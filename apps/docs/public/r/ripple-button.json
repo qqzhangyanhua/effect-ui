@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button",
+  "type": "registry:ui",
+  "title": "Ripple Button",
+  "description": "点击波纹按钮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/ripple-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/ripple-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface Ripple {\n  id: number\n  x: number\n  y: number\n}\n\nexport interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  rippleColor?: string\n}\n\nfunction RippleButton({\n  className,\n  children,\n  rippleColor = \"color-mix(in oklab, var(--primary-foreground) 45%, transparent)\",\n  onClick,\n  ...props\n}: RippleButtonProps) {\n  const [ripples, setRipples] = React.useState<Ripple[]>([])\n\n  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {\n    const rect = event.currentTarget.getBoundingClientRect()\n    const next: Ripple = {\n      id: Date.now(),\n      x: event.clientX - rect.left,\n      y: event.clientY - rect.top,\n    }\n    setRipples((current) => [...current, next])\n    window.setTimeout(() => {\n      setRipples((current) => current.filter((item) => item.id !== next.id))\n    }, 650)\n    onClick?.(event)\n  }\n\n  return (\n    <button\n      data-slot=\"ripple-button\"\n      className={cn(\n        \"relative inline-flex h-10 overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90\",\n        className,\n      )}\n      onClick={handleClick}\n      {...props}\n    >\n      <span className=\"relative z-10\">{children}</span>\n      {ripples.map((ripple) => (\n        <span\n          key={ripple.id}\n          className=\"pointer-events-none absolute size-4 -translate-x-1/2 -translate-y-1/2 animate-[ripple-expand_0.65s_ease-out] rounded-full\"\n          style={{\n            left: ripple.x,\n            top: ripple.y,\n            backgroundColor: rippleColor,\n          }}\n        />\n      ))}\n    </button>\n  )\n}\n\nexport { RippleButton }\n"
+    }
+  ]
+}

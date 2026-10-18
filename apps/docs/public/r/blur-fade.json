@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-fade",
+  "type": "registry:ui",
+  "title": "Blur Fade",
+  "description": "模糊消散后显现。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/blur-fade.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/blur-fade.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, type HTMLMotionProps } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface BlurFadeProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  blur?: number\n}\n\nfunction BlurFade({\n  className,\n  children,\n  delay = 0,\n  blur = 8,\n  ...props\n}: BlurFadeProps) {\n  return (\n    <motion.div\n      data-slot=\"blur-fade\"\n      className={cn(className)}\n      initial={{ opacity: 0, y: 12, filter: `blur(${blur}px)` }}\n      whileInView={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n      viewport={{ once: true, amount: 0.4 }}\n      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}\n      {...props}\n    >\n      {children}\n    </motion.div>\n  )\n}\n\nexport { BlurFade }\n"
+    }
+  ]
+}

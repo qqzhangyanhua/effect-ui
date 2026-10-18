@@ -1,0 +1,22 @@
+{
+  "name": "effect-ui",
+  "private": true,
+  "version": "0.1.0",
+  "description": "React UI + effects component library. shadcn-compatible registry.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.4",
+  "scripts": {
+    "dev": "pnpm --filter @effect-ui/docs dev",
+    "build": "pnpm registry:build && pnpm --filter @effect-ui/docs build",
+    "lint": "eslint apps/docs packages/registry/src scripts",
+    "typecheck": "pnpm --filter @effect-ui/docs typecheck",
+    "registry:build": "tsx scripts/build-registry.ts"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

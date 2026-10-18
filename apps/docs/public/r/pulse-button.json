@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pulse-button",
+  "type": "registry:ui",
+  "title": "Pulse Button",
+  "description": "向外脉冲的按钮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/pulse-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/pulse-button.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type PulseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>\n\nfunction PulseButton({ className, children, ...props }: PulseButtonProps) {\n  return (\n    <button\n      data-slot=\"pulse-button\"\n      className={cn(\n        \"relative inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground\",\n        className,\n      )}\n      {...props}\n    >\n      <span\n        aria-hidden\n        className=\"absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] rounded-full bg-primary/40\"\n      />\n      {children}\n    </button>\n  )\n}\n\nexport { PulseButton }\n"
+    }
+  ]
+}

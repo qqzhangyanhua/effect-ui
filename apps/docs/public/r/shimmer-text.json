@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-text",
+  "type": "registry:ui",
+  "title": "Shimmer Text",
+  "description": "金属光泽扫过文字。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/shimmer-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/shimmer-text.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type ShimmerTextProps = React.HTMLAttributes<HTMLSpanElement>\n\nfunction ShimmerText({ className, children, ...props }: ShimmerTextProps) {\n  return (\n    <span\n      data-slot=\"shimmer-text\"\n      className={cn(\n        \"inline-flex animate-[shimmer-sweep_2.4s_linear_infinite] bg-linear-to-r from-muted-foreground/40 via-foreground to-muted-foreground/40 bg-size-[200%_100%] bg-clip-text text-transparent\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  )\n}\n\nexport { ShimmerText }\n"
+    }
+  ]
+}

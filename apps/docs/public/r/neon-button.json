@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neon-button",
+  "type": "registry:ui",
+  "title": "Neon Button",
+  "description": "霓虹描边发光按钮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/neon-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/neon-button.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  glowColor?: string\n}\n\nfunction NeonButton({\n  className,\n  children,\n  glowColor = \"var(--primary)\",\n  ...props\n}: NeonButtonProps) {\n  return (\n    <button\n      data-slot=\"neon-button\"\n      className={cn(\n        \"relative inline-flex h-10 items-center justify-center rounded-md border border-[color-mix(in_oklab,var(--neon)_70%,transparent)] bg-background px-5 text-sm font-medium text-foreground shadow-[0_0_18px_-6px_var(--neon)] transition-shadow hover:shadow-[0_0_28px_-4px_var(--neon)]\",\n        className,\n      )}\n      style={{ \"--neon\": glowColor } as React.CSSProperties}\n      {...props}\n    >\n      {children}\n    </button>\n  )\n}\n\nexport { NeonButton }\n"
+    }
+  ]
+}

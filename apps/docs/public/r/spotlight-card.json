@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-card",
+  "type": "registry:ui",
+  "title": "Spotlight Card",
+  "description": "跟随指针的聚光卡片。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/spotlight-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/spotlight-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useMotionTemplate, useMotionValue } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  spotlightColor?: string\n  radius?: number\n}\n\nfunction SpotlightCard({\n  className,\n  children,\n  spotlightColor = \"color-mix(in oklab, var(--primary) 35%, transparent)\",\n  radius = 240,\n  ...props\n}: SpotlightCardProps) {\n  const mouseX = useMotionValue(0)\n  const mouseY = useMotionValue(0)\n\n  const onMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {\n    const { left, top } = event.currentTarget.getBoundingClientRect()\n    mouseX.set(event.clientX - left)\n    mouseY.set(event.clientY - top)\n  }\n\n  const background = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, ${spotlightColor}, transparent 70%)`\n\n  return (\n    <div\n      data-slot=\"spotlight-card\"\n      onMouseMove={onMouseMove}\n      className={cn(\n        \"group relative overflow-hidden rounded-xl border bg-card p-6 text-card-foreground shadow-sm\",\n        className,\n      )}\n      {...props}\n    >\n      <motion.div\n        className=\"pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100\"\n        style={{ background }}\n      />\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  )\n}\n\nexport { SpotlightCard }\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "count-up",
+  "type": "registry:ui",
+  "title": "Count Up",
+  "description": "数字滚动计数。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/count-up.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/count-up.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { useInView, useMotionValue, useSpring } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface CountUpProps extends React.HTMLAttributes<HTMLSpanElement> {\n  value: number\n  direction?: \"up\" | \"down\"\n  delay?: number\n  decimalPlaces?: number\n}\n\nfunction CountUp({\n  value,\n  direction = \"up\",\n  delay = 0,\n  decimalPlaces = 0,\n  className,\n  ...props\n}: CountUpProps) {\n  const ref = React.useRef<HTMLSpanElement>(null)\n  const motionValue = useMotionValue(direction === \"down\" ? value : 0)\n  const springValue = useSpring(motionValue, { damping: 40, stiffness: 120 })\n  const isInView = useInView(ref, { once: true, margin: \"0px\" })\n\n  React.useEffect(() => {\n    if (!isInView) return\n    const timer = window.setTimeout(() => {\n      motionValue.set(direction === \"down\" ? 0 : value)\n    }, delay * 1000)\n    return () => window.clearTimeout(timer)\n  }, [delay, direction, isInView, motionValue, value])\n\n  React.useEffect(() => {\n    const unsubscribe = springValue.on(\"change\", (latest) => {\n      if (!ref.current) return\n      ref.current.textContent = Intl.NumberFormat(\"en-US\", {\n        minimumFractionDigits: decimalPlaces,\n        maximumFractionDigits: decimalPlaces,\n      }).format(Number(latest.toFixed(decimalPlaces)))\n    })\n    return unsubscribe\n  }, [decimalPlaces, springValue])\n\n  return (\n    <span\n      ref={ref}\n      data-slot=\"count-up\"\n      className={cn(\"inline-block tabular-nums tracking-tight\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { CountUp }\n"
+    }
+  ]
+}

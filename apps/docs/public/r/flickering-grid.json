@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flickering-grid",
+  "type": "registry:ui",
+  "title": "Flickering Grid",
+  "description": "随机闪烁的像素网格。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/flickering-grid.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/flickering-grid.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface FlickeringGridProps extends React.HTMLAttributes<HTMLCanvasElement> {\n  squareSize?: number\n  gridGap?: number\n  flickerChance?: number\n  color?: string\n  maxOpacity?: number\n}\n\nfunction FlickeringGrid({\n  className,\n  squareSize = 4,\n  gridGap = 6,\n  flickerChance = 0.18,\n  color = \"var(--foreground)\",\n  maxOpacity = 0.28,\n  ...props\n}: FlickeringGridProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n    let frame = 0\n\n    const paint = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      const dpr = window.devicePixelRatio || 1\n      if (canvas.width !== width * dpr || canvas.height !== height * dpr) {\n        canvas.width = width * dpr\n        canvas.height = height * dpr\n        ctx.setTransform(dpr, 0, 0, dpr, 0, 0)\n      }\n      ctx.clearRect(0, 0, width, height)\n      const step = squareSize + gridGap\n      for (let x = 0; x < width; x += step) {\n        for (let y = 0; y < height; y += step) {\n          if (Math.random() > flickerChance) continue\n          ctx.globalAlpha = Math.random() * maxOpacity\n          ctx.fillStyle = color\n          ctx.fillRect(x, y, squareSize, squareSize)\n        }\n      }\n      frame = window.requestAnimationFrame(paint)\n    }\n\n    paint()\n    return () => window.cancelAnimationFrame(frame)\n  }, [color, flickerChance, gridGap, maxOpacity, squareSize])\n\n  return (\n    <canvas\n      ref={canvasRef}\n      data-slot=\"flickering-grid\"\n      className={cn(\"pointer-events-none absolute inset-0 size-full\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { FlickeringGrid }\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-gradient",
+  "type": "registry:ui",
+  "title": "Noise Gradient",
+  "description": "噪点渐变背景。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/noise-gradient.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/noise-gradient.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type NoiseGradientProps = React.HTMLAttributes<HTMLDivElement>\n\nfunction NoiseGradient({ className, children, ...props }: NoiseGradientProps) {\n  return (\n    <div\n      data-slot=\"noise-gradient\"\n      className={cn(\"relative overflow-hidden rounded-xl\", className)}\n      {...props}\n    >\n      <div className=\"absolute inset-0 bg-linear-to-br from-violet-600 via-fuchsia-500 to-cyan-400\" />\n      <div\n        aria-hidden\n        className=\"absolute inset-0 opacity-25 mix-blend-overlay\"\n        style={{\n          backgroundImage:\n            \"url(\\\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\\\")\",\n        }}\n      />\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  )\n}\n\nexport { NoiseGradient }\n"
+    }
+  ]
+}

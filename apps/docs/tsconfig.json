@@ -8,6 +8,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@/components/ui/*": ["../../packages/registry/src/ui/*"],
+      "@/hooks/*": ["../../packages/registry/src/hooks/*"],
       "@effect-ui/registry/*": ["../../packages/registry/src/*"]
     }
   },

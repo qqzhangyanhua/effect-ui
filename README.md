@@ -65,7 +65,7 @@ registry.json          shadcn 兼容总表
 
 ### 基础组件（shadcn/ui）
 
-button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider
+button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table
 
 ### 文字动画
 
@@ -78,6 +78,11 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | split-text | Motion Primitives |
 | highlight-text | Animata |
 | count-up | Magic UI |
+| scramble-text | Magic UI |
+| word-rotate | Magic UI |
+| morphing-text | Magic UI |
+| rolling-number | Magic UI |
+| text-reveal | Magic UI |
 
 ### 背景
 
@@ -90,6 +95,12 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | aurora-background | 原创 |
 | ripples | Magic UI |
 | flickering-grid | Magic UI |
+| light-beams | Magic UI |
+| starfield | 原创 |
+| wave-background | 原创 |
+| noise-gradient | 原创 |
+| animated-grid | Magic UI |
+| retro-grid | Magic UI |
 
 ### 光标 / 悬停
 
@@ -100,6 +111,14 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | cursor-follow | 原创 |
 | tilt | Motion Primitives |
 | glow-hover | Cult UI |
+| dock | Magic UI |
+| marquee | Magic UI |
+| orbiting-circles | Magic UI |
+| animated-list | Magic UI |
+| globe-sphere | 原创 |
+| confetti-burst | Magic UI |
+| cursor-trail | 原创 |
+| sparkles | Magic UI |
 
 ### 卡片 / 3D
 
@@ -109,6 +128,10 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | glass-card | 原创 |
 | shine-border | Magic UI |
 | hover-lift | Cult UI |
+| border-beam | Magic UI |
+| bento-grid | Magic UI |
+| perspective-card | 原创 |
+| expandable-card | Cult UI |
 
 ### 按钮特效
 
@@ -118,6 +141,9 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | shimmer-button | Magic UI |
 | pulse-button | Magic UI |
 | neon-button | 原创 |
+| rainbow-button | Magic UI |
+| interactive-hover-button | Magic UI |
+| gooey-button | 原创 |
 
 ### 加载
 
@@ -137,6 +163,21 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | stagger-list | Motion Primitives |
 | parallax | 原创 |
 | blur-fade | Magic UI |
+
+### 导航
+
+| 组件 | 来源 |
+| --- | --- |
+| animated-tabs | Motion Primitives |
+| floating-navbar | 原创 |
+| animated-sidebar | 原创 |
+
+### 页面 / 转场
+
+| 组件 | 来源 |
+| --- | --- |
+| page-transition | 原创 |
+| reveal-section | Motion Primitives |
 
 ---
 

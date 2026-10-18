@@ -1,3 +1,5 @@
+import { batch2Components } from "./catalog-batch2"
+
 export type ComponentCategory =
   | "ui"
   | "text"
@@ -7,6 +9,8 @@ export type ComponentCategory =
   | "buttons"
   | "loaders"
   | "scroll"
+  | "navigation"
+  | "page"
 
 export type SourceLibrary =
   | "shadcn/ui"
@@ -46,6 +50,8 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   buttons: "按钮特效",
   loaders: "加载",
   scroll: "滚动显现",
+  navigation: "导航",
+  page: "页面 / 转场",
 }
 
 export const categoryOrder: ComponentCategory[] = [
@@ -57,6 +63,8 @@ export const categoryOrder: ComponentCategory[] = [
   "buttons",
   "loaders",
   "scroll",
+  "navigation",
+  "page",
 ]
 
 const uiProps: PropDoc[] = [
@@ -867,6 +875,7 @@ export const components: ComponentMeta[] = [
       { name: "blur", type: "number", defaultValue: "8", description: "初始模糊像素。" },
     ],
   },
+  ...batch2Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

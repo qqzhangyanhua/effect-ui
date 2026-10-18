@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-grid",
+  "type": "registry:ui",
+  "title": "Animated Grid",
+  "description": "缓慢漂移的网格线。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/animated-grid.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/animated-grid.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedGridProps extends React.SVGAttributes<SVGSVGElement> {\n  cell?: number\n}\n\nfunction AnimatedGrid({ className, cell = 36, ...props }: AnimatedGridProps) {\n  const id = React.useId()\n  return (\n    <svg\n      aria-hidden\n      data-slot=\"animated-grid\"\n      className={cn(\n        \"pointer-events-none absolute inset-0 size-full stroke-foreground/15\",\n        className,\n      )}\n      {...props}\n    >\n      <defs>\n        <pattern id={id} width={cell} height={cell} patternUnits=\"userSpaceOnUse\">\n          <path d={`M ${cell} 0 L 0 0 0 ${cell}`} fill=\"none\" />\n        </pattern>\n      </defs>\n      <rect\n        width=\"100%\"\n        height=\"100%\"\n        fill={`url(#${id})`}\n        className=\"animate-[grid-drift_12s_linear_infinite]\"\n      />\n    </svg>\n  )\n}\n\nexport { AnimatedGrid }\n"
+    }
+  ]
+}

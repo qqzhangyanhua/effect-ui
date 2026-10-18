@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-list",
+  "type": "registry:ui",
+  "title": "Animated List",
+  "description": "逐条入场通知列表。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/animated-list.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/animated-list.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedListProps {\n  className?: string\n  items: React.ReactNode[]\n  delay?: number\n}\n\nfunction AnimatedList({ className, items, delay = 1400 }: AnimatedListProps) {\n  const [index, setIndex] = React.useState(0)\n\n  React.useEffect(() => {\n    if (items.length === 0) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % items.length)\n    }, delay)\n    return () => window.clearInterval(timer)\n  }, [delay, items.length])\n\n  const visible = items.slice(0, index + 1).reverse()\n\n  return (\n    <div data-slot=\"animated-list\" className={cn(\"flex flex-col gap-2\", className)}>\n      <AnimatePresence initial={false}>\n        {visible.map((item, itemIndex) => (\n          <motion.div\n            key={`${itemIndex}-${index}`}\n            initial={{ opacity: 0, y: 18, scale: 0.97 }}\n            animate={{ opacity: 1, y: 0, scale: 1 }}\n            exit={{ opacity: 0, scale: 0.96 }}\n            transition={{ duration: 0.28 }}\n          >\n            {item}\n          </motion.div>\n        ))}\n      </AnimatePresence>\n    </div>\n  )\n}\n\nexport { AnimatedList }\n"
+    }
+  ]
+}

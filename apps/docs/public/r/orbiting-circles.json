@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "orbiting-circles",
+  "type": "registry:ui",
+  "title": "Orbiting Circles",
+  "description": "环绕轨道图标。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/orbiting-circles.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/orbiting-circles.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface OrbitingCirclesProps extends React.HTMLAttributes<HTMLDivElement> {\n  radius?: number\n  duration?: number\n}\n\nfunction OrbitingCircles({\n  className,\n  children,\n  radius = 80,\n  duration = 12,\n  ...props\n}: OrbitingCirclesProps) {\n  const items = React.Children.toArray(children)\n\n  return (\n    <div\n      data-slot=\"orbiting-circles\"\n      className={cn(\"relative size-52\", className)}\n      {...props}\n    >\n      <span\n        className=\"absolute inset-0 rounded-full border border-dashed border-border\"\n        style={{ margin: `calc(50% - ${radius}px)` }}\n      />\n      {items.map((child, index) => (\n        <span\n          key={index}\n          className=\"absolute top-1/2 left-1/2 size-8 -translate-x-1/2 -translate-y-1/2\"\n          style={{\n            animation: `orbit-path ${duration}s linear infinite`,\n            animationDelay: `${(-index * duration) / items.length}s`,\n            [\"--orbit-radius\" as string]: `${radius}px`,\n          }}\n        >\n          {child}\n        </span>\n      ))}\n    </div>\n  )\n}\n\nexport { OrbitingCircles }\n"
+    }
+  ]
+}

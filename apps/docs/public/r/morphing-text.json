@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-text",
+  "type": "registry:ui",
+  "title": "Morphing Text",
+  "description": "模糊变形切换文字。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/morphing-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/morphing-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface MorphingTextProps {\n  texts: string[]\n  className?: string\n  interval?: number\n}\n\nfunction MorphingText({ texts, className, interval = 2200 }: MorphingTextProps) {\n  const [index, setIndex] = React.useState(0)\n\n  React.useEffect(() => {\n    if (texts.length === 0) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % texts.length)\n    }, interval)\n    return () => window.clearInterval(timer)\n  }, [interval, texts.length])\n\n  const text = texts[index] ?? \"\"\n\n  return (\n    <span data-slot=\"morphing-text\" className={cn(\"relative inline-grid\", className)}>\n      <AnimatePresence mode=\"wait\">\n        <motion.span\n          key={text}\n          initial={{ filter: \"blur(10px)\", opacity: 0, scale: 0.96 }}\n          animate={{ filter: \"blur(0px)\", opacity: 1, scale: 1 }}\n          exit={{ filter: \"blur(10px)\", opacity: 0, scale: 1.04 }}\n          transition={{ duration: 0.4 }}\n          className=\"col-start-1 row-start-1\"\n        >\n          {text}\n        </motion.span>\n      </AnimatePresence>\n    </span>\n  )\n}\n\nexport { MorphingText }\n"
+    }
+  ]
+}

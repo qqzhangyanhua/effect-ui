@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-button",
+  "type": "registry:ui",
+  "title": "Gooey Button",
+  "description": "液态粘连按钮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/gooey-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/gooey-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type GooeyButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>\n\nfunction GooeyButton({ className, children, ...props }: GooeyButtonProps) {\n  const id = React.useId()\n\n  return (\n    <button\n      data-slot=\"gooey-button\"\n      className={cn(\n        \"relative inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground\",\n        className,\n      )}\n      style={{ filter: `url(#${id})` }}\n      {...props}\n    >\n      <svg width=\"0\" height=\"0\" className=\"absolute\">\n        <filter id={id}>\n          <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"6\" result=\"blur\" />\n          <feColorMatrix\n            in=\"blur\"\n            mode=\"matrix\"\n            values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7\"\n            result=\"goo\"\n          />\n          <feBlend in=\"SourceGraphic\" in2=\"goo\" />\n        </filter>\n      </svg>\n      <span className=\"relative z-10\">{children}</span>\n      <span className=\"absolute -right-1 size-8 rounded-full bg-primary/80\" />\n      <span className=\"absolute -left-1 size-7 rounded-full bg-primary/70\" />\n    </button>\n  )\n}\n\nexport { GooeyButton }\n"
+    }
+  ]
+}

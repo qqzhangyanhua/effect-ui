@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "starfield",
+  "type": "registry:ui",
+  "title": "Starfield",
+  "description": "星空穿梭背景。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/starfield.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/starfield.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface StarfieldProps extends React.HTMLAttributes<HTMLCanvasElement> {\n  count?: number\n}\n\nfunction Starfield({ className, count = 90, ...props }: StarfieldProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n    let frame = 0\n    const stars = Array.from({ length: count }, () => ({\n      x: Math.random(),\n      y: Math.random(),\n      z: Math.random(),\n      s: 0.4 + Math.random() * 1.4,\n    }))\n\n    const draw = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      const dpr = window.devicePixelRatio || 1\n      canvas.width = width * dpr\n      canvas.height = height * dpr\n      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)\n      ctx.clearRect(0, 0, width, height)\n      for (const star of stars) {\n        star.z -= 0.002\n        if (star.z <= 0) star.z = 1\n        const x = (star.x - 0.5) * (1 / star.z) * width + width / 2\n        const y = (star.y - 0.5) * (1 / star.z) * height + height / 2\n        ctx.globalAlpha = 1 - star.z\n        ctx.fillStyle = \"currentColor\"\n        ctx.beginPath()\n        ctx.arc(x, y, star.s * (1 - star.z + 0.2), 0, Math.PI * 2)\n        ctx.fill()\n      }\n      frame = window.requestAnimationFrame(draw)\n    }\n\n    draw()\n    return () => window.cancelAnimationFrame(frame)\n  }, [count])\n\n  return (\n    <canvas\n      ref={canvasRef}\n      data-slot=\"starfield\"\n      className={cn(\"pointer-events-none absolute inset-0 size-full text-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Starfield }\n"
+    }
+  ]
+}

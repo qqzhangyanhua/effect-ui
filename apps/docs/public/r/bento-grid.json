@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid",
+  "type": "registry:ui",
+  "title": "Bento Grid",
+  "description": "不规则卡片宫格。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/bento-grid.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/bento-grid.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction BentoGrid({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      data-slot=\"bento-grid\"\n      className={cn(\n        \"grid w-full auto-rows-[10rem] grid-cols-3 gap-3\",\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction BentoCard({\n  className,\n  colSpan = 1,\n  rowSpan = 1,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement> & {\n  colSpan?: 1 | 2 | 3\n  rowSpan?: 1 | 2\n}) {\n  return (\n    <div\n      data-slot=\"bento-card\"\n      className={cn(\n        \"overflow-hidden rounded-xl border bg-card p-4 text-card-foreground shadow-sm\",\n        colSpan === 2 && \"col-span-2\",\n        colSpan === 3 && \"col-span-3\",\n        rowSpan === 2 && \"row-span-2\",\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { BentoGrid, BentoCard }\n"
+    }
+  ]
+}

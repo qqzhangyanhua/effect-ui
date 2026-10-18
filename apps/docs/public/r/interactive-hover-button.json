@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "interactive-hover-button",
+  "type": "registry:ui",
+  "title": "Interactive Hover Button",
+  "description": "悬停滑出箭头按钮。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/interactive-hover-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/interactive-hover-button.tsx",
+      "content": "import * as React from \"react\"\nimport { ArrowRight } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type InteractiveHoverButtonProps =\n  React.ButtonHTMLAttributes<HTMLButtonElement>\n\nfunction InteractiveHoverButton({\n  className,\n  children,\n  ...props\n}: InteractiveHoverButtonProps) {\n  return (\n    <button\n      data-slot=\"interactive-hover-button\"\n      className={cn(\n        \"group relative inline-flex h-10 items-center overflow-hidden rounded-full border bg-background px-6 text-sm\",\n        className,\n      )}\n      {...props}\n    >\n      <span className=\"inline-flex items-center gap-2 transition-transform duration-300 group-hover:-translate-x-3\">\n        {children}\n      </span>\n      <ArrowRight className=\"absolute right-4 size-4 translate-x-6 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100\" />\n    </button>\n  )\n}\n\nexport { InteractiveHoverButton }\n"
+    }
+  ]
+}

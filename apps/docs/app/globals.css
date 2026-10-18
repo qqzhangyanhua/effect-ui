@@ -230,3 +230,82 @@
     transform: translateY(-6px);
   }
 }
+
+@keyframes beam-rise {
+  0%,
+  100% {
+    transform: translateY(8%) rotate(var(--beam-rot, -12deg));
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-6%) rotate(var(--beam-rot, -12deg));
+    opacity: 0.8;
+  }
+}
+
+@keyframes wave-shift {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-6%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes grid-drift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(48px);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes orbit-path {
+  to {
+    transform: rotate(360deg) translateX(var(--orbit-radius, 80px)) rotate(-360deg);
+  }
+}
+
+@keyframes globe-spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes confetti-pop {
+  to {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes rainbow-spin {
+  to {
+    --shine-angle: 360deg;
+  }
+}

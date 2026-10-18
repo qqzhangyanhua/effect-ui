@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-burst",
+  "type": "registry:ui",
+  "title": "Confetti Burst",
+  "description": "点击撒彩纸。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/confetti-burst.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/confetti-burst.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface Particle {\n  id: number\n  x: number\n  y: number\n  color: string\n  rotate: number\n}\n\nconst COLORS = [\"#a78bfa\", \"#22d3ee\", \"#f472b6\", \"#facc15\", \"#34d399\"]\n\nexport interface ConfettiBurstProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  pieces?: number\n}\n\nfunction ConfettiBurst({\n  className,\n  children,\n  pieces = 18,\n  onClick,\n  ...props\n}: ConfettiBurstProps) {\n  const [particles, setParticles] = React.useState<Particle[]>([])\n\n  const burst = (event: React.MouseEvent<HTMLButtonElement>) => {\n    const next = Array.from({ length: pieces }, (_, index) => ({\n      id: Date.now() + index,\n      x: (Math.random() - 0.5) * 180,\n      y: -40 - Math.random() * 90,\n      color: COLORS[index % COLORS.length] ?? \"#a78bfa\",\n      rotate: Math.random() * 220,\n    }))\n    setParticles(next)\n    window.setTimeout(() => setParticles([]), 800)\n    onClick?.(event)\n  }\n\n  return (\n    <button\n      data-slot=\"confetti-burst\"\n      className={cn(\"relative inline-flex h-10 items-center rounded-md bg-primary px-4 text-sm text-primary-foreground\", className)}\n      onClick={burst}\n      {...props}\n    >\n      {children}\n      {particles.map((particle) => (\n        <span\n          key={particle.id}\n          className=\"pointer-events-none absolute top-1/2 left-1/2 size-2 rounded-[1px]\"\n          style={{\n            background: particle.color,\n            animation: \"confetti-pop 0.8s ease-out forwards\",\n            [\"--dx\" as string]: `${particle.x}px`,\n            [\"--dy\" as string]: `${particle.y}px`,\n            [\"--rot\" as string]: `${particle.rotate}deg`,\n          }}\n        />\n      ))}\n    </button>\n  )\n}\n\nexport { ConfettiBurst }\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particles",
+  "type": "registry:ui",
+  "title": "Particles",
+  "description": "跟随指针的粒子背景。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/particles.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/particles.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface Particle {\n  x: number\n  y: number\n  vx: number\n  vy: number\n  size: number\n}\n\nexport interface ParticlesProps extends React.HTMLAttributes<HTMLCanvasElement> {\n  quantity?: number\n  staticity?: number\n  ease?: number\n  color?: string\n}\n\nfunction Particles({\n  className,\n  quantity = 60,\n  staticity = 50,\n  ease = 50,\n  color = \"currentColor\",\n  ...props\n}: ParticlesProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n  const particles = React.useRef<Particle[]>([])\n  const mouse = React.useRef({ x: 0, y: 0 })\n  const frame = React.useRef(0)\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n\n    const resize = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      const dpr = window.devicePixelRatio || 1\n      canvas.width = width * dpr\n      canvas.height = height * dpr\n      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)\n      particles.current = Array.from({ length: quantity }, () => ({\n        x: Math.random() * width,\n        y: Math.random() * height,\n        vx: (Math.random() - 0.5) * 0.4,\n        vy: (Math.random() - 0.5) * 0.4,\n        size: Math.random() * 1.6 + 0.4,\n      }))\n    }\n\n    const onMove = (event: MouseEvent) => {\n      const rect = canvas.getBoundingClientRect()\n      mouse.current = {\n        x: event.clientX - rect.left,\n        y: event.clientY - rect.top,\n      }\n    }\n\n    const draw = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      ctx.clearRect(0, 0, width, height)\n      ctx.fillStyle = color\n      const attraction = (100 - staticity) / 1800\n      const damping = ease / 1400\n\n      for (const particle of particles.current) {\n        const dx = mouse.current.x - particle.x\n        const dy = mouse.current.y - particle.y\n        particle.vx += dx * attraction\n        particle.vy += dy * attraction\n        particle.vx *= 1 - damping\n        particle.vy *= 1 - damping\n        particle.x += particle.vx\n        particle.y += particle.vy\n\n        if (particle.x < 0 || particle.x > width) particle.vx *= -1\n        if (particle.y < 0 || particle.y > height) particle.vy *= -1\n\n        ctx.beginPath()\n        ctx.globalAlpha = 0.7\n        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)\n        ctx.fill()\n      }\n\n      frame.current = window.requestAnimationFrame(draw)\n    }\n\n    resize()\n    draw()\n    window.addEventListener(\"resize\", resize)\n    canvas.addEventListener(\"mousemove\", onMove)\n    return () => {\n      window.removeEventListener(\"resize\", resize)\n      canvas.removeEventListener(\"mousemove\", onMove)\n      window.cancelAnimationFrame(frame.current)\n    }\n  }, [color, ease, quantity, staticity])\n\n  return (\n    <canvas\n      ref={canvasRef}\n      data-slot=\"particles\"\n      className={cn(\"pointer-events-auto absolute inset-0 size-full\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Particles }\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sparkles",
+  "type": "registry:ui",
+  "title": "Sparkles",
+  "description": "文字周围闪烁星点。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/sparkles.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/sparkles.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SparklesProps extends React.HTMLAttributes<HTMLSpanElement> {\n  count?: number\n}\n\nfunction Sparkles({ className, children, count = 8, ...props }: SparklesProps) {\n  return (\n    <span data-slot=\"sparkles\" className={cn(\"relative inline-flex\", className)} {...props}>\n      {children}\n      {Array.from({ length: count }, (_, index) => (\n        <span\n          key={index}\n          className=\"pointer-events-none absolute size-1 rounded-full bg-amber-300\"\n          style={{\n            left: `${8 + ((index * 13) % 84)}%`,\n            top: `${((index * 19) % 80) - 10}%`,\n            animation: `sparkle-twinkle ${1.4 + (index % 3) * 0.3}s ease-in-out ${index * 0.12}s infinite`,\n          }}\n        />\n      ))}\n    </span>\n  )\n}\n\nexport { Sparkles }\n"
+    }
+  ]
+}

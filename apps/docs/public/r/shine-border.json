@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shine-border",
+  "type": "registry:ui",
+  "title": "Shine Border",
+  "description": "旋转高光描边卡片。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/shine-border.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/shine-border.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ShineBorderProps extends React.HTMLAttributes<HTMLDivElement> {\n  shineColor?: string\n  duration?: number\n}\n\nfunction ShineBorder({\n  className,\n  children,\n  shineColor = \"var(--primary)\",\n  duration = 10,\n  ...props\n}: ShineBorderProps) {\n  return (\n    <div\n      data-slot=\"shine-border\"\n      className={cn(\n        \"relative overflow-hidden rounded-xl border bg-card p-6 text-card-foreground\",\n        className,\n      )}\n      {...props}\n    >\n      <span\n        aria-hidden\n        className=\"pointer-events-none absolute inset-0 rounded-[inherit]\"\n        style={{\n          padding: 1,\n          background: `conic-gradient(from var(--shine-angle), transparent 0%, ${shineColor} 12%, transparent 28%)`,\n          animation: `shine-spin ${duration}s linear infinite`,\n          mask: \"linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)\",\n          maskComposite: \"exclude\",\n        }}\n      />\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  )\n}\n\nexport { ShineBorder }\n"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/lib/utils": ["./src/lib/utils.ts"],
+      "@/components/ui/*": ["./src/ui/*"],
+      "@/hooks/*": ["./src/hooks/*"]
+    }
+  },
+  "include": ["src"]
+}

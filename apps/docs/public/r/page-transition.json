@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-transition",
+  "type": "registry:ui",
+  "title": "Page Transition",
+  "description": "页面切换淡入模糊。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/page-transition.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/page-transition.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface PageTransitionProps {\n  className?: string\n  children?: React.ReactNode\n  transitionKey: string\n}\n\nfunction PageTransition({\n  className,\n  children,\n  transitionKey,\n}: PageTransitionProps) {\n  return (\n    <AnimatePresence mode=\"wait\">\n      <motion.div\n        key={transitionKey}\n        data-slot=\"page-transition\"\n        className={cn(className)}\n        initial={{ opacity: 0, y: 18, filter: \"blur(8px)\" }}\n        animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\n        exit={{ opacity: 0, y: -12, filter: \"blur(8px)\" }}\n        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}\n      >\n        {children}\n      </motion.div>\n    </AnimatePresence>\n  )\n}\n\nexport { PageTransition }\n"
+    }
+  ]
+}

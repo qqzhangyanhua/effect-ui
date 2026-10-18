@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-pattern",
+  "type": "registry:ui",
+  "title": "Dot Pattern",
+  "description": "圆点背景图案。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/dot-pattern.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/dot-pattern.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface DotPatternProps extends React.SVGAttributes<SVGSVGElement> {\n  width?: number\n  height?: number\n  cx?: number\n  cy?: number\n  cr?: number\n}\n\nfunction DotPattern({\n  width = 16,\n  height = 16,\n  cx = 1,\n  cy = 1,\n  cr = 1,\n  className,\n  ...props\n}: DotPatternProps) {\n  const id = React.useId()\n\n  return (\n    <svg\n      aria-hidden\n      data-slot=\"dot-pattern\"\n      className={cn(\n        \"pointer-events-none absolute inset-0 size-full fill-foreground/18\",\n        className,\n      )}\n      {...props}\n    >\n      <defs>\n        <pattern\n          id={id}\n          width={width}\n          height={height}\n          patternUnits=\"userSpaceOnUse\"\n        >\n          <circle cx={cx} cy={cy} r={cr} />\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" fill={`url(#${id})`} />\n    </svg>\n  )\n}\n\nexport { DotPattern }\n"
+    }
+  ]
+}

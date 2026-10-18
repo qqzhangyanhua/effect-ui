@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-card",
+  "type": "registry:ui",
+  "title": "Glass Card",
+  "description": "毛玻璃卡片。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glass-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glass-card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type GlassCardProps = React.HTMLAttributes<HTMLDivElement>\n\nfunction GlassCard({ className, children, ...props }: GlassCardProps) {\n  return (\n    <div\n      data-slot=\"glass-card\"\n      className={cn(\n        \"relative overflow-hidden rounded-2xl border border-white/15 bg-white/8 p-6 text-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18)] backdrop-blur-xl dark:bg-white/6\",\n        className,\n      )}\n      {...props}\n    >\n      <div\n        aria-hidden\n        className=\"pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/50 to-transparent\"\n      />\n      {children}\n    </div>\n  )\n}\n\nexport { GlassCard }\n"
+    }
+  ]
+}

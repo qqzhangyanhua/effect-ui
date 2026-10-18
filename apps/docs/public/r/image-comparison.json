@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-comparison",
+  "type": "registry:ui",
+  "title": "Image Comparison",
+  "description": "前后对比拖动滑块。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/image-comparison.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/image-comparison.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useMotionValue, useSpring, useTransform } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface ImageComparisonContextValue {\n  position: ReturnType<typeof useSpring>\n}\n\nconst ImageComparisonContext = React.createContext<ImageComparisonContextValue | null>(null)\n\nfunction useImageComparison() {\n  const context = React.useContext(ImageComparisonContext)\n  if (!context) {\n    throw new Error(\"ImageComparison parts must be used within ImageComparison\")\n  }\n  return context\n}\n\nfunction ImageComparison({\n  children,\n  className,\n  enableHover = false,\n}: {\n  children: React.ReactNode\n  className?: string\n  enableHover?: boolean\n}) {\n  const [dragging, setDragging] = React.useState(false)\n  const raw = useMotionValue(50)\n  const position = useSpring(raw, { bounce: 0, duration: 0 })\n\n  const move = (event: React.MouseEvent | React.TouchEvent) => {\n    if (!dragging && !enableHover) return\n    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()\n    const clientX = \"touches\" in event ? event.touches[0]?.clientX ?? 0 : event.clientX\n    const percent = Math.min(Math.max(((clientX - rect.left) / rect.width) * 100, 0), 100)\n    raw.set(percent)\n  }\n\n  return (\n    <ImageComparisonContext.Provider value={{ position }}>\n      <div\n        className={cn(\"relative select-none overflow-hidden\", enableHover && \"cursor-ew-resize\", className)}\n        onMouseMove={move}\n        onMouseDown={() => {\n          if (!enableHover) setDragging(true)\n        }}\n        onMouseUp={() => setDragging(false)}\n        onMouseLeave={() => setDragging(false)}\n        onTouchStart={() => {\n          if (!enableHover) setDragging(true)\n        }}\n        onTouchMove={move}\n        onTouchEnd={() => setDragging(false)}\n      >\n        {children}\n      </div>\n    </ImageComparisonContext.Provider>\n  )\n}\n\nfunction ImageComparisonImage({\n  src,\n  alt,\n  position,\n  className,\n}: {\n  src: string\n  alt: string\n  position: \"left\" | \"right\"\n  className?: string\n}) {\n  const { position: slider } = useImageComparison()\n  const clip = useTransform(slider, (value) =>\n    position === \"left\" ? `inset(0 ${100 - value}% 0 0)` : `inset(0 0 0 ${value}%)`,\n  )\n  return (\n    <motion.img\n      src={src}\n      alt={alt}\n      className={cn(\"absolute inset-0 size-full object-cover\", className)}\n      style={{ clipPath: clip }}\n    />\n  )\n}\n\nfunction ImageComparisonSlider({\n  className,\n  children,\n}: {\n  className?: string\n  children?: React.ReactNode\n}) {\n  const { position } = useImageComparison()\n  const left = useTransform(position, (value) => `${value}%`)\n  return (\n    <motion.div\n      className={cn(\"absolute inset-y-0 w-0.5 -translate-x-1/2 cursor-ew-resize bg-white shadow\", className)}\n      style={{ left }}\n    >\n      {children}\n    </motion.div>\n  )\n}\n\nexport { ImageComparison, ImageComparisonImage, ImageComparisonSlider }\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-hover",
+  "type": "registry:ui",
+  "title": "Glow Hover",
+  "description": "悬停时外发光上浮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glow-hover.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glow-hover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GlowHoverProps extends React.HTMLAttributes<HTMLDivElement> {\n  glowColor?: string\n}\n\nfunction GlowHover({\n  className,\n  children,\n  glowColor = \"var(--primary)\",\n  ...props\n}: GlowHoverProps) {\n  return (\n    <div\n      data-slot=\"glow-hover\"\n      className={cn(\n        \"relative rounded-xl transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--glow)_40%,transparent),0_12px_40px_-16px_var(--glow)]\",\n        className,\n      )}\n      style={{ \"--glow\": glowColor } as React.CSSProperties}\n      {...props}\n    >\n      {children}\n    </div>\n  )\n}\n\nexport { GlowHover }\n"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "日期选择日历。",
+  "dependencies": [
+    "react-day-picker",
+    "date-fns",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/calendar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/calendar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ChevronLeft, ChevronRight } from \"lucide-react\"\nimport { DayPicker } from \"react-day-picker\"\n\nimport { buttonVariants } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nfunction Calendar({\n  className,\n  classNames,\n  showOutsideDays = true,\n  ...props\n}: React.ComponentProps<typeof DayPicker>) {\n  return (\n    <DayPicker\n      showOutsideDays={showOutsideDays}\n      className={cn(\"p-3\", className)}\n      classNames={{\n        months: \"flex flex-col gap-4 sm:flex-row\",\n        month: \"flex flex-col gap-4\",\n        month_caption: \"flex h-8 items-center justify-center\",\n        caption_label: \"text-sm font-medium\",\n        nav: \"absolute inset-x-0 top-3 flex items-center justify-between px-1\",\n        button_previous: cn(\n          buttonVariants({ variant: \"outline\" }),\n          \"size-7 bg-transparent p-0 opacity-50 hover:opacity-100\",\n        ),\n        button_next: cn(\n          buttonVariants({ variant: \"outline\" }),\n          \"size-7 bg-transparent p-0 opacity-50 hover:opacity-100\",\n        ),\n        month_grid: \"w-full border-collapse\",\n        weekdays: \"flex\",\n        weekday:\n          \"w-8 rounded-md text-[0.8rem] font-normal text-muted-foreground\",\n        week: \"mt-2 flex w-full\",\n        day: \"relative p-0 text-center text-sm\",\n        day_button: cn(\n          buttonVariants({ variant: \"ghost\" }),\n          \"size-8 p-0 font-normal aria-selected:opacity-100\",\n        ),\n        selected:\n          \"rounded-md bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground\",\n        today: \"rounded-md bg-accent text-accent-foreground\",\n        outside: \"text-muted-foreground opacity-50\",\n        disabled: \"text-muted-foreground opacity-50\",\n        hidden: \"invisible\",\n        ...classNames,\n      }}\n      components={{\n        Chevron: ({ orientation }) =>\n          orientation === \"left\" ? (\n            <ChevronLeft className=\"size-4\" />\n          ) : (\n            <ChevronRight className=\"size-4\" />\n          ),\n      }}\n      {...props}\n    />\n  )\n}\n\nexport { Calendar }\n"
+    }
+  ]
+}

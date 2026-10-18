@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-range-picker",
+  "type": "registry:ui",
+  "title": "Date Range Picker",
+  "description": "日期范围选择，含近 7/30/90 天预设。",
+  "dependencies": [
+    "date-fns",
+    "lucide-react",
+    "react-day-picker"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button",
+    "calendar",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/date-range-picker.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/date-range-picker.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { format, startOfDay, subDays } from \"date-fns\"\nimport { CalendarIcon } from \"lucide-react\"\nimport type { DateRange } from \"react-day-picker\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Calendar } from \"@/components/ui/calendar\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface DateRangePreset {\n  label: string\n  range: DateRange\n}\n\nfunction defaultPresets(today = startOfDay(new Date())): DateRangePreset[] {\n  return [\n    { label: \"今天\", range: { from: today, to: today } },\n    { label: \"近 7 天\", range: { from: subDays(today, 6), to: today } },\n    { label: \"近 30 天\", range: { from: subDays(today, 29), to: today } },\n    { label: \"近 90 天\", range: { from: subDays(today, 89), to: today } },\n  ]\n}\n\nexport interface DateRangePickerProps {\n  value?: DateRange\n  onValueChange?: (value: DateRange | undefined) => void\n  presets?: DateRangePreset[]\n  className?: string\n}\n\nfunction DateRangePicker({\n  value,\n  onValueChange,\n  presets,\n  className,\n}: DateRangePickerProps) {\n  const [open, setOpen] = React.useState(false)\n  const [uncontrolled, setUncontrolled] = React.useState<DateRange | undefined>()\n  const selected = value ?? uncontrolled\n  const options = presets ?? defaultPresets()\n\n  const setSelected = (next: DateRange | undefined) => {\n    if (value === undefined) setUncontrolled(next)\n    onValueChange?.(next)\n  }\n\n  const label =\n    selected?.from && selected.to\n      ? `${format(selected.from, \"yyyy-MM-dd\")} – ${format(selected.to, \"yyyy-MM-dd\")}`\n      : selected?.from\n        ? format(selected.from, \"yyyy-MM-dd\")\n        : \"选择日期范围\"\n\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger asChild>\n        <Button variant=\"outline\" className={cn(\"justify-start gap-2\", className)}>\n          <CalendarIcon className=\"size-4\" />\n          {label}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\">\n        <div className=\"flex flex-col gap-2 p-2 sm:flex-row\">\n          <div className=\"flex flex-col gap-1 border-b pb-2 sm:border-r sm:border-b-0 sm:pr-2 sm:pb-0\">\n            {options.map((preset) => (\n              <Button\n                key={preset.label}\n                variant=\"ghost\"\n                size=\"sm\"\n                className=\"justify-start\"\n                onClick={() => setSelected(preset.range)}\n              >\n                {preset.label}\n              </Button>\n            ))}\n          </div>\n          <Calendar\n            mode=\"range\"\n            selected={selected}\n            onSelect={setSelected}\n            numberOfMonths={1}\n          />\n        </div>\n      </PopoverContent>\n    </Popover>\n  )\n}\n\nexport { DateRangePicker, defaultPresets }\n"
+    }
+  ]
+}

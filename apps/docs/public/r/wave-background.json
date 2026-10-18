@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "wave-background",
+  "type": "registry:ui",
+  "title": "Wave Background",
+  "description": "底部波浪背景。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/wave-background.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/wave-background.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type WaveBackgroundProps = React.HTMLAttributes<HTMLDivElement>\n\nfunction WaveBackground({ className, children, ...props }: WaveBackgroundProps) {\n  return (\n    <div\n      data-slot=\"wave-background\"\n      className={cn(\"relative overflow-hidden rounded-xl bg-background\", className)}\n      {...props}\n    >\n      <svg\n        aria-hidden\n        className=\"pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full text-primary/25\"\n        viewBox=\"0 0 1440 120\"\n        preserveAspectRatio=\"none\"\n      >\n        <path\n          fill=\"currentColor\"\n          className=\"animate-[wave-shift_8s_ease-in-out_infinite]\"\n          d=\"M0,64 C240,120 480,0 720,48 C960,96 1200,16 1440,64 L1440,120 L0,120 Z\"\n        />\n      </svg>\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  )\n}\n\nexport { WaveBackground }\n"
+    }
+  ]
+}

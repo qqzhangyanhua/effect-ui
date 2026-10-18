@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meteors",
+  "type": "registry:ui",
+  "title": "Meteors",
+  "description": "流星雨背景。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/meteors.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/meteors.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface MeteorsProps extends React.HTMLAttributes<HTMLDivElement> {\n  number?: number\n}\n\nfunction Meteors({ number = 18, className, ...props }: MeteorsProps) {\n  const items = Array.from({ length: number }, (_, index) => index)\n\n  return (\n    <div\n      data-slot=\"meteors\"\n      className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}\n      {...props}\n    >\n      {items.map((index) => {\n        const left = (index * 53) % 100\n        const delay = `${(index * 0.35) % 4}s`\n        const duration = `${2.4 + (index % 5) * 0.35}s`\n        return (\n          <span\n            key={index}\n            className=\"absolute top-0 h-0.5 w-0.5 rotate-[215deg] animate-[meteor-fall_3s_linear_infinite] rounded-full bg-foreground shadow-[0_0_0_1px_#ffffff10]\"\n            style={{\n              left: `${left}%`,\n              animationDelay: delay,\n              animationDuration: duration,\n            }}\n          >\n            <span className=\"absolute top-1/2 -z-10 h-px w-12 -translate-y-1/2 bg-linear-to-r from-foreground to-transparent\" />\n          </span>\n        )\n      })}\n    </div>\n  )\n}\n\nexport { Meteors }\n"
+    }
+  ]
+}

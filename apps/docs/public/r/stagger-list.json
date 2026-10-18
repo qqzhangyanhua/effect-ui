@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stagger-list",
+  "type": "registry:ui",
+  "title": "Stagger List",
+  "description": "列表子项错落入场。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/stagger-list.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/stagger-list.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, type Variants } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface StaggerListProps {\n  className?: string\n  children?: React.ReactNode\n  delay?: number\n}\n\nconst list: Variants = {\n  hidden: {},\n  show: {\n    transition: { staggerChildren: 0.08 },\n  },\n}\n\nconst item: Variants = {\n  hidden: { opacity: 0, y: 14 },\n  show: {\n    opacity: 1,\n    y: 0,\n    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },\n  },\n}\n\nfunction StaggerList({\n  className,\n  children,\n  delay = 0,\n}: StaggerListProps) {\n  return (\n    <motion.ul\n      data-slot=\"stagger-list\"\n      className={cn(\"flex flex-col gap-2\", className)}\n      variants={list}\n      initial=\"hidden\"\n      whileInView=\"show\"\n      viewport={{ once: true, amount: 0.3 }}\n      transition={{ delayChildren: delay }}\n    >\n      {React.Children.map(children, (child, index) => (\n        <motion.li key={index} variants={item}>\n          {child}\n        </motion.li>\n      ))}\n    </motion.ul>\n  )\n}\n\nexport { StaggerList }\n"
+    }
+  ]
+}

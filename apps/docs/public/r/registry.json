@@ -1,0 +1,2493 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "effect-ui",
+  "homepage": "https://github.com/qqzhangyanhua/effect-ui",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "clsx + tailwind-merge 的 cn 辅助函数。",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "支持多种变体与尺寸的按钮。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "文本输入框。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "多行文本输入。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "表单标签。",
+      "dependencies": [
+        "@radix-ui/react-label"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "通用卡片容器。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "状态与分类徽标。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "水平或垂直分隔线。",
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "模态对话框。",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "从边缘滑出的面板。",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "下拉菜单。",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "选项卡切换。",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "悬停提示。",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "基于 Sonner 的轻提示。",
+      "dependencies": [
+        "sonner",
+        "next-themes"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/sonner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sonner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "开关控件。",
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "复选框。",
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "选择器。",
+      "dependencies": [
+        "@radix-ui/react-select",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "手风琴折叠面板。",
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/accordion.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/accordion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "弹出层。",
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/popover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "头像。",
+      "dependencies": [
+        "@radix-ui/react-avatar"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "滑块。",
+      "dependencies": [
+        "@radix-ui/react-slider"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typing-text",
+      "type": "registry:ui",
+      "title": "Typing Text",
+      "description": "打字机文字动画。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/typing-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/typing-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Gradient Text",
+      "description": "流动渐变文字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gradient-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-text",
+      "type": "registry:ui",
+      "title": "Shimmer Text",
+      "description": "金属光泽扫过文字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shimmer-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shimmer-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aurora-text",
+      "type": "registry:ui",
+      "title": "Aurora Text",
+      "description": "极光色流动文字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/aurora-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/aurora-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-text",
+      "type": "registry:ui",
+      "title": "Split Text",
+      "description": "按字符或单词错落入场。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/split-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/split-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "highlight-text",
+      "type": "registry:ui",
+      "title": "Highlight Text",
+      "description": "进入视口时绘制高亮底纹。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/highlight-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/highlight-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "count-up",
+      "type": "registry:ui",
+      "title": "Count Up",
+      "description": "数字滚动计数。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/count-up.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/count-up.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particles",
+      "type": "registry:ui",
+      "title": "Particles",
+      "description": "跟随指针的粒子背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/particles.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/particles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-pattern",
+      "type": "registry:ui",
+      "title": "Grid Pattern",
+      "description": "网格背景图案。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/grid-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/grid-pattern.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-pattern",
+      "type": "registry:ui",
+      "title": "Dot Pattern",
+      "description": "圆点背景图案。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dot-pattern.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dot-pattern.tsx"
+        }
+      ]
+    },
+    {
+      "name": "meteors",
+      "type": "registry:ui",
+      "title": "Meteors",
+      "description": "流星雨背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/meteors.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/meteors.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "title": "Aurora Background",
+      "description": "极光模糊渐变背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/aurora-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/aurora-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripples",
+      "type": "registry:ui",
+      "title": "Ripples",
+      "description": "同心圆扩散背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ripples.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ripples.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flickering-grid",
+      "type": "registry:ui",
+      "title": "Flickering Grid",
+      "description": "随机闪烁的像素网格。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flickering-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flickering-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "title": "Spotlight Card",
+      "description": "跟随指针的聚光卡片。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spotlight-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spotlight-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:ui",
+      "title": "Magnetic",
+      "description": "磁性吸附跟随指针。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magnetic.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magnetic.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cursor-follow",
+      "type": "registry:ui",
+      "title": "Cursor Follow",
+      "description": "区域内的柔光指针跟随。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cursor-follow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cursor-follow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilt",
+      "type": "registry:ui",
+      "title": "Tilt",
+      "description": "指针驱动的 3D 倾斜。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tilt.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tilt.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glow-hover",
+      "type": "registry:ui",
+      "title": "Glow Hover",
+      "description": "悬停时外发光上浮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glow-hover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glow-hover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-card",
+      "type": "registry:ui",
+      "title": "Flip Card",
+      "description": "悬停翻转卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flip-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flip-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glass-card",
+      "type": "registry:ui",
+      "title": "Glass Card",
+      "description": "毛玻璃卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glass-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glass-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shine-border",
+      "type": "registry:ui",
+      "title": "Shine Border",
+      "description": "旋转高光描边卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shine-border.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shine-border.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-lift",
+      "type": "registry:ui",
+      "title": "Hover Lift",
+      "description": "悬停上浮阴影卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-lift.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-lift.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "title": "Ripple Button",
+      "description": "点击波纹按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ripple-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ripple-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "title": "Shimmer Button",
+      "description": "斜向光泽扫过按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shimmer-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shimmer-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulse-button",
+      "type": "registry:ui",
+      "title": "Pulse Button",
+      "description": "向外脉冲的按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pulse-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pulse-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neon-button",
+      "type": "registry:ui",
+      "title": "Neon Button",
+      "description": "霓虹描边发光按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/neon-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/neon-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "旋转加载指示。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spinner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbit-loader",
+      "type": "registry:ui",
+      "title": "Orbit Loader",
+      "description": "轨道旋转加载。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbit-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbit-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dots-loader",
+      "type": "registry:ui",
+      "title": "Dots Loader",
+      "description": "三点弹跳加载。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dots-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dots-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:ui",
+      "title": "Progress Ring",
+      "description": "环形进度。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progress-ring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fade-in",
+      "type": "registry:ui",
+      "title": "Fade In",
+      "description": "进入视口时淡入上移。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fade-in.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fade-in.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slide-in",
+      "type": "registry:ui",
+      "title": "Slide In",
+      "description": "从指定方向滑入。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/slide-in.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slide-in.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stagger-list",
+      "type": "registry:ui",
+      "title": "Stagger List",
+      "description": "列表子项错落入场。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stagger-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stagger-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "parallax",
+      "type": "registry:ui",
+      "title": "Parallax",
+      "description": "滚动视差位移。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/parallax.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/parallax.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-fade",
+      "type": "registry:ui",
+      "title": "Blur Fade",
+      "description": "模糊消散后显现。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blur-fade.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blur-fade.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "内联提示条。",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/alert.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "需要确认的警告对话框。",
+      "dependencies": [
+        "@radix-ui/react-alert-dialog"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "固定宽高比容器。",
+      "dependencies": [
+        "@radix-ui/react-aspect-ratio"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/aspect-ratio.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/aspect-ratio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "面包屑导航。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/breadcrumb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/breadcrumb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "日期选择日历。",
+      "dependencies": [
+        "react-day-picker",
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "基于 Embla 的轮播。",
+      "dependencies": [
+        "embla-carousel-react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Recharts 图表容器。",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "可折叠区域。",
+      "dependencies": [
+        "@radix-ui/react-collapsible"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "命令面板 / 搜索列表。",
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/command.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/command.tsx"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "右键菜单。",
+      "dependencies": [
+        "@radix-ui/react-context-menu",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/context-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/context-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "底部抽屉。",
+      "dependencies": [
+        "vaul"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "react-hook-form 封装。",
+      "dependencies": [
+        "react-hook-form",
+        "@radix-ui/react-label",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "utils",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/form.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "悬停卡片。",
+      "dependencies": [
+        "@radix-ui/react-hover-card"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/hover-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "验证码输入。",
+      "dependencies": [
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input-otp.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input-otp.tsx"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "桌面式菜单栏。",
+      "dependencies": [
+        "@radix-ui/react-menubar",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/menubar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/menubar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "站点导航菜单。",
+      "dependencies": [
+        "@radix-ui/react-navigation-menu",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/navigation-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/navigation-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "分页控件。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/pagination.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pagination.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "线性进度条。",
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "单选组。",
+      "dependencies": [
+        "@radix-ui/react-radio-group",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/radio-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/radio-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "可拖拽分割面板。",
+      "dependencies": [
+        "react-resizable-panels",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/resizable.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/resizable.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "自定义滚动区域。",
+      "dependencies": [
+        "@radix-ui/react-scroll-area"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "应用侧栏。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "separator",
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/sidebar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sidebar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "加载占位骨架。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/skeleton.tsx"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "数据表格结构。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "切换按钮。",
+      "dependencies": [
+        "@radix-ui/react-toggle",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "切换按钮组。",
+      "dependencies": [
+        "@radix-ui/react-toggle-group"
+      ],
+      "registryDependencies": [
+        "utils",
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "可排序分页的数据表示例。",
+      "dependencies": [
+        "@tanstack/react-table"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/data-table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:ui",
+      "title": "Scramble Text",
+      "description": "解密/乱码还原文字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scramble-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scramble-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "词语轮换。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/word-rotate.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/word-rotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-text",
+      "type": "registry:ui",
+      "title": "Morphing Text",
+      "description": "模糊变形切换文字。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morphing-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morphing-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rolling-number",
+      "type": "registry:ui",
+      "title": "Rolling Number",
+      "description": "数字滚轮变体。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rolling-number.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rolling-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "title": "Text Reveal",
+      "description": "随滚动逐词显现。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "light-beams",
+      "type": "registry:ui",
+      "title": "Light Beams",
+      "description": "倾斜光束背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/light-beams.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/light-beams.tsx"
+        }
+      ]
+    },
+    {
+      "name": "starfield",
+      "type": "registry:ui",
+      "title": "Starfield",
+      "description": "星空穿梭背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/starfield.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/starfield.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wave-background",
+      "type": "registry:ui",
+      "title": "Wave Background",
+      "description": "底部波浪背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wave-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wave-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "noise-gradient",
+      "type": "registry:ui",
+      "title": "Noise Gradient",
+      "description": "噪点渐变背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/noise-gradient.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/noise-gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-grid",
+      "type": "registry:ui",
+      "title": "Animated Grid",
+      "description": "缓慢漂移的网格线。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:ui",
+      "title": "Retro Grid",
+      "description": "透视复古网格。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/retro-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/retro-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Dock",
+      "description": "macOS 式放大 Dock。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dock.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dock.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "description": "无限滚动跑马灯。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/marquee.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/marquee.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbiting-circles",
+      "type": "registry:ui",
+      "title": "Orbiting Circles",
+      "description": "环绕轨道图标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbiting-circles.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbiting-circles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-list",
+      "type": "registry:ui",
+      "title": "Animated List",
+      "description": "逐条入场通知列表。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "globe-sphere",
+      "type": "registry:ui",
+      "title": "Globe Sphere",
+      "description": "CSS 3D 点阵球体。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/globe-sphere.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/globe-sphere.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confetti-burst",
+      "type": "registry:ui",
+      "title": "Confetti Burst",
+      "description": "点击撒彩纸。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/confetti-burst.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/confetti-burst.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cursor-trail",
+      "type": "registry:ui",
+      "title": "Cursor Trail",
+      "description": "指针拖尾。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cursor-trail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cursor-trail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sparkles",
+      "type": "registry:ui",
+      "title": "Sparkles",
+      "description": "文字周围闪烁星点。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sparkles.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sparkles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "描边光束卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/border-beam.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/border-beam.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:ui",
+      "title": "Bento Grid",
+      "description": "不规则卡片宫格。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bento-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bento-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perspective-card",
+      "type": "registry:ui",
+      "title": "Perspective Card",
+      "description": "透视 3D 卡片。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/perspective-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/perspective-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "title": "Expandable Card",
+      "description": "点击展开卡片。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/expandable-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/expandable-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rainbow-button",
+      "type": "registry:ui",
+      "title": "Rainbow Button",
+      "description": "彩虹描边按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rainbow-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rainbow-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "interactive-hover-button",
+      "type": "registry:ui",
+      "title": "Interactive Hover Button",
+      "description": "悬停滑出箭头按钮。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/interactive-hover-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/interactive-hover-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-button",
+      "type": "registry:ui",
+      "title": "Gooey Button",
+      "description": "液态粘连按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gooey-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gooey-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:ui",
+      "title": "Animated Tabs",
+      "description": "滑块指示的动画选项卡。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-navbar",
+      "type": "registry:ui",
+      "title": "Floating Navbar",
+      "description": "滚动时收起的浮动导航。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/floating-navbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floating-navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-sidebar",
+      "type": "registry:ui",
+      "title": "Animated Sidebar",
+      "description": "展开/收起动画侧栏。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-sidebar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-sidebar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "page-transition",
+      "type": "registry:ui",
+      "title": "Page Transition",
+      "description": "页面切换淡入模糊。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/page-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/page-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reveal-section",
+      "type": "registry:ui",
+      "title": "Reveal Section",
+      "description": "区块滚动揭开。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reveal-section.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reveal-section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-beam",
+      "type": "registry:ui",
+      "title": "Animated Beam",
+      "description": "节点之间流动的光束连线。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-beam.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-beam.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-dialog",
+      "type": "registry:ui",
+      "title": "Morphing Dialog",
+      "description": "卡片共享布局变形展开成弹窗。",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morphing-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morphing-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-comparison",
+      "type": "registry:ui",
+      "title": "Image Comparison",
+      "description": "前后对比拖动滑块。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/image-comparison.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/image-comparison.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-blur",
+      "type": "registry:ui",
+      "title": "Progressive Blur",
+      "description": "内容边缘的渐进模糊遮罩。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progressive-blur.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progressive-blur.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Scroll Progress",
+      "description": "随滚动伸长的阅读进度条。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-velocity",
+      "type": "registry:ui",
+      "title": "Scroll Velocity",
+      "description": "滚动速度驱动的跑马灯。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-velocity.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-velocity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stacking-cards",
+      "type": "registry:ui",
+      "title": "Stacking Cards",
+      "description": "滚动时卡片依次叠放。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stacking-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stacking-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-island",
+      "type": "registry:ui",
+      "title": "Dynamic Island",
+      "description": "仿 iPhone 灵动岛的弹性状态切换。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dynamic-island.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dynamic-island.tsx"
+        }
+      ]
+    },
+    {
+      "name": "variable-font-proximity",
+      "type": "registry:ui",
+      "title": "Variable Font Proximity",
+      "description": "可变字体字重随鼠标距离变化。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/variable-font-proximity.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/variable-font-proximity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropzone",
+      "type": "registry:ui",
+      "title": "Dropzone",
+      "description": "拖拽上传，含预览与类型/大小校验。",
+      "dependencies": [
+        "react-dropzone",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dropzone.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dropzone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "Multi Select",
+      "description": "可搜索的多选下拉。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "badge",
+        "command",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/multi-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/multi-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "title": "Tag Input",
+      "description": "回车添加、退格删除的标签输入。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tag-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tag-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker",
+      "description": "日期范围选择，含近 7/30/90 天预设。",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/date-range-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/date-range-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "竖向/横向时间线。",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "可点击的步骤条。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/stepper.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stepper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "HSL 取色、Hex 输入与吸管。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/color-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/color-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Shiki 高亮、行号、复制与多文件 Tab。",
+      "dependencies": [
+        "shiki",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/code-block.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/code-block.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kanban",
+      "type": "registry:ui",
+      "title": "Kanban",
+      "description": "基于 dnd-kit 的可拖拽看板。",
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities"
+      ],
+      "registryDependencies": [
+        "utils",
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/kanban.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kanban.tsx"
+        }
+      ]
+    }
+  ]
+}

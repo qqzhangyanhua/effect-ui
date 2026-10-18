@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-card",
+  "type": "registry:ui",
+  "title": "Expandable Card",
+  "description": "点击展开卡片。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/expandable-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/expandable-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ExpandableCardProps {\n  className?: string\n  title: string\n  preview: React.ReactNode\n  children: React.ReactNode\n}\n\nfunction ExpandableCard({\n  className,\n  title,\n  preview,\n  children,\n}: ExpandableCardProps) {\n  const [open, setOpen] = React.useState(false)\n\n  return (\n    <motion.button\n      type=\"button\"\n      data-slot=\"expandable-card\"\n      layout\n      onClick={() => setOpen((current) => !current)}\n      className={cn(\n        \"w-full rounded-xl border bg-card p-5 text-left text-card-foreground shadow-sm\",\n        className,\n      )}\n    >\n      <motion.h3 layout className=\"text-lg font-medium\">\n        {title}\n      </motion.h3>\n      <p className=\"mt-2 text-sm text-muted-foreground\">{preview}</p>\n      <AnimatePresence>\n        {open ? (\n          <motion.div\n            initial={{ opacity: 0, height: 0 }}\n            animate={{ opacity: 1, height: \"auto\" }}\n            exit={{ opacity: 0, height: 0 }}\n            className=\"overflow-hidden\"\n          >\n            <div className=\"pt-3 text-sm\">{children}</div>\n          </motion.div>\n        ) : null}\n      </AnimatePresence>\n    </motion.button>\n  )\n}\n\nexport { ExpandableCard }\n"
+    }
+  ]
+}

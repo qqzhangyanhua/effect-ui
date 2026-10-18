@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart",
+  "type": "registry:ui",
+  "title": "Chart",
+  "description": "Recharts 图表容器。",
+  "dependencies": [
+    "recharts"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/chart.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/chart.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as RechartsPrimitive from \"recharts\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type ChartConfig = Record<\n  string,\n  {\n    label?: React.ReactNode\n    icon?: React.ComponentType\n    color?: string\n  }\n>\n\nconst ChartContext = React.createContext<{ config: ChartConfig } | null>(null)\n\nfunction useChart() {\n  const context = React.useContext(ChartContext)\n  if (!context) {\n    throw new Error(\"useChart must be used within a <ChartContainer />\")\n  }\n  return context\n}\n\nfunction ChartContainer({\n  id,\n  className,\n  children,\n  config,\n  ...props\n}: React.ComponentProps<\"div\"> & {\n  config: ChartConfig\n  children: React.ComponentProps<\n    typeof RechartsPrimitive.ResponsiveContainer\n  >[\"children\"]\n}) {\n  const uniqueId = React.useId()\n  const chartId = `chart-${id ?? uniqueId.replace(/:/g, \"\")}`\n\n  return (\n    <ChartContext.Provider value={{ config }}>\n      <div\n        data-slot=\"chart\"\n        data-chart={chartId}\n        className={cn(\n          \"flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden\",\n          className,\n        )}\n        {...props}\n      >\n        <style\n          dangerouslySetInnerHTML={{\n            __html: Object.entries(config)\n              .filter(([, item]) => item.color)\n              .map(\n                ([key, item]) =>\n                  `[data-chart=${chartId}] { --color-${key}: ${item.color}; }`,\n              )\n              .join(\"\\n\"),\n          }}\n        />\n        <RechartsPrimitive.ResponsiveContainer>\n          {children}\n        </RechartsPrimitive.ResponsiveContainer>\n      </div>\n    </ChartContext.Provider>\n  )\n}\n\nfunction ChartTooltip(props: React.ComponentProps<typeof RechartsPrimitive.Tooltip>) {\n  return <RechartsPrimitive.Tooltip {...props} />\n}\n\nfunction ChartTooltipContent({\n  active,\n  payload,\n  className,\n  label,\n}: {\n  active?: boolean\n  payload?: Array<{\n    name?: string\n    value?: number | string\n    color?: string\n    dataKey?: string\n  }>\n  className?: string\n  label?: string\n}) {\n  const { config } = useChart()\n  if (!active || !payload?.length) return null\n\n  return (\n    <div\n      className={cn(\n        \"grid min-w-[8rem] gap-1.5 rounded-lg border bg-background px-2.5 py-1.5 text-xs shadow-xl\",\n        className,\n      )}\n    >\n      {label ? <div className=\"font-medium\">{label}</div> : null}\n      {payload.map((item) => {\n        const key = item.dataKey ?? item.name ?? \"value\"\n        const itemConfig = config[key]\n        return (\n          <div key={key} className=\"flex items-center justify-between gap-4\">\n            <span className=\"text-muted-foreground\">\n              {itemConfig?.label ?? item.name}\n            </span>\n            <span className=\"font-mono font-medium tabular-nums\">\n              {item.value}\n            </span>\n          </div>\n        )\n      })}\n    </div>\n  )\n}\n\nfunction ChartLegend(props: React.ComponentProps<typeof RechartsPrimitive.Legend>) {\n  return <RechartsPrimitive.Legend {...props} />\n}\n\nexport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n  ChartLegend,\n  useChart,\n}\n"
+    }
+  ]
+}

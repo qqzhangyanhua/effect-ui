@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scramble-text",
+  "type": "registry:ui",
+  "title": "Scramble Text",
+  "description": "解密/乱码还原文字。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scramble-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scramble-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst GLYPHS = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%\"\n\nexport interface ScrambleTextProps {\n  text: string\n  className?: string\n  duration?: number\n}\n\nfunction ScrambleText({ text, className, duration = 900 }: ScrambleTextProps) {\n  const [output, setOutput] = React.useState(text)\n\n  React.useEffect(() => {\n    const start = performance.now()\n    let frame = 0\n    const tick = (now: number) => {\n      const progress = Math.min(1, (now - start) / duration)\n      const reveal = Math.floor(progress * text.length)\n      const next = Array.from(text, (char, index) => {\n        if (index < reveal || char === \" \") return char\n        return GLYPHS[Math.floor(Math.random() * GLYPHS.length)] ?? char\n      }).join(\"\")\n      setOutput(next)\n      if (progress < 1) frame = window.requestAnimationFrame(tick)\n    }\n    frame = window.requestAnimationFrame(tick)\n    return () => window.cancelAnimationFrame(frame)\n  }, [duration, text])\n\n  return (\n    <span data-slot=\"scramble-text\" className={cn(\"font-mono\", className)}>\n      {output}\n    </span>\n  )\n}\n\nexport { ScrambleText }\n"
+    }
+  ]
+}

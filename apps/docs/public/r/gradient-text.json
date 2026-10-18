@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-text",
+  "type": "registry:ui",
+  "title": "Gradient Text",
+  "description": "流动渐变文字。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/gradient-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/gradient-text.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  colors?: string\n}\n\nfunction GradientText({\n  className,\n  colors = \"from-violet-500 via-fuchsia-500 to-cyan-400\",\n  children,\n  ...props\n}: GradientTextProps) {\n  return (\n    <span\n      data-slot=\"gradient-text\"\n      className={cn(\n        \"inline-block bg-linear-to-r bg-size-[200%_auto] bg-clip-text text-transparent animate-[gradient-shift_6s_ease_infinite]\",\n        colors,\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  )\n}\n\nexport { GradientText }\n"
+    }
+  ]
+}

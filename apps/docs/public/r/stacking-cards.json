@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stacking-cards",
+  "type": "registry:ui",
+  "title": "Stacking Cards",
+  "description": "滚动时卡片依次叠放。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/stacking-cards.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/stacking-cards.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll, useTransform, type MotionValue } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface StackingCardsContextValue {\n  progress: MotionValue<number>\n  totalCards: number\n  scaleMultiplier: number\n}\n\nconst StackingCardsContext = React.createContext<StackingCardsContextValue | null>(null)\n\nfunction useStackingCards() {\n  const context = React.useContext(StackingCardsContext)\n  if (!context) {\n    throw new Error(\"StackingCardItem must be used within StackingCards\")\n  }\n  return context\n}\n\nfunction StackingCards({\n  children,\n  className,\n  totalCards,\n  scaleMultiplier = 0.03,\n}: {\n  children: React.ReactNode\n  className?: string\n  totalCards: number\n  scaleMultiplier?: number\n}) {\n  const targetRef = React.useRef<HTMLDivElement>(null)\n  const { scrollYProgress } = useScroll({\n    target: targetRef,\n    offset: [\"start start\", \"end end\"],\n  })\n\n  return (\n    <StackingCardsContext.Provider\n      value={{ progress: scrollYProgress, totalCards, scaleMultiplier }}\n    >\n      <div ref={targetRef} className={cn(\"relative\", className)}>\n        {children}\n      </div>\n    </StackingCardsContext.Provider>\n  )\n}\n\nfunction StackingCardItem({\n  index,\n  children,\n  className,\n}: {\n  index: number\n  children: React.ReactNode\n  className?: string\n}) {\n  const { progress, totalCards, scaleMultiplier } = useStackingCards()\n  const scaleTo = 1 - (totalCards - index) * scaleMultiplier\n  const scale = useTransform(progress, [index * (1 / totalCards), 1], [1, scaleTo])\n  const top = `${8 + index * 12}px`\n\n  return (\n    <div className={cn(\"sticky top-4 h-full\", className)}>\n      <motion.div className=\"relative origin-top\" style={{ top, scale }}>\n        {children}\n      </motion.div>\n    </div>\n  )\n}\n\nexport { StackingCards, StackingCardItem }\n"
+    }
+  ]
+}

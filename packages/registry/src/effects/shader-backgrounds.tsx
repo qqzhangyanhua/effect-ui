@@ -72,7 +72,10 @@ function ShaderBackground({
   const palette = colors ?? defaults[variant]
 
   return (
-    <div className={cn("relative min-h-48 overflow-hidden", className)}>
+    <div
+      className={cn("relative min-h-48 overflow-hidden", className)}
+      style={{ background: `linear-gradient(135deg, ${palette.join(", ")})` }}
+    >
       <div className="absolute inset-0">
         <ShaderLayer variant={variant} colors={palette} />
       </div>

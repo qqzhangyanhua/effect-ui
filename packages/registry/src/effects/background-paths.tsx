@@ -18,7 +18,7 @@ function BackgroundPaths({ className, count = 10 }: BackgroundPathsProps) {
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        className="absolute inset-0 size-full text-foreground/25"
+        className="absolute inset-0 size-full text-foreground/45"
       >
         {paths.map((d, index) => (
           <path
@@ -30,7 +30,7 @@ function BackgroundPaths({ className, count = 10 }: BackgroundPathsProps) {
             pathLength={1}
             style={{
               strokeDasharray: 1,
-              strokeDashoffset: 1,
+              strokeDashoffset: 0.15,
               animation: `path-draw 2.4s ${index * 80}ms ease forwards, path-flow 8s ${index * 200}ms linear infinite`,
             }}
           />

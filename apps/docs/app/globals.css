@@ -111,6 +111,10 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    view-transition-name: root;
+  }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
     font-synthesis-weight: none;
@@ -308,4 +312,67 @@
   to {
     --shine-angle: 360deg;
   }
+}
+
+@keyframes path-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes path-flow {
+  0% {
+    stroke-dasharray: 0.2 0.8;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 0.2 0.8;
+    stroke-dashoffset: -1;
+  }
+}
+
+@keyframes glitch-r {
+  0%,
+  80%,
+  100% {
+    transform: translate(0);
+    clip-path: inset(0);
+  }
+  20% {
+    transform: translate(2px, -1px);
+    clip-path: inset(10% 0 60% 0);
+  }
+  40% {
+    transform: translate(-2px, 1px);
+    clip-path: inset(40% 0 20% 0);
+  }
+}
+
+@keyframes glitch-c {
+  0%,
+  80%,
+  100% {
+    transform: translate(0);
+    clip-path: inset(0);
+  }
+  25% {
+    transform: translate(-2px, 1px);
+    clip-path: inset(55% 0 10% 0);
+  }
+  55% {
+    transform: translate(2px, -1px);
+    clip-path: inset(15% 0 45% 0);
+  }
+}
+
+@keyframes icon-orbit {
+  to {
+    transform: rotateY(360deg) rotateX(12deg);
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

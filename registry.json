@@ -2488,6 +2488,307 @@
           "target": "components/ui/kanban.tsx"
         }
       ]
+    },
+    {
+      "name": "shader-backgrounds",
+      "type": "registry:ui",
+      "title": "Shader Backgrounds",
+      "description": "封装 Paper Shaders 的 GPU 背景：mesh、grain、dithering、metaballs、warp。",
+      "dependencies": [
+        "@paper-design/shaders-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shader-backgrounds.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shader-backgrounds.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-glass",
+      "type": "registry:ui",
+      "title": "Liquid Glass",
+      "description": "液态玻璃折射面板，不支持位移滤镜时回退到毛玻璃。",
+      "dependencies": [
+        "liquid-glass-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-glass.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-glass.tsx"
+        }
+      ]
+    },
+    {
+      "name": "background-paths",
+      "type": "registry:ui",
+      "title": "Background Paths",
+      "description": "SVG 路径逐条绘制并循环流动。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/background-paths.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/background-paths.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-flow",
+      "type": "registry:ui",
+      "title": "Number Flow",
+      "description": "带 Intl 格式化的数字过渡（货币、百分比、单位）。",
+      "dependencies": [
+        "@number-flow/react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/effects/number-flow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/number-flow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glitch-text",
+      "type": "registry:ui",
+      "title": "Glitch Text",
+      "description": "RGB 错位故障文字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glitch-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glitch-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-trail",
+      "type": "registry:ui",
+      "title": "Image Trail",
+      "description": "指针移动时留下一串图片残影。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/image-trail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/image-trail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-cloud",
+      "type": "registry:ui",
+      "title": "Icon Cloud",
+      "description": "3D 球面旋转的图标云。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/icon-cloud.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/icon-cloud.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-theme-toggler",
+      "type": "registry:ui",
+      "title": "Animated Theme Toggler",
+      "description": "圆形扩散的明暗切换（View Transitions）。",
+      "dependencies": [
+        "next-themes",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-theme-toggler.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-theme-toggler.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-input",
+      "type": "registry:ui",
+      "title": "Prompt Input",
+      "description": "自适应高度的 AI 输入框，带附件与发送/停止。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/prompt-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/prompt-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-message",
+      "type": "registry:ui",
+      "title": "Chat Message",
+      "description": "用户/助手气泡，助手侧支持流式 Markdown。",
+      "dependencies": [
+        "react-markdown"
+      ],
+      "registryDependencies": [
+        "utils",
+        "avatar"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/chat-message.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-message.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marketing-blocks",
+      "type": "registry:ui",
+      "title": "Marketing Blocks",
+      "description": "营销区块：Hero / Pricing / Testimonial / Footer，各 3 个变体，组合现有特效。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "aurora-background",
+        "glass-card",
+        "shimmer-button"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/marketing-blocks.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/marketing-blocks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "device-mockups",
+      "type": "registry:ui",
+      "title": "Device Mockups",
+      "description": "Safari、iPhone、MacBook 设备外框。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/device-mockups.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/device-mockups.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Terminal",
+      "description": "逐行打字的终端窗口。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/terminal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/terminal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rich-text-editor",
+      "type": "registry:ui",
+      "title": "Rich Text Editor",
+      "description": "基于 Tiptap 的富文本编辑器，含基础工具栏。",
+      "dependencies": [
+        "@tiptap/react",
+        "@tiptap/starter-kit",
+        "@tiptap/pm",
+        "@tiptap/extension-placeholder",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/rich-text-editor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rich-text-editor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tree-view",
+      "type": "registry:ui",
+      "title": "Tree View",
+      "description": "可展开的文件夹 / 文件树。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/tree-view.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tree-view.tsx"
+        }
+      ]
+    },
+    {
+      "name": "onboarding-tour",
+      "type": "registry:ui",
+      "title": "Onboarding Tour",
+      "description": "高亮遮罩 + 步骤卡片的产品引导。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/onboarding-tour.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/onboarding-tour.tsx"
+        }
+      ]
     }
   ]
 }

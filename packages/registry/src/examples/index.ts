@@ -3,9 +3,11 @@ import type { ComponentType } from "react"
 import * as effectDemos from "./effect-demos"
 import * as effectDemos2 from "./effect-demos-2"
 import * as effectDemos3 from "./effect-demos-3"
+import * as effectDemos4 from "./effect-demos-4"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
+import * as uiDemos4 from "./ui-demos-4"
 
 const demoMap: Record<string, ComponentType> = {
   button: uiDemos.ButtonDemo,
@@ -140,6 +142,22 @@ const demoMap: Record<string, ComponentType> = {
   "color-picker": uiDemos3.ColorPickerDemo,
   "code-block": uiDemos3.CodeBlockDemo,
   kanban: uiDemos3.KanbanDemo,
+  "shader-backgrounds": effectDemos4.ShaderBackgroundsDemo,
+  "liquid-glass": effectDemos4.LiquidGlassDemo,
+  "background-paths": effectDemos4.BackgroundPathsDemo,
+  "number-flow": effectDemos4.NumberFlowDemo,
+  "glitch-text": effectDemos4.GlitchTextDemo,
+  "image-trail": effectDemos4.ImageTrailDemo,
+  "icon-cloud": effectDemos4.IconCloudDemo,
+  "animated-theme-toggler": effectDemos4.AnimatedThemeTogglerDemo,
+  "marketing-blocks": effectDemos4.MarketingBlocksDemo,
+  terminal: effectDemos4.TerminalDemo,
+  "prompt-input": uiDemos4.PromptInputDemo,
+  "chat-message": uiDemos4.ChatMessageDemo,
+  "device-mockups": uiDemos4.DeviceMockupsDemo,
+  "rich-text-editor": uiDemos4.RichTextEditorDemo,
+  "tree-view": uiDemos4.TreeViewDemo,
+  "onboarding-tour": uiDemos4.OnboardingTourDemo,
 }
 
 export function getDemo(name: string): ComponentType | undefined {

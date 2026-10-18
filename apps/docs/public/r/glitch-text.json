@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glitch-text",
+  "type": "registry:ui",
+  "title": "Glitch Text",
+  "description": "RGB 错位故障文字。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glitch-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glitch-text.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GlitchTextProps {\n  text: string\n  className?: string\n}\n\nfunction GlitchText({ text, className }: GlitchTextProps) {\n  return (\n    <span className={cn(\"relative inline-block\", className)}>\n      <span aria-hidden className=\"absolute inset-0 animate-[glitch-r_1.6s_steps(2,end)_infinite] text-red-500/80\">\n        {text}\n      </span>\n      <span aria-hidden className=\"absolute inset-0 animate-[glitch-c_1.8s_steps(2,end)_infinite] text-cyan-400/80\">\n        {text}\n      </span>\n      <span className=\"relative\">{text}</span>\n    </span>\n  )\n}\n\nexport { GlitchText }\n"
+    }
+  ]
+}

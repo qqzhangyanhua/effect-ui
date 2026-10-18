@@ -84,6 +84,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | rolling-number | Magic UI |
 | text-reveal | Magic UI |
 | variable-font-proximity | Fancy Components |
+| number-flow | Number Flow（MIT） |
+| glitch-text | Kokonut UI（免费 MIT） |
 
 ### 背景
 
@@ -103,6 +105,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | animated-grid | Magic UI |
 | retro-grid | Magic UI |
 | animated-beam | Magic UI |
+| shader-backgrounds | Paper Shaders（Apache-2.0，>=0.0.77） |
+| background-paths | Kokonut UI（免费 MIT） |
 
 ### 光标 / 悬停
 
@@ -122,6 +126,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | cursor-trail | 原创 |
 | sparkles | Magic UI |
 | dynamic-island | Cult UI |
+| image-trail | Fancy Components |
 
 ### 卡片 / 3D
 
@@ -137,6 +142,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | expandable-card | Cult UI |
 | morphing-dialog | Motion Primitives |
 | image-comparison | Motion Primitives |
+| liquid-glass | liquid-glass-react |
+| icon-cloud | Magic UI |
 
 ### 按钮特效
 
@@ -180,6 +187,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | animated-tabs | Motion Primitives |
 | floating-navbar | 原创 |
 | animated-sidebar | 原创 |
+| animated-theme-toggler | Magic UI |
 
 ### 页面 / 转场
 
@@ -187,6 +195,16 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | --- | --- |
 | page-transition | 原创 |
 | reveal-section | Motion Primitives |
+| marketing-blocks | Tailark（免费 MIT） |
+| device-mockups | Magic UI |
+| terminal | Eldora UI |
+
+### AI 对话
+
+| 组件 | 来源 |
+| --- | --- |
+| prompt-input | prompt-kit |
+| chat-message | prompt-kit |
 
 ### 实用组件
 
@@ -201,6 +219,9 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | color-picker | Kibo UI |
 | code-block | Kibo UI |
 | kanban | Kibo UI |
+| rich-text-editor | Kibo UI / Tiptap |
+| tree-view | 原创 |
+| onboarding-tour | 原创 |
 
 ---
 

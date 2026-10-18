@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "onboarding-tour",
+  "type": "registry:ui",
+  "title": "Onboarding Tour",
+  "description": "高亮遮罩 + 步骤卡片的产品引导。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/onboarding-tour.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/onboarding-tour.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TourStep {\n  selector: string\n  title: string\n  description: string\n}\n\nexport interface OnboardingTourProps {\n  steps: TourStep[]\n  open?: boolean\n  onOpenChange?: (open: boolean) => void\n  className?: string\n}\n\nfunction readBox(selector: string) {\n  if (typeof document === \"undefined\") return null\n  return document.querySelector(selector)?.getBoundingClientRect() ?? null\n}\n\nfunction OnboardingTour({ steps, open = false, onOpenChange, className }: OnboardingTourProps) {\n  const [index, setIndex] = useState(0)\n  const step = steps[index]\n\n  if (!open || !step) return null\n\n  const box = readBox(step.selector)\n  const next = () => {\n    if (index >= steps.length - 1) {\n      onOpenChange?.(false)\n      setIndex(0)\n      return\n    }\n    setIndex((value) => value + 1)\n  }\n\n  return (\n    <div className={cn(\"fixed inset-0 z-50\", className)}>\n      <div className=\"absolute inset-0 bg-black/50\" onClick={() => onOpenChange?.(false)} />\n      {box ? (\n        <div\n          className=\"pointer-events-none absolute rounded-lg ring-2 ring-primary\"\n          style={{ top: box.top - 6, left: box.left - 6, width: box.width + 12, height: box.height + 12 }}\n        />\n      ) : null}\n      <div\n        className=\"absolute w-72 rounded-xl border bg-background p-4 shadow-xl\"\n        style={{\n          top: Math.min((box?.bottom ?? 80) + 12, (typeof window === \"undefined\" ? 800 : window.innerHeight) - 180),\n          left: Math.min(box?.left ?? 24, (typeof window === \"undefined\" ? 800 : window.innerWidth) - 308),\n        }}\n      >\n        <p className=\"text-xs text-muted-foreground\">\n          {index + 1} / {steps.length}\n        </p>\n        <h3 className=\"mt-1 font-medium\">{step.title}</h3>\n        <p className=\"mt-1 text-sm text-muted-foreground\">{step.description}</p>\n        <div className=\"mt-3 flex justify-end gap-2\">\n          <Button type=\"button\" variant=\"ghost\" size=\"sm\" onClick={() => onOpenChange?.(false)}>\n            跳过\n          </Button>\n          <Button type=\"button\" size=\"sm\" onClick={next}>\n            {index === steps.length - 1 ? \"完成\" : \"下一步\"}\n          </Button>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport { OnboardingTour }\n"
+    }
+  ]
+}

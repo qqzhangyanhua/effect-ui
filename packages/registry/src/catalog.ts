@@ -1,4 +1,5 @@
 import { batch2Components } from "./catalog-batch2"
+import { batch3Components } from "./catalog-batch3"
 
 export type ComponentCategory =
   | "ui"
@@ -11,6 +12,7 @@ export type ComponentCategory =
   | "scroll"
   | "navigation"
   | "page"
+  | "utility"
 
 export type SourceLibrary =
   | "shadcn/ui"
@@ -18,6 +20,9 @@ export type SourceLibrary =
   | "Animata"
   | "Motion Primitives"
   | "Cult UI"
+  | "Fancy Components"
+  | "Kibo UI"
+  | "Origin UI"
   | "original"
 
 export interface PropDoc {
@@ -52,6 +57,7 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   scroll: "滚动显现",
   navigation: "导航",
   page: "页面 / 转场",
+  utility: "实用组件",
 }
 
 export const categoryOrder: ComponentCategory[] = [
@@ -65,6 +71,7 @@ export const categoryOrder: ComponentCategory[] = [
   "scroll",
   "navigation",
   "page",
+  "utility",
 ]
 
 const uiProps: PropDoc[] = [
@@ -876,6 +883,7 @@ export const components: ComponentMeta[] = [
     ],
   },
   ...batch2Components,
+  ...batch3Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

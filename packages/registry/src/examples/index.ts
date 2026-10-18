@@ -2,8 +2,10 @@ import type { ComponentType } from "react"
 
 import * as effectDemos from "./effect-demos"
 import * as effectDemos2 from "./effect-demos-2"
+import * as effectDemos3 from "./effect-demos-3"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
+import * as uiDemos3 from "./ui-demos-3"
 
 const demoMap: Record<string, ComponentType> = {
   button: uiDemos.ButtonDemo,
@@ -120,6 +122,24 @@ const demoMap: Record<string, ComponentType> = {
   "animated-sidebar": effectDemos2.AnimatedSidebarDemo,
   "page-transition": effectDemos2.PageTransitionDemo,
   "reveal-section": effectDemos2.RevealSectionDemo,
+  "animated-beam": effectDemos3.AnimatedBeamDemo,
+  "morphing-dialog": effectDemos3.MorphingDialogDemo,
+  "image-comparison": effectDemos3.ImageComparisonDemo,
+  "progressive-blur": effectDemos3.ProgressiveBlurDemo,
+  "scroll-progress": effectDemos3.ScrollProgressDemo,
+  "scroll-velocity": effectDemos3.ScrollVelocityDemo,
+  "stacking-cards": effectDemos3.StackingCardsDemo,
+  "dynamic-island": effectDemos3.DynamicIslandDemo,
+  "variable-font-proximity": effectDemos3.VariableFontProximityDemo,
+  dropzone: uiDemos3.DropzoneDemo,
+  "multi-select": uiDemos3.MultiSelectDemo,
+  "tag-input": uiDemos3.TagInputDemo,
+  "date-range-picker": uiDemos3.DateRangePickerDemo,
+  timeline: uiDemos3.TimelineDemo,
+  stepper: uiDemos3.StepperDemo,
+  "color-picker": uiDemos3.ColorPickerDemo,
+  "code-block": uiDemos3.CodeBlockDemo,
+  kanban: uiDemos3.KanbanDemo,
 }
 
 export function getDemo(name: string): ComponentType | undefined {

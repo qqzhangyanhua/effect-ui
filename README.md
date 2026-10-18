@@ -83,6 +83,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | morphing-text | Magic UI |
 | rolling-number | Magic UI |
 | text-reveal | Magic UI |
+| variable-font-proximity | Fancy Components |
 
 ### 背景
 
@@ -101,6 +102,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | noise-gradient | 原创 |
 | animated-grid | Magic UI |
 | retro-grid | Magic UI |
+| animated-beam | Magic UI |
 
 ### 光标 / 悬停
 
@@ -119,6 +121,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | confetti-burst | Magic UI |
 | cursor-trail | 原创 |
 | sparkles | Magic UI |
+| dynamic-island | Cult UI |
 
 ### 卡片 / 3D
 
@@ -132,6 +135,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | bento-grid | Magic UI |
 | perspective-card | 原创 |
 | expandable-card | Cult UI |
+| morphing-dialog | Motion Primitives |
+| image-comparison | Motion Primitives |
 
 ### 按钮特效
 
@@ -163,6 +168,10 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | stagger-list | Motion Primitives |
 | parallax | 原创 |
 | blur-fade | Magic UI |
+| progressive-blur | Motion Primitives |
+| scroll-progress | Magic UI |
+| scroll-velocity | Magic UI |
+| stacking-cards | Fancy Components |
 
 ### 导航
 
@@ -178,6 +187,20 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | --- | --- |
 | page-transition | 原创 |
 | reveal-section | Motion Primitives |
+
+### 实用组件
+
+| 组件 | 来源 |
+| --- | --- |
+| dropzone | Kibo UI |
+| multi-select | sersavan / Kibo UI |
+| tag-input | Kibo UI |
+| date-range-picker | Origin UI（仅 `apps/origin/` MIT） |
+| timeline | Origin UI |
+| stepper | Origin UI |
+| color-picker | Kibo UI |
+| code-block | Kibo UI |
+| kanban | Kibo UI |
 
 ---
 

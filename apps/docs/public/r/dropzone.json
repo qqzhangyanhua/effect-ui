@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropzone",
+  "type": "registry:ui",
+  "title": "Dropzone",
+  "description": "拖拽上传，含预览与类型/大小校验。",
+  "dependencies": [
+    "react-dropzone",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/dropzone.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/dropzone.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { UploadIcon } from \"lucide-react\"\nimport { useDropzone, type DropzoneOptions, type FileRejection } from \"react-dropzone\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\ninterface DropzoneContextValue {\n  files?: File[]\n  accept?: DropzoneOptions[\"accept\"]\n  maxSize?: number\n  maxFiles?: number\n}\n\nconst DropzoneContext = React.createContext<DropzoneContextValue | null>(null)\n\nfunction useDropzoneContext() {\n  const context = React.useContext(DropzoneContext)\n  if (!context) throw new Error(\"Dropzone parts must be used within Dropzone\")\n  return context\n}\n\nfunction formatBytes(bytes: number) {\n  const units = [\"B\", \"KB\", \"MB\", \"GB\"]\n  let size = bytes\n  let index = 0\n  while (size >= 1024 && index < units.length - 1) {\n    size /= 1024\n    index += 1\n  }\n  return `${size.toFixed(1)} ${units[index]}`\n}\n\nexport interface DropzoneProps extends Omit<DropzoneOptions, \"onDrop\"> {\n  files?: File[]\n  className?: string\n  children?: React.ReactNode\n  onDrop?: (accepted: File[], rejected: FileRejection[]) => void\n}\n\nfunction Dropzone({\n  files,\n  className,\n  children,\n  accept,\n  maxFiles = 4,\n  maxSize,\n  disabled,\n  onDrop,\n  onError,\n  ...props\n}: DropzoneProps) {\n  const { getRootProps, getInputProps, isDragActive } = useDropzone({\n    accept,\n    maxFiles,\n    maxSize,\n    disabled,\n    onError,\n    onDrop: (accepted, rejected) => {\n      if (rejected[0]?.errors[0]) {\n        onError?.(new Error(rejected[0].errors[0].message))\n        return\n      }\n      onDrop?.(accepted, rejected)\n    },\n    ...props,\n  })\n\n  return (\n    <DropzoneContext.Provider value={{ files, accept, maxSize, maxFiles }}>\n      <Button\n        type=\"button\"\n        variant=\"outline\"\n        disabled={disabled}\n        className={cn(\n          \"h-auto w-full flex-col gap-2 p-8\",\n          isDragActive && \"ring-2 ring-ring\",\n          className,\n        )}\n        {...getRootProps()}\n      >\n        <input {...getInputProps()} disabled={disabled} />\n        {children}\n      </Button>\n    </DropzoneContext.Provider>\n  )\n}\n\nfunction DropzoneEmptyState({ className }: { className?: string }) {\n  const { files, accept, maxSize, maxFiles } = useDropzoneContext()\n  if (files && files.length > 0) return null\n  const types = accept ? Object.keys(accept).join(\", \") : \"任意类型\"\n  return (\n    <div className={cn(\"flex flex-col items-center text-center\", className)}>\n      <div className=\"mb-2 flex size-9 items-center justify-center rounded-md bg-muted\">\n        <UploadIcon className=\"size-4\" />\n      </div>\n      <p className=\"text-sm font-medium\">拖拽或点击上传</p>\n      <p className=\"text-xs text-muted-foreground\">\n        最多 {maxFiles} 个文件{maxSize ? ` · 单文件 ${formatBytes(maxSize)}` : \"\"} · {types}\n      </p>\n    </div>\n  )\n}\n\nfunction DropzoneContent({ className }: { className?: string }) {\n  const { files } = useDropzoneContext()\n  if (!files?.length) return null\n  return (\n    <div className={cn(\"w-full space-y-1 text-left text-sm\", className)}>\n      {files.map((file) => (\n        <div key={`${file.name}-${file.size}`} className=\"flex justify-between gap-3\">\n          <span className=\"truncate\">{file.name}</span>\n          <span className=\"text-muted-foreground\">{formatBytes(file.size)}</span>\n        </div>\n      ))}\n    </div>\n  )\n}\n\nexport { Dropzone, DropzoneContent, DropzoneEmptyState, formatBytes }\n"
+    }
+  ]
+}

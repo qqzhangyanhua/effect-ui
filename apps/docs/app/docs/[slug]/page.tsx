@@ -9,6 +9,7 @@ import { ComponentPreview } from "@/components/component-preview"
 import { PropsTable } from "@/components/props-table"
 import { highlightCode, languageForFile } from "@/lib/highlight"
 import { readRegistrySource } from "@/lib/source"
+import { readUsageExample } from "@/lib/usage"
 
 interface DocsPageProps {
   params: Promise<{ slug: string }>
@@ -37,10 +38,12 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   if (!Demo) notFound()
 
   const source = readRegistrySource(item.file)
+  const usage = readUsageExample(item.name)
   const install = `npx shadcn@latest add /r/${item.name}.json`
-  const [sourceHtml, installHtml] = await Promise.all([
+  const [sourceHtml, installHtml, usageHtml] = await Promise.all([
     highlightCode(source, languageForFile(item.file)),
     highlightCode(install, "bash"),
+    highlightCode(usage, "tsx"),
   ])
 
   return (
@@ -57,6 +60,11 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
       <section className="space-y-3">
         <h2 className="text-xl font-medium">预览</h2>
         <ComponentPreview Demo={Demo} />
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-medium">用法</h2>
+        <CodeBlock code={usage} html={usageHtml} filename="example.tsx" />
       </section>
 
       <section className="space-y-3">

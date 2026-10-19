@@ -18,10 +18,7 @@ function ScrambleText({ text, className, duration = 900 }: ScrambleTextProps) {
   const [output, setOutput] = React.useState(text)
 
   React.useEffect(() => {
-    if (reduced) {
-      setOutput(text)
-      return
-    }
+    if (reduced) return
     const start = performance.now()
     let frame = 0
     const tick = (now: number) => {
@@ -40,7 +37,7 @@ function ScrambleText({ text, className, duration = 900 }: ScrambleTextProps) {
 
   return (
     <span data-slot="scramble-text" className={cn("font-mono", className)}>
-      {output}
+      {reduced ? text : output}
     </span>
   )
 }

@@ -3762,6 +3762,295 @@
           "target": "components/ui/pixel-transition.tsx"
         }
       ]
+    },
+    {
+      "name": "vfx-element",
+      "type": "registry:ui",
+      "title": "VFX Element",
+      "description": "vfx-js（MIT）WebGL 特效封装：glitch / glow / CRT / RGB shift / pixelate，可叠加。无 WebGL 或减弱动效时回退 CSS。",
+      "dependencies": [
+        "@vfx-js/core"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/vfx-element.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/vfx-element.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mouse-flowmap",
+      "type": "registry:ui",
+      "title": "Mouse Flowmap",
+      "description": "移植 OGL mouse-flowmap 示例（Unlicense）：指针在贴图上留下流动扭曲。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mouse-flowmap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mouse-flowmap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gpgpu-particles",
+      "type": "registry:ui",
+      "title": "GPGPU Particles",
+      "description": "移植 OGL GPGPU 粒子示例（Unlicense）：鼠标涡流，粒子可聚成文字。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gpgpu-particles.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gpgpu-particles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "polyline-ribbon-cursor",
+      "type": "registry:ui",
+      "title": "Polyline Ribbon Cursor",
+      "description": "移植 OGL polylines 示例（Unlicense）：跟随指针的丝带网格。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/polyline-ribbon-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/polyline-ribbon-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pixel-canvas-card",
+      "type": "registry:ui",
+      "title": "Pixel Canvas Card",
+      "description": "移植 hexagoncircle/pixel-canvas（MIT）：悬停时像素从中心闪现。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pixel-canvas-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pixel-canvas-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "atropos-card",
+      "type": "registry:ui",
+      "title": "Atropos Card",
+      "description": "Atropos（MIT）多层 3D 视差卡片。",
+      "dependencies": [
+        "atropos"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/atropos-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/atropos-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rough-annotation",
+      "type": "registry:ui",
+      "title": "Rough Annotation",
+      "description": "rough-notation（MIT）手绘下划线 / 高亮 / 框选注释。",
+      "dependencies": [
+        "rough-notation"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rough-annotation.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rough-annotation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "burst-icons",
+      "type": "registry:ui",
+      "title": "Burst Icons",
+      "description": "灵感来自 mo.js（MIT），用 Motion 重写的点击图标爆发。",
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/burst-icons.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/burst-icons.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marquee-along-svg-path",
+      "type": "registry:ui",
+      "title": "Marquee Along SVG Path",
+      "description": "Fancy Components（MIT）：子元素沿 SVG 路径循环移动。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/marquee-along-svg-path.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/marquee-along-svg-path.tsx"
+        }
+      ]
+    },
+    {
+      "name": "evervault-card",
+      "type": "registry:ui",
+      "title": "Evervault Card",
+      "description": "灵感来自 encrypted card，原创实现：乱码字符在悬停处揭开明文。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/evervault-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/evervault-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "canvas-reveal",
+      "type": "registry:ui",
+      "title": "Canvas Reveal",
+      "description": "灵感来自 dot-matrix reveal，原创实现：点阵涟漪揭开下层内容。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/canvas-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/canvas-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "letter-glitch-wall",
+      "type": "registry:ui",
+      "title": "Letter Glitch Wall",
+      "description": "灵感来自 letter glitch wall，原创实现：字符墙随机翻跳。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/letter-glitch-wall.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/letter-glitch-wall.tsx"
+        }
+      ]
+    },
+    {
+      "name": "target-cursor",
+      "type": "registry:ui",
+      "title": "Target Cursor",
+      "description": "灵感来自 target cursor，原创实现：四角括号吸附到 data-target。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/target-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/target-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lightning",
+      "type": "registry:ui",
+      "title": "Lightning",
+      "description": "原创 GLSL 闪电：噪声折线与辉光，无 WebGL 时回退渐变。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lightning.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lightning.tsx"
+        }
+      ]
+    },
+    {
+      "name": "iridescence",
+      "type": "registry:ui",
+      "title": "Iridescence",
+      "description": "原创虹彩噪声背景着色器，无 WebGL 时回退锥形渐变。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/iridescence.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/iridescence.tsx"
+        }
+      ]
+    },
+    {
+      "name": "silk",
+      "type": "registry:ui",
+      "title": "Silk",
+      "description": "原创丝绸褶皱噪声背景着色器，无 WebGL 时回退线性渐变。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/silk.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/silk.tsx"
+        }
+      ]
     }
   ]
 }

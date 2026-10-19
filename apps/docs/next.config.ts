@@ -21,6 +21,9 @@ const nextConfig: NextConfig = {
     "wavesurfer.js",
     "matter-js",
     "ogl",
+    "@vfx-js/core",
+    "atropos",
+    "rough-notation",
   ],
 }
 

@@ -1,0 +1,105 @@
+apps/docs/public/r/registry.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 3446-3714
+packages/registry/package.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 65,68,88
+packages/registry/src/effects/shader-pack-2.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-69
+apps/docs/public/r/circular-gallery.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+apps/docs/public/r/tracing-beam.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+packages/registry/src/effects/glowing-edge.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-22
+packages/registry/src/effects/tracing-beam.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-69
+packages/registry/src/examples/index.ts
+  s_1daa3c8b983ac8::t_e190501a8709a8 8,198-212
+apps/docs/public/r/glowing-edge.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+apps/docs/public/r/text-along-path.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+packages/registry/src/effects/ascii-render.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-59
+apps/docs/app/globals.css
+  s_1daa3c8b983ac8::t_e190501a8709a8 395-406
+apps/docs/public/r/pixel-transition.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+packages/registry/src/effects/scroll-typography.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-63
+licenses/mit/webgl-fluid-simulation/LICENSE
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+packages/registry/src/effects/siri-orb.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-24
+apps/docs/public/r/scroll-image-sequence.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+packages/registry/src/effects/lamp-heading.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-22
+apps/docs/public/r/container-scroll-3d.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+packages/registry/src/effects/pixel-transition.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-41
+packages/registry/src/effects/scroll-image-sequence.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-36
+CREDITS.md
+  s_1daa3c8b983ac8::t_e190501a8709a8 14
+apps/docs/next.config.ts
+  s_1daa3c8b983ac8::t_e190501a8709a8 22-23
+packages/registry/src/examples/effect-demos-6.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-135
+apps/docs/public/r/siri-orb.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+packages/registry/src/effects/three-d-carousel.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-57
+packages/registry/src/effects/text-along-path.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-30
+apps/docs/public/r/shader-pack-2.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+apps/docs/package.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 64,68,90
+apps/docs/public/r/splash-cursor.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+packages/registry/src/effects/gravity.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-70
+packages/registry/src/catalog.ts
+  s_1daa3c8b983ac8::t_e190501a8709a8 5,45-47,953
+apps/docs/public/r/ascii-render.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+packages/registry/src/catalog-batch6.ts
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-236
+apps/docs/public/r/3d-carousel.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+packages/registry/src/effects/circular-gallery.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-126
+packages/registry/src/effects/container-scroll-3d.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-36
+README.md
+  s_1daa3c8b983ac8::t_e190501a8709a8 94-96,120,141,160-162,201-203,225,233,265-266
+apps/docs/public/r/lamp-heading.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-19
+THIRD_PARTY_NOTICES.md
+  s_1daa3c8b983ac8::t_e190501a8709a8 40,47,78-79,169,187-207,211
+registry.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 3446-3714
+apps/docs/public/r/gravity.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+apps/docs/public/r/scroll-typography.json
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-21
+packages/registry/src/effects/splash-cursor.tsx
+  s_1daa3c8b983ac8::t_e190501a8709a8 1-186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "c1fd88d1f8cdb35afea29e5fbe1a32068a7f5043",
+  "prompts": {},
+  "sessions": {
+    "s_1daa3c8b983ac8": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15354-8138-76e0-b7a6-7bf3b01a52bd",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

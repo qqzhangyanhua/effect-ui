@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react"
+import { motion, type HTMLMotionProps } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SlideInProps extends HTMLMotionProps<"div"> {
@@ -24,7 +25,7 @@ function SlideIn({
   delay = 0,
   ...props
 }: SlideInProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   return (
     <motion.div
       data-slot="slide-in"

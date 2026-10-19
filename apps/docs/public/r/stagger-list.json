@@ -8,6 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
+    "use-prefers-reduced-motion",
     "utils"
   ],
   "files": [
@@ -15,7 +16,7 @@
       "path": "registry/effects/stagger-list.tsx",
       "type": "registry:ui",
       "target": "components/ui/stagger-list.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, type Variants } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface StaggerListProps {\n  className?: string\n  children?: React.ReactNode\n  delay?: number\n}\n\nconst list: Variants = {\n  hidden: {},\n  show: {\n    transition: { staggerChildren: 0.08 },\n  },\n}\n\nconst item: Variants = {\n  hidden: { opacity: 0, y: 14 },\n  show: {\n    opacity: 1,\n    y: 0,\n    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },\n  },\n}\n\nfunction StaggerList({\n  className,\n  children,\n  delay = 0,\n}: StaggerListProps) {\n  const reduce = useReducedMotion() === true\n  return (\n    <motion.ul\n      data-slot=\"stagger-list\"\n      className={cn(\"flex flex-col gap-2\", className)}\n      variants={reduce ? undefined : list}\n      initial={reduce ? false : \"hidden\"}\n      whileInView={reduce ? undefined : \"show\"}\n      viewport={{ once: true, amount: 0.3 }}\n      transition={reduce ? { duration: 0 } : { delayChildren: delay }}\n    >\n      {React.Children.map(children, (child, index) => (\n        <motion.li key={index} variants={reduce ? undefined : item}>\n          {child}\n        </motion.li>\n      ))}\n    </motion.ul>\n  )\n}\n\nexport { StaggerList }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, type Variants } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StaggerListProps {\n  className?: string\n  children?: React.ReactNode\n  delay?: number\n}\n\nconst list: Variants = {\n  hidden: {},\n  show: {\n    transition: { staggerChildren: 0.08 },\n  },\n}\n\nconst item: Variants = {\n  hidden: { opacity: 0, y: 14 },\n  show: {\n    opacity: 1,\n    y: 0,\n    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },\n  },\n}\n\nfunction StaggerList({\n  className,\n  children,\n  delay = 0,\n}: StaggerListProps) {\n  const reduce = usePrefersReducedMotion()\n  return (\n    <motion.ul\n      data-slot=\"stagger-list\"\n      className={cn(\"flex flex-col gap-2\", className)}\n      variants={reduce ? undefined : list}\n      initial={reduce ? false : \"hidden\"}\n      whileInView={reduce ? undefined : \"show\"}\n      viewport={{ once: true, amount: 0.3 }}\n      transition={reduce ? { duration: 0 } : { delayChildren: delay }}\n    >\n      {React.Children.map(children, (child, index) => (\n        <motion.li key={index} variants={reduce ? undefined : item}>\n          {child}\n        </motion.li>\n      ))}\n    </motion.ul>\n  )\n}\n\nexport { StaggerList }\n"
     }
   ]
 }

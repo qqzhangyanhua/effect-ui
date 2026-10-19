@@ -2,23 +2,10 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%"
-
-function subscribeReducedMotion(onStoreChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onStoreChange)
-  return () => media.removeEventListener("change", onStoreChange)
-}
-
-function reducedMotionSnapshot() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
-}
-
-function usePrefersReducedMotion() {
-  return React.useSyncExternalStore(subscribeReducedMotion, reducedMotionSnapshot, () => false)
-}
 
 export interface ScrambleTextProps {
   text: string

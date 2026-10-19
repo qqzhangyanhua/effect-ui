@@ -457,7 +457,7 @@ export const batch5Components: ComponentMeta[] = [
     source: "Kokonut UI",
     type: "registry:ui",
     dependencies: [],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/spoiler-text.tsx",
     target: "components/ui/spoiler-text.tsx",
     props: [{ name: "text", type: "string", description: "隐藏文本。" }, ...ui],

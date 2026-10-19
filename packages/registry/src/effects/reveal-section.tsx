@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface RevealSectionProps {
@@ -12,7 +13,7 @@ export interface RevealSectionProps {
 }
 
 function RevealSection({ className, children, delay = 0 }: RevealSectionProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   return (
     <motion.section
       data-slot="reveal-section"

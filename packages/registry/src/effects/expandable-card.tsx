@@ -1,26 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function useIsReducedMotion() {
-  const prefersReducedMotion = useReducedMotion()
-  return React.useSyncExternalStore(
-    subscribeReducedMotion,
-    () =>
-      prefersReducedMotion === true ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
-}
 
 export interface ExpandableCardProps {
   className?: string
@@ -35,7 +19,7 @@ function ExpandableCard({
   preview,
   children,
 }: ExpandableCardProps) {
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   const [open, setOpen] = React.useState(false)
 
   return (

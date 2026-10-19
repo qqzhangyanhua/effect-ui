@@ -15,7 +15,7 @@
       "path": "registry/effects/scroll-progress.tsx",
       "type": "registry:ui",
       "target": "components/ui/scroll-progress.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useReducedMotion, useScroll } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollProgressProps {\n  className?: string\n  containerRef?: React.RefObject<HTMLElement | null>\n}\n\nfunction ScrollProgress({ className, containerRef }: ScrollProgressProps) {\n  const reduce = useReducedMotion() === true\n  const { scrollYProgress } = useScroll(\n    containerRef ? { container: containerRef } : undefined,\n  )\n\n  return (\n    <motion.div\n      className={cn(\n        \"h-1 origin-left bg-linear-to-r from-violet-500 via-fuchsia-400 to-amber-300\",\n        className,\n      )}\n      style={{ scaleX: reduce ? 1 : scrollYProgress }}\n    />\n  )\n}\n\nexport { ScrollProgress }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollProgressProps {\n  className?: string\n  containerRef?: React.RefObject<HTMLElement | null>\n}\n\nfunction ScrollProgress({ className, containerRef }: ScrollProgressProps) {\n  const { scrollYProgress } = useScroll(\n    containerRef ? { container: containerRef } : undefined,\n  )\n\n  return (\n    <motion.div\n      className={cn(\n        \"h-1 origin-left bg-linear-to-r from-violet-500 via-fuchsia-400 to-amber-300\",\n        className,\n      )}\n      style={{ scaleX: scrollYProgress }}\n    />\n  )\n}\n\nexport { ScrollProgress }\n"
     }
   ]
 }

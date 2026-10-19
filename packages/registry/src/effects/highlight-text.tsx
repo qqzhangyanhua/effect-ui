@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface HighlightTextProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -15,12 +16,7 @@ function HighlightText({
   children,
   ...props
 }: HighlightTextProps) {
-  const prefersReducedMotion = useReducedMotion()
-  const [reduced, setReduced] = React.useState(false)
-
-  React.useEffect(() => {
-    setReduced(prefersReducedMotion === true)
-  }, [prefersReducedMotion])
+  const reduced = usePrefersReducedMotion()
 
   return (
     <span

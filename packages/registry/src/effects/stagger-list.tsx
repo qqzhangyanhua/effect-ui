@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, type Variants } from "motion/react"
+import { motion, type Variants } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface StaggerListProps {
@@ -32,7 +33,7 @@ function StaggerList({
   children,
   delay = 0,
 }: StaggerListProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   return (
     <motion.ul
       data-slot="stagger-list"

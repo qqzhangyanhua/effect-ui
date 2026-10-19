@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { useReducedMotion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 function parseSettings(value: string) {
@@ -37,8 +37,7 @@ function VariableFontProximity({
   falloff = "linear",
   className,
 }: VariableFontProximityProps) {
-  const prefersReducedMotion = useReducedMotion()
-  const [reduced, setReduced] = React.useState(false)
+  const reduced = usePrefersReducedMotion()
   const letterRefs = React.useRef<Array<HTMLSpanElement | null>>([])
   const mouse = React.useRef({ x: -9999, y: -9999 })
 
@@ -53,11 +52,7 @@ function VariableFontProximity({
   }, [fromFontVariationSettings, toFontVariationSettings])
 
   React.useEffect(() => {
-    setReduced(prefersReducedMotion === true)
-  }, [prefersReducedMotion])
-
-  React.useEffect(() => {
-    if (reduced) return
+    if (reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const move = (event: PointerEvent) => {
       const box = containerRef.current?.getBoundingClientRect()
       if (!box) return
@@ -68,7 +63,7 @@ function VariableFontProximity({
   }, [containerRef, reduced])
 
   React.useEffect(() => {
-    if (reduced) return
+    if (reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     let frame = 0
     const tick = () => {
       frame = window.requestAnimationFrame(tick)

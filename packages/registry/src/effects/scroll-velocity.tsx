@@ -5,7 +5,6 @@ import {
   motion,
   useAnimationFrame,
   useMotionValue,
-  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -13,6 +12,7 @@ import {
   type MotionValue,
 } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 function wrap(min: number, max: number, value: number) {
@@ -29,7 +29,7 @@ function ScrollVelocity({
   children: React.ReactNode
   className?: string
 }) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   if (reduce) {
     return <div className={cn("relative w-full", className)}>{children}</div>
   }
@@ -69,7 +69,7 @@ function ScrollVelocityRow({
   baseVelocity?: number
   direction?: 1 | -1
 }) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   if (reduce) {
     return (
       <div className={cn("w-full overflow-hidden whitespace-nowrap", className)}>

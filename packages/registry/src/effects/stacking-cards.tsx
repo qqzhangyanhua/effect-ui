@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react"
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 interface StackingCardsContextValue {
@@ -58,7 +59,7 @@ function StackingCardItem({
   children: React.ReactNode
   className?: string
 }) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   const { progress, totalCards, scaleMultiplier } = useStackingCards()
   const scaleTo = 1 - (totalCards - index) * scaleMultiplier
   const scale = useTransform(progress, [index * (1 / totalCards), 1], [1, scaleTo])

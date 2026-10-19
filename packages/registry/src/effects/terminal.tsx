@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface TerminalProps {
@@ -12,15 +13,7 @@ export interface TerminalProps {
 
 function Terminal({ lines, className, interval = 700 }: TerminalProps) {
   const [count, setCount] = React.useState(1)
-  const reduce = React.useSyncExternalStore(
-    (onStoreChange) => {
-      const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-      media.addEventListener("change", onStoreChange)
-      return () => media.removeEventListener("change", onStoreChange)
-    },
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
+  const reduce = usePrefersReducedMotion()
   const shown = reduce ? lines.length : count
 
   React.useEffect(() => {

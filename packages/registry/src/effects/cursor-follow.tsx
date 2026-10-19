@@ -1,26 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react"
+import { motion, useMotionValue, useSpring } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function useIsReducedMotion() {
-  const prefersReducedMotion = useReducedMotion()
-  return React.useSyncExternalStore(
-    subscribeReducedMotion,
-    () =>
-      prefersReducedMotion === true ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
-}
 
 export interface CursorFollowProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number
@@ -32,7 +16,7 @@ function CursorFollow({
   children,
   ...props
 }: CursorFollowProps) {
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
   const springX = useSpring(x, { stiffness: 220, damping: 22 })

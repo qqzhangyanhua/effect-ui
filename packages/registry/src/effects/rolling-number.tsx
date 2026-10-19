@@ -1,8 +1,8 @@
 "use client"
 
-import * as React from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface RollingNumberProps {
@@ -11,13 +11,8 @@ export interface RollingNumberProps {
 }
 
 function RollingNumber({ value, className }: RollingNumberProps) {
-  const prefersReducedMotion = useReducedMotion()
-  const [reduced, setReduced] = React.useState(false)
+  const reduced = usePrefersReducedMotion()
   const digits = String(Math.max(0, Math.floor(value))).split("")
-
-  React.useEffect(() => {
-    setReduced(prefersReducedMotion === true)
-  }, [prefersReducedMotion])
 
   if (reduced) {
     return (

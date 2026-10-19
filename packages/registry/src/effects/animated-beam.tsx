@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useId, useState, useSyncExternalStore, type RefObject } from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { useEffect, useId, useState, type RefObject } from "react"
+import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface AnimatedBeamProps {
@@ -25,16 +26,6 @@ export interface AnimatedBeamProps {
   endYOffset?: number
 }
 
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function reducedMotionSnapshot() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
-}
-
 function AnimatedBeam({
   className,
   containerRef,
@@ -55,13 +46,7 @@ function AnimatedBeam({
   endYOffset = 0,
 }: AnimatedBeamProps) {
   const id = useId()
-  // motion 12 的 useReducedMotion 只读一次，偏好变化时不会重渲染。
-  useReducedMotion()
-  const reduceMotion = useSyncExternalStore(
-    subscribeReducedMotion,
-    reducedMotionSnapshot,
-    () => false,
-  )
+  const reduceMotion = usePrefersReducedMotion()
   const [pathD, setPathD] = useState("")
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 })
 

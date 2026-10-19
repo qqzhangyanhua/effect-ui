@@ -1,26 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function useIsReducedMotion() {
-  const prefersReducedMotion = useReducedMotion()
-  return React.useSyncExternalStore(
-    subscribeReducedMotion,
-    () =>
-      prefersReducedMotion === true ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
-}
 
 export type DynamicIslandSize = "compact" | "idle" | "expanded" | "tall"
 
@@ -38,7 +22,7 @@ export interface DynamicIslandProps {
 }
 
 function DynamicIsland({ size = "idle", className, children }: DynamicIslandProps) {
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   const preset = sizes[size]
   return (
     <motion.div

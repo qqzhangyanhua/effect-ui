@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { useInView, useMotionValue, useReducedMotion, useSpring } from "motion/react"
+import { useInView, useMotionValue, useSpring } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface CountUpProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -27,17 +28,12 @@ function CountUp({
   className,
   ...props
 }: CountUpProps) {
-  const prefersReducedMotion = useReducedMotion()
-  const [reduced, setReduced] = React.useState(false)
+  const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLSpanElement>(null)
   const motionValue = useMotionValue(direction === "down" ? value : 0)
   const springValue = useSpring(motionValue, { damping: 40, stiffness: 120 })
   const isInView = useInView(ref, { once: true, margin: "0px" })
   const endValue = direction === "down" ? 0 : value
-
-  React.useEffect(() => {
-    setReduced(prefersReducedMotion === true)
-  }, [prefersReducedMotion])
 
   React.useEffect(() => {
     if (reduced || !isInView) return
@@ -56,18 +52,15 @@ function CountUp({
     return unsubscribe
   }, [decimalPlaces, reduced, springValue])
 
-  React.useEffect(() => {
-    if (!reduced || !ref.current) return
-    ref.current.textContent = formatCount(endValue, decimalPlaces)
-  }, [decimalPlaces, endValue, reduced])
-
   return (
     <span
       ref={ref}
       data-slot="count-up"
       className={cn("inline-block tabular-nums tracking-tight", className)}
       {...props}
-    />
+    >
+      {reduced ? formatCount(endValue, decimalPlaces) : null}
+    </span>
   )
 }
 

@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface AnimatedTabsItem {
@@ -18,7 +19,7 @@ export interface AnimatedTabsProps {
 }
 
 function AnimatedTabs({ items, className, defaultValue }: AnimatedTabsProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   const [value, setValue] = React.useState(defaultValue ?? items[0]?.value ?? "")
   const current = items.find((item) => item.value === value)
 

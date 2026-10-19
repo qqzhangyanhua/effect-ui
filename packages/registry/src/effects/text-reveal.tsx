@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
+import { motion, useScroll, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface TextRevealProps {
@@ -11,18 +12,13 @@ export interface TextRevealProps {
 }
 
 function TextReveal({ text, className }: TextRevealProps) {
-  const prefersReducedMotion = useReducedMotion()
-  const [reduced, setReduced] = React.useState(false)
+  const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLParagraphElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 0.9", "start 0.35"],
   })
   const words = text.split(" ")
-
-  React.useEffect(() => {
-    setReduced(prefersReducedMotion === true)
-  }, [prefersReducedMotion])
 
   return (
     <p

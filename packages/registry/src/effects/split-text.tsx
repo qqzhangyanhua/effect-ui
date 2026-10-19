@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, type Variants } from "motion/react"
+import { motion, type Variants } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SplitTextProps {
@@ -37,16 +38,11 @@ function SplitText({
   by = "char",
   className,
 }: SplitTextProps) {
-  const prefersReducedMotion = useReducedMotion()
-  const [reduced, setReduced] = React.useState(false)
+  const reduced = usePrefersReducedMotion()
   const pieces = React.useMemo(
     () => (by === "word" ? text.split(/(\s+)/) : Array.from(text)),
     [by, text],
   )
-
-  React.useEffect(() => {
-    setReduced(prefersReducedMotion === true)
-  }, [prefersReducedMotion])
 
   return (
     <motion.span

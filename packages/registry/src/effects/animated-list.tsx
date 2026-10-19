@@ -1,26 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function useIsReducedMotion() {
-  const prefersReducedMotion = useReducedMotion()
-  return React.useSyncExternalStore(
-    subscribeReducedMotion,
-    () =>
-      prefersReducedMotion === true ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
-}
 
 export interface AnimatedListProps {
   className?: string
@@ -29,11 +13,11 @@ export interface AnimatedListProps {
 }
 
 function AnimatedList({ className, items, delay = 1400 }: AnimatedListProps) {
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   const [index, setIndex] = React.useState(0)
 
   React.useEffect(() => {
-    if (reduceMotion || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    if (reduceMotion) return
     if (items.length === 0) return
     const timer = window.setInterval(() => {
       setIndex((current) => (current + 1) % items.length)

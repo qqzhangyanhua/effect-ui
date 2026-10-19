@@ -1,26 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react"
+import { motion, useMotionTemplate, useMotionValue } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function useIsReducedMotion() {
-  const prefersReducedMotion = useReducedMotion()
-  return React.useSyncExternalStore(
-    subscribeReducedMotion,
-    () =>
-      prefersReducedMotion === true ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
-}
 
 export interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   spotlightColor?: string
@@ -34,7 +18,7 @@ function SpotlightCard({
   radius = 240,
   ...props
 }: SpotlightCardProps) {
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 

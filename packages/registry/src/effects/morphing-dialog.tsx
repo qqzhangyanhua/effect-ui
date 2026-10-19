@@ -2,27 +2,11 @@
 
 import * as React from "react"
 import { createPortal } from "react-dom"
-import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react"
+import { AnimatePresence, MotionConfig, motion } from "motion/react"
 import { XIcon } from "lucide-react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
-function subscribeReducedMotion(onChange: () => void) {
-  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
-  media.addEventListener("change", onChange)
-  return () => media.removeEventListener("change", onChange)
-}
-
-function useIsReducedMotion() {
-  const prefersReducedMotion = useReducedMotion()
-  return React.useSyncExternalStore(
-    subscribeReducedMotion,
-    () =>
-      prefersReducedMotion === true ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    () => false,
-  )
-}
 
 interface MorphingDialogContextValue {
   open: boolean
@@ -43,7 +27,7 @@ function useMorphingDialog() {
 function MorphingDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false)
   const id = React.useId()
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   return (
     <MorphingDialogContext.Provider value={{ open, setOpen, id }}>
       <MotionConfig
@@ -68,7 +52,7 @@ function MorphingDialogTrigger({
   className?: string
 }) {
   const { open, setOpen, id } = useMorphingDialog()
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   return (
     <motion.button
       type="button"
@@ -122,7 +106,7 @@ function MorphingDialogContent({
   className?: string
 }) {
   const { setOpen, id } = useMorphingDialog()
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
 
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -155,7 +139,7 @@ function MorphingDialogTitle({
   className?: string
 }) {
   const { id } = useMorphingDialog()
-  const reduceMotion = useIsReducedMotion()
+  const reduceMotion = usePrefersReducedMotion()
   return (
     <motion.h2
       layoutId={reduceMotion ? undefined : `morph-title-${id}`}

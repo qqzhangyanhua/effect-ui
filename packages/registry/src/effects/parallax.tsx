@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
+import { motion, useScroll, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface ParallaxProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,7 +11,7 @@ export interface ParallaxProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function Parallax({ className, children, offset = 80, ...props }: ParallaxProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,

@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react"
+import { motion, type HTMLMotionProps } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface FadeInProps extends HTMLMotionProps<"div"> {
@@ -17,7 +18,7 @@ function FadeIn({
   once = true,
   ...props
 }: FadeInProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   return (
     <motion.div
       data-slot="fade-in"

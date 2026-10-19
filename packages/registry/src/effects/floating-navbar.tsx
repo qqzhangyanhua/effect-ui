@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react"
+import { motion, useMotionValueEvent, useScroll } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface FloatingNavbarProps {
@@ -11,7 +12,7 @@ export interface FloatingNavbarProps {
 }
 
 function FloatingNavbar({ className, children }: FloatingNavbarProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   const { scrollY } = useScroll()
   const [hidden, setHidden] = React.useState(false)
 

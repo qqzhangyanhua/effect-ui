@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react"
+import { motion, type HTMLMotionProps } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface BlurFadeProps extends HTMLMotionProps<"div"> {
@@ -17,7 +18,7 @@ function BlurFade({
   blur = 8,
   ...props
 }: BlurFadeProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   return (
     <motion.div
       data-slot="blur-fade"

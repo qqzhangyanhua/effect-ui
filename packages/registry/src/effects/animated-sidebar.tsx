@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { AnimatePresence, motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface AnimatedSidebarProps {
@@ -18,7 +19,7 @@ function AnimatedSidebar({
   onOpenChange,
   children,
 }: AnimatedSidebarProps) {
-  const reduce = useReducedMotion() === true
+  const reduce = usePrefersReducedMotion()
   const [internalOpen, setInternalOpen] = React.useState(false)
   const isOpen = open ?? internalOpen
   const setOpen = onOpenChange ?? setInternalOpen

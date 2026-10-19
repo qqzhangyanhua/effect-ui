@@ -8,6 +8,18 @@ export interface StarfieldProps extends React.HTMLAttributes<HTMLCanvasElement> 
   count?: number
 }
 
+function watchDevicePixelRatio(onChange: () => void) {
+  let media = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+  const handle = () => {
+    media.removeEventListener("change", handle)
+    media = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+    media.addEventListener("change", handle)
+    onChange()
+  }
+  media.addEventListener("change", handle)
+  return () => media.removeEventListener("change", handle)
+}
+
 function Starfield({ className, count = 90, ...props }: StarfieldProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
 
@@ -16,7 +28,13 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
     if (!canvas) return
     const ctx = canvas.getContext("2d")
     if (!ctx) return
+
     let frame = 0
+    let running = false
+    let visible = false
+    let width = 0
+    let height = 0
+    let dpr = 0
     const stars = Array.from({ length: count }, () => ({
       x: Math.random(),
       y: Math.random(),
@@ -24,12 +42,19 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
       s: 0.4 + Math.random() * 1.4,
     }))
 
-    const draw = () => {
-      const { width, height } = canvas.getBoundingClientRect()
-      const dpr = window.devicePixelRatio || 1
+    const syncSize = (nextWidth: number, nextHeight: number) => {
+      const nextDpr = window.devicePixelRatio || 1
+      if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
+      if (nextWidth === width && nextHeight === height && nextDpr === dpr) return
+      width = nextWidth
+      height = nextHeight
+      dpr = nextDpr
       canvas.width = width * dpr
       canvas.height = height * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+
+    const draw = () => {
       ctx.clearRect(0, 0, width, height)
       for (const star of stars) {
         star.z -= 0.002
@@ -45,8 +70,43 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
       frame = window.requestAnimationFrame(draw)
     }
 
-    draw()
-    return () => window.cancelAnimationFrame(frame)
+    const start = () => {
+      if (running || width <= 0 || height <= 0) return
+      running = true
+      frame = window.requestAnimationFrame(draw)
+    }
+
+    const stop = () => {
+      running = false
+      window.cancelAnimationFrame(frame)
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (!entry) return
+      syncSize(entry.contentRect.width, entry.contentRect.height)
+      if (visible) start()
+    })
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      visible = Boolean(entry?.isIntersecting)
+      if (visible) start()
+      else stop()
+    })
+
+    const stopDprWatch = watchDevicePixelRatio(() => {
+      syncSize(width, height)
+    })
+
+    resizeObserver.observe(canvas)
+    intersectionObserver.observe(canvas)
+
+    return () => {
+      stop()
+      resizeObserver.disconnect()
+      intersectionObserver.disconnect()
+      stopDprWatch()
+    }
   }, [count])
 
   return (

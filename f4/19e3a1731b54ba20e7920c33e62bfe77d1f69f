@@ -1,0 +1,25 @@
+apps/docs/public/r/hold-button.json
+  s_a44583b6558718::t_ab2a7adb27a39a 16
+apps/docs/public/r/ripple-button.json
+  s_a44583b6558718::t_df7e3312966cff 16
+packages/registry/src/effects/ripple-button.tsx
+  s_a44583b6558718::t_4cd7f8d6539761 45
+packages/registry/src/effects/hold-button.tsx
+  s_a44583b6558718::t_cda49cb52ef02c 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f419e3a1731b54ba20e7920c33e62bfe77d1f69f",
+  "prompts": {},
+  "sessions": {
+    "s_a44583b6558718": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a154da-1dd1-7782-a1ed-cb7b2c8b5ec7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

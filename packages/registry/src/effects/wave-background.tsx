@@ -19,7 +19,7 @@ function WaveBackground({ className, children, ...props }: WaveBackgroundProps) 
       >
         <path
           fill="currentColor"
-          className="animate-[wave-shift_8s_ease-in-out_infinite]"
+          className="animate-[wave-shift_8s_ease-in-out_infinite] motion-reduce:animate-none"
           d="M0,64 C240,120 480,0 720,48 C960,96 1200,16 1440,64 L1440,120 L0,120 Z"
         />
       </svg>

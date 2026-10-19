@@ -35,6 +35,8 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
     let width = 0
     let height = 0
     let dpr = 0
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let reducedMotion = motionMedia.matches
     const stars = Array.from({ length: count }, () => ({
       x: Math.random(),
       y: Math.random(),
@@ -67,19 +69,36 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
         ctx.arc(x, y, star.s * (1 - star.z + 0.2), 0, Math.PI * 2)
         ctx.fill()
       }
-      frame = window.requestAnimationFrame(draw)
-    }
-
-    const start = () => {
-      if (running || width <= 0 || height <= 0) return
-      running = true
-      frame = window.requestAnimationFrame(draw)
+      if (!reducedMotion) frame = window.requestAnimationFrame(draw)
     }
 
     const stop = () => {
       running = false
       window.cancelAnimationFrame(frame)
     }
+
+    const start = () => {
+      if (width <= 0 || height <= 0) return
+      if (reducedMotion) {
+        stop()
+        draw()
+        return
+      }
+      if (running) return
+      running = true
+      frame = window.requestAnimationFrame(draw)
+    }
+
+    const onMotionChange = () => {
+      reducedMotion = motionMedia.matches
+      if (reducedMotion) {
+        stop()
+        if (visible && width > 0 && height > 0) draw()
+        return
+      }
+      if (visible) start()
+    }
+    motionMedia.addEventListener("change", onMotionChange)
 
     const resizeObserver = new ResizeObserver((entries) => {
       const entry = entries[0]
@@ -96,6 +115,7 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
+      if (reducedMotion && visible) start()
     })
 
     resizeObserver.observe(canvas)
@@ -106,6 +126,7 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
       stopDprWatch()
+      motionMedia.removeEventListener("change", onMotionChange)
     }
   }, [count])
 

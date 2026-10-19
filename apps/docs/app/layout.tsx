@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google"
 
 import { SiteHeader } from "@/components/site-header"
 import { ThemeProvider } from "@/components/theme-provider"
+import { getRegistryBaseUrl } from "@/lib/source"
 import { Toaster } from "@effect-ui/registry/ui/sonner"
 import { TooltipProvider } from "@effect-ui/registry/ui/tooltip"
 
@@ -26,6 +27,7 @@ const display = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getRegistryBaseUrl()),
   title: {
     default: "effect-ui",
     template: "%s · effect-ui",

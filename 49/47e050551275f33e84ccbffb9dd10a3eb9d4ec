@@ -1,0 +1,193 @@
+apps/docs/public/r/reveal-section.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/variable-font-proximity.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 5,40,55,66
+apps/docs/public/r/scroll-progress.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 18
+apps/docs/public/r/morphing-dialog.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 12,20
+apps/docs/public/r/stagger-list.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/animated-list.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,16,20
+apps/docs/public/r/typing-text.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 9,17
+apps/docs/public/r/magnetic.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+README.md
+  s_c8ca0e644b7388::t_b038c53abac0c9 72
+packages/registry/src/effects/stacking-cards.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,62
+packages/registry/src/effects/scramble-text.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 5
+packages/registry/src/effects/magnetic.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,20
+packages/registry/src/effects/perspective-card.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,15
+apps/docs/public/r/use-prefers-reduced-motion.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 1-17
+packages/registry/src/catalog-batch3.ts
+  s_c8ca0e644b7388::t_b038c53abac0c9 20,38,93,109,125,137-138
+packages/registry/src/catalog-batch4.ts
+  s_c8ca0e644b7388::t_b038c53abac0c9 20,202
+apps/docs/public/r/expandable-card.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/slide-in.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/morphing-text.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,16
+apps/docs/public/r/dock.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/animated-beam.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/spotlight-card.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,21
+packages/registry/src/catalog.ts
+  s_c8ca0e644b7388::t_b038c53abac0c9 200-211,504,561,578,591,715,731,744,757,952,968,984,997,1010
+  s_c8ca0e644b7388::t_79e21b381cf61f 199
+packages/registry/src/effects/dock.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,50
+packages/registry/src/effects/expandable-card.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,22
+packages/registry/src/effects/floating-navbar.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,15
+packages/registry/src/effects/spoiler-text.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 5
+apps/docs/public/r/gravity.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/word-rotate.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/perspective-card.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/text-reveal.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/word-rotate.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,16
+packages/registry/src/catalog-batch5.ts
+  s_c8ca0e644b7388::t_b038c53abac0c9 460
+packages/registry/src/catalog-batch2.ts
+  s_c8ca0e644b7388::t_b038c53abac0c9 401,417,433,446,459,550,595,686,699,754,767,780,793,806
+apps/docs/public/r/scroll-velocity.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/page-transition.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,20
+packages/registry/src/effects/shader-backgrounds.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 3,12,44
+packages/registry/src/effects/scroll-velocity.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 15,32,72
+apps/docs/public/r/spotlight-card.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/fade-in.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,21
+apps/docs/public/r/floating-navbar.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/gravity.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 6,16,21,83
+packages/registry/src/effects/morphing-dialog.tsx
+  s_c8ca0e644b7388::t_22e9d662254746 5
+  s_c8ca0e644b7388::t_b038c53abac0c9 8,30,55,109,142
+packages/registry/src/catalog-batch6.ts
+  s_c8ca0e644b7388::t_b038c53abac0c9 119
+packages/registry/src/effects/split-text.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,41
+packages/registry/src/effects/count-up.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,31,61-63
+apps/docs/public/r/spoiler-text.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 9,17
+packages/registry/src/effects/scroll-progress.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,24
+packages/registry/src/effects/typing-text.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 5
+apps/docs/public/r/parallax.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/reveal-section.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,16
+apps/docs/public/r/animated-list.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/terminal.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 9,17
+packages/registry/src/effects/blur-fade.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,21
+apps/docs/public/r/tilt.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/text-reveal.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,15
+apps/docs/public/r/page-transition.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/registry.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 40-53,442,513,533,553,692,712,732,752,993,1013,1033,1053,1073,1625,1645,1665,1685,1705,1827,1881,2003,2023,2096,2116,2136,2156,2176,2196,2217,2294,2314,2334,2350,2352,2562,2784,3400,3611
+  s_c8ca0e644b7388::t_2e5c63011ef02b 39
+apps/docs/public/r/animated-sidebar.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/split-text.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/variable-font-proximity.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 7,9,17
+apps/docs/public/r/shader-backgrounds.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/stacking-cards.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+registry.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 40-53,442,513,533,553,692,712,732,752,993,1013,1033,1053,1073,1625,1645,1665,1685,1705,1827,1881,2003,2023,2096,2116,2136,2156,2176,2196,2217,2294,2314,2334,2350,2352,2562,2784,3400,3611
+  s_c8ca0e644b7388::t_7901441545464d 39
+apps/docs/public/r/blur-fade.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/animated-tabs.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/morphing-text.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/rolling-number.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/tilt.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,16
+packages/registry/src/effects/highlight-text.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,19
+packages/registry/src/effects/animated-tabs.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,22
+packages/registry/src/effects/parallax.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,14
+packages/registry/src/effects/rolling-number.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 3,5,14
+apps/docs/public/r/cursor-follow.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/dynamic-island.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+apps/docs/public/r/fade-in.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/dynamic-island.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,25
+apps/docs/public/r/scramble-text.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 9,17
+packages/registry/src/effects/cursor-follow.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,19
+packages/registry/src/effects/slide-in.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,28
+packages/registry/src/effects/stagger-list.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,36
+packages/registry/src/effects/terminal.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 5,16
+apps/docs/public/r/count-up.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+packages/registry/src/effects/animated-beam.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 3-4,6,49
+packages/registry/src/effects/animated-sidebar.tsx
+  s_c8ca0e644b7388::t_b038c53abac0c9 4,6,22
+apps/docs/public/r/highlight-text.json
+  s_c8ca0e644b7388::t_2b3b48df2ee221 11,19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "4947e050551275f33e84ccbffb9dd10a3eb9d4ec",
+  "prompts": {},
+  "sessions": {
+    "s_c8ca0e644b7388": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15384-fb39-7b73-9787-161287d6f173",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

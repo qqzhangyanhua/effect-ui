@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { ComponentSearch } from "@/components/component-search"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
@@ -17,6 +18,7 @@ function SiteHeader() {
           </Link>
         </div>
         <nav className="flex shrink-0 items-center gap-0.5 text-sm sm:gap-1">
+          <ComponentSearch />
           <Link
             href="/docs"
             className="rounded-md px-2 py-1.5 text-muted-foreground transition-colors hover:text-foreground sm:px-3"

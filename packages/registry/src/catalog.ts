@@ -9,6 +9,8 @@ export type ComponentCategory =
   | "text"
   | "backgrounds"
   | "cursor"
+  | "showcase"
+  | "decor"
   | "cards"
   | "buttons"
   | "loaders"
@@ -73,6 +75,8 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   text: "文字动画",
   backgrounds: "背景",
   cursor: "光标 / 悬停",
+  showcase: "展示 / 列表",
+  decor: "装饰 / 庆祝",
   cards: "卡片 / 3D",
   buttons: "按钮特效",
   loaders: "加载",
@@ -88,6 +92,8 @@ export const categoryOrder: ComponentCategory[] = [
   "text",
   "backgrounds",
   "cursor",
+  "showcase",
+  "decor",
   "cards",
   "buttons",
   "loaders",

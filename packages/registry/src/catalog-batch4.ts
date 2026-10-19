@@ -102,7 +102,7 @@ export const batch4Components: ComponentMeta[] = [
     name: "icon-cloud",
     title: "Icon Cloud",
     description: "3D 球面旋转的图标云。",
-    category: "cards",
+    category: "showcase",
     source: "Magic UI",
     type: "registry:ui",
     dependencies: [],

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-shader",
+  "type": "registry:ui",
+  "title": "Hero Shader",
+  "description": "着色器背景 + 标题 + CTA。背景槽可切换 Silk / Iridescence / Lightning / Mesh / Aurora，也可传入自定义节点。减弱动效时回退静态渐变。",
+  "dependencies": [],
+  "registryDependencies": [
+    "aurora-background",
+    "button",
+    "iridescence",
+    "lightning",
+    "shader-backgrounds",
+    "shimmer-button",
+    "silk",
+    "split-text",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/hero-shader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-shader.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { AuroraBackground } from \"@/components/ui/aurora-background\"\nimport { Button } from \"@/components/ui/button\"\nimport { Iridescence } from \"@/components/ui/iridescence\"\nimport { Lightning } from \"@/components/ui/lightning\"\nimport { ShaderBackground } from \"@/components/ui/shader-backgrounds\"\nimport { ShimmerButton } from \"@/components/ui/shimmer-button\"\nimport { Silk } from \"@/components/ui/silk\"\nimport { SplitText } from \"@/components/ui/split-text\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport type HeroShaderBackground = \"silk\" | \"iridescence\" | \"lightning\" | \"mesh\" | \"aurora\"\n\nexport interface HeroShaderProps {\n  title?: string\n  subtitle?: string\n  ctaLabel?: string\n  secondaryLabel?: string\n  backgroundVariant?: HeroShaderBackground\n  background?: React.ReactNode\n  className?: string\n}\n\nconst layer = \"absolute inset-0 size-full min-h-0 rounded-none border-0\"\n\nfunction ShaderSlot({\n  variant,\n  background,\n  reduced,\n}: {\n  variant: HeroShaderBackground\n  background?: React.ReactNode\n  reduced: boolean\n}) {\n  if (reduced) {\n    return <div className=\"absolute inset-0 bg-[linear-gradient(135deg,#1e1b4b,#4c1d95,#0f172a)]\" />\n  }\n  if (background) {\n    return <div className=\"absolute inset-0\">{background}</div>\n  }\n  if (variant === \"iridescence\") return <Iridescence className={layer} />\n  if (variant === \"lightning\") return <Lightning className={layer} />\n  if (variant === \"mesh\") return <ShaderBackground variant=\"mesh\" className={layer} />\n  if (variant === \"aurora\") return <AuroraBackground className={layer} />\n  return <Silk className={layer} />\n}\n\nfunction HeroShader({\n  title = \"Shaders, blocks, and a copy-paste registry\",\n  subtitle = \"切换背景槽：Silk / Iridescence / Lightning / Mesh / Aurora。减弱动效时回退静态渐变。\",\n  ctaLabel = \"开始使用\",\n  secondaryLabel = \"查看文档\",\n  backgroundVariant = \"silk\",\n  background,\n  className,\n}: HeroShaderProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <section\n      className={cn(\n        \"relative isolate min-h-[28rem] overflow-hidden rounded-2xl border text-white\",\n        className,\n      )}\n    >\n      <ShaderSlot variant={backgroundVariant} background={background} reduced={reduced} />\n      <div className=\"pointer-events-none absolute inset-0 bg-zinc-950/35\" />\n      <div className=\"relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-5 px-6 py-20 text-center\">\n        <p className=\"text-xs tracking-[0.28em] text-white/60 uppercase\">Hero Shader</p>\n        <h2 className=\"font-display text-4xl tracking-tight text-balance sm:text-5xl\">\n          <SplitText text={title} by=\"word\" className=\"justify-center gap-x-2\" />\n        </h2>\n        <p className=\"max-w-lg text-sm text-white/70\">{subtitle}</p>\n        <div className=\"flex flex-wrap justify-center gap-2\">\n          <ShimmerButton>{ctaLabel}</ShimmerButton>\n          <Button\n            variant=\"outline\"\n            className=\"border-white/25 bg-white/5 text-white hover:bg-white/10 hover:text-white\"\n          >\n            {secondaryLabel}\n          </Button>\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { HeroShader }\n"
+    }
+  ]
+}

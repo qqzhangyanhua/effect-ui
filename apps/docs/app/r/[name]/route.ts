@@ -12,6 +12,14 @@ interface RouteContext {
   params: Promise<{ name: string }>
 }
 
+export function generateStaticParams() {
+  return [
+    { name: "registry.json" },
+    ...components.map((item) => ({ name: `${item.name}.json` })),
+    ...components.map((item) => ({ name: item.name })),
+  ]
+}
+
 export async function GET(_request: Request, context: RouteContext) {
   const { name } = await context.params
   const itemName = name.endsWith(".json") ? name.slice(0, -5) : name

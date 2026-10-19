@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-kinetic-text",
+  "type": "registry:ui",
+  "title": "Hero Kinetic Text",
+  "description": "词组逐词显现 + 旋转关键词 + rough-annotation 手绘注释。",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "rough-annotation",
+    "shimmer-button",
+    "split-text",
+    "word-rotate",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/hero-kinetic-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-kinetic-text.tsx",
+      "content": "\"use client\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { RoughAnnotation } from \"@/components/ui/rough-annotation\"\nimport { ShimmerButton } from \"@/components/ui/shimmer-button\"\nimport { SplitText } from \"@/components/ui/split-text\"\nimport { WordRotate } from \"@/components/ui/word-rotate\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HeroKineticTextProps {\n  lead?: string\n  words?: string[]\n  annotation?: string\n  subtitle?: string\n  className?: string\n}\n\nfunction HeroKineticText({\n  lead = \"Interfaces that\",\n  words = [\"move\", \"delight\", \"convert\", \"ship\"],\n  annotation = \"hand-drawn\",\n  subtitle = \"词组逐词显现，关键词轮换，再用 rough-annotation 圈出重点。\",\n  className,\n}: HeroKineticTextProps) {\n  return (\n    <section\n      className={cn(\n        \"relative overflow-hidden rounded-2xl border bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--primary)_14%,transparent),transparent_48%)] px-6 py-20\",\n        className,\n      )}\n    >\n      <div className=\"mx-auto flex max-w-3xl flex-col items-center gap-6 text-center\">\n        <p className=\"text-xs tracking-[0.28em] text-muted-foreground uppercase\">Hero Kinetic</p>\n        <h2 className=\"font-display flex flex-wrap items-baseline justify-center gap-x-3 text-4xl tracking-tight sm:text-6xl\">\n          <SplitText text={lead} by=\"word\" className=\"justify-center gap-x-2\" />\n          <WordRotate words={words} className=\"text-primary\" />\n        </h2>\n        <p className=\"max-w-md text-sm text-muted-foreground\">\n          {subtitle} Try the{\" \"}\n          <RoughAnnotation type=\"circle\" color=\"var(--primary)\">\n            {annotation}\n          </RoughAnnotation>{\" \"}\n          mark.\n        </p>\n        <div className=\"flex gap-2\">\n          <ShimmerButton>开始构建</ShimmerButton>\n          <Button variant=\"ghost\">示例</Button>\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { HeroKineticText }\n"
+    }
+  ]
+}

@@ -4051,6 +4051,325 @@
           "target": "components/ui/silk.tsx"
         }
       ]
+    },
+    {
+      "name": "hero-shader",
+      "type": "registry:ui",
+      "title": "Hero Shader",
+      "description": "着色器背景 + 标题 + CTA。背景槽可切换 Silk / Iridescence / Lightning / Mesh / Aurora，也可传入自定义节点。减弱动效时回退静态渐变。",
+      "dependencies": [],
+      "registryDependencies": [
+        "aurora-background",
+        "button",
+        "iridescence",
+        "lightning",
+        "shader-backgrounds",
+        "shimmer-button",
+        "silk",
+        "split-text",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-shader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-shader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-globe",
+      "type": "registry:ui",
+      "title": "Hero Globe",
+      "description": "cobe（MIT）WebGL 地球仪 Hero，带城市标记与航线。无 WebGL 或减弱动效时回退静态渐变与 CSS 球。",
+      "dependencies": [
+        "cobe"
+      ],
+      "registryDependencies": [
+        "button",
+        "globe-sphere",
+        "shimmer-button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-globe.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-globe.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-product-mockup",
+      "type": "registry:ui",
+      "title": "Hero Product Mockup",
+      "description": "设备框 + 辉光，滚动时 3D 抬头。组合 device-mockups、glow-hover 与 container-scroll-3d。",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "container-scroll-3d",
+        "device-mockups",
+        "glow-hover",
+        "shimmer-button",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-product-mockup.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-product-mockup.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-kinetic-text",
+      "type": "registry:ui",
+      "title": "Hero Kinetic Text",
+      "description": "词组逐词显现 + 旋转关键词 + rough-annotation 手绘注释。",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "rough-annotation",
+        "shimmer-button",
+        "split-text",
+        "word-rotate",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-kinetic-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-kinetic-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-ai-prompt",
+      "type": "registry:ui",
+      "title": "Hero AI Prompt",
+      "description": "灵感来自 v0 / Lovable，原创实现。居中大提示框，建议芯片，减弱动效时保留静态渐变底。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "textarea",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-ai-prompt.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-ai-prompt.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-parallax-wall",
+      "type": "registry:ui",
+      "title": "Hero Parallax Wall",
+      "description": "灵感来自 Aceternity，原创实现。倾斜卡片墙反向视差。未打开也不拷贝 Aceternity 源码。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "shimmer-button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-parallax-wall.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-parallax-wall.tsx"
+        }
+      ]
+    },
+    {
+      "name": "footer-curtain-reveal",
+      "type": "registry:ui",
+      "title": "Footer Curtain Reveal",
+      "description": "内容层滑过时揭开粘底页脚。移植 Fancy Components（MIT）curtain footer 结构。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/footer-curtain-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/footer-curtain-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "footer-giant-wordmark",
+      "type": "registry:ui",
+      "title": "Footer Giant Wordmark",
+      "description": "灵感来自巨型字标光标描边，原创实现。指针靠近时点亮描边，减弱动效时关闭光晕。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/footer-giant-wordmark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/footer-giant-wordmark.tsx"
+        }
+      ]
+    },
+    {
+      "name": "footer-interactive-wordmark",
+      "type": "registry:ui",
+      "title": "Footer Interactive Wordmark",
+      "description": "字重跟随光标（variable-font-proximity），点击字母经 matter-js 坠落。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils",
+        "variable-font-proximity"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/footer-interactive-wordmark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/footer-interactive-wordmark.tsx"
+        }
+      ]
+    },
+    {
+      "name": "footer-shader-wordmark",
+      "type": "registry:ui",
+      "title": "Footer Shader Wordmark",
+      "description": "液态金属 / 抖动着色器填充字标。减弱动效时回退渐变字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "shader-backgrounds",
+        "shader-pack-2",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/footer-shader-wordmark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/footer-shader-wordmark.tsx"
+        }
+      ]
+    },
+    {
+      "name": "nav-morphing",
+      "type": "registry:ui",
+      "title": "Nav Morphing",
+      "description": "滚动后收缩成胶囊，菜单按钮形变成面板。仅参考 Kokonut UI 免费 MIT 导航，未使用 Pro。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/nav-morphing.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/nav-morphing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-logo-cloud",
+      "type": "registry:ui",
+      "title": "Section Logo Cloud",
+      "description": "Logo 跑马灯，两侧渐变模糊，悬停从灰度到彩色，底下跟一条时间线。",
+      "dependencies": [],
+      "registryDependencies": [
+        "marquee",
+        "progressive-blur",
+        "timeline",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/section-logo-cloud.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-logo-cloud.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-sticky-feature-scroll",
+      "type": "registry:ui",
+      "title": "Section Sticky Feature Scroll",
+      "description": "粘性特性滚动：左侧画面粘住，右侧条目进入视口时切换。移植 Cult UI（MIT）结构。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/section-sticky-feature-scroll.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-sticky-feature-scroll.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-animated-bento",
+      "type": "registry:ui",
+      "title": "Section Animated Bento",
+      "description": "Bento 网格，每个格子组合不同的现有迷你动画。",
+      "dependencies": [],
+      "registryDependencies": [
+        "bento-grid",
+        "border-beam",
+        "count-up",
+        "orbiting-circles",
+        "sparkles",
+        "utils",
+        "word-rotate"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/section-animated-bento.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-animated-bento.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-pricing-flow",
+      "type": "registry:ui",
+      "title": "Section Pricing Flow",
+      "description": "月付 / 年付切换时价格数字翻滚，推荐套餐用发光边。",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "glowing-edge",
+        "number-flow",
+        "switch",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/section-pricing-flow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-pricing-flow.tsx"
+        }
+      ]
     }
   ]
 }

@@ -7,6 +7,7 @@ import * as effectDemos4 from "./effect-demos-4"
 import * as effectDemos5 from "./effect-demos-5"
 import * as effectDemos6 from "./effect-demos-6"
 import * as effectDemos7 from "./effect-demos-7"
+import * as effectDemos8 from "./effect-demos-8"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -227,6 +228,21 @@ const demoMap: Record<string, ComponentType> = {
   lightning: effectDemos7.LightningDemo,
   iridescence: effectDemos7.IridescenceDemo,
   silk: effectDemos7.SilkDemo,
+  "hero-shader": effectDemos8.HeroShaderDemo,
+  "hero-globe": effectDemos8.HeroGlobeDemo,
+  "hero-product-mockup": effectDemos8.HeroProductMockupDemo,
+  "hero-kinetic-text": effectDemos8.HeroKineticTextDemo,
+  "hero-ai-prompt": effectDemos8.HeroAiPromptDemo,
+  "hero-parallax-wall": effectDemos8.HeroParallaxWallDemo,
+  "footer-curtain-reveal": effectDemos8.FooterCurtainRevealDemo,
+  "footer-giant-wordmark": effectDemos8.FooterGiantWordmarkDemo,
+  "footer-interactive-wordmark": effectDemos8.FooterInteractiveWordmarkDemo,
+  "footer-shader-wordmark": effectDemos8.FooterShaderWordmarkDemo,
+  "nav-morphing": effectDemos8.NavMorphingDemo,
+  "section-logo-cloud": effectDemos8.SectionLogoCloudDemo,
+  "section-sticky-feature-scroll": effectDemos8.SectionStickyFeatureScrollDemo,
+  "section-animated-bento": effectDemos8.SectionAnimatedBentoDemo,
+  "section-pricing-flow": effectDemos8.SectionPricingFlowDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

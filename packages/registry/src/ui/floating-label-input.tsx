@@ -23,7 +23,7 @@ function FloatingLabelInput({ label, className, id, ...props }: FloatingLabelInp
       />
       <label
         htmlFor={inputId}
-        className="pointer-events-none absolute top-1/2 left-3 origin-left -translate-y-1/2 text-sm text-muted-foreground transition-all peer-focus:top-2 peer-focus:text-[10px] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[10px]"
+        className="pointer-events-none absolute top-1/2 left-3 origin-left -translate-y-1/2 text-sm text-muted-foreground transition-all motion-reduce:transition-none peer-focus:top-2 peer-focus:text-[10px] peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[10px]"
       >
         {label}
       </label>

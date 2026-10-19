@@ -41,7 +41,9 @@ function ChatMessage({
           ) : (
             <div className="prose prose-sm dark:prose-invert max-w-none text-left [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:bg-background/60 [&_pre]:p-2">
               <Markdown>{content}</Markdown>
-              {streaming ? <span className="ml-0.5 inline-block h-3 w-1.5 animate-pulse bg-foreground/70" /> : null}
+              {streaming ? (
+                <span className="ml-0.5 inline-block h-3 w-1.5 animate-pulse bg-foreground/70 motion-reduce:animate-none" />
+              ) : null}
             </div>
           )}
         </div>

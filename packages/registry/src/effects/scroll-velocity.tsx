@@ -5,6 +5,7 @@ import {
   motion,
   useAnimationFrame,
   useMotionValue,
+  useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
@@ -28,6 +29,20 @@ function ScrollVelocity({
   children: React.ReactNode
   className?: string
 }) {
+  const reduce = useReducedMotion() === true
+  if (reduce) {
+    return <div className={cn("relative w-full", className)}>{children}</div>
+  }
+  return <ScrollVelocityLive className={className}>{children}</ScrollVelocityLive>
+}
+
+function ScrollVelocityLive({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   const { scrollY } = useScroll()
   const velocity = useVelocity(scrollY)
   const smooth = useSpring(velocity, { damping: 50, stiffness: 400 })
@@ -44,6 +59,32 @@ function ScrollVelocity({
 }
 
 function ScrollVelocityRow({
+  children,
+  className,
+  baseVelocity = 5,
+  direction = 1,
+}: {
+  children: React.ReactNode
+  className?: string
+  baseVelocity?: number
+  direction?: 1 | -1
+}) {
+  const reduce = useReducedMotion() === true
+  if (reduce) {
+    return (
+      <div className={cn("w-full overflow-hidden whitespace-nowrap", className)}>
+        <div className="inline-flex items-center">{children}</div>
+      </div>
+    )
+  }
+  return (
+    <ScrollVelocityRowLive className={className} baseVelocity={baseVelocity} direction={direction}>
+      {children}
+    </ScrollVelocityRowLive>
+  )
+}
+
+function ScrollVelocityRowLive({
   children,
   className,
   baseVelocity = 5,

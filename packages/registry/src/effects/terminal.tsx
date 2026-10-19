@@ -12,12 +12,22 @@ export interface TerminalProps {
 
 function Terminal({ lines, className, interval = 700 }: TerminalProps) {
   const [count, setCount] = React.useState(1)
+  const reduce = React.useSyncExternalStore(
+    (onStoreChange) => {
+      const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+      media.addEventListener("change", onStoreChange)
+      return () => media.removeEventListener("change", onStoreChange)
+    },
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  )
+  const shown = reduce ? lines.length : count
 
   React.useEffect(() => {
-    if (count >= lines.length) return
+    if (reduce || count >= lines.length) return
     const id = window.setTimeout(() => setCount((value) => value + 1), interval)
     return () => window.clearTimeout(id)
-  }, [count, interval, lines.length])
+  }, [count, interval, lines.length, reduce])
 
   return (
     <div className={cn("overflow-hidden rounded-xl border bg-zinc-950 text-zinc-100", className)}>
@@ -27,13 +37,13 @@ function Terminal({ lines, className, interval = 700 }: TerminalProps) {
         <span className="size-2.5 rounded-full bg-emerald-400" />
       </div>
       <pre className="min-h-40 p-4 font-mono text-xs leading-6">
-        {lines.slice(0, count).map((line) => (
-          <div key={line}>
+        {lines.map((line, index) => (
+          <div key={line} className={index < shown ? undefined : "hidden motion-reduce:block"}>
             <span className="text-emerald-400">❯ </span>
             {line}
           </div>
         ))}
-        {count < lines.length ? <span className="animate-pulse">▍</span> : null}
+        {shown < lines.length ? <span className="animate-pulse motion-reduce:hidden">▍</span> : null}
       </pre>
     </div>
   )

@@ -30,7 +30,8 @@ function AnimatedThemeToggler({ className, duration = 500 }: AnimatedThemeToggle
       startViewTransition?: (cb: () => void) => { ready: Promise<void> }
     }
 
-    if (!doc.startViewTransition) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduceMotion || !doc.startViewTransition) {
       apply()
       return
     }

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, useScroll, useTransform } from "motion/react"
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -11,6 +11,8 @@ export interface TextRevealProps {
 }
 
 function TextReveal({ text, className }: TextRevealProps) {
+  const prefersReducedMotion = useReducedMotion()
+  const [reduced, setReduced] = React.useState(false)
   const ref = React.useRef<HTMLParagraphElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -18,17 +20,27 @@ function TextReveal({ text, className }: TextRevealProps) {
   })
   const words = text.split(" ")
 
+  React.useEffect(() => {
+    setReduced(prefersReducedMotion === true)
+  }, [prefersReducedMotion])
+
   return (
     <p
       ref={ref}
       data-slot="text-reveal"
       className={cn("flex flex-wrap gap-x-2 gap-y-1 text-2xl font-medium", className)}
     >
-      {words.map((word, index) => (
-        <Word key={`${word}-${index}`} progress={scrollYProgress} index={index} total={words.length}>
-          {word}
-        </Word>
-      ))}
+      {words.map((word, index) =>
+        reduced ? (
+          <span key={`${word}-${index}`} className="inline-block">
+            {word}
+          </span>
+        ) : (
+          <Word key={`${word}-${index}`} progress={scrollYProgress} index={index} total={words.length}>
+            {word}
+          </Word>
+        ),
+      )}
     </p>
   )
 }

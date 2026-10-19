@@ -128,6 +128,9 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "react-photo-album": "https://react-photo-album.com",
   "yet-another-react-lightbox": "https://yet-another-react-lightbox.com",
   "react-phone-number-input": "https://catamphetamine.gitlab.io/react-phone-number-input/",
+  Codrops: "https://tympanus.net/codrops/",
+  "matter-js": "https://brm.io/matter-js/",
+  "WebGL Fluid Simulation": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
   original: null,
 }
 

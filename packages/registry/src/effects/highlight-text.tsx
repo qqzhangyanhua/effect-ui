@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -15,6 +15,13 @@ function HighlightText({
   children,
   ...props
 }: HighlightTextProps) {
+  const prefersReducedMotion = useReducedMotion()
+  const [reduced, setReduced] = React.useState(false)
+
+  React.useEffect(() => {
+    setReduced(prefersReducedMotion === true)
+  }, [prefersReducedMotion])
+
   return (
     <span
       data-slot="highlight-text"
@@ -25,10 +32,13 @@ function HighlightText({
         aria-hidden
         className="absolute inset-x-0 bottom-0 z-0 h-[42%] origin-left rounded-sm opacity-40"
         style={{ backgroundColor: color }}
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
+        initial={reduced ? { scaleX: 1 } : { scaleX: 0 }}
+        animate={reduced ? { scaleX: 1 } : undefined}
+        whileInView={reduced ? undefined : { scaleX: 1 }}
         viewport={{ once: true, amount: 0.8 }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        transition={
+          reduced ? { duration: 0 } : { duration: 0.55, ease: [0.22, 1, 0.36, 1] }
+        }
       />
       <span className="relative z-10">{children}</span>
     </span>

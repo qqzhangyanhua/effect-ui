@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { SearchIcon } from "lucide-react"
 
-import { getComponentsByCategory } from "@effect-ui/registry/catalog"
+import { getComponentsByCategory, uiSubgroupsOf } from "@effect-ui/registry/catalog"
 import { Button } from "@effect-ui/registry/ui/button"
 import {
   CommandDialog,
@@ -19,6 +19,17 @@ import { Kbd } from "@effect-ui/registry/ui/kbd"
 const componentGroups = getComponentsByCategory().filter(
   (group) => group.items.length > 0,
 )
+
+const searchSections = componentGroups.flatMap((group) => {
+  if (group.category !== "ui") {
+    return [{ key: group.category, heading: group.label, items: group.items }]
+  }
+  return uiSubgroupsOf(group.items).map((section) => ({
+    key: `${group.category}-${section.subgroup}`,
+    heading: `${group.label} / ${section.label}`,
+    items: section.items,
+  }))
+})
 
 function ComponentSearch() {
   const router = useRouter()
@@ -67,8 +78,8 @@ function ComponentSearch() {
         <CommandInput placeholder="搜索组件名称、标题或描述" className="pr-8" />
         <CommandList>
           <CommandEmpty>没有匹配的组件</CommandEmpty>
-          {componentGroups.map((group) => (
-            <CommandGroup key={group.category} heading={group.label}>
+          {searchSections.map((group) => (
+            <CommandGroup key={group.key} heading={group.heading}>
               {group.items.map((item) => (
                 <CommandItem
                   key={item.name}

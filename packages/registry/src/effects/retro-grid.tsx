@@ -15,7 +15,7 @@ function RetroGrid({ className, ...props }: RetroGridProps) {
       {...props}
     >
       <div className="absolute inset-0 origin-bottom [transform:rotateX(62deg)]">
-        <div className="h-[200%] w-full bg-[linear-gradient(to_right,color-mix(in_oklab,var(--primary)_28%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--primary)_28%,transparent)_1px,transparent_1px)] bg-size-[48px_48px] animate-[grid-drift_8s_linear_infinite]" />
+        <div className="h-[200%] w-full bg-[linear-gradient(to_right,color-mix(in_oklab,var(--primary)_28%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--primary)_28%,transparent)_1px,transparent_1px)] bg-size-[48px_48px] animate-[grid-drift_8s_linear_infinite] motion-reduce:animate-none" />
       </div>
       <div className="absolute inset-0 bg-linear-to-t from-background via-background/40 to-transparent" />
     </div>

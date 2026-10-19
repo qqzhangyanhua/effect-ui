@@ -47,6 +47,8 @@ function FlickeringGrid({
     let width = 0
     let height = 0
     let dpr = 0
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let reducedMotion = motionMedia.matches
 
     const syncSize = (nextWidth: number, nextHeight: number) => {
       const nextDpr = window.devicePixelRatio || 1
@@ -71,19 +73,36 @@ function FlickeringGrid({
           ctx.fillRect(x, y, squareSize, squareSize)
         }
       }
-      frame = window.requestAnimationFrame(paint)
-    }
-
-    const start = () => {
-      if (running || width <= 0 || height <= 0) return
-      running = true
-      frame = window.requestAnimationFrame(paint)
+      if (!reducedMotion) frame = window.requestAnimationFrame(paint)
     }
 
     const stop = () => {
       running = false
       window.cancelAnimationFrame(frame)
     }
+
+    const start = () => {
+      if (width <= 0 || height <= 0) return
+      if (reducedMotion) {
+        stop()
+        paint()
+        return
+      }
+      if (running) return
+      running = true
+      frame = window.requestAnimationFrame(paint)
+    }
+
+    const onMotionChange = () => {
+      reducedMotion = motionMedia.matches
+      if (reducedMotion) {
+        stop()
+        if (visible && width > 0 && height > 0) paint()
+        return
+      }
+      if (visible) start()
+    }
+    motionMedia.addEventListener("change", onMotionChange)
 
     const resizeObserver = new ResizeObserver((entries) => {
       const entry = entries[0]
@@ -100,6 +119,7 @@ function FlickeringGrid({
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
+      if (reducedMotion && visible) start()
     })
 
     resizeObserver.observe(canvas)
@@ -110,6 +130,7 @@ function FlickeringGrid({
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
       stopDprWatch()
+      motionMedia.removeEventListener("change", onMotionChange)
     }
   }, [color, flickerChance, gridGap, maxOpacity, squareSize])
 

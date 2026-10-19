@@ -1,6 +1,6 @@
 "use client"
 
-import type { ReactNode } from "react"
+import { useSyncExternalStore, type ReactNode } from "react"
 import {
   Dithering,
   GrainGradient,
@@ -33,6 +33,16 @@ const defaults: Record<ShaderBackgroundVariant, string[]> = {
   warp: ["#020617", "#6366f1", "#f59e0b"],
 }
 
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+  media.addEventListener("change", onChange)
+  return () => media.removeEventListener("change", onChange)
+}
+
+function reducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+}
+
 function ShaderLayer({
   variant,
   colors,
@@ -40,7 +50,17 @@ function ShaderLayer({
   variant: ShaderBackgroundVariant
   colors: string[]
 }) {
-  const shared = { className: "size-full", width: "100%", height: "100%" }
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    reducedMotionSnapshot,
+    () => false,
+  )
+  const shared = {
+    className: "size-full",
+    width: "100%",
+    height: "100%",
+    speed: reducedMotion ? 0 : undefined,
+  }
 
   if (variant === "grain") {
     return <GrainGradient {...shared} colors={colors} colorBack={colors[0]} />

@@ -41,6 +41,8 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
     let width = 0
     let height = 0
     let dpr = 0
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let reducedMotion = motionMedia.matches
     let time = 0
     const dots: Dot[] = []
 
@@ -85,19 +87,36 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
           dot.y = Math.random() * height
         }
       }
-      frame = window.requestAnimationFrame(tick)
-    }
-
-    const start = () => {
-      if (running || width <= 0 || height <= 0) return
-      running = true
-      frame = window.requestAnimationFrame(tick)
+      if (!reducedMotion) frame = window.requestAnimationFrame(tick)
     }
 
     const stop = () => {
       running = false
       window.cancelAnimationFrame(frame)
     }
+
+    const start = () => {
+      if (width <= 0 || height <= 0) return
+      if (reducedMotion) {
+        stop()
+        tick()
+        return
+      }
+      if (running) return
+      running = true
+      frame = window.requestAnimationFrame(tick)
+    }
+
+    const onMotionChange = () => {
+      reducedMotion = motionMedia.matches
+      if (reducedMotion) {
+        stop()
+        if (visible && width > 0 && height > 0) tick()
+        return
+      }
+      if (visible) start()
+    }
+    motionMedia.addEventListener("change", onMotionChange)
 
     const resizeObserver = new ResizeObserver((entries) => {
       const entry = entries[0]
@@ -114,6 +133,7 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
+      if (reducedMotion && visible) start()
     })
 
     resizeObserver.observe(canvas)
@@ -124,6 +144,7 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
       stopDprWatch()
+      motionMedia.removeEventListener("change", onMotionChange)
     }
   }, [density])
 

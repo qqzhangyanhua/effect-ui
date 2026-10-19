@@ -22,7 +22,7 @@ function Meteors({ number = 18, className, ...props }: MeteorsProps) {
         return (
           <span
             key={index}
-            className="absolute top-0 h-0.5 w-0.5 rotate-[215deg] animate-[meteor-fall_3s_linear_infinite] rounded-full bg-foreground shadow-[0_0_0_1px_#ffffff10]"
+            className="absolute top-0 h-0.5 w-0.5 rotate-[215deg] animate-[meteor-fall_3s_linear_infinite] motion-reduce:animate-none rounded-full bg-foreground shadow-[0_0_0_1px_#ffffff10]"
             style={{
               left: `${left}%`,
               animationDelay: delay,

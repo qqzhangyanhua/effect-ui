@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useId, useState, type RefObject } from "react"
-import { motion } from "motion/react"
+import { useEffect, useId, useState, useSyncExternalStore, type RefObject } from "react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -25,6 +25,16 @@ export interface AnimatedBeamProps {
   endYOffset?: number
 }
 
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+  media.addEventListener("change", onChange)
+  return () => media.removeEventListener("change", onChange)
+}
+
+function reducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+}
+
 function AnimatedBeam({
   className,
   containerRef,
@@ -45,12 +55,22 @@ function AnimatedBeam({
   endYOffset = 0,
 }: AnimatedBeamProps) {
   const id = useId()
+  // motion 12 的 useReducedMotion 只读一次，偏好变化时不会重渲染。
+  useReducedMotion()
+  const reduceMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    reducedMotionSnapshot,
+    () => false,
+  )
   const [pathD, setPathD] = useState("")
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 })
 
   const gradientCoordinates = reverse
     ? { x1: ["90%", "-10%"], x2: ["100%", "0%"], y1: ["0%", "0%"], y2: ["0%", "0%"] }
     : { x1: ["10%", "110%"], x2: ["0%", "100%"], y1: ["0%", "0%"], y2: ["0%", "0%"] }
+  const staticCoordinates = reverse
+    ? { x1: "90%", x2: "100%", y1: "0%", y2: "0%" }
+    : { x1: "10%", x2: "0%", y1: "0%", y2: "0%" }
 
   useEffect(() => {
     const updatePath = () => {
@@ -109,14 +129,22 @@ function AnimatedBeam({
           className="transform-gpu"
           id={id}
           gradientUnits="userSpaceOnUse"
-          initial={{ x1: "0%", x2: "0%", y1: "0%", y2: "0%" }}
-          animate={gradientCoordinates}
-          transition={{
-            delay,
-            duration,
-            ease: [0.16, 1, 0.3, 1],
-            repeat: Infinity,
-          }}
+          initial={
+            reduceMotion
+              ? staticCoordinates
+              : { x1: "0%", x2: "0%", y1: "0%", y2: "0%" }
+          }
+          animate={reduceMotion ? staticCoordinates : gradientCoordinates}
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : {
+                  delay,
+                  duration,
+                  ease: [0.16, 1, 0.3, 1],
+                  repeat: Infinity,
+                }
+          }
         >
           <stop stopColor={gradientStartColor} stopOpacity="0" />
           <stop stopColor={gradientStartColor} />

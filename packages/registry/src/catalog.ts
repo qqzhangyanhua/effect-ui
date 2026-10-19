@@ -94,6 +94,33 @@ export const categoryOrder: ComponentCategory[] = [
   "utility",
 ]
 
+export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
+  "shadcn/ui": "https://ui.shadcn.com",
+  "Magic UI": "https://magicui.design",
+  Animata: "https://animata.design",
+  "Motion Primitives": "https://motion-primitives.com",
+  "Cult UI": "https://www.cult-ui.com",
+  "Fancy Components": "https://www.fancycomponents.dev",
+  "Kibo UI": "https://www.kibo-ui.com",
+  "Origin UI": "https://coss.com/origin",
+  "Paper Shaders": "https://shaders.paper.design",
+  "Kokonut UI": "https://kokonutui.com",
+  "Number Flow": "https://number-flow.barvian.me",
+  "liquid-glass-react": "https://github.com/rdev/liquid-glass-react",
+  "prompt-kit": "https://www.prompt-kit.com",
+  Tailark: "https://tailark.com",
+  "Eldora UI": "https://www.eldoraui.site",
+  "Smooth UI": "https://smoothui.dev",
+  "TanStack Virtual": "https://tanstack.com/virtual",
+  frimousse: "https://frimousse.liveblocks.io",
+  "wavesurfer.js": "https://wavesurfer.xyz",
+  "Base UI": "https://base-ui.com",
+  "react-photo-album": "https://react-photo-album.com",
+  "yet-another-react-lightbox": "https://yet-another-react-lightbox.com",
+  "react-phone-number-input": "https://catamphetamine.gitlab.io/react-phone-number-input/",
+  original: null,
+}
+
 const uiProps: PropDoc[] = [
   {
     name: "className",

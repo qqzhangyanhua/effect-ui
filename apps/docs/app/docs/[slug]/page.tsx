@@ -7,6 +7,7 @@ import { Badge } from "@effect-ui/registry/ui/badge"
 import { CodeBlock } from "@/components/code-block"
 import { ComponentPreview } from "@/components/component-preview"
 import { PropsTable } from "@/components/props-table"
+import { highlightCode, languageForFile } from "@/lib/highlight"
 import { readRegistrySource } from "@/lib/source"
 
 interface DocsPageProps {
@@ -37,6 +38,10 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
 
   const source = readRegistrySource(item.file)
   const install = `npx shadcn@latest add /r/${item.name}.json`
+  const [sourceHtml, installHtml] = await Promise.all([
+    highlightCode(source, languageForFile(item.file)),
+    highlightCode(install, "bash"),
+  ])
 
   return (
     <article className="mx-auto max-w-3xl space-y-8">
@@ -56,7 +61,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
 
       <section className="space-y-3">
         <h2 className="text-xl font-medium">安装</h2>
-        <CodeBlock code={install} />
+        <CodeBlock code={install} html={installHtml} />
         <p className="text-sm text-muted-foreground">
           文档站运行后，也可使用{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 font-mono">
@@ -67,7 +72,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
 
       <section className="space-y-3">
         <h2 className="text-xl font-medium">源码</h2>
-        <CodeBlock code={source} />
+        <CodeBlock code={source} html={sourceHtml} filename={item.target} />
       </section>
 
       <section className="space-y-3">

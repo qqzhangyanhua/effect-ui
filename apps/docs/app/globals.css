@@ -376,3 +376,43 @@
   animation: none;
   mix-blend-mode: normal;
 }
+
+.docs-code .shiki {
+  margin: 0;
+  background-color: transparent !important;
+  padding: 1rem 1rem 1rem 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.625rem;
+}
+
+.docs-code:not(.docs-code-numbered) .shiki {
+  padding: 1rem 2.75rem 1rem 1rem;
+}
+
+.docs-code-numbered .shiki code {
+  display: block;
+  white-space: normal;
+  counter-reset: line;
+}
+
+.docs-code-numbered .shiki .line {
+  display: block;
+  padding-right: 1rem;
+  white-space: pre;
+}
+
+.docs-code-numbered .shiki .line::before {
+  counter-increment: line;
+  content: counter(line);
+  position: sticky;
+  left: 0;
+  display: inline-block;
+  box-sizing: content-box;
+  width: 3rem;
+  padding-right: 1rem;
+  background-color: #24292e;
+  color: #6e7681;
+  text-align: right;
+  user-select: none;
+}

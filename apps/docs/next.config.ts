@@ -6,6 +6,7 @@ const appDir = path.dirname(fileURLToPath(import.meta.url))
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(appDir, "../.."),
+  serverExternalPackages: ["shiki"],
   transpilePackages: [
     "@effect-ui/registry",
     "@paper-design/shaders-react",

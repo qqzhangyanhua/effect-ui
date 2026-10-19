@@ -3,6 +3,10 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 import { components } from "../packages/registry/src/catalog.ts"
+import {
+  buildRegistry,
+  buildRegistryItem,
+} from "../packages/registry/src/registry-item.ts"
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const registrySrc = path.join(root, "packages/registry/src")
@@ -10,67 +14,17 @@ const publicDir = path.join(root, "apps/docs/public/r")
 
 fs.mkdirSync(publicDir, { recursive: true })
 
-const items = components.map((item) => {
-  const sourcePath = path.join(registrySrc, item.file)
-  const content = fs.readFileSync(sourcePath, "utf8")
-  return {
-    meta: item,
-    content,
-  }
-})
+const registryJson = `${JSON.stringify(buildRegistry(components), null, 2)}\n`
+fs.writeFileSync(path.join(root, "registry.json"), registryJson)
+fs.writeFileSync(path.join(publicDir, "registry.json"), registryJson)
 
-const registry = {
-  $schema: "https://ui.shadcn.com/schema/registry.json",
-  name: "effect-ui",
-  homepage: "https://github.com/qqzhangyanhua/effect-ui",
-  items: items.map(({ meta }) => ({
-    name: meta.name,
-    type: meta.type,
-    title: meta.title,
-    description: meta.description,
-    dependencies: meta.dependencies,
-    registryDependencies: meta.registryDependencies,
-    files: [
-      {
-        path: `registry/${meta.file}`,
-        type: meta.type,
-        target: meta.target,
-      },
-    ],
-  })),
-}
-
-fs.writeFileSync(
-  path.join(root, "registry.json"),
-  `${JSON.stringify(registry, null, 2)}\n`,
-)
-fs.writeFileSync(
-  path.join(publicDir, "registry.json"),
-  `${JSON.stringify(registry, null, 2)}\n`,
-)
-
-for (const { meta, content } of items) {
-  const payload = {
-    $schema: "https://ui.shadcn.com/schema/registry-item.json",
-    name: meta.name,
-    type: meta.type,
-    title: meta.title,
-    description: meta.description,
-    dependencies: meta.dependencies,
-    registryDependencies: meta.registryDependencies,
-    files: [
-      {
-        path: `registry/${meta.file}`,
-        type: meta.type,
-        target: meta.target,
-        content,
-      },
-    ],
-  }
+for (const item of components) {
+  const content = fs.readFileSync(path.join(registrySrc, item.file), "utf8")
   fs.writeFileSync(
-    path.join(publicDir, `${meta.name}.json`),
-    `${JSON.stringify(payload, null, 2)}\n`,
+    path.join(publicDir, `${item.name}.json`),
+    `${JSON.stringify(buildRegistryItem(item, content), null, 2)}\n`,
   )
 }
 
-console.log(`Wrote ${items.length} registry items`)
+console.log(`Wrote ${components.length} registry items`)
+

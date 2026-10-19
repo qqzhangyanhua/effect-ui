@@ -30,5 +30,16 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Test
+        run: pnpm test
+
       - name: Build
         run: pnpm build
+
+      - name: Check registry JSON is unchanged
+        run: |
+          if [ -n "$(git status --porcelain -- registry.json apps/docs/public/r)" ]; then
+            git status --porcelain -- registry.json apps/docs/public/r
+            git diff -- registry.json apps/docs/public/r
+            exit 1
+          fi

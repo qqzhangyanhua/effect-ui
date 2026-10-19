@@ -10,6 +10,7 @@
     "build": "pnpm registry:build && pnpm --filter @effect-ui/docs build",
     "lint": "eslint apps/docs packages/registry/src scripts",
     "typecheck": "pnpm --filter @effect-ui/docs typecheck",
+    "test": "vitest run",
     "registry:build": "tsx scripts/build-registry.ts"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.2",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
   }
 }

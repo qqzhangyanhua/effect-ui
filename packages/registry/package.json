@@ -10,7 +10,8 @@
     "./examples/*": "./src/examples/*",
     "./lib/utils": "./src/lib/utils.ts",
     "./hooks/*": "./src/hooks/*",
-    "./catalog": "./src/catalog.ts"
+    "./catalog": "./src/catalog.ts",
+    "./registry-item": "./src/registry-item.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

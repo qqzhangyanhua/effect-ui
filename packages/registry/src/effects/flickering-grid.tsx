@@ -12,6 +12,18 @@ export interface FlickeringGridProps extends React.HTMLAttributes<HTMLCanvasElem
   maxOpacity?: number
 }
 
+function watchDevicePixelRatio(onChange: () => void) {
+  let media = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+  const handle = () => {
+    media.removeEventListener("change", handle)
+    media = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+    media.addEventListener("change", handle)
+    onChange()
+  }
+  media.addEventListener("change", handle)
+  return () => media.removeEventListener("change", handle)
+}
+
 function FlickeringGrid({
   className,
   squareSize = 4,
@@ -28,16 +40,27 @@ function FlickeringGrid({
     if (!canvas) return
     const ctx = canvas.getContext("2d")
     if (!ctx) return
+
     let frame = 0
+    let running = false
+    let visible = false
+    let width = 0
+    let height = 0
+    let dpr = 0
+
+    const syncSize = (nextWidth: number, nextHeight: number) => {
+      const nextDpr = window.devicePixelRatio || 1
+      if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
+      if (nextWidth === width && nextHeight === height && nextDpr === dpr) return
+      width = nextWidth
+      height = nextHeight
+      dpr = nextDpr
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
 
     const paint = () => {
-      const { width, height } = canvas.getBoundingClientRect()
-      const dpr = window.devicePixelRatio || 1
-      if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-        canvas.width = width * dpr
-        canvas.height = height * dpr
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      }
       ctx.clearRect(0, 0, width, height)
       const step = squareSize + gridGap
       for (let x = 0; x < width; x += step) {
@@ -51,8 +74,43 @@ function FlickeringGrid({
       frame = window.requestAnimationFrame(paint)
     }
 
-    paint()
-    return () => window.cancelAnimationFrame(frame)
+    const start = () => {
+      if (running || width <= 0 || height <= 0) return
+      running = true
+      frame = window.requestAnimationFrame(paint)
+    }
+
+    const stop = () => {
+      running = false
+      window.cancelAnimationFrame(frame)
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (!entry) return
+      syncSize(entry.contentRect.width, entry.contentRect.height)
+      if (visible) start()
+    })
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      visible = Boolean(entry?.isIntersecting)
+      if (visible) start()
+      else stop()
+    })
+
+    const stopDprWatch = watchDevicePixelRatio(() => {
+      syncSize(width, height)
+    })
+
+    resizeObserver.observe(canvas)
+    intersectionObserver.observe(canvas)
+
+    return () => {
+      stop()
+      resizeObserver.disconnect()
+      intersectionObserver.disconnect()
+      stopDprWatch()
+    }
   }, [color, flickerChance, gridGap, maxOpacity, squareSize])
 
   return (

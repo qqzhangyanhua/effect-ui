@@ -20,6 +20,14 @@ export type ComponentCategory =
   | "ai"
   | "utility"
 
+export type UiSubgroup =
+  | "form"
+  | "overlay"
+  | "navigation"
+  | "data"
+  | "layout"
+  | "feedback"
+
 export type SourceLibrary =
   | "shadcn/ui"
   | "Magic UI"
@@ -61,6 +69,7 @@ export interface ComponentMeta {
   title: string
   description: string
   category: ComponentCategory
+  subgroup?: UiSubgroup
   source: SourceLibrary
   type: "registry:ui" | "registry:lib" | "registry:hook"
   dependencies: string[]
@@ -104,6 +113,24 @@ export const categoryOrder: ComponentCategory[] = [
   "utility",
 ]
 
+export const subgroupLabels: Record<UiSubgroup, string> = {
+  form: "表单",
+  overlay: "浮层",
+  navigation: "导航",
+  data: "数据展示",
+  layout: "布局",
+  feedback: "反馈",
+}
+
+export const subgroupOrder: UiSubgroup[] = [
+  "form",
+  "overlay",
+  "navigation",
+  "data",
+  "layout",
+  "feedback",
+]
+
 export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "shadcn/ui": "https://ui.shadcn.com",
   "Magic UI": "https://magicui.design",
@@ -128,6 +155,9 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "react-photo-album": "https://react-photo-album.com",
   "yet-another-react-lightbox": "https://yet-another-react-lightbox.com",
   "react-phone-number-input": "https://catamphetamine.gitlab.io/react-phone-number-input/",
+  Codrops: "https://github.com/codrops/OnScrollTypographyAnimations",
+  "matter-js": "https://github.com/liabru/matter-js",
+  "WebGL Fluid Simulation": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
   original: null,
 }
 
@@ -167,10 +197,24 @@ export const components: ComponentMeta[] = [
     props: [],
   },
   {
+    name: "use-prefers-reduced-motion",
+    title: "Use Prefers Reduced Motion",
+    description: "系统开启减弱动态效果时返回 true，并在偏好变化时更新。",
+    category: "ui",
+    source: "original",
+    type: "registry:hook",
+    dependencies: [],
+    registryDependencies: [],
+    file: "hooks/use-prefers-reduced-motion.ts",
+    target: "hooks/use-prefers-reduced-motion.ts",
+    props: [],
+  },
+  {
     name: "button",
     title: "Button",
     description: "支持多种变体与尺寸的按钮。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot", "class-variance-authority"],
@@ -188,6 +232,7 @@ export const components: ComponentMeta[] = [
     title: "Input",
     description: "文本输入框。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: [],
@@ -201,6 +246,7 @@ export const components: ComponentMeta[] = [
     title: "Textarea",
     description: "多行文本输入。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: [],
@@ -214,6 +260,7 @@ export const components: ComponentMeta[] = [
     title: "Label",
     description: "表单标签。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-label"],
@@ -227,6 +274,7 @@ export const components: ComponentMeta[] = [
     title: "Card",
     description: "通用卡片容器。",
     category: "ui",
+    subgroup: "layout",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: [],
@@ -240,6 +288,7 @@ export const components: ComponentMeta[] = [
     title: "Badge",
     description: "状态与分类徽标。",
     category: "ui",
+    subgroup: "data",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot", "class-variance-authority"],
@@ -253,6 +302,7 @@ export const components: ComponentMeta[] = [
     title: "Separator",
     description: "水平或垂直分隔线。",
     category: "ui",
+    subgroup: "layout",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-separator"],
@@ -266,6 +316,7 @@ export const components: ComponentMeta[] = [
     title: "Dialog",
     description: "模态对话框。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dialog", "lucide-react"],
@@ -279,6 +330,7 @@ export const components: ComponentMeta[] = [
     title: "Sheet",
     description: "从边缘滑出的面板。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dialog", "lucide-react"],
@@ -292,6 +344,7 @@ export const components: ComponentMeta[] = [
     title: "Dropdown Menu",
     description: "下拉菜单。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dropdown-menu", "lucide-react"],
@@ -305,6 +358,7 @@ export const components: ComponentMeta[] = [
     title: "Tabs",
     description: "选项卡切换。",
     category: "ui",
+    subgroup: "navigation",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tabs"],
@@ -318,6 +372,7 @@ export const components: ComponentMeta[] = [
     title: "Tooltip",
     description: "悬停提示。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tooltip"],
@@ -331,6 +386,7 @@ export const components: ComponentMeta[] = [
     title: "Toast",
     description: "基于 Sonner 的轻提示。",
     category: "ui",
+    subgroup: "feedback",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["sonner", "next-themes"],
@@ -344,6 +400,7 @@ export const components: ComponentMeta[] = [
     title: "Switch",
     description: "开关控件。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-switch"],
@@ -357,6 +414,7 @@ export const components: ComponentMeta[] = [
     title: "Checkbox",
     description: "复选框。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-checkbox", "lucide-react"],
@@ -370,6 +428,7 @@ export const components: ComponentMeta[] = [
     title: "Select",
     description: "选择器。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-select", "lucide-react"],
@@ -383,6 +442,7 @@ export const components: ComponentMeta[] = [
     title: "Accordion",
     description: "手风琴折叠面板。",
     category: "ui",
+    subgroup: "layout",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-accordion", "lucide-react"],
@@ -396,6 +456,7 @@ export const components: ComponentMeta[] = [
     title: "Popover",
     description: "弹出层。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-popover"],
@@ -409,6 +470,7 @@ export const components: ComponentMeta[] = [
     title: "Avatar",
     description: "头像。",
     category: "ui",
+    subgroup: "data",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-avatar"],
@@ -422,6 +484,7 @@ export const components: ComponentMeta[] = [
     title: "Slider",
     description: "滑块。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slider"],
@@ -438,7 +501,7 @@ export const components: ComponentMeta[] = [
     source: "Magic UI",
     type: "registry:ui",
     dependencies: [],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/typing-text.tsx",
     target: "components/ui/typing-text.tsx",
     props: [
@@ -495,7 +558,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/split-text.tsx",
     target: "components/ui/split-text.tsx",
     props: [
@@ -512,7 +575,7 @@ export const components: ComponentMeta[] = [
     source: "Animata",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/highlight-text.tsx",
     target: "components/ui/highlight-text.tsx",
     props: [{ name: "color", type: "string", defaultValue: "var(--primary)", description: "高亮颜色。" }],
@@ -525,7 +588,7 @@ export const components: ComponentMeta[] = [
     source: "Magic UI",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/count-up.tsx",
     target: "components/ui/count-up.tsx",
     props: [
@@ -649,7 +712,7 @@ export const components: ComponentMeta[] = [
     source: "Magic UI",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/spotlight-card.tsx",
     target: "components/ui/spotlight-card.tsx",
     props: [
@@ -665,7 +728,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/magnetic.tsx",
     target: "components/ui/magnetic.tsx",
     props: [{ name: "strength", type: "number", defaultValue: "0.35", description: "吸附强度。" }],
@@ -678,7 +741,7 @@ export const components: ComponentMeta[] = [
     source: "original",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/cursor-follow.tsx",
     target: "components/ui/cursor-follow.tsx",
     props: [{ name: "size", type: "number", defaultValue: "28", description: "光标尺寸。" }],
@@ -691,7 +754,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/tilt.tsx",
     target: "components/ui/tilt.tsx",
     props: [{ name: "maxTilt", type: "number", defaultValue: "12", description: "最大倾斜角度。" }],
@@ -886,7 +949,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/fade-in.tsx",
     target: "components/ui/fade-in.tsx",
     props: [
@@ -902,7 +965,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/slide-in.tsx",
     target: "components/ui/slide-in.tsx",
     props: [
@@ -918,7 +981,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/stagger-list.tsx",
     target: "components/ui/stagger-list.tsx",
     props: [{ name: "delay", type: "number", defaultValue: "0", description: "起始延迟（秒）。" }],
@@ -931,7 +994,7 @@ export const components: ComponentMeta[] = [
     source: "original",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/parallax.tsx",
     target: "components/ui/parallax.tsx",
     props: [{ name: "offset", type: "number", defaultValue: "80", description: "视差位移像素。" }],
@@ -944,7 +1007,7 @@ export const components: ComponentMeta[] = [
     source: "Magic UI",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/blur-fade.tsx",
     target: "components/ui/blur-fade.tsx",
     props: [
@@ -963,12 +1026,35 @@ export function getComponent(name: string): ComponentMeta | undefined {
   return components.find((item) => item.name === name)
 }
 
+export function uiSubgroupsOf(items: readonly ComponentMeta[]) {
+  return subgroupOrder
+    .map((subgroup) => ({
+      subgroup,
+      label: subgroupLabels[subgroup],
+      items: items.filter((item) => item.subgroup === subgroup),
+    }))
+    .filter((section) => section.items.length > 0)
+}
+
+function uiItemsInSubgroupOrder(items: readonly ComponentMeta[]) {
+  return [...items].sort((a, b) => {
+    const aRank = a.subgroup ? subgroupOrder.indexOf(a.subgroup) : subgroupOrder.length
+    const bRank = b.subgroup ? subgroupOrder.indexOf(b.subgroup) : subgroupOrder.length
+    return aRank - bRank
+  })
+}
+
 export function getComponentsByCategory() {
-  return categoryOrder.map((category) => ({
-    category,
-    label: categoryLabels[category],
-    items: components.filter((item) => item.category === category && item.type === "registry:ui"),
-  }))
+  return categoryOrder.map((category) => {
+    const items = components.filter(
+      (item) => item.category === category && item.type === "registry:ui",
+    )
+    return {
+      category,
+      label: categoryLabels[category],
+      items: category === "ui" ? uiItemsInSubgroupOrder(items) : items,
+    }
+  })
 }
 
 export const visibleComponents = components.filter((item) => item.type === "registry:ui")

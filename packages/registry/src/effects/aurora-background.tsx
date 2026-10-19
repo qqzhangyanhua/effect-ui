@@ -20,7 +20,7 @@ function AuroraBackground({
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-16 opacity-70 blur-3xl"
+        className="pointer-events-none absolute -inset-16 opacity-70 blur-3xl motion-reduce:animate-none!"
         style={{
           background:
             "radial-gradient(40% 50% at 20% 20%, color-mix(in oklab, var(--primary) 45%, transparent), transparent 70%), radial-gradient(40% 50% at 80% 10%, color-mix(in oklab, var(--chart-2) 40%, transparent), transparent 70%), radial-gradient(50% 40% at 50% 90%, color-mix(in oklab, var(--chart-4) 35%, transparent), transparent 70%)",

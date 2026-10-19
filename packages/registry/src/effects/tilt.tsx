@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface TiltProps {
@@ -12,6 +13,7 @@ export interface TiltProps {
 }
 
 function Tilt({ className, children, maxTilt = 12 }: TiltProps) {
+  const reduceMotion = usePrefersReducedMotion()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [maxTilt, -maxTilt]), {
@@ -24,6 +26,7 @@ function Tilt({ className, children, maxTilt = 12 }: TiltProps) {
   })
 
   const onMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (reduceMotion) return
     const rect = event.currentTarget.getBoundingClientRect()
     x.set((event.clientX - rect.left) / rect.width - 0.5)
     y.set((event.clientY - rect.top) / rect.height - 0.5)
@@ -38,7 +41,11 @@ function Tilt({ className, children, maxTilt = 12 }: TiltProps) {
     <motion.div
       data-slot="tilt"
       className={cn("[transform-style:preserve-3d]", className)}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      style={{
+        rotateX: reduceMotion ? 0 : rotateX,
+        rotateY: reduceMotion ? 0 : rotateY,
+        transformPerspective: 900,
+      }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
     >

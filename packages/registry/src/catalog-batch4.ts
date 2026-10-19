@@ -17,7 +17,7 @@ export const batch4Components: ComponentMeta[] = [
     source: "Paper Shaders",
     type: "registry:ui",
     dependencies: ["@paper-design/shaders-react"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/shader-backgrounds.tsx",
     target: "components/ui/shader-backgrounds.tsx",
     props: [
@@ -199,7 +199,7 @@ export const batch4Components: ComponentMeta[] = [
     source: "Eldora UI",
     type: "registry:ui",
     dependencies: [],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/terminal.tsx",
     target: "components/ui/terminal.tsx",
     props: [

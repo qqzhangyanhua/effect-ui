@@ -23,7 +23,7 @@ function TearButton({ className, children = "撕开", onClick, ...props }: TearB
       <span
         className={cn(
           "absolute inset-0 overflow-hidden rounded-md bg-primary text-primary-foreground",
-          torn && "animate-[tear-left_0.7s_ease-in_forwards]",
+          torn && "animate-[tear-left_0.7s_ease-in_forwards] motion-reduce:animate-none motion-reduce:opacity-0",
         )}
         style={{ clipPath: "inset(0 50% 0 0)" }}
       >
@@ -32,7 +32,7 @@ function TearButton({ className, children = "撕开", onClick, ...props }: TearB
       <span
         className={cn(
           "absolute inset-0 overflow-hidden rounded-md bg-primary text-primary-foreground",
-          torn && "animate-[tear-right_0.7s_ease-in_forwards]",
+          torn && "animate-[tear-right_0.7s_ease-in_forwards] motion-reduce:animate-none motion-reduce:opacity-0",
         )}
         style={{ clipPath: "inset(0 0 0 50%)" }}
       >

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { AnimatePresence, motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface PageTransitionProps {
@@ -16,6 +17,14 @@ function PageTransition({
   children,
   transitionKey,
 }: PageTransitionProps) {
+  const reduce = usePrefersReducedMotion()
+  if (reduce) {
+    return (
+      <div data-slot="page-transition" className={cn(className)}>
+        {children}
+      </div>
+    )
+  }
   return (
     <AnimatePresence mode="wait">
       <motion.div

@@ -3,6 +3,7 @@
 import * as React from "react"
 import Matter from "matter-js"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface GravityProps {
@@ -12,10 +13,27 @@ export interface GravityProps {
 
 function Gravity({ className, labels = ["UI", "FX", "MIT", "React"] }: GravityProps) {
   const hostRef = React.useRef<HTMLDivElement>(null)
+  const reduced = usePrefersReducedMotion()
 
   React.useEffect(() => {
     const host = hostRef.current
     if (!host) return
+    if (reduced) {
+      const els = labels.map((label, index) => {
+        const el = document.createElement("div")
+        el.textContent = label
+        el.className =
+          "pointer-events-none absolute grid place-items-center rounded-lg border bg-card text-xs font-medium shadow-sm"
+        el.style.width = "72px"
+        el.style.height = "32px"
+        el.style.transform = `translate(${16 + (index % 4) * 80}px, ${16 + Math.floor(index / 4) * 40}px)`
+        host.appendChild(el)
+        return el
+      })
+      return () => {
+        for (const el of els) el.remove()
+      }
+    }
     const { width, height } = host.getBoundingClientRect()
     const engine = Matter.Engine.create({ gravity: { x: 0, y: 1.05 } })
     const world = engine.world
@@ -62,7 +80,7 @@ function Gravity({ className, labels = ["UI", "FX", "MIT", "React"] }: GravityPr
       Matter.Engine.clear(engine)
       for (const chip of chips) chip.el.remove()
     }
-  }, [labels])
+  }, [labels, reduced])
 
   return <div ref={hostRef} className={cn("relative min-h-56 overflow-hidden rounded-xl border bg-muted/30", className)} />
 }

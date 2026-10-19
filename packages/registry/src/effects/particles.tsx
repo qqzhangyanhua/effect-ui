@@ -19,6 +19,18 @@ export interface ParticlesProps extends React.HTMLAttributes<HTMLCanvasElement> 
   color?: string
 }
 
+function watchDevicePixelRatio(onChange: () => void) {
+  let media = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+  const handle = () => {
+    media.removeEventListener("change", handle)
+    media = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+    media.addEventListener("change", handle)
+    onChange()
+  }
+  media.addEventListener("change", handle)
+  return () => media.removeEventListener("change", handle)
+}
+
 function Particles({
   className,
   quantity = 60,
@@ -30,7 +42,6 @@ function Particles({
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const particles = React.useRef<Particle[]>([])
   const mouse = React.useRef({ x: 0, y: 0 })
-  const frame = React.useRef(0)
 
   React.useEffect(() => {
     const canvas = canvasRef.current
@@ -38,12 +49,27 @@ function Particles({
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const resize = () => {
-      const { width, height } = canvas.getBoundingClientRect()
-      const dpr = window.devicePixelRatio || 1
+    let frame = 0
+    let running = false
+    let visible = false
+    let width = 0
+    let height = 0
+    let dpr = 0
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let reducedMotion = motionMedia.matches
+
+    const syncSize = (nextWidth: number, nextHeight: number) => {
+      const nextDpr = window.devicePixelRatio || 1
+      if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
+      const sizeChanged = nextWidth !== width || nextHeight !== height
+      if (!sizeChanged && nextDpr === dpr) return
+      width = nextWidth
+      height = nextHeight
+      dpr = nextDpr
       canvas.width = width * dpr
       canvas.height = height * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      if (!sizeChanged) return
       particles.current = Array.from({ length: quantity }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -62,7 +88,6 @@ function Particles({
     }
 
     const draw = () => {
-      const { width, height } = canvas.getBoundingClientRect()
       ctx.clearRect(0, 0, width, height)
       ctx.fillStyle = color
       const attraction = (100 - staticity) / 1800
@@ -87,17 +112,66 @@ function Particles({
         ctx.fill()
       }
 
-      frame.current = window.requestAnimationFrame(draw)
+      if (!reducedMotion) frame = window.requestAnimationFrame(draw)
     }
 
-    resize()
-    draw()
-    window.addEventListener("resize", resize)
+    const stop = () => {
+      running = false
+      window.cancelAnimationFrame(frame)
+    }
+
+    const start = () => {
+      if (width <= 0 || height <= 0) return
+      if (reducedMotion) {
+        stop()
+        draw()
+        return
+      }
+      if (running) return
+      running = true
+      frame = window.requestAnimationFrame(draw)
+    }
+
+    const onMotionChange = () => {
+      reducedMotion = motionMedia.matches
+      if (reducedMotion) {
+        stop()
+        if (visible && width > 0 && height > 0) draw()
+        return
+      }
+      if (visible) start()
+    }
+    motionMedia.addEventListener("change", onMotionChange)
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (!entry) return
+      syncSize(entry.contentRect.width, entry.contentRect.height)
+      if (visible) start()
+    })
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      visible = Boolean(entry?.isIntersecting)
+      if (visible) start()
+      else stop()
+    })
+
+    const stopDprWatch = watchDevicePixelRatio(() => {
+      syncSize(width, height)
+      if (reducedMotion && visible) start()
+    })
+
+    resizeObserver.observe(canvas)
+    intersectionObserver.observe(canvas)
     canvas.addEventListener("mousemove", onMove)
+
     return () => {
-      window.removeEventListener("resize", resize)
+      stop()
+      resizeObserver.disconnect()
+      intersectionObserver.disconnect()
+      stopDprWatch()
+      motionMedia.removeEventListener("change", onMotionChange)
       canvas.removeEventListener("mousemove", onMove)
-      window.cancelAnimationFrame(frame.current)
     }
   }, [color, ease, quantity, staticity])
 

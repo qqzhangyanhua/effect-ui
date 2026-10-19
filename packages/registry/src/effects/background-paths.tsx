@@ -28,6 +28,7 @@ function BackgroundPaths({ className, count = 10 }: BackgroundPathsProps) {
             stroke="currentColor"
             strokeWidth="0.35"
             pathLength={1}
+            className="motion-reduce:animate-none!"
             style={{
               strokeDasharray: 1,
               strokeDashoffset: 0.15,

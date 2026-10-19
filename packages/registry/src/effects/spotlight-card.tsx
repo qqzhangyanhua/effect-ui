@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useMotionTemplate, useMotionValue } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -17,16 +18,19 @@ function SpotlightCard({
   radius = 240,
   ...props
 }: SpotlightCardProps) {
+  const reduceMotion = usePrefersReducedMotion()
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
   const onMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (reduceMotion) return
     const { left, top } = event.currentTarget.getBoundingClientRect()
     mouseX.set(event.clientX - left)
     mouseY.set(event.clientY - top)
   }
 
   const background = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, ${spotlightColor}, transparent 70%)`
+  const staticBackground = `radial-gradient(${radius}px circle at 50% 50%, ${spotlightColor}, transparent 70%)`
 
   return (
     <div
@@ -40,7 +44,7 @@ function SpotlightCard({
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background }}
+        style={{ background: reduceMotion ? staticBackground : background }}
       />
       <div className="relative z-10">{children}</div>
     </div>

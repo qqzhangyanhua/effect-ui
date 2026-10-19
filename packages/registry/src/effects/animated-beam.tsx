@@ -3,6 +3,7 @@
 import { useEffect, useId, useState, type RefObject } from "react"
 import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface AnimatedBeamProps {
@@ -45,12 +46,16 @@ function AnimatedBeam({
   endYOffset = 0,
 }: AnimatedBeamProps) {
   const id = useId()
+  const reduceMotion = usePrefersReducedMotion()
   const [pathD, setPathD] = useState("")
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 })
 
   const gradientCoordinates = reverse
     ? { x1: ["90%", "-10%"], x2: ["100%", "0%"], y1: ["0%", "0%"], y2: ["0%", "0%"] }
     : { x1: ["10%", "110%"], x2: ["0%", "100%"], y1: ["0%", "0%"], y2: ["0%", "0%"] }
+  const staticCoordinates = reverse
+    ? { x1: "90%", x2: "100%", y1: "0%", y2: "0%" }
+    : { x1: "10%", x2: "0%", y1: "0%", y2: "0%" }
 
   useEffect(() => {
     const updatePath = () => {
@@ -109,14 +114,22 @@ function AnimatedBeam({
           className="transform-gpu"
           id={id}
           gradientUnits="userSpaceOnUse"
-          initial={{ x1: "0%", x2: "0%", y1: "0%", y2: "0%" }}
-          animate={gradientCoordinates}
-          transition={{
-            delay,
-            duration,
-            ease: [0.16, 1, 0.3, 1],
-            repeat: Infinity,
-          }}
+          initial={
+            reduceMotion
+              ? staticCoordinates
+              : { x1: "0%", x2: "0%", y1: "0%", y2: "0%" }
+          }
+          animate={reduceMotion ? staticCoordinates : gradientCoordinates}
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : {
+                  delay,
+                  duration,
+                  ease: [0.16, 1, 0.3, 1],
+                  repeat: Infinity,
+                }
+          }
         >
           <stop stopColor={gradientStartColor} stopOpacity="0" />
           <stop stopColor={gradientStartColor} />

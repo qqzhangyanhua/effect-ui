@@ -28,6 +28,8 @@ function ConfettiBurst({
   const [particles, setParticles] = React.useState<Particle[]>([])
 
   const burst = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onClick?.(event)
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const next = Array.from({ length: pieces }, (_, index) => ({
       id: Date.now() + index,
       x: (Math.random() - 0.5) * 180,
@@ -37,7 +39,6 @@ function ConfettiBurst({
     }))
     setParticles(next)
     window.setTimeout(() => setParticles([]), 800)
-    onClick?.(event)
   }
 
   return (

@@ -12,6 +12,7 @@ import {
   type MotionValue,
 } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 function wrap(min: number, max: number, value: number) {
@@ -22,6 +23,20 @@ function wrap(min: number, max: number, value: number) {
 const VelocityContext = React.createContext<MotionValue<number> | null>(null)
 
 function ScrollVelocity({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  const reduce = usePrefersReducedMotion()
+  if (reduce) {
+    return <div className={cn("relative w-full", className)}>{children}</div>
+  }
+  return <ScrollVelocityLive className={className}>{children}</ScrollVelocityLive>
+}
+
+function ScrollVelocityLive({
   children,
   className,
 }: {
@@ -44,6 +59,32 @@ function ScrollVelocity({
 }
 
 function ScrollVelocityRow({
+  children,
+  className,
+  baseVelocity = 5,
+  direction = 1,
+}: {
+  children: React.ReactNode
+  className?: string
+  baseVelocity?: number
+  direction?: 1 | -1
+}) {
+  const reduce = usePrefersReducedMotion()
+  if (reduce) {
+    return (
+      <div className={cn("w-full overflow-hidden whitespace-nowrap", className)}>
+        <div className="inline-flex items-center">{children}</div>
+      </div>
+    )
+  }
+  return (
+    <ScrollVelocityRowLive className={className} baseVelocity={baseVelocity} direction={direction}>
+      {children}
+    </ScrollVelocityRowLive>
+  )
+}
+
+function ScrollVelocityRowLive({
   children,
   className,
   baseVelocity = 5,

@@ -29,7 +29,7 @@ function Marquee({
         <div
           key={index}
           className={cn(
-            "flex shrink-0 items-center gap-(--gap) animate-[marquee_var(--duration)_linear_infinite] pr-(--gap)",
+            "flex shrink-0 items-center gap-(--gap) animate-[marquee_var(--duration)_linear_infinite] motion-reduce:animate-none pr-(--gap)",
             pauseOnHover && "hover:[animation-play-state:paused]",
             reverse && "[animation-direction:reverse]",
           )}

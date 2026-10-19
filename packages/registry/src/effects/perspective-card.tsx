@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface PerspectiveCardProps {
@@ -11,6 +12,7 @@ export interface PerspectiveCardProps {
 }
 
 function PerspectiveCard({ className, children }: PerspectiveCardProps) {
+  const reduceMotion = usePrefersReducedMotion()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [14, -14]), {
@@ -29,8 +31,13 @@ function PerspectiveCard({ className, children }: PerspectiveCardProps) {
         "relative rounded-2xl border bg-card p-6 shadow-xl [transform-style:preserve-3d]",
         className,
       )}
-      style={{ rotateX, rotateY, transformPerspective: 1100 }}
+      style={{
+        rotateX: reduceMotion ? 0 : rotateX,
+        rotateY: reduceMotion ? 0 : rotateY,
+        transformPerspective: 1100,
+      }}
       onMouseMove={(event) => {
+        if (reduceMotion) return
         const rect = event.currentTarget.getBoundingClientRect()
         x.set((event.clientX - rect.left) / rect.width - 0.5)
         y.set((event.clientY - rect.top) / rect.height - 0.5)

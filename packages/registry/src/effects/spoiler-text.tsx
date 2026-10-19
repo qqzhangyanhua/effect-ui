@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SpoilerTextProps {
@@ -18,13 +19,15 @@ interface Speck {
 }
 
 function SpoilerText({ text, className }: SpoilerTextProps) {
+  const reduced = usePrefersReducedMotion()
   const [revealed, setRevealed] = React.useState(false)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const specks = React.useRef<Speck[]>([])
+  const visible = revealed || reduced
 
   React.useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas || revealed) return
+    if (!canvas || visible) return
     const ctx = canvas.getContext("2d")
     if (!ctx) return
     const resize = () => {
@@ -56,9 +59,13 @@ function SpoilerText({ text, className }: SpoilerTextProps) {
     }
     frame = window.requestAnimationFrame(tick)
     return () => window.cancelAnimationFrame(frame)
-  }, [revealed])
+  }, [visible])
 
   const reveal = () => {
+    if (reduced) {
+      setRevealed(true)
+      return
+    }
     const canvas = canvasRef.current
     const ctx = canvas?.getContext("2d")
     if (!canvas || !ctx) {
@@ -93,10 +100,10 @@ function SpoilerText({ text, className }: SpoilerTextProps) {
       type="button"
       onClick={reveal}
       className={cn("relative inline-block rounded-md px-2 py-1 text-left", className)}
-      aria-label={revealed ? text : "点击揭示隐藏文本"}
+      aria-label={visible ? text : "点击揭示隐藏文本"}
     >
-      <span className={cn(!revealed && "opacity-0")}>{text}</span>
-      {!revealed ? <canvas ref={canvasRef} className="absolute inset-0 size-full cursor-pointer" /> : null}
+      <span className={cn(!visible && "opacity-0")}>{text}</span>
+      {!visible ? <canvas ref={canvasRef} className="absolute inset-0 size-full cursor-pointer" /> : null}
     </button>
   )
 }

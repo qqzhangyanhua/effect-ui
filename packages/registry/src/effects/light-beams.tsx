@@ -19,7 +19,7 @@ function LightBeams({ className, beams = 6, ...props }: LightBeamsProps) {
       {Array.from({ length: beams }, (_, index) => (
         <span
           key={index}
-          className="absolute top-0 h-[140%] w-px origin-top bg-linear-to-b from-transparent via-primary/50 to-transparent"
+          className="absolute top-0 h-[140%] w-px origin-top bg-linear-to-b from-transparent via-primary/50 to-transparent motion-reduce:animate-none!"
           style={{
             left: `${12 + index * (76 / beams)}%`,
             transform: `rotate(${-18 + index * 6}deg)`,

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useScroll, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface ParallaxProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,6 +11,7 @@ export interface ParallaxProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 function Parallax({ className, children, offset = 80, ...props }: ParallaxProps) {
+  const reduce = usePrefersReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -19,7 +21,7 @@ function Parallax({ className, children, offset = 80, ...props }: ParallaxProps)
 
   return (
     <div ref={ref} data-slot="parallax" className={cn(className)} {...props}>
-      <motion.div style={{ y }}>{children}</motion.div>
+      {reduce ? children : <motion.div style={{ y }}>{children}</motion.div>}
     </div>
   )
 }

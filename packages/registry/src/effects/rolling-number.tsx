@@ -1,8 +1,8 @@
 "use client"
 
-import * as React from "react"
 import { motion } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface RollingNumberProps {
@@ -11,7 +11,26 @@ export interface RollingNumberProps {
 }
 
 function RollingNumber({ value, className }: RollingNumberProps) {
+  const reduced = usePrefersReducedMotion()
   const digits = String(Math.max(0, Math.floor(value))).split("")
+
+  if (reduced) {
+    return (
+      <span
+        data-slot="rolling-number"
+        className={cn("inline-flex font-mono tabular-nums", className)}
+      >
+        {digits.map((digit, index) => (
+          <span
+            key={`${index}-${digits.length}`}
+            className="inline-flex h-[1em] w-[0.7em] items-center justify-center"
+          >
+            {digit}
+          </span>
+        ))}
+      </span>
+    )
+  }
 
   return (
     <span

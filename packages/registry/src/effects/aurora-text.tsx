@@ -9,7 +9,7 @@ function AuroraText({ className, children, ...props }: AuroraTextProps) {
     <span
       data-slot="aurora-text"
       className={cn(
-        "relative inline-flex overflow-hidden bg-linear-to-r from-indigo-400 via-fuchsia-400 to-emerald-300 bg-size-[200%_auto] bg-clip-text font-semibold text-transparent animate-[aurora-flow_7s_ease-in-out_infinite]",
+        "relative inline-flex animate-[aurora-flow_7s_ease-in-out_infinite] overflow-hidden bg-linear-to-r from-indigo-400 via-fuchsia-400 to-emerald-300 bg-size-[200%_auto] bg-clip-text font-semibold text-transparent motion-reduce:animate-none",
         className,
       )}
       {...props}

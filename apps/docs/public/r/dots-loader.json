@@ -13,7 +13,7 @@
       "path": "registry/effects/dots-loader.tsx",
       "type": "registry:ui",
       "target": "components/ui/dots-loader.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type DotsLoaderProps = React.HTMLAttributes<HTMLDivElement>\n\nfunction DotsLoader({ className, ...props }: DotsLoaderProps) {\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"dots-loader\"\n      className={cn(\"flex items-center gap-1.5\", className)}\n      {...props}\n    >\n      {[0, 1, 2].map((index) => (\n        <span\n          key={index}\n          className=\"size-2 rounded-full bg-primary\"\n          style={{\n            animation: \"dot-bounce 0.9s ease-in-out infinite\",\n            animationDelay: `${index * 0.12}s`,\n          }}\n        />\n      ))}\n      <span className=\"sr-only\">Loading</span>\n    </div>\n  )\n}\n\nexport { DotsLoader }\n"
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type DotsLoaderProps = React.HTMLAttributes<HTMLDivElement>\n\nfunction DotsLoader({ className, ...props }: DotsLoaderProps) {\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"dots-loader\"\n      className={cn(\"flex items-center gap-1.5\", className)}\n      {...props}\n    >\n      {[0, 1, 2].map((index) => (\n        <span\n          key={index}\n          className=\"size-2 rounded-full bg-primary animate-[dot-bounce_0.9s_ease-in-out_infinite] motion-reduce:animate-pulse\"\n          style={{ animationDelay: `${index * 0.12}s` }}\n        />\n      ))}\n      <span className=\"sr-only\">Loading</span>\n    </div>\n  )\n}\n\nexport { DotsLoader }\n"
     }
   ]
 }

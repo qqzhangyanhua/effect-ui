@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface TypingTextProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -19,10 +20,12 @@ function TypingText({
   className,
   ...props
 }: TypingTextProps) {
+  const reduced = usePrefersReducedMotion()
   const [count, setCount] = React.useState(0)
   const [dir, setDir] = React.useState<1 | -1>(1)
 
   React.useEffect(() => {
+    if (reduced) return
     const next = count + dir
     const atEnd = next > text.length
     const atStart = next < 0
@@ -42,7 +45,7 @@ function TypingText({
     }, delay)
 
     return () => window.clearTimeout(timer)
-  }, [count, dir, duration, loop, text.length])
+  }, [count, dir, duration, loop, reduced, text.length])
 
   return (
     <span
@@ -50,9 +53,9 @@ function TypingText({
       className={cn("inline-flex items-baseline font-medium", className)}
       {...props}
     >
-      {text.slice(0, count)}
+      {reduced ? text : text.slice(0, count)}
       {cursor ? (
-        <span className="ml-0.5 inline-block h-[1em] w-px translate-y-0.5 animate-pulse bg-current" />
+        <span className="ml-0.5 inline-block h-[1em] w-px translate-y-0.5 animate-pulse bg-current motion-reduce:animate-none" />
       ) : null}
     </span>
   )

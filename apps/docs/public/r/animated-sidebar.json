@@ -8,6 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
+    "use-prefers-reduced-motion",
     "utils"
   ],
   "files": [
@@ -15,7 +16,7 @@
       "path": "registry/effects/animated-sidebar.tsx",
       "type": "registry:ui",
       "target": "components/ui/animated-sidebar.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedSidebarProps {\n  className?: string\n  open?: boolean\n  onOpenChange?: (open: boolean) => void\n  children?: React.ReactNode\n}\n\nfunction AnimatedSidebar({\n  className,\n  open,\n  onOpenChange,\n  children,\n}: AnimatedSidebarProps) {\n  const [internalOpen, setInternalOpen] = React.useState(false)\n  const isOpen = open ?? internalOpen\n  const setOpen = onOpenChange ?? setInternalOpen\n\n  return (\n    <div data-slot=\"animated-sidebar\" className={cn(\"relative\", className)}>\n      <button\n        type=\"button\"\n        className=\"rounded-md border px-3 py-1.5 text-sm\"\n        onClick={() => setOpen(!isOpen)}\n      >\n        {isOpen ? \"收起侧栏\" : \"展开侧栏\"}\n      </button>\n      <AnimatePresence>\n        {isOpen ? (\n          <motion.aside\n            initial={{ x: -24, opacity: 0 }}\n            animate={{ x: 0, opacity: 1 }}\n            exit={{ x: -24, opacity: 0 }}\n            className=\"mt-3 w-56 rounded-xl border bg-card p-4 shadow-sm\"\n          >\n            {children}\n          </motion.aside>\n        ) : null}\n      </AnimatePresence>\n    </div>\n  )\n}\n\nexport { AnimatedSidebar }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedSidebarProps {\n  className?: string\n  open?: boolean\n  onOpenChange?: (open: boolean) => void\n  children?: React.ReactNode\n}\n\nfunction AnimatedSidebar({\n  className,\n  open,\n  onOpenChange,\n  children,\n}: AnimatedSidebarProps) {\n  const reduce = usePrefersReducedMotion()\n  const [internalOpen, setInternalOpen] = React.useState(false)\n  const isOpen = open ?? internalOpen\n  const setOpen = onOpenChange ?? setInternalOpen\n\n  return (\n    <div data-slot=\"animated-sidebar\" className={cn(\"relative\", className)}>\n      <button\n        type=\"button\"\n        className=\"rounded-md border px-3 py-1.5 text-sm\"\n        onClick={() => setOpen(!isOpen)}\n      >\n        {isOpen ? \"收起侧栏\" : \"展开侧栏\"}\n      </button>\n      {reduce ? (\n        isOpen ? (\n          <aside className=\"mt-3 w-56 rounded-xl border bg-card p-4 shadow-sm\">{children}</aside>\n        ) : null\n      ) : (\n        <AnimatePresence>\n          {isOpen ? (\n            <motion.aside\n              initial={{ x: -24, opacity: 0 }}\n              animate={{ x: 0, opacity: 1 }}\n              exit={{ x: -24, opacity: 0 }}\n              className=\"mt-3 w-56 rounded-xl border bg-card p-4 shadow-sm\"\n            >\n              {children}\n            </motion.aside>\n          ) : null}\n        </AnimatePresence>\n      )}\n    </div>\n  )\n}\n\nexport { AnimatedSidebar }\n"
     }
   ]
 }

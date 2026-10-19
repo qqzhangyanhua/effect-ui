@@ -33,6 +33,11 @@ export async function generateMetadata({ params }: DocsPageProps) {
   return {
     title: item.title,
     description: item.description,
+    openGraph: {
+      title: item.title,
+      description: item.description,
+      url: `/docs/${item.name}`,
+    },
   }
 }
 

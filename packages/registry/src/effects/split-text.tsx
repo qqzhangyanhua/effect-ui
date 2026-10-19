@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, type Variants } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SplitTextProps {
@@ -37,6 +38,7 @@ function SplitText({
   by = "char",
   className,
 }: SplitTextProps) {
+  const reduced = usePrefersReducedMotion()
   const pieces = React.useMemo(
     () => (by === "word" ? text.split(/(\s+)/) : Array.from(text)),
     [by, text],
@@ -47,12 +49,19 @@ function SplitText({
       data-slot="split-text"
       className={cn("inline-flex flex-wrap", className)}
       variants={container}
-      initial="hidden"
+      initial={reduced ? false : "hidden"}
       animate="show"
-      transition={{ delayChildren: delay }}
+      transition={reduced ? { duration: 0, delayChildren: 0 } : { delayChildren: delay }}
     >
       {pieces.map((piece, index) => (
-        <motion.span key={`${piece}-${index}`} variants={item} className="inline-block">
+        <motion.span
+          key={`${piece}-${index}`}
+          variants={item}
+          className="inline-block"
+          transition={
+            reduced ? { duration: 0 } : { duration: 0.45, ease: [0.22, 1, 0.36, 1] }
+          }
+        >
           {piece === " " ? "\u00A0" : piece}
         </motion.span>
       ))}

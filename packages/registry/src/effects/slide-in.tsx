@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, type HTMLMotionProps } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SlideInProps extends HTMLMotionProps<"div"> {
@@ -24,15 +25,20 @@ function SlideIn({
   delay = 0,
   ...props
 }: SlideInProps) {
+  const reduce = usePrefersReducedMotion()
   return (
     <motion.div
       data-slot="slide-in"
       className={cn(className)}
-      initial={{ opacity: 0, ...offset[from] }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      {...props}
+      {...(reduce
+        ? { ...props, initial: false, transition: { duration: 0 } }
+        : {
+            initial: { opacity: 0, ...offset[from] },
+            whileInView: { opacity: 1, x: 0, y: 0 },
+            transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const },
+            ...props,
+          })}
     >
       {children}
     </motion.div>

@@ -23,6 +23,8 @@ function ParticleButton({ className, children = "粒子爆散", onClick, ...prop
         className,
       )}
       onClick={(event) => {
+        onClick?.(event)
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
         const rect = event.currentTarget.getBoundingClientRect()
         const next = {
           id: Date.now(),
@@ -33,7 +35,6 @@ function ParticleButton({ className, children = "粒子爆散", onClick, ...prop
         window.setTimeout(() => {
           setBursts((current) => current.filter((item) => item.id !== next.id))
         }, 700)
-        onClick?.(event)
       }}
       {...props}
     >

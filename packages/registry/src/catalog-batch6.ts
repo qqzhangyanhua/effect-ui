@@ -116,7 +116,7 @@ export const batch6Components: ComponentMeta[] = [
     source: "matter-js",
     type: "registry:ui",
     dependencies: ["matter-js"],
-    registryDependencies: ["utils"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "effects/gravity.tsx",
     target: "components/ui/gravity.tsx",
     props: [{ name: "labels", type: "string[]", description: "下落标签。" }, ...ui],

@@ -26,10 +26,9 @@ function OrbitLoader({
         return (
           <span
             key={index}
-            className="absolute top-1/2 left-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary"
+            className="absolute top-1/2 left-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary animate-[orbit-spin_1.4s_linear_infinite] motion-reduce:animate-pulse"
             style={{
               transform: `rotate(${angle}deg) translateY(-${size / 2 - 6}px)`,
-              animation: `orbit-spin 1.4s linear infinite`,
               animationDelay: `${index * 0.08}s`,
               opacity: 0.35 + (index / dots) * 0.65,
             }}

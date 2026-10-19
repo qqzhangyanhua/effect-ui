@@ -13,7 +13,7 @@ function IconCloud({ icons, className }: IconCloudProps) {
   const count = icons.length || 1
   return (
     <div className={cn("relative mx-auto size-56 [perspective:800px]", className)}>
-      <div className="absolute inset-0 animate-[icon-orbit_18s_linear_infinite] [transform-style:preserve-3d]">
+      <div className="absolute inset-0 animate-[icon-orbit_18s_linear_infinite] motion-reduce:animate-none [transform-style:preserve-3d]">
         {icons.map((icon, index) => {
           const phi = Math.acos(-1 + (2 * index) / count)
           const theta = Math.sqrt(count * Math.PI) * phi

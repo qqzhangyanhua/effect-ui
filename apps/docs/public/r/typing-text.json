@@ -6,6 +6,7 @@
   "description": "打字机文字动画。",
   "dependencies": [],
   "registryDependencies": [
+    "use-prefers-reduced-motion",
     "utils"
   ],
   "files": [
@@ -13,7 +14,7 @@
       "path": "registry/effects/typing-text.tsx",
       "type": "registry:ui",
       "target": "components/ui/typing-text.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TypingTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  text: string\n  duration?: number\n  loop?: boolean\n  cursor?: boolean\n}\n\nfunction TypingText({\n  text,\n  duration = 80,\n  loop = false,\n  cursor = true,\n  className,\n  ...props\n}: TypingTextProps) {\n  const [count, setCount] = React.useState(0)\n  const [dir, setDir] = React.useState<1 | -1>(1)\n\n  React.useEffect(() => {\n    const next = count + dir\n    const atEnd = next > text.length\n    const atStart = next < 0\n\n    const delay = atEnd || atStart ? 900 : duration\n    const timer = window.setTimeout(() => {\n      if (atEnd) {\n        if (loop) setDir(-1)\n        return\n      }\n      if (atStart) {\n        setDir(1)\n        setCount(0)\n        return\n      }\n      setCount(next)\n    }, delay)\n\n    return () => window.clearTimeout(timer)\n  }, [count, dir, duration, loop, text.length])\n\n  return (\n    <span\n      data-slot=\"typing-text\"\n      className={cn(\"inline-flex items-baseline font-medium\", className)}\n      {...props}\n    >\n      {text.slice(0, count)}\n      {cursor ? (\n        <span className=\"ml-0.5 inline-block h-[1em] w-px translate-y-0.5 animate-pulse bg-current\" />\n      ) : null}\n    </span>\n  )\n}\n\nexport { TypingText }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TypingTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  text: string\n  duration?: number\n  loop?: boolean\n  cursor?: boolean\n}\n\nfunction TypingText({\n  text,\n  duration = 80,\n  loop = false,\n  cursor = true,\n  className,\n  ...props\n}: TypingTextProps) {\n  const reduced = usePrefersReducedMotion()\n  const [count, setCount] = React.useState(0)\n  const [dir, setDir] = React.useState<1 | -1>(1)\n\n  React.useEffect(() => {\n    if (reduced) return\n    const next = count + dir\n    const atEnd = next > text.length\n    const atStart = next < 0\n\n    const delay = atEnd || atStart ? 900 : duration\n    const timer = window.setTimeout(() => {\n      if (atEnd) {\n        if (loop) setDir(-1)\n        return\n      }\n      if (atStart) {\n        setDir(1)\n        setCount(0)\n        return\n      }\n      setCount(next)\n    }, delay)\n\n    return () => window.clearTimeout(timer)\n  }, [count, dir, duration, loop, reduced, text.length])\n\n  return (\n    <span\n      data-slot=\"typing-text\"\n      className={cn(\"inline-flex items-baseline font-medium\", className)}\n      {...props}\n    >\n      {reduced ? text : text.slice(0, count)}\n      {cursor ? (\n        <span className=\"ml-0.5 inline-block h-[1em] w-px translate-y-0.5 animate-pulse bg-current motion-reduce:animate-none\" />\n      ) : null}\n    </span>\n  )\n}\n\nexport { TypingText }\n"
     }
   ]
 }

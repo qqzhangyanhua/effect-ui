@@ -196,6 +196,8 @@ const demoMap: Record<string, ComponentType> = {
   halftone: effectDemos5.HalftoneDemo,
 }
 
+export const demoNames: readonly string[] = Object.keys(demoMap)
+
 export function getDemo(name: string): ComponentType | undefined {
   return demoMap[name]
 }

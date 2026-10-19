@@ -5,6 +5,7 @@ import * as effectDemos2 from "./effect-demos-2"
 import * as effectDemos3 from "./effect-demos-3"
 import * as effectDemos4 from "./effect-demos-4"
 import * as effectDemos5 from "./effect-demos-5"
+import * as effectDemos6 from "./effect-demos-6"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -194,6 +195,21 @@ const demoMap: Record<string, ComponentType> = {
   "tear-button": effectDemos5.TearButtonDemo,
   "flow-field": effectDemos5.FlowFieldDemo,
   halftone: effectDemos5.HalftoneDemo,
+  "splash-cursor": effectDemos6.SplashCursorDemo,
+  "shader-pack-2": effectDemos6.ShaderPack2Demo,
+  "text-along-path": effectDemos6.TextAlongPathDemo,
+  "scroll-typography": effectDemos6.ScrollTypographyDemo,
+  "3d-carousel": effectDemos6.ThreeDCarouselDemo,
+  "siri-orb": effectDemos6.SiriOrbDemo,
+  gravity: effectDemos6.GravityDemo,
+  "ascii-render": effectDemos6.AsciiRenderDemo,
+  "lamp-heading": effectDemos6.LampHeadingDemo,
+  "tracing-beam": effectDemos6.TracingBeamDemo,
+  "container-scroll-3d": effectDemos6.ContainerScroll3DDemo,
+  "circular-gallery": effectDemos6.CircularGalleryDemo,
+  "glowing-edge": effectDemos6.GlowingEdgeDemo,
+  "scroll-image-sequence": effectDemos6.ScrollImageSequenceDemo,
+  "pixel-transition": effectDemos6.PixelTransitionDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

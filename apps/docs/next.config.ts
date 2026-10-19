@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
     "react-phone-number-input",
     "frimousse",
     "wavesurfer.js",
+    "matter-js",
+    "ogl",
   ],
 }
 

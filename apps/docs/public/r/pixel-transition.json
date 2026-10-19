@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pixel-transition",
+  "type": "registry:ui",
+  "title": "Pixel Transition",
+  "description": "灵感来自 pixel transition，原创实现：像素格淡出切换画面。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/pixel-transition.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/pixel-transition.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface PixelTransitionProps {\n  from: string\n  to: string\n  className?: string\n}\n\nfunction PixelTransition({ from, to, className }: PixelTransitionProps) {\n  const [revealed, setRevealed] = React.useState(false)\n  const cells = 48\n\n  return (\n    <button\n      type=\"button\"\n      onClick={() => setRevealed((value) => !value)}\n      className={cn(\"relative block aspect-video w-full overflow-hidden rounded-xl border\", className)}\n    >\n      <span className=\"absolute inset-0 bg-cover\" style={{ backgroundImage: `url(${revealed ? to : from})` }} />\n      <span className=\"absolute inset-0 grid\" style={{ gridTemplateColumns: `repeat(${cells / 4}, 1fr)` }}>\n        {Array.from({ length: cells }, (_, index) => (\n          <span\n            key={index}\n            className=\"bg-zinc-950 transition-opacity duration-500\"\n            style={{\n              opacity: revealed ? 0 : 0.35 + ((index * 17) % 7) * 0.08,\n              transitionDelay: `${(index % 12) * 28}ms`,\n            }}\n          />\n        ))}\n      </span>\n      <span className=\"relative z-10 grid h-full place-items-center text-sm text-white\">点击像素过渡</span>\n    </button>\n  )\n}\n\nexport { PixelTransition }\n"
+    }
+  ]
+}

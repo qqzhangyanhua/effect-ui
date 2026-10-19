@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glowing-edge",
+  "type": "registry:ui",
+  "title": "Glowing Edge",
+  "description": "灵感来自 Linear 发光描边，原创实现：旋转锥形渐变边。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glowing-edge.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glowing-edge.tsx",
+      "content": "import type { ReactNode } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GlowingEdgeProps {\n  children: ReactNode\n  className?: string\n}\n\nfunction GlowingEdge({ children, className }: GlowingEdgeProps) {\n  return (\n    <div className={cn(\"relative overflow-hidden rounded-2xl p-px\", className)}>\n      <div\n        aria-hidden\n        className=\"absolute inset-[-40%] animate-[glow-orbit_6s_linear_infinite] bg-[conic-gradient(from_var(--shine-angle),transparent_0deg,#7c3aed_70deg,transparent_140deg)]\"\n      />\n      <div className=\"relative rounded-[calc(var(--radius)+2px)] bg-card p-5\">{children}</div>\n    </div>\n  )\n}\n\nexport { GlowingEdge }\n"
+    }
+  ]
+}

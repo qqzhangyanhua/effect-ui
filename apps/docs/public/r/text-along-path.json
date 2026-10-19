@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-along-path",
+  "type": "registry:ui",
+  "title": "Text Along Path",
+  "description": "文字沿 SVG 路径排列。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/text-along-path.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/text-along-path.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextAlongPathProps {\n  text: string\n  path?: string\n  className?: string\n}\n\nconst DEFAULT_PATH = \"M 12 70 C 80 10, 160 130, 228 70\"\n\nfunction TextAlongPath({ text, path = DEFAULT_PATH, className }: TextAlongPathProps) {\n  const id = React.useId().replace(/:/g, \"\")\n\n  return (\n    <svg viewBox=\"0 0 240 140\" className={cn(\"w-full text-foreground\", className)}>\n      <path id={id} d={path} fill=\"none\" stroke=\"currentColor\" strokeOpacity=\"0.18\" strokeWidth=\"1\" />\n      <text className=\"fill-current text-[14px] font-medium\">\n        <textPath href={`#${id}`} startOffset=\"0%\">\n          {text}\n        </textPath>\n      </text>\n    </svg>\n  )\n}\n\nexport { TextAlongPath }\n"
+    }
+  ]
+}

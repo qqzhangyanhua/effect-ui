@@ -87,6 +87,9 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | number-flow | Number Flow（MIT） |
 | glitch-text | Kokonut UI（免费 MIT） |
 | spoiler-text | Kokonut UI（免费 MIT） |
+| text-along-path | Fancy Components |
+| scroll-typography | Codrops MIT（Motion 重写） |
+| lamp-heading | 灵感来自 lamp heading，原创实现 |
 
 ### 背景
 
@@ -110,6 +113,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | background-paths | Kokonut UI（免费 MIT） |
 | flow-field | Kokonut UI（免费 MIT） |
 | halftone | Kokonut UI（免费 MIT） |
+| shader-pack-2 | Paper Shaders（Apache-2.0） |
 
 ### 光标 / 悬停
 
@@ -130,6 +134,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | sparkles | Magic UI |
 | dynamic-island | Cult UI |
 | image-trail | Fancy Components |
+| splash-cursor | PavelDoGreat WebGL-Fluid-Simulation MIT |
 
 ### 卡片 / 3D
 
@@ -148,6 +153,9 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | liquid-glass | liquid-glass-react |
 | icon-cloud | Magic UI |
 | holographic-foil | Smooth UI |
+| 3d-carousel | Cult UI |
+| circular-gallery | 灵感来自 circular gallery，原创实现 |
+| glowing-edge | 灵感来自 Linear，原创实现 |
 
 ### 按钮特效
 
@@ -186,6 +194,9 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | scroll-progress | Magic UI |
 | scroll-velocity | Magic UI |
 | stacking-cards | Fancy Components |
+| tracing-beam | 灵感来自 tracing-beam，原创实现 |
+| container-scroll-3d | 灵感来自 container-scroll，原创实现 |
+| scroll-image-sequence | 灵感来自 Apple 产品页，原创实现 |
 
 ### 导航
 
@@ -207,6 +218,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | terminal | Eldora UI |
 | dashboard-blocks | 原创 |
 | ecommerce-blocks | 原创 |
+| pixel-transition | 灵感来自 pixel transition，原创实现 |
 
 ### AI 对话
 
@@ -214,6 +226,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | --- | --- |
 | prompt-input | prompt-kit |
 | chat-message | prompt-kit |
+| siri-orb | Smooth UI |
 
 ### 实用组件
 
@@ -245,6 +258,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | audio-waveform | wavesurfer.js（BSD-3） |
 | toast-stack | Kokonut UI（免费 MIT） |
 | notification-center | Kokonut UI（免费 MIT） |
+| gravity | matter-js |
+| ascii-render | Smooth UI |
 
 ---
 

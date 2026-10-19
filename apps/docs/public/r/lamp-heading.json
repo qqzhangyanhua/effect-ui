@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lamp-heading",
+  "type": "registry:ui",
+  "title": "Lamp Heading",
+  "description": "灵感来自 lamp heading，原创实现：顶部灯罩高光落在大标题上。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/lamp-heading.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/lamp-heading.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nexport interface LampHeadingProps {\n  text: string\n  className?: string\n}\n\nfunction LampHeading({ text, className }: LampHeadingProps) {\n  return (\n    <div className={cn(\"relative overflow-hidden rounded-2xl bg-zinc-950 px-8 py-16 text-center\", className)}>\n      <div className=\"pointer-events-none absolute inset-x-0 top-0 flex justify-center\">\n        <div className=\"h-24 w-40 rounded-b-full bg-[radial-gradient(ellipse_at_top,#c4b5fd,transparent_70%)] blur-2xl\" />\n      </div>\n      <div className=\"pointer-events-none absolute top-6 left-1/2 h-20 w-px -translate-x-1/2 bg-linear-to-b from-violet-200 to-transparent\" />\n      <div className=\"pointer-events-none absolute top-6 left-1/2 h-2 w-16 -translate-x-1/2 rounded-full bg-violet-100/80 blur-[1px]\" />\n      <p className=\"relative font-display text-4xl tracking-tight text-white\">{text}</p>\n      <p className=\"relative mt-2 text-sm text-white/45\">灵感来自 lamp heading，原创实现</p>\n    </div>\n  )\n}\n\nexport { LampHeading }\n"
+    }
+  ]
+}

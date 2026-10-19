@@ -392,6 +392,18 @@
   }
 }
 
+@keyframes orb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow-orbit {
+  to {
+    --shine-angle: 360deg;
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

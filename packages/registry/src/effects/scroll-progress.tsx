@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, useScroll } from "motion/react"
+import { motion, useReducedMotion, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -11,6 +11,7 @@ export interface ScrollProgressProps {
 }
 
 function ScrollProgress({ className, containerRef }: ScrollProgressProps) {
+  const reduce = useReducedMotion() === true
   const { scrollYProgress } = useScroll(
     containerRef ? { container: containerRef } : undefined,
   )
@@ -21,7 +22,7 @@ function ScrollProgress({ className, containerRef }: ScrollProgressProps) {
         "h-1 origin-left bg-linear-to-r from-violet-500 via-fuchsia-400 to-amber-300",
         className,
       )}
-      style={{ scaleX: scrollYProgress }}
+      style={{ scaleX: reduce ? 1 : scrollYProgress }}
     />
   )
 }

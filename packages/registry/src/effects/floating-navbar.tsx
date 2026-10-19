@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionValueEvent, useScroll } from "motion/react"
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -11,6 +11,7 @@ export interface FloatingNavbarProps {
 }
 
 function FloatingNavbar({ className, children }: FloatingNavbarProps) {
+  const reduce = useReducedMotion() === true
   const { scrollY } = useScroll()
   const [hidden, setHidden] = React.useState(false)
 
@@ -23,7 +24,7 @@ function FloatingNavbar({ className, children }: FloatingNavbarProps) {
     <motion.nav
       data-slot="floating-navbar"
       animate={{ y: hidden ? -88 : 0, opacity: hidden ? 0 : 1 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: reduce ? 0 : 0.25 }}
       className={cn(
         "sticky top-3 z-30 mx-auto flex w-fit items-center gap-3 rounded-full border bg-background/80 px-4 py-2 shadow-sm backdrop-blur",
         className,

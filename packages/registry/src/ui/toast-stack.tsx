@@ -74,7 +74,7 @@ function ToastStack({ items, className, onDismiss }: ToastStackProps) {
         <div
           key={toast.id}
           className={cn(
-            "rounded-xl border p-3 shadow-lg transition-transform",
+            "rounded-xl border p-3 shadow-lg transition-transform motion-reduce:transition-none",
             variantClass(toast.variant),
           )}
           style={{ transform: `translateY(${index * -4}px) scale(${1 - index * 0.03})` }}

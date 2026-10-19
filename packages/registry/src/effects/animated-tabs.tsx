@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -18,6 +18,7 @@ export interface AnimatedTabsProps {
 }
 
 function AnimatedTabs({ items, className, defaultValue }: AnimatedTabsProps) {
+  const reduce = useReducedMotion() === true
   const [value, setValue] = React.useState(defaultValue ?? items[0]?.value ?? "")
   const current = items.find((item) => item.value === value)
 
@@ -32,11 +33,15 @@ function AnimatedTabs({ items, className, defaultValue }: AnimatedTabsProps) {
             className="relative z-10 flex-1 rounded-full px-3 py-1.5 text-sm"
           >
             {value === item.value ? (
-              <motion.span
-                layoutId="animated-tab-pill"
-                className="absolute inset-0 rounded-full bg-background shadow-sm"
-                transition={{ type: "spring", stiffness: 380, damping: 32 }}
-              />
+              reduce ? (
+                <span className="absolute inset-0 rounded-full bg-background shadow-sm" />
+              ) : (
+                <motion.span
+                  layoutId="animated-tab-pill"
+                  className="absolute inset-0 rounded-full bg-background shadow-sm"
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                />
+              )
             ) : null}
             <span className="relative z-10">{item.label}</span>
           </button>

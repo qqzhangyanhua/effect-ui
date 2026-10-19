@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -16,6 +16,14 @@ function PageTransition({
   children,
   transitionKey,
 }: PageTransitionProps) {
+  const reduce = useReducedMotion() === true
+  if (reduce) {
+    return (
+      <div data-slot="page-transition" className={cn(className)}>
+        {children}
+      </div>
+    )
+  }
   return (
     <AnimatePresence mode="wait">
       <motion.div

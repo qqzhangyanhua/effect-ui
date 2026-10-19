@@ -16,6 +16,22 @@ function Gravity({ className, labels = ["UI", "FX", "MIT", "React"] }: GravityPr
   React.useEffect(() => {
     const host = hostRef.current
     if (!host) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const els = labels.map((label, index) => {
+        const el = document.createElement("div")
+        el.textContent = label
+        el.className =
+          "pointer-events-none absolute grid place-items-center rounded-lg border bg-card text-xs font-medium shadow-sm"
+        el.style.width = "72px"
+        el.style.height = "32px"
+        el.style.transform = `translate(${16 + (index % 4) * 80}px, ${16 + Math.floor(index / 4) * 40}px)`
+        host.appendChild(el)
+        return el
+      })
+      return () => {
+        for (const el of els) el.remove()
+      }
+    }
     const { width, height } = host.getBoundingClientRect()
     const engine = Matter.Engine.create({ gravity: { x: 0, y: 1.05 } })
     const world = engine.world

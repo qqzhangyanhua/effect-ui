@@ -160,7 +160,11 @@ function KanbanCard({
     <Card
       ref={setNodeRef}
       style={{ transform: CSS.Transform.toString(transform), transition }}
-      className={cn("cursor-grab gap-0 p-3 py-3 text-sm shadow-none", isDragging && "opacity-40", className)}
+      className={cn(
+        "cursor-grab gap-0 p-3 py-3 text-sm shadow-none motion-reduce:transition-none!",
+        isDragging && "opacity-40",
+        className,
+      )}
       {...attributes}
       {...listeners}
     >

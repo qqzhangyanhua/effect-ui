@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, type HTMLMotionProps } from "motion/react"
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -17,15 +17,20 @@ function FadeIn({
   once = true,
   ...props
 }: FadeInProps) {
+  const reduce = useReducedMotion() === true
   return (
     <motion.div
       data-slot="fade-in"
       className={cn(className)}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, amount: 0.4 }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-      {...props}
+      {...(reduce
+        ? { ...props, initial: false, transition: { duration: 0 } }
+        : {
+            initial: { opacity: 0, y: 16 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
+            ...props,
+          })}
     >
       {children}
     </motion.div>

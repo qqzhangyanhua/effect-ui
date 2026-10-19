@@ -29,7 +29,7 @@ function TreeItem({ node, depth }: { node: TreeNode; depth: number }) {
         onClick={() => isFolder && setOpen((value) => !value)}
       >
         {isFolder ? (
-          <ChevronRight className={cn("size-3.5 transition-transform", open && "rotate-90")} />
+          <ChevronRight className={cn("size-3.5 transition-transform motion-reduce:transition-none", open && "rotate-90")} />
         ) : (
           <span className="w-3.5" />
         )}

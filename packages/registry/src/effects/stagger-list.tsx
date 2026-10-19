@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, type Variants } from "motion/react"
+import { motion, useReducedMotion, type Variants } from "motion/react"
 
 import { cn } from "@/lib/utils"
 
@@ -32,18 +32,19 @@ function StaggerList({
   children,
   delay = 0,
 }: StaggerListProps) {
+  const reduce = useReducedMotion() === true
   return (
     <motion.ul
       data-slot="stagger-list"
       className={cn("flex flex-col gap-2", className)}
-      variants={list}
-      initial="hidden"
-      whileInView="show"
+      variants={reduce ? undefined : list}
+      initial={reduce ? false : "hidden"}
+      whileInView={reduce ? undefined : "show"}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ delayChildren: delay }}
+      transition={reduce ? { duration: 0 } : { delayChildren: delay }}
     >
       {React.Children.map(children, (child, index) => (
-        <motion.li key={index} variants={item}>
+        <motion.li key={index} variants={reduce ? undefined : item}>
           {child}
         </motion.li>
       ))}

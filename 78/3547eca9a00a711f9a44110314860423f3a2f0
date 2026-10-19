@@ -1,0 +1,24 @@
+packages/registry/src/audit-exceptions.ts
+  h_4132837b09b7e7 1-11
+packages/registry/src/audit.repo.test.ts
+  h_4132837b09b7e7 1-89
+packages/registry/src/audit.test.ts
+  h_4132837b09b7e7 1-318
+packages/registry/src/audit.ts
+  h_4132837b09b7e7 1-236
+packages/registry/src/examples/index.ts
+  h_4132837b09b7e7 199-200
+vitest.config.mts
+  h_4132837b09b7e7 1-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "783547eca9a00a711f9a44110314860423f3a2f0",
+  "prompts": {},
+  "humans": {
+    "h_4132837b09b7e7": {
+      "author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

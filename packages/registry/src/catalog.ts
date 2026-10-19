@@ -20,6 +20,14 @@ export type ComponentCategory =
   | "ai"
   | "utility"
 
+export type UiSubgroup =
+  | "form"
+  | "overlay"
+  | "navigation"
+  | "data"
+  | "layout"
+  | "feedback"
+
 export type SourceLibrary =
   | "shadcn/ui"
   | "Magic UI"
@@ -61,6 +69,7 @@ export interface ComponentMeta {
   title: string
   description: string
   category: ComponentCategory
+  subgroup?: UiSubgroup
   source: SourceLibrary
   type: "registry:ui" | "registry:lib" | "registry:hook"
   dependencies: string[]
@@ -102,6 +111,24 @@ export const categoryOrder: ComponentCategory[] = [
   "page",
   "ai",
   "utility",
+]
+
+export const subgroupLabels: Record<UiSubgroup, string> = {
+  form: "表单",
+  overlay: "浮层",
+  navigation: "导航",
+  data: "数据展示",
+  layout: "布局",
+  feedback: "反馈",
+}
+
+export const subgroupOrder: UiSubgroup[] = [
+  "form",
+  "overlay",
+  "navigation",
+  "data",
+  "layout",
+  "feedback",
 ]
 
 export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
@@ -174,6 +201,7 @@ export const components: ComponentMeta[] = [
     title: "Button",
     description: "支持多种变体与尺寸的按钮。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot", "class-variance-authority"],
@@ -191,6 +219,7 @@ export const components: ComponentMeta[] = [
     title: "Input",
     description: "文本输入框。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: [],
@@ -204,6 +233,7 @@ export const components: ComponentMeta[] = [
     title: "Textarea",
     description: "多行文本输入。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: [],
@@ -217,6 +247,7 @@ export const components: ComponentMeta[] = [
     title: "Label",
     description: "表单标签。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-label"],
@@ -230,6 +261,7 @@ export const components: ComponentMeta[] = [
     title: "Card",
     description: "通用卡片容器。",
     category: "ui",
+    subgroup: "layout",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: [],
@@ -243,6 +275,7 @@ export const components: ComponentMeta[] = [
     title: "Badge",
     description: "状态与分类徽标。",
     category: "ui",
+    subgroup: "data",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slot", "class-variance-authority"],
@@ -256,6 +289,7 @@ export const components: ComponentMeta[] = [
     title: "Separator",
     description: "水平或垂直分隔线。",
     category: "ui",
+    subgroup: "layout",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-separator"],
@@ -269,6 +303,7 @@ export const components: ComponentMeta[] = [
     title: "Dialog",
     description: "模态对话框。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dialog", "lucide-react"],
@@ -282,6 +317,7 @@ export const components: ComponentMeta[] = [
     title: "Sheet",
     description: "从边缘滑出的面板。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dialog", "lucide-react"],
@@ -295,6 +331,7 @@ export const components: ComponentMeta[] = [
     title: "Dropdown Menu",
     description: "下拉菜单。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-dropdown-menu", "lucide-react"],
@@ -308,6 +345,7 @@ export const components: ComponentMeta[] = [
     title: "Tabs",
     description: "选项卡切换。",
     category: "ui",
+    subgroup: "navigation",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tabs"],
@@ -321,6 +359,7 @@ export const components: ComponentMeta[] = [
     title: "Tooltip",
     description: "悬停提示。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-tooltip"],
@@ -334,6 +373,7 @@ export const components: ComponentMeta[] = [
     title: "Toast",
     description: "基于 Sonner 的轻提示。",
     category: "ui",
+    subgroup: "feedback",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["sonner", "next-themes"],
@@ -347,6 +387,7 @@ export const components: ComponentMeta[] = [
     title: "Switch",
     description: "开关控件。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-switch"],
@@ -360,6 +401,7 @@ export const components: ComponentMeta[] = [
     title: "Checkbox",
     description: "复选框。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-checkbox", "lucide-react"],
@@ -373,6 +415,7 @@ export const components: ComponentMeta[] = [
     title: "Select",
     description: "选择器。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-select", "lucide-react"],
@@ -386,6 +429,7 @@ export const components: ComponentMeta[] = [
     title: "Accordion",
     description: "手风琴折叠面板。",
     category: "ui",
+    subgroup: "layout",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-accordion", "lucide-react"],
@@ -399,6 +443,7 @@ export const components: ComponentMeta[] = [
     title: "Popover",
     description: "弹出层。",
     category: "ui",
+    subgroup: "overlay",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-popover"],
@@ -412,6 +457,7 @@ export const components: ComponentMeta[] = [
     title: "Avatar",
     description: "头像。",
     category: "ui",
+    subgroup: "data",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-avatar"],
@@ -425,6 +471,7 @@ export const components: ComponentMeta[] = [
     title: "Slider",
     description: "滑块。",
     category: "ui",
+    subgroup: "form",
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["@radix-ui/react-slider"],
@@ -966,12 +1013,35 @@ export function getComponent(name: string): ComponentMeta | undefined {
   return components.find((item) => item.name === name)
 }
 
+export function uiSubgroupsOf(items: readonly ComponentMeta[]) {
+  return subgroupOrder
+    .map((subgroup) => ({
+      subgroup,
+      label: subgroupLabels[subgroup],
+      items: items.filter((item) => item.subgroup === subgroup),
+    }))
+    .filter((section) => section.items.length > 0)
+}
+
+function uiItemsInSubgroupOrder(items: readonly ComponentMeta[]) {
+  return [...items].sort((a, b) => {
+    const aRank = a.subgroup ? subgroupOrder.indexOf(a.subgroup) : subgroupOrder.length
+    const bRank = b.subgroup ? subgroupOrder.indexOf(b.subgroup) : subgroupOrder.length
+    return aRank - bRank
+  })
+}
+
 export function getComponentsByCategory() {
-  return categoryOrder.map((category) => ({
-    category,
-    label: categoryLabels[category],
-    items: components.filter((item) => item.category === category && item.type === "registry:ui"),
-  }))
+  return categoryOrder.map((category) => {
+    const items = components.filter(
+      (item) => item.category === category && item.type === "registry:ui",
+    )
+    return {
+      category,
+      label: categoryLabels[category],
+      items: category === "ui" ? uiItemsInSubgroupOrder(items) : items,
+    }
+  })
 }
 
 export const visibleComponents = components.filter((item) => item.type === "registry:ui")

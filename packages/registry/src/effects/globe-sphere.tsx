@@ -16,7 +16,7 @@ function GlobeSphere({ className, dots = 48, ...props }: GlobeSphereProps) {
       )}
       {...props}
     >
-      <div className="absolute inset-3 animate-[globe-spin_16s_linear_infinite] rounded-full border border-dashed border-foreground/20" />
+      <div className="absolute inset-3 animate-[globe-spin_16s_linear_infinite] motion-reduce:animate-none rounded-full border border-dashed border-foreground/20" />
       {Array.from({ length: dots }, (_, index) => {
         const lat = ((index * 47) % 160) - 80
         const lon = (index * 77) % 360

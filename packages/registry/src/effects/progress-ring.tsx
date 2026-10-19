@@ -48,7 +48,7 @@ function ProgressRing({
           r={radius}
           fill="none"
           stroke="currentColor"
-          className="text-primary transition-[stroke-dashoffset] duration-500"
+          className="text-primary transition-[stroke-dashoffset] duration-500 motion-reduce:transition-none"
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}

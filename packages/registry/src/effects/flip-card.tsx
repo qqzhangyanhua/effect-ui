@@ -22,14 +22,24 @@ function FlipCard({ className, front, back, ...props }: FlipCardProps) {
     >
       <div
         className={cn(
-          "relative h-full w-full transition-transform duration-500 [transform-style:preserve-3d]",
-          flipped && "[transform:rotateY(180deg)]",
+          "relative h-full w-full transition-transform duration-500 motion-reduce:transition-none [transform-style:preserve-3d]",
+          flipped && "[transform:rotateY(180deg)] motion-reduce:transform-none",
         )}
       >
-        <div className="absolute inset-0 [backface-visibility:hidden]">
+        <div
+          className={cn(
+            "absolute inset-0 [backface-visibility:hidden]",
+            flipped && "motion-reduce:hidden",
+          )}
+        >
           {front}
         </div>
-        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div
+          className={cn(
+            "absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] motion-reduce:transform-none",
+            !flipped && "motion-reduce:hidden",
+          )}
+        >
           {back}
         </div>
       </div>

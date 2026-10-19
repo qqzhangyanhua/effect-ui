@@ -12,7 +12,7 @@ function Spinner({ className, size = 28, ...props }: SpinnerProps) {
       role="status"
       data-slot="spinner"
       className={cn(
-        "animate-spin rounded-full border-2 border-muted-foreground/25 border-t-primary",
+        "animate-spin motion-reduce:animate-pulse rounded-full border-2 border-muted-foreground/25 border-t-primary",
         className,
       )}
       style={{ width: size, height: size }}

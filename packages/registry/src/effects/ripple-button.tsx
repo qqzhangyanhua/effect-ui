@@ -24,6 +24,8 @@ function RippleButton({
   const [ripples, setRipples] = React.useState<Ripple[]>([])
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onClick?.(event)
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const rect = event.currentTarget.getBoundingClientRect()
     const next: Ripple = {
       id: Date.now(),
@@ -34,7 +36,6 @@ function RippleButton({
     window.setTimeout(() => {
       setRipples((current) => current.filter((item) => item.id !== next.id))
     }, 650)
-    onClick?.(event)
   }
 
   return (

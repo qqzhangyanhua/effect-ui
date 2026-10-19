@@ -2,10 +2,27 @@
 
 import * as React from "react"
 import { createPortal } from "react-dom"
-import { AnimatePresence, MotionConfig, motion } from "motion/react"
+import { AnimatePresence, MotionConfig, motion, useReducedMotion } from "motion/react"
 import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+  media.addEventListener("change", onChange)
+  return () => media.removeEventListener("change", onChange)
+}
+
+function useIsReducedMotion() {
+  const prefersReducedMotion = useReducedMotion()
+  return React.useSyncExternalStore(
+    subscribeReducedMotion,
+    () =>
+      prefersReducedMotion === true ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  )
+}
 
 interface MorphingDialogContextValue {
   open: boolean
@@ -26,9 +43,17 @@ function useMorphingDialog() {
 function MorphingDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false)
   const id = React.useId()
+  const reduceMotion = useIsReducedMotion()
   return (
     <MorphingDialogContext.Provider value={{ open, setOpen, id }}>
-      <MotionConfig transition={{ type: "spring", bounce: 0.15, duration: 0.45 }}>
+      <MotionConfig
+        reducedMotion={reduceMotion ? "always" : "never"}
+        transition={
+          reduceMotion
+            ? { duration: 0.15 }
+            : { type: "spring", bounce: 0.15, duration: 0.45 }
+        }
+      >
         {children}
       </MotionConfig>
     </MorphingDialogContext.Provider>
@@ -43,10 +68,11 @@ function MorphingDialogTrigger({
   className?: string
 }) {
   const { open, setOpen, id } = useMorphingDialog()
+  const reduceMotion = useIsReducedMotion()
   return (
     <motion.button
       type="button"
-      layoutId={`morph-dialog-${id}`}
+      layoutId={reduceMotion ? undefined : `morph-dialog-${id}`}
       className={cn("relative cursor-pointer text-left", className)}
       onClick={() => setOpen(!open)}
       aria-haspopup="dialog"
@@ -96,6 +122,7 @@ function MorphingDialogContent({
   className?: string
 }) {
   const { setOpen, id } = useMorphingDialog()
+  const reduceMotion = useIsReducedMotion()
 
   React.useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -107,9 +134,12 @@ function MorphingDialogContent({
 
   return (
     <motion.div
-      layoutId={`morph-dialog-${id}`}
+      layoutId={reduceMotion ? undefined : `morph-dialog-${id}`}
       role="dialog"
       aria-modal="true"
+      initial={reduceMotion ? { opacity: 0 } : undefined}
+      animate={reduceMotion ? { opacity: 1 } : undefined}
+      exit={reduceMotion ? { opacity: 0 } : undefined}
       className={cn("relative overflow-hidden rounded-2xl border bg-card shadow-xl", className)}
     >
       {children}
@@ -125,8 +155,12 @@ function MorphingDialogTitle({
   className?: string
 }) {
   const { id } = useMorphingDialog()
+  const reduceMotion = useIsReducedMotion()
   return (
-    <motion.h2 layoutId={`morph-title-${id}`} className={cn("text-lg font-semibold", className)}>
+    <motion.h2
+      layoutId={reduceMotion ? undefined : `morph-title-${id}`}
+      className={cn("text-lg font-semibold", className)}
+    >
       {children}
     </motion.h2>
   )

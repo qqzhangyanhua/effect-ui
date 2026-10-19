@@ -1,0 +1,20 @@
+AGENTS.md
+  h_4132837b09b7e7 1-13
+docs/agents/domain.md
+  h_4132837b09b7e7 1-51
+docs/agents/issue-tracker.md
+  h_4132837b09b7e7 1-45
+docs/agents/triage-labels.md
+  h_4132837b09b7e7 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "1484f05f758130cdf4d0532a3605455ef26f26db",
+  "prompts": {},
+  "humans": {
+    "h_4132837b09b7e7": {
+      "author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

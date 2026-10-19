@@ -1,5 +1,6 @@
 import { batch2Components } from "./catalog-batch2"
 import { batch3Components } from "./catalog-batch3"
+import { batch4Components } from "./catalog-batch4"
 
 export type ComponentCategory =
   | "ui"
@@ -12,6 +13,7 @@ export type ComponentCategory =
   | "scroll"
   | "navigation"
   | "page"
+  | "ai"
   | "utility"
 
 export type SourceLibrary =
@@ -23,6 +25,13 @@ export type SourceLibrary =
   | "Fancy Components"
   | "Kibo UI"
   | "Origin UI"
+  | "Paper Shaders"
+  | "Kokonut UI"
+  | "Number Flow"
+  | "liquid-glass-react"
+  | "prompt-kit"
+  | "Tailark"
+  | "Eldora UI"
   | "original"
 
 export interface PropDoc {
@@ -57,6 +66,7 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   scroll: "滚动显现",
   navigation: "导航",
   page: "页面 / 转场",
+  ai: "AI 对话",
   utility: "实用组件",
 }
 
@@ -71,6 +81,7 @@ export const categoryOrder: ComponentCategory[] = [
   "scroll",
   "navigation",
   "page",
+  "ai",
   "utility",
 ]
 
@@ -884,6 +895,7 @@ export const components: ComponentMeta[] = [
   },
   ...batch2Components,
   ...batch3Components,
+  ...batch4Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

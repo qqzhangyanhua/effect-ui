@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-flow",
+  "type": "registry:ui",
+  "title": "Number Flow",
+  "description": "带 Intl 格式化的数字过渡（货币、百分比、单位）。",
+  "dependencies": [
+    "@number-flow/react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/effects/number-flow.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/number-flow.tsx",
+      "content": "\"use client\"\n\nimport NumberFlowPrimitive, { type Format } from \"@number-flow/react\"\n\nexport interface NumberFlowProps {\n  value: number\n  locales?: Intl.LocalesArgument\n  format?: Format\n  prefix?: string\n  suffix?: string\n  className?: string\n}\n\nfunction NumberFlow({ value, locales, format, prefix, suffix, className }: NumberFlowProps) {\n  return (\n    <NumberFlowPrimitive\n      value={value}\n      locales={locales}\n      format={format}\n      prefix={prefix}\n      suffix={suffix}\n      className={className}\n    />\n  )\n}\n\nexport { NumberFlow }\n"
+    }
+  ]
+}

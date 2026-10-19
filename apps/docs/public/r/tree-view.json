@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-view",
+  "type": "registry:ui",
+  "title": "Tree View",
+  "description": "可展开的文件夹 / 文件树。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/tree-view.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/tree-view.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ChevronRight, FileIcon, FolderIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TreeNode {\n  id: string\n  name: string\n  children?: TreeNode[]\n}\n\nexport interface TreeViewProps {\n  nodes: TreeNode[]\n  className?: string\n}\n\nfunction TreeItem({ node, depth }: { node: TreeNode; depth: number }) {\n  const [open, setOpen] = React.useState(true)\n  const isFolder = Boolean(node.children)\n\n  return (\n    <div>\n      <button\n        type=\"button\"\n        className=\"flex w-full items-center gap-1 rounded-md px-1.5 py-1 text-left text-sm hover:bg-muted\"\n        style={{ paddingLeft: 8 + depth * 14 }}\n        onClick={() => isFolder && setOpen((value) => !value)}\n      >\n        {isFolder ? (\n          <ChevronRight className={cn(\"size-3.5 transition-transform\", open && \"rotate-90\")} />\n        ) : (\n          <span className=\"w-3.5\" />\n        )}\n        {isFolder ? <FolderIcon className=\"size-3.5\" /> : <FileIcon className=\"size-3.5\" />}\n        {node.name}\n      </button>\n      {isFolder && open\n        ? node.children?.map((child) => <TreeItem key={child.id} node={child} depth={depth + 1} />)\n        : null}\n    </div>\n  )\n}\n\nfunction TreeView({ nodes, className }: TreeViewProps) {\n  return (\n    <div className={cn(\"min-w-48\", className)}>\n      {nodes.map((node) => (\n        <TreeItem key={node.id} node={node} depth={0} />\n      ))}\n    </div>\n  )\n}\n\nexport { TreeView, TreeView as FileTree }\n"
+    }
+  ]
+}

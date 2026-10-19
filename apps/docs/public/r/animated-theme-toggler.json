@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-theme-toggler",
+  "type": "registry:ui",
+  "title": "Animated Theme Toggler",
+  "description": "圆形扩散的明暗切换（View Transitions）。",
+  "dependencies": [
+    "next-themes",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/animated-theme-toggler.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/animated-theme-toggler.tsx",
+      "content": "\"use client\"\n\nimport type { MouseEvent } from \"react\"\nimport { Moon, Sun } from \"lucide-react\"\nimport { useTheme } from \"next-themes\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedThemeTogglerProps {\n  className?: string\n  duration?: number\n}\n\nfunction AnimatedThemeToggler({ className, duration = 500 }: AnimatedThemeTogglerProps) {\n  const { resolvedTheme, setTheme } = useTheme()\n\n  const toggle = async (event: MouseEvent<HTMLButtonElement>) => {\n    const next = resolvedTheme === \"dark\" ? \"light\" : \"dark\"\n    const origin = event.currentTarget.getBoundingClientRect()\n    const x = origin.left + origin.width / 2\n    const y = origin.top + origin.height / 2\n    const radius = Math.hypot(\n      Math.max(x, window.innerWidth - x),\n      Math.max(y, window.innerHeight - y),\n    )\n\n    const apply = () => setTheme(next)\n    const doc = document as Document & {\n      startViewTransition?: (cb: () => void) => { ready: Promise<void> }\n    }\n\n    if (!doc.startViewTransition) {\n      apply()\n      return\n    }\n\n    const transition = doc.startViewTransition(apply)\n    await transition.ready\n    document.documentElement.animate(\n      {\n        clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`],\n      },\n      {\n        duration,\n        easing: \"ease-out\",\n        pseudoElement: \"::view-transition-new(root)\",\n      },\n    )\n  }\n\n  return (\n    <Button\n      type=\"button\"\n      variant=\"ghost\"\n      size=\"icon\"\n      aria-label=\"切换主题\"\n      className={cn(className)}\n      onClick={(event) => void toggle(event)}\n    >\n      <Sun className=\"size-4 dark:hidden\" />\n      <Moon className=\"hidden size-4 dark:block\" />\n    </Button>\n  )\n}\n\nexport { AnimatedThemeToggler }\n"
+    }
+  ]
+}

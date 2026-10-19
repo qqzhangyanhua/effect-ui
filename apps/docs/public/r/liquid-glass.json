@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "liquid-glass",
+  "type": "registry:ui",
+  "title": "Liquid Glass",
+  "description": "液态玻璃折射面板，不支持位移滤镜时回退到毛玻璃。",
+  "dependencies": [
+    "liquid-glass-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/liquid-glass.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/liquid-glass.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport type { ComponentType, ReactNode } from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface LiquidGlassProps {\n  children?: ReactNode\n  className?: string\n}\n\nfunction supportsDisplacement() {\n  if (typeof window === \"undefined\") return false\n  return CSS.supports(\"backdrop-filter\", \"url(#x)\") || \"CSS\" in window\n}\n\nfunction FallbackGlass({ children, className }: LiquidGlassProps) {\n  return (\n    <div\n      className={cn(\n        \"rounded-2xl border border-white/20 bg-white/10 p-6 shadow-lg backdrop-blur-xl\",\n        className,\n      )}\n    >\n      {children}\n    </div>\n  )\n}\n\nfunction LiquidGlass({ children, className }: LiquidGlassProps) {\n  const [Impl, setImpl] = React.useState<ComponentType<{\n    children?: ReactNode\n    className?: string\n  }> | null>(null)\n\n  React.useEffect(() => {\n    if (!supportsDisplacement()) return\n    void import(\"liquid-glass-react\")\n      .then((mod) => {\n        const Candidate = (mod.default ?? (mod as { LiquidGlass?: ComponentType<{ children?: ReactNode }> }).LiquidGlass) as\n          | ComponentType<{ children?: ReactNode; className?: string }>\n          | undefined\n        if (Candidate) setImpl(() => Candidate)\n      })\n      .catch(() => undefined)\n  }, [])\n\n  if (!Impl) {\n    return <FallbackGlass className={className}>{children}</FallbackGlass>\n  }\n\n  return (\n    <Impl className={cn(\"rounded-2xl p-6\", className)}>\n      {children}\n    </Impl>\n  )\n}\n\nexport { LiquidGlass, FallbackGlass }\n"
+    }
+  ]
+}

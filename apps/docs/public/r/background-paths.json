@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "background-paths",
+  "type": "registry:ui",
+  "title": "Background Paths",
+  "description": "SVG 路径逐条绘制并循环流动。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/background-paths.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/background-paths.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface BackgroundPathsProps {\n  className?: string\n  count?: number\n}\n\nfunction BackgroundPaths({ className, count = 10 }: BackgroundPathsProps) {\n  const paths = Array.from({ length: count }, (_, index) => {\n    const y = 20 + index * (60 / count)\n    return `M -10 ${y} C 30 ${y - 18}, 70 ${y + 18}, 110 ${y}`\n  })\n\n  return (\n    <div className={cn(\"relative overflow-hidden\", className)}>\n      <svg\n        viewBox=\"0 0 100 100\"\n        preserveAspectRatio=\"none\"\n        className=\"absolute inset-0 size-full text-foreground/45\"\n      >\n        {paths.map((d, index) => (\n          <path\n            key={d}\n            d={d}\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth=\"0.35\"\n            pathLength={1}\n            style={{\n              strokeDasharray: 1,\n              strokeDashoffset: 0.15,\n              animation: `path-draw 2.4s ${index * 80}ms ease forwards, path-flow 8s ${index * 200}ms linear infinite`,\n            }}\n          />\n        ))}\n      </svg>\n    </div>\n  )\n}\n\nexport { BackgroundPaths }\n"
+    }
+  ]
+}

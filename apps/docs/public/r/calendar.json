@@ -6,7 +6,6 @@
   "description": "日期选择日历。",
   "dependencies": [
     "react-day-picker",
-    "date-fns",
     "lucide-react"
   ],
   "registryDependencies": [

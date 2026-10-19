@@ -47,6 +47,9 @@ function staticJson(): AuditStaticJson {
 }
 
 function repoInput(exceptions: AuditInput["exceptions"]): AuditInput {
+  const packageJson = readJson(path.join(repoRoot, "packages/registry/package.json")) as {
+    dependencies?: Record<string, string>
+  }
   return {
     catalog: components,
     readSource: (file) => {
@@ -58,31 +61,67 @@ function repoInput(exceptions: AuditInput["exceptions"]): AuditInput {
     readme: fs.readFileSync(path.join(repoRoot, "README.md"), "utf8"),
     staticJson: staticJson(),
     exceptions,
+    packageDependencies: Object.keys(packageJson.dependencies ?? {}),
   }
+}
+
+function component(name: string) {
+  const item = components.find((entry) => entry.name === name)
+  if (!item) throw new Error(`catalog 缺少 ${name}`)
+  return item
 }
 
 test("examples 导出 demo 映射的键名，审计可以直接导入", () => {
   expect(demoNames).toContain("button")
   expect(demoNames).not.toContain("utils")
+  expect(demoNames).not.toContain("use-mobile")
 })
 
-test("未套用例外时，当前仓库只报告 use-mobile 未登记", () => {
+test("use-mobile 以 registry:hook 安装到 hooks 目录", () => {
+  expect(component("use-mobile")).toMatchObject({
+    type: "registry:hook",
+    file: "hooks/use-mobile.ts",
+    target: "hooks/use-mobile.ts",
+  })
+})
+
+test("sidebar、input-group、toggle-group 的依赖声明与源码一致", () => {
+  expect([...component("sidebar").registryDependencies].sort()).toEqual([
+    "button",
+    "separator",
+    "sheet",
+    "use-mobile",
+    "utils",
+  ])
+  expect([...component("input-group").registryDependencies].sort()).toEqual([
+    "button",
+    "input",
+    "textarea",
+    "utils",
+  ])
+  expect([...component("toggle-group").dependencies].sort()).toEqual([
+    "@radix-ui/react-toggle-group",
+    "class-variance-authority",
+  ])
+})
+
+test("未套用例外时只报告保留的 @tiptap/pm peer 依赖", () => {
   expect(auditRegistry(repoInput([]))).toEqual([
     {
-      name: "use-mobile",
-      type: "unregistered-source",
-      description: "源码文件 hooks/use-mobile.ts 未登记到 catalog。",
+      name: "rich-text-editor",
+      type: "extra-npm-dependency",
+      description: "dependencies 声明了 “@tiptap/pm”，但源码未引用。",
     },
   ])
 })
 
-test("use-mobile 临时例外写明原因，套用后仓库结构审计没有问题", () => {
+test("use-mobile 临时例外已移除，套用例外后仓库审计没有问题", () => {
   expect(auditExceptions).toEqual([
     {
-      name: "use-mobile",
-      type: "unregistered-source",
-      reason:
-        "hooks/use-mobile.ts 尚未登记。依赖检查会把它登记为 registry:hook，此前临时例外。",
+      name: "rich-text-editor",
+      type: "extra-npm-dependency",
+      dependency: "@tiptap/pm",
+      reason: "@tiptap/pm 是 @tiptap/react 的 peer 依赖，安装组件时保留。",
     },
   ])
   expect(auditRegistry(repoInput(auditExceptions))).toEqual([])

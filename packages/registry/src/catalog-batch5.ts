@@ -30,7 +30,7 @@ export const batch5Components: ComponentMeta[] = [
     source: "shadcn/ui",
     type: "registry:ui",
     dependencies: ["class-variance-authority"],
-    registryDependencies: ["utils", "button"],
+    registryDependencies: ["utils", "button", "input", "textarea"],
     file: "ui/input-group.tsx",
     target: "components/ui/input-group.tsx",
     props: ui,

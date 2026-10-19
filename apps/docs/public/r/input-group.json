@@ -9,7 +9,9 @@
   ],
   "registryDependencies": [
     "utils",
-    "button"
+    "button",
+    "input",
+    "textarea"
   ],
   "files": [
     {

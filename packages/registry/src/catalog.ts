@@ -56,7 +56,7 @@ export interface ComponentMeta {
   description: string
   category: ComponentCategory
   source: SourceLibrary
-  type: "registry:ui" | "registry:lib"
+  type: "registry:ui" | "registry:lib" | "registry:hook"
   dependencies: string[]
   registryDependencies: string[]
   file: string
@@ -114,6 +114,19 @@ export const components: ComponentMeta[] = [
     registryDependencies: [],
     file: "lib/utils.ts",
     target: "lib/utils.ts",
+    props: [],
+  },
+  {
+    name: "use-mobile",
+    title: "Use Mobile",
+    description: "视口宽度小于 768px 时返回 true。",
+    category: "ui",
+    source: "shadcn/ui",
+    type: "registry:hook",
+    dependencies: [],
+    registryDependencies: [],
+    file: "hooks/use-mobile.ts",
+    target: "hooks/use-mobile.ts",
     props: [],
   },
   {
@@ -916,8 +929,8 @@ export function getComponentsByCategory() {
   return categoryOrder.map((category) => ({
     category,
     label: categoryLabels[category],
-    items: components.filter((item) => item.category === category && item.name !== "utils"),
+    items: components.filter((item) => item.category === category && item.type === "registry:ui"),
   }))
 }
 
-export const visibleComponents = components.filter((item) => item.name !== "utils")
+export const visibleComponents = components.filter((item) => item.type === "registry:ui")

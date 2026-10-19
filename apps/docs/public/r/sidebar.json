@@ -13,7 +13,8 @@
     "utils",
     "button",
     "separator",
-    "sheet"
+    "sheet",
+    "use-mobile"
   ],
   "files": [
     {

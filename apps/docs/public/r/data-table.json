@@ -8,7 +8,6 @@
     "@tanstack/react-table"
   ],
   "registryDependencies": [
-    "utils",
     "button",
     "table"
   ],

@@ -56,7 +56,7 @@ pnpm registry:build
 
 ```
 apps/docs              Next.js 文档 / 演示站
-packages/registry      组件源码（ui + effects + examples）
+packages/registry      组件源码（ui、effects、hooks、lib、examples）
 scripts/build-registry.ts
 registry.json          shadcn 兼容总表
 ```
@@ -65,7 +65,11 @@ registry.json          shadcn 兼容总表
 
 ### 基础组件（shadcn/ui）
 
-button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table · field · input-group · button-group · kbd · empty · item · native-select · combobox · date-picker（官方文档组合，无独立 registry JSON） · typography（同上） · direction
+button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table · field · input-group · button-group · kbd · empty · item · native-select · combobox · date-picker · typography · direction
+
+### Hooks
+
+use-mobile
 
 ### 文字动画
 
@@ -245,6 +249,21 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | audio-waveform | wavesurfer.js（BSD-3） |
 | toast-stack | Kokonut UI（免费 MIT） |
 | notification-center | Kokonut UI（免费 MIT） |
+
+## 新增组件
+
+`date-picker` 和 `typography` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住：
+
+1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。
+2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`dependencies`、`registryDependencies`、`file`、`target`、`props`。
+   - `type` 为 `registry:ui`、`registry:lib` 或 `registry:hook`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。
+   - `dependencies` 与源码 import 一致，包括 type-only import 和动态 `import()`。不要写 `react`、`react-dom`。
+   - 上面的别名和同目录相对引用写入 `registryDependencies`。
+   - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`。
+3. **demo**：`registry:ui` 在 `packages/registry/src/examples/` 增加 Demo，并登记到 `examples/index.ts` 的 `demoMap`。`registry:lib` 和 `registry:hook` 不需要 demo 和 Props。
+4. **README** 组件列表写上独立组件名。
+5. **例外**：必须保留源码没有直接引用的依赖时（例如 `@tiptap/pm` 作为 peer），在 `packages/registry/src/audit-exceptions.ts` 写明组件、问题类型和原因。
+6. 运行 `pnpm registry:build`，更新根目录 `registry.json` 和 `apps/docs/public/r/`。
 
 ---
 

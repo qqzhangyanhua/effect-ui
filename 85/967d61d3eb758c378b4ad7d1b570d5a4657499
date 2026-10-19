@@ -1,0 +1,40 @@
+README.md
+  h_4132837b09b7e7 59,68-72,253-267
+apps/docs/public/r/input-group.json
+  h_4132837b09b7e7 12-14
+apps/docs/public/r/registry.json
+  h_4132837b09b7e7 24-38,1484-1485,1555-1556,2839-2841
+apps/docs/public/r/sidebar.json
+  h_4132837b09b7e7 16-17
+apps/docs/public/r/toggle-group.json
+  h_4132837b09b7e7 8-9
+apps/docs/public/r/use-mobile.json
+  h_4132837b09b7e7 1-17
+packages/registry/src/audit-exceptions.ts
+  h_4132837b09b7e7 6-9
+packages/registry/src/audit.repo.test.ts
+  h_4132837b09b7e7 50-52,64,68-73,77-105,108,111-113,118,121-124
+packages/registry/src/audit.test.ts
+  h_4132837b09b7e7 38,50,60,64-92,226-241,366-552
+packages/registry/src/audit.ts
+  h_4132837b09b7e7 16-21,37-38,54,65,127-497,504-514,523-524,590-592
+packages/registry/src/catalog-batch2.ts
+  h_4132837b09b7e7 71,293,344,358
+packages/registry/src/catalog-batch5.ts
+  h_4132837b09b7e7 33
+packages/registry/src/catalog.ts
+  h_4132837b09b7e7 59,119-131,932,936
+registry.json
+  h_4132837b09b7e7 24-38,1484-1485,1555-1556,2839-2841
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "85967d61d3eb758c378b4ad7d1b570d5a4657499",
+  "prompts": {},
+  "humans": {
+    "h_4132837b09b7e7": {
+      "author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

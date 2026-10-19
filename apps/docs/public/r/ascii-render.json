@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ascii-render",
+  "type": "registry:ui",
+  "title": "ASCII Render",
+  "description": "把图片采样成 ASCII 字符画。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/ascii-render.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/ascii-render.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AsciiRenderProps {\n  src: string\n  className?: string\n  charset?: string\n}\n\nconst DEFAULT_CHARS = \" .:-=+*#%@\"\n\nfunction AsciiRender({ src, className, charset = DEFAULT_CHARS }: AsciiRenderProps) {\n  const preRef = React.useRef<HTMLPreElement>(null)\n\n  React.useEffect(() => {\n    const img = new Image()\n    img.crossOrigin = \"anonymous\"\n    img.src = src\n    img.onload = () => {\n      const canvas = document.createElement(\"canvas\")\n      const cols = 56\n      const scale = cols / img.width\n      const rows = Math.max(8, Math.floor(img.height * scale * 0.46))\n      canvas.width = cols\n      canvas.height = rows\n      const ctx = canvas.getContext(\"2d\")\n      if (!ctx || !preRef.current) return\n      ctx.drawImage(img, 0, 0, cols, rows)\n      const data = ctx.getImageData(0, 0, cols, rows).data\n      let out = \"\"\n      for (let y = 0; y < rows; y += 1) {\n        for (let x = 0; x < cols; x += 1) {\n          const i = (y * cols + x) * 4\n          const lum = ((data[i] ?? 0) * 0.3 + (data[i + 1] ?? 0) * 0.59 + (data[i + 2] ?? 0) * 0.11) / 255\n          out += charset[Math.min(charset.length - 1, Math.floor(lum * (charset.length - 1)))] ?? \" \"\n        }\n        out += \"\\n\"\n      }\n      preRef.current.textContent = out\n    }\n  }, [charset, src])\n\n  return (\n    <pre\n      ref={preRef}\n      className={cn(\n        \"overflow-auto rounded-xl border bg-zinc-950 p-3 font-mono text-[7px] leading-[7px] text-emerald-300\",\n        className,\n      )}\n    >\n      加载 ASCII…\n    </pre>\n  )\n}\n\nexport { AsciiRender }\n"
+    }
+  ]
+}

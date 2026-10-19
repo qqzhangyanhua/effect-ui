@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-typography",
+  "type": "registry:ui",
+  "title": "Scroll Typography",
+  "description": "滚动揭示字母（clip / blur / scale / slide）。Codrops MIT 灵感，用 Motion 重写，未使用 GSAP。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scroll-typography.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-typography.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll, useTransform } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type ScrollTypographyVariant = \"clip\" | \"blur\" | \"scale\" | \"slide\"\n\nexport interface ScrollTypographyProps {\n  text: string\n  variant?: ScrollTypographyVariant\n  className?: string\n}\n\nfunction ScrollTypography({ text, variant = \"clip\", className }: ScrollTypographyProps) {\n  const ref = React.useRef<HTMLDivElement>(null)\n  const { scrollYProgress } = useScroll({ target: ref, offset: [\"start 0.9\", \"end 0.35\"] })\n  const letters = Array.from(text)\n\n  return (\n    <div ref={ref} className={cn(\"flex flex-wrap justify-center gap-x-1 font-display text-4xl\", className)}>\n      {letters.map((letter, index) => (\n        <Letter key={`${letter}-${index}`} progress={scrollYProgress} index={index} total={letters.length} variant={variant}>\n          {letter === \" \" ? \"\\u00a0\" : letter}\n        </Letter>\n      ))}\n    </div>\n  )\n}\n\nfunction Letter({\n  children,\n  progress,\n  index,\n  total,\n  variant,\n}: {\n  children: string\n  progress: ReturnType<typeof useScroll>[\"scrollYProgress\"]\n  index: number\n  total: number\n  variant: ScrollTypographyVariant\n}) {\n  const start = index / total\n  const end = Math.min(1, start + 0.18)\n  const t = useTransform(progress, [start, end], [0, 1])\n  const opacity = useTransform(t, [0, 1], [0.15, 1])\n  const y = useTransform(t, [0, 1], [variant === \"slide\" ? 28 : 0, 0])\n  const scale = useTransform(t, [0, 1], [variant === \"scale\" ? 1.45 : 1, 1])\n  const blur = useTransform(t, [0, 1], [variant === \"blur\" ? 10 : 0, 0])\n  const clip = useTransform(t, [0, 1], [variant === \"clip\" ? 100 : 0, 0])\n  const filter = useTransform(blur, (value) => `blur(${value}px)`)\n  const clipPath = useTransform(clip, (value) => `inset(0 ${value}% 0 0)`)\n\n  return (\n    <motion.span style={{ opacity, y, scale, filter, clipPath }} className=\"inline-block origin-bottom\">\n      {children}\n    </motion.span>\n  )\n}\n\nexport { ScrollTypography }\n"
+    }
+  ]
+}

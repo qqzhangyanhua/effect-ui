@@ -3426,6 +3426,275 @@
           "target": "components/ui/halftone.tsx"
         }
       ]
+    },
+    {
+      "name": "splash-cursor",
+      "type": "registry:ui",
+      "title": "Splash Cursor",
+      "description": "WebGL 流体喷溅光标。移植自 PavelDoGreat/WebGL-Fluid-Simulation（MIT），无 WebGL 时回退渐变。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/splash-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/splash-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shader-pack-2",
+      "type": "registry:ui",
+      "title": "Shader Pack 2",
+      "description": "Paper Shaders 第二组预设：liquid-metal、god-rays、water、smoke-ring、pulsing-border、voronoi、swirl、fluted-glass。",
+      "dependencies": [
+        "@paper-design/shaders-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shader-pack-2.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shader-pack-2.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-along-path",
+      "type": "registry:ui",
+      "title": "Text Along Path",
+      "description": "文字沿 SVG 路径排列。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-along-path.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-along-path.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-typography",
+      "type": "registry:ui",
+      "title": "Scroll Typography",
+      "description": "滚动揭示字母（clip / blur / scale / slide）。Codrops MIT 灵感，用 Motion 重写，未使用 GSAP。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-typography.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-typography.tsx"
+        }
+      ]
+    },
+    {
+      "name": "3d-carousel",
+      "type": "registry:ui",
+      "title": "3D Carousel",
+      "description": "透视圆环 3D 轮播。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/three-d-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/three-d-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "siri-orb",
+      "type": "registry:ui",
+      "title": "Siri Orb",
+      "description": "多层锥形渐变的 AI 光球。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/siri-orb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/siri-orb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gravity",
+      "type": "registry:ui",
+      "title": "Gravity",
+      "description": "matter-js 刚体下落与拖拽。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gravity.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gravity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii-render",
+      "type": "registry:ui",
+      "title": "ASCII Render",
+      "description": "把图片采样成 ASCII 字符画。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ascii-render.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ascii-render.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lamp-heading",
+      "type": "registry:ui",
+      "title": "Lamp Heading",
+      "description": "灵感来自 lamp heading，原创实现：顶部灯罩高光落在大标题上。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lamp-heading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lamp-heading.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tracing-beam",
+      "type": "registry:ui",
+      "title": "Tracing Beam",
+      "description": "灵感来自 tracing-beam / svg-scroll-paths，原创实现：滚动点亮竖线，并描出 SVG 路径。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tracing-beam.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tracing-beam.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container-scroll-3d",
+      "type": "registry:ui",
+      "title": "Container Scroll 3D",
+      "description": "灵感来自 container-scroll，原创实现：滚动时容器从透视翻正。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/container-scroll-3d.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/container-scroll-3d.tsx"
+        }
+      ]
+    },
+    {
+      "name": "circular-gallery",
+      "type": "registry:ui",
+      "title": "Circular Gallery",
+      "description": "灵感来自 circular gallery，原创实现：OGL 环形相册，无 WebGL 时 CSS 3D 回退。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/circular-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/circular-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glowing-edge",
+      "type": "registry:ui",
+      "title": "Glowing Edge",
+      "description": "灵感来自 Linear 发光描边，原创实现：旋转锥形渐变边。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glowing-edge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glowing-edge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-image-sequence",
+      "type": "registry:ui",
+      "title": "Scroll Image Sequence",
+      "description": "灵感来自 Apple 产品页，原创实现：滚动切换序列帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-image-sequence.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-image-sequence.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pixel-transition",
+      "type": "registry:ui",
+      "title": "Pixel Transition",
+      "description": "灵感来自 pixel transition，原创实现：像素格淡出切换画面。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pixel-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pixel-transition.tsx"
+        }
+      ]
     }
   ]
 }

@@ -37,14 +37,14 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/nolly-studio/cult-ui
 - 许可：MIT
 - 版权：Copyright (c) 2023 Jordan-Gilliam
-- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`
+- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`
 
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`
+- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`
 
 ## Kibo UI
 
@@ -75,8 +75,8 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - npm：`@paper-design/shaders` / `@paper-design/shaders-react` 0.0.81
 - LICENSE / NOTICE：`licenses/apache/paper-shaders/`
 - NOTICE 原文：Powered by Paper Shaders: https://shaders.paper.design
-- 衍生组件：`shader-backgrounds`
-- **改动说明**：未修改上游着色器或 npm 包源码。本仓库只提供 React 封装，按 `variant` 选择 MeshGradient / GrainGradient / Dithering / Metaballs / Warp，并传入调色板与容器尺寸。
+- 衍生组件：`shader-backgrounds`、`shader-pack-2`
+- **改动说明**：未修改上游着色器或 npm 包源码。本仓库只提供 React 封装。`shader-backgrounds` 选择 MeshGradient / GrainGradient / Dithering / Metaballs / Warp；`shader-pack-2` 选择 LiquidMetal / GodRays / Water / SmokeRing / PulsingBorder / Voronoi / Swirl / FlutedGlass。
 
 ## Kokonut UI（免费 GitHub 组件）
 
@@ -166,7 +166,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/educlopez/smoothui
 - 许可：MIT
 - 版权：Copyright (c) 2024 Eduardo Calvo
-- 衍生组件：`holographic-foil`、`floating-label-input`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）
+- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）
 
 ## frimousse
 
@@ -184,8 +184,30 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 衍生组件：`audio-waveform`（薄封装，重依赖单独成 registry 条目）
 - 再分发须保留版权声明与免责条款；本仓库未修改 wavesurfer 源码。
 
+## WebGL Fluid Simulation（PavelDoGreat）
+
+- 仓库：https://github.com/PavelDoGreat/WebGL-Fluid-Simulation
+- 许可：MIT
+- 版权：Copyright (c) 2017 Pavel Dobryakov
+- LICENSE：`licenses/mit/webgl-fluid-simulation/LICENSE`
+- 衍生组件：`splash-cursor`（精简移植 splat / 衰减显示管线，未拷贝 React Bits）
+
+## Codrops
+
+- 仓库：https://github.com/codrops/OnScrollTypographyAnimations
+- 许可：MIT
+- 衍生组件：`scroll-typography`（按滚动揭示效果用 Motion 重写，**未使用 GSAP**）
+
+## matter-js
+
+- 仓库：https://github.com/liabru/matter-js
+- 许可：MIT
+- 版权：Copyright (c) 2014-2026 Liam Brummitt
+- 衍生组件：`gravity`（薄封装，重依赖单独成 registry 条目）
+
 ## 本仓库原创实现
 
 - `aurora-background`、`cursor-follow`、`glass-card`、`neon-button`、`spinner`、`parallax`、`starfield`、`wave-background`、`noise-gradient`、`globe-sphere`、`cursor-trail`、`perspective-card`、`gooey-button`、`floating-navbar`、`animated-sidebar`、`page-transition`、`tree-view`、`onboarding-tour`、`infinite-scroll`、`password-strength`、`currency-input`、`quantity-stepper`、`dashboard-blocks`、`ecommerce-blocks`
+- Batch 6 Group B（灵感来自常见效果，**未打开原仓库源码**）：`lamp-heading`、`tracing-beam` / `SvgScrollPath`、`container-scroll-3d`、`circular-gallery`、`glowing-edge`、`scroll-image-sequence`、`pixel-transition`
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

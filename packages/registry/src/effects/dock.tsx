@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface DockProps {
@@ -46,6 +47,7 @@ function DockIcon({
   mouseX: ReturnType<typeof useMotionValue<number>>
   magnification: number
 }) {
+  const reduceMotion = usePrefersReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
   const distance = useTransform(mouseX, (value) => {
     const bounds = ref.current?.getBoundingClientRect()
@@ -58,7 +60,7 @@ function DockIcon({
   return (
     <motion.div
       ref={ref}
-      style={{ width }}
+      style={{ width: reduceMotion ? 40 : width }}
       className="flex aspect-square items-center justify-center rounded-xl bg-muted"
     >
       {children}

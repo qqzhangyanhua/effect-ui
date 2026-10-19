@@ -25,11 +25,11 @@ function ShineBorder({
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-[inherit]"
+        className="pointer-events-none absolute inset-0 rounded-[inherit] animate-[shine-spin_linear_infinite] motion-reduce:animate-none"
         style={{
           padding: 1,
           background: `conic-gradient(from var(--shine-angle), transparent 0%, ${shineColor} 12%, transparent 28%)`,
-          animation: `shine-spin ${duration}s linear infinite`,
+          animationDuration: `${duration}s`,
           mask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
           maskComposite: "exclude",
         }}

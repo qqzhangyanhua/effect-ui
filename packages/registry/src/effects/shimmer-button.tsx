@@ -24,7 +24,7 @@ function ShimmerButton({
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer-sweep_2.2s_infinite] bg-linear-to-r from-transparent via-white/40 to-transparent"
+        className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer-sweep_2.2s_infinite] motion-reduce:animate-none bg-linear-to-r from-transparent via-white/40 to-transparent"
         style={{
           backgroundImage: `linear-gradient(90deg, transparent, ${shimmerColor}, transparent)`,
         }}

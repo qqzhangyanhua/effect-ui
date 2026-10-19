@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useScroll, useTransform } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface TextRevealProps {
@@ -11,6 +12,7 @@ export interface TextRevealProps {
 }
 
 function TextReveal({ text, className }: TextRevealProps) {
+  const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLParagraphElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -24,11 +26,17 @@ function TextReveal({ text, className }: TextRevealProps) {
       data-slot="text-reveal"
       className={cn("flex flex-wrap gap-x-2 gap-y-1 text-2xl font-medium", className)}
     >
-      {words.map((word, index) => (
-        <Word key={`${word}-${index}`} progress={scrollYProgress} index={index} total={words.length}>
-          {word}
-        </Word>
-      ))}
+      {words.map((word, index) =>
+        reduced ? (
+          <span key={`${word}-${index}`} className="inline-block">
+            {word}
+          </span>
+        ) : (
+          <Word key={`${word}-${index}`} progress={scrollYProgress} index={index} total={words.length}>
+            {word}
+          </Word>
+        ),
+      )}
     </p>
   )
 }

@@ -16,7 +16,7 @@ function PulseButton({ className, children, ...props }: PulseButtonProps) {
     >
       <span
         aria-hidden
-        className="absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] rounded-full bg-primary/40"
+        className="absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full bg-primary/40"
       />
       {children}
     </button>

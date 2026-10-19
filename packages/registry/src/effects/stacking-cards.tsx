@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 interface StackingCardsContextValue {
@@ -58,10 +59,15 @@ function StackingCardItem({
   children: React.ReactNode
   className?: string
 }) {
+  const reduce = usePrefersReducedMotion()
   const { progress, totalCards, scaleMultiplier } = useStackingCards()
   const scaleTo = 1 - (totalCards - index) * scaleMultiplier
   const scale = useTransform(progress, [index * (1 / totalCards), 1], [1, scaleTo])
   const top = `${8 + index * 12}px`
+
+  if (reduce) {
+    return <div className={cn("relative", className)}>{children}</div>
+  }
 
   return (
     <div className={cn("sticky top-4 h-full", className)}>

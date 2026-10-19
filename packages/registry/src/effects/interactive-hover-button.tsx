@@ -20,10 +20,10 @@ function InteractiveHoverButton({
       )}
       {...props}
     >
-      <span className="inline-flex items-center gap-2 transition-transform duration-300 group-hover:-translate-x-3">
+      <span className="inline-flex items-center gap-2 transition-transform duration-300 group-hover:-translate-x-3 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0">
         {children}
       </span>
-      <ArrowRight className="absolute right-4 size-4 translate-x-6 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+      <ArrowRight className="absolute right-4 size-4 translate-x-6 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:translate-x-0" />
     </button>
   )
 }

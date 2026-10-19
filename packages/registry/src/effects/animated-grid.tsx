@@ -27,7 +27,7 @@ function AnimatedGrid({ className, cell = 36, ...props }: AnimatedGridProps) {
         width="100%"
         height="100%"
         fill={`url(#${id})`}
-        className="animate-[grid-drift_12s_linear_infinite]"
+        className="animate-[grid-drift_12s_linear_infinite] motion-reduce:animate-none"
       />
     </svg>
   )

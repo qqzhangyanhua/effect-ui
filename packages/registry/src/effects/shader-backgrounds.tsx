@@ -9,6 +9,7 @@ import {
   Warp,
 } from "@paper-design/shaders-react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export type ShaderBackgroundVariant =
@@ -40,7 +41,13 @@ function ShaderLayer({
   variant: ShaderBackgroundVariant
   colors: string[]
 }) {
-  const shared = { className: "size-full", width: "100%", height: "100%" }
+  const reducedMotion = usePrefersReducedMotion()
+  const shared = {
+    className: "size-full",
+    width: "100%",
+    height: "100%",
+    speed: reducedMotion ? 0 : undefined,
+  }
 
   if (variant === "grain") {
     return <GrainGradient {...shared} colors={colors} colorBack={colors[0]} />

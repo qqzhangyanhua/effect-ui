@@ -108,7 +108,7 @@ function VideoPlayer({ src, poster, className }: VideoPlayerProps) {
         onClick={togglePlay}
         playsInline
       />
-      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 bg-linear-to-t from-black/70 to-transparent p-3 text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 bg-linear-to-t from-black/70 to-transparent p-3 text-white opacity-0 transition-opacity motion-reduce:transition-none group-hover:opacity-100 group-focus-within:opacity-100">
         <input
           type="range"
           min={0}

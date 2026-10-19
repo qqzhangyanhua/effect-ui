@@ -18,6 +18,7 @@ function CursorTrail({ className, children, dots = 8, ...props }: CursorTrailPro
       data-slot="cursor-trail"
       className={cn("relative overflow-hidden", className)}
       onMouseMove={(event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
         const rect = event.currentTarget.getBoundingClientRect()
         const next = { x: event.clientX - rect.left, y: event.clientY - rect.top }
         setPoints((current) => [next, ...current.slice(0, dots - 1)])

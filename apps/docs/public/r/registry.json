@@ -37,6 +37,21 @@
       ]
     },
     {
+      "name": "use-prefers-reduced-motion",
+      "type": "registry:hook",
+      "title": "Use Prefers Reduced Motion",
+      "description": "系统开启减弱动态效果时返回 true，并在偏好变化时更新。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-prefers-reduced-motion.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-prefers-reduced-motion.ts"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -424,6 +439,7 @@
       "description": "打字机文字动画。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -494,6 +510,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -513,6 +530,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -532,6 +550,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -670,6 +689,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -689,6 +709,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -708,6 +729,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -727,6 +749,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -967,6 +990,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -986,6 +1010,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1005,6 +1030,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1024,6 +1050,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1043,6 +1070,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1594,6 +1622,7 @@
       "description": "解密/乱码还原文字。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1613,6 +1642,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1632,6 +1662,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1651,6 +1682,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1670,6 +1702,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1791,6 +1824,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1844,6 +1878,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1965,6 +2000,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -1984,6 +2020,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2056,6 +2093,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2075,6 +2113,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2094,6 +2133,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2113,6 +2153,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2132,6 +2173,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2151,6 +2193,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2171,6 +2214,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2247,6 +2291,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2266,6 +2311,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2285,6 +2331,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2300,10 +2347,9 @@
       "type": "registry:ui",
       "title": "Variable Font Proximity",
       "description": "可变字体字重随鼠标距离变化。",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2513,6 +2559,7 @@
         "@paper-design/shaders-react"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2734,6 +2781,7 @@
       "description": "逐行打字的终端窗口。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3349,6 +3397,7 @@
       "description": "粒子遮挡，点击揭示。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3559,6 +3608,7 @@
         "matter-js"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [

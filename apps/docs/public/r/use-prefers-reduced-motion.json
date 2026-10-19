@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-prefers-reduced-motion",
+  "type": "registry:hook",
+  "title": "Use Prefers Reduced Motion",
+  "description": "系统开启减弱动态效果时返回 true，并在偏好变化时更新。",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/hooks/use-prefers-reduced-motion.ts",
+      "type": "registry:hook",
+      "target": "hooks/use-prefers-reduced-motion.ts",
+      "content": "\"use client\"\n\nimport { useSyncExternalStore } from \"react\"\n\nconst QUERY = \"(prefers-reduced-motion: reduce)\"\n\nfunction subscribe(onStoreChange: () => void) {\n  const media = window.matchMedia(QUERY)\n  media.addEventListener(\"change\", onStoreChange)\n  return () => media.removeEventListener(\"change\", onStoreChange)\n}\n\nfunction getSnapshot() {\n  return window.matchMedia(QUERY).matches\n}\n\n// 服务端没有媒体查询。固定 false，避免和首屏 hydration 不一致。\nfunction getServerSnapshot() {\n  return false\n}\n\nexport function usePrefersReducedMotion() {\n  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\n}\n"
+    }
+  ]
+}

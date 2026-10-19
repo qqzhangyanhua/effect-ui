@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%"
@@ -13,9 +14,11 @@ export interface ScrambleTextProps {
 }
 
 function ScrambleText({ text, className, duration = 900 }: ScrambleTextProps) {
+  const reduced = usePrefersReducedMotion()
   const [output, setOutput] = React.useState(text)
 
   React.useEffect(() => {
+    if (reduced) return
     const start = performance.now()
     let frame = 0
     const tick = (now: number) => {
@@ -30,11 +33,11 @@ function ScrambleText({ text, className, duration = 900 }: ScrambleTextProps) {
     }
     frame = window.requestAnimationFrame(tick)
     return () => window.cancelAnimationFrame(frame)
-  }, [duration, text])
+  }, [duration, reduced, text])
 
   return (
     <span data-slot="scramble-text" className={cn("font-mono", className)}>
-      {output}
+      {reduced ? text : output}
     </span>
   )
 }

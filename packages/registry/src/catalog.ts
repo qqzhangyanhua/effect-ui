@@ -3,6 +3,7 @@ import { batch3Components } from "./catalog-batch3"
 import { batch4Components } from "./catalog-batch4"
 import { batch5Components } from "./catalog-batch5"
 import { batch6Components } from "./catalog-batch6"
+import { batch7Components } from "./catalog-batch7"
 
 export type ComponentCategory =
   | "ui"
@@ -47,6 +48,12 @@ export type SourceLibrary =
   | "Codrops"
   | "matter-js"
   | "WebGL Fluid Simulation"
+  | "vfx-js"
+  | "OGL"
+  | "pixel-canvas"
+  | "Atropos"
+  | "rough-notation"
+  | "mo.js"
   | "original"
 
 export interface PropDoc {
@@ -128,6 +135,15 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "react-photo-album": "https://react-photo-album.com",
   "yet-another-react-lightbox": "https://yet-another-react-lightbox.com",
   "react-phone-number-input": "https://catamphetamine.gitlab.io/react-phone-number-input/",
+  Codrops: "https://tympanus.net/codrops",
+  "matter-js": "https://brm.io/matter-js",
+  "WebGL Fluid Simulation": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
+  "vfx-js": "https://amagi.dev/vfx-js",
+  OGL: "https://github.com/oframe/ogl",
+  "pixel-canvas": "https://github.com/hexagoncircle/pixel-canvas",
+  Atropos: "https://atroposjs.com",
+  "rough-notation": "https://roughnotation.com",
+  "mo.js": "https://mojs.github.io",
   original: null,
 }
 
@@ -957,6 +973,7 @@ export const components: ComponentMeta[] = [
   ...batch4Components,
   ...batch5Components,
   ...batch6Components,
+  ...batch7Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

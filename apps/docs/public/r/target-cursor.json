@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "target-cursor",
+  "type": "registry:ui",
+  "title": "Target Cursor",
+  "description": "灵感来自 target cursor，原创实现：四角括号吸附到 data-target。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/target-cursor.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/target-cursor.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface TargetCursorProps {\n  className?: string\n  children?: React.ReactNode\n}\n\nfunction TargetCursor({ className, children }: TargetCursorProps) {\n  const rootRef = React.useRef<HTMLDivElement>(null)\n  const cursor = React.useRef({ x: 80, y: 80, w: 28, h: 28 })\n  const target = React.useRef({ x: 80, y: 80, w: 28, h: 28 })\n  const [box, setBox] = React.useState({ x: 80, y: 80, w: 28, h: 28 })\n\n  React.useEffect(() => {\n    const reduced = window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches\n    let frame = 0\n    const tick = () => {\n      const ease = reduced ? 1 : 0.22\n      cursor.current = {\n        x: cursor.current.x + (target.current.x - cursor.current.x) * ease,\n        y: cursor.current.y + (target.current.y - cursor.current.y) * ease,\n        w: cursor.current.w + (target.current.w - cursor.current.w) * ease,\n        h: cursor.current.h + (target.current.h - cursor.current.h) * ease,\n      }\n      setBox({ ...cursor.current })\n      frame = window.requestAnimationFrame(tick)\n    }\n    frame = window.requestAnimationFrame(tick)\n    return () => window.cancelAnimationFrame(frame)\n  }, [])\n\n  const corner = \"absolute size-3 border-primary\"\n  return (\n    <div\n      ref={rootRef}\n      className={cn(\"relative min-h-56 overflow-hidden rounded-xl border bg-muted/30 p-8\", className)}\n      onPointerMove={(event) => {\n        const root = rootRef.current\n        if (!root) return\n        const rect = root.getBoundingClientRect()\n        const hit = (event.target as HTMLElement).closest(\"[data-target]\")\n        if (hit) {\n          const boxRect = hit.getBoundingClientRect()\n          target.current = {\n            x: boxRect.left - rect.left,\n            y: boxRect.top - rect.top,\n            w: boxRect.width,\n            h: boxRect.height,\n          }\n          return\n        }\n        target.current = {\n          x: event.clientX - rect.left - 14,\n          y: event.clientY - rect.top - 14,\n          w: 28,\n          h: 28,\n        }\n      }}\n    >\n      <div\n        className=\"pointer-events-none absolute z-20\"\n        style={{ left: box.x, top: box.y, width: box.w, height: box.h }}\n      >\n        <span className={cn(corner, \"top-0 left-0 border-t-2 border-l-2\")} />\n        <span className={cn(corner, \"top-0 right-0 border-t-2 border-r-2\")} />\n        <span className={cn(corner, \"bottom-0 left-0 border-b-2 border-l-2\")} />\n        <span className={cn(corner, \"right-0 bottom-0 border-b-2 border-r-2\")} />\n      </div>\n      {children ?? (\n        <div className=\"flex flex-wrap gap-3\">\n          <button data-target className=\"rounded-md border bg-background px-4 py-2 text-sm\">\n            目标 A\n          </button>\n          <button data-target className=\"rounded-md border bg-background px-4 py-2 text-sm\">\n            目标 B\n          </button>\n          <button data-target className=\"rounded-md border bg-background px-4 py-2 text-sm\">\n            目标 C\n          </button>\n        </div>\n      )}\n    </div>\n  )\n}\n\nexport { TargetCursor }\n"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import * as effectDemos3 from "./effect-demos-3"
 import * as effectDemos4 from "./effect-demos-4"
 import * as effectDemos5 from "./effect-demos-5"
 import * as effectDemos6 from "./effect-demos-6"
+import * as effectDemos7 from "./effect-demos-7"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -210,6 +211,22 @@ const demoMap: Record<string, ComponentType> = {
   "glowing-edge": effectDemos6.GlowingEdgeDemo,
   "scroll-image-sequence": effectDemos6.ScrollImageSequenceDemo,
   "pixel-transition": effectDemos6.PixelTransitionDemo,
+  "vfx-element": effectDemos7.VfxElementDemo,
+  "mouse-flowmap": effectDemos7.MouseFlowmapDemo,
+  "gpgpu-particles": effectDemos7.GpgpuParticlesDemo,
+  "polyline-ribbon-cursor": effectDemos7.PolylineRibbonCursorDemo,
+  "pixel-canvas-card": effectDemos7.PixelCanvasCardDemo,
+  "atropos-card": effectDemos7.AtroposCardDemo,
+  "rough-annotation": effectDemos7.RoughAnnotationDemo,
+  "burst-icons": effectDemos7.BurstIconsDemo,
+  "marquee-along-svg-path": effectDemos7.MarqueeAlongSvgPathDemo,
+  "evervault-card": effectDemos7.EvervaultCardDemo,
+  "canvas-reveal": effectDemos7.CanvasRevealDemo,
+  "letter-glitch-wall": effectDemos7.LetterGlitchWallDemo,
+  "target-cursor": effectDemos7.TargetCursorDemo,
+  lightning: effectDemos7.LightningDemo,
+  iridescence: effectDemos7.IridescenceDemo,
+  silk: effectDemos7.SilkDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

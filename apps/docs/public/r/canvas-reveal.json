@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "canvas-reveal",
+  "type": "registry:ui",
+  "title": "Canvas Reveal",
+  "description": "灵感来自 dot-matrix reveal，原创实现：点阵涟漪揭开下层内容。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/canvas-reveal.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/canvas-reveal.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface CanvasRevealProps {\n  className?: string\n  gap?: number\n  children?: React.ReactNode\n}\n\nfunction CanvasReveal({ className, gap = 10, children }: CanvasRevealProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n  const ripples = React.useRef<{ x: number; y: number; r: number }[]>([])\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n    const reduced = window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches\n\n    const resize = () => {\n      const rect = canvas.getBoundingClientRect()\n      canvas.width = Math.floor(rect.width)\n      canvas.height = Math.floor(rect.height)\n    }\n    resize()\n\n    let frame = 0\n    const tick = () => {\n      ctx.clearRect(0, 0, canvas.width, canvas.height)\n      ctx.fillStyle = \"#09090b\"\n      for (let x = 0; x < canvas.width; x += gap) {\n        for (let y = 0; y < canvas.height; y += gap) {\n          const covered = ripples.current.some((ripple) => Math.hypot(x - ripple.x, y - ripple.y) < ripple.r)\n          const size = covered ? 0.4 : 2.2\n          ctx.globalAlpha = covered ? 0.15 : 0.9\n          ctx.fillRect(x, y, size, size)\n        }\n      }\n      if (!reduced) {\n        ripples.current = ripples.current\n          .map((ripple) => ({ ...ripple, r: ripple.r + 3.2 }))\n          .filter((ripple) => ripple.r < Math.max(canvas.width, canvas.height))\n      }\n      frame = window.requestAnimationFrame(tick)\n    }\n    frame = window.requestAnimationFrame(tick)\n    window.addEventListener(\"resize\", resize)\n    return () => {\n      window.cancelAnimationFrame(frame)\n      window.removeEventListener(\"resize\", resize)\n    }\n  }, [gap])\n\n  return (\n    <div\n      className={cn(\"relative min-h-48 overflow-hidden rounded-xl border\", className)}\n      onPointerMove={(event) => {\n        const rect = event.currentTarget.getBoundingClientRect()\n        ripples.current.push({\n          x: event.clientX - rect.left,\n          y: event.clientY - rect.top,\n          r: 8,\n        })\n      }}\n    >\n      <div className=\"relative z-0 p-6\">{children}</div>\n      <canvas ref={canvasRef} className=\"pointer-events-none absolute inset-0 size-full\" />\n    </div>\n  )\n}\n\nexport { CanvasReveal }\n"
+    }
+  ]
+}

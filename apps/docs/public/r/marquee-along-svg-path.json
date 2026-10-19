@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-along-svg-path",
+  "type": "registry:ui",
+  "title": "Marquee Along SVG Path",
+  "description": "Fancy Components（MIT）：子元素沿 SVG 路径循环移动。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/marquee-along-svg-path.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/marquee-along-svg-path.tsx",
+      "content": "\"use client\"\n\nimport { useAnimationFrame, useMotionValue, useTransform } from \"motion/react\"\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface MarqueeAlongSvgPathProps {\n  path?: string\n  className?: string\n  viewBox?: string\n  showPath?: boolean\n  baseVelocity?: number\n  repeat?: number\n  children?: React.ReactNode\n}\n\nconst DEFAULT_PATH = \"M 20 90 C 80 10, 200 10, 280 90 S 420 170, 520 90\"\n\nfunction wrap(min: number, max: number, value: number) {\n  const range = max - min\n  return ((((value - min) % range) + range) % range) + min\n}\n\nfunction MarqueeItem({\n  child,\n  itemIndex,\n  total,\n  baseOffset,\n  path,\n  hidden,\n}: {\n  child: React.ReactNode\n  itemIndex: number\n  total: number\n  baseOffset: ReturnType<typeof useMotionValue<number>>\n  path: string\n  hidden: boolean\n}) {\n  const offset = useTransform(baseOffset, (value) => {\n    const position = (itemIndex * 100) / Math.max(total, 1)\n    return `${wrap(0, 100, value + position)}%`\n  })\n\n  return (\n    <motion.div\n      aria-hidden={hidden}\n      className=\"absolute top-0 left-0\"\n      style={{ offsetPath: `path('${path}')`, offsetDistance: offset }}\n    >\n      {child}\n    </motion.div>\n  )\n}\n\nfunction MarqueeAlongSvgPath({\n  path = DEFAULT_PATH,\n  className,\n  viewBox = \"0 0 540 180\",\n  showPath = true,\n  baseVelocity = 8,\n  repeat = 2,\n  children,\n}: MarqueeAlongSvgPathProps) {\n  const baseOffset = useMotionValue(0)\n  const items = React.useMemo(() => {\n    const childrenArray = React.Children.toArray(children)\n    return childrenArray.flatMap((child, childIndex) =>\n      Array.from({ length: repeat }, (_, repeatIndex) => ({\n        child,\n        key: `${childIndex}-${repeatIndex}`,\n        itemIndex: repeatIndex * childrenArray.length + childIndex,\n        hidden: repeatIndex > 0,\n      })),\n    )\n  }, [children, repeat])\n\n  useAnimationFrame((_, delta) => {\n    if (window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches) return\n    baseOffset.set(baseOffset.get() + (delta / 1000) * baseVelocity)\n  })\n\n  return (\n    <div className={cn(\"relative min-h-40 overflow-hidden\", className)}>\n      <svg viewBox={viewBox} className=\"absolute inset-0 size-full\">\n        {showPath ? <path d={path} fill=\"none\" stroke=\"currentColor\" strokeOpacity=\"0.2\" /> : null}\n      </svg>\n      {items.map((item) => (\n        <MarqueeItem\n          key={item.key}\n          child={item.child}\n          itemIndex={item.itemIndex}\n          total={items.length}\n          baseOffset={baseOffset}\n          path={path}\n          hidden={item.hidden}\n        />\n      ))}\n    </div>\n  )\n}\n\nexport { MarqueeAlongSvgPath }\n"
+    }
+  ]
+}

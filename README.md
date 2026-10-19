@@ -94,6 +94,8 @@ use-mobile
 | text-along-path | Fancy Components |
 | scroll-typography | Codrops MIT（Motion 重写） |
 | lamp-heading | 灵感来自 lamp heading，原创实现 |
+| vfx-element | vfx-js MIT |
+| rough-annotation | rough-notation MIT |
 
 ### 背景
 
@@ -117,6 +119,11 @@ use-mobile
 | flow-field | Kokonut UI（免费 MIT） |
 | halftone | Kokonut UI（免费 MIT） |
 | shader-pack-2 | Paper Shaders（Apache-2.0） |
+| gpgpu-particles | OGL GPGPU 示例（Unlicense） |
+| letter-glitch-wall | 灵感来自 letter glitch wall，原创实现 |
+| lightning | 原创 GLSL |
+| iridescence | 原创噪声着色器 |
+| silk | 原创噪声着色器 |
 
 ### 光标 / 悬停
 
@@ -130,6 +137,9 @@ use-mobile
 | cursor-trail | 原创 |
 | image-trail | Fancy Components |
 | splash-cursor | PavelDoGreat WebGL-Fluid-Simulation MIT |
+| mouse-flowmap | OGL flowmap 示例（Unlicense） |
+| polyline-ribbon-cursor | OGL polylines 示例（Unlicense） |
+| target-cursor | 灵感来自 target cursor，原创实现 |
 
 ### 展示 / 列表
 
@@ -141,6 +151,7 @@ use-mobile
 | globe-sphere | 原创 |
 | icon-cloud | Magic UI |
 | animated-beam | Magic UI |
+| marquee-along-svg-path | Fancy Components |
 
 ### 装饰 / 庆祝
 
@@ -148,6 +159,7 @@ use-mobile
 | --- | --- |
 | confetti-burst | Magic UI |
 | sparkles | Magic UI |
+| burst-icons | 灵感来自 mo.js，Motion 重写 |
 
 ### 卡片 / 3D
 
@@ -168,6 +180,9 @@ use-mobile
 | 3d-carousel | Cult UI |
 | circular-gallery | 灵感来自 circular gallery，原创实现 |
 | glowing-edge | 灵感来自 Linear，原创实现 |
+| pixel-canvas-card | hexagoncircle/pixel-canvas MIT |
+| atropos-card | Atropos MIT |
+| evervault-card | 灵感来自 encrypted card，原创实现 |
 
 ### 按钮特效
 
@@ -233,6 +248,7 @@ use-mobile
 | dashboard-blocks | 原创 |
 | ecommerce-blocks | 原创 |
 | pixel-transition | 灵感来自 pixel transition，原创实现 |
+| canvas-reveal | 灵感来自 dot-matrix reveal，原创实现 |
 
 ### AI 对话
 

@@ -44,7 +44,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`
+- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`
 
 ## Kibo UI
 
@@ -205,9 +205,61 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2014-2026 Liam Brummitt
 - 衍生组件：`gravity`（薄封装，重依赖单独成 registry 条目）
 
+## vfx-js（MIT）
+
+- 仓库：https://github.com/fand/vfx-js
+- 许可：MIT
+- 版权：Copyright (c) 2020-present The VFX-JS developers
+- LICENSE：`licenses/mit/vfx-js/LICENSE`
+- npm：`@vfx-js/core` 1.1.0（重依赖单独成 registry 条目）
+- 衍生组件：`vfx-element`（叠加 glitch / glow / CRT scanline / rgb-shift / pixelate；无 WebGL 或 `prefers-reduced-motion` 时回退 CSS）
+
+## OGL（Unlicense）
+
+- 仓库：https://github.com/oframe/ogl
+- 许可：Unlicense
+- 版权：Nathan Gordon / oframe
+- LICENSE：`licenses/unlicense/ogl/UNLICENSE`
+- npm：`ogl` 1.0.11（重依赖单独成 registry 条目）
+- 衍生组件：`mouse-flowmap`（`examples/mouse-flowmap.html`）、`gpgpu-particles`（`examples/gpgpu-particles.html`，鼠标涡流并可聚成文字）、`polyline-ribbon-cursor`（`examples/polylines.html`）
+- 无 WebGL 或减弱动效时回退 CSS / SVG，与 `splash-cursor` 相同策略。
+
+## pixel-canvas（MIT）
+
+- 仓库：https://github.com/hexagoncircle/pixel-canvas
+- 许可：MIT
+- 版权：Copyright (c) 2024 Ryan Mulligan
+- LICENSE：`licenses/mit/pixel-canvas/LICENSE`
+- 衍生组件：`pixel-canvas-card`（Web Component 逻辑移植为 React，保留减弱动效处理）
+
+## Atropos（MIT）
+
+- 仓库：https://github.com/nolimits4web/atropos
+- 许可：MIT
+- 版权：Copyright (c) 2021 Vladimir Kharlampidi
+- LICENSE：`licenses/mit/atropos/LICENSE`
+- npm：`atropos` 2.0.2
+- 衍生组件：`atropos-card`（多层 3D 视差卡片）
+
+## rough-notation（MIT）
+
+- 仓库：https://github.com/rough-stuff/rough-notation
+- 许可：MIT
+- 版权：Copyright (c) 2020 Preet Shihn
+- LICENSE：`licenses/mit/rough-notation/LICENSE`
+- npm：`rough-notation` 0.5.1
+- 衍生组件：`rough-annotation`
+
+## mo.js（MIT，仅灵感）
+
+- 仓库：https://github.com/mojs/mojs
+- 许可：MIT
+- 衍生组件：`burst-icons`（用 Motion 重写图标爆发，**未拷贝 mo.js 源码**）
+
 ## 本仓库原创实现
 
 - `aurora-background`、`cursor-follow`、`glass-card`、`neon-button`、`spinner`、`parallax`、`starfield`、`wave-background`、`noise-gradient`、`globe-sphere`、`cursor-trail`、`perspective-card`、`gooey-button`、`floating-navbar`、`animated-sidebar`、`page-transition`、`tree-view`、`onboarding-tour`、`infinite-scroll`、`password-strength`、`currency-input`、`quantity-stepper`、`dashboard-blocks`、`ecommerce-blocks`
 - Batch 6 Group B（灵感来自常见效果，**未打开原仓库源码**）：`lamp-heading`、`tracing-beam` / `SvgScrollPath`、`container-scroll-3d`、`circular-gallery`、`glowing-edge`、`scroll-image-sequence`、`pixel-transition`
+- Batch 7 Group B（灵感来自 X，原创实现，**未打开 Aceternity / React Bits / Skiper / Hover.dev / Shadertoy 源码**）：`evervault-card`、`canvas-reveal`、`letter-glitch-wall`、`target-cursor`、`lightning`、`iridescence`、`silk`
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

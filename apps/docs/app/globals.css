@@ -371,6 +371,27 @@
   }
 }
 
+@keyframes particle-burst {
+  to {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+
+@keyframes tear-left {
+  to {
+    transform: translateX(-18%) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes tear-right {
+  to {
+    transform: translateX(18%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

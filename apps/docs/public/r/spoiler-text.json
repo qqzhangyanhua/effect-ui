@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spoiler-text",
+  "type": "registry:ui",
+  "title": "Spoiler Text",
+  "description": "粒子遮挡，点击揭示。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/spoiler-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/spoiler-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpoilerTextProps {\n  text: string\n  className?: string\n}\n\ninterface Speck {\n  x: number\n  y: number\n  vx: number\n  vy: number\n  life: number\n}\n\nfunction SpoilerText({ text, className }: SpoilerTextProps) {\n  const [revealed, setRevealed] = React.useState(false)\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n  const specks = React.useRef<Speck[]>([])\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas || revealed) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n    const resize = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      const dpr = window.devicePixelRatio || 1\n      canvas.width = width * dpr\n      canvas.height = height * dpr\n      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)\n      specks.current = Array.from({ length: 90 }, () => ({\n        x: Math.random() * width,\n        y: Math.random() * height,\n        vx: 0,\n        vy: 0,\n        life: 1,\n      }))\n    }\n    resize()\n    let frame = 0\n    const tick = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      ctx.clearRect(0, 0, width, height)\n      for (const speck of specks.current) {\n        speck.x += (Math.random() - 0.5) * 0.8\n        speck.y += (Math.random() - 0.5) * 0.8\n        ctx.fillStyle = `color-mix(in oklab, var(--foreground) ${40 + speck.life * 40}%, transparent)`\n        ctx.fillRect(speck.x, speck.y, 2.2, 2.2)\n      }\n      frame = window.requestAnimationFrame(tick)\n    }\n    frame = window.requestAnimationFrame(tick)\n    return () => window.cancelAnimationFrame(frame)\n  }, [revealed])\n\n  const reveal = () => {\n    const canvas = canvasRef.current\n    const ctx = canvas?.getContext(\"2d\")\n    if (!canvas || !ctx) {\n      setRevealed(true)\n      return\n    }\n    const { width, height } = canvas.getBoundingClientRect()\n    specks.current = specks.current.map((speck) => ({\n      ...speck,\n      vx: (speck.x - width / 2) * 0.08,\n      vy: (speck.y - height / 2) * 0.08,\n    }))\n    let steps = 0\n    const burst = () => {\n      ctx.clearRect(0, 0, width, height)\n      for (const speck of specks.current) {\n        speck.x += speck.vx\n        speck.y += speck.vy\n        speck.life *= 0.9\n        ctx.globalAlpha = speck.life\n        ctx.fillRect(speck.x, speck.y, 2.2, 2.2)\n      }\n      steps += 1\n      if (steps < 18) window.requestAnimationFrame(burst)\n      else setRevealed(true)\n    }\n    burst()\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={reveal}\n      className={cn(\"relative inline-block rounded-md px-2 py-1 text-left\", className)}\n      aria-label={revealed ? text : \"点击揭示隐藏文本\"}\n    >\n      <span className={cn(!revealed && \"opacity-0\")}>{text}</span>\n      {!revealed ? <canvas ref={canvasRef} className=\"absolute inset-0 size-full cursor-pointer\" /> : null}\n    </button>\n  )\n}\n\nexport { SpoilerText }\n"
+    }
+  ]
+}

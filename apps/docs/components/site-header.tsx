@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { ComponentSearch } from "@/components/component-search"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 function SiteHeader() {
@@ -13,6 +14,7 @@ function SiteHeader() {
           effect-ui
         </Link>
         <nav className="flex items-center gap-1 text-sm">
+          <ComponentSearch />
           <Link
             href="/docs"
             className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground"

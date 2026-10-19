@@ -1,0 +1,30 @@
+apps/docs/components/code-block.tsx
+  s_2e822617b581a4::t_9b5b54bbf523cd 27
+  s_2e822617b581a4::t_32b9e8b4c67312 66-75
+  s_2e822617b581a4::t_ba6365ef013afc 8-26,28-50,52-54,63-65,76-90,92-108
+apps/docs/app/docs/[slug]/page.tsx
+  s_2e822617b581a4::t_ff1c7bac3325d8 10,41-44,64,75
+apps/docs/next.config.ts
+  s_2e822617b581a4::t_6f4e4f34ad3924 9
+apps/docs/app/globals.css
+  s_2e822617b581a4::t_effff72cd7ba3f 379-393,396-401,403-407,410,412,415-418
+  s_2e822617b581a4::t_654c1dd5ee337a 394
+  s_2e822617b581a4::t_6ad8513d0e676c 408-409,411,413-414
+  s_2e822617b581a4::t_b65d5d6a61b2a2 395,402
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "78df2a811930648fb13ee33abe6df397e8c1111a",
+  "prompts": {},
+  "sessions": {
+    "s_2e822617b581a4": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15282-f1b8-7743-899f-fa3e02ebbb75",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

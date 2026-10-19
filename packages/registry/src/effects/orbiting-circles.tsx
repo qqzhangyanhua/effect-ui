@@ -29,9 +29,9 @@ function OrbitingCircles({
       {items.map((child, index) => (
         <span
           key={index}
-          className="absolute top-1/2 left-1/2 size-8 -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 size-8 -translate-x-1/2 -translate-y-1/2 animate-[orbit-path_linear_infinite] motion-reduce:animate-none"
           style={{
-            animation: `orbit-path ${duration}s linear infinite`,
+            animationDuration: `${duration}s`,
             animationDelay: `${(-index * duration) / items.length}s`,
             ["--orbit-radius" as string]: `${radius}px`,
           }}

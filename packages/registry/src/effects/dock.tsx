@@ -1,9 +1,26 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react"
 
 import { cn } from "@/lib/utils"
+
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+  media.addEventListener("change", onChange)
+  return () => media.removeEventListener("change", onChange)
+}
+
+function useIsReducedMotion() {
+  const prefersReducedMotion = useReducedMotion()
+  return React.useSyncExternalStore(
+    subscribeReducedMotion,
+    () =>
+      prefersReducedMotion === true ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  )
+}
 
 export interface DockProps {
   className?: string
@@ -46,6 +63,7 @@ function DockIcon({
   mouseX: ReturnType<typeof useMotionValue<number>>
   magnification: number
 }) {
+  const reduceMotion = useIsReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
   const distance = useTransform(mouseX, (value) => {
     const bounds = ref.current?.getBoundingClientRect()
@@ -58,7 +76,7 @@ function DockIcon({
   return (
     <motion.div
       ref={ref}
-      style={{ width }}
+      style={{ width: reduceMotion ? 40 : width }}
       className="flex aspect-square items-center justify-center rounded-xl bg-muted"
     >
       {children}

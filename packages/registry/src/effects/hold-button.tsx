@@ -59,8 +59,13 @@ function HoldButton({
     >
       <span
         aria-hidden
-        className="absolute inset-y-0 left-0 bg-primary-foreground/20"
-        style={{ width: `${progress * 100}%` }}
+        className="absolute inset-y-0 left-0 w-(--hold) bg-primary-foreground/20 motion-reduce:w-full motion-reduce:[opacity:var(--hold-opacity)]"
+        style={
+          {
+            "--hold": `${progress * 100}%`,
+            "--hold-opacity": progress,
+          } as React.CSSProperties
+        }
       />
       <span className="relative z-10">{children}</span>
     </button>

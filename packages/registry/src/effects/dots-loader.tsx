@@ -15,11 +15,8 @@ function DotsLoader({ className, ...props }: DotsLoaderProps) {
       {[0, 1, 2].map((index) => (
         <span
           key={index}
-          className="size-2 rounded-full bg-primary"
-          style={{
-            animation: "dot-bounce 0.9s ease-in-out infinite",
-            animationDelay: `${index * 0.12}s`,
-          }}
+          className="size-2 rounded-full bg-primary animate-[dot-bounce_0.9s_ease-in-out_infinite] motion-reduce:animate-pulse"
+          style={{ animationDelay: `${index * 0.12}s` }}
         />
       ))}
       <span className="sr-only">Loading</span>

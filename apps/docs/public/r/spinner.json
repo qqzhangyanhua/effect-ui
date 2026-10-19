@@ -13,7 +13,7 @@
       "path": "registry/effects/spinner.tsx",
       "type": "registry:ui",
       "target": "components/ui/spinner.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: number\n}\n\nfunction Spinner({ className, size = 28, ...props }: SpinnerProps) {\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"spinner\"\n      className={cn(\n        \"animate-spin rounded-full border-2 border-muted-foreground/25 border-t-primary\",\n        className,\n      )}\n      style={{ width: size, height: size }}\n      {...props}\n    >\n      <span className=\"sr-only\">Loading</span>\n    </div>\n  )\n}\n\nexport { Spinner }\n"
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: number\n}\n\nfunction Spinner({ className, size = 28, ...props }: SpinnerProps) {\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"spinner\"\n      className={cn(\n        \"animate-spin motion-reduce:animate-pulse rounded-full border-2 border-muted-foreground/25 border-t-primary\",\n        className,\n      )}\n      style={{ width: size, height: size }}\n      {...props}\n    >\n      <span className=\"sr-only\">Loading</span>\n    </div>\n  )\n}\n\nexport { Spinner }\n"
     }
   ]
 }

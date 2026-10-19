@@ -1,9 +1,26 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 
 import { cn } from "@/lib/utils"
+
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+  media.addEventListener("change", onChange)
+  return () => media.removeEventListener("change", onChange)
+}
+
+function useIsReducedMotion() {
+  const prefersReducedMotion = useReducedMotion()
+  return React.useSyncExternalStore(
+    subscribeReducedMotion,
+    () =>
+      prefersReducedMotion === true ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  )
+}
 
 export type DynamicIslandSize = "compact" | "idle" | "expanded" | "tall"
 
@@ -21,10 +38,11 @@ export interface DynamicIslandProps {
 }
 
 function DynamicIsland({ size = "idle", className, children }: DynamicIslandProps) {
+  const reduceMotion = useIsReducedMotion()
   const preset = sizes[size]
   return (
     <motion.div
-      layout
+      layout={!reduceMotion}
       className={cn(
         "relative overflow-hidden bg-black text-white shadow-lg",
         className,
@@ -34,16 +52,16 @@ function DynamicIsland({ size = "idle", className, children }: DynamicIslandProp
         height: preset.height,
         borderRadius: preset.radius,
       }}
-      transition={{ type: "spring", stiffness: 380, damping: 28 }}
+      transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 28 }}
     >
       <AnimatePresence mode="wait">
         <motion.div
           key={size}
           className="flex size-full items-center px-3"
-          initial={{ opacity: 0, filter: "blur(6px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          exit={{ opacity: 0, filter: "blur(6px)" }}
-          transition={{ duration: 0.18 }}
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: "blur(6px)" }}
+          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, filter: "blur(0px)" }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: "blur(6px)" }}
+          transition={{ duration: reduceMotion ? 0.15 : 0.18 }}
         >
           {children}
         </motion.div>

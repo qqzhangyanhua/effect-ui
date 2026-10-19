@@ -13,6 +13,7 @@ function HolographicFoil({ children, className }: HolographicFoilProps) {
   const ref = React.useRef<HTMLDivElement>(null)
 
   const onMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     const node = ref.current
     if (!node) return
     const rect = node.getBoundingClientRect()
@@ -35,7 +36,7 @@ function HolographicFoil({ children, className }: HolographicFoilProps) {
         node.style.setProperty("--tilt-y", "0deg")
       }}
       className={cn(
-        "relative overflow-hidden rounded-2xl border p-8 [transform:perspective(900px)_rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))] transition-transform",
+        "relative overflow-hidden rounded-2xl border p-8 [transform:perspective(900px)_rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))] transition-transform motion-reduce:transform-none motion-reduce:transition-none",
         className,
       )}
     >
@@ -51,11 +52,10 @@ function HolographicFoil({ children, className }: HolographicFoilProps) {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-40"
+        className="pointer-events-none absolute inset-0 opacity-40 [transform:translateX(calc((var(--foil-x,0.5)-0.5)*40%))] motion-reduce:transform-none"
         style={{
           background:
             "linear-gradient(115deg, transparent 30%, color-mix(in oklab, white 55%, transparent) 48%, transparent 62%)",
-          transform: "translateX(calc((var(--foil-x, 0.5) - 0.5) * 40%))",
         }}
       />
       <div className="relative z-10">{children ?? <p className="font-display text-2xl">Holographic Foil</p>}</div>

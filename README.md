@@ -112,7 +112,6 @@ use-mobile
 | noise-gradient | 原创 |
 | animated-grid | Magic UI |
 | retro-grid | Magic UI |
-| animated-beam | Magic UI |
 | shader-backgrounds | Paper Shaders（Apache-2.0，>=0.0.77） |
 | background-paths | Kokonut UI（免费 MIT） |
 | flow-field | Kokonut UI（免费 MIT） |
@@ -128,17 +127,27 @@ use-mobile
 | cursor-follow | 原创 |
 | tilt | Motion Primitives |
 | glow-hover | Cult UI |
-| dock | Magic UI |
-| marquee | Magic UI |
-| orbiting-circles | Magic UI |
-| animated-list | Magic UI |
-| globe-sphere | 原创 |
-| confetti-burst | Magic UI |
 | cursor-trail | 原创 |
-| sparkles | Magic UI |
-| dynamic-island | Cult UI |
 | image-trail | Fancy Components |
 | splash-cursor | PavelDoGreat WebGL-Fluid-Simulation MIT |
+
+### 展示 / 列表
+
+| 组件 | 来源 |
+| --- | --- |
+| marquee | Magic UI |
+| animated-list | Magic UI |
+| orbiting-circles | Magic UI |
+| globe-sphere | 原创 |
+| icon-cloud | Magic UI |
+| animated-beam | Magic UI |
+
+### 装饰 / 庆祝
+
+| 组件 | 来源 |
+| --- | --- |
+| confetti-burst | Magic UI |
+| sparkles | Magic UI |
 
 ### 卡片 / 3D
 
@@ -155,7 +164,6 @@ use-mobile
 | morphing-dialog | Motion Primitives |
 | image-comparison | Motion Primitives |
 | liquid-glass | liquid-glass-react |
-| icon-cloud | Magic UI |
 | holographic-foil | Smooth UI |
 | 3d-carousel | Cult UI |
 | circular-gallery | 灵感来自 circular gallery，原创实现 |
@@ -210,6 +218,8 @@ use-mobile
 | floating-navbar | 原创 |
 | animated-sidebar | 原创 |
 | animated-theme-toggler | Magic UI |
+| dock | Magic UI |
+| dynamic-island | Cult UI |
 
 ### 页面 / 转场
 

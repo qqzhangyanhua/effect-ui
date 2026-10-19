@@ -16,7 +16,7 @@ function GradientText({
     <span
       data-slot="gradient-text"
       className={cn(
-        "inline-block bg-linear-to-r bg-size-[200%_auto] bg-clip-text text-transparent animate-[gradient-shift_6s_ease_infinite]",
+        "inline-block animate-[gradient-shift_6s_ease_infinite] bg-linear-to-r bg-size-[200%_auto] bg-clip-text text-transparent motion-reduce:animate-none",
         colors,
         className,
       )}

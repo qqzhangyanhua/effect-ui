@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "halftone",
+  "type": "registry:ui",
+  "title": "Halftone",
+  "description": "半调网点，随鼠标放大。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/halftone.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/halftone.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface HalftoneProps {\n  gap?: number\n  className?: string\n}\n\nfunction Halftone({ gap = 14, className }: HalftoneProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n  const mouse = React.useRef({ x: 0.5, y: 0.5 })\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n\n    const paint = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      const dpr = window.devicePixelRatio || 1\n      canvas.width = width * dpr\n      canvas.height = height * dpr\n      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)\n      ctx.clearRect(0, 0, width, height)\n      const mx = mouse.current.x * width\n      const my = mouse.current.y * height\n      for (let y = gap / 2; y < height; y += gap) {\n        for (let x = gap / 2; x < width; x += gap) {\n          const dist = Math.hypot(x - mx, y - my)\n          const radius = Math.max(1.1, (1 - Math.min(dist / 180, 1)) * (gap * 0.42) + 1.2)\n          ctx.beginPath()\n          ctx.fillStyle = \"color-mix(in oklab, var(--foreground) 55%, transparent)\"\n          ctx.arc(x, y, radius, 0, Math.PI * 2)\n          ctx.fill()\n        }\n      }\n    }\n\n    paint()\n    const onMove = (event: MouseEvent) => {\n      const rect = canvas.getBoundingClientRect()\n      mouse.current = {\n        x: (event.clientX - rect.left) / rect.width,\n        y: (event.clientY - rect.top) / rect.height,\n      }\n      paint()\n    }\n    window.addEventListener(\"resize\", paint)\n    canvas.addEventListener(\"mousemove\", onMove)\n    return () => {\n      window.removeEventListener(\"resize\", paint)\n      canvas.removeEventListener(\"mousemove\", onMove)\n    }\n  }, [gap])\n\n  return <canvas ref={canvasRef} className={cn(\"size-full min-h-48 rounded-xl border bg-background\", className)} />\n}\n\nexport { Halftone }\n"
+    }
+  ]
+}

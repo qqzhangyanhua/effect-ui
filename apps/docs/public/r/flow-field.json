@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flow-field",
+  "type": "registry:ui",
+  "title": "Flow Field",
+  "description": "流场线粒子背景。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/flow-field.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/flow-field.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface FlowFieldProps {\n  density?: number\n  className?: string\n}\n\ninterface Dot {\n  x: number\n  y: number\n}\n\nfunction FlowField({ density = 70, className }: FlowFieldProps) {\n  const canvasRef = React.useRef<HTMLCanvasElement>(null)\n\n  React.useEffect(() => {\n    const canvas = canvasRef.current\n    if (!canvas) return\n    const ctx = canvas.getContext(\"2d\")\n    if (!ctx) return\n\n    const resize = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      const dpr = window.devicePixelRatio || 1\n      canvas.width = width * dpr\n      canvas.height = height * dpr\n      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)\n    }\n    resize()\n\n    const dots: Dot[] = Array.from({ length: density }, () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      return { x: Math.random() * width, y: Math.random() * height }\n    })\n\n    let frame = 0\n    let time = 0\n    const tick = () => {\n      const { width, height } = canvas.getBoundingClientRect()\n      ctx.fillStyle = \"color-mix(in oklab, var(--background) 18%, transparent)\"\n      ctx.fillRect(0, 0, width, height)\n      ctx.strokeStyle = \"color-mix(in oklab, var(--primary) 70%, transparent)\"\n      ctx.lineWidth = 1\n      time += 0.006\n      for (const dot of dots) {\n        const angle = Math.sin(dot.x * 0.02 + time) + Math.cos(dot.y * 0.02 - time)\n        const nx = dot.x + Math.cos(angle) * 1.6\n        const ny = dot.y + Math.sin(angle) * 1.6\n        ctx.beginPath()\n        ctx.moveTo(dot.x, dot.y)\n        ctx.lineTo(nx, ny)\n        ctx.stroke()\n        dot.x = nx\n        dot.y = ny\n        if (dot.x < 0 || dot.x > width || dot.y < 0 || dot.y > height) {\n          dot.x = Math.random() * width\n          dot.y = Math.random() * height\n        }\n      }\n      frame = window.requestAnimationFrame(tick)\n    }\n    frame = window.requestAnimationFrame(tick)\n    window.addEventListener(\"resize\", resize)\n    return () => {\n      window.cancelAnimationFrame(frame)\n      window.removeEventListener(\"resize\", resize)\n    }\n  }, [density])\n\n  return <canvas ref={canvasRef} className={cn(\"size-full min-h-48 rounded-xl border bg-background\", className)} />\n}\n\nexport { FlowField }\n"
+    }
+  ]
+}

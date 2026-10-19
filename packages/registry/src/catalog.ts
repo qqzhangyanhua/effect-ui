@@ -1,6 +1,7 @@
 import { batch2Components } from "./catalog-batch2"
 import { batch3Components } from "./catalog-batch3"
 import { batch4Components } from "./catalog-batch4"
+import { batch5Components } from "./catalog-batch5"
 
 export type ComponentCategory =
   | "ui"
@@ -32,6 +33,14 @@ export type SourceLibrary =
   | "prompt-kit"
   | "Tailark"
   | "Eldora UI"
+  | "Smooth UI"
+  | "TanStack Virtual"
+  | "frimousse"
+  | "wavesurfer.js"
+  | "Base UI"
+  | "react-photo-album"
+  | "yet-another-react-lightbox"
+  | "react-phone-number-input"
   | "original"
 
 export interface PropDoc {
@@ -896,6 +905,7 @@ export const components: ComponentMeta[] = [
   ...batch2Components,
   ...batch3Components,
   ...batch4Components,
+  ...batch5Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

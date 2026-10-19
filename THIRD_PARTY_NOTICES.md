@@ -9,7 +9,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/shadcn-ui/ui
 - 许可：MIT
 - 版权：Copyright (c) 2023 shadcn
-- 衍生组件：`button`、`input`、`textarea`、`label`、`card`、`badge`、`separator`、`dialog`、`sheet`、`dropdown-menu`、`tabs`、`tooltip`、`sonner`、`switch`、`checkbox`、`select`、`accordion`、`popover`、`avatar`、`slider`、`utils`、`alert`、`alert-dialog`、`aspect-ratio`、`breadcrumb`、`calendar`、`carousel`、`chart`、`collapsible`、`command`、`context-menu`、`drawer`、`form`、`hover-card`、`input-otp`、`menubar`、`navigation-menu`、`pagination`、`progress`、`radio-group`、`resizable`、`scroll-area`、`sidebar`、`skeleton`、`table`、`toggle`、`toggle-group`、`data-table`
+- 衍生组件：`button`、`input`、`textarea`、`label`、`card`、`badge`、`separator`、`dialog`、`sheet`、`dropdown-menu`、`tabs`、`tooltip`、`sonner`、`switch`、`checkbox`、`select`、`accordion`、`popover`、`avatar`、`slider`、`utils`、`alert`、`alert-dialog`、`aspect-ratio`、`breadcrumb`、`calendar`、`carousel`、`chart`、`collapsible`、`command`、`context-menu`、`drawer`、`form`、`hover-card`、`input-otp`、`menubar`、`navigation-menu`、`pagination`、`progress`、`radio-group`、`resizable`、`scroll-area`、`sidebar`、`skeleton`、`table`、`toggle`、`toggle-group`、`data-table`、`field`、`input-group`、`button-group`、`kbd`、`empty`、`item`、`native-select`、`date-picker`（文档组合，官方无独立 registry JSON）、`typography`（文档组合，官方无独立 registry JSON）、`direction`（React 上下文，未使用统一 `radix-ui` 包）
 
 ## Magic UI
 
@@ -51,7 +51,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/shadcnblocks/kibo（原 haydenbleasel/kibo）
 - 许可：MIT
 - 版权：Copyright (c) 2023 — Present shadcnblocks
-- 衍生组件：`dropzone`、`tag-input`、`color-picker`、`code-block`、`kanban`、`rich-text-editor`
+- 衍生组件：`dropzone`、`tag-input`、`color-picker`、`code-block`、`kanban`、`rich-text-editor`、`video-player`（按 Kibo 风格封装原生 `<video>`，未引入 Vidstack）
 
 ## Origin UI（coss.com/origin）
 
@@ -83,7 +83,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/kokonut-labs/kokonutui
 - 许可：MIT（站点另有付费 Pro，**未使用 Pro 组件**）
 - 版权：Copyright (c) kokonutlabs
-- 衍生组件：`background-paths`、`glitch-text`（按免费文档中的 path-draw / RGB 错位效果重写，未拷贝 Pro 源码）
+- 衍生组件：`background-paths`、`glitch-text`、`toast-stack`、`notification-center`、`spoiler-text`、`hold-button`、`particle-button`、`tear-button`、`flow-field`、`halftone`（按免费 GitHub 组件的视觉效果重写，**未使用 Pro 组件或源码**）
 
 ## Number Flow
 
@@ -126,8 +126,66 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Tiptap
 - 通过 `rich-text-editor` 使用 `@tiptap/react` / `@tiptap/starter-kit` / `@tiptap/extension-placeholder`，重依赖单独成 registry 条目。
 
+## Base UI
+
+- 仓库：https://github.com/mui/base-ui
+- 许可：MIT
+- 版权：Copyright (c) 2014 Material UI SAS, trading as MUI, and the contributors
+- 通过 `combobox` 使用 `@base-ui/react`（官方 shadcn combobox 依赖，重依赖单独成 registry 条目）
+
+## TanStack Virtual
+
+- 仓库：https://github.com/TanStack/virtual
+- 许可：MIT
+- 版权：Copyright (c) Tanner Linsley
+- 衍生组件：`virtual-list`（薄封装 `@tanstack/react-virtual`）。`infinite-scroll` 为本仓库原创 IntersectionObserver 哨兵。
+
+## react-photo-album
+
+- 仓库：https://github.com/igordanchenko/react-photo-album
+- 许可：MIT
+- 版权：Copyright (c) 2022 Igor Danchenko
+- 衍生组件：`masonry-gallery`
+
+## yet-another-react-lightbox
+
+- 仓库：https://github.com/igordanchenko/yet-another-react-lightbox
+- 许可：MIT
+- 版权：Copyright (c) 2022 Igor Danchenko
+- 衍生组件：`lightbox`
+
+## react-phone-number-input
+
+- 仓库：https://github.com/catamphetamine/react-phone-number-input
+- 许可：MIT
+- 版权：Copyright (c) 2017 @catamphetamine
+- 衍生组件：`phone-input`
+
+## Smooth UI
+
+- 仓库：https://github.com/educlopez/smoothui
+- 许可：MIT
+- 版权：Copyright (c) 2024 Eduardo Calvo
+- 衍生组件：`holographic-foil`、`floating-label-input`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）
+
+## frimousse
+
+- 仓库：https://github.com/liveblocks/frimousse
+- 许可：MIT
+- 版权：Copyright (c) 2025 Liveblocks
+- 衍生组件：`emoji-picker`（薄封装，重依赖单独成 registry 条目）
+
+## wavesurfer.js（BSD-3-Clause）
+
+- 仓库：https://github.com/katspaugh/wavesurfer.js
+- 许可：BSD-3-Clause
+- 版权：Copyright (c) 2012-2023, katspaugh and contributors
+- LICENSE：`licenses/bsd/wavesurfer.js/LICENSE`
+- 衍生组件：`audio-waveform`（薄封装，重依赖单独成 registry 条目）
+- 再分发须保留版权声明与免责条款；本仓库未修改 wavesurfer 源码。
+
 ## 本仓库原创实现
 
-- `aurora-background`、`cursor-follow`、`glass-card`、`neon-button`、`spinner`、`parallax`、`starfield`、`wave-background`、`noise-gradient`、`globe-sphere`、`cursor-trail`、`perspective-card`、`gooey-button`、`floating-navbar`、`animated-sidebar`、`page-transition`、`tree-view`、`onboarding-tour`
+- `aurora-background`、`cursor-follow`、`glass-card`、`neon-button`、`spinner`、`parallax`、`starfield`、`wave-background`、`noise-gradient`、`globe-sphere`、`cursor-trail`、`perspective-card`、`gooey-button`、`floating-navbar`、`animated-sidebar`、`page-transition`、`tree-view`、`onboarding-tour`、`infinite-scroll`、`password-strength`、`currency-input`、`quantity-stepper`、`dashboard-blocks`、`ecommerce-blocks`
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

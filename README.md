@@ -65,7 +65,7 @@ registry.json          shadcn 兼容总表
 
 ### 基础组件（shadcn/ui）
 
-button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table
+button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table · field · input-group · button-group · kbd · empty · item · native-select · combobox · date-picker（官方文档组合，无独立 registry JSON） · typography（同上） · direction
 
 ### 文字动画
 
@@ -86,6 +86,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | variable-font-proximity | Fancy Components |
 | number-flow | Number Flow（MIT） |
 | glitch-text | Kokonut UI（免费 MIT） |
+| spoiler-text | Kokonut UI（免费 MIT） |
 
 ### 背景
 
@@ -107,6 +108,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | animated-beam | Magic UI |
 | shader-backgrounds | Paper Shaders（Apache-2.0，>=0.0.77） |
 | background-paths | Kokonut UI（免费 MIT） |
+| flow-field | Kokonut UI（免费 MIT） |
+| halftone | Kokonut UI（免费 MIT） |
 
 ### 光标 / 悬停
 
@@ -144,6 +147,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | image-comparison | Motion Primitives |
 | liquid-glass | liquid-glass-react |
 | icon-cloud | Magic UI |
+| holographic-foil | Smooth UI |
 
 ### 按钮特效
 
@@ -156,6 +160,9 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | rainbow-button | Magic UI |
 | interactive-hover-button | Magic UI |
 | gooey-button | 原创 |
+| hold-button | Kokonut UI（免费 MIT） |
+| particle-button | Kokonut UI（免费 MIT） |
+| tear-button | Kokonut UI（免费 MIT） |
 
 ### 加载
 
@@ -198,6 +205,8 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | marketing-blocks | Tailark（免费 MIT） |
 | device-mockups | Magic UI |
 | terminal | Eldora UI |
+| dashboard-blocks | 原创 |
+| ecommerce-blocks | 原创 |
 
 ### AI 对话
 
@@ -222,6 +231,20 @@ button · input · textarea · label · card · badge · separator · dialog · 
 | rich-text-editor | Kibo UI / Tiptap |
 | tree-view | 原创 |
 | onboarding-tour | 原创 |
+| virtual-list | TanStack Virtual |
+| infinite-scroll | 原创 |
+| masonry-gallery | react-photo-album |
+| lightbox | yet-another-react-lightbox |
+| phone-input | react-phone-number-input |
+| password-strength | 原创 |
+| currency-input | 原创 |
+| quantity-stepper | 原创 |
+| floating-label-input | Smooth UI |
+| emoji-picker | frimousse |
+| video-player | Kibo UI（原生 video） |
+| audio-waveform | wavesurfer.js（BSD-3） |
+| toast-stack | Kokonut UI（免费 MIT） |
+| notification-center | Kokonut UI（免费 MIT） |
 
 ---
 

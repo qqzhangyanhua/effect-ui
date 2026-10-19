@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinite-scroll",
+  "type": "registry:ui",
+  "title": "Infinite Scroll",
+  "description": "触底哨兵触发加载更多。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/infinite-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/infinite-scroll.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface InfiniteScrollProps {\n  children: React.ReactNode\n  onLoadMore: () => void\n  hasMore?: boolean\n  loading?: boolean\n  className?: string\n}\n\nfunction InfiniteScroll({\n  children,\n  onLoadMore,\n  hasMore = true,\n  loading = false,\n  className,\n}: InfiniteScrollProps) {\n  const sentinel = React.useRef<HTMLDivElement>(null)\n\n  React.useEffect(() => {\n    const node = sentinel.current\n    if (!node || !hasMore) return\n    const observer = new IntersectionObserver(\n      (entries) => {\n        if (entries[0]?.isIntersecting && !loading) onLoadMore()\n      },\n      { rootMargin: \"120px\" },\n    )\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [hasMore, loading, onLoadMore])\n\n  return (\n    <div className={cn(\"space-y-2\", className)}>\n      {children}\n      <div ref={sentinel} className=\"grid h-8 place-items-center text-xs text-muted-foreground\">\n        {loading ? \"加载中…\" : hasMore ? \"继续滚动\" : \"没有更多了\"}\n      </div>\n    </div>\n  )\n}\n\nexport { InfiniteScroll }\n"
+    }
+  ]
+}

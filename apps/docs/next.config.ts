@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
     "@paper-design/shaders-react",
     "@paper-design/shaders",
     "liquid-glass-react",
+    "@base-ui/react",
+    "@tanstack/react-virtual",
+    "react-photo-album",
+    "yet-another-react-lightbox",
+    "react-phone-number-input",
+    "frimousse",
+    "wavesurfer.js",
   ],
 }
 

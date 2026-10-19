@@ -4,10 +4,12 @@ import * as effectDemos from "./effect-demos"
 import * as effectDemos2 from "./effect-demos-2"
 import * as effectDemos3 from "./effect-demos-3"
 import * as effectDemos4 from "./effect-demos-4"
+import * as effectDemos5 from "./effect-demos-5"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
+import * as uiDemos5 from "./ui-demos-5"
 
 const demoMap: Record<string, ComponentType> = {
   button: uiDemos.ButtonDemo,
@@ -158,6 +160,40 @@ const demoMap: Record<string, ComponentType> = {
   "rich-text-editor": uiDemos4.RichTextEditorDemo,
   "tree-view": uiDemos4.TreeViewDemo,
   "onboarding-tour": uiDemos4.OnboardingTourDemo,
+  field: uiDemos5.FieldDemo,
+  "input-group": uiDemos5.InputGroupDemo,
+  "button-group": uiDemos5.ButtonGroupDemo,
+  kbd: uiDemos5.KbdDemo,
+  empty: uiDemos5.EmptyDemo,
+  item: uiDemos5.ItemDemo,
+  "native-select": uiDemos5.NativeSelectDemo,
+  combobox: uiDemos5.ComboboxDemo,
+  "date-picker": uiDemos5.DatePickerDemo,
+  typography: uiDemos5.TypographyDemo,
+  direction: uiDemos5.DirectionDemo,
+  "virtual-list": uiDemos5.VirtualListDemo,
+  "infinite-scroll": uiDemos5.InfiniteScrollDemo,
+  "masonry-gallery": uiDemos5.MasonryGalleryDemo,
+  lightbox: uiDemos5.LightboxDemo,
+  "phone-input": uiDemos5.PhoneInputDemo,
+  "password-strength": uiDemos5.PasswordStrengthDemo,
+  "currency-input": uiDemos5.CurrencyInputDemo,
+  "quantity-stepper": uiDemos5.QuantityStepperDemo,
+  "floating-label-input": uiDemos5.FloatingLabelInputDemo,
+  "emoji-picker": uiDemos5.EmojiPickerDemo,
+  "video-player": uiDemos5.VideoPlayerDemo,
+  "audio-waveform": uiDemos5.AudioWaveformDemo,
+  "toast-stack": uiDemos5.ToastStackDemo,
+  "notification-center": uiDemos5.NotificationCenterDemo,
+  "dashboard-blocks": uiDemos5.DashboardBlocksDemo,
+  "ecommerce-blocks": uiDemos5.EcommerceBlocksDemo,
+  "holographic-foil": effectDemos5.HolographicFoilDemo,
+  "spoiler-text": effectDemos5.SpoilerTextDemo,
+  "hold-button": effectDemos5.HoldButtonDemo,
+  "particle-button": effectDemos5.ParticleButtonDemo,
+  "tear-button": effectDemos5.TearButtonDemo,
+  "flow-field": effectDemos5.FlowFieldDemo,
+  halftone: effectDemos5.HalftoneDemo,
 }
 
 export function getDemo(name: string): ComponentType | undefined {

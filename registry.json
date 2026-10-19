@@ -2789,6 +2789,643 @@
           "target": "components/ui/onboarding-tour.tsx"
         }
       ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "表单字段布局：标签、描述、错误与分隔。",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "label",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "输入框与前后缀、按钮组合成一组。",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "把多个按钮拼成一组，支持横/竖方向。",
+      "dependencies": [
+        "class-variance-authority",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "utils",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "键盘按键样式。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/kbd.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kbd.tsx"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "空状态：图标、标题、描述与操作。",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/empty.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/empty.tsx"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "列表项：媒体、标题、描述与操作。",
+      "dependencies": [
+        "class-variance-authority",
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "utils",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/item.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/item.tsx"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "原生 select 的主题化封装。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/native-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/native-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "可搜索选择器，基于 Base UI。",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/combobox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/combobox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Popover + Calendar 的单日期选择（官方无独立 registry JSON，按文档组合）。",
+      "dependencies": [
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/date-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/date-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "标题、段落、引用与行内代码样式（官方无独立 registry JSON，按文档模式）。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/typography.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/typography.tsx"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "LTR / RTL 方向上下文（未使用统一 radix-ui 包）。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/direction.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/direction.tsx"
+        }
+      ]
+    },
+    {
+      "name": "virtual-list",
+      "type": "registry:ui",
+      "title": "Virtual List",
+      "description": "基于 TanStack Virtual 的大列表虚拟滚动。",
+      "dependencies": [
+        "@tanstack/react-virtual"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/virtual-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/virtual-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "infinite-scroll",
+      "type": "registry:ui",
+      "title": "Infinite Scroll",
+      "description": "触底哨兵触发加载更多。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/infinite-scroll.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/infinite-scroll.tsx"
+        }
+      ]
+    },
+    {
+      "name": "masonry-gallery",
+      "type": "registry:ui",
+      "title": "Masonry Gallery",
+      "description": "瀑布流相册。",
+      "dependencies": [
+        "react-photo-album"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/masonry-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/masonry-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lightbox",
+      "type": "registry:ui",
+      "title": "Lightbox",
+      "description": "全屏灯箱，支持缩放与滑动。",
+      "dependencies": [
+        "yet-another-react-lightbox"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/lightbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lightbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "phone-input",
+      "type": "registry:ui",
+      "title": "Phone Input",
+      "description": "国家区号与国际手机号格式化。",
+      "dependencies": [
+        "react-phone-number-input"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/phone-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/phone-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "password-strength",
+      "type": "registry:ui",
+      "title": "Password Strength",
+      "description": "密码强度条（长度、大小写、数字、符号）。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/password-strength.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/password-strength.tsx"
+        }
+      ]
+    },
+    {
+      "name": "currency-input",
+      "type": "registry:ui",
+      "title": "Currency Input",
+      "description": "数字输入并预览货币格式。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/currency-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/currency-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quantity-stepper",
+      "type": "registry:ui",
+      "title": "Quantity Stepper",
+      "description": "加减数量步进器。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/quantity-stepper.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/quantity-stepper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-label-input",
+      "type": "registry:ui",
+      "title": "Floating Label Input",
+      "description": "标签上浮的输入框。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/floating-label-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floating-label-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "emoji-picker",
+      "type": "registry:ui",
+      "title": "Emoji Picker",
+      "description": "轻量表情选择器（frimousse）。",
+      "dependencies": [
+        "frimousse"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/emoji-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/emoji-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-player",
+      "type": "registry:ui",
+      "title": "Video Player",
+      "description": "原生 video 自定义控制条：进度、音量、全屏、画中画、快捷键。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/video-player.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/video-player.tsx"
+        }
+      ]
+    },
+    {
+      "name": "audio-waveform",
+      "type": "registry:ui",
+      "title": "Audio Waveform",
+      "description": "wavesurfer.js 音频波形与播放。",
+      "dependencies": [
+        "wavesurfer.js",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/audio-waveform.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/audio-waveform.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast-stack",
+      "type": "registry:ui",
+      "title": "Toast Stack",
+      "description": "堆叠 toast，支持成功/失败与撤销。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/toast-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toast-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "notification-center",
+      "type": "registry:ui",
+      "title": "Notification Center",
+      "description": "铃铛弹出的通知中心。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/notification-center.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/notification-center.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-blocks",
+      "type": "registry:ui",
+      "title": "Dashboard Blocks",
+      "description": "分析 / 销售 / 运维三套仪表盘整页区块。",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "utils",
+        "badge",
+        "card",
+        "chart",
+        "table"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/dashboard-blocks.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dashboard-blocks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ecommerce-blocks",
+      "type": "registry:ui",
+      "title": "Ecommerce Blocks",
+      "description": "商品卡、画廊、购物车抽屉、结账步骤。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "sheet"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/ecommerce-blocks.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ecommerce-blocks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "holographic-foil",
+      "type": "registry:ui",
+      "title": "Holographic Foil",
+      "description": "随鼠标倾斜的镭射全息卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/holographic-foil.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/holographic-foil.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spoiler-text",
+      "type": "registry:ui",
+      "title": "Spoiler Text",
+      "description": "粒子遮挡，点击揭示。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spoiler-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spoiler-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hold-button",
+      "type": "registry:ui",
+      "title": "Hold Button",
+      "description": "长按进度确认。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hold-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hold-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particle-button",
+      "type": "registry:ui",
+      "title": "Particle Button",
+      "description": "点击粒子爆散。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/particle-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/particle-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tear-button",
+      "type": "registry:ui",
+      "title": "Tear Button",
+      "description": "按钮从中间撕开。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tear-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tear-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flow-field",
+      "type": "registry:ui",
+      "title": "Flow Field",
+      "description": "流场线粒子背景。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flow-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flow-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "halftone",
+      "type": "registry:ui",
+      "title": "Halftone",
+      "description": "半调网点，随鼠标放大。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/halftone.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/halftone.tsx"
+        }
+      ]
     }
   ]
 }

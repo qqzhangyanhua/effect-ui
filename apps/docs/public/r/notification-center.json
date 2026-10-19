@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-center",
+  "type": "registry:ui",
+  "title": "Notification Center",
+  "description": "铃铛弹出的通知中心。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/notification-center.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/notification-center.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Bell } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface NotificationItem {\n  id: string\n  title: string\n  body: string\n  time: string\n  unread?: boolean\n}\n\nexport interface NotificationCenterProps {\n  items?: NotificationItem[]\n  className?: string\n}\n\nconst sample: NotificationItem[] = [\n  { id: \"1\", title: \"构建完成\", body: \"registry 已生成 180+ 条目。\", time: \"刚刚\", unread: true },\n  { id: \"2\", title: \"新评论\", body: \"有人在 holographic-foil 下留言。\", time: \"12 分钟前\", unread: true },\n  { id: \"3\", title: \"周报\", body: \"本周新增 15 个组件。\", time: \"昨天\", unread: false },\n]\n\nfunction NotificationCenter({ items = sample, className }: NotificationCenterProps) {\n  const [list, setList] = React.useState(items)\n  const unread = list.filter((item) => item.unread).length\n\n  return (\n    <Popover>\n      <PopoverTrigger asChild>\n        <Button variant=\"outline\" size=\"icon\" className={cn(\"relative\", className)} aria-label=\"通知\">\n          <Bell className=\"size-4\" />\n          {unread > 0 ? (\n            <span className=\"absolute -top-1 -right-1 grid size-4 place-items-center rounded-full bg-destructive text-[10px] text-white\">\n              {unread}\n            </span>\n          ) : null}\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-80 p-0\" align=\"end\">\n        <div className=\"flex items-center justify-between border-b px-3 py-2\">\n          <p className=\"text-sm font-medium\">通知</p>\n          <button type=\"button\" className=\"text-xs text-primary\" onClick={() => setList((current) => current.map((item) => ({ ...item, unread: false })))}>\n            全部已读\n          </button>\n        </div>\n        <ul className=\"max-h-72 overflow-auto\">\n          {list.map((item) => (\n            <li key={item.id} className=\"border-b px-3 py-2 last:border-0\">\n              <div className=\"flex items-center justify-between gap-2\">\n                <p className=\"text-sm font-medium\">{item.title}</p>\n                {item.unread ? <span className=\"size-1.5 rounded-full bg-primary\" /> : null}\n              </div>\n              <p className=\"mt-0.5 text-xs text-muted-foreground\">{item.body}</p>\n              <p className=\"mt-1 text-[10px] text-muted-foreground\">{item.time}</p>\n            </li>\n          ))}\n        </ul>\n      </PopoverContent>\n    </Popover>\n  )\n}\n\nexport { NotificationCenter }\n"
+    }
+  ]
+}

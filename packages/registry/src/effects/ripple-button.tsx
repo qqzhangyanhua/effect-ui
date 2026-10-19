@@ -42,7 +42,7 @@ function RippleButton({
     <button
       data-slot="ripple-button"
       className={cn(
-        "relative inline-flex h-10 overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
+        "relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
         className,
       )}
       onClick={handleClick}

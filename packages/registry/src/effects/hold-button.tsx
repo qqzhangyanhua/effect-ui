@@ -31,7 +31,7 @@ function HoldButton({
     <button
       type="button"
       className={cn(
-        "relative inline-flex h-10 overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground",
+        "relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground",
         className,
       )}
       onPointerDown={(event) => {

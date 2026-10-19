@@ -1,0 +1,28 @@
+packages/registry/src/catalog-batch3.ts
+  s_0c8a7e2da2fc7f::t_b397f8998236de 16,121
+packages/registry/src/catalog.ts
+  s_0c8a7e2da2fc7f::t_29c499273ebfb9 12-13,78-79,95-96
+packages/registry/src/catalog-batch2.ts
+  s_0c8a7e2da2fc7f::t_9f0cf6ac867d65 519,532,548,564
+  s_0c8a7e2da2fc7f::t_31f12d99622db9 577,590,616
+packages/registry/src/catalog-batch4.ts
+  s_0c8a7e2da2fc7f::t_9643338734233c 105
+README.md
+  s_0c8a7e2da2fc7f::t_c084d05ca62c34 126-133,136,138-144,217-218
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "777c674de04f25921dd91751dc8fb48cbc47a3a6",
+  "prompts": {},
+  "sessions": {
+    "s_0c8a7e2da2fc7f": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1534a-971d-70b0-b937-49f45fb119ff",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

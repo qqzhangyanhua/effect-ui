@@ -852,7 +852,8 @@
       "description": "点击波纹按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -2079,7 +2080,8 @@
       "description": "液态粘连按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -3422,7 +3424,8 @@
       "description": "长按进度确认。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -3439,7 +3442,8 @@
       "description": "点击粒子爆散。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -3456,7 +3460,8 @@
       "description": "按钮从中间撕开。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {

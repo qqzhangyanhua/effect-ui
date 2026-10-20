@@ -2,11 +2,17 @@
 
 import * as React from "react"
 
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-export interface HoldButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface HoldButtonProps extends React.ComponentProps<typeof Button> {
   duration?: number
   onConfirm?: () => void
+}
+
+function slotTargetOf(asChild: boolean, children: React.ReactNode) {
+  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
+  return null
 }
 
 function HoldButton({
@@ -14,6 +20,9 @@ function HoldButton({
   children = "长按确认",
   duration = 1000,
   onConfirm,
+  variant,
+  size = "lg",
+  asChild = false,
   onPointerDown,
   onPointerUp,
   onPointerLeave,
@@ -21,19 +30,39 @@ function HoldButton({
 }: HoldButtonProps) {
   const [progress, setProgress] = React.useState(0)
   const timer = React.useRef(0)
+  const slotTarget = slotTargetOf(asChild, children)
+  const label = slotTarget ? slotTarget.props.children : children
 
   const stop = () => {
     window.clearInterval(timer.current)
     setProgress(0)
   }
 
+  const body = (
+    <>
+      <span
+        aria-hidden
+        className="absolute inset-y-0 left-0 w-(--hold) bg-primary-foreground/20 motion-reduce:w-full motion-reduce:[opacity:var(--hold-opacity)]"
+        style={
+          {
+            "--hold": `${progress * 100}%`,
+            "--hold-opacity": progress,
+          } as React.CSSProperties
+        }
+      />
+      <span className="relative z-10">{label}</span>
+    </>
+  )
+
   return (
-    <button
+    <Button
       type="button"
-      className={cn(
-        "relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground",
-        className,
-      )}
+      // Button 在 props 之前写入 data-slot="button"；这个组件原先没有 data-slot。
+      data-slot={undefined}
+      variant={variant}
+      size={size}
+      asChild={slotTarget !== null}
+      className={cn("relative overflow-hidden", className)}
       onPointerDown={(event) => {
         const began = performance.now()
         timer.current = window.setInterval(() => {
@@ -57,18 +86,8 @@ function HoldButton({
       }}
       {...props}
     >
-      <span
-        aria-hidden
-        className="absolute inset-y-0 left-0 w-(--hold) bg-primary-foreground/20 motion-reduce:w-full motion-reduce:[opacity:var(--hold-opacity)]"
-        style={
-          {
-            "--hold": `${progress * 100}%`,
-            "--hold-opacity": progress,
-          } as React.CSSProperties
-        }
-      />
-      <span className="relative z-10">{children}</span>
-    </button>
+      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+    </Button>
   )
 }
 

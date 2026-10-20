@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface Ripple {
@@ -10,18 +11,28 @@ interface Ripple {
   y: number
 }
 
-export interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface RippleButtonProps extends React.ComponentProps<typeof Button> {
   rippleColor?: string
+}
+
+function slotTargetOf(asChild: boolean, children: React.ReactNode) {
+  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
+  return null
 }
 
 function RippleButton({
   className,
   children,
   rippleColor = "color-mix(in oklab, var(--primary-foreground) 45%, transparent)",
+  variant,
+  size = "lg",
+  asChild = false,
   onClick,
   ...props
 }: RippleButtonProps) {
   const [ripples, setRipples] = React.useState<Ripple[]>([])
+  const slotTarget = slotTargetOf(asChild, children)
+  const label = slotTarget ? slotTarget.props.children : children
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event)
@@ -38,17 +49,9 @@ function RippleButton({
     }, 650)
   }
 
-  return (
-    <button
-      data-slot="ripple-button"
-      className={cn(
-        "relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90",
-        className,
-      )}
-      onClick={handleClick}
-      {...props}
-    >
-      <span className="relative z-10">{children}</span>
+  const body = (
+    <>
+      <span className="relative z-10">{label}</span>
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
@@ -60,7 +63,21 @@ function RippleButton({
           }}
         />
       ))}
-    </button>
+    </>
+  )
+
+  return (
+    <Button
+      data-slot="ripple-button"
+      variant={variant}
+      size={size}
+      asChild={slotTarget !== null}
+      className={cn("relative overflow-hidden", className)}
+      onClick={handleClick}
+      {...props}
+    >
+      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+    </Button>
   )
 }
 

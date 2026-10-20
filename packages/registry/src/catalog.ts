@@ -862,7 +862,7 @@ export const components: ComponentMeta[] = [
     source: "Animata",
     type: "registry:ui",
     dependencies: [],
-    registryDependencies: ["utils"],
+    registryDependencies: ["utils", "button"],
     file: "effects/ripple-button.tsx",
     target: "components/ui/ripple-button.tsx",
     props: [{ name: "rippleColor", type: "string", description: "波纹颜色。" }],

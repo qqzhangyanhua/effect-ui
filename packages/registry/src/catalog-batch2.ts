@@ -738,7 +738,7 @@ export const batch2Components: ComponentMeta[] = [
     source: "original",
     type: "registry:ui",
     dependencies: [],
-    registryDependencies: ["utils"],
+    registryDependencies: ["utils", "button"],
     file: "effects/gooey-button.tsx",
     target: "components/ui/gooey-button.tsx",
     props: ui,

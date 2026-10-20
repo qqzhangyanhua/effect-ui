@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 interface Burst {
@@ -10,35 +11,44 @@ interface Burst {
   y: number
 }
 
-export type ParticleButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
+export type ParticleButtonProps = React.ComponentProps<typeof Button>
 
-function ParticleButton({ className, children = "粒子爆散", onClick, ...props }: ParticleButtonProps) {
+function slotTargetOf(asChild: boolean, children: React.ReactNode) {
+  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
+  return null
+}
+
+function ParticleButton({
+  className,
+  children = "粒子爆散",
+  variant,
+  size = "lg",
+  asChild = false,
+  onClick,
+  ...props
+}: ParticleButtonProps) {
   const [bursts, setBursts] = React.useState<Burst[]>([])
+  const slotTarget = slotTargetOf(asChild, children)
+  const label = slotTarget ? slotTarget.props.children : children
 
-  return (
-    <button
-      type="button"
-      className={cn(
-        "relative inline-flex h-10 overflow-visible rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground",
-        className,
-      )}
-      onClick={(event) => {
-        onClick?.(event)
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-        const rect = event.currentTarget.getBoundingClientRect()
-        const next = {
-          id: Date.now(),
-          x: event.clientX - rect.left,
-          y: event.clientY - rect.top,
-        }
-        setBursts((current) => [...current, next])
-        window.setTimeout(() => {
-          setBursts((current) => current.filter((item) => item.id !== next.id))
-        }, 700)
-      }}
-      {...props}
-    >
-      <span className="relative z-10">{children}</span>
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onClick?.(event)
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const rect = event.currentTarget.getBoundingClientRect()
+    const next = {
+      id: Date.now(),
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    }
+    setBursts((current) => [...current, next])
+    window.setTimeout(() => {
+      setBursts((current) => current.filter((item) => item.id !== next.id))
+    }, 700)
+  }
+
+  const body = (
+    <>
+      <span className="relative z-10">{label}</span>
       {bursts.map((burst) => (
         <span key={burst.id} className="pointer-events-none absolute" style={{ left: burst.x, top: burst.y }}>
           {Array.from({ length: 10 }, (_, index) => {
@@ -58,7 +68,23 @@ function ParticleButton({ className, children = "粒子爆散", onClick, ...prop
           })}
         </span>
       ))}
-    </button>
+    </>
+  )
+
+  return (
+    <Button
+      type="button"
+      // Button 在 props 之前写入 data-slot="button"；这个组件原先没有 data-slot。
+      data-slot={undefined}
+      variant={variant}
+      size={size}
+      asChild={slotTarget !== null}
+      className={cn("relative overflow-visible", className)}
+      onClick={handleClick}
+      {...props}
+    >
+      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+    </Button>
   )
 }
 

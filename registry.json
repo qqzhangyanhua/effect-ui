@@ -284,8 +284,8 @@
       "title": "Toast",
       "description": "基于 Sonner 的轻提示。",
       "dependencies": [
-        "sonner",
-        "next-themes"
+        "next-themes",
+        "sonner"
       ],
       "registryDependencies": [],
       "files": [
@@ -852,8 +852,8 @@
       "description": "点击波纹按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -870,8 +870,8 @@
       "description": "斜向光泽扫过按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -888,8 +888,8 @@
       "description": "向外脉冲的按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -906,8 +906,8 @@
       "description": "霓虹描边发光按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -1130,8 +1130,8 @@
         "@radix-ui/react-alert-dialog"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -1184,12 +1184,12 @@
       "title": "Calendar",
       "description": "日期选择日历。",
       "dependencies": [
-        "react-day-picker",
-        "lucide-react"
+        "lucide-react",
+        "react-day-picker"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -1209,8 +1209,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -1266,8 +1266,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "dialog"
+        "dialog",
+        "utils"
       ],
       "files": [
         {
@@ -1322,13 +1322,13 @@
       "title": "Form",
       "description": "react-hook-form 封装。",
       "dependencies": [
-        "react-hook-form",
         "@radix-ui/react-label",
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "react-hook-form"
       ],
       "registryDependencies": [
-        "utils",
-        "label"
+        "label",
+        "utils"
       ],
       "files": [
         {
@@ -1427,8 +1427,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -1483,8 +1483,8 @@
       "title": "Resizable",
       "description": "可拖拽分割面板。",
       "dependencies": [
-        "react-resizable-panels",
-        "lucide-react"
+        "lucide-react",
+        "react-resizable-panels"
       ],
       "registryDependencies": [
         "utils"
@@ -1527,11 +1527,11 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
         "separator",
         "sheet",
-        "use-mobile"
+        "use-mobile",
+        "utils"
       ],
       "files": [
         {
@@ -1605,8 +1605,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils",
-        "toggle"
+        "toggle",
+        "utils"
       ],
       "files": [
         {
@@ -2073,8 +2073,8 @@
       "description": "彩虹描边按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2093,8 +2093,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2111,8 +2111,8 @@
       "description": "液态粘连按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2245,8 +2245,8 @@
       "title": "Morphing Dialog",
       "description": "卡片共享布局变形展开成弹窗。",
       "dependencies": [
-        "motion",
-        "lucide-react"
+        "lucide-react",
+        "motion"
       ],
       "registryDependencies": [
         "use-prefers-reduced-motion",
@@ -2401,12 +2401,12 @@
       "title": "Dropzone",
       "description": "拖拽上传，含预览与类型/大小校验。",
       "dependencies": [
-        "react-dropzone",
-        "lucide-react"
+        "lucide-react",
+        "react-dropzone"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2425,11 +2425,11 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "button",
         "badge",
+        "button",
         "command",
-        "popover"
+        "popover",
+        "utils"
       ],
       "files": [
         {
@@ -2448,8 +2448,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "badge"
+        "badge",
+        "utils"
       ],
       "files": [
         {
@@ -2470,10 +2470,10 @@
         "react-day-picker"
       ],
       "registryDependencies": [
-        "utils",
         "button",
         "calendar",
-        "popover"
+        "popover",
+        "utils"
       ],
       "files": [
         {
@@ -2530,9 +2530,9 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
-        "input"
+        "input",
+        "utils"
       ],
       "files": [
         {
@@ -2548,12 +2548,12 @@
       "title": "Code Block",
       "description": "Shiki 高亮、行号、复制与多文件 Tab。",
       "dependencies": [
-        "shiki",
-        "lucide-react"
+        "lucide-react",
+        "shiki"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2574,8 +2574,8 @@
         "@dnd-kit/utilities"
       ],
       "registryDependencies": [
-        "utils",
-        "card"
+        "card",
+        "utils"
       ],
       "files": [
         {
@@ -2715,12 +2715,12 @@
       "title": "Animated Theme Toggler",
       "description": "圆形扩散的明暗切换（View Transitions）。",
       "dependencies": [
-        "next-themes",
-        "lucide-react"
+        "lucide-react",
+        "next-themes"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2739,9 +2739,9 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
-        "textarea"
+        "textarea",
+        "utils"
       ],
       "files": [
         {
@@ -2760,8 +2760,8 @@
         "react-markdown"
       ],
       "registryDependencies": [
-        "utils",
-        "avatar"
+        "avatar",
+        "utils"
       ],
       "files": [
         {
@@ -2778,11 +2778,11 @@
       "description": "营销区块：Hero / Pricing / Testimonial / Footer，各 3 个变体，组合现有特效。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button",
         "aurora-background",
+        "button",
         "glass-card",
-        "shimmer-button"
+        "shimmer-button",
+        "utils"
       ],
       "files": [
         {
@@ -2833,15 +2833,15 @@
       "title": "Rich Text Editor",
       "description": "基于 Tiptap 的富文本编辑器，含基础工具栏。",
       "dependencies": [
+        "@tiptap/extension-placeholder",
+        "@tiptap/pm",
         "@tiptap/react",
         "@tiptap/starter-kit",
-        "@tiptap/pm",
-        "@tiptap/extension-placeholder",
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2877,8 +2877,8 @@
       "description": "高亮遮罩 + 步骤卡片的产品引导。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -2897,9 +2897,9 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils",
         "label",
-        "separator"
+        "separator",
+        "utils"
       ],
       "files": [
         {
@@ -2918,10 +2918,10 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils",
         "button",
         "input",
-        "textarea"
+        "textarea",
+        "utils"
       ],
       "files": [
         {
@@ -2937,12 +2937,12 @@
       "title": "Button Group",
       "description": "把多个按钮拼成一组，支持横/竖方向。",
       "dependencies": [
-        "class-variance-authority",
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils",
-        "separator"
+        "separator",
+        "utils"
       ],
       "files": [
         {
@@ -2994,12 +2994,12 @@
       "title": "Item",
       "description": "列表项：媒体、标题、描述与操作。",
       "dependencies": [
-        "class-variance-authority",
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils",
-        "separator"
+        "separator",
+        "utils"
       ],
       "files": [
         {
@@ -3038,9 +3038,9 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
-        "input-group"
+        "input-group",
+        "utils"
       ],
       "files": [
         {
@@ -3060,10 +3060,10 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
         "calendar",
-        "popover"
+        "popover",
+        "utils"
       ],
       "files": [
         {
@@ -3186,8 +3186,8 @@
         "react-phone-number-input"
       ],
       "registryDependencies": [
-        "utils",
-        "input"
+        "input",
+        "utils"
       ],
       "files": [
         {
@@ -3204,8 +3204,8 @@
       "description": "密码强度条（长度、大小写、数字、符号）。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "input"
+        "input",
+        "utils"
       ],
       "files": [
         {
@@ -3222,8 +3222,8 @@
       "description": "数字输入并预览货币格式。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "input"
+        "input",
+        "utils"
       ],
       "files": [
         {
@@ -3242,9 +3242,9 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
-        "input"
+        "input",
+        "utils"
       ],
       "files": [
         {
@@ -3261,8 +3261,8 @@
       "description": "标签上浮的输入框。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "input"
+        "input",
+        "utils"
       ],
       "files": [
         {
@@ -3316,8 +3316,8 @@
       "title": "Audio Waveform",
       "description": "wavesurfer.js 音频波形与播放。",
       "dependencies": [
-        "wavesurfer.js",
-        "lucide-react"
+        "lucide-react",
+        "wavesurfer.js"
       ],
       "registryDependencies": [
         "utils"
@@ -3356,9 +3356,9 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils",
         "button",
-        "popover"
+        "popover",
+        "utils"
       ],
       "files": [
         {
@@ -3377,11 +3377,11 @@
         "recharts"
       ],
       "registryDependencies": [
-        "utils",
         "badge",
         "card",
         "chart",
-        "table"
+        "table",
+        "utils"
       ],
       "files": [
         {
@@ -3398,9 +3398,9 @@
       "description": "商品卡、画廊、购物车抽屉、结账步骤。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
         "button",
-        "sheet"
+        "sheet",
+        "utils"
       ],
       "files": [
         {
@@ -3452,8 +3452,8 @@
       "description": "长按进度确认。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -3470,8 +3470,8 @@
       "description": "点击粒子爆散。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -3488,8 +3488,8 @@
       "description": "按钮从中间撕开。",
       "dependencies": [],
       "registryDependencies": [
-        "utils",
-        "button"
+        "button",
+        "utils"
       ],
       "files": [
         {
@@ -3940,8 +3940,8 @@
       "title": "Burst Icons",
       "description": "灵感来自 mo.js（MIT），用 Motion 重写的点击图标爆发。",
       "dependencies": [
-        "motion",
-        "lucide-react"
+        "lucide-react",
+        "motion"
       ],
       "registryDependencies": [
         "utils"
@@ -4174,8 +4174,8 @@
         "rough-annotation",
         "shimmer-button",
         "split-text",
-        "word-rotate",
-        "utils"
+        "utils",
+        "word-rotate"
       ],
       "files": [
         {

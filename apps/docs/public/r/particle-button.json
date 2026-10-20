@@ -6,8 +6,8 @@
   "description": "点击粒子爆散。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

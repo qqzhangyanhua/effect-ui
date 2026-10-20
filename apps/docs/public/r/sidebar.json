@@ -10,11 +10,11 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "utils",
     "button",
     "separator",
     "sheet",
-    "use-mobile"
+    "use-mobile",
+    "utils"
   ],
   "files": [
     {

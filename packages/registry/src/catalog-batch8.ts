@@ -17,19 +17,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: [
-      "aurora-background",
-      "button",
-      "iridescence",
-      "lightning",
-      "shader-backgrounds",
-      "shimmer-button",
-      "silk",
-      "split-text",
-      "use-prefers-reduced-motion",
-      "utils",
-    ],
     file: "sections/hero-shader.tsx",
     target: "components/ui/hero-shader.tsx",
     props: [
@@ -54,8 +41,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "cobe",
     type: "registry:ui",
-    dependencies: ["cobe"],
-    registryDependencies: ["button", "globe-sphere", "shimmer-button", "use-prefers-reduced-motion", "utils"],
     file: "sections/hero-globe.tsx",
     target: "components/ui/hero-globe.tsx",
     props: [
@@ -74,15 +59,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: [
-      "button",
-      "container-scroll-3d",
-      "device-mockups",
-      "glow-hover",
-      "shimmer-button",
-      "utils",
-    ],
     file: "sections/hero-product-mockup.tsx",
     target: "components/ui/hero-product-mockup.tsx",
     props: [
@@ -100,15 +76,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: [
-      "button",
-      "rough-annotation",
-      "shimmer-button",
-      "split-text",
-      "word-rotate",
-      "utils",
-    ],
     file: "sections/hero-kinetic-text.tsx",
     target: "components/ui/hero-kinetic-text.tsx",
     props: [
@@ -126,8 +93,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button", "textarea", "use-prefers-reduced-motion", "utils"],
     file: "sections/hero-ai-prompt.tsx",
     target: "components/ui/hero-ai-prompt.tsx",
     props: [
@@ -147,8 +112,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: ["motion"],
-    registryDependencies: ["button", "shimmer-button", "use-prefers-reduced-motion", "utils"],
     file: "sections/hero-parallax-wall.tsx",
     target: "components/ui/hero-parallax-wall.tsx",
     props: [
@@ -165,8 +128,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "Fancy Components",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: ["utils"],
     file: "sections/footer-curtain-reveal.tsx",
     target: "components/ui/footer-curtain-reveal.tsx",
     props: [
@@ -184,8 +145,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "sections/footer-giant-wordmark.tsx",
     target: "components/ui/footer-giant-wordmark.tsx",
     props: [
@@ -201,8 +160,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "matter-js",
     type: "registry:ui",
-    dependencies: ["matter-js"],
-    registryDependencies: ["use-prefers-reduced-motion", "utils", "variable-font-proximity"],
     file: "sections/footer-interactive-wordmark.tsx",
     target: "components/ui/footer-interactive-wordmark.tsx",
     props: [
@@ -218,8 +175,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "Paper Shaders",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: ["shader-backgrounds", "shader-pack-2", "use-prefers-reduced-motion", "utils"],
     file: "sections/footer-shader-wordmark.tsx",
     target: "components/ui/footer-shader-wordmark.tsx",
     props: [
@@ -241,8 +196,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "Kokonut UI",
     type: "registry:ui",
-    dependencies: ["lucide-react", "motion"],
-    registryDependencies: ["button", "use-prefers-reduced-motion", "utils"],
     file: "sections/nav-morphing.tsx",
     target: "components/ui/nav-morphing.tsx",
     props: [
@@ -258,8 +211,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: ["marquee", "progressive-blur", "timeline", "utils"],
     file: "sections/section-logo-cloud.tsx",
     target: "components/ui/section-logo-cloud.tsx",
     props: [
@@ -275,8 +226,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "Cult UI",
     type: "registry:ui",
-    dependencies: ["motion"],
-    registryDependencies: ["use-prefers-reduced-motion", "utils"],
     file: "sections/section-sticky-feature-scroll.tsx",
     target: "components/ui/section-sticky-feature-scroll.tsx",
     props: [
@@ -291,16 +240,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "original",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: [
-      "bento-grid",
-      "border-beam",
-      "count-up",
-      "orbiting-circles",
-      "sparkles",
-      "utils",
-      "word-rotate",
-    ],
     file: "sections/section-animated-bento.tsx",
     target: "components/ui/section-animated-bento.tsx",
     props: ui,
@@ -312,8 +251,6 @@ export const batch8Components: ComponentMeta[] = [
     category: "sections",
     source: "Number Flow",
     type: "registry:ui",
-    dependencies: [],
-    registryDependencies: ["button", "glowing-edge", "number-flow", "switch", "utils"],
     file: "sections/section-pricing-flow.tsx",
     target: "components/ui/section-pricing-flow.tsx",
     props: [

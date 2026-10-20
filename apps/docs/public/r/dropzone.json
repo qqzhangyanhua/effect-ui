@@ -5,12 +5,12 @@
   "title": "Dropzone",
   "description": "拖拽上传，含预览与类型/大小校验。",
   "dependencies": [
-    "react-dropzone",
-    "lucide-react"
+    "lucide-react",
+    "react-dropzone"
   ],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

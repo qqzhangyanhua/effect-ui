@@ -9,8 +9,9 @@ effect-ui is a React UI and effects library distributed as a shadcn-compatible r
   - `src/hooks`, `src/lib`: hook and lib registry items.
   - `src/examples`: docs demos. `examples/index.ts` holds `demoMap`.
   - `src/catalog.ts`: the component list. It spreads every `catalog-batch*.ts`.
-  - `src/registry-item.ts`: turns a catalog entry plus source into registry JSON.
-  - `src/audit.ts`, `src/audit-exceptions.ts`: registry consistency audit, run by `pnpm test`.
+  - `src/registry-item.ts`: turns a catalog entry plus a source reader into registry JSON.
+  - `src/dependencies.ts`: derives each item's npm and registry dependencies from its source imports.
+  - `src/audit.ts`: registry consistency audit, run by `pnpm test`.
 - `apps/docs/` (`@effect-ui/docs`): Next.js docs and demo site.
   - `app/page.tsx` (`/`), `app/docs/page.tsx` (`/docs`), `app/docs/[slug]/page.tsx` (`/docs/[slug]`), `app/preview/[slug]` (`/preview/[slug]`, template previews).
   - `app/r/[name]/route.ts`: `GET /r/[name]`, the public install endpoint.
@@ -48,7 +49,7 @@ How each one resolves:
 Follow "新增组件" in `README.md`. In short:
 
 1. Put the source in `packages/registry/src/{ui,effects,sections,templates,lib,hooks}`.
-2. Register it in `catalog.ts` or a `catalog-batch*.ts` file. `dependencies` must match the source imports.
+2. Register it in `catalog.ts` or a `catalog-batch*.ts` file. Do not list dependencies: the build derives them from the source imports (`docs/adr/0001-derive-dependency-lists-from-source.md`). Use `extraDependencies` only for an npm package the source never imports, such as a peer.
 3. Add each new npm package to `packages/registry/package.json`. By convention it also goes into `apps/docs/package.json`.
 4. For `registry:ui` and `registry:block`, add a demo and register it in `examples/index.ts`.
 5. List the component name in the README component list.

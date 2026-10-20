@@ -6,8 +6,8 @@
   "description": "标签上浮的输入框。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "input"
+    "input",
+    "utils"
   ],
   "files": [
     {

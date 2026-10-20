@@ -6,8 +6,8 @@
   "description": "向外脉冲的按钮。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

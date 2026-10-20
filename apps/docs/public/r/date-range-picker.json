@@ -10,10 +10,10 @@
     "react-day-picker"
   ],
   "registryDependencies": [
-    "utils",
     "button",
     "calendar",
-    "popover"
+    "popover",
+    "utils"
   ],
   "files": [
     {

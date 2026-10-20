@@ -9,8 +9,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "utils",
-    "dialog"
+    "dialog",
+    "utils"
   ],
   "files": [
     {

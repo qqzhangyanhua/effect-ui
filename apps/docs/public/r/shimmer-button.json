@@ -6,8 +6,8 @@
   "description": "斜向光泽扫过按钮。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

@@ -5,12 +5,12 @@
   "title": "Code Block",
   "description": "Shiki 高亮、行号、复制与多文件 Tab。",
   "dependencies": [
-    "shiki",
-    "lucide-react"
+    "lucide-react",
+    "shiki"
   ],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

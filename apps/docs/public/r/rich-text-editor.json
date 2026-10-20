@@ -5,15 +5,15 @@
   "title": "Rich Text Editor",
   "description": "基于 Tiptap 的富文本编辑器，含基础工具栏。",
   "dependencies": [
+    "@tiptap/extension-placeholder",
+    "@tiptap/pm",
     "@tiptap/react",
     "@tiptap/starter-kit",
-    "@tiptap/pm",
-    "@tiptap/extension-placeholder",
     "lucide-react"
   ],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

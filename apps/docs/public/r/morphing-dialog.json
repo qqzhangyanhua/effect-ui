@@ -5,8 +5,8 @@
   "title": "Morphing Dialog",
   "description": "卡片共享布局变形展开成弹窗。",
   "dependencies": [
-    "motion",
-    "lucide-react"
+    "lucide-react",
+    "motion"
   ],
   "registryDependencies": [
     "use-prefers-reduced-motion",

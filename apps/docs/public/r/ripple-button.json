@@ -6,8 +6,8 @@
   "description": "点击波纹按钮。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

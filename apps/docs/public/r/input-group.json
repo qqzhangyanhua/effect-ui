@@ -8,10 +8,10 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils",
     "button",
     "input",
-    "textarea"
+    "textarea",
+    "utils"
   ],
   "files": [
     {

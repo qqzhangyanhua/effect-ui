@@ -8,8 +8,8 @@
     "@radix-ui/react-alert-dialog"
   ],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

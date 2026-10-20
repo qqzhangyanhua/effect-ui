@@ -12,23 +12,19 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const registrySrc = path.join(root, "packages/registry/src")
 const publicDir = path.join(root, "apps/docs/public/r")
 
+const readSource = (file: string) => fs.readFileSync(path.join(registrySrc, file), "utf8")
+
 fs.mkdirSync(publicDir, { recursive: true })
 
-const registryJson = `${JSON.stringify(buildRegistry(components), null, 2)}\n`
+const registryJson = `${JSON.stringify(buildRegistry(components, readSource), null, 2)}\n`
 fs.writeFileSync(path.join(root, "registry.json"), registryJson)
 fs.writeFileSync(path.join(publicDir, "registry.json"), registryJson)
 
 for (const item of components) {
-  const contents: Record<string, string> = {}
-  const files = item.files && item.files.length > 0 ? item.files : [{ file: item.file }]
-  for (const file of files) {
-    contents[file.file] = fs.readFileSync(path.join(registrySrc, file.file), "utf8")
-  }
   fs.writeFileSync(
     path.join(publicDir, `${item.name}.json`),
-    `${JSON.stringify(buildRegistryItem(item, contents), null, 2)}\n`,
+    `${JSON.stringify(buildRegistryItem(item, readSource), null, 2)}\n`,
   )
 }
 
 console.log(`Wrote ${components.length} registry items`)
-

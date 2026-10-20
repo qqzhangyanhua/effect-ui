@@ -10,8 +10,8 @@
     "rough-annotation",
     "shimmer-button",
     "split-text",
-    "word-rotate",
-    "utils"
+    "utils",
+    "word-rotate"
   ],
   "files": [
     {

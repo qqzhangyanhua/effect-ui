@@ -6,8 +6,8 @@
   "description": "按钮从中间撕开。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

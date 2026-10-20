@@ -5,8 +5,8 @@
   "title": "Resizable",
   "description": "可拖拽分割面板。",
   "dependencies": [
-    "react-resizable-panels",
-    "lucide-react"
+    "lucide-react",
+    "react-resizable-panels"
   ],
   "registryDependencies": [
     "utils"

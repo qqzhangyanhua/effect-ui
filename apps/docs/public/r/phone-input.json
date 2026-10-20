@@ -8,8 +8,8 @@
     "react-phone-number-input"
   ],
   "registryDependencies": [
-    "utils",
-    "input"
+    "input",
+    "utils"
   ],
   "files": [
     {

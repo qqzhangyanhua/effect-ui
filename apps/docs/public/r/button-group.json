@@ -5,12 +5,12 @@
   "title": "Button Group",
   "description": "把多个按钮拼成一组，支持横/竖方向。",
   "dependencies": [
-    "class-variance-authority",
-    "@radix-ui/react-slot"
+    "@radix-ui/react-slot",
+    "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils",
-    "separator"
+    "separator",
+    "utils"
   ],
   "files": [
     {

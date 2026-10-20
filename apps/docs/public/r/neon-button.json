@@ -6,8 +6,8 @@
   "description": "霓虹描边发光按钮。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

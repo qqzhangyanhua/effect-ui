@@ -8,9 +8,9 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils",
     "label",
-    "separator"
+    "separator",
+    "utils"
   ],
   "files": [
     {

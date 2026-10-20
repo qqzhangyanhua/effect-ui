@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "macbook-scroll",
+  "type": "registry:ui",
+  "title": "Macbook Scroll",
+  "description": "灵感来自 Aceternity，原创实现。通用笔记本盖随滚动打开，屏幕画面再稍微放大。没有品牌标志。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/macbook-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/macbook-scroll.tsx",
+      "content": "\"use client\"\n\nimport { motion, useMotionValue, useTransform } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface MacbookScrollProps {\n  className?: string\n}\n\nfunction ScreenMock() {\n  return (\n    <div className=\"flex h-full flex-col bg-zinc-950 p-3 text-zinc-100\">\n      <div className=\"mb-3 h-2 w-16 rounded-full bg-white/30\" />\n      <div className=\"grid flex-1 grid-cols-[4rem_1fr] gap-2\">\n        <div className=\"space-y-2\">\n          <div className=\"h-8 rounded-md bg-cyan-400/70\" />\n          <div className=\"h-8 rounded-md bg-white/15\" />\n          <div className=\"h-8 rounded-md bg-white/15\" />\n        </div>\n        <div className=\"rounded-md bg-[linear-gradient(160deg,#312e81,#0e7490_60%,#b45309)] p-3\">\n          <div className=\"h-2 w-1/2 rounded-full bg-white/70\" />\n          <div className=\"mt-6 h-16 rounded-md bg-white/20\" />\n        </div>\n      </div>\n    </div>\n  )\n}\n\nfunction MacbookScroll({ className }: MacbookScrollProps) {\n  const reduced = usePrefersReducedMotion()\n  const progress = useMotionValue(reduced ? 1 : 0)\n  const rotateX = useTransform(progress, [0, 0.62], [-68, 0])\n  const scale = useTransform(progress, [0.4, 1], [1, 1.7])\n\n  const onScroll = (event: React.UIEvent<HTMLDivElement>) => {\n    if (reduced) return\n    const element = event.currentTarget\n    const max = element.scrollHeight - element.clientHeight\n    progress.set(max <= 0 ? 1 : element.scrollTop / max)\n  }\n\n  return (\n    <div\n      data-slot=\"macbook-scroll\"\n      tabIndex={0}\n      aria-label=\"滚动时笔记本屏幕打开，画面再稍微放大。这是通用机身，没有品牌标志。\"\n      className={cn(\n        \"h-96 w-full overflow-auto rounded-xl border bg-zinc-950 outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n        className,\n      )}\n      onScroll={onScroll}\n    >\n      <div className=\"h-[180vh]\">\n        <div className=\"sticky top-0 grid h-96 place-items-center [perspective:1100px]\">\n          <div className=\"w-72\">\n            <motion.div\n              className=\"origin-bottom overflow-visible rounded-t-xl border border-b-0 border-white/20 bg-zinc-800 p-2\"\n              style={reduced ? { rotateX: 0 } : { rotateX }}\n            >\n              <motion.div className=\"h-40 overflow-hidden rounded-md\" style={reduced ? undefined : { scale }}>\n                <ScreenMock />\n              </motion.div>\n            </motion.div>\n            <div className=\"h-3 rounded-b-xl bg-zinc-700 shadow-[0_16px_30px_rgba(0,0,0,0.35)]\">\n              <div className=\"mx-auto h-1 w-16 rounded-b-md bg-zinc-500\" />\n            </div>\n            <p className=\"mt-4 text-center text-xs text-zinc-400\">滚动展开屏幕</p>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport { MacbookScroll }\n"
+    }
+  ]
+}

@@ -376,6 +376,28 @@ use-mobile · use-prefers-reduced-motion
 | image-cropper | 灵感来自 Apple，原创实现 |
 | diff-viewer | 灵感来自 GitHub，原创实现 |
 
+### 滚动透镜与检索组件
+
+登记在 `catalog-batch15.ts`（`catalog-batch14.ts` 已用于上一批原创动效）。未打开 Codrops、Aceternity、Coda、Maze、Linear、Webflow、Retool、Vercel 的源码，未移植其组件。未使用 GSAP。`square-lens-distortion` 懒加载已有的 OGL。`resource-search-hero` 按需加载 `fuse.js`（Apache-2.0）。`macbook-scroll` 是通用笔记本，没有品牌标志。
+
+| 组件 | 来源 |
+| --- | --- |
+| ghost-trail-text | 灵感来自 Codrops，原创实现 |
+| gravity-image-trail | 灵感来自 Codrops，原创实现 |
+| square-lens-distortion | 灵感来自 Codrops，原创实现 |
+| dual-wave-text-list | 灵感来自 Codrops，原创实现 |
+| clip-reveal-menu | 灵感来自 Codrops，原创实现 |
+| sticky-grid-scroll | 灵感来自 Codrops，原创实现 |
+| svg-mask-scroll-transition | 灵感来自 Codrops，原创实现 |
+| macbook-scroll | 灵感来自 Aceternity，原创实现 |
+| faceted-filter-bar | 灵感来自 Linear，原创实现 |
+| json-viewer | 灵感来自 Retool，原创实现 |
+| heatmap-calendar | 灵感来自 GitHub，原创实现 |
+| grouped-checklist | 灵感来自 Coda，原创实现 |
+| text-generate | 灵感来自 Vercel，原创实现 |
+| column-config-panel | 灵感来自 Retool，原创实现 |
+| resource-search-hero | 灵感来自 Maze，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-generate",
+  "type": "registry:ui",
+  "title": "Text Generate",
+  "description": "灵感来自 Vercel，原创实现。文字按词从模糊里显出，追加文本时只动画新词。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/text-generate.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/text-generate.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextGenerateProps {\n  text: string\n  className?: string\n}\n\nfunction TextGenerate({ text, className }: TextGenerateProps) {\n  const reduced = usePrefersReducedMotion()\n  const words = text.split(/\\s+/).filter((word) => word.length > 0)\n\n  return (\n    <p data-slot=\"text-generate\" className={cn(\"min-h-16 text-2xl leading-relaxed\", className)} aria-live=\"polite\">\n      {words.map((word, index) => (\n        <motion.span\n          key={`${index}-${word}`}\n          className=\"mr-[0.3em] inline-block\"\n          initial={reduced ? false : { opacity: 0, filter: \"blur(8px)\" }}\n          animate={{ opacity: 1, filter: \"blur(0px)\" }}\n          transition={{ duration: reduced ? 0 : 0.35 }}\n        >\n          {word}\n        </motion.span>\n      ))}\n    </p>\n  )\n}\n\nexport { TextGenerate }\n"
+    }
+  ]
+}

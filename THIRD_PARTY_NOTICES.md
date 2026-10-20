@@ -314,6 +314,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 微交互试用（`catalog-batch12.ts`。计划里的 Batch 11 A3 与上面的滚动 / 3D Batch 11 不是同一批）：灵感来自 React Bits，原创实现，未打开源码。未在 `licenses/` 增加文件。组件：`squish-switch`、`jelly-radio`、`spring-check`、`peek-rating`、`slide-to-confirm`、`swipe-row`、`fuse-button`、`pulse-heart`、`lattice-loader`、`warm-tooltip`。`fuse-button` 不并入 `hold-button`。
 - React Bits 灵感动效（`catalog-batch13.ts`）：灵感来自 React Bits，原创实现。未打开 React Bits 源码，未在 `licenses/` 增加 React Bits 许可文本。未使用 GSAP。组件：`text-pressure`、`true-focus`、`split-flap-text`、`curved-loop`、`fuzzy-text`、`electric-border`、`sticker-peel`、`click-spark`、`glare-hover`、`card-swap`、`flowing-menu`、`dome-gallery`、`elastic-slider`、`light-rays`、`hyperspeed`。`light-rays` 与 `hyperspeed` 懒加载已登记的 OGL。
 - 原创动效与实用组件（`catalog-batch14.ts`）：灵感来自 X，原创实现。未打开 Aceternity、Hover.dev、Stripe、Linear、Vercel、Apple、GitHub 源码。未使用 GSAP。`vortex-background` 与 `flow-field` 分开登记。组件：`lens-zoom`（Hover.dev）、`world-map-arcs`（Aceternity）、`vortex-background`（Aceternity）、`beams-collision`（Aceternity）、`placeholder-vanish-input`（Aceternity）、`link-preview`（Hover.dev）、`avatar-group-tooltip`（Hover.dev）、`shuffle-grid-hero`（Aceternity）、`toc-scrollspy`（Stripe）、`sortable-list`（Linear）、`kpi-sparkline-card`（Vercel）、`cookie-consent`（Stripe）、`countdown-timer`（Apple）、`image-cropper`（Apple）、`diff-viewer`（GitHub）。
+- 滚动透镜与检索组件（`catalog-batch15.ts`）：灵感来自 X，原创实现。未打开 Codrops、Aceternity、Coda、Maze、Linear、Webflow、Retool、Vercel 源码，未移植其组件。未使用 GSAP。组件：`ghost-trail-text`（Codrops）、`gravity-image-trail`（Codrops）、`square-lens-distortion`（Codrops）、`dual-wave-text-list`（Codrops）、`clip-reveal-menu`（Codrops）、`sticky-grid-scroll`（Codrops）、`svg-mask-scroll-transition`（Codrops）、`macbook-scroll`（Aceternity，通用笔记本，无品牌标志）、`faceted-filter-bar`（Linear）、`json-viewer`（Retool）、`heatmap-calendar`（GitHub）、`grouped-checklist`（Coda）、`text-generate`（Vercel）、`column-config-panel`（Retool）、`resource-search-hero`（Maze）。`square-lens-distortion` 懒加载已登记的 OGL。
 
 ## jsdiff（BSD-3-Clause）
 
@@ -334,4 +335,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - npm：`simplex-noise` 4.0.3
 - 衍生组件：`vortex-background`（动态 `import("simplex-noise")` 的 `createNoise2D`，未修改上游源码）
 
-完整 MIT / Apache-2.0 / BSD-3-Clause 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`、`licenses/bsd/`、`licenses/mit/`，以及本仓库 `LICENSE`。
+## fuse.js（Apache-2.0）
+
+- 仓库：https://github.com/krisk/Fuse
+- 许可：Apache-2.0
+- 版权：Copyright 2017 Kirollos Risk
+- LICENSE：`licenses/apache/fuse.js/LICENSE`
+- npm：`fuse.js` 7.5.0
+- 衍生组件：`resource-search-hero`（动态 `import("fuse.js")`，未修改上游源码）
+
+完整 MIT / Apache-2.0 / BSD-3-Clause 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`、`licenses/apache/fuse.js/`、`licenses/bsd/`、`licenses/mit/`，以及本仓库 `LICENSE`。

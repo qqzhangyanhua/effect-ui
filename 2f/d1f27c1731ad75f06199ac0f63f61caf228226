@@ -1,0 +1,25 @@
+apps/docs/public/r/reveal.json
+  s_0e0aa159108cb9::t_dd8e6b733ea049 19
+apps/docs/public/r/tear-button.json
+  s_0e0aa159108cb9::t_dd8e6b733ea049 17
+packages/registry/src/effects/reveal.tsx
+  s_0e0aa159108cb9::t_a35fd69ba49c1d 75-76,78
+packages/registry/src/effects/tear-button.tsx
+  s_0e0aa159108cb9::t_1a16b5e9f7f00e 25-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "2fd1f27c1731ad75f06199ac0f63f61caf228226",
+  "prompts": {},
+  "sessions": {
+    "s_0e0aa159108cb9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1583a-1816-76c3-a12c-10d4292e8805",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+apps/docs/public/r/keycap-3d.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+apps/docs/package.json
+  s_c92134f149f9b8::t_9a2731f0672798 49-50,62,67,89,102
+apps/docs/public/r/anchor-popover.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+packages/registry/src/catalog-batch11.ts
+  s_c92134f149f9b8::t_9a2731f0672798 1-191
+packages/registry/src/sections/hero-3d-canvas.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-57
+packages/registry/src/sections/hero-3d-model.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-89
+apps/docs/public/r/hover-image-list.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+packages/registry/src/effects/infinite-canvas-gallery.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-130
+packages/registry/src/examples/effect-demos-11.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-77
+packages/registry/src/ui/anchor-popover.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-98
+apps/docs/public/r/css-accordion-auto.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+apps/docs/public/r/text-variable-scroll.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+licenses/mit/react-three-drei/LICENSE
+  s_c92134f149f9b8::t_9a2731f0672798 1-21
+packages/registry/package.json
+  s_c92134f149f9b8::t_9a2731f0672798 52-53,70,91,100-101
+registry.json
+  s_c92134f149f9b8::t_9a2731f0672798 5070-5363
+apps/docs/public/r/liquid-glass-tabbar.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+apps/docs/public/r/intro-preloader.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+apps/docs/public/r/scroll-timeline-reveal.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+packages/registry/src/ui/hover-image-list.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-74
+README.md
+  s_c92134f149f9b8::t_9a2731f0672798 300-319
+packages/registry/src/ui/smooth-scroll-provider.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-87
+CREDITS.md
+  s_c92134f149f9b8::t_9a2731f0672798 17
+licenses/mit/three/LICENSE
+  s_c92134f149f9b8::t_9a2731f0672798 1-21
+packages/registry/src/effects/scroll-timeline-reveal.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-67
+apps/docs/public/r/section-horizontal-scroll.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+licenses/mit/lenis/LICENSE
+  s_c92134f149f9b8::t_9a2731f0672798 1-9
+licenses/mit/react-three-fiber/LICENSE
+  s_c92134f149f9b8::t_9a2731f0672798 1-21
+packages/registry/src/catalog.ts
+  s_c92134f149f9b8::t_9a2731f0672798 10,72-73,189-190,967
+packages/registry/src/effects/dither-gradient.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-149
+apps/docs/public/r/dither-gradient.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+packages/registry/src/examples/index.ts
+  s_c92134f149f9b8::t_9a2731f0672798 13,282-296
+packages/registry/src/effects/intro-preloader.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-95
+apps/docs/public/r/hero-scroll-zoom.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+apps/docs/public/r/smooth-scroll-provider.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+apps/docs/public/r/hero-3d-model.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-31
+apps/docs/public/r/infinite-canvas-gallery.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-20
+packages/registry/src/effects/text-variable-scroll.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-69
+apps/docs/public/r/view-transition-gallery.json
+  s_c92134f149f9b8::t_9a2731f0672798 1-22
+packages/registry/src/sections/hero-scroll-zoom.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-38
+packages/registry/src/sections/section-horizontal-scroll.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-75
+packages/registry/src/ui/css-accordion-auto.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-88
+packages/registry/src/ui/liquid-glass-tabbar.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-80
+THIRD_PARTY_NOTICES.md
+  s_c92134f149f9b8::t_9a2731f0672798 268-303,313
+apps/docs/public/r/registry.json
+  s_c92134f149f9b8::t_9a2731f0672798 5070-5363
+packages/registry/src/ui/keycap-3d.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-64
+packages/registry/src/ui/view-transition-gallery.tsx
+  s_c92134f149f9b8::t_9a2731f0672798 1-108
+pnpm-lock.yaml
+  s_c92134f149f9b8::t_fd196e6955a972 28,146-151,200-202,266-268,300-302,420-425,474-476,537-539,562-564,727-729,1264-1271,1977-2012,2468-2470,2513-2515,2543-2545,2551-2555,2559-2564,2574-2576,2759-2766,2896-2898,2923-2925,2942-2947,3015-3019,3141-3143,3164-3166,3422-3427,3540-3542,3592-3594,3605-3607,3616-3618,3752-3754,3801-3805,3863-3876,3884-3886,4074-4079,4124-4131,4398-4400,4409-4411,4575-4583,4768-4776,4849-4853,4864-4876,4914-4926,4947-4949,5051-5054,5164-5169,5249-5281,5465-5466,5811-5817,6541-6593,7002-7003,7046-7047,7074-7075,7080-7083,7088-7098,7105-7106,7270-7276,7414-7415,7443-7447,7467-7470,7528-7531,7646-7649,7666-7667,7865-7884,7948-7974,8135-8138,8250-8251,8322-8323,8334-8335,8340-8341,8467-8468,8521-8527,8592-8595,8603-8606,8736-8740,8848-8853,9199-9200,9209-9213,9406-9411,9685-9691,9784-9787,9794-9809,9841-9854,9876-9883,10035-10036,10117-10120,10204-10218
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "56bc3a851c50d44d86f1854180cfcb447e1b1a6f",
+  "prompts": {},
+  "sessions": {
+    "s_c92134f149f9b8": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15850-fa29-7c10-a536-89c6715832ff",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

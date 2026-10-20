@@ -10,18 +10,13 @@ export interface HoldButtonProps extends React.ComponentProps<typeof Button> {
   onConfirm?: () => void
 }
 
-function slotTargetOf(asChild: boolean, children: React.ReactNode) {
-  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
-  return null
-}
-
 function HoldButton({
   className,
   children = "长按确认",
   duration = 1000,
   onConfirm,
   variant,
-  size = "lg",
+  size,
   asChild = false,
   onPointerDown,
   onPointerUp,
@@ -30,8 +25,9 @@ function HoldButton({
 }: HoldButtonProps) {
   const [progress, setProgress] = React.useState(0)
   const timer = React.useRef(0)
-  const slotTarget = slotTargetOf(asChild, children)
-  const label = slotTarget ? slotTarget.props.children : children
+  const slotted =
+    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
+  const label = slotted ? slotted.props.children : children
 
   const stop = () => {
     window.clearInterval(timer.current)
@@ -61,8 +57,13 @@ function HoldButton({
       data-slot={undefined}
       variant={variant}
       size={size}
-      asChild={slotTarget !== null}
-      className={cn("relative overflow-hidden", className)}
+      asChild={slotted !== null}
+      className={cn(
+        "relative overflow-hidden",
+        variant == null && "hover:bg-primary",
+        size == null && "h-10 px-5",
+        className,
+      )}
       onPointerDown={(event) => {
         const began = performance.now()
         timer.current = window.setInterval(() => {
@@ -86,7 +87,7 @@ function HoldButton({
       }}
       {...props}
     >
-      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+      {slotted ? React.cloneElement(slotted, undefined, body) : body}
     </Button>
   )
 }

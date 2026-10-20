@@ -38,10 +38,16 @@ function PhoneInput({
       disabled={disabled}
       aria-invalid={ariaInvalid}
       inputComponent={Input}
-      numberInputProps={{ className: "w-auto flex-1" }}
+      numberInputProps={{
+        className:
+          "h-full w-auto flex-1 border-0 bg-transparent px-0 shadow-none focus-visible:ring-0 aria-invalid:ring-0 dark:bg-transparent disabled:opacity-100",
+      }}
       className={cn(
-        "flex w-full items-center text-sm [&_.PhoneInputCountry]:mr-2 [&_.PhoneInputCountrySelect]:bg-background",
-        disabled && "[&_.PhoneInputCountry]:opacity-50",
+        "flex h-9 w-full items-center rounded-md border border-input bg-transparent px-2 text-sm shadow-xs transition-[color,box-shadow] outline-none dark:bg-input/30",
+        "focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50",
+        "has-aria-invalid:border-destructive has-aria-invalid:ring-destructive/20 dark:has-aria-invalid:ring-destructive/40",
+        "has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50",
+        "[&_.PhoneInputCountry]:mr-2 [&_.PhoneInputCountrySelect]:bg-background",
         className,
       )}
     />

@@ -7,23 +7,19 @@ import { cn } from "@/lib/utils"
 
 export type TearButtonProps = React.ComponentProps<typeof Button>
 
-function slotTargetOf(asChild: boolean, children: React.ReactNode) {
-  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
-  return null
-}
-
 function TearButton({
   className,
   children = "撕开",
   variant,
-  size = "lg",
+  size,
   asChild = false,
   onClick,
   ...props
 }: TearButtonProps) {
   const [torn, setTorn] = React.useState(false)
-  const slotTarget = slotTargetOf(asChild, children)
-  const label = slotTarget ? slotTarget.props.children : children
+  const slotted =
+    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
+  const label = slotted ? slotted.props.children : children
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setTorn(true)
@@ -34,7 +30,7 @@ function TearButton({
   const face = (clipPath: string, tornClass: string) => (
     <span
       className={cn(
-        buttonVariants({ variant }),
+        variant == null ? "bg-primary text-primary-foreground" : buttonVariants({ variant }),
         "absolute inset-0 block h-full w-full overflow-hidden rounded-md border-0 px-0 py-0 shadow-none transition-none",
         torn && tornClass,
       )}
@@ -65,12 +61,16 @@ function TearButton({
       data-slot={undefined}
       variant={variant}
       size={size}
-      asChild={slotTarget !== null}
-      className={cn("relative min-w-28 bg-transparent hover:bg-transparent", className)}
+      asChild={slotted !== null}
+      className={cn(
+        "relative min-w-28 bg-transparent hover:bg-transparent",
+        size == null && "h-10 px-0",
+        className,
+      )}
       onClick={handleClick}
       {...props}
     >
-      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+      {slotted ? React.cloneElement(slotted, undefined, body) : body}
     </Button>
   )
 }

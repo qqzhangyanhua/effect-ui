@@ -13,23 +13,19 @@ interface Burst {
 
 export type ParticleButtonProps = React.ComponentProps<typeof Button>
 
-function slotTargetOf(asChild: boolean, children: React.ReactNode) {
-  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
-  return null
-}
-
 function ParticleButton({
   className,
   children = "粒子爆散",
   variant,
-  size = "lg",
+  size,
   asChild = false,
   onClick,
   ...props
 }: ParticleButtonProps) {
   const [bursts, setBursts] = React.useState<Burst[]>([])
-  const slotTarget = slotTargetOf(asChild, children)
-  const label = slotTarget ? slotTarget.props.children : children
+  const slotted =
+    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
+  const label = slotted ? slotted.props.children : children
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event)
@@ -78,12 +74,17 @@ function ParticleButton({
       data-slot={undefined}
       variant={variant}
       size={size}
-      asChild={slotTarget !== null}
-      className={cn("relative overflow-visible", className)}
+      asChild={slotted !== null}
+      className={cn(
+        "relative overflow-visible",
+        variant == null && "hover:bg-primary",
+        size == null && "h-10 px-5",
+        className,
+      )}
       onClick={handleClick}
       {...props}
     >
-      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+      {slotted ? React.cloneElement(slotted, undefined, body) : body}
     </Button>
   )
 }

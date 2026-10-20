@@ -15,24 +15,20 @@ export interface RippleButtonProps extends React.ComponentProps<typeof Button> {
   rippleColor?: string
 }
 
-function slotTargetOf(asChild: boolean, children: React.ReactNode) {
-  if (asChild && React.isValidElement<{ children?: React.ReactNode }>(children)) return children
-  return null
-}
-
 function RippleButton({
   className,
   children,
   rippleColor = "color-mix(in oklab, var(--primary-foreground) 45%, transparent)",
   variant,
-  size = "lg",
+  size,
   asChild = false,
   onClick,
   ...props
 }: RippleButtonProps) {
   const [ripples, setRipples] = React.useState<Ripple[]>([])
-  const slotTarget = slotTargetOf(asChild, children)
-  const label = slotTarget ? slotTarget.props.children : children
+  const slotted =
+    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
+  const label = slotted ? slotted.props.children : children
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event)
@@ -71,12 +67,12 @@ function RippleButton({
       data-slot="ripple-button"
       variant={variant}
       size={size}
-      asChild={slotTarget !== null}
-      className={cn("relative overflow-hidden", className)}
+      asChild={slotted !== null}
+      className={cn("relative overflow-hidden", size == null && "h-10 px-5", className)}
       onClick={handleClick}
       {...props}
     >
-      {slotTarget ? React.cloneElement(slotTarget, undefined, body) : body}
+      {slotted ? React.cloneElement(slotted, undefined, body) : body}
     </Button>
   )
 }

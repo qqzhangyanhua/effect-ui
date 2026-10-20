@@ -10,7 +10,7 @@ export function readRegistrySource(file: string): string {
   return fs.readFileSync(sourcePath, "utf8")
 }
 
-const productionSiteUrl = "https://effect-ui.dev"
+const productionSiteUrl = "https://ui.mabiao.dev"
 
 export function getRegistryBaseUrl(): string {
   const configured = process.env.NEXT_PUBLIC_REGISTRY_URL?.trim().replace(/\/$/, "")

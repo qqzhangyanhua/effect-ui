@@ -3,8 +3,11 @@ import Link from "next/link"
 import { getComponentsByCategory } from "@effect-ui/registry/catalog"
 import { Badge } from "@effect-ui/registry/ui/badge"
 
+import { getRegistryBaseUrl } from "@/lib/source"
+
 function DocsIndexPage() {
   const groups = getComponentsByCategory()
+  const baseUrl = getRegistryBaseUrl()
 
   return (
     <article className="mx-auto max-w-3xl space-y-8">
@@ -23,13 +26,13 @@ function DocsIndexPage() {
           <li>
             直接用组件 JSON：
             <code className="mx-1 rounded bg-muted px-1.5 py-0.5 font-mono text-foreground">
-              npx shadcn@latest add https://&lt;docs-host&gt;/r/shimmer-button.json
+              npx shadcn@latest add {baseUrl}/r/shimmer-button.json
             </code>
           </li>
           <li>
             或把本仓库加为命名空间：
             <code className="mx-1 rounded bg-muted px-1.5 py-0.5 font-mono text-foreground">
-              {`{ "registries": { "@effect-ui": "https://<docs-host>/r/{name}.json" } }`}
+              {`{ "registries": { "@effect-ui": "${baseUrl}/r/{name}.json" } }`}
             </code>
           </li>
         </ol>

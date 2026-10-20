@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation"
 import { SearchIcon } from "lucide-react"
 
 import { getComponentsByCategory, uiSubgroupsOf } from "@effect-ui/registry/catalog"
-import { Button } from "@effect-ui/registry/ui/button"
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,6 +14,8 @@ import {
   CommandList,
 } from "@effect-ui/registry/ui/command"
 import { Kbd } from "@effect-ui/registry/ui/kbd"
+
+import { cn } from "@/lib/utils"
 
 const componentGroups = getComponentsByCategory().filter(
   (group) => group.items.length > 0,
@@ -31,7 +32,11 @@ const searchSections = componentGroups.flatMap((group) => {
   }))
 })
 
-function ComponentSearch() {
+interface ComponentSearchProps {
+  className?: string
+}
+
+function ComponentSearch({ className }: ComponentSearchProps = {}) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
 
@@ -56,19 +61,22 @@ function ComponentSearch() {
 
   return (
     <>
-      <Button
+      <button
         type="button"
-        variant="outline"
-        size="sm"
-        className="shrink-0 px-2 text-muted-foreground md:px-2.5"
-        aria-label="搜索组件"
+        className={cn(
+          "relative flex h-8 w-32 sm:w-48 md:w-56 items-center justify-between rounded-lg border border-border/70 bg-muted/30 px-2.5 text-xs text-muted-foreground transition-all hover:border-border hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+          className
+        )}
+        aria-label="搜索组件、文档..."
         aria-keyshortcuts="Meta+K Control+K"
         onClick={() => setOpen(true)}
       >
-        <SearchIcon />
-        <span className="hidden md:inline">搜索</span>
-        <Kbd className="hidden md:inline">⌘K</Kbd>
-      </Button>
+        <span className="flex items-center gap-1.5 truncate">
+          <SearchIcon className="size-3.5 shrink-0 opacity-70" />
+          <span className="truncate">搜索组件、文档...</span>
+        </span>
+        <Kbd className="hidden font-mono text-[10px] sm:inline-flex">⌘K</Kbd>
+      </button>
       <CommandDialog
         open={open}
         onOpenChange={setOpen}

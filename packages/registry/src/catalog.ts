@@ -4,6 +4,7 @@ import { batch4Components } from "./catalog-batch4"
 import { batch5Components } from "./catalog-batch5"
 import { batch6Components } from "./catalog-batch6"
 import { batch7Components } from "./catalog-batch7"
+import { batch8Components } from "./catalog-batch8"
 
 export type ComponentCategory =
   | "ui"
@@ -18,6 +19,7 @@ export type ComponentCategory =
   | "scroll"
   | "navigation"
   | "page"
+  | "sections"
   | "ai"
   | "utility"
 
@@ -62,6 +64,7 @@ export type SourceLibrary =
   | "Atropos"
   | "rough-notation"
   | "mo.js"
+  | "cobe"
   | "original"
 
 export interface PropDoc {
@@ -99,6 +102,7 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   scroll: "滚动显现",
   navigation: "导航",
   page: "页面 / 转场",
+  sections: "落地页区块",
   ai: "AI 对话",
   utility: "实用组件",
 }
@@ -116,6 +120,7 @@ export const categoryOrder: ComponentCategory[] = [
   "scroll",
   "navigation",
   "page",
+  "sections",
   "ai",
   "utility",
 ]
@@ -171,6 +176,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   Atropos: "https://atroposjs.com",
   "rough-notation": "https://roughnotation.com",
   "mo.js": "https://mojs.github.io",
+  cobe: "https://cobe.vercel.app",
   original: null,
 }
 
@@ -1034,6 +1040,7 @@ export const components: ComponentMeta[] = [
   ...batch5Components,
   ...batch6Components,
   ...batch7Components,
+  ...batch8Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

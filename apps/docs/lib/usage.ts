@@ -171,7 +171,11 @@ function renderImport(record: ImportRecord, names: Set<string>) {
 }
 
 function userImportSource(source: string) {
-  if (source.startsWith("../ui/") || source.startsWith("../effects/")) {
+  if (
+    source.startsWith("../ui/") ||
+    source.startsWith("../effects/") ||
+    source.startsWith("../sections/")
+  ) {
     return `@/components/ui/${source.slice(source.lastIndexOf("/") + 1)}`
   }
   if (source.startsWith("../lib/")) return `@/lib/${source.slice("../lib/".length)}`

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-ai-prompt",
+  "type": "registry:ui",
+  "title": "Hero AI Prompt",
+  "description": "灵感来自 v0 / Lovable，原创实现。居中大提示框，建议芯片，减弱动效时保留静态渐变底。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "textarea",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/hero-ai-prompt.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-ai-prompt.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { ArrowUp, Paperclip, Sparkles } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Textarea } from \"@/components/ui/textarea\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HeroAiPromptProps {\n  title?: string\n  subtitle?: string\n  placeholder?: string\n  suggestions?: string[]\n  onSubmit?: (value: string) => void\n  className?: string\n}\n\nconst defaultSuggestions = [\"生成定价页\", \"重绘这个 Hero\", \"加一列 logo wall\"]\n\nfunction HeroAiPrompt({\n  title = \"描述你想要的界面\",\n  subtitle = \"灵感来自 v0 / Lovable，原创实现。居中大提示框，不是聊天输入的缩小版。\",\n  placeholder = \"做一个带着色器背景、地球仪和定价表的落地页…\",\n  suggestions = defaultSuggestions,\n  onSubmit,\n  className,\n}: HeroAiPromptProps) {\n  const reduced = usePrefersReducedMotion()\n  const [value, setValue] = React.useState(\"\")\n\n  const submit = () => {\n    const next = value.trim()\n    if (!next) return\n    onSubmit?.(next)\n  }\n\n  return (\n    <section\n      className={cn(\n        \"relative isolate overflow-hidden rounded-2xl border px-6 py-20\",\n        className,\n      )}\n    >\n      <div\n        aria-hidden\n        className={cn(\n          \"absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_70%),linear-gradient(180deg,#09090b,#111827)]\",\n          !reduced && \"after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_20%_80%,color-mix(in_oklab,var(--chart-2)_16%,transparent),transparent_42%)]\",\n        )}\n      />\n      <div className=\"relative z-10 mx-auto flex max-w-2xl flex-col items-center text-center text-white\">\n        <span className=\"mb-4 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/70\">\n          <Sparkles className=\"size-3.5\" />\n          effect-ui prompt\n        </span>\n        <h2 className=\"font-display text-4xl tracking-tight text-balance sm:text-5xl\">{title}</h2>\n        <p className=\"mt-3 max-w-md text-sm text-white/60\">{subtitle}</p>\n        <form\n          className=\"mt-8 w-full rounded-3xl border border-white/12 bg-zinc-950/70 p-3 text-left shadow-[0_20px_80px_-32px_rgba(124,58,237,0.7)] backdrop-blur\"\n          onSubmit={(event) => {\n            event.preventDefault()\n            submit()\n          }}\n        >\n          <Textarea\n            value={value}\n            onChange={(event) => setValue(event.target.value)}\n            placeholder={placeholder}\n            className=\"min-h-28 resize-none border-0 bg-transparent text-base text-white shadow-none placeholder:text-white/35 focus-visible:ring-0 dark:bg-transparent\"\n            onKeyDown={(event) => {\n              if (event.key === \"Enter\" && (event.metaKey || event.ctrlKey)) {\n                event.preventDefault()\n                submit()\n              }\n            }}\n          />\n          <div className=\"mt-2 flex items-center justify-between px-1\">\n            <Button\n              type=\"button\"\n              size=\"icon\"\n              variant=\"ghost\"\n              className=\"text-white/60 hover:bg-white/10 hover:text-white\"\n              aria-label=\"附加文件\"\n            >\n              <Paperclip className=\"size-4\" />\n            </Button>\n            <Button type=\"submit\" size=\"sm\" className=\"rounded-full px-4\">\n              生成\n              <ArrowUp className=\"size-3.5\" />\n            </Button>\n          </div>\n        </form>\n        <div className=\"mt-5 flex flex-wrap justify-center gap-2\">\n          {suggestions.map((item) => (\n            <button\n              key={item}\n              type=\"button\"\n              onClick={() => setValue(item)}\n              className=\"rounded-full border border-white/12 bg-white/5 px-3 py-1 text-xs text-white/70 transition hover:bg-white/10\"\n            >\n              {item}\n            </button>\n          ))}\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { HeroAiPrompt }\n"
+    }
+  ]
+}

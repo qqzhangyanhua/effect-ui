@@ -56,7 +56,7 @@ pnpm registry:build
 
 ```
 apps/docs              Next.js 文档 / 演示站
-packages/registry      组件源码（ui、effects、hooks、lib、examples）
+packages/registry      组件源码（ui、effects、sections、hooks、lib、examples）
 scripts/build-registry.ts
 registry.json          shadcn 兼容总表
 ```
@@ -250,6 +250,26 @@ use-mobile · use-prefers-reduced-motion
 | pixel-transition | 灵感来自 pixel transition，原创实现 |
 | canvas-reveal | 灵感来自 dot-matrix reveal，原创实现 |
 
+### 落地页区块
+
+| 组件 | 来源 |
+| --- | --- |
+| hero-shader | 原创（组合 silk / iridescence / lightning / shader-backgrounds） |
+| hero-globe | cobe（MIT） |
+| hero-product-mockup | 原创（组合 device-mockups / glow-hover / container-scroll-3d） |
+| hero-kinetic-text | 原创（组合 split-text / word-rotate / rough-annotation） |
+| hero-ai-prompt | 灵感来自 v0 / Lovable，原创实现 |
+| hero-parallax-wall | 灵感来自 Aceternity，原创实现 |
+| footer-curtain-reveal | Fancy Components（MIT） |
+| footer-giant-wordmark | 灵感来自巨型字标光标描边，原创实现 |
+| footer-interactive-wordmark | matter-js + variable-font-proximity |
+| footer-shader-wordmark | Paper Shaders |
+| nav-morphing | Kokonut UI（免费 MIT） |
+| section-logo-cloud | 原创（组合 marquee / progressive-blur / timeline） |
+| section-sticky-feature-scroll | Cult UI（MIT） |
+| section-animated-bento | 原创（组合 bento-grid 与迷你动画） |
+| section-pricing-flow | Number Flow |
+
 ### AI 对话
 
 | 组件 | 来源 |
@@ -295,7 +315,7 @@ use-mobile · use-prefers-reduced-motion
 
 `date-picker` 和 `typography` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住：
 
-1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。
+1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。
 2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`dependencies`、`registryDependencies`、`file`、`target`、`props`。
    - `type` 为 `registry:ui`、`registry:lib` 或 `registry:hook`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。
    - `dependencies` 与源码 import 一致，包括 type-only import 和动态 `import()`。不要写 `react`、`react-dom`。

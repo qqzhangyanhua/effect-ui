@@ -37,14 +37,14 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/nolly-studio/cult-ui
 - 许可：MIT
 - 版权：Copyright (c) 2023 Jordan-Gilliam
-- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`
+- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）
 
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`
+- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）
 
 ## Kibo UI
 
@@ -83,14 +83,14 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/kokonut-labs/kokonutui
 - 许可：MIT（站点另有付费 Pro，**未使用 Pro 组件**）
 - 版权：Copyright (c) kokonutlabs
-- 衍生组件：`background-paths`、`glitch-text`、`toast-stack`、`notification-center`、`spoiler-text`、`hold-button`、`particle-button`、`tear-button`、`flow-field`、`halftone`（按免费 GitHub 组件的视觉效果重写，**未使用 Pro 组件或源码**）
+- 衍生组件：`background-paths`、`glitch-text`、`toast-stack`、`notification-center`、`spoiler-text`、`hold-button`、`particle-button`、`tear-button`、`flow-field`、`halftone`、`nav-morphing`（按免费 GitHub 导航的收缩成胶囊 / 菜单形变重写，**未使用 Pro 组件或源码**）
 
 ## Number Flow
 
 - 仓库：https://github.com/barvian/number-flow
 - 许可：MIT
 - 版权：Copyright (c) Maxwell Barvian
-- 衍生组件：`number-flow`（薄封装 `@number-flow/react`，重依赖单独成 registry 条目）
+- 衍生组件：`number-flow`（薄封装 `@number-flow/react`，重依赖单独成 registry 条目）、`section-pricing-flow`（月/年数字翻滚）
 
 ## liquid-glass-react
 
@@ -203,7 +203,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/liabru/matter-js
 - 许可：MIT
 - 版权：Copyright (c) 2014-2026 Liam Brummitt
-- 衍生组件：`gravity`（薄封装，重依赖单独成 registry 条目）
+- 衍生组件：`gravity`（薄封装，重依赖单独成 registry 条目）、`footer-interactive-wordmark`（点击字母坠落）
 
 ## vfx-js（MIT）
 
@@ -256,10 +256,21 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 许可：MIT
 - 衍生组件：`burst-icons`（用 Motion 重写图标爆发，**未拷贝 mo.js 源码**）
 
+## cobe（MIT）
+
+- 仓库：https://github.com/shuding/cobe
+- 许可：MIT
+- 版权：Copyright (c) 2021 Shu Ding
+- LICENSE：`licenses/mit/cobe/LICENSE`
+- npm：`cobe` 2.0.1（重依赖单独成 registry 条目）
+- 衍生组件：`hero-globe`（标记 + 航线；无 WebGL 或减弱动效时回退静态渐变与 `globe-sphere`）
+
 ## 本仓库原创实现
 
 - `aurora-background`、`cursor-follow`、`glass-card`、`neon-button`、`spinner`、`parallax`、`starfield`、`wave-background`、`noise-gradient`、`globe-sphere`、`cursor-trail`、`perspective-card`、`gooey-button`、`floating-navbar`、`animated-sidebar`、`page-transition`、`tree-view`、`onboarding-tour`、`infinite-scroll`、`password-strength`、`currency-input`、`quantity-stepper`、`dashboard-blocks`、`ecommerce-blocks`
 - Batch 6 Group B（灵感来自常见效果，**未打开原仓库源码**）：`lamp-heading`、`tracing-beam` / `SvgScrollPath`、`container-scroll-3d`、`circular-gallery`、`glowing-edge`、`scroll-image-sequence`、`pixel-transition`
 - Batch 7 Group B（灵感来自 X，原创实现，**未打开 Aceternity / React Bits / Skiper / Hover.dev / Shadertoy 源码**）：`evervault-card`、`canvas-reveal`、`letter-glitch-wall`、`target-cursor`、`lightning`、`iridescence`、`silk`
+- Batch 8 Group B（灵感来自 X，原创实现，**未打开 Aceternity / v0 / Lovable / Preline / shadcnblocks / Tailwind Plus 源码**）：`hero-ai-prompt`、`hero-parallax-wall`、`footer-giant-wordmark`
+- Batch 8 组合区块：`hero-shader`、`hero-product-mockup`、`hero-kinetic-text`、`footer-shader-wordmark`、`section-logo-cloud`、`section-animated-bento`、`section-pricing-flow`
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

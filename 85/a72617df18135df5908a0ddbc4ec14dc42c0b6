@@ -1,0 +1,19 @@
+docs/debugging.md
+  s_8caf9d02dcb127::t_475bc4640c4900 16-17,20-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "85a72617df18135df5908a0ddbc4ec14dc42c0b6",
+  "prompts": {},
+  "sessions": {
+    "s_8caf9d02dcb127": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "e6ecadae-fa33-4861-a693-1aa0d3ddf145",
+        "model": "unknown"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

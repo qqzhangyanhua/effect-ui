@@ -322,6 +322,7 @@ use-mobile · use-prefers-reduced-motion
 | 组件 | 来源 |
 | --- | --- |
 | dropzone | Kibo UI |
+| select-plus | 原创 |
 | multi-select | sersavan / Kibo UI |
 | tag-input | Kibo UI |
 | date-range-picker | Origin UI（仅 `apps/origin/` MIT） |

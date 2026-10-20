@@ -143,6 +143,7 @@ const demoMap: Record<string, ComponentType> = {
   "dynamic-island": effectDemos3.DynamicIslandDemo,
   "variable-font-proximity": effectDemos3.VariableFontProximityDemo,
   dropzone: uiDemos3.DropzoneDemo,
+  "select-plus": uiDemos3.SelectPlusDemo,
   "multi-select": uiDemos3.MultiSelectDemo,
   "tag-input": uiDemos3.TagInputDemo,
   "date-range-picker": uiDemos3.DateRangePickerDemo,

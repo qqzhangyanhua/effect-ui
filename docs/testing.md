@@ -23,7 +23,7 @@ Root `package.json`:
 | `pnpm registry:build` | `tsx scripts/build-registry.ts` | rewrites generated registry JSON |
 | `pnpm build` | `pnpm registry:build`, then `next build` | full build |
 
-Typecheck excludes `*.test.ts`, and vitest does not type-check. Type errors in test files are not caught by any command.
+Typecheck excludes `*.test.ts` and `*.test.tsx`, and vitest does not type-check. Type errors in test files are not caught by any command.
 
 `pnpm lint` currently reports 2 `react-hooks/incompatible-library` warnings, in `data-table.tsx` and `virtual-list.tsx`. They are expected and do not fail the check.
 
@@ -32,8 +32,9 @@ Typecheck excludes `*.test.ts`, and vitest does not type-check. Type errors in t
 - `packages/registry/src/dependencies.test.ts`: import scanning for dependency derivation.
 - `packages/registry/src/audit.test.ts`: unit tests for the audit rules.
 - `packages/registry/src/audit.repo.test.ts`: audits the real repo. It checks that every derived npm dependency is in `packages/registry/package.json`, every derived registry dependency is in the catalog, and that demos and the README list are complete. It also checks that `registry.json` and `apps/docs/public/r` match a fresh build. Stale generated JSON fails `pnpm test`.
+- `packages/registry/src/ui/select-plus.test.tsx`: renders `SelectPlus` and `MultiSelect` in jsdom. The file opts in with `// @vitest-environment jsdom` and calls `cleanup()` in `afterEach`, because vitest does not enable globals and Testing Library will not clean up on its own. Assertions use rendered text, roles, ARIA, and `onValueChange` / `onSearch` / `onOpenChange`.
 
-There are no tests under `apps/docs`. UI behavior is verified manually with `pnpm dev`.
+`jsdom`, `@testing-library/react`, `@testing-library/user-event`, and `@testing-library/jest-dom` are root devDependencies. There are no tests under `apps/docs`. Docs pages are still checked manually with `pnpm dev`.
 
 ## Notes
 - Do not claim a check passed unless it ran in this workspace.

@@ -25,5 +25,5 @@
     "../../packages/registry/src/**/*.ts",
     "../../packages/registry/src/**/*.tsx"
   ],
-  "exclude": ["node_modules", "../../packages/registry/src/**/*.test.ts"]
+  "exclude": ["node_modules", "../../packages/registry/src/**/*.test.ts", "../../packages/registry/src/**/*.test.tsx"]
 }

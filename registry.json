@@ -2417,19 +2417,34 @@
       ]
     },
     {
-      "name": "multi-select",
+      "name": "select-plus",
       "type": "registry:ui",
-      "title": "Multi Select",
-      "description": "可搜索的多选下拉。",
+      "title": "Select Plus",
+      "description": "基于 combobox 的复合选择器，支持单选、多选和标签。",
       "dependencies": [
+        "@base-ui/react",
         "lucide-react"
       ],
       "registryDependencies": [
-        "badge",
-        "button",
-        "command",
-        "popover",
+        "combobox",
         "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/select-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select-plus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "Multi Select",
+      "description": "SelectPlus 的多选包装。安装名和 props 不变。",
+      "dependencies": [],
+      "registryDependencies": [
+        "select-plus"
       ],
       "files": [
         {

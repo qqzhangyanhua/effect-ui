@@ -3,23 +3,17 @@
   "name": "multi-select",
   "type": "registry:ui",
   "title": "Multi Select",
-  "description": "可搜索的多选下拉。",
-  "dependencies": [
-    "lucide-react"
-  ],
+  "description": "SelectPlus 的多选包装。安装名和 props 不变。",
+  "dependencies": [],
   "registryDependencies": [
-    "badge",
-    "button",
-    "command",
-    "popover",
-    "utils"
+    "select-plus"
   ],
   "files": [
     {
       "path": "registry/ui/multi-select.tsx",
       "type": "registry:ui",
       "target": "components/ui/multi-select.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { CheckIcon, ChevronsUpDownIcon, XIcon } from \"lucide-react\"\n\nimport { Badge } from \"@/components/ui/badge\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/components/ui/command\"\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface MultiSelectOption {\n  value: string\n  label: string\n}\n\nexport interface MultiSelectProps {\n  options: MultiSelectOption[]\n  value?: string[]\n  onValueChange?: (value: string[]) => void\n  placeholder?: string\n  className?: string\n}\n\nfunction MultiSelect({\n  options,\n  value: controlled,\n  onValueChange,\n  placeholder = \"选择多项…\",\n  className,\n}: MultiSelectProps) {\n  const [open, setOpen] = React.useState(false)\n  const [uncontrolled, setUncontrolled] = React.useState<string[]>([])\n  const selected = controlled ?? uncontrolled\n\n  const setSelected = (next: string[]) => {\n    if (controlled === undefined) setUncontrolled(next)\n    onValueChange?.(next)\n  }\n\n  const toggle = (item: string) => {\n    setSelected(selected.includes(item) ? selected.filter((value) => value !== item) : [...selected, item])\n  }\n\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger asChild>\n        <Button\n          variant=\"outline\"\n          role=\"combobox\"\n          aria-expanded={open}\n          className={cn(\"h-auto min-h-9 w-full justify-between px-2 py-1\", className)}\n        >\n          <div className=\"flex flex-1 flex-wrap gap-1\">\n            {selected.length === 0 ? (\n              <span className=\"px-1 text-muted-foreground\">{placeholder}</span>\n            ) : (\n              selected.map((item) => {\n                const option = options.find((entry) => entry.value === item)\n                return (\n                  <Badge key={item} variant=\"secondary\" className=\"gap-1\">\n                    {option?.label ?? item}\n                    <span\n                      role=\"button\"\n                      tabIndex={0}\n                      className=\"rounded-full hover:bg-muted\"\n                      onClick={(event) => {\n                        event.preventDefault()\n                        event.stopPropagation()\n                        toggle(item)\n                      }}\n                      onKeyDown={(event) => {\n                        if (event.key === \"Enter\") toggle(item)\n                      }}\n                    >\n                      <XIcon className=\"size-3\" />\n                    </span>\n                  </Badge>\n                )\n              })\n            )}\n          </div>\n          <ChevronsUpDownIcon className=\"size-4 opacity-50\" />\n        </Button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-[var(--radix-popover-trigger-width)] p-0\" align=\"start\">\n        <Command>\n          <CommandInput placeholder=\"搜索…\" />\n          <CommandList>\n            <CommandEmpty>没有匹配项</CommandEmpty>\n            <CommandGroup>\n              {options.map((option) => (\n                <CommandItem key={option.value} value={option.label} onSelect={() => toggle(option.value)}>\n                  <CheckIcon className={cn(\"size-4\", selected.includes(option.value) ? \"opacity-100\" : \"opacity-0\")} />\n                  {option.label}\n                </CommandItem>\n              ))}\n            </CommandGroup>\n          </CommandList>\n        </Command>\n      </PopoverContent>\n    </Popover>\n  )\n}\n\nexport { MultiSelect }\n"
+      "content": "\"use client\"\n\nimport { SelectPlus } from \"@/components/ui/select-plus\"\n\nexport interface MultiSelectOption {\n  value: string\n  label: string\n}\n\nexport interface MultiSelectProps {\n  options: MultiSelectOption[]\n  value?: string[]\n  onValueChange?: (value: string[]) => void\n  placeholder?: string\n  className?: string\n}\n\nfunction MultiSelect({\n  options,\n  value,\n  onValueChange,\n  placeholder = \"选择多项…\",\n  className,\n}: MultiSelectProps) {\n  return (\n    <SelectPlus\n      mode=\"multiple\"\n      options={options}\n      value={value}\n      onValueChange={onValueChange}\n      placeholder={placeholder}\n      className={className}\n    />\n  )\n}\n\nexport { MultiSelect }\n"
     }
   ]
 }

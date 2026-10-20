@@ -6,11 +6,11 @@
   "description": "营销区块：Hero / Pricing / Testimonial / Footer，各 3 个变体，组合现有特效。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button",
     "aurora-background",
+    "button",
     "glass-card",
-    "shimmer-button"
+    "shimmer-button",
+    "utils"
   ],
   "files": [
     {

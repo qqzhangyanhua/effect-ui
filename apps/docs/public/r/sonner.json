@@ -5,8 +5,8 @@
   "title": "Toast",
   "description": "基于 Sonner 的轻提示。",
   "dependencies": [
-    "sonner",
-    "next-themes"
+    "next-themes",
+    "sonner"
   ],
   "registryDependencies": [],
   "files": [

@@ -1,10 +1,6 @@
 import { expect, test } from "vitest"
 
-import {
-  auditRegistry,
-  type AuditCatalogEntry,
-  type AuditException,
-} from "./audit"
+import { auditRegistry, type AuditCatalogEntry } from "./audit"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
 
 const source = "export function Button() {\n  return null\n}\n"
@@ -15,8 +11,6 @@ function entry(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
     type: "registry:ui",
     title: "Button",
     description: "按钮。",
-    dependencies: [],
-    registryDependencies: [],
     file: "ui/button.tsx",
     target: "components/ui/button.tsx",
     props: [{ name: "className" }],
@@ -34,9 +28,10 @@ interface FixtureInput {
     indexes: { label: string; json: unknown }[]
     items: Record<string, unknown>
   }
-  exceptions: AuditException[]
   packageDependencies: string[]
 }
+
+const generatedFrom = () => source
 
 function consistent(
   catalog: readonly AuditCatalogEntry[],
@@ -51,12 +46,11 @@ function consistent(
       .map((item) => item.name),
     readme: catalog.map((item) => item.name).join(" · "),
     staticJson: {
-      indexes: [{ label: "registry.json", json: buildRegistry(catalog) }],
+      indexes: [{ label: "registry.json", json: buildRegistry(catalog, generatedFrom) }],
       items: Object.fromEntries(
-        catalog.map((item) => [item.name, buildRegistryItem(item, source)]),
+        catalog.map((item) => [item.name, buildRegistryItem(item, generatedFrom)]),
       ),
     },
-    exceptions: [],
     packageDependencies: [],
   }
 }
@@ -70,9 +64,9 @@ function withSource(
   input.readSource = (file) => sources[file]
   input.packageDependencies = packageDependencies
   input.staticJson = {
-    indexes: [{ label: "registry.json", json: buildRegistry(catalog) }],
+    indexes: [{ label: "registry.json", json: buildRegistry(catalog, (file) => sources[file]) }],
     items: Object.fromEntries(
-      catalog.map((item) => [item.name, buildRegistryItem(item, sources[item.file] ?? "")]),
+      catalog.map((item) => [item.name, buildRegistryItem(item, (file) => sources[file])]),
     ),
   }
   return input
@@ -338,65 +332,9 @@ test("文档组件 Props 为空时报告", () => {
   ])
 })
 
-test("写明原因的例外会抑制对应问题", () => {
-  const input = consistent([entry()], ["ui/button.tsx", "hooks/use-mobile.ts"])
-  input.exceptions = [
-    {
-      name: "use-mobile",
-      type: "unregistered-source",
-      reason: "依赖检查会把它登记为 registry:hook。",
-    },
-  ]
-  expect(auditRegistry(input)).toEqual([])
-})
-
-test("没有原因的例外不会抑制问题", () => {
-  const input = consistent([entry()], ["ui/button.tsx", "hooks/use-mobile.ts"])
-  input.exceptions = [
-    { name: "use-mobile", type: "unregistered-source", reason: "   " },
-  ]
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "use-mobile",
-      type: "unregistered-source",
-      description: "源码文件 hooks/use-mobile.ts 未登记到 catalog。",
-    },
-  ])
-})
-
-test("源码引用了未声明的 npm 包时报告缺失", () => {
-  const input = withSource(
-    [entry()],
-    { "ui/button.tsx": 'import { z } from "zod"\nexport function Button() {\n  return z\n}\n' },
-    ["zod"],
-  )
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
-      type: "missing-npm-dependency",
-      description: "源码引用了 npm 包 “zod”，但 dependencies 未声明。",
-    },
-  ])
-})
-
-test("dependencies 声明了源码未引用的 npm 包时报告多余", () => {
-  const input = withSource(
-    [entry({ dependencies: ["zod"] })],
-    { "ui/button.tsx": "export function Button() {\n  return null\n}\n" },
-    ["zod"],
-  )
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
-      type: "extra-npm-dependency",
-      description: "dependencies 声明了 “zod”，但源码未引用。",
-    },
-  ])
-})
-
 test("源码引用的 npm 包不在 registry 包依赖清单中时报告", () => {
   const input = withSource(
-    [entry({ dependencies: ["zod"] })],
+    [entry()],
     { "ui/button.tsx": 'import { z } from "zod"\nexport function Button() {\n  return z\n}\n' },
     [],
   )
@@ -409,123 +347,44 @@ test("源码引用的 npm 包不在 registry 包依赖清单中时报告", () =>
   ])
 })
 
-test("源码引用了未声明的 registry 组件时报告缺失", () => {
-  const input = withSource([entry(), utilsEntry()], {
-    "ui/button.tsx": 'import { cn } from "@/lib/utils"\nexport function Button() {\n  return cn()\n}\n',
-    "lib/utils.ts": "export function cn() {\n  return \"\"\n}\n",
+test("extraDependencies 不在 registry 包依赖清单中时报告", () => {
+  const input = withSource(
+    [entry({ extraDependencies: ["@tiptap/pm"] })],
+    { "ui/button.tsx": "export function Button() {\n  return null\n}\n" },
+    [],
+  )
+  expect(auditRegistry(input)).toEqual([
+    {
+      name: "button",
+      type: "missing-package-dependency",
+      description: "npm 包 “@tiptap/pm” 未出现在 registry 包的依赖清单中。",
+    },
+  ])
+})
+
+test("源码引用了 catalog 中不存在的 registry 组件时报告", () => {
+  const input = withSource([entry()], {
+    "ui/button.tsx":
+      'import { Widget } from "@/components/ui/missing-widget"\nexport function Button() {\n  return Widget\n}\n',
   })
   expect(auditRegistry(input)).toEqual([
     {
       name: "button",
-      type: "missing-registry-dependency",
-      description: "源码引用了 registry 组件 “utils”，但 registryDependencies 未声明。",
-    },
-  ])
-})
-
-test("registryDependencies 声明了源码未引用的组件时报告多余", () => {
-  const input = withSource(
-    [entry({ registryDependencies: ["utils"] }), utilsEntry()],
-    {
-      "ui/button.tsx": "export function Button() {\n  return null\n}\n",
-      "lib/utils.ts": "export function cn() {\n  return \"\"\n}\n",
-    },
-  )
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
-      type: "extra-registry-dependency",
-      description: "registryDependencies 声明了 “utils”，但源码未引用。",
-    },
-  ])
-})
-
-test("registryDependencies 指向不存在的组件时报告", () => {
-  const input = withSource(
-    [entry({ registryDependencies: ["missing-widget"] })],
-    { "ui/button.tsx": "export function Button() {\n  return null\n}\n" },
-  )
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
       type: "unknown-registry-dependency",
-      description: "registryDependencies 指向不存在的组件 “missing-widget”。",
+      description: "源码引用了 registry 组件 “missing-widget”，但 catalog 中没有这个组件。",
     },
   ])
 })
 
-test("type-only import 计入 npm 依赖", () => {
-  const input = withSource(
-    [entry()],
-    {
-      "ui/button.tsx":
-        'import type { ZodType } from "zod"\nexport function Button(): ZodType | null {\n  return null\n}\n',
-    },
-    ["zod"],
-  )
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
-      type: "missing-npm-dependency",
-      description: "源码引用了 npm 包 “zod”，但 dependencies 未声明。",
-    },
+test("源码缺失时只报告缺失，不比较总表", () => {
+  const input = consistent([entry(), entry({ name: "input", title: "Input", file: "ui/input.tsx" })], [
+    "ui/button.tsx",
   ])
-})
-
-test("动态 import() 计入 npm 依赖", () => {
-  const input = withSource(
-    [entry()],
-    {
-      "ui/button.tsx":
-        'export function Button() {\n  return import("zod")\n}\n',
-    },
-    ["zod"],
-  )
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
-      type: "missing-npm-dependency",
-      description: "源码引用了 npm 包 “zod”，但 dependencies 未声明。",
-    },
-  ])
-})
-
-test("同目录相对路径引用映射为同名 registry 组件", () => {
-  const input = withSource(
-    [entry(), entry({ name: "input", title: "Input", file: "ui/input.tsx" })],
-    {
-      "ui/button.tsx": 'import { Input } from "./input"\nexport function Button() {\n  return Input\n}\n',
-      "ui/input.tsx": "export function Input() {\n  return null\n}\n",
-    },
-  )
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
-      type: "missing-registry-dependency",
-      description: "源码引用了 registry 组件 “input”，但 registryDependencies 未声明。",
-    },
-  ])
-})
-
-test("写明原因的依赖例外只抑制对应的包", () => {
-  const input = withSource(
-    [entry({ dependencies: ["@tiptap/pm", "zod"] })],
-    { "ui/button.tsx": "export function Button() {\n  return null\n}\n" },
-    ["@tiptap/pm", "zod"],
-  )
-  input.exceptions = [
-    {
-      name: "button",
-      type: "extra-npm-dependency",
-      dependency: "@tiptap/pm",
-      reason: "@tiptap/pm 作为 peer 依赖保留。",
-    },
-  ]
-  expect(auditRegistry(input)).toEqual([
-    {
-      name: "button",
-      type: "extra-npm-dependency",
-      description: "dependencies 声明了 “zod”，但源码未引用。",
+      name: "input",
+      type: "missing-source",
+      description: "源码文件 ui/input.tsx 不存在。",
     },
   ])
 })
@@ -538,7 +397,6 @@ test("使用 useId 但没有 use client 时不报告", () => {
         title: "Grid Pattern",
         file: "effects/grid-pattern.tsx",
         target: "components/ui/grid-pattern.tsx",
-        registryDependencies: ["utils"],
       }),
       utilsEntry(),
     ],

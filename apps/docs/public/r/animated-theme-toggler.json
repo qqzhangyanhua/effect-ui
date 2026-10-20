@@ -5,12 +5,12 @@
   "title": "Animated Theme Toggler",
   "description": "圆形扩散的明暗切换（View Transitions）。",
   "dependencies": [
-    "next-themes",
-    "lucide-react"
+    "lucide-react",
+    "next-themes"
   ],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

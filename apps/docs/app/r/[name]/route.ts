@@ -25,7 +25,7 @@ export async function GET(_request: Request, context: RouteContext) {
   const itemName = name.endsWith(".json") ? name.slice(0, -5) : name
 
   if (itemName === "registry") {
-    return NextResponse.json(buildRegistry(components))
+    return NextResponse.json(buildRegistry(components, readRegistrySource))
   }
 
   const item = getComponent(itemName)
@@ -33,7 +33,5 @@ export async function GET(_request: Request, context: RouteContext) {
     return NextResponse.json({ error: "Not found" }, { status: 404 })
   }
 
-  const files = item.files && item.files.length > 0 ? item.files : [{ file: item.file }]
-  const contents = Object.fromEntries(files.map((file) => [file.file, readRegistrySource(file.file)]))
-  return NextResponse.json(buildRegistryItem(item, contents))
+  return NextResponse.json(buildRegistryItem(item, readRegistrySource))
 }

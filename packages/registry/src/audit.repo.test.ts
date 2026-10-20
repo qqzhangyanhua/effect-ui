@@ -5,9 +5,9 @@ import { fileURLToPath } from "node:url"
 import { expect, test } from "vitest"
 
 import { auditRegistry, type AuditInput, type AuditStaticJson } from "./audit"
-import { auditExceptions } from "./audit-exceptions"
 import { components } from "./catalog"
 import { demoNames } from "./examples/index"
+import { buildRegistryItem } from "./registry-item"
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..")
 const registrySrc = path.join(repoRoot, "packages/registry/src")
@@ -46,7 +46,7 @@ function staticJson(): AuditStaticJson {
   }
 }
 
-function repoInput(exceptions: AuditInput["exceptions"]): AuditInput {
+function repoInput(): AuditInput {
   const packageJson = readJson(path.join(repoRoot, "packages/registry/package.json")) as {
     dependencies?: Record<string, string>
   }
@@ -60,7 +60,6 @@ function repoInput(exceptions: AuditInput["exceptions"]): AuditInput {
     demoNames,
     readme: fs.readFileSync(path.join(repoRoot, "README.md"), "utf8"),
     staticJson: staticJson(),
-    exceptions,
     packageDependencies: Object.keys(packageJson.dependencies ?? {}),
   }
 }
@@ -69,6 +68,10 @@ function component(name: string) {
   const item = components.find((entry) => entry.name === name)
   if (!item) throw new Error(`catalog 缺少 ${name}`)
   return item
+}
+
+function builtItem(name: string) {
+  return buildRegistryItem(component(name), (file) => fs.readFileSync(path.join(registrySrc, file), "utf8"))
 }
 
 test("examples 导出 demo 映射的键名，审计可以直接导入", () => {
@@ -85,44 +88,30 @@ test("use-mobile 以 registry:hook 安装到 hooks 目录", () => {
   })
 })
 
-test("sidebar、input-group、toggle-group 的依赖声明与源码一致", () => {
-  expect([...component("sidebar").registryDependencies].sort()).toEqual([
+test("sidebar、input-group、toggle-group 的依赖从源码推导", () => {
+  expect(builtItem("sidebar").registryDependencies).toEqual([
     "button",
     "separator",
     "sheet",
     "use-mobile",
     "utils",
   ])
-  expect([...component("input-group").registryDependencies].sort()).toEqual([
+  expect(builtItem("input-group").registryDependencies).toEqual([
     "button",
     "input",
     "textarea",
     "utils",
   ])
-  expect([...component("toggle-group").dependencies].sort()).toEqual([
+  expect(builtItem("toggle-group").dependencies).toEqual([
     "@radix-ui/react-toggle-group",
     "class-variance-authority",
   ])
 })
 
-test("未套用例外时只报告保留的 @tiptap/pm peer 依赖", () => {
-  expect(auditRegistry(repoInput([]))).toEqual([
-    {
-      name: "rich-text-editor",
-      type: "extra-npm-dependency",
-      description: "dependencies 声明了 “@tiptap/pm”，但源码未引用。",
-    },
-  ])
+test("rich-text-editor 保留源码未引用的 peer 依赖 @tiptap/pm", () => {
+  expect(builtItem("rich-text-editor").dependencies).toContain("@tiptap/pm")
 })
 
-test("use-mobile 临时例外已移除，套用例外后仓库审计没有问题", () => {
-  expect(auditExceptions).toEqual([
-    {
-      name: "rich-text-editor",
-      type: "extra-npm-dependency",
-      dependency: "@tiptap/pm",
-      reason: "@tiptap/pm 是 @tiptap/react 的 peer 依赖，安装组件时保留。",
-    },
-  ])
-  expect(auditRegistry(repoInput(auditExceptions))).toEqual([])
+test("仓库审计没有问题", () => {
+  expect(auditRegistry(repoInput())).toEqual([])
 })

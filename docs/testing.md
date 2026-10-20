@@ -28,9 +28,10 @@ Typecheck excludes `*.test.ts`, and vitest does not type-check. Type errors in t
 `pnpm lint` currently reports 2 `react-hooks/incompatible-library` warnings, in `data-table.tsx` and `virtual-list.tsx`. They are expected and do not fail the check.
 
 ## Tests
-- `packages/registry/src/registry-item.test.ts`: registry JSON shape.
+- `packages/registry/src/registry-item.test.ts`: registry JSON shape, derived dependency lists, and missing-file errors.
+- `packages/registry/src/dependencies.test.ts`: import scanning for dependency derivation.
 - `packages/registry/src/audit.test.ts`: unit tests for the audit rules.
-- `packages/registry/src/audit.repo.test.ts`: audits the real repo. It checks that the catalog matches source imports, `packages/registry/package.json`, demos, and the README list. It also checks that `registry.json` and `apps/docs/public/r` match a fresh build. Stale generated JSON fails `pnpm test`.
+- `packages/registry/src/audit.repo.test.ts`: audits the real repo. It checks that every derived npm dependency is in `packages/registry/package.json`, every derived registry dependency is in the catalog, and that demos and the README list are complete. It also checks that `registry.json` and `apps/docs/public/r` match a fresh build. Stale generated JSON fails `pnpm test`.
 
 There are no tests under `apps/docs`. UI behavior is verified manually with `pnpm dev`.
 

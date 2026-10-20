@@ -10,8 +10,8 @@
     "@dnd-kit/utilities"
   ],
   "registryDependencies": [
-    "utils",
-    "card"
+    "card",
+    "utils"
   ],
   "files": [
     {

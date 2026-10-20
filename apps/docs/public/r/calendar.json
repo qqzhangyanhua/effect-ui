@@ -5,12 +5,12 @@
   "title": "Calendar",
   "description": "日期选择日历。",
   "dependencies": [
-    "react-day-picker",
-    "lucide-react"
+    "lucide-react",
+    "react-day-picker"
   ],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

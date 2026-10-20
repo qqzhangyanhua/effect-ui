@@ -9,9 +9,9 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "utils",
     "button",
-    "input-group"
+    "input-group",
+    "utils"
   ],
   "files": [
     {

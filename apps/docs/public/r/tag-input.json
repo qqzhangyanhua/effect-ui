@@ -8,8 +8,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "utils",
-    "badge"
+    "badge",
+    "utils"
   ],
   "files": [
     {

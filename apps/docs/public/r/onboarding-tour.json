@@ -6,8 +6,8 @@
   "description": "高亮遮罩 + 步骤卡片的产品引导。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
-    "button"
+    "button",
+    "utils"
   ],
   "files": [
     {

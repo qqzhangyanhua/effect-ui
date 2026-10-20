@@ -8,8 +8,8 @@
     "react-markdown"
   ],
   "registryDependencies": [
-    "utils",
-    "avatar"
+    "avatar",
+    "utils"
   ],
   "files": [
     {

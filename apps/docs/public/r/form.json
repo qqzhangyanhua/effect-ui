@@ -5,13 +5,13 @@
   "title": "Form",
   "description": "react-hook-form 封装。",
   "dependencies": [
-    "react-hook-form",
     "@radix-ui/react-label",
-    "@radix-ui/react-slot"
+    "@radix-ui/react-slot",
+    "react-hook-form"
   ],
   "registryDependencies": [
-    "utils",
-    "label"
+    "label",
+    "utils"
   ],
   "files": [
     {

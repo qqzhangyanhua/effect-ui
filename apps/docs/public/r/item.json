@@ -5,12 +5,12 @@
   "title": "Item",
   "description": "列表项：媒体、标题、描述与操作。",
   "dependencies": [
-    "class-variance-authority",
-    "@radix-ui/react-slot"
+    "@radix-ui/react-slot",
+    "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils",
-    "separator"
+    "separator",
+    "utils"
   ],
   "files": [
     {

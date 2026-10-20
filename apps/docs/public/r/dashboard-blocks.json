@@ -8,11 +8,11 @@
     "recharts"
   ],
   "registryDependencies": [
-    "utils",
     "badge",
     "card",
     "chart",
-    "table"
+    "table",
+    "utils"
   ],
   "files": [
     {

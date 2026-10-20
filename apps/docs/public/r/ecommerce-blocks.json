@@ -6,9 +6,9 @@
   "description": "商品卡、画廊、购物车抽屉、结账步骤。",
   "dependencies": [],
   "registryDependencies": [
-    "utils",
     "button",
-    "sheet"
+    "sheet",
+    "utils"
   ],
   "files": [
     {

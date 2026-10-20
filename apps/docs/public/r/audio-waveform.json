@@ -5,8 +5,8 @@
   "title": "Audio Waveform",
   "description": "wavesurfer.js 音频波形与播放。",
   "dependencies": [
-    "wavesurfer.js",
-    "lucide-react"
+    "lucide-react",
+    "wavesurfer.js"
   ],
   "registryDependencies": [
     "utils"

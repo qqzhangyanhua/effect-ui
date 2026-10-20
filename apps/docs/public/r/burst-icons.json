@@ -5,8 +5,8 @@
   "title": "Burst Icons",
   "description": "灵感来自 mo.js（MIT），用 Motion 重写的点击图标爆发。",
   "dependencies": [
-    "motion",
-    "lucide-react"
+    "lucide-react",
+    "motion"
   ],
   "registryDependencies": [
     "utils"

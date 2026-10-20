@@ -13,10 +13,13 @@ The lockfile gained a dependency that is not installed locally. Run `pnpm instal
 **`pnpm test` fails in `audit.repo.test.ts`.**
 The audit message says what is missing. Common causes:
 - `stale-static-json` or `missing-static-json`: run `pnpm registry:build` and commit the output.
-- An npm package is not declared: add it to the catalog entry's `dependencies` and to `packages/registry/package.json`.
+- `missing-package-dependency`: an npm package the source imports, or one listed in `extraDependencies`, is missing from `packages/registry/package.json`. Add it there.
+- `unknown-registry-dependency`: the source imports `@/components/ui/x`, `@/hooks/x`, `@/lib/x`, or `./x`, and no catalog entry is named `x`. Register the item or fix the import.
 - `unregistered-source`: a component file has no catalog entry.
 - The README does not mention the component name.
-- A dependency is intentionally unused, for example a peer dependency: add an entry to `packages/registry/src/audit-exceptions.ts` with a reason.
+
+**An installed component fails because a peer package was not installed.**
+Dependency lists are derived from source imports, so a package the source never imports is not listed. Add it to the catalog entry's `extraDependencies`, then run `pnpm registry:build`. See `docs/adr/0001-derive-dependency-lists-from-source.md`.
 
 **CI step "Check registry JSON is unchanged" fails.**
 Generated JSON was not committed. Run `pnpm registry:build` locally and commit `registry.json` and `apps/docs/public/r`.

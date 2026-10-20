@@ -1,0 +1,43 @@
+packages/registry/src/effects/particle-button.tsx
+  s_1fd08f5c0dd26b::t_90e2f372022bcb 20,26-28,77-83,87
+apps/docs/public/r/phone-input.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 19
+packages/registry/src/effects/gooey-button.tsx
+  s_1fd08f5c0dd26b::t_f6013355ae380a 14,20-22,25-39,50-56,60
+apps/docs/public/r/tear-button.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 17
+apps/docs/public/r/text-rotate.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 19
+apps/docs/public/r/hold-button.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 17
+apps/docs/public/r/gooey-button.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 17
+packages/registry/src/ui/phone-input.tsx
+  s_1fd08f5c0dd26b::t_efe15d0a16ef4a 41-44,46-50
+packages/registry/src/effects/tear-button.tsx
+  s_1fd08f5c0dd26b::t_5628803692ad2e 14,20-22,33,64-69,73
+packages/registry/src/effects/hold-button.tsx
+  s_1fd08f5c0dd26b::t_fc4b24fd42765d 19,28-30,60-66,90
+packages/registry/src/effects/ripple-button.tsx
+  s_1fd08f5c0dd26b::t_ee70d91a6ed78b 23,29-31,70-71,75
+apps/docs/public/r/particle-button.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 17
+apps/docs/public/r/ripple-button.json
+  s_1fd08f5c0dd26b::t_91d6ef7d483783 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "bc9856e8c59a3ccbf7b0bace23177a4463a5ed35",
+  "prompts": {},
+  "sessions": {
+    "s_1fd08f5c0dd26b": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a157f0-61cf-7030-96ce-8f051d03f96a",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

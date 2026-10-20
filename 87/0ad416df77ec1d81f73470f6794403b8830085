@@ -1,0 +1,16 @@
+apps/docs/app/docs/page.tsx
+  h_4132837b09b7e7 6-7,10,29,35
+apps/docs/lib/source.ts
+  h_4132837b09b7e7 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "870ad416df77ec1d81f73470f6794403b8830085",
+  "prompts": {},
+  "humans": {
+    "h_4132837b09b7e7": {
+      "author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

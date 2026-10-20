@@ -6821,6 +6821,318 @@
           "target": "components/ui/setup-guide.tsx"
         }
       ]
+    },
+    {
+      "name": "galaxy-spiral",
+      "type": "registry:ui",
+      "title": "Galaxy Spiral",
+      "description": "灵感来自 Codrops Galaxy Configurator，原创实现。可调旋臂、半径、内外色、粒子数、随机度和速度，内圈转得更快，加法混合，拖动倾斜。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/galaxy-spiral.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/galaxy-spiral.tsx"
+        }
+      ]
+    },
+    {
+      "name": "proximity-scale-grid",
+      "type": "registry:ui",
+      "title": "Proximity Scale Grid",
+      "description": "灵感来自 Codrops Proximity Scale Grid，原创实现。圆点、方块或加号网格，距离用 smoothstep 放大变色，带惯性，停稳后不再请求动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/proximity-scale-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/proximity-scale-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "polaroid-scroll-stack",
+      "type": "registry:ui",
+      "title": "Polaroid Scroll Stack",
+      "description": "灵感来自 Codrops Scroll-Driven Polaroid，原创实现。粘性滚动里相片从画面外甩入叠放，角度由种子固定，带回弹和手写说明。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/polaroid-scroll-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/polaroid-scroll-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-svg-graph",
+      "type": "registry:ui",
+      "title": "Scroll SVG Graph",
+      "description": "灵感来自 Codrops Scroll-Driven SVG Graph，原创实现。全宽折线和面积随滚动描线，数据点依次弹出，当前值用数字滚动。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "number-flow",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-svg-graph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-svg-graph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cloth-wind-banner",
+      "type": "registry:ui",
+      "title": "Cloth Wind Banner",
+      "description": "灵感来自 Codrops Old Cloth with Wind，原创实现。细分布面用多层正弦和噪声鼓起，左边钉住，指针处有高斯鼓包，法线决定明暗，可传入纹理。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cloth-wind-banner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cloth-wind-banner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "xray-fluid-reveal",
+      "type": "registry:ui",
+      "title": "Xray Fluid Reveal",
+      "description": "灵感来自 Codrops Skeleton Fluid Reveal，原创实现。双缓冲遮罩留下柔边轨迹并衰减，噪声边缘混合两张图。减弱动效时点击切换。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/xray-fluid-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/xray-fluid-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "petal-dissolve-text",
+      "type": "registry:ui",
+      "title": "Petal Dissolve Text",
+      "description": "灵感来自 Codrops Clair Obscur Gommage，原创实现。离屏采样文字，带噪声的阈值线推进后粒子变成花瓣飘散，也可以反向重组。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/petal-dissolve-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/petal-dissolve-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-tunnel",
+      "type": "registry:ui",
+      "title": "Data Tunnel",
+      "description": "灵感来自 Codrops Data Tunnel，原创实现。实例化的发光环段带着字符图集沿深度循环，滚动或按住加速，视野随速度张开。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/data-tunnel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-tunnel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-upload-queue",
+      "type": "registry:ui",
+      "title": "File Upload Queue",
+      "description": "灵感来自 Dropbox 与 Google Drive，原创实现。多文件队列显示进度、速度、剩余时间和状态，可暂停、重试、移除和全部重试，默认同时上传 3 个，可与拖拽区组合。",
+      "dependencies": [],
+      "registryDependencies": [
+        "dropzone",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/file-upload-queue.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/file-upload-queue.tsx"
+        }
+      ]
+    },
+    {
+      "name": "embed-code-generator",
+      "type": "registry:ui",
+      "title": "Embed Code Generator",
+      "description": "灵感来自 Readymag，原创实现。像素或百分比、圆角和主题实时预览，并生成 iframe 与 script 代码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "animated-tabs",
+        "code-block",
+        "quantity-stepper",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/embed-code-generator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/embed-code-generator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-post-feed",
+      "type": "registry:ui",
+      "title": "Social Post Feed",
+      "description": "灵感来自 Campsite，原创实现。撰写帖子，一到四张图按网格排开并可放大，表情计数会跳，长文可以展开。",
+      "dependencies": [],
+      "registryDependencies": [
+        "lightbox",
+        "reaction-bar",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/social-post-feed.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/social-post-feed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comment-thread",
+      "type": "registry:ui",
+      "title": "Comment Thread",
+      "description": "灵感来自 GitHub、Linear 与 Figma，原创实现。按 parentId 组成最多三层的评论树，提及高亮，可标为已解决，编辑或删除，⌘ Enter 发送。",
+      "dependencies": [],
+      "registryDependencies": [
+        "combobox",
+        "reaction-bar",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/comment-thread.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/comment-thread.tsx"
+        }
+      ]
+    },
+    {
+      "name": "signature-pad",
+      "type": "registry:ui",
+      "title": "Signature Pad",
+      "description": "灵感来自 DocuSign，原创实现。指针速度决定线宽，二次曲线平滑，可撤销、清除、改颜色和粗细，导出 PNG 或 SVG，也可以输入姓名生成签名。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/signature-pad.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/signature-pad.tsx"
+        }
+      ]
+    },
+    {
+      "name": "poll-vote",
+      "type": "registry:ui",
+      "title": "Poll Vote",
+      "description": "灵感来自 X 与 Slack，原创实现。单选或多选，投票后选项变成百分比条并高亮最高票，读出总票数和相对截止时间。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/poll-vote.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/poll-vote.tsx"
+        }
+      ]
+    },
+    {
+      "name": "schedule-slot-picker",
+      "type": "registry:ui",
+      "title": "Schedule Slot Picker",
+      "description": "灵感来自 Calendly 与 Cal.com，原创实现。日历选出日期后列出时段，可切换 12/24 小时和时区。选中后拆成时间和确认。Cal.com 为 AGPL，只借鉴交互。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/schedule-slot-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/schedule-slot-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reaction-bar",
+      "type": "registry:ui",
+      "title": "Reaction Bar",
+      "description": "帖子和评论共用的表情反应条。计数用数字滚动，选中时轻轻弹一下。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "number-flow",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reaction-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reaction-bar.tsx"
+        }
+      ]
     }
   ]
 }

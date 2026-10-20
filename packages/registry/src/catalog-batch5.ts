@@ -326,7 +326,7 @@ export const batch5Components: ComponentMeta[] = [
     source: "Smooth UI",
     type: "registry:ui",
     dependencies: [],
-    registryDependencies: ["utils"],
+    registryDependencies: ["utils", "input"],
     file: "ui/floating-label-input.tsx",
     target: "components/ui/floating-label-input.tsx",
     props: [{ name: "label", type: "string", description: "浮动标签。" }, ...ui],

@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 
 export interface FloatingLabelInputProps extends React.ComponentProps<"input"> {
@@ -12,13 +13,10 @@ function FloatingLabelInput({ label, className, id, ...props }: FloatingLabelInp
 
   return (
     <div className={cn("relative", className)}>
-      <input
+      <Input
         id={inputId}
         placeholder=" "
-        className={cn(
-          "peer h-11 w-full rounded-md border border-input bg-transparent px-3 pt-3 text-sm outline-none",
-          "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        )}
+        className="peer h-11 pt-3 pb-0 text-sm"
         {...props}
       />
       <label

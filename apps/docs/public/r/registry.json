@@ -3225,7 +3225,8 @@
       "description": "标签上浮的输入框。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "input"
       ],
       "files": [
         {

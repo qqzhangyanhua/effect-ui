@@ -100,6 +100,7 @@ const demoMap: Record<string, ComponentType> = {
   "toggle-group": uiDemos2.ToggleGroupDemo,
   "data-table": uiDemos2.DataTableDemo,
   "scramble-text": effectDemos2.ScrambleTextDemo,
+  "text-rotate": effectDemos2.TextRotateDemo,
   "word-rotate": effectDemos2.WordRotateDemo,
   "morphing-text": effectDemos2.MorphingTextDemo,
   "rolling-number": effectDemos2.RollingNumberDemo,

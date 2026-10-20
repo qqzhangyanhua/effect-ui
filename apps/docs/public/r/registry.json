@@ -1638,16 +1638,33 @@
       ]
     },
     {
-      "name": "word-rotate",
+      "name": "text-rotate",
       "type": "registry:ui",
-      "title": "Word Rotate",
-      "description": "词语轮换。",
+      "title": "Text Rotate",
+      "description": "按间隔轮换一组文字，可选滑动、模糊或字形动画。",
       "dependencies": [
         "motion"
       ],
       "registryDependencies": [
         "use-prefers-reduced-motion",
         "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-rotate.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-rotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "词语轮换。",
+      "dependencies": [],
+      "registryDependencies": [
+        "text-rotate"
       ],
       "files": [
         {
@@ -1662,12 +1679,9 @@
       "type": "registry:ui",
       "title": "Morphing Text",
       "description": "模糊变形切换文字。",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": [],
       "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
+        "text-rotate"
       ],
       "files": [
         {
@@ -4504,11 +4518,9 @@
       "type": "registry:ui",
       "title": "Text Morph",
       "description": "两段文字按共同字母平滑形变。移植 Motion Primitives（MIT）交互。",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": [],
       "registryDependencies": [
-        "use-prefers-reduced-motion",
+        "text-rotate",
         "utils"
       ],
       "files": [

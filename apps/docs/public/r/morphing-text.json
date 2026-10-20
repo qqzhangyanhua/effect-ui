@@ -4,19 +4,16 @@
   "type": "registry:ui",
   "title": "Morphing Text",
   "description": "模糊变形切换文字。",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": [],
   "registryDependencies": [
-    "use-prefers-reduced-motion",
-    "utils"
+    "text-rotate"
   ],
   "files": [
     {
       "path": "registry/effects/morphing-text.tsx",
       "type": "registry:ui",
       "target": "components/ui/morphing-text.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface MorphingTextProps {\n  texts: string[]\n  className?: string\n  interval?: number\n}\n\nfunction MorphingText({ texts, className, interval = 2200 }: MorphingTextProps) {\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = React.useState(0)\n\n  React.useEffect(() => {\n    if (reduced || texts.length === 0) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % texts.length)\n    }, interval)\n    return () => window.clearInterval(timer)\n  }, [interval, reduced, texts.length])\n\n  const text = (reduced ? texts[0] : texts[index]) ?? \"\"\n\n  return (\n    <span data-slot=\"morphing-text\" className={cn(\"relative inline-grid\", className)}>\n      {reduced ? (\n        <span className=\"col-start-1 row-start-1\">{text}</span>\n      ) : (\n        <AnimatePresence mode=\"wait\">\n          <motion.span\n            key={text}\n            initial={{ filter: \"blur(10px)\", opacity: 0, scale: 0.96 }}\n            animate={{ filter: \"blur(0px)\", opacity: 1, scale: 1 }}\n            exit={{ filter: \"blur(10px)\", opacity: 0, scale: 1.04 }}\n            transition={{ duration: 0.4 }}\n            className=\"col-start-1 row-start-1\"\n          >\n            {text}\n          </motion.span>\n        </AnimatePresence>\n      )}\n    </span>\n  )\n}\n\nexport { MorphingText }\n"
+      "content": "\"use client\"\n\nimport { TextRotate } from \"./text-rotate\"\n\nexport interface MorphingTextProps {\n  texts: string[]\n  className?: string\n  interval?: number\n}\n\nfunction MorphingText({ texts, className, interval = 2200 }: MorphingTextProps) {\n  return (\n    <TextRotate\n      animation=\"blur\"\n      className={className}\n      data-slot=\"morphing-text\"\n      interval={interval}\n      texts={texts}\n    />\n  )\n}\n\nexport { MorphingText }\n"
     }
   ]
 }

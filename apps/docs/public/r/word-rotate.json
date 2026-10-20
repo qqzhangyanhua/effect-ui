@@ -4,19 +4,16 @@
   "type": "registry:ui",
   "title": "Word Rotate",
   "description": "词语轮换。",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": [],
   "registryDependencies": [
-    "use-prefers-reduced-motion",
-    "utils"
+    "text-rotate"
   ],
   "files": [
     {
       "path": "registry/effects/word-rotate.tsx",
       "type": "registry:ui",
       "target": "components/ui/word-rotate.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface WordRotateProps {\n  words: string[]\n  className?: string\n  interval?: number\n}\n\nfunction WordRotate({ words, className, interval = 1800 }: WordRotateProps) {\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = React.useState(0)\n\n  React.useEffect(() => {\n    if (reduced || words.length === 0) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % words.length)\n    }, interval)\n    return () => window.clearInterval(timer)\n  }, [interval, reduced, words.length])\n\n  const word = (reduced ? words[0] : words[index]) ?? \"\"\n\n  return (\n    <span data-slot=\"word-rotate\" className={cn(\"inline-flex overflow-hidden\", className)}>\n      {reduced ? (\n        <span className=\"inline-block\">{word}</span>\n      ) : (\n        <AnimatePresence mode=\"wait\">\n          <motion.span\n            key={word}\n            initial={{ y: 16, opacity: 0 }}\n            animate={{ y: 0, opacity: 1 }}\n            exit={{ y: -16, opacity: 0 }}\n            transition={{ duration: 0.28 }}\n            className=\"inline-block\"\n          >\n            {word}\n          </motion.span>\n        </AnimatePresence>\n      )}\n    </span>\n  )\n}\n\nexport { WordRotate }\n"
+      "content": "\"use client\"\n\nimport { TextRotate } from \"./text-rotate\"\n\nexport interface WordRotateProps {\n  words: string[]\n  className?: string\n  interval?: number\n}\n\nfunction WordRotate({ words, className, interval = 1800 }: WordRotateProps) {\n  return (\n    <TextRotate\n      animation=\"slide\"\n      className={className}\n      data-slot=\"word-rotate\"\n      interval={interval}\n      texts={words}\n    />\n  )\n}\n\nexport { WordRotate }\n"
     }
   ]
 }

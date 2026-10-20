@@ -32,6 +32,7 @@ import { ScrambleText } from "../effects/scramble-text"
 import { Sparkles } from "../effects/sparkles"
 import { Starfield } from "../effects/starfield"
 import { TextReveal } from "../effects/text-reveal"
+import { TextRotate } from "../effects/text-rotate"
 import { WaveBackground } from "../effects/wave-background"
 import { WordRotate } from "../effects/word-rotate"
 import { Badge } from "../ui/badge"
@@ -46,6 +47,37 @@ function Frame({ children }: { children: ReactNode }) {
 
 export function ScrambleTextDemo() {
   return <ScrambleText className="text-2xl" text="DECRYPT COMPLETE" />
+}
+
+export function TextRotateDemo() {
+  return (
+    <div className="grid w-full gap-8 text-center sm:grid-cols-3">
+      <div className="space-y-2">
+        <p className="text-xs text-muted-foreground">slide</p>
+        <TextRotate
+          animation="slide"
+          className="text-2xl font-semibold"
+          texts={["Motion", "Tailwind", "Registry"]}
+        />
+      </div>
+      <div className="space-y-2">
+        <p className="text-xs text-muted-foreground">blur</p>
+        <TextRotate
+          animation="blur"
+          className="text-2xl font-semibold"
+          texts={["Copy.", "Tweak.", "Ship."]}
+        />
+      </div>
+      <div className="space-y-2">
+        <p className="text-xs text-muted-foreground">glyph</p>
+        <TextRotate
+          animation="glyph"
+          className="font-display text-4xl"
+          texts={["Design", "Delight"]}
+        />
+      </div>
+    </div>
+  )
 }
 
 export function WordRotateDemo() {

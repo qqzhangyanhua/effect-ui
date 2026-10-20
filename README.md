@@ -84,6 +84,7 @@ use-mobile · use-prefers-reduced-motion
 | highlight-text | Animata |
 | count-up | Magic UI |
 | scramble-text | Magic UI |
+| text-rotate | 原创 |
 | word-rotate | Magic UI |
 | morphing-text | Magic UI |
 | rolling-number | Magic UI |

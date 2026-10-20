@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-dotted-feature-tabs",
+  "type": "registry:ui",
+  "title": "Section Dotted Feature Tabs",
+  "description": "灵感来自 Maze（via Mobbin），原创实现。半调点背景，页签切换漂浮的迷你界面。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-dotted-feature-tabs.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-dotted-feature-tabs.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface DottedFeature {\n  id: string\n  label: string\n  title: string\n}\n\nexport interface SectionDottedFeatureTabsProps {\n  features?: DottedFeature[]\n  className?: string\n}\n\nconst defaultFeatures: DottedFeature[] = [\n  { id: \"chart\", label: \"图表\", title: \"这一周的起伏\" },\n  { id: \"list\", label: \"列表\", title: \"待处理的三条\" },\n  { id: \"calendar\", label: \"日历\", title: \"下周的空档\" },\n]\n\nfunction Mini({ id }: { id: string }) {\n  if (id === \"list\") {\n    return (\n      <div className=\"space-y-2 p-4\">\n        {[\"对齐标题\", \"补上页脚\", \"检查减弱动效\"].map((item) => (\n          <div key={item} className=\"rounded-md bg-muted px-3 py-2 text-xs\">{item}</div>\n        ))}\n      </div>\n    )\n  }\n  if (id === \"calendar\") {\n    return (\n      <div className=\"grid grid-cols-7 gap-1 p-4\">\n        {Array.from({ length: 14 }, (_, index) => (\n          <span key={index} className={cn(\"grid h-6 place-items-center rounded text-[10px]\", index === 9 && \"bg-primary text-primary-foreground\")}>\n            {index + 1}\n          </span>\n        ))}\n      </div>\n    )\n  }\n  return (\n    <div className=\"flex h-full items-end gap-2 p-4\">\n      {[36, 64, 48, 80].map((height) => (\n        <span key={height} className=\"flex-1 rounded-t bg-primary/80\" style={{ height }} />\n      ))}\n    </div>\n  )\n}\n\nfunction SectionDottedFeatureTabs({\n  features = defaultFeatures,\n  className,\n}: SectionDottedFeatureTabsProps) {\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = React.useState(0)\n  const feature = features[index] ?? features[0]\n\n  if (!feature) return null\n\n  return (\n    <section className={cn(\"relative overflow-hidden rounded-2xl border bg-background px-4 py-12\", className)}>\n      <style>\n        {`@keyframes eu-card { 50% { transform: translateY(-8px); } }`}\n      </style>\n      <div\n        className=\"pointer-events-none absolute inset-0 opacity-50\"\n        style={{\n          backgroundImage:\n            \"radial-gradient(circle, color-mix(in oklab, var(--foreground) 40%, transparent) 1.1px, transparent 1.2px)\",\n          backgroundSize: \"12px 12px\",\n        }}\n      />\n      <div className=\"relative mx-auto grid max-w-4xl items-center gap-8 md:grid-cols-2\">\n        <div>\n          <div className=\"flex flex-wrap gap-2\">\n            {features.map((item, itemIndex) => (\n              <button\n                key={item.id}\n                type=\"button\"\n                aria-pressed={itemIndex === index}\n                onClick={() => setIndex(itemIndex)}\n                className={cn(\n                  \"rounded-full border px-3 py-1 text-sm\",\n                  itemIndex === index && \"bg-foreground text-background\",\n                )}\n              >\n                {item.label}\n              </button>\n            ))}\n          </div>\n          <h2 className=\"font-display mt-4 text-4xl\">{feature.title}</h2>\n        </div>\n        <div\n          className=\"h-44 overflow-hidden rounded-2xl border bg-card shadow-lg\"\n          style={{ animation: reduced ? undefined : \"eu-card 4.5s ease-in-out infinite\" }}\n        >\n          <Mini id={feature.id} />\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { SectionDottedFeatureTabs }\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-pricing-perspective-grid",
+  "type": "registry:ui",
+  "title": "Section Pricing Perspective Grid",
+  "description": "灵感来自 Dovetail（via Mobbin），原创实现。定价卡浮在透视网格上，等宽大写标签和分段月/年切换。减弱动效时停掉循环，保留静态布局。",
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-pricing-perspective-grid.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-pricing-perspective-grid.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PerspectivePlan {\n  name: string\n  monthly: number\n  yearly: number\n  items: string[]\n}\n\nexport interface SectionPricingPerspectiveGridProps {\n  plans?: PerspectivePlan[]\n  className?: string\n}\n\nconst defaultPlans: PerspectivePlan[] = [\n  { name: \"HOBBY\", monthly: 0, yearly: 0, items: [\"1 个空间\", \"社区支持\"] },\n  { name: \"STUDIO\", monthly: 29, yearly: 19, items: [\"无限区块\", \"优先更新\"] },\n  { name: \"TEAM\", monthly: 79, yearly: 59, items: [\"席位管理\", \"设计评审\"] },\n]\n\nfunction SectionPricingPerspectiveGrid({\n  plans = defaultPlans,\n  className,\n}: SectionPricingPerspectiveGridProps) {\n  const reduced = usePrefersReducedMotion()\n  const [yearly, setYearly] = React.useState(true)\n\n  return (\n    <section className={cn(\"relative overflow-hidden rounded-2xl border bg-background px-4 py-14\", className)}>\n      <style>\n        {`@keyframes eu-hover { 50% { transform: translateY(-8px); } }`}\n      </style>\n      <div className=\"pointer-events-none absolute inset-x-0 bottom-0 h-64 [perspective:700px]\">\n        <div className=\"absolute inset-0 origin-bottom bg-[linear-gradient(to_right,color-mix(in_oklab,var(--foreground)_16%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--foreground)_16%,transparent)_1px,transparent_1px)] bg-size-[42px_42px] [transform:rotateX(68deg)]\" />\n      </div>\n      <div className=\"relative mx-auto max-w-4xl text-center\">\n        <p className=\"font-mono text-xs tracking-[0.32em] text-muted-foreground uppercase\">Pricing</p>\n        <h2 className=\"font-display mt-2 text-4xl\">卡片浮在消失的网格上</h2>\n        <div className=\"mt-5 inline-flex rounded-full border bg-card p-1 font-mono text-[11px] tracking-[0.18em] uppercase\">\n          {([\"monthly\", \"yearly\"] as const).map((cycle) => {\n            const on = yearly === (cycle === \"yearly\")\n            return (\n              <button\n                key={cycle}\n                type=\"button\"\n                aria-pressed={on}\n                onClick={() => setYearly(cycle === \"yearly\")}\n                className={cn(\"rounded-full px-4 py-1.5\", on && \"bg-foreground text-background\")}\n              >\n                {cycle}\n              </button>\n            )\n          })}\n        </div>\n        <div className=\"mt-8 grid gap-4 md:grid-cols-3\">\n          {plans.map((plan, index) => (\n            <article\n              key={plan.name}\n              className=\"rounded-2xl border bg-card/95 p-5 text-left shadow-lg backdrop-blur\"\n              style={{ animation: reduced ? undefined : `eu-hover ${4 + index}s ease-in-out infinite` }}\n            >\n              <p className=\"font-mono text-xs tracking-[0.22em]\">{plan.name}</p>\n              <p className=\"font-display mt-3 text-4xl\">${yearly ? plan.yearly : plan.monthly}</p>\n              <ul className=\"mt-4 space-y-1 text-sm text-muted-foreground\">\n                {plan.items.map((item) => (\n                  <li key={item}>{item}</li>\n                ))}\n              </ul>\n              <Button className=\"mt-5 w-full\" variant={index === 1 ? \"default\" : \"outline\"}>\n                选择 {plan.name}\n              </Button>\n            </article>\n          ))}\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { SectionPricingPerspectiveGrid }\n"
+    }
+  ]
+}

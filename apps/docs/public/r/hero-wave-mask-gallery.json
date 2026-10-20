@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-wave-mask-gallery",
+  "type": "registry:ui",
+  "title": "Hero Wave Mask Gallery",
+  "description": "灵感来自 Kajabi（via Mobbin），原创实现。超粗标题，画面条被波浪遮罩裁切，随滚动视差。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/hero-wave-mask-gallery.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-wave-mask-gallery.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll, useTransform } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface WaveTile {\n  label: string\n  tint: string\n}\n\nexport interface HeroWaveMaskGalleryProps {\n  title?: string\n  tiles?: WaveTile[]\n  className?: string\n}\n\nconst defaultTiles: WaveTile[] = [\n  { label: \"01\", tint: \"#312e81\" },\n  { label: \"02\", tint: \"#7c3aed\" },\n  { label: \"03\", tint: \"#22d3ee\" },\n  { label: \"04\", tint: \"#f472b6\" },\n  { label: \"05\", tint: \"#0f172a\" },\n]\n\nfunction HeroWaveMaskGallery({\n  title = \"粗体标题压在波浪裁切的画面上\",\n  tiles = defaultTiles,\n  className,\n}: HeroWaveMaskGalleryProps) {\n  const reduced = usePrefersReducedMotion()\n  const ref = React.useRef<HTMLElement>(null)\n  const clipId = React.useId().replace(/:/g, \"\")\n  const { scrollYProgress } = useScroll({ target: ref, offset: [\"start end\", \"end start\"] })\n  const x = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [-48, 48])\n  const y = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [28, -28])\n\n  return (\n    <section ref={ref} className={cn(\"overflow-hidden rounded-2xl border bg-background px-4 py-12 sm:px-8\", className)}>\n      <h2 className=\"font-display mx-auto max-w-4xl text-center text-5xl leading-[0.9] font-black tracking-tight text-balance uppercase sm:text-7xl\">\n        {title}\n      </h2>\n      <div className=\"relative mx-auto mt-8 h-56 max-w-4xl\">\n        <svg className=\"absolute size-0\" aria-hidden>\n          <defs>\n            <clipPath id={clipId} clipPathUnits=\"objectBoundingBox\">\n              <path d=\"M0,0.18 C0.12,0.42 0.22,0.02 0.36,0.2 C0.5,0.38 0.6,0.05 0.74,0.22 C0.86,0.36 0.94,0.1 1,0.2 L1,1 L0,1 Z\" />\n            </clipPath>\n          </defs>\n        </svg>\n        <motion.div\n          className=\"absolute inset-x-[-8%] top-0 flex h-[130%] gap-3\"\n          style={{ x, y, clipPath: `url(#${clipId})` }}\n        >\n          {tiles.map((tile) => (\n            <div\n              key={tile.label}\n              className=\"grid h-full w-48 shrink-0 place-items-end p-3 text-sm text-white\"\n              style={{ background: `linear-gradient(160deg, ${tile.tint}, #09090b)` }}\n            >\n              {tile.label}\n            </div>\n          ))}\n        </motion.div>\n        <div\n          className=\"pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent\"\n          style={{ clipPath: `url(#${clipId})` }}\n        />\n      </div>\n    </section>\n  )\n}\n\nexport { HeroWaveMaskGallery }\n"
+    }
+  ]
+}

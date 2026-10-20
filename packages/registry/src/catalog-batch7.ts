@@ -180,8 +180,20 @@ export const batch7Components: ComponentMeta[] = [
     file: "effects/letter-glitch-wall.tsx",
     target: "components/ui/letter-glitch-wall.tsx",
     props: [
-      { name: "rows", type: "number", defaultValue: "8", description: "行数。" },
-      { name: "cols", type: "number", defaultValue: "18", description: "列数。" },
+      {
+        name: "rows",
+        type: "number",
+        defaultValue: "8",
+        description: "行数。",
+        control: { kind: "range", value: 8, min: 2, max: 16, step: 1 },
+      },
+      {
+        name: "cols",
+        type: "number",
+        defaultValue: "18",
+        description: "列数。",
+        control: { kind: "range", value: 18, min: 6, max: 40, step: 1 },
+      },
       ...ui,
     ],
   },
@@ -194,7 +206,14 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/target-cursor.tsx",
     target: "components/ui/target-cursor.tsx",
-    props: ui,
+    props: [
+      {
+        name: "className",
+        type: "string",
+        description: "额外 Tailwind 类名，与主题变量兼容。",
+        control: { kind: "text", value: "w-full" },
+      },
+    ],
   },
   {
     name: "lightning",
@@ -205,7 +224,16 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/lightning.tsx",
     target: "components/ui/lightning.tsx",
-    props: [{ name: "hue", type: "number", defaultValue: "3.8", description: "色相偏移。" }, ...ui],
+    props: [
+      {
+        name: "hue",
+        type: "number",
+        defaultValue: "3.8",
+        description: "色相偏移。",
+        control: { kind: "range", value: 3.8, min: 0, max: 8, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "iridescence",
@@ -216,7 +244,15 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/iridescence.tsx",
     target: "components/ui/iridescence.tsx",
-    props: ui,
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "前景内容。",
+        control: { kind: "text", value: "虹彩噪声" },
+      },
+      ...ui,
+    ],
   },
   {
     name: "silk",
@@ -227,6 +263,14 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/silk.tsx",
     target: "components/ui/silk.tsx",
-    props: ui,
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "前景内容。",
+        control: { kind: "text", value: "丝绸褶皱" },
+      },
+      ...ui,
+    ],
   },
 ]

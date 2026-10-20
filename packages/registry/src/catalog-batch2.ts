@@ -346,8 +346,19 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/scramble-text.tsx",
     target: "components/ui/scramble-text.tsx",
     props: [
-      { name: "text", type: "string", description: "目标文本。" },
-      { name: "duration", type: "number", defaultValue: "900", description: "动画时长（毫秒）。" },
+      {
+        name: "text",
+        type: "string",
+        description: "目标文本。",
+        control: { kind: "text", value: "DECRYPT COMPLETE" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "900",
+        description: "动画时长（毫秒）。",
+        control: { kind: "range", value: 900, min: 200, max: 3000, step: 50 },
+      },
     ],
   },
   {
@@ -587,7 +598,15 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/border-beam.tsx",
     target: "components/ui/border-beam.tsx",
-    props: [{ name: "duration", type: "number", defaultValue: "8", description: "旋转周期。" }],
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "8",
+        description: "旋转周期。",
+        control: { kind: "range", value: 8, min: 1, max: 20, step: 0.5 },
+      },
+    ],
   },
   {
     name: "bento-grid",

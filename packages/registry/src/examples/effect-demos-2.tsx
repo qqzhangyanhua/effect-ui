@@ -45,8 +45,11 @@ function Frame({ children }: { children: ReactNode }) {
   )
 }
 
-export function ScrambleTextDemo() {
-  return <ScrambleText className="text-2xl" text="DECRYPT COMPLETE" />
+export function ScrambleTextDemo({
+  text = "DECRYPT COMPLETE",
+  duration = 900,
+}: { text?: string; duration?: number } = {}) {
+  return <ScrambleText className="text-2xl" text={text} duration={duration} />
 }
 
 export function TextRotateDemo() {
@@ -235,9 +238,9 @@ export function SparklesDemo() {
   return <Sparkles className="px-6 py-3 text-2xl font-medium">Sparkles</Sparkles>
 }
 
-export function BorderBeamDemo() {
+export function BorderBeamDemo({ duration = 8 }: { duration?: number } = {}) {
   return (
-    <BorderBeam className="w-72">
+    <BorderBeam className="w-72" duration={duration}>
       <h3 className="font-medium">Border Beam</h3>
       <p className="mt-2 text-sm text-muted-foreground">光束沿着边框跑。</p>
     </BorderBeam>

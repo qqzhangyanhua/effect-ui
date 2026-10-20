@@ -121,9 +121,26 @@ export const batch3Components: ComponentMeta[] = [
     file: "effects/variable-font-proximity.tsx",
     target: "components/ui/variable-font-proximity.tsx",
     props: [
-      { name: "label", type: "string", description: "文本。" },
-      { name: "radius", type: "number", defaultValue: "80", description: "感应半径。" },
-      { name: "falloff", type: '"linear" | "exponential" | "gaussian"', defaultValue: '"linear"', description: "衰减曲线。" },
+      {
+        name: "label",
+        type: "string",
+        description: "文本。",
+        control: { kind: "text", value: "Move closer" },
+      },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "80",
+        description: "感应半径。",
+        control: { kind: "range", value: 90, min: 20, max: 240, step: 1 },
+      },
+      {
+        name: "falloff",
+        type: '"linear" | "exponential" | "gaussian"',
+        defaultValue: '"linear"',
+        description: "衰减曲线。",
+        control: { kind: "select", value: "linear", options: ["linear", "exponential", "gaussian"] },
+      },
     ],
   },
   {

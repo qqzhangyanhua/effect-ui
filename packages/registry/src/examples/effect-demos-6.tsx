@@ -31,14 +31,29 @@ const gallery = [
   { title: "D", src: "https://picsum.photos/id/1035/240/300" },
 ]
 
-export function SplashCursorDemo() {
-  return <SplashCursor className="h-56 w-full" />
+export function SplashCursorDemo({
+  splatRadius = 0.012,
+  fade = 0.975,
+}: { splatRadius?: number; fade?: number } = {}) {
+  return <SplashCursor className="h-56 w-full" splatRadius={splatRadius} fade={fade} />
 }
 
-export function ShaderPack2Demo() {
+export function ShaderPack2Demo({
+  variant = "god-rays",
+}: {
+  variant?:
+    | "liquid-metal"
+    | "god-rays"
+    | "water"
+    | "smoke-ring"
+    | "pulsing-border"
+    | "voronoi"
+    | "swirl"
+    | "fluted-glass"
+} = {}) {
   return (
-    <ShaderPack2 variant="god-rays" className="h-56 w-full rounded-xl">
-      <div className="flex h-56 items-end p-4 text-sm text-white/80">god-rays</div>
+    <ShaderPack2 variant={variant} className="h-56 w-full rounded-xl">
+      <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderPack2>
   )
 }
@@ -61,8 +76,8 @@ export function ThreeDCarouselDemo() {
   return <ThreeDCarousel className="w-full" items={gallery} />
 }
 
-export function SiriOrbDemo() {
-  return <SiriOrb />
+export function SiriOrbDemo({ size = 160 }: { size?: number } = {}) {
+  return <SiriOrb size={size} />
 }
 
 export function GravityDemo() {

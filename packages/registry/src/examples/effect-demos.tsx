@@ -49,12 +49,24 @@ function PreviewFrame({ children }: { children: ReactNode }) {
   )
 }
 
-export function TypingTextDemo() {
+export function TypingTextDemo({
+  text = "把特效复制进你的项目",
+  duration = 80,
+  loop = true,
+  cursor = true,
+}: Partial<{
+  text: string
+  duration: number
+  loop: boolean
+  cursor: boolean
+}> = {}) {
   return (
     <TypingText
       className="text-2xl"
-      text="把特效复制进你的项目"
-      loop
+      text={text}
+      duration={duration}
+      loop={loop}
+      cursor={cursor}
     />
   )
 }
@@ -67,16 +79,24 @@ export function GradientTextDemo() {
   )
 }
 
-export function ShimmerTextDemo() {
-  return <ShimmerText className="text-2xl font-medium">扫光文字即将上线</ShimmerText>
+export function ShimmerTextDemo({ children = "扫光文字即将上线" }: { children?: string } = {}) {
+  return <ShimmerText className="text-2xl font-medium">{children}</ShimmerText>
 }
 
 export function AuroraTextDemo() {
   return <AuroraText className="text-4xl font-semibold">极光标题</AuroraText>
 }
 
-export function SplitTextDemo() {
-  return <SplitText className="text-3xl font-medium" text="逐字显现的标题" />
+export function SplitTextDemo({
+  text = "逐字显现的标题",
+  by = "char",
+  delay = 0,
+}: {
+  text?: string
+  by?: "char" | "word"
+  delay?: number
+} = {}) {
+  return <SplitText className="text-3xl font-medium" text={text} by={by} delay={delay} />
 }
 
 export function HighlightTextDemo() {
@@ -96,10 +116,20 @@ export function CountUpDemo() {
   )
 }
 
-export function ParticlesDemo() {
+export function ParticlesDemo({
+  quantity = 80,
+  staticity = 50,
+  ease = 50,
+  color = "#7c3aed",
+}: {
+  quantity?: number
+  staticity?: number
+  ease?: number
+  color?: string
+} = {}) {
   return (
     <PreviewFrame>
-      <Particles className="text-primary" quantity={80} />
+      <Particles quantity={quantity} staticity={staticity} ease={ease} color={color} />
       <p className="relative z-10 text-sm text-muted-foreground">移动指针，粒子会跟上</p>
     </PreviewFrame>
   )
@@ -133,10 +163,12 @@ export function MeteorsDemo() {
   )
 }
 
-export function AuroraBackgroundDemo() {
+export function AuroraBackgroundDemo({
+  children = "极光铺在内容后面",
+}: { children?: string } = {}) {
   return (
     <AuroraBackground className="flex min-h-48 w-full items-center justify-center p-10">
-      <p className="text-lg font-medium">极光铺在内容后面</p>
+      <p className="text-lg font-medium">{children}</p>
     </AuroraBackground>
   )
 }
@@ -168,9 +200,9 @@ export function SpotlightCardDemo() {
   )
 }
 
-export function MagneticDemo() {
+export function MagneticDemo({ strength = 0.35 }: { strength?: number } = {}) {
   return (
-    <Magnetic>
+    <Magnetic strength={strength}>
       <Button>磁性按钮</Button>
     </Magnetic>
   )
@@ -184,9 +216,9 @@ export function CursorFollowDemo() {
   )
 }
 
-export function TiltDemo() {
+export function TiltDemo({ maxTilt = 12 }: { maxTilt?: number } = {}) {
   return (
-    <Tilt className="w-full max-w-sm">
+    <Tilt className="w-full max-w-sm" maxTilt={maxTilt}>
       <div className="rounded-xl border bg-card p-6 shadow-sm">
         <h3 className="font-medium">3D Tilt</h3>
         <p className="mt-2 text-sm text-muted-foreground">指针移动时卡片会倾斜。</p>

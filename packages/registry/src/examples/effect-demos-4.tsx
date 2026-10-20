@@ -30,10 +30,14 @@ function Frame({ children, className }: { children: ReactNode; className?: strin
 const swatch = (color: string) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect width="128" height="128" rx="16" fill="${color}"/></svg>`)}`
 
-export function ShaderBackgroundsDemo() {
+export function ShaderBackgroundsDemo({
+  variant = "mesh",
+}: {
+  variant?: "mesh" | "grain" | "dithering" | "metaballs" | "warp"
+} = {}) {
   return (
-    <ShaderBackground variant="mesh" className="h-56 w-full rounded-xl">
-      <div className="flex h-56 items-end p-4 text-sm text-white/80">mesh gradient</div>
+    <ShaderBackground variant={variant} className="h-56 w-full rounded-xl">
+      <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderBackground>
   )
 }
@@ -72,10 +76,10 @@ export function NumberFlowDemo() {
   )
 }
 
-export function GlitchTextDemo() {
+export function GlitchTextDemo({ text = "GLITCH" }: { text?: string } = {}) {
   return (
     <Frame>
-      <GlitchText className="text-4xl font-semibold" text="GLITCH" />
+      <GlitchText className="text-4xl font-semibold" text={text} />
     </Frame>
   )
 }

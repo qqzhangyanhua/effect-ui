@@ -2,11 +2,24 @@
 
 import type { ComponentType } from "react"
 
-function ComponentPreview({ Demo }: { Demo: ComponentType }) {
+import { ControlledPreview, PreviewShell, type ControlField } from "@/components/control-panel"
+
+function ComponentPreview({
+  Demo,
+  componentName,
+  controls,
+}: {
+  Demo: ComponentType
+  componentName?: string
+  controls?: readonly ControlField[]
+}) {
+  if (componentName && controls && controls.length > 0) {
+    return <ControlledPreview Demo={Demo} componentName={componentName} controls={controls} />
+  }
   return (
-    <div className="flex min-h-64 items-center justify-center rounded-xl border bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_46%)] p-8">
+    <PreviewShell>
       <Demo />
-    </div>
+    </PreviewShell>
   )
 }
 

@@ -1,6 +1,8 @@
 import fs from "node:fs"
 import path from "node:path"
 
+import { endOfBlock, rewriteControlledDemo, skip } from "./usage-rewrite"
+
 interface Specifier {
   local: string
   typeOnly: boolean
@@ -65,7 +67,7 @@ function readUsageExample(name: string) {
   const location = getDemoLocations().get(name)
   if (!location) throw new Error(`找不到 ${name} 的用法示例`)
   const source = fs.readFileSync(path.join(registrySrc(), location.file), "utf8")
-  const fn = unwrapPreview(extractFunction(source, location.fn))
+  const fn = unwrapPreview(rewriteControlledDemo(extractFunction(source, location.fn)))
   const locals = includedLocals(source, fn)
   const example = [fn, ...locals.map((item) => item.code)].join("\n")
   const imports = renderImports(parseImports(source), usedNames(example))
@@ -337,19 +339,6 @@ function usedNames(code: string) {
   return new Set([...stripped.matchAll(/\b[A-Za-z_$][\w$]*\b/g)].map((match) => match[0]))
 }
 
-function endOfBlock(source: string, open: number) {
-  let depth = 0
-  for (let index = open; index < source.length; index = skip(source, index)) {
-    const char = source[index]
-    if (char === "{") depth += 1
-    if (char === "}") {
-      depth -= 1
-      if (depth === 0) return index + 1
-    }
-  }
-  throw new Error("示例函数没有结束")
-}
-
 function endOfStatement(source: string, start: number) {
   let brace = 0
   let paren = 0
@@ -379,45 +368,6 @@ function continues(source: string, index: number) {
   while (previous >= 0 && /\s/.test(source[previous] ?? "")) previous -= 1
   const char = source[previous]
   return char === "+" || char === "?" || char === ":" || char === "." || char === "," || char === "&" || char === "|" || char === "=" || char === ">" || char === "(" || char === "[" || char === "{" || char === "!"
-}
-
-function skip(source: string, index: number) {
-  const char = source[index]
-  const next = source[index + 1]
-  if (char === "/" && next === "/") return source.indexOf("\n", index + 2) + 1 || source.length
-  if (char === "/" && next === "*") {
-    const end = source.indexOf("*/", index + 2)
-    return end === -1 ? source.length : end + 2
-  }
-  if (char === "'" || char === '"') return endOfQuote(source, index, char)
-  if (char === "`") return endOfTemplate(source, index)
-  return index + 1
-}
-
-function endOfQuote(source: string, start: number, quote: string) {
-  for (let index = start + 1; index < source.length; index += 1) {
-    if (source[index] === "\\") {
-      index += 1
-      continue
-    }
-    if (source[index] === quote) return index + 1
-  }
-  return source.length
-}
-
-function endOfTemplate(source: string, start: number) {
-  for (let index = start + 1; index < source.length; index += 1) {
-    if (source[index] === "\\") {
-      index += 1
-      continue
-    }
-    if (source[index] === "`") return index + 1
-    if (source[index] === "$" && source[index + 1] === "{") {
-      const end = endOfBlock(source, index + 1)
-      index = end - 1
-    }
-  }
-  return source.length
 }
 
 export { readUsageExample }

@@ -17,6 +17,7 @@ export type AuditIssueType =
   | "empty-props"
   | "missing-package-dependency"
   | "unknown-registry-dependency"
+  | "control-out-of-range"
 
 export interface AuditIssue {
   name: string
@@ -119,6 +120,59 @@ function differenceDescription(label: string, actual: unknown, expected: unknown
   return `静态 JSON ${label} 与构建器输出不一致：${shown.join("、")}${more}。`
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+}
+
+function pushControlIssues(issues: AuditIssue[], entry: AuditCatalogEntry): void {
+  for (const prop of entry.props) {
+    if (!isRecord(prop) || !isRecord(prop.control)) continue
+    const control = prop.control
+    const name = typeof prop.name === "string" ? prop.name : "prop"
+    if (control.kind === "range") {
+      const value = control.value
+      const min = control.min
+      const max = control.max
+      if (typeof value !== "number" || typeof min !== "number" || typeof max !== "number") {
+        issues.push({
+          name: entry.name,
+          type: "control-out-of-range",
+          description: `控件 “${name}” 的 range 起始值、最小值或最大值不是数字。`,
+        })
+        continue
+      }
+      if (value < min || value > max) {
+        issues.push({
+          name: entry.name,
+          type: "control-out-of-range",
+          description: `控件 “${name}” 的起始值 ${value} 不在 ${min} 到 ${max} 之间。`,
+        })
+      }
+    }
+    if (control.kind === "select") {
+      const value = control.value
+      const options = control.options
+      const choices = Array.isArray(options) ? options : []
+      const strings = choices.every((option) => typeof option === "string")
+      if (typeof value !== "string" || !Array.isArray(options) || !strings) {
+        issues.push({
+          name: entry.name,
+          type: "control-out-of-range",
+          description: `控件 “${name}” 的 select 起始值或可选项不是字符串。`,
+        })
+        continue
+      }
+      if (!choices.includes(value)) {
+        issues.push({
+          name: entry.name,
+          type: "control-out-of-range",
+          description: `控件 “${name}” 的起始值 “${value}” 不在可选项中。`,
+        })
+      }
+    }
+  }
+}
+
 function pushDependencyIssues(
   issues: AuditIssue[],
   entry: AuditCatalogEntry,
@@ -213,6 +267,7 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
         description: "Props 文档为空。",
       })
     }
+    pushControlIssues(issues, entry)
 
     const itemJson = input.staticJson.items[entry.name]
     if (itemJson === undefined) {

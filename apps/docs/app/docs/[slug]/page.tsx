@@ -22,6 +22,18 @@ interface DocsPageProps {
   params: Promise<{ slug: string }>
 }
 
+function componentExportName(source: string) {
+  const match = source.match(/export\s*\{([^}]+)\}/)
+  const body = match?.[1]
+  if (!body) return ""
+  for (const part of body.split(",")) {
+    const name = part.trim()
+    if (name.length === 0 || name.startsWith("type ")) continue
+    return name.split(/\s+as\s+/)[0]?.trim() ?? ""
+  }
+  return ""
+}
+
 function fileName(target: string) {
   return target.split("/").pop() ?? target
 }
@@ -82,6 +94,10 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   ])
 
   const targets = sources.map((file) => file.target)
+  const primary = sources.find((file) => file.file === item.file) ?? sources[0]
+  const controls = item.props.flatMap((prop) =>
+    prop.control ? [{ name: prop.name, defaultValue: prop.defaultValue, control: prop.control }] : [],
+  )
 
   return (
     <article className="mx-auto max-w-5xl space-y-8">
@@ -113,7 +129,11 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
               className="h-[70vh] w-full rounded-xl border bg-background"
             />
           ) : (
-            <ComponentPreview Demo={Demo} />
+            <ComponentPreview
+              Demo={Demo}
+              componentName={primary ? componentExportName(primary.code) : ""}
+              controls={controls}
+            />
           )
         }
         usage={{ code: usage, html: usageHtml, filename: "example.tsx" }}

@@ -227,17 +227,26 @@ export function DynamicIslandDemo() {
   )
 }
 
-export function VariableFontProximityDemo() {
+export function VariableFontProximityDemo({
+  label = "Move closer",
+  radius = 90,
+  falloff = "linear",
+}: {
+  label?: string
+  radius?: number
+  falloff?: "linear" | "exponential" | "gaussian"
+} = {}) {
   const container = useRef<HTMLDivElement>(null)
   return (
     <Frame>
       <div ref={container} className="w-full max-w-lg py-6 text-center">
         <VariableFontProximity
-          label="Move closer"
+          label={label}
           fromFontVariationSettings="'wght' 400"
           toFontVariationSettings="'wght' 900"
           containerRef={container}
-          radius={90}
+          radius={radius}
+          falloff={falloff}
           className="text-4xl tracking-tight"
         />
       </div>

@@ -73,11 +73,20 @@ export type SourceLibrary =
   | "three"
   | "original"
 
+export type ControlDef =
+  | { kind: "range"; value: number; min: number; max: number; step?: number }
+  | { kind: "select"; value: string; options: readonly string[] }
+  | { kind: "color"; value: string }
+  | { kind: "boolean"; value: boolean }
+  | { kind: "text"; value: string }
+
 export interface PropDoc {
   name: string
   type: string
   defaultValue?: string
   description: string
+  /** 文档预览里读者可改的控件。`value` 是 demo 起始值，不是组件默认值。 */
+  control?: ControlDef
 }
 
 export interface ComponentMeta {
@@ -487,10 +496,33 @@ export const components: ComponentMeta[] = [
     file: "effects/typing-text.tsx",
     target: "components/ui/typing-text.tsx",
     props: [
-      { name: "text", type: "string", description: "要逐字显示的文本。" },
-      { name: "duration", type: "number", defaultValue: "80", description: "每个字符的间隔（毫秒）。" },
-      { name: "loop", type: "boolean", defaultValue: "false", description: "是否循环打字 / 删除。" },
-      { name: "cursor", type: "boolean", defaultValue: "true", description: "是否显示光标。" },
+      {
+        name: "text",
+        type: "string",
+        description: "要逐字显示的文本。",
+        control: { kind: "text", value: "把特效复制进你的项目" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "80",
+        description: "每个字符的间隔（毫秒）。",
+        control: { kind: "range", value: 80, min: 20, max: 400, step: 10 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "false",
+        description: "是否循环打字 / 删除。",
+        control: { kind: "boolean", value: true },
+      },
+      {
+        name: "cursor",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否显示光标。",
+        control: { kind: "boolean", value: true },
+      },
     ],
   },
   {
@@ -513,7 +545,15 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/shimmer-text.tsx",
     target: "components/ui/shimmer-text.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "文字内容。",
+        control: { kind: "text", value: "扫光文字即将上线" },
+      },
+      ...uiProps,
+    ],
   },
   {
     name: "aurora-text",
@@ -536,9 +576,26 @@ export const components: ComponentMeta[] = [
     file: "effects/split-text.tsx",
     target: "components/ui/split-text.tsx",
     props: [
-      { name: "text", type: "string", description: "文本内容。" },
-      { name: "by", type: '"char" | "word"', defaultValue: '"char"', description: "拆分粒度。" },
-      { name: "delay", type: "number", defaultValue: "0", description: "入场延迟（秒）。" },
+      {
+        name: "text",
+        type: "string",
+        description: "文本内容。",
+        control: { kind: "text", value: "逐字显现的标题" },
+      },
+      {
+        name: "by",
+        type: '"char" | "word"',
+        defaultValue: '"char"',
+        description: "拆分粒度。",
+        control: { kind: "select", value: "char", options: ["char", "word"] },
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "入场延迟（秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
     ],
   },
   {
@@ -578,10 +635,34 @@ export const components: ComponentMeta[] = [
     file: "effects/particles.tsx",
     target: "components/ui/particles.tsx",
     props: [
-      { name: "quantity", type: "number", defaultValue: "60", description: "粒子数量。" },
-      { name: "staticity", type: "number", defaultValue: "50", description: "静止程度，越高越不跟随。" },
-      { name: "ease", type: "number", defaultValue: "50", description: "缓动阻尼。" },
-      { name: "color", type: "string", defaultValue: "currentColor", description: "粒子颜色。" },
+      {
+        name: "quantity",
+        type: "number",
+        defaultValue: "60",
+        description: "粒子数量。",
+        control: { kind: "range", value: 80, min: 10, max: 200, step: 1 },
+      },
+      {
+        name: "staticity",
+        type: "number",
+        defaultValue: "50",
+        description: "静止程度，越高越不跟随。",
+        control: { kind: "range", value: 50, min: 0, max: 100, step: 1 },
+      },
+      {
+        name: "ease",
+        type: "number",
+        defaultValue: "50",
+        description: "缓动阻尼。",
+        control: { kind: "range", value: 50, min: 1, max: 100, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "currentColor",
+        description: "粒子颜色。",
+        control: { kind: "color", value: "#7c3aed" },
+      },
     ],
   },
   {
@@ -633,7 +714,15 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/aurora-background.tsx",
     target: "components/ui/aurora-background.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "前景内容。",
+        control: { kind: "text", value: "极光铺在内容后面" },
+      },
+      ...uiProps,
+    ],
   },
   {
     name: "ripples",
@@ -683,7 +772,15 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/magnetic.tsx",
     target: "components/ui/magnetic.tsx",
-    props: [{ name: "strength", type: "number", defaultValue: "0.35", description: "吸附强度。" }],
+    props: [
+      {
+        name: "strength",
+        type: "number",
+        defaultValue: "0.35",
+        description: "吸附强度。",
+        control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 },
+      },
+    ],
   },
   {
     name: "cursor-follow",
@@ -705,7 +802,15 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tilt.tsx",
     target: "components/ui/tilt.tsx",
-    props: [{ name: "maxTilt", type: "number", defaultValue: "12", description: "最大倾斜角度。" }],
+    props: [
+      {
+        name: "maxTilt",
+        type: "number",
+        defaultValue: "12",
+        description: "最大倾斜角度。",
+        control: { kind: "range", value: 12, min: 0, max: 40, step: 1 },
+      },
+    ],
   },
   {
     name: "glow-hover",

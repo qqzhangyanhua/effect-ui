@@ -19,7 +19,17 @@ export const batch4Components: ComponentMeta[] = [
     file: "effects/shader-backgrounds.tsx",
     target: "components/ui/shader-backgrounds.tsx",
     props: [
-      { name: "variant", type: '"mesh" | "grain" | "dithering" | "metaballs" | "warp"', defaultValue: '"mesh"', description: "着色器预设。" },
+      {
+        name: "variant",
+        type: '"mesh" | "grain" | "dithering" | "metaballs" | "warp"',
+        defaultValue: '"mesh"',
+        description: "着色器预设。",
+        control: {
+          kind: "select",
+          value: "mesh",
+          options: ["mesh", "grain", "dithering", "metaballs", "warp"],
+        },
+      },
       { name: "colors", type: "string[]", description: "调色板。dithering 使用前两色作为底/前景。" },
       ...ui,
     ],
@@ -73,7 +83,15 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glitch-text.tsx",
     target: "components/ui/glitch-text.tsx",
-    props: [{ name: "text", type: "string", description: "文本。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "文本。",
+        control: { kind: "text", value: "GLITCH" },
+      },
+      ...ui,
+    ],
   },
   {
     name: "image-trail",

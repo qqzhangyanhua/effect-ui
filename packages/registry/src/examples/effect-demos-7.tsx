@@ -85,30 +85,33 @@ export function CanvasRevealDemo() {
   )
 }
 
-export function LetterGlitchWallDemo() {
-  return <LetterGlitchWall className="h-48 w-full" />
+export function LetterGlitchWallDemo({
+  rows = 8,
+  cols = 18,
+}: { rows?: number; cols?: number } = {}) {
+  return <LetterGlitchWall className="h-48 w-full" rows={rows} cols={cols} />
 }
 
-export function TargetCursorDemo() {
-  return <TargetCursor className="w-full" />
+export function TargetCursorDemo({ className = "w-full" }: { className?: string } = {}) {
+  return <TargetCursor className={className} />
 }
 
-export function LightningDemo() {
-  return <Lightning className="h-52 w-full" />
+export function LightningDemo({ hue = 3.8 }: { hue?: number } = {}) {
+  return <Lightning className="h-52 w-full" hue={hue} />
 }
 
-export function IridescenceDemo() {
+export function IridescenceDemo({ children = "虹彩噪声" }: { children?: string } = {}) {
   return (
     <Iridescence className="h-52 w-full">
-      <div className="grid h-52 place-items-center text-sm text-white/80">虹彩噪声</div>
+      <div className="grid h-52 place-items-center text-sm text-white/80">{children}</div>
     </Iridescence>
   )
 }
 
-export function SilkDemo() {
+export function SilkDemo({ children = "丝绸褶皱" }: { children?: string } = {}) {
   return (
     <Silk className="h-52 w-full">
-      <div className="grid h-52 place-items-center text-sm text-white/80">丝绸褶皱</div>
+      <div className="grid h-52 place-items-center text-sm text-white/80">{children}</div>
     </Silk>
   )
 }

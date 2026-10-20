@@ -408,3 +408,96 @@ test("使用 useId 但没有 use client 时不报告", () => {
   )
   expect(auditRegistry(input)).toEqual([])
 })
+
+test("控件起始值在范围内且属于选项时不报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          props: [
+            { name: "speed", control: { kind: "range", value: 2, min: 0, max: 2 } },
+            { name: "variant", control: { kind: "select", value: "mesh", options: ["mesh", "warp"] } },
+          ],
+        }),
+      ]),
+    ),
+  ).toEqual([])
+})
+
+test("range 控件起始值超出 min 或 max 时报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          props: [{ name: "speed", control: { kind: "range", value: 3, min: 0, max: 2 } }],
+        }),
+        entry({
+          name: "input",
+          file: "ui/input.tsx",
+          title: "Input",
+          props: [{ name: "delay", control: { kind: "range", value: -1, min: 0, max: 2 } }],
+        }),
+      ]),
+    ),
+  ).toEqual([
+    {
+      name: "button",
+      type: "control-out-of-range",
+      description: "控件 “speed” 的起始值 3 不在 0 到 2 之间。",
+    },
+    {
+      name: "input",
+      type: "control-out-of-range",
+      description: "控件 “delay” 的起始值 -1 不在 0 到 2 之间。",
+    },
+  ])
+})
+
+test("range 或 select 控件字段类型不对时报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          props: [{ name: "speed", control: { kind: "range", value: "3", min: 0, max: 2 } }],
+        }),
+        entry({
+          name: "input",
+          file: "ui/input.tsx",
+          title: "Input",
+          props: [{ name: "variant", control: { kind: "select", value: "mesh", options: ["mesh", 1] } }],
+        }),
+      ]),
+    ),
+  ).toEqual([
+    {
+      name: "button",
+      type: "control-out-of-range",
+      description: "控件 “speed” 的 range 起始值、最小值或最大值不是数字。",
+    },
+    {
+      name: "input",
+      type: "control-out-of-range",
+      description: "控件 “variant” 的 select 起始值或可选项不是字符串。",
+    },
+  ])
+})
+
+test("select 控件起始值不在选项中时报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          props: [
+            { name: "variant", control: { kind: "select", value: "nope", options: ["mesh", "warp"] } },
+          ],
+        }),
+      ]),
+    ),
+  ).toEqual([
+    {
+      name: "button",
+      type: "control-out-of-range",
+      description: "控件 “variant” 的起始值 “nope” 不在可选项中。",
+    },
+  ])
+})

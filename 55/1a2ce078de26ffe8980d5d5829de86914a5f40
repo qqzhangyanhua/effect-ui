@@ -1,0 +1,62 @@
+packages/registry/src/ui/input-plus.test.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-99
+packages/registry/src/ui/radio-plus.test.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-42
+registry.json
+  s_6a01d538b88ab7::t_97033d0f94363f 2438-2535
+packages/registry/src/ui/checkbox-plus.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-126
+apps/docs/public/r/checkbox-plus.json
+  s_6a01d538b88ab7::t_97033d0f94363f 1-22
+packages/registry/src/catalog-batch3.ts
+  s_6a01d538b88ab7::t_97033d0f94363f 192-300
+packages/registry/src/ui/input-plus.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-392
+apps/docs/public/r/registry.json
+  s_6a01d538b88ab7::t_97033d0f94363f 2438-2535
+apps/docs/public/r/switch-plus.json
+  s_6a01d538b88ab7::t_97033d0f94363f 1-22
+packages/registry/src/ui/checkbox-plus.test.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-68
+apps/docs/public/r/button-plus.json
+  s_6a01d538b88ab7::t_97033d0f94363f 1-22
+packages/registry/src/ui/switch-plus.test.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-48
+README.md
+  s_6a01d538b88ab7::t_97033d0f94363f 361-365
+packages/registry/src/ui/button-plus.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-102
+apps/docs/public/r/input-plus.json
+  s_6a01d538b88ab7::t_97033d0f94363f 1-22
+apps/docs/public/r/radio-plus.json
+  s_6a01d538b88ab7::t_97033d0f94363f 1-20
+docs/testing.md
+  s_6a01d538b88ab7::t_97033d0f94363f 36
+packages/registry/src/examples/index.ts
+  s_6a01d538b88ab7::t_97033d0f94363f 149-153
+packages/registry/src/ui/button-plus.test.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-72
+packages/registry/src/ui/radio-plus.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-99
+packages/registry/src/ui/switch-plus.tsx
+  s_6a01d538b88ab7::t_97033d0f94363f 1-89
+packages/registry/src/examples/ui-demos-6.tsx
+  s_6a01d538b88ab7::t_4363f965424c8f 3-9,11,16,21,201-305,321-323
+  s_6a01d538b88ab7::t_97033d0f94363f 306-320
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "551a2ce078de26ffe8980d5d5829de86914a5f40",
+  "prompts": {},
+  "sessions": {
+    "s_6a01d538b88ab7": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15894-a84a-7760-8779-c7380b4a740b",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

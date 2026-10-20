@@ -1,0 +1,77 @@
+packages/registry/src/ui/input-plus.tsx
+  s_09b068bdb3672d::t_8716bc432ec673 200,371
+  s_09b068bdb3672d::t_b7916719ac4cf5 18
+  s_09b068bdb3672d::t_e07f99e2314326 295-299,382-383
+  s_09b068bdb3672d::t_2cd889dcd0f32e 53-56
+  s_09b068bdb3672d::t_d1279405f07aef 1-17,19-52,57-199,201-294,300-370,372-381,384-392
+packages/registry/src/ui/radio-plus.test.tsx
+  s_09b068bdb3672d::t_9dc3d86d6c2e68 1-3,5-22,27-42
+  s_09b068bdb3672d::t_a8d81afe61f3b5 4,23-26
+packages/registry/src/ui/switch-plus.tsx
+  s_09b068bdb3672d::t_743c2375f46a9b 1-89
+packages/registry/src/examples/index.ts
+  s_09b068bdb3672d::t_f18d50ce280446 19,149-153
+packages/registry/src/ui/checkbox-plus.test.tsx
+  s_09b068bdb3672d::t_5e7ef254632b9e 1-68
+docs/testing.md
+  s_09b068bdb3672d::t_6a6d0a4e1dae9d 36
+packages/registry/src/catalog-batch3.ts
+  s_09b068bdb3672d::t_6ba2a970426403 175-283
+packages/registry/src/ui/input-plus.test.tsx
+  s_09b068bdb3672d::t_b8ea3512fdbf5d 1-61,63-84,87-91
+  s_09b068bdb3672d::t_0f730fab685e16 62,85-86
+  s_09b068bdb3672d::t_4c73b1ce906f3c 92-99
+packages/registry/src/ui/switch-plus.test.tsx
+  s_09b068bdb3672d::t_fb5dc5cea67b29 1-48
+packages/registry/src/ui/checkbox-plus.tsx
+  s_09b068bdb3672d::t_db995f05b48aca 1-68,75-126
+  s_09b068bdb3672d::t_6116b4e3f28d66 69-74
+apps/docs/public/r/radio-plus.json
+  s_09b068bdb3672d::t_3a1967eda4e0ff 1-16,18-20
+  s_09b068bdb3672d::t_6e5070475a143c 17
+README.md
+  s_09b068bdb3672d::t_5a53054a801467 346-350
+apps/docs/public/r/button-plus.json
+  s_09b068bdb3672d::t_6fed9767fbdf26 19
+  s_09b068bdb3672d::t_3a1967eda4e0ff 1-18,20-22
+apps/docs/public/r/registry.json
+  s_09b068bdb3672d::t_3a1967eda4e0ff 2440-2537
+apps/docs/public/r/input-plus.json
+  s_09b068bdb3672d::t_27efcf7988b798 19
+  s_09b068bdb3672d::t_3a1967eda4e0ff 1-18,20-22
+packages/registry/src/ui/radio-plus.tsx
+  s_09b068bdb3672d::t_cceec2f7396cd4 76,90
+  s_09b068bdb3672d::t_2c52bce4d8ca22 1-75,77-89,91-99
+registry.json
+  s_09b068bdb3672d::t_3a1967eda4e0ff 2440-2537
+apps/docs/public/r/switch-plus.json
+  s_09b068bdb3672d::t_3a1967eda4e0ff 1-22
+packages/registry/src/ui/button-plus.test.tsx
+  s_09b068bdb3672d::t_104f93e2c008f8 1-72
+packages/registry/src/ui/button-plus.tsx
+  s_09b068bdb3672d::t_048829ef6dfe91 83-86
+  s_09b068bdb3672d::t_bd8a76446be2cc 1-51,54-57,59-82,87-102
+  s_09b068bdb3672d::t_eb8cafdcf71d42 52,58
+  s_09b068bdb3672d::t_ef3d230d8a21f3 53
+packages/registry/src/examples/ui-demos-6.tsx
+  s_09b068bdb3672d::t_6910b05e78b5d9 1-107,113-135
+  s_09b068bdb3672d::t_bf8b401dbb71f5 108-112
+apps/docs/public/r/checkbox-plus.json
+  s_09b068bdb3672d::t_3a1967eda4e0ff 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "393912e7ca5005e80d40f39293cc78518292d8ef",
+  "prompts": {},
+  "sessions": {
+    "s_09b068bdb3672d": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15880-d53f-7941-a958-26aeb01bc882",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

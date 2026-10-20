@@ -6535,6 +6535,292 @@
           "target": "components/ui/resource-search-hero.tsx"
         }
       ]
+    },
+    {
+      "name": "datamosh-transition",
+      "type": "registry:ui",
+      "title": "Datamosh Transition",
+      "description": "灵感来自 Codrops，原创实现。切换画面时色块被拖影拉开，再收回新画面。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/datamosh-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/datamosh-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "loom-threads-marquee",
+      "type": "registry:ui",
+      "title": "Loom Threads Marquee",
+      "description": "灵感来自 Codrops，原创实现。滚动的色块可以拆成彩色丝线，再织回画面。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/loom-threads-marquee.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/loom-threads-marquee.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hologram-card",
+      "type": "registry:ui",
+      "title": "Hologram Card",
+      "description": "灵感来自 BL/S，原创实现。扫描线、边缘辉光和闪烁，只用 CSS。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hologram-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hologram-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sketch-hatch-image",
+      "type": "registry:ui",
+      "title": "Sketch Hatch Image",
+      "description": "灵感来自 Codrops，原创实现。画面以铅笔排线呈现，指针附近露出原来的颜色。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sketch-hatch-image.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sketch-hatch-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-3d-image-rotate",
+      "type": "registry:ui",
+      "title": "Scroll 3D Image Rotate",
+      "description": "灵感来自 Codrops，原创实现。滚动时色块绕竖直轴翻入，再翻出。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-3d-image-rotate.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-3d-image-rotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thumbnail-flow-path",
+      "type": "registry:ui",
+      "title": "Thumbnail Flow Path",
+      "description": "灵感来自 Codrops，原创实现。缩略图沿 S 形 offset-path 飞过，然后落进网格。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/thumbnail-flow-path.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/thumbnail-flow-path.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shader-grid-wide",
+      "type": "registry:ui",
+      "title": "Shader Grid Wide",
+      "description": "灵感来自 Codrops，原创实现。作品网格在指针附近鼓起，并随滚动速度拉伸。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shader-grid-wide.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shader-grid-wide.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sea-waves-background",
+      "type": "registry:ui",
+      "title": "Sea Waves Background",
+      "description": "灵感来自 Vanta，原创实现。程式化海面，浪尖发亮，滑杆从平静调到风暴。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sea-waves-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sea-waves-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cinema-seat-picker",
+      "type": "registry:ui",
+      "title": "Cinema Seat Picker",
+      "description": "灵感来自 Framer，原创实现。座位有可选、已选和已售，方向键移动，旁边是价格和场次预览。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cinema-seat-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cinema-seat-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "publication-filter-list",
+      "type": "registry:ui",
+      "title": "Publication Filter List",
+      "description": "灵感来自 Maze，原创实现。分类页签加搜索，三列条目会按筛选重新排列。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/publication-filter-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/publication-filter-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "activity-feed",
+      "type": "registry:ui",
+      "title": "Activity Feed",
+      "description": "灵感来自 Dropbox，原创实现。按今天和近 7 天分组，显示相对时间、同步条，新动态滑入。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/activity-feed.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/activity-feed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "project-update-card",
+      "type": "registry:ui",
+      "title": "Project Update Card",
+      "description": "灵感来自 Linear，原创实现。更新带正常、有风险或偏离标记，可写新更新，并只看未读。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/project-update-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/project-update-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "share-invite-panel",
+      "type": "registry:ui",
+      "title": "Share Invite Panel",
+      "description": "灵感来自 Figma，原创实现。多个邮箱、权限下拉和成员列表，旁边是滞后的访客光标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/share-invite-panel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/share-invite-panel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "changelog-feed",
+      "type": "registry:ui",
+      "title": "Changelog Feed",
+      "description": "灵感来自 Stripe，原创实现。更新卡片、吸顶的类型筛选和搜索，时间线可以关掉。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/changelog-feed.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/changelog-feed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "setup-guide",
+      "type": "registry:ui",
+      "title": "Setup Guide",
+      "description": "灵感来自 Claude，原创实现。分阶段进度、可折叠任务组，全部完成时沿用 confetti-burst 的纸屑配色。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/setup-guide.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/setup-guide.tsx"
+        }
+      ]
     }
   ]
 }

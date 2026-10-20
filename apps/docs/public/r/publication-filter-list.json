@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "publication-filter-list",
+  "type": "registry:ui",
+  "title": "Publication Filter List",
+  "description": "灵感来自 Maze，原创实现。分类页签加搜索，三列条目会按筛选重新排列。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/publication-filter-list.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/publication-filter-list.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface Publication {\n  id: string\n  title: string\n  category: string\n  summary: string\n}\n\nexport interface PublicationFilterListProps {\n  items?: readonly Publication[]\n  className?: string\n}\n\nconst ITEMS: readonly Publication[] = [\n  { id: \"signal\", title: \"信号笔记\", category: \"研究\", summary: \"滚动速度怎样留下残影\" },\n  { id: \"seat\", title: \"座位草案\", category: \"产品\", summary: \"键盘能走到每一座\" },\n  { id: \"wave\", title: \"海况参数\", category: \"视觉\", summary: \"平静和风暴共用一个值\" },\n  { id: \"thread\", title: \"丝线走马灯\", category: \"视觉\", summary: \"画面拆开再织回去\" },\n  { id: \"guide\", title: \"安装清单\", category: \"产品\", summary: \"分组任务和总进度\" },\n  { id: \"feed\", title: \"动态分组\", category: \"研究\", summary: \"今天和近七天\" },\n]\n\nfunction PublicationFilterList({ items = ITEMS, className }: PublicationFilterListProps) {\n  const reduced = usePrefersReducedMotion()\n  const categories = [\"全部\", ...new Set(items.map((item) => item.category))]\n  const [category, setCategory] = React.useState(\"全部\")\n  const [query, setQuery] = React.useState(\"\")\n  const needle = query.trim().toLowerCase()\n  const visible = items.filter((item) => {\n    const categoryOk = category === \"全部\" || item.category === category\n    const text = `${item.title} ${item.summary}`.toLowerCase()\n    return categoryOk && (!needle || text.includes(needle))\n  })\n\n  return (\n    <section data-slot=\"publication-filter-list\" className={cn(\"w-full space-y-4\", className)}>\n      <div className=\"flex flex-wrap items-center gap-2\">\n        <div role=\"tablist\" aria-label=\"分类\" className=\"flex flex-wrap gap-2\">\n          {categories.map((item) => (\n            <button\n              key={item}\n              type=\"button\"\n              role=\"tab\"\n              aria-selected={category === item}\n              className={cn(\n                \"rounded-md border px-3 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n                category === item && \"bg-primary text-primary-foreground\",\n              )}\n              onClick={() => setCategory(item)}\n            >\n              {item}\n            </button>\n          ))}\n        </div>\n        <input\n          value={query}\n          aria-label=\"搜索出版物\"\n          placeholder=\"搜索标题\"\n          className=\"ml-auto h-9 rounded-md border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary\"\n          onChange={(event) => setQuery(event.target.value)}\n        />\n      </div>\n      {visible.length === 0 ? (\n        <p className=\"text-sm text-muted-foreground\">没有匹配的条目</p>\n      ) : (\n        <div className=\"grid gap-3 sm:grid-cols-2 lg:grid-cols-3\">\n          {visible.map((item) => (\n            <motion.article\n              key={item.id}\n              layout\n              transition={reduced ? { duration: 0 } : { type: \"spring\", stiffness: 380, damping: 32 }}\n              className=\"rounded-xl border p-3\"\n            >\n              <p className=\"text-xs text-muted-foreground\">{item.category}</p>\n              <h3 className=\"mt-1 text-sm font-medium\">{item.title}</h3>\n              <p className=\"mt-1 text-xs text-muted-foreground\">{item.summary}</p>\n            </motion.article>\n          ))}\n        </div>\n      )}\n    </section>\n  )\n}\n\nexport { PublicationFilterList }\n"
+    }
+  ]
+}

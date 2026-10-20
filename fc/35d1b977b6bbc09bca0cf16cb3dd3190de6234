@@ -1,0 +1,157 @@
+registry.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 287-288,1133-1134,1187-1188,1191-1192,1212-1213,1269-1270,1326-1327,1330-1331,1430-1431,1486-1487,1533-1534,1608-1609,2248-2249,2404-2405,2408-2409,2429,2431-2432,2451-2452,2475-2476,2534-2535,2551-2552,2555-2556,2577-2578,2718-2719,2722-2723,2743-2744,2763-2764,2782,2784-2785,2836-2837,2843-2844,2880-2881,2901-2902,2923-2924,2940-2941,2944-2945,2997-2998,3001-3002,3042-3043,3065-3066,3207-3208,3225-3226,3246-3247,3319-3320,3360-3361,3383-3384,3402-3403,3943-3944,4177-4178
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 855-856,873-874,891-892,909-910,2076-2077,2096-2097,2114-2115,3189-3190,3264-3265,3455-3456,3473-3474,3491-3492
+apps/docs/public/r/audio-waveform.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9
+apps/docs/public/r/chat-message.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 11-12
+apps/docs/public/r/date-range-picker.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 15-16
+apps/docs/public/r/hero-kinetic-text.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 13-14
+packages/registry/src/catalog-batch4.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 192
+apps/docs/public/r/burst-icons.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9
+CONTEXT.md
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 1-43
+apps/docs/public/r/prompt-input.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+apps/docs/public/r/pulse-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/ripple-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/interactive-hover-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 11-12
+apps/docs/public/r/gooey-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+packages/registry/src/catalog.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 88-89
+apps/docs/public/r/alert-dialog.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 11-12
+apps/docs/public/r/marketing-blocks.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 10,12-13
+apps/docs/public/r/quantity-stepper.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+apps/docs/public/r/particle-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/sidebar.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 16-17
+apps/docs/public/r/button-group.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,12-13
+apps/docs/public/r/kanban.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 13-14
+packages/registry/src/dependencies.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 1-331
+apps/docs/public/r/hold-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/color-picker.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+apps/docs/public/r/rainbow-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/animated-theme-toggler.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,12-13
+apps/docs/public/r/rich-text-editor.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,15-16
+apps/docs/public/r/toggle-group.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+packages/registry/src/audit.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 1,125,129-130,139,144,174-175,191,194,225,234-235,250-253,263,272
+apps/docs/public/r/field.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+docs/testing.md
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 31-32,34
+apps/docs/public/r/pagination.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 11-12
+scripts/build-registry.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 15-16,19,26
+apps/docs/public/r/combobox.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 13-14
+apps/docs/public/r/code-block.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,12-13
+apps/docs/public/r/dashboard-blocks.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 14-15
+packages/registry/src/audit.repo.test.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 10,49,73-76,91-92,99,105,111-112,115-116
+apps/docs/public/r/notification-center.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+apps/docs/public/r/morphing-dialog.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9
+apps/docs/app/r/[name]/route.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 28,36
+apps/docs/public/r/floating-label-input.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/onboarding-tour.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 9-10
+apps/docs/public/r/password-strength.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 9-10
+packages/registry/src/registry-item.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 1-2,9-11,17,63-72,77,83-98,104,106-107,114-115
+apps/docs/public/r/dropzone.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,12-13
+apps/docs/public/r/tear-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+packages/registry/src/audit.test.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 3,34-35,49,51,67,69,335,339,344-345,350,352,360,365-368,374,379-381,385-387
+apps/docs/public/r/input-group.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 13-14
+docs/project-map.md
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-14,52
+apps/docs/public/r/carousel.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+apps/docs/public/r/date-picker.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 14-15
+apps/docs/public/r/item.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,12-13
+apps/docs/public/r/ecommerce-blocks.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 10-11
+apps/docs/public/r/phone-input.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 11-12
+apps/docs/public/r/command.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12-13
+apps/docs/public/r/currency-input.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 9-10
+apps/docs/public/r/neon-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/calendar.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9,12-13
+apps/docs/public/r/form.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 9-10,13-14
+apps/docs/public/r/registry.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 287-288,1133-1134,1187-1188,1191-1192,1212-1213,1269-1270,1326-1327,1330-1331,1430-1431,1486-1487,1533-1534,1608-1609,2248-2249,2404-2405,2408-2409,2429,2431-2432,2451-2452,2475-2476,2534-2535,2551-2552,2555-2556,2577-2578,2718-2719,2722-2723,2743-2744,2763-2764,2782,2784-2785,2836-2837,2843-2844,2880-2881,2901-2902,2923-2924,2940-2941,2944-2945,2997-2998,3001-3002,3042-3043,3065-3066,3207-3208,3225-3226,3246-3247,3319-3320,3360-3361,3383-3384,3402-3403,3943-3944,4177-4178
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 855-856,873-874,891-892,909-910,2076-2077,2096-2097,2114-2115,3189-3190,3264-3265,3455-3456,3473-3474,3491-3492
+apps/docs/public/r/tag-input.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 11-12
+apps/docs/public/r/sonner.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9
+packages/registry/src/registry-item.test.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 5-8,10-32,34-35,48,54-55,80,93-136
+packages/registry/src/dependencies.test.ts
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 1-70
+README.md
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 344,346-347,351
+apps/docs/public/r/shimmer-button.json
+  s_4c2ed6fac9dd84::t_7e62951f739e0b 9-10
+apps/docs/public/r/multi-select.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 12,14-15
+docs/adr/0001-derive-dependency-lists-from-source.md
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 1-18
+apps/docs/public/r/resizable.json
+  s_4c2ed6fac9dd84::t_c8ecbef1170508 8-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "fc35d1b977b6bbc09bca0cf16cb3dd3190de6234",
+  "prompts": {},
+  "sessions": {
+    "s_4c2ed6fac9dd84": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a157cf-a199-7b21-99db-50f7d5ce33b5",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

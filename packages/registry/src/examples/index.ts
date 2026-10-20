@@ -8,6 +8,7 @@ import * as effectDemos5 from "./effect-demos-5"
 import * as effectDemos6 from "./effect-demos-6"
 import * as effectDemos7 from "./effect-demos-7"
 import * as effectDemos8 from "./effect-demos-8"
+import * as effectDemos9 from "./effect-demos-9"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -243,6 +244,21 @@ const demoMap: Record<string, ComponentType> = {
   "section-sticky-feature-scroll": effectDemos8.SectionStickyFeatureScrollDemo,
   "section-animated-bento": effectDemos8.SectionAnimatedBentoDemo,
   "section-pricing-flow": effectDemos8.SectionPricingFlowDemo,
+  "coverflow-carousel": effectDemos9.CoverflowCarouselDemo,
+  "book-flip": effectDemos9.BookFlipDemo,
+  "folder-reveal": effectDemos9.FolderRevealDemo,
+  "box-carousel": effectDemos9.BoxCarouselDemo,
+  "detent-dial": effectDemos9.DetentDialDemo,
+  "family-drawer": effectDemos9.FamilyDrawerDemo,
+  "text-morph": effectDemos9.TextMorphDemo,
+  "orbiting-items-3d": effectDemos9.OrbitingItems3DDemo,
+  "apple-activity-card": effectDemos9.AppleActivityCardDemo,
+  "apple-cards-carousel": effectDemos9.AppleCardsCarouselDemo,
+  "saas-template": effectDemos9.SaasTemplateDemo,
+  "ai-product-template": effectDemos9.AiProductTemplateDemo,
+  "devtool-template": effectDemos9.DevtoolTemplateDemo,
+  "portfolio-template": effectDemos9.PortfolioTemplateDemo,
+  "agency-template": effectDemos9.AgencyTemplateDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

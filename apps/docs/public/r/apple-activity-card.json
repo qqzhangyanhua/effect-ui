@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "apple-activity-card",
+  "type": "registry:ui",
+  "title": "Apple Activity Card",
+  "description": "三色活动圆环逐段填充。仅参考 Kokonut UI 免费 MIT，未使用 Pro。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/apple-activity-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/apple-activity-card.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ActivityRing {\n  label: string\n  value: number\n  color: string\n}\n\nexport interface AppleActivityCardProps {\n  rings?: ActivityRing[]\n  className?: string\n}\n\nconst defaultRings: ActivityRing[] = [\n  { label: \"Move\", value: 0.72, color: \"#fb2c36\" },\n  { label: \"Exercise\", value: 0.54, color: \"#9ae600\" },\n  { label: \"Stand\", value: 0.86, color: \"#00d3f2\" },\n]\n\nfunction AppleActivityCard({ rings = defaultRings, className }: AppleActivityCardProps) {\n  const reduced = usePrefersReducedMotion()\n  const size = 168\n  const center = size / 2\n\n  return (\n    <div className={cn(\"flex items-center gap-6 rounded-2xl border bg-zinc-950 p-5 text-white\", className)}>\n      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role=\"img\" aria-label=\"活动圆环\">\n        {rings.map((ring, index) => {\n          const radius = 72 - index * 18\n          const length = 2 * Math.PI * radius\n          return (\n            <g key={ring.label}>\n              <circle cx={center} cy={center} r={radius} fill=\"none\" stroke={ring.color} strokeOpacity={0.2} strokeWidth={12} />\n              <motion.circle\n                cx={center}\n                cy={center}\n                r={radius}\n                fill=\"none\"\n                stroke={ring.color}\n                strokeWidth={12}\n                strokeLinecap=\"round\"\n                strokeDasharray={length}\n                initial={false}\n                animate={{ strokeDashoffset: length * (1 - Math.min(Math.max(ring.value, 0), 1)) }}\n                transition={reduced ? { duration: 0 } : { duration: 0.8, ease: \"easeOut\" }}\n                transform={`rotate(-90 ${center} ${center})`}\n              />\n            </g>\n          )\n        })}\n      </svg>\n      <ul className=\"space-y-2 text-sm\">\n        {rings.map((ring) => (\n          <li key={ring.label}>\n            <span className=\"mr-2 inline-block size-2 rounded-full\" style={{ background: ring.color }} />\n            {ring.label}\n            <span className=\"ml-2 font-mono\">{Math.round(ring.value * 100)}</span>\n          </li>\n        ))}\n      </ul>\n    </div>\n  )\n}\n\nexport { AppleActivityCard }\n"
+    }
+  ]
+}

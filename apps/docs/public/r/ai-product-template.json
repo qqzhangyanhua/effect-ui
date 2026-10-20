@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-product-template",
+  "type": "registry:block",
+  "title": "AI Product Template",
+  "description": "多文件模板：可关掉底的 AI 提示框叠在懒加载虹彩上，加对话、光球和定价。",
+  "dependencies": [],
+  "registryDependencies": [
+    "chat-message",
+    "footer-giant-wordmark",
+    "hero-ai-prompt",
+    "iridescence",
+    "section-pricing-flow",
+    "shimmer-text",
+    "siri-orb",
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/templates/ai-product/page.tsx",
+      "type": "registry:page",
+      "target": "app/ai-product/page.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { ChatMessage } from \"@/components/ui/chat-message\"\nimport { FooterGiantWordmark } from \"@/components/ui/footer-giant-wordmark\"\nimport { HeroAiPrompt } from \"@/components/ui/hero-ai-prompt\"\nimport { SectionPricingFlow } from \"@/components/ui/section-pricing-flow\"\nimport { ShimmerText } from \"@/components/ui/shimmer-text\"\nimport { SiriOrb } from \"@/components/ui/siri-orb\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\n\nimport { aiContent } from \"./content\"\nimport { aiTheme } from \"./theme\"\n\nconst Iridescence = React.lazy(() =>\n  import(\"@/components/ui/iridescence\").then((mod) => ({ default: mod.Iridescence })),\n)\n\nfunction AiProductTemplate() {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <div style={aiTheme} className=\"bg-background text-foreground\">\n      <div className=\"relative overflow-hidden\">\n        <div className=\"absolute inset-0\">\n          {reduced ? (\n            <div className=\"size-full bg-[linear-gradient(160deg,#312e81,#111827)]\" />\n          ) : (\n            <React.Suspense fallback={<div className=\"size-full bg-[linear-gradient(160deg,#312e81,#111827)]\" />}>\n              <Iridescence className=\"min-h-full rounded-none\" />\n            </React.Suspense>\n          )}\n        </div>\n        <HeroAiPrompt backdrop={false} title={aiContent.title} subtitle={aiContent.subtitle} className=\"relative border-0 bg-transparent\" />\n      </div>\n      <div className=\"mx-auto grid max-w-5xl gap-6 px-4 py-10 md:grid-cols-[1.2fr_0.8fr]\">\n        <div className=\"space-y-3 rounded-2xl border p-4\">\n          {aiContent.messages.map((message) => (\n            <ChatMessage key={message.content} role={message.role} content={message.content} />\n          ))}\n          <ShimmerText>正在组织界面…</ShimmerText>\n        </div>\n        <div className=\"grid place-items-center rounded-2xl border p-6\">\n          <SiriOrb />\n          <p className=\"mt-3 text-sm text-muted-foreground\">语音能力用现有光球演示。</p>\n        </div>\n      </div>\n      <div className=\"mx-auto max-w-5xl px-4 pb-10\">\n        <SectionPricingFlow />\n      </div>\n      <FooterGiantWordmark word=\"northwind\" />\n    </div>\n  )\n}\n\nexport { AiProductTemplate }\n"
+    },
+    {
+      "path": "registry/templates/ai-product/content.ts",
+      "type": "registry:file",
+      "target": "app/ai-product/content.ts",
+      "content": "export const aiContent = {\n  title: \"描述产品，剩下的交给界面\",\n  subtitle: \"提示框、对话演示和定价来自现有组件。重着色器懒加载。\",\n  messages: [\n    { role: \"user\" as const, content: \"做一个带地球仪的定价页\" },\n    { role: \"assistant\" as const, content: \"已经放上 Hero Globe、三档定价和页脚字标。\" },\n  ],\n}\n"
+    },
+    {
+      "path": "registry/templates/ai-product/theme.ts",
+      "type": "registry:file",
+      "target": "app/ai-product/theme.ts",
+      "content": "import type { CSSProperties } from \"react\"\n\nexport const aiTheme = {\n  \"--primary\": \"oklch(0.62 0.2 300)\",\n  \"--background\": \"oklch(0.16 0.03 285)\",\n  \"--foreground\": \"oklch(0.97 0.01 95)\",\n} as CSSProperties\n"
+    }
+  ]
+}

@@ -136,6 +136,7 @@ export const batch8Components: ComponentMeta[] = [
       { name: "placeholder", type: "string", description: "提示框占位。" },
       { name: "suggestions", type: "string[]", description: "快捷建议。" },
       { name: "onSubmit", type: "(value: string) => void", description: "提交回调。" },
+      { name: "backdrop", type: "boolean", defaultValue: "true", description: "为 false 时去掉内置渐变，交给外层背景槽。" },
       ...ui,
     ],
   },

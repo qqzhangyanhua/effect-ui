@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "family-drawer",
+  "type": "registry:ui",
+  "title": "Family Drawer",
+  "description": "按钮展开成多步骤面板，高度平滑变化。移植 Cult UI（MIT）结构。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/family-drawer.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/family-drawer.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FamilyStep {\n  title: string\n  body: string\n}\n\nexport interface FamilyDrawerProps {\n  steps?: FamilyStep[]\n  className?: string\n}\n\nconst defaultSteps: FamilyStep[] = [\n  { title: \"你\", body: \"先确认自己的账户。\" },\n  { title: \"家人\", body: \"把成员加进同一个空间。\" },\n  { title: \"确认\", body: \"共享组件和主题。\" },\n]\n\nfunction FamilyDrawer({ steps = defaultSteps, className }: FamilyDrawerProps) {\n  const reduced = usePrefersReducedMotion()\n  const [open, setOpen] = React.useState(false)\n  const [step, setStep] = React.useState(0)\n  const current = steps[step]\n\n  return (\n    <motion.div\n      layout\n      transition={reduced ? { duration: 0 } : { type: \"spring\", stiffness: 260, damping: 28 }}\n      className={cn(\"w-full max-w-sm overflow-hidden rounded-2xl border bg-card shadow-sm\", className)}\n    >\n      {!open || !current ? (\n        <button type=\"button\" className=\"w-full px-4 py-3 text-left text-sm font-medium\" onClick={() => setOpen(true)}>\n          打开 Family\n        </button>\n      ) : (\n        <div className=\"space-y-4 p-4\">\n          <p className=\"text-xs text-muted-foreground\">\n            {step + 1} / {steps.length}\n          </p>\n          <AnimatePresence mode=\"wait\" initial={false}>\n            <motion.div\n              key={current.title}\n              initial={reduced ? false : { opacity: 0, y: 8 }}\n              animate={{ opacity: 1, y: 0 }}\n              exit={reduced ? { opacity: 1 } : { opacity: 0, y: -8 }}\n            >\n              <h3 className=\"font-display text-2xl\">{current.title}</h3>\n              <p className=\"mt-1 text-sm text-muted-foreground\">{current.body}</p>\n            </motion.div>\n          </AnimatePresence>\n          <div className=\"flex justify-between\">\n            <button\n              type=\"button\"\n              className=\"text-sm text-muted-foreground\"\n              onClick={() => {\n                if (step === 0) setOpen(false)\n                else setStep((value) => value - 1)\n              }}\n            >\n              返回\n            </button>\n            <button\n              type=\"button\"\n              className=\"rounded-full bg-primary px-3 py-1 text-sm text-primary-foreground\"\n              onClick={() => {\n                if (step >= steps.length - 1) {\n                  setOpen(false)\n                  setStep(0)\n                } else setStep((value) => value + 1)\n              }}\n            >\n              {step >= steps.length - 1 ? \"完成\" : \"继续\"}\n            </button>\n          </div>\n        </div>\n      )}\n    </motion.div>\n  )\n}\n\nexport { FamilyDrawer }\n"
+    }
+  ]
+}

@@ -49,7 +49,14 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   const Demo = getDemo(item.name)
   if (!Demo) notFound()
 
-  const source = readRegistrySource(item.file)
+  const files =
+    item.files && item.files.length > 0
+      ? item.files
+      : [{ file: item.file, type: item.type, target: item.target }]
+  const sources = files.map((file) => ({
+    ...file,
+    code: readRegistrySource(file.file),
+  }))
   const usage = readUsageExample(item.name)
   const install = `npx shadcn@latest add ${getRegistryBaseUrl()}/r/${item.name}.json`
   const sourceUrl = sourceLibraryUrls[item.source]
@@ -57,8 +64,9 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   const index = ordered.findIndex((entry) => entry.name === item.name)
   const previous = index > 0 ? ordered[index - 1] : undefined
   const next = index >= 0 ? ordered[index + 1] : undefined
+  const template = item.category === "templates"
   const [sourceHtml, installHtml, usageHtml] = await Promise.all([
-    highlightCode(source, languageForFile(item.file)),
+    Promise.all(sources.map((file) => highlightCode(file.code, languageForFile(file.file)))),
     highlightCode(install, "bash"),
     highlightCode(usage, "tsx"),
   ])
@@ -83,8 +91,24 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
       </header>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-medium">预览</h2>
-        <ComponentPreview Demo={Demo} />
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-xl font-medium">预览</h2>
+          {template ? (
+            <Link href={`/preview/${item.name}`} className="text-sm underline">
+              全屏预览
+            </Link>
+          ) : null}
+        </div>
+        {template ? (
+          <iframe
+            title={`${item.title} 预览`}
+            src={`/preview/${item.name}`}
+            loading="lazy"
+            className="h-[70vh] w-full rounded-xl border bg-background"
+          />
+        ) : (
+          <ComponentPreview Demo={Demo} />
+        )}
       </section>
 
       <section className="space-y-3">
@@ -99,7 +123,14 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
 
       <section className="space-y-3">
         <h2 className="text-xl font-medium">源码</h2>
-        <CodeBlock code={source} html={sourceHtml} filename={item.target} />
+        {sources.map((file, fileIndex) => (
+          <CodeBlock
+            key={file.file}
+            code={file.code}
+            html={sourceHtml[fileIndex] ?? ""}
+            filename={file.target}
+          />
+        ))}
       </section>
 
       <section className="space-y-3">

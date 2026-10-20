@@ -14,6 +14,7 @@ export interface HeroAiPromptProps {
   placeholder?: string
   suggestions?: string[]
   onSubmit?: (value: string) => void
+  backdrop?: boolean
   className?: string
 }
 
@@ -25,6 +26,7 @@ function HeroAiPrompt({
   placeholder = "做一个带着色器背景、地球仪和定价表的落地页…",
   suggestions = defaultSuggestions,
   onSubmit,
+  backdrop = true,
   className,
 }: HeroAiPromptProps) {
   const reduced = usePrefersReducedMotion()
@@ -43,13 +45,15 @@ function HeroAiPrompt({
         className,
       )}
     >
-      <div
-        aria-hidden
-        className={cn(
-          "absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_70%),linear-gradient(180deg,#09090b,#111827)]",
-          !reduced && "after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_20%_80%,color-mix(in_oklab,var(--chart-2)_16%,transparent),transparent_42%)]",
-        )}
-      />
+      {backdrop ? (
+        <div
+          aria-hidden
+          className={cn(
+            "absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_70%),linear-gradient(180deg,#09090b,#111827)]",
+            !reduced && "after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_20%_80%,color-mix(in_oklab,var(--chart-2)_16%,transparent),transparent_42%)]",
+          )}
+        />
+      ) : null}
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center text-center text-white">
         <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/70">
           <Sparkles className="size-3.5" />

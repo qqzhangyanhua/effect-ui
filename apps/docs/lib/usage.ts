@@ -178,6 +178,9 @@ function userImportSource(source: string) {
   ) {
     return `@/components/ui/${source.slice(source.lastIndexOf("/") + 1)}`
   }
+  if (source.startsWith("../templates/")) {
+    return `@/components/${source.slice("../".length)}`
+  }
   if (source.startsWith("../lib/")) return `@/lib/${source.slice("../lib/".length)}`
   if (source.startsWith("../hooks/")) return `@/hooks/${source.slice("../hooks/".length)}`
   return source

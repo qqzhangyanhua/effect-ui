@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google"
 
-import { SiteHeader } from "@/components/site-header"
+import { AppChrome } from "@/components/app-chrome"
 import { ThemeProvider } from "@/components/theme-provider"
 import { getRegistryBaseUrl } from "@/lib/source"
 import { Toaster } from "@effect-ui/registry/ui/sonner"
@@ -42,10 +42,7 @@ function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${sans.variable} ${mono.variable} ${display.variable} min-h-svh`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <TooltipProvider>
-            <div className="flex min-h-svh flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-            </div>
+            <AppChrome>{children}</AppChrome>
             <Toaster />
           </TooltipProvider>
         </ThemeProvider>

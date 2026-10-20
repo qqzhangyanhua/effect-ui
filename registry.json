@@ -4370,6 +4370,367 @@
           "target": "components/ui/section-pricing-flow.tsx"
         }
       ]
+    },
+    {
+      "name": "coverflow-carousel",
+      "type": "registry:ui",
+      "title": "Coverflow Carousel",
+      "description": "iTunes 式封面流：中间放大，两侧倾斜。移植 Smooth UI（MIT）交互。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/coverflow-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/coverflow-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "book-flip",
+      "type": "registry:ui",
+      "title": "Book Flip",
+      "description": "3D 书本：悬停打开封面，点击翻页。移植 Smooth UI（MIT）交互。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/book-flip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/book-flip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "folder-reveal",
+      "type": "registry:ui",
+      "title": "Folder Reveal",
+      "description": "悬停时文件夹打开，卡片从中扇出。移植 Smooth UI（MIT）交互。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/folder-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/folder-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "box-carousel",
+      "type": "registry:ui",
+      "title": "Box Carousel",
+      "description": "3D 立方体旋转切换四面内容。移植 Fancy Components（MIT）交互。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/box-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/box-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "detent-dial",
+      "type": "registry:ui",
+      "title": "Detent Dial",
+      "description": "带刻度吸附的旋钮。仅参考 Kokonut UI 免费 MIT，未使用 Pro。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/detent-dial.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/detent-dial.tsx"
+        }
+      ]
+    },
+    {
+      "name": "family-drawer",
+      "type": "registry:ui",
+      "title": "Family Drawer",
+      "description": "按钮展开成多步骤面板，高度平滑变化。移植 Cult UI（MIT）结构。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/family-drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/family-drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-morph",
+      "type": "registry:ui",
+      "title": "Text Morph",
+      "description": "两段文字按共同字母平滑形变。移植 Motion Primitives（MIT）交互。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-morph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbiting-items-3d",
+      "type": "registry:ui",
+      "title": "Orbiting Items 3D",
+      "description": "图标在倾斜 3D 轨道上环绕，前后有遮挡。移植 Animata（MIT）交互。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbiting-items-3d.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbiting-items-3d.tsx"
+        }
+      ]
+    },
+    {
+      "name": "apple-activity-card",
+      "type": "registry:ui",
+      "title": "Apple Activity Card",
+      "description": "三色活动圆环逐段填充。仅参考 Kokonut UI 免费 MIT，未使用 Pro。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/apple-activity-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/apple-activity-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "apple-cards-carousel",
+      "type": "registry:ui",
+      "title": "Apple Cards Carousel",
+      "description": "灵感来自 Aceternity，原创实现。横向大卡片，点击展开详情。未打开其源码。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/apple-cards-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/apple-cards-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "saas-template",
+      "type": "registry:block",
+      "title": "SaaS Template",
+      "description": "多文件模板：导航、着色器 Hero、logo 墙、bento、粘性特性、定价、评价和幕布页脚。WebGL 懒加载。",
+      "dependencies": [],
+      "registryDependencies": [
+        "footer-curtain-reveal",
+        "hero-shader",
+        "marketing-blocks",
+        "nav-morphing",
+        "section-animated-bento",
+        "section-logo-cloud",
+        "section-pricing-flow",
+        "section-sticky-feature-scroll",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/templates/saas/page.tsx",
+          "type": "registry:page",
+          "target": "app/saas/page.tsx"
+        },
+        {
+          "path": "registry/templates/saas/content.ts",
+          "type": "registry:file",
+          "target": "app/saas/content.ts"
+        },
+        {
+          "path": "registry/templates/saas/theme.ts",
+          "type": "registry:file",
+          "target": "app/saas/theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "ai-product-template",
+      "type": "registry:block",
+      "title": "AI Product Template",
+      "description": "多文件模板：可关掉底的 AI 提示框叠在懒加载虹彩上，加对话、光球和定价。",
+      "dependencies": [],
+      "registryDependencies": [
+        "chat-message",
+        "footer-giant-wordmark",
+        "hero-ai-prompt",
+        "iridescence",
+        "section-pricing-flow",
+        "shimmer-text",
+        "siri-orb",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/templates/ai-product/page.tsx",
+          "type": "registry:page",
+          "target": "app/ai-product/page.tsx"
+        },
+        {
+          "path": "registry/templates/ai-product/content.ts",
+          "type": "registry:file",
+          "target": "app/ai-product/content.ts"
+        },
+        {
+          "path": "registry/templates/ai-product/theme.ts",
+          "type": "registry:file",
+          "target": "app/ai-product/theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "devtool-template",
+      "type": "registry:block",
+      "title": "Devtool Template",
+      "description": "多文件模板：终端 Hero、闪烁网格、集成轨道、前后代码、更新日志和着色器字标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "code-block",
+        "flickering-grid",
+        "footer-shader-wordmark",
+        "orbiting-circles",
+        "terminal",
+        "timeline",
+        "tracing-beam",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/templates/devtool/page.tsx",
+          "type": "registry:page",
+          "target": "app/devtool/page.tsx"
+        },
+        {
+          "path": "registry/templates/devtool/content.ts",
+          "type": "registry:file",
+          "target": "app/devtool/content.ts"
+        },
+        {
+          "path": "registry/templates/devtool/theme.ts",
+          "type": "registry:file",
+          "target": "app/devtool/theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "portfolio-template",
+      "type": "registry:block",
+      "title": "Portfolio Template",
+      "description": "简历式单页。结构参考 Magic UI portfolio（MIT）：分段显现、项目卡、经历、联系和 Dock。",
+      "dependencies": [],
+      "registryDependencies": [
+        "atropos-card",
+        "blur-fade",
+        "dock",
+        "shimmer-button",
+        "timeline"
+      ],
+      "files": [
+        {
+          "path": "registry/templates/portfolio/page.tsx",
+          "type": "registry:page",
+          "target": "app/portfolio/page.tsx"
+        },
+        {
+          "path": "registry/templates/portfolio/content.ts",
+          "type": "registry:file",
+          "target": "app/portfolio/content.ts"
+        },
+        {
+          "path": "registry/templates/portfolio/theme.ts",
+          "type": "registry:file",
+          "target": "app/portfolio/theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "agency-template",
+      "type": "registry:block",
+      "title": "Agency Template",
+      "description": "灵感来自 Awwwards，原创组合。视差墙、滚动字、圆形画廊、图片轨迹和可点击字标。重 WebGL 懒加载。",
+      "dependencies": [],
+      "registryDependencies": [
+        "circular-gallery",
+        "footer-interactive-wordmark",
+        "hero-parallax-wall",
+        "image-trail",
+        "scroll-typography",
+        "splash-cursor",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/templates/agency/page.tsx",
+          "type": "registry:page",
+          "target": "app/agency/page.tsx"
+        },
+        {
+          "path": "registry/templates/agency/content.ts",
+          "type": "registry:file",
+          "target": "app/agency/content.ts"
+        },
+        {
+          "path": "registry/templates/agency/theme.ts",
+          "type": "registry:file",
+          "target": "app/agency/theme.ts"
+        }
+      ]
     }
   ]
 }

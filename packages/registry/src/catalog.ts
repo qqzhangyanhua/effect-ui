@@ -5,6 +5,7 @@ import { batch5Components } from "./catalog-batch5"
 import { batch6Components } from "./catalog-batch6"
 import { batch7Components } from "./catalog-batch7"
 import { batch8Components } from "./catalog-batch8"
+import { batch9Components } from "./catalog-batch9"
 
 export type ComponentCategory =
   | "ui"
@@ -20,6 +21,7 @@ export type ComponentCategory =
   | "navigation"
   | "page"
   | "sections"
+  | "templates"
   | "ai"
   | "utility"
 
@@ -81,7 +83,8 @@ export interface ComponentMeta {
   category: ComponentCategory
   subgroup?: UiSubgroup
   source: SourceLibrary
-  type: "registry:ui" | "registry:lib" | "registry:hook"
+  type: "registry:ui" | "registry:lib" | "registry:hook" | "registry:block"
+  files?: readonly { file: string; type: string; target: string }[]
   dependencies: string[]
   registryDependencies: string[]
   file: string
@@ -103,6 +106,7 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   navigation: "导航",
   page: "页面 / 转场",
   sections: "落地页区块",
+  templates: "整页模板",
   ai: "AI 对话",
   utility: "实用组件",
 }
@@ -121,6 +125,7 @@ export const categoryOrder: ComponentCategory[] = [
   "navigation",
   "page",
   "sections",
+  "templates",
   "ai",
   "utility",
 ]
@@ -1041,6 +1046,7 @@ export const components: ComponentMeta[] = [
   ...batch6Components,
   ...batch7Components,
   ...batch8Components,
+  ...batch9Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -1068,7 +1074,8 @@ function uiItemsInSubgroupOrder(items: readonly ComponentMeta[]) {
 export function getComponentsByCategory() {
   return categoryOrder.map((category) => {
     const items = components.filter(
-      (item) => item.category === category && item.type === "registry:ui",
+      (item) =>
+        item.category === category && (item.type === "registry:ui" || item.type === "registry:block"),
     )
     return {
       category,
@@ -1078,4 +1085,6 @@ export function getComponentsByCategory() {
   })
 }
 
-export const visibleComponents = components.filter((item) => item.type === "registry:ui")
+export const visibleComponents = components.filter(
+  (item) => item.type === "registry:ui" || item.type === "registry:block",
+)

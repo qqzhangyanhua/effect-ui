@@ -33,7 +33,7 @@ export async function GET(_request: Request, context: RouteContext) {
     return NextResponse.json({ error: "Not found" }, { status: 404 })
   }
 
-  return NextResponse.json(
-    buildRegistryItem(item, readRegistrySource(item.file)),
-  )
+  const files = item.files && item.files.length > 0 ? item.files : [{ file: item.file }]
+  const contents = Object.fromEntries(files.map((file) => [file.file, readRegistrySource(file.file)]))
+  return NextResponse.json(buildRegistryItem(item, contents))
 }

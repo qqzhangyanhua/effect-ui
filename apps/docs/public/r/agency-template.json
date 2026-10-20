@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "agency-template",
+  "type": "registry:block",
+  "title": "Agency Template",
+  "description": "灵感来自 Awwwards，原创组合。视差墙、滚动字、圆形画廊、图片轨迹和可点击字标。重 WebGL 懒加载。",
+  "dependencies": [],
+  "registryDependencies": [
+    "circular-gallery",
+    "footer-interactive-wordmark",
+    "hero-parallax-wall",
+    "image-trail",
+    "scroll-typography",
+    "splash-cursor",
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/templates/agency/page.tsx",
+      "type": "registry:page",
+      "target": "app/agency/page.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { HeroParallaxWall } from \"@/components/ui/hero-parallax-wall\"\nimport { ImageTrail } from \"@/components/ui/image-trail\"\nimport { ScrollTypography } from \"@/components/ui/scroll-typography\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\n\nimport { agencyContent } from \"./content\"\nimport { agencyTheme } from \"./theme\"\n\nconst CircularGallery = React.lazy(() =>\n  import(\"@/components/ui/circular-gallery\").then((mod) => ({ default: mod.CircularGallery })),\n)\nconst SplashCursor = React.lazy(() =>\n  import(\"@/components/ui/splash-cursor\").then((mod) => ({ default: mod.SplashCursor })),\n)\nconst FooterInteractiveWordmark = React.lazy(() =>\n  import(\"@/components/ui/footer-interactive-wordmark\").then((mod) => ({\n    default: mod.FooterInteractiveWordmark,\n  })),\n)\n\nfunction AgencyTemplate() {\n  const reduced = usePrefersReducedMotion()\n  const gallery = agencyContent.gallery.map((item, index) => ({\n    title: item.title,\n    src: agencyContent.portraits[index % agencyContent.portraits.length] ?? \"\",\n  }))\n\n  return (\n    <div style={agencyTheme} className=\"bg-background text-foreground\">\n      <HeroParallaxWall title={agencyContent.title} subtitle={agencyContent.subtitle} />\n      <div className=\"px-6 py-16\">\n        <ScrollTypography text={agencyContent.manifesto} className=\"text-5xl\" />\n      </div>\n      {reduced ? (\n        <div className=\"grid grid-cols-2 gap-3 px-6 md:grid-cols-4\">\n          {agencyContent.gallery.map((item) => (\n            <div key={item.title} className=\"grid h-36 place-items-end rounded-xl bg-primary/30 p-3\">\n              {item.title}\n            </div>\n          ))}\n        </div>\n      ) : (\n        <React.Suspense\n          fallback={<div className=\"mx-6 h-56 rounded-xl bg-[linear-gradient(135deg,#4c1d95,#111827)]\" />}\n        >\n          <CircularGallery items={gallery} className=\"mx-6\" />\n        </React.Suspense>\n      )}\n      <div className=\"px-6 py-16\">\n        <ImageTrail images={[...agencyContent.portraits]} className=\"h-48\" />\n      </div>\n      {reduced ? null : (\n        <React.Suspense fallback={null}>\n          <SplashCursor className=\"mx-6\" />\n        </React.Suspense>\n      )}\n      {reduced ? (\n        <p className=\"px-6 py-12 text-center font-display text-5xl\">AGENCY</p>\n      ) : (\n        <React.Suspense fallback={null}>\n          <FooterInteractiveWordmark word=\"AGENCY\" />\n        </React.Suspense>\n      )}\n    </div>\n  )\n}\n\nexport { AgencyTemplate }\n"
+    },
+    {
+      "path": "registry/templates/agency/content.ts",
+      "type": "registry:file",
+      "target": "app/agency/content.ts",
+      "content": "export const agencyContent = {\n  title: \"倾斜的作品墙\",\n  subtitle: \"灵感来自 Awwwards，只用自家组件。未打开获奖站源码。\",\n  manifesto: \"把动效留在滚动里\",\n  gallery: [\n    { title: \"Atlas\", src: \"\" },\n    { title: \"Kino\", src: \"\" },\n    { title: \"Nimbus\", src: \"\" },\n    { title: \"Vera\", src: \"\" },\n  ],\n  portraits: [\n    \"data:image/svg+xml;utf8,\" + encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"80\"><rect width=\"80\" height=\"80\" fill=\"#7c3aed\"/></svg>'),\n    \"data:image/svg+xml;utf8,\" + encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"80\"><rect width=\"80\" height=\"80\" fill=\"#22d3ee\"/></svg>'),\n    \"data:image/svg+xml;utf8,\" + encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"80\"><rect width=\"80\" height=\"80\" fill=\"#f472b6\"/></svg>'),\n  ],\n}\n"
+    },
+    {
+      "path": "registry/templates/agency/theme.ts",
+      "type": "registry:file",
+      "target": "app/agency/theme.ts",
+      "content": "import type { CSSProperties } from \"react\"\n\nexport const agencyTheme = {\n  \"--primary\": \"oklch(0.7 0.18 330)\",\n  \"--background\": \"oklch(0.12 0.02 300)\",\n  \"--foreground\": \"oklch(0.97 0.01 95)\",\n} as CSSProperties\n"
+    }
+  ]
+}

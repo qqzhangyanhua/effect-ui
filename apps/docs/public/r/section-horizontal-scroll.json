@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-horizontal-scroll",
+  "type": "registry:ui",
+  "title": "Section Horizontal Scroll",
+  "description": "灵感来自 Apple，原创实现。竖向滚动驱动横向章节，sticky 加 Motion。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-horizontal-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-horizontal-scroll.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll, useTransform } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HorizontalChapter {\n  title: string\n  body: string\n  tint: string\n}\n\nexport interface SectionHorizontalScrollProps {\n  chapters?: HorizontalChapter[]\n  className?: string\n}\n\nconst defaultChapters: HorizontalChapter[] = [\n  { title: \"起势\", body: \"先把画面撑满一屏。\", tint: \"#312e81\" },\n  { title: \"推进\", body: \"竖向滚动换成横向章节。\", tint: \"#0e7490\" },\n  { title: \"收束\", body: \"最后一章停在视口里。\", tint: \"#9d174d\" },\n]\n\nfunction SectionHorizontalScroll({\n  chapters = defaultChapters,\n  className,\n}: SectionHorizontalScrollProps) {\n  const reduced = usePrefersReducedMotion()\n  const ref = React.useRef<HTMLElement>(null)\n  const [width, setWidth] = React.useState(0)\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    offset: [\"start start\", \"end end\"],\n  })\n  const x = useTransform(scrollYProgress, [0, 1], [0, -width * Math.max(chapters.length - 1, 0)])\n\n  React.useEffect(() => {\n    const element = ref.current\n    if (!element) return\n    const update = () => setWidth(element.clientWidth)\n    update()\n    const observer = new ResizeObserver(update)\n    observer.observe(element)\n    return () => observer.disconnect()\n  }, [])\n\n  return (\n    <section ref={ref} className={cn(reduced ? \"space-y-4\" : \"h-[220vh]\", className)}>\n      <div className={cn(reduced ? \"\" : \"sticky top-0 flex h-[70vh] items-center overflow-hidden\")}>\n        <motion.div style={{ x: reduced ? 0 : x }} className={cn(reduced ? \"grid gap-4\" : \"flex h-full\")}>\n          {chapters.map((chapter) => (\n            <article\n              key={chapter.title}\n              className=\"grid h-full shrink-0 place-items-end p-8 text-white\"\n              style={{\n                width: reduced ? \"100%\" : width || \"100%\",\n                background: `linear-gradient(160deg, ${chapter.tint}, #09090b)`,\n                minHeight: reduced ? \"16rem\" : undefined,\n              }}\n            >\n              <div>\n                <h2 className=\"font-display text-5xl\">{chapter.title}</h2>\n                <p className=\"mt-2 max-w-sm text-sm text-white/75\">{chapter.body}</p>\n              </div>\n            </article>\n          ))}\n        </motion.div>\n      </div>\n    </section>\n  )\n}\n\nexport { SectionHorizontalScroll }\n"
+    }
+  ]
+}

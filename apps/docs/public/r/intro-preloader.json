@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "intro-preloader",
+  "type": "registry:ui",
+  "title": "Intro Preloader",
+  "description": "灵感来自 Linear，原创实现。0 到 100 计数后幕布错开揭开，每个会话只自动播放一次。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/intro-preloader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/intro-preloader.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface IntroPreloaderProps {\n  className?: string\n  children?: React.ReactNode\n}\n\nconst STORAGE_KEY = \"effect-ui-intro-preloader\"\nconst INTRO_EVENT = \"effect-ui-intro\"\n\nfunction IntroPreloader({ className, children }: IntroPreloaderProps) {\n  const reduced = usePrefersReducedMotion()\n  const [progress, setProgress] = React.useState(0)\n  const [phase, setPhase] = React.useState<\"count\" | \"curtains\" | \"done\">(\"count\")\n  const seen = React.useSyncExternalStore(\n    (onChange) => {\n      window.addEventListener(INTRO_EVENT, onChange)\n      return () => window.removeEventListener(INTRO_EVENT, onChange)\n    },\n    () => window.sessionStorage.getItem(STORAGE_KEY) === \"1\",\n    () => false,\n  )\n\n  React.useEffect(() => {\n    if (reduced || seen) return\n    let value = 0\n    let timeout = 0\n    const timer = window.setInterval(() => {\n      value = Math.min(100, value + 4)\n      setProgress(value)\n      if (value >= 100) {\n        window.clearInterval(timer)\n        setPhase(\"curtains\")\n        timeout = window.setTimeout(() => {\n          window.sessionStorage.setItem(STORAGE_KEY, \"1\")\n          window.dispatchEvent(new Event(INTRO_EVENT))\n          setPhase(\"done\")\n        }, 900)\n      }\n    }, 32)\n    return () => {\n      window.clearInterval(timer)\n      window.clearTimeout(timeout)\n    }\n  }, [reduced, seen])\n\n  return (\n    <div className={cn(\"relative min-h-80 overflow-hidden rounded-2xl border bg-zinc-950 text-white\", className)}>\n      <div className=\"grid min-h-80 place-items-center p-8\">\n        {children ?? <p className=\"font-display text-4xl\">页面已经打开</p>}\n      </div>\n      {!reduced && !(seen && phase !== \"curtains\") ? (\n        <div className=\"absolute inset-0 z-10\">\n          <div className=\"absolute inset-0 flex\">\n            {Array.from({ length: 5 }, (_, index) => (\n              <span\n                key={index}\n                className=\"h-full flex-1 bg-zinc-950\"\n                style={{\n                  transform: phase === \"curtains\" ? \"translateY(-100%)\" : \"translateY(0)\",\n                  transition: reduced ? \"none\" : `transform 700ms ${index * 70}ms ease`,\n                }}\n              />\n            ))}\n          </div>\n          {phase === \"count\" ? (\n            <div className=\"absolute inset-0 grid place-items-center\">\n              <p className=\"font-mono text-6xl tabular-nums\">{String(progress).padStart(3, \"0\")}</p>\n            </div>\n          ) : null}\n        </div>\n      ) : (\n        <button\n          type=\"button\"\n          className=\"absolute right-3 bottom-3 rounded-full border border-white/20 px-3 py-1 text-xs\"\n          onClick={() => {\n            window.sessionStorage.removeItem(STORAGE_KEY)\n            window.dispatchEvent(new Event(INTRO_EVENT))\n            setProgress(0)\n            setPhase(\"count\")\n          }}\n        >\n          再播一次\n        </button>\n      )}\n    </div>\n  )\n}\n\nexport { IntroPreloader }\n"
+    }
+  ]
+}

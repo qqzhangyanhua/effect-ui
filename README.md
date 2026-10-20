@@ -297,6 +297,26 @@ use-mobile · use-prefers-reduced-motion
 | cta-ribbon-swoosh | Inspired by The Leap (via Mobbin), original implementation |
 | section-testimonial-split | Inspired by Paraform (via Mobbin), original implementation |
 
+### 2025-26 动效
+
+| 组件 | 来源 |
+| --- | --- |
+| view-transition-gallery | 灵感来自 Apple，原创实现 |
+| scroll-timeline-reveal | 原创（view()，回退 Motion） |
+| smooth-scroll-provider | Lenis（MIT） |
+| hero-scroll-zoom | 灵感来自 Apple，原创实现 |
+| section-horizontal-scroll | 灵感来自 Apple，原创实现 |
+| intro-preloader | 灵感来自 Linear，原创实现 |
+| hero-3d-model | three / React Three Fiber / drei（MIT），灵感来自 Apple，原创实现 |
+| keycap-3d | 灵感来自 Raycast，原创实现 |
+| infinite-canvas-gallery | 灵感来自无限画布，原创实现 |
+| hover-image-list | 灵感来自作品列表，原创实现 |
+| text-variable-scroll | 灵感来自 Linear，原创实现 |
+| liquid-glass-tabbar | 灵感来自 iOS 26，原创实现 |
+| dither-gradient | 原创 Bayer 抖动着色器 |
+| anchor-popover | 原创（CSS anchor + Popover API） |
+| css-accordion-auto | 原创（interpolate-size） |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

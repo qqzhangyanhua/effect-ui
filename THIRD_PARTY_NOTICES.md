@@ -265,6 +265,42 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - npm：`cobe` 2.0.1（重依赖单独成 registry 条目）
 - 衍生组件：`hero-globe`（标记 + 航线；无 WebGL 或减弱动效时回退静态渐变与 `globe-sphere`）
 
+## Lenis（MIT）
+
+- 仓库：https://github.com/darkroomengineering/lenis
+- 许可：MIT
+- 版权：Copyright (c) 2024 darkroom.engineering
+- LICENSE：`licenses/mit/lenis/LICENSE`
+- npm：`lenis` 1.3.27
+- 衍生组件：`smooth-scroll-provider`（容器内平滑滚动与 `useLenis`；减弱动效时不创建实例）
+
+## three.js（MIT）
+
+- 仓库：https://github.com/mrdoob/three.js
+- 许可：MIT
+- 版权：Copyright © 2010-2026 three.js authors
+- LICENSE：`licenses/mit/three/LICENSE`
+- npm：`three` 0.186.1
+- 衍生组件：`hero-3d-model`
+
+## React Three Fiber（MIT）
+
+- 仓库：https://github.com/pmndrs/react-three-fiber
+- 许可：MIT
+- 版权：Copyright (c) 2019-2025 Poimandres
+- LICENSE：`licenses/mit/react-three-fiber/LICENSE`
+- npm：`@react-three/fiber` 9.8.2
+- 衍生组件：`hero-3d-model`（懒加载画布）
+
+## drei（MIT）
+
+- 仓库：https://github.com/pmndrs/drei
+- 许可：MIT
+- 版权：Copyright (c) 2020 react-spring
+- LICENSE：`licenses/mit/react-three-drei/LICENSE`
+- npm：`@react-three/drei` 10.7.9
+- 衍生组件：`hero-3d-model`（`MeshTransmissionMaterial`）
+
 ## 本仓库原创实现
 
 - `aurora-background`、`cursor-follow`、`glass-card`、`neon-button`、`spinner`、`parallax`、`starfield`、`wave-background`、`noise-gradient`、`globe-sphere`、`cursor-trail`、`perspective-card`、`gooey-button`、`floating-navbar`、`animated-sidebar`、`page-transition`、`tree-view`、`onboarding-tour`、`infinite-scroll`、`password-strength`、`currency-input`、`quantity-stepper`、`dashboard-blocks`、`ecommerce-blocks`
@@ -274,5 +310,6 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - Batch 8 组合区块：`hero-shader`、`hero-product-mockup`、`hero-kinetic-text`、`footer-shader-wordmark`、`section-logo-cloud`、`section-animated-bento`、`section-pricing-flow`
 - Batch 9 Group B（灵感来自 X，原创实现，**未打开 Aceternity / Awwwards / Magic UI Pro / Once UI magic-portfolio / Tailwind Plus 源码**）：`apple-cards-carousel`、`saas-template`、`ai-product-template`、`devtool-template`、`agency-template`
 - Batch 10（Inspired by <App> (via Mobbin), original implementation。只参考版式与交互，**未复制标志、文案或图片**）：`hero-annotated-showcase`（ToDesktop）、`hero-wave-mask-gallery`（Kajabi）、`hero-inline-mascot`（Phantom）、`hero-orbit-nodes`（Air）、`hero-swirl-avatars`（Wizz）、`footer-dot-matrix-wordmark`（Fuser）、`footer-social-marquee`（BAGGU）、`section-pricing-perspective-grid`（Dovetail）、`section-pricing-product-tabs`（Better Stack）、`section-pattern-cards`（Loom）、`section-stats-cornered`（Spade）、`section-stats-blob`（Oyster）、`section-dotted-feature-tabs`（Maze）、`cta-ribbon-swoosh`（The Leap）、`section-testimonial-split`（Paraform）
+- Batch 11（灵感来自 X，原创实现；**未使用 GSAP，抖动着色器未移植 Paper Shaders**）：`view-transition-gallery`（Apple）、`hero-scroll-zoom`（Apple）、`section-horizontal-scroll`（Apple）、`intro-preloader`（Linear）、`text-variable-scroll`（Linear）、`keycap-3d`（Raycast）、`liquid-glass-tabbar`（iOS 26）、`scroll-timeline-reveal`、`infinite-canvas-gallery`、`hover-image-list`、`dither-gradient`、`anchor-popover`、`css-accordion-auto`
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

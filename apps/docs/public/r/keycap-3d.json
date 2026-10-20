@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "keycap-3d",
+  "type": "registry:ui",
+  "title": "Keycap 3D",
+  "description": "灵感来自 Raycast，原创实现。可按下的立体键帽，真实键盘按下时高亮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/keycap-3d.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/keycap-3d.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface Keycap3DProps {\n  keys?: string[]\n  className?: string\n}\n\nconst defaultKeys = [\"Q\", \"W\", \"E\", \"R\", \"T\", \"A\", \"S\", \"D\", \"F\", \"G\"]\n\nfunction Keycap3D({ keys = defaultKeys, className }: Keycap3DProps) {\n  const reduced = usePrefersReducedMotion()\n  const [pressed, setPressed] = React.useState<string | null>(null)\n\n  React.useEffect(() => {\n    const down = (event: KeyboardEvent) => {\n      const key = event.key.toUpperCase()\n      if (keys.includes(key)) setPressed(key)\n    }\n    const up = () => setPressed(null)\n    window.addEventListener(\"keydown\", down)\n    window.addEventListener(\"keyup\", up)\n    return () => {\n      window.removeEventListener(\"keydown\", down)\n      window.removeEventListener(\"keyup\", up)\n    }\n  }, [keys])\n\n  return (\n    <div className={cn(\"rounded-2xl border bg-zinc-950 p-6 text-white\", className)}>\n      <p className=\"font-mono text-xs tracking-[0.2em] text-white/50 uppercase\">\n        {pressed ? `key ${pressed}` : \"按下键盘\"}\n      </p>\n      <div className=\"mt-6 grid grid-cols-5 gap-3 [perspective:800px]\">\n        {keys.map((key) => {\n          const down = pressed === key\n          return (\n            <button\n              key={key}\n              type=\"button\"\n              onPointerDown={() => setPressed(key)}\n              onPointerUp={() => setPressed(null)}\n              onPointerLeave={() => setPressed((current) => (current === key ? null : current))}\n              className=\"relative h-16 rounded-lg border border-white/10 bg-gradient-to-b from-zinc-100 to-zinc-300 text-lg font-medium text-zinc-900 shadow-[0_8px_0_#3f3f46]\"\n              style={{\n                transform: down ? \"translateY(6px) rotateX(8deg)\" : \"translateY(0) rotateX(18deg)\",\n                boxShadow: down ? \"0 2px 0 #3f3f46\" : undefined,\n                transition: reduced ? \"none\" : \"transform 80ms ease, box-shadow 80ms ease\",\n              }}\n            >\n              {key}\n            </button>\n          )\n        })}\n      </div>\n    </div>\n  )\n}\n\nexport { Keycap3D }\n"
+    }
+  ]
+}

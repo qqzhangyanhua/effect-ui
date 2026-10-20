@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "anchor-popover",
+  "type": "registry:ui",
+  "title": "Anchor Popover",
+  "description": "原创。CSS anchor 定位加 Popover API，position-try 翻转；不支持时用坐标回退。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/anchor-popover.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/anchor-popover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnchorPopoverProps {\n  label?: string\n  content?: string\n  className?: string\n}\n\nfunction place(anchor: HTMLElement, popover: HTMLElement) {\n  const box = anchor.getBoundingClientRect()\n  const width = popover.offsetWidth\n  const height = popover.offsetHeight\n  let top = box.bottom + 8\n  let left = box.left\n  if (top + height > window.innerHeight - 8) top = Math.max(8, box.top - height - 8)\n  if (left + width > window.innerWidth - 8) left = window.innerWidth - width - 8\n  popover.style.top = `${top}px`\n  popover.style.left = `${Math.max(8, left)}px`\n}\n\nfunction AnchorPopover({\n  label = \"打开说明\",\n  content = \"优先用 CSS anchor 定位，不够放就翻到另一侧。\",\n  className,\n}: AnchorPopoverProps) {\n  const reduced = usePrefersReducedMotion()\n  const reactId = React.useId().replace(/:/g, \"\")\n  const anchorName = `--pop${reactId}`\n  const popoverId = `pop-${reactId}`\n  const buttonRef = React.useRef<HTMLButtonElement>(null)\n  const popoverRef = React.useRef<HTMLDivElement>(null)\n  const mode = React.useSyncExternalStore(\n    () => () => {},\n    () =>\n      CSS.supports(\"anchor-name\", \"--a\") && \"popover\" in HTMLElement.prototype ? \"anchor\" : \"js\",\n    () => \"js\" as const,\n  )\n  const [open, setOpen] = React.useState(false)\n\n  React.useEffect(() => {\n    if (mode !== \"js\" || !open) return\n    const anchor = buttonRef.current\n    const popover = popoverRef.current\n    if (!anchor || !popover) return\n    place(anchor, popover)\n    const close = (event: PointerEvent) => {\n      const target = event.target\n      if (!(target instanceof Node)) return\n      if (anchor.contains(target) || popover.contains(target)) return\n      setOpen(false)\n    }\n    window.addEventListener(\"pointerdown\", close)\n    return () => window.removeEventListener(\"pointerdown\", close)\n  }, [mode, open])\n\n  return (\n    <div className={cn(\"rounded-2xl border bg-background p-6\", className)}>\n      {mode === \"anchor\" ? (\n        <style>\n          {`#btn-${reactId}{anchor-name:${anchorName}}\n            #${popoverId}{position-anchor:${anchorName};position-area:block-end;position-try-fallbacks:flip-block,flip-inline;margin:8px 0 0;inset:auto;}`}\n        </style>\n      ) : null}\n      <button\n        ref={buttonRef}\n        id={`btn-${reactId}`}\n        type=\"button\"\n        className=\"rounded-full border px-4 py-2 text-sm\"\n        popoverTarget={mode === \"anchor\" ? popoverId : undefined}\n        onClick={() => {\n          if (mode === \"js\") setOpen((value) => !value)\n        }}\n      >\n        {label}\n      </button>\n      <div\n        ref={popoverRef}\n        id={popoverId}\n        popover={mode === \"anchor\" ? \"auto\" : undefined}\n        className={cn(\n          \"z-20 max-w-xs rounded-xl border bg-popover p-4 text-sm text-popover-foreground shadow-lg\",\n          mode === \"js\" && \"fixed\",\n          mode === \"js\" && !open && \"hidden\",\n        )}\n        style={{ transition: reduced ? \"none\" : undefined }}\n      >\n        {content}\n      </div>\n    </div>\n  )\n}\n\nexport { AnchorPopover }\n"
+    }
+  ]
+}

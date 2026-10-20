@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-variable-scroll",
+  "type": "registry:ui",
+  "title": "Text Variable Scroll",
+  "description": "灵感来自 Linear，原创实现。滚动驱动每个字母的字重和字宽波动。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/text-variable-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/text-variable-scroll.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll, useTransform, type MotionValue } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextVariableScrollProps {\n  text?: string\n  className?: string\n}\n\nfunction Letter({\n  char,\n  index,\n  progress,\n  reduced,\n}: {\n  char: string\n  index: number\n  progress: MotionValue<number>\n  reduced: boolean\n}) {\n  const weight = useTransform(progress, (value) => {\n    if (reduced) return 500\n    const wave = Math.sin(value * Math.PI * 2 + index * 0.45)\n    return Math.round(280 + (wave * 0.5 + 0.5) * 520)\n  })\n  const width = useTransform(progress, (value) => {\n    if (reduced) return 100\n    const wave = Math.sin(value * Math.PI * 2 + index * 0.45)\n    return Math.round(75 + (wave * 0.5 + 0.5) * 50)\n  })\n  const variation = useTransform(width, (value) => `\"wdth\" ${value}`)\n\n  return (\n    <motion.span\n      className=\"inline-block\"\n      style={{ fontWeight: weight, fontVariationSettings: variation }}\n    >\n      {char === \" \" ? \"\\u00a0\" : char}\n    </motion.span>\n  )\n}\n\nfunction TextVariableScroll({\n  text = \"Weight moves through the letters\",\n  className,\n}: TextVariableScrollProps) {\n  const reduced = usePrefersReducedMotion()\n  const ref = React.useRef<HTMLElement>(null)\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    offset: [\"start end\", \"end start\"],\n  })\n\n  return (\n    <section ref={ref} className={cn(\"rounded-2xl border bg-background px-6 py-16\", className)}>\n      <p className=\"font-sans text-4xl leading-tight tracking-tight sm:text-6xl\">\n        {Array.from(text).map((char, index) => (\n          <Letter key={`${char}-${index}`} char={char} index={index} progress={scrollYProgress} reduced={reduced} />\n        ))}\n      </p>\n    </section>\n  )\n}\n\nexport { TextVariableScroll }\n"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ effect-ui is a React UI and effects library distributed as a shadcn-compatible r
   - `src/dependencies.ts`: derives each item's npm and registry dependencies from its source imports.
   - `src/audit.ts`: registry consistency audit, run by `pnpm test`.
 - `apps/docs/` (`@effect-ui/docs`): Next.js docs and demo site.
-  - `app/page.tsx` (`/`), `app/docs/page.tsx` (`/docs`), `app/docs/[slug]/page.tsx` (`/docs/[slug]`), `app/preview/[slug]` (`/preview/[slug]`, template previews).
+  - `app/page.tsx` (`/`), `app/docs/page.tsx` (`/docs`), `app/docs/[slug]/page.tsx` (`/docs/[slug]`), `app/preview/[slug]` (`/preview/[slug]`, full-screen demo for every visible item that has a demo; templates render the template component).
   - `app/r/[name]/route.ts`: `GET /r/[name]`, the public install endpoint.
   - `public/r/`: generated static registry JSON.
 - `scripts/build-registry.ts`: writes the generated registry JSON. `scripts/check.sh`: local checks.

@@ -11,8 +11,8 @@ import {
 } from "@effect-ui/registry/catalog"
 import { Badge } from "@effect-ui/registry/ui/badge"
 
-import { CodeBlock } from "@/components/code-block"
 import { ComponentPreview } from "@/components/component-preview"
+import { ComponentTabs } from "@/components/component-tabs"
 import { PropsTable } from "@/components/props-table"
 import { highlightCode, languageForFile } from "@/lib/highlight"
 import { getRegistryBaseUrl, readRegistrySource } from "@/lib/source"
@@ -20,6 +20,16 @@ import { readUsageExample } from "@/lib/usage"
 
 interface DocsPageProps {
   params: Promise<{ slug: string }>
+}
+
+function fileName(target: string) {
+  return target.split("/").pop() ?? target
+}
+
+function sourceTabLabel(target: string, targets: readonly string[]) {
+  const name = fileName(target)
+  const shared = targets.filter((item) => fileName(item) === name).length > 1
+  return shared ? target : name
 }
 
 export function generateStaticParams() {
@@ -71,8 +81,10 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
     highlightCode(usage, "tsx"),
   ])
 
+  const targets = sources.map((file) => file.target)
+
   return (
-    <article className="mx-auto max-w-3xl space-y-8">
+    <article className="mx-auto max-w-5xl space-y-8">
       <header className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
           {sourceUrl ? (
@@ -90,48 +102,30 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
         <p className="text-muted-foreground">{item.description}</p>
       </header>
 
-      <section className="space-y-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-xl font-medium">预览</h2>
-          {template ? (
-            <Link href={`/preview/${item.name}`} className="text-sm underline">
-              全屏预览
-            </Link>
-          ) : null}
-        </div>
-        {template ? (
-          <iframe
-            title={`${item.title} 预览`}
-            src={`/preview/${item.name}`}
-            loading="lazy"
-            className="h-[70vh] w-full rounded-xl border bg-background"
-          />
-        ) : (
-          <ComponentPreview Demo={Demo} />
-        )}
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="text-xl font-medium">用法</h2>
-        <CodeBlock code={usage} html={usageHtml} filename="example.tsx" />
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="text-xl font-medium">安装</h2>
-        <CodeBlock code={install} html={installHtml} />
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="text-xl font-medium">源码</h2>
-        {sources.map((file, fileIndex) => (
-          <CodeBlock
-            key={file.file}
-            code={file.code}
-            html={sourceHtml[fileIndex] ?? ""}
-            filename={file.target}
-          />
-        ))}
-      </section>
+      <ComponentTabs
+        fullScreenHref={`/preview/${item.name}`}
+        preview={
+          template ? (
+            <iframe
+              title={`${item.title} 预览`}
+              src={`/preview/${item.name}`}
+              loading="lazy"
+              className="h-[70vh] w-full rounded-xl border bg-background"
+            />
+          ) : (
+            <ComponentPreview Demo={Demo} />
+          )
+        }
+        usage={{ code: usage, html: usageHtml, filename: "example.tsx" }}
+        install={{ code: install, html: installHtml }}
+        sources={sources.map((file, fileIndex) => ({
+          id: file.file,
+          label: sourceTabLabel(file.target, targets),
+          code: file.code,
+          html: sourceHtml[fileIndex] ?? "",
+          filename: file.target,
+        }))}
+      />
 
       <section className="space-y-3">
         <h2 className="text-xl font-medium">Props</h2>

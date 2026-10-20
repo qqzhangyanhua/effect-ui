@@ -13,6 +13,7 @@ import * as effectDemos10 from "./effect-demos-10"
 import * as effectDemos11 from "./effect-demos-11"
 import * as effectDemos13 from "./effect-demos-13"
 import * as effectDemos14 from "./effect-demos-14"
+import * as effectDemos15 from "./effect-demos-15"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -342,6 +343,21 @@ const demoMap: Record<string, ComponentType> = {
   "countdown-timer": effectDemos14.CountdownTimerDemo,
   "image-cropper": effectDemos14.ImageCropperDemo,
   "diff-viewer": effectDemos14.DiffViewerDemo,
+  "ghost-trail-text": effectDemos15.GhostTrailTextDemo,
+  "gravity-image-trail": effectDemos15.GravityImageTrailDemo,
+  "square-lens-distortion": effectDemos15.SquareLensDistortionDemo,
+  "dual-wave-text-list": effectDemos15.DualWaveTextListDemo,
+  "clip-reveal-menu": effectDemos15.ClipRevealMenuDemo,
+  "sticky-grid-scroll": effectDemos15.StickyGridScrollDemo,
+  "svg-mask-scroll-transition": effectDemos15.SvgMaskScrollTransitionDemo,
+  "macbook-scroll": effectDemos15.MacbookScrollDemo,
+  "faceted-filter-bar": effectDemos15.FacetedFilterBarDemo,
+  "json-viewer": effectDemos15.JsonViewerDemo,
+  "heatmap-calendar": effectDemos15.HeatmapCalendarDemo,
+  "grouped-checklist": effectDemos15.GroupedChecklistDemo,
+  "text-generate": effectDemos15.TextGenerateDemo,
+  "column-config-panel": effectDemos15.ColumnConfigPanelDemo,
+  "resource-search-hero": effectDemos15.ResourceSearchHeroDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

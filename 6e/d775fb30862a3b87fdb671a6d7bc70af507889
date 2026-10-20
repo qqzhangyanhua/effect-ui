@@ -1,0 +1,131 @@
+packages/registry/src/catalog-batch4.ts
+  s_8caf9d02dcb127::t_78971d6aa7a5d7 192
+packages/registry/src/catalog.ts
+  s_8caf9d02dcb127::t_2dd2f5dc20569d 88-89
+CONTEXT.md
+  s_8caf9d02dcb127::t_d4584fac544734 1-43
+README.md
+  s_8caf9d02dcb127::t_89a4d80deb1f2b 342,344-345,349
+apps/docs/app/r/[name]/route.ts
+  s_8caf9d02dcb127::t_93511a5cfc1ecd 28,36
+apps/docs/public/r/alert-dialog.json
+  s_8caf9d02dcb127::t_18b957be1299de 11-12
+apps/docs/public/r/animated-theme-toggler.json
+  s_8caf9d02dcb127::t_946b5f971f242b 8-9,12-13
+apps/docs/public/r/audio-waveform.json
+  s_8caf9d02dcb127::t_241264d68c78f5 8-9
+apps/docs/public/r/burst-icons.json
+  s_8caf9d02dcb127::t_78ef6cbf95ca2d 8-9
+apps/docs/public/r/button-group.json
+  s_8caf9d02dcb127::t_bf95906361b395 8-9,12-13
+apps/docs/public/r/calendar.json
+  s_8caf9d02dcb127::t_080707ee257aa7 8-9,12-13
+apps/docs/public/r/carousel.json
+  s_8caf9d02dcb127::t_419c3a5ed72545 12-13
+apps/docs/public/r/chat-message.json
+  s_8caf9d02dcb127::t_48e5aba6a17306 11-12
+apps/docs/public/r/code-block.json
+  s_8caf9d02dcb127::t_66cdbac71dbe41 8-9,12-13
+apps/docs/public/r/color-picker.json
+  s_8caf9d02dcb127::t_e721e191b7ff6c 12-13
+apps/docs/public/r/combobox.json
+  s_8caf9d02dcb127::t_9ef75c38ed0579 13-14
+apps/docs/public/r/command.json
+  s_8caf9d02dcb127::t_773cd46e0c9d74 12-13
+apps/docs/public/r/currency-input.json
+  s_8caf9d02dcb127::t_986b89b6558405 9-10
+apps/docs/public/r/dashboard-blocks.json
+  s_8caf9d02dcb127::t_21fc036c2095e2 14-15
+apps/docs/public/r/date-picker.json
+  s_8caf9d02dcb127::t_70dfe3d811436d 14-15
+apps/docs/public/r/date-range-picker.json
+  s_8caf9d02dcb127::t_2067b7699cb3d9 15-16
+apps/docs/public/r/dropzone.json
+  s_8caf9d02dcb127::t_27df906d09d9b1 8-9,12-13
+apps/docs/public/r/ecommerce-blocks.json
+  s_8caf9d02dcb127::t_dcc3b9ea9553b5 10-11
+apps/docs/public/r/field.json
+  s_8caf9d02dcb127::t_9e71b164a934c0 12-13
+apps/docs/public/r/form.json
+  s_8caf9d02dcb127::t_36013479763079 9-10,13-14
+apps/docs/public/r/hero-kinetic-text.json
+  s_8caf9d02dcb127::t_a626ae7d5820e4 13-14
+apps/docs/public/r/input-group.json
+  s_8caf9d02dcb127::t_b5de10f485e5d2 13-14
+apps/docs/public/r/item.json
+  s_8caf9d02dcb127::t_fa1412b6724fbf 8-9,12-13
+apps/docs/public/r/kanban.json
+  s_8caf9d02dcb127::t_c63152331ce382 13-14
+apps/docs/public/r/marketing-blocks.json
+  s_8caf9d02dcb127::t_a033cfcb9f0e59 10,12-13
+apps/docs/public/r/morphing-dialog.json
+  s_8caf9d02dcb127::t_4b6d43ec235d79 8-9
+apps/docs/public/r/multi-select.json
+  s_8caf9d02dcb127::t_96658511b5c13b 12,14-15
+apps/docs/public/r/notification-center.json
+  s_8caf9d02dcb127::t_e8671d4ed5a6be 12-13
+apps/docs/public/r/onboarding-tour.json
+  s_8caf9d02dcb127::t_9e2d325ae4bf4a 9-10
+apps/docs/public/r/pagination.json
+  s_8caf9d02dcb127::t_5c1f402afc8ca1 11-12
+apps/docs/public/r/password-strength.json
+  s_8caf9d02dcb127::t_baf54d74d22ca3 9-10
+apps/docs/public/r/prompt-input.json
+  s_8caf9d02dcb127::t_d030646fac7717 12-13
+apps/docs/public/r/quantity-stepper.json
+  s_8caf9d02dcb127::t_dacc22bdc975cd 12-13
+apps/docs/public/r/registry.json
+  s_8caf9d02dcb127::t_e07a302c06ea50 287-288,1112-1113,1166-1167,1170-1171,1191-1192,1248-1249,1305-1306,1309-1310,1409-1410,1465-1466,1512-1513,1587-1588,2213-2214,2369-2370,2373-2374,2394,2396-2397,2416-2417,2440-2441,2499-2500,2516-2517,2520-2521,2542-2543,2683-2684,2687-2688,2708-2709,2728-2729,2747,2749-2750,2801-2802,2808-2809,2845-2846,2866-2867,2888-2889,2905-2906,2909-2910,2962-2963,2966-2967,3007-3008,3030-3031,3171-3172,3189-3190,3210-3211,3282-3283,3323-3324,3346-3347,3365-3366,3903-3904,4137-4138
+apps/docs/public/r/resizable.json
+  s_8caf9d02dcb127::t_b7c8d13793e2a6 8-9
+apps/docs/public/r/rich-text-editor.json
+  s_8caf9d02dcb127::t_d74827d4d81d10 8-9,15-16
+apps/docs/public/r/sidebar.json
+  s_8caf9d02dcb127::t_764085d64c48e4 16-17
+apps/docs/public/r/sonner.json
+  s_8caf9d02dcb127::t_64d79cc1755593 8-9
+apps/docs/public/r/tag-input.json
+  s_8caf9d02dcb127::t_13f327087d5f6e 11-12
+apps/docs/public/r/toggle-group.json
+  s_8caf9d02dcb127::t_b0e2aa9b5e17a8 12-13
+docs/adr/0001-derive-dependency-lists-from-source.md
+  s_8caf9d02dcb127::t_ad5860a9b251d5 1-18
+docs/project-map.md
+  s_8caf9d02dcb127::t_538f57cb569b76 12-14,52
+docs/testing.md
+  s_8caf9d02dcb127::t_2cfa34a235a911 31-32,34
+packages/registry/src/audit.repo.test.ts
+  s_8caf9d02dcb127::t_b2b48e89a56264 10,49,73-76,91-92,99,105,111-112,115-116
+packages/registry/src/audit.test.ts
+  s_8caf9d02dcb127::t_caf4ac6cef220a 3,34-35,49,51,67,69,335,339,344-345,350,352,360,365-368,374,379-381,385-387
+packages/registry/src/audit.ts
+  s_8caf9d02dcb127::t_f8f537c1e77bf2 1,125,129-130,139,144,174-175,191,194,225,234-235,250-253,263,272
+packages/registry/src/dependencies.test.ts
+  s_8caf9d02dcb127::t_63bb770df99fb9 1-70
+packages/registry/src/dependencies.ts
+  s_8caf9d02dcb127::t_cf147e806970c3 1-331
+packages/registry/src/registry-item.test.ts
+  s_8caf9d02dcb127::t_9d8a0150c1c0a9 5-8,10-32,34-35,48,54-55,80,93-136
+packages/registry/src/registry-item.ts
+  s_8caf9d02dcb127::t_07ebfd952d016f 1-2,9-11,17,63-72,77,83-98,104,106-107,114-115
+registry.json
+  s_8caf9d02dcb127::t_8d034e36c78bdf 287-288,1112-1113,1166-1167,1170-1171,1191-1192,1248-1249,1305-1306,1309-1310,1409-1410,1465-1466,1512-1513,1587-1588,2213-2214,2369-2370,2373-2374,2394,2396-2397,2416-2417,2440-2441,2499-2500,2516-2517,2520-2521,2542-2543,2683-2684,2687-2688,2708-2709,2728-2729,2747,2749-2750,2801-2802,2808-2809,2845-2846,2866-2867,2888-2889,2905-2906,2909-2910,2962-2963,2966-2967,3007-3008,3030-3031,3171-3172,3189-3190,3210-3211,3282-3283,3323-3324,3346-3347,3365-3366,3903-3904,4137-4138
+scripts/build-registry.ts
+  s_8caf9d02dcb127::t_8b40eece0e3a1d 15-16,19,26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "6ed775fb30862a3b87fdb671a6d7bc70af507889",
+  "prompts": {},
+  "sessions": {
+    "s_8caf9d02dcb127": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "e6ecadae-fa33-4861-a693-1aa0d3ddf145",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

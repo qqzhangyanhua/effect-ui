@@ -1,0 +1,77 @@
+apps/docs/lib/usage.test.ts
+  s_f53d2b1dba732e::t_915a01aebd74b2 1-44
+README.md
+  s_f53d2b1dba732e::t_86c9ec1c1f0e44 386
+docs/testing.md
+  s_f53d2b1dba732e::t_89137bae4741c4 22,26,37-39
+packages/registry/src/catalog-batch2.ts
+  s_f53d2b1dba732e::t_dc7252f2bdbb96 349-361,601-609
+packages/registry/src/catalog.ts
+  s_f53d2b1dba732e::t_aafb34bc6ee597 499-525,548-556,579-598,638-665,717-725,775-783,805-813
+  s_f53d2b1dba732e::t_6e40b62b9b614e 76-82,88-89
+apps/docs/components/component-preview.tsx
+  s_f53d2b1dba732e::t_e538dcc55ae7be 5-18,20,22
+apps/docs/app/docs/[slug]/page.tsx
+  s_f53d2b1dba732e::t_2684e7fce1ac05 25-36,97-100,132-136
+packages/registry/src/examples/effect-demos-4.tsx
+  s_f53d2b1dba732e::t_baf34a5d078506 33-37,39-40,79,82
+packages/registry/src/examples/effect-demos.tsx
+  s_f53d2b1dba732e::t_b6324c90c46ed5 203,205,219,221
+  s_f53d2b1dba732e::t_00693fdb70f70c 52-62,66-69,82-83
+  s_f53d2b1dba732e::t_8cc0e961177e92 90-99,119-129,132,166-168,171
+packages/registry/src/examples/effect-demos-7.tsx
+  s_f53d2b1dba732e::t_0ce67b69521a97 88-92,95-96,99-100,103,106,111,114
+apps/docs/lib/usage.ts
+  s_f53d2b1dba732e::t_b846b7740351c6 70
+  s_f53d2b1dba732e::t_f608f169fe2855 4-5
+packages/registry/src/audit.test.ts
+  s_f53d2b1dba732e::t_a1d39206a1fe36 434-439,447-451
+  s_f53d2b1dba732e::t_2a845300899315 456-484
+  s_f53d2b1dba732e::t_cf8f0adda14c0e 411-433,440-446,452-455,485-503
+packages/registry/src/examples/effect-demos-3.tsx
+  s_f53d2b1dba732e::t_1a86c8db4aa4b5 230-238,244,248-249
+packages/registry/src/examples/effect-demos-2.tsx
+  s_f53d2b1dba732e::t_3725a8b7a0fc2f 48-52,241,243
+apps/docs/components/control-panel.tsx
+  s_f53d2b1dba732e::t_9816df64c0fa2e 179-180
+  s_f53d2b1dba732e::t_0786c522c391d5 243-247
+  s_f53d2b1dba732e::t_7a574f2f81a958 3,178,181-187,190
+  s_f53d2b1dba732e::t_04a12c1fe82bf5 249,267-268,274-279
+  s_f53d2b1dba732e::t_65bc256975e42d 255
+  s_f53d2b1dba732e::t_3007380500ecdd 1-2,4-177,188-189,191-242,248,250-254,256-266,269-273,281-367
+  s_f53d2b1dba732e::t_4e6042db7288d2 280
+packages/registry/src/catalog-batch7.ts
+  s_f53d2b1dba732e::t_ccff3c88646137 183-196,209-216,227-236
+  s_f53d2b1dba732e::t_7b7af932c37496 247-255,266-274
+packages/registry/src/catalog-batch3.ts
+  s_f53d2b1dba732e::t_d33d7250e3bed5 124-143
+packages/registry/src/audit.ts
+  s_f53d2b1dba732e::t_accbad562d128b 136-143,155-164
+  s_f53d2b1dba732e::t_df8120de7008ae 270
+  s_f53d2b1dba732e::t_5387a9386e8e04 20,123-135,144-154,165-174
+  s_f53d2b1dba732e::t_36bf4264e1b544 175
+packages/registry/src/catalog-batch6.ts
+  s_f53d2b1dba732e::t_6d8dec613d23e8 22-35,54-67,123-132
+packages/registry/src/catalog-batch4.ts
+  s_f53d2b1dba732e::t_486050fd66d3d6 22-32,86-94
+packages/registry/src/examples/effect-demos-6.tsx
+  s_f53d2b1dba732e::t_fe67b690a18646 34-38,41-53,55-56,79-80
+apps/docs/lib/usage-rewrite.ts
+  s_f53d2b1dba732e::t_21142380218ac7 1-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "2ae0cb07ceb54245bb0e1b23593989f083ab752c",
+  "prompts": {},
+  "sessions": {
+    "s_f53d2b1dba732e": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15895-2629-7fc2-96b7-96ccd29516cf",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

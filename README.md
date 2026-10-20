@@ -48,6 +48,7 @@ pnpm dev
 ```bash
 pnpm lint
 pnpm typecheck
+pnpm test           # 单元测试 + registry 审计
 pnpm build          # 先生成 registry，再构建文档站
 pnpm registry:build
 ```
@@ -342,7 +343,7 @@ use-mobile · use-prefers-reduced-motion
    - `type` 为 `registry:ui`、`registry:lib`、`registry:hook` 或 `registry:block`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。模板用 `registry:block`。
    - `dependencies` 与源码 import 一致，包括 type-only import 和动态 `import()`。不要写 `react`、`react-dom`。
    - 上面的别名和同目录相对引用写入 `registryDependencies`。
-   - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`。
+   - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`；按惯例同时加到 `apps/docs/package.json`（审计不检查这一项）。
 3. **demo**：`registry:ui` 和 `registry:block` 在 `packages/registry/src/examples/` 增加 Demo，并登记到 `examples/index.ts` 的 `demoMap`。`registry:lib` 和 `registry:hook` 不需要 demo 和 Props。模板的文档预览走 `/preview/{name}`。
 4. **README** 组件列表写上独立组件名。
 5. **例外**：必须保留源码没有直接引用的依赖时（例如 `@tiptap/pm` 作为 peer），在 `packages/registry/src/audit-exceptions.ts` 写明组件、问题类型和原因。

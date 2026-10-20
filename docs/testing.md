@@ -1,0 +1,39 @@
+# Testing
+
+## Standard Check
+```sh
+./scripts/check.sh          # pnpm lint, pnpm typecheck, pnpm test
+./scripts/check.sh --full   # also pnpm build, same steps as CI
+```
+
+The script runs every step, prints a summary, and exits 1 if any step failed. Run `--full` after changing the catalog, component source, or `apps/docs` build config.
+
+One difference from CI: after `pnpm build`, `--full` only prints a notice when `registry.json` or `apps/docs/public/r` differ from the index, because uncommitted but current generated files are normal locally. CI fails on the same condition. When you see the notice, commit the generated files with the source change.
+
+If a step fails with `Cannot find module` or `Cannot find package`, run `pnpm install` first. See `docs/debugging.md`.
+
+## Commands
+Root `package.json`:
+
+| Command | Runs | Scope |
+| --- | --- | --- |
+| `pnpm lint` | `eslint apps/docs packages/registry/src scripts` | docs app, registry source, scripts |
+| `pnpm typecheck` | `tsc --noEmit` in `apps/docs` | docs app plus `packages/registry/src` (included by `apps/docs/tsconfig.json`) |
+| `pnpm test` | `vitest run` | `packages/registry/src/*.test.ts` |
+| `pnpm registry:build` | `tsx scripts/build-registry.ts` | rewrites generated registry JSON |
+| `pnpm build` | `pnpm registry:build`, then `next build` | full build |
+
+Typecheck excludes `*.test.ts`, and vitest does not type-check. Type errors in test files are not caught by any command.
+
+`pnpm lint` currently reports 2 `react-hooks/incompatible-library` warnings, in `data-table.tsx` and `virtual-list.tsx`. They are expected and do not fail the check.
+
+## Tests
+- `packages/registry/src/registry-item.test.ts`: registry JSON shape.
+- `packages/registry/src/audit.test.ts`: unit tests for the audit rules.
+- `packages/registry/src/audit.repo.test.ts`: audits the real repo. It checks that the catalog matches source imports, `packages/registry/package.json`, demos, and the README list. It also checks that `registry.json` and `apps/docs/public/r` match a fresh build. Stale generated JSON fails `pnpm test`.
+
+There are no tests under `apps/docs`. UI behavior is verified manually with `pnpm dev`.
+
+## Notes
+- Do not claim a check passed unless it ran in this workspace.
+- No pre-commit hooks are configured.

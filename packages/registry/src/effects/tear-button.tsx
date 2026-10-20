@@ -22,9 +22,11 @@ function TearButton({
   const label = slotted ? slotted.props.children : children
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    onClick?.(event)
+    // 撕开半边在减弱动效下是 opacity 0，而占位标签是 invisible。进入 torn 会把文字整段藏掉。
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     setTorn(true)
     window.setTimeout(() => setTorn(false), 900)
-    onClick?.(event)
   }
 
   const face = (clipPath: string, tornClass: string) => (

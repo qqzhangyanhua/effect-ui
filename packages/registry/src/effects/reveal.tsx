@@ -72,8 +72,10 @@ function Reveal({
 }: RevealProps) {
   const reduce = usePrefersReducedMotion()
   const preset = revealMotion(variant, from, blur)
+  // 服务端快照会先提交隐藏的 initial。只写 initial: false 清不掉它，内容会停在 opacity 0。
+  const settled = { opacity: 1, x: 0, y: 0, filter: "blur(0px)", clipPath: "inset(0% 0 0 0)" }
   const motionProps = reduce
-    ? { ...props, initial: false, transition: { duration: 0 } }
+    ? { ...props, initial: settled, animate: settled, transition: { duration: 0 } }
     : {
         initial: preset.initial,
         whileInView: preset.whileInView,

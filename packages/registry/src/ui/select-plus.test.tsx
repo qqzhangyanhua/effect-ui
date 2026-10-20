@@ -251,7 +251,8 @@ test("loading 标记忙碌，分组、自定义渲染、空状态和 children �
   expect(screen.getByText("没有这个")).toBeInTheDocument()
   expect(screen.queryByRole("option")).not.toBeInTheDocument()
 
-  rerender(
+  cleanup()
+  render(
     <SelectPlus onValueChange={onValueChange}>
       <ComboboxItem value="custom">自定义项</ComboboxItem>
     </SelectPlus>,

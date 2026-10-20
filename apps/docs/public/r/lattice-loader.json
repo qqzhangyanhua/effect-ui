@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lattice-loader",
+  "type": "registry:ui",
+  "title": "Lattice Loader",
+  "description": "点阵按行列做波浪。减弱动效时停在静止点阵。灵感来自 React Bits，原创实现，未打开源码。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/lattice-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/lattice-loader.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface LatticeLoaderProps {\n  rows?: number\n  cols?: number\n  speed?: number\n  color?: string\n  className?: string\n  ref?: React.Ref<HTMLDivElement>\n  \"aria-label\"?: string\n}\n\nfunction LatticeLoader({\n  rows = 4,\n  cols = 4,\n  speed = 1,\n  color,\n  className,\n  ref,\n  \"aria-label\": ariaLabel = \"加载中\",\n}: LatticeLoaderProps) {\n  const reduced = usePrefersReducedMotion()\n  const safeRows = Math.max(1, Math.round(rows))\n  const safeCols = Math.max(1, Math.round(cols))\n  const safeSpeed = Math.max(0.1, speed)\n\n  return (\n    <div\n      ref={ref}\n      role=\"status\"\n      aria-label={ariaLabel}\n      data-slot=\"lattice-loader\"\n      data-reduced={reduced ? \"true\" : \"false\"}\n      className={cn(\"inline-grid gap-1.5\", className)}\n      style={{\n        gridTemplateColumns: `repeat(${safeCols}, minmax(0, 1fr))`,\n        color,\n      }}\n    >\n      {Array.from({ length: safeRows * safeCols }, (_, index) => {\n        const row = Math.floor(index / safeCols)\n        const col = index % safeCols\n        const delay = ((row + col) / (safeRows + safeCols)) * (1.2 / safeSpeed)\n        return (\n          <span\n            key={index}\n            aria-hidden\n            className={cn(\"size-1.5 rounded-full bg-current\", !reduced && \"animate-pulse\")}\n            style={\n              reduced\n                ? undefined\n                : { animationDelay: `${delay}s`, animationDuration: `${1.2 / safeSpeed}s` }\n            }\n          />\n        )\n      })}\n    </div>\n  )\n}\n\nexport { LatticeLoader }\n"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "squish-switch",
+  "type": "registry:ui",
+  "title": "Squish Switch",
+  "description": "按下或拖动时滑块被压扁，松手后弹回。灵感来自 React Bits，原创实现，未打开源码。",
+  "dependencies": [
+    "@radix-ui/react-switch",
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/squish-switch.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/squish-switch.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SwitchPrimitive from \"@radix-ui/react-switch\"\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nconst tracks = {\n  sm: { track: \"h-5 w-9\", thumb: \"size-4\", travel: 16 },\n  md: { track: \"h-6 w-11\", thumb: \"size-5\", travel: 20 },\n  lg: { track: \"h-7 w-14\", thumb: \"size-6\", travel: 28 },\n} as const\n\nexport interface SquishSwitchProps\n  extends Omit<React.ComponentProps<typeof SwitchPrimitive.Root>, \"color\"> {\n  size?: keyof typeof tracks\n  color?: string\n  squish?: number\n}\n\nfunction SquishSwitch({\n  className,\n  size = \"md\",\n  color,\n  squish = 0.35,\n  disabled,\n  checked,\n  defaultChecked,\n  onCheckedChange,\n  ref,\n  onPointerDown,\n  onPointerUp,\n  onPointerCancel,\n  ...props\n}: SquishSwitchProps) {\n  const reduced = usePrefersReducedMotion()\n  const [pressed, setPressed] = React.useState(false)\n  const [uncontrolled, setUncontrolled] = React.useState(defaultChecked === true)\n  const on = checked ?? uncontrolled\n  const metric = tracks[size] ?? tracks.md\n  const amount = Math.min(1, Math.max(0, squish))\n  const release = (event: React.PointerEvent<HTMLButtonElement>, notify?: (event: React.PointerEvent<HTMLButtonElement>) => void) => {\n    setPressed(false)\n    notify?.(event)\n  }\n\n  return (\n    <SwitchPrimitive.Root\n      ref={ref}\n      data-slot=\"squish-switch\"\n      disabled={disabled}\n      className={cn(\n        \"peer inline-flex shrink-0 items-center rounded-full border border-transparent p-0.5 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-input\",\n        color\n          ? \"data-[state=checked]:bg-(--squish-color)\"\n          : \"data-[state=checked]:bg-primary\",\n        metric.track,\n        className,\n      )}\n      style={color ? ({ \"--squish-color\": color } as React.CSSProperties) : undefined}\n      {...(checked !== undefined ? { checked } : { defaultChecked })}\n      onCheckedChange={(value) => {\n        if (checked === undefined) setUncontrolled(value)\n        onCheckedChange?.(value)\n      }}\n      onPointerDown={(event) => {\n        if (!disabled) {\n          setPressed(true)\n          event.currentTarget.setPointerCapture(event.pointerId)\n        }\n        onPointerDown?.(event)\n      }}\n      onPointerUp={(event) => release(event, onPointerUp)}\n      onPointerCancel={(event) => release(event, onPointerCancel)}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"squish-switch-thumb\"\n        className={cn(\"pointer-events-none block\", metric.thumb)}\n      >\n        <motion.span\n          aria-hidden\n          className=\"block size-full rounded-full bg-background shadow-sm\"\n          animate={{\n            x: on ? metric.travel : 0,\n            scaleX: pressed && !reduced ? 1 + amount * 0.7 : 1,\n            scaleY: pressed && !reduced ? 1 - amount * 0.45 : 1,\n          }}\n          transition={reduced ? { duration: 0 } : { type: \"spring\", stiffness: 520, damping: 18 }}\n        />\n      </SwitchPrimitive.Thumb>\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { SquishSwitch }\n"
+    }
+  ]
+}

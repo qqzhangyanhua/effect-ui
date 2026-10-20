@@ -209,6 +209,21 @@ use-mobile · use-prefers-reduced-motion
 | particle-button | Kokonut UI（免费 MIT） |
 | tear-button | Kokonut UI（免费 MIT） |
 
+### 微交互
+
+| 组件 | 来源 |
+| --- | --- |
+| squish-switch | 灵感来自 React Bits，原创实现，未打开源码 |
+| jelly-radio | 灵感来自 React Bits，原创实现，未打开源码 |
+| spring-check | 灵感来自 React Bits，原创实现，未打开源码 |
+| peek-rating | 灵感来自 React Bits，原创实现，未打开源码 |
+| slide-to-confirm | 灵感来自 React Bits，原创实现，未打开源码 |
+| swipe-row | 灵感来自 React Bits，原创实现，未打开源码 |
+| fuse-button | 灵感来自 React Bits，原创实现，未打开源码 |
+| pulse-heart | 灵感来自 React Bits，原创实现，未打开源码 |
+| lattice-loader | 灵感来自 React Bits，原创实现，未打开源码 |
+| warm-tooltip | 灵感来自 React Bits，原创实现，未打开源码 |
+
 ### 加载
 
 | 组件 | 来源 |

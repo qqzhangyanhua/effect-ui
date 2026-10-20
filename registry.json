@@ -5361,6 +5361,202 @@
           "target": "components/ui/css-accordion-auto.tsx"
         }
       ]
+    },
+    {
+      "name": "squish-switch",
+      "type": "registry:ui",
+      "title": "Squish Switch",
+      "description": "按下或拖动时滑块被压扁，松手后弹回。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [
+        "@radix-ui/react-switch",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/squish-switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/squish-switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "jelly-radio",
+      "type": "registry:ui",
+      "title": "Jelly Radio",
+      "description": "选项间移动的指示器带弹簧回弹。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [
+        "@radix-ui/react-radio-group",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/jelly-radio.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/jelly-radio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spring-check",
+      "type": "registry:ui",
+      "title": "Spring Check",
+      "description": "勾选用弹簧画出，并支持半选。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/spring-check.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spring-check.tsx"
+        }
+      ]
+    },
+    {
+      "name": "peek-rating",
+      "type": "registry:ui",
+      "title": "Peek Rating",
+      "description": "悬停时预览分数，可半星，也可只读。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/peek-rating.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/peek-rating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slide-to-confirm",
+      "type": "registry:ui",
+      "title": "Slide To Confirm",
+      "description": "把滑块拖过阈值才确认，提前松开会弹回。键盘用 Enter 或 Space。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/slide-to-confirm.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slide-to-confirm.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swipe-row",
+      "type": "registry:ui",
+      "title": "Swipe Row",
+      "description": "横向滑动露出操作，点击操作后关闭。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/swipe-row.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/swipe-row.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fuse-button",
+      "type": "registry:ui",
+      "title": "Fuse Button",
+      "description": "按住直到引信环烧完才触发。与 hold-button 分开：圆环和 holdMs / onComplete，不改原来的进度条按钮。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/fuse-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fuse-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulse-heart",
+      "type": "registry:ui",
+      "title": "Pulse Heart",
+      "description": "点赞时心跳并散出一圈粒子，可用 active 受控。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/pulse-heart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pulse-heart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lattice-loader",
+      "type": "registry:ui",
+      "title": "Lattice Loader",
+      "description": "点阵按行列做波浪。减弱动效时停在静止点阵。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/lattice-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lattice-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warm-tooltip",
+      "type": "registry:ui",
+      "title": "Warm Tooltip",
+      "description": "包住 tooltip，从触发器淡入，并可带一圈柔光。灵感来自 React Bits，原创实现，未打开源码。",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/warm-tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/warm-tooltip.tsx"
+        }
+      ]
     }
   ]
 }

@@ -16,6 +16,7 @@ import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
 import * as uiDemos5 from "./ui-demos-5"
+import * as uiDemos6 from "./ui-demos-6"
 
 const demoMap: Record<string, ComponentType> = {
   button: uiDemos.ButtonDemo,
@@ -294,6 +295,16 @@ const demoMap: Record<string, ComponentType> = {
   "dither-gradient": effectDemos11.DitherGradientDemo,
   "anchor-popover": effectDemos11.AnchorPopoverDemo,
   "css-accordion-auto": effectDemos11.CssAccordionAutoDemo,
+  "squish-switch": uiDemos6.SquishSwitchDemo,
+  "jelly-radio": uiDemos6.JellyRadioDemo,
+  "spring-check": uiDemos6.SpringCheckDemo,
+  "peek-rating": uiDemos6.PeekRatingDemo,
+  "slide-to-confirm": uiDemos6.SlideToConfirmDemo,
+  "swipe-row": uiDemos6.SwipeRowDemo,
+  "fuse-button": uiDemos6.FuseButtonDemo,
+  "pulse-heart": uiDemos6.PulseHeartDemo,
+  "lattice-loader": uiDemos6.LatticeLoaderDemo,
+  "warm-tooltip": uiDemos6.WarmTooltipDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

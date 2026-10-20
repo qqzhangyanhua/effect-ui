@@ -8,6 +8,7 @@ import { batch8Components } from "./catalog-batch8"
 import { batch9Components } from "./catalog-batch9"
 import { batch10Components } from "./catalog-batch10"
 import { batch11Components } from "./catalog-batch11"
+import { batch12Components } from "./catalog-batch12"
 
 export type ComponentCategory =
   | "ui"
@@ -18,6 +19,7 @@ export type ComponentCategory =
   | "decor"
   | "cards"
   | "buttons"
+  | "micro"
   | "loaders"
   | "scroll"
   | "navigation"
@@ -114,6 +116,7 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   decor: "装饰 / 庆祝",
   cards: "卡片 / 3D",
   buttons: "按钮特效",
+  micro: "微交互",
   loaders: "加载",
   scroll: "滚动显现",
   navigation: "导航",
@@ -133,6 +136,7 @@ export const categoryOrder: ComponentCategory[] = [
   "decor",
   "cards",
   "buttons",
+  "micro",
   "loaders",
   "scroll",
   "navigation",
@@ -1070,6 +1074,7 @@ export const components: ComponentMeta[] = [
   ...batch9Components,
   ...batch10Components,
   ...batch11Components,
+  ...batch12Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

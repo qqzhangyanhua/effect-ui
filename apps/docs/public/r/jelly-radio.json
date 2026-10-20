@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "jelly-radio",
+  "type": "registry:ui",
+  "title": "Jelly Radio",
+  "description": "选项间移动的指示器带弹簧回弹。灵感来自 React Bits，原创实现，未打开源码。",
+  "dependencies": [
+    "@radix-ui/react-radio-group",
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/jelly-radio.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/jelly-radio.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\"\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface JellyRadioOption {\n  value: string\n  label: React.ReactNode\n  disabled?: boolean\n}\n\nexport interface JellyRadioProps {\n  options: readonly JellyRadioOption[]\n  value?: string\n  defaultValue?: string\n  onValueChange?: (value: string) => void\n  disabled?: boolean\n  stiffness?: number\n  color?: string\n  className?: string\n  name?: string\n  ref?: React.Ref<HTMLDivElement>\n  \"aria-label\"?: string\n}\n\nfunction JellyRadio({\n  options,\n  value,\n  defaultValue,\n  onValueChange,\n  disabled,\n  stiffness = 320,\n  color,\n  className,\n  name,\n  ref,\n  \"aria-label\": ariaLabel,\n}: JellyRadioProps) {\n  const reduced = usePrefersReducedMotion()\n  const layoutId = React.useId()\n  const fill = color ? { background: color } : undefined\n\n  return (\n    <RadioGroupPrimitive.Root\n      ref={ref}\n      name={name}\n      value={value}\n      defaultValue={defaultValue}\n      onValueChange={onValueChange}\n      disabled={disabled}\n      orientation=\"horizontal\"\n      aria-label={ariaLabel}\n      data-slot=\"jelly-radio\"\n      className={cn(\"inline-flex gap-1 rounded-full bg-muted p-1\", className)}\n    >\n      {options.map((option) => (\n        <RadioGroupPrimitive.Item\n          key={option.value}\n          value={option.value}\n          disabled={option.disabled}\n          className=\"relative rounded-full px-3 py-1.5 text-sm text-foreground outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:text-primary-foreground\"\n        >\n          <RadioGroupPrimitive.Indicator className=\"absolute inset-0\">\n            {reduced ? (\n              <span className=\"absolute inset-0 rounded-full bg-primary\" style={fill} />\n            ) : (\n              <motion.span\n                layoutId={layoutId}\n                className=\"absolute inset-0 rounded-full bg-primary\"\n                style={fill}\n                transition={{ type: \"spring\", stiffness, damping: 14, mass: 0.55 }}\n              />\n            )}\n          </RadioGroupPrimitive.Indicator>\n          <span className=\"relative z-10\">{option.label}</span>\n        </RadioGroupPrimitive.Item>\n      ))}\n    </RadioGroupPrimitive.Root>\n  )\n}\n\nexport { JellyRadio }\n"
+    }
+  ]
+}

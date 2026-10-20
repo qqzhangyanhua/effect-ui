@@ -1,0 +1,37 @@
+docs/debugging.md
+  s_1a119fdc934264::t_d34893b25d23a1 1-28
+docs/project-map.md
+  s_1a119fdc934264::t_d34893b25d23a1 1-7,9-14,16-49,51-52,54-61
+  s_1a119fdc934264::t_8a3abc3231bc4f 8,15,50,53
+AGENTS.md
+  s_1a119fdc934264::t_d34893b25d23a1 1-28
+.gitignore
+  s_1a119fdc934264::t_d34893b25d23a1 3
+docs/dangerous-areas.md
+  s_1a119fdc934264::t_d34893b25d23a1 1-30,32-41
+  s_1a119fdc934264::t_8a3abc3231bc4f 31
+README.md
+  s_1a119fdc934264::t_d34893b25d23a1 51,346
+docs/testing.md
+  s_1a119fdc934264::t_d34893b25d23a1 1-39
+docs/agent-plan-template.md
+  s_1a119fdc934264::t_d34893b25d23a1 1-29
+scripts/check.sh
+  s_1a119fdc934264::t_d34893b25d23a1 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "3c1495ecb77a1846655021d743015c46dcf93282",
+  "prompts": {},
+  "sessions": {
+    "s_1a119fdc934264": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "69a8edb9-d4f8-4aef-a09d-21e5d34c5705",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

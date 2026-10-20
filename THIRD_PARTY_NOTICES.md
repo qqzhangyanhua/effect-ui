@@ -313,5 +313,25 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - Batch 11（灵感来自 X，原创实现；**未使用 GSAP，抖动着色器未移植 Paper Shaders**）：`view-transition-gallery`（Apple）、`hero-scroll-zoom`（Apple）、`section-horizontal-scroll`（Apple）、`intro-preloader`（Linear）、`text-variable-scroll`（Linear）、`keycap-3d`（Raycast）、`liquid-glass-tabbar`（iOS 26）、`scroll-timeline-reveal`、`infinite-canvas-gallery`、`hover-image-list`、`dither-gradient`、`anchor-popover`、`css-accordion-auto`
 - 微交互试用（`catalog-batch12.ts`。计划里的 Batch 11 A3 与上面的滚动 / 3D Batch 11 不是同一批）：灵感来自 React Bits，原创实现，未打开源码。未在 `licenses/` 增加文件。组件：`squish-switch`、`jelly-radio`、`spring-check`、`peek-rating`、`slide-to-confirm`、`swipe-row`、`fuse-button`、`pulse-heart`、`lattice-loader`、`warm-tooltip`。`fuse-button` 不并入 `hold-button`。
 - React Bits 灵感动效（`catalog-batch13.ts`）：灵感来自 React Bits，原创实现。未打开 React Bits 源码，未在 `licenses/` 增加 React Bits 许可文本。未使用 GSAP。组件：`text-pressure`、`true-focus`、`split-flap-text`、`curved-loop`、`fuzzy-text`、`electric-border`、`sticker-peel`、`click-spark`、`glare-hover`、`card-swap`、`flowing-menu`、`dome-gallery`、`elastic-slider`、`light-rays`、`hyperspeed`。`light-rays` 与 `hyperspeed` 懒加载已登记的 OGL。
+- 原创动效与实用组件（`catalog-batch14.ts`）：灵感来自 X，原创实现。未打开 Aceternity、Hover.dev、Stripe、Linear、Vercel、Apple、GitHub 源码。未使用 GSAP。`vortex-background` 与 `flow-field` 分开登记。组件：`lens-zoom`（Hover.dev）、`world-map-arcs`（Aceternity）、`vortex-background`（Aceternity）、`beams-collision`（Aceternity）、`placeholder-vanish-input`（Aceternity）、`link-preview`（Hover.dev）、`avatar-group-tooltip`（Hover.dev）、`shuffle-grid-hero`（Aceternity）、`toc-scrollspy`（Stripe）、`sortable-list`（Linear）、`kpi-sparkline-card`（Vercel）、`cookie-consent`（Stripe）、`countdown-timer`（Apple）、`image-cropper`（Apple）、`diff-viewer`（GitHub）。
 
-完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。
+## jsdiff（BSD-3-Clause）
+
+- 仓库：https://github.com/kpdecker/jsdiff
+- 许可：BSD-3-Clause
+- 版权：Copyright (c) 2009-2015, Kevin Decker <kpdecker@gmail.com>
+- LICENSE：`licenses/bsd/jsdiff/LICENSE`
+- npm：`diff` 9.0.0
+- 衍生组件：`diff-viewer`（动态 `import("diff")`，未修改上游源码）
+- 再分发须保留版权声明与免责条款。
+
+## simplex-noise（MIT）
+
+- 仓库：https://github.com/jwagner/simplex-noise.js
+- 许可：MIT
+- 版权：Copyright (c) 2018 Jonas Wagner
+- LICENSE：`licenses/mit/simplex-noise/LICENSE`
+- npm：`simplex-noise` 4.0.3
+- 衍生组件：`vortex-background`（动态 `import("simplex-noise")` 的 `createNoise2D`，未修改上游源码）
+
+完整 MIT / Apache-2.0 / BSD-3-Clause 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`、`licenses/bsd/`、`licenses/mit/`，以及本仓库 `LICENSE`。

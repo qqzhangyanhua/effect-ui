@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beams-collision",
+  "type": "registry:ui",
+  "title": "Beams Collision",
+  "description": "灵感来自 Aceternity，原创实现。光束从顶部落下，碰到底部时迸出火花。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/beams-collision.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/beams-collision.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BeamsCollisionProps {\n  className?: string\n  count?: number\n}\n\ninterface Impact {\n  id: number\n  x: number\n}\n\nfunction ImpactSparks({ x }: { x: number }) {\n  return (\n    <span className=\"pointer-events-none absolute bottom-2\" style={{ left: x }}>\n      {Array.from({ length: 9 }, (_, index) => {\n        const angle = -180 + (index / 8) * 180\n        const rad = (angle * Math.PI) / 180\n        return (\n          <motion.span\n            key={index}\n            className=\"absolute top-0 left-0 h-0.5 w-3 origin-left rounded-full bg-cyan-100\"\n            style={{ rotate: angle }}\n            initial={{ x: 0, y: 0, opacity: 1, scaleX: 0.35 }}\n            animate={{ x: Math.cos(rad) * 30, y: Math.sin(rad) * 24, opacity: 0, scaleX: 1 }}\n            transition={{ duration: 0.42, ease: \"easeOut\" }}\n          />\n        )\n      })}\n    </span>\n  )\n}\n\nfunction BeamsCollision({ className, count = 6 }: BeamsCollisionProps) {\n  const reduced = usePrefersReducedMotion()\n  const hostRef = React.useRef<HTMLDivElement>(null)\n  const impactId = React.useRef(0)\n  const [impacts, setImpacts] = React.useState<Impact[]>([])\n  const beams = React.useMemo(\n    () =>\n      Array.from({ length: Math.max(1, count) }, (_, index) => ({\n        id: index,\n        left: 10 + ((index + 0.5) * 80) / Math.max(1, count),\n        duration: 1.25 + (index % 3) * 0.32,\n        delay: index * 0.16,\n      })),\n    [count],\n  )\n\n  const spawn = (leftPercent: number) => {\n    const host = hostRef.current\n    if (!host || reduced) return\n    impactId.current += 1\n    const id = impactId.current\n    const x = (leftPercent / 100) * host.clientWidth\n    setImpacts((current) => [...current.slice(-18), { id, x }])\n    window.setTimeout(() => {\n      setImpacts((current) => current.filter((impact) => impact.id !== id))\n    }, 460)\n  }\n\n  return (\n    <div\n      ref={hostRef}\n      data-slot=\"beams-collision\"\n      className={cn(\n        \"relative h-72 w-full overflow-hidden rounded-xl border border-white/10 bg-zinc-950\",\n        className,\n      )}\n    >\n      <style>\n        {`@keyframes effect-ui-beam-fall { from { top: -28%; } to { top: 100%; } }\n          @media (prefers-reduced-motion: reduce) {\n            [data-slot=\"beams-collision\"] .effect-ui-beam { animation: none; top: 42%; }\n          }`}\n      </style>\n      <div className=\"absolute inset-x-0 bottom-0 h-px bg-cyan-200/70\" />\n      {beams.map((beam) => (\n        <span\n          key={beam.id}\n          className=\"effect-ui-beam absolute w-px\"\n          style={{\n            left: `${beam.left}%`,\n            height: \"24%\",\n            background: \"linear-gradient(to bottom, transparent, #67e8f9 70%, #ecfeff)\",\n            boxShadow: \"0 0 12px rgba(103,232,249,0.85)\",\n            animation: reduced\n              ? undefined\n              : `effect-ui-beam-fall ${beam.duration}s linear ${beam.delay}s infinite`,\n            top: reduced ? `${18 + beam.id * 7}%` : undefined,\n          }}\n          onAnimationIteration={() => spawn(beam.left)}\n        />\n      ))}\n      {impacts.map((impact) => (\n        <ImpactSparks key={impact.id} x={impact.x} />\n      ))}\n    </div>\n  )\n}\n\nexport { BeamsCollision }\n"
+    }
+  ]
+}

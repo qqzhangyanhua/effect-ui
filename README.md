@@ -354,6 +354,28 @@ use-mobile · use-prefers-reduced-motion
 | light-rays | 灵感来自 React Bits，原创实现 |
 | hyperspeed | 灵感来自 React Bits，原创实现 |
 
+### 原创动效与实用组件
+
+登记在 `catalog-batch14.ts`（`catalog-batch13.ts` 已用于 React Bits 灵感动效）。未打开 Aceternity、Hover.dev、Stripe、Linear、Vercel、Apple、GitHub 的源码。`vortex-background` 是向心辉光漩涡，和 `flow-field` 的开放拖尾不是同一个效果。`simplex-noise` 与 `diff` 按需动态加载。
+
+| 组件 | 来源 |
+| --- | --- |
+| lens-zoom | 灵感来自 Hover.dev，原创实现 |
+| world-map-arcs | 灵感来自 Aceternity，原创实现 |
+| vortex-background | 灵感来自 Aceternity，原创实现 |
+| beams-collision | 灵感来自 Aceternity，原创实现 |
+| placeholder-vanish-input | 灵感来自 Aceternity，原创实现 |
+| link-preview | 灵感来自 Hover.dev，原创实现 |
+| avatar-group-tooltip | 灵感来自 Hover.dev，原创实现 |
+| shuffle-grid-hero | 灵感来自 Aceternity，原创实现 |
+| toc-scrollspy | 灵感来自 Stripe，原创实现 |
+| sortable-list | 灵感来自 Linear，原创实现 |
+| kpi-sparkline-card | 灵感来自 Vercel，原创实现 |
+| cookie-consent | 灵感来自 Stripe，原创实现 |
+| countdown-timer | 灵感来自 Apple，原创实现 |
+| image-cropper | 灵感来自 Apple，原创实现 |
+| diff-viewer | 灵感来自 GitHub，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

@@ -12,6 +12,7 @@ import * as effectDemos9 from "./effect-demos-9"
 import * as effectDemos10 from "./effect-demos-10"
 import * as effectDemos11 from "./effect-demos-11"
 import * as effectDemos13 from "./effect-demos-13"
+import * as effectDemos14 from "./effect-demos-14"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -326,6 +327,21 @@ const demoMap: Record<string, ComponentType> = {
   "elastic-slider": effectDemos13.ElasticSliderDemo,
   "light-rays": effectDemos13.LightRaysDemo,
   "hyperspeed": effectDemos13.HyperspeedDemo,
+  "lens-zoom": effectDemos14.LensZoomDemo,
+  "world-map-arcs": effectDemos14.WorldMapArcsDemo,
+  "vortex-background": effectDemos14.VortexBackgroundDemo,
+  "beams-collision": effectDemos14.BeamsCollisionDemo,
+  "placeholder-vanish-input": effectDemos14.PlaceholderVanishInputDemo,
+  "link-preview": effectDemos14.LinkPreviewDemo,
+  "avatar-group-tooltip": effectDemos14.AvatarGroupTooltipDemo,
+  "shuffle-grid-hero": effectDemos14.ShuffleGridHeroDemo,
+  "toc-scrollspy": effectDemos14.TocScrollspyDemo,
+  "sortable-list": effectDemos14.SortableListDemo,
+  "kpi-sparkline-card": effectDemos14.KpiSparklineCardDemo,
+  "cookie-consent": effectDemos14.CookieConsentDemo,
+  "countdown-timer": effectDemos14.CountdownTimerDemo,
+  "image-cropper": effectDemos14.ImageCropperDemo,
+  "diff-viewer": effectDemos14.DiffViewerDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

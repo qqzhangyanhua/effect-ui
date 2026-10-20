@@ -332,6 +332,28 @@ use-mobile · use-prefers-reduced-motion
 | anchor-popover | 原创（CSS anchor + Popover API） |
 | css-accordion-auto | 原创（interpolate-size） |
 
+### React Bits 灵感动效
+
+未打开 React Bits 源码。每项均为原创实现，登记为「灵感来自 React Bits，原创实现」。`curved-loop` 复用 `marquee-along-svg-path`。`light-rays` 是从单点射出的体积光锥，和 `light-beams` 的平行细光束不同。`hyperspeed` 是夜路灯轨，按住加速。重 WebGL 通过动态 `import("ogl")` 懒加载。
+
+| 组件 | 来源 |
+| --- | --- |
+| text-pressure | 灵感来自 React Bits，原创实现 |
+| true-focus | 灵感来自 React Bits，原创实现 |
+| split-flap-text | 灵感来自 React Bits，原创实现 |
+| curved-loop | 灵感来自 React Bits，原创实现 |
+| fuzzy-text | 灵感来自 React Bits，原创实现 |
+| electric-border | 灵感来自 React Bits，原创实现 |
+| sticker-peel | 灵感来自 React Bits，原创实现 |
+| click-spark | 灵感来自 React Bits，原创实现 |
+| glare-hover | 灵感来自 React Bits，原创实现 |
+| card-swap | 灵感来自 React Bits，原创实现 |
+| flowing-menu | 灵感来自 React Bits，原创实现 |
+| dome-gallery | 灵感来自 React Bits，原创实现 |
+| elastic-slider | 灵感来自 React Bits，原创实现 |
+| light-rays | 灵感来自 React Bits，原创实现 |
+| hyperspeed | 灵感来自 React Bits，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

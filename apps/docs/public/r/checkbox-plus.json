@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-plus",
+  "type": "registry:ui",
+  "title": "Checkbox Plus",
+  "description": "带文字的复选框，以及用 options 渲染的复选组。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "checkbox",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/checkbox-plus.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/checkbox-plus.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { MinusIcon } from \"lucide-react\"\n\nimport { Checkbox } from \"@/components/ui/checkbox\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CheckboxOption {\n  label: React.ReactNode\n  value: string\n  disabled?: boolean\n}\n\nexport type CheckboxOptionInput = string | CheckboxOption\n\nexport interface CheckboxPlusProps extends Omit<React.ComponentProps<typeof Checkbox>, \"checked\"> {\n  checked?: boolean\n  indeterminate?: boolean\n}\n\nexport interface CheckboxPlusGroupProps {\n  options: readonly CheckboxOptionInput[]\n  value?: string[]\n  defaultValue?: string[]\n  onValueChange?: (value: string[]) => void\n  disabled?: boolean\n  orientation?: \"horizontal\" | \"vertical\"\n  className?: string\n  id?: string\n  ref?: React.Ref<HTMLButtonElement>\n  \"aria-invalid\"?: React.AriaAttributes[\"aria-invalid\"]\n  \"aria-describedby\"?: string\n}\n\nfunction normalizeOption(option: CheckboxOptionInput): CheckboxOption {\n  if (typeof option === \"string\") return { label: option, value: option }\n  return option\n}\n\nfunction CheckboxPlus({\n  children,\n  indeterminate = false,\n  checked,\n  className,\n  id,\n  ref,\n  \"aria-invalid\": ariaInvalid,\n  \"aria-describedby\": ariaDescribedBy,\n  ...props\n}: CheckboxPlusProps) {\n  const box = (\n    <span className=\"relative inline-flex\">\n      <Checkbox\n        {...props}\n        ref={ref}\n        id={id}\n        checked={indeterminate ? \"indeterminate\" : checked}\n        aria-invalid={ariaInvalid}\n        aria-describedby={ariaDescribedBy}\n        className={cn(indeterminate && \"[&_[data-slot=checkbox-indicator]]:opacity-0\", className)}\n      />\n      {indeterminate ? <MinusIcon aria-hidden className=\"pointer-events-none absolute inset-0 m-auto size-3\" /> : null}\n    </span>\n  )\n\n  if (children == null || children === false) return box\n\n  return (\n    <label className=\"inline-flex items-center gap-2 text-sm leading-none\">\n      {box}\n      {children}\n    </label>\n  )\n}\n\nfunction CheckboxPlusGroup({\n  options,\n  value,\n  defaultValue = [],\n  onValueChange,\n  disabled = false,\n  orientation = \"horizontal\",\n  className,\n  id,\n  ref,\n  \"aria-invalid\": ariaInvalid,\n  \"aria-describedby\": ariaDescribedBy,\n}: CheckboxPlusGroupProps) {\n  const items = options.map(normalizeOption)\n  const [uncontrolled, setUncontrolled] = React.useState(defaultValue)\n  const selected = value ?? uncontrolled\n\n  function toggle(optionValue: string, next: boolean | \"indeterminate\") {\n    const picked = new Set(selected)\n    if (next === true) picked.add(optionValue)\n    else picked.delete(optionValue)\n    const ordered = items.map((item) => item.value).filter((item) => picked.has(item))\n    if (value === undefined) setUncontrolled(ordered)\n    onValueChange?.(ordered)\n  }\n\n  return (\n    <div\n      data-orientation={orientation}\n      className={cn(orientation === \"vertical\" ? \"grid gap-2\" : \"flex flex-wrap items-center gap-3\", className)}\n    >\n      {items.map((item, index) => (\n        <CheckboxPlus\n          key={item.value}\n          checked={selected.includes(item.value)}\n          disabled={disabled || item.disabled}\n          onCheckedChange={(next) => toggle(item.value, next)}\n          id={index === 0 ? id : undefined}\n          ref={index === 0 ? ref : undefined}\n          aria-invalid={ariaInvalid}\n          aria-describedby={ariaDescribedBy}\n        >\n          {item.label}\n        </CheckboxPlus>\n      ))}\n    </div>\n  )\n}\n\nexport { CheckboxPlus, CheckboxPlusGroup }\n"
+    }
+  ]
+}

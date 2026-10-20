@@ -33,6 +33,7 @@ Typecheck excludes `*.test.ts` and `*.test.tsx`, and vitest does not type-check.
 - `packages/registry/src/audit.test.ts`: unit tests for the audit rules.
 - `packages/registry/src/audit.repo.test.ts`: audits the real repo. It checks that every derived npm dependency is in `packages/registry/package.json`, every derived registry dependency is in the catalog, and that demos and the README list are complete. It also checks that `registry.json` and `apps/docs/public/r` match a fresh build. Stale generated JSON fails `pnpm test`.
 - `packages/registry/src/ui/select-plus.test.tsx`: renders `SelectPlus` and `MultiSelect` in jsdom. The file opts in with `// @vitest-environment jsdom` and calls `cleanup()` in `afterEach`, because vitest does not enable globals and Testing Library will not clean up on its own. Assertions use rendered text, roles, ARIA, and `onValueChange` / `onSearch` / `onOpenChange`.
+- `packages/registry/src/ui/button-plus.test.tsx`, `input-plus.test.tsx`, `switch-plus.test.tsx`, `checkbox-plus.test.tsx`, and `radio-plus.test.tsx` use the same jsdom setup. They render each composite through its public props and assert on text, roles, ARIA, focus, and callback calls.
 
 `jsdom`, `@testing-library/react`, `@testing-library/user-event`, and `@testing-library/jest-dom` are root devDependencies. There are no tests under `apps/docs`. Docs pages are still checked manually with `pnpm dev`.
 

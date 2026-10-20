@@ -16,6 +16,7 @@ import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
 import * as uiDemos5 from "./ui-demos-5"
+import * as uiDemos6 from "./ui-demos-6"
 
 const demoMap: Record<string, ComponentType> = {
   button: uiDemos.ButtonDemo,
@@ -145,6 +146,11 @@ const demoMap: Record<string, ComponentType> = {
   "variable-font-proximity": effectDemos3.VariableFontProximityDemo,
   dropzone: uiDemos3.DropzoneDemo,
   "select-plus": uiDemos3.SelectPlusDemo,
+  "button-plus": uiDemos6.ButtonPlusDemo,
+  "input-plus": uiDemos6.InputPlusDemo,
+  "switch-plus": uiDemos6.SwitchPlusDemo,
+  "checkbox-plus": uiDemos6.CheckboxPlusDemo,
+  "radio-plus": uiDemos6.RadioPlusDemo,
   "multi-select": uiDemos3.MultiSelectDemo,
   "tag-input": uiDemos3.TagInputDemo,
   "date-range-picker": uiDemos3.DateRangePickerDemo,

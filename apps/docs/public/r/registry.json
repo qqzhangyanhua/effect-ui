@@ -2438,6 +2438,104 @@
       ]
     },
     {
+      "name": "button-plus",
+      "type": "registry:ui",
+      "title": "Button Plus",
+      "description": "带加载、图标、危险色和整行宽度的按钮。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button-plus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-plus",
+      "type": "registry:ui",
+      "title": "Input Plus",
+      "description": "带清除、前后缀、字数、密码、搜索和自适应多行的输入。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "input-group",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/input-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input-plus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch-plus",
+      "type": "registry:ui",
+      "title": "Switch Plus",
+      "description": "带加载、轨道文案和尺寸的开关。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "switch",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/switch-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch-plus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-plus",
+      "type": "registry:ui",
+      "title": "Checkbox Plus",
+      "description": "带文字的复选框，以及用 options 渲染的复选组。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/checkbox-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox-plus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-plus",
+      "type": "registry:ui",
+      "title": "Radio Plus",
+      "description": "用 options 渲染的单选组，可排成按钮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "radio-group",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/radio-plus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/radio-plus.tsx"
+        }
+      ]
+    },
+    {
       "name": "multi-select",
       "type": "registry:ui",
       "title": "Multi Select",

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-plus",
+  "type": "registry:ui",
+  "title": "Button Plus",
+  "description": "带加载、图标、危险色和整行宽度的按钮。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/button-plus.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/button-plus.tsx",
+      "content": "import * as React from \"react\"\nimport { Loader2Icon } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\ntype ButtonProps = React.ComponentProps<typeof Button>\n\nexport interface ButtonPlusProps extends Omit<ButtonProps, \"type\"> {\n  loading?: boolean\n  icon?: React.ReactNode\n  danger?: boolean\n  block?: boolean\n  htmlType?: \"button\" | \"submit\" | \"reset\"\n}\n\nfunction hasLabel(children: React.ReactNode): boolean {\n  return React.Children.count(children) > 0\n}\n\nfunction ButtonPlus({\n  loading = false,\n  icon,\n  danger = false,\n  block = false,\n  htmlType = \"button\",\n  variant,\n  size,\n  asChild = false,\n  disabled,\n  className,\n  children,\n  onClick,\n  ...props\n}: ButtonPlusProps) {\n  const iconOnly = !hasLabel(children)\n  const solidDanger = danger && (variant === undefined || variant === \"default\" || variant === \"secondary\")\n  const resolvedVariant = solidDanger ? \"destructive\" : variant\n  const dangerClass =\n    danger && variant === \"outline\"\n      ? \"border-destructive text-destructive hover:bg-destructive/10 hover:text-destructive\"\n      : danger && variant === \"ghost\"\n        ? \"text-destructive hover:bg-destructive/10 hover:text-destructive\"\n        : danger && variant === \"link\"\n          ? \"text-destructive\"\n          : undefined\n  const square = iconOnly && !asChild\n  const buttonSize = square && (size === undefined || size === \"default\") ? \"icon\" : size\n\n  return (\n    <Button\n      {...props}\n      type={htmlType}\n      variant={resolvedVariant}\n      size={buttonSize}\n      asChild={asChild}\n      disabled={disabled || loading}\n      aria-busy={loading ? true : props[\"aria-busy\"]}\n      data-danger={danger ? \"true\" : undefined}\n      data-loading={loading ? \"true\" : undefined}\n      data-block={block ? \"true\" : undefined}\n      data-icon-only={square ? \"true\" : undefined}\n      className={cn(\n        \"relative\",\n        dangerClass,\n        block && \"w-full\",\n        square && size === \"sm\" && \"size-8\",\n        square && size === \"lg\" && \"size-10\",\n        className,\n      )}\n      onClick={(event) => {\n        if (loading) {\n          event.preventDefault()\n          return\n        }\n        onClick?.(event)\n      }}\n    >\n      {asChild ? (\n        children\n      ) : (\n        <>\n          <span\n            aria-hidden={loading || undefined}\n            className={cn(\"inline-flex items-center justify-center gap-2\", loading && \"invisible\")}\n          >\n            {icon}\n            {children}\n          </span>\n          {loading ? (\n            <span className=\"absolute inset-0 inline-flex items-center justify-center gap-2\">\n              <Loader2Icon className=\"size-4 animate-spin\" aria-hidden />\n              {children}\n            </span>\n          ) : null}\n        </>\n      )}\n    </Button>\n  )\n}\n\nexport { ButtonPlus }\n"
+    }
+  ]
+}

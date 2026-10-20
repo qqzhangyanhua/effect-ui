@@ -57,6 +57,7 @@ export interface AuditInput {
 const componentSourceDirs: Record<string, true> = {
   ui: true,
   effects: true,
+  sections: true,
   lib: true,
   hooks: true,
 }

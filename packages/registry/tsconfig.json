@@ -5,7 +5,7 @@
     "baseUrl": ".",
     "paths": {
       "@/lib/utils": ["./src/lib/utils.ts"],
-      "@/components/ui/*": ["./src/ui/*"],
+      "@/components/ui/*": ["./src/ui/*", "./src/effects/*", "./src/sections/*"],
       "@/hooks/*": ["./src/hooks/*"]
     }
   },

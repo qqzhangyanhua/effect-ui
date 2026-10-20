@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-logo-cloud",
+  "type": "registry:ui",
+  "title": "Section Logo Cloud",
+  "description": "Logo 跑马灯，两侧渐变模糊，悬停从灰度到彩色，底下跟一条时间线。",
+  "dependencies": [],
+  "registryDependencies": [
+    "marquee",
+    "progressive-blur",
+    "timeline",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-logo-cloud.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-logo-cloud.tsx",
+      "content": "import { Marquee } from \"@/components/ui/marquee\"\nimport { ProgressiveBlur } from \"@/components/ui/progressive-blur\"\nimport {\n  Timeline,\n  TimelineContent,\n  TimelineDate,\n  TimelineHeader,\n  TimelineIndicator,\n  TimelineItem,\n  TimelineSeparator,\n  TimelineTitle,\n} from \"@/components/ui/timeline\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface LogoCloudItem {\n  name: string\n}\n\nexport interface LogoCloudMilestone {\n  year: string\n  title: string\n}\n\nexport interface SectionLogoCloudProps {\n  logos?: LogoCloudItem[]\n  milestones?: LogoCloudMilestone[]\n  className?: string\n}\n\nconst defaultLogos: LogoCloudItem[] = [\n  { name: \"Northwind\" },\n  { name: \"Helix\" },\n  { name: \"Lumen\" },\n  { name: \"Orbital\" },\n  { name: \"Nimbus\" },\n  { name: \"Cascade\" },\n  { name: \"Vertex\" },\n  { name: \"Harbor\" },\n]\n\nconst defaultMilestones: LogoCloudMilestone[] = [\n  { year: \"2024\", title: \"开源 registry\" },\n  { year: \"2025\", title: \"特效批次\" },\n  { year: \"2026\", title: \"落地页区块\" },\n]\n\nfunction SectionLogoCloud({\n  logos = defaultLogos,\n  milestones = defaultMilestones,\n  className,\n}: SectionLogoCloudProps) {\n  const step = milestones.length\n\n  return (\n    <section className={cn(\"space-y-8 rounded-2xl border bg-background px-6 py-12\", className)}>\n      <div className=\"text-center\">\n        <p className=\"text-xs tracking-[0.28em] text-muted-foreground uppercase\">Logo cloud</p>\n        <h2 className=\"font-display mt-2 text-3xl\">被这些团队用在生产页</h2>\n      </div>\n      <div className=\"relative\">\n        <Marquee className=\"py-2\" pauseOnHover>\n          {logos.map((logo) => (\n            <span\n              key={logo.name}\n              className=\"rounded-full border bg-card px-5 py-2 text-sm font-medium text-muted-foreground grayscale transition hover:text-foreground hover:grayscale-0\"\n            >\n              {logo.name}\n            </span>\n          ))}\n        </Marquee>\n        <ProgressiveBlur direction=\"left\" className=\"absolute inset-y-0 left-0 w-16\" />\n        <ProgressiveBlur direction=\"right\" className=\"absolute inset-y-0 right-0 w-16\" />\n      </div>\n      <Timeline value={step} orientation=\"horizontal\" className=\"pt-2\">\n        {milestones.map((item, index) => (\n          <TimelineItem key={item.year} step={index + 1} className=\"min-w-0\">\n            <TimelineSeparator />\n            <TimelineIndicator />\n            <TimelineHeader>\n              <TimelineDate>{item.year}</TimelineDate>\n              <TimelineTitle>{item.title}</TimelineTitle>\n            </TimelineHeader>\n            <TimelineContent>落地页区块批次</TimelineContent>\n          </TimelineItem>\n        ))}\n      </Timeline>\n    </section>\n  )\n}\n\nexport { SectionLogoCloud }\n"
+    }
+  ]
+}

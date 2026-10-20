@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-sticky-feature-scroll",
+  "type": "registry:ui",
+  "title": "Section Sticky Feature Scroll",
+  "description": "粘性特性滚动：左侧画面粘住，右侧条目进入视口时切换。移植 Cult UI（MIT）结构。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-sticky-feature-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-sticky-feature-scroll.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion, useInView } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StickyFeature {\n  title: string\n  body: string\n  tint: string\n}\n\nexport interface SectionStickyFeatureScrollProps {\n  features?: StickyFeature[]\n  className?: string\n}\n\nconst defaultFeatures: StickyFeature[] = [\n  {\n    title: \"可替换背景槽\",\n    body: \"Hero 把 Silk / Iridescence / Lightning 当成插槽，而不是写死一张图。\",\n    tint: \"#7c3aed\",\n  },\n  {\n    title: \"减弱动效回退\",\n    body: \"系统开启 prefers-reduced-motion 时，着色器和地球仪换成静态渐变。\",\n    tint: \"#22d3ee\",\n  },\n  {\n    title: \"组合现有特效\",\n    body: \"区块优先引用 registry 里已有的按钮、数字翻滚和设备框。\",\n    tint: \"#f472b6\",\n  },\n]\n\nfunction FeatureRow({\n  feature,\n  index,\n  onVisible,\n}: {\n  feature: StickyFeature\n  index: number\n  onVisible: (index: number) => void\n}) {\n  const ref = React.useRef<HTMLLIElement>(null)\n  const inView = useInView(ref, { amount: 0.55 })\n\n  React.useEffect(() => {\n    if (inView) onVisible(index)\n  }, [inView, index, onVisible])\n\n  return (\n    <li ref={ref} className=\"min-h-48 py-8\">\n      <h3 className=\"font-display text-2xl\">{feature.title}</h3>\n      <p className=\"mt-2 max-w-sm text-sm text-muted-foreground\">{feature.body}</p>\n    </li>\n  )\n}\n\nfunction SectionStickyFeatureScroll({\n  features = defaultFeatures,\n  className,\n}: SectionStickyFeatureScrollProps) {\n  const reduced = usePrefersReducedMotion()\n  const [active, setActive] = React.useState(0)\n  const current = features[active] ?? features[0]\n\n  return (\n    <section className={cn(\"rounded-2xl border bg-background px-6 py-12\", className)}>\n      <p className=\"text-xs tracking-[0.28em] text-muted-foreground uppercase\">Sticky features</p>\n      <h2 className=\"font-display mt-2 text-3xl\">滚动时左侧粘住，右侧换故事</h2>\n      <div className=\"mt-8 grid gap-8 md:grid-cols-2\">\n        <div className=\"md:sticky md:top-8 h-64 overflow-hidden rounded-2xl border\">\n          <AnimatePresence mode=\"wait\">\n            <motion.div\n              key={current?.title ?? \"empty\"}\n              initial={reduced ? false : { opacity: 0, y: 16 }}\n              animate={{ opacity: 1, y: 0 }}\n              exit={reduced ? { opacity: 1 } : { opacity: 0, y: -16 }}\n              className=\"flex h-full flex-col justify-end p-6 text-white\"\n              style={{\n                background: `linear-gradient(160deg, ${current?.tint ?? \"#7c3aed\"}, #09090b)`,\n              }}\n            >\n              <p className=\"text-xs tracking-[0.2em] uppercase opacity-70\">0{active + 1}</p>\n              <p className=\"font-display mt-2 text-2xl\">{current?.title}</p>\n            </motion.div>\n          </AnimatePresence>\n        </div>\n        <ul>\n          {features.map((feature, index) => (\n            <FeatureRow key={feature.title} feature={feature} index={index} onVisible={setActive} />\n          ))}\n        </ul>\n      </div>\n    </section>\n  )\n}\n\nexport { SectionStickyFeatureScroll }\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-shader-wordmark",
+  "type": "registry:ui",
+  "title": "Footer Shader Wordmark",
+  "description": "液态金属 / 抖动着色器填充字标。减弱动效时回退渐变字。",
+  "dependencies": [],
+  "registryDependencies": [
+    "shader-backgrounds",
+    "shader-pack-2",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/footer-shader-wordmark.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/footer-shader-wordmark.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { ShaderBackground } from \"@/components/ui/shader-backgrounds\"\nimport { ShaderPack2 } from \"@/components/ui/shader-pack-2\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport type FooterShaderFill = \"liquid-metal\" | \"dithering\"\n\nexport interface FooterShaderWordmarkProps {\n  text?: string\n  fill?: FooterShaderFill\n  note?: string\n  className?: string\n}\n\nfunction FooterShaderWordmark({\n  text = \"effect-ui\",\n  fill = \"liquid-metal\",\n  note = \"液态金属 / 抖动着色器填进字标。减弱动效时回退渐变字。\",\n  className,\n}: FooterShaderWordmarkProps) {\n  const reduced = usePrefersReducedMotion()\n  const clipId = React.useId().replace(/:/g, \"\")\n\n  return (\n    <footer\n      className={cn(\n        \"overflow-hidden rounded-2xl border bg-zinc-950 px-6 py-12 text-white\",\n        className,\n      )}\n    >\n      <p className=\"text-xs tracking-[0.28em] text-white/40 uppercase\">Shader wordmark</p>\n      {reduced ? (\n        <p className=\"font-display mt-4 bg-[linear-gradient(90deg,#c4b5fd,#22d3ee,#f472b6)] bg-clip-text text-7xl text-transparent\">\n          {text}\n        </p>\n      ) : (\n        <svg viewBox=\"0 0 800 170\" className=\"mt-4 h-32 w-full\" role=\"img\" aria-label={text}>\n          <defs>\n            <clipPath id={clipId}>\n              <text\n                x=\"50%\"\n                y=\"68%\"\n                textAnchor=\"middle\"\n                fontSize=\"92\"\n                fontWeight=\"700\"\n                fontFamily=\"var(--font-display), serif\"\n              >\n                {text}\n              </text>\n            </clipPath>\n          </defs>\n          <foreignObject width=\"800\" height=\"170\" clipPath={`url(#${clipId})`}>\n            <div className=\"h-full w-full\">\n              {fill === \"dithering\" ? (\n                <ShaderBackground variant=\"dithering\" className=\"min-h-full rounded-none\" />\n              ) : (\n                <ShaderPack2 variant=\"liquid-metal\" className=\"min-h-full rounded-none\" />\n              )}\n            </div>\n          </foreignObject>\n        </svg>\n      )}\n      <p className=\"mt-2 text-sm text-white/50\">{note}</p>\n    </footer>\n  )\n}\n\nexport { FooterShaderWordmark }\n"
+    }
+  ]
+}

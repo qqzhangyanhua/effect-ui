@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-giant-wordmark",
+  "type": "registry:ui",
+  "title": "Footer Giant Wordmark",
+  "description": "灵感来自巨型字标光标描边，原创实现。指针靠近时点亮描边，减弱动效时关闭光晕。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/footer-giant-wordmark.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/footer-giant-wordmark.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FooterGiantWordmarkProps {\n  word?: string\n  note?: string\n  className?: string\n}\n\nfunction FooterGiantWordmark({\n  word = \"effect-ui\",\n  note = \"灵感来自巨型字标光标描边，原创实现。指针靠近时点亮描边。\",\n  className,\n}: FooterGiantWordmarkProps) {\n  const reduced = usePrefersReducedMotion()\n  const ref = React.useRef<HTMLElement>(null)\n  const glowRef = React.useRef<SVGCircleElement>(null)\n  const reactId = React.useId().replace(/:/g, \"\")\n  const glowId = `${reactId}-glow`\n  const maskId = `${reactId}-mask`\n\n  const onMove = (event: React.PointerEvent<HTMLElement>) => {\n    if (reduced) return\n    const box = ref.current?.getBoundingClientRect()\n    const glow = glowRef.current\n    if (!box || !glow) return\n    glow.setAttribute(\"cx\", String(event.clientX - box.left))\n    glow.setAttribute(\"cy\", String(event.clientY - box.top))\n  }\n\n  return (\n    <footer\n      ref={ref}\n      onPointerMove={onMove}\n      className={cn(\n        \"relative overflow-hidden rounded-2xl border bg-zinc-950 px-6 py-12 text-white\",\n        className,\n      )}\n    >\n      <p className=\"text-xs tracking-[0.28em] text-white/40 uppercase\">Giant wordmark</p>\n      <svg\n        viewBox=\"0 0 800 180\"\n        className=\"mt-4 h-32 w-full\"\n        role=\"img\"\n        aria-label={word}\n      >\n        <defs>\n          <radialGradient id={glowId} cx=\"50%\" cy=\"50%\" r=\"50%\">\n            <stop offset=\"0%\" stopColor=\"#c4b5fd\" />\n            <stop offset=\"55%\" stopColor=\"#7c3aed\" />\n            <stop offset=\"100%\" stopColor=\"transparent\" />\n          </radialGradient>\n          <mask id={maskId}>\n            <rect width=\"800\" height=\"180\" fill=\"black\" />\n            <text\n              x=\"50%\"\n              y=\"62%\"\n              textAnchor=\"middle\"\n              fill=\"none\"\n              stroke=\"white\"\n              strokeWidth=\"3\"\n              fontSize=\"92\"\n              fontWeight=\"700\"\n              fontFamily=\"var(--font-display), serif\"\n            >\n              {word}\n            </text>\n          </mask>\n        </defs>\n        <text\n          x=\"50%\"\n          y=\"62%\"\n          textAnchor=\"middle\"\n          fill=\"none\"\n          stroke=\"rgba(255,255,255,0.16)\"\n          strokeWidth=\"2.5\"\n          fontSize=\"92\"\n          fontWeight=\"700\"\n          fontFamily=\"var(--font-display), serif\"\n        >\n          {word}\n        </text>\n        <circle\n          ref={glowRef}\n          cx=\"400\"\n          cy=\"90\"\n          r={reduced ? \"0\" : \"120\"}\n          fill={`url(#${glowId})`}\n          mask={`url(#${maskId})`}\n        />\n      </svg>\n      <p className=\"mt-2 text-sm text-white/50\">{note}</p>\n    </footer>\n  )\n}\n\nexport { FooterGiantWordmark }\n"
+    }
+  ]
+}

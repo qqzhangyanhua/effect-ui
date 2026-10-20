@@ -14,6 +14,39 @@ _Avoid_: manifest, component list
 The hand-written record for one item: its name, description, category, and source files. It holds only facts that cannot be read from the source itself.
 _Avoid_: component meta, registry entry
 
+**Batch**:
+A group of catalog entries planned, implemented, and credited together, with one shared provenance record.
+_Avoid_: wave, release, drop
+
+### Components
+
+**Primitive**:
+A shadcn-style building block that is assembled from parts by the caller, such as `Select` with `SelectTrigger` and `SelectItem`. It stays close to its upstream shape and is never given features beyond it.
+_Avoid_: base component, raw component
+
+**Composite component**:
+A props-driven component built on one or more primitives that covers a common scenario in a single call, such as a select with search, multiple values and a clear button. It is a separate catalog entry that depends on its primitives, so the user can pick either layer. A catalog entry that was already a composite component is upgraded in place instead of getting a second entry.
+_Avoid_: aggregate component, wrapper, enhanced component
+
+### Docs site
+
+**Demo**:
+The example rendered on a catalog entry's docs page to show the item in use. Each catalog entry that is a component or block has exactly one.
+_Avoid_: example, preview (that is the page region the demo sits in), story
+
+**Control**:
+A demo prop that the reader can change live on the docs page. The catalog entry declares which props are controls and how each one is edited; a demo without controls is static.
+_Avoid_: knob, playground prop, 属性面板项
+
+### Provenance
+
+**Port**:
+Code copied from a source whose license allows redistribution, then adapted to this registry. Every port records its source and license.
+_Avoid_: copy, vendored component
+
+**Original implementation**:
+Code written from an item's publicly visible behavior without reading the source it was inspired by. Used when the source's license forbids redistribution; credited as "灵感来自 X，原创实现".
+_Avoid_: rewrite, clone, 复刻 (reads as copying)
 ### Install output
 
 **Registry item**:

@@ -9,78 +9,135 @@ export interface ProximityScaleGridProps {
   className?: string
 }
 
-const TILES = [
-  "from-violet-500 to-indigo-400",
-  "from-sky-400 to-cyan-300",
-  "from-amber-400 to-orange-500",
-  "from-emerald-400 to-teal-500",
-  "from-fuchsia-500 to-pink-400",
-  "from-lime-300 to-emerald-500",
-  "from-rose-400 to-red-500",
-  "from-blue-500 to-violet-400",
-  "from-yellow-300 to-amber-500",
-  "from-cyan-400 to-blue-600",
-  "from-orange-300 to-rose-500",
-  "from-teal-300 to-cyan-500",
-]
+type CellShape = "dot" | "square" | "plus"
+
+const SHAPES: CellShape[] = ["dot", "square", "plus"]
+const SHAPE_LABEL: Record<CellShape, string> = { dot: "圆点", square: "方块", plus: "加号" }
+
+function mix(from: number, to: number, amount: number) {
+  return from + (to - from) * amount
+}
 
 function ProximityScaleGrid({ className }: ProximityScaleGridProps) {
   const reduced = usePrefersReducedMotion()
-  const gridRef = React.useRef<HTMLDivElement>(null)
+  const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const [shape, setShape] = React.useState<CellShape>("dot")
+  const target = React.useRef({ x: -999, y: -999 })
+  const current = React.useRef({ x: -999, y: -999 })
 
-  const scaleTo = (x: number, y: number) => {
-    const grid = gridRef.current
-    if (!grid) return
-    const cells = grid.querySelectorAll<HTMLElement>("[data-cell]")
-    cells.forEach((cell) => {
-      if (reduced) {
-        cell.style.transform = "scale(1)"
+  const draw = React.useCallback(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const rect = canvas.getBoundingClientRect()
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const width = Math.max(1, Math.floor(rect.width * dpr))
+    const height = Math.max(1, Math.floor(rect.height * dpr))
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width
+      canvas.height = height
+    }
+    const context = canvas.getContext("2d")
+    if (!context) return
+    context.setTransform(dpr, 0, 0, dpr, 0, 0)
+    context.clearRect(0, 0, rect.width, rect.height)
+    const cols = 18
+    const rows = 9
+    const gapX = rect.width / cols
+    const gapY = rect.height / rows
+    const pointer = reduced ? { x: -9999, y: -9999 } : current.current
+    for (let row = 0; row < rows; row += 1) {
+      for (let col = 0; col < cols; col += 1) {
+        const x = gapX * (col + 0.5)
+        const y = gapY * (row + 0.5)
+        const distance = Math.hypot(x - pointer.x, y - pointer.y)
+        const influence = reduced ? 0 : 1 - Math.min(Math.max((distance - 28) / 140, 0), 1)
+        const scale = 0.55 + influence * influence * (3 - 2 * influence) * 1.35
+        const hue = mix(222, 168, influence)
+        context.fillStyle = `hsl(${hue} 82% ${mix(62, 70, influence)}%)`
+        context.save()
+        context.translate(x, y)
+        context.scale(scale, scale)
+        const kind = shape
+        if (kind === "dot") {
+          context.beginPath()
+          context.arc(0, 0, 3.2, 0, Math.PI * 2)
+          context.fill()
+        } else if (kind === "square") {
+          context.fillRect(-3.2, -3.2, 6.4, 6.4)
+        } else {
+          context.fillRect(-3.4, -1, 6.8, 2)
+          context.fillRect(-1, -3.4, 2, 6.8)
+        }
+        context.restore()
+      }
+    }
+  }, [reduced, shape])
+
+  const wakeRef = React.useRef<() => void>(() => {})
+
+  React.useEffect(() => {
+    let frameId = 0
+    let active = false
+    function step() {
+      const from = current.current
+      const to = target.current
+      const before = Math.hypot(from.x - to.x, from.y - to.y)
+      from.x += (to.x - from.x) * 0.18
+      from.y += (to.y - from.y) * 0.18
+      draw()
+      const after = Math.hypot(from.x - to.x, from.y - to.y)
+      if (after < 0.35 && before < 0.35) {
+        active = false
         return
       }
-      const rect = cell.getBoundingClientRect()
-      const gridRect = grid.getBoundingClientRect()
-      const cx = rect.left - gridRect.left + rect.width / 2
-      const cy = rect.top - gridRect.top + rect.height / 2
-      const distance = Math.hypot(cx - x, cy - y)
-      const scale = 1 + Math.max(0, 1 - distance / 160) * 0.42
-      cell.style.transform = `scale(${scale.toFixed(3)})`
-    })
-  }
+      frameId = window.requestAnimationFrame(step)
+    }
+    wakeRef.current = () => {
+      if (reduced) {
+        draw()
+        return
+      }
+      if (active) return
+      active = true
+      frameId = window.requestAnimationFrame(step)
+    }
+    draw()
+    return () => window.cancelAnimationFrame(frameId)
+  }, [draw, reduced])
 
   return (
-    <div data-slot="proximity-scale-grid" className={cn("w-full space-y-2", className)}>
-      <p className="text-xs text-muted-foreground">靠近指针的格子会变大。键盘聚焦时只放大当前格。</p>
-      <div
-        ref={gridRef}
-        role="list"
-        aria-label="邻近缩放网格"
-        className="grid grid-cols-3 gap-3 sm:grid-cols-4"
-        onPointerMove={(event) => {
-          const rect = event.currentTarget.getBoundingClientRect()
-          scaleTo(event.clientX - rect.left, event.clientY - rect.top)
-        }}
-        onPointerLeave={() => scaleTo(-999, -999)}
-      >
-        {TILES.map((tone, index) => (
+    <div data-slot="proximity-scale-grid" className={cn("w-full space-y-3", className)}>
+      <div role="radiogroup" aria-label="格子形状" className="flex gap-2">
+        {SHAPES.map((item) => (
           <button
-            key={tone}
+            key={item}
             type="button"
-            data-cell=""
+            role="radio"
+            aria-checked={shape === item}
             className={cn(
-              "h-16 rounded-xl bg-linear-to-br text-sm font-medium text-white outline-none transition-transform focus-visible:scale-110 focus-visible:ring-2 focus-visible:ring-primary",
-              tone,
+              "rounded-md border px-2 py-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-primary",
+              shape === item && "bg-primary text-primary-foreground",
             )}
-            onFocus={(event) => {
-              const rect = event.currentTarget.getBoundingClientRect()
-              const gridRect = gridRef.current?.getBoundingClientRect()
-              if (!gridRect) return
-              scaleTo(rect.left - gridRect.left + rect.width / 2, rect.top - gridRect.top + rect.height / 2)
-            }}
+            onClick={() => setShape(item)}
           >
-            {String(index + 1).padStart(2, "0")}
+            {SHAPE_LABEL[item]}
           </button>
         ))}
       </div>
+      <canvas
+        ref={canvasRef}
+        aria-label="邻近缩放网格。指针附近的格子放大并变色。"
+        className="h-72 w-full rounded-xl border bg-slate-950"
+        onPointerMove={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect()
+          target.current = { x: event.clientX - rect.left, y: event.clientY - rect.top }
+          wakeRef.current()
+        }}
+        onPointerLeave={() => {
+          target.current = { x: -999, y: -999 }
+          wakeRef.current()
+        }}
+      />
     </div>
   )
 }

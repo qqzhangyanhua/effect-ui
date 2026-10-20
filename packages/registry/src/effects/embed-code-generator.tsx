@@ -2,93 +2,114 @@
 
 import * as React from "react"
 
+import { AnimatedTabs } from "@/components/ui/animated-tabs"
+import { CodeBlock } from "@/components/ui/code-block"
+import { QuantityStepper } from "@/components/ui/quantity-stepper"
 import { cn } from "@/lib/utils"
+
+export interface EmbedValues {
+  width: number
+  height: number
+  unit: "px" | "%"
+  radius: number
+  theme: "light" | "dark"
+  autoplay: boolean
+}
 
 export interface EmbedCodeGeneratorProps {
   className?: string
+  template?: (values: EmbedValues) => { iframe: string; script: string }
 }
 
-function EmbedCodeGenerator({ className }: EmbedCodeGeneratorProps) {
+function defaultTemplate(values: EmbedValues) {
+  const unit = values.unit
+  const style = `width:${values.width}${unit};height:${values.height}${unit};border:0;border-radius:${values.radius}px`
+  const src = `https://embed.example.com/widget?theme=${values.theme}&autoplay=${values.autoplay ? 1 : 0}`
+  return {
+    iframe: `<iframe src="${src}" title="嵌入预览" style="${style}"></iframe>`,
+    script: `<script src="https://embed.example.com/widget.js" data-theme="${values.theme}" data-width="${values.width}${unit}" data-height="${values.height}${unit}" data-radius="${values.radius}" data-autoplay="${values.autoplay}"></script>`,
+  }
+}
+
+function EmbedCodeGenerator({ className, template = defaultTemplate }: EmbedCodeGeneratorProps) {
+  const [unit, setUnit] = React.useState<"px" | "%">("px")
   const [width, setWidth] = React.useState(480)
   const [height, setHeight] = React.useState(270)
-  const [theme, setTheme] = React.useState<"dark" | "light">("dark")
-  const [autoplay, setAutoplay] = React.useState(false)
-  const [copied, setCopied] = React.useState(false)
-  const code = `<iframe src="https://embed.invalid/view" width="${width}" height="${height}" title="嵌入预览"${autoplay ? ' data-autoplay="true"' : ""} data-theme="${theme}"></iframe>`
+  const [radius, setRadius] = React.useState(16)
+  const [theme, setTheme] = React.useState<"light" | "dark">("dark")
+  const [autoplay, setAutoplay] = React.useState(true)
+  const values = { width, height, unit, radius, theme, autoplay }
+  const code = template(values)
+  const max = unit === "px" ? 960 : 100
 
   return (
-    <section data-slot="embed-code-generator" className={cn("grid w-full gap-4 lg:grid-cols-[1fr_1fr]", className)}>
-      <div className="space-y-3">
-        <label className="flex items-center justify-between gap-3 text-sm">
+    <div data-slot="embed-code-generator" className={cn("w-full space-y-4", className)}>
+      <AnimatedTabs
+        value={unit}
+        onValueChange={(next) => setUnit(next === "%" ? "%" : "px")}
+        items={[
+          { value: "px", label: "像素", content: "尺寸按像素计算。" },
+          { value: "%", label: "百分比", content: "尺寸按容器百分比计算。" },
+        ]}
+      />
+      <div className="flex flex-wrap items-center gap-4 text-sm">
+        <label className="flex items-center gap-2">
           宽度
-          <input
-            aria-label="宽度"
-            type="number"
-            min={240}
-            max={960}
-            value={width}
-            className="h-9 w-28 rounded-md border bg-background px-2 outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            onChange={(event) => setWidth(Number(event.target.value) || 240)}
-          />
+          <QuantityStepper value={Math.min(width, max)} min={10} max={max} onValueChange={setWidth} />
         </label>
-        <label className="flex items-center justify-between gap-3 text-sm">
+        <label className="flex items-center gap-2">
           高度
-          <input
-            aria-label="高度"
-            type="number"
-            min={135}
-            max={540}
-            value={height}
-            className="h-9 w-28 rounded-md border bg-background px-2 outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            onChange={(event) => setHeight(Number(event.target.value) || 135)}
-          />
+          <QuantityStepper value={Math.min(height, max)} min={10} max={max} onValueChange={setHeight} />
         </label>
-        <label className="flex items-center justify-between gap-3 text-sm">
+        <label className="flex items-center gap-2">
+          圆角
+          <QuantityStepper value={radius} min={0} max={48} onValueChange={setRadius} />
+        </label>
+        <label className="flex items-center gap-2">
           主题
           <select
             aria-label="主题"
+            className="h-9 rounded-md border bg-background px-2"
             value={theme}
-            className="h-9 rounded-md border bg-background px-2 outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            onChange={(event) => setTheme(event.target.value as "dark" | "light")}
+            onChange={(event) => setTheme(event.target.value === "light" ? "light" : "dark")}
           >
             <option value="dark">深色</option>
             <option value="light">浅色</option>
           </select>
         </label>
-        <label className="flex items-center gap-2 text-sm">
+        <label className="flex items-center gap-2">
           <input type="checkbox" checked={autoplay} onChange={(event) => setAutoplay(event.target.checked)} />
           自动播放
         </label>
       </div>
-      <div className="space-y-3">
+      <div className="rounded-xl border bg-muted/40 p-4">
         <div
-          className={cn(
-            "flex items-center justify-center rounded-xl border text-sm",
-            theme === "dark" ? "bg-slate-950 text-slate-100" : "bg-slate-100 text-slate-900",
-          )}
-          style={{ aspectRatio: `${width} / ${height}` }}
-        >
-          {width} × {height}
-          {autoplay ? " · 自动播放" : ""}
-        </div>
-        <label className="block text-xs text-muted-foreground">
-          嵌入代码
-          <textarea aria-label="嵌入代码" readOnly value={code} rows={4} className="mt-1 w-full rounded-md border bg-background p-2 font-mono text-xs" />
-        </label>
-        <button
-          type="button"
-          className="rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          onClick={() => {
-            void navigator.clipboard?.writeText(code).then(
-              () => setCopied(true),
-              () => setCopied(false),
-            )
+          data-theme={theme}
+          className={cn("flex items-center justify-center border text-sm", theme === "dark" ? "bg-slate-950 text-white" : "bg-white text-slate-900")}
+          style={{
+            width: unit === "%" ? `${width}%` : width,
+            height: unit === "%" ? undefined : height,
+            aspectRatio: unit === "%" ? `${width} / ${height}` : undefined,
+            borderRadius: radius,
+            maxWidth: "100%",
           }}
         >
-          {copied ? "已复制" : "复制"}
-        </button>
+          实时预览 {width}
+          {unit} × {height}
+          {unit}
+        </div>
       </div>
-    </section>
+      <p className="sr-only">
+        {code.iframe}
+        {code.script}
+      </p>
+      <CodeBlock
+        files={[
+          { filename: "iframe.html", language: "html", code: code.iframe },
+          { filename: "embed.js", language: "html", code: code.script },
+        ]}
+      />
+    </div>
   )
 }
 

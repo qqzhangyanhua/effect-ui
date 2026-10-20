@@ -19,55 +19,85 @@ void main() {
 }
 `
 
-const FRAG = `
+const MASK = `
 precision highp float;
+uniform sampler2D u_prev;
 uniform vec2 u_pointer;
-uniform float u_time;
+uniform float u_down;
 varying vec2 vUv;
-
-float blob(vec2 p) {
-  float n = sin(p.x * 18.0 + u_time) * 0.012 + sin(p.y * 14.0 - u_time * 1.3) * 0.012;
-  return length(p) + n;
-}
-
 void main() {
-  vec2 p = vUv * 2.0 - 1.0;
-  float body = smoothstep(0.72, 0.55, length(p * vec2(0.85, 1.15)));
-  vec3 skin = mix(vec3(0.55, 0.32, 0.28), vec3(0.93, 0.72, 0.58), body);
-  skin = mix(vec3(0.05, 0.07, 0.1), skin, body);
-  float rib = smoothstep(0.015, 0.0, abs(fract(p.y * 7.0) - 0.5) - 0.42);
-  float spine = smoothstep(0.03, 0.0, abs(p.x));
-  vec3 bone = vec3(0.75, 0.9, 0.95) * max(rib, spine) * body;
-  vec3 xray = vec3(0.03, 0.08, 0.12) + bone;
-  vec2 pointer = u_pointer * 2.0 - 1.0;
-  float reveal = 1.0 - smoothstep(0.16, 0.34, blob(p - pointer));
-  vec3 color = mix(skin, xray, reveal);
-  gl_FragColor = vec4(color, 1.0);
+  float prev = texture2D(u_prev, vUv).r * 0.955;
+  float dist = distance(vUv, u_pointer);
+  float circle = (1.0 - smoothstep(0.05, 0.14, dist)) * u_down;
+  gl_FragColor = vec4(vec3(max(prev, circle)), 1.0);
 }
 `
 
-function XrayFallback({ x, y }: { x: number; y: number }) {
-  return (
-    <div className="absolute inset-0 bg-linear-to-br from-stone-700 to-stone-950">
-      <div
-        className="absolute size-28 -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          left: `${x * 100}%`,
-          top: `${(1 - y) * 100}%`,
-          background: "radial-gradient(circle, rgba(186,230,253,0.9), rgba(12,74,110,0.2) 70%, transparent 72%)",
-        }}
-      />
-    </div>
-  )
+const MIX = `
+precision highp float;
+uniform sampler2D u_mask;
+uniform sampler2D u_skin;
+uniform sampler2D u_bone;
+uniform float u_time;
+varying vec2 vUv;
+void main() {
+  float n = sin(vUv.x * 40.0 + u_time) * sin(vUv.y * 33.0 - u_time * 1.3);
+  float mask = smoothstep(0.28, 0.62, texture2D(u_mask, vUv).r + n * 0.06);
+  vec3 skin = texture2D(u_skin, vUv).rgb;
+  vec3 bone = texture2D(u_bone, vUv).rgb;
+  gl_FragColor = vec4(mix(skin, bone, mask), 1.0);
+}
+`
+
+function paintSkin() {
+  const canvas = document.createElement("canvas")
+  canvas.width = 640
+  canvas.height = 320
+  const context = canvas.getContext("2d")
+  if (!context) return canvas
+  const sky = context.createLinearGradient(0, 0, 0, 320)
+  sky.addColorStop(0, "#1c1917")
+  sky.addColorStop(1, "#44403c")
+  context.fillStyle = sky
+  context.fillRect(0, 0, 640, 320)
+  context.fillStyle = "#e7b8a0"
+  context.beginPath()
+  context.ellipse(320, 168, 230, 78, 0, 0, Math.PI * 2)
+  context.fill()
+  return canvas
+}
+
+function paintBone() {
+  const canvas = document.createElement("canvas")
+  canvas.width = 640
+  canvas.height = 320
+  const context = canvas.getContext("2d")
+  if (!context) return canvas
+  context.fillStyle = "#082f49"
+  context.fillRect(0, 0, 640, 320)
+  context.strokeStyle = "#e0f2fe"
+  context.lineWidth = 3
+  for (let index = 0; index < 7; index += 1) {
+    context.beginPath()
+    context.moveTo(140, 70 + index * 28)
+    context.lineTo(500, 70 + index * 28)
+    context.stroke()
+  }
+  context.lineWidth = 8
+  context.beginPath()
+  context.moveTo(320, 60)
+  context.lineTo(320, 250)
+  context.stroke()
+  return canvas
 }
 
 function XrayFluidReveal({ className }: XrayFluidRevealProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
-  const pointerRef = React.useRef({ x: 0.5, y: 0.62 })
-  const [pointer, setPointer] = React.useState({ x: 0.5, y: 0.62 })
+  const pointerRef = React.useRef({ x: 0.5, y: 0.55, down: 0 })
   const [fallback, setFallback] = React.useState(false)
+  const [showBone, setShowBone] = React.useState(false)
   const showCanvas = !reduced && !fallback
 
   React.useEffect(() => {
@@ -90,12 +120,31 @@ function XrayFluidReveal({ className }: XrayFluidRevealProps) {
       }
       const camera = new ogl.Camera(gl)
       camera.position.z = 1
-      const scene = new ogl.Transform()
+      const size = { width: 480, height: 240 }
+      let read = new ogl.RenderTarget(gl, { width: size.width, height: size.height, depth: false })
+      let write = new ogl.RenderTarget(gl, { width: size.width, height: size.height, depth: false })
       const geometry = new ogl.Plane(gl, { width: 2, height: 2 })
-      const uniforms = { u_time: { value: 0 }, u_pointer: { value: [0.5, 0.62] } }
-      const program = new ogl.Program(gl, { vertex: VERT, fragment: FRAG, uniforms })
-      const mesh = new ogl.Mesh(gl, { geometry, program })
-      mesh.setParent(scene)
+      const maskUniforms = {
+        u_prev: { value: read.texture },
+        u_pointer: { value: [0.5, 0.55] },
+        u_down: { value: 0 },
+      }
+      const maskProgram = new ogl.Program(gl, { vertex: VERT, fragment: MASK, uniforms: maskUniforms, depthTest: false })
+      const maskMesh = new ogl.Mesh(gl, { geometry, program: maskProgram, frustumCulled: false })
+      const maskScene = new ogl.Transform()
+      maskMesh.setParent(maskScene)
+      const skin = new ogl.Texture(gl, { image: paintSkin() })
+      const bone = new ogl.Texture(gl, { image: paintBone() })
+      const mixUniforms = {
+        u_mask: { value: read.texture },
+        u_skin: { value: skin },
+        u_bone: { value: bone },
+        u_time: { value: 0 },
+      }
+      const mixProgram = new ogl.Program(gl, { vertex: VERT, fragment: MIX, uniforms: mixUniforms, depthTest: false })
+      const mixMesh = new ogl.Mesh(gl, { geometry, program: mixProgram, frustumCulled: false })
+      const mixScene = new ogl.Transform()
+      mixMesh.setParent(mixScene)
       const resize = () => {
         const rect = host.getBoundingClientRect()
         renderer.setSize(Math.max(rect.width, 1), Math.max(rect.height, 1))
@@ -105,9 +154,16 @@ function XrayFluidReveal({ className }: XrayFluidRevealProps) {
       observer.observe(host)
       const started = performance.now()
       const tick = () => {
-        uniforms.u_time.value = reduced ? 0 : (performance.now() - started) / 1000
-        uniforms.u_pointer.value = [pointerRef.current.x, pointerRef.current.y]
-        renderer.render({ scene, camera })
+        maskUniforms.u_prev.value = read.texture
+        maskUniforms.u_pointer.value = [pointerRef.current.x, pointerRef.current.y]
+        maskUniforms.u_down.value = pointerRef.current.down
+        renderer.render({ scene: maskScene, camera, target: write })
+        const swap = read
+        read = write
+        write = swap
+        mixUniforms.u_mask.value = read.texture
+        mixUniforms.u_time.value = (performance.now() - started) / 1000
+        renderer.render({ scene: mixScene, camera })
         frame = window.requestAnimationFrame(tick)
       }
       frame = window.requestAnimationFrame(tick)
@@ -130,36 +186,43 @@ function XrayFluidReveal({ className }: XrayFluidRevealProps) {
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }
-  }, [reduced, showCanvas])
+  }, [showCanvas])
 
-  const place = (x: number, y: number) => {
-    const next = { x: Math.min(1, Math.max(0, x)), y: Math.min(1, Math.max(0, y)) }
-    pointerRef.current = next
-    setPointer((current) => (showCanvas ? current : next))
+  const place = (event: React.PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    pointerRef.current = {
+      x: (event.clientX - rect.left) / Math.max(rect.width, 1),
+      y: 1 - (event.clientY - rect.top) / Math.max(rect.height, 1),
+      down: event.buttons > 0 || event.type === "pointermove" ? 1 : 0,
+    }
   }
 
   return (
     <div data-slot="xray-fluid-reveal" className={cn("w-full space-y-2", className)}>
-      <p className="text-xs text-muted-foreground">移动指针，或用方向键，查看流动的内部。</p>
+      <p className="text-xs text-muted-foreground">
+        {reduced || fallback ? "点击切换外表和内部。" : "按住并移动指针，轨迹会留下柔边的透视。"}
+      </p>
       <div
         ref={hostRef}
-        tabIndex={0}
-        role="application"
-        aria-label="透视揭示。方向键移动观察点。"
-        className="relative h-72 overflow-hidden rounded-xl border outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        onPointerMove={(event) => {
-          const rect = event.currentTarget.getBoundingClientRect()
-          place((event.clientX - rect.left) / rect.width, 1 - (event.clientY - rect.top) / rect.height)
+        role="img"
+        aria-label="透视揭示"
+        className="relative h-72 overflow-hidden rounded-xl border"
+        onPointerMove={place}
+        onPointerDown={place}
+        onPointerUp={() => {
+          pointerRef.current = { ...pointerRef.current, down: 0 }
         }}
-        onKeyDown={(event) => {
-          const step = 0.06
-          if (event.key === "ArrowLeft") place(pointerRef.current.x - step, pointerRef.current.y)
-          if (event.key === "ArrowRight") place(pointerRef.current.x + step, pointerRef.current.y)
-          if (event.key === "ArrowUp") place(pointerRef.current.x, pointerRef.current.y + step)
-          if (event.key === "ArrowDown") place(pointerRef.current.x, pointerRef.current.y - step)
+        onClick={() => {
+          if (reduced || fallback) setShowBone((current) => !current)
         }}
       >
-        {showCanvas ? <canvas ref={canvasRef} className="absolute inset-0 size-full" /> : <XrayFallback x={pointer.x} y={pointer.y} />}
+        {showCanvas ? (
+          <canvas ref={canvasRef} className="absolute inset-0 size-full" />
+        ) : (
+          <div className={cn("absolute inset-0", showBone ? "bg-sky-950" : "bg-stone-700")}>
+            <div className={cn("absolute top-1/2 left-1/2 h-24 w-3/5 -translate-x-1/2 -translate-y-1/2 rounded-full", showBone ? "border-y-4 border-sky-100" : "bg-orange-200")} />
+          </div>
+        )}
       </div>
     </div>
   )

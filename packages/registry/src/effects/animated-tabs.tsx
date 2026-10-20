@@ -16,11 +16,18 @@ export interface AnimatedTabsProps {
   items: AnimatedTabsItem[]
   className?: string
   defaultValue?: string
+  value?: string
+  onValueChange?: (value: string) => void
 }
 
-function AnimatedTabs({ items, className, defaultValue }: AnimatedTabsProps) {
+function AnimatedTabs({ items, className, defaultValue, value: valueProp, onValueChange }: AnimatedTabsProps) {
   const reduce = usePrefersReducedMotion()
-  const [value, setValue] = React.useState(defaultValue ?? items[0]?.value ?? "")
+  const [uncontrolled, setUncontrolled] = React.useState(defaultValue ?? items[0]?.value ?? "")
+  const value = valueProp ?? uncontrolled
+  const setValue = (next: string) => {
+    if (valueProp === undefined) setUncontrolled(next)
+    onValueChange?.(next)
+  }
   const current = items.find((item) => item.value === value)
 
   return (

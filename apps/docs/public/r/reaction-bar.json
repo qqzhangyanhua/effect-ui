@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reaction-bar",
+  "type": "registry:ui",
+  "title": "Reaction Bar",
+  "description": "帖子和评论共用的表情反应条。计数用数字滚动，选中时轻轻弹一下。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "number-flow",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/reaction-bar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/reaction-bar.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\n\nimport { NumberFlow } from \"@/components/ui/number-flow\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ReactionItem {\n  emoji: string\n  count: number\n  active?: boolean\n}\n\nexport interface ReactionBarProps {\n  items: readonly ReactionItem[]\n  onToggle: (emoji: string) => void\n  className?: string\n}\n\nfunction ReactionBar({ items, onToggle, className }: ReactionBarProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <div data-slot=\"reaction-bar\" className={cn(\"flex flex-wrap gap-2\", className)}>\n      {items.map((item) => (\n        <motion.button\n          key={item.emoji}\n          type=\"button\"\n          aria-pressed={Boolean(item.active)}\n          className={cn(\n            \"inline-flex items-center gap-1 rounded-full border px-2 py-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n            item.active && \"border-primary bg-primary/10\",\n          )}\n          animate={reduced || !item.active ? { scale: 1 } : { scale: [1, 1.18, 1] }}\n          transition={reduced ? { duration: 0 } : { duration: 0.28 }}\n          onClick={() => onToggle(item.emoji)}\n        >\n          <span aria-hidden>{item.emoji}</span>\n          <NumberFlow value={item.count} />\n          <span className=\"sr-only\">{item.active ? \"已反应\" : \"反应\"}</span>\n        </motion.button>\n      ))}\n    </div>\n  )\n}\n\nexport { ReactionBar }\n"
+    }
+  ]
+}

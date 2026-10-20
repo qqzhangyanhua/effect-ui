@@ -390,6 +390,7 @@ const demoMap: Record<string, ComponentType> = {
   "signature-pad": effectDemos17.SignaturePadDemo,
   "poll-vote": effectDemos17.PollVoteDemo,
   "schedule-slot-picker": effectDemos17.ScheduleSlotPickerDemo,
+  "reaction-bar": effectDemos17.ReactionBarDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

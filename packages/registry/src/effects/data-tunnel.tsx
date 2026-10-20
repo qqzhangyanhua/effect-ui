@@ -10,49 +10,59 @@ export interface DataTunnelProps {
 }
 
 const VERT = `
-attribute vec2 uv;
 attribute vec3 position;
+attribute vec2 uv;
+attribute vec3 aCenter;
+attribute float aCell;
+uniform float u_depth;
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
 varying vec2 vUv;
 void main() {
-  vUv = uv;
-  gl_Position = vec4(position, 1.0);
+  float z = mod(aCenter.z - u_depth, 8.0) - 4.0;
+  vec3 p = vec3(aCenter.x, aCenter.y, 0.0) + position * vec3(0.09, 0.045, 1.0);
+  p.z += z;
+  vUv = vec2((uv.x + mod(aCell, 16.0)) / 16.0, uv.y);
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
 }
 `
 
 const FRAG = `
 precision highp float;
-uniform float u_time;
+uniform sampler2D u_atlas;
 varying vec2 vUv;
-
 void main() {
-  vec2 p = vUv * 2.0 - 1.0;
-  float r = length(p);
-  float depth = fract(0.18 / max(r, 0.025) - u_time * 0.35);
-  float ring = smoothstep(0.05, 0.0, abs(fract(depth * 5.0) - 0.5) - 0.4);
-  float spoke = smoothstep(0.035, 0.0, abs(fract(atan(p.y, p.x) * 1.2) - 0.5) - 0.45);
-  float lane = max(ring, spoke) * smoothstep(0.0, 0.12, r);
-  vec3 color = mix(vec3(0.01, 0.03, 0.08), vec3(0.15, 0.75, 0.85), lane);
-  color += vec3(0.9, 0.95, 1.0) * smoothstep(0.12, 0.0, r);
-  gl_FragColor = vec4(color, 1.0);
+  float glyph = texture2D(u_atlas, vUv).r;
+  vec3 color = mix(vec3(0.05, 0.2, 0.28), vec3(0.65, 0.95, 1.0), glyph);
+  gl_FragColor = vec4(color, 0.35 + glyph * 0.65);
 }
 `
 
-function TunnelFallback() {
-  return (
-    <div
-      className="absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(circle at 50% 50%, #e2e8f0 0 4%, transparent 5%), repeating-radial-gradient(circle at 50% 50%, transparent 0 18px, rgba(34,211,238,0.45) 18px 20px)",
-      }}
-    />
-  )
+const CHARS = "0123456789ABCDEF"
+
+function paintAtlas() {
+  const canvas = document.createElement("canvas")
+  canvas.width = 512
+  canvas.height = 32
+  const context = canvas.getContext("2d")
+  if (!context) return canvas
+  context.fillStyle = "#042f2e"
+  context.fillRect(0, 0, 512, 32)
+  context.fillStyle = "#ecfeff"
+  context.font = "22px monospace"
+  context.textAlign = "center"
+  context.textBaseline = "middle"
+  for (let index = 0; index < CHARS.length; index += 1) {
+    context.fillText(CHARS[index] ?? "", index * 32 + 16, 17)
+  }
+  return canvas
 }
 
 function DataTunnel({ className }: DataTunnelProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const boost = React.useRef(0)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
 
@@ -74,24 +84,62 @@ function DataTunnel({ className }: DataTunnelProps) {
         })
         return undefined
       }
-      const camera = new ogl.Camera(gl)
-      camera.position.z = 1
+      const camera = new ogl.Camera(gl, { fov: 42, near: 0.1, far: 20 })
+      camera.position.z = 0.2
+      const rings = 10
+      const segments = 14
+      const count = rings * segments
+      const centers = new Float32Array(count * 3)
+      const cells = new Float32Array(count)
+      for (let ring = 0; ring < rings; ring += 1) {
+        for (let segment = 0; segment < segments; segment += 1) {
+          const index = ring * segments + segment
+          const angle = (segment / segments) * Math.PI * 2
+          const radius = 0.72 + (ring % 3) * 0.08
+          centers[index * 3] = Math.cos(angle) * radius
+          centers[index * 3 + 1] = Math.sin(angle) * radius
+          centers[index * 3 + 2] = ring * 0.8
+          cells[index] = (ring + segment) % CHARS.length
+        }
+      }
+      const geometry = new ogl.Geometry(gl, {
+        position: { size: 3, data: new Float32Array([-1, -1, 0, 1, -1, 0, -1, 1, 0, 1, 1, 0]) },
+        uv: { size: 2, data: new Float32Array([0, 0, 1, 0, 0, 1, 1, 1]) },
+        index: { data: new Uint16Array([0, 1, 2, 2, 1, 3]) },
+        aCenter: { size: 3, data: centers, instanced: 1 },
+        aCell: { size: 1, data: cells, instanced: 1 },
+      })
+      const atlas = new ogl.Texture(gl, { image: paintAtlas(), minFilter: gl.LINEAR, magFilter: gl.LINEAR })
+      const uniforms = { u_depth: { value: 0 }, u_atlas: { value: atlas } }
+      const program = new ogl.Program(gl, {
+        vertex: VERT,
+        fragment: FRAG,
+        uniforms,
+        transparent: true,
+        depthWrite: false,
+      })
       const scene = new ogl.Transform()
-      const geometry = new ogl.Plane(gl, { width: 2, height: 2 })
-      const uniforms = { u_time: { value: 0 } }
-      const program = new ogl.Program(gl, { vertex: VERT, fragment: FRAG, uniforms })
-      const mesh = new ogl.Mesh(gl, { geometry, program })
+      const mesh = new ogl.Mesh(gl, { geometry, program, frustumCulled: false })
       mesh.setParent(scene)
+      let depth = 0
+      let speed = 0.35
       const resize = () => {
         const rect = host.getBoundingClientRect()
         renderer.setSize(Math.max(rect.width, 1), Math.max(rect.height, 1))
+        camera.perspective({ aspect: Math.max(rect.width, 1) / Math.max(rect.height, 1), fov: camera.fov })
       }
       resize()
       const observer = new ResizeObserver(resize)
       observer.observe(host)
-      const started = performance.now()
       const tick = () => {
-        uniforms.u_time.value = (performance.now() - started) / 1000
+        speed += boost.current
+        speed = Math.max(0.18, Math.min(2.4, speed * 0.96))
+        boost.current *= 0.9
+        depth += speed * 0.04
+        uniforms.u_depth.value = depth
+        const fov = 38 + speed * 16
+        camera.fov = fov
+        camera.perspective({ fov, aspect: gl.canvas.width / Math.max(gl.canvas.height, 1) })
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
@@ -119,9 +167,32 @@ function DataTunnel({ className }: DataTunnelProps) {
 
   return (
     <div data-slot="data-tunnel" className={cn("w-full space-y-2", className)}>
-      <p className="text-xs text-muted-foreground">数据沿隧道向前。减弱动效时画面静止。</p>
-      <div ref={hostRef} role="img" aria-label="数据隧道" className="relative h-72 overflow-hidden rounded-xl border bg-slate-950">
-        {showCanvas ? <canvas ref={canvasRef} className="absolute inset-0 size-full" /> : <TunnelFallback />}
+      <p className="text-xs text-muted-foreground">滚动或按住加速。视野会随速度张开。减弱动效时保持静止。</p>
+      <div
+        ref={hostRef}
+        role="img"
+        aria-label="数据隧道"
+        className="relative h-72 overflow-hidden rounded-xl border bg-slate-950"
+        onWheel={(event) => {
+          if (reduced) return
+          event.preventDefault()
+          boost.current += Math.min(0.4, Math.abs(event.deltaY) * 0.0015)
+        }}
+        onPointerDown={() => {
+          boost.current += 0.35
+        }}
+      >
+        {showCanvas ? (
+          <canvas ref={canvasRef} className="absolute inset-0 size-full" />
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 50%, #e0f2fe 0 3%, transparent 4%), repeating-radial-gradient(circle at 50% 50%, transparent 0 16px, rgba(34,211,238,0.4) 16px 18px)",
+            }}
+          />
+        )}
       </div>
     </div>
   )

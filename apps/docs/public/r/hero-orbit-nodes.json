@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-orbit-nodes",
+  "type": "registry:ui",
+  "title": "Hero Orbit Nodes",
+  "description": "灵感来自 Air（via Mobbin），原创实现。透视虚线椭圆轨道，光球用虚线连回中心。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/hero-orbit-nodes.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-orbit-nodes.tsx",
+      "content": "\"use client\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface OrbitNode {\n  label: string\n  tint: string\n}\n\nexport interface HeroOrbitNodesProps {\n  title?: string\n  nodes?: OrbitNode[]\n  className?: string\n}\n\nconst defaultNodes: OrbitNode[] = [\n  { label: \"采集\", tint: \"#a78bfa\" },\n  { label: \"同步\", tint: \"#67e8f9\" },\n  { label: \"发布\", tint: \"#f9a8d4\" },\n  { label: \"回放\", tint: \"#fcd34d\" },\n]\n\nfunction HeroOrbitNodes({\n  title = \"虚线椭圆轨道，每颗光球都连回中心\",\n  nodes = defaultNodes,\n  className,\n}: HeroOrbitNodesProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <section className={cn(\"overflow-hidden rounded-2xl border bg-zinc-950 px-6 py-14 text-white\", className)}>\n      <style>\n        {`@keyframes eu-spin { to { transform: rotate(360deg); } }`}\n      </style>\n      <div className=\"mx-auto grid max-w-4xl items-center gap-8 md:grid-cols-[0.8fr_1.2fr]\">\n        <div>\n          <p className=\"font-mono text-xs tracking-[0.28em] text-white/50 uppercase\">Orbit nodes</p>\n          <h2 className=\"font-display mt-3 text-4xl tracking-tight text-balance\">{title}</h2>\n        </div>\n        <div className=\"relative mx-auto h-72 w-full max-w-md [perspective:900px]\">\n          <div className=\"absolute inset-0 [transform:rotateX(62deg)]\">\n            {nodes.map((node, index) => {\n              const radius = 72 + index * 18\n              return (\n                <div\n                  key={node.label}\n                  className=\"absolute top-1/2 left-1/2\"\n                  style={{\n                    width: radius * 2,\n                    height: radius * 0.72,\n                    marginLeft: -radius,\n                    marginTop: -radius * 0.36,\n                  }}\n                >\n                  <div className=\"absolute inset-0 rounded-[50%] border border-dashed border-white/30\" />\n                  <div\n                    className=\"absolute inset-0\"\n                    style={{ animation: reduced ? undefined : `eu-spin ${16 + index * 5}s linear infinite` }}\n                  >\n                    <span className=\"absolute top-1/2 left-0 h-px w-1/2 -translate-y-1/2 border-t border-dashed border-white/50\" />\n                    <span\n                      className=\"absolute top-1/2 left-0 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_0_18px_currentColor]\"\n                      style={{ background: node.tint, color: node.tint }}\n                    />\n                  </div>\n                </div>\n              )\n            })}\n            <span className=\"absolute top-1/2 left-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white\" />\n          </div>\n          <ul className=\"absolute inset-x-0 bottom-0 flex justify-center gap-3 text-[11px] text-white/70\">\n            {nodes.map((node) => (\n              <li key={node.label} className=\"flex items-center gap-1\">\n                <span className=\"size-1.5 rounded-full\" style={{ background: node.tint }} />\n                {node.label}\n              </li>\n            ))}\n          </ul>\n        </div>\n      </div>\n    </section>\n  )\n}\n\nexport { HeroOrbitNodes }\n"
+    }
+  ]
+}

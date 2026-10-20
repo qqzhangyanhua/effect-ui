@@ -273,5 +273,6 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - Batch 8 Group B（灵感来自 X，原创实现，**未打开 Aceternity / v0 / Lovable / Preline / shadcnblocks / Tailwind Plus 源码**）：`hero-ai-prompt`、`hero-parallax-wall`、`footer-giant-wordmark`
 - Batch 8 组合区块：`hero-shader`、`hero-product-mockup`、`hero-kinetic-text`、`footer-shader-wordmark`、`section-logo-cloud`、`section-animated-bento`、`section-pricing-flow`
 - Batch 9 Group B（灵感来自 X，原创实现，**未打开 Aceternity / Awwwards / Magic UI Pro / Once UI magic-portfolio / Tailwind Plus 源码**）：`apple-cards-carousel`、`saas-template`、`ai-product-template`、`devtool-template`、`agency-template`
+- Batch 10（Inspired by <App> (via Mobbin), original implementation。只参考版式与交互，**未复制标志、文案或图片**）：`hero-annotated-showcase`（ToDesktop）、`hero-wave-mask-gallery`（Kajabi）、`hero-inline-mascot`（Phantom）、`hero-orbit-nodes`（Air）、`hero-swirl-avatars`（Wizz）、`footer-dot-matrix-wordmark`（Fuser）、`footer-social-marquee`（BAGGU）、`section-pricing-perspective-grid`（Dovetail）、`section-pricing-product-tabs`（Better Stack）、`section-pattern-cards`（Loom）、`section-stats-cornered`（Spade）、`section-stats-blob`（Oyster）、`section-dotted-feature-tabs`（Maze）、`cta-ribbon-swoosh`（The Leap）、`section-testimonial-split`（Paraform）
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

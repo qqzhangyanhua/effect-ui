@@ -9,6 +9,7 @@ import * as effectDemos6 from "./effect-demos-6"
 import * as effectDemos7 from "./effect-demos-7"
 import * as effectDemos8 from "./effect-demos-8"
 import * as effectDemos9 from "./effect-demos-9"
+import * as effectDemos10 from "./effect-demos-10"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -259,6 +260,21 @@ const demoMap: Record<string, ComponentType> = {
   "devtool-template": effectDemos9.DevtoolTemplateDemo,
   "portfolio-template": effectDemos9.PortfolioTemplateDemo,
   "agency-template": effectDemos9.AgencyTemplateDemo,
+  "hero-annotated-showcase": effectDemos10.HeroAnnotatedShowcaseDemo,
+  "hero-wave-mask-gallery": effectDemos10.HeroWaveMaskGalleryDemo,
+  "hero-inline-mascot": effectDemos10.HeroInlineMascotDemo,
+  "hero-orbit-nodes": effectDemos10.HeroOrbitNodesDemo,
+  "hero-swirl-avatars": effectDemos10.HeroSwirlAvatarsDemo,
+  "footer-dot-matrix-wordmark": effectDemos10.FooterDotMatrixWordmarkDemo,
+  "footer-social-marquee": effectDemos10.FooterSocialMarqueeDemo,
+  "section-pricing-perspective-grid": effectDemos10.SectionPricingPerspectiveGridDemo,
+  "section-pricing-product-tabs": effectDemos10.SectionPricingProductTabsDemo,
+  "section-pattern-cards": effectDemos10.SectionPatternCardsDemo,
+  "section-stats-cornered": effectDemos10.SectionStatsCorneredDemo,
+  "section-stats-blob": effectDemos10.SectionStatsBlobDemo,
+  "section-dotted-feature-tabs": effectDemos10.SectionDottedFeatureTabsDemo,
+  "cta-ribbon-swoosh": effectDemos10.CtaRibbonSwooshDemo,
+  "section-testimonial-split": effectDemos10.SectionTestimonialSplitDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

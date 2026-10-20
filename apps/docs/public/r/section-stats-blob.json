@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-stats-blob",
+  "type": "registry:ui",
+  "title": "Section Stats Blob",
+  "description": "灵感来自 Oyster（via Mobbin），原创实现。数字落在手绘色块上，色块弹出后缓慢变形。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-stats-blob.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-stats-blob.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BlobStat {\n  label: string\n  value: string\n}\n\nexport interface SectionStatsBlobProps {\n  stats?: BlobStat[]\n  className?: string\n}\n\nconst defaultStats: BlobStat[] = [\n  { label: \"周活跃\", value: \"12k\" },\n  { label: \"回访\", value: \"64%\" },\n  { label: \"完成\", value: \"4.8\" },\n]\n\nconst blobA = \"M70,18 C104,8 128,40 116,74 C104,108 48,118 24,86 C2,54 32,28 70,18 Z\"\nconst blobB = \"M78,12 C118,22 124,64 102,92 C80,120 28,108 16,74 C4,40 36,2 78,12 Z\"\n\nfunction SectionStatsBlob({ stats = defaultStats, className }: SectionStatsBlobProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <section className={cn(\"rounded-2xl border bg-background px-4 py-12\", className)}>\n      <div className=\"mx-auto grid max-w-4xl gap-6 sm:grid-cols-3\">\n        {stats.map((stat, index) => (\n          <div key={stat.label} className=\"relative grid h-44 place-items-center\">\n            <svg viewBox=\"0 0 140 130\" className=\"absolute inset-0 size-full\" aria-hidden>\n              <motion.path\n                d={blobA}\n                fill=\"color-mix(in oklab, var(--primary) 72%, white)\"\n                initial={reduced ? false : { opacity: 0, scale: 0.82 }}\n                animate={\n                  reduced\n                    ? { opacity: 1, scale: 1, d: blobA }\n                    : { opacity: 1, scale: 1, d: [blobA, blobB, blobA] }\n                }\n                transition={\n                  reduced\n                    ? { duration: 0 }\n                    : { opacity: { duration: 0.4 }, scale: { type: \"spring\", delay: index * 0.08 }, d: { duration: 7, repeat: Infinity, ease: \"easeInOut\" } }\n                }\n                style={{ transformOrigin: \"70px 65px\" }}\n              />\n            </svg>\n            <div className=\"relative text-center text-zinc-950\">\n              <p className=\"font-display text-4xl\">{stat.value}</p>\n              <p className=\"text-xs\">{stat.label}</p>\n            </div>\n          </div>\n        ))}\n      </div>\n    </section>\n  )\n}\n\nexport { SectionStatsBlob }\n"
+    }
+  ]
+}

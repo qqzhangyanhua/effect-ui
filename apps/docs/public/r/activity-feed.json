@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "activity-feed",
+  "type": "registry:ui",
+  "title": "Activity Feed",
+  "description": "灵感来自 Dropbox，原创实现。按今天和近 7 天分组，显示相对时间、同步条，新动态滑入。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/activity-feed.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/activity-feed.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ActivityItem {\n  id: string\n  title: string\n  at: number\n}\n\nexport interface ActivityFeedProps {\n  className?: string\n}\n\nconst NOW = Date.UTC(2026, 9, 20, 18, 0, 0)\nconst HOUR = 3600000\n\nconst INITIAL: readonly ActivityItem[] = [\n  { id: \"sync\", title: \"文件已对齐\", at: NOW - 2 * HOUR },\n  { id: \"note\", title: \"留下一条批注\", at: NOW - 5 * HOUR },\n  { id: \"share\", title: \"发出查看链接\", at: NOW - 26 * HOUR },\n  { id: \"rename\", title: \"重命名了目录\", at: NOW - 50 * HOUR },\n]\n\nfunction relative(at: number) {\n  const hours = Math.max(0, Math.round((NOW - at) / HOUR))\n  if (hours < 1) return \"刚刚\"\n  if (hours < 24) return `${hours} 小时前`\n  return `${Math.round(hours / 24)} 天前`\n}\n\nfunction groupOf(at: number) {\n  return NOW - at < 24 * HOUR ? \"今天\" : \"近 7 天\"\n}\n\nfunction ActivityFeed({ className }: ActivityFeedProps) {\n  const reduced = usePrefersReducedMotion()\n  const nextId = React.useRef(1)\n  const [items, setItems] = React.useState<ActivityItem[]>([...INITIAL])\n  const [syncing, setSyncing] = React.useState(false)\n  const groups = [\"今天\", \"近 7 天\"]\n    .map((name) => ({ name, items: items.filter((item) => groupOf(item.at) === name) }))\n    .filter((group) => group.items.length > 0)\n\n  const addItem = () => {\n    nextId.current += 1\n    setItems((current) => [{ id: `new-${nextId.current}`, title: \"新的同步记录\", at: NOW - 10 * 60000 }, ...current])\n  }\n\n  const sync = () => {\n    setSyncing(true)\n    window.setTimeout(() => setSyncing(false), reduced ? 0 : 700)\n  }\n\n  return (\n    <section data-slot=\"activity-feed\" className={cn(\"w-full space-y-4\", className)}>\n      <div className=\"flex items-center gap-3\">\n        <div className=\"h-1.5 flex-1 overflow-hidden rounded-full bg-muted\" role=\"status\" aria-live=\"polite\">\n          <div className={cn(\"h-full bg-primary\", syncing ? \"w-2/3\" : \"w-full\")} style={{ transition: reduced ? \"none\" : \"width 300ms ease\" }} />\n        </div>\n        <span className=\"text-xs text-muted-foreground\">{syncing ? \"正在同步\" : \"已同步\"}</span>\n        <button type=\"button\" className=\"rounded-md border px-2 py-1 text-xs\" onClick={sync}>\n          同步\n        </button>\n        <button type=\"button\" className=\"rounded-md bg-primary px-2 py-1 text-xs text-primary-foreground\" onClick={addItem}>\n          新动态\n        </button>\n      </div>\n      {groups.map((group) => (\n        <section key={group.name}>\n          <h2 className=\"mb-2 text-sm font-medium\">{group.name}</h2>\n          <ul className=\"space-y-2\">\n            {group.items.map((item) => (\n              <motion.li\n                key={item.id}\n                layout\n                initial={reduced ? false : { y: -10, opacity: 0 }}\n                animate={{ y: 0, opacity: 1 }}\n                transition={{ duration: reduced ? 0 : 0.28 }}\n                className=\"flex items-center justify-between rounded-lg border px-3 py-2 text-sm\"\n              >\n                <span>{item.title}</span>\n                <time dateTime={new Date(item.at).toISOString()} className=\"text-xs text-muted-foreground\">\n                  {relative(item.at)}\n                </time>\n              </motion.li>\n            ))}\n          </ul>\n        </section>\n      ))}\n    </section>\n  )\n}\n\nexport { ActivityFeed }\n"
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import * as effectDemos11 from "./effect-demos-11"
 import * as effectDemos13 from "./effect-demos-13"
 import * as effectDemos14 from "./effect-demos-14"
 import * as effectDemos15 from "./effect-demos-15"
+import * as effectDemos16 from "./effect-demos-16"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -358,6 +359,21 @@ const demoMap: Record<string, ComponentType> = {
   "text-generate": effectDemos15.TextGenerateDemo,
   "column-config-panel": effectDemos15.ColumnConfigPanelDemo,
   "resource-search-hero": effectDemos15.ResourceSearchHeroDemo,
+  "datamosh-transition": effectDemos16.DatamoshTransitionDemo,
+  "loom-threads-marquee": effectDemos16.LoomThreadsMarqueeDemo,
+  "hologram-card": effectDemos16.HologramCardDemo,
+  "sketch-hatch-image": effectDemos16.SketchHatchImageDemo,
+  "scroll-3d-image-rotate": effectDemos16.Scroll3dImageRotateDemo,
+  "thumbnail-flow-path": effectDemos16.ThumbnailFlowPathDemo,
+  "shader-grid-wide": effectDemos16.ShaderGridWideDemo,
+  "sea-waves-background": effectDemos16.SeaWavesBackgroundDemo,
+  "cinema-seat-picker": effectDemos16.CinemaSeatPickerDemo,
+  "publication-filter-list": effectDemos16.PublicationFilterListDemo,
+  "activity-feed": effectDemos16.ActivityFeedDemo,
+  "project-update-card": effectDemos16.ProjectUpdateCardDemo,
+  "share-invite-panel": effectDemos16.ShareInvitePanelDemo,
+  "changelog-feed": effectDemos16.ChangelogFeedDemo,
+  "setup-guide": effectDemos16.SetupGuideDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

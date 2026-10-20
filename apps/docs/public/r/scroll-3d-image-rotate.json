@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-3d-image-rotate",
+  "type": "registry:ui",
+  "title": "Scroll 3D Image Rotate",
+  "description": "灵感来自 Codrops，原创实现。滚动时色块绕竖直轴翻入，再翻出。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scroll-3d-image-rotate.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-3d-image-rotate.tsx",
+      "content": "\"use client\"\n\nimport { motion, useMotionValue, useTransform, type MotionValue } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface Scroll3dImageRotateProps {\n  className?: string\n}\n\nconst CARDS = [\n  { id: \"north\", label: \"01\", hue: 262 },\n  { id: \"east\", label: \"02\", hue: 190 },\n  { id: \"south\", label: \"03\", hue: 28 },\n  { id: \"west\", label: \"04\", hue: 330 },\n]\n\nfunction FlipCard({\n  card,\n  index,\n  progress,\n  reduced,\n}: {\n  card: (typeof CARDS)[number]\n  index: number\n  progress: MotionValue<number>\n  reduced: boolean\n}) {\n  const start = index * 0.16\n  const rotateY = useTransform(progress, [start, start + 0.16, start + 0.34], [80, 0, -80])\n  const opacity = useTransform(progress, [start, start + 0.08, start + 0.28, start + 0.38], [0.15, 1, 1, 0.15])\n  return (\n    <motion.div\n      className=\"absolute inset-x-8 top-10 flex h-48 items-end rounded-2xl p-4 text-2xl font-medium text-white shadow-xl\"\n      style={{\n        background: `linear-gradient(150deg, hsl(${card.hue} 55% 32%), hsl(${card.hue} 75% 52%))`,\n        rotateY: reduced ? 0 : rotateY,\n        opacity: reduced ? 1 : opacity,\n      }}\n    >\n      {card.label}\n    </motion.div>\n  )\n}\n\nfunction Scroll3dImageRotate({ className }: Scroll3dImageRotateProps) {\n  const reduced = usePrefersReducedMotion()\n  const progress = useMotionValue(0)\n\n  return (\n    <div\n      data-slot=\"scroll-3d-image-rotate\"\n      tabIndex={0}\n      aria-label=\"滚动时色块绕竖直轴翻入再翻出。\"\n      className={cn(\n        \"h-96 w-full overflow-auto rounded-xl border bg-zinc-950 outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n        className,\n      )}\n      onScroll={(event) => {\n        if (reduced) return\n        const element = event.currentTarget\n        const max = element.scrollHeight - element.clientHeight\n        progress.set(max <= 0 ? 1 : element.scrollTop / max)\n      }}\n    >\n      <div className=\"h-[220vh]\">\n        <div className=\"sticky top-0 h-96 [perspective:900px]\">\n          {CARDS.map((card, index) => (\n            <FlipCard key={card.id} card={card} index={index} progress={progress} reduced={reduced} />\n          ))}\n          <p className=\"absolute bottom-4 left-4 text-xs text-zinc-400\">\n            {reduced ? \"色块叠放，不再翻转。\" : \"在这个区域里滚动。\"}\n          </p>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport { Scroll3dImageRotate }\n"
+    }
+  ]
+}

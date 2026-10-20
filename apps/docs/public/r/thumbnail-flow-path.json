@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thumbnail-flow-path",
+  "type": "registry:ui",
+  "title": "Thumbnail Flow Path",
+  "description": "灵感来自 Codrops，原创实现。缩略图沿 S 形 offset-path 飞过，然后落进网格。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/thumbnail-flow-path.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/thumbnail-flow-path.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ThumbnailFlowPathProps {\n  className?: string\n}\n\nconst TILES = [\n  { id: \"a\", label: \"01\", hue: 262 },\n  { id: \"b\", label: \"02\", hue: 190 },\n  { id: \"c\", label: \"03\", hue: 24 },\n  { id: \"d\", label: \"04\", hue: 330 },\n  { id: \"e\", label: \"05\", hue: 152 },\n  { id: \"f\", label: \"06\", hue: 48 },\n]\n\nconst PATH = \"M 36 210 C 140 20, 260 20, 340 180 S 560 340, 700 120\"\n\nfunction ThumbnailFlowPath({ className }: ThumbnailFlowPathProps) {\n  const reduced = usePrefersReducedMotion()\n  const [phase, setPhase] = React.useState<\"stack\" | \"fly\" | \"grid\">(reduced ? \"grid\" : \"stack\")\n  const done = React.useRef(0)\n\n  React.useEffect(() => {\n    if (reduced) return\n    const id = window.setTimeout(() => setPhase(\"fly\"), 240)\n    return () => window.clearTimeout(id)\n  }, [reduced])\n\n  React.useEffect(() => {\n    if (phase !== \"fly\") return\n    const id = window.setTimeout(() => setPhase(\"grid\"), 2800)\n    return () => window.clearTimeout(id)\n  }, [phase])\n\n  const replay = () => {\n    if (reduced) {\n      setPhase(\"grid\")\n      return\n    }\n    done.current = 0\n    setPhase(\"stack\")\n    window.setTimeout(() => setPhase(\"fly\"), 40)\n  }\n\n  return (\n    <div data-slot=\"thumbnail-flow-path\" className={cn(\"w-full space-y-3\", className)}>\n      <style>\n        {`@keyframes effect-ui-offset-fly { to { offset-distance: 100%; } }`}\n      </style>\n      <div className=\"flex items-center justify-between\">\n        <p className=\"text-sm text-muted-foreground\">\n          {phase === \"grid\" ? \"已经落进网格。\" : \"缩略图沿着 S 形路径飞过。\"}\n        </p>\n        <button\n          type=\"button\"\n          className=\"rounded-md border px-3 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary\"\n          onClick={replay}\n        >\n          再飞一次\n        </button>\n      </div>\n      <div className=\"relative h-80 overflow-hidden rounded-xl border bg-background\">\n        <div className={cn(\"h-full\", phase === \"grid\" ? \"grid grid-cols-3 gap-3 p-4\" : \"relative\")}>\n          {TILES.map((tile, index) => (\n            <div\n              key={tile.id}\n              className={cn(\n                \"flex items-end rounded-lg p-2 text-sm font-medium text-white\",\n                phase === \"grid\" ? \"h-24\" : \"absolute size-16\",\n              )}\n              style={{\n                background: `linear-gradient(145deg, hsl(${tile.hue} 55% 34%), hsl(${tile.hue} 72% 54%))`,\n                offsetPath: phase === \"fly\" ? `path(\"${PATH}\")` : undefined,\n                offsetRotate: phase === \"fly\" ? \"0deg\" : undefined,\n                offsetDistance: phase === \"fly\" ? \"0%\" : undefined,\n                animation: phase === \"fly\" && !reduced ? `effect-ui-offset-fly 1.35s ease-in-out ${index * 0.12}s forwards` : undefined,\n                left: phase === \"stack\" ? 24 + index * 10 : undefined,\n                top: phase === \"stack\" ? 28 + index * 8 : undefined,\n              }}\n              onAnimationEnd={() => {\n                done.current += 1\n                if (done.current >= TILES.length) setPhase(\"grid\")\n              }}\n            >\n              {tile.label}\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport { ThumbnailFlowPath }\n"
+    }
+  ]
+}

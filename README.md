@@ -398,6 +398,28 @@ use-mobile · use-prefers-reduced-motion
 | column-config-panel | 灵感来自 Retool，原创实现 |
 | resource-search-hero | 灵感来自 Maze，原创实现 |
 
+### 织物、海面与协作清单
+
+登记在 `catalog-batch16.ts`（`catalog-batch15.ts` 已用于滚动透镜与检索）。未打开 Codrops、Dropbox、Linear、Framer、Figma、Maze、Vanta、Stripe、Claude、BL/S 的源码，未移植其组件。未使用 GSAP，没有新增依赖。WebGL 一律懒加载已有的 OGL，失败或减弱动效时用 CSS 画面。`setup-guide` 的纸屑沿用 `confetti-burst` 的配色，不嵌套其按钮。
+
+| 组件 | 来源 |
+| --- | --- |
+| datamosh-transition | 灵感来自 Codrops，原创实现 |
+| loom-threads-marquee | 灵感来自 Codrops，原创实现 |
+| hologram-card | 灵感来自 BL/S，原创实现 |
+| sketch-hatch-image | 灵感来自 Codrops，原创实现 |
+| scroll-3d-image-rotate | 灵感来自 Codrops，原创实现 |
+| thumbnail-flow-path | 灵感来自 Codrops，原创实现 |
+| shader-grid-wide | 灵感来自 Codrops，原创实现 |
+| sea-waves-background | 灵感来自 Vanta，原创实现 |
+| cinema-seat-picker | 灵感来自 Framer，原创实现 |
+| publication-filter-list | 灵感来自 Maze，原创实现 |
+| activity-feed | 灵感来自 Dropbox，原创实现 |
+| project-update-card | 灵感来自 Linear，原创实现 |
+| share-invite-panel | 灵感来自 Figma，原创实现 |
+| changelog-feed | 灵感来自 Stripe，原创实现 |
+| setup-guide | 灵感来自 Claude，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

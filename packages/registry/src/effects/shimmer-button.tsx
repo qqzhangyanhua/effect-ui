@@ -1,9 +1,9 @@
 import * as React from "react"
 
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-export interface ShimmerButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ShimmerButtonProps extends React.ComponentProps<typeof Button> {
   shimmerColor?: string
 }
 
@@ -11,17 +11,15 @@ function ShimmerButton({
   className,
   children,
   shimmerColor = "color-mix(in oklab, var(--primary-foreground) 70%, transparent)",
+  variant,
+  size,
+  asChild = false,
   ...props
 }: ShimmerButtonProps) {
-  return (
-    <button
-      data-slot="shimmer-button"
-      className={cn(
-        "relative inline-flex h-10 items-center justify-center overflow-hidden rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm",
-        className,
-      )}
-      {...props}
-    >
+  const slotted =
+    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
+  const content = (
+    <>
       <span
         aria-hidden
         className="pointer-events-none absolute inset-0 -translate-x-full animate-[shimmer-sweep_2.2s_infinite] motion-reduce:animate-none bg-linear-to-r from-transparent via-white/40 to-transparent"
@@ -29,8 +27,26 @@ function ShimmerButton({
           backgroundImage: `linear-gradient(90deg, transparent, ${shimmerColor}, transparent)`,
         }}
       />
-      <span className="relative z-10">{children}</span>
-    </button>
+      <span className="relative z-10">{slotted ? slotted.props.children : children}</span>
+    </>
+  )
+
+  return (
+    <Button
+      data-slot="shimmer-button"
+      variant={variant}
+      size={size}
+      asChild={asChild}
+      className={cn(
+        "relative overflow-hidden",
+        variant == null && "shadow-sm hover:bg-primary",
+        size == null && "h-10 px-5",
+        className,
+      )}
+      {...props}
+    >
+      {slotted ? React.cloneElement(slotted, {}, content) : content}
+    </Button>
   )
 }
 

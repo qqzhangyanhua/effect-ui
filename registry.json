@@ -869,7 +869,8 @@
       "description": "斜向光泽扫过按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -886,7 +887,8 @@
       "description": "向外脉冲的按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -903,7 +905,8 @@
       "description": "霓虹描边发光按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -2038,7 +2041,8 @@
       "description": "彩虹描边按钮。",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {
@@ -2057,7 +2061,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "button"
       ],
       "files": [
         {

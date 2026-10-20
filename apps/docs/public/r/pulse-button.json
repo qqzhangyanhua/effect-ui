@@ -6,14 +6,15 @@
   "description": "向外脉冲的按钮。",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "utils",
+    "button"
   ],
   "files": [
     {
       "path": "registry/effects/pulse-button.tsx",
       "type": "registry:ui",
       "target": "components/ui/pulse-button.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type PulseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>\n\nfunction PulseButton({ className, children, ...props }: PulseButtonProps) {\n  return (\n    <button\n      data-slot=\"pulse-button\"\n      className={cn(\n        \"relative inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground\",\n        className,\n      )}\n      {...props}\n    >\n      <span\n        aria-hidden\n        className=\"absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full bg-primary/40\"\n      />\n      {children}\n    </button>\n  )\n}\n\nexport { PulseButton }\n"
+      "content": "import * as React from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport type PulseButtonProps = React.ComponentProps<typeof Button>\n\nfunction PulseButton({\n  className,\n  children,\n  variant,\n  size,\n  asChild = false,\n  ...props\n}: PulseButtonProps) {\n  const slotted =\n    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null\n  const content = (\n    <>\n      <span\n        aria-hidden\n        className=\"absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full bg-primary/40\"\n      />\n      {slotted ? slotted.props.children : children}\n    </>\n  )\n\n  return (\n    <Button\n      data-slot=\"pulse-button\"\n      variant={variant}\n      size={size}\n      asChild={asChild}\n      className={cn(\n        \"relative rounded-full\",\n        variant == null && \"hover:bg-primary\",\n        size == null && \"h-10 px-6\",\n        className,\n      )}\n      {...props}\n    >\n      {slotted ? React.cloneElement(slotted, {}, content) : content}\n    </Button>\n  )\n}\n\nexport { PulseButton }\n"
     }
   ]
 }

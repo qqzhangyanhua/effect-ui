@@ -8,15 +8,14 @@
     "motion"
   ],
   "registryDependencies": [
-    "use-prefers-reduced-motion",
-    "utils"
+    "reveal"
   ],
   "files": [
     {
       "path": "registry/effects/fade-in.tsx",
       "type": "registry:ui",
       "target": "components/ui/fade-in.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, type HTMLMotionProps } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FadeInProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  once?: boolean\n}\n\nfunction FadeIn({\n  className,\n  children,\n  delay = 0,\n  once = true,\n  ...props\n}: FadeInProps) {\n  const reduce = usePrefersReducedMotion()\n  return (\n    <motion.div\n      data-slot=\"fade-in\"\n      className={cn(className)}\n      viewport={{ once, amount: 0.4 }}\n      {...(reduce\n        ? { ...props, initial: false, transition: { duration: 0 } }\n        : {\n            initial: { opacity: 0, y: 16 },\n            whileInView: { opacity: 1, y: 0 },\n            transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },\n            ...props,\n          })}\n    >\n      {children}\n    </motion.div>\n  )\n}\n\nexport { FadeIn }\n"
+      "content": "\"use client\"\n\nimport { type HTMLMotionProps } from \"motion/react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface FadeInProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  once?: boolean\n}\n\nfunction FadeIn({ className, children, delay = 0, once = true, ...props }: FadeInProps) {\n  return (\n    <Reveal\n      data-slot=\"fade-in\"\n      variant=\"fade\"\n      className={className}\n      delay={delay}\n      once={once}\n      {...props}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { FadeIn }\n"
     }
   ]
 }

@@ -1,0 +1,96 @@
+"use client"
+
+import { motion, type HTMLMotionProps } from "motion/react"
+
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { cn } from "@/lib/utils"
+
+const REVEAL_EASE = [0.22, 1, 0.36, 1] as const
+
+const slideOffset = {
+  left: { x: -36, y: 0 },
+  right: { x: 36, y: 0 },
+  top: { x: 0, y: -36 },
+  bottom: { x: 0, y: 36 },
+} as const
+
+export type RevealVariant = "fade" | "blur" | "slide" | "clip"
+export type RevealFrom = "left" | "right" | "top" | "bottom"
+
+export interface RevealProps extends HTMLMotionProps<"div"> {
+  variant?: RevealVariant
+  from?: RevealFrom
+  delay?: number
+  once?: boolean
+  blur?: number
+  as?: "div" | "section"
+}
+
+function revealMotion(variant: RevealVariant, from: RevealFrom, blur: number) {
+  if (variant === "blur") {
+    return {
+      amount: 0.4,
+      duration: 0.55,
+      initial: { opacity: 0, y: 12, filter: `blur(${blur}px)` },
+      whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
+    }
+  }
+  if (variant === "slide") {
+    return {
+      amount: 0.35,
+      duration: 0.55,
+      initial: { opacity: 0, ...slideOffset[from] },
+      whileInView: { opacity: 1, x: 0, y: 0 },
+    }
+  }
+  if (variant === "clip") {
+    return {
+      amount: 0.35,
+      duration: 0.65,
+      initial: { opacity: 0, y: 32, clipPath: "inset(12% 0 0 0)" },
+      whileInView: { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)" },
+    }
+  }
+  return {
+    amount: 0.4,
+    duration: 0.5,
+    initial: { opacity: 0, y: 16 },
+    whileInView: { opacity: 1, y: 0 },
+  }
+}
+
+function Reveal({
+  className,
+  children,
+  variant = "fade",
+  from = "bottom",
+  delay = 0,
+  once = true,
+  blur = 8,
+  as = "div",
+  ...props
+}: RevealProps) {
+  const reduce = usePrefersReducedMotion()
+  const preset = revealMotion(variant, from, blur)
+  const motionProps = reduce
+    ? { ...props, initial: false, transition: { duration: 0 } }
+    : {
+        initial: preset.initial,
+        whileInView: preset.whileInView,
+        transition: { duration: preset.duration, delay, ease: REVEAL_EASE },
+        ...props,
+      }
+  const shared = {
+    "data-slot": "reveal",
+    className: cn(className),
+    viewport: { once, amount: preset.amount },
+    ...motionProps,
+  }
+
+  if (as === "section") {
+    return <motion.section {...shared}>{children}</motion.section>
+  }
+  return <motion.div {...shared}>{children}</motion.div>
+}
+
+export { Reveal }

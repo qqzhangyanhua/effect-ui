@@ -966,6 +966,36 @@ export const components: ComponentMeta[] = [
     ],
   },
   {
+    name: "reveal",
+    title: "Reveal",
+    description: "滚动进入视口时按变体显现。",
+    category: "scroll",
+    source: "original",
+    type: "registry:ui",
+    dependencies: ["motion"],
+    registryDependencies: ["use-prefers-reduced-motion", "utils"],
+    file: "effects/reveal.tsx",
+    target: "components/ui/reveal.tsx",
+    props: [
+      {
+        name: "variant",
+        type: '"fade" | "blur" | "slide" | "clip"',
+        defaultValue: '"fade"',
+        description: "显现方式。",
+      },
+      {
+        name: "from",
+        type: '"left" | "right" | "top" | "bottom"',
+        defaultValue: '"bottom"',
+        description: "滑入方向，仅 slide。",
+      },
+      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
+      { name: "once", type: "boolean", defaultValue: "true", description: "是否只播放一次。" },
+      { name: "blur", type: "number", defaultValue: "8", description: "初始模糊像素，仅 blur。" },
+      { name: "as", type: '"div" | "section"', defaultValue: '"div"', description: "渲染元素。" },
+    ],
+  },
+  {
     name: "fade-in",
     title: "Fade In",
     description: "进入视口时淡入上移。",
@@ -973,7 +1003,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["use-prefers-reduced-motion", "utils"],
+    registryDependencies: ["reveal"],
     file: "effects/fade-in.tsx",
     target: "components/ui/fade-in.tsx",
     props: [
@@ -989,7 +1019,7 @@ export const components: ComponentMeta[] = [
     source: "Motion Primitives",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["use-prefers-reduced-motion", "utils"],
+    registryDependencies: ["reveal"],
     file: "effects/slide-in.tsx",
     target: "components/ui/slide-in.tsx",
     props: [
@@ -1031,7 +1061,7 @@ export const components: ComponentMeta[] = [
     source: "Magic UI",
     type: "registry:ui",
     dependencies: ["motion"],
-    registryDependencies: ["use-prefers-reduced-motion", "utils"],
+    registryDependencies: ["reveal"],
     file: "effects/blur-fade.tsx",
     target: "components/ui/blur-fade.tsx",
     props: [

@@ -222,6 +222,7 @@ use-mobile · use-prefers-reduced-motion
 
 | 组件 | 来源 |
 | --- | --- |
+| reveal | 原创 |
 | fade-in | Motion Primitives |
 | slide-in | Motion Primitives |
 | stagger-list | Motion Primitives |

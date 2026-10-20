@@ -1,40 +1,26 @@
 "use client"
 
-import * as React from "react"
-import { motion, type HTMLMotionProps } from "motion/react"
+import { type HTMLMotionProps } from "motion/react"
 
-import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { Reveal } from "./reveal"
 
 export interface BlurFadeProps extends HTMLMotionProps<"div"> {
   delay?: number
   blur?: number
 }
 
-function BlurFade({
-  className,
-  children,
-  delay = 0,
-  blur = 8,
-  ...props
-}: BlurFadeProps) {
-  const reduce = usePrefersReducedMotion()
+function BlurFade({ className, children, delay = 0, blur = 8, ...props }: BlurFadeProps) {
   return (
-    <motion.div
+    <Reveal
       data-slot="blur-fade"
-      className={cn(className)}
-      viewport={{ once: true, amount: 0.4 }}
-      {...(reduce
-        ? { ...props, initial: false, transition: { duration: 0 } }
-        : {
-            initial: { opacity: 0, y: 12, filter: `blur(${blur}px)` },
-            whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
-            transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const },
-            ...props,
-          })}
+      variant="blur"
+      className={className}
+      delay={delay}
+      blur={blur}
+      {...props}
     >
       {children}
-    </motion.div>
+    </Reveal>
   )
 }
 

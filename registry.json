@@ -986,6 +986,26 @@
       ]
     },
     {
+      "name": "reveal",
+      "type": "registry:ui",
+      "title": "Reveal",
+      "description": "滚动进入视口时按变体显现。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reveal.tsx"
+        }
+      ]
+    },
+    {
       "name": "fade-in",
       "type": "registry:ui",
       "title": "Fade In",
@@ -994,8 +1014,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
+        "reveal"
       ],
       "files": [
         {
@@ -1014,8 +1033,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
+        "reveal"
       ],
       "files": [
         {
@@ -1074,8 +1092,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
+        "reveal"
       ],
       "files": [
         {
@@ -2190,12 +2207,9 @@
       "type": "registry:ui",
       "title": "Reveal Section",
       "description": "区块滚动揭开。",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": [],
       "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
+        "reveal"
       ],
       "files": [
         {

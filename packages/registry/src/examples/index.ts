@@ -67,6 +67,7 @@ const demoMap: Record<string, ComponentType> = {
   "orbit-loader": effectDemos.OrbitLoaderDemo,
   "dots-loader": effectDemos.DotsLoaderDemo,
   "progress-ring": effectDemos.ProgressRingDemo,
+  reveal: effectDemos.RevealDemo,
   "fade-in": effectDemos.FadeInDemo,
   "slide-in": effectDemos.SlideInDemo,
   "stagger-list": effectDemos.StaggerListDemo,

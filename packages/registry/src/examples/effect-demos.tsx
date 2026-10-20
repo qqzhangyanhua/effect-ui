@@ -26,6 +26,7 @@ import { Parallax } from "../effects/parallax"
 import { Particles } from "../effects/particles"
 import { ProgressRing } from "../effects/progress-ring"
 import { PulseButton } from "../effects/pulse-button"
+import { Reveal } from "../effects/reveal"
 import { RippleButton } from "../effects/ripple-button"
 import { Ripples } from "../effects/ripples"
 import { ShimmerButton } from "../effects/shimmer-button"
@@ -280,6 +281,25 @@ export function DotsLoaderDemo() {
 
 export function ProgressRingDemo() {
   return <ProgressRing value={72} />
+}
+
+export function RevealDemo() {
+  return (
+    <div className="grid w-full gap-3 sm:grid-cols-2">
+      <Reveal variant="fade" className="rounded-xl border bg-card p-4">
+        淡入
+      </Reveal>
+      <Reveal variant="blur" delay={0.05} className="rounded-xl border bg-card p-4">
+        模糊显现
+      </Reveal>
+      <Reveal variant="slide" from="left" delay={0.1} className="rounded-xl border bg-card p-4">
+        从左滑入
+      </Reveal>
+      <Reveal as="section" variant="clip" delay={0.15} className="rounded-xl border bg-card p-4">
+        裁切揭开
+      </Reveal>
+    </div>
+  )
 }
 
 export function FadeInDemo() {

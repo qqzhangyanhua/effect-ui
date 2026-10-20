@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-scroll-zoom",
+  "type": "registry:ui",
+  "title": "Hero Scroll Zoom",
+  "description": "灵感来自 Apple，原创实现。全屏画面随滚动收成圆角产品窗口。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/hero-scroll-zoom.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hero-scroll-zoom.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll, useTransform } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HeroScrollZoomProps {\n  title?: string\n  className?: string\n}\n\nfunction HeroScrollZoom({ title = \"全屏画面收成圆角窗口\", className }: HeroScrollZoomProps) {\n  const reduced = usePrefersReducedMotion()\n  const ref = React.useRef<HTMLElement>(null)\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    offset: [\"start start\", \"end start\"],\n  })\n  const scale = useTransform(scrollYProgress, [0, 1], reduced ? [0.86, 0.86] : [1, 0.72])\n  const radius = useTransform(scrollYProgress, [0, 1], reduced ? [24, 24] : [0, 32])\n\n  return (\n    <section ref={ref} className={cn(reduced ? \"h-auto\" : \"h-[170vh]\", className)}>\n      <div className={cn(\"flex items-center justify-center\", reduced ? \"py-10\" : \"sticky top-0 h-[80vh]\")}>\n        <motion.div\n          style={{ scale, borderRadius: radius }}\n          className=\"relative grid h-[68vh] w-[min(100%,56rem)] place-items-end overflow-hidden bg-[linear-gradient(160deg,#312e81,#22d3ee_55%,#09090b)] p-6 text-white\"\n        >\n          <p className=\"font-display text-4xl tracking-tight sm:text-6xl\">{title}</p>\n        </motion.div>\n      </div>\n    </section>\n  )\n}\n\nexport { HeroScrollZoom }\n"
+    }
+  ]
+}

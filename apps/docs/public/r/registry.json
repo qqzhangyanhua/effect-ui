@@ -5052,6 +5052,300 @@
           "target": "components/ui/section-testimonial-split.tsx"
         }
       ]
+    },
+    {
+      "name": "view-transition-gallery",
+      "type": "registry:ui",
+      "title": "View Transition Gallery",
+      "description": "灵感来自 Apple，原创实现。缩略图到详情用 View Transitions API 共享元素，不支持时回退 Motion layoutId。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/view-transition-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/view-transition-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-timeline-reveal",
+      "type": "registry:ui",
+      "title": "Scroll Timeline Reveal",
+      "description": "原创。animation-timeline: view() 做显现和视差，不支持时回退 Motion whileInView。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-timeline-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-timeline-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smooth-scroll-provider",
+      "type": "registry:ui",
+      "title": "Smooth Scroll Provider",
+      "description": "Lenis（MIT）平滑滚动容器和 useLenis。减弱动效时关闭 Lenis，改回原生滚动。",
+      "dependencies": [
+        "lenis"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/smooth-scroll-provider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/smooth-scroll-provider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-scroll-zoom",
+      "type": "registry:ui",
+      "title": "Hero Scroll Zoom",
+      "description": "灵感来自 Apple，原创实现。全屏画面随滚动收成圆角产品窗口。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-scroll-zoom.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-scroll-zoom.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-horizontal-scroll",
+      "type": "registry:ui",
+      "title": "Section Horizontal Scroll",
+      "description": "灵感来自 Apple，原创实现。竖向滚动驱动横向章节，sticky 加 Motion。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/section-horizontal-scroll.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-horizontal-scroll.tsx"
+        }
+      ]
+    },
+    {
+      "name": "intro-preloader",
+      "type": "registry:ui",
+      "title": "Intro Preloader",
+      "description": "灵感来自 Linear，原创实现。0 到 100 计数后幕布错开揭开，每个会话只自动播放一次。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/intro-preloader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/intro-preloader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-3d-model",
+      "type": "registry:ui",
+      "title": "Hero 3D Model",
+      "description": "灵感来自 Apple，原创实现。three / React Three Fiber / drei 的玻璃体随滚动旋转。懒加载，无 WebGL 或减弱动效时用静态宝石。",
+      "dependencies": [
+        "@react-three/drei",
+        "@react-three/fiber",
+        "motion",
+        "three"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/hero-3d-model.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-3d-model.tsx"
+        },
+        {
+          "path": "registry/sections/hero-3d-canvas.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-3d-canvas.tsx"
+        }
+      ]
+    },
+    {
+      "name": "keycap-3d",
+      "type": "registry:ui",
+      "title": "Keycap 3D",
+      "description": "灵感来自 Raycast，原创实现。可按下的立体键帽，真实键盘按下时高亮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/keycap-3d.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/keycap-3d.tsx"
+        }
+      ]
+    },
+    {
+      "name": "infinite-canvas-gallery",
+      "type": "registry:ui",
+      "title": "Infinite Canvas Gallery",
+      "description": "灵感来自无限画布，原创实现。四个方向可拖动的无限平铺网格，带惯性。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/infinite-canvas-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/infinite-canvas-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-image-list",
+      "type": "registry:ui",
+      "title": "Hover Image List",
+      "description": "灵感来自作品列表，原创实现。文字行悬停时图片跟着手指。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/hover-image-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-image-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-variable-scroll",
+      "type": "registry:ui",
+      "title": "Text Variable Scroll",
+      "description": "灵感来自 Linear，原创实现。滚动驱动每个字母的字重和字宽波动。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-variable-scroll.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-variable-scroll.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-glass-tabbar",
+      "type": "registry:ui",
+      "title": "Liquid Glass Tabbar",
+      "description": "灵感来自 iOS 26，原创实现。玻璃底栏和会融合的液态指示。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/liquid-glass-tabbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-glass-tabbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dither-gradient",
+      "type": "registry:ui",
+      "title": "Dither Gradient",
+      "description": "原创 Bayer 抖动渐变着色器。无 WebGL 时回退点阵渐变，减弱动效时停在一帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dither-gradient.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dither-gradient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "anchor-popover",
+      "type": "registry:ui",
+      "title": "Anchor Popover",
+      "description": "原创。CSS anchor 定位加 Popover API，position-try 翻转；不支持时用坐标回退。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/anchor-popover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/anchor-popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "css-accordion-auto",
+      "type": "registry:ui",
+      "title": "CSS Accordion Auto",
+      "description": "原创。原生 details 用 interpolate-size 过渡到 height auto，不支持时测量高度。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/css-accordion-auto.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/css-accordion-auto.tsx"
+        }
+      ]
     }
   ]
 }

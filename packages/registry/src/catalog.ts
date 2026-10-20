@@ -7,6 +7,7 @@ import { batch7Components } from "./catalog-batch7"
 import { batch8Components } from "./catalog-batch8"
 import { batch9Components } from "./catalog-batch9"
 import { batch10Components } from "./catalog-batch10"
+import { batch11Components } from "./catalog-batch11"
 
 export type ComponentCategory =
   | "ui"
@@ -68,6 +69,8 @@ export type SourceLibrary =
   | "rough-notation"
   | "mo.js"
   | "cobe"
+  | "Lenis"
+  | "three"
   | "original"
 
 export interface PropDoc {
@@ -183,6 +186,8 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "rough-notation": "https://roughnotation.com",
   "mo.js": "https://mojs.github.io",
   cobe: "https://cobe.vercel.app",
+  Lenis: "https://github.com/darkroomengineering/lenis",
+  three: "https://threejs.org",
   original: null,
 }
 
@@ -959,6 +964,7 @@ export const components: ComponentMeta[] = [
   ...batch8Components,
   ...batch9Components,
   ...batch10Components,
+  ...batch11Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

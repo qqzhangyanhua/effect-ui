@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-timeline-reveal",
+  "type": "registry:ui",
+  "title": "Scroll Timeline Reveal",
+  "description": "原创。animation-timeline: view() 做显现和视差，不支持时回退 Motion whileInView。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scroll-timeline-reveal.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-timeline-reveal.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollTimelineRevealProps {\n  mode?: \"reveal\" | \"parallax\"\n  className?: string\n  children?: React.ReactNode\n}\n\nfunction supportsViewTimeline() {\n  return CSS.supports(\"animation-timeline\", \"view()\")\n}\n\nfunction ScrollTimelineReveal({ mode = \"reveal\", className, children }: ScrollTimelineRevealProps) {\n  const reduced = usePrefersReducedMotion()\n  const supported = React.useSyncExternalStore(\n    () => () => {},\n    supportsViewTimeline,\n    () => false,\n  )\n  const css = supported && !reduced\n  const body = children ?? (\n    <div className=\"rounded-2xl border bg-card p-6\">\n      <p className=\"font-display text-3xl\">{mode === \"parallax\" ? \"视差\" : \"显现\"}</p>\n      <p className=\"mt-2 text-sm text-muted-foreground\">进入视口时沿 view() 时间线运动。</p>\n    </div>\n  )\n\n  return (\n    <div className={cn(\"py-8\", className)}>\n      <style>\n        {`@keyframes eu11-reveal { from { opacity: 0; transform: translateY(2rem); } to { opacity: 1; transform: none; } }\n          @keyframes eu11-parallax { from { transform: translateY(2.5rem); } to { transform: translateY(-2.5rem); } }\n          .eu11-reveal { animation: eu11-reveal linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }\n          .eu11-parallax { animation: eu11-parallax linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }`}\n      </style>\n      {css ? (\n        <div className={mode === \"parallax\" ? \"eu11-parallax\" : \"eu11-reveal\"}>{body}</div>\n      ) : (\n        <motion.div\n          initial={reduced ? false : { opacity: 0, y: 28 }}\n          whileInView={{ opacity: 1, y: 0 }}\n          viewport={{ once: mode === \"reveal\", amount: 0.45 }}\n          transition={{ duration: reduced ? 0 : 0.55 }}\n        >\n          {body}\n        </motion.div>\n      )}\n    </div>\n  )\n}\n\nfunction ScrollTimelineShowcase({ className }: { className?: string }) {\n  return (\n    <div className={cn(\"space-y-[28vh]\", className)}>\n      <ScrollTimelineReveal mode=\"reveal\" />\n      <ScrollTimelineReveal mode=\"parallax\" />\n    </div>\n  )\n}\n\nexport { ScrollTimelineReveal, ScrollTimelineShowcase }\n"
+    }
+  ]
+}

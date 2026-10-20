@@ -1,0 +1,47 @@
+.gitignore
+  s_80b876ac2f5ce9::t_838c60e83b2df5 3
+docs/dangerous-areas.md
+  s_80b876ac2f5ce9::t_82bec1e871c8c1 13,16
+  s_80b876ac2f5ce9::t_14e38ab7c166ee 10-12
+  s_80b876ac2f5ce9::t_329c65a6c25445 14-15
+  s_80b876ac2f5ce9::t_3d569089aea995 17-19
+  s_1a119fdc934264::t_c9fcee541a3807 1-9,20-41
+AGENTS.md
+  s_1a119fdc934264::t_4b4b272de8a857 1-28
+README.md
+  s_1a119fdc934264::t_d92ef84d52571a 51,324
+docs/agent-plan-template.md
+  s_1a119fdc934264::t_0b79a110586679 1-29
+docs/debugging.md
+  s_1a119fdc934264::t_534055f73a55f2 1-28
+docs/project-map.md
+  s_1a119fdc934264::t_4ee61c023b5e56 1-60
+docs/testing.md
+  s_1a119fdc934264::t_e2f5724cf3a9d1 1-39
+scripts/check.sh
+  s_1a119fdc934264::t_8c24ae29d7f83e 1-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0e03731d6084af44db75373d19c0023e31f0e4c6",
+  "prompts": {},
+  "sessions": {
+    "s_1a119fdc934264": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "69a8edb9-d4f8-4aef-a09d-21e5d34c5705",
+        "model": "unknown"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_80b876ac2f5ce9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15754-65d3-71e0-a328-7c864c2658e9",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -10,6 +10,7 @@ import * as effectDemos7 from "./effect-demos-7"
 import * as effectDemos8 from "./effect-demos-8"
 import * as effectDemos9 from "./effect-demos-9"
 import * as effectDemos10 from "./effect-demos-10"
+import * as effectDemos11 from "./effect-demos-11"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -277,6 +278,21 @@ const demoMap: Record<string, ComponentType> = {
   "section-dotted-feature-tabs": effectDemos10.SectionDottedFeatureTabsDemo,
   "cta-ribbon-swoosh": effectDemos10.CtaRibbonSwooshDemo,
   "section-testimonial-split": effectDemos10.SectionTestimonialSplitDemo,
+  "view-transition-gallery": effectDemos11.ViewTransitionGalleryDemo,
+  "scroll-timeline-reveal": effectDemos11.ScrollTimelineRevealDemo,
+  "smooth-scroll-provider": effectDemos11.SmoothScrollProviderDemo,
+  "hero-scroll-zoom": effectDemos11.HeroScrollZoomDemo,
+  "section-horizontal-scroll": effectDemos11.SectionHorizontalScrollDemo,
+  "intro-preloader": effectDemos11.IntroPreloaderDemo,
+  "hero-3d-model": effectDemos11.Hero3DModelDemo,
+  "keycap-3d": effectDemos11.Keycap3DDemo,
+  "infinite-canvas-gallery": effectDemos11.InfiniteCanvasGalleryDemo,
+  "hover-image-list": effectDemos11.HoverImageListDemo,
+  "text-variable-scroll": effectDemos11.TextVariableScrollDemo,
+  "liquid-glass-tabbar": effectDemos11.LiquidGlassTabbarDemo,
+  "dither-gradient": effectDemos11.DitherGradientDemo,
+  "anchor-popover": effectDemos11.AnchorPopoverDemo,
+  "css-accordion-auto": effectDemos11.CssAccordionAutoDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

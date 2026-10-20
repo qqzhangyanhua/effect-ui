@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-stats-cornered",
+  "type": "registry:ui",
+  "title": "Section Stats Cornered",
+  "description": "灵感来自 Spade（via Mobbin），原创实现。取景框四角、等宽标签和递增数字。",
+  "dependencies": [],
+  "registryDependencies": [
+    "count-up",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-stats-cornered.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-stats-cornered.tsx",
+      "content": "\"use client\"\n\nimport { CountUp } from \"@/components/ui/count-up\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CornerStat {\n  label: string\n  value: number\n  suffix?: string\n}\n\nexport interface SectionStatsCorneredProps {\n  stats?: CornerStat[]\n  className?: string\n}\n\nconst defaultStats: CornerStat[] = [\n  { label: \"SHIPPED\", value: 128 },\n  { label: \"UPTIME\", value: 99, suffix: \"%\" },\n  { label: \"TEAMS\", value: 36 },\n]\n\nfunction Viewfinder() {\n  const mark = \"absolute size-3 border-foreground/80\"\n  return (\n    <>\n      <span className={cn(mark, \"top-3 left-3 border-t border-l\")} />\n      <span className={cn(mark, \"top-3 right-3 border-t border-r\")} />\n      <span className={cn(mark, \"bottom-3 left-3 border-b border-l\")} />\n      <span className={cn(mark, \"right-3 bottom-3 border-r border-b\")} />\n    </>\n  )\n}\n\nfunction SectionStatsCornered({ stats = defaultStats, className }: SectionStatsCorneredProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <section className={cn(\"rounded-2xl border bg-background px-4 py-12\", className)}>\n      <div className=\"mx-auto grid max-w-4xl gap-4 sm:grid-cols-3\">\n        {stats.map((stat) => (\n          <article key={stat.label} className=\"relative rounded-xl border bg-card px-5 py-8\">\n            <Viewfinder />\n            <p className=\"font-mono text-[11px] tracking-[0.22em] text-muted-foreground\">{stat.label}</p>\n            <p className=\"font-display mt-3 text-5xl tabular-nums\" style={{ transition: reduced ? \"none\" : undefined }}>\n              <CountUp value={stat.value} />\n              {stat.suffix}\n            </p>\n          </article>\n        ))}\n      </div>\n    </section>\n  )\n}\n\nexport { SectionStatsCornered }\n"
+    }
+  ]
+}

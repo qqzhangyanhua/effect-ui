@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-testimonial-split",
+  "type": "registry:ui",
+  "title": "Section Testimonial Split",
+  "description": "灵感来自 Paraform（via Mobbin），原创实现。左侧衬线引言，右侧深色品牌卡，两边同步轮换。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/section-testimonial-split.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/section-testimonial-split.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SplitQuote {\n  quote: string\n  name: string\n  role: string\n  brand: string\n  metric: string\n}\n\nexport interface SectionTestimonialSplitProps {\n  quotes?: SplitQuote[]\n  className?: string\n}\n\nconst defaultQuotes: SplitQuote[] = [\n  { quote: \"区块接上之后，落地页不再像三套工具拼出来的。\", name: \"林夏\", role: \"设计\", brand: \"Harbor\", metric: \"3.2×\" },\n  { quote: \"定价和页脚终于用同一套字号。评审少了一轮。\", name: \"周衡\", role: \"前端\", brand: \"North\", metric: \"11 天\" },\n  { quote: \"减弱动效打开时，页面还是完整的。\", name: \"苏晚\", role: \"产品\", brand: \"Lumen\", metric: \"0 跳帧\" },\n]\n\nfunction SectionTestimonialSplit({ quotes = defaultQuotes, className }: SectionTestimonialSplitProps) {\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = React.useState(0)\n  const quote = quotes[index] ?? quotes[0]\n  const count = quotes.length\n\n  React.useEffect(() => {\n    if (reduced || count < 2) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % count)\n    }, 4200)\n    return () => window.clearInterval(timer)\n  }, [count, reduced])\n\n  if (!quote) return null\n\n  const step = (delta: number) => setIndex((current) => (current + delta + count) % count)\n\n  return (\n    <section className={cn(\"rounded-2xl border bg-background p-4\", className)}>\n      <div className=\"grid overflow-hidden rounded-xl md:grid-cols-2\">\n        <article className=\"bg-card px-6 py-10\">\n          <p className=\"font-display text-2xl leading-snug tracking-tight text-balance sm:text-3xl\">“{quote.quote}”</p>\n          <p className=\"mt-6 text-sm\">\n            {quote.name}\n            <span className=\"text-muted-foreground\"> · {quote.role}</span>\n          </p>\n        </article>\n        <article className=\"flex flex-col justify-between bg-zinc-950 px-6 py-10 text-white\">\n          <p className=\"font-mono text-xs tracking-[0.28em] text-white/50 uppercase\">{quote.brand}</p>\n          <p className=\"font-display text-6xl\">{quote.metric}</p>\n          <div className=\"flex gap-2\">\n            <button type=\"button\" className=\"rounded-full border border-white/20 px-3 py-1 text-xs\" onClick={() => step(-1)}>\n              上一条\n            </button>\n            <button type=\"button\" className=\"rounded-full border border-white/20 px-3 py-1 text-xs\" onClick={() => step(1)}>\n              下一条\n            </button>\n          </div>\n        </article>\n      </div>\n    </section>\n  )\n}\n\nexport { SectionTestimonialSplit }\n"
+    }
+  ]
+}

@@ -281,6 +281,21 @@ use-mobile · use-prefers-reduced-motion
 | section-sticky-feature-scroll | Cult UI（MIT） |
 | section-animated-bento | 原创（组合 bento-grid 与迷你动画） |
 | section-pricing-flow | Number Flow |
+| hero-annotated-showcase | Inspired by ToDesktop (via Mobbin), original implementation |
+| hero-wave-mask-gallery | Inspired by Kajabi (via Mobbin), original implementation |
+| hero-inline-mascot | Inspired by Phantom (via Mobbin), original implementation |
+| hero-orbit-nodes | Inspired by Air (via Mobbin), original implementation |
+| hero-swirl-avatars | Inspired by Wizz (via Mobbin), original implementation |
+| footer-dot-matrix-wordmark | Inspired by Fuser (via Mobbin), original implementation |
+| footer-social-marquee | Inspired by BAGGU (via Mobbin), original implementation |
+| section-pricing-perspective-grid | Inspired by Dovetail (via Mobbin), original implementation |
+| section-pricing-product-tabs | Inspired by Better Stack (via Mobbin), original implementation |
+| section-pattern-cards | Inspired by Loom (via Mobbin), original implementation |
+| section-stats-cornered | Inspired by Spade (via Mobbin), original implementation |
+| section-stats-blob | Inspired by Oyster (via Mobbin), original implementation |
+| section-dotted-feature-tabs | Inspired by Maze (via Mobbin), original implementation |
+| cta-ribbon-swoosh | Inspired by The Leap (via Mobbin), original implementation |
+| section-testimonial-split | Inspired by Paraform (via Mobbin), original implementation |
 
 ### 整页模板
 

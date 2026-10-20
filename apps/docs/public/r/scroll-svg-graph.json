@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-svg-graph",
+  "type": "registry:ui",
+  "title": "Scroll SVG Graph",
+  "description": "灵感来自 Codrops，原创实现。滚动时 SVG 折线沿路径画出，并带有数据表。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scroll-svg-graph.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-svg-graph.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollSvgGraphProps {\n  className?: string\n}\n\nconst POINTS = [\n  { label: \"一\", value: 22 },\n  { label: \"二\", value: 38 },\n  { label: \"三\", value: 30 },\n  { label: \"四\", value: 56 },\n  { label: \"五\", value: 48 },\n  { label: \"六\", value: 74 },\n  { label: \"七\", value: 63 },\n  { label: \"八\", value: 88 },\n]\n\nfunction linePath() {\n  return POINTS.map((point, index) => {\n    const x = (index / (POINTS.length - 1)) * 100\n    const y = 100 - point.value\n    return `${index === 0 ? \"M\" : \"L\"} ${x.toFixed(2)} ${y.toFixed(2)}`\n  }).join(\" \")\n}\n\nfunction ScrollSvgGraph({ className }: ScrollSvgGraphProps) {\n  const reduced = usePrefersReducedMotion()\n  const [progress, setProgress] = React.useState(0)\n  const drawn = reduced ? 1 : progress\n  const path = linePath()\n\n  return (\n    <div data-slot=\"scroll-svg-graph\" className={cn(\"w-full\", className)}>\n      <div\n        className=\"h-80 overflow-y-auto rounded-xl border\"\n        onScroll={(event) => {\n          const el = event.currentTarget\n          const max = el.scrollHeight - el.clientHeight\n          setProgress(max <= 0 ? 1 : el.scrollTop / max)\n        }}\n      >\n        <div className=\"h-[160vh]\">\n          <div className=\"sticky top-0 flex h-80 flex-col justify-center px-4\">\n            <p className=\"mb-3 text-xs text-muted-foreground\">在这个区域里滚动，折线沿路径画出来。</p>\n            <svg viewBox=\"0 0 100 100\" className=\"h-48 w-full\" role=\"img\" aria-label=\"八个节点的滚动折线\">\n              <line x1=\"0\" y1=\"100\" x2=\"100\" y2=\"100\" stroke=\"currentColor\" strokeOpacity=\"0.25\" strokeWidth=\"0.6\" />\n              <path\n                d={path}\n                fill=\"none\"\n                stroke=\"#a78bfa\"\n                strokeWidth=\"1.6\"\n                strokeLinejoin=\"round\"\n                strokeLinecap=\"round\"\n                pathLength={100}\n                strokeDasharray={100}\n                strokeDashoffset={100 - drawn * 100}\n              />\n              {POINTS.map((point, index) => {\n                const x = (index / (POINTS.length - 1)) * 100\n                const y = 100 - point.value\n                const visible = index / (POINTS.length - 1) <= drawn + 0.001\n                return <circle key={point.label} cx={x} cy={y} r=\"1.5\" fill=\"#e9d5ff\" opacity={visible ? 1 : 0} />\n              })}\n            </svg>\n            <table className=\"sr-only\">\n              <caption>折线数据</caption>\n              <tbody>\n                {POINTS.map((point) => (\n                  <tr key={point.label}>\n                    <th scope=\"row\">{point.label}</th>\n                    <td>{point.value}</td>\n                  </tr>\n                ))}\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport { ScrollSvgGraph }\n"
+    }
+  ]
+}

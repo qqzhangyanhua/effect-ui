@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "schedule-slot-picker",
+  "type": "registry:ui",
+  "title": "Schedule Slot Picker",
+  "description": "灵感来自 Calendly，原创实现。按日期选择时段，已占时段不可选。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/schedule-slot-picker.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/schedule-slot-picker.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScheduleSlotPickerProps {\n  className?: string\n}\n\nconst DAYS = [\"周一\", \"周二\", \"周三\"] as const\nconst SLOTS = [\"09:00\", \"10:00\", \"11:00\", \"14:00\", \"15:00\", \"16:00\"]\nconst TAKEN = new Set([\"周一 10:00\", \"周二 14:00\", \"周三 09:00\"])\n\nfunction ScheduleSlotPicker({ className }: ScheduleSlotPickerProps) {\n  const [day, setDay] = React.useState<(typeof DAYS)[number]>(\"周一\")\n  const [slot, setSlot] = React.useState<string | null>(null)\n\n  return (\n    <section data-slot=\"schedule-slot-picker\" className={cn(\"w-full space-y-3\", className)}>\n      <div role=\"tablist\" aria-label=\"日期\" className=\"flex gap-2\">\n        {DAYS.map((item) => (\n          <button\n            key={item}\n            type=\"button\"\n            role=\"tab\"\n            aria-selected={day === item}\n            className={cn(\n              \"rounded-md border px-3 py-1.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n              day === item && \"bg-primary text-primary-foreground\",\n            )}\n            onClick={() => setDay(item)}\n          >\n            {item}\n          </button>\n        ))}\n      </div>\n      <div role=\"radiogroup\" aria-label={`${day}的时段`} className=\"grid grid-cols-3 gap-2\">\n        {SLOTS.map((time) => {\n          const id = `${day} ${time}`\n          const taken = TAKEN.has(id)\n          const selected = slot === id\n          return (\n            <button\n              key={time}\n              type=\"button\"\n              role=\"radio\"\n              aria-checked={selected}\n              disabled={taken}\n              className={cn(\n                \"rounded-lg border px-2 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground\",\n                selected && \"border-primary bg-primary/15\",\n              )}\n              onClick={() => setSlot(id)}\n            >\n              {time}\n              {taken ? \" 已占\" : \"\"}\n            </button>\n          )\n        })}\n      </div>\n      <p className=\"text-sm\">{slot ? `已选 ${slot}` : \"还没有选择时段。\"}</p>\n    </section>\n  )\n}\n\nexport { ScheduleSlotPicker }\n"
+    }
+  ]
+}

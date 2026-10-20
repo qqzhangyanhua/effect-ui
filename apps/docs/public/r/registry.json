@@ -6821,6 +6821,282 @@
           "target": "components/ui/setup-guide.tsx"
         }
       ]
+    },
+    {
+      "name": "galaxy-spiral",
+      "type": "registry:ui",
+      "title": "Galaxy Spiral",
+      "description": "灵感来自 Codrops，原创实现。指针附近的螺旋星系，星臂缓慢转动。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/galaxy-spiral.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/galaxy-spiral.tsx"
+        }
+      ]
+    },
+    {
+      "name": "proximity-scale-grid",
+      "type": "registry:ui",
+      "title": "Proximity Scale Grid",
+      "description": "灵感来自 Codrops，原创实现。格子离指针越近越大，键盘聚焦时只放大当前格。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/proximity-scale-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/proximity-scale-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "polaroid-scroll-stack",
+      "type": "registry:ui",
+      "title": "Polaroid Scroll Stack",
+      "description": "灵感来自 Codrops，原创实现。滚动时叠放的拍立得散开。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/polaroid-scroll-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/polaroid-scroll-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-svg-graph",
+      "type": "registry:ui",
+      "title": "Scroll SVG Graph",
+      "description": "灵感来自 Codrops，原创实现。滚动时 SVG 折线沿路径画出，并带有数据表。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-svg-graph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-svg-graph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cloth-wind-banner",
+      "type": "registry:ui",
+      "title": "Cloth Wind Banner",
+      "description": "灵感来自 Codrops，原创实现。旗帜随风力起伏。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cloth-wind-banner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cloth-wind-banner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "xray-fluid-reveal",
+      "type": "registry:ui",
+      "title": "Xray Fluid Reveal",
+      "description": "灵感来自 Codrops，原创实现。指针处用流动边缘揭示内部。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/xray-fluid-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/xray-fluid-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "petal-dissolve-text",
+      "type": "registry:ui",
+      "title": "Petal Dissolve Text",
+      "description": "灵感来自 Codrops，原创实现。文字散成花瓣，再聚回去。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/petal-dissolve-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/petal-dissolve-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-tunnel",
+      "type": "registry:ui",
+      "title": "Data Tunnel",
+      "description": "灵感来自 Magic UI，原创实现。数据格子沿隧道向前。WebGL 按需加载。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/data-tunnel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-tunnel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-upload-queue",
+      "type": "registry:ui",
+      "title": "File Upload Queue",
+      "description": "灵感来自 Dropbox，原创实现。选择文件或加入示例，显示进度、失败和重试。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/file-upload-queue.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/file-upload-queue.tsx"
+        }
+      ]
+    },
+    {
+      "name": "embed-code-generator",
+      "type": "registry:ui",
+      "title": "Embed Code Generator",
+      "description": "灵感来自 YouTube，原创实现。调节宽高、主题和自动播放，生成嵌入代码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/embed-code-generator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/embed-code-generator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-post-feed",
+      "type": "registry:ui",
+      "title": "Social Post Feed",
+      "description": "灵感来自 Instagram，原创实现。发布帖子、相对时间和喜欢计数。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/social-post-feed.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/social-post-feed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comment-thread",
+      "type": "registry:ui",
+      "title": "Comment Thread",
+      "description": "灵感来自 GitHub，原创实现。回复、收起和展开讨论。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/comment-thread.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/comment-thread.tsx"
+        }
+      ]
+    },
+    {
+      "name": "signature-pad",
+      "type": "registry:ui",
+      "title": "Signature Pad",
+      "description": "灵感来自 Kokonut UI，原创实现。指针绘制签名，可放入示例并清除。不依赖签名库。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/signature-pad.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/signature-pad.tsx"
+        }
+      ]
+    },
+    {
+      "name": "poll-vote",
+      "type": "registry:ui",
+      "title": "Poll Vote",
+      "description": "灵感来自 Slack，原创实现。单选投票后显示比例，可以改投。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/poll-vote.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/poll-vote.tsx"
+        }
+      ]
+    },
+    {
+      "name": "schedule-slot-picker",
+      "type": "registry:ui",
+      "title": "Schedule Slot Picker",
+      "description": "灵感来自 Calendly，原创实现。按日期选择时段，已占时段不可选。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/schedule-slot-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/schedule-slot-picker.tsx"
+        }
+      ]
     }
   ]
 }

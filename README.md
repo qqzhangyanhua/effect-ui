@@ -420,6 +420,28 @@ use-mobile · use-prefers-reduced-motion
 | changelog-feed | 灵感来自 Stripe，原创实现 |
 | setup-guide | 灵感来自 Claude，原创实现 |
 
+### 星系、布料与协作表单
+
+登记在 `catalog-batch17.ts`（`catalog-batch16.ts` 已用于织物、海面与协作清单）。未打开 Codrops、Magic UI、Dropbox、YouTube、Instagram、GitHub、Kokonut UI、Slack、Calendly 的源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 一律懒加载已有的 OGL，失败或减弱动效时用 CSS 画面。`signature-pad` 只用画布，不引入签名库。
+
+| 组件 | 来源 |
+| --- | --- |
+| galaxy-spiral | 灵感来自 Codrops，原创实现 |
+| proximity-scale-grid | 灵感来自 Codrops，原创实现 |
+| polaroid-scroll-stack | 灵感来自 Codrops，原创实现 |
+| scroll-svg-graph | 灵感来自 Codrops，原创实现 |
+| cloth-wind-banner | 灵感来自 Codrops，原创实现 |
+| xray-fluid-reveal | 灵感来自 Codrops，原创实现 |
+| petal-dissolve-text | 灵感来自 Codrops，原创实现 |
+| data-tunnel | 灵感来自 Magic UI，原创实现 |
+| file-upload-queue | 灵感来自 Dropbox，原创实现 |
+| embed-code-generator | 灵感来自 YouTube，原创实现 |
+| social-post-feed | 灵感来自 Instagram，原创实现 |
+| comment-thread | 灵感来自 GitHub，原创实现 |
+| signature-pad | 灵感来自 Kokonut UI，原创实现 |
+| poll-vote | 灵感来自 Slack，原创实现 |
+| schedule-slot-picker | 灵感来自 Calendly，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

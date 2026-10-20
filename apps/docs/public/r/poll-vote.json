@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "poll-vote",
+  "type": "registry:ui",
+  "title": "Poll Vote",
+  "description": "灵感来自 Slack，原创实现。单选投票后显示比例，可以改投。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/poll-vote.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/poll-vote.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PollVoteProps {\n  className?: string\n}\n\nconst OPTIONS = [\n  { id: \"wave\", label: \"海浪\" },\n  { id: \"galaxy\", label: \"星系\" },\n  { id: \"cloth\", label: \"布料\" },\n] as const\n\nfunction PollVote({ className }: PollVoteProps) {\n  const reduced = usePrefersReducedMotion()\n  const [counts, setCounts] = React.useState<Record<string, number>>({ wave: 18, galaxy: 11, cloth: 7 })\n  const [mine, setMine] = React.useState<string | null>(null)\n  const total = Object.values(counts).reduce((sum, value) => sum + value, 0)\n\n  const choose = (id: string) => {\n    const next = { ...counts }\n    if (mine) next[mine] = Math.max(0, (next[mine] ?? 0) - 1)\n    next[id] = (next[id] ?? 0) + 1\n    setCounts(next)\n    setMine(id)\n  }\n\n  return (\n    <section data-slot=\"poll-vote\" className={cn(\"w-full space-y-3 rounded-xl border p-4\", className)}>\n      <h2 className=\"text-sm font-medium\">下一张想先看哪一种？</h2>\n      <div role=\"radiogroup\" aria-label=\"投票\" className=\"space-y-2\">\n        {OPTIONS.map((option) => {\n          const count = counts[option.id] ?? 0\n          const percent = total === 0 ? 0 : Math.round((count / total) * 100)\n          const selected = mine === option.id\n          return (\n            <button\n              key={option.id}\n              type=\"button\"\n              role=\"radio\"\n              aria-checked={selected}\n              className={cn(\n                \"relative w-full overflow-hidden rounded-lg border px-3 py-2 text-left text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary\",\n                selected && \"border-primary\",\n              )}\n              onClick={() => choose(option.id)}\n            >\n              {mine ? (\n                <span\n                  aria-hidden\n                  className=\"absolute inset-y-0 left-0 bg-primary/15\"\n                  style={{ width: `${percent}%`, transition: reduced ? \"none\" : \"width 240ms ease\" }}\n                />\n              ) : null}\n              <span className=\"relative flex items-center justify-between\">\n                <span>{option.label}</span>\n                <span className=\"text-xs text-muted-foreground\">{mine ? `${percent}%` : \"投票\"}</span>\n              </span>\n            </button>\n          )\n        })}\n      </div>\n      <p className=\"text-xs text-muted-foreground\">{mine ? `共 ${total} 票，可以改投。` : \"还没有投票。\"}</p>\n    </section>\n  )\n}\n\nexport { PollVote }\n"
+    }
+  ]
+}

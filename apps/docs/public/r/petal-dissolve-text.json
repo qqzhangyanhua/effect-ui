@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "petal-dissolve-text",
+  "type": "registry:ui",
+  "title": "Petal Dissolve Text",
+  "description": "灵感来自 Codrops，原创实现。文字散成花瓣，再聚回去。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/petal-dissolve-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/petal-dissolve-text.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PetalDissolveTextProps {\n  text?: string\n  className?: string\n}\n\nconst COLORS = [\"#fb7185\", \"#fda4af\", \"#f9a8d4\", \"#fecdd3\", \"#f472b6\", \"#ffe4e6\"]\n\nfunction petalsFor(count: number) {\n  return Array.from({ length: count }, (_, index) => {\n    const angle = (index / count) * Math.PI * 2\n    const distance = 70 + (index % 5) * 22\n    return {\n      id: index,\n      dx: Math.cos(angle) * distance,\n      dy: Math.sin(angle) * distance * 0.72,\n      rot: (index * 47) % 80 - 40,\n      color: COLORS[index % COLORS.length] ?? COLORS[0],\n      delay: (index % 6) * 40,\n    }\n  })\n}\n\nfunction PetalDissolveText({ text = \"花瓣散开\", className }: PetalDissolveTextProps) {\n  const reduced = usePrefersReducedMotion()\n  const [open, setOpen] = React.useState(false)\n  const petals = petalsFor(16)\n\n  return (\n    <div data-slot=\"petal-dissolve-text\" className={cn(\"w-full space-y-3\", className)}>\n      <button\n        type=\"button\"\n        aria-pressed={open}\n        className=\"rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground outline-none focus-visible:ring-2 focus-visible:ring-primary\"\n        onClick={() => setOpen((current) => !current)}\n      >\n        {open ? \"聚回文字\" : \"散成花瓣\"}\n      </button>\n      <div className=\"relative flex h-56 items-center justify-center overflow-hidden rounded-xl border\">\n        <p\n          className={cn(\"font-display text-4xl tracking-wide\", open ? \"opacity-0\" : \"opacity-100\")}\n          style={{ transition: reduced ? \"none\" : \"opacity 280ms ease\" }}\n        >\n          {text}\n        </p>\n        {open\n          ? petals.map((petal) => (\n              <span\n                key={petal.id}\n                aria-hidden\n                className=\"absolute top-1/2 left-1/2 h-3 w-5 rounded-[100%_0_100%_0]\"\n                style={{\n                  background: petal.color,\n                  [\"--dx\" as string]: `${petal.dx}px`,\n                  [\"--dy\" as string]: `${petal.dy}px`,\n                  [\"--rot\" as string]: `${petal.rot}deg`,\n                  animation: reduced ? \"none\" : `effect-ui-petal 700ms ${petal.delay}ms both`,\n                  transform: reduced\n                    ? `translate(calc(-50% + ${petal.dx}px), calc(-50% + ${petal.dy}px)) rotate(${petal.rot}deg)`\n                    : undefined,\n                }}\n              />\n            ))\n          : null}\n      </div>\n      <style>{`@keyframes effect-ui-petal { from { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 0; } to { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--rot)) scale(1); opacity: 1; } }`}</style>\n    </div>\n  )\n}\n\nexport { PetalDissolveText }\n"
+    }
+  ]
+}

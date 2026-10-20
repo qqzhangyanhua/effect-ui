@@ -15,6 +15,7 @@ import * as effectDemos13 from "./effect-demos-13"
 import * as effectDemos14 from "./effect-demos-14"
 import * as effectDemos15 from "./effect-demos-15"
 import * as effectDemos16 from "./effect-demos-16"
+import * as effectDemos17 from "./effect-demos-17"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -374,6 +375,21 @@ const demoMap: Record<string, ComponentType> = {
   "share-invite-panel": effectDemos16.ShareInvitePanelDemo,
   "changelog-feed": effectDemos16.ChangelogFeedDemo,
   "setup-guide": effectDemos16.SetupGuideDemo,
+  "galaxy-spiral": effectDemos17.GalaxySpiralDemo,
+  "proximity-scale-grid": effectDemos17.ProximityScaleGridDemo,
+  "polaroid-scroll-stack": effectDemos17.PolaroidScrollStackDemo,
+  "scroll-svg-graph": effectDemos17.ScrollSvgGraphDemo,
+  "cloth-wind-banner": effectDemos17.ClothWindBannerDemo,
+  "xray-fluid-reveal": effectDemos17.XrayFluidRevealDemo,
+  "petal-dissolve-text": effectDemos17.PetalDissolveTextDemo,
+  "data-tunnel": effectDemos17.DataTunnelDemo,
+  "file-upload-queue": effectDemos17.FileUploadQueueDemo,
+  "embed-code-generator": effectDemos17.EmbedCodeGeneratorDemo,
+  "social-post-feed": effectDemos17.SocialPostFeedDemo,
+  "comment-thread": effectDemos17.CommentThreadDemo,
+  "signature-pad": effectDemos17.SignaturePadDemo,
+  "poll-vote": effectDemos17.PollVoteDemo,
+  "schedule-slot-picker": effectDemos17.ScheduleSlotPickerDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

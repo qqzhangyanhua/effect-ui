@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-post-feed",
+  "type": "registry:ui",
+  "title": "Social Post Feed",
+  "description": "灵感来自 Instagram，原创实现。发布帖子、相对时间和喜欢计数。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/social-post-feed.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/social-post-feed.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SocialPostFeedProps {\n  className?: string\n}\n\ninterface Post {\n  id: string\n  author: string\n  body: string\n  at: number\n  likes: number\n  liked: boolean\n}\n\nconst NOW = Date.UTC(2026, 9, 20, 18, 0, 0)\n\nconst INITIAL: Post[] = [\n  { id: \"p1\", author: \"林夏\", body: \"隧道预览已经对着数据节奏了。\", at: NOW - 2 * 3600000, likes: 12, liked: false },\n  { id: \"p2\", author: \"周宁\", body: \"相片堆在滚动到一半时最好看。\", at: NOW - 26 * 3600000, likes: 4, liked: false },\n  { id: \"p3\", author: \"赵衡\", body: \"风力拉满以后旗帜会卷边。\", at: NOW - 3 * 86400000, likes: 9, liked: true },\n]\n\nfunction relative(at: number) {\n  const hours = Math.round((NOW - at) / 3600000)\n  if (hours < 1) return \"刚刚\"\n  if (hours < 24) return `${hours} 小时前`\n  return `${Math.round(hours / 24)} 天前`\n}\n\nfunction SocialPostFeed({ className }: SocialPostFeedProps) {\n  const reduced = usePrefersReducedMotion()\n  const nextId = React.useRef(4)\n  const [draft, setDraft] = React.useState(\"\")\n  const [posts, setPosts] = React.useState(INITIAL)\n\n  const publish = () => {\n    const body = draft.trim()\n    if (!body) return\n    nextId.current += 1\n    setPosts((current) => [{ id: `p-${nextId.current}`, author: \"你\", body, at: NOW - 60 * 1000, likes: 0, liked: false }, ...current])\n    setDraft(\"\")\n  }\n\n  return (\n    <section data-slot=\"social-post-feed\" className={cn(\"w-full space-y-3\", className)}>\n      <div className=\"flex gap-2\">\n        <input\n          aria-label=\"新帖子\"\n          value={draft}\n          placeholder=\"写一条更新\"\n          className=\"h-9 flex-1 rounded-md border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary\"\n          onChange={(event) => setDraft(event.target.value)}\n          onKeyDown={(event) => {\n            if (event.key === \"Enter\") publish()\n          }}\n        />\n        <button type=\"button\" className=\"rounded-md bg-primary px-3 text-sm text-primary-foreground\" onClick={publish}>\n          发布\n        </button>\n      </div>\n      <ul className=\"space-y-2\">\n        {posts.map((post) => (\n          <motion.li\n            key={post.id}\n            layout\n            initial={reduced ? false : { y: -8, opacity: 0 }}\n            animate={{ y: 0, opacity: 1 }}\n            transition={{ duration: reduced ? 0 : 0.25 }}\n            className=\"rounded-xl border p-3\"\n          >\n            <article>\n              <div className=\"flex items-center justify-between gap-3 text-xs text-muted-foreground\">\n                <span className=\"text-sm font-medium text-foreground\">{post.author}</span>\n                <time dateTime={new Date(post.at).toISOString()}>{relative(post.at)}</time>\n              </div>\n              <p className=\"mt-2 text-sm\">{post.body}</p>\n              <button\n                type=\"button\"\n                aria-pressed={post.liked}\n                className=\"mt-2 rounded-md border px-2 py-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-primary\"\n                onClick={() =>\n                  setPosts((current) =>\n                    current.map((item) =>\n                      item.id === post.id\n                        ? { ...item, liked: !item.liked, likes: item.likes + (item.liked ? -1 : 1) }\n                        : item,\n                    ),\n                  )\n                }\n              >\n                {post.liked ? \"已喜欢\" : \"喜欢\"} · {post.likes}\n              </button>\n            </article>\n          </motion.li>\n        ))}\n      </ul>\n    </section>\n  )\n}\n\nexport { SocialPostFeed }\n"
+    }
+  ]
+}

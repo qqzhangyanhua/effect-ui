@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-plus",
+  "type": "registry:ui",
+  "title": "Radio Plus",
+  "description": "用 options 渲染的单选组，可排成按钮。",
+  "dependencies": [],
+  "registryDependencies": [
+    "radio-group",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/radio-plus.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/radio-plus.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface RadioOption {\n  label: React.ReactNode\n  value: string\n  disabled?: boolean\n}\n\nexport type RadioOptionInput = string | RadioOption\n\nexport interface RadioPlusGroupProps {\n  options: readonly RadioOptionInput[]\n  value?: string\n  defaultValue?: string\n  onValueChange?: (value: string) => void\n  disabled?: boolean\n  orientation?: \"horizontal\" | \"vertical\"\n  optionType?: \"default\" | \"button\"\n  className?: string\n  id?: string\n  ref?: React.Ref<HTMLButtonElement>\n  \"aria-invalid\"?: React.AriaAttributes[\"aria-invalid\"]\n  \"aria-describedby\"?: string\n}\n\nfunction normalizeOption(option: RadioOptionInput): RadioOption {\n  if (typeof option === \"string\") return { label: option, value: option }\n  return option\n}\n\nfunction RadioPlusGroup({\n  options,\n  value,\n  defaultValue,\n  onValueChange,\n  disabled = false,\n  orientation = \"horizontal\",\n  optionType = \"default\",\n  className,\n  id,\n  ref,\n  \"aria-invalid\": ariaInvalid,\n  \"aria-describedby\": ariaDescribedBy,\n}: RadioPlusGroupProps) {\n  const items = options.map(normalizeOption)\n  const buttons = optionType === \"button\"\n\n  return (\n    <RadioGroup\n      value={value}\n      defaultValue={defaultValue}\n      onValueChange={onValueChange}\n      disabled={disabled}\n      orientation={orientation}\n      className={cn(\n        buttons\n          ? \"inline-flex gap-0\"\n          : orientation === \"vertical\"\n            ? \"grid gap-2\"\n            : \"flex flex-wrap items-center gap-3\",\n        buttons && orientation === \"vertical\" && \"flex-col\",\n        className,\n      )}\n    >\n      {items.map((item, index) => (\n        <label\n          key={item.value}\n          className={cn(\n            \"inline-flex items-center gap-2 text-sm leading-none\",\n            buttons &&\n              \"relative cursor-pointer border border-input px-3 py-1.5 first:rounded-l-md last:rounded-r-md has-[[data-state=checked]]:bg-primary has-[[data-state=checked]]:text-primary-foreground has-[:focus-visible]:z-10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring\",\n            buttons &&\n              orientation === \"vertical\" &&\n              \"first:rounded-l-none first:rounded-t-md last:rounded-r-none last:rounded-b-md\",\n            (disabled || item.disabled) && \"cursor-not-allowed opacity-50\",\n          )}\n        >\n          <RadioGroupItem\n            value={item.value}\n            disabled={disabled || item.disabled}\n            id={index === 0 ? id : undefined}\n            ref={index === 0 ? ref : undefined}\n            aria-invalid={ariaInvalid}\n            aria-describedby={ariaDescribedBy}\n            className={buttons ? \"absolute inset-0 size-auto aspect-auto h-full w-full cursor-pointer opacity-0\" : undefined}\n          />\n          {item.label}\n        </label>\n      ))}\n    </RadioGroup>\n  )\n}\n\nexport { RadioPlusGroup }\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticker-peel",
+  "type": "registry:ui",
+  "title": "Sticker Peel",
+  "description": "灵感来自 React Bits，原创实现。拖右上角揭开贴纸，露出白色背面，松手弹簧回弹。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/sticker-peel.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/sticker-peel.tsx",
+      "content": "\"use client\"\n\nimport { animate, motion, useMotionValue, useTransform } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StickerPeelProps {\n  className?: string\n  label?: string\n}\n\nfunction StickerPeel({ className, label = \"STICKER\" }: StickerPeelProps) {\n  const reduced = usePrefersReducedMotion()\n  const x = useMotionValue(0)\n  const y = useMotionValue(0)\n  const drag = React.useRef<{ px: number; py: number } | null>(null)\n  const rotate = useTransform([x, y], ([latestX, latestY]) => Number(latestX) * 0.05 + Number(latestY) * 0.08)\n  const clip = useTransform([x, y], ([latestX, latestY]) => {\n    const dx = Math.max(0, -Number(latestX))\n    const dy = Math.max(0, Number(latestY))\n    const cut = Math.min(86, (dx + dy) * 0.55)\n    return `polygon(0% 0%, ${100 - cut}% 0%, 100% ${cut}%, 100% 100%, 0% 100%)`\n  })\n  const fold = useTransform([x, y], ([latestX, latestY]) => {\n    const dx = Math.max(0, -Number(latestX))\n    const dy = Math.max(0, Number(latestY))\n    return Math.min(92, 18 + (dx + dy) * 0.45)\n  })\n\n  const springBack = () => {\n    drag.current = null\n    void animate(x, 0, { type: \"spring\", stiffness: 340, damping: 22 })\n    void animate(y, 0, { type: \"spring\", stiffness: 340, damping: 22 })\n  }\n\n  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {\n    if (reduced) return\n    drag.current = { px: event.clientX, py: event.clientY }\n    event.currentTarget.setPointerCapture(event.pointerId)\n  }\n\n  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {\n    const previous = drag.current\n    if (!previous) return\n    const dx = event.clientX - previous.px\n    const dy = event.clientY - previous.py\n    drag.current = { px: event.clientX, py: event.clientY }\n    x.set(Math.max(-150, Math.min(12, x.get() + dx)))\n    y.set(Math.max(-12, Math.min(130, y.get() + dy)))\n  }\n\n  return (\n    <div data-slot=\"sticker-peel\" className={cn(\"relative h-56 w-56\", className)}>\n      <div className=\"absolute inset-0 rounded-2xl bg-white shadow-inner\">\n        <div className=\"absolute inset-3 rounded-xl border border-dashed border-zinc-300\" />\n        <p className=\"absolute bottom-4 left-4 text-xs tracking-[0.22em] text-zinc-400\">WHITE BACK</p>\n      </div>\n      {reduced ? null : (\n        <motion.span\n          aria-hidden\n          className=\"absolute top-0 right-0 bg-zinc-100 shadow-md\"\n          style={{\n            width: fold,\n            height: fold,\n            clipPath: \"polygon(0 0, 100% 0, 100% 100%)\",\n          }}\n        />\n      )}\n      <motion.div\n        aria-label=\"拖动揭开贴纸\"\n        className=\"absolute inset-0 cursor-grab touch-none rounded-2xl shadow-xl active:cursor-grabbing\"\n        style={{ x, y, rotate, clipPath: clip }}\n        onPointerDown={onPointerDown}\n        onPointerMove={onPointerMove}\n        onPointerUp={springBack}\n        onPointerCancel={springBack}\n      >\n        <div className=\"grid h-full place-items-center rounded-2xl bg-[conic-gradient(from_120deg,#fb7185,#fbbf24,#34d399,#60a5fa,#fb7185)]\">\n          <span className=\"rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-zinc-900\">{label}</span>\n        </div>\n      </motion.div>\n    </div>\n  )\n}\n\nexport { StickerPeel }\n"
+    }
+  ]
+}

@@ -5655,6 +5655,297 @@
           "target": "components/ui/warm-tooltip.tsx"
         }
       ]
+    },
+    {
+      "name": "text-pressure",
+      "type": "registry:ui",
+      "title": "Text Pressure",
+      "description": "灵感来自 React Bits，原创实现。通栏可变字体，靠近指针的字母增加字重、宽度和高度。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-pressure.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-pressure.tsx"
+        }
+      ]
+    },
+    {
+      "name": "true-focus",
+      "type": "registry:ui",
+      "title": "True Focus",
+      "description": "灵感来自 React Bits，原创实现。句子里的词轮流对焦，其余模糊，发光角框滑到当前词。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/true-focus.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/true-focus.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-flap-text",
+      "type": "registry:ui",
+      "title": "Split Flap Text",
+      "description": "灵感来自 React Bits，原创实现。机场翻板字，字符逐格翻到目标文本。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/split-flap-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/split-flap-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "curved-loop",
+      "type": "registry:ui",
+      "title": "Curved Loop",
+      "description": "灵感来自 React Bits，原创实现。大字沿弧线循环，拖动改变方向。复用 marquee-along-svg-path。",
+      "dependencies": [],
+      "registryDependencies": [
+        "marquee-along-svg-path",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/curved-loop.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/curved-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fuzzy-text",
+      "type": "registry:ui",
+      "title": "Fuzzy Text",
+      "description": "灵感来自 React Bits，原创实现。画布按行水平抖动，像信号不良，悬停更强。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fuzzy-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fuzzy-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "electric-border",
+      "type": "registry:ui",
+      "title": "Electric Border",
+      "description": "灵感来自 React Bits，原创实现。用 SVG feTurbulence 和 feDisplacementMap 做爆裂发光边。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/electric-border.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/electric-border.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sticker-peel",
+      "type": "registry:ui",
+      "title": "Sticker Peel",
+      "description": "灵感来自 React Bits，原创实现。拖右上角揭开贴纸，露出白色背面，松手弹簧回弹。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sticker-peel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sticker-peel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "click-spark",
+      "type": "registry:ui",
+      "title": "Click Spark",
+      "description": "灵感来自 React Bits，原创实现。点击任意处迸出一圈短火花线。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/click-spark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/click-spark.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glare-hover",
+      "type": "registry:ui",
+      "title": "Glare Hover",
+      "description": "灵感来自 React Bits，原创实现。悬停时一道对角高光扫过，纯 CSS。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glare-hover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glare-hover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-swap",
+      "type": "registry:ui",
+      "title": "Card Swap",
+      "description": "灵感来自 React Bits，原创实现。倾斜堆叠的 3D 卡片，最前面一张落下后排到末尾。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/card-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flowing-menu",
+      "type": "registry:ui",
+      "title": "Flowing Menu",
+      "description": "灵感来自 React Bits，原创实现。通栏大字菜单，跑马灯从指针进入的那一侧滑入。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flowing-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flowing-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dome-gallery",
+      "type": "registry:ui",
+      "title": "Dome Gallery",
+      "description": "灵感来自 React Bits，原创实现。色块贴在球面内侧，拖动旋转 360°，点击放大。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dome-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dome-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "elastic-slider",
+      "type": "registry:ui",
+      "title": "Elastic Slider",
+      "description": "灵感来自 React Bits，原创实现。滑块拖过两端会像橡皮一样拉长，松手弹回。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/elastic-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/elastic-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "light-rays",
+      "type": "registry:ui",
+      "title": "Light Rays",
+      "description": "灵感来自 React Bits，原创实现。从单点射出的体积光锥，光线摆动，可选跟随指针。与 light-beams 的平行细光束不同。OGL 懒加载，失败或减弱动效时用锥形渐变。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/light-rays.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/light-rays.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hyperspeed",
+      "type": "registry:ui",
+      "title": "Hyperspeed",
+      "description": "灵感来自 React Bits，原创实现。夜路灯轨向消失点汇聚，按住加速。与 light-rays 的扇形体积光不同。OGL 懒加载，失败或减弱动效时用 CSS 灯轨。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hyperspeed.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hyperspeed.tsx"
+        }
+      ]
     }
   ]
 }

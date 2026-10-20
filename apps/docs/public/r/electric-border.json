@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "electric-border",
+  "type": "registry:ui",
+  "title": "Electric Border",
+  "description": "灵感来自 React Bits，原创实现。用 SVG feTurbulence 和 feDisplacementMap 做爆裂发光边。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/electric-border.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/electric-border.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ElectricBorderProps {\n  className?: string\n  color?: string\n  children?: React.ReactNode\n}\n\nfunction ElectricBorder({ className, color = \"#67e8f9\", children }: ElectricBorderProps) {\n  const reduced = usePrefersReducedMotion()\n  const rawId = React.useId()\n  const filterId = `electric-${rawId.replace(/:/g, \"\")}`\n  const turbulenceRef = React.useRef<SVGFETurbulenceElement>(null)\n\n  React.useEffect(() => {\n    if (reduced) return\n    const node = turbulenceRef.current\n    if (!node) return\n    let frame = 0\n    const started = performance.now()\n    const tick = (now: number) => {\n      const t = (now - started) / 1000\n      const x = 0.008 + Math.sin(t * 3.1) * 0.006\n      const y = 0.035 + Math.cos(t * 4.4) * 0.02\n      node.setAttribute(\"baseFrequency\", `${x} ${y}`)\n      node.setAttribute(\"seed\", String(Math.floor(t * 8) % 8))\n      frame = window.requestAnimationFrame(tick)\n    }\n    frame = window.requestAnimationFrame(tick)\n    return () => window.cancelAnimationFrame(frame)\n  }, [reduced])\n\n  return (\n    <div\n      data-slot=\"electric-border\"\n      className={cn(\"relative overflow-visible rounded-2xl bg-zinc-950 text-white\", className)}\n      style={{ color }}\n    >\n      <svg className=\"pointer-events-none absolute -inset-3 size-[calc(100%+1.5rem)]\" aria-hidden>\n        <defs>\n          <filter id={filterId} x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\">\n            <feTurbulence\n              ref={turbulenceRef}\n              type=\"turbulence\"\n              baseFrequency=\"0.01 0.04\"\n              numOctaves={2}\n              seed={2}\n              result=\"noise\"\n            />\n            <feDisplacementMap in=\"SourceGraphic\" in2=\"noise\" scale={14} xChannelSelector=\"R\" yChannelSelector=\"G\" />\n          </filter>\n        </defs>\n        <rect\n          x=\"8%\"\n          y=\"10%\"\n          width=\"84%\"\n          height=\"80%\"\n          rx=\"18\"\n          fill=\"none\"\n          stroke={color}\n          strokeWidth=\"3\"\n          filter={`url(#${filterId})`}\n          style={{ filter: `drop-shadow(0 0 8px ${color})` }}\n        />\n      </svg>\n      <div className=\"relative z-10 px-8 py-10\">\n        {children ?? (\n          <div className=\"text-center\">\n            <p className=\"text-xs tracking-[0.28em] text-cyan-100/70\">BORDER</p>\n            <p className=\"mt-2 font-display text-3xl\">Crackling edge</p>\n          </div>\n        )}\n      </div>\n    </div>\n  )\n}\n\nexport { ElectricBorder }\n"
+    }
+  ]
+}

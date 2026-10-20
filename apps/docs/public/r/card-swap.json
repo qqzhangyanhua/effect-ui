@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-swap",
+  "type": "registry:ui",
+  "title": "Card Swap",
+  "description": "灵感来自 React Bits，原创实现。倾斜堆叠的 3D 卡片，最前面一张落下后排到末尾。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/card-swap.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/card-swap.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CardSwapCard {\n  id: string\n  kicker: string\n  title: string\n  tone: string\n}\n\nexport interface CardSwapProps {\n  className?: string\n  cards?: CardSwapCard[]\n  interval?: number\n}\n\nconst DEFAULT_CARDS: CardSwapCard[] = [\n  { id: \"archive\", kicker: \"01\", title: \"Archive\", tone: \"bg-indigo-500\" },\n  { id: \"signal\", kicker: \"02\", title: \"Signal\", tone: \"bg-sky-500\" },\n  { id: \"field\", kicker: \"03\", title: \"Field\", tone: \"bg-amber-400 text-zinc-950\" },\n]\n\nconst POSES = [\n  { x: 0, y: 0, rotate: -8, scale: 1, zIndex: 3 },\n  { x: 36, y: -18, rotate: 6, scale: 0.94, zIndex: 2 },\n  { x: 68, y: -34, rotate: 13, scale: 0.88, zIndex: 1 },\n]\n\nfunction CardSwap({ className, cards = DEFAULT_CARDS, interval = 2400 }: CardSwapProps) {\n  const reduced = usePrefersReducedMotion()\n  const [order, setOrder] = React.useState(() => cards.map((card) => card.id))\n  const [dropping, setDropping] = React.useState<string | null>(null)\n\n  React.useEffect(() => {\n    if (reduced) return\n    const front = order[0]\n    if (!front) return\n    let inner = 0\n    const outer = window.setTimeout(() => {\n      setDropping(front)\n      inner = window.setTimeout(() => {\n        setOrder((current) => {\n          if (current[0] !== front) return current\n          return [...current.slice(1), front]\n        })\n        setDropping(null)\n      }, 460)\n    }, interval)\n    return () => {\n      window.clearTimeout(outer)\n      window.clearTimeout(inner)\n    }\n  }, [reduced, interval, order])\n\n  return (\n    <div data-slot=\"card-swap\" className={cn(\"relative mx-auto h-80 w-full max-w-md overflow-hidden\", className)}>\n      <div\n        className=\"absolute inset-0\"\n        style={{ perspective: 900, transform: \"rotateX(16deg) rotateZ(-7deg)\", transformStyle: \"preserve-3d\" }}\n      >\n        {cards.map((card) => {\n          const stackIndex = Math.max(0, order.indexOf(card.id))\n          const pose = dropping === card.id ? { x: -24, y: 120, rotate: 18, scale: 0.94, zIndex: 6 } : POSES[stackIndex] ?? POSES[2]\n          return (\n            <motion.article\n              key={card.id}\n              className={cn(\n                \"absolute top-10 left-8 flex h-40 w-52 flex-col justify-between rounded-2xl p-4 text-white shadow-xl\",\n                card.tone,\n              )}\n              initial={false}\n              animate={pose ?? POSES[0]}\n              transition={reduced ? { duration: 0 } : { type: \"spring\", stiffness: 240, damping: 24 }}\n            >\n              <span className=\"text-xs tracking-[0.2em] opacity-80\">{card.kicker}</span>\n              <span className=\"font-display text-3xl\">{card.title}</span>\n            </motion.article>\n          )\n        })}\n      </div>\n    </div>\n  )\n}\n\nexport { CardSwap }\n"
+    }
+  ]
+}

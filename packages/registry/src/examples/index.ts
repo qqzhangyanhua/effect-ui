@@ -11,6 +11,7 @@ import * as effectDemos8 from "./effect-demos-8"
 import * as effectDemos9 from "./effect-demos-9"
 import * as effectDemos10 from "./effect-demos-10"
 import * as effectDemos11 from "./effect-demos-11"
+import * as effectDemos13 from "./effect-demos-13"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -310,6 +311,21 @@ const demoMap: Record<string, ComponentType> = {
   "pulse-heart": uiDemos6.PulseHeartDemo,
   "lattice-loader": uiDemos6.LatticeLoaderDemo,
   "warm-tooltip": uiDemos6.WarmTooltipDemo,
+  "text-pressure": effectDemos13.TextPressureDemo,
+  "true-focus": effectDemos13.TrueFocusDemo,
+  "split-flap-text": effectDemos13.SplitFlapTextDemo,
+  "curved-loop": effectDemos13.CurvedLoopDemo,
+  "fuzzy-text": effectDemos13.FuzzyTextDemo,
+  "electric-border": effectDemos13.ElectricBorderDemo,
+  "sticker-peel": effectDemos13.StickerPeelDemo,
+  "click-spark": effectDemos13.ClickSparkDemo,
+  "glare-hover": effectDemos13.GlareHoverDemo,
+  "card-swap": effectDemos13.CardSwapDemo,
+  "flowing-menu": effectDemos13.FlowingMenuDemo,
+  "dome-gallery": effectDemos13.DomeGalleryDemo,
+  "elastic-slider": effectDemos13.ElasticSliderDemo,
+  "light-rays": effectDemos13.LightRaysDemo,
+  "hyperspeed": effectDemos13.HyperspeedDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

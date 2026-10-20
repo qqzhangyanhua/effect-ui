@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "elastic-slider",
+  "type": "registry:ui",
+  "title": "Elastic Slider",
+  "description": "灵感来自 React Bits，原创实现。滑块拖过两端会像橡皮一样拉长，松手弹回。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/elastic-slider.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/elastic-slider.tsx",
+      "content": "\"use client\"\n\nimport { animate, motion, useMotionValue, useTransform } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ElasticSliderProps {\n  className?: string\n  min?: number\n  max?: number\n  defaultValue?: number\n}\n\nfunction ElasticSlider({ className, min = 0, max = 100, defaultValue = 42 }: ElasticSliderProps) {\n  const reduced = usePrefersReducedMotion()\n  const [value, setValue] = React.useState(defaultValue)\n  const trackRef = React.useRef<HTMLDivElement>(null)\n  const stretch = useMotionValue(0)\n  const scaleX = useTransform(stretch, (latest) => 1 + Math.min(0.22, Math.abs(latest) * 0.55))\n  const origin = useTransform(stretch, (latest) => (latest < 0 ? \"right center\" : \"left center\"))\n  const thumbX = useTransform(stretch, (latest) => latest * 42)\n\n  const applyPointer = (clientX: number) => {\n    const track = trackRef.current\n    if (!track) return\n    const rect = track.getBoundingClientRect()\n    const ratio = rect.width === 0 ? 0 : (clientX - rect.left) / rect.width\n    if (ratio < 0) {\n      setValue(min)\n      if (!reduced) stretch.set(ratio)\n      return\n    }\n    if (ratio > 1) {\n      setValue(max)\n      if (!reduced) stretch.set(ratio - 1)\n      return\n    }\n    stretch.set(0)\n    setValue(min + ratio * (max - min))\n  }\n\n  const release = () => {\n    if (reduced) {\n      stretch.set(0)\n      return\n    }\n    void animate(stretch, 0, { type: \"spring\", stiffness: 460, damping: 16 })\n  }\n\n  const percent = ((value - min) / Math.max(max - min, 1)) * 100\n\n  return (\n    <div data-slot=\"elastic-slider\" className={cn(\"w-full max-w-md space-y-3\", className)}>\n      <div className=\"flex items-center justify-between text-sm\">\n        <span>弹性滑块</span>\n        <span className=\"tabular-nums text-muted-foreground\">{Math.round(value)}</span>\n      </div>\n      <div\n        ref={trackRef}\n        role=\"slider\"\n        tabIndex={0}\n        aria-valuemin={min}\n        aria-valuemax={max}\n        aria-valuenow={Math.round(value)}\n        aria-label=\"弹性滑块\"\n        className=\"relative h-10 cursor-ew-resize touch-none outline-none\"\n        onPointerDown={(event) => {\n          event.currentTarget.setPointerCapture(event.pointerId)\n          applyPointer(event.clientX)\n        }}\n        onPointerMove={(event) => {\n          if (!event.currentTarget.hasPointerCapture(event.pointerId)) return\n          applyPointer(event.clientX)\n        }}\n        onPointerUp={release}\n        onPointerCancel={release}\n        onKeyDown={(event) => {\n          const step = (max - min) / 20\n          if (event.key === \"ArrowRight\" || event.key === \"ArrowUp\") {\n            setValue((current) => Math.min(max, current + step))\n          }\n          if (event.key === \"ArrowLeft\" || event.key === \"ArrowDown\") {\n            setValue((current) => Math.max(min, current - step))\n          }\n        }}\n      >\n        <motion.div\n          className=\"absolute top-4 h-2 w-full rounded-full bg-muted\"\n          style={{ scaleX, transformOrigin: origin }}\n        />\n        <motion.div\n          className=\"absolute top-4 h-2 rounded-full bg-primary\"\n          style={{ width: `${percent}%`, scaleX, transformOrigin: origin }}\n        />\n        <motion.div\n          className=\"absolute top-2.5 size-5 rounded-full border-2 border-primary bg-background shadow\"\n          style={{ left: `calc(${percent}% - 10px)`, x: thumbX }}\n        />\n      </div>\n      <p className=\"text-xs text-muted-foreground\">拖过两端会像橡皮一样拉长，松手弹回。</p>\n    </div>\n  )\n}\n\nexport { ElasticSlider }\n"
+    }
+  ]
+}

@@ -45,6 +45,7 @@ function CheckboxPlus({
   className,
   id,
   ref,
+  onCheckedChange,
   "aria-invalid": ariaInvalid,
   "aria-describedby": ariaDescribedBy,
   ...props
@@ -55,6 +56,7 @@ function CheckboxPlus({
         {...props}
         ref={ref}
         id={id}
+        onCheckedChange={onCheckedChange}
         checked={indeterminate ? "indeterminate" : checked}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedBy}

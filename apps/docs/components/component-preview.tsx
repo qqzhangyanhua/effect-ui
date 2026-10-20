@@ -2,7 +2,8 @@
 
 import type { ComponentType } from "react"
 
-import { ControlledPreview, PreviewShell, type ControlField } from "@/components/control-panel"
+import { ControlledPreview, type ControlField } from "@/components/control-panel"
+import { PreviewFrame } from "@/components/preview-frame"
 
 function ComponentPreview({
   Demo,
@@ -17,9 +18,9 @@ function ComponentPreview({
     return <ControlledPreview Demo={Demo} componentName={componentName} controls={controls} />
   }
   return (
-    <PreviewShell>
+    <PreviewFrame>
       <Demo />
-    </PreviewShell>
+    </PreviewFrame>
   )
 }
 

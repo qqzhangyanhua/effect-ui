@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { afterEach, beforeAll, expect, test, vi } from "vitest"
-import { cleanup, render, screen, within } from "@testing-library/react"
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { useForm } from "react-hook-form"
 import "@testing-library/jest-dom/vitest"
@@ -257,8 +257,8 @@ test("loading 标记忙碌，分组、自定义渲染、空状态和 children �
       <ComboboxItem value="custom">自定义项</ComboboxItem>
     </SelectPlus>,
   )
-  await user.click(screen.getByRole("combobox"))
-  await user.click(await screen.findByRole("option", { name: "自定义项" }))
+  fireEvent.mouseDown(screen.getByRole("combobox"))
+  fireEvent.click(await screen.findByRole("option", { name: "自定义项" }))
   expect(onValueChange).toHaveBeenCalledWith("custom")
 })
 

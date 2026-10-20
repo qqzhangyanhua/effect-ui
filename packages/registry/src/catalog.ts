@@ -81,12 +81,15 @@ export type SourceLibrary =
   | "three"
   | "original"
 
+export type ControlGroup = "外观" | "动画" | "交互"
+
 export type ControlDef =
-  | { kind: "range"; value: number; min: number; max: number; step?: number }
-  | { kind: "select"; value: string; options: readonly string[] }
-  | { kind: "color"; value: string }
-  | { kind: "boolean"; value: boolean }
-  | { kind: "text"; value: string }
+  | { kind: "range"; value: number; min: number; max: number; step?: number; group?: ControlGroup }
+  | { kind: "select"; value: string; options: readonly string[]; group?: ControlGroup }
+  | { kind: "color"; value?: string; group?: ControlGroup }
+  | { kind: "colors"; value: readonly string[]; group?: ControlGroup }
+  | { kind: "boolean"; value: boolean; group?: ControlGroup }
+  | { kind: "text"; value: string; group?: ControlGroup }
 
 export interface PropDoc {
   name: string
@@ -250,6 +253,17 @@ export const components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-prefers-reduced-motion.ts",
     target: "hooks/use-prefers-reduced-motion.ts",
+    props: [],
+  },
+  {
+    name: "use-animation-active",
+    title: "Use Animation Active",
+    description: "目标处于视口内，并且标签页可见时返回 true。",
+    category: "ui",
+    source: "original",
+    type: "registry:hook",
+    file: "hooks/use-animation-active.ts",
+    target: "hooks/use-animation-active.ts",
     props: [],
   },
   {

@@ -70,7 +70,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 
 ### Hooks
 
-use-mobile · use-prefers-reduced-motion
+use-mobile · use-prefers-reduced-motion · use-animation-active
 
 ### 文字动画
 

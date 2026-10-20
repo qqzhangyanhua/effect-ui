@@ -3,7 +3,18 @@ import { expect, test } from "vitest"
 import { auditRegistry, type AuditCatalogEntry } from "./audit"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
 
-const source = "export function Button() {\n  return null\n}\n"
+const source = `export interface ButtonProps {
+  className?: string
+  speed?: number
+  variant?: string
+  delay?: number
+  config?: unknown
+}
+
+export function Button() {
+  return null
+}
+`
 
 function entry(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
   return {
@@ -335,7 +346,10 @@ test("文档组件 Props 为空时报告", () => {
 test("源码引用的 npm 包不在 registry 包依赖清单中时报告", () => {
   const input = withSource(
     [entry()],
-    { "ui/button.tsx": 'import { z } from "zod"\nexport function Button() {\n  return z\n}\n' },
+    {
+      "ui/button.tsx":
+        'import { z } from "zod"\nexport interface ButtonProps {\n  className?: string\n}\nexport function Button() {\n  return z\n}\n',
+    },
     [],
   )
   expect(auditRegistry(input)).toEqual([
@@ -350,7 +364,10 @@ test("源码引用的 npm 包不在 registry 包依赖清单中时报告", () =>
 test("extraDependencies 不在 registry 包依赖清单中时报告", () => {
   const input = withSource(
     [entry({ extraDependencies: ["@tiptap/pm"] })],
-    { "ui/button.tsx": "export function Button() {\n  return null\n}\n" },
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  className?: string\n}\nexport function Button() {\n  return null\n}\n",
+    },
     [],
   )
   expect(auditRegistry(input)).toEqual([
@@ -365,7 +382,7 @@ test("extraDependencies 不在 registry 包依赖清单中时报告", () => {
 test("源码引用了 catalog 中不存在的 registry 组件时报告", () => {
   const input = withSource([entry()], {
     "ui/button.tsx":
-      'import { Widget } from "@/components/ui/missing-widget"\nexport function Button() {\n  return Widget\n}\n',
+      'import { Widget } from "@/components/ui/missing-widget"\nexport interface ButtonProps {\n  className?: string\n}\nexport function Button() {\n  return Widget\n}\n',
   })
   expect(auditRegistry(input)).toEqual([
     {
@@ -402,7 +419,7 @@ test("使用 useId 但没有 use client 时不报告", () => {
     ],
     {
       "effects/grid-pattern.tsx":
-        'import * as React from "react"\nimport { createPortal } from "react-dom"\nimport { cn } from "@/lib/utils"\nexport function GridPattern() {\n  const id = React.useId()\n  return createPortal(id, document.body)\n}\n',
+        'import * as React from "react"\nimport { createPortal } from "react-dom"\nimport { cn } from "@/lib/utils"\nexport function GridPattern({ className }: { className?: string }) {\n  const id = React.useId()\n  return createPortal(id, document.body)\n}\n',
       "lib/utils.ts": "export function cn() {\n  return \"\"\n}\n",
     },
   )
@@ -480,6 +497,39 @@ test("range 或 select 控件字段类型不对时报告", () => {
       description: "控件 “variant” 的 select 起始值或可选项不是字符串。",
     },
   ])
+})
+
+test("PropDoc 名字出现在导出的 Props 类型里时不报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }] })],
+    { "ui/button.tsx": "export interface ButtonProps {\n  speed?: number\n}\n" },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-type")).toEqual([])
+})
+
+test("PropDoc 名字不在导出的 Props 类型里时报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }, { name: "glow" }] })],
+    { "ui/button.tsx": "export interface ButtonProps {\n  speed?: number\n}\n" },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-type")).toEqual([
+    {
+      name: "button",
+      type: "prop-not-in-type",
+      description: "Prop “glow” 没有出现在导出的 Props 类型中。",
+    },
+  ])
+})
+
+test("继承 HTML 属性时，未写在类型正文里的 className 不报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "className" }, { name: "intensity" }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps extends React.HTMLAttributes<HTMLDivElement> {\n  intensity?: number\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-type")).toEqual([])
 })
 
 test("select 控件起始值不在选项中时报告", () => {

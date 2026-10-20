@@ -52,6 +52,21 @@
       ]
     },
     {
+      "name": "use-animation-active",
+      "type": "registry:hook",
+      "title": "Use Animation Active",
+      "description": "目标处于视口内，并且标签页可见时返回 true。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-animation-active.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-animation-active.ts"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",

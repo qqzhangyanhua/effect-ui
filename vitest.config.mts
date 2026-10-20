@@ -42,6 +42,14 @@ export default defineConfig({
     alias: [
       { find: "@/lib/utils", replacement: path.join(registrySrc, "lib/utils.ts") },
       {
+        find: /^@\/lib\/(.*)$/,
+        replacement: `${path.join(root, "apps/docs/lib")}/$1`,
+      },
+      {
+        find: /^@\/components\/(?!ui\/)(.*)$/,
+        replacement: `${path.join(root, "apps/docs/components")}/$1`,
+      },
+      {
         find: /^@\/hooks\/(.*)$/,
         replacement: `${path.join(registrySrc, "hooks")}/$1`,
       },

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-animation-active",
+  "type": "registry:hook",
+  "title": "Use Animation Active",
+  "description": "目标处于视口内，并且标签页可见时返回 true。",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/hooks/use-animation-active.ts",
+      "type": "registry:hook",
+      "target": "hooks/use-animation-active.ts",
+      "content": "\"use client\"\n\nimport { useEffect, useState, useSyncExternalStore, type RefObject } from \"react\"\n\nfunction subscribe(onStoreChange: () => void) {\n  document.addEventListener(\"visibilitychange\", onStoreChange)\n  return () => document.removeEventListener(\"visibilitychange\", onStoreChange)\n}\n\nfunction visibleNow() {\n  return document.visibilityState === \"visible\"\n}\n\nexport function useAnimationActive(ref: RefObject<Element | null>) {\n  const visible = useSyncExternalStore(subscribe, visibleNow, () => false)\n  const [inView, setInView] = useState(false)\n\n  useEffect(() => {\n    const node = ref.current\n    if (!node || typeof IntersectionObserver === \"undefined\") return\n    const observer = new IntersectionObserver((entries) => {\n      const entry = entries[entries.length - 1]\n      setInView(entry?.isIntersecting ?? false)\n    })\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [ref])\n\n  return visible && inView\n}\n"
+    }
+  ]
+}

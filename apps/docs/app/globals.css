@@ -3,7 +3,7 @@
 
 @source "../../../packages/registry/src/**/*.{ts,tsx}";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *):not(:is(.theme-light, .theme-light *)));
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
@@ -43,7 +43,8 @@
   --color-sidebar-border: var(--sidebar-border);
 }
 
-:root {
+:root,
+.theme-light {
   --radius: 0.7rem;
   --background: oklch(0.985 0.01 95);
   --foreground: oklch(0.2 0.03 280);

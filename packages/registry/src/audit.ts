@@ -1,4 +1,5 @@
 import { deriveDependencies } from "./dependencies"
+import { missingPropNames } from "./prop-type-text"
 import {
   buildRegistry,
   buildRegistryItem,
@@ -18,6 +19,7 @@ export type AuditIssueType =
   | "missing-package-dependency"
   | "unknown-registry-dependency"
   | "control-out-of-range"
+  | "prop-not-in-type"
 
 export interface AuditIssue {
   name: string
@@ -173,6 +175,20 @@ function pushControlIssues(issues: AuditIssue[], entry: AuditCatalogEntry): void
   }
 }
 
+function pushPropTypeIssues(issues: AuditIssue[], entry: AuditCatalogEntry, source: string) {
+  const names: string[] = []
+  for (const prop of entry.props) {
+    if (isRecord(prop) && typeof prop.name === "string") names.push(prop.name)
+  }
+  for (const name of missingPropNames(source, names)) {
+    issues.push({
+      name: entry.name,
+      type: "prop-not-in-type",
+      description: `Prop “${name}” 没有出现在导出的 Props 类型中。`,
+    })
+  }
+}
+
 function pushDependencyIssues(
   issues: AuditIssue[],
   entry: AuditCatalogEntry,
@@ -287,6 +303,7 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
       }
     }
     if (complete) {
+      pushPropTypeIssues(issues, entry, Object.values(contents).join("\n"))
       pushDependencyIssues(issues, entry, contents, catalogNames, packageDependencies)
     }
   }

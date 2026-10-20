@@ -96,6 +96,7 @@ use-mobile · use-prefers-reduced-motion
 | lamp-heading | 灵感来自 lamp heading，原创实现 |
 | vfx-element | vfx-js MIT |
 | rough-annotation | rough-notation MIT |
+| text-morph | Motion Primitives |
 
 ### 背景
 
@@ -152,6 +153,7 @@ use-mobile · use-prefers-reduced-motion
 | icon-cloud | Magic UI |
 | animated-beam | Magic UI |
 | marquee-along-svg-path | Fancy Components |
+| orbiting-items-3d | Animata |
 
 ### 装饰 / 庆祝
 
@@ -183,6 +185,12 @@ use-mobile · use-prefers-reduced-motion
 | pixel-canvas-card | hexagoncircle/pixel-canvas MIT |
 | atropos-card | Atropos MIT |
 | evervault-card | 灵感来自 encrypted card，原创实现 |
+| coverflow-carousel | Smooth UI |
+| book-flip | Smooth UI |
+| folder-reveal | Smooth UI |
+| box-carousel | Fancy Components |
+| apple-activity-card | Kokonut UI（免费 MIT） |
+| apple-cards-carousel | 灵感来自 Aceternity，原创实现 |
 
 ### 按钮特效
 
@@ -235,6 +243,7 @@ use-mobile · use-prefers-reduced-motion
 | animated-theme-toggler | Magic UI |
 | dock | Magic UI |
 | dynamic-island | Cult UI |
+| family-drawer | Cult UI |
 
 ### 页面 / 转场
 
@@ -269,6 +278,18 @@ use-mobile · use-prefers-reduced-motion
 | section-sticky-feature-scroll | Cult UI（MIT） |
 | section-animated-bento | 原创（组合 bento-grid 与迷你动画） |
 | section-pricing-flow | Number Flow |
+
+### 整页模板
+
+每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。
+
+| 组件 | 来源 |
+| --- | --- |
+| saas-template | 原创（组合 nav-morphing / hero-shader / 落地页区块 / footer-curtain-reveal） |
+| ai-product-template | 原创（组合 hero-ai-prompt / iridescence / chat-message / siri-orb / shimmer-text） |
+| devtool-template | 原创（组合 terminal / code-block / flickering-grid / timeline / footer-shader-wordmark） |
+| portfolio-template | Magic UI portfolio（MIT） |
+| agency-template | 灵感来自 Awwwards，原创实现 |
 
 ### AI 对话
 
@@ -310,18 +331,19 @@ use-mobile · use-prefers-reduced-motion
 | notification-center | Kokonut UI（免费 MIT） |
 | gravity | matter-js |
 | ascii-render | Smooth UI |
+| detent-dial | Kokonut UI（免费 MIT） |
 
 ## 新增组件
 
 `date-picker` 和 `typography` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住：
 
-1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。
-2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`dependencies`、`registryDependencies`、`file`、`target`、`props`。
-   - `type` 为 `registry:ui`、`registry:lib` 或 `registry:hook`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。
+1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`templates/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。模板的文案和主题用同目录 `./content`、`./theme`，不要写成会被当成 registry 依赖的 `./theme.css`。
+2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`dependencies`、`registryDependencies`、`file`、`target`、`props`。多文件条目再写 `files`（页面、文案、主题）。
+   - `type` 为 `registry:ui`、`registry:lib`、`registry:hook` 或 `registry:block`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。模板用 `registry:block`。
    - `dependencies` 与源码 import 一致，包括 type-only import 和动态 `import()`。不要写 `react`、`react-dom`。
    - 上面的别名和同目录相对引用写入 `registryDependencies`。
    - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`。
-3. **demo**：`registry:ui` 在 `packages/registry/src/examples/` 增加 Demo，并登记到 `examples/index.ts` 的 `demoMap`。`registry:lib` 和 `registry:hook` 不需要 demo 和 Props。
+3. **demo**：`registry:ui` 和 `registry:block` 在 `packages/registry/src/examples/` 增加 Demo，并登记到 `examples/index.ts` 的 `demoMap`。`registry:lib` 和 `registry:hook` 不需要 demo 和 Props。模板的文档预览走 `/preview/{name}`。
 4. **README** 组件列表写上独立组件名。
 5. **例外**：必须保留源码没有直接引用的依赖时（例如 `@tiptap/pm` 作为 peer），在 `packages/registry/src/audit-exceptions.ts` 写明组件、问题类型和原因。
 6. 运行 `pnpm registry:build`，更新根目录 `registry.json` 和 `apps/docs/public/r/`。

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "portfolio-template",
+  "type": "registry:block",
+  "title": "Portfolio Template",
+  "description": "简历式单页。结构参考 Magic UI portfolio（MIT）：分段显现、项目卡、经历、联系和 Dock。",
+  "dependencies": [],
+  "registryDependencies": [
+    "atropos-card",
+    "blur-fade",
+    "dock",
+    "shimmer-button",
+    "timeline"
+  ],
+  "files": [
+    {
+      "path": "registry/templates/portfolio/page.tsx",
+      "type": "registry:page",
+      "target": "app/portfolio/page.tsx",
+      "content": "\"use client\"\n\nimport { AtroposCard } from \"@/components/ui/atropos-card\"\nimport { BlurFade } from \"@/components/ui/blur-fade\"\nimport { Dock } from \"@/components/ui/dock\"\nimport { ShimmerButton } from \"@/components/ui/shimmer-button\"\nimport {\n  Timeline,\n  TimelineContent,\n  TimelineDate,\n  TimelineHeader,\n  TimelineIndicator,\n  TimelineItem,\n  TimelineSeparator,\n  TimelineTitle,\n} from \"@/components/ui/timeline\"\n\nimport { portfolioContent } from \"./content\"\nimport { portfolioTheme } from \"./theme\"\n\nfunction PortfolioTemplate() {\n  return (\n    <div style={portfolioTheme} className=\"bg-background text-foreground\">\n      <div className=\"mx-auto max-w-3xl space-y-10 px-4 py-16\">\n        <BlurFade>\n          <p className=\"text-xs tracking-[0.2em] text-muted-foreground uppercase\">{portfolioContent.role}</p>\n          <h1 className=\"font-display mt-2 text-5xl\">{portfolioContent.name}</h1>\n          <p className=\"mt-3 text-sm text-muted-foreground\">{portfolioContent.bio}</p>\n        </BlurFade>\n        <BlurFade delay={0.05}>\n          <div className=\"grid gap-4 sm:grid-cols-3\">\n            {portfolioContent.projects.map((project) => (\n              <AtroposCard key={project.title} title={project.title} subtitle={project.subtitle} />\n            ))}\n          </div>\n        </BlurFade>\n        <BlurFade delay={0.1}>\n          <Timeline value={portfolioContent.experience.length}>\n            {portfolioContent.experience.map((item, index) => (\n              <TimelineItem key={item.title} step={index + 1}>\n                <TimelineSeparator />\n                <TimelineIndicator />\n                <TimelineHeader>\n                  <TimelineDate>{item.year}</TimelineDate>\n                  <TimelineTitle>{item.title}</TimelineTitle>\n                </TimelineHeader>\n                <TimelineContent>作品与组件</TimelineContent>\n              </TimelineItem>\n            ))}\n          </Timeline>\n        </BlurFade>\n        <BlurFade delay={0.15} className=\"text-center\">\n          <ShimmerButton>联系</ShimmerButton>\n        </BlurFade>\n      </div>\n      <div className=\"sticky bottom-4\">\n        <Dock>\n          <span className=\"text-xs\">作</span>\n          <span className=\"text-xs\">历</span>\n          <span className=\"text-xs\">信</span>\n        </Dock>\n      </div>\n    </div>\n  )\n}\n\nexport { PortfolioTemplate }\n"
+    },
+    {
+      "path": "registry/templates/portfolio/content.ts",
+      "type": "registry:file",
+      "target": "app/portfolio/content.ts",
+      "content": "export const portfolioContent = {\n  name: \"林夏\",\n  role: \"界面与动效\",\n  bio: \"用现有区块拼一份可以滚动的简历。结构参考 Magic UI portfolio（MIT），视觉用 effect-ui。\",\n  projects: [\n    { title: \"Northwind\", subtitle: \"SaaS 落地页\" },\n    { title: \"Harbor\", subtitle: \"开发者文档\" },\n    { title: \"Lumen\", subtitle: \"作品集\" },\n  ],\n  experience: [\n    { year: \"2024\", title: \"独立设计\" },\n    { year: \"2025\", title: \"组件系统\" },\n    { year: \"2026\", title: \"effect-ui\" },\n  ],\n}\n"
+    },
+    {
+      "path": "registry/templates/portfolio/theme.ts",
+      "type": "registry:file",
+      "target": "app/portfolio/theme.ts",
+      "content": "import type { CSSProperties } from \"react\"\n\nexport const portfolioTheme = {\n  \"--primary\": \"oklch(0.58 0.16 45)\",\n  \"--background\": \"oklch(0.98 0.01 80)\",\n  \"--foreground\": \"oklch(0.22 0.03 50)\",\n} as CSSProperties\n"
+    }
+  ]
+}

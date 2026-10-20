@@ -16,35 +16,35 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/magicuidesign/magicui
 - 许可：MIT
 - 版权：Copyright (c) Magic UI
-- 衍生组件：`typing-text`、`gradient-text`、`shimmer-text`、`aurora-text`、`count-up`、`particles`、`grid-pattern`、`dot-pattern`、`meteors`、`ripples`、`flickering-grid`、`spotlight-card`、`shine-border`、`shimmer-button`、`pulse-button`、`progress-ring`、`blur-fade`、`scramble-text`、`word-rotate`、`morphing-text`、`rolling-number`、`text-reveal`、`light-beams`、`animated-grid`、`retro-grid`、`dock`、`marquee`、`orbiting-circles`、`animated-list`、`confetti-burst`、`sparkles`、`border-beam`、`bento-grid`、`rainbow-button`、`interactive-hover-button`、`animated-beam`、`scroll-progress`、`scroll-velocity`、`icon-cloud`、`animated-theme-toggler`、`device-mockups`
+- 衍生组件：`typing-text`、`gradient-text`、`shimmer-text`、`aurora-text`、`count-up`、`particles`、`grid-pattern`、`dot-pattern`、`meteors`、`ripples`、`flickering-grid`、`spotlight-card`、`shine-border`、`shimmer-button`、`pulse-button`、`progress-ring`、`blur-fade`、`scramble-text`、`word-rotate`、`morphing-text`、`rolling-number`、`text-reveal`、`light-beams`、`animated-grid`、`retro-grid`、`dock`、`marquee`、`orbiting-circles`、`animated-list`、`confetti-burst`、`sparkles`、`border-beam`、`bento-grid`、`rainbow-button`、`interactive-hover-button`、`animated-beam`、`scroll-progress`、`scroll-velocity`、`icon-cloud`、`animated-theme-toggler`、`device-mockups`、`portfolio-template`（MIT portfolio 的分段显现 / 项目卡 / 经历 / Dock 结构，组件用本仓库实现，未使用 Magic UI Pro）
 
 ## Animata
 
 - 仓库：https://github.com/codse/animata
 - 许可：MIT
 - 版权：Copyright (c) Animata
-- 衍生组件：`highlight-text`、`flip-card`、`ripple-button`、`orbit-loader`、`dots-loader`
+- 衍生组件：`highlight-text`、`flip-card`、`ripple-button`、`orbit-loader`、`dots-loader`、`orbiting-items-3d`（倾斜轨道上的前后遮挡，按 Animata 交互重写）
 
 ## Motion Primitives
 
 - 仓库：https://github.com/ibelick/motion-primitives
 - 许可：MIT
 - 版权：Copyright (c) 2024 ibelick
-- 衍生组件：`split-text`、`magnetic`、`tilt`、`fade-in`、`slide-in`、`stagger-list`、`animated-tabs`、`reveal-section`、`morphing-dialog`、`image-comparison`、`progressive-blur`
+- 衍生组件：`split-text`、`magnetic`、`tilt`、`fade-in`、`slide-in`、`stagger-list`、`animated-tabs`、`reveal-section`、`morphing-dialog`、`image-comparison`、`progressive-blur`、`text-morph`（共同字母形变，按 Motion Primitives 交互重写）
 
 ## Cult UI
 
 - 仓库：https://github.com/nolly-studio/cult-ui
 - 许可：MIT
 - 版权：Copyright (c) 2023 Jordan-Gilliam
-- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）
+- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）、`family-drawer`（多步骤展开面板，按 Cult UI 结构重写）
 
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）
+- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）、`box-carousel`（四面立方体旋转，按 Fancy 交互重写）
 
 ## Kibo UI
 
@@ -83,7 +83,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/kokonut-labs/kokonutui
 - 许可：MIT（站点另有付费 Pro，**未使用 Pro 组件**）
 - 版权：Copyright (c) kokonutlabs
-- 衍生组件：`background-paths`、`glitch-text`、`toast-stack`、`notification-center`、`spoiler-text`、`hold-button`、`particle-button`、`tear-button`、`flow-field`、`halftone`、`nav-morphing`（按免费 GitHub 导航的收缩成胶囊 / 菜单形变重写，**未使用 Pro 组件或源码**）
+- 衍生组件：`background-paths`、`glitch-text`、`toast-stack`、`notification-center`、`spoiler-text`、`hold-button`、`particle-button`、`tear-button`、`flow-field`、`halftone`、`nav-morphing`（按免费 GitHub 导航的收缩成胶囊 / 菜单形变重写，**未使用 Pro 组件或源码**）、`detent-dial`（刻度吸附旋钮）、`apple-activity-card`（三色活动圆环）。二者只参考免费 MIT，**未使用 Pro**。
 
 ## Number Flow
 
@@ -166,7 +166,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/educlopez/smoothui
 - 许可：MIT
 - 版权：Copyright (c) 2024 Eduardo Calvo
-- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）
+- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`、`coverflow-carousel`、`book-flip`、`folder-reveal`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）
 
 ## frimousse
 
@@ -272,5 +272,6 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - Batch 7 Group B（灵感来自 X，原创实现，**未打开 Aceternity / React Bits / Skiper / Hover.dev / Shadertoy 源码**）：`evervault-card`、`canvas-reveal`、`letter-glitch-wall`、`target-cursor`、`lightning`、`iridescence`、`silk`
 - Batch 8 Group B（灵感来自 X，原创实现，**未打开 Aceternity / v0 / Lovable / Preline / shadcnblocks / Tailwind Plus 源码**）：`hero-ai-prompt`、`hero-parallax-wall`、`footer-giant-wordmark`
 - Batch 8 组合区块：`hero-shader`、`hero-product-mockup`、`hero-kinetic-text`、`footer-shader-wordmark`、`section-logo-cloud`、`section-animated-bento`、`section-pricing-flow`
+- Batch 9 Group B（灵感来自 X，原创实现，**未打开 Aceternity / Awwwards / Magic UI Pro / Once UI magic-portfolio / Tailwind Plus 源码**）：`apple-cards-carousel`、`saas-template`、`ai-product-template`、`devtool-template`、`agency-template`
 
 完整 MIT / Apache-2.0 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`，以及本仓库 `LICENSE`。

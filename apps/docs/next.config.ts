@@ -24,6 +24,7 @@ function registryUiAliases() {
 const uiAliases = registryUiAliases()
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
   outputFileTracingRoot: path.join(appDir, "../.."),
   serverExternalPackages: ["shiki"],
   turbopack: {

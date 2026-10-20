@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-morph",
+  "type": "registry:ui",
+  "title": "Text Morph",
+  "description": "两段文字按共同字母平滑形变。移植 Motion Primitives（MIT）交互。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/text-morph.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/text-morph.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextMorphProps {\n  texts?: string[]\n  className?: string\n}\n\nfunction glyphsOf(text: string) {\n  const seen = new Map<string, number>()\n  return Array.from(text).map((char) => {\n    const count = seen.get(char) ?? 0\n    seen.set(char, count + 1)\n    return { char, id: `${char}-${count}` }\n  })\n}\n\nfunction TextMorph({ texts = [\"Design\", \"Delight\"], className }: TextMorphProps) {\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = React.useState(0)\n  const text = texts[index] ?? \"\"\n\n  React.useEffect(() => {\n    if (reduced || texts.length < 2) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % texts.length)\n    }, 1800)\n    return () => window.clearInterval(timer)\n  }, [reduced, texts.length])\n\n  return (\n    <span className={cn(\"inline-flex font-display text-4xl\", className)} aria-label={text}>\n      <AnimatePresence mode=\"popLayout\" initial={false}>\n        {glyphsOf(text).map((glyph) => (\n          <motion.span\n            key={glyph.id}\n            layout={reduced ? false : \"position\"}\n            initial={reduced ? false : { opacity: 0, filter: \"blur(8px)\" }}\n            animate={{ opacity: 1, filter: \"blur(0px)\" }}\n            exit={reduced ? { opacity: 1 } : { opacity: 0, filter: \"blur(8px)\" }}\n            transition={reduced ? { duration: 0 } : { type: \"spring\", stiffness: 320, damping: 28 }}\n            className=\"inline-block\"\n          >\n            {glyph.char === \" \" ? \"\\u00a0\" : glyph.char}\n          </motion.span>\n        ))}\n      </AnimatePresence>\n    </span>\n  )\n}\n\nexport { TextMorph }\n"
+    }
+  ]
+}

@@ -19,10 +19,14 @@ fs.writeFileSync(path.join(root, "registry.json"), registryJson)
 fs.writeFileSync(path.join(publicDir, "registry.json"), registryJson)
 
 for (const item of components) {
-  const content = fs.readFileSync(path.join(registrySrc, item.file), "utf8")
+  const contents: Record<string, string> = {}
+  const files = item.files && item.files.length > 0 ? item.files : [{ file: item.file }]
+  for (const file of files) {
+    contents[file.file] = fs.readFileSync(path.join(registrySrc, file.file), "utf8")
+  }
   fs.writeFileSync(
     path.join(publicDir, `${item.name}.json`),
-    `${JSON.stringify(buildRegistryItem(item, content), null, 2)}\n`,
+    `${JSON.stringify(buildRegistryItem(item, contents), null, 2)}\n`,
   )
 }
 

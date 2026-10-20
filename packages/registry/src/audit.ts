@@ -1,6 +1,7 @@
 import {
   buildRegistry,
   buildRegistryItem,
+  registryFiles,
   type RegistryCatalogEntry,
 } from "./registry-item"
 
@@ -58,12 +59,22 @@ const componentSourceDirs: Record<string, true> = {
   ui: true,
   effects: true,
   sections: true,
+  templates: true,
   lib: true,
   hooks: true,
 }
 
 function hasDocsPage(entry: AuditCatalogEntry): boolean {
-  return entry.type === "registry:ui"
+  return entry.type === "registry:ui" || entry.type === "registry:block"
+}
+
+function catalogSourceFiles(entry: AuditCatalogEntry): string[] {
+  return registryFiles(entry).map((file) => file.file)
+}
+
+function basenameNoExt(file: string): string {
+  const base = file.slice(file.lastIndexOf("/") + 1)
+  return base.replace(/\.(tsx|ts|jsx|js|mjs|cjs)$/, "")
 }
 
 function isComponentSource(file: string): boolean {
@@ -436,11 +447,13 @@ function pushDependencyIssues(
   content: string,
   catalogNames: ReadonlySet<string>,
   packageDependencies: ReadonlySet<string>,
+  siblings: ReadonlySet<string>,
 ): void {
   const found = collectDependencies(content)
   const imported = new Set(found.npm.filter((pkg) => !ignoredNpmPackages.has(pkg)))
   const declaredNpm = new Set(entry.dependencies.filter((pkg) => !ignoredNpmPackages.has(pkg)))
   const referenced = new Set(found.registry)
+  for (const sibling of siblings) referenced.delete(sibling)
   const declaredRegistry = new Set(entry.registryDependencies)
 
   for (const pkg of sorted(imported)) {
@@ -520,7 +533,7 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
   const issues: AuditIssue[] = []
   const listed = new Set(input.sourceFiles)
   const demos = new Set(input.demoNames)
-  const registered = new Set(input.catalog.map((entry) => entry.file))
+  const registered = new Set(input.catalog.flatMap((entry) => catalogSourceFiles(entry)))
   const catalogNames = new Set(input.catalog.map((entry) => entry.name))
   const packageDependencies = new Set(input.packageDependencies)
   const counts = new Map<string, number>()
@@ -541,14 +554,23 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
   }
 
   for (const entry of input.catalog) {
-    const content = listed.has(entry.file) ? input.readSource(entry.file) : undefined
-    if (content === undefined) {
-      issues.push({
-        name: entry.name,
-        type: "missing-source",
-        description: `源码文件 ${entry.file} 不存在。`,
-      })
+    const sources = catalogSourceFiles(entry)
+    const contents: Record<string, string> = {}
+    let complete = true
+    for (const file of sources) {
+      const text = listed.has(file) ? input.readSource(file) : undefined
+      if (text === undefined) {
+        complete = false
+        issues.push({
+          name: entry.name,
+          type: "missing-source",
+          description: `源码文件 ${file} 不存在。`,
+        })
+      } else {
+        contents[file] = text
+      }
     }
+    const content = complete ? Object.values(contents).join("\n") : undefined
     if (hasDocsPage(entry) && !demos.has(entry.name)) {
       issues.push({
         name: entry.name,
@@ -578,8 +600,8 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
         type: "missing-static-json",
         description: `静态 JSON ${entry.name}.json 缺失。`,
       })
-    } else if (content !== undefined) {
-      const expected = buildRegistryItem(entry, content)
+    } else if (complete) {
+      const expected = buildRegistryItem(entry, contents)
       if (differingPaths(itemJson, expected).length > 0) {
         issues.push({
           name: entry.name,
@@ -589,7 +611,14 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
       }
     }
     if (content !== undefined) {
-      pushDependencyIssues(issues, entry, content, catalogNames, packageDependencies)
+      pushDependencyIssues(
+        issues,
+        entry,
+        content,
+        catalogNames,
+        packageDependencies,
+        new Set(sources.map((file) => basenameNoExt(file))),
+      )
     }
   }
 

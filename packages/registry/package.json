@@ -8,6 +8,7 @@
     "./ui/*": "./src/ui/*.tsx",
     "./effects/*": "./src/effects/*.tsx",
     "./sections/*": "./src/sections/*.tsx",
+    "./templates/*": "./src/templates/*",
     "./examples/*": "./src/examples/*",
     "./lib/utils": "./src/lib/utils.ts",
     "./hooks/*": "./src/hooks/*",

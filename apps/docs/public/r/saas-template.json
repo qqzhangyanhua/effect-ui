@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "saas-template",
+  "type": "registry:block",
+  "title": "SaaS Template",
+  "description": "多文件模板：导航、着色器 Hero、logo 墙、bento、粘性特性、定价、评价和幕布页脚。WebGL 懒加载。",
+  "dependencies": [],
+  "registryDependencies": [
+    "footer-curtain-reveal",
+    "hero-shader",
+    "marketing-blocks",
+    "nav-morphing",
+    "section-animated-bento",
+    "section-logo-cloud",
+    "section-pricing-flow",
+    "section-sticky-feature-scroll",
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/templates/saas/page.tsx",
+      "type": "registry:page",
+      "target": "app/saas/page.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { FooterCurtainReveal } from \"@/components/ui/footer-curtain-reveal\"\nimport { MarketingTestimonials } from \"@/components/ui/marketing-blocks\"\nimport { NavMorphing } from \"@/components/ui/nav-morphing\"\nimport { SectionAnimatedBento } from \"@/components/ui/section-animated-bento\"\nimport { SectionLogoCloud } from \"@/components/ui/section-logo-cloud\"\nimport { SectionPricingFlow } from \"@/components/ui/section-pricing-flow\"\nimport { SectionStickyFeatureScroll } from \"@/components/ui/section-sticky-feature-scroll\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\n\nimport { saasContent } from \"./content\"\nimport { saasTheme } from \"./theme\"\n\nconst HeroShader = React.lazy(() =>\n  import(\"@/components/ui/hero-shader\").then((mod) => ({ default: mod.HeroShader })),\n)\n\nfunction StaticHero() {\n  return (\n    <section className=\"grid min-h-[24rem] place-items-center bg-[linear-gradient(135deg,#1e1b4b,#312e81,#0f172a)] px-6 text-center text-white\">\n      <div>\n        <h1 className=\"font-display text-4xl\">{saasContent.heroTitle}</h1>\n        <p className=\"mx-auto mt-3 max-w-md text-sm text-white/70\">{saasContent.heroSubtitle}</p>\n      </div>\n    </section>\n  )\n}\n\nfunction SaasTemplate() {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <div style={saasTheme} className=\"bg-background text-foreground\">\n      <FooterCurtainReveal brand={saasContent.brand} blurb={saasContent.heroSubtitle}>\n        <NavMorphing brand={saasContent.brand} links={[\"产品\", \"定价\", \"客户\", \"文档\"]} />\n        {reduced ? (\n          <StaticHero />\n        ) : (\n          <React.Suspense fallback={<StaticHero />}>\n            <HeroShader title={saasContent.heroTitle} subtitle={saasContent.heroSubtitle} backgroundVariant=\"mesh\" />\n          </React.Suspense>\n        )}\n        <div className=\"mx-auto max-w-5xl space-y-8 px-4 py-10\">\n          <SectionLogoCloud />\n          <SectionAnimatedBento />\n          <SectionStickyFeatureScroll />\n          <SectionPricingFlow />\n          <MarketingTestimonials />\n        </div>\n      </FooterCurtainReveal>\n    </div>\n  )\n}\n\nexport { SaasTemplate }\n"
+    },
+    {
+      "path": "registry/templates/saas/content.ts",
+      "type": "registry:file",
+      "target": "app/saas/content.ts",
+      "content": "export const saasContent = {\n  brand: \"Northwind\",\n  heroTitle: \"把产品页做成可以复制的区块\",\n  heroSubtitle: \"导航、着色器首屏、logo 墙、bento、粘性特性和定价，都来自 effect-ui。\",\n  testimonialsTitle: \"客户怎么说\",\n}\n"
+    },
+    {
+      "path": "registry/templates/saas/theme.ts",
+      "type": "registry:file",
+      "target": "app/saas/theme.ts",
+      "content": "import type { CSSProperties } from \"react\"\n\nexport const saasTheme = {\n  \"--primary\": \"oklch(0.55 0.18 262)\",\n  \"--background\": \"oklch(0.99 0.005 95)\",\n  \"--foreground\": \"oklch(0.2 0.03 262)\",\n} as CSSProperties\n"
+    }
+  ]
+}

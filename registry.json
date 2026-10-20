@@ -5946,6 +5946,301 @@
           "target": "components/ui/hyperspeed.tsx"
         }
       ]
+    },
+    {
+      "name": "lens-zoom",
+      "type": "registry:ui",
+      "title": "Lens Zoom",
+      "description": "灵感来自 Hover.dev，原创实现。圆形镜片跟随指针放大图片，方向键可移动镜片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lens-zoom.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lens-zoom.tsx"
+        }
+      ]
+    },
+    {
+      "name": "world-map-arcs",
+      "type": "registry:ui",
+      "title": "World Map Arcs",
+      "description": "灵感来自 Aceternity，原创实现。点状世界地图上，城市之间画出带脉冲点的发光弧线。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/world-map-arcs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/world-map-arcs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "vortex-background",
+      "type": "registry:ui",
+      "title": "Vortex Background",
+      "description": "灵感来自 Aceternity，原创实现。粒子绕中心旋转并带辉光，角速度由 simplex-noise 扰动。这不是 flow-field 的预设：flow-field 是开放的正弦轨迹拖尾，本组件是向心漩涡。",
+      "dependencies": [
+        "simplex-noise"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/vortex-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/vortex-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "beams-collision",
+      "type": "registry:ui",
+      "title": "Beams Collision",
+      "description": "灵感来自 Aceternity，原创实现。光束从顶部落下，碰到底部时迸出火花。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/beams-collision.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/beams-collision.tsx"
+        }
+      ]
+    },
+    {
+      "name": "placeholder-vanish-input",
+      "type": "registry:ui",
+      "title": "Placeholder Vanish Input",
+      "description": "灵感来自 Aceternity，原创实现。占位文案轮换；提交时已输入的文字散成粒子。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/placeholder-vanish-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/placeholder-vanish-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "link-preview",
+      "type": "registry:ui",
+      "title": "Link Preview",
+      "description": "灵感来自 Hover.dev，原创实现。悬停或聚焦链接时，弹簧卡片展示标题和页面图。图片用 image 属性，不调用截图服务。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/link-preview.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/link-preview.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-group-tooltip",
+      "type": "registry:ui",
+      "title": "Avatar Group Tooltip",
+      "description": "灵感来自 Hover.dev，原创实现。重叠头像在悬停时抬起，名字提示跟随指针，超出数量显示 +N。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/avatar-group-tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar-group-tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shuffle-grid-hero",
+      "type": "registry:ui",
+      "title": "Shuffle Grid Hero",
+      "description": "灵感来自 Aceternity，原创实现。首屏图片格按间隔打乱，并用布局动画换位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shuffle-grid-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shuffle-grid-hero.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toc-scrollspy",
+      "type": "registry:ui",
+      "title": "TOC Scrollspy",
+      "description": "灵感来自 Stripe，原创实现。当前标题高亮并带滑动指示器，左侧细线表示阅读进度。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/toc-scrollspy.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toc-scrollspy.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "type": "registry:ui",
+      "title": "Sortable List",
+      "description": "灵感来自 Linear，原创实现。用 Motion Reorder 拖动手柄排序，聚焦后可用上下方向键移动。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sortable-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sortable-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kpi-sparkline-card",
+      "type": "registry:ui",
+      "title": "KPI Sparkline Card",
+      "description": "灵感来自 Vercel，原创实现。数字用 CountUp 递增，角标显示涨跌，迷你折线可悬停或用方向键查看点值。",
+      "dependencies": [],
+      "registryDependencies": [
+        "count-up",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/kpi-sparkline-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kpi-sparkline-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cookie-consent",
+      "type": "registry:ui",
+      "title": "Cookie Consent",
+      "description": "灵感来自 Stripe，原创实现。浮动卡片可展开类别开关，选择写入 localStorage。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cookie-consent.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cookie-consent.tsx"
+        }
+      ]
+    },
+    {
+      "name": "countdown-timer",
+      "type": "registry:ui",
+      "title": "Countdown Timer",
+      "description": "灵感来自 Apple，原创实现。天、时、分、秒用滚动数字显示，到点调用 onComplete。confetti 开启时播放与 confetti-burst 同色的纸屑，不嵌套那个按钮。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/countdown-timer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/countdown-timer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-cropper",
+      "type": "registry:ui",
+      "title": "Image Cropper",
+      "description": "灵感来自 Apple，原创实现。拖动和平移缩放图片，圆形或方形遮罩，旁边实时预览，并可导出 PNG Blob。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/image-cropper.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/image-cropper.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diff-viewer",
+      "type": "registry:ui",
+      "title": "Diff Viewer",
+      "description": "灵感来自 GitHub，原创实现。并排或合并查看差异，改动词内联高亮，未改动的长段可以折叠。diff 包按需加载。",
+      "dependencies": [
+        "diff"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/diff-viewer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/diff-viewer.tsx"
+        }
+      ]
     }
   ]
 }

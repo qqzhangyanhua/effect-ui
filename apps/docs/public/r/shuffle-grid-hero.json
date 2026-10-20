@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shuffle-grid-hero",
+  "type": "registry:ui",
+  "title": "Shuffle Grid Hero",
+  "description": "灵感来自 Aceternity，原创实现。首屏图片格按间隔打乱，并用布局动画换位。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/shuffle-grid-hero.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/shuffle-grid-hero.tsx",
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ShuffleTile {\n  id: string\n  label: string\n  className: string\n}\n\nexport interface ShuffleGridHeroProps {\n  className?: string\n  title?: string\n  interval?: number\n  tiles?: readonly ShuffleTile[]\n}\n\nconst TILES: readonly ShuffleTile[] = [\n  { id: \"a\", label: \"01\", className: \"bg-[linear-gradient(145deg,#312e81,#6366f1)]\" },\n  { id: \"b\", label: \"02\", className: \"bg-[linear-gradient(145deg,#0f766e,#2dd4bf)]\" },\n  { id: \"c\", label: \"03\", className: \"bg-[linear-gradient(145deg,#9a3412,#fb923c)]\" },\n  { id: \"d\", label: \"04\", className: \"bg-[linear-gradient(145deg,#831843,#fb7185)]\" },\n  { id: \"e\", label: \"05\", className: \"bg-[linear-gradient(145deg,#1e3a8a,#38bdf8)]\" },\n  { id: \"f\", label: \"06\", className: \"bg-[linear-gradient(145deg,#3f6212,#a3e635)]\" },\n  { id: \"g\", label: \"07\", className: \"bg-[linear-gradient(145deg,#4c1d95,#c084fc)]\" },\n  { id: \"h\", label: \"08\", className: \"bg-[linear-gradient(145deg,#713f12,#facc15)]\" },\n]\n\nfunction shuffle<T>(items: readonly T[]) {\n  const next = [...items]\n  for (let index = next.length - 1; index > 0; index -= 1) {\n    const swap = Math.floor(Math.random() * (index + 1))\n    const current = next[index]\n    const other = next[swap]\n    if (current === undefined || other === undefined) continue\n    next[index] = other\n    next[swap] = current\n  }\n  return next\n}\n\nfunction ShuffleGridHero({\n  className,\n  title = \"版面自己换位\",\n  interval = 1800,\n  tiles = TILES,\n}: ShuffleGridHeroProps) {\n  const reduced = usePrefersReducedMotion()\n  const [order, setOrder] = React.useState(tiles)\n\n  React.useEffect(() => {\n    if (reduced) return\n    const id = window.setInterval(() => {\n      setOrder((current) => shuffle(current))\n    }, interval)\n    return () => window.clearInterval(id)\n  }, [interval, reduced])\n\n  return (\n    <section\n      data-slot=\"shuffle-grid-hero\"\n      className={cn(\n        \"grid w-full items-center gap-6 rounded-xl border bg-background p-6 md:grid-cols-[0.9fr_1.1fr]\",\n        className,\n      )}\n    >\n      <div className=\"space-y-3\">\n        <p className=\"text-xs tracking-[0.22em] text-muted-foreground uppercase\">Effect UI</p>\n        <h2 className=\"font-display text-4xl tracking-tight\">{title}</h2>\n        <p className=\"max-w-sm text-sm text-muted-foreground\">\n          图片格按间隔打乱，位置用布局动画过渡。减弱动效时格子保持静止。\n        </p>\n      </div>\n      <div className=\"grid grid-cols-4 gap-2\">\n        {order.map((tile) => (\n          <motion.div\n            key={tile.id}\n            layout\n            transition={reduced ? { duration: 0 } : { type: \"spring\", stiffness: 320, damping: 28 }}\n            className={cn(\n              \"flex aspect-square items-end rounded-lg p-2 text-sm font-medium text-white\",\n              tile.className,\n            )}\n          >\n            {tile.label}\n          </motion.div>\n        ))}\n      </div>\n    </section>\n  )\n}\n\nexport { ShuffleGridHero }\n"
+    }
+  ]
+}

@@ -3151,7 +3151,8 @@
         "react-phone-number-input"
       ],
       "registryDependencies": [
-        "utils"
+        "utils",
+        "input"
       ],
       "files": [
         {

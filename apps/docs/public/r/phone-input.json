@@ -8,14 +8,15 @@
     "react-phone-number-input"
   ],
   "registryDependencies": [
-    "utils"
+    "utils",
+    "input"
   ],
   "files": [
     {
       "path": "registry/ui/phone-input.tsx",
       "type": "registry:ui",
       "target": "components/ui/phone-input.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport PhoneInputPrimitive, { type Value } from \"react-phone-number-input\"\nimport flags from \"react-phone-number-input/flags\"\nimport \"react-phone-number-input/style.css\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface PhoneInputProps {\n  value?: Value\n  onValueChange?: (value?: Value) => void\n  placeholder?: string\n  className?: string\n  defaultCountry?: \"US\" | \"CN\" | \"GB\" | \"JP\"\n}\n\nfunction PhoneInput({\n  value,\n  onValueChange,\n  placeholder = \"手机号\",\n  className,\n  defaultCountry = \"US\",\n}: PhoneInputProps) {\n  return (\n    <PhoneInputPrimitive\n      international\n      defaultCountry={defaultCountry}\n      flags={flags}\n      value={value}\n      onChange={(next) => onValueChange?.(next)}\n      placeholder={placeholder}\n      className={cn(\n        \"flex h-9 w-full items-center rounded-md border border-input bg-transparent px-2 text-sm shadow-xs dark:bg-input/30\",\n        \"[&_.PhoneInputInput]:h-full [&_.PhoneInputInput]:flex-1 [&_.PhoneInputInput]:bg-transparent [&_.PhoneInputInput]:outline-none\",\n        \"[&_.PhoneInputCountry]:mr-2 [&_.PhoneInputCountrySelect]:bg-background\",\n        className,\n      )}\n    />\n  )\n}\n\nexport { PhoneInput }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport PhoneInputPrimitive, { type Value } from \"react-phone-number-input\"\nimport flags from \"react-phone-number-input/flags\"\nimport \"react-phone-number-input/style.css\"\n\nimport { Input } from \"@/components/ui/input\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PhoneInputProps {\n  value?: Value\n  onValueChange?: (value?: Value) => void\n  placeholder?: string\n  className?: string\n  defaultCountry?: \"US\" | \"CN\" | \"GB\" | \"JP\"\n  disabled?: boolean\n  \"aria-invalid\"?: React.ComponentProps<\"input\">[\"aria-invalid\"]\n}\n\nfunction PhoneInput({\n  value,\n  onValueChange,\n  placeholder = \"手机号\",\n  className,\n  defaultCountry = \"US\",\n  disabled,\n  \"aria-invalid\": ariaInvalid,\n}: PhoneInputProps) {\n  return (\n    <PhoneInputPrimitive\n      international\n      defaultCountry={defaultCountry}\n      flags={flags}\n      value={value}\n      onChange={(next) => onValueChange?.(next)}\n      placeholder={placeholder}\n      disabled={disabled}\n      aria-invalid={ariaInvalid}\n      inputComponent={Input}\n      numberInputProps={{ className: \"w-auto flex-1\" }}\n      className={cn(\n        \"flex w-full items-center text-sm [&_.PhoneInputCountry]:mr-2 [&_.PhoneInputCountrySelect]:bg-background\",\n        disabled && \"[&_.PhoneInputCountry]:opacity-50\",\n        className,\n      )}\n    />\n  )\n}\n\nexport { PhoneInput }\n"
     }
   ]
 }

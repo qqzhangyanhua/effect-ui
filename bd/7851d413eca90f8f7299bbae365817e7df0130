@@ -1,0 +1,18 @@
+CONTEXT.md
+  h_4132837b09b7e7 17-49
+docs/adr/0005-controls-declared-in-catalog.md
+  h_4132837b09b7e7 1-8
+docs/plans/0002-docs-playground-and-batch11.md
+  h_4132837b09b7e7 1-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "bd7851d413eca90f8f7299bbae365817e7df0130",
+  "prompts": {},
+  "humans": {
+    "h_4132837b09b7e7": {
+      "author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

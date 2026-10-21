@@ -57,7 +57,13 @@ export const batch3Components: ComponentMeta[] = [
     file: "effects/progressive-blur.tsx",
     target: "components/ui/progressive-blur.tsx",
     props: [
-      { name: "direction", type: '"top" | "right" | "bottom" | "left"', defaultValue: '"bottom"', description: "模糊方向。" },
+      {
+        name: "direction",
+        type: '"top" | "right" | "bottom" | "left"',
+        defaultValue: '"bottom"',
+        description: "模糊方向。",
+        vocabularyExemption: "历史取值是 top/right/bottom/left，不是词汇表的 left/right/up/down。",
+      },
       { name: "blurLayers", type: "number", defaultValue: "8", description: "层数。" },
     ],
   },
@@ -83,7 +89,13 @@ export const batch3Components: ComponentMeta[] = [
     target: "components/ui/scroll-velocity.tsx",
     props: [
       { name: "baseVelocity", type: "number", defaultValue: "5", description: "基础速度。" },
-      { name: "direction", type: "1 | -1", defaultValue: "1", description: "方向。" },
+      {
+        name: "direction",
+        type: "1 | -1",
+        defaultValue: "1",
+        description: "方向。",
+        vocabularyExemption: "历史取值是 1 或 -1，不是 left/right/up/down。",
+      },
     ],
   },
   {

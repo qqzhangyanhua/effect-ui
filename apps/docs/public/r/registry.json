@@ -472,6 +472,7 @@
       "description": "流动渐变文字。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2793,6 +2794,7 @@
       "description": "RGB 错位故障文字。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [

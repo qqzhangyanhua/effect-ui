@@ -532,6 +532,234 @@ test("继承 HTML 属性时，未写在类型正文里的 className 不报告", 
   expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-type")).toEqual([])
 })
 
+test("Effect 用了词汇表里的词且类型、控件、分组一致时不报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props: [
+            { name: "speed", type: "number", control: { kind: "range", value: 1, min: 0, max: 2 } },
+            {
+              name: "direction",
+              type: '"up" | "down"',
+              control: { kind: "select", value: "up", options: ["up", "down"] },
+            },
+          ],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "vocabulary-mismatch"),
+  ).toEqual([])
+})
+
+test("词汇表里的词类型、控件种类或分组不一致时报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props: [
+            { name: "speed", type: "string", control: { kind: "boolean", value: true, group: "外观" } },
+          ],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "vocabulary-mismatch"),
+  ).toEqual([
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "Prop “speed” 的类型是 string，词汇表要求 number。",
+    },
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "控件 “speed” 的种类是 boolean，词汇表要求 range。",
+    },
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "控件 “speed” 的分组是 外观，词汇表要求 动画。",
+    },
+  ])
+})
+
+test("词汇表取值的可选项超出允许值时报告，子集不报告", () => {
+  const issues = auditRegistry(
+    consistent([
+      entry({
+        category: "scroll",
+        props: [
+          {
+            name: "direction",
+            type: '"left" | "top"',
+            control: { kind: "select", value: "left", options: ["left", "top"] },
+          },
+        ],
+      }),
+    ]),
+  ).filter((issue) => issue.type === "vocabulary-mismatch")
+  expect(issues).toEqual([
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "Prop “direction” 的类型是 \"left\" | \"top\"，词汇表要求 \"left\" | \"right\" | \"up\" | \"down\" 的子集。",
+    },
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "控件 “direction” 的可选项 top 不在词汇表取值内。",
+    },
+  ])
+})
+
+test("词汇表 prop 的起始值越界仍按控件范围报告", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props: [{ name: "speed", type: "number", control: { kind: "range", value: 3, min: 0, max: 2 } }],
+        }),
+      ]),
+    ).map((issue) => issue.type),
+  ).toEqual(["control-out-of-range"])
+})
+
+test("非空豁免跳过词汇表检查，空豁免仍报告", () => {
+  const exempt = auditRegistry(
+    consistent([
+      entry({
+        category: "text",
+        props: [{ name: "colors", type: "string", vocabularyExemption: "历史 prop 是 Tailwind 类字符串。" }],
+      }),
+    ]),
+  ).filter((issue) => issue.type === "vocabulary-mismatch")
+  expect(exempt).toEqual([])
+
+  const blank = auditRegistry(
+    consistent([
+      entry({
+        category: "text",
+        props: [{ name: "colors", type: "string", vocabularyExemption: "  " }],
+      }),
+    ]),
+  ).filter((issue) => issue.type === "vocabulary-mismatch")
+  expect(blank).toEqual([
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "Prop “colors” 的词汇表豁免说明为空。",
+    },
+  ])
+})
+
+test("文字排版词使用像素、字重、字距和对齐", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props: [
+            { name: "fontSize", type: "number", control: { kind: "range", value: 48, min: 16, max: 96, step: 1 } },
+            { name: "fontWeight", type: "number", control: { kind: "range", value: 600, min: 100, max: 900, step: 100 } },
+            {
+              name: "letterSpacing",
+              type: "number",
+              control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+            },
+            {
+              name: "align",
+              type: '"left" | "center"',
+              control: { kind: "select", value: "left", options: ["left", "center"] },
+            },
+          ],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "vocabulary-mismatch"),
+  ).toEqual([])
+
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props: [{ name: "fontSize", type: "string", control: { kind: "text", value: "大" } }],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "vocabulary-mismatch"),
+  ).toEqual([
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "Prop “fontSize” 的类型是 string，词汇表要求 number。",
+    },
+    {
+      name: "button",
+      type: "vocabulary-mismatch",
+      description: "控件 “fontSize” 的种类是 text，词汇表要求 range。",
+    },
+  ])
+})
+
+test("预设的值必须落在控件范围内", () => {
+  const props = [
+    { name: "fontSize", type: "number", control: { kind: "range", value: 48, min: 16, max: 96, step: 1 } },
+    { name: "align", type: '"left" | "center" | "right"', control: { kind: "select", value: "left", options: ["left", "center", "right"] } },
+  ]
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props,
+          presets: [{ name: "display", label: "大标题", values: { fontSize: 64, align: "center" } }],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "preset-invalid"),
+  ).toEqual([])
+
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "text",
+          props,
+          presets: [{ name: "broken", label: "坏的", values: { fontSize: 200, align: "justify", className: "x" } }],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "preset-invalid"),
+  ).toEqual([
+    {
+      name: "button",
+      type: "preset-invalid",
+      description: "预设 “坏的” 的 fontSize 值 200 不在控件允许的范围内。",
+    },
+    {
+      name: "button",
+      type: "preset-invalid",
+      description: "预设 “坏的” 的 align 值 “justify” 不在控件允许的范围内。",
+    },
+    {
+      name: "button",
+      type: "preset-invalid",
+      description: "预设 “坏的” 引用了没有控件的 prop “className”。",
+    },
+  ])
+})
+
+test("基础组件用了同名词也不做词汇表检查", () => {
+  expect(
+    auditRegistry(
+      consistent([
+        entry({
+          category: "ui",
+          props: [{ name: "size", type: '"sm" | "md"', control: { kind: "select", value: "sm", options: ["sm", "md"] } }],
+        }),
+      ]),
+    ).filter((issue) => issue.type === "vocabulary-mismatch"),
+  ).toEqual([])
+})
+
 test("select 控件起始值不在选项中时报告", () => {
   expect(
     auditRegistry(

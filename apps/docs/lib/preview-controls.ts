@@ -1,4 +1,5 @@
 import type { ControlDef, ControlGroup } from "@effect-ui/registry/catalog"
+import { implicitControlGroup } from "@effect-ui/registry/prop-vocabulary"
 
 interface ControlField {
   name: string
@@ -9,23 +10,27 @@ interface ControlField {
 type ControlValue = string | number | boolean | readonly string[]
 type ControlValues = Record<string, ControlValue | undefined>
 
-const namedGroups: Record<string, ControlGroup> = {
-  color: "外观",
-  colors: "外观",
-  intensity: "外观",
-  size: "外观",
-  count: "外观",
-  gap: "外观",
-  duration: "动画",
-  speed: "动画",
-  direction: "动画",
-  trigger: "交互",
-}
-
-const groupOrder: readonly ControlGroup[] = ["外观", "动画", "交互"]
+const groupOrder: readonly ControlGroup[] = ["文字", "外观", "动画", "交互"]
 
 function fieldGroup(field: ControlField): ControlGroup {
-  return field.control.group ?? namedGroups[field.name] ?? "外观"
+  if (field.control.group) return field.control.group
+  if (field.name === "text" || field.name === "children") return "文字"
+  return implicitControlGroup(field.name) ?? "外观"
+}
+
+function textContentFirst(fields: readonly ControlField[]): ControlField[] {
+  return fields
+    .map((field, index) => ({
+      field,
+      index,
+      rank: field.name === "text" || field.name === "children" ? 0 : 1,
+    }))
+    .sort((left, right) => left.rank - right.rank || left.index - right.index)
+    .map((item) => item.field)
+}
+
+function controlsAreGrouped(fields: readonly ControlField[]): boolean {
+  return fields.length > 6 || fields.some((field) => fieldGroup(field) === "文字")
 }
 
 function groupedFields(fields: readonly ControlField[]) {
@@ -38,7 +43,8 @@ function groupedFields(fields: readonly ControlField[]) {
   }
   return groupOrder.flatMap((group) => {
     const list = buckets.get(group)
-    return list ? [{ group, fields: list }] : []
+    if (!list) return []
+    return [{ group, fields: group === "文字" ? textContentFirst(list) : list }]
   })
 }
 
@@ -172,6 +178,7 @@ function hexColor(raw: string) {
 
 export type { ControlField, ControlValue, ControlValues }
 export {
+  controlsAreGrouped,
   definedProps,
   formatNumber,
   formatSnippet,

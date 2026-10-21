@@ -16,6 +16,7 @@ import { batch16Components } from "./catalog-batch16"
 import { batch17Components } from "./catalog-batch17"
 import { batch18Components } from "./catalog-batch18"
 import { batch19Components } from "./catalog-batch19"
+import type { VocabularyGroup } from "./prop-vocabulary"
 
 export type ComponentCategory =
   | "ui"
@@ -82,7 +83,7 @@ export type SourceLibrary =
   | "three"
   | "original"
 
-export type ControlGroup = "外观" | "动画" | "交互"
+export type ControlGroup = VocabularyGroup
 
 export type ControlDef =
   | { kind: "range"; value: number; min: number; max: number; step?: number; group?: ControlGroup }
@@ -92,6 +93,14 @@ export type ControlDef =
   | { kind: "boolean"; value: boolean; group?: ControlGroup }
   | { kind: "text"; value: string; group?: ControlGroup }
 
+export type PresetValue = string | number | boolean | readonly string[]
+
+export interface ControlPreset {
+  name: string
+  label: string
+  values: Readonly<Record<string, PresetValue>>
+}
+
 export interface PropDoc {
   name: string
   type: string
@@ -99,6 +108,11 @@ export interface PropDoc {
   description: string
   /** 文档预览里读者可改的控件。`value` 是 demo 起始值，不是组件默认值。 */
   control?: ControlDef
+  /**
+   * 名字在参数词汇表里，但已发布的类型或取值不能改。
+   * 非空说明会让 audit 跳过这个 prop 的词汇表一致性检查。
+   */
+  vocabularyExemption?: string
 }
 
 export interface ComponentMeta {
@@ -112,6 +126,8 @@ export interface ComponentMeta {
   files?: readonly { file: string; type: string; target: string }[]
   /** 源码没有 import、但安装时必须一起装的 npm 包，例如另一个依赖的 peer。其余依赖从源码推导。 */
   extraDependencies?: string[]
+  /** 文档页预设。不进组件 props，也不进 registry JSON。 */
+  presets?: readonly ControlPreset[]
   file: string
   target: string
   props: PropDoc[]
@@ -548,6 +564,61 @@ export const components: ComponentMeta[] = [
         description: "是否显示光标。",
         control: { kind: "boolean", value: true },
       },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "第一字出现前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时从头打。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 32, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 500, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
+    ],
+    presets: [
+      {
+        name: "typing-headline",
+        label: "标题",
+        values: { text: "把特效复制进你的项目", fontSize: 56, fontWeight: 700, align: "center", duration: 40 },
+      },
+      {
+        name: "typing-slow",
+        label: "慢打",
+        values: { text: "一行慢慢出现", fontSize: 20, fontWeight: 400, duration: 180, loop: true },
+      },
+      {
+        name: "typing-plain",
+        label: "正文",
+        values: { text: "适合说明的句子", fontSize: 16, fontWeight: 400, letterSpacing: 0, align: "left", loop: false },
+      },
     ],
   },
   {
@@ -559,7 +630,103 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gradient-text.tsx",
     target: "components/ui/gradient-text.tsx",
-    props: [{ name: "colors", type: "string", defaultValue: "from-violet-500 via-fuchsia-500 to-cyan-400", description: "Tailwind 渐变色类。" }],
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "文字内容。",
+        control: { kind: "text", value: "流动渐变" },
+      },
+      {
+        name: "colors",
+        type: "string",
+        defaultValue: "from-violet-500 via-fuchsia-500 to-cyan-400",
+        description: "Tailwind 渐变色类。",
+        vocabularyExemption: "历史 prop 是 Tailwind 渐变类字符串，不是 CSS 颜色数组。不改名、不改类型。",
+        control: { kind: "text", value: "from-violet-500 via-fuchsia-500 to-cyan-400" },
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "流动开始前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "true",
+        description: "为假时只走一轮。不传则一直循环。",
+        control: { kind: "boolean", value: true },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 48, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 700, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "center", options: ["left", "center", "right"] },
+      },
+    ],
+    presets: [
+      {
+        name: "gradient-hero",
+        label: "主标题",
+        values: {
+          children: "流动渐变",
+          colors: "from-violet-500 via-fuchsia-500 to-cyan-400",
+          fontSize: 64,
+          fontWeight: 700,
+          align: "center",
+        },
+      },
+      {
+        name: "gradient-warm",
+        label: "暖色",
+        values: {
+          children: "暖调标题",
+          colors: "from-orange-400 via-rose-500 to-amber-300",
+          fontSize: 40,
+          fontWeight: 600,
+          align: "left",
+        },
+      },
+      {
+        name: "gradient-quiet",
+        label: "弱对比",
+        values: {
+          children: "一句说明",
+          colors: "from-zinc-500 via-zinc-300 to-zinc-500",
+          fontSize: 18,
+          fontWeight: 400,
+          letterSpacing: 0.02,
+          loop: true,
+        },
+      },
+    ],
   },
   {
     name: "shimmer-text",
@@ -577,7 +744,48 @@ export const components: ComponentMeta[] = [
         description: "文字内容。",
         control: { kind: "text", value: "扫光文字即将上线" },
       },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 48, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 600, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
       ...uiProps,
+    ],
+    presets: [
+      {
+        name: "shimmer-display",
+        label: "大标题",
+        values: { children: "扫光标题", fontSize: 72, fontWeight: 700, letterSpacing: -0.04, align: "center" },
+      },
+      {
+        name: "shimmer-reading",
+        label: "正文",
+        values: { children: "一段可以阅读的文字", fontSize: 18, fontWeight: 400, letterSpacing: 0, align: "left" },
+      },
+      {
+        name: "shimmer-kicker",
+        label: "小标签",
+        values: { children: "NEW", fontSize: 14, fontWeight: 600, letterSpacing: 0.18, align: "left" },
+      },
     ],
   },
   {
@@ -620,6 +828,61 @@ export const components: ComponentMeta[] = [
         defaultValue: "0",
         description: "入场延迟（秒）。",
         control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "false",
+        description: "入场结束后再播一次。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 40, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 600, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
+    ],
+    presets: [
+      {
+        name: "split-headline",
+        label: "标题",
+        values: { text: "逐字显现的标题", fontSize: 64, fontWeight: 700, align: "center", by: "char", delay: 0 },
+      },
+      {
+        name: "split-words",
+        label: "按词",
+        values: { text: "按词错落出现", fontSize: 28, fontWeight: 500, by: "word", delay: 0.2 },
+      },
+      {
+        name: "split-quiet",
+        label: "正文",
+        values: { text: "轻轻进入的一句", fontSize: 18, fontWeight: 400, letterSpacing: 0.01, align: "left", delay: 0 },
       },
     ],
   },

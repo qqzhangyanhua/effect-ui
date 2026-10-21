@@ -32,6 +32,7 @@ export const batch12Components: ComponentMeta[] = [
         defaultValue: '"md"',
         description: "轨道尺寸。",
         control: { kind: "select", value: "md", options: ["sm", "md", "lg"] },
+        vocabularyExemption: "历史取值是 sm/md/lg，不是像素。",
       },
       {
         name: "color",

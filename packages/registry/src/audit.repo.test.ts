@@ -115,3 +115,27 @@ test("rich-text-editor 保留源码未引用的 peer 依赖 @tiptap/pm", () => {
 test("仓库审计没有问题", () => {
   expect(auditRegistry(repoInput())).toEqual([])
 })
+
+test("真实 catalog 里的 Effect 用词汇表里的词时，类型、控件和分组一致", () => {
+  expect(auditRegistry(repoInput()).filter((issue) => issue.type === "vocabulary-mismatch")).toEqual([])
+})
+
+test("gradient-text 的 colors 保持 Tailwind 类字符串，词汇表检查跳过它", () => {
+  expect(
+    auditRegistry(repoInput()).filter(
+      (issue) => issue.name === "gradient-text" && issue.type === "vocabulary-mismatch",
+    ),
+  ).toEqual([])
+  expect(component("gradient-text").props.find((prop) => prop.name === "colors")).toMatchObject({
+    type: "string",
+    vocabularyExemption: expect.stringContaining("Tailwind"),
+  })
+})
+
+test("预设留在 catalog，不进入 shimmer-text 的 registry JSON", () => {
+  const item = builtItem("shimmer-text")
+  expect(item).not.toHaveProperty("presets")
+  expect(JSON.stringify(item)).not.toContain("shimmer-display")
+  expect(JSON.stringify(item)).not.toContain("shimmer-reading")
+  expect(JSON.stringify(item)).not.toContain("shimmer-kicker")
+})

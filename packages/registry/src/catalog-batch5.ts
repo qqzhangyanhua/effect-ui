@@ -495,9 +495,20 @@ export const batch5Components: ComponentMeta[] = [
     file: "effects/hold-button.tsx",
     target: "components/ui/hold-button.tsx",
     props: [
-      { name: "duration", type: "number", defaultValue: "1000", description: "按住毫秒。" },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "1000",
+        description: "按住毫秒。1000 与不传相同。",
+        control: { kind: "range", value: 1000, min: 400, max: 2000, step: 50 },
+      },
       { name: "onConfirm", type: "() => void", description: "完成回调。" },
       ...ui,
+    ],
+    presets: [
+      { name: "hold-button-short", label: "短", values: { duration: 500 } },
+      { name: "hold-button-default", label: "默认", values: { duration: 1000 } },
+      { name: "hold-button-long", label: "长", values: { duration: 1600 } },
     ],
   },
   {
@@ -509,7 +520,32 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/particle-button.tsx",
     target: "components/ui/particle-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "爆散时长（毫秒）。700 与不传相同。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "粒子个数。10 与不传相同。",
+        control: { kind: "range", value: 10, min: 4, max: 20, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "飞出距离倍率。1 与不传相同，仍是 28px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "particle-button-few", label: "少", values: { duration: 400, count: 6, scale: 0.5 } },
+      { name: "particle-button-default", label: "默认", values: { duration: 700, count: 10, scale: 1 } },
+      { name: "particle-button-burst", label: "盛", values: { duration: 1100, count: 16, scale: 1.5 } },
+    ],
   },
   {
     name: "tear-button",
@@ -520,7 +556,26 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tear-button.tsx",
     target: "components/ui/tear-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "撕开时长（毫秒）。700 与不传相同。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "复位等待（毫秒）。900 与不传相同。",
+        control: { kind: "range", value: 900, min: 0, max: 1800, step: 50 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "tear-button-fast", label: "快", values: { duration: 400, delay: 450 } },
+      { name: "tear-button-default", label: "默认", values: { duration: 700, delay: 900 } },
+      { name: "tear-button-slow", label: "慢", values: { duration: 1100, delay: 1400 } },
+    ],
   },
   ...batch5Backgrounds,
 ]

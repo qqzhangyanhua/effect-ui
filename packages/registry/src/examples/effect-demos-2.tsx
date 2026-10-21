@@ -418,16 +418,16 @@ export function ExpandableCardDemo({ title = "可展开卡片" }: { title?: stri
   )
 }
 
-export function RainbowButtonDemo() {
-  return <RainbowButton>Rainbow</RainbowButton>
+export function RainbowButtonDemo({ duration, colors, scale }: { duration?: number; colors?: string[]; scale?: number } = {}) {
+  return <RainbowButton duration={duration} colors={colors} scale={scale}>Rainbow</RainbowButton>
 }
 
-export function InteractiveHoverButtonDemo() {
-  return <InteractiveHoverButton>继续阅读</InteractiveHoverButton>
+export function InteractiveHoverButtonDemo({ duration, scale }: { duration?: number; scale?: number } = {}) {
+  return <InteractiveHoverButton duration={duration} scale={scale}>继续阅读</InteractiveHoverButton>
 }
 
-export function GooeyButtonDemo() {
-  return <GooeyButton>Gooey</GooeyButton>
+export function GooeyButtonDemo({ scale, intensity }: { scale?: number; intensity?: number } = {}) {
+  return <GooeyButton scale={scale} intensity={intensity}>Gooey</GooeyButton>
 }
 
 export function AnimatedTabsDemo() {

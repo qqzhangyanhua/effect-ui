@@ -13,12 +13,18 @@ interface Ripple {
 
 export interface RippleButtonProps extends React.ComponentProps<typeof Button> {
   rippleColor?: string
+  /** 波纹时长，毫秒。不传或 650 仍是 0.65s。 */
+  duration?: number
+  /** 波纹点倍率。不传或 1 仍是 size-4。 */
+  scale?: number
 }
 
 function RippleButton({
   className,
   children,
   rippleColor = "color-mix(in oklab, var(--primary-foreground) 45%, transparent)",
+  duration,
+  scale,
   variant,
   size,
   asChild = false,
@@ -29,6 +35,9 @@ function RippleButton({
   const slotted =
     asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
   const label = slotted ? slotted.props.children : children
+  const timed = duration === undefined || duration === 650
+  const ms = timed ? 650 : duration
+  const dot = scale === undefined || scale === 1 ? undefined : 16 * scale
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onClick?.(event)
@@ -42,7 +51,7 @@ function RippleButton({
     setRipples((current) => [...current, next])
     window.setTimeout(() => {
       setRipples((current) => current.filter((item) => item.id !== next.id))
-    }, 650)
+    }, ms)
   }
 
   const body = (
@@ -51,12 +60,26 @@ function RippleButton({
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="pointer-events-none absolute size-4 -translate-x-1/2 -translate-y-1/2 animate-[ripple-expand_0.65s_ease-out] rounded-full"
-          style={{
-            left: ripple.x,
-            top: ripple.y,
-            backgroundColor: rippleColor,
-          }}
+          className={
+            dot === undefined
+              ? "pointer-events-none absolute size-4 -translate-x-1/2 -translate-y-1/2 animate-[ripple-expand_0.65s_ease-out] rounded-full"
+              : "pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 animate-[ripple-expand_0.65s_ease-out] rounded-full"
+          }
+          style={
+            dot === undefined && timed
+              ? {
+                  left: ripple.x,
+                  top: ripple.y,
+                  backgroundColor: rippleColor,
+                }
+              : {
+                  left: ripple.x,
+                  top: ripple.y,
+                  backgroundColor: rippleColor,
+                  ...(dot === undefined ? {} : { width: dot, height: dot }),
+                  ...(timed ? {} : { animationDuration: `${ms}ms` }),
+                }
+          }
         />
       ))}
     </>

@@ -1064,7 +1064,59 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/rainbow-button.tsx",
     target: "components/ui/rainbow-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "旋转时长（毫秒）。3000 与不传相同。",
+        control: { kind: "range", value: 3000, min: 1200, max: 6000, step: 100 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "彩虹色。这 6 个色与不传相同。",
+        control: {
+          kind: "colors",
+          value: ["#f43f5e", "#f59e0b", "#22c55e", "#06b6d4", "#8b5cf6", "#f43f5e"],
+        },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "描边厚度倍率。1 与不传相同，仍是 2px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      {
+        name: "rainbow-button-fast",
+        label: "快",
+        values: {
+          duration: 1600,
+          scale: 0.5,
+          colors: ["#f43f5e", "#f59e0b", "#22c55e", "#06b6d4", "#8b5cf6", "#f43f5e"],
+        },
+      },
+      {
+        name: "rainbow-button-default",
+        label: "默认",
+        values: {
+          duration: 3000,
+          scale: 1,
+          colors: ["#f43f5e", "#f59e0b", "#22c55e", "#06b6d4", "#8b5cf6", "#f43f5e"],
+        },
+      },
+      {
+        name: "rainbow-button-wide",
+        label: "宽",
+        values: {
+          duration: 4800,
+          scale: 1.5,
+          colors: ["#fb7185", "#fbbf24", "#4ade80", "#22d3ee", "#a78bfa", "#fb7185"],
+        },
+      },
+    ],
   },
   {
     name: "interactive-hover-button",
@@ -1075,7 +1127,26 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/interactive-hover-button.tsx",
     target: "components/ui/interactive-hover-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "滑出时长（毫秒）。300 与不传相同。",
+        control: { kind: "range", value: 300, min: 120, max: 600, step: 20 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "滑出距离倍率。1 与不传相同，仍是 12px 与 24px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "interactive-hover-button-tight", label: "近", values: { duration: 160, scale: 0.5 } },
+      { name: "interactive-hover-button-default", label: "默认", values: { duration: 300, scale: 1 } },
+      { name: "interactive-hover-button-wide", label: "远", values: { duration: 480, scale: 1.5 } },
+    ],
   },
   {
     name: "gooey-button",
@@ -1086,7 +1157,26 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gooey-button.tsx",
     target: "components/ui/gooey-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "scale",
+        type: "number",
+        description: "模糊倍率。1 与不传相同，仍是 stdDeviation 6。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "粘连强度倍率。1 与不传相同，仍是矩阵 18 与 -7。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "gooey-button-soft", label: "淡", values: { scale: 0.5, intensity: 0.5 } },
+      { name: "gooey-button-default", label: "默认", values: { scale: 1, intensity: 1 } },
+      { name: "gooey-button-thick", label: "浓", values: { scale: 1.5, intensity: 1 } },
+    ],
   },
   {
     name: "animated-tabs",

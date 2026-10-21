@@ -5,11 +5,18 @@ import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-export type GooeyButtonProps = React.ComponentProps<typeof Button>
+export type GooeyButtonProps = React.ComponentProps<typeof Button> & {
+  /** 模糊倍率。不传或 1 仍是 stdDeviation 6。 */
+  scale?: number
+  /** 粘连强度倍率。不传或 1 仍是矩阵 18 与 -7。 */
+  intensity?: number
+}
 
 function GooeyButton({
   className,
   children,
+  scale,
+  intensity,
   variant,
   size,
   asChild = false,
@@ -20,16 +27,22 @@ function GooeyButton({
   const slotted =
     asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
   const label = slotted ? slotted.props.children : children
+  const blur = scale === undefined || scale === 1 ? undefined : 6 * scale
+  const gain = intensity === undefined || intensity === 1 ? undefined : intensity
   const body = (
     <>
       <span className="relative z-10">
         <svg width="0" height="0" className="absolute size-0">
           <filter id={id}>
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation={blur === undefined ? "6" : String(blur)} result="blur" />
             <feColorMatrix
               in="blur"
               mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              values={
+                gain === undefined
+                  ? "1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                  : `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${18 * gain} ${-7 * gain}`
+              }
               result="goo"
             />
             <feBlend in="SourceGraphic" in2="goo" />

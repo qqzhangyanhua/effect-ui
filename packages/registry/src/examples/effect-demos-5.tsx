@@ -51,16 +51,16 @@ export function SpoilerTextDemo({
   )
 }
 
-export function HoldButtonDemo() {
-  return <HoldButton>长按确认</HoldButton>
+export function HoldButtonDemo({ duration }: { duration?: number } = {}) {
+  return <HoldButton duration={duration}>长按确认</HoldButton>
 }
 
-export function ParticleButtonDemo() {
-  return <ParticleButton>粒子爆散</ParticleButton>
+export function ParticleButtonDemo({ duration, count, scale }: { duration?: number; count?: number; scale?: number } = {}) {
+  return <ParticleButton duration={duration} count={count} scale={scale}>粒子爆散</ParticleButton>
 }
 
-export function TearButtonDemo() {
-  return <TearButton>撕开</TearButton>
+export function TearButtonDemo({ duration, delay }: { duration?: number; delay?: number } = {}) {
+  return <TearButton duration={duration} delay={delay}>撕开</TearButton>
 }
 
 export function FlowFieldDemo({

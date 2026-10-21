@@ -386,20 +386,20 @@ export function HoverLiftDemo({ duration, intensity }: { duration?: number; inte
   )
 }
 
-export function RippleButtonDemo() {
-  return <RippleButton>点击出现波纹</RippleButton>
+export function RippleButtonDemo({ rippleColor, duration, scale }: { rippleColor?: string; duration?: number; scale?: number } = {}) {
+  return <RippleButton rippleColor={rippleColor} duration={duration} scale={scale}>点击出现波纹</RippleButton>
 }
 
-export function ShimmerButtonDemo() {
-  return <ShimmerButton>Shimmer</ShimmerButton>
+export function ShimmerButtonDemo({ shimmerColor, duration }: { shimmerColor?: string; duration?: number } = {}) {
+  return <ShimmerButton shimmerColor={shimmerColor} duration={duration}>Shimmer</ShimmerButton>
 }
 
-export function PulseButtonDemo() {
-  return <PulseButton>脉冲</PulseButton>
+export function PulseButtonDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
+  return <PulseButton duration={duration} intensity={intensity}>脉冲</PulseButton>
 }
 
-export function NeonButtonDemo() {
-  return <NeonButton>Neon</NeonButton>
+export function NeonButtonDemo({ glowColor, scale }: { glowColor?: string; scale?: number } = {}) {
+  return <NeonButton glowColor={glowColor} scale={scale}>Neon</NeonButton>
 }
 
 export function SpinnerDemo() {

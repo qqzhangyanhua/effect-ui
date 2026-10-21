@@ -1648,7 +1648,31 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/ripple-button.tsx",
     target: "components/ui/ripple-button.tsx",
-    props: [{ name: "rippleColor", type: "string", description: "波纹颜色。" }],
+    props: [
+      {
+        name: "rippleColor",
+        type: "string",
+        description: "波纹颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "波纹时长（毫秒）。650 与不传相同。",
+        control: { kind: "range", value: 650, min: 260, max: 1300, step: 10 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "波纹点倍率。1 与不传相同，仍是 size-4。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "ripple-button-small", label: "小", values: { duration: 400, scale: 0.5 } },
+      { name: "ripple-button-default", label: "默认", values: { duration: 650, scale: 1 } },
+      { name: "ripple-button-large", label: "大", values: { duration: 1100, scale: 1.5 } },
+    ],
   },
   {
     name: "shimmer-button",
@@ -1659,7 +1683,25 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/shimmer-button.tsx",
     target: "components/ui/shimmer-button.tsx",
-    props: [{ name: "shimmerColor", type: "string", description: "光泽颜色。" }],
+    props: [
+      {
+        name: "shimmerColor",
+        type: "string",
+        description: "光泽颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "扫光时长（毫秒）。2200 与不传相同。",
+        control: { kind: "range", value: 2200, min: 880, max: 4400, step: 40 },
+      },
+    ],
+    presets: [
+      { name: "shimmer-button-fast", label: "快", values: { duration: 1200 } },
+      { name: "shimmer-button-default", label: "默认", values: { duration: 2200 } },
+      { name: "shimmer-button-slow", label: "慢", values: { duration: 3600 } },
+    ],
   },
   {
     name: "pulse-button",
@@ -1670,7 +1712,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/pulse-button.tsx",
     target: "components/ui/pulse-button.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "脉冲时长（毫秒）。2000 与不传相同。",
+        control: { kind: "range", value: 2000, min: 800, max: 4000, step: 100 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "光环不透明度。0.4 与不传相同，仍是 bg-primary/40。",
+        control: { kind: "range", value: 0.4, min: 0, max: 1, step: 0.05 },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "pulse-button-soft", label: "柔", values: { duration: 2800, intensity: 0.2 } },
+      { name: "pulse-button-default", label: "默认", values: { duration: 2000, intensity: 0.4 } },
+      { name: "pulse-button-strong", label: "强", values: { duration: 1200, intensity: 0.8 } },
+    ],
   },
   {
     name: "neon-button",
@@ -1681,7 +1742,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/neon-button.tsx",
     target: "components/ui/neon-button.tsx",
-    props: [{ name: "glowColor", type: "string", defaultValue: "var(--primary)", description: "霓虹颜色。" }],
+    props: [
+      {
+        name: "glowColor",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "霓虹颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "辉光倍率。1 与不传相同，仍是 18px 与 28px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "neon-button-dim", label: "暗", values: { scale: 0.5 } },
+      { name: "neon-button-default", label: "默认", values: { scale: 1 } },
+      { name: "neon-button-bright", label: "亮", values: { scale: 2 } },
+    ],
   },
   {
     name: "spinner",

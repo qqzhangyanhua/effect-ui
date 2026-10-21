@@ -17,6 +17,7 @@ import * as effectDemos15 from "./effect-demos-15"
 import * as effectDemos16 from "./effect-demos-16"
 import * as effectDemos17 from "./effect-demos-17"
 import * as effectDemos18 from "./effect-demos-18"
+import * as effectDemos19 from "./effect-demos-19"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -407,6 +408,21 @@ const demoMap: Record<string, ComponentType> = {
   "mention-textarea": effectDemos18.MentionTextareaDemo,
   "inbox-split-view": effectDemos18.InboxSplitViewDemo,
   "timezone-clock": effectDemos18.TimezoneClockDemo,
+  "tubes-cursor": effectDemos19.TubesCursorDemo,
+  "liquid-morph-slideshow": effectDemos19.LiquidMorphSlideshowDemo,
+  "wavefield-neon": effectDemos19.WavefieldNeonDemo,
+  "gradient-carousel-3d": effectDemos19.GradientCarousel3dDemo,
+  "text-3d-scroll": effectDemos19.Text3dScrollDemo,
+  "rolling-text-hover": effectDemos19.RollingTextHoverDemo,
+  "audio-spectrum": effectDemos19.AudioSpectrumDemo,
+  "singularity": effectDemos19.SingularityDemo,
+  "credit-card-form": effectDemos19.CreditCardFormDemo,
+  "cart-drawer": effectDemos19.CartDrawerDemo,
+  "coupon-input": effectDemos19.CouponInputDemo,
+  "radial-gauge": effectDemos19.RadialGaugeDemo,
+  "funnel-chart": effectDemos19.FunnelChartDemo,
+  "gantt-timeline": effectDemos19.GanttTimelineDemo,
+  "org-chart": effectDemos19.OrgChartDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

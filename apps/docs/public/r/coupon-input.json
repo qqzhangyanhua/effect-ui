@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "coupon-input",
+  "type": "registry:ui",
+  "title": "Coupon Input",
+  "description": "应用优惠码。加载、成功芯片和失败抖动由外部 validate 决定。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/coupon-input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/coupon-input.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport type CouponResult = { ok: true; label: string } | { ok: false; message: string }\n\nexport interface CouponInputProps {\n  validate: (code: string) => Promise<CouponResult>\n  className?: string\n}\n\nfunction CouponInput({ validate, className }: CouponInputProps) {\n  const reduced = usePrefersReducedMotion()\n  const [code, setCode] = React.useState(\"\")\n  const [status, setStatus] = React.useState<\"idle\" | \"loading\" | \"success\" | \"error\">(\"idle\")\n  const [message, setMessage] = React.useState(\"\")\n  const [label, setLabel] = React.useState(\"\")\n  const validateRef = React.useRef(validate)\n  React.useEffect(() => {\n    validateRef.current = validate\n  }, [validate])\n\n  const apply = async () => {\n    const next = code.trim()\n    if (!next || status === \"loading\") return\n    setStatus(\"loading\")\n    setMessage(\"\")\n    try {\n      const result = await validateRef.current(next)\n      if (result.ok) {\n        setStatus(\"success\")\n        setLabel(result.label)\n        setMessage(\"\")\n      } else {\n        setStatus(\"error\")\n        setMessage(result.message)\n      }\n    } catch {\n      setStatus(\"error\")\n      setMessage(\"暂时无法核验这张券。\")\n    }\n  }\n\n  if (status === \"success\") {\n    return (\n      <div data-slot=\"coupon-input\" className={cn(\"flex items-center gap-2\", className)}>\n        <span className=\"rounded-full bg-emerald-500/15 px-3 py-1 text-sm text-emerald-700\">{label}</span>\n        <button\n          type=\"button\"\n          aria-label=\"移除优惠\"\n          className=\"text-sm text-muted-foreground\"\n          onClick={() => {\n            setStatus(\"idle\")\n            setLabel(\"\")\n            setCode(\"\")\n          }}\n        >\n          移除\n        </button>\n      </div>\n    )\n  }\n\n  return (\n    <div data-slot=\"coupon-input\" className={cn(\"grid gap-2\", className)}>\n      <motion.div animate={status === \"error\" && !reduced ? { x: [0, -8, 8, -5, 5, 0] } : { x: 0 }} transition={{ duration: 0.35 }} className=\"flex gap-2\">\n        <input\n          aria-label=\"优惠码\"\n          value={code}\n          onChange={(event) => {\n            setCode(event.target.value)\n            if (status === \"error\") setStatus(\"idle\")\n          }}\n          className=\"h-10 flex-1 rounded-md border px-3\"\n          placeholder=\"输入优惠码\"\n        />\n        <button type=\"button\" className=\"rounded-md bg-primary px-3 text-sm text-primary-foreground disabled:opacity-60\" disabled={status === \"loading\"} onClick={() => void apply()}>\n          {status === \"loading\" ? \"应用中\" : \"应用\"}\n        </button>\n      </motion.div>\n      {status === \"error\" ? <p role=\"alert\" className=\"text-sm text-destructive\">{message}</p> : null}\n    </div>\n  )\n}\n\nexport { CouponInput }\n"
+    }
+  ]
+}

@@ -7451,6 +7451,306 @@
           "target": "components/ui/timezone-clock.tsx"
         }
       ]
+    },
+    {
+      "name": "tubes-cursor",
+      "type": "registry:ui",
+      "title": "Tubes Cursor",
+      "description": "灵感来自 Codrops Tubes Cursor，原创实现。光标拖出几根发光的立体管道，点击切换配色。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tubes-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tubes-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-morph-slideshow",
+      "type": "registry:ui",
+      "title": "Liquid Morph Slideshow",
+      "description": "灵感来自 Codrops Liquid Morphology Slideshow，原创实现。切换时旧图像液体一样流进新图。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-morph-slideshow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-morph-slideshow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wavefield-neon",
+      "type": "registry:ui",
+      "title": "Wavefield Neon",
+      "description": "灵感来自 Codrops Wavefield Shader，原创实现。霓虹线条在透视平面上起伏，指针处荡开涟漪。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wavefield-neon.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wavefield-neon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gradient-carousel-3d",
+      "type": "registry:ui",
+      "title": "Gradient Carousel 3D",
+      "description": "灵感来自 Codrops Infinite 3D Gradient Carousel，原创实现。渐变卡片沿弧线无限排列，拖拽带惯性。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gradient-carousel-3d.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gradient-carousel-3d.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-3d-scroll",
+      "type": "registry:ui",
+      "title": "Text 3D Scroll",
+      "description": "灵感来自 Codrops 3D Text Scroll Animations，原创实现。标题逐字绕 X 轴从 90° 翻到平面。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-3d-scroll.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-3d-scroll.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rolling-text-hover",
+      "type": "registry:ui",
+      "title": "Rolling Text Hover",
+      "description": "灵感来自 Codrops Rolling text，原创实现。悬停时字母向上滚出，下一份从下方滚入。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rolling-text-hover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rolling-text-hover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "audio-spectrum",
+      "type": "registry:ui",
+      "title": "Audio Spectrum",
+      "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。和静态的 audio-waveform 不同。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/audio-spectrum.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/audio-spectrum.tsx"
+        }
+      ]
+    },
+    {
+      "name": "singularity",
+      "type": "registry:ui",
+      "title": "Singularity",
+      "description": "灵感来自 Codrops Singularity，原创实现。中心暗盘、旋转吸积环，外圈星空被引力透镜拧弯。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/singularity.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/singularity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "credit-card-form",
+      "type": "registry:ui",
+      "title": "Credit Card Form",
+      "description": "卡号、有效期和安全码自动分段，按 BIN 识别卡组织，并用 Luhn 校验。聚焦安全码时卡面翻到背面。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/credit-card-form.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/credit-card-form.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cart-drawer",
+      "type": "registry:ui",
+      "title": "Cart Drawer",
+      "description": "右侧购物车抽屉。可改数量、移除，显示小计和免运费进度。加购时图标跳动并带计数。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "quantity-stepper",
+        "sheet",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cart-drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cart-drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "coupon-input",
+      "type": "registry:ui",
+      "title": "Coupon Input",
+      "description": "应用优惠码。加载、成功芯片和失败抖动由外部 validate 决定。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/coupon-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/coupon-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radial-gauge",
+      "type": "registry:ui",
+      "title": "Radial Gauge",
+      "description": "半圆或四分之三圆仪表。分段配色，指针有弹性，中心数字滚动，可标阈值。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "number-flow",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/radial-gauge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/radial-gauge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "funnel-chart",
+      "type": "registry:ui",
+      "title": "Funnel Chart",
+      "description": "纯 SVG 漏斗。宽度按数值，显示转化率和流失率，悬停高亮，入场逐层展开。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/funnel-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/funnel-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gantt-timeline",
+      "type": "registry:ui",
+      "title": "Gantt Timeline",
+      "description": "任务条、依赖箭头和今日线。可按日、周、月缩放，拖动改日期，拉伸改时长。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/gantt-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gantt-timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "org-chart",
+      "type": "registry:ui",
+      "title": "Org Chart",
+      "description": "组织架构。节点可展开折叠，画布可平移缩放，搜索后定位到对应的人。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/org-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/org-chart.tsx"
+        }
+      ]
     }
   ]
 }

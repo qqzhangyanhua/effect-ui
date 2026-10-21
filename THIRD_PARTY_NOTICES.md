@@ -166,7 +166,14 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/educlopez/smoothui
 - 许可：MIT
 - 版权：Copyright (c) 2024 Eduardo Calvo
-- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`、`coverflow-carousel`、`book-flip`、`folder-reveal`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）、`aurora-curtain`、`gravity-stars`、`magnetic-field`、`ransom-note`、`liquid-metal`、`sdf-blob-transition`、`video-ambient`、`pixel-brush-canvas`、`duration-picker`、`exposure-slider`、`scrubber`、`breakpoint-indicator`、`switchboard-card`、`time-machine-stack`、`interactive-image-selector`、`drawing-cursor`、`emboss-surface`、`chroma-blur-transition`、`arcade-pixel`、`kinetic-type-scroll`、`orbital-image-wheel`、`dither-chart`、`card-swipe-deck`、`pinned-list`、`grid-loader`、`squircle`、`vector-editor-toolbar`、`unlock-face-id`、`music-toggle`。后二十九项按 SmoothUI 源码移植；`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 的着色器保持原样，WebGL 样板改用 `ogl`。`chroma-blur-transition` 的着色器保持原样。
+- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`、`coverflow-carousel`、`book-flip`、`folder-reveal`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）、`aurora-curtain`、`gravity-stars`、`magnetic-field`、`ransom-note`、`liquid-metal`、`sdf-blob-transition`、`video-ambient`、`pixel-brush-canvas`、`duration-picker`、`exposure-slider`、`scrubber`、`breakpoint-indicator`、`switchboard-card`、`time-machine-stack`、`interactive-image-selector`、`drawing-cursor`、`emboss-surface`、`chroma-blur-transition`、`arcade-pixel`、`kinetic-type-scroll`、`orbital-image-wheel`、`dither-chart`、`card-swipe-deck`、`pinned-list`、`grid-loader`、`squircle`、`vector-editor-toolbar`、`unlock-face-id`、`music-toggle`、`perspective-text-3d`、`scroll-image-reveal`、`svg-clip-mask`、`depth-parallax-words`、`prism-sweep-transition`、`orb`、`morph-icon`、`hover-expand`、`inline-testimonials`、`count-badge`、`social-selector`、`github-stars-animation`、`expandable-navbar`、`reviews-carousel`。后四十三项按 SmoothUI 源码移植；`aurora-curtain`、`liquid-metal`、`sdf-blob-transition`、`prism-sweep-transition`、`orb` 的着色器保持原样，WebGL 样板改用 `ogl`。`chroma-blur-transition` 的着色器保持原样。
+
+## UI Layouts
+
+- 仓库：https://github.com/ui-layouts/uilayouts
+- 许可：MIT
+- 版权：Copyright (c) 2024 UI LAYOUT
+- 衍生组件：`splash-mask`。路径来自 `clip-path-water-splash.tsx`，内联进组件，不请求外部 SVG。
 
 ## frimousse
 

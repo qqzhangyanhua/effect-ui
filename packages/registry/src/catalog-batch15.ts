@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -19,9 +20,33 @@ export const batch15Components: ComponentMeta[] = [
     file: "effects/ghost-trail-text.tsx",
     target: "components/ui/ghost-trail-text.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: "GHOST", description: "标题文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: "GHOST",
+        description: "标题文字。",
+        control: { kind: "text", value: "GHOST" },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "残影层数。不传则 4。",
+        control: { kind: "range", value: 4, min: 1, max: 12, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "残影位移和模糊。不传则 1。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...textControls({ fontSize: 72, fontWeight: 600, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("ghost", "text", [
+      { label: "原样", content: "GHOST", fontSize: 72, fontWeight: 600, align: "left", extra: { count: 4, intensity: 1 } },
+      { label: "多层", content: "TRAIL", fontSize: 56, fontWeight: 700, align: "center", extra: { count: 8, intensity: 0.7 } },
+      { label: "淡", content: "SOFT", fontSize: 48, fontWeight: 500, align: "left", extra: { count: 2, intensity: 0.3 } },
+    ]),
   },
   {
     name: "gravity-image-trail",
@@ -176,7 +201,37 @@ export const batch15Components: ComponentMeta[] = [
     target: "components/ui/text-generate.tsx",
     props: [
       { name: "text", type: "string", description: "当前全文。流式输入时把已到达的词拼进来。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "每个词显出的时长，毫秒。不传则 350。",
+        control: { kind: "range", value: 350, min: 140, max: 700, step: 10 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "词与词的错开，毫秒。不传则 0。",
+        control: { kind: "range", value: 0, min: 0, max: 400, step: 10 },
+      },
+      ...textControls({ fontSize: 24, fontWeight: 400, align: "left" }),
       ...ui,
+    ],
+    presets: [
+      {
+        name: "text-generate-1",
+        label: "逐词",
+        values: { duration: 350, delay: 0, fontSize: 24, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "text-generate-2",
+        label: "错开",
+        values: { duration: 280, delay: 80, fontSize: 32, fontWeight: 600, align: "center" },
+      },
+      {
+        name: "text-generate-3",
+        label: "慢显",
+        values: { duration: 600, delay: 40, fontSize: 18, fontWeight: 400, align: "left" },
+      },
     ],
   },
   {

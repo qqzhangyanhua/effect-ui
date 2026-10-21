@@ -62,15 +62,57 @@ export function ShaderPack2Demo({
   )
 }
 
-export function TextAlongPathDemo() {
-  return <TextAlongPath className="h-36 w-full" text="effect-ui · text along a curve · MIT" />
+export function TextAlongPathDemo({
+  text = "effect-ui · text along a curve · MIT",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TextAlongPath
+      className="h-36 w-full"
+      text={text}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function ScrollTypographyDemo() {
+export function ScrollTypographyDemo({
+  text = "Scroll Type",
+  variant = "blur",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  variant?: "clip" | "blur" | "scale" | "slide"
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <div className="h-40 w-full overflow-auto rounded-xl border p-4">
       <div className="h-10" />
-      <ScrollTypography text="Scroll Type" variant="blur" />
+      <ScrollTypography
+        text={text}
+        variant={variant}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
       <div className="h-24" />
     </div>
   )
@@ -92,8 +134,32 @@ export function AsciiRenderDemo() {
   return <AsciiRender className="w-full max-w-lg" src="https://picsum.photos/id/1025/400/260" />
 }
 
-export function LampHeadingDemo() {
-  return <LampHeading className="w-full" text="effect-ui" />
+export function LampHeadingDemo({
+  text = "effect-ui",
+  color,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  color?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <LampHeading
+      className="w-full"
+      text={text}
+      color={color}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function TracingBeamDemo() {

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-style",
+  "type": "registry:lib",
+  "title": "Text Style",
+  "description": "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/lib/text-style.ts",
+      "type": "registry:lib",
+      "target": "lib/text-style.ts",
+      "content": "import type { CSSProperties } from \"react\"\n\nexport type TextAlign = \"left\" | \"center\" | \"right\"\n\n/** 只在传入时写内联样式。都不传时返回 undefined，沿用组件原来的 class。 */\nexport function textStyle(\n  style: CSSProperties | undefined,\n  fontSize: number | undefined,\n  fontWeight: number | undefined,\n  letterSpacing: number | undefined,\n  align: TextAlign | undefined,\n): CSSProperties | undefined {\n  const next: CSSProperties = style === undefined ? {} : { ...style }\n  if (fontSize !== undefined) next.fontSize = fontSize\n  if (fontWeight !== undefined) next.fontWeight = fontWeight\n  if (letterSpacing !== undefined) next.letterSpacing = `${letterSpacing}em`\n  if (align !== undefined) {\n    next.textAlign = align\n    next.justifyContent = align === \"left\" ? \"flex-start\" : align === \"right\" ? \"flex-end\" : \"center\"\n    next.justifyItems = align === \"left\" ? \"start\" : align === \"right\" ? \"end\" : \"center\"\n  }\n  return Object.keys(next).length > 0 ? next : undefined\n}\n"
+    }
+  ]
+}

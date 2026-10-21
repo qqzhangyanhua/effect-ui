@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -25,8 +26,26 @@ export const batch7Components: ComponentMeta[] = [
         defaultValue: '["glitch"]',
         description: "可叠加的预设特效。",
       },
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "被特效覆盖的文字。不传则显示 VFX。",
+        control: { kind: "text", value: "effect-ui" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "特效强度。不传则按开关原样叠加。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("vfx", "children", [
+      { label: "原样", content: "effect-ui", fontSize: 36, fontWeight: 600, align: "center", extra: { intensity: 1 } },
+      { label: "轻", content: "VFX", fontSize: 48, fontWeight: 700, align: "center", extra: { intensity: 0.4 } },
+      { label: "小字", content: "glitch", fontSize: 20, fontWeight: 500, align: "left", extra: { intensity: 0.8 } },
+    ]),
   },
   {
     name: "mouse-flowmap",
@@ -137,14 +156,43 @@ export const batch7Components: ComponentMeta[] = [
     target: "components/ui/rough-annotation.tsx",
     props: [
       {
+        name: "children",
+        type: "ReactNode",
+        description: "被注释的文字。",
+        control: { kind: "text", value: "重点词" },
+      },
+      {
         name: "type",
         type: '"underline" | "box" | "circle" | "highlight" | "strike-through" | "crossed-off" | "bracket"',
         defaultValue: '"underline"',
         description: "注释类型。",
+        control: {
+          kind: "select",
+          value: "highlight",
+          options: ["underline", "box", "circle", "highlight", "strike-through", "crossed-off", "bracket"],
+        },
       },
-      { name: "color", type: "string", defaultValue: '"#7c3aed"', description: "笔触颜色。" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"#7c3aed"',
+        description: "笔触颜色。",
+        control: { kind: "color", value: "#7c3aed" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "笔画时长，毫秒。不传则 700。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 },
+      },
+      ...textControls({ fontSize: 18, fontWeight: 400, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("rough", "children", [
+      { label: "高亮", content: "重点词", fontSize: 18, fontWeight: 500, align: "left", extra: { type: "highlight", color: "#7c3aed", duration: 700 } },
+      { label: "下划线", content: "手绘一行", fontSize: 24, fontWeight: 600, align: "center", extra: { type: "underline", color: "#ea580c", duration: 500 } },
+      { label: "圈出", content: "这里", fontSize: 28, fontWeight: 700, align: "center", extra: { type: "circle", color: "#0f766e", duration: 1000 } },
+    ]),
   },
   {
     name: "burst-icons",

@@ -7,13 +7,15 @@
   "dependencies": [
     "@number-flow/react"
   ],
-  "registryDependencies": [],
+  "registryDependencies": [
+    "text-style"
+  ],
   "files": [
     {
       "path": "registry/effects/number-flow.tsx",
       "type": "registry:ui",
       "target": "components/ui/number-flow.tsx",
-      "content": "\"use client\"\n\nimport NumberFlowPrimitive, { type Format } from \"@number-flow/react\"\n\nexport interface NumberFlowProps {\n  value: number\n  locales?: Intl.LocalesArgument\n  format?: Format\n  prefix?: string\n  suffix?: string\n  className?: string\n}\n\nfunction NumberFlow({ value, locales, format, prefix, suffix, className }: NumberFlowProps) {\n  return (\n    <NumberFlowPrimitive\n      value={value}\n      locales={locales}\n      format={format}\n      prefix={prefix}\n      suffix={suffix}\n      className={className}\n    />\n  )\n}\n\nexport { NumberFlow }\n"
+      "content": "\"use client\"\n\nimport NumberFlowPrimitive, { type Format } from \"@number-flow/react\"\n\nimport { textStyle } from \"@/lib/text-style\"\n\nexport interface NumberFlowProps {\n  value: number\n  locales?: Intl.LocalesArgument\n  format?: Format\n  prefix?: string\n  suffix?: string\n  className?: string\n  fontSize?: number\n  fontWeight?: number\n  letterSpacing?: number\n  align?: \"left\" | \"center\" | \"right\"\n}\n\nfunction NumberFlow({\n  value,\n  locales,\n  format,\n  prefix,\n  suffix,\n  className,\n  fontSize,\n  fontWeight,\n  letterSpacing,\n  align,\n}: NumberFlowProps) {\n  const styled = textStyle(undefined, fontSize, fontWeight, letterSpacing, align)\n  const flow = (\n    <NumberFlowPrimitive\n      value={value}\n      locales={locales}\n      format={format}\n      prefix={prefix}\n      suffix={suffix}\n      className={className}\n    />\n  )\n  if (styled === undefined) return flow\n  return (\n    <span className={className} style={styled}>\n      {flow}\n    </span>\n  )\n}\n\nexport { NumberFlow }\n"
     }
   ]
 }

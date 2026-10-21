@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -94,10 +95,21 @@ export const batch6Components: ComponentMeta[] = [
     file: "effects/text-along-path.tsx",
     target: "components/ui/text-along-path.tsx",
     props: [
-      { name: "text", type: "string", description: "路径上的文字。" },
+      {
+        name: "text",
+        type: "string",
+        description: "路径上的文字。",
+        control: { kind: "text", value: "effect-ui · text along a curve · MIT" },
+      },
       { name: "path", type: "string", description: "SVG path d。" },
+      ...textControls({ fontSize: 14, fontWeight: 500, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("text-along-path", "text", [
+      { label: "沿路径", content: "effect-ui · text along a curve · MIT", fontSize: 14, fontWeight: 500, align: "left" },
+      { label: "居中", content: "沿弧线排开", fontSize: 18, fontWeight: 600, align: "center" },
+      { label: "贴右", content: "到此结束", fontSize: 16, fontWeight: 400, align: "right" },
+    ]),
   },
   {
     name: "scroll-typography",
@@ -109,10 +121,27 @@ export const batch6Components: ComponentMeta[] = [
     file: "effects/scroll-typography.tsx",
     target: "components/ui/scroll-typography.tsx",
     props: [
-      { name: "text", type: "string", description: "文案。" },
-      { name: "variant", type: '"clip" | "blur" | "scale" | "slide"', defaultValue: '"clip"', description: "揭示方式。" },
+      {
+        name: "text",
+        type: "string",
+        description: "文案。",
+        control: { kind: "text", value: "Scroll Type" },
+      },
+      {
+        name: "variant",
+        type: '"clip" | "blur" | "scale" | "slide"',
+        defaultValue: '"clip"',
+        description: "揭示方式。",
+        control: { kind: "select", value: "blur", options: ["clip", "blur", "scale", "slide"] },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("scroll-type", "text", [
+      { label: "模糊", content: "Scroll Type", fontSize: 36, fontWeight: 600, align: "center", extra: { variant: "blur" } },
+      { label: "裁切", content: "逐字揭开", fontSize: 48, fontWeight: 700, align: "center", extra: { variant: "clip" } },
+      { label: "滑入", content: "滚上来", fontSize: 28, fontWeight: 500, align: "left", extra: { variant: "slide" } },
+    ]),
   },
   {
     name: "3d-carousel",
@@ -180,7 +209,26 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/lamp-heading.tsx",
     target: "components/ui/lamp-heading.tsx",
-    props: [{ name: "text", type: "string", description: "标题。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "标题。",
+        control: { kind: "text", value: "effect-ui" },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "灯罩颜色。不传或传 #c4b5fd 都是原来的紫色灯罩。",
+        control: { kind: "color", value: "#c4b5fd" },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 400, align: "center" }),
+      ...ui,
+    ],
+    presets: textPresets("lamp", "text", [
+      { label: "标题", content: "effect-ui", fontSize: 48, fontWeight: 600, align: "center" },
+      { label: "短句", content: "灯下的一句", fontSize: 28, fontWeight: 400, align: "center" },
+    ]),
   },
   {
     name: "tracing-beam",

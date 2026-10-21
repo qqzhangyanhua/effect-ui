@@ -52,63 +52,137 @@ export function ScrambleTextDemo({
   return <ScrambleText className="text-2xl" text={text} duration={duration} />
 }
 
-export function TextRotateDemo() {
+export function TextRotateDemo({
+  interval = 1800,
+  animation = "slide",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  animation?: "slide" | "blur" | "glyph"
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
-    <div className="grid w-full gap-8 text-center sm:grid-cols-3">
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground">slide</p>
-        <TextRotate
-          animation="slide"
-          className="text-2xl font-semibold"
-          texts={["Motion", "Tailwind", "Registry"]}
-        />
-      </div>
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground">blur</p>
-        <TextRotate
-          animation="blur"
-          className="text-2xl font-semibold"
-          texts={["Copy.", "Tweak.", "Ship."]}
-        />
-      </div>
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground">glyph</p>
-        <TextRotate
-          animation="glyph"
-          className="font-display text-4xl"
-          texts={["Design", "Delight"]}
-        />
-      </div>
-    </div>
-  )
-}
-
-export function WordRotateDemo() {
-  return (
-    <p className="text-2xl">
-      Build with <WordRotate words={["Motion", "Tailwind", "Registry"]} />
-    </p>
-  )
-}
-
-export function MorphingTextDemo() {
-  return (
-    <MorphingText
-      className="text-3xl font-semibold"
-      texts={["Copy.", "Tweak.", "Ship."]}
+    <TextRotate
+      texts={["Motion", "Tailwind", "Registry"]}
+      interval={interval}
+      animation={animation}
+      className="text-2xl font-semibold"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
     />
   )
 }
 
-export function RollingNumberDemo() {
-  return <RollingNumber className="text-5xl" value={2048} />
+export function WordRotateDemo({
+  interval = 1800,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <p className="text-2xl">
+      Build with{" "}
+      <WordRotate
+        words={["Motion", "Tailwind", "Registry"]}
+        interval={interval}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
+    </p>
+  )
 }
 
-export function TextRevealDemo() {
+export function MorphingTextDemo({
+  interval = 2200,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <MorphingText
+      className="text-3xl font-semibold"
+      texts={["Copy.", "Tweak.", "Ship."]}
+      interval={interval}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
+}
+
+export function RollingNumberDemo({
+  value = 2048,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  value?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <RollingNumber
+      className="text-5xl"
+      value={value}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
+}
+
+export function TextRevealDemo({
+  text = "滚动这段文字，单词会依次从淡到实。",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <div className="h-40 w-full overflow-auto rounded-xl border p-4">
       <div className="h-16" />
-      <TextReveal text="滚动这段文字，单词会依次从淡到实。" />
+      <TextReveal
+        text={text}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
       <div className="h-24" />
     </div>
   )

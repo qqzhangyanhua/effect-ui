@@ -25,6 +25,7 @@ export const effectCategories: ReadonlySet<string> = new Set([
 
 export const propVocabulary: readonly VocabularyWord[] = [
   { name: "duration", type: "number", kind: "range", group: "动画" },
+  { name: "interval", type: "number", kind: "range", group: "动画" },
   { name: "speed", type: "number", kind: "range", group: "动画" },
   { name: "color", type: "string", kind: "color", group: "外观" },
   { name: "colors", type: "string[]", kind: "colors", group: "外观" },

@@ -2,7 +2,9 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 function parseSettings(value: string) {
@@ -26,6 +28,9 @@ export interface VariableFontProximityProps {
   radius?: number
   falloff?: "linear" | "exponential" | "gaussian"
   className?: string
+  fontSize?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 function VariableFontProximity({
@@ -36,8 +41,13 @@ function VariableFontProximity({
   radius = 80,
   falloff = "linear",
   className,
+  fontSize,
+  letterSpacing,
+  align,
 }: VariableFontProximityProps) {
   const reduced = usePrefersReducedMotion()
+  const hostRef = React.useRef<HTMLSpanElement>(null)
+  const active = useAnimationActive(hostRef)
   const letterRefs = React.useRef<Array<HTMLSpanElement | null>>([])
   const mouse = React.useRef({ x: -9999, y: -9999 })
 
@@ -63,7 +73,7 @@ function VariableFontProximity({
   }, [containerRef, reduced])
 
   React.useEffect(() => {
-    if (reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    if (!active || reduced || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
     let frame = 0
     const tick = () => {
       frame = window.requestAnimationFrame(tick)
@@ -89,12 +99,17 @@ function VariableFontProximity({
     }
     frame = window.requestAnimationFrame(tick)
     return () => window.cancelAnimationFrame(frame)
-  }, [axes, containerRef, falloff, radius, reduced])
+  }, [active, axes, containerRef, falloff, radius, reduced])
 
   const letters = Array.from(label)
 
   return (
-    <span className={cn("inline-block", className)} aria-label={label}>
+    <span
+      ref={hostRef}
+      className={cn("inline-block", className)}
+      aria-label={label}
+      style={textStyle(undefined, fontSize, undefined, letterSpacing, align)}
+    >
       {letters.map((char, index) => (
         <span
           key={`${char}-${index}`}

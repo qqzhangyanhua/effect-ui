@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -393,14 +394,39 @@ export const batch2Components: ComponentMeta[] = [
     target: "components/ui/text-rotate.tsx",
     props: [
       { name: "texts", type: "string[]", description: "轮换的文本。" },
-      { name: "interval", type: "number", defaultValue: "1800", description: "间隔毫秒。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1800",
+        description: "间隔毫秒。",
+        control: { kind: "range", value: 1800, min: 600, max: 3600, step: 100 },
+      },
       {
         name: "animation",
         type: '"slide" | "blur" | "glyph"',
         defaultValue: '"slide"',
         description: "切换动画。",
+        control: { kind: "select", value: "slide", options: ["slide", "blur", "glyph"] },
       },
+      ...textControls({ fontSize: 24, fontWeight: 600, align: "center" }),
       ...ui,
+    ],
+    presets: [
+      {
+        name: "text-rotate-1",
+        label: "滑动",
+        values: { interval: 1800, animation: "slide", fontSize: 36, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "text-rotate-2",
+        label: "模糊",
+        values: { interval: 1400, animation: "blur", fontSize: 28, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "text-rotate-3",
+        label: "字形",
+        values: { interval: 2200, animation: "glyph", fontSize: 48, fontWeight: 600, align: "center" },
+      },
     ],
   },
   {
@@ -414,7 +440,26 @@ export const batch2Components: ComponentMeta[] = [
     target: "components/ui/word-rotate.tsx",
     props: [
       { name: "words", type: "string[]", description: "轮换词列表。" },
-      { name: "interval", type: "number", defaultValue: "1800", description: "间隔毫秒。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1800",
+        description: "间隔毫秒。",
+        control: { kind: "range", value: 1800, min: 600, max: 3600, step: 100 },
+      },
+      ...textControls({ fontSize: 24, fontWeight: 400, align: "left" }),
+    ],
+    presets: [
+      {
+        name: "word-rotate-1",
+        label: "正文",
+        values: { interval: 1800, fontSize: 24, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "word-rotate-2",
+        label: "标题",
+        values: { interval: 1200, fontSize: 40, fontWeight: 700, align: "center" },
+      },
     ],
   },
   {
@@ -426,7 +471,29 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/morphing-text.tsx",
     target: "components/ui/morphing-text.tsx",
-    props: [{ name: "texts", type: "string[]", description: "文本序列。" }],
+    props: [
+      { name: "texts", type: "string[]", description: "文本序列。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "2200",
+        description: "间隔毫秒。不传则 2200。",
+        control: { kind: "range", value: 2200, min: 800, max: 4400, step: 100 },
+      },
+      ...textControls({ fontSize: 30, fontWeight: 600, align: "center" }),
+    ],
+    presets: [
+      {
+        name: "morphing-text-1",
+        label: "标题",
+        values: { interval: 2200, fontSize: 48, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "morphing-text-2",
+        label: "慢变",
+        values: { interval: 3600, fontSize: 24, fontWeight: 400, align: "left" },
+      },
+    ],
   },
   {
     name: "rolling-number",
@@ -437,7 +504,27 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/rolling-number.tsx",
     target: "components/ui/rolling-number.tsx",
-    props: [{ name: "value", type: "number", description: "当前数字。" }],
+    props: [
+      {
+        name: "value",
+        type: "number",
+        description: "当前数字。",
+        control: { kind: "range", value: 2048, min: 0, max: 9999, step: 1 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "center" }),
+    ],
+    presets: [
+      {
+        name: "rolling-number-1",
+        label: "大数字",
+        values: { value: 2048, fontSize: 64, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "rolling-number-2",
+        label: "小数",
+        values: { value: 86, fontSize: 32, fontWeight: 500, align: "left" },
+      },
+    ],
   },
   {
     name: "text-reveal",
@@ -448,7 +535,20 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-reveal.tsx",
     target: "components/ui/text-reveal.tsx",
-    props: [{ name: "text", type: "string", description: "段落文本。" }],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "段落文本。",
+        control: { kind: "text", value: "滚动这段文字，单词会依次从淡到实。" },
+      },
+      ...textControls({ fontSize: 18, fontWeight: 400, align: "left" }),
+      ...ui,
+    ],
+    presets: textPresets("text-reveal", "text", [
+      { label: "正文", content: "滚动这段文字，单词会依次从淡到实。", fontSize: 18, fontWeight: 400, align: "left" },
+      { label: "标题", content: "逐词显现", fontSize: 40, fontWeight: 700, align: "center" },
+    ]),
   },
   {
     name: "light-beams",

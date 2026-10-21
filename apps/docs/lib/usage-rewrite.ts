@@ -3,12 +3,19 @@ function rewriteControlledDemo(fn: string) {
   if (openParen < 0) return fn
   const closeParen = matchingCloser(fn, openParen, "(", ")")
   if (closeParen < 0) return fn
-  const defaults = destructuredDefaults(fn.slice(openParen + 1, closeParen))
-  if (!defaults) return fn
+  const parsed = destructuredDefaults(fn.slice(openParen + 1, closeParen))
+  if (!parsed) return fn
   const bodyOpen = fn.indexOf("{", closeParen)
   if (bodyOpen < 0) return fn
-  const consts = defaults.map((item) => `  const ${item.name} = ${item.literal}`).join("\n")
-  return `${fn.slice(0, openParen)}() {\n${consts}${fn.slice(bodyOpen + 1)}`
+  const consts = parsed.defaults.map((item) => `  const ${item.name} = ${item.literal}`).join("\n")
+  let body = fn.slice(bodyOpen + 1)
+  for (const name of parsed.omitted) body = stripForwardedProp(body, name)
+  const header = consts.length > 0 ? `${consts}\n` : ""
+  return `${fn.slice(0, openParen)}() {\n${header}${body}`
+}
+
+function stripForwardedProp(body: string, name: string) {
+  return body.replace(new RegExp(`\\s+${name}=\\{${name}\\}`, "g"), "")
 }
 
 function destructuredDefaults(params: string) {
@@ -18,17 +25,23 @@ function destructuredDefaults(params: string) {
   const close = matchingCloser(params, index, "{", "}")
   if (close < 0) return null
   const defaults: { name: string; literal: string }[] = []
+  const omitted: string[] = []
   for (const part of splitTopLevel(params.slice(index + 1, close))) {
     const piece = part.trim()
     if (piece.length === 0) continue
     const eq = separatorEquals(piece)
-    if (eq < 0) return null
+    if (eq < 0) {
+      if (!/^[A-Za-z_$][\w$]*$/.test(piece)) return null
+      omitted.push(piece)
+      continue
+    }
     const name = piece.slice(0, eq).trim()
     const literal = piece.slice(eq + 1).trim()
     if (!/^[A-Za-z_$][\w$]*$/.test(name) || literal.length === 0) return null
     defaults.push({ name, literal })
   }
-  return defaults.length > 0 ? defaults : null
+  if (defaults.length === 0 && omitted.length === 0) return null
+  return { defaults, omitted }
 }
 
 function matchingCloser(source: string, openIndex: number, open: string, close: string) {

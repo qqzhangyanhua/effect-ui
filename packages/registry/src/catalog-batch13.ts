@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -21,10 +22,28 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/text-pressure.tsx",
     target: "components/ui/text-pressure.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: '"PRESSURE"', description: "通栏文字。" },
-      { name: "radius", type: "number", defaultValue: "160", description: "指针影响半径，像素。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: '"PRESSURE"',
+        description: "通栏文字。",
+        control: { kind: "text", value: "PRESSURE" },
+      },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "160",
+        description: "指针影响半径，像素。",
+        control: { kind: "range", value: 160, min: 40, max: 320, step: 10 },
+      },
+      ...textControls({ fontSize: 64, align: "left", skipWeight: true }),
       ...ui,
     ],
+    presets: textPresets("pressure", "text", [
+      { label: "通栏", content: "PRESSURE", fontSize: 64, align: "left", extra: { radius: 160 } },
+      { label: "窄感应", content: "PUSH", fontSize: 48, align: "center", extra: { radius: 80 } },
+      { label: "宽感应", content: "NEAR", fontSize: 72, align: "center", extra: { radius: 280 } },
+    ]),
   },
   {
     name: "true-focus",
@@ -36,10 +55,33 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/true-focus.tsx",
     target: "components/ui/true-focus.tsx",
     props: [
-      { name: "sentence", type: "string", description: "按空白分词的句子。" },
-      { name: "interval", type: "number", defaultValue: "1400", description: "每个词停留的毫秒数。" },
+      {
+        name: "sentence",
+        type: "string",
+        description: "按空白分词的句子。",
+        control: { kind: "text", value: "把注意力交给正在发光的词" },
+      },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1400",
+        description: "每个词停留的毫秒数。",
+        control: { kind: "range", value: 1400, min: 400, max: 2800, step: 100 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "角框颜色。不传则保持青色描边。",
+        control: { kind: "color" },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 400, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("true-focus", "sentence", [
+      { label: "原句", content: "把注意力交给正在发光的词", fontSize: 36, fontWeight: 500, align: "center", extra: { interval: 1400 } },
+      { label: "快切", content: "看这里 再看那里", fontSize: 28, fontWeight: 600, align: "center", extra: { interval: 700 } },
+      { label: "慢切", content: "一次只亮一个词", fontSize: 24, fontWeight: 400, align: "left", extra: { interval: 2400 } },
+    ]),
   },
   {
     name: "split-flap-text",
@@ -51,9 +93,27 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/split-flap-text.tsx",
     target: "components/ui/split-flap-text.tsx",
     props: [
-      { name: "target", type: "string", defaultValue: '"GATE 12"', description: "目标字符串，字母会转成大写。" },
+      {
+        name: "target",
+        type: "string",
+        defaultValue: '"GATE 12"',
+        description: "目标字符串，字母会转成大写。",
+        control: { kind: "text", value: "GATE 12" },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "翻板速度倍率。不传则每格 80 毫秒。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...textControls({ fontSize: 24, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("split-flap", "target", [
+      { label: "登机口", content: "GATE 12", fontSize: 24, fontWeight: 600, align: "center", extra: { speed: 1 } },
+      { label: "快翻", content: "NOW", fontSize: 36, fontWeight: 700, align: "center", extra: { speed: 2 } },
+      { label: "慢翻", content: "WAIT", fontSize: 20, fontWeight: 500, align: "left", extra: { speed: 0.5 } },
+    ]),
   },
   {
     name: "curved-loop",
@@ -65,9 +125,27 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/curved-loop.tsx",
     target: "components/ui/curved-loop.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: '"CURVED LOOP · "', description: "沿弧线重复的文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: '"CURVED LOOP · "',
+        description: "沿弧线重复的文字。",
+        control: { kind: "text", value: "CURVED LOOP · " },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "循环速度倍率。不传则保持原来的基础速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("curved-loop", "text", [
+      { label: "原速", content: "CURVED LOOP · ", fontSize: 48, fontWeight: 600, align: "center", extra: { speed: 1 } },
+      { label: "慢", content: "SLOW LOOP · ", fontSize: 36, fontWeight: 500, align: "center", extra: { speed: 0.5 } },
+      { label: "快", content: "FAST · ", fontSize: 64, fontWeight: 700, align: "center", extra: { speed: 2 } },
+    ]),
   },
   {
     name: "fuzzy-text",
@@ -79,9 +157,33 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/fuzzy-text.tsx",
     target: "components/ui/fuzzy-text.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: '"SIGNAL"', description: "抖动的文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: '"SIGNAL"',
+        description: "抖动的文字。",
+        control: { kind: "text", value: "SIGNAL" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "抖动幅度。不传则按原来的幅度。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "文字颜色。不传则 #f4f4f5。",
+        control: { kind: "color", value: "#f4f4f5" },
+      },
+      ...textControls({ fontSize: 64, fontWeight: 700, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("fuzzy", "text", [
+      { label: "信号", content: "SIGNAL", fontSize: 64, fontWeight: 700, align: "center", extra: { intensity: 1, color: "#f4f4f5" } },
+      { label: "轻抖", content: "NOISE", fontSize: 48, fontWeight: 500, align: "center", extra: { intensity: 0.3, color: "#e4e4e7" } },
+      { label: "贴左", content: "LEFT", fontSize: 40, fontWeight: 600, align: "left", extra: { intensity: 0.8, color: "#fafafa" } },
+    ]),
   },
   {
     name: "electric-border",

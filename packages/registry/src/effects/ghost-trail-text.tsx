@@ -3,11 +3,20 @@
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export interface GhostTrailTextProps {
   text?: string
   className?: string
+  /** 残影层数。不传则 4 层。 */
+  count?: number
+  /** 残影位移和模糊的倍率。不传则按原来的速度换算。 */
+  intensity?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 function GhostCopy({
@@ -36,7 +45,16 @@ function GhostCopy({
   )
 }
 
-function GhostTrailText({ text = "GHOST", className }: GhostTrailTextProps) {
+function GhostTrailText({
+  text = "GHOST",
+  className,
+  count,
+  intensity,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: GhostTrailTextProps) {
   const reduced = usePrefersReducedMotion()
   const [trail, setTrail] = React.useState({ shift: 0, amount: 0 })
   const lastTop = React.useRef(0)
@@ -45,10 +63,12 @@ function GhostTrailText({ text = "GHOST", className }: GhostTrailTextProps) {
 
   React.useEffect(() => () => window.clearTimeout(timer.current), [])
 
+  const gain = intensity === undefined ? 1 : intensity
+  const copies = Math.max(0, Math.round(count ?? 4))
   const pushVelocity = (velocity: number) => {
     setTrail({
-      shift: Math.max(-42, Math.min(42, velocity * 2.4)),
-      amount: Math.min(12, Math.abs(velocity) * 0.7),
+      shift: Math.max(-42, Math.min(42, velocity * 2.4 * gain)),
+      amount: Math.min(12, Math.abs(velocity) * 0.7 * gain),
     })
     window.clearTimeout(timer.current)
     timer.current = window.setTimeout(() => setTrail({ shift: 0, amount: 0 }), 900)
@@ -92,11 +112,14 @@ function GhostTrailText({ text = "GHOST", className }: GhostTrailTextProps) {
     >
       <div className="relative h-[170vh]">
         <div className="sticky top-16 px-6">
-          <div className="relative font-display text-6xl tracking-tight sm:text-7xl">
+          <div
+            className="relative font-display text-6xl tracking-tight sm:text-7xl"
+            style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}
+          >
             {reduced
               ? null
-              : [1, 2, 3, 4].map((index) => (
-                  <GhostCopy key={index} text={text} index={index} shift={trail.shift} amount={trail.amount} />
+              : Array.from({ length: copies }, (_, index) => (
+                  <GhostCopy key={index + 1} text={text} index={index + 1} shift={trail.shift} amount={trail.amount} />
                 ))}
             <h2 className="relative z-10">{text}</h2>
           </div>

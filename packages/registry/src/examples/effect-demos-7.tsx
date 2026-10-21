@@ -17,10 +17,32 @@ import { Silk } from "../effects/silk"
 import { TargetCursor } from "../effects/target-cursor"
 import { VfxElement } from "../effects/vfx-element"
 
-export function VfxElementDemo() {
+export function VfxElementDemo({
+  children = "effect-ui",
+  intensity,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  children?: string
+  intensity?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
-    <VfxElement className="w-full" effects={["glitch", "rgb-shift", "crt"]}>
-      <p className="font-display text-4xl">effect-ui</p>
+    <VfxElement
+      className="w-full"
+      effects={["glitch", "rgb-shift", "crt"]}
+      intensity={intensity}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    >
+      {children}
     </VfxElement>
   )
 }
@@ -60,10 +82,40 @@ export function AtroposCardDemo() {
   return <AtroposCard className="w-full" />
 }
 
-export function RoughAnnotationDemo() {
+export function RoughAnnotationDemo({
+  children = "重点词",
+  type = "highlight",
+  color = "#7c3aed",
+  duration,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  children?: string
+  type?: "underline" | "box" | "circle" | "highlight" | "strike-through" | "crossed-off" | "bracket"
+  color?: string
+  duration?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <p className="text-lg">
-      给 <RoughAnnotation type="highlight">重点词</RoughAnnotation> 加上手绘注释。
+      给{" "}
+      <RoughAnnotation
+        type={type}
+        color={color}
+        duration={duration}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      >
+        {children}
+      </RoughAnnotation>{" "}
+      加上手绘注释。
     </p>
   )
 }

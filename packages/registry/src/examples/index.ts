@@ -18,6 +18,7 @@ import * as effectDemos16 from "./effect-demos-16"
 import * as effectDemos17 from "./effect-demos-17"
 import * as effectDemos18 from "./effect-demos-18"
 import * as effectDemos19 from "./effect-demos-19"
+import * as effectDemos20 from "./effect-demos-20"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -78,11 +79,11 @@ const demoMap: Record<string, ComponentType> = {
   "dots-loader": effectDemos.DotsLoaderDemo,
   "progress-ring": effectDemos.ProgressRingDemo,
   reveal: effectDemos.RevealDemo,
-  "fade-in": effectDemos.FadeInDemo,
-  "slide-in": effectDemos.SlideInDemo,
-  "stagger-list": effectDemos.StaggerListDemo,
-  parallax: effectDemos.ParallaxDemo,
-  "blur-fade": effectDemos.BlurFadeDemo,
+  "fade-in": effectDemos20.FadeInDemo,
+  "slide-in": effectDemos20.SlideInDemo,
+  "stagger-list": effectDemos20.StaggerListDemo,
+  parallax: effectDemos20.ParallaxDemo,
+  "blur-fade": effectDemos20.BlurFadeDemo,
   alert: uiDemos2.AlertDemo,
   "alert-dialog": uiDemos2.AlertDialogDemo,
   "aspect-ratio": uiDemos2.AspectRatioDemo,

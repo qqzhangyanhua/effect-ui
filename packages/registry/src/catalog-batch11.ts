@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -136,7 +137,27 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-variable-scroll.tsx",
     target: "components/ui/text-variable-scroll.tsx",
-    props: [{ name: "text", type: "string", description: "逐字变化的句子。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "逐字变化的句子。",
+        control: { kind: "text", value: "Weight moves through the letters" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "字重波动幅度。不传则按原来的幅度。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...textControls({ fontSize: 60, align: "left", skipWeight: true }),
+      ...ui,
+    ],
+    presets: textPresets("variable-scroll", "text", [
+      { label: "原句", content: "Weight moves through the letters", fontSize: 60, align: "left", extra: { intensity: 1 } },
+      { label: "轻波", content: "轻轻起伏", fontSize: 36, align: "center", extra: { intensity: 0.35 } },
+      { label: "短句", content: "WAVE", fontSize: 72, align: "center", extra: { intensity: 0.8 } },
+    ]),
   },
   {
     name: "liquid-glass-tabbar",

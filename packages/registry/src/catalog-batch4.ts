@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -130,7 +131,20 @@ export const batch4Components: ComponentMeta[] = [
       { name: "format", type: "Format", description: "数字格式（Intl 子集）。" },
       { name: "prefix", type: "string", description: "前缀。" },
       { name: "suffix", type: "string", description: "后缀。" },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "left" }),
       ...ui,
+    ],
+    presets: [
+      {
+        name: "number-flow-1",
+        label: "大数字",
+        values: { fontSize: 48, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "number-flow-2",
+        label: "正文",
+        values: { fontSize: 20, fontWeight: 400, align: "left" },
+      },
     ],
   },
   {

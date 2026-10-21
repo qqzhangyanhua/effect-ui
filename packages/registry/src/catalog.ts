@@ -17,6 +17,7 @@ import { batch17Components } from "./catalog-batch17"
 import { batch18Components } from "./catalog-batch18"
 import { batch19Components } from "./catalog-batch19"
 import type { VocabularyGroup } from "./prop-vocabulary"
+import { textControls, textPresets } from "./text-controls"
 
 export type ComponentCategory =
   | "ui"
@@ -248,6 +249,17 @@ export const components: ComponentMeta[] = [
     type: "registry:lib",
     file: "lib/utils.ts",
     target: "lib/utils.ts",
+    props: [],
+  },
+  {
+    name: "text-style",
+    title: "Text Style",
+    description: "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
+    category: "ui",
+    source: "original",
+    type: "registry:lib",
+    file: "lib/text-style.ts",
+    target: "lib/text-style.ts",
     props: [],
   },
   {
@@ -797,7 +809,27 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/aurora-text.tsx",
     target: "components/ui/aurora-text.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "文字内容。",
+        control: { kind: "text", value: "极光标题" },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "center" }),
+      {
+        name: "speed",
+        type: "number",
+        description: "流动速度倍率。不传则保持原来的 7 秒一轮。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...uiProps,
+    ],
+    presets: textPresets("aurora", "children", [
+      { label: "大标题", content: "极光标题", fontSize: 72, fontWeight: 700, align: "center", extra: { speed: 1 } },
+      { label: "正文", content: "流动的一句", fontSize: 18, fontWeight: 400, align: "left", extra: { speed: 0.6 } },
+      { label: "快闪", content: "AURORA", fontSize: 48, fontWeight: 600, align: "center", extra: { speed: 2 } },
+    ]),
   },
   {
     name: "split-text",
@@ -895,7 +927,33 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/highlight-text.tsx",
     target: "components/ui/highlight-text.tsx",
-    props: [{ name: "color", type: "string", defaultValue: "var(--primary)", description: "高亮颜色。" }],
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "被强调的文字。",
+        control: { kind: "text", value: "关键句" },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "高亮颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "底纹展开时长，毫秒。不传则 550。",
+        control: { kind: "range", value: 550, min: 220, max: 1100, step: 10 },
+      },
+      ...textControls({ fontSize: 20, fontWeight: 400, align: "left" }),
+    ],
+    presets: textPresets("highlight", "children", [
+      { label: "正文", content: "关键句", fontSize: 20, fontWeight: 500, align: "left", extra: { duration: 550 } },
+      { label: "标题", content: "划重点", fontSize: 36, fontWeight: 700, align: "center", extra: { duration: 800 } },
+      { label: "快划", content: "注意", fontSize: 16, fontWeight: 600, align: "left", extra: { duration: 280 } },
+    ]),
   },
   {
     name: "count-up",
@@ -907,10 +965,51 @@ export const components: ComponentMeta[] = [
     file: "effects/count-up.tsx",
     target: "components/ui/count-up.tsx",
     props: [
-      { name: "value", type: "number", description: "目标数字。" },
-      { name: "direction", type: '"up" | "down"', defaultValue: '"up"', description: "计数方向。" },
-      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
-      { name: "decimalPlaces", type: "number", defaultValue: "0", description: "小数位。" },
+      {
+        name: "value",
+        type: "number",
+        description: "目标数字。",
+        control: { kind: "range", value: 1280, min: 0, max: 5000, step: 10 },
+      },
+      {
+        name: "direction",
+        type: '"up" | "down"',
+        defaultValue: '"up"',
+        description: "计数方向。",
+        control: { kind: "select", value: "up", options: ["up", "down"] },
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "延迟（秒）。已有单位，不改成毫秒。",
+        control: { kind: "range", value: 0, min: 0, max: 2, step: 0.1 },
+      },
+      {
+        name: "decimalPlaces",
+        type: "number",
+        defaultValue: "0",
+        description: "小数位。",
+        control: { kind: "range", value: 0, min: 0, max: 4, step: 1 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "left" }),
+    ],
+    presets: [
+      {
+        name: "count-up-1",
+        label: "大数字",
+        values: { value: 1280, direction: "up", delay: 0, decimalPlaces: 0, fontSize: 64, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "count-up-2",
+        label: "小数",
+        values: { value: 99.5, direction: "up", delay: 0.2, decimalPlaces: 1, fontSize: 36, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "count-up-3",
+        label: "倒数",
+        values: { value: 80, direction: "down", delay: 0, decimalPlaces: 0, fontSize: 28, fontWeight: 600, align: "right" },
+      },
     ],
   },
   {

@@ -3,6 +3,7 @@
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export interface TextPressureProps {
@@ -10,9 +11,19 @@ export interface TextPressureProps {
   className?: string
   /** 指针影响半径，像素。 */
   radius?: number
+  fontSize?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
-function TextPressure({ text = "PRESSURE", className, radius = 160 }: TextPressureProps) {
+function TextPressure({
+  text = "PRESSURE",
+  className,
+  radius = 160,
+  fontSize,
+  letterSpacing,
+  align,
+}: TextPressureProps) {
   const reduced = usePrefersReducedMotion()
   const letterRefs = React.useRef<Array<HTMLSpanElement | null>>([])
   const [weights, setWeights] = React.useState<number[]>([])
@@ -37,7 +48,10 @@ function TextPressure({ text = "PRESSURE", className, radius = 160 }: TextPressu
       onPointerMove={onPointerMove}
       onPointerLeave={() => setWeights([])}
     >
-      <p className="flex w-full items-end justify-between font-sans text-[clamp(2.4rem,8vw,6.5rem)] leading-none">
+      <p
+        className="flex w-full items-end justify-between font-sans text-[clamp(2.4rem,8vw,6.5rem)] leading-none"
+        style={textStyle(undefined, fontSize, undefined, letterSpacing, align)}
+      >
         {letters.map((char, index) => {
           const proximity = reduced ? 0 : (weights[index] ?? 0)
           const weight = Math.round(420 + proximity * 480)
@@ -50,7 +64,7 @@ function TextPressure({ text = "PRESSURE", className, radius = 160 }: TextPressu
               }}
               className="inline-block origin-bottom text-center transition-[font-weight,transform] duration-100 ease-out"
               style={{
-                flex: char === " " ? "0 0 0.35em" : "1 1 0",
+                flex: char === " " ? "0 0 0.35em" : align === undefined ? "1 1 0" : "0 0 auto",
                 fontWeight: weight,
                 fontVariationSettings: `"wght" ${weight}, "wdth" ${width}`,
                 transform: `scaleX(${1 + proximity * 0.18}) scaleY(${1 + proximity * 0.62})`,

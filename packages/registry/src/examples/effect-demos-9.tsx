@@ -40,8 +40,30 @@ export function FamilyDrawerDemo() {
   return <FamilyDrawer className="max-w-sm" />
 }
 
-export function TextMorphDemo() {
-  return <TextMorph texts={["Design", "Delight"]} className="font-display text-5xl" />
+export function TextMorphDemo({
+  interval = 1800,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TextMorph
+      texts={["Design", "Delight"]}
+      className="font-display text-5xl"
+      interval={interval}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function OrbitingItems3DDemo() {

@@ -17,8 +17,38 @@ export function HolographicFoilDemo() {
   )
 }
 
-export function SpoilerTextDemo() {
-  return <SpoilerText className="text-lg" text="点击揭示隐藏剧透" />
+export function SpoilerTextDemo({
+  text = "点击揭示隐藏剧透",
+  count,
+  speed,
+  color,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  count?: number
+  speed?: number
+  color?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <SpoilerText
+      className="text-lg"
+      text={text}
+      count={count}
+      speed={speed}
+      color={color}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function HoldButtonDemo() {

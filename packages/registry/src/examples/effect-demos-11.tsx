@@ -56,8 +56,29 @@ export function HoverImageListDemo() {
   return <HoverImageList className="w-full" />
 }
 
-export function TextVariableScrollDemo() {
-  return <TextVariableScroll className="w-full" />
+export function TextVariableScrollDemo({
+  text = "Weight moves through the letters",
+  intensity,
+  fontSize,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  intensity?: number
+  fontSize?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TextVariableScroll
+      className="w-full"
+      text={text}
+      intensity={intensity}
+      fontSize={fontSize}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function LiquidGlassTabbarDemo() {

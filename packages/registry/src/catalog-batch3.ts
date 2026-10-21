@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -153,7 +154,13 @@ export const batch3Components: ComponentMeta[] = [
         description: "衰减曲线。",
         control: { kind: "select", value: "linear", options: ["linear", "exponential", "gaussian"] },
       },
+      ...textControls({ fontSize: 36, align: "center", skipWeight: true }),
     ],
+    presets: textPresets("variable-font", "label", [
+      { label: "靠近", content: "Move closer", fontSize: 36, align: "center", extra: { radius: 90, falloff: "linear" } },
+      { label: "宽感应", content: "Weight", fontSize: 64, align: "center", extra: { radius: 180, falloff: "gaussian" } },
+      { label: "窄感应", content: "Aa", fontSize: 48, align: "left", extra: { radius: 40, falloff: "exponential" } },
+    ]),
   },
   {
     name: "dropzone",

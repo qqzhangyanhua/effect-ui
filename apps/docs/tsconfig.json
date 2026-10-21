@@ -8,6 +8,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@/lib/text-style": ["../../packages/registry/src/lib/text-style.ts"],
       "@/components/ui/*": [
         "../../packages/registry/src/ui/*",
         "../../packages/registry/src/effects/*",

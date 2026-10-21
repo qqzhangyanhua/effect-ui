@@ -72,6 +72,10 @@ button · input · textarea · label · card · badge · separator · dialog · 
 
 use-mobile · use-prefers-reduced-motion · use-animation-active
 
+### 库
+
+text-style
+
 ### 文字动画
 
 | 组件 | 来源 |

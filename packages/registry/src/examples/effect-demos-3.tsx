@@ -231,10 +231,16 @@ export function VariableFontProximityDemo({
   label = "Move closer",
   radius = 90,
   falloff = "linear",
+  fontSize,
+  letterSpacing,
+  align,
 }: {
   label?: string
   radius?: number
   falloff?: "linear" | "exponential" | "gaussian"
+  fontSize?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 } = {}) {
   const container = useRef<HTMLDivElement>(null)
   return (
@@ -247,6 +253,9 @@ export function VariableFontProximityDemo({
           containerRef={container}
           radius={radius}
           falloff={falloff}
+          fontSize={fontSize}
+          letterSpacing={letterSpacing}
+          align={align}
           className="text-4xl tracking-tight"
         />
       </div>

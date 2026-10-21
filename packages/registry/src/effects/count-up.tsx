@@ -4,13 +4,19 @@ import * as React from "react"
 import { useInView, useMotionValue, useSpring } from "motion/react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export interface CountUpProps extends React.HTMLAttributes<HTMLSpanElement> {
   value: number
   direction?: "up" | "down"
+  /** 延迟，秒。已有单位，不改成毫秒。 */
   delay?: number
   decimalPlaces?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 function formatCount(value: number, decimalPlaces: number) {
@@ -25,7 +31,12 @@ function CountUp({
   direction = "up",
   delay = 0,
   decimalPlaces = 0,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
   className,
+  style,
   ...props
 }: CountUpProps) {
   const reduced = usePrefersReducedMotion()
@@ -57,6 +68,7 @@ function CountUp({
       ref={ref}
       data-slot="count-up"
       className={cn("inline-block tabular-nums tracking-tight", className)}
+      style={textStyle(style, fontSize, fontWeight, letterSpacing, align)}
       {...props}
     >
       {reduced ? formatCount(endValue, decimalPlaces) : null}

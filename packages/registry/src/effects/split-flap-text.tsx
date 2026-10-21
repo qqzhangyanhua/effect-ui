@@ -4,11 +4,18 @@ import { motion } from "motion/react"
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export interface SplitFlapTextProps {
   target?: string
   className?: string
+  /** 翻页速度倍率。不传则每格仍隔 80 毫秒。 */
+  speed?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 const CHARSET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·"
@@ -22,26 +29,62 @@ function stepToward(current: string, goalChar: string) {
   return CHARSET[(from + 1) % CHARSET.length] ?? goalChar
 }
 
-function SplitFlapText({ target = "GATE 12", className }: SplitFlapTextProps) {
+function SplitFlapText({
+  target = "GATE 12",
+  className,
+  speed,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: SplitFlapTextProps) {
   const goal = target.toUpperCase()
-  return <FlapRow key={goal} goal={goal} className={className} />
+  return (
+    <FlapRow
+      key={goal}
+      goal={goal}
+      className={className}
+      speed={speed}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-function FlapRow({ goal, className }: { goal: string; className?: string }) {
+function FlapRow({
+  goal,
+  className,
+  speed,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  goal: string
+  className?: string
+  speed?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+}) {
   const reduced = usePrefersReducedMotion()
   const [glyphs, setGlyphs] = React.useState(() => Array.from(goal, () => " "))
 
   React.useEffect(() => {
     if (reduced) return
+    const tickMs = speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 80 : 80 / speed
     const timer = window.setInterval(() => {
       setGlyphs((current) => {
         const next = Array.from(goal, (char, index) => stepToward(current[index] ?? " ", char))
         const settled = next.every((char, index) => char === current[index])
         return settled ? current : next
       })
-    }, 80)
+    }, tickMs)
     return () => window.clearInterval(timer)
-  }, [goal, reduced])
+  }, [goal, reduced, speed])
 
   const shown = reduced ? Array.from(goal) : glyphs
 
@@ -51,24 +94,54 @@ function FlapRow({ goal, className }: { goal: string; className?: string }) {
       role="img"
       aria-label={goal}
       className={cn("flex flex-wrap items-center justify-center gap-1", className)}
-      style={{ perspective: 600 }}
+      style={textStyle({ perspective: 600 }, undefined, undefined, undefined, align)}
     >
       {shown.map((glyph, index) => (
-        <Flap key={`${goal}-${index}`} glyph={glyph} reduced={reduced} />
+        <Flap
+          key={`${goal}-${index}`}
+          glyph={glyph}
+          reduced={reduced}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
+          letterSpacing={letterSpacing}
+        />
       ))}
     </div>
   )
 }
 
-function Flap({ glyph, reduced }: { glyph: string; reduced: boolean }) {
+function Flap({
+  glyph,
+  reduced,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+}: {
+  glyph: string
+  reduced: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+}) {
   const blank = glyph === " "
+  const sized = fontSize !== undefined
   return (
     <span
       aria-hidden
       className={cn(
-        "relative inline-flex h-16 overflow-hidden rounded-sm bg-zinc-900 font-mono text-2xl text-amber-100 shadow-md",
-        blank ? "w-4" : "w-11",
+        "relative inline-flex overflow-hidden rounded-sm bg-zinc-900 font-mono text-amber-100 shadow-md",
+        !sized && "h-16 text-2xl",
+        !sized && (blank ? "w-4" : "w-11"),
       )}
+      style={
+        sized
+          ? {
+              ...textStyle(undefined, fontSize, fontWeight, letterSpacing, undefined),
+              height: fontSize * 1.7,
+              width: blank ? fontSize * 0.45 : fontSize * 1.15,
+            }
+          : textStyle(undefined, undefined, fontWeight, letterSpacing, undefined)
+      }
     >
       <span className="absolute inset-x-0 top-0 flex h-1/2 items-end justify-center overflow-hidden border-b border-black/70 bg-zinc-800">
         <span className="translate-y-1/2">{blank ? "" : glyph}</span>

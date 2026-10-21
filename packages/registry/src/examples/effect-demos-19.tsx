@@ -32,12 +32,59 @@ export function GradientCarousel3dDemo() {
   return <GradientCarousel3d className="w-full" />
 }
 
-export function Text3dScrollDemo() {
-  return <Text3dScroll className="w-full" />
+export function Text3dScrollDemo({
+  text = "把句子从平面里翻出来",
+  angle,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  angle?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <Text3dScroll
+      className="w-full"
+      text={text}
+      angle={angle}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function RollingTextHoverDemo() {
-  return <RollingTextHover />
+export function RollingTextHoverDemo({
+  label = "开始使用",
+  delay,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  label?: string
+  delay?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <RollingTextHover
+      label={label}
+      delay={delay}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function AudioSpectrumDemo() {

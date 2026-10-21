@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 import { batch5Backgrounds } from "./catalog-batch5-backgrounds"
 
@@ -410,7 +411,39 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/spoiler-text.tsx",
     target: "components/ui/spoiler-text.tsx",
-    props: [{ name: "text", type: "string", description: "隐藏文本。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "隐藏文本。",
+        control: { kind: "text", value: "点击揭示隐藏剧透" },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "遮挡粒子数量。不传则 90。",
+        control: { kind: "range", value: 90, min: 20, max: 180, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "粒子抖动速度倍率。不传则 1。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "粒子颜色。不传则用原来的混色。",
+        control: { kind: "color" },
+      },
+      ...textControls({ fontSize: 18, fontWeight: 400, align: "left" }),
+      ...ui,
+    ],
+    presets: textPresets("spoiler", "text", [
+      { label: "剧透", content: "点击揭示隐藏剧透", fontSize: 18, fontWeight: 500, align: "left", extra: { count: 90, speed: 1 } },
+      { label: "密", content: "秘密", fontSize: 24, fontWeight: 700, align: "center", extra: { count: 150, speed: 1.6 } },
+      { label: "疏", content: "轻轻遮住", fontSize: 16, fontWeight: 400, align: "left", extra: { count: 30, speed: 0.5 } },
+    ]),
   },
   {
     name: "hold-button",

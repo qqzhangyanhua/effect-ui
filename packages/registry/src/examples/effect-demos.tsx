@@ -4,12 +4,10 @@ import type { ReactNode } from "react"
 
 import { AuroraBackground } from "../effects/aurora-background"
 import { AuroraText } from "../effects/aurora-text"
-import { BlurFade } from "../effects/blur-fade"
 import { CountUp } from "../effects/count-up"
 import { CursorFollow } from "../effects/cursor-follow"
 import { DotPattern } from "../effects/dot-pattern"
 import { DotsLoader } from "../effects/dots-loader"
-import { FadeIn } from "../effects/fade-in"
 import { FlickeringGrid } from "../effects/flickering-grid"
 import { FlipCard } from "../effects/flip-card"
 import { GlassCard } from "../effects/glass-card"
@@ -22,7 +20,6 @@ import { Magnetic } from "../effects/magnetic"
 import { Meteors } from "../effects/meteors"
 import { NeonButton } from "../effects/neon-button"
 import { OrbitLoader } from "../effects/orbit-loader"
-import { Parallax } from "../effects/parallax"
 import { Particles } from "../effects/particles"
 import { ProgressRing } from "../effects/progress-ring"
 import { PulseButton } from "../effects/pulse-button"
@@ -32,11 +29,9 @@ import { Ripples } from "../effects/ripples"
 import { ShimmerButton } from "../effects/shimmer-button"
 import { ShimmerText } from "../effects/shimmer-text"
 import { ShineBorder } from "../effects/shine-border"
-import { SlideIn } from "../effects/slide-in"
 import { Spinner } from "../effects/spinner"
 import { SplitText } from "../effects/split-text"
 import { SpotlightCard } from "../effects/spotlight-card"
-import { StaggerList } from "../effects/stagger-list"
 import { Tilt } from "../effects/tilt"
 import { TypingText } from "../effects/typing-text"
 import { Button } from "../ui/button"
@@ -83,8 +78,33 @@ export function ShimmerTextDemo({ children = "扫光文字即将上线" }: { chi
   return <ShimmerText className="text-2xl font-medium">{children}</ShimmerText>
 }
 
-export function AuroraTextDemo() {
-  return <AuroraText className="text-4xl font-semibold">极光标题</AuroraText>
+export function AuroraTextDemo({
+  children = "极光标题",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+  speed,
+}: {
+  children?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+  speed?: number
+} = {}) {
+  return (
+    <AuroraText
+      className="text-4xl font-semibold"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+      speed={speed}
+    >
+      {children}
+    </AuroraText>
+  )
 }
 
 export function SplitTextDemo({
@@ -99,18 +119,73 @@ export function SplitTextDemo({
   return <SplitText className="text-3xl font-medium" text={text} by={by} delay={delay} />
 }
 
-export function HighlightTextDemo() {
+export function HighlightTextDemo({
+  children = "关键句",
+  color,
+  duration,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  children?: string
+  color?: string
+  duration?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <p className="text-xl">
-      把 <HighlightText>关键句</HighlightText> 用底纹强调出来
+      把{" "}
+      <HighlightText
+        color={color}
+        duration={duration}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      >
+        {children}
+      </HighlightText>{" "}
+      用底纹强调出来
     </p>
   )
 }
 
-export function CountUpDemo() {
+export function CountUpDemo({
+  value = 1280,
+  direction = "up",
+  delay = 0,
+  decimalPlaces = 0,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  value?: number
+  direction?: "up" | "down"
+  delay?: number
+  decimalPlaces?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <div className="flex items-end gap-2">
-      <CountUp className="text-5xl font-semibold" value={1280} />
+      <CountUp
+        className="text-5xl font-semibold"
+        value={value}
+        direction={direction}
+        delay={delay}
+        decimalPlaces={decimalPlaces}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
       <span className="pb-1 text-muted-foreground">components</span>
     </div>
   )
@@ -412,53 +487,4 @@ export function RevealDemo() {
   )
 }
 
-export function FadeInDemo() {
-  return (
-    <FadeIn className="rounded-xl border bg-card p-6">
-      滚动到这里时淡入
-    </FadeIn>
-  )
-}
 
-export function SlideInDemo() {
-  return (
-    <div className="flex gap-4">
-      <SlideIn from="left" className="rounded-xl border bg-card p-4">
-        从左滑入
-      </SlideIn>
-      <SlideIn from="right" delay={0.1} className="rounded-xl border bg-card p-4">
-        从右滑入
-      </SlideIn>
-    </div>
-  )
-}
-
-export function StaggerListDemo() {
-  return (
-    <StaggerList className="w-full max-w-sm">
-      <div className="rounded-lg border bg-card px-3 py-2">第一项</div>
-      <div className="rounded-lg border bg-card px-3 py-2">第二项</div>
-      <div className="rounded-lg border bg-card px-3 py-2">第三项</div>
-    </StaggerList>
-  )
-}
-
-export function ParallaxDemo() {
-  return (
-    <div className="h-40 w-full overflow-auto rounded-xl border">
-      <div className="flex h-80 items-center justify-center bg-muted/40">
-        <Parallax offset={40}>
-          <p className="text-lg font-medium">滚动这块区域看视差</p>
-        </Parallax>
-      </div>
-    </div>
-  )
-}
-
-export function BlurFadeDemo() {
-  return (
-    <BlurFade className="rounded-xl border bg-card p-6">
-      从模糊到清晰
-    </BlurFade>
-  )
-}

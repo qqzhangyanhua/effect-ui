@@ -75,8 +75,41 @@ export function XrayFluidRevealDemo() {
   return <XrayFluidReveal className="w-full" />
 }
 
-export function PetalDissolveTextDemo() {
-  return <PetalDissolveText className="w-full" />
+export function PetalDissolveTextDemo({
+  text = "花瓣散开",
+  direction = "forward",
+  duration = 1400,
+  color = "#fb7185",
+  trigger = "manual",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  direction?: "forward" | "reverse"
+  duration?: number
+  color?: string
+  trigger?: "view" | "hover" | "manual"
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <PetalDissolveText
+      className="w-full"
+      text={text}
+      direction={direction}
+      duration={duration}
+      color={color}
+      trigger={trigger}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function DataTunnelDemo({

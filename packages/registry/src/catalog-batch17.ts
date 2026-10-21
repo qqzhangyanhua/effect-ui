@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -153,25 +154,72 @@ export const batch17Components: ComponentMeta[] = [
     file: "effects/petal-dissolve-text.tsx",
     target: "components/ui/petal-dissolve-text.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: "花瓣散开", description: "会散开的文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: "花瓣散开",
+        description: "会散开的文字。",
+        control: { kind: "text", value: "花瓣散开" },
+      },
       {
         name: "direction",
         type: '"forward" | "reverse"',
         defaultValue: "forward",
         description: "阈值线的推进方向。",
         vocabularyExemption: "历史取值是 forward/reverse，不是 left/right/up/down。",
+        control: { kind: "select", value: "forward", options: ["forward", "reverse"] },
       },
-      { name: "duration", type: "number", defaultValue: "1400", description: "一次散开或重组的时长，单位毫秒。" },
-      { name: "color", type: "string", defaultValue: "#fb7185", description: "花瓣颜色。" },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "1400",
+        description: "一次散开或重组的时长，单位毫秒。",
+        control: { kind: "range", value: 1400, min: 560, max: 2800, step: 100 },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "#fb7185",
+        description: "花瓣颜色。",
+        control: { kind: "color", value: "#fb7185" },
+      },
       {
         name: "trigger",
         type: '"view" | "hover" | "manual"',
         defaultValue: "manual",
         description: "进入视口、悬停或按钮触发。",
         vocabularyExemption: "历史取值是 view/hover/manual，不是 mount/hover/inView。",
+        control: { kind: "select", value: "manual", options: ["view", "hover", "manual"] },
       },
+      ...textControls({ fontSize: 72, fontWeight: 400, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("petal", "text", [
+      {
+        label: "散开",
+        content: "花瓣散开",
+        fontSize: 72,
+        fontWeight: 400,
+        align: "left",
+        extra: { direction: "forward", duration: 1400, color: "#fb7185", trigger: "manual" },
+      },
+      {
+        label: "重组",
+        content: "再聚回来",
+        fontSize: 56,
+        fontWeight: 600,
+        align: "center",
+        extra: { direction: "reverse", duration: 1800, color: "#fb7185", trigger: "hover" },
+      },
+      {
+        label: "入场",
+        content: "看见才散",
+        fontSize: 48,
+        fontWeight: 500,
+        align: "center",
+        extra: { direction: "forward", duration: 1000, color: "#f43f5e", trigger: "view" },
+      },
+    ]),
   },
   {
     name: "data-tunnel",

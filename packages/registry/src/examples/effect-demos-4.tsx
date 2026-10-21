@@ -86,7 +86,17 @@ export function BackgroundPathsDemo({
   )
 }
 
-export function NumberFlowDemo() {
+export function NumberFlowDemo({
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   const [value, setValue] = useState(1280)
   return (
     <Frame>
@@ -95,7 +105,14 @@ export function NumberFlowDemo() {
         className="text-4xl font-semibold tabular-nums"
         onClick={() => setValue((current) => (current === 1280 ? 4860 : 1280))}
       >
-        <NumberFlow value={value} format={{ style: "currency", currency: "USD" }} />
+        <NumberFlow
+          value={value}
+          format={{ style: "currency", currency: "USD" }}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
+          letterSpacing={letterSpacing}
+          align={align}
+        />
       </button>
     </Frame>
   )

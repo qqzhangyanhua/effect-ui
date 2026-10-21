@@ -22,6 +22,21 @@
       ]
     },
     {
+      "name": "text-style",
+      "type": "registry:lib",
+      "title": "Text Style",
+      "description": "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/text-style.ts",
+          "type": "registry:lib",
+          "target": "lib/text-style.ts"
+        }
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "title": "Use Mobile",
@@ -507,6 +522,7 @@
       "description": "极光色流动文字。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -546,6 +562,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -566,6 +583,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -1681,6 +1699,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -1735,6 +1754,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -1755,6 +1775,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -2403,6 +2424,8 @@
       "description": "可变字体字重随鼠标距离变化。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -2782,7 +2805,9 @@
       "dependencies": [
         "@number-flow/react"
       ],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "text-style"
+      ],
       "files": [
         {
           "path": "registry/effects/number-flow.tsx",
@@ -3568,6 +3593,8 @@
       "description": "粒子遮挡，点击揭示。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -3713,6 +3740,7 @@
       "description": "文字沿 SVG 路径排列。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -3732,6 +3760,8 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3820,6 +3850,7 @@
       "description": "灵感来自 lamp heading，原创实现：顶部灯罩高光落在大标题上。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -3949,6 +3980,8 @@
         "@vfx-js/core"
       ],
       "registryDependencies": [
+        "text-style",
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4062,6 +4095,7 @@
         "rough-notation"
       ],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -5404,6 +5438,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5693,6 +5728,7 @@
       "description": "灵感来自 React Bits，原创实现。通栏可变字体，靠近指针的字母增加字重、宽度和高度。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5713,6 +5749,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5733,6 +5770,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5752,6 +5790,7 @@
       "dependencies": [],
       "registryDependencies": [
         "marquee-along-svg-path",
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5770,6 +5809,7 @@
       "description": "灵感来自 React Bits，原创实现。画布按行水平抖动，像信号不良，悬停更强。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6282,6 +6322,7 @@
       "description": "灵感来自 Codrops，原创实现。滚动速度驱动大标题身后的模糊残影。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6517,6 +6558,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7541,6 +7583,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7561,6 +7604,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],

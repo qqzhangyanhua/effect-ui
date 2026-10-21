@@ -16,24 +16,147 @@ import { StickerPeel } from "../effects/sticker-peel"
 import { TextPressure } from "../effects/text-pressure"
 import { TrueFocus } from "../effects/true-focus"
 
-export function TextPressureDemo() {
-  return <TextPressure className="w-full" />
+export function TextPressureDemo({
+  text = "PRESSURE",
+  radius = 160,
+  fontSize,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  radius?: number
+  fontSize?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TextPressure
+      className="w-full"
+      text={text}
+      radius={radius}
+      fontSize={fontSize}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function TrueFocusDemo() {
-  return <TrueFocus className="w-full" />
+export function TrueFocusDemo({
+  sentence = "把注意力交给正在发光的词",
+  interval = 1400,
+  color,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  sentence?: string
+  interval?: number
+  color?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TrueFocus
+      className="w-full"
+      sentence={sentence}
+      interval={interval}
+      color={color}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function SplitFlapTextDemo() {
-  return <SplitFlapText className="w-full" />
+export function SplitFlapTextDemo({
+  target = "GATE 12",
+  speed,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  target?: string
+  speed?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <SplitFlapText
+      className="w-full"
+      target={target}
+      speed={speed}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function CurvedLoopDemo() {
-  return <CurvedLoop className="w-full" />
+export function CurvedLoopDemo({
+  text = "CURVED LOOP · ",
+  speed,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  speed?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <CurvedLoop
+      className="w-full"
+      text={text}
+      speed={speed}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function FuzzyTextDemo() {
-  return <FuzzyText className="w-full" />
+export function FuzzyTextDemo({
+  text = "SIGNAL",
+  intensity,
+  color,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  intensity?: number
+  color?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <FuzzyText
+      className="w-full"
+      text={text}
+      intensity={intensity}
+      color={color}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function ElectricBorderDemo() {

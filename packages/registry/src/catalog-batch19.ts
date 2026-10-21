@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -72,7 +73,27 @@ export const batch19Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-3d-scroll.tsx",
     target: "components/ui/text-3d-scroll.tsx",
-    props: [{ name: "text", type: "string", description: "要翻过来的句子。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "要翻过来的句子。",
+        control: { kind: "text", value: "把句子从平面里翻出来" },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "起始仰角，度。不传则从 90° 翻到平面。",
+        control: { kind: "range", value: 90, min: 0, max: 180, step: 5 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "left" }),
+      ...ui,
+    ],
+    presets: textPresets("text-3d", "text", [
+      { label: "翻起", content: "把句子从平面里翻出来", fontSize: 48, fontWeight: 600, align: "left", extra: { angle: 90 } },
+      { label: "浅角", content: "轻轻抬起", fontSize: 36, fontWeight: 500, align: "center", extra: { angle: 40 } },
+      { label: "大标题", content: "立体", fontSize: 72, fontWeight: 700, align: "center", extra: { angle: 90 } },
+    ]),
   },
   {
     name: "rolling-text-hover",
@@ -85,9 +106,27 @@ export const batch19Components: ComponentMeta[] = [
     target: "components/ui/rolling-text-hover.tsx",
     props: [
       { name: "items", type: "string[]", description: "导航文字。" },
-      { name: "label", type: "string", defaultValue: "开始使用", description: "按钮文字。" },
+      {
+        name: "label",
+        type: "string",
+        defaultValue: "开始使用",
+        description: "按钮文字。",
+        control: { kind: "text", value: "开始使用" },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻字母的错开，毫秒。不传则 35。",
+        control: { kind: "range", value: 35, min: 0, max: 120, step: 5 },
+      },
+      ...textControls({ fontSize: 16, fontWeight: 500, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("rolling-hover", "label", [
+      { label: "按钮", content: "开始使用", fontSize: 16, fontWeight: 500, align: "left", extra: { delay: 35 } },
+      { label: "慢滚", content: "了解更多", fontSize: 18, fontWeight: 600, align: "center", extra: { delay: 80 } },
+      { label: "齐滚", content: "进入", fontSize: 14, fontWeight: 700, align: "left", extra: { delay: 0 } },
+    ]),
   },
   {
     name: "audio-spectrum",

@@ -4,6 +4,7 @@ import * as React from "react"
 import { AnimatePresence, motion } from "motion/react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export type TextRotateAnimation = "slide" | "blur" | "glyph"
@@ -13,6 +14,10 @@ export interface TextRotateProps extends Omit<React.ComponentProps<"span">, "chi
   interval?: number
   animation?: TextRotateAnimation
   "data-slot"?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 // 同一字符多次出现时用序号区分，layout 才能对上共同字母。
@@ -44,6 +49,11 @@ function TextRotate({
   interval = 1800,
   animation = "slide",
   className,
+  style,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
   "data-slot": dataSlot,
   "aria-label": ariaLabel,
   ...props
@@ -65,6 +75,7 @@ function TextRotate({
   return (
     <span
       {...props}
+      style={textStyle(style, fontSize, fontWeight, letterSpacing, align)}
       aria-label={animation === "glyph" ? text : ariaLabel}
       className={cn(
         animation === "blur" ? "relative inline-grid" : "inline-flex",

@@ -4,7 +4,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import type { ComponentMeta } from "@effect-ui/registry/catalog"
-import { getComponentsByCategory, uiSubgroupsOf } from "@effect-ui/registry/catalog"
+import { getCatalogGroups } from "@effect-ui/registry/catalog"
+
+import { familyPath, type FamilyCluster } from "@/lib/family-path"
+
+const familyClusters: ReadonlySet<string> = new Set<FamilyCluster>(["button", "input"])
 
 function NavLinks({
   items,
@@ -44,7 +48,7 @@ function NavLinks({
 
 function SiteNav({ onSelectCurrent }: { onSelectCurrent?: () => void }) {
   const pathname = usePathname()
-  const groups = getComponentsByCategory()
+  const groups = getCatalogGroups()
 
   return (
     <div className="px-3 py-6">
@@ -57,15 +61,38 @@ function SiteNav({ onSelectCurrent }: { onSelectCurrent?: () => void }) {
       >
         开始
       </Link>
-      {groups.map((group) => (
-        <div key={group.category} className="mb-6">
+      {groups.map((group) => {
+        if (familyClusters.has(group.key)) {
+          const href = familyPath(group.key as FamilyCluster)
+          const isActive = pathname === href
+          return (
+            <div key={group.key} className="mb-6">
+              <Link
+                href={href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => {
+                  if (isActive) onSelectCurrent?.()
+                }}
+                className={
+                  isActive
+                    ? "block rounded-md bg-sidebar-accent px-2 py-1.5 text-sm text-sidebar-accent-foreground"
+                    : "block rounded-md px-2 py-1.5 text-sm text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                }
+              >
+                {group.label}
+              </Link>
+            </div>
+          )
+        }
+        return (
+        <div key={group.key} className="mb-6">
           <p className="px-2 pb-2 text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">
             {group.label}
           </p>
-          {group.category === "ui" ? (
+          {group.sections.length > 0 ? (
             <div className="space-y-3">
-              {uiSubgroupsOf(group.items).map((section) => (
-                <div key={section.subgroup}>
+              {group.sections.map((section) => (
+                <div key={section.key}>
                   <p className="px-2 pb-1 text-xs font-medium text-muted-foreground">
                     {section.label}
                   </p>
@@ -85,7 +112,8 @@ function SiteNav({ onSelectCurrent }: { onSelectCurrent?: () => void }) {
             />
           )}
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

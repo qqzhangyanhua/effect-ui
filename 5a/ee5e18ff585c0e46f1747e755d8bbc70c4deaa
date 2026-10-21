@@ -1,0 +1,92 @@
+packages/registry/src/ui/view-transition-gallery.tsx
+  s_6e6548ca6927de::t_b9864984fd8a15 19-20,36,80,82-85,87,89
+  s_6e6548ca6927de::t_c4ac232f520cf8 37-38,69,81,86,88
+apps/docs/public/r/pixel-transition.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 16
+apps/docs/public/r/registry.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 4187
+packages/registry/src/effects/pixel-transition.tsx
+  s_6e6548ca6927de::t_065833dc10073b 11-13,16,18-20,30,41
+  s_6e6548ca6927de::t_d9dc8e268aabf0 21,34-38,42
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_ee3dd7df421c94 1278-1287,1298-1307
+packages/registry/src/examples/effect-demos-11.tsx
+  s_6e6548ca6927de::t_e5bcd412561a45 19-20
+packages/registry/src/examples/effect-demos-2.tsx
+  s_6e6548ca6927de::t_db747eb2099f42 459,470,477,479
+packages/registry/src/examples/effect-demos-6.tsx
+  s_6e6548ca6927de::t_dfb4bb7266cc5d 256,262-264
+apps/docs/public/r/datamosh-transition.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 19
+packages/registry/src/effects/datamosh-transition.tsx
+  s_6e6548ca6927de::t_697ad0cc8f7833 10-11,77,83-86,91-95,135-136,138-139,141-142,144-145
+packages/registry/src/catalog-batch16.ts
+  s_6e6548ca6927de::t_1d478b2984a24c 21-30
+packages/registry/src/catalog-batch11.ts
+  s_6e6548ca6927de::t_131f208a4f061b 22-32
+CREDITS.md
+  s_6e6548ca6927de::t_cb8580dce99b80 32
+apps/docs/public/r/page-transition.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 19
+apps/docs/public/r/reveal-section.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 16
+packages/registry/src/effects/canvas-reveal.tsx
+  s_6e6548ca6927de::t_35dc3f803f96dc 44-45
+  s_6e6548ca6927de::t_17d7063a15d059 42-43
+packages/registry/src/catalog-batch7.ts
+  s_6e6548ca6927de::t_483724b2d8031f 394-406
+apps/docs/public/r/terminal.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 17
+packages/registry/src/catalog-batch5.ts
+  s_6e6548ca6927de::t_355fc00a3b3f39 376,379-383,395,398-402
+packages/registry/src/effects/page-transition.tsx
+  s_6e6548ca6927de::t_f991ea5561f66b 13-14,21-22,25-28,42,44-45
+packages/registry/src/examples/effect-demos-16.tsx
+  s_6e6548ca6927de::t_9515ac190a20f4 19-20
+packages/registry/src/effects/reveal-section.tsx
+  s_6e6548ca6927de::t_60241e0fb50b4f 11-12,15,23-24
+packages/registry/src/examples/effect-demos-7.tsx
+  s_6e6548ca6927de::t_de85d407affcc3 163-175,177
+packages/registry/src/prop-vocabulary.ts
+  s_6e6548ca6927de::t_8ddca6e21b0cc7 25
+apps/docs/public/r/canvas-reveal.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 9,17
+packages/registry/src/examples/effect-demos-4.tsx
+  s_6e6548ca6927de::t_f5248234789c08 193,198-199
+apps/docs/public/r/view-transition-gallery.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 19
+packages/registry/src/catalog-batch4.ts
+  s_6e6548ca6927de::t_80241c3b1b08ac 396-397,400-403
+  s_6e6548ca6927de::t_cbbd20ae15de41 404
+registry.json
+  s_6e6548ca6927de::t_f67b7a9cc7ab5a 4187
+packages/registry/src/effects/terminal.tsx
+  s_6e6548ca6927de::t_04070e42c1c1e1 12,15,36-38
+packages/registry/src/effects/page-vocabulary.test.tsx
+  s_6e6548ca6927de::t_d9f3b18a80b837 130-131
+  s_6e6548ca6927de::t_48717e44ce1995 42-45
+  s_6e6548ca6927de::t_e92ebd46a69518 39-41
+  s_6e6548ca6927de::t_9b10a97eac661d 46-48,127-129
+  s_6e6548ca6927de::t_80d3e5c040792a 132-134
+packages/registry/src/examples/ui-demos-5.tsx
+  s_6e6548ca6927de::t_34e8096ac4337f 298-299,302-303
+packages/registry/src/catalog-batch6.ts
+  s_6e6548ca6927de::t_0b8d13f0af8a4a 464-466,469-472
+  s_6e6548ca6927de::t_23fb637ca3bc20 473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "5aee5e18ff585c0e46f1747e755d8bbc70c4deaa",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

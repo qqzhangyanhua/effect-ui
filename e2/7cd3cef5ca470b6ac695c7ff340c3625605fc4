@@ -1,0 +1,199 @@
+apps/docs/public/r/tilt.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 19
+packages/registry/src/catalog-batch6.ts
+  s_6e6548ca6927de::t_dfec6f3f7676e3 37-49,52-55
+  s_6e6548ca6927de::t_302fe230b8033d 56
+packages/registry/src/examples/effect-demos-4.tsx
+  s_6e6548ca6927de::t_8386d40296dbfe 129-139,144-147
+packages/registry/src/effects/cursor-vocabulary.test.tsx
+  s_6e6548ca6927de::t_810140e131c614 279,281
+  s_6e6548ca6927de::t_122043922ed53f 121
+  s_6e6548ca6927de::t_06e070efd7552d 122-124,126,129,132,136,138-139
+  s_6e6548ca6927de::t_87e9c74bd62d9e 55,60,68,75,81,92,95,98,101,103-120,125,127-128,130-131,133-135,137,140-252,255,257,259,265,267,275-278,280,282,288,292,322,325,329
+  s_6e6548ca6927de::t_5e63bfe0299b42 258
+  s_6e6548ca6927de::t_9aed3959be8d68 269-274
+  s_6e6548ca6927de::t_792576daf33ac4 52-54
+  s_6e6548ca6927de::t_c1472ea8d9002e 56-59
+  s_6e6548ca6927de::t_b18d1e4ca4ec3f 61-63,65-67
+  s_6e6548ca6927de::t_6fefaeec788395 69-74
+  s_6e6548ca6927de::t_4105812a3c7223 76-80
+  s_6e6548ca6927de::t_9fbb902428626f 82-84,89-91
+  s_6e6548ca6927de::t_8d61cf9535f6f3 93-94
+  s_6e6548ca6927de::t_336d781d474b90 96-97
+  s_6e6548ca6927de::t_b57251fcf7b943 99-100
+  s_6e6548ca6927de::t_6d285d13964c0a 102
+  s_6e6548ca6927de::t_b199da102cd17b 253-254
+  s_6e6548ca6927de::t_1242e43f35f812 256
+  s_6e6548ca6927de::t_f7a78c97d03d9b 260-264
+  s_6e6548ca6927de::t_d7f9130e4131bd 266
+  s_6e6548ca6927de::t_2bf3e7827f69d9 268
+  s_6e6548ca6927de::t_d9014bb6e957a0 283-287
+  s_6e6548ca6927de::t_fea47515896580 289-291
+  s_6e6548ca6927de::t_2e2c4108ba5d58 293-295,319-321
+  s_6e6548ca6927de::t_9e37964e4e2c9c 323-324
+  s_6e6548ca6927de::t_2ee1d7a1a5ec37 326-328
+packages/registry/src/examples/index.ts
+  s_6e6548ca6927de::t_3506e90d0afdd5 22,65-69,133
+apps/docs/public/r/tubes-cursor.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 11,20
+packages/registry/src/catalog-batch4.ts
+  s_6e6548ca6927de::t_4e7b0b42aa88b3 240-250,252-272
+  s_6e6548ca6927de::t_065bce27928759 251
+packages/registry/src/effects/splash-cursor.tsx
+  s_6e6548ca6927de::t_795084472bb38d 48,50-66,68-69,71-77,107-116,179
+  s_6e6548ca6927de::t_d61ecb1dc7f2cd 67,70,102
+  s_324d736a250404::t_0af20314fc8df1 5-6,13-15,46-47,49,78,91-92,96-101,105-106,180,184-186,197-200,212-215,218,222,226-227,243,246
+packages/registry/src/examples/effect-demos-14.tsx
+  s_6e6548ca6927de::t_0afb5824284d64 19-30
+packages/registry/src/catalog-batch13.ts
+  s_6e6548ca6927de::t_2ae70be4940bae 241-260,267-270,272-273
+  s_6e6548ca6927de::t_35a669f1c1d723 261-266,271
+packages/registry/src/effects/lens-zoom.tsx
+  s_6e6548ca6927de::t_81ebcaf455b3d8 15-16,62,65,116-126,135
+  s_6e6548ca6927de::t_27f4976ce77455 66-67
+apps/docs/public/r/spotlight-card.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 19
+packages/registry/src/effects/sketch-hatch-image.tsx
+  s_6e6548ca6927de::t_c95d60f23b09ca 171-177,189-193,195-197,202-205,207,223
+  s_6e6548ca6927de::t_b8dd36446f15d1 41,43,52,54,129
+  s_6e6548ca6927de::t_2b2b840c6e6d29 5,11-19,22-23,53,70-73,88,90,92-93,115,123-128,130-134,136-141
+  s_6e6548ca6927de::t_2b31cfab4d6f61 20-21,24-40,42,44-51
+  s_6e6548ca6927de::t_ec5ae0be397d69 135,198
+packages/registry/src/effects/wobble-line-cursor.tsx
+  s_6e6548ca6927de::t_cc7ad56384f04d 12-18,26-28,34-36,40,43,46-47,55,58,67,78
+apps/docs/public/r/glow-hover.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 16
+apps/docs/public/r/registry.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 3705-3706,4006,4046,4211,6349,6370,6688,6747,7517
+packages/registry/src/effects/shader-grid-wide.tsx
+  s_6e6548ca6927de::t_964102b8123cb2 125-131,143-146,148-150,152-155,159-162,164,180
+  s_6e6548ca6927de::t_c709b33510a279 5,11-22,39-41,54,56,75,83-101
+packages/registry/src/examples/effect-demos-16.tsx
+  s_6e6548ca6927de::t_eb908b269e40be 35-46,57-68
+packages/registry/src/catalog-batch19.ts
+  s_6e6548ca6927de::t_4974fb3b84e104 22-54
+packages/registry/src/effects/square-lens-distortion.tsx
+  s_6e6548ca6927de::t_493822c64f9366 118,126-131,134-137,139-144,184-186,204-210,212-213,218-221,223,239,272
+  s_6e6548ca6927de::t_0b3655124aecbb 21-37,39-41,43-48,101-102,138,214
+  s_6e6548ca6927de::t_107e065dcf5764 38,42,132
+  s_6e6548ca6927de::t_40e1868a08cbb2 5,11-20,65-67,83,86,95,100,106-112
+  s_324d736a250404::t_d6c4bdabc1caee 133
+packages/registry/src/effects/glare-hover.tsx
+  s_6e6548ca6927de::t_8f9afe58df4d88 19,21-27,29-34
+  s_6e6548ca6927de::t_124a9bd09c17fe 17-18
+  s_6e6548ca6927de::t_79fcf671f2ce81 20
+packages/registry/src/examples/effect-demos-6.tsx
+  s_6e6548ca6927de::t_e468affc0d9658 37-56
+apps/docs/public/r/mouse-flowmap.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 11,19
+packages/registry/src/catalog-batch16.ts
+  s_6e6548ca6927de::t_ab5265ab3432c4 58-73,75-89,122-153
+  s_6e6548ca6927de::t_3478f71e3e7afb 74
+apps/docs/public/r/image-trail.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 16
+packages/registry/src/examples/effect-demos-7.tsx
+  s_6e6548ca6927de::t_3c740a372dff37 50-61,78-91,186-199
+packages/registry/src/examples/effect-demos-19.tsx
+  s_6e6548ca6927de::t_c1af46ba9f35c5 19-30
+apps/docs/public/r/cursor-follow.json
+  s_6e6548ca6927de::t_4d408841d6c764 19
+registry.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 3705-3706,4006,4046,4211,6349,6370,6688,6747,7517
+apps/docs/public/r/gravity-image-trail.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 9,18
+apps/docs/public/r/square-lens-distortion.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 11
+  s_6e6548ca6927de::t_4d408841d6c764 20
+apps/docs/public/r/wobble-line-cursor.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 19
+packages/registry/src/examples/effect-demos-15.tsx
+  s_6e6548ca6927de::t_2b4545620d61d3 54-65,68-79
+packages/registry/src/examples/effect-demos-13.tsx
+  s_6e6548ca6927de::t_35bef657938f6b 174-185
+apps/docs/public/r/glare-hover.json
+  s_6e6548ca6927de::t_4d408841d6c764 17
+apps/docs/public/r/target-cursor.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 9,17
+apps/docs/public/r/polyline-ribbon-cursor.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 11,19
+apps/docs/public/r/splash-cursor.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 9-10
+  s_6e6548ca6927de::t_4d408841d6c764 18
+apps/docs/public/r/magnetic.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 19
+apps/docs/public/r/sketch-hatch-image.json
+  s_6e6548ca6927de::t_4d408841d6c764 20
+  s_6e6548ca6927de::t_4f99db9586ab4a 11
+packages/registry/src/effects/gravity-image-trail.tsx
+  s_6e6548ca6927de::t_03ebee1dc195f9 5,11-18,50,52,58-61,63-65,69-75,89,119,135,140,157-159,164
+  s_6e6548ca6927de::t_382794b46aa2c3 195
+  s_6e6548ca6927de::t_53b372216c9121 176,180-184
+packages/registry/src/examples/effect-demos-18.tsx
+  s_6e6548ca6927de::t_e4edb643298069 33-44
+packages/registry/src/effects/cursor-follow.tsx
+  s_6e6548ca6927de::t_0464e0dd83e405 28,31,47-57
+  s_6e6548ca6927de::t_ea2f0f74129bb2 25-27
+  s_6e6548ca6927de::t_e65960153ab7d0 58
+packages/registry/src/catalog.ts
+  s_6e6548ca6927de::t_746a6cdfe7b4e8 1330-1353,1374-1396,1408-1434,1453-1475,1487-1512
+  s_6e6548ca6927de::t_af5f0ceda89683 1354
+apps/docs/public/r/shader-grid-wide.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 11,20
+packages/registry/src/effects/polyline-ribbon-cursor.tsx
+  s_6e6548ca6927de::t_9b5c7109af3420 126,133-134,149
+  s_6e6548ca6927de::t_4006c73d888d87 5,12-17,32-33,39-54,76,91-94,98-99,101,103-104,109-112,115
+packages/registry/src/catalog-batch14.ts
+  s_6e6548ca6927de::t_e49d5f709b8ae3 43-48,53
+  s_6e6548ca6927de::t_916011d23f23df 23-42,51-52,54
+  s_6e6548ca6927de::t_9d8e8496572ec1 55
+packages/registry/src/effects/tubes-cursor.tsx
+  s_6e6548ca6927de::t_108f63d954b949 5,12-18,38,44-49,59-68
+  s_6e6548ca6927de::t_b82c324676b5fa 174,179-181,188,213,218,249-252,254,268
+  s_6e6548ca6927de::t_6efb2920db18b1 69
+apps/docs/public/r/lens-zoom.json
+  s_6e6548ca6927de::t_4d408841d6c764 17
+CREDITS.md
+  s_6e6548ca6927de::t_da83ccf899fd09 29
+packages/registry/src/effects/glow-hover.tsx
+  s_6e6548ca6927de::t_a72fb92309c555 33
+  s_6e6548ca6927de::t_b958b581356c25 31-32
+packages/registry/src/catalog-batch7.ts
+  s_6e6548ca6927de::t_df009b682ccc83 59-90,143-168,171-175,363-386
+packages/registry/src/catalog-batch18.ts
+  s_6e6548ca6927de::t_e87fc7e1b823b9 64-91
+packages/registry/src/effects/mouse-flowmap.tsx
+  s_6e6548ca6927de::t_2b258f5c152050 70,75,102,167
+  s_6e6548ca6927de::t_16fe3ea14ad9cd 171-172
+  s_6e6548ca6927de::t_e8d8506c7d1c59 5,11-17,59-60,65-69,71-74,77-80,131-134,139-140,142,147-150,153,164
+  s_324d736a250404::t_28648789dd38e8 76
+apps/docs/public/r/cursor-trail.json
+  s_6e6548ca6927de::t_4f99db9586ab4a 16
+packages/registry/src/catalog-batch15.ts
+  s_6e6548ca6927de::t_772a55e471a915 60-91,102-133
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_4b69cb597d896b 879-905
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "e27cd3cef5ca470b6ac695c7ff340c3625605fc4",
+  "prompts": {},
+  "sessions": {
+    "s_324d736a250404": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "5c603331-3c86-4c05-873e-36a13174bff9",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

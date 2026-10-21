@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-click-outside",
+  "type": "registry:hook",
+  "title": "Use Click Outside",
+  "description": "指针点在元素外时调用回调。供变形弹层和工具栏收起使用。",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/hooks/use-click-outside.ts",
+      "type": "registry:hook",
+      "target": "hooks/use-click-outside.ts",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, type RefObject } from \"react\"\n\nexport function useClickOutside(ref: RefObject<HTMLElement | null>, onOutside: () => void) {\n  const onOutsideRef = useRef(onOutside)\n\n  useEffect(() => {\n    onOutsideRef.current = onOutside\n  }, [onOutside])\n\n  useEffect(() => {\n    const onPointer = (event: PointerEvent) => {\n      const node = ref.current\n      if (!node || !(event.target instanceof Node) || node.contains(event.target)) return\n      onOutsideRef.current()\n    }\n    document.addEventListener(\"pointerdown\", onPointer)\n    return () => document.removeEventListener(\"pointerdown\", onPointer)\n  }, [ref])\n}\n"
+    }
+  ]
+}

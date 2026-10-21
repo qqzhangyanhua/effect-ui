@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "disclosure",
+  "type": "registry:ui",
+  "title": "Disclosure",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/disclosure.tsx 单段展开，可受控或非受控，高度和透明度过渡，可传入自定义 variants。减弱动效时立即展开。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/disclosure.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/disclosure.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/disclosure.tsx\n\nimport { createContext, useContext, useState, type ReactNode } from \"react\"\nimport { AnimatePresence, motion, type TargetAndTransition } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\ninterface DisclosureContextValue {\n  open: boolean\n  toggle: () => void\n  reduced: boolean\n  variants?: { expanded?: TargetAndTransition; collapsed?: TargetAndTransition }\n}\n\nconst DisclosureContext = createContext<DisclosureContextValue | null>(null)\n\nfunction useDisclosureContext() {\n  const value = useContext(DisclosureContext)\n  if (!value) throw new Error(\"DisclosureTrigger 必须放在 Disclosure 内\")\n  return value\n}\n\nexport interface DisclosureProps {\n  children?: ReactNode\n  open?: boolean\n  defaultOpen?: boolean\n  onOpenChange?: (open: boolean) => void\n  variants?: { expanded?: TargetAndTransition; collapsed?: TargetAndTransition }\n  className?: string\n}\n\nfunction Disclosure({ children, open, defaultOpen = false, onOpenChange, variants, className }: DisclosureProps) {\n  const reduced = usePrefersReducedMotion()\n  const [internal, setInternal] = useState(defaultOpen)\n  const isOpen = open !== undefined ? open : internal\n  const toggle = () => {\n    const next = !isOpen\n    if (open === undefined) setInternal(next)\n    onOpenChange?.(next)\n  }\n\n  return (\n    <DisclosureContext.Provider value={{ open: isOpen, toggle, reduced, variants }}>\n      <div data-slot=\"disclosure\" data-reduced={reduced ? \"true\" : \"false\"} className={cn(\"w-full\", className)}>\n        {children}\n      </div>\n    </DisclosureContext.Provider>\n  )\n}\n\nfunction DisclosureTrigger({ children, className }: { children?: ReactNode; className?: string }) {\n  const { open, toggle } = useDisclosureContext()\n  return (\n    <button type=\"button\" className={cn(\"flex w-full items-center justify-between py-2 text-left text-sm font-medium\", className)} aria-expanded={open} onClick={toggle}>\n      {children}\n    </button>\n  )\n}\n\nfunction DisclosureContent({ children, className }: { children?: ReactNode; className?: string }) {\n  const { open, reduced, variants } = useDisclosureContext()\n  return (\n    <div className={cn(\"overflow-hidden\", className)}>\n      <AnimatePresence initial={false}>\n        {open ? (\n          <motion.div\n            initial={reduced ? false : { height: 0, opacity: 0, ...variants?.collapsed }}\n            animate={{ height: \"auto\", opacity: 1, ...variants?.expanded }}\n            exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0, ...variants?.collapsed }}\n            transition={reduced ? { duration: 0 } : { type: \"spring\", bounce: 0.05, duration: 0.35 }}\n          >\n            {children}\n          </motion.div>\n        ) : null}\n      </AnimatePresence>\n    </div>\n  )\n}\n\nexport { Disclosure, DisclosureTrigger, DisclosureContent }\n"
+    }
+  ]
+}

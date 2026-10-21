@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-expandable",
+  "type": "registry:ui",
+  "title": "Toolbar Expandable",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/toolbar-expandable.tsx 点击图标后在上方展开对应内容，高度由 useMeasure 测量。减弱动效时不做高度动画。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-click-outside",
+    "use-measure",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/toolbar-expandable.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/toolbar-expandable.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/toolbar-expandable.tsx\n\nimport { useRef, useState, type ReactNode } from \"react\"\nimport { AnimatePresence, MotionConfig, motion } from \"motion/react\"\n\nimport { useClickOutside } from \"@/hooks/use-click-outside\"\nimport { useMeasure } from \"@/hooks/use-measure\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ToolbarExpandableProps {\n  items: readonly { id: string; label: string; icon: ReactNode; content: ReactNode }[]\n  className?: string\n}\n\nfunction ToolbarExpandable({ items, className }: ToolbarExpandableProps) {\n  const reduced = usePrefersReducedMotion()\n  const [active, setActive] = useState<string | null>(null)\n  const rootRef = useRef<HTMLDivElement>(null)\n  const [contentRef, contentSize] = useMeasure<HTMLDivElement>()\n  useClickOutside(rootRef, () => setActive(null))\n\n  return (\n    <MotionConfig transition={reduced ? { duration: 0 } : { type: \"spring\", bounce: 0.1, duration: 0.28 }}>\n      <div ref={rootRef} data-slot=\"toolbar-expandable\" data-reduced={reduced ? \"true\" : \"false\"} className={cn(\"w-fit rounded-xl border bg-popover text-popover-foreground shadow-sm\", className)}>\n        <AnimatePresence initial={false}>\n          {active ? (\n            <motion.div\n              key=\"panel\"\n              className=\"overflow-hidden\"\n              initial={reduced ? false : { height: 0, opacity: 0 }}\n              animate={{ height: reduced ? \"auto\" : contentSize.height || \"auto\", opacity: 1 }}\n              exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}\n            >\n              <div ref={contentRef} className=\"p-3 text-sm\">\n                {items.map((item) => (\n                  <div key={item.id} hidden={item.id !== active}>\n                    {item.content}\n                  </div>\n                ))}\n              </div>\n            </motion.div>\n          ) : null}\n        </AnimatePresence>\n        <div className=\"flex gap-1 p-2\">\n          {items.map((item) => (\n            <button\n              key={item.id}\n              type=\"button\"\n              aria-label={item.label}\n              aria-expanded={active === item.id}\n              className={cn(\"grid size-9 place-items-center rounded-lg hover:bg-muted\", active === item.id && \"bg-muted\")}\n              onClick={() => setActive((current) => (current === item.id ? null : item.id))}\n            >\n              {item.icon}\n            </button>\n          ))}\n        </div>\n      </div>\n    </MotionConfig>\n  )\n}\n\nexport { ToolbarExpandable }\n"
+    }
+  ]
+}

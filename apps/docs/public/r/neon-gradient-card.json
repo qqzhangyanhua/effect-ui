@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "neon-gradient-card",
+  "type": "registry:ui",
+  "title": "Neon Gradient Card",
+  "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/neon-gradient-card.tsx 双色霓虹渐变沿边框流动，外圈带模糊辉光。减弱动效或离开视口时渐变静止。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-measure",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/neon-gradient-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/neon-gradient-card.tsx",
+      "content": "\"use client\"\n\n// Ported from Magic UI (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/neon-gradient-card.tsx\n\nimport { useRef, type CSSProperties, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { useMeasure } from \"@/hooks/use-measure\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface NeonGradientCardProps {\n  children?: ReactNode\n  colors?: readonly string[]\n  borderSize?: number\n  borderRadius?: number\n  className?: string\n}\n\nfunction NeonGradientCard({\n  children,\n  colors = [\"#ff00aa\", \"#00fff1\"],\n  borderSize = 2,\n  borderRadius = 20,\n  className,\n}: NeonGradientCardProps) {\n  const reduced = usePrefersReducedMotion()\n  const nodeRef = useRef<HTMLDivElement>(null)\n  const active = useAnimationActive(nodeRef)\n  const [measureRef, size] = useMeasure<HTMLDivElement>()\n  const first = colors[0] ?? \"#ff00aa\"\n  const second = colors[1] ?? \"#00fff1\"\n  const animated = !reduced && active\n\n  return (\n    <div\n      ref={(node) => {\n        nodeRef.current = node\n        measureRef(node)\n      }}\n      data-slot=\"neon-gradient-card\"\n      data-animated={animated ? \"true\" : \"false\"}\n      className={cn(\"relative w-full\", className)}\n      style={\n        {\n          \"--neon-border\": `${borderSize}px`,\n          \"--neon-radius\": `${borderRadius}px`,\n          \"--neon-first\": first,\n          \"--neon-second\": second,\n          \"--neon-blur\": `${Math.max(16, size.width / 3)}px`,\n        } as CSSProperties\n      }\n    >\n      <style>\n        {`@keyframes effect-ui-neon-flow { from { background-position: 0% 0%; } to { background-position: 0% 200%; } }\n[data-slot=\"neon-gradient-card\"] .neon-flow {\n  position: absolute;\n  inset: calc(var(--neon-border) * -1);\n  border-radius: var(--neon-radius);\n  background-image: linear-gradient(0deg, var(--neon-first), var(--neon-second), var(--neon-first));\n  background-size: 100% 200%;\n  z-index: 0;\n}\n[data-slot=\"neon-gradient-card\"] .neon-glow { filter: blur(var(--neon-blur)); opacity: 0.75; }\n[data-slot=\"neon-gradient-card\"][data-animated=\"true\"] .neon-flow { animation: effect-ui-neon-flow 3.2s linear infinite; }`}\n      </style>\n      <div aria-hidden className=\"neon-flow neon-glow\" />\n      <div aria-hidden className=\"neon-flow\" />\n      <div\n        className=\"relative z-10 bg-card p-6 text-card-foreground\"\n        style={{ borderRadius: Math.max(0, borderRadius - borderSize) }}\n      >\n        {children}\n      </div>\n    </div>\n  )\n}\n\nexport { NeonGradientCard }\n"
+    }
+  ]
+}

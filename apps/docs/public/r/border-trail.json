@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-trail",
+  "type": "registry:ui",
+  "title": "Border Trail",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/border-trail.tsx 一个圆点沿圆角边框用 offset-path 巡游。减弱动效或离开视口时改成静止的高亮边框。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/border-trail.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/border-trail.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/border-trail.tsx\n\nimport { useRef, type ReactNode } from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BorderTrailProps {\n  children?: ReactNode\n  size?: number\n  duration?: number\n  radius?: number\n  className?: string\n}\n\nfunction BorderTrail({ children, size = 14, duration = 4, radius = 16, className }: BorderTrailProps) {\n  const reduced = usePrefersReducedMotion()\n  const rootRef = useRef<HTMLDivElement>(null)\n  const active = useAnimationActive(rootRef)\n  const moving = !reduced && active\n\n  return (\n    <div ref={rootRef} data-slot=\"border-trail\" data-reduced={reduced ? \"true\" : \"false\"} className={cn(\"relative w-full\", className)}>\n      {children}\n      {moving ? (\n        <div\n          className=\"pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent\"\n          style={{\n            borderWidth: Math.max(2, Math.round(size / 2)),\n            maskImage: \"linear-gradient(transparent, transparent), linear-gradient(#000, #000)\",\n            WebkitMaskImage: \"linear-gradient(transparent, transparent), linear-gradient(#000, #000)\",\n            maskClip: \"padding-box, border-box\",\n            WebkitMaskClip: \"padding-box, border-box\",\n            maskComposite: \"intersect\",\n            WebkitMaskComposite: \"source-in\",\n          }}\n        >\n          <motion.div\n            className=\"absolute aspect-square rounded-full bg-primary\"\n            style={{ width: size, offsetPath: `rect(0 auto auto 0 round ${radius}px)` }}\n            animate={{ offsetDistance: [\"0%\", \"100%\"] }}\n            transition={{ duration, repeat: Infinity, ease: \"linear\" }}\n          />\n        </div>\n      ) : (\n        <span aria-hidden className=\"pointer-events-none absolute inset-0 rounded-[inherit] border-2 border-primary/70\" />\n      )}\n    </div>\n  )\n}\n\nexport { BorderTrail }\n"
+    }
+  ]
+}

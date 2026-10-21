@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comic-text",
+  "type": "registry:ui",
+  "title": "Comic Text",
+  "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/comic-text.tsx 漫画描边、错位阴影，并带一次弹跳入场。减弱动效时不弹跳。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/comic-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/comic-text.tsx",
+      "content": "\"use client\"\n\n// Ported from Magic UI (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/comic-text.tsx\n\nimport { motion } from \"motion/react\"\nimport type { CSSProperties } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ComicTextProps {\n  children?: string\n  fontSize?: number\n  className?: string\n}\n\nfunction ComicText({ children = \"BOOM\", fontSize = 4, className }: ComicTextProps) {\n  const reduced = usePrefersReducedMotion()\n  const stroke = Math.max(2, fontSize * 1.6)\n  const typeface: CSSProperties = {\n    fontSize: `${fontSize}rem`,\n    fontFamily: '\"Comic Sans MS\", \"Impact\", system-ui, sans-serif',\n    lineHeight: 1,\n  }\n\n  return (\n    <span\n      className={cn(\"inline-block\", className)}\n      style={{ transform: \"skewX(-8deg)\", filter: \"drop-shadow(5px 5px 0 #000) drop-shadow(3px 3px 0 #EF4444)\" }}\n    >\n      <motion.span\n        className=\"relative inline-block select-none text-center font-black uppercase\"\n        initial={reduced ? false : { opacity: 0, scale: 0.8, rotate: -3 }}\n        animate={{ opacity: 1, scale: 1, rotate: 0 }}\n        transition={reduced ? { duration: 0 } : { type: \"spring\", duration: 0.55, bounce: 0.42 }}\n      >\n        <span\n          aria-hidden\n          className=\"absolute inset-0\"\n          style={{ ...typeface, zIndex: 0, color: \"transparent\", WebkitTextFillColor: \"transparent\", WebkitTextStroke: `${stroke}px #000` }}\n        >\n          {children}\n        </span>\n        <span\n          data-slot=\"comic-text\"\n          data-reduced={reduced ? \"true\" : \"false\"}\n          className=\"relative z-[1]\"\n          style={{ ...typeface, color: \"#FACC15\" }}\n        >\n          {children}\n        </span>\n        <span\n          aria-hidden\n          className=\"pointer-events-none absolute inset-0 z-[2]\"\n          style={{\n            ...typeface,\n            color: \"transparent\",\n            backgroundImage: \"radial-gradient(circle at 1px 1px, #EF4444 1px, transparent 0)\",\n            backgroundSize: \"8px 8px\",\n            WebkitBackgroundClip: \"text\",\n            backgroundClip: \"text\",\n          }}\n        >\n          {children}\n        </span>\n      </motion.span>\n    </span>\n  )\n}\n\nexport { ComicText }\n"
+    }
+  ]
+}

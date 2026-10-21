@@ -22,6 +22,7 @@ import * as effectDemos20 from "./effect-demos-20"
 import * as effectDemos21 from "./effect-demos-21"
 import * as effectDemos22 from "./effect-demos-22"
 import * as effectDemos23 from "./effect-demos-23"
+import * as effectDemos24 from "./effect-demos-24"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -456,6 +457,21 @@ const demoMap: Record<string, ComponentType> = {
   "data-export-dialog": effectDemos23.DataExportDialogDemo,
   "two-factor-setup": effectDemos23.TwoFactorSetupDemo,
   "active-sessions-list": effectDemos23.ActiveSessionsListDemo,
+  "comic-text": effectDemos24.ComicTextDemo,
+  "neon-gradient-card": effectDemos24.NeonGradientCardDemo,
+  "cool-mode": effectDemos24.CoolModeDemo,
+  "pixel-image": effectDemos24.PixelImageDemo,
+  "geo-patterns": effectDemos24.GeoPatternsDemo,
+  "border-trail": effectDemos24.BorderTrailDemo,
+  "glow-effect": effectDemos24.GlowEffectDemo,
+  "text-shimmer-wave": effectDemos24.TextShimmerWaveDemo,
+  "morphing-popover": effectDemos24.MorphingPopoverDemo,
+  "toolbar-dynamic": effectDemos24.ToolbarDynamicDemo,
+  "toolbar-expandable": effectDemos24.ToolbarExpandableDemo,
+  "transition-panel": effectDemos24.TransitionPanelDemo,
+  "animated-background": effectDemos24.AnimatedBackgroundDemo,
+  disclosure: effectDemos24.DisclosureDemo,
+  "feedback-widget": effectDemos24.FeedbackWidgetDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

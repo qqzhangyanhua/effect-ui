@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-effect",
+  "type": "registry:ui",
+  "title": "Glow Effect",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/glow-effect.tsx 元素背后的彩色模糊辉光，模式有 rotate、pulse、breathe、colorShift、flowHorizontal 和 static。减弱动效或离开视口时使用 static。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glow-effect.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glow-effect.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/glow-effect.tsx\n\nimport { useRef } from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport type GlowMode = \"rotate\" | \"pulse\" | \"breathe\" | \"colorShift\" | \"flowHorizontal\" | \"static\"\n\nexport interface GlowEffectProps {\n  colors?: readonly string[]\n  mode?: GlowMode\n  duration?: number\n  scale?: number\n  blur?: number\n  className?: string\n}\n\nfunction GlowEffect({\n  colors = [\"#FF5733\", \"#33FF57\", \"#3357FF\", \"#F1C40F\"],\n  mode = \"rotate\",\n  duration = 5,\n  scale = 1,\n  blur = 16,\n  className,\n}: GlowEffectProps) {\n  const reduced = usePrefersReducedMotion()\n  const rootRef = useRef<HTMLDivElement>(null)\n  const active = useAnimationActive(rootRef)\n  const palette = colors.length > 0 ? colors : [\"#FF5733\", \"#3357FF\"]\n  const joined = palette.join(\", \")\n  const resolved = reduced || !active ? \"static\" : mode\n  const animate =\n    resolved === \"rotate\"\n      ? { background: [`conic-gradient(from 0deg, ${joined})`, `conic-gradient(from 360deg, ${joined})`] }\n      : resolved === \"pulse\"\n        ? {\n            background: palette.map((color) => `radial-gradient(circle, ${color} 0%, transparent 70%)`),\n            scale: [scale, scale * 1.08, scale],\n            opacity: [0.55, 0.9, 0.55],\n          }\n        : resolved === \"breathe\"\n          ? {\n              background: palette.map((color) => `radial-gradient(circle, ${color} 0%, transparent 72%)`),\n              scale: [scale, scale * 1.04, scale],\n            }\n          : resolved === \"colorShift\"\n            ? {\n                background: palette.map((color, index) => {\n                  const next = palette[(index + 1) % palette.length]\n                  return `conic-gradient(from 0deg, ${color}, ${next}, ${color})`\n                }),\n              }\n            : resolved === \"flowHorizontal\"\n              ? {\n                  background: palette.map((color, index) => {\n                    const next = palette[(index + 1) % palette.length]\n                    return `linear-gradient(to right, ${color}, ${next})`\n                  }),\n                }\n              : { background: `linear-gradient(to right, ${joined})`, scale }\n\n  return (\n    <motion.div\n      ref={rootRef}\n      data-slot=\"glow-effect\"\n      data-reduced={reduced ? \"true\" : \"false\"}\n      aria-hidden\n      className={cn(\"pointer-events-none absolute inset-0\", className)}\n      style={{ filter: `blur(${blur}px)`, scale: resolved === \"static\" ? scale : undefined }}\n      animate={animate}\n      transition={resolved === \"static\" ? { duration: 0 } : { duration, repeat: Infinity, ease: \"linear\" }}\n    />\n  )\n}\n\nexport { GlowEffect }\n"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+apps/docs/components/home-showcase.tsx
+  s_212d5913124ebc::t_ba928c27aeaef2 68-73,75,83-89,91,99-103,105
+  s_212d5913124ebc::t_e0eec2c6d9e15e 8,12-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f37864d35b5d8271f701796efaf81b33e4cfad59",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

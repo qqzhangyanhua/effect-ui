@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 收据、液面与裁切
+
+登记在 `catalog-batch25.ts`。上一批地形、摇篮字与转录已占用 `catalog-batch24.ts`。十五项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面和支出环直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。
+
+| 组件 | 来源 |
+| --- | --- |
+| receipt-printer | kokonutUI，MIT |
+| liquid-gauge | kokonutUI，MIT |
+| liquid-slider | kokonutUI，MIT |
+| attract-button | kokonutUI，MIT |
+| dot-field | kokonutUI，MIT |
+| ai-text-loading | kokonutUI，MIT |
+| ai-voice | kokonutUI，MIT |
+| avatar-picker | kokonutUI，MIT |
+| spending-ring | kokonutUI，MIT |
+| ai-citations | kokonutUI，MIT |
+| ai-token-alternatives | kokonutUI，MIT |
+| ai-branches | kokonutUI，MIT |
+| timezone-planner | kokonutUI，MIT |
+| currency-transfer | kokonutUI，MIT |
+| clip-trimmer | kokonutUI，MIT |
+
 ### 地形、摇篮字与转录
 
 登记在 `catalog-batch24.ts`。上一批鸟群、流星与投票已占用 `catalog-batch23.ts`。十五项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`focal-point-picker` 用 `<img>` 替换 `next/image`。离开视口或切到后台时停止动画帧。减弱动效时地形、布帘、等高线、挤出字和形状堆停住，摇篮字和拨弦不再被带动，拉绳松手后直接回位，滚轮立刻停在一格，撤销倒计时的过渡被拿掉，转录滚动不再平滑。拉绳可以用键盘聚焦开关。

@@ -25,6 +25,7 @@ import * as effectDemos23 from "./effect-demos-23"
 import * as effectDemos24 from "./effect-demos-24"
 import * as effectDemos25 from "./effect-demos-25"
 import * as effectDemos26 from "./effect-demos-26"
+import * as effectDemos27 from "./effect-demos-27"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -504,6 +505,21 @@ const demoMap: Record<string, ComponentType> = {
   "undo-button": effectDemos26.UndoButtonDemo,
   "focal-point-picker": effectDemos26.FocalPointPickerDemo,
   "synced-transcript": effectDemos26.SyncedTranscriptDemo,
+  "receipt-printer": effectDemos27.ReceiptPrinterDemo,
+  "liquid-gauge": effectDemos27.LiquidGaugeDemo,
+  "liquid-slider": effectDemos27.LiquidSliderDemo,
+  "attract-button": effectDemos27.AttractButtonDemo,
+  "dot-field": effectDemos27.DotFieldDemo,
+  "ai-text-loading": effectDemos27.AITextLoadingDemo,
+  "ai-voice": effectDemos27.AIVoiceDemo,
+  "avatar-picker": effectDemos27.AvatarPickerDemo,
+  "spending-ring": effectDemos27.SpendingRingDemo,
+  "ai-citations": effectDemos27.AICitationsDemo,
+  "ai-token-alternatives": effectDemos27.AITokenAlternativesDemo,
+  "ai-branches": effectDemos27.AIBranchesDemo,
+  "timezone-planner": effectDemos27.TimezonePlannerDemo,
+  "currency-transfer": effectDemos27.CurrencyTransferDemo,
+  "clip-trimmer": effectDemos27.ClipTrimmerDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

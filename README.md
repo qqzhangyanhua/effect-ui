@@ -555,6 +555,29 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 鸟群、流星与投票
+
+登记在 `catalog-batch23.ts`。上一批漫画字已占用 `catalog-batch22.ts`。`boids-ecosystem`、`shooting-stars`、`fibonacci-lines`、`aperture-reveal`、`text-explode`、`speed-dial`、`flower-menu`、`sibling-focus-nav` 移植自 Animata（MIT，Copyright (c) Animata）。`distorted-glass`、`merging-bubbles`、`svg-bands`、`popover-form`、`floating-panel`、`copy-button`、`feature-voting` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`use-controllable-state` 是原创钩子，给投票列表做受控状态，没有加入 `@radix-ui/react-use-controllable-state`。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧和循环。减弱动效时鸟群和流星静止，斐波那契线同时出现，光圈按阅读顺序排开，文字不炸开，气泡和色带不动，速度旋钮和花朵菜单直接打开，导航只变暗，表单和面板改为淡入，复制图标直接切换，投票列表不播放重排。
+
+| 组件 | 来源 |
+| --- | --- |
+| use-controllable-state | 原创 |
+| boids-ecosystem | Animata，MIT |
+| shooting-stars | Animata，MIT |
+| fibonacci-lines | Animata，MIT |
+| aperture-reveal | Animata，MIT |
+| text-explode | Animata，MIT |
+| distorted-glass | Cult UI，MIT |
+| merging-bubbles | Cult UI，MIT |
+| svg-bands | Cult UI，MIT |
+| speed-dial | Animata，MIT |
+| flower-menu | Animata，MIT |
+| sibling-focus-nav | Animata，MIT |
+| popover-form | Cult UI，MIT |
+| floating-panel | Cult UI，MIT |
+| copy-button | Cult UI，MIT |
+| feature-voting | Cult UI，MIT |
+
 ### 漫画字、霓虹边框与反馈
 
 登记在 `catalog-batch22.ts`。上一批字符点阵已占用 `catalog-batch21.ts`。`comic-text`、`neon-gradient-card`、`cool-mode`、`pixel-image`、`geo-patterns` 移植自 Magic UI（MIT，Copyright (c) Magic UI）。`border-trail`、`glow-effect`、`text-shimmer-wave`、`morphing-popover`、`toolbar-dynamic`、`toolbar-expandable`、`transition-panel`、`animated-background`、`disclosure` 移植自 Motion Primitives（MIT，Copyright (c) 2024 ibelick，Julien Thibeaut）。`use-click-outside` 与 `use-measure` 是原创钩子，后者用 ResizeObserver 测量尺寸。`feedback-widget` 灵感来自常见 SaaS 反馈组件，原创实现。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧。减弱动效时漫画字不弹跳，霓虹和辉光静止，粒子不出现，像素图直接上色，边框圆点停住，文字只变色，弹层改为淡入，工具栏宽度和高度立即切换，高亮直接跳转，折叠立即展开。

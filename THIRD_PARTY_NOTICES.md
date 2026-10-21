@@ -23,7 +23,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/codse/animata
 - 许可：MIT
 - 版权：Copyright (c) Animata
-- 衍生组件：`highlight-text`、`flip-card`、`ripple-button`、`orbit-loader`、`dots-loader`、`orbiting-items-3d`（倾斜轨道上的前后遮挡，按 Animata 交互重写）
+- 衍生组件：`highlight-text`、`flip-card`、`ripple-button`、`orbit-loader`、`dots-loader`、`orbiting-items-3d`（倾斜轨道上的前后遮挡，按 Animata 交互重写）、`boids-ecosystem`（https://github.com/codse/animata/blob/main/animata/background/boids-ecosystem.tsx）、`shooting-stars`（https://github.com/codse/animata/blob/main/animata/background/shooting-stars.tsx）、`fibonacci-lines`（https://github.com/codse/animata/blob/main/animata/container/fibonacci-lines.tsx）、`aperture-reveal`（https://github.com/codse/animata/blob/main/animata/scroll/aperture-reveal.tsx）、`text-explode`（https://github.com/codse/animata/blob/main/animata/text/text-explode-imessage.tsx）、`speed-dial`（https://github.com/codse/animata/blob/main/animata/fabs/speed-dial.tsx）、`flower-menu`（https://github.com/codse/animata/blob/main/animata/fabs/flower-menu.tsx）、`sibling-focus-nav`（https://github.com/codse/animata/blob/main/animata/container/sibling-focus-nav.tsx）
 
 ## Motion Primitives
 
@@ -37,7 +37,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/nolly-studio/cult-ui
 - 许可：MIT
 - 版权：Copyright (c) 2023 Jordan-Gilliam
-- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）、`family-drawer`（多步骤展开面板，按 Cult UI 结构重写）
+- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）、`family-drawer`（多步骤展开面板，按 Cult UI 结构重写）、`distorted-glass`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/distorted-glass.tsx）、`merging-bubbles`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/merging-bubbles.tsx）、`svg-bands`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/svg-bands.tsx）、`popover-form`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/popover-form.tsx）、`floating-panel`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/floating-panel.tsx）、`copy-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/copy-button.tsx）、`feature-voting`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/feature-voting.tsx）
 
 ## Fancy Components
 

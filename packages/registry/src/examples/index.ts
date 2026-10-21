@@ -23,6 +23,7 @@ import * as effectDemos21 from "./effect-demos-21"
 import * as effectDemos22 from "./effect-demos-22"
 import * as effectDemos23 from "./effect-demos-23"
 import * as effectDemos24 from "./effect-demos-24"
+import * as effectDemos25 from "./effect-demos-25"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -472,6 +473,21 @@ const demoMap: Record<string, ComponentType> = {
   "animated-background": effectDemos24.AnimatedBackgroundDemo,
   disclosure: effectDemos24.DisclosureDemo,
   "feedback-widget": effectDemos24.FeedbackWidgetDemo,
+  "boids-ecosystem": effectDemos25.BoidsEcosystemDemo,
+  "shooting-stars": effectDemos25.ShootingStarsDemo,
+  "fibonacci-lines": effectDemos25.FibonacciLinesDemo,
+  "aperture-reveal": effectDemos25.ApertureRevealDemo,
+  "text-explode": effectDemos25.TextExplodeDemo,
+  "distorted-glass": effectDemos25.DistortedGlassDemo,
+  "merging-bubbles": effectDemos25.MergingBubblesDemo,
+  "svg-bands": effectDemos25.SvgBandsDemo,
+  "speed-dial": effectDemos25.SpeedDialDemo,
+  "flower-menu": effectDemos25.FlowerMenuDemo,
+  "sibling-focus-nav": effectDemos25.SiblingFocusNavDemo,
+  "popover-form": effectDemos25.PopoverFormDemo,
+  "floating-panel": effectDemos25.FloatingPanelDemo,
+  "copy-button": effectDemos25.CopyButtonDemo,
+  "feature-voting": effectDemos25.FeatureVotingDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

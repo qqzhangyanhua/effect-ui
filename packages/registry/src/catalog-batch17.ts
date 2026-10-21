@@ -331,7 +331,14 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/embed-code-generator.tsx",
     target: "components/ui/embed-code-generator.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "template",
+        type: "(values: EmbedValues) => { iframe: string; script: string }",
+        description: "代码模板。省略时生成默认 iframe 与 script。",
+      },
+      ...ui,
+    ],
   },
   {
     name: "social-post-feed",
@@ -342,7 +349,7 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/social-post-feed.tsx",
     target: "components/ui/social-post-feed.tsx",
-    props: [...ui],
+    props: [{ name: "posts", type: "SocialPost[]", description: "帖子列表。省略时用内置帖子。" }, ...ui],
   },
   {
     name: "comment-thread",
@@ -353,7 +360,11 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/comment-thread.tsx",
     target: "components/ui/comment-thread.tsx",
-    props: [...ui],
+    props: [
+      { name: "comments", type: "ThreadComment[]", description: "评论。省略时用内置评论。" },
+      { name: "people", type: "string[]", description: "可提及的人。省略时用内置名单。" },
+      ...ui,
+    ],
   },
   {
     name: "signature-pad",
@@ -375,7 +386,14 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/poll-vote.tsx",
     target: "components/ui/poll-vote.tsx",
-    props: [...ui],
+    props: [
+      { name: "question", type: "string", defaultValue: "这个功能什么时候发出去？", description: "问题。" },
+      { name: "options", type: "PollOption[]", description: "选项。省略时用内置选项。" },
+      { name: "mode", type: '"single" | "multiple"', defaultValue: '"single"', description: "单选或多选。" },
+      { name: "deadline", type: "number", description: "截止时间，毫秒时间戳。省略时为内置时刻之后两天。" },
+      { name: "now", type: "number", description: "当前时间，毫秒时间戳。省略时用内置时刻。" },
+      ...ui,
+    ],
   },
   {
     name: "schedule-slot-picker",
@@ -388,6 +406,7 @@ export const batch17Components: ComponentMeta[] = [
     target: "components/ui/schedule-slot-picker.tsx",
     props: [
       { name: "getSlots", type: "(date: Date) => ScheduleSlot[]", description: "某一天的可预约时段。" },
+      { name: "timeZone", type: "string", defaultValue: "Asia/Shanghai", description: "时区。" },
       ...ui,
     ],
   },

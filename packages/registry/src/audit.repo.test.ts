@@ -116,6 +116,14 @@ test("仓库审计没有问题", () => {
   expect(auditRegistry(repoInput())).toEqual([])
 })
 
+test("control-not-in-demo 和 prop-not-in-catalog 可以按 catalog 条目查看", () => {
+  const names = new Set(components.map((entry) => entry.name))
+  for (const issue of auditRegistry(repoInput())) {
+    if (issue.type !== "control-not-in-demo" && issue.type !== "prop-not-in-catalog") continue
+    expect(names.has(issue.name)).toBe(true)
+  }
+})
+
 test("真实 catalog 里的 Effect 用词汇表里的词时，类型、控件和分组一致", () => {
   expect(auditRegistry(repoInput()).filter((issue) => issue.type === "vocabulary-mismatch")).toEqual([])
 })

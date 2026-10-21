@@ -43,11 +43,23 @@ export function TypingTextDemo({
   duration = 80,
   loop = true,
   cursor = true,
+  delay = 0,
+  interactive = false,
+  fontSize = 32,
+  fontWeight = 500,
+  letterSpacing = 0,
+  align = "left",
 }: Partial<{
   text: string
   duration: number
   loop: boolean
   cursor: boolean
+  delay: number
+  interactive: boolean
+  fontSize: number
+  fontWeight: number
+  letterSpacing: number
+  align: "left" | "center" | "right"
 }> = {}) {
   return (
     <TypingText
@@ -56,20 +68,78 @@ export function TypingTextDemo({
       duration={duration}
       loop={loop}
       cursor={cursor}
+      delay={delay}
+      interactive={interactive}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
     />
   )
 }
 
-export function GradientTextDemo() {
+export function GradientTextDemo({
+  children = "流动渐变",
+  colors = "from-violet-500 via-fuchsia-500 to-cyan-400",
+  delay = 0,
+  loop = true,
+  interactive = false,
+  fontSize = 48,
+  fontWeight = 700,
+  letterSpacing = 0,
+  align = "center",
+}: {
+  children?: string
+  colors?: string
+  delay?: number
+  loop?: boolean
+  interactive?: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
-    <GradientText className="text-4xl font-semibold tracking-tight">
-      Effect UI
+    <GradientText
+      className="text-4xl font-semibold tracking-tight"
+      colors={colors}
+      delay={delay}
+      loop={loop}
+      interactive={interactive}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    >
+      {children}
     </GradientText>
   )
 }
 
-export function ShimmerTextDemo({ children = "扫光文字即将上线" }: { children?: string } = {}) {
-  return <ShimmerText className="text-2xl font-medium">{children}</ShimmerText>
+export function ShimmerTextDemo({
+  children = "扫光文字即将上线",
+  fontSize = 48,
+  fontWeight = 600,
+  letterSpacing = 0,
+  align = "left",
+}: {
+  children?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <ShimmerText
+      className="text-2xl font-medium"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    >
+      {children}
+    </ShimmerText>
+  )
 }
 
 export function AuroraTextDemo({
@@ -105,12 +175,37 @@ export function SplitTextDemo({
   text = "逐字显现的标题",
   by = "char",
   delay = 0,
+  loop = false,
+  interactive = false,
+  fontSize = 40,
+  fontWeight = 600,
+  letterSpacing = 0,
+  align = "left",
 }: {
   text?: string
   by?: "char" | "word"
   delay?: number
+  loop?: boolean
+  interactive?: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 } = {}) {
-  return <SplitText className="text-3xl font-medium" text={text} by={by} delay={delay} />
+  return (
+    <SplitText
+      className="text-3xl font-medium"
+      text={text}
+      by={by}
+      delay={delay}
+      loop={loop}
+      interactive={interactive}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function HighlightTextDemo({
@@ -441,17 +536,19 @@ export function DotsLoaderDemo({
 }
 
 export function ProgressRingDemo({
+  value = 72,
   size,
   strokeWidth,
   duration,
   color,
 }: {
+  value?: number
   size?: number
   strokeWidth?: number
   duration?: number
   color?: string
 } = {}) {
-  return <ProgressRing value={72} size={size} strokeWidth={strokeWidth} duration={duration} color={color} />
+  return <ProgressRing value={value} size={size} strokeWidth={strokeWidth} duration={duration} color={color} />
 }
 
 export function RevealDemo({

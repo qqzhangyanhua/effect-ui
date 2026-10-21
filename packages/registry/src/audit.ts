@@ -1,5 +1,11 @@
 import { deriveDependencies } from "./dependencies"
-import { missingPropNames } from "./prop-type-text"
+import {
+  catalogDemoNames,
+  missingPropNames,
+  propsMissingFromCatalog,
+  readDemoBindings,
+  type DemoBinding,
+} from "./prop-type-text"
 import { effectCategories, vocabularyWord, type VocabularyWord } from "./prop-vocabulary"
 import {
   buildRegistry,
@@ -23,6 +29,8 @@ export type AuditIssueType =
   | "vocabulary-mismatch"
   | "preset-invalid"
   | "prop-not-in-type"
+  | "control-not-in-demo"
+  | "prop-not-in-catalog"
 
 export interface AuditIssue {
   name: string
@@ -336,17 +344,108 @@ function pushPresetIssues(issues: AuditIssue[], entry: AuditCatalogEntry): void 
   }
 }
 
-function pushPropTypeIssues(issues: AuditIssue[], entry: AuditCatalogEntry, source: string) {
+function catalogPropNames(entry: AuditCatalogEntry) {
   const names: string[] = []
   for (const prop of entry.props) {
     if (isRecord(prop) && typeof prop.name === "string") names.push(prop.name)
   }
-  for (const name of missingPropNames(source, names)) {
+  return names
+}
+
+function pushPropTypeIssues(issues: AuditIssue[], entry: AuditCatalogEntry, source: string) {
+  for (const name of missingPropNames(source, catalogPropNames(entry))) {
     issues.push({
       name: entry.name,
       type: "prop-not-in-type",
       description: `Prop “${name}” 没有出现在导出的 Props 类型中。`,
     })
+  }
+}
+
+function pushCatalogPropIssues(issues: AuditIssue[], entry: AuditCatalogEntry, source: string) {
+  for (const name of propsMissingFromCatalog(source, catalogPropNames(entry))) {
+    issues.push({
+      name: entry.name,
+      type: "prop-not-in-catalog",
+      description: `Prop “${name}” 没有写进 catalog 的 props。`,
+    })
+  }
+}
+
+function fallbackDemoName(catalogName: string): string {
+  let pascal = ""
+  for (const part of catalogName.split("-")) {
+    if (part.length === 0) continue
+    pascal += part.charAt(0).toUpperCase() + part.slice(1)
+  }
+  return `${pascal}Demo`
+}
+
+interface DemoIndex {
+  functions: Map<string, DemoBinding>
+  names: Map<string, string>
+}
+
+function indexDemos(input: AuditInput): DemoIndex {
+  const functions = new Map<string, DemoBinding>()
+  const names = new Map<string, string>()
+  const fromExamples = new Set<string>()
+  const dropped = new Set<string>()
+  const seen = new Set<string>()
+  for (const file of input.sourceFiles) {
+    if (seen.has(file) || file.endsWith(".test.ts") || file.endsWith(".test.tsx")) continue
+    seen.add(file)
+    const text = input.readSource(file)
+    if (text === undefined) continue
+    if (text.includes("const demoMap")) {
+      for (const [catalogName, fn] of catalogDemoNames(text)) names.set(catalogName, fn)
+    }
+    if (!text.includes("Demo")) continue
+    const examples = file.startsWith("examples/") || file.includes("/examples/")
+    for (const [fn, binding] of readDemoBindings(text)) {
+      if (dropped.has(fn)) continue
+      const prev = functions.get(fn)
+      if (!prev) {
+        functions.set(fn, binding)
+        if (examples) fromExamples.add(fn)
+        continue
+      }
+      const prevExamples = fromExamples.has(fn)
+      if (examples && !prevExamples) {
+        functions.set(fn, binding)
+        fromExamples.add(fn)
+        continue
+      }
+      if (!examples && prevExamples) continue
+      functions.delete(fn)
+      fromExamples.delete(fn)
+      dropped.add(fn)
+    }
+  }
+  return { functions, names }
+}
+
+function pushControlDemoIssues(issues: AuditIssue[], entry: AuditCatalogEntry, demos: DemoIndex) {
+  const fn = demos.names.get(entry.name) ?? fallbackDemoName(entry.name)
+  const demo = demos.functions.get(fn)
+  if (!demo) return
+  for (const prop of entry.props) {
+    if (!isRecord(prop) || typeof prop.name !== "string" || !isRecord(prop.control)) continue
+    if (!demo.params.has(prop.name)) {
+      issues.push({
+        name: entry.name,
+        type: "control-not-in-demo",
+        description: `控件 “${prop.name}” 不在 Demo 的参数里。`,
+      })
+      continue
+    }
+    if (!demo.passed.has(prop.name)) {
+      issues.push({
+        name: entry.name,
+        type: "control-not-in-demo",
+        description: `控件 “${prop.name}” 在 Demo 参数里，但没有传给组件。`,
+      })
+    }
   }
 }
 
@@ -402,6 +501,7 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
     })
   }
 
+  const demoIndex = indexDemos(input)
   const allContents: Record<string, string> = {}
   let allComplete = true
   for (const entry of input.catalog) {
@@ -445,6 +545,7 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
       })
     }
     pushControlIssues(issues, entry)
+    pushControlDemoIssues(issues, entry, demoIndex)
     pushVocabularyIssues(issues, entry)
     pushPresetIssues(issues, entry)
 
@@ -466,7 +567,9 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
       }
     }
     if (complete) {
-      pushPropTypeIssues(issues, entry, Object.values(contents).join("\n"))
+      const sourceText = Object.values(contents).join("\n")
+      pushPropTypeIssues(issues, entry, sourceText)
+      pushCatalogPropIssues(issues, entry, sourceText)
       pushDependencyIssues(issues, entry, contents, catalogNames, packageDependencies)
     }
   }

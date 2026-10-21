@@ -291,7 +291,7 @@ export const batch14Components: ComponentMeta[] = [
     target: "components/ui/shuffle-grid-hero.tsx",
     props: [
       { name: "title", type: "string", defaultValue: '"版面自己换位"', description: "首屏标题。" },
-      { name: "interval", type: "number", defaultValue: "1800", description: "打乱间隔，毫秒。" },
+      { name: "interval", type: "number", defaultValue: "1800", description: "打乱间隔，毫秒。", control: { kind: "range", value: 1800, min: 720, max: 3600, step: 40 } },
       { name: "tiles", type: "ShuffleTile[]", description: "格子的 id、编号和背景类名。" },
       ...ui,
     ],
@@ -348,9 +348,27 @@ export const batch14Components: ComponentMeta[] = [
     file: "effects/kpi-sparkline-card.tsx",
     target: "components/ui/kpi-sparkline-card.tsx",
     props: [
-      { name: "label", type: "string", defaultValue: '"本周访问"', description: "指标名称。" },
-      { name: "value", type: "number", defaultValue: "12840", description: "主数字。" },
-      { name: "delta", type: "number", defaultValue: "12.4", description: "涨跌百分比。" },
+      {
+        name: "label",
+        type: "string",
+        defaultValue: '"本周访问"',
+        description: "指标名称。",
+        control: { kind: "text", value: "本周访问" },
+      },
+      {
+        name: "value",
+        type: "number",
+        defaultValue: "12840",
+        description: "主数字。",
+        control: { kind: "range", value: 12840, min: 0, max: 50000, step: 10 },
+      },
+      {
+        name: "delta",
+        type: "number",
+        defaultValue: "12.4",
+        description: "涨跌百分比。",
+        control: { kind: "range", value: 12.4, min: -100, max: 100, step: 0.1 },
+      },
       { name: "series", type: "number[]", description: "折线数据。" },
       {
         name: "color",
@@ -398,8 +416,20 @@ export const batch14Components: ComponentMeta[] = [
     file: "effects/countdown-timer.tsx",
     target: "components/ui/countdown-timer.tsx",
     props: [
-      { name: "durationSeconds", type: "number", defaultValue: "86400", description: "从挂载开始的倒计时秒数。" },
-      { name: "confetti", type: "boolean", defaultValue: "false", description: "结束时是否放纸屑。" },
+      {
+        name: "durationSeconds",
+        type: "number",
+        defaultValue: "86400",
+        description: "从挂载开始的倒计时秒数。",
+        control: { kind: "range", value: 36, min: 12, max: 72, step: 1 },
+      },
+      {
+        name: "confetti",
+        type: "boolean",
+        defaultValue: "false",
+        description: "结束时是否放纸屑。",
+        control: { kind: "boolean", value: false },
+      },
       { name: "onComplete", type: "() => void", description: "倒计时到 0 时调用一次。" },
       {
         name: "gap",

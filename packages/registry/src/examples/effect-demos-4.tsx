@@ -118,10 +118,38 @@ export function NumberFlowDemo({
   )
 }
 
-export function GlitchTextDemo({ text = "GLITCH" }: { text?: string } = {}) {
+export function GlitchTextDemo({
+  text = "GLITCH",
+  delay = 0,
+  loop = true,
+  interactive = false,
+  fontSize = 64,
+  fontWeight = 700,
+  letterSpacing = 0.08,
+  align = "left",
+}: {
+  text?: string
+  delay?: number
+  loop?: boolean
+  interactive?: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <Frame>
-      <GlitchText className="text-4xl font-semibold" text={text} />
+      <GlitchText
+        className="text-4xl font-semibold"
+        text={text}
+        delay={delay}
+        loop={loop}
+        interactive={interactive}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
     </Frame>
   )
 }

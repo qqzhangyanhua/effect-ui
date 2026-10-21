@@ -96,8 +96,8 @@ export function AvatarGroupTooltipDemo({ max, scale, intensity, size, speed }: {
   return <AvatarGroupTooltip className="w-full justify-center py-8" max={max} scale={scale} intensity={intensity} size={size} speed={speed} />
 }
 
-export function ShuffleGridHeroDemo() {
-  return <ShuffleGridHero className="w-full" />
+export function ShuffleGridHeroDemo({ interval = 1800 }: { interval?: number } = {}) {
+  return <ShuffleGridHero className="w-full" interval={interval} />
 }
 
 export function TocScrollspyDemo({ duration, gap }: { duration?: number; gap?: number } = {}) {
@@ -108,8 +108,20 @@ export function SortableListDemo({ gap }: { gap?: number } = {}) {
   return <SortableList className="w-full" gap={gap} />
 }
 
-export function KpiSparklineCardDemo({ color, size }: { color?: string; size?: number } = {}) {
-  return <KpiSparklineCard className="w-full" color={color} size={size} />
+export function KpiSparklineCardDemo({
+  label = "本周访问",
+  value = 12840,
+  delta = 12.4,
+  color,
+  size,
+}: {
+  label?: string
+  value?: number
+  delta?: number
+  color?: string
+  size?: number
+} = {}) {
+  return <KpiSparklineCard className="w-full" label={label} value={value} delta={delta} color={color} size={size} />
 }
 
 export function CookieConsentDemo() {
@@ -121,11 +133,15 @@ export function CookieConsentDemo() {
 }
 
 export function CountdownTimerDemo({
+  durationSeconds = 36,
+  confetti = false,
   gap,
   speed,
   duration,
   fontSize,
 }: {
+  durationSeconds?: number
+  confetti?: boolean
   gap?: number
   speed?: number
   duration?: number
@@ -134,8 +150,8 @@ export function CountdownTimerDemo({
   return (
     <CountdownTimer
       className="w-full"
-      durationSeconds={36}
-      confetti
+      durationSeconds={durationSeconds}
+      confetti={confetti}
       gap={gap}
       speed={speed}
       duration={duration}

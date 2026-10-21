@@ -33,8 +33,16 @@ export function LiquidMorphSlideshowDemo({ interval, intensity, speed }: { inter
   return <LiquidMorphSlideshow className="w-full" interval={interval} intensity={intensity} speed={speed} />
 }
 
-export function WavefieldNeonDemo() {
-  return <WavefieldNeon className="w-full" />
+export function WavefieldNeonDemo({
+  color = "#22d3ee",
+  density = 18,
+  amplitude = 0.28,
+}: {
+  color?: string
+  density?: number
+  amplitude?: number
+} = {}) {
+  return <WavefieldNeon className="w-full" color={color} density={density} amplitude={amplitude} />
 }
 
 export function GradientCarousel3dDemo({ speed, angle, scale, intensity }: { speed?: number; angle?: number; scale?: number; intensity?: number } = {}) {
@@ -125,8 +133,14 @@ export function CouponInputDemo() {
   )
 }
 
-export function RadialGaugeDemo() {
-  return <RadialGauge value={64} thresholds={[80]} />
+export function RadialGaugeDemo({
+  value = 64,
+  variant = "semi",
+}: {
+  value?: number
+  variant?: "semi" | "three-quarter"
+} = {}) {
+  return <RadialGauge value={value} variant={variant} thresholds={[80]} />
 }
 
 export function GanttTimelineDemo() {

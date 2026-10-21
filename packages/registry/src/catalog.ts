@@ -1912,7 +1912,12 @@ export const components: ComponentMeta[] = [
     file: "effects/progress-ring.tsx",
     target: "components/ui/progress-ring.tsx",
     props: [
-      { name: "value", type: "number", description: "0-100 进度。" },
+      {
+        name: "value",
+        type: "number",
+        description: "0-100 进度。",
+        control: { kind: "range", value: 72, min: 0, max: 100, step: 1 },
+      },
       {
         name: "size",
         type: "number",

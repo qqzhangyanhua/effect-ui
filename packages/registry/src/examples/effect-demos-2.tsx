@@ -47,8 +47,26 @@ function Frame({ children }: { children: ReactNode }) {
 export function ScrambleTextDemo({
   text = "DECRYPT COMPLETE",
   duration = 900,
-}: { text?: string; duration?: number } = {}) {
-  return <ScrambleText className="text-2xl" text={text} duration={duration} />
+  delay = 0,
+  loop = false,
+  interactive = false,
+}: {
+  text?: string
+  duration?: number
+  delay?: number
+  loop?: boolean
+  interactive?: boolean
+} = {}) {
+  return (
+    <ScrambleText
+      className="text-2xl"
+      text={text}
+      duration={duration}
+      delay={delay}
+      loop={loop}
+      interactive={interactive}
+    />
+  )
 }
 
 export function TextRotateDemo({

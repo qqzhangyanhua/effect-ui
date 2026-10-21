@@ -60,9 +60,9 @@ export function TelescopeZoomScrollDemo() {
   return <TelescopeZoomScroll className="w-full" />
 }
 
-export function CurvedScrollbarDemo() {
+export function CurvedScrollbarDemo({ radius = 28 }: { radius?: number } = {}) {
   return (
-    <CurvedScrollbar className="h-64 w-full">
+    <CurvedScrollbar className="h-64 w-full" radius={radius}>
       <div className="space-y-3 p-4 pr-8 text-sm">
         {Array.from({ length: 12 }, (_, index) => (
           <p key={index}>第 {index + 1} 段。轨道沿着圆角走，滑块跟着这段内容移动。</p>

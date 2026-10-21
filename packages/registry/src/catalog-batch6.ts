@@ -296,6 +296,7 @@ export const batch6Components: ComponentMeta[] = [
         description: "光束颜色。不传或传 #a78bfa 都沿用紫到青的渐变。",
         control: { kind: "color", value: "#a78bfa" },
       },
+      { name: "d", type: "string", description: "同文件路径组件的 SVG 路径数据。" },
       ...ui,
     ],
     presets: [

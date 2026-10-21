@@ -1,0 +1,145 @@
+packages/registry/src/examples/effect-demos-18.tsx
+  s_6e6548ca6927de::t_d7e662a754d9ec 21-30
+packages/registry/src/effects/stagger-list.tsx
+  s_6e6548ca6927de::t_dd4165ad17c8ee 13-15,18-19,26-28,31-46,50-51
+packages/registry/src/effects/scroll-progress.tsx
+  s_6e6548ca6927de::t_a0b7a3257942b4 22,27-28,31-35
+  s_6e6548ca6927de::t_589ee2cbb73c04 20-21
+  s_6e6548ca6927de::t_b4ff3d7438aa70 36
+packages/registry/src/effects/image-tube-scroll.tsx
+  s_6e6548ca6927de::t_17484ed4342a5f 6,14,45,50-52,56,77-85,170-173,179,185-186,192-195,197,209
+packages/registry/src/effects/tracing-beam.tsx
+  s_6e6548ca6927de::t_a9c6a3e917cf7c 6,12-14,17-22,25-29,35,41-51,54,57-68
+  s_6e6548ca6927de::t_a168b65102630f 55
+apps/docs/public/r/stagger-list.json
+  s_6e6548ca6927de::t_a191b29a5e3838 19
+packages/registry/src/examples/effect-demos-15.tsx
+  s_6e6548ca6927de::t_345b35f8d038a2 90-97,100-109,112-121
+packages/registry/src/examples/effect-demos.tsx
+  s_6e6548ca6927de::t_6bbfb1183c75e4 420-439,441-453
+packages/registry/src/effects/fade-in.tsx
+  s_6e6548ca6927de::t_bd8e2e11b6cced 10-11,14,22-23
+packages/registry/src/catalog-batch3.ts
+  s_6e6548ca6927de::t_9ac2ba5eb9c060 122-123,127-129
+  s_6e6548ca6927de::t_d4e5a0c3b2d476 67-87,89-93,105-121,124-126,130,142-148,153,155-167,170-174,186-216
+apps/docs/public/r/slide-in.json
+  s_6e6548ca6927de::t_a191b29a5e3838 18
+registry.json
+  s_6e6548ca6927de::t_a191b29a5e3838 2369,3876,3896,3952,7239
+packages/registry/src/catalog-batch15.ts
+  s_6e6548ca6927de::t_7f1c67480284b8 247-248,259-261
+  s_6e6548ca6927de::t_294c85530d6b4e 172-190,201-226,237-246,249-258,262
+packages/registry/src/examples/effect-demos-17.tsx
+  s_6e6548ca6927de::t_4dd67710281fc5 58-67
+apps/docs/public/r/fade-in.json
+  s_6e6548ca6927de::t_a191b29a5e3838 18
+apps/docs/public/r/reveal.json
+  s_6e6548ca6927de::t_a191b29a5e3838 19
+packages/registry/src/catalog-batch17.ts
+  s_6e6548ca6927de::t_f532eac20890e5 99-124
+apps/docs/public/r/parallax.json
+  s_6e6548ca6927de::t_a191b29a5e3838 19
+packages/registry/src/catalog-batch18.ts
+  s_6e6548ca6927de::t_9eea78897ce354 23-42,45-48
+  s_6e6548ca6927de::t_b639fae8f5ae2a 49
+packages/registry/src/effects/blur-fade.tsx
+  s_6e6548ca6927de::t_f852d711547b83 10-11,14,22-23
+packages/registry/src/effects/macbook-scroll.tsx
+  s_6e6548ca6927de::t_ede8d378595305 48
+  s_6e6548ca6927de::t_0996d943a09767 11-17,39,42-47,49-50
+packages/registry/src/effects/scroll-3d-image-rotate.tsx
+  s_6e6548ca6927de::t_3efbc445091136 11-17,32-34,40-42,44-50,65,88
+packages/registry/src/examples/effect-demos-11.tsx
+  s_6e6548ca6927de::t_51eb15764678f5 11,23-32
+packages/registry/src/effects/parallax.tsx
+  s_6e6548ca6927de::t_d7969f6f324c90 11-13,16-20,27-33,37
+apps/docs/public/r/scroll-3d-image-rotate.json
+  s_6e6548ca6927de::t_a191b29a5e3838 19
+apps/docs/public/r/stacking-cards.json
+  s_6e6548ca6927de::t_a191b29a5e3838 19
+apps/docs/public/r/container-scroll-3d.json
+  s_6e6548ca6927de::t_a191b29a5e3838 11
+apps/docs/public/r/svg-mask-scroll-transition.json
+  s_6e6548ca6927de::t_a191b29a5e3838 17
+packages/registry/src/effects/container-scroll-3d.tsx
+  s_6e6548ca6927de::t_bd270eb524f0b1 43
+  s_6e6548ca6927de::t_38429f80aa4f57 40-42
+  s_6e6548ca6927de::t_f99c4607681f3b 44-46
+packages/registry/src/effects/reveal.tsx
+  s_6e6548ca6927de::t_120c9ca6713202 27-28,31-39,44,49,53,61,68,82-83,87-89,97
+packages/registry/src/catalog-batch6.ts
+  s_6e6548ca6927de::t_eb9a412e112c59 276-277,282-283,324-325,330-332
+  s_6e6548ca6927de::t_6d6a411f2f3dab 260-275,278-281,284,295-323,326-329,333,366-385
+packages/registry/src/effects/sticky-grid-scroll.tsx
+  s_6e6548ca6927de::t_ca9c59016d75ca 11-16,42,45-53
+apps/docs/public/r/registry.json
+  s_6e6548ca6927de::t_a191b29a5e3838 2369,3876,3896,3952,7239
+apps/docs/public/r/sticky-grid-scroll.json
+  s_6e6548ca6927de::t_a191b29a5e3838 19
+packages/registry/src/catalog-batch16.ts
+  s_6e6548ca6927de::t_b1284b00257f64 100-125
+packages/registry/src/effects/scroll-timeline-reveal.tsx
+  s_6e6548ca6927de::t_fdc13c2c09682a 41-42,46-49
+  s_6e6548ca6927de::t_46039eceef131f 13-14,17-21,26-30,38-40,43-45,59,64,67
+apps/docs/public/r/image-tube-scroll.json
+  s_6e6548ca6927de::t_a191b29a5e3838 12,21
+packages/registry/src/catalog-batch11.ts
+  s_6e6548ca6927de::t_0e77a145c7abab 34-40,42-53,56-59
+  s_6e6548ca6927de::t_b7ac93f47f3da3 60
+packages/registry/src/examples/effect-demos-3.tsx
+  s_6e6548ca6927de::t_cfeb141757d039 116-126,137-143,149-157,162,173-184,189-190,202-212,216
+apps/docs/public/r/scroll-velocity.json
+  s_6e6548ca6927de::t_a191b29a5e3838 11,20
+apps/docs/public/r/progressive-blur.json
+  s_6e6548ca6927de::t_a191b29a5e3838 18
+packages/registry/src/effects/scroll-svg-graph.tsx
+  s_6e6548ca6927de::t_b77c7efa69469d 12-18,57,61-65,67-70,96,100
+  s_6e6548ca6927de::t_45c97de9d3ac0c 71
+apps/docs/public/r/blur-fade.json
+  s_6e6548ca6927de::t_a191b29a5e3838 18
+packages/registry/src/effects/svg-mask-scroll-transition.tsx
+  s_6e6548ca6927de::t_fc4ebcd29f7ba5 12-18,28,34-36,46-47,85,89-90,94,97-100,111
+packages/registry/src/effects/slide-in.tsx
+  s_6e6548ca6927de::t_fa0e9e69cb8f9d 10-11,19-20,30-31
+packages/registry/src/catalog.ts
+  s_6e6548ca6927de::t_295663e59ee0c3 1867-1890,1892-1898,1910-1940
+  s_6e6548ca6927de::t_f0843bd37a2bcf 1674,1681,1683-1727,1740-1770,1783-1813,1825-1856
+  s_6e6548ca6927de::t_cdf67560e7dd12 1891
+apps/docs/public/r/tracing-beam.json
+  s_6e6548ca6927de::t_a191b29a5e3838 11
+CREDITS.md
+  s_6e6548ca6927de::t_59c5e1a07c2388 29
+packages/registry/src/examples/effect-demos-16.tsx
+  s_6e6548ca6927de::t_5f554206bd0bc0 49-58
+packages/registry/src/effects/scroll-vocabulary.test.tsx
+  s_6e6548ca6927de::t_6bc3bee90ecab7 162,223
+  s_6e6548ca6927de::t_40f6ffd372e9b3 111,151-154,200-205
+  s_6e6548ca6927de::t_55ba1b50813a7c 108-110
+  s_6e6548ca6927de::t_c2d5fd070424df 112-114,148-150
+  s_6e6548ca6927de::t_dbed7560e8e98d 155-157,159-161
+  s_6e6548ca6927de::t_5e2200a7e71953 163-165,197-199
+  s_6e6548ca6927de::t_769bd402177172 206-208,220-222
+  s_6e6548ca6927de::t_843edd6c57787b 224-226
+apps/docs/public/r/scroll-svg-graph.json
+  s_6e6548ca6927de::t_a191b29a5e3838 20
+packages/registry/src/examples/effect-demos-6.tsx
+  s_6e6548ca6927de::t_0b9e6f4d049833 183-191,194,203-215,219,240-246,250
+apps/docs/public/r/scroll-image-sequence.json
+  s_6e6548ca6927de::t_a191b29a5e3838 11,19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "7100d97a2aeac4270ed093a677d219fe2579049a",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

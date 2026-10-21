@@ -1,0 +1,101 @@
+packages/registry/src/effects/flowing-menu.tsx
+  s_6e6548ca6927de::t_ccaf1d3aa26ab0 16-17,27,37,44-54,57-61,81,85
+packages/registry/src/effects/animated-sidebar.tsx
+  s_6e6548ca6927de::t_85f5e6e1772ea5 14-15,23-24,30-34,47-49,55,57-59
+packages/registry/src/catalog-batch15.ts
+  s_6e6548ca6927de::t_7371d3f36ae4bd 166-168,171-174
+  s_6e6548ca6927de::t_ab0a3966830f27 175
+apps/docs/public/r/clip-reveal-menu.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+packages/registry/src/effects/toc-scrollspy.tsx
+  s_6e6548ca6927de::t_c82ed667040f68 19-20,52,54-55,100,118
+apps/docs/public/r/family-drawer.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+apps/docs/public/r/flowing-menu.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+apps/docs/public/r/liquid-glass-tabbar.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+packages/registry/src/effects/family-drawer.tsx
+  s_6e6548ca6927de::t_6253ea30ee5cf2 17,26,31,51,53
+apps/docs/public/r/toc-scrollspy.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+packages/registry/src/ui/liquid-glass-tabbar.tsx
+  s_6e6548ca6927de::t_f196514da34413 17-19,29,34-39,45
+  s_6e6548ca6927de::t_980cd2b50329a1 60,65
+packages/registry/src/prop-vocabulary.ts
+  s_6e6548ca6927de::t_7189ca7f2da347 26
+packages/registry/src/examples/effect-demos-2.tsx
+  s_6e6548ca6927de::t_1d16302a856579 317,319,427,431,440,443,452,454
+packages/registry/src/catalog-batch14.ts
+  s_6e6548ca6927de::t_09998d074654b7 310-311,314-317
+  s_6e6548ca6927de::t_178899de5d0bf0 318
+packages/registry/src/effects/dock.tsx
+  s_6e6548ca6927de::t_828dd19bf173f0 13-14,17,19-20,28-30,33,37,52,57,66,72
+apps/docs/public/r/animated-tabs.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+apps/docs/public/r/dynamic-island.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+packages/registry/src/examples/effect-demos-3.tsx
+  s_6e6548ca6927de::t_d55c799bd5a978 230,234
+packages/registry/src/catalog-batch9.ts
+  s_6e6548ca6927de::t_db235841199064 190-199
+packages/registry/src/effects/clip-reveal-menu.tsx
+  s_6e6548ca6927de::t_6aec99d148bafe 18-20,30,32-36,78,104,106
+packages/registry/src/effects/floating-navbar.tsx
+  s_6e6548ca6927de::t_72e85efa9abe05 12-13,16,20-21,31-32
+packages/registry/src/effects/animated-tabs.tsx
+  s_6e6548ca6927de::t_5a6a8dac049898 21,24,26,37-40
+packages/registry/src/catalog-batch4.ts
+  s_6e6548ca6927de::t_e0e0fd5c6992c7 324-332
+packages/registry/src/examples/effect-demos-13.tsx
+  s_6e6548ca6927de::t_f51ee88451bbf7 192-193
+packages/registry/src/catalog-batch13.ts
+  s_6e6548ca6927de::t_4f7b3d3163b3c4 25-26,358-359,362-365
+  s_6e6548ca6927de::t_b7949ea9521c98 366
+CREDITS.md
+  s_6e6548ca6927de::t_d2ec1efd3bb799 32
+packages/registry/src/effects/navigation-vocabulary.test.tsx
+  s_6e6548ca6927de::t_839cccef48bb1b 52
+  s_6e6548ca6927de::t_a5f6582d6a3ede 49-51
+  s_6e6548ca6927de::t_77ae59a0db8437 53-55
+apps/docs/public/r/animated-sidebar.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+packages/registry/src/effects/dynamic-island.tsx
+  s_6e6548ca6927de::t_5c75026da81185 20-21,26,29-31,50,52-53
+apps/docs/public/r/dock.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+apps/docs/public/r/floating-navbar.json
+  s_6e6548ca6927de::t_b4d7ebe7c78887 19
+packages/registry/src/examples/effect-demos-4.tsx
+  s_6e6548ca6927de::t_56245e0c588f10 174,177
+packages/registry/src/examples/effect-demos-11.tsx
+  s_6e6548ca6927de::t_203c5d04c17c52 104-105
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_69479a79b6fb7b 807-816,1254-1262,1273-1282,1293-1302
+packages/registry/src/examples/effect-demos-9.tsx
+  s_6e6548ca6927de::t_577d532458200f 39-40
+packages/registry/src/examples/effect-demos-15.tsx
+  s_6e6548ca6927de::t_69328a8f03bfb9 86-87
+packages/registry/src/catalog-batch3.ts
+  s_6e6548ca6927de::t_5c80fbfd63947d 280-295
+packages/registry/src/catalog-batch11.ts
+  s_6e6548ca6927de::t_3d4186cb8b0c63 294-305
+packages/registry/src/examples/effect-demos-14.tsx
+  s_6e6548ca6927de::t_0dd5781bc23721 103-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "428df1b5c4411d3292ad5928b5de8fb747b88823",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

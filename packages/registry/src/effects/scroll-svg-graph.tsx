@@ -22,12 +22,18 @@ const POINTS = [
   { label: "八月", value: 88 },
 ]
 
+function graphLinePath(values: readonly number[], width = 100, base = 88, scale = 0.72) {
+  return values
+    .map((value, index) => {
+      const x = values.length <= 1 ? 0 : (index / (values.length - 1)) * width
+      const y = base - value * scale
+      return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`
+    })
+    .join(" ")
+}
+
 function linePath() {
-  return POINTS.map((point, index) => {
-    const x = (index / (POINTS.length - 1)) * 100
-    const y = 88 - point.value * 0.72
-    return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`
-  }).join(" ")
+  return graphLinePath(POINTS.map((point) => point.value))
 }
 
 function GraphMark({
@@ -116,4 +122,4 @@ function ScrollSvgGraph({ className }: ScrollSvgGraphProps) {
   )
 }
 
-export { ScrollSvgGraph }
+export { ScrollSvgGraph, graphLinePath }

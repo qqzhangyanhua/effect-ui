@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "usage-meter",
+  "type": "registry:ui",
+  "title": "Usage Meter",
+  "description": "灵感来自 Sprig，原创实现。已用和额度进度条，超过八成变黄、超过额度变红，可堆叠多个指标。",
+  "dependencies": [],
+  "registryDependencies": [
+    "number-flow",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/usage-meter.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/usage-meter.tsx",
+      "content": "\"use client\"\n\nimport { NumberFlow } from \"@/components/ui/number-flow\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface UsageMetric {\n  id: string\n  label: string\n  used: number\n  limit: number\n  daily?: number[]\n}\n\nexport interface UsageMeterProps {\n  metrics?: UsageMetric[]\n  resetsOn?: string\n  onUpgrade?: () => void\n  className?: string\n}\n\nconst DEFAULTS: UsageMetric[] = [\n  { id: \"views\", label: \"页面访问\", used: 8600, limit: 10000, daily: [20, 28, 24, 40, 36, 30, 22] },\n  { id: \"seats\", label: \"席位\", used: 12, limit: 10, daily: [8, 9, 10, 11, 12, 12, 12] },\n]\n\nfunction tone(used: number, limit: number) {\n  const ratio = used / Math.max(limit, 1)\n  if (ratio >= 1) return \"over\"\n  if (ratio >= 0.8) return \"warn\"\n  return \"ok\"\n}\n\nconst BAR = { ok: \"bg-emerald-500\", warn: \"bg-amber-400\", over: \"bg-rose-500\" }\n\nfunction UsageMeter({ metrics = DEFAULTS, resetsOn = \"2026-11-01\", onUpgrade, className }: UsageMeterProps) {\n  usePrefersReducedMotion()\n  return (\n    <section data-slot=\"usage-meter\" className={cn(\"w-full space-y-4 rounded-xl border p-4\", className)}>\n      <div className=\"flex items-center justify-between gap-3\">\n        <p className=\"text-sm text-muted-foreground\">重置于 {resetsOn}</p>\n        <button type=\"button\" className=\"rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground\" onClick={onUpgrade}>升级方案</button>\n      </div>\n      {metrics.map((metric) => {\n        const level = tone(metric.used, metric.limit)\n        const width = Math.min(100, (metric.used / Math.max(metric.limit, 1)) * 100)\n        const peak = Math.max(...(metric.daily ?? [1]), 1)\n        return (\n          <article key={metric.id} className=\"space-y-2\">\n            <div className=\"flex items-baseline justify-between text-sm\">\n              <h3>{metric.label}</h3>\n              <p>\n                <NumberFlow value={metric.used} />\n                <span className=\"text-muted-foreground\"> / {metric.limit}</span>\n              </p>\n            </div>\n            <div className=\"h-2 overflow-hidden rounded-full bg-muted\" role=\"meter\" aria-label={metric.label} aria-valuenow={metric.used} aria-valuemax={metric.limit} data-tone={level}>\n              <div className={cn(\"h-full\", BAR[level])} style={{ width: `${width}%` }} />\n            </div>\n            {metric.daily ? (\n              <div className=\"flex h-10 items-end gap-1\" aria-hidden>\n                {metric.daily.map((value, index) => (\n                  <span key={index} className={cn(\"flex-1 rounded-sm\", BAR[level])} style={{ height: `${(value / peak) * 100}%` }} />\n                ))}\n              </div>\n            ) : null}\n          </article>\n        )\n      })}\n    </section>\n  )\n}\n\nexport { UsageMeter }\n"
+    }
+  ]
+}

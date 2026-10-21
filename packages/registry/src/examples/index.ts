@@ -18,6 +18,7 @@ import * as effectDemos16 from "./effect-demos-16"
 import * as effectDemos17 from "./effect-demos-17"
 import * as effectDemos18 from "./effect-demos-18"
 import * as effectDemos19 from "./effect-demos-19"
+import * as effectDemos20 from "./effect-demos-20"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -423,6 +424,21 @@ const demoMap: Record<string, ComponentType> = {
   "funnel-chart": effectDemos19.FunnelChartDemo,
   "gantt-timeline": effectDemos19.GanttTimelineDemo,
   "org-chart": effectDemos19.OrgChartDemo,
+  "lenticular-card": effectDemos20.LenticularCardDemo,
+  "card-beam-scanner": effectDemos20.CardBeamScannerDemo,
+  "repetition-image-hover": effectDemos20.RepetitionImageHoverDemo,
+  "hyperspace-text": effectDemos20.HyperspaceTextDemo,
+  "tiled-swirl-loader": effectDemos20.TiledSwirlLoaderDemo,
+  "rain-puddle": effectDemos20.RainPuddleDemo,
+  "keyhole-scroll-reveal": effectDemos20.KeyholeScrollRevealDemo,
+  "rubber-band-drag": effectDemos20.RubberBandDragDemo,
+  "uptime-bars": effectDemos20.UptimeBarsDemo,
+  "status-page": effectDemos20.StatusPageDemo,
+  "integrations-directory": effectDemos20.IntegrationsDirectoryDemo,
+  "api-key-manager": effectDemos20.ApiKeyManagerDemo,
+  "usage-meter": effectDemos20.UsageMeterDemo,
+  "team-members-table": effectDemos20.TeamMembersTableDemo,
+  "help-center-index": effectDemos20.HelpCenterIndexDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

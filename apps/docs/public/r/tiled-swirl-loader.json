@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tiled-swirl-loader",
+  "type": "registry:ui",
+  "title": "Tiled Swirl Loader",
+  "description": "灵感来自 Codrops Tiled Swirl，原创实现。方块沿螺旋起伏，循环播放。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/tiled-swirl-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/tiled-swirl-loader.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TiledSwirlLoaderProps {\n  size?: number\n  color?: string\n  speed?: number\n  className?: string\n}\n\nfunction spiralCells(count: number) {\n  const cells: { x: number; y: number }[] = []\n  const seen = new Set<string>()\n  let x = 0\n  let y = 0\n  let dx = 1\n  let dy = 0\n  while (cells.length < count * count) {\n    cells.push({ x, y })\n    seen.add(`${x},${y}`)\n    let nextX = x + dx\n    let nextY = y + dy\n    if (nextX < 0 || nextY < 0 || nextX >= count || nextY >= count || seen.has(`${nextX},${nextY}`)) {\n      const turnX = -dy\n      const turnY = dx\n      dx = turnX\n      dy = turnY\n      nextX = x + dx\n      nextY = y + dy\n    }\n    x = nextX\n    y = nextY\n  }\n  return cells\n}\n\nfunction TiledSwirlLoader({ size = 168, color = \"#38bdf8\", speed = 1, className }: TiledSwirlLoaderProps) {\n  const reduced = usePrefersReducedMotion()\n  const hostRef = React.useRef<HTMLDivElement>(null)\n  const count = size < 120 ? 5 : 7\n  const cells = React.useMemo(() => spiralCells(count), [count])\n  const [phase, setPhase] = React.useState(0)\n\n  React.useEffect(() => {\n    if (reduced) return\n    const host = hostRef.current\n    if (!host) return\n    let frame = 0\n    let running = true\n    const visibleRef = { current: true }\n    let time = 0\n    const tick = () => {\n      if (!running) return\n      if (!visibleRef.current) {\n        frame = 0\n        return\n      }\n      time += 0.016 * speed\n      setPhase(time)\n      frame = window.requestAnimationFrame(tick)\n    }\n    const observer = new IntersectionObserver((entries) => {\n      visibleRef.current = entries.some((entry) => entry.isIntersecting)\n      if (visibleRef.current && running && frame === 0) frame = window.requestAnimationFrame(tick)\n    })\n    observer.observe(host)\n    frame = window.requestAnimationFrame(tick)\n    return () => {\n      running = false\n      window.cancelAnimationFrame(frame)\n      observer.disconnect()\n    }\n  }, [reduced, speed])\n\n  if (reduced) {\n    return (\n      <div data-slot=\"tiled-swirl-loader\" className={cn(\"inline-flex\", className)} role=\"img\" aria-label=\"加载中\">\n        <svg width={size} height={size} viewBox=\"0 0 48 48\" aria-hidden>\n          <circle cx=\"24\" cy=\"24\" r=\"14\" fill=\"none\" stroke={color} strokeWidth=\"4\" strokeDasharray=\"28 60\" />\n        </svg>\n      </div>\n    )\n  }\n\n  const cell = size / count\n  return (\n    <div ref={hostRef} data-slot=\"tiled-swirl-loader\" className={cn(\"inline-grid\", className)} style={{ width: size, height: size, gridTemplateColumns: `repeat(${count}, 1fr)` }} role=\"img\" aria-label=\"方块旋涡加载\">\n      {cells.map((item, index) => {\n        const wave = Math.sin(phase * 2.4 - index * 0.38)\n        const scale = 0.35 + (wave + 1) * 0.32\n        return (\n          <span\n            key={`${item.x}-${item.y}`}\n            style={{\n              width: cell - 3,\n              height: cell - 3,\n              margin: 1.5,\n              background: color,\n              borderRadius: 3,\n              transform: `scale(${scale})`,\n              opacity: 0.35 + scale * 0.6,\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n\nexport { TiledSwirlLoader }\n"
+    }
+  ]
+}

@@ -7,9 +7,11 @@ import { Reveal } from "./reveal"
 export interface FadeInProps extends HTMLMotionProps<"div"> {
   delay?: number
   once?: boolean
+  speed?: number
+  intensity?: number
 }
 
-function FadeIn({ className, children, delay = 0, once = true, ...props }: FadeInProps) {
+function FadeIn({ className, children, delay = 0, once = true, speed, intensity, ...props }: FadeInProps) {
   return (
     <Reveal
       data-slot="fade-in"
@@ -17,6 +19,8 @@ function FadeIn({ className, children, delay = 0, once = true, ...props }: FadeI
       className={className}
       delay={delay}
       once={once}
+      speed={speed}
+      intensity={intensity}
       {...props}
     >
       {children}

@@ -113,7 +113,17 @@ export function ImageComparisonDemo() {
   )
 }
 
-export function ProgressiveBlurDemo() {
+export function ProgressiveBlurDemo({
+  direction = "bottom",
+  blurLayers = 8,
+  blurIntensity = 0.25,
+  intensity,
+}: {
+  direction?: "top" | "right" | "bottom" | "left"
+  blurLayers?: number
+  blurIntensity?: number
+  intensity?: number
+} = {}) {
   return (
     <Frame>
       <div className="relative h-40 w-full max-w-md overflow-hidden rounded-xl border">
@@ -124,18 +134,32 @@ export function ProgressiveBlurDemo() {
             </div>
           ))}
         </div>
-        <ProgressiveBlur className="absolute inset-x-0 bottom-0 h-16" />
+        <ProgressiveBlur
+          className="absolute inset-x-0 bottom-0 h-16"
+          direction={direction}
+          blurLayers={blurLayers}
+          blurIntensity={blurIntensity}
+          intensity={intensity}
+        />
       </div>
     </Frame>
   )
 }
 
-export function ScrollProgressDemo() {
+export function ScrollProgressDemo({
+  size,
+  intensity,
+  color,
+}: {
+  size?: number
+  intensity?: number
+  color?: string
+} = {}) {
   const container = useRef<HTMLDivElement>(null)
   return (
     <Frame>
       <div className="w-full max-w-md overflow-hidden rounded-xl border">
-        <ScrollProgress containerRef={container} className="sticky top-0 z-10" />
+        <ScrollProgress containerRef={container} className="sticky top-0 z-10" size={size} intensity={intensity} color={color} />
         <div ref={container} className="h-40 overflow-auto p-4 text-sm leading-7">
           {Array.from({ length: 12 }, (_, index) => (
             <p key={index}>滚动这段内容，顶部进度条会跟着走。第 {index + 1} 段。</p>
@@ -146,13 +170,24 @@ export function ScrollProgressDemo() {
   )
 }
 
-export function ScrollVelocityDemo() {
+export function ScrollVelocityDemo({
+  baseVelocity = 5,
+  direction = 1,
+  speed,
+  intensity,
+}: {
+  baseVelocity?: number
+  direction?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  const way: 1 | -1 = direction === -1 ? -1 : 1
   return (
     <Frame>
       <div className="w-full">
         <p className="mb-3 text-center text-xs text-muted-foreground">滚动页面可改变速度</p>
-        <ScrollVelocity>
-          <ScrollVelocityRow className="text-2xl font-semibold tracking-tight">
+        <ScrollVelocity intensity={intensity}>
+          <ScrollVelocityRow className="text-2xl font-semibold tracking-tight" baseVelocity={baseVelocity} direction={way} speed={speed} intensity={intensity}>
             <span className="px-6">effect-ui</span>
             <span className="px-6">Motion</span>
             <span className="px-6">Registry</span>
@@ -164,11 +199,21 @@ export function ScrollVelocityDemo() {
   )
 }
 
-export function StackingCardsDemo() {
+export function StackingCardsDemo({
+  scaleMultiplier = 0.03,
+  intensity,
+  gap,
+  speed,
+}: {
+  scaleMultiplier?: number
+  intensity?: number
+  gap?: number
+  speed?: number
+} = {}) {
   const cards = ["设计", "开发", "发布"]
   return (
     <div className="h-64 w-full overflow-auto rounded-xl border">
-      <StackingCards totalCards={cards.length} className="min-h-[420px] px-4 pt-4">
+      <StackingCards totalCards={cards.length} scaleMultiplier={scaleMultiplier} intensity={intensity} gap={gap} speed={speed} className="min-h-[420px] px-4 pt-4">
         {cards.map((title, index) => (
           <StackingCardItem key={title} index={index} className="h-36">
             <div className="rounded-xl border bg-card p-5 shadow-sm">

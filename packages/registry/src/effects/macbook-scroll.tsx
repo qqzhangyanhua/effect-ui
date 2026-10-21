@@ -8,6 +8,13 @@ import { cn } from "@/lib/utils"
 
 export interface MacbookScrollProps {
   className?: string
+  intensity?: number
+  scale?: number
+  speed?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 function ScreenMock() {
@@ -29,11 +36,18 @@ function ScreenMock() {
   )
 }
 
-function MacbookScroll({ className }: MacbookScrollProps) {
+function MacbookScroll({ className, intensity, scale: endScale, speed }: MacbookScrollProps) {
   const reduced = usePrefersReducedMotion()
   const progress = useMotionValue(reduced ? 1 : 0)
-  const rotateX = useTransform(progress, [0, 0.62], [-68, 0])
-  const scale = useTransform(progress, [0.4, 1], [1, 1.7])
+  const rate = pace(speed)
+  const shaped = useTransform(progress, (value) =>
+    rate === 1 ? value : Math.pow(Math.min(Math.max(value, 0), 1), rate),
+  )
+  const gain = intensity === undefined || intensity === 1 ? 1 : intensity
+  const open = gain === 1 ? 68 : 68 * gain
+  const end = endScale === undefined || endScale === 1 ? 1.7 : 1.7 * endScale
+  const rotateX = useTransform(shaped, [0, 0.62], [-open, 0])
+  const scale = useTransform(shaped, [0.4, 1], [1, end])
 
   const onScroll = (event: React.UIEvent<HTMLDivElement>) => {
     if (reduced) return

@@ -15,7 +15,7 @@
       "path": "registry/effects/fade-in.tsx",
       "type": "registry:ui",
       "target": "components/ui/fade-in.tsx",
-      "content": "\"use client\"\n\nimport { type HTMLMotionProps } from \"motion/react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface FadeInProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  once?: boolean\n}\n\nfunction FadeIn({ className, children, delay = 0, once = true, ...props }: FadeInProps) {\n  return (\n    <Reveal\n      data-slot=\"fade-in\"\n      variant=\"fade\"\n      className={className}\n      delay={delay}\n      once={once}\n      {...props}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { FadeIn }\n"
+      "content": "\"use client\"\n\nimport { type HTMLMotionProps } from \"motion/react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface FadeInProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  once?: boolean\n  speed?: number\n  intensity?: number\n}\n\nfunction FadeIn({ className, children, delay = 0, once = true, speed, intensity, ...props }: FadeInProps) {\n  return (\n    <Reveal\n      data-slot=\"fade-in\"\n      variant=\"fade\"\n      className={className}\n      delay={delay}\n      once={once}\n      speed={speed}\n      intensity={intensity}\n      {...props}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { FadeIn }\n"
     }
   ]
 }

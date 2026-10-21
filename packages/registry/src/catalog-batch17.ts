@@ -96,7 +96,32 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-svg-graph.tsx",
     target: "components/ui/scroll-svg-graph.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧刚度倍率。1 与不传相同，刚度仍是 140。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "面积起始不透明度。1 与不传相同，起始仍是 0.15。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "折线颜色。#c4b5fd 与不传相同，面积仍是 #a78bfa。",
+        control: { kind: "color", value: "#c4b5fd" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "scroll-graph-default", label: "默认", values: { speed: 1, intensity: 1, color: "#c4b5fd" } },
+      { name: "scroll-graph-fast", label: "加快", values: { speed: 1.8, intensity: 1, color: "#c4b5fd" } },
+      { name: "scroll-graph-solid", label: "实色", values: { speed: 1, intensity: 1, color: "#38bdf8" } },
+    ],
   },
   {
     name: "cloth-wind-banner",

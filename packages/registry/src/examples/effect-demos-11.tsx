@@ -8,7 +8,7 @@ import { InfiniteCanvasGallery } from "../effects/infinite-canvas-gallery"
 import { IntroPreloader } from "../effects/intro-preloader"
 import { Keycap3D } from "../ui/keycap-3d"
 import { LiquidGlassTabbar } from "../ui/liquid-glass-tabbar"
-import { ScrollTimelineShowcase } from "../effects/scroll-timeline-reveal"
+import { ScrollTimelineReveal } from "../effects/scroll-timeline-reveal"
 import { Hero3DModel } from "../sections/hero-3d-model"
 import { HeroScrollZoom } from "../sections/hero-scroll-zoom"
 import { SectionHorizontalScroll } from "../sections/section-horizontal-scroll"
@@ -20,8 +20,16 @@ export function ViewTransitionGalleryDemo() {
   return <ViewTransitionGallery className="w-full" />
 }
 
-export function ScrollTimelineRevealDemo() {
-  return <ScrollTimelineShowcase className="w-full" />
+export function ScrollTimelineRevealDemo({
+  mode = "reveal",
+  speed,
+  intensity,
+}: {
+  mode?: "reveal" | "parallax"
+  speed?: number
+  intensity?: number
+} = {}) {
+  return <ScrollTimelineReveal className="w-full" mode={mode} speed={speed} intensity={intensity} />
 }
 
 export function SmoothScrollProviderDemo() {

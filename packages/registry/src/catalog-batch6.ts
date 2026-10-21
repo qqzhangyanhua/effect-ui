@@ -257,7 +257,31 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tracing-beam.tsx",
     target: "components/ui/tracing-beam.tsx",
-    props: ui,
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧刚度倍率。1 与不传相同，刚度仍是 90。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "光束宽度（像素）。1 与不传相同，沿用 w-px。",
+        control: { kind: "range", value: 1, min: 1, max: 8, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "光束颜色。不传或传 #a78bfa 都沿用紫到青的渐变。",
+        control: { kind: "color", value: "#a78bfa" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "tracing-beam-steady", label: "平稳", values: { speed: 1, size: 1, color: "#a78bfa" } },
+      { name: "tracing-beam-fast", label: "加快", values: { speed: 1.8, size: 2, color: "#a78bfa" } },
+    ],
   },
   {
     name: "container-scroll-3d",
@@ -268,7 +292,45 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/container-scroll-3d.tsx",
     target: "components/ui/container-scroll-3d.tsx",
-    props: [{ name: "title", type: "string", description: "上方标题。" }, ...ui],
+    props: [
+      {
+        name: "title",
+        type: "string",
+        defaultValue: '"滚动透视"',
+        description: "上方标题。",
+        control: { kind: "text", value: "滚动透视" },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "起始俯仰角（度）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 0, max: 360, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "俯仰和位移的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动曲线倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "起始缩放的倍率。1 与不传相同，起始仍是 0.88。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "container-scroll-default", label: "默认", values: { title: "滚动透视", angle: 28, intensity: 1, speed: 1, scale: 1 } },
+      { name: "container-scroll-flat", label: "平", values: { title: "几乎放平", angle: 8, intensity: 1, speed: 1, scale: 1 } },
+      { name: "container-scroll-steep", label: "陡", values: { title: "更深透视", angle: 48, intensity: 1, speed: 1.2, scale: 0.8 } },
+    ],
   },
   {
     name: "circular-gallery",
@@ -301,7 +363,26 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-image-sequence.tsx",
     target: "components/ui/scroll-image-sequence.tsx",
-    props: [{ name: "frames", type: "string[]", description: "帧图片 URL。" }, ...ui],
+    props: [
+      { name: "frames", type: "string[]", description: "帧图片 URL。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "帧进度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "画面不透明度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "scroll-sequence-default", label: "默认", values: { speed: 1, intensity: 1 } },
+      { name: "scroll-sequence-dim", label: "变淡", values: { speed: 1, intensity: 0.6 } },
+    ],
   },
   {
     name: "pixel-transition",

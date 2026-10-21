@@ -55,8 +55,16 @@ export function PolaroidScrollStackDemo() {
   return <PolaroidScrollStack className="w-full" />
 }
 
-export function ScrollSvgGraphDemo() {
-  return <ScrollSvgGraph className="w-full" />
+export function ScrollSvgGraphDemo({
+  speed,
+  intensity,
+  color,
+}: {
+  speed?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return <ScrollSvgGraph className="w-full" speed={speed} intensity={intensity} color={color} />
 }
 
 export function ClothWindBannerDemo({

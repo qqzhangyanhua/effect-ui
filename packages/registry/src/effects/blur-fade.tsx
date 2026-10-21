@@ -7,9 +7,11 @@ import { Reveal } from "./reveal"
 export interface BlurFadeProps extends HTMLMotionProps<"div"> {
   delay?: number
   blur?: number
+  speed?: number
+  intensity?: number
 }
 
-function BlurFade({ className, children, delay = 0, blur = 8, ...props }: BlurFadeProps) {
+function BlurFade({ className, children, delay = 0, blur = 8, speed, intensity, ...props }: BlurFadeProps) {
   return (
     <Reveal
       data-slot="blur-fade"
@@ -17,6 +19,8 @@ function BlurFade({ className, children, delay = 0, blur = 8, ...props }: BlurFa
       className={className}
       delay={delay}
       blur={blur}
+      speed={speed}
+      intensity={intensity}
       {...props}
     >
       {children}

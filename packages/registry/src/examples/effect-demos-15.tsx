@@ -87,16 +87,38 @@ export function ClipRevealMenuDemo() {
   return <ClipRevealMenu className="w-full" />
 }
 
-export function StickyGridScrollDemo() {
-  return <StickyGridScroll className="w-full" />
+export function StickyGridScrollDemo({
+  intensity,
+  speed,
+}: {
+  intensity?: number
+  speed?: number
+} = {}) {
+  return <StickyGridScroll className="w-full" intensity={intensity} speed={speed} />
 }
 
-export function SvgMaskScrollTransitionDemo() {
-  return <SvgMaskScrollTransition className="w-full" />
+export function SvgMaskScrollTransitionDemo({
+  intensity,
+  speed,
+  count,
+}: {
+  intensity?: number
+  speed?: number
+  count?: number
+} = {}) {
+  return <SvgMaskScrollTransition className="w-full" intensity={intensity} speed={speed} count={count} />
 }
 
-export function MacbookScrollDemo() {
-  return <MacbookScroll className="w-full" />
+export function MacbookScrollDemo({
+  intensity,
+  scale,
+  speed,
+}: {
+  intensity?: number
+  scale?: number
+  speed?: number
+} = {}) {
+  return <MacbookScroll className="w-full" intensity={intensity} scale={scale} speed={speed} />
 }
 
 export function FacetedFilterBarDemo() {

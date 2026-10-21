@@ -20,9 +20,32 @@ export const batch18Components: ComponentMeta[] = [
     target: "components/ui/image-tube-scroll.tsx",
     props: [
       { name: "images", type: "string[]", description: "贴在内壁上的图片。省略时用内置色卡。" },
-      { name: "radius", type: "number", defaultValue: "1.35", description: "圆柱半径。" },
-      { name: "speed", type: "number", defaultValue: "1", description: "前进和旋转的速度。" },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "1.35",
+        description: "圆柱半径。",
+        control: { kind: "range", value: 1.35, min: 0.6, max: 2.4, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "前进和旋转的速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "卡片朝向圆心的倾斜。1 与不传相同，倾斜仍是 0.55。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "image-tube-default", label: "默认", values: { radius: 1.35, speed: 1, intensity: 1 } },
+      { name: "image-tube-tight", label: "收紧", values: { radius: 0.9, speed: 1, intensity: 1 } },
+      { name: "image-tube-fast", label: "加快", values: { radius: 1.35, speed: 1.8, intensity: 0.6 } },
     ],
   },
   {

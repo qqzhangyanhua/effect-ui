@@ -18,8 +18,16 @@ import { PricingCalculator } from "../sections/pricing-calculator"
 import { TelescopeZoomScroll } from "../sections/telescope-zoom-scroll"
 import { InboxSplitView } from "../templates/inbox-split-view"
 
-export function ImageTubeScrollDemo() {
-  return <ImageTubeScroll className="w-full" />
+export function ImageTubeScrollDemo({
+  radius = 1.35,
+  speed,
+  intensity,
+}: {
+  radius?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return <ImageTubeScroll className="w-full" radius={radius} speed={speed} intensity={intensity} />
 }
 
 export function DepthFogGalleryDemo() {

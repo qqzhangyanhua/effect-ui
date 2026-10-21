@@ -180,10 +180,18 @@ export function LampHeadingDemo({
   )
 }
 
-export function TracingBeamDemo() {
+export function TracingBeamDemo({
+  speed,
+  size,
+  color,
+}: {
+  speed?: number
+  size?: number
+  color?: string
+} = {}) {
   return (
     <div className="h-56 w-full overflow-auto rounded-xl border p-4">
-      <TracingBeam>
+      <TracingBeam speed={speed} size={size} color={color}>
         <p className="text-sm">滚动点亮竖线。</p>
         <p className="text-sm text-muted-foreground">灵感来自 tracing-beam，原创实现。</p>
         <SvgScrollPath />
@@ -192,11 +200,23 @@ export function TracingBeamDemo() {
   )
 }
 
-export function ContainerScroll3DDemo() {
+export function ContainerScroll3DDemo({
+  title = "滚动透视",
+  angle,
+  intensity,
+  speed,
+  scale,
+}: {
+  title?: string
+  angle?: number
+  intensity?: number
+  speed?: number
+  scale?: number
+} = {}) {
   return (
     <div className="h-56 w-full overflow-auto rounded-xl border p-4">
       <div className="h-8" />
-      <ContainerScroll3D>
+      <ContainerScroll3D title={title} angle={angle} intensity={intensity} speed={speed} scale={scale}>
         <div className="grid h-36 place-items-center bg-muted text-sm">透视卡片</div>
       </ContainerScroll3D>
       <div className="h-16" />
@@ -217,11 +237,17 @@ export function GlowingEdgeDemo() {
   )
 }
 
-export function ScrollImageSequenceDemo() {
+export function ScrollImageSequenceDemo({
+  speed,
+  intensity,
+}: {
+  speed?: number
+  intensity?: number
+} = {}) {
   return (
     <div className="h-56 w-full overflow-auto rounded-xl border p-3">
       <div className="h-8" />
-      <ScrollImageSequence frames={frames} />
+      <ScrollImageSequence frames={frames} speed={speed} intensity={intensity} />
       <div className="h-16" />
     </div>
   )

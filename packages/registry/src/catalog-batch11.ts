@@ -31,9 +31,32 @@ export const batch11Components: ComponentMeta[] = [
     file: "effects/scroll-timeline-reveal.tsx",
     target: "components/ui/scroll-timeline-reveal.tsx",
     props: [
-      { name: "mode", type: '"reveal" | "parallax"', defaultValue: '"reveal"', description: "显现或视差。" },
+      {
+        name: "mode",
+        type: '"reveal" | "parallax"',
+        defaultValue: '"reveal"',
+        description: "显现或视差。",
+        control: { kind: "select", value: "reveal", options: ["reveal", "parallax"] },
+      },
       { name: "children", type: "ReactNode", description: "被驱动的内容。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "不支持 view() 时的回退时长倍率。1 与不传相同，时长仍是 0.55 秒。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "位移幅度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "scroll-timeline-reveal", label: "显现", values: { mode: "reveal", speed: 1, intensity: 1 } },
+      { name: "scroll-timeline-parallax", label: "视差", values: { mode: "parallax", speed: 1, intensity: 1 } },
+      { name: "scroll-timeline-soft", label: "轻", values: { mode: "reveal", speed: 1, intensity: 0.4 } },
     ],
   },
   {

@@ -9,6 +9,13 @@ import { cn } from "@/lib/utils"
 
 export interface ScrollSvgGraphProps {
   className?: string
+  speed?: number
+  intensity?: number
+  color?: string
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const POINTS = [
@@ -47,13 +54,21 @@ function GraphMark({
   return <motion.circle cx={x} cy={y} r="1.15" fill="#f5f3ff" style={{ scale }} />
 }
 
-function ScrollSvgGraph({ className }: ScrollSvgGraphProps) {
+function ScrollSvgGraph({ className, speed, intensity, color }: ScrollSvgGraphProps) {
   const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
-  const smooth = useSpring(scrollYProgress, reduced ? { duration: 0 } : { stiffness: 140, damping: 24 })
+  const rate = pace(speed)
+  const smooth = useSpring(
+    scrollYProgress,
+    reduced ? { duration: 0 } : rate === 1 ? { stiffness: 140, damping: 24 } : { stiffness: 140 * rate, damping: 24 },
+  )
   const dash = useTransform(smooth, [0, 1], reduced ? [0, 0] : [100, 0])
-  const areaOpacity = useTransform(smooth, [0, 1], reduced ? [1, 1] : [0.15, 1])
+  const areaStart = intensity === undefined || intensity === 1 ? 0.15 : 0.15 * intensity
+  const areaOpacity = useTransform(smooth, [0, 1], reduced ? [1, 1] : [areaStart, 1])
+  const canonical = color === undefined || color.toLowerCase() === "#c4b5fd"
+  const stroke = canonical ? "#c4b5fd" : color
+  const fill = canonical ? "#a78bfa" : color ?? "#a78bfa"
   const path = linePath()
   const [active, setActive] = React.useState(POINTS[0]?.value ?? 0)
   const area = `${path} L 100 92 L 0 92 Z`
@@ -78,11 +93,11 @@ function ScrollSvgGraph({ className }: ScrollSvgGraphProps) {
         </div>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="h-64 w-full" role="img" aria-label="八个月的滚动折线与面积">
           <line x1="0" y1="92" x2="100" y2="92" stroke="currentColor" strokeOpacity="0.25" strokeWidth="0.4" vectorEffect="non-scaling-stroke" />
-          <motion.path d={area} fill="#a78bfa" fillOpacity="0.22" stroke="none" style={{ opacity: areaOpacity }} />
+          <motion.path d={area} fill={fill} fillOpacity="0.22" stroke="none" style={{ opacity: areaOpacity }} />
           <motion.path
             d={path}
             fill="none"
-            stroke="#c4b5fd"
+            stroke={stroke}
             strokeWidth="1.4"
             vectorEffect="non-scaling-stroke"
             strokeLinejoin="round"

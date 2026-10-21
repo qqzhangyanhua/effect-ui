@@ -417,22 +417,40 @@ export function ProgressRingDemo() {
   return <ProgressRing value={72} />
 }
 
-export function RevealDemo() {
+export function RevealDemo({
+  variant = "fade",
+  from = "bottom",
+  delay = 0,
+  once = true,
+  blur = 8,
+  as = "div",
+  speed,
+  intensity,
+}: {
+  variant?: "fade" | "blur" | "slide" | "clip"
+  from?: "left" | "right" | "top" | "bottom"
+  delay?: number
+  once?: boolean
+  blur?: number
+  as?: "div" | "section"
+  speed?: number
+  intensity?: number
+} = {}) {
+  const label = variant === "blur" ? "模糊显现" : variant === "slide" ? "滑入" : variant === "clip" ? "裁切揭开" : "淡入"
   return (
-    <div className="grid w-full gap-3 sm:grid-cols-2">
-      <Reveal variant="fade" className="rounded-xl border bg-card p-4">
-        淡入
-      </Reveal>
-      <Reveal variant="blur" delay={0.05} className="rounded-xl border bg-card p-4">
-        模糊显现
-      </Reveal>
-      <Reveal variant="slide" from="left" delay={0.1} className="rounded-xl border bg-card p-4">
-        从左滑入
-      </Reveal>
-      <Reveal as="section" variant="clip" delay={0.15} className="rounded-xl border bg-card p-4">
-        裁切揭开
-      </Reveal>
-    </div>
+    <Reveal
+      variant={variant}
+      from={from}
+      delay={delay}
+      once={once}
+      blur={blur}
+      as={as}
+      speed={speed}
+      intensity={intensity}
+      className="w-full rounded-xl border bg-card p-4"
+    >
+      {label}
+    </Reveal>
   )
 }
 

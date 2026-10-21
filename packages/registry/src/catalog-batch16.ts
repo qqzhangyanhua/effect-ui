@@ -97,7 +97,32 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-3d-image-rotate.tsx",
     target: "components/ui/scroll-3d-image-rotate.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        description: "翻入角度（度）。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 0, max: 360, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "每张卡片占用的进度窗口倍率。1 与不传相同，窗口仍是 0.16。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "翻出时的最低不透明度。1 与不传相同，最低仍是 0.15。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "scroll-3d-default", label: "默认", values: { angle: 80, speed: 1, intensity: 1 } },
+      { name: "scroll-3d-shallow", label: "浅", values: { angle: 40, speed: 1, intensity: 1 } },
+      { name: "scroll-3d-ghost", label: "更透", values: { angle: 80, speed: 1, intensity: 0.4 } },
+    ],
   },
   {
     name: "thumbnail-flow-path",

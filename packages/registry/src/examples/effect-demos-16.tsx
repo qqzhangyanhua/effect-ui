@@ -46,8 +46,16 @@ export function SketchHatchImageDemo({
   return <SketchHatchImage className="w-full" count={count} intensity={intensity} angle={angle} color={color} />
 }
 
-export function Scroll3dImageRotateDemo() {
-  return <Scroll3dImageRotate className="w-full" />
+export function Scroll3dImageRotateDemo({
+  angle,
+  speed,
+  intensity,
+}: {
+  angle?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return <Scroll3dImageRotate className="w-full" angle={angle} speed={speed} intensity={intensity} />
 }
 
 export function ThumbnailFlowPathDemo() {

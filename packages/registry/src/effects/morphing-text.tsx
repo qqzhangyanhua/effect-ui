@@ -6,9 +6,21 @@ export interface MorphingTextProps {
   texts: string[]
   className?: string
   interval?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
-function MorphingText({ texts, className, interval = 2200 }: MorphingTextProps) {
+function MorphingText({
+  texts,
+  className,
+  interval = 2200,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: MorphingTextProps) {
   return (
     <TextRotate
       animation="blur"
@@ -16,6 +28,10 @@ function MorphingText({ texts, className, interval = 2200 }: MorphingTextProps) 
       data-slot="morphing-text"
       interval={interval}
       texts={texts}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
     />
   )
 }

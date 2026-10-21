@@ -11,6 +11,10 @@ export interface CountdownTimerProps {
   confetti?: boolean
   onComplete?: () => void
   className?: string
+  gap?: number
+  speed?: number
+  duration?: number
+  fontSize?: number
 }
 
 const CONFETTI = [
@@ -32,13 +36,19 @@ function digitsOf(value: number, count: number) {
   })
 }
 
-function RollDigit({ value, reduced }: { value: number; reduced: boolean }) {
+function RollDigit({ value, reduced, speed }: { value: number; reduced: boolean; speed?: number }) {
   return (
     <span className="relative inline-block h-[1em] w-[0.66em] overflow-hidden">
       <motion.span
         className="absolute inset-x-0 top-0 flex flex-col items-center"
         animate={{ y: `${-value}em` }}
-        transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 220, damping: 24 }}
+        transition={
+          reduced
+            ? { duration: 0 }
+            : speed === undefined || speed === 1
+              ? { type: "spring", stiffness: 220, damping: 24 }
+              : { type: "spring", stiffness: 220 * speed, damping: 24 }
+        }
       >
         {Array.from({ length: 10 }, (_, digit) => (
           <span key={digit} className="flex h-[1em] items-center justify-center">
@@ -55,17 +65,29 @@ function Unit({
   value,
   places,
   reduced,
+  speed,
+  fontSize,
 }: {
   label: string
   value: number
   places: number
   reduced: boolean
+  speed?: number
+  fontSize?: number
 }) {
+  const keepSize = fontSize === undefined || fontSize === 36
   return (
     <div className="min-w-14 text-center">
-      <div className="font-display text-4xl leading-none tracking-tight tabular-nums">
+      <div
+        className={
+          keepSize
+            ? "font-display text-4xl leading-none tracking-tight tabular-nums"
+            : "font-display leading-none tracking-tight tabular-nums"
+        }
+        style={keepSize ? undefined : { fontSize }}
+      >
         {digitsOf(value, places).map((digit, index) => (
-          <RollDigit key={`${label}-${index}`} value={digit} reduced={reduced} />
+          <RollDigit key={`${label}-${index}`} value={digit} reduced={reduced} speed={speed} />
         ))}
       </div>
       <p className="mt-2 text-xs text-muted-foreground">{label}</p>
@@ -78,6 +100,10 @@ function CountdownTimer({
   confetti = false,
   onComplete,
   className,
+  gap,
+  speed,
+  duration,
+  fontSize,
 }: CountdownTimerProps) {
   const reduced = usePrefersReducedMotion()
   const [remaining, setRemaining] = React.useState(durationSeconds)
@@ -120,11 +146,15 @@ function CountdownTimer({
         剩余 {days} 天 {hours} 小时 {minutes} 分 {seconds} 秒
         {remaining === 0 ? "，计时结束" : ""}
       </div>
-      <div className="flex items-start justify-center gap-4" aria-hidden>
-        <Unit label="天" value={days} places={dayPlaces} reduced={reduced} />
-        <Unit label="时" value={hours} places={2} reduced={reduced} />
-        <Unit label="分" value={minutes} places={2} reduced={reduced} />
-        <Unit label="秒" value={seconds} places={2} reduced={reduced} />
+      <div
+        className={gap === undefined || gap === 16 ? "flex items-start justify-center gap-4" : "flex items-start justify-center"}
+        style={gap === undefined || gap === 16 ? undefined : { gap }}
+        aria-hidden
+      >
+        <Unit label="天" value={days} places={dayPlaces} reduced={reduced} speed={speed} fontSize={fontSize} />
+        <Unit label="时" value={hours} places={2} reduced={reduced} speed={speed} fontSize={fontSize} />
+        <Unit label="分" value={minutes} places={2} reduced={reduced} speed={speed} fontSize={fontSize} />
+        <Unit label="秒" value={seconds} places={2} reduced={reduced} speed={speed} fontSize={fontSize} />
       </div>
       <p className="mt-4 text-center text-sm text-muted-foreground">
         {remaining === 0 ? "计时结束" : "倒计时进行中"}
@@ -138,7 +168,11 @@ function CountdownTimer({
               style={{ background: piece.color }}
               initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
               animate={{ x: piece.x, y: piece.y, opacity: 0, rotate: piece.rotate }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
+              transition={
+                duration === undefined || duration === 900
+                  ? { duration: 0.9, ease: "easeOut" }
+                  : { duration: duration / 1000, ease: "easeOut" }
+              }
             />
           ))}
         </span>

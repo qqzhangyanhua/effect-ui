@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { SearchIcon } from "lucide-react"
 
-import { getComponentsByCategory, uiSubgroupsOf } from "@effect-ui/registry/catalog"
+import { componentCluster, getCatalogGroups } from "@effect-ui/registry/catalog"
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,18 +15,15 @@ import {
 } from "@effect-ui/registry/ui/command"
 import { Kbd } from "@effect-ui/registry/ui/kbd"
 
+import { familyPath } from "@/lib/family-path"
 import { cn } from "@/lib/utils"
 
-const componentGroups = getComponentsByCategory().filter(
-  (group) => group.items.length > 0,
-)
-
-const searchSections = componentGroups.flatMap((group) => {
-  if (group.category !== "ui") {
-    return [{ key: group.category, heading: group.label, items: group.items }]
+const searchSections = getCatalogGroups().flatMap((group) => {
+  if (group.sections.length === 0) {
+    return [{ key: group.key, heading: group.label, items: group.items }]
   }
-  return uiSubgroupsOf(group.items).map((section) => ({
-    key: `${group.category}-${section.subgroup}`,
+  return group.sections.map((section) => ({
+    key: `${group.key}-${section.key}`,
     heading: `${group.label} / ${section.label}`,
     items: section.items,
   }))
@@ -56,7 +53,8 @@ function ComponentSearch({ className }: ComponentSearchProps = {}) {
 
   function openComponent(name: string) {
     setOpen(false)
-    router.push(`/docs/${name}`)
+    const cluster = componentCluster(name)
+    router.push(cluster ? `${familyPath(cluster)}#${name}` : `/docs/${name}`)
   }
 
   return (

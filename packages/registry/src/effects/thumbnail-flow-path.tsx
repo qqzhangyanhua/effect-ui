@@ -7,6 +7,10 @@ import { cn } from "@/lib/utils"
 
 export interface ThumbnailFlowPathProps {
   className?: string
+  duration?: number
+  delay?: number
+  size?: number
+  gap?: number
 }
 
 const TILES = [
@@ -20,7 +24,7 @@ const TILES = [
 
 const PATH = "M 36 210 C 140 20, 260 20, 340 180 S 560 340, 700 120"
 
-function ThumbnailFlowPath({ className }: ThumbnailFlowPathProps) {
+function ThumbnailFlowPath({ className, duration, delay, size, gap }: ThumbnailFlowPathProps) {
   const reduced = usePrefersReducedMotion()
   const [phase, setPhase] = React.useState<"stack" | "fly" | "grid">(reduced ? "grid" : "stack")
   const done = React.useRef(0)
@@ -33,9 +37,13 @@ function ThumbnailFlowPath({ className }: ThumbnailFlowPathProps) {
 
   React.useEffect(() => {
     if (phase !== "fly") return
-    const id = window.setTimeout(() => setPhase("grid"), 2800)
+    const wait =
+      duration === undefined || duration === 1350
+        ? 2800
+        : duration + (delay === undefined || delay === 120 ? 120 : delay) * (TILES.length - 1) + 400
+    const id = window.setTimeout(() => setPhase("grid"), wait)
     return () => window.clearTimeout(id)
-  }, [phase])
+  }, [delay, duration, phase])
 
   const replay = () => {
     if (reduced) {
@@ -65,22 +73,33 @@ function ThumbnailFlowPath({ className }: ThumbnailFlowPathProps) {
         </button>
       </div>
       <div className="relative h-80 overflow-hidden rounded-xl border bg-background">
-        <div className={cn("h-full", phase === "grid" ? "grid grid-cols-3 gap-3 p-4" : "relative")}>
-          {TILES.map((tile, index) => (
+        <div
+          className={cn(
+            "h-full",
+            phase === "grid" ? (gap === undefined || gap === 12 ? "grid grid-cols-3 gap-3 p-4" : "grid grid-cols-3 p-4") : "relative",
+          )}
+          style={phase === "grid" && gap !== undefined && gap !== 12 ? { gap } : undefined}
+        >
+          {TILES.map((tile, index) => {
+            const fly = duration === undefined || duration === 1350 ? "1.35s" : `${duration}ms`
+            const stagger = delay === undefined || delay === 120 ? `${index * 0.12}s` : `${index * delay}ms`
+            const chip = size === undefined || size === 64
+            return (
             <div
               key={tile.id}
               className={cn(
                 "flex items-end rounded-lg p-2 text-sm font-medium text-white",
-                phase === "grid" ? "h-24" : "absolute size-16",
+                phase === "grid" ? "h-24" : chip ? "absolute size-16" : "absolute",
               )}
               style={{
                 background: `linear-gradient(145deg, hsl(${tile.hue} 55% 34%), hsl(${tile.hue} 72% 54%))`,
                 offsetPath: phase === "fly" ? `path("${PATH}")` : undefined,
                 offsetRotate: phase === "fly" ? "0deg" : undefined,
                 offsetDistance: phase === "fly" ? "0%" : undefined,
-                animation: phase === "fly" && !reduced ? `effect-ui-offset-fly 1.35s ease-in-out ${index * 0.12}s forwards` : undefined,
+                animation: phase === "fly" && !reduced ? `effect-ui-offset-fly ${fly} ease-in-out ${stagger} forwards` : undefined,
                 left: phase === "stack" ? 24 + index * 10 : undefined,
                 top: phase === "stack" ? 28 + index * 8 : undefined,
+                ...(phase !== "grid" && !chip && size !== undefined ? { width: size, height: size } : {}),
               }}
               onAnimationEnd={() => {
                 done.current += 1
@@ -89,7 +108,8 @@ function ThumbnailFlowPath({ className }: ThumbnailFlowPathProps) {
             >
               {tile.label}
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>

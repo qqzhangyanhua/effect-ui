@@ -8,6 +8,13 @@ import { cn } from "@/lib/utils"
 
 export interface Scroll3dImageRotateProps {
   className?: string
+  angle?: number
+  speed?: number
+  intensity?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const CARDS = [
@@ -22,15 +29,25 @@ function FlipCard({
   index,
   progress,
   reduced,
+  angle,
+  speed,
+  intensity,
 }: {
   card: (typeof CARDS)[number]
   index: number
   progress: MotionValue<number>
   reduced: boolean
+  angle?: number
+  speed?: number
+  intensity?: number
 }) {
-  const start = index * 0.16
-  const rotateY = useTransform(progress, [start, start + 0.16, start + 0.34], [80, 0, -80])
-  const opacity = useTransform(progress, [start, start + 0.08, start + 0.28, start + 0.38], [0.15, 1, 1, 0.15])
+  const turn = angle === undefined || angle === 80 ? 80 : angle
+  const rate = pace(speed)
+  const span = rate === 1 ? 0.16 : 0.16 / rate
+  const start = index * span
+  const rotateY = useTransform(progress, [start, start + span, start + span + 0.18], [turn, 0, -turn])
+  const floor = intensity === undefined || intensity === 1 ? 0.15 : 0.15 * intensity
+  const opacity = useTransform(progress, [start, start + 0.08, start + 0.28, start + 0.38], [floor, 1, 1, floor])
   return (
     <motion.div
       className="absolute inset-x-8 top-10 flex h-48 items-end rounded-2xl p-4 text-2xl font-medium text-white shadow-xl"
@@ -45,7 +62,7 @@ function FlipCard({
   )
 }
 
-function Scroll3dImageRotate({ className }: Scroll3dImageRotateProps) {
+function Scroll3dImageRotate({ className, angle, speed, intensity }: Scroll3dImageRotateProps) {
   const reduced = usePrefersReducedMotion()
   const progress = useMotionValue(0)
 
@@ -68,7 +85,7 @@ function Scroll3dImageRotate({ className }: Scroll3dImageRotateProps) {
       <div className="h-[220vh]">
         <div className="sticky top-0 h-96 [perspective:900px]">
           {CARDS.map((card, index) => (
-            <FlipCard key={card.id} card={card} index={index} progress={progress} reduced={reduced} />
+            <FlipCard key={card.id} card={card} index={index} progress={progress} reduced={reduced} angle={angle} speed={speed} intensity={intensity} />
           ))}
           <p className="absolute bottom-4 left-4 text-xs text-zinc-400">
             {reduced ? "色块叠放，不再翻转。" : "在这个区域里滚动。"}

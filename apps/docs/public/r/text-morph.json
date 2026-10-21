@@ -14,7 +14,7 @@
       "path": "registry/effects/text-morph.tsx",
       "type": "registry:ui",
       "target": "components/ui/text-morph.tsx",
-      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { TextRotate } from \"./text-rotate\"\n\nexport interface TextMorphProps {\n  texts?: string[]\n  className?: string\n}\n\nfunction TextMorph({ texts = [\"Design\", \"Delight\"], className }: TextMorphProps) {\n  return (\n    <TextRotate\n      animation=\"glyph\"\n      className={cn(\"font-display text-4xl\", className)}\n      interval={1800}\n      texts={texts}\n    />\n  )\n}\n\nexport { TextMorph }\n"
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { TextRotate } from \"./text-rotate\"\n\nexport interface TextMorphProps {\n  texts?: string[]\n  className?: string\n  interval?: number\n  fontSize?: number\n  fontWeight?: number\n  letterSpacing?: number\n  align?: \"left\" | \"center\" | \"right\"\n}\n\nfunction TextMorph({\n  texts = [\"Design\", \"Delight\"],\n  className,\n  interval = 1800,\n  fontSize,\n  fontWeight,\n  letterSpacing,\n  align,\n}: TextMorphProps) {\n  return (\n    <TextRotate\n      animation=\"glyph\"\n      className={cn(\"font-display text-4xl\", className)}\n      interval={interval}\n      texts={texts}\n      fontSize={fontSize}\n      fontWeight={fontWeight}\n      letterSpacing={letterSpacing}\n      align={align}\n    />\n  )\n}\n\nexport { TextMorph }\n"
     }
   ]
 }

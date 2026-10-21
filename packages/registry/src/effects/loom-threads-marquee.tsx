@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 
 export interface LoomThreadsMarqueeProps {
   className?: string
+  speed?: number
 }
 
 const VERT = `
@@ -61,10 +62,12 @@ function LoomFallback({ unravel }: { unravel: boolean }) {
   )
 }
 
-function LoomThreadsMarquee({ className }: LoomThreadsMarqueeProps) {
+function LoomThreadsMarquee({ className, speed }: LoomThreadsMarqueeProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const rateRef = React.useRef(rate)
   const unravelRef = React.useRef(0)
   const [unravel, setUnravel] = React.useState(false)
   const [fallback, setFallback] = React.useState(false)
@@ -72,7 +75,8 @@ function LoomThreadsMarquee({ className }: LoomThreadsMarqueeProps) {
 
   React.useEffect(() => {
     unravelRef.current = unravel ? 1 : 0
-  }, [unravel])
+    rateRef.current = rate
+  }, [rate, unravel])
 
   React.useEffect(() => {
     if (!showCanvas) return
@@ -110,8 +114,11 @@ function LoomThreadsMarquee({ className }: LoomThreadsMarqueeProps) {
       const started = performance.now()
       let shown = 0
       const tick = () => {
-        shown += (unravelRef.current - shown) * 0.06
-        uniforms.u_time.value = (performance.now() - started) / 1000
+        const rateNow = rateRef.current
+        const lerp = rateNow === 1 ? 0.06 : 0.06 * rateNow
+        shown += (unravelRef.current - shown) * lerp
+        const elapsed = (performance.now() - started) / 1000
+        uniforms.u_time.value = rateNow === 1 ? elapsed : elapsed * rateNow
         uniforms.u_unravel.value = shown
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)

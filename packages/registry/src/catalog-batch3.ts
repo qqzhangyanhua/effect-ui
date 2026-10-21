@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -22,7 +23,24 @@ export const batch3Components: ComponentMeta[] = [
       { name: "containerRef", type: "RefObject<HTMLElement>", description: "定位容器。" },
       { name: "fromRef", type: "RefObject<HTMLElement>", description: "起点节点。" },
       { name: "toRef", type: "RefObject<HTMLElement>", description: "终点节点。" },
-      { name: "curvature", type: "number", defaultValue: "0", description: "曲线拱起。" },
+      { name: "curvature", type: "number", defaultValue: "0", description: "曲线拱起。", control: { kind: "range", value: 40, min: 0, max: 80, step: 1 } },
+      { name: "reverse", type: "boolean", defaultValue: "false", description: "反向流动。" },
+      { name: "duration", type: "number", defaultValue: "5", description: "光束周期（秒）。", control: { kind: "range", value: 5, min: 2, max: 10, step: 0.5 } },
+      { name: "delay", type: "number", defaultValue: "0", description: "光束延迟（秒）。", control: { kind: "range", value: 0, min: 0, max: 3, step: 0.1 } },
+      { name: "pathColor", type: "string", defaultValue: '"gray"', description: "路径颜色。" },
+      { name: "pathWidth", type: "number", defaultValue: "2", description: "线宽。", control: { kind: "range", value: 2, min: 1, max: 6, step: 1 } },
+      { name: "pathOpacity", type: "number", defaultValue: "0.2", description: "路径透明度。" },
+      { name: "gradientStartColor", type: "string", defaultValue: '"#ffaa40"', description: "渐变起点颜色。" },
+      { name: "gradientStopColor", type: "string", defaultValue: '"#9c40ff"', description: "渐变终点颜色。" },
+      { name: "startXOffset", type: "number", defaultValue: "0", description: "起点水平偏移。" },
+      { name: "startYOffset", type: "number", defaultValue: "0", description: "起点垂直偏移。" },
+      { name: "endXOffset", type: "number", defaultValue: "0", description: "终点水平偏移。" },
+      { name: "endYOffset", type: "number", defaultValue: "0", description: "终点垂直偏移。" },
+    ],
+    presets: [
+      { name: "animated-beam-slow", label: "慢", values: { duration: 8, delay: 0.4, pathWidth: 2 } },
+      { name: "animated-beam-default", label: "默认", values: { duration: 5, delay: 0, pathWidth: 2 } },
+      { name: "animated-beam-fast", label: "快", values: { duration: 3, delay: 0, pathWidth: 4 } },
     ],
   },
   {
@@ -34,7 +52,26 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/morphing-dialog.tsx",
     target: "components/ui/morphing-dialog.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "弹簧时长（毫秒）。450 与不传相同，仍是 0.45 秒。",
+        control: { kind: "range", value: 450, min: 180, max: 900, step: 10 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "弹簧回弹。0.15 与不传相同。",
+        control: { kind: "range", value: 0.15, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "morphing-dialog-soft", label: "柔", values: { duration: 700, intensity: 0 } },
+      { name: "morphing-dialog-default", label: "默认", values: { duration: 450, intensity: 0.15 } },
+      { name: "morphing-dialog-snappy", label: "弹", values: { duration: 280, intensity: 0.4 } },
+    ],
   },
   {
     name: "image-comparison",
@@ -45,7 +82,32 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/image-comparison.tsx",
     target: "components/ui/image-comparison.tsx",
-    props: [{ name: "enableHover", type: "boolean", defaultValue: "false", description: "悬停即可滑动。" }],
+    props: [
+      {
+        name: "enableHover",
+        type: "boolean",
+        defaultValue: "false",
+        description: "悬停即可滑动。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "滑块颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "滑块厚度（像素）。2 与不传相同。",
+        control: { kind: "range", value: 2, min: 1, max: 12, step: 1 },
+      },
+    ],
+    presets: [
+      { name: "image-comparison-drag", label: "拖动", values: { enableHover: false, color: "#ffffff", size: 2 } },
+      { name: "image-comparison-hover", label: "悬停", values: { enableHover: true, color: "#ffffff", size: 2 } },
+      { name: "image-comparison-bold", label: "粗", values: { enableHover: true, color: "#f59e0b", size: 6 } },
+    ],
   },
   {
     name: "progressive-blur",
@@ -57,8 +119,39 @@ export const batch3Components: ComponentMeta[] = [
     file: "effects/progressive-blur.tsx",
     target: "components/ui/progressive-blur.tsx",
     props: [
-      { name: "direction", type: '"top" | "right" | "bottom" | "left"', defaultValue: '"bottom"', description: "模糊方向。" },
-      { name: "blurLayers", type: "number", defaultValue: "8", description: "层数。" },
+      {
+        name: "direction",
+        type: '"top" | "right" | "bottom" | "left"',
+        defaultValue: '"bottom"',
+        description: "模糊方向。",
+        vocabularyExemption: "历史取值是 top/right/bottom/left，不是词汇表的 left/right/up/down。",
+        control: { kind: "select", value: "bottom", options: ["top", "right", "bottom", "left"] },
+      },
+      {
+        name: "blurLayers",
+        type: "number",
+        defaultValue: "8",
+        description: "层数。",
+        control: { kind: "range", value: 8, min: 2, max: 16, step: 1 },
+      },
+      {
+        name: "blurIntensity",
+        type: "number",
+        defaultValue: "0.25",
+        description: "每层模糊像素。不是词汇表的 intensity。",
+        control: { kind: "range", value: 0.25, min: 0, max: 2, step: 0.05 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "在 blurIntensity 上的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "progressive-blur-bottom", label: "底部", values: { direction: "bottom", blurLayers: 8, blurIntensity: 0.25, intensity: 1 } },
+      { name: "progressive-blur-top", label: "顶部", values: { direction: "top", blurLayers: 6, blurIntensity: 0.4, intensity: 1 } },
+      { name: "progressive-blur-soft", label: "轻", values: { direction: "bottom", blurLayers: 8, blurIntensity: 0.25, intensity: 0.5 } },
     ],
   },
   {
@@ -70,7 +163,32 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-progress.tsx",
     target: "components/ui/scroll-progress.tsx",
-    props: [{ name: "containerRef", type: "RefObject<HTMLElement>", description: "可选滚动容器。" }],
+    props: [
+      { name: "containerRef", type: "RefObject<HTMLElement>", description: "可选滚动容器。" },
+      {
+        name: "size",
+        type: "number",
+        description: "进度条高度（像素）。4 与不传相同，沿用 h-1。",
+        control: { kind: "range", value: 4, min: 1, max: 16, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "进度条颜色。不传或传 #8b5cf6 都沿用紫到琥珀的渐变。",
+        control: { kind: "color", value: "#8b5cf6" },
+      },
+    ],
+    presets: [
+      { name: "scroll-progress-thin", label: "细", values: { size: 4, intensity: 1, color: "#8b5cf6" } },
+      { name: "scroll-progress-bold", label: "粗", values: { size: 8, intensity: 1, color: "#8b5cf6" } },
+      { name: "scroll-progress-flat", label: "纯色", values: { size: 4, intensity: 1, color: "#f59e0b" } },
+    ],
   },
   {
     name: "scroll-velocity",
@@ -82,8 +200,38 @@ export const batch3Components: ComponentMeta[] = [
     file: "effects/scroll-velocity.tsx",
     target: "components/ui/scroll-velocity.tsx",
     props: [
-      { name: "baseVelocity", type: "number", defaultValue: "5", description: "基础速度。" },
-      { name: "direction", type: "1 | -1", defaultValue: "1", description: "方向。" },
+      {
+        name: "baseVelocity",
+        type: "number",
+        defaultValue: "5",
+        description: "基础速度。",
+        control: { kind: "range", value: 5, min: 0, max: 20, step: 1 },
+      },
+      {
+        name: "direction",
+        type: "1 | -1",
+        defaultValue: "1",
+        description: "方向。1 向一侧，-1 向另一侧。",
+        vocabularyExemption: "历史取值是 1 或 -1，不是 left/right/up/down。",
+        control: { kind: "range", value: 1, min: -1, max: 1, step: 2 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "基础速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "滚动速度对位移的影响。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "scroll-velocity-forward", label: "正向", values: { baseVelocity: 5, direction: 1, speed: 1, intensity: 1 } },
+      { name: "scroll-velocity-reverse", label: "反向", values: { baseVelocity: 5, direction: -1, speed: 1, intensity: 1 } },
+      { name: "scroll-velocity-fast", label: "加快", values: { baseVelocity: 8, direction: 1, speed: 1.6, intensity: 1 } },
     ],
   },
   {
@@ -96,8 +244,37 @@ export const batch3Components: ComponentMeta[] = [
     file: "effects/stacking-cards.tsx",
     target: "components/ui/stacking-cards.tsx",
     props: [
-      { name: "totalCards", type: "number", description: "卡片总数。" },
-      { name: "scaleMultiplier", type: "number", defaultValue: "0.03", description: "叠放缩放。" },
+      { name: "totalCards", type: "number", description: "卡片总数。需与子项数量一致，文档预览不提供控件。" },
+      {
+        name: "scaleMultiplier",
+        type: "number",
+        defaultValue: "0.03",
+        description: "叠放缩放。",
+        control: { kind: "range", value: 0.03, min: 0, max: 0.12, step: 0.01 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "叠放缩放的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "粘性顶距的步进（像素）。12 与不传相同。",
+        control: { kind: "range", value: 12, min: 0, max: 48, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动进度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "stacking-default", label: "默认", values: { scaleMultiplier: 0.03, intensity: 1, gap: 12, speed: 1 } },
+      { name: "stacking-tight", label: "紧", values: { scaleMultiplier: 0.06, intensity: 1, gap: 4, speed: 1 } },
+      { name: "stacking-flat", label: "平", values: { scaleMultiplier: 0.03, intensity: 0.4, gap: 20, speed: 1 } },
     ],
   },
   {
@@ -109,7 +286,22 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dynamic-island.tsx",
     target: "components/ui/dynamic-island.tsx",
-    props: [{ name: "size", type: '"compact" | "idle" | "expanded" | "tall"', defaultValue: '"idle"', description: "尺寸预设。" }],
+    props: [
+      {
+        name: "size",
+        type: '"compact" | "idle" | "expanded" | "tall"',
+        defaultValue: '"idle"',
+        description: "尺寸预设。",
+        vocabularyExemption: "历史取值是 compact/idle/expanded/tall，不是像素。",
+      },
+      { name: "duration", type: "number", description: "内容淡入毫秒。180 与不传相同，仍是 0.18 秒。减弱动效时仍是 0.15 秒。", control: { kind: "range", value: 180, min: 80, max: 360, step: 10 } },
+      { name: "intensity", type: "number", description: "模糊倍率。1 与不传相同，仍是 6 像素。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "dynamic-island-slow", label: "慢", values: { duration: 280, intensity: 0.5 } },
+      { name: "dynamic-island-default", label: "默认", values: { duration: 180, intensity: 1 } },
+      { name: "dynamic-island-fast", label: "快", values: { duration: 100, intensity: 1 } },
+    ],
   },
   {
     name: "variable-font-proximity",
@@ -127,6 +319,9 @@ export const batch3Components: ComponentMeta[] = [
         description: "文本。",
         control: { kind: "text", value: "Move closer" },
       },
+      { name: "fromFontVariationSettings", type: "string", description: "起始字变设置。" },
+      { name: "toFontVariationSettings", type: "string", description: "目标字变设置。" },
+      { name: "containerRef", type: "RefObject<HTMLElement | null>", description: "感应容器。" },
       {
         name: "radius",
         type: "number",
@@ -141,7 +336,13 @@ export const batch3Components: ComponentMeta[] = [
         description: "衰减曲线。",
         control: { kind: "select", value: "linear", options: ["linear", "exponential", "gaussian"] },
       },
+      ...textControls({ fontSize: 36, align: "center", skipWeight: true }),
     ],
+    presets: textPresets("variable-font", "label", [
+      { label: "靠近", content: "Move closer", fontSize: 36, align: "center", extra: { radius: 90, falloff: "linear" } },
+      { label: "宽感应", content: "Weight", fontSize: 64, align: "center", extra: { radius: 180, falloff: "gaussian" } },
+      { label: "窄感应", content: "Aa", fontSize: 48, align: "left", extra: { radius: 40, falloff: "exponential" } },
+    ]),
   },
   {
     name: "dropzone",
@@ -277,6 +478,7 @@ export const batch3Components: ComponentMeta[] = [
       { name: "onValueChange", type: "(value: string[]) => void", description: "组的值变化，顺序与 options 一致。" },
       { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用整组，或通过选项上的 disabled 禁用单个。" },
       { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "组的排列方向。" },
+      { name: "ref", type: "React.Ref<HTMLButtonElement>", description: "组里第一个复选框按钮的 ref。" },
     ],
   },
   {
@@ -296,6 +498,7 @@ export const batch3Components: ComponentMeta[] = [
       { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用整组，或通过选项上的 disabled 禁用单个。" },
       { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "排列方向。方向键沿这个方向移动。" },
       { name: "optionType", type: '"default" | "button"', defaultValue: '"default"', description: "button 渲染成分段按钮，仍然是 radio。" },
+      { name: "ref", type: "React.Ref<HTMLButtonElement>", description: "组里第一个单选按钮的 ref。" },
     ],
   },
   {

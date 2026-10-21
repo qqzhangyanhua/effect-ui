@@ -9,6 +9,13 @@ export type MaskPreset = "circle" | "blob" | "stripes" | "text"
 
 export interface SvgMaskScrollTransitionProps {
   className?: string
+  intensity?: number
+  speed?: number
+  count?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const PRESETS: readonly { id: MaskPreset; label: string }[] = [
@@ -18,12 +25,15 @@ const PRESETS: readonly { id: MaskPreset; label: string }[] = [
   { id: "text", label: "文字" },
 ]
 
-function SvgMaskScrollTransition({ className }: SvgMaskScrollTransitionProps) {
+function SvgMaskScrollTransition({ className, intensity, speed, count }: SvgMaskScrollTransitionProps) {
   const reduced = usePrefersReducedMotion()
   const reactId = React.useId().replace(/:/g, "")
   const maskId = `effect-ui-mask-${reactId}`
   const [progress, setProgress] = React.useState(reduced ? 1 : 0)
   const [preset, setPreset] = React.useState<MaskPreset>("circle")
+  const rate = pace(speed)
+  const gain = intensity === undefined || intensity === 1 ? 1 : intensity
+  const stripes = count === undefined || count === 7 ? 7 : Math.max(1, Math.round(count))
 
   const onScroll = (event: React.UIEvent<HTMLDivElement>) => {
     if (reduced) return
@@ -33,7 +43,8 @@ function SvgMaskScrollTransition({ className }: SvgMaskScrollTransitionProps) {
     setProgress(next)
   }
 
-  const amount = reduced ? 1 : progress
+  const shaped = rate === 1 ? progress : Math.min(1, Math.pow(Math.max(progress, 0), rate))
+  const amount = reduced ? 1 : shaped
 
   return (
     <div data-slot="svg-mask-scroll-transition" className={cn("w-full space-y-3", className)}>
@@ -71,22 +82,22 @@ function SvgMaskScrollTransition({ className }: SvgMaskScrollTransitionProps) {
             <svg className="pointer-events-none absolute h-0 w-0" aria-hidden>
               <mask id={maskId} maskContentUnits="objectBoundingBox">
                 {preset === "circle" ? (
-                  <circle cx="0.5" cy="0.5" r={0.04 + amount * 0.72} fill="white" />
+                  <circle cx="0.5" cy="0.5" r={gain === 1 ? 0.04 + amount * 0.72 : 0.04 + amount * 0.72 * gain} fill="white" />
                 ) : null}
                 {preset === "blob" ? (
                   <>
-                    <ellipse cx="0.46" cy="0.48" rx={0.08 + amount * 0.42} ry={0.06 + amount * 0.34} fill="white" />
-                    <ellipse cx="0.62" cy="0.58" rx={0.05 + amount * 0.24} ry={0.08 + amount * 0.22} fill="white" />
+                    <ellipse cx="0.46" cy="0.48" rx={gain === 1 ? 0.08 + amount * 0.42 : 0.08 + amount * 0.42 * gain} ry={gain === 1 ? 0.06 + amount * 0.34 : 0.06 + amount * 0.34 * gain} fill="white" />
+                    <ellipse cx="0.62" cy="0.58" rx={gain === 1 ? 0.05 + amount * 0.24 : 0.05 + amount * 0.24 * gain} ry={gain === 1 ? 0.08 + amount * 0.22 : 0.08 + amount * 0.22 * gain} fill="white" />
                   </>
                 ) : null}
                 {preset === "stripes"
-                  ? Array.from({ length: 7 }, (_, index) => (
+                  ? Array.from({ length: stripes }, (_, index) => (
                       <rect
                         key={index}
-                        x={index / 7 + 0.008}
-                        y={1 - amount}
-                        width={1 / 7 - 0.016}
-                        height={amount}
+                        x={index / stripes + 0.008}
+                        y={1 - (gain === 1 ? amount : amount * gain)}
+                        width={1 / stripes - 0.016}
+                        height={gain === 1 ? amount : amount * gain}
                         fill="white"
                       />
                     ))
@@ -97,7 +108,7 @@ function SvgMaskScrollTransition({ className }: SvgMaskScrollTransitionProps) {
                     y="0.58"
                     textAnchor="middle"
                     fill="white"
-                    fontSize={0.05 + amount * 0.42}
+                    fontSize={gain === 1 ? 0.05 + amount * 0.42 : 0.05 + amount * 0.42 * gain}
                     fontFamily="sans-serif"
                   >
                     OPEN

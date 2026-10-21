@@ -2,12 +2,15 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface GpgpuParticlesProps {
   className?: string
   count?: number
   text?: string
+  speed?: number
+  size?: number
 }
 
 const SIM = `
@@ -94,15 +97,34 @@ function useReducedMotion() {
   )
 }
 
-function GpgpuParticles({ className, count = 1400, text = "effect-ui" }: GpgpuParticlesProps) {
+function playbackRate(speed: number) {
+  return Number.isFinite(speed) && speed > 0 ? speed : 1
+}
+
+function GpgpuParticles({
+  className,
+  count = 1400,
+  text = "effect-ui",
+  speed = 1,
+  size = 2.4,
+}: GpgpuParticlesProps) {
+  const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(hostRef)
   const reduced = useReducedMotion()
   const [fallback, setFallback] = React.useState(false)
   const mouse = React.useRef({ x: 0, y: 0 })
+  const speedRef = React.useRef(playbackRate(speed))
+  const sizeRef = React.useRef(size)
+
+  React.useEffect(() => {
+    speedRef.current = playbackRate(speed)
+    sizeRef.current = size
+  }, [speed, size])
 
   React.useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas || reduced) return
+    if (!canvas || reduced || !active) return
 
     let cancelled = false
     let frame = 0
@@ -110,7 +132,7 @@ function GpgpuParticles({ className, count = 1400, text = "effect-ui" }: GpgpuPa
     const run = async () => {
       const ogl = await import("ogl")
       if (!canvas || cancelled) return
-      const renderer = new ogl.Renderer({ canvas, alpha: true, dpr: Math.min(window.devicePixelRatio || 1, 1.25) })
+      const renderer = new ogl.Renderer({ canvas, alpha: true, dpr: Math.min(window.devicePixelRatio || 1, 2) })
       const gl = renderer.gl
       const targets = textTargets(text, count)
       const data = new Float32Array(count * 4)
@@ -133,10 +155,14 @@ function GpgpuParticles({ className, count = 1400, text = "effect-ui" }: GpgpuPa
         position: { size: 2, data: new Float32Array(count * 2) },
         uv: { size: 2, data: gpgpu.coords },
       })
+      const pointUniforms = {
+        tMap: gpgpu.uniform,
+        uSize: { value: 2.4 },
+      }
       const program = new ogl.Program(gl, {
         vertex: VERT,
         fragment: FRAG,
-        uniforms: { tMap: gpgpu.uniform, uSize: { value: 2.4 } },
+        uniforms: pointUniforms,
         transparent: true,
         depthTest: false,
       })
@@ -150,7 +176,8 @@ function GpgpuParticles({ className, count = 1400, text = "effect-ui" }: GpgpuPa
 
       let time = 0
       const tick = () => {
-        time += 0.016
+        time += 0.016 * speedRef.current
+        pointUniforms.uSize.value = sizeRef.current
         const pass = gpgpu.passes[0]
         if (pass) {
           pass.uniforms.uTime.value = time
@@ -176,10 +203,11 @@ function GpgpuParticles({ className, count = 1400, text = "effect-ui" }: GpgpuPa
       cancelled = true
       void cleanup.then((fn) => fn?.())
     }
-  }, [count, reduced, text])
+  }, [active, count, reduced, text])
 
   return (
     <div
+      ref={hostRef}
       className={cn("relative min-h-56 overflow-hidden rounded-xl border bg-zinc-950", className)}
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect()

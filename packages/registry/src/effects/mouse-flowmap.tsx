@@ -2,11 +2,19 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface MouseFlowmapProps {
   className?: string
   image?: string
+  intensity?: number
+  speed?: number
+  scale?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const SAMPLE =
@@ -48,11 +56,28 @@ function useReducedMotion() {
   )
 }
 
-function MouseFlowmap({ className, image = SAMPLE }: MouseFlowmapProps) {
+function MouseFlowmap({ className, image = SAMPLE, intensity, speed, scale }: MouseFlowmapProps) {
+  const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const reduced = useReducedMotion()
   const [fallback, setFallback] = React.useState(false)
   const pointer = React.useRef({ x: 0.5, y: 0.5 })
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
+  const speedRef = React.useRef(pace(speed))
+  const scaleRef = React.useRef(scale)
+  const falloff = intensity === undefined ? 0.28 : intensity
+
+  React.useEffect(() => {
+    speedRef.current = pace(speed)
+    scaleRef.current = scale
+  }, [speed, scale])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   React.useEffect(() => {
     const canvas = canvasRef.current
@@ -74,7 +99,7 @@ function MouseFlowmap({ className, image = SAMPLE }: MouseFlowmapProps) {
       const camera = new ogl.Camera(gl, { fov: 35 })
       camera.position.z = 2
       const scene = new ogl.Transform()
-      const flowmap = new ogl.Flowmap(gl, { falloff: 0.28, dissipation: 0.96 })
+      const flowmap = new ogl.Flowmap(gl, { falloff, dissipation: 0.96 })
       const texture = new ogl.Texture(gl)
       const img = new Image()
       img.crossOrigin = "anonymous"
@@ -103,19 +128,29 @@ function MouseFlowmap({ className, image = SAMPLE }: MouseFlowmapProps) {
       resize()
 
       const tick = () => {
+        if (!activeRef.current) {
+          frame = 0
+          return
+        }
         const dx = pointer.current.x - last.x
         const dy = pointer.current.y - last.y
         last.x = pointer.current.x
         last.y = pointer.current.y
+        const rate = speedRef.current
+        const follow = 0.35 * (scaleRef.current === undefined || scaleRef.current === 1 ? 1 : scaleRef.current)
         flowmap.mouse.set(pointer.current.x, 1 - pointer.current.y)
-        flowmap.velocity.lerp(new ogl.Vec2(dx * 12, dy * 12), 0.35)
+        flowmap.velocity.lerp(new ogl.Vec2(dx * 12 * rate, dy * 12 * rate), follow)
         flowmap.update()
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       window.addEventListener("resize", resize)
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         window.removeEventListener("resize", resize)
       }
@@ -126,12 +161,15 @@ function MouseFlowmap({ className, image = SAMPLE }: MouseFlowmapProps) {
     })
     return () => {
       cancelled = true
+      kickRef.current = null
       void cleanup.then((fn) => fn?.())
     }
-  }, [image, reduced])
+  }, [image, reduced, falloff])
 
   return (
     <div
+      ref={hostRef}
+      data-slot="mouse-flowmap"
       className={cn("relative min-h-52 overflow-hidden rounded-xl border bg-zinc-950", className)}
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect()

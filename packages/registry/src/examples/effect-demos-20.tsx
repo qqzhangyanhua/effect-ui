@@ -1,100 +1,103 @@
 "use client"
 
-import { ApiKeyManager } from "../effects/api-key-manager"
-import { CardBeamScanner } from "../effects/card-beam-scanner"
-import { HyperspaceText } from "../effects/hyperspace-text"
-import { LenticularCard } from "../effects/lenticular-card"
-import { RainPuddle } from "../effects/rain-puddle"
-import { RepetitionImageHover } from "../effects/repetition-image-hover"
-import { RubberBandDrag } from "../effects/rubber-band-drag"
-import { TeamMembersTable } from "../effects/team-members-table"
-import { TiledSwirlLoader } from "../effects/tiled-swirl-loader"
-import { UptimeBars } from "../effects/uptime-bars"
-import { UsageMeter } from "../effects/usage-meter"
-import { HelpCenterIndex } from "../sections/help-center-index"
-import { IntegrationsDirectory } from "../sections/integrations-directory"
-import { KeyholeScrollReveal } from "../sections/keyhole-scroll-reveal"
-import { StatusPage } from "../templates/status-page"
+import { BlurFade } from "../effects/blur-fade"
+import { FadeIn } from "../effects/fade-in"
+import { Parallax } from "../effects/parallax"
+import { SlideIn } from "../effects/slide-in"
+import { StaggerList } from "../effects/stagger-list"
 
-export function LenticularCardDemo() {
-  return <LenticularCard className="w-full" />
-}
-
-export function CardBeamScannerDemo() {
-  return <CardBeamScanner className="w-full" />
-}
-
-export function RepetitionImageHoverDemo() {
-  return <RepetitionImageHover className="w-full" />
-}
-
-export function HyperspaceTextDemo() {
-  return <HyperspaceText className="w-full" />
-}
-
-export function TiledSwirlLoaderDemo() {
-  return <TiledSwirlLoader />
-}
-
-export function RainPuddleDemo() {
-  return <RainPuddle className="w-full" />
-}
-
-export function KeyholeScrollRevealDemo() {
-  return <KeyholeScrollReveal className="w-full" />
-}
-
-export function RubberBandDragDemo() {
-  return <RubberBandDrag className="w-full" />
-}
-
-export function UptimeBarsDemo() {
-  return <UptimeBars />
-}
-
-export function StatusPageDemo() {
-  return <StatusPage />
-}
-
-export function IntegrationsDirectoryDemo() {
-  return <IntegrationsDirectory />
-}
-
-export function ApiKeyManagerDemo() {
+export function FadeInDemo({
+  delay = 0,
+  once = true,
+  speed,
+  intensity,
+}: {
+  delay?: number
+  once?: boolean
+  speed?: number
+  intensity?: number
+} = {}) {
   return (
-    <ApiKeyManager
-      keys={[
-        {
-          id: "north",
-          name: "北窗",
-          masked: "sk_live_••••91",
-          scopes: ["读取"],
-          lastUsed: "2026-10-20",
-          createdAt: "2026-09-01",
-        },
-      ]}
-      onCreate={async (input) => ({
-        id: `key-${input.name}`,
-        name: input.name,
-        masked: "sk_live_••••91",
-        secret: "sk_live_north_91",
-        scopes: input.scopes,
-        lastUsed: "从未",
-        createdAt: "2026-10-21",
-      })}
-      onRevoke={async () => {}}
-    />
+    <FadeIn className="rounded-xl border bg-card p-6" delay={delay} once={once} speed={speed} intensity={intensity}>
+      滚动到这里时淡入
+    </FadeIn>
   )
 }
 
-export function UsageMeterDemo() {
-  return <UsageMeter />
+export function SlideInDemo({
+  from = "bottom",
+  delay = 0,
+  speed,
+  intensity,
+}: {
+  from?: "left" | "right" | "top" | "bottom"
+  delay?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return (
+    <SlideIn from={from} delay={delay} speed={speed} intensity={intensity} className="rounded-xl border bg-card p-4">
+      滑入
+    </SlideIn>
+  )
 }
 
-export function TeamMembersTableDemo() {
-  return <TeamMembersTable />
+export function StaggerListDemo({
+  delay = 0,
+  speed,
+  intensity,
+  gap,
+}: {
+  delay?: number
+  speed?: number
+  intensity?: number
+  gap?: number
+} = {}) {
+  return (
+    <StaggerList className="w-full max-w-sm" delay={delay} speed={speed} intensity={intensity} gap={gap}>
+      <div className="rounded-lg border bg-card px-3 py-2">第一项</div>
+      <div className="rounded-lg border bg-card px-3 py-2">第二项</div>
+      <div className="rounded-lg border bg-card px-3 py-2">第三项</div>
+    </StaggerList>
+  )
 }
 
-export function HelpCenterIndexDemo() {
-  return <HelpCenterIndex />
+export function ParallaxDemo({
+  offset = 40,
+  speed,
+  intensity,
+  scale,
+}: {
+  offset?: number
+  speed?: number
+  intensity?: number
+  scale?: number
+} = {}) {
+  return (
+    <div className="h-40 w-full overflow-auto rounded-xl border">
+      <div className="flex h-80 items-center justify-center bg-muted/40">
+        <Parallax offset={offset} speed={speed} intensity={intensity} scale={scale}>
+          <p className="text-lg font-medium">滚动这块区域看视差</p>
+        </Parallax>
+      </div>
+    </div>
+  )
+}
+
+export function BlurFadeDemo({
+  delay = 0,
+  blur = 8,
+  speed,
+  intensity,
+}: {
+  delay?: number
+  blur?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return (
+    <BlurFade className="rounded-xl border bg-card p-6" delay={delay} blur={blur} speed={speed} intensity={intensity}>
+      从模糊到清晰
+    </BlurFade>
+  )
 }

@@ -15,9 +15,10 @@ import {
 } from "@effect-ui/registry/ui/select"
 import { Slider } from "@effect-ui/registry/ui/slider"
 import { Switch } from "@effect-ui/registry/ui/switch"
-import type { ControlDef } from "@effect-ui/registry/catalog"
+import type { ControlDef, ControlPreset } from "@effect-ui/registry/catalog"
 
 import {
+  controlsAreGrouped,
   definedProps,
   formatNumber,
   formatSnippet,
@@ -38,15 +39,18 @@ function ControlledPreview({
   Demo,
   componentName,
   controls,
+  presets,
 }: {
   Demo: ComponentType
   componentName: string
   controls: readonly ControlField[]
+  presets?: readonly ControlPreset[]
 }) {
   const initial = startValues(controls)
   const [draft, setDraft] = useState(initial)
   const [applied, setApplied] = useState(initial)
   const [copied, setCopied] = useState(false)
+  const [activePreset, setActivePreset] = useState<string | undefined>(undefined)
   const draftRef = useRef(draft)
   const concreteRef = useRef(initialConcrete(controls))
   const timer = useRef(0)
@@ -71,7 +75,17 @@ function ControlledPreview({
     if (field.control.kind === "color" || field.control.kind === "colors") {
       concreteRef.current = { ...concreteRef.current, [field.name]: value }
     }
+    setActivePreset(undefined)
     publish({ ...draftRef.current, [field.name]: value }, !slowKinds.has(field.control.kind))
+  }
+
+  const applyPreset = (preset: ControlPreset) => {
+    const next = { ...draftRef.current }
+    for (const [key, value] of Object.entries(preset.values)) {
+      next[key] = Array.isArray(value) ? [...value] : value
+    }
+    setActivePreset(preset.name)
+    publish(next, true)
   }
 
   const toggleFollow = (field: ControlField, follow: boolean) => {
@@ -86,6 +100,7 @@ function ControlledPreview({
     setDraft(initial)
     setApplied(initial)
     setCopied(false)
+    setActivePreset(undefined)
   }
 
   const copy = () => {
@@ -100,7 +115,7 @@ function ControlledPreview({
   }
 
   const snippet = formatSnippet(componentName, controls, draft)
-  const grouped = controls.length > 6
+  const grouped = controlsAreGrouped(controls)
 
   return (
     <div className="@container">
@@ -112,6 +127,22 @@ function ControlledPreview({
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-sm font-medium">属性</h2>
             <div className="flex flex-wrap gap-2">
+              {presets && presets.length > 0 ? (
+                <div className="flex flex-wrap gap-2" role="group" aria-label="预设">
+                  {presets.map((preset) => (
+                    <Button
+                      key={preset.name}
+                      type="button"
+                      size="sm"
+                      variant={activePreset === preset.name ? "default" : "outline"}
+                      aria-pressed={activePreset === preset.name}
+                      onClick={() => applyPreset(preset)}
+                    >
+                      {preset.label}
+                    </Button>
+                  ))}
+                </div>
+              ) : null}
               <Button type="button" variant="outline" size="sm" onClick={reset}>
                 重置
               </Button>

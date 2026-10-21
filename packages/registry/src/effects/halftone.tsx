@@ -6,10 +6,21 @@ import { cn } from "@/lib/utils"
 
 export interface HalftoneProps {
   gap?: number
+  color?: string
+  intensity?: number
+  size?: number
   className?: string
 }
 
-function Halftone({ gap = 14, className }: HalftoneProps) {
+function halftoneFill(color: string | undefined, intensity: number) {
+  if (color === undefined && intensity === 0.55) {
+    return "color-mix(in oklab, var(--foreground) 55%, transparent)"
+  }
+  const percent = Math.round(intensity * 100)
+  return `color-mix(in oklab, ${color ?? "var(--foreground)"} ${percent}%, transparent)`
+}
+
+function Halftone({ gap = 14, color, intensity = 0.55, size = 180, className }: HalftoneProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const mouse = React.useRef({ x: 0.5, y: 0.5 })
 
@@ -21,7 +32,7 @@ function Halftone({ gap = 14, className }: HalftoneProps) {
 
     const paint = () => {
       const { width, height } = canvas.getBoundingClientRect()
-      const dpr = window.devicePixelRatio || 1
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
       canvas.width = width * dpr
       canvas.height = height * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
@@ -31,9 +42,9 @@ function Halftone({ gap = 14, className }: HalftoneProps) {
       for (let y = gap / 2; y < height; y += gap) {
         for (let x = gap / 2; x < width; x += gap) {
           const dist = Math.hypot(x - mx, y - my)
-          const radius = Math.max(1.1, (1 - Math.min(dist / 180, 1)) * (gap * 0.42) + 1.2)
+          const radius = Math.max(1.1, (1 - Math.min(dist / size, 1)) * (gap * 0.42) + 1.2)
           ctx.beginPath()
-          ctx.fillStyle = "color-mix(in oklab, var(--foreground) 55%, transparent)"
+          ctx.fillStyle = halftoneFill(color, intensity)
           ctx.arc(x, y, radius, 0, Math.PI * 2)
           ctx.fill()
         }
@@ -55,7 +66,7 @@ function Halftone({ gap = 14, className }: HalftoneProps) {
       window.removeEventListener("resize", paint)
       canvas.removeEventListener("mousemove", onMove)
     }
-  }, [gap])
+  }, [color, gap, intensity, size])
 
   return <canvas ref={canvasRef} className={cn("size-full min-h-48 rounded-xl border bg-background", className)} />
 }

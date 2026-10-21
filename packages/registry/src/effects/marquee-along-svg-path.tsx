@@ -4,6 +4,7 @@ import { useAnimationFrame, useMotionValue, useTransform } from "motion/react"
 import { motion } from "motion/react"
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface MarqueeAlongSvgPathProps {
@@ -63,7 +64,16 @@ function MarqueeAlongSvgPath({
   repeat = 2,
   children,
 }: MarqueeAlongSvgPathProps) {
+  const hostRef = React.useRef<HTMLDivElement>(null)
+  const active = useAnimationActive(hostRef)
   const baseOffset = useMotionValue(0)
+  const velocityRef = React.useRef(baseVelocity)
+  const activeRef = React.useRef(false)
+
+  React.useEffect(() => {
+    velocityRef.current = baseVelocity
+    activeRef.current = active
+  }, [active, baseVelocity])
   const items = React.useMemo(() => {
     const childrenArray = React.Children.toArray(children)
     return childrenArray.flatMap((child, childIndex) =>
@@ -77,12 +87,13 @@ function MarqueeAlongSvgPath({
   }, [children, repeat])
 
   useAnimationFrame((_, delta) => {
+    if (!activeRef.current) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    baseOffset.set(baseOffset.get() + (delta / 1000) * baseVelocity)
+    baseOffset.set(baseOffset.get() + (delta / 1000) * velocityRef.current)
   })
 
   return (
-    <div className={cn("relative min-h-40 overflow-hidden", className)}>
+    <div ref={hostRef} className={cn("relative min-h-40 overflow-hidden", className)}>
       <svg viewBox={viewBox} className="absolute inset-0 size-full">
         {showPath ? <path d={path} fill="none" stroke="currentColor" strokeOpacity="0.2" /> : null}
       </svg>

@@ -14,6 +14,7 @@ export interface FamilyStep {
 export interface FamilyDrawerProps {
   steps?: FamilyStep[]
   className?: string
+  intensity?: number
 }
 
 const defaultSteps: FamilyStep[] = [
@@ -22,11 +23,12 @@ const defaultSteps: FamilyStep[] = [
   { title: "确认", body: "共享组件和主题。" },
 ]
 
-function FamilyDrawer({ steps = defaultSteps, className }: FamilyDrawerProps) {
+function FamilyDrawer({ steps = defaultSteps, className, intensity }: FamilyDrawerProps) {
   const reduced = usePrefersReducedMotion()
   const [open, setOpen] = React.useState(false)
   const [step, setStep] = React.useState(0)
   const current = steps[step]
+  const lift = intensity === undefined || intensity === 1 ? 8 : 8 * intensity
 
   return (
     <motion.div
@@ -46,9 +48,9 @@ function FamilyDrawer({ steps = defaultSteps, className }: FamilyDrawerProps) {
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current.title}
-              initial={reduced ? false : { opacity: 0, y: 8 }}
+              initial={reduced ? false : { opacity: 0, y: lift }}
               animate={{ opacity: 1, y: 0 }}
-              exit={reduced ? { opacity: 1 } : { opacity: 0, y: -8 }}
+              exit={reduced ? { opacity: 1 } : { opacity: 0, y: lift === 8 ? -8 : -lift }}
             >
               <h3 className="font-display text-2xl">{current.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{current.body}</p>

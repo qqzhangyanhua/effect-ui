@@ -12,6 +12,10 @@ export interface PetalDissolveTextProps {
   color?: string
   trigger?: "view" | "hover" | "manual"
   className?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 interface Particle {
@@ -20,7 +24,14 @@ interface Particle {
   noise: number
 }
 
-function sampleText(text: string, color: string) {
+function sampleText(
+  text: string,
+  color: string,
+  fontSize: number | undefined,
+  fontWeight: number | undefined,
+  letterSpacing: number | undefined,
+  align: "left" | "center" | "right" | undefined,
+) {
   const width = 640
   const height = 180
   const offscreen = document.createElement("canvas")
@@ -31,9 +42,12 @@ function sampleText(text: string, color: string) {
   if (!context) return { width, height, particles }
   context.clearRect(0, 0, width, height)
   context.fillStyle = color
-  context.font = "72px sans-serif"
+  context.font = `${fontWeight === undefined ? "" : `${fontWeight} `}${fontSize ?? 72}px sans-serif`
+  if (letterSpacing !== undefined) context.letterSpacing = `${letterSpacing}em`
   context.textBaseline = "middle"
-  context.fillText(text, 24, height / 2)
+  context.textAlign = align === "center" ? "center" : align === "right" ? "right" : "left"
+  const x = align === "center" ? width / 2 : align === "right" ? width - 24 : 24
+  context.fillText(text, x, height / 2)
   const pixels = context.getImageData(0, 0, width, height).data
   for (let y = 0; y < height; y += 3) {
     for (let x = 0; x < width; x += 3) {
@@ -52,6 +66,10 @@ function PetalDissolveText({
   color = "#fb7185",
   trigger = "manual",
   className,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
 }: PetalDissolveTextProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
@@ -64,10 +82,10 @@ function PetalDissolveText({
   const [playing, setPlaying] = React.useState(direction === "reverse")
 
   React.useEffect(() => {
-    const sampled = sampleText(text, color)
+    const sampled = sampleText(text, color, fontSize, fontWeight, letterSpacing, align)
     particlesRef.current = sampled.particles
     sizeRef.current = { width: sampled.width, height: sampled.height }
-  }, [text, color])
+  }, [align, color, fontSize, fontWeight, letterSpacing, text])
 
   React.useEffect(() => {
     if (trigger !== "view") return

@@ -8,6 +8,12 @@ import { cn } from "@/lib/utils"
 
 export interface StickyGridScrollProps {
   className?: string
+  intensity?: number
+  speed?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const TILES = [
@@ -33,12 +39,18 @@ function Tile({ tile, hero = false }: { tile: (typeof TILES)[number]; hero?: boo
   )
 }
 
-function StickyGridScroll({ className }: StickyGridScrollProps) {
+function StickyGridScroll({ className, intensity, speed }: StickyGridScrollProps) {
   const reduced = usePrefersReducedMotion()
   const progress = useMotionValue(0)
-  const leftY = useTransform(progress, [0, 1], [24, -80])
-  const rightY = useTransform(progress, [0, 1], [-12, 64])
-  const scale = useTransform(progress, [0.12, 0.9], [1, 3.8])
+  const rate = pace(speed)
+  const shaped = useTransform(progress, (value) =>
+    rate === 1 ? value : Math.pow(Math.min(Math.max(value, 0), 1), rate),
+  )
+  const gain = intensity === undefined || intensity === 1 ? 1 : intensity
+  const leftY = useTransform(shaped, [0, 1], gain === 1 ? [24, -80] : [24 * gain, -80 * gain])
+  const rightY = useTransform(shaped, [0, 1], gain === 1 ? [-12, 64] : [-12 * gain, 64 * gain])
+  const endScale = gain === 1 ? 3.8 : 1 + (3.8 - 1) * gain
+  const scale = useTransform(shaped, [0.12, 0.9], [1, endScale])
 
   const onScroll = (event: React.UIEvent<HTMLDivElement>) => {
     const element = event.currentTarget

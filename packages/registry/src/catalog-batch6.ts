@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -33,7 +34,25 @@ export const batch6Components: ComponentMeta[] = [
         description: "每帧衰减。",
         control: { kind: "range", value: 0.975, min: 0.9, max: 0.995, step: 0.001 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "色相变化速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "喷溅颜色亮度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      { name: "color", type: "string", description: "固定喷溅颜色。不传则沿用色相循环。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "splash-fine", label: "细", values: { splatRadius: 0.006, fade: 0.99, speed: 0.6, intensity: 0.7 } },
+      { name: "splash-default", label: "默认", values: { splatRadius: 0.012, fade: 0.975, speed: 1, intensity: 1 } },
+      { name: "splash-wide", label: "铺开", values: { splatRadius: 0.028, fade: 0.94, speed: 1.6, intensity: 1 } },
     ],
   },
   {
@@ -67,6 +86,20 @@ export const batch6Components: ComponentMeta[] = [
         },
       },
       { name: "image", type: "string", description: "water / fluted-glass / liquid-metal 的贴图。" },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "动画速度倍率，1 保持库预设速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        defaultValue: "1",
+        description: "图案缩放，1 与库默认缩放一致。",
+        control: { kind: "range", value: 1, min: 0.6, max: 1.8, step: 0.1 },
+      },
       ...ui,
     ],
   },
@@ -80,10 +113,21 @@ export const batch6Components: ComponentMeta[] = [
     file: "effects/text-along-path.tsx",
     target: "components/ui/text-along-path.tsx",
     props: [
-      { name: "text", type: "string", description: "路径上的文字。" },
+      {
+        name: "text",
+        type: "string",
+        description: "路径上的文字。",
+        control: { kind: "text", value: "effect-ui · text along a curve · MIT" },
+      },
       { name: "path", type: "string", description: "SVG path d。" },
+      ...textControls({ fontSize: 14, fontWeight: 500, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("text-along-path", "text", [
+      { label: "沿路径", content: "effect-ui · text along a curve · MIT", fontSize: 14, fontWeight: 500, align: "left" },
+      { label: "居中", content: "沿弧线排开", fontSize: 18, fontWeight: 600, align: "center" },
+      { label: "贴右", content: "到此结束", fontSize: 16, fontWeight: 400, align: "right" },
+    ]),
   },
   {
     name: "scroll-typography",
@@ -95,10 +139,27 @@ export const batch6Components: ComponentMeta[] = [
     file: "effects/scroll-typography.tsx",
     target: "components/ui/scroll-typography.tsx",
     props: [
-      { name: "text", type: "string", description: "文案。" },
-      { name: "variant", type: '"clip" | "blur" | "scale" | "slide"', defaultValue: '"clip"', description: "揭示方式。" },
+      {
+        name: "text",
+        type: "string",
+        description: "文案。",
+        control: { kind: "text", value: "Scroll Type" },
+      },
+      {
+        name: "variant",
+        type: '"clip" | "blur" | "scale" | "slide"',
+        defaultValue: '"clip"',
+        description: "揭示方式。",
+        control: { kind: "select", value: "blur", options: ["clip", "blur", "scale", "slide"] },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("scroll-type", "text", [
+      { label: "模糊", content: "Scroll Type", fontSize: 36, fontWeight: 600, align: "center", extra: { variant: "blur" } },
+      { label: "裁切", content: "逐字揭开", fontSize: 48, fontWeight: 700, align: "center", extra: { variant: "clip" } },
+      { label: "滑入", content: "滚上来", fontSize: 28, fontWeight: 500, align: "left", extra: { variant: "slide" } },
+    ]),
   },
   {
     name: "3d-carousel",
@@ -109,7 +170,27 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/three-d-carousel.tsx",
     target: "components/ui/three-d-carousel.tsx",
-    props: [{ name: "items", type: "{ title: string; src: string }[]", description: "卡片。" }, ...ui],
+    props: [
+      { name: "items", type: "{ title: string; src: string }[]", description: "卡片。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "切换时长（毫秒）。500 与不传相同。",
+        control: { kind: "range", value: 500, min: 200, max: 1000, step: 50 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "环半径（像素）。180 与不传相同。",
+        control: { kind: "range", value: 180, min: 80, max: 280, step: 10 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "3d-carousel-near", label: "近", values: { duration: 500, size: 120 } },
+      { name: "3d-carousel-default", label: "默认", values: { duration: 500, size: 180 } },
+      { name: "3d-carousel-slow", label: "慢", values: { duration: 900, size: 220 } },
+    ],
   },
   {
     name: "siri-orb",
@@ -166,7 +247,26 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/lamp-heading.tsx",
     target: "components/ui/lamp-heading.tsx",
-    props: [{ name: "text", type: "string", description: "标题。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "标题。",
+        control: { kind: "text", value: "effect-ui" },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "灯罩颜色。不传或传 #c4b5fd 都是原来的紫色灯罩。",
+        control: { kind: "color", value: "#c4b5fd" },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 400, align: "center" }),
+      ...ui,
+    ],
+    presets: textPresets("lamp", "text", [
+      { label: "标题", content: "effect-ui", fontSize: 48, fontWeight: 600, align: "center" },
+      { label: "短句", content: "灯下的一句", fontSize: 28, fontWeight: 400, align: "center" },
+    ]),
   },
   {
     name: "tracing-beam",
@@ -177,7 +277,32 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tracing-beam.tsx",
     target: "components/ui/tracing-beam.tsx",
-    props: ui,
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧刚度倍率。1 与不传相同，刚度仍是 90。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "光束宽度（像素）。1 与不传相同，沿用 w-px。",
+        control: { kind: "range", value: 1, min: 1, max: 8, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "光束颜色。不传或传 #a78bfa 都沿用紫到青的渐变。",
+        control: { kind: "color", value: "#a78bfa" },
+      },
+      { name: "d", type: "string", description: "同文件路径组件的 SVG 路径数据。" },
+      ...ui,
+    ],
+    presets: [
+      { name: "tracing-beam-steady", label: "平稳", values: { speed: 1, size: 1, color: "#a78bfa" } },
+      { name: "tracing-beam-fast", label: "加快", values: { speed: 1.8, size: 2, color: "#a78bfa" } },
+    ],
   },
   {
     name: "container-scroll-3d",
@@ -188,7 +313,45 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/container-scroll-3d.tsx",
     target: "components/ui/container-scroll-3d.tsx",
-    props: [{ name: "title", type: "string", description: "上方标题。" }, ...ui],
+    props: [
+      {
+        name: "title",
+        type: "string",
+        defaultValue: '"滚动透视"',
+        description: "上方标题。",
+        control: { kind: "text", value: "滚动透视" },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "起始俯仰角（度）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 0, max: 360, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "俯仰和位移的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动曲线倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "起始缩放的倍率。1 与不传相同，起始仍是 0.88。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "container-scroll-default", label: "默认", values: { title: "滚动透视", angle: 28, intensity: 1, speed: 1, scale: 1 } },
+      { name: "container-scroll-flat", label: "平", values: { title: "几乎放平", angle: 8, intensity: 1, speed: 1, scale: 1 } },
+      { name: "container-scroll-steep", label: "陡", values: { title: "更深透视", angle: 48, intensity: 1, speed: 1.2, scale: 0.8 } },
+    ],
   },
   {
     name: "circular-gallery",
@@ -199,7 +362,21 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/circular-gallery.tsx",
     target: "components/ui/circular-gallery.tsx",
-    props: [{ name: "items", type: "{ src: string; title: string }[]", description: "图片。" }, ...ui],
+    props: [
+      { name: "items", type: "{ src: string; title: string }[]", description: "图片。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "自转倍率。1 与不传相同，每帧仍是 0.004 弧度。离开视口后停下。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "circular-gallery-slow", label: "慢", values: { speed: 0.4 } },
+      { name: "circular-gallery-default", label: "默认", values: { speed: 1 } },
+      { name: "circular-gallery-fast", label: "快", values: { speed: 2 } },
+    ],
   },
   {
     name: "glowing-edge",
@@ -210,7 +387,38 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glowing-edge.tsx",
     target: "components/ui/glowing-edge.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "旋转一周（毫秒）。6000 与不传相同，仍是 6 秒。",
+        control: { kind: "range", value: 6000, min: 2400, max: 12000, step: 100 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "描边颜色。#7c3aed 与不传相同。",
+        control: { kind: "color", value: "#7c3aed" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "色带张角的倍率。1 与不传相同，仍是 70° 到 140°。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "描边厚度（像素）。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 1, max: 8, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "glowing-edge-soft", label: "细", values: { duration: 8000, color: "#7c3aed", intensity: 0.45, size: 1 } },
+      { name: "glowing-edge-default", label: "默认", values: { duration: 6000, color: "#7c3aed", intensity: 1, size: 1 } },
+      { name: "glowing-edge-hot", label: "热", values: { duration: 3200, color: "#f59e0b", intensity: 1, size: 3 } },
+    ],
   },
   {
     name: "scroll-image-sequence",
@@ -221,7 +429,26 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-image-sequence.tsx",
     target: "components/ui/scroll-image-sequence.tsx",
-    props: [{ name: "frames", type: "string[]", description: "帧图片 URL。" }, ...ui],
+    props: [
+      { name: "frames", type: "string[]", description: "帧图片 URL。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "帧进度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "画面不透明度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "scroll-sequence-default", label: "默认", values: { speed: 1, intensity: 1 } },
+      { name: "scroll-sequence-dim", label: "变淡", values: { speed: 1, intensity: 0.6 } },
+    ],
   },
   {
     name: "pixel-transition",
@@ -235,7 +462,15 @@ export const batch6Components: ComponentMeta[] = [
     props: [
       { name: "from", type: "string", description: "起始图。" },
       { name: "to", type: "string", description: "目标图。" },
+      { name: "count", type: "number", description: "像素格数。48 与不传相同。", control: { kind: "range", value: 48, min: 16, max: 80, step: 4 } },
+      { name: "duration", type: "number", description: "淡出毫秒。500 与不传相同，仍是 duration-500。", control: { kind: "range", value: 500, min: 200, max: 1000, step: 10 } },
+      { name: "delay", type: "number", description: "错开毫秒。28 与不传相同。", control: { kind: "range", value: 28, min: 0, max: 56, step: 2 } },
       ...ui,
+    ],
+    presets: [
+      { name: "pixel-transition-slow", label: "慢", values: { count: 32, duration: 800, delay: 48 } },
+      { name: "pixel-transition-default", label: "默认", values: { count: 48, duration: 500, delay: 28 } },
+      { name: "pixel-transition-fast", label: "快", values: { count: 64, duration: 240, delay: 8 } },
     ],
   },
 ]

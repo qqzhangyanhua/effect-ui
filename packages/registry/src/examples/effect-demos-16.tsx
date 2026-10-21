@@ -16,40 +16,80 @@ import { ShareInvitePanel } from "../effects/share-invite-panel"
 import { SketchHatchImage } from "../effects/sketch-hatch-image"
 import { ThumbnailFlowPath } from "../effects/thumbnail-flow-path"
 
-export function DatamoshTransitionDemo() {
-  return <DatamoshTransition className="w-full" />
+export function DatamoshTransitionDemo({ speed, intensity }: { speed?: number; intensity?: number } = {}) {
+  return <DatamoshTransition className="w-full" speed={speed} intensity={intensity} />
 }
 
-export function LoomThreadsMarqueeDemo() {
-  return <LoomThreadsMarquee className="w-full" />
+export function LoomThreadsMarqueeDemo({ speed }: { speed?: number } = {}) {
+  return <LoomThreadsMarquee className="w-full" speed={speed} />
 }
 
-export function HologramCardDemo() {
+export function HologramCardDemo({ duration, intensity, color }: { duration?: number; intensity?: number; color?: string } = {}) {
   return (
     <div className="flex w-full justify-center py-6">
-      <HologramCard />
+      <HologramCard duration={duration} intensity={intensity} color={color} />
     </div>
   )
 }
 
-export function SketchHatchImageDemo() {
-  return <SketchHatchImage className="w-full" />
+export function SketchHatchImageDemo({
+  count,
+  intensity,
+  angle,
+  color,
+}: {
+  count?: number
+  intensity?: number
+  angle?: number
+  color?: string
+} = {}) {
+  return <SketchHatchImage className="w-full" count={count} intensity={intensity} angle={angle} color={color} />
 }
 
-export function Scroll3dImageRotateDemo() {
-  return <Scroll3dImageRotate className="w-full" />
+export function Scroll3dImageRotateDemo({
+  angle,
+  speed,
+  intensity,
+}: {
+  angle?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return <Scroll3dImageRotate className="w-full" angle={angle} speed={speed} intensity={intensity} />
 }
 
-export function ThumbnailFlowPathDemo() {
-  return <ThumbnailFlowPath className="w-full" />
+export function ThumbnailFlowPathDemo({ duration, delay, size, gap }: { duration?: number; delay?: number; size?: number; gap?: number } = {}) {
+  return <ThumbnailFlowPath className="w-full" duration={duration} delay={delay} size={size} gap={gap} />
 }
 
-export function ShaderGridWideDemo() {
-  return <ShaderGridWide className="w-full" />
+export function ShaderGridWideDemo({
+  intensity,
+  speed,
+  count,
+  scale,
+}: {
+  intensity?: number
+  speed?: number
+  count?: number
+  scale?: number
+} = {}) {
+  return <ShaderGridWide className="w-full" intensity={intensity} speed={speed} count={count} scale={scale} />
 }
 
-export function SeaWavesBackgroundDemo() {
-  return <SeaWavesBackground className="w-full" />
+export function SeaWavesBackgroundDemo({
+  intensity = 0.15,
+  speed = 1,
+  colors = ["#05142e", "#0d597a", "#dbe8f2"],
+  scale = 1,
+}: {
+  intensity?: number
+  speed?: number
+  colors?: string[]
+  scale?: number
+} = {}) {
+  return (
+    <SeaWavesBackground className="w-full" intensity={intensity} speed={speed} colors={colors} scale={scale} />
+  )
 }
 
 export function CinemaSeatPickerDemo() {

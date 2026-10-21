@@ -16,6 +16,7 @@ export interface SortableListProps {
   items?: readonly SortableItem[]
   className?: string
   onReorder?: (items: SortableItem[]) => void
+  gap?: number
 }
 
 const ITEMS: readonly SortableItem[] = [
@@ -82,7 +83,7 @@ function SortableRow({
   )
 }
 
-function SortableList({ items: itemsProp = ITEMS, className, onReorder }: SortableListProps) {
+function SortableList({ items: itemsProp = ITEMS, className, onReorder, gap }: SortableListProps) {
   const reduced = usePrefersReducedMotion()
   const [items, setItems] = React.useState<readonly SortableItem[]>(itemsProp)
 
@@ -104,7 +105,8 @@ function SortableList({ items: itemsProp = ITEMS, className, onReorder }: Sortab
         axis="y"
         values={[...items]}
         onReorder={commit}
-        className="flex list-none flex-col gap-2 p-0"
+        className={gap === undefined || gap === 8 ? "flex list-none flex-col gap-2 p-0" : "flex list-none flex-col p-0"}
+        style={gap === undefined || gap === 8 ? undefined : { gap }}
       >
         {items.map((item) => (
           <SortableRow key={item.id} item={item} reduced={reduced} onMove={onMove} />

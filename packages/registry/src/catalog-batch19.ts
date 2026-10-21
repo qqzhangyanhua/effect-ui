@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -18,7 +19,39 @@ export const batch19Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tubes-cursor.tsx",
     target: "components/ui/tubes-cursor.tsx",
-    props: [{ name: "tubes", type: "number", defaultValue: "4", description: "管道数量，限制在 3 到 5。" }, ...ui],
+    props: [
+      {
+        name: "tubes",
+        type: "number",
+        defaultValue: "4",
+        description: "管道数量，限制在 3 到 5。",
+        control: { kind: "range", value: 4, min: 3, max: 5, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "跟随速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "管道粗细倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "前后摆动幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "tubes-few", label: "少", values: { tubes: 3, speed: 0.6, intensity: 0.6, scale: 0.7 } },
+      { name: "tubes-default", label: "默认", values: { tubes: 4, speed: 1, intensity: 1, scale: 1 } },
+      { name: "tubes-many", label: "多", values: { tubes: 5, speed: 1.6, intensity: 1, scale: 1.4 } },
+    ],
   },
   {
     name: "liquid-morph-slideshow",
@@ -31,9 +64,15 @@ export const batch19Components: ComponentMeta[] = [
     target: "components/ui/liquid-morph-slideshow.tsx",
     props: [
       { name: "images", type: "string[]", description: "幻灯图片。省略时用内置色块。" },
-      { name: "interval", type: "number", defaultValue: "3200", description: "自动切换间隔，毫秒。" },
-      { name: "intensity", type: "number", defaultValue: "0.45", description: "噪声位移强度。" },
+      { name: "interval", type: "number", defaultValue: "3200", description: "自动切换间隔，毫秒。", control: { kind: "range", value: 3200, min: 1280, max: 6400, step: 40 } },
+      { name: "intensity", type: "number", defaultValue: "0.45", description: "噪声位移强度。0.45 与不传相同。", control: { kind: "range", value: 0.45, min: 0, max: 1, step: 0.05 } },
+      { name: "speed", type: "number", description: "液体流速倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "liquid-morph-slideshow-slow", label: "慢", values: { interval: 4800, intensity: 0.2, speed: 0.6 } },
+      { name: "liquid-morph-slideshow-default", label: "默认", values: { interval: 3200, intensity: 0.45, speed: 1 } },
+      { name: "liquid-morph-slideshow-fast", label: "快", values: { interval: 1600, intensity: 0.8, speed: 1.6 } },
     ],
   },
   {
@@ -46,9 +85,9 @@ export const batch19Components: ComponentMeta[] = [
     file: "effects/wavefield-neon.tsx",
     target: "components/ui/wavefield-neon.tsx",
     props: [
-      { name: "color", type: "string", defaultValue: "#22d3ee", description: "线条颜色。" },
-      { name: "density", type: "number", defaultValue: "18", description: "线条数量。" },
-      { name: "amplitude", type: "number", defaultValue: "0.28", description: "起伏幅度。" },
+      { name: "color", type: "string", defaultValue: "#22d3ee", description: "线条颜色。", control: { kind: "color", value: "#22d3ee" } },
+      { name: "density", type: "number", defaultValue: "18", description: "线条数量。", control: { kind: "range", value: 18, min: 8, max: 28, step: 1 } },
+      { name: "amplitude", type: "number", defaultValue: "0.28", description: "起伏幅度。", control: { kind: "range", value: 0.28, min: 0, max: 1, step: 0.01 } },
       ...ui,
     ],
   },
@@ -61,7 +100,39 @@ export const batch19Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gradient-carousel-3d.tsx",
     target: "components/ui/gradient-carousel-3d.tsx",
-    props: [{ name: "items", type: "GradientCard[]", description: "卡片标题和说明。" }, ...ui],
+    props: [
+      { name: "items", type: "GradientCard[]", description: "卡片标题和说明。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "拖拽灵敏度的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "侧向转角。42 与不传相同。",
+        control: { kind: "range", value: 42, min: 0, max: 80, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "卡片缩放的倍率。1 与不传相同，中心仍是 1.18。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "色相跟随的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "gradient-carousel-flat", label: "平", values: { speed: 1, angle: 12, scale: 1, intensity: 0.3 } },
+      { name: "gradient-carousel-default", label: "默认", values: { speed: 1, angle: 42, scale: 1, intensity: 1 } },
+      { name: "gradient-carousel-fast", label: "快", values: { speed: 1.8, angle: 60, scale: 0.8, intensity: 1 } },
+    ],
   },
   {
     name: "text-3d-scroll",
@@ -72,7 +143,27 @@ export const batch19Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-3d-scroll.tsx",
     target: "components/ui/text-3d-scroll.tsx",
-    props: [{ name: "text", type: "string", description: "要翻过来的句子。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "要翻过来的句子。",
+        control: { kind: "text", value: "把句子从平面里翻出来" },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "起始仰角，度。不传则从 90° 翻到平面。",
+        control: { kind: "range", value: 90, min: 0, max: 180, step: 5 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "left" }),
+      ...ui,
+    ],
+    presets: textPresets("text-3d", "text", [
+      { label: "翻起", content: "把句子从平面里翻出来", fontSize: 48, fontWeight: 600, align: "left", extra: { angle: 90 } },
+      { label: "浅角", content: "轻轻抬起", fontSize: 36, fontWeight: 500, align: "center", extra: { angle: 40 } },
+      { label: "大标题", content: "立体", fontSize: 72, fontWeight: 700, align: "center", extra: { angle: 90 } },
+    ]),
   },
   {
     name: "rolling-text-hover",
@@ -85,9 +176,27 @@ export const batch19Components: ComponentMeta[] = [
     target: "components/ui/rolling-text-hover.tsx",
     props: [
       { name: "items", type: "string[]", description: "导航文字。" },
-      { name: "label", type: "string", defaultValue: "开始使用", description: "按钮文字。" },
+      {
+        name: "label",
+        type: "string",
+        defaultValue: "开始使用",
+        description: "按钮文字。",
+        control: { kind: "text", value: "开始使用" },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻字母的错开，毫秒。不传则 35。",
+        control: { kind: "range", value: 35, min: 0, max: 120, step: 5 },
+      },
+      ...textControls({ fontSize: 16, fontWeight: 500, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("rolling-hover", "label", [
+      { label: "按钮", content: "开始使用", fontSize: 16, fontWeight: 500, align: "left", extra: { delay: 35 } },
+      { label: "慢滚", content: "了解更多", fontSize: 18, fontWeight: 600, align: "center", extra: { delay: 80 } },
+      { label: "齐滚", content: "进入", fontSize: 14, fontWeight: 700, align: "left", extra: { delay: 0 } },
+    ]),
   },
   {
     name: "audio-spectrum",
@@ -100,8 +209,15 @@ export const batch19Components: ComponentMeta[] = [
     target: "components/ui/audio-spectrum.tsx",
     props: [
       { name: "src", type: "string", description: "可选音频地址。" },
-      { name: "mode", type: '"bars" | "circle" | "wave"', defaultValue: "bars", description: "可视化形状。" },
+      { name: "mode", type: '"bars" | "circle" | "wave"', defaultValue: "bars", description: "可视化形状。", control: { kind: "select", value: "bars", options: ["bars", "circle", "wave"] } },
+      { name: "size", type: "number", description: "环形半径（像素）。48 与不传相同。条形和波形不受影响。", control: { kind: "range", value: 48, min: 24, max: 96, step: 2 } },
+      { name: "color", type: "string", description: "频谱颜色。不传则按音量变色。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "audio-spectrum-bars", label: "条形", values: { mode: "bars", size: 48 } },
+      { name: "audio-spectrum-circle", label: "环形", values: { mode: "circle", size: 64 } },
+      { name: "audio-spectrum-wave", label: "波形", values: { mode: "wave", size: 48 } },
     ],
   },
   {
@@ -138,6 +254,8 @@ export const batch19Components: ComponentMeta[] = [
     props: [
       { name: "catalog", type: "CartProduct[]", description: "可加入的商品。" },
       { name: "freeShippingAt", type: "number", defaultValue: "100", description: "免运费门槛。" },
+      { name: "currency", type: "string", defaultValue: "CNY", description: "货币代码。" },
+      { name: "locale", type: "string", defaultValue: "zh-CN", description: "地区。" },
       ...ui,
     ],
   },
@@ -162,23 +280,12 @@ export const batch19Components: ComponentMeta[] = [
     file: "effects/radial-gauge.tsx",
     target: "components/ui/radial-gauge.tsx",
     props: [
-      { name: "value", type: "number", defaultValue: "42", description: "当前值。" },
-      { name: "variant", type: '"semi" | "three-quarter"', defaultValue: "semi", description: "圆弧范围。" },
+      { name: "value", type: "number", defaultValue: "42", description: "当前值。", control: { kind: "range", value: 64, min: 0, max: 100, step: 1 } },
+      { name: "variant", type: '"semi" | "three-quarter"', defaultValue: "semi", description: "圆弧范围。", control: { kind: "select", value: "semi", options: ["semi", "three-quarter"] } },
       { name: "segments", type: "GaugeSegment[]", description: "分段颜色。" },
       { name: "thresholds", type: "number[]", description: "阈值刻度。" },
       ...ui,
     ],
-  },
-  {
-    name: "funnel-chart",
-    title: "Funnel Chart",
-    description: "纯 SVG 漏斗。宽度按数值，显示转化率和流失率，悬停高亮，入场逐层展开。",
-    category: "utility",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/funnel-chart.tsx",
-    target: "components/ui/funnel-chart.tsx",
-    props: [{ name: "stages", type: "FunnelStage[]", description: "阶段和数值。" }, ...ui],
   },
   {
     name: "gantt-timeline",

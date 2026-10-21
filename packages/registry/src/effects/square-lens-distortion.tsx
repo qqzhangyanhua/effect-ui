@@ -2,11 +2,50 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SquareLensDistortionProps {
   className?: string
+  speed?: number
+  intensity?: number
+  scale?: number
+  color?: string
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
+}
+
+function cssToUnit(input: string): [number, number, number] | undefined {
+  const text = input.trim()
+  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(text)
+  const raw = hex?.[1]
+  if (raw) {
+    const full = raw.length === 3 ? `${raw[0]}${raw[0]}${raw[1]}${raw[1]}${raw[2]}${raw[2]}` : raw
+    return [
+      Number.parseInt(full.slice(0, 2), 16) / 255,
+      Number.parseInt(full.slice(2, 4), 16) / 255,
+      Number.parseInt(full.slice(4, 6), 16) / 255,
+    ]
+  }
+  const rgb = /^rgba?\(\s*([\d.]+)[\s,/]+([\d.]+)[\s,/]+([\d.]+)/i.exec(text)
+  if (!rgb?.[1] || !rgb[2] || !rgb[3]) return undefined
+  return [Number(rgb[1]) / 255, Number(rgb[2]) / 255, Number(rgb[3]) / 255]
+}
+
+function borderUnit(color: string | undefined, allowDom = true): [number, number, number] {
+  const value = color?.trim().toLowerCase()
+  if (!value || value === "#fff" || value === "#ffffff" || value === "white") return [1, 1, 1]
+  const direct = cssToUnit(color ?? "")
+  if (direct || !allowDom || typeof document === "undefined") return direct ?? [1, 1, 1]
+  const probe = document.createElement("span")
+  probe.style.color = color ?? ""
+  document.body.appendChild(probe)
+  const computed = getComputedStyle(probe).color
+  probe.remove()
+  return cssToUnit(computed) ?? [1, 1, 1]
 }
 
 const VERT = `
@@ -23,6 +62,9 @@ const FRAG = `
 precision highp float;
 uniform vec2 u_mouse;
 uniform float u_time;
+uniform float u_intensity;
+uniform float u_scale;
+uniform vec3 u_border;
 varying vec2 vUv;
 
 vec3 scene(vec2 uv) {
@@ -38,10 +80,10 @@ vec3 scene(vec2 uv) {
 void main() {
   vec2 uv = vUv;
   vec2 delta = uv - u_mouse;
-  float halfSize = 0.16;
+  float halfSize = 0.16 * u_scale;
   float inside = step(abs(delta.x), halfSize) * step(abs(delta.y), halfSize);
   vec2 lensUv = u_mouse + delta / 1.85;
-  lensUv += vec2(sin(lensUv.y * 26.0 + u_time), cos(lensUv.x * 22.0 - u_time)) * 0.014;
+  lensUv += vec2(sin(lensUv.y * 26.0 + u_time), cos(lensUv.x * 22.0 - u_time)) * 0.014 * u_intensity;
   float shift = 0.012;
   vec3 magnified = vec3(
     scene(lensUv + vec2(shift, 0.0)).r,
@@ -50,23 +92,30 @@ void main() {
   );
   vec3 color = mix(scene(uv), magnified, inside);
   float border = inside * (1.0 - step(abs(delta.x), halfSize - 0.008) * step(abs(delta.y), halfSize - 0.008));
-  color = mix(color, vec3(1.0), border);
+  color = mix(color, u_border, border);
   gl_FragColor = vec4(color, 1.0);
 }
 `
 
-function LensFallback({ x, y }: { x: number; y: number }) {
+function LensFallback({ x, y, color }: { x: number; y: number; color?: string }) {
+  const value = color?.trim().toLowerCase()
+  const keep = !value || value === "#fff" || value === "#ffffff" || value === "white"
   return (
     <div className="absolute inset-0 bg-[linear-gradient(160deg,#1e1b4b,#9a3412)]">
       <div
-        className="absolute size-28 border-2 border-white/80 bg-white/10"
-        style={{ left: `${x * 100}%`, top: `${y * 100}%`, transform: "translate(-50%, -50%)" }}
+        className={cn("absolute size-28 border-2 bg-white/10", keep && "border-white/80")}
+        style={{
+          left: `${x * 100}%`,
+          top: `${y * 100}%`,
+          transform: "translate(-50%, -50%)",
+          borderColor: keep ? undefined : color,
+        }}
       />
     </div>
   )
 }
 
-function SquareLensDistortion({ className }: SquareLensDistortionProps) {
+function SquareLensDistortion({ className, speed, intensity, scale, color }: SquareLensDistortionProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
@@ -74,6 +123,25 @@ function SquareLensDistortion({ className }: SquareLensDistortionProps) {
   const [fallback, setFallback] = React.useState(false)
   const [lens, setLens] = React.useState({ x: 0.5, y: 0.45 })
   const showCanvas = !reduced && !fallback
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
+  const speedRef = React.useRef(pace(speed))
+  const intensityRef = React.useRef(intensity)
+  const scaleRef = React.useRef(scale)
+  const borderRef = React.useRef(borderUnit(color, false))
+
+  React.useEffect(() => {
+    speedRef.current = pace(speed)
+    intensityRef.current = intensity
+    scaleRef.current = scale
+    borderRef.current = borderUnit(color)
+  }, [speed, intensity, scale, color])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   const moveTo = (x: number, y: number, paintFallback: boolean) => {
     const next = {
@@ -113,6 +181,9 @@ function SquareLensDistortion({ className }: SquareLensDistortionProps) {
       const uniforms = {
         u_time: { value: 0 },
         u_mouse: { value: [0.5, 0.55] },
+        u_intensity: { value: 1 },
+        u_scale: { value: 1 },
+        u_border: { value: [1, 1, 1] },
       }
       const program = new ogl.Program(gl, {
         vertex: VERT,
@@ -130,13 +201,26 @@ function SquareLensDistortion({ className }: SquareLensDistortionProps) {
       observer.observe(host)
       const started = performance.now()
       const tick = () => {
-        uniforms.u_time.value = (performance.now() - started) / 1000
+        if (!activeRef.current) {
+          frame = 0
+          return
+        }
+        const amount = intensityRef.current
+        const sized = scaleRef.current
+        uniforms.u_time.value = ((performance.now() - started) / 1000) * speedRef.current
         uniforms.u_mouse.value = [pointer.current.x, 1 - pointer.current.y]
+        uniforms.u_intensity.value = amount === undefined || amount === 1 ? 1 : amount
+        uniforms.u_scale.value = sized === undefined || sized === 1 ? 1 : sized
+        uniforms.u_border.value = borderRef.current
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         observer.disconnect()
         gl.getExtension("WEBGL_lose_context")?.loseContext()
@@ -152,6 +236,7 @@ function SquareLensDistortion({ className }: SquareLensDistortionProps) {
     })
     return () => {
       cancelled = true
+      kickRef.current = null
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }
@@ -184,7 +269,7 @@ function SquareLensDistortion({ className }: SquareLensDistortionProps) {
         moveTo(pointer.current.x + dx, pointer.current.y + dy, !showCanvas)
       }}
     >
-      {showCanvas ? <canvas ref={canvasRef} className="absolute inset-0 size-full" /> : <LensFallback x={lens.x} y={lens.y} />}
+      {showCanvas ? <canvas ref={canvasRef} className="absolute inset-0 size-full" /> : <LensFallback x={lens.x} y={lens.y} color={color} />}
     </div>
   )
 }

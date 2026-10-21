@@ -8,6 +8,10 @@ import { cn } from "@/lib/utils"
 export interface ImageTrailProps {
   images: string[]
   className?: string
+  gap?: number
+  count?: number
+  size?: number
+  intensity?: number
 }
 
 interface TrailPoint {
@@ -17,22 +21,28 @@ interface TrailPoint {
   src: string
 }
 
-function ImageTrail({ images, className }: ImageTrailProps) {
+function ImageTrail({ images, className, gap, count, size, intensity }: ImageTrailProps) {
   const [points, setPoints] = React.useState<TrailPoint[]>([])
   const last = React.useRef({ x: 0, y: 0, i: 0 })
   const id = React.useRef(0)
+  const threshold = gap === undefined ? 28 : gap
+  const keep = count === undefined ? 8 : count
+  const keepSize = size === undefined || size === 64
+  const keepOpacity = intensity === undefined || intensity === 0.8
 
   return (
     <div
+      data-slot="image-trail"
       className={cn("relative overflow-hidden", className)}
       onPointerMove={(event) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+        const media = window.matchMedia
+        if (media("(prefers-reduced-motion: reduce)").matches || media("(pointer: coarse)").matches) return
         const rect = event.currentTarget.getBoundingClientRect()
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
         const dx = x - last.current.x
         const dy = y - last.current.y
-        if (Math.hypot(dx, dy) < 28) return
+        if (Math.hypot(dx, dy) < threshold) return
         last.current = { x, y, i: last.current.i + 1 }
         const next: TrailPoint = {
           id: (id.current += 1),
@@ -40,7 +50,7 @@ function ImageTrail({ images, className }: ImageTrailProps) {
           y,
           src: images[last.current.i % images.length] ?? images[0] ?? "",
         }
-        setPoints((prev) => [...prev.slice(-8), next])
+        setPoints((prev) => [...prev.slice(-keep), next])
       }}
     >
       {points.map((point) => (
@@ -48,8 +58,18 @@ function ImageTrail({ images, className }: ImageTrailProps) {
           key={point.id}
           src={point.src}
           alt=""
-          className="pointer-events-none absolute size-16 -translate-x-1/2 -translate-y-1/2 rounded-lg object-cover opacity-80 shadow"
-          style={{ left: point.x, top: point.y }}
+          className={cn(
+            "pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-lg object-cover shadow",
+            keepSize && "size-16",
+            keepOpacity && "opacity-80",
+          )}
+          style={{
+            left: point.x,
+            top: point.y,
+            width: keepSize ? undefined : size,
+            height: keepSize ? undefined : size,
+            opacity: keepOpacity ? undefined : intensity,
+          }}
         />
       ))}
     </div>

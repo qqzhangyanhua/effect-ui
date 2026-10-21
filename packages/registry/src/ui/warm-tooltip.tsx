@@ -13,6 +13,7 @@ export interface WarmTooltipProps {
   delay?: number
   side?: "top" | "right" | "bottom" | "left"
   glow?: boolean
+  intensity?: number
   className?: string
   ref?: React.Ref<HTMLDivElement>
 }
@@ -23,11 +24,13 @@ function WarmTooltip({
   delay = 200,
   side = "top",
   glow = false,
+  intensity,
   className,
   ref,
 }: WarmTooltipProps) {
   const reduced = usePrefersReducedMotion()
   const showGlow = glow && !reduced
+  const glowStrength = intensity === undefined || intensity === 1 ? 1 : intensity
 
   return (
     // registry 的 Tooltip 根会再包一层 delayDuration=0 的 Provider，延迟要加在这一层。
@@ -40,9 +43,16 @@ function WarmTooltip({
           data-glow={showGlow ? "true" : "false"}
           className={cn(
             reduced && "animate-none duration-0",
-            showGlow && "shadow-[0_0_24px_color-mix(in_oklab,var(--primary)_55%,transparent)]",
+            showGlow && glowStrength === 1 && "shadow-[0_0_24px_color-mix(in_oklab,var(--primary)_55%,transparent)]",
             className,
           )}
+          style={
+            showGlow && glowStrength !== 1
+              ? {
+                  boxShadow: `0 0 ${24 * glowStrength}px color-mix(in oklab, var(--primary) ${Math.round(55 * glowStrength)}%, transparent)`,
+                }
+              : undefined
+          }
         >
           {content}
         </TooltipContent>

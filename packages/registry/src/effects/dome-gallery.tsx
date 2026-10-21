@@ -3,11 +3,15 @@
 import { motion, useAnimationFrame, useMotionValue } from "motion/react"
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface DomeGalleryProps {
   className?: string
+  count?: number
+  speed?: number
+  size?: number
 }
 
 interface DomeTile {
@@ -45,23 +49,39 @@ function buildTiles(count: number): DomeTile[] {
 
 const TILES = buildTiles(20)
 
-function DomeGallery({ className }: DomeGalleryProps) {
+function DomeGallery({ className, count, speed, size }: DomeGalleryProps) {
   const reduced = usePrefersReducedMotion()
+  const hostRef = React.useRef<HTMLDivElement>(null)
+  const active = useAnimationActive(hostRef)
+  const total = count === undefined || count === 20 ? 20 : count
+  const tiles = total === 20 ? TILES : buildTiles(total)
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const depth = size === undefined || size === 168 ? 168 : size
   const [open, setOpen] = React.useState<DomeTile | null>(null)
   const rotX = useMotionValue(-8)
   const rotY = useMotionValue(16)
   const drag = React.useRef({ active: false, x: 0, y: 0, moved: false })
+  const rateRef = React.useRef(rate)
+  const activeRef = React.useRef(false)
+  const reducedRef = React.useRef(reduced)
+
+  React.useEffect(() => {
+    rateRef.current = rate
+    activeRef.current = active
+    reducedRef.current = reduced
+  }, [active, rate, reduced])
 
   useAnimationFrame((_, delta) => {
-    if (reduced || drag.current.active) return
-    rotY.set(rotY.get() + delta * 0.012)
+    if (reducedRef.current || !activeRef.current || drag.current.active) return
+    const spin = rateRef.current === 1 ? 0.012 : 0.012 * rateRef.current
+    rotY.set(rotY.get() + delta * spin)
   })
 
   if (reduced) {
     return (
-      <div data-slot="dome-gallery" className={cn("relative w-full", className)}>
+      <div ref={hostRef} data-slot="dome-gallery" className={cn("relative w-full", className)}>
         <div className="grid grid-cols-4 gap-2 sm:grid-cols-5">
-          {TILES.map((tile) => (
+          {tiles.map((tile) => (
             <TileButton key={tile.id} tile={tile} flat onOpen={setOpen} />
           ))}
         </div>
@@ -71,7 +91,7 @@ function DomeGallery({ className }: DomeGalleryProps) {
   }
 
   return (
-    <div data-slot="dome-gallery" className={cn("relative h-[440px] w-full overflow-hidden rounded-xl bg-zinc-950", className)}>
+    <div ref={hostRef} data-slot="dome-gallery" className={cn("relative h-[440px] w-full overflow-hidden rounded-xl bg-zinc-950", className)}>
       <div
         className="absolute inset-0 cursor-grab touch-none active:cursor-grabbing"
         style={{ perspective: 880 }}
@@ -100,7 +120,7 @@ function DomeGallery({ className }: DomeGalleryProps) {
           className="absolute top-1/2 left-1/2 size-0"
           style={{ rotateX: rotX, rotateY: rotY, transformStyle: "preserve-3d" }}
         >
-          {TILES.map((tile) => (
+          {tiles.map((tile) => (
             <button
               key={tile.id}
               type="button"
@@ -109,7 +129,7 @@ function DomeGallery({ className }: DomeGalleryProps) {
                 left: 0,
                 top: 0,
                 background: tile.background,
-                transform: `rotateY(${tile.lon}deg) rotateX(${tile.lat}deg) translateZ(168px) translate(-50%, -50%)`,
+                transform: `rotateY(${tile.lon}deg) rotateX(${tile.lat}deg) translateZ(${depth}px) translate(-50%, -50%)`,
                 backfaceVisibility: "hidden",
               }}
               onClick={() => {

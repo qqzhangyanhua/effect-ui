@@ -1,4 +1,7 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
+
+import { batch5Backgrounds } from "./catalog-batch5-backgrounds"
 
 const ui: PropDoc[] = [
   {
@@ -370,8 +373,13 @@ export const batch5Components: ComponentMeta[] = [
     file: "ui/dashboard-blocks.tsx",
     target: "components/ui/dashboard-blocks.tsx",
     props: [
-      { name: "variant", type: '"analytics" | "sales" | "ops"', defaultValue: '"analytics"', description: "看板变体。" },
+      { name: "variant", type: '"analytics" | "sales" | "ops"', defaultValue: '"analytics"', description: "看板变体。", control: { kind: "select", value: "analytics", options: ["analytics", "sales", "ops"] } },
       ...ui,
+    ],
+    presets: [
+      { name: "dashboard-blocks-analytics", label: "分析", values: { variant: "analytics" } },
+      { name: "dashboard-blocks-sales", label: "销售", values: { variant: "sales" } },
+      { name: "dashboard-blocks-ops", label: "运维", values: { variant: "ops" } },
     ],
   },
   {
@@ -384,8 +392,16 @@ export const batch5Components: ComponentMeta[] = [
     file: "ui/ecommerce-blocks.tsx",
     target: "components/ui/ecommerce-blocks.tsx",
     props: [
-      { name: "view", type: '"store" | "gallery" | "checkout"', defaultValue: '"store"', description: "展示哪一组。" },
+      { name: "view", type: '"store" | "gallery" | "checkout"', defaultValue: '"store"', description: "展示哪一组。", control: { kind: "select", value: "store", options: ["store", "gallery", "checkout"] } },
+      { name: "product", type: "Product", description: "商品卡的商品，含 id、名称、价格和图片。" },
+      { name: "images", type: "string[]", description: "画廊图片地址。" },
+      { name: "items", type: "CartItem[]", description: "购物车行项目，含商品和数量。" },
       ...ui,
+    ],
+    presets: [
+      { name: "ecommerce-blocks-store", label: "店铺", values: { view: "store" } },
+      { name: "ecommerce-blocks-gallery", label: "画廊", values: { view: "gallery" } },
+      { name: "ecommerce-blocks-checkout", label: "结账", values: { view: "checkout" } },
     ],
   },
   {
@@ -397,7 +413,47 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/holographic-foil.tsx",
     target: "components/ui/holographic-foil.tsx",
-    props: ui,
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        description: "倾斜角。14 与不传相同。",
+        control: { kind: "range", value: 14, min: 0, max: 28, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "箔膜不透明度。0.8 与不传相同。",
+        control: { kind: "range", value: 0.8, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "镭射色。这 6 个色与不传相同。",
+        control: {
+          kind: "colors",
+          value: ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"],
+        },
+      },
+      ...ui,
+    ],
+    presets: [
+      {
+        name: "holographic-foil-soft",
+        label: "淡",
+        values: { angle: 8, intensity: 0.4, colors: ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"] },
+      },
+      {
+        name: "holographic-foil-default",
+        label: "默认",
+        values: { angle: 14, intensity: 0.8, colors: ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"] },
+      },
+      {
+        name: "holographic-foil-cool",
+        label: "冷",
+        values: { angle: 22, intensity: 1, colors: ["#67e8f9", "#818cf8", "#22d3ee", "#a78bfa", "#38bdf8", "#67e8f9"] },
+      },
+    ],
   },
   {
     name: "spoiler-text",
@@ -408,7 +464,39 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/spoiler-text.tsx",
     target: "components/ui/spoiler-text.tsx",
-    props: [{ name: "text", type: "string", description: "隐藏文本。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "隐藏文本。",
+        control: { kind: "text", value: "点击揭示隐藏剧透" },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "遮挡粒子数量。不传则 90。",
+        control: { kind: "range", value: 90, min: 20, max: 180, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "粒子抖动速度倍率。不传则 1。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "粒子颜色。不传则用原来的混色。",
+        control: { kind: "color" },
+      },
+      ...textControls({ fontSize: 18, fontWeight: 400, align: "left" }),
+      ...ui,
+    ],
+    presets: textPresets("spoiler", "text", [
+      { label: "剧透", content: "点击揭示隐藏剧透", fontSize: 18, fontWeight: 500, align: "left", extra: { count: 90, speed: 1 } },
+      { label: "密", content: "秘密", fontSize: 24, fontWeight: 700, align: "center", extra: { count: 150, speed: 1.6 } },
+      { label: "疏", content: "轻轻遮住", fontSize: 16, fontWeight: 400, align: "left", extra: { count: 30, speed: 0.5 } },
+    ]),
   },
   {
     name: "hold-button",
@@ -420,9 +508,20 @@ export const batch5Components: ComponentMeta[] = [
     file: "effects/hold-button.tsx",
     target: "components/ui/hold-button.tsx",
     props: [
-      { name: "duration", type: "number", defaultValue: "1000", description: "按住毫秒。" },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "1000",
+        description: "按住毫秒。1000 与不传相同。",
+        control: { kind: "range", value: 1000, min: 400, max: 2000, step: 50 },
+      },
       { name: "onConfirm", type: "() => void", description: "完成回调。" },
       ...ui,
+    ],
+    presets: [
+      { name: "hold-button-short", label: "短", values: { duration: 500 } },
+      { name: "hold-button-default", label: "默认", values: { duration: 1000 } },
+      { name: "hold-button-long", label: "长", values: { duration: 1600 } },
     ],
   },
   {
@@ -434,7 +533,32 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/particle-button.tsx",
     target: "components/ui/particle-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "爆散时长（毫秒）。700 与不传相同。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "粒子个数。10 与不传相同。",
+        control: { kind: "range", value: 10, min: 4, max: 20, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "飞出距离倍率。1 与不传相同，仍是 28px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "particle-button-few", label: "少", values: { duration: 400, count: 6, scale: 0.5 } },
+      { name: "particle-button-default", label: "默认", values: { duration: 700, count: 10, scale: 1 } },
+      { name: "particle-button-burst", label: "盛", values: { duration: 1100, count: 16, scale: 1.5 } },
+    ],
   },
   {
     name: "tear-button",
@@ -445,28 +569,26 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tear-button.tsx",
     target: "components/ui/tear-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "撕开时长（毫秒）。700 与不传相同。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "复位等待（毫秒）。900 与不传相同。",
+        control: { kind: "range", value: 900, min: 0, max: 1800, step: 50 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "tear-button-fast", label: "快", values: { duration: 400, delay: 450 } },
+      { name: "tear-button-default", label: "默认", values: { duration: 700, delay: 900 } },
+      { name: "tear-button-slow", label: "慢", values: { duration: 1100, delay: 1400 } },
+    ],
   },
-  {
-    name: "flow-field",
-    title: "Flow Field",
-    description: "流场线粒子背景。",
-    category: "backgrounds",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/flow-field.tsx",
-    target: "components/ui/flow-field.tsx",
-    props: [{ name: "density", type: "number", defaultValue: "70", description: "粒子数。" }, ...ui],
-  },
-  {
-    name: "halftone",
-    title: "Halftone",
-    description: "半调网点，随鼠标放大。",
-    category: "backgrounds",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/halftone.tsx",
-    target: "components/ui/halftone.tsx",
-    props: [{ name: "gap", type: "number", defaultValue: "14", description: "网点间距。" }, ...ui],
-  },
+  ...batch5Backgrounds,
 ]

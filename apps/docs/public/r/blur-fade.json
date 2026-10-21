@@ -15,7 +15,7 @@
       "path": "registry/effects/blur-fade.tsx",
       "type": "registry:ui",
       "target": "components/ui/blur-fade.tsx",
-      "content": "\"use client\"\n\nimport { type HTMLMotionProps } from \"motion/react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface BlurFadeProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  blur?: number\n}\n\nfunction BlurFade({ className, children, delay = 0, blur = 8, ...props }: BlurFadeProps) {\n  return (\n    <Reveal\n      data-slot=\"blur-fade\"\n      variant=\"blur\"\n      className={className}\n      delay={delay}\n      blur={blur}\n      {...props}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { BlurFade }\n"
+      "content": "\"use client\"\n\nimport { type HTMLMotionProps } from \"motion/react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface BlurFadeProps extends HTMLMotionProps<\"div\"> {\n  delay?: number\n  blur?: number\n  speed?: number\n  intensity?: number\n}\n\nfunction BlurFade({ className, children, delay = 0, blur = 8, speed, intensity, ...props }: BlurFadeProps) {\n  return (\n    <Reveal\n      data-slot=\"blur-fade\"\n      variant=\"blur\"\n      className={className}\n      delay={delay}\n      blur={blur}\n      speed={speed}\n      intensity={intensity}\n      {...props}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { BlurFade }\n"
     }
   ]
 }

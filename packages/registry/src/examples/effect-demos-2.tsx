@@ -10,7 +10,6 @@ import { AnimatedTabs } from "../effects/animated-tabs"
 import { BentoCard, BentoGrid } from "../effects/bento-grid"
 import { BorderBeam } from "../effects/border-beam"
 import { ConfettiBurst } from "../effects/confetti-burst"
-import { CursorTrail } from "../effects/cursor-trail"
 import { Dock } from "../effects/dock"
 import { ExpandableCard } from "../effects/expandable-card"
 import { FloatingNavbar } from "../effects/floating-navbar"
@@ -48,128 +47,294 @@ function Frame({ children }: { children: ReactNode }) {
 export function ScrambleTextDemo({
   text = "DECRYPT COMPLETE",
   duration = 900,
-}: { text?: string; duration?: number } = {}) {
-  return <ScrambleText className="text-2xl" text={text} duration={duration} />
-}
-
-export function TextRotateDemo() {
+  delay = 0,
+  loop = false,
+  interactive = false,
+}: {
+  text?: string
+  duration?: number
+  delay?: number
+  loop?: boolean
+  interactive?: boolean
+} = {}) {
   return (
-    <div className="grid w-full gap-8 text-center sm:grid-cols-3">
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground">slide</p>
-        <TextRotate
-          animation="slide"
-          className="text-2xl font-semibold"
-          texts={["Motion", "Tailwind", "Registry"]}
-        />
-      </div>
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground">blur</p>
-        <TextRotate
-          animation="blur"
-          className="text-2xl font-semibold"
-          texts={["Copy.", "Tweak.", "Ship."]}
-        />
-      </div>
-      <div className="space-y-2">
-        <p className="text-xs text-muted-foreground">glyph</p>
-        <TextRotate
-          animation="glyph"
-          className="font-display text-4xl"
-          texts={["Design", "Delight"]}
-        />
-      </div>
-    </div>
-  )
-}
-
-export function WordRotateDemo() {
-  return (
-    <p className="text-2xl">
-      Build with <WordRotate words={["Motion", "Tailwind", "Registry"]} />
-    </p>
-  )
-}
-
-export function MorphingTextDemo() {
-  return (
-    <MorphingText
-      className="text-3xl font-semibold"
-      texts={["Copy.", "Tweak.", "Ship."]}
+    <ScrambleText
+      className="text-2xl"
+      text={text}
+      duration={duration}
+      delay={delay}
+      loop={loop}
+      interactive={interactive}
     />
   )
 }
 
-export function RollingNumberDemo() {
-  return <RollingNumber className="text-5xl" value={2048} />
+export function TextRotateDemo({
+  interval = 1800,
+  animation = "slide",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  animation?: "slide" | "blur" | "glyph"
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TextRotate
+      texts={["Motion", "Tailwind", "Registry"]}
+      interval={interval}
+      animation={animation}
+      className="text-2xl font-semibold"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function TextRevealDemo() {
+export function WordRotateDemo({
+  interval = 1800,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <p className="text-2xl">
+      Build with{" "}
+      <WordRotate
+        words={["Motion", "Tailwind", "Registry"]}
+        interval={interval}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
+    </p>
+  )
+}
+
+export function MorphingTextDemo({
+  interval = 2200,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  interval?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <MorphingText
+      className="text-3xl font-semibold"
+      texts={["Copy.", "Tweak.", "Ship."]}
+      interval={interval}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
+}
+
+export function RollingNumberDemo({
+  value = 2048,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  value?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <RollingNumber
+      className="text-5xl"
+      value={value}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
+}
+
+export function TextRevealDemo({
+  text = "滚动这段文字，单词会依次从淡到实。",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <div className="h-40 w-full overflow-auto rounded-xl border p-4">
       <div className="h-16" />
-      <TextReveal text="滚动这段文字，单词会依次从淡到实。" />
+      <TextReveal
+        text={text}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
       <div className="h-24" />
     </div>
   )
 }
 
-export function LightBeamsDemo() {
+export function LightBeamsDemo({
+  beams = 6,
+  speed = 1,
+  color,
+  intensity = 0.5,
+}: {
+  beams?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
   return (
     <Frame>
-      <LightBeams />
+      <LightBeams beams={beams} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">光束</p>
     </Frame>
   )
 }
 
-export function StarfieldDemo() {
+export function StarfieldDemo({
+  count = 90,
+  speed = 1,
+  color,
+  size = 1,
+}: {
+  count?: number
+  speed?: number
+  color?: string
+  size?: number
+} = {}) {
   return (
     <Frame>
       <div className="absolute inset-0 bg-zinc-950" />
-      <Starfield className="text-white" />
+      <Starfield className="text-white" count={count} speed={speed} color={color} size={size} />
       <p className="relative z-10 text-sm text-zinc-100">星空</p>
     </Frame>
   )
 }
 
-export function WaveBackgroundDemo() {
+export function WaveBackgroundDemo({
+  speed = 1,
+  color,
+  intensity = 0.25,
+  size = 112,
+}: {
+  speed?: number
+  color?: string
+  intensity?: number
+  size?: number
+} = {}) {
   return (
-    <WaveBackground className="flex min-h-40 w-full items-center justify-center p-8">
+    <WaveBackground
+      className="flex min-h-40 w-full items-center justify-center p-8"
+      speed={speed}
+      color={color}
+      intensity={intensity}
+      size={size}
+    >
       波浪背景
     </WaveBackground>
   )
 }
 
-export function NoiseGradientDemo() {
+export function NoiseGradientDemo({
+  colors = ["#7c3aed", "#d946ef", "#22d3ee"],
+  angle = 135,
+  intensity = 0.25,
+  scale = 1,
+}: {
+  colors?: string[]
+  angle?: number
+  intensity?: number
+  scale?: number
+} = {}) {
   return (
-    <NoiseGradient className="flex min-h-40 w-full items-center justify-center p-8 text-white">
+    <NoiseGradient
+      className="flex min-h-40 w-full items-center justify-center p-8 text-white"
+      colors={colors}
+      angle={angle}
+      intensity={intensity}
+      scale={scale}
+    >
       噪点渐变
     </NoiseGradient>
   )
 }
 
-export function AnimatedGridDemo() {
+export function AnimatedGridDemo({
+  cell = 36,
+  speed = 1,
+  color,
+  intensity = 0.15,
+}: {
+  cell?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
   return (
     <Frame>
-      <AnimatedGrid />
+      <AnimatedGrid cell={cell} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">漂移网格</p>
     </Frame>
   )
 }
 
-export function RetroGridDemo() {
+export function RetroGridDemo({
+  size = 48,
+  speed = 1,
+  color,
+  intensity = 0.28,
+  angle = 62,
+}: {
+  size?: number
+  speed?: number
+  color?: string
+  intensity?: number
+  angle?: number
+} = {}) {
   return (
     <Frame>
-      <RetroGrid />
+      <RetroGrid size={size} speed={speed} color={color} intensity={intensity} angle={angle} />
       <p className="relative z-10 text-sm">复古透视网格</p>
     </Frame>
   )
 }
 
-export function DockDemo() {
+export function DockDemo({ magnification, size, gap }: { magnification?: number; size?: number; gap?: number } = {}) {
   return (
-    <Dock>
+    <Dock magnification={magnification} size={size} gap={gap}>
       <Home className="size-5" />
       <Star className="size-5" />
       <Sparkle className="size-5" />
@@ -177,79 +342,65 @@ export function DockDemo() {
   )
 }
 
-export function MarqueeDemo() {
+export function MarqueeDemo({ pauseOnHover, reverse, repeat, duration, gap }: { pauseOnHover?: boolean; reverse?: boolean; repeat?: number; duration?: number; gap?: number } = {}) {
   return (
-    <Marquee className="w-80">
+    <Marquee className="w-80" pauseOnHover={pauseOnHover} reverse={reverse} repeat={repeat} duration={duration} gap={gap}>
       {["Dock", "Marquee", "Orbit", "Bento"].map((item) => (
-        <Badge key={item} variant="secondary">
-          {item}
-        </Badge>
+        <Badge key={item} variant="secondary">{item}</Badge>
       ))}
     </Marquee>
   )
 }
 
-export function OrbitingCirclesDemo() {
+export function OrbitingCirclesDemo({ radius, duration, size }: { radius?: number; duration?: number; size?: number } = {}) {
+  const chip = "grid size-8 place-items-center rounded-full text-xs"
   return (
-    <OrbitingCircles>
-      <span className="grid size-8 place-items-center rounded-full bg-primary text-xs text-primary-foreground">
-        A
-      </span>
-      <span className="grid size-8 place-items-center rounded-full bg-chart-2 text-xs">
-        B
-      </span>
-      <span className="grid size-8 place-items-center rounded-full bg-chart-3 text-xs">
-        C
-      </span>
+    <OrbitingCircles radius={radius} duration={duration} size={size}>
+      <span className={`${chip} bg-primary text-primary-foreground`}>A</span>
+      <span className={`${chip} bg-chart-2`}>B</span>
+      <span className={`${chip} bg-chart-3`}>C</span>
     </OrbitingCircles>
   )
 }
 
-export function AnimatedListDemo() {
+export function AnimatedListDemo({ delay, duration, gap }: { delay?: number; duration?: number; gap?: number } = {}) {
   return (
     <AnimatedList
       className="w-64"
+      delay={delay}
+      duration={duration}
+      gap={gap}
       items={["新组件已发布", "Registry 构建完成", "文档站已更新"].map((text) => (
-        <div key={text} className="rounded-lg border bg-card px-3 py-2 text-sm">
-          {text}
-        </div>
+        <div key={text} className="rounded-lg border bg-card px-3 py-2 text-sm">{text}</div>
       ))}
     />
   )
 }
 
-export function GlobeSphereDemo() {
-  return <GlobeSphere className="[transform-style:preserve-3d]" />
+export function GlobeSphereDemo({ dots, duration, size, color }: { dots?: number; duration?: number; size?: number; color?: string } = {}) {
+  return <GlobeSphere className="[transform-style:preserve-3d]" dots={dots} duration={duration} size={size} color={color} />
 }
 
-export function ConfettiBurstDemo() {
-  return <ConfettiBurst>庆祝一下</ConfettiBurst>
+export function ConfettiBurstDemo({ pieces, duration, scale, colors }: { pieces?: number; duration?: number; scale?: number; colors?: string[] } = {}) {
+  return <ConfettiBurst pieces={pieces} duration={duration} scale={scale} colors={colors}>庆祝一下</ConfettiBurst>
 }
 
-export function CursorTrailDemo() {
+export function SparklesDemo({ count, duration, delay, size, color }: { count?: number; duration?: number; delay?: number; size?: number; color?: string } = {}) {
+  return <Sparkles className="px-6 py-3 text-2xl font-medium" count={count} duration={duration} delay={delay} size={size} color={color}>Sparkles</Sparkles>
+}
+
+export function BorderBeamDemo({ duration = 8, colorFrom, colorTo, size, intensity }: { duration?: number; colorFrom?: string; colorTo?: string; size?: number; intensity?: number } = {}) {
   return (
-    <CursorTrail className="flex min-h-40 w-full items-center justify-center rounded-xl border">
-      <p className="text-sm text-muted-foreground">在区域内移动指针</p>
-    </CursorTrail>
-  )
-}
-
-export function SparklesDemo() {
-  return <Sparkles className="px-6 py-3 text-2xl font-medium">Sparkles</Sparkles>
-}
-
-export function BorderBeamDemo({ duration = 8 }: { duration?: number } = {}) {
-  return (
-    <BorderBeam className="w-72" duration={duration}>
+    <BorderBeam className="w-72" duration={duration} colorFrom={colorFrom} colorTo={colorTo} size={size} intensity={intensity}>
       <h3 className="font-medium">Border Beam</h3>
       <p className="mt-2 text-sm text-muted-foreground">光束沿着边框跑。</p>
     </BorderBeam>
   )
 }
 
-export function BentoGridDemo() {
+export function BentoGridDemo({ gap, count, size }: { gap?: number; count?: number; size?: number } = {}) {
   return (
-    <BentoGrid className="max-w-lg">
+    <BentoGrid className="max-w-lg" gap={gap} count={count} size={size}>
       <BentoCard colSpan={2}>宽卡片</BentoCard>
       <BentoCard>窄</BentoCard>
       <BentoCard>A</BentoCard>
@@ -258,20 +409,20 @@ export function BentoGridDemo() {
   )
 }
 
-export function PerspectiveCardDemo() {
+export function PerspectiveCardDemo({ angle, size }: { angle?: number; size?: number } = {}) {
   return (
-    <PerspectiveCard className="w-72">
+    <PerspectiveCard className="w-72" angle={angle} size={size}>
       <h3 className="font-medium">Perspective</h3>
       <p className="mt-2 text-sm text-muted-foreground">指针移动时透视倾斜。</p>
     </PerspectiveCard>
   )
 }
 
-export function ExpandableCardDemo() {
+export function ExpandableCardDemo({ title = "可展开卡片" }: { title?: string } = {}) {
   return (
     <ExpandableCard
       className="max-w-sm"
-      title="可展开卡片"
+      title={title}
       preview="点击查看更多细节"
     >
       这里是展开后的说明，适合放次要内容。
@@ -279,22 +430,23 @@ export function ExpandableCardDemo() {
   )
 }
 
-export function RainbowButtonDemo() {
-  return <RainbowButton>Rainbow</RainbowButton>
+export function RainbowButtonDemo({ duration, colors, scale }: { duration?: number; colors?: string[]; scale?: number } = {}) {
+  return <RainbowButton duration={duration} colors={colors} scale={scale}>Rainbow</RainbowButton>
 }
 
-export function InteractiveHoverButtonDemo() {
-  return <InteractiveHoverButton>继续阅读</InteractiveHoverButton>
+export function InteractiveHoverButtonDemo({ duration, scale }: { duration?: number; scale?: number } = {}) {
+  return <InteractiveHoverButton duration={duration} scale={scale}>继续阅读</InteractiveHoverButton>
 }
 
-export function GooeyButtonDemo() {
-  return <GooeyButton>Gooey</GooeyButton>
+export function GooeyButtonDemo({ scale, intensity }: { scale?: number; intensity?: number } = {}) {
+  return <GooeyButton scale={scale} intensity={intensity}>Gooey</GooeyButton>
 }
 
-export function AnimatedTabsDemo() {
+export function AnimatedTabsDemo({ gap }: { gap?: number } = {}) {
   return (
     <AnimatedTabs
       className="w-80"
+      gap={gap}
       items={[
         { value: "one", label: "预览", content: "实时预览区域" },
         { value: "two", label: "代码", content: "npx shadcn add …" },
@@ -303,10 +455,10 @@ export function AnimatedTabsDemo() {
   )
 }
 
-export function FloatingNavbarDemo() {
+export function FloatingNavbarDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   return (
     <div className="h-40 w-full overflow-auto rounded-xl border">
-      <FloatingNavbar>
+      <FloatingNavbar duration={duration} intensity={intensity}>
         <span className="text-sm">Home</span>
         <span className="text-sm">Docs</span>
       </FloatingNavbar>
@@ -315,15 +467,15 @@ export function FloatingNavbarDemo() {
   )
 }
 
-export function AnimatedSidebarDemo() {
+export function AnimatedSidebarDemo({ size, intensity }: { size?: number; intensity?: number } = {}) {
   return (
-    <AnimatedSidebar>
+    <AnimatedSidebar size={size} intensity={intensity}>
       <p className="text-sm">侧栏内容</p>
     </AnimatedSidebar>
   )
 }
 
-export function PageTransitionDemo() {
+export function PageTransitionDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   const [key, setKey] = useState("a")
   return (
     <div className="space-y-3">
@@ -334,16 +486,16 @@ export function PageTransitionDemo() {
       >
         切换页面
       </button>
-      <PageTransition transitionKey={key} className="rounded-xl border bg-card p-6">
+      <PageTransition transitionKey={key} className="rounded-xl border bg-card p-6" duration={duration} intensity={intensity}>
         当前视图：{key === "a" ? "概览" : "详情"}
       </PageTransition>
     </div>
   )
 }
 
-export function RevealSectionDemo() {
+export function RevealSectionDemo({ delay, speed, intensity }: { delay?: number; speed?: number; intensity?: number } = {}) {
   return (
-    <RevealSection className="rounded-xl border bg-card p-6">
+    <RevealSection className="rounded-xl border bg-card p-6" delay={delay} speed={speed} intensity={intensity}>
       滚动到这里时区块揭开
     </RevealSection>
   )

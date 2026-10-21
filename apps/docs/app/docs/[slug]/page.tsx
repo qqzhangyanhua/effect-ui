@@ -1,11 +1,12 @@
 import Link from "next/link"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 import { getDemo } from "@effect-ui/registry/examples/index"
 import {
   categoryLabels,
+  componentCluster,
+  getCatalogGroups,
   getComponent,
-  getComponentsByCategory,
   sourceLibraryUrls,
   visibleComponents,
 } from "@effect-ui/registry/catalog"
@@ -14,6 +15,7 @@ import { Badge } from "@effect-ui/registry/ui/badge"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentTabs } from "@/components/component-tabs"
 import { PropsTable } from "@/components/props-table"
+import { familyPath } from "@/lib/family-path"
 import { highlightCode, languageForFile } from "@/lib/highlight"
 import { getRegistryBaseUrl, readRegistrySource } from "@/lib/source"
 import { readUsageExample } from "@/lib/usage"
@@ -65,6 +67,8 @@ export async function generateMetadata({ params }: DocsPageProps) {
 
 async function ComponentDocsPage({ params }: DocsPageProps) {
   const { slug } = await params
+  const cluster = componentCluster(slug)
+  if (cluster) redirect(`${familyPath(cluster)}#${slug}`)
   const item = getComponent(slug)
   if (!item || item.name === "utils") notFound()
 
@@ -82,7 +86,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   const usage = readUsageExample(item.name)
   const install = `npx shadcn@latest add ${getRegistryBaseUrl()}/r/${item.name}.json`
   const sourceUrl = sourceLibraryUrls[item.source]
-  const ordered = getComponentsByCategory().flatMap((group) => group.items)
+  const ordered = getCatalogGroups().flatMap((group) => group.items)
   const index = ordered.findIndex((entry) => entry.name === item.name)
   const previous = index > 0 ? ordered[index - 1] : undefined
   const next = index >= 0 ? ordered[index + 1] : undefined
@@ -133,6 +137,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
               Demo={Demo}
               componentName={primary ? componentExportName(primary.code) : ""}
               controls={controls}
+              presets={item.presets}
             />
           )
         }

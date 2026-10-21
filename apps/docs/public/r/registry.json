@@ -22,6 +22,21 @@
       ]
     },
     {
+      "name": "text-style",
+      "type": "registry:lib",
+      "title": "Text Style",
+      "description": "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/lib/text-style.ts",
+          "type": "registry:lib",
+          "target": "lib/text-style.ts"
+        }
+      ]
+    },
+    {
       "name": "use-mobile",
       "type": "registry:hook",
       "title": "Use Mobile",
@@ -472,6 +487,7 @@
       "description": "流动渐变文字。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -506,6 +522,7 @@
       "description": "极光色流动文字。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -545,6 +562,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -565,6 +583,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -583,6 +602,7 @@
       "description": "跟随指针的粒子背景。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -685,6 +705,7 @@
       "description": "随机闪烁的像素网格。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -1678,6 +1699,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -1732,6 +1754,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -1752,6 +1775,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -1787,6 +1811,7 @@
       "description": "星空穿梭背景。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -2341,6 +2366,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -2399,6 +2425,8 @@
       "description": "可变字体字重随鼠标距离变化。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -2722,6 +2750,7 @@
         "@paper-design/shaders-react"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -2777,7 +2806,9 @@
       "dependencies": [
         "@number-flow/react"
       ],
-      "registryDependencies": [],
+      "registryDependencies": [
+        "text-style"
+      ],
       "files": [
         {
           "path": "registry/effects/number-flow.tsx",
@@ -2793,6 +2824,7 @@
       "description": "RGB 错位故障文字。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3562,6 +3594,8 @@
       "description": "粒子遮挡，点击揭示。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -3634,6 +3668,7 @@
       "description": "流场线粒子背景。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -3668,6 +3703,8 @@
       "description": "WebGL 流体喷溅光标。移植自 PavelDoGreat/WebGL-Fluid-Simulation（MIT），无 WebGL 时回退渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3687,6 +3724,8 @@
         "@paper-design/shaders-react"
       ],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3704,6 +3743,7 @@
       "description": "文字沿 SVG 路径排列。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -3723,6 +3763,8 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3811,6 +3853,7 @@
       "description": "灵感来自 lamp heading，原创实现：顶部灯罩高光落在大标题上。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -3830,6 +3873,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3849,6 +3893,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3868,6 +3913,8 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3885,6 +3932,7 @@
       "description": "灵感来自 Linear 发光描边，原创实现：旋转锥形渐变边。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3904,6 +3952,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3940,6 +3989,8 @@
         "@vfx-js/core"
       ],
       "registryDependencies": [
+        "text-style",
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -3959,6 +4010,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -3978,6 +4030,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -3997,6 +4050,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4014,6 +4068,7 @@
       "description": "移植 hexagoncircle/pixel-canvas（MIT）：悬停时像素从中心闪现。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4052,6 +4107,7 @@
         "rough-notation"
       ],
       "registryDependencies": [
+        "text-style",
         "utils"
       ],
       "files": [
@@ -4091,6 +4147,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4108,6 +4165,8 @@
       "description": "灵感来自 encrypted card，原创实现：乱码字符在悬停处揭开明文。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -4125,6 +4184,7 @@
       "description": "灵感来自 dot-matrix reveal，原创实现：点阵涟漪揭开下层内容。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4142,6 +4202,7 @@
       "description": "灵感来自 letter glitch wall，原创实现：字符墙随机翻跳。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4159,6 +4220,7 @@
       "description": "灵感来自 target cursor，原创实现：四角括号吸附到 data-target。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4176,6 +4238,7 @@
       "description": "原创 GLSL 闪电：噪声折线与辉光，无 WebGL 时回退渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4193,6 +4256,7 @@
       "description": "原创虹彩噪声背景着色器，无 WebGL 时回退锥形渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4210,6 +4274,7 @@
       "description": "原创丝绸褶皱噪声背景着色器，无 WebGL 时回退线性渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4680,6 +4745,7 @@
       "description": "图标在倾斜 3D 轨道上环绕，前后有遮挡。移植 Animata（MIT）交互。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5390,6 +5456,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5428,6 +5495,7 @@
       "description": "原创 Bayer 抖动渐变着色器。无 WebGL 时回退点阵渐变，减弱动效时停在一帧。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5678,6 +5746,7 @@
       "description": "灵感来自 React Bits，原创实现。通栏可变字体，靠近指针的字母增加字重、宽度和高度。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5698,6 +5767,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5718,6 +5788,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5737,6 +5808,7 @@
       "dependencies": [],
       "registryDependencies": [
         "marquee-along-svg-path",
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5755,6 +5827,7 @@
       "description": "灵感来自 React Bits，原创实现。画布按行水平抖动，像信号不良，悬停更强。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5773,6 +5846,7 @@
       "description": "灵感来自 React Bits，原创实现。用 SVG feTurbulence 和 feDisplacementMap 做爆裂发光边。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5891,6 +5965,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5931,6 +6006,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5951,6 +6027,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6009,6 +6086,7 @@
         "simplex-noise"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6264,6 +6342,7 @@
       "description": "灵感来自 Codrops，原创实现。滚动速度驱动大标题身后的模糊残影。",
       "dependencies": [],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6282,6 +6361,7 @@
       "description": "灵感来自 Codrops，原创实现。沿指针路径生成色块，它们下落、弹起后淡出。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6302,6 +6382,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6499,6 +6580,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6618,6 +6700,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6676,6 +6759,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6696,6 +6780,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6846,6 +6931,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6925,6 +7011,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6983,6 +7070,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7159,6 +7247,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7292,6 +7381,7 @@
       "description": "灵感来自 Codrops Sands of Time，原创实现。沙粒从上室流到下室并堆积，可用作加载或倒计时。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7441,6 +7531,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7519,6 +7610,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7539,6 +7631,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "text-style",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7669,26 +7762,6 @@
           "path": "registry/effects/radial-gauge.tsx",
           "type": "registry:ui",
           "target": "components/ui/radial-gauge.tsx"
-        }
-      ]
-    },
-    {
-      "name": "funnel-chart",
-      "type": "registry:ui",
-      "title": "Funnel Chart",
-      "description": "纯 SVG 漏斗。宽度按数值，显示转化率和流失率，悬停高亮，入场逐层展开。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/funnel-chart.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/funnel-chart.tsx"
         }
       ]
     },

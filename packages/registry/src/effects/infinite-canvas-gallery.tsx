@@ -13,6 +13,8 @@ export interface CanvasTile {
 export interface InfiniteCanvasGalleryProps {
   tiles?: CanvasTile[]
   className?: string
+  gap?: number
+  size?: number
 }
 
 const defaultTiles: CanvasTile[] = [
@@ -26,19 +28,21 @@ const defaultTiles: CanvasTile[] = [
 
 const STEP = 168
 
-function InfiniteCanvasGallery({ tiles = defaultTiles, className }: InfiniteCanvasGalleryProps) {
+function InfiniteCanvasGallery({ tiles = defaultTiles, className, gap, size }: InfiniteCanvasGalleryProps) {
   const reduced = usePrefersReducedMotion()
   const frameRef = React.useRef<HTMLDivElement>(null)
   const offsetRef = React.useRef({ x: 24, y: 16 })
   const velocity = React.useRef({ x: 0, y: 0 })
   const drag = React.useRef<{ x: number; y: number; ox: number; oy: number; lx: number; ly: number } | null>(null)
   const [offset, setOffset] = React.useState({ x: 24, y: 16 })
-  const [size, setSize] = React.useState({ w: 640, h: 360 })
+  const [viewport, setViewport] = React.useState({ w: 640, h: 360 })
+  const step = gap === undefined || gap === STEP ? STEP : gap
+  const tileCanonical = size === undefined || size === 160
 
   React.useEffect(() => {
     const element = frameRef.current
     if (!element) return
-    const update = () => setSize({ w: element.clientWidth, h: element.clientHeight })
+    const update = () => setViewport({ w: element.clientWidth, h: element.clientHeight })
     update()
     const observer = new ResizeObserver(update)
     observer.observe(element)
@@ -64,10 +68,10 @@ function InfiniteCanvasGallery({ tiles = defaultTiles, className }: InfiniteCanv
     window.requestAnimationFrame(step)
   }
 
-  const col0 = Math.floor(-offset.x / STEP) - 1
-  const row0 = Math.floor(-offset.y / STEP) - 1
-  const cols = Math.ceil(size.w / STEP) + 3
-  const rows = Math.ceil(size.h / STEP) + 3
+  const col0 = Math.floor(-offset.x / step) - 1
+  const row0 = Math.floor(-offset.y / step) - 1
+  const cols = Math.ceil(viewport.w / step) + 3
+  const rows = Math.ceil(viewport.h / step) + 3
   const cells: { col: number; row: number }[] = []
   for (let row = row0; row < row0 + rows; row += 1) {
     for (let col = col0; col < col0 + cols; col += 1) cells.push({ col, row })
@@ -113,10 +117,15 @@ function InfiniteCanvasGallery({ tiles = defaultTiles, className }: InfiniteCanv
         return (
           <div
             key={`${col}:${row}`}
-            className="absolute grid size-40 place-items-end rounded-xl p-3 text-sm text-white"
+            className={
+              tileCanonical
+                ? "absolute grid size-40 place-items-end rounded-xl p-3 text-sm text-white"
+                : "absolute grid place-items-end rounded-xl p-3 text-sm text-white"
+            }
             style={{
-              transform: `translate(${col * STEP + offset.x}px, ${row * STEP + offset.y}px)`,
+              transform: `translate(${col * step + offset.x}px, ${row * step + offset.y}px)`,
               background: `linear-gradient(160deg, ${tile.tint}, #09090b)`,
+              ...(tileCanonical || size === undefined ? {} : { width: size, height: size }),
             }}
           >
             {tile.label}

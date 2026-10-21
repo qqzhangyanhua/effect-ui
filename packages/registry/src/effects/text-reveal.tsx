@@ -4,14 +4,19 @@ import * as React from "react"
 import { motion, useScroll, useTransform } from "motion/react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export interface TextRevealProps {
   text: string
   className?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
-function TextReveal({ text, className }: TextRevealProps) {
+function TextReveal({ text, className, fontSize, fontWeight, letterSpacing, align }: TextRevealProps) {
   const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLParagraphElement>(null)
   const { scrollYProgress } = useScroll({
@@ -25,6 +30,7 @@ function TextReveal({ text, className }: TextRevealProps) {
       ref={ref}
       data-slot="text-reveal"
       className={cn("flex flex-wrap gap-x-2 gap-y-1 text-2xl font-medium", className)}
+      style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}
     >
       {words.map((word, index) =>
         reduced ? (

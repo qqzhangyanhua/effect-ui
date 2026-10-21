@@ -18,7 +18,16 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/datamosh-transition.tsx",
     target: "components/ui/datamosh-transition.tsx",
-    props: [...ui],
+    props: [
+      { name: "speed", type: "number", description: "切换和扫描倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "拖影强度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "datamosh-transition-slow", label: "慢", values: { speed: 0.6, intensity: 0.45 } },
+      { name: "datamosh-transition-default", label: "默认", values: { speed: 1, intensity: 1 } },
+      { name: "datamosh-transition-hard", label: "强", values: { speed: 1.8, intensity: 1 } },
+    ],
   },
   {
     name: "loom-threads-marquee",
@@ -29,7 +38,15 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/loom-threads-marquee.tsx",
     target: "components/ui/loom-threads-marquee.tsx",
-    props: [...ui],
+    props: [
+      { name: "speed", type: "number", description: "拆丝和流动的倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "loom-threads-marquee-slow", label: "慢", values: { speed: 0.6 } },
+      { name: "loom-threads-marquee-default", label: "默认", values: { speed: 1 } },
+      { name: "loom-threads-marquee-fast", label: "快", values: { speed: 1.8 } },
+    ],
   },
   {
     name: "hologram-card",
@@ -43,7 +60,30 @@ export const batch16Components: ComponentMeta[] = [
     props: [
       { name: "title", type: "string", defaultValue: "全息卡片", description: "卡片标题。" },
       { name: "detail", type: "string", description: "说明文字。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "扫描一周（毫秒）。1100 与不传相同，仍是 1.1 秒。",
+        control: { kind: "range", value: 1100, min: 440, max: 2200, step: 20 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "扫描线和闪烁的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "辉光颜色。#67e8f9 与不传相同。",
+        control: { kind: "color", value: "#67e8f9" },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "hologram-card-dim", label: "淡", values: { duration: 1600, intensity: 0.4, color: "#67e8f9" } },
+      { name: "hologram-card-default", label: "默认", values: { duration: 1100, intensity: 1, color: "#67e8f9" } },
+      { name: "hologram-card-alert", label: "警", values: { duration: 700, intensity: 1, color: "#f43f5e" } },
     ],
   },
   {
@@ -55,7 +95,38 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/sketch-hatch-image.tsx",
     target: "components/ui/sketch-hatch-image.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "count",
+        type: "number",
+        description: "排线密度。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 8, max: 80, step: 2 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "揭开范围倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "排线角度（度）。46 与不传相同，都是 0.8 弧度。",
+        control: { kind: "range", value: 46, min: 0, max: 360, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "铅笔颜色。#292621 与不传相同。",
+        control: { kind: "color", value: "#292621" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "sketch-loose", label: "疏", values: { count: 16, intensity: 0.6, angle: 20, color: "#292621" } },
+      { name: "sketch-default", label: "默认", values: { count: 28, intensity: 1, angle: 46, color: "#292621" } },
+      { name: "sketch-dense", label: "密", values: { count: 52, intensity: 1, angle: 80, color: "#292621" } },
+    ],
   },
   {
     name: "scroll-3d-image-rotate",
@@ -66,7 +137,32 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-3d-image-rotate.tsx",
     target: "components/ui/scroll-3d-image-rotate.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        description: "翻入角度（度）。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 0, max: 360, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "每张卡片占用的进度窗口倍率。1 与不传相同，窗口仍是 0.16。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "翻出时的最低不透明度。1 与不传相同，最低仍是 0.15。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "scroll-3d-default", label: "默认", values: { angle: 80, speed: 1, intensity: 1 } },
+      { name: "scroll-3d-shallow", label: "浅", values: { angle: 40, speed: 1, intensity: 1 } },
+      { name: "scroll-3d-ghost", label: "更透", values: { angle: 80, speed: 1, intensity: 0.4 } },
+    ],
   },
   {
     name: "thumbnail-flow-path",
@@ -77,7 +173,18 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/thumbnail-flow-path.tsx",
     target: "components/ui/thumbnail-flow-path.tsx",
-    props: [...ui],
+    props: [
+      { name: "duration", type: "number", description: "飞行毫秒。1350 与不传相同，仍是 1.35 秒。", control: { kind: "range", value: 1350, min: 540, max: 2700, step: 10 } },
+      { name: "delay", type: "number", description: "相邻缩略图的错开（毫秒）。120 与不传相同，仍是 0.12 秒。", control: { kind: "range", value: 120, min: 0, max: 300, step: 10 } },
+      { name: "size", type: "number", description: "飞行时边长（像素）。64 与不传相同，仍是 size-16。", control: { kind: "range", value: 64, min: 32, max: 96, step: 4 } },
+      { name: "gap", type: "number", description: "落进网格后的间距（像素）。12 与不传相同，仍是 gap-3。", control: { kind: "range", value: 12, min: 0, max: 24, step: 1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "thumbnail-flow-path-slow", label: "慢", values: { duration: 2000, delay: 180, size: 48, gap: 16 } },
+      { name: "thumbnail-flow-path-default", label: "默认", values: { duration: 1350, delay: 120, size: 64, gap: 12 } },
+      { name: "thumbnail-flow-path-fast", label: "快", values: { duration: 800, delay: 40, size: 80, gap: 8 } },
+    ],
   },
   {
     name: "shader-grid-wide",
@@ -88,7 +195,38 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/shader-grid-wide.tsx",
     target: "components/ui/shader-grid-wide.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "滚动拉伸倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "指针鼓起幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "横向格子数。6 与不传相同，纵向是它的一半。",
+        control: { kind: "range", value: 6, min: 2, max: 12, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "鼓起范围倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "shader-grid-calm", label: "平", values: { intensity: 0.4, speed: 0.5, count: 4, scale: 0.7 } },
+      { name: "shader-grid-default", label: "默认", values: { intensity: 1, speed: 1, count: 6, scale: 1 } },
+      { name: "shader-grid-busy", label: "密", values: { intensity: 1, speed: 1.8, count: 10, scale: 1.4 } },
+    ],
   },
   {
     name: "sea-waves-background",
@@ -99,7 +237,37 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/sea-waves-background.tsx",
     target: "components/ui/sea-waves-background.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.15",
+        description: "海况，0 是平静，1 是风暴。",
+        control: { kind: "range", value: 0.15, min: 0, max: 1, step: 0.01 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "波浪时间倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#05142e", "#0d597a", "#dbe8f2"]',
+        description: "深海、近岸和天空的颜色。",
+        control: { kind: "colors", value: ["#05142e", "#0d597a", "#dbe8f2"] },
+      },
+      {
+        name: "scale",
+        type: "number",
+        defaultValue: "1",
+        description: "波浪空间频率倍率。",
+        control: { kind: "range", value: 1, min: 0.6, max: 1.8, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "cinema-seat-picker",

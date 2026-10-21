@@ -103,6 +103,20 @@ test("滑块、开关、文本和选项改值后，demo 收到新值", async () 
   expect(snippet()).toContain('direction="right"')
 })
 
+test("colors 可以一开始跟随主题，关掉之后才把调色板传给 demo", async () => {
+  const user = renderPreview([
+    { name: "colors", control: { kind: "colors", value: ["#ff0000", "#00ff00"], follow: true } },
+  ])
+
+  expect(params()).toBe("{}")
+  expect(snippet()).toBe("<Aurora />")
+  expect(screen.getByRole("switch", { name: "colors 跟随主题" })).toBeChecked()
+
+  await user.click(screen.getByRole("switch", { name: "colors 跟随主题" }))
+  expect(params()).toBe('{"colors":["#ff0000","#00ff00"]}')
+  expect(snippet()).toBe('<Aurora colors={["#ff0000", "#00ff00"]} />')
+})
+
 test("colors 的数量固定，改一个颜色只改那一项", async () => {
   const user = renderPreview([
     { name: "colors", control: { kind: "colors", value: ["#ff0000", "#00ff00"] } },
@@ -188,19 +202,15 @@ test("重放会重新挂载 demo，参数保持当前值", async () => {
   expect(params()).toBe('{"loop":true}')
 })
 
-test("主题和底纹切换反映在预览容器上", async () => {
-  const user = renderPreview([{ name: "loop", control: { kind: "boolean", value: false } }])
-  expect(screen.getByRole("region", { name: "组件预览，主题 跟随站点，底纹 无" })).toBeInTheDocument()
-
-  await user.click(screen.getByRole("radio", { name: "亮" }))
-  expect(screen.getByRole("region", { name: "组件预览，主题 亮，底纹 无" })).toBeInTheDocument()
-
-  await user.click(screen.getByRole("radio", { name: "棋盘格" }))
-  expect(screen.getByRole("region", { name: "组件预览，主题 亮，底纹 棋盘格" })).toBeInTheDocument()
-
-  await user.click(screen.getByRole("radio", { name: "暗" }))
-  await user.click(screen.getByRole("radio", { name: "网格" }))
-  expect(screen.getByRole("region", { name: "组件预览，主题 暗，底纹 网格" })).toBeInTheDocument()
+test("预览不提供主题和底纹切换", () => {
+  renderPreview([{ name: "loop", control: { kind: "boolean", value: false } }])
+  expect(screen.getByRole("region", { name: "组件预览" })).toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "跟随站点" })).not.toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "亮" })).not.toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "暗" })).not.toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "无" })).not.toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "网格" })).not.toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "棋盘格" })).not.toBeInTheDocument()
 })
 
 test("重置恢复全部 Start value", async () => {
@@ -231,18 +241,81 @@ test("重置恢复全部 Start value", async () => {
   expect(screen.getByRole("textbox", { name: "colors 颜色 1" })).toHaveValue("#ff0000")
 })
 
-test("没有 Control 的 demo 也有重放、主题和底纹", async () => {
+test("文字分组排在外观之前，文字内容排在同组最前", () => {
+  render(
+    <ComponentPreview
+      Demo={Demo}
+      componentName="ShimmerText"
+      controls={[
+        { name: "fontSize", control: { kind: "range", value: 48, min: 16, max: 96, step: 1 } },
+        { name: "text", control: { kind: "text", value: "标题" } },
+        { name: "color", control: { kind: "color", value: "#000000" } },
+      ]}
+    />,
+  )
+
+  const headings = screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)
+  expect(headings).toEqual(["文字", "外观"])
+  const textGroup = screen.getByRole("region", { name: "文字" })
+  const names = within(textGroup).getAllByRole("textbox").map((field) => field.getAttribute("id"))
+  const labels = within(textGroup).getAllByText(/^(text|fontSize)$/)
+  expect(labels.map((label) => label.textContent)).toEqual(["text", "fontSize"])
+  expect(names.length).toBeGreaterThan(0)
+})
+
+test("套用预设后预览和复制配置一起变，重置和重放仍可用", async () => {
+  const user = userEvent.setup()
+  render(
+    <ComponentPreview
+      Demo={Demo}
+      componentName="ShimmerText"
+      controls={[
+        { name: "fontSize", defaultValue: "48", control: { kind: "range", value: 48, min: 12, max: 96, step: 1 } },
+        {
+          name: "align",
+          defaultValue: '"left"',
+          control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+        },
+      ]}
+      presets={[{ name: "shimmer-display", label: "大标题", values: { fontSize: 72, align: "center" } }]}
+    />,
+  )
+
+  expect(params()).toBe('{"fontSize":48,"align":"left"}')
+  expect(snippet()).toBe("<ShimmerText />")
+
+  await user.click(screen.getByRole("button", { name: "大标题" }))
+  expect(params()).toBe('{"fontSize":72,"align":"center"}')
+  expect(snippet()).toBe('<ShimmerText fontSize={72} align="center" />')
+  expect(screen.getByRole("button", { name: "大标题" })).toHaveAttribute("aria-pressed", "true")
+
+  await user.click(screen.getByRole("slider", { name: "fontSize" }))
+  await user.keyboard("{ArrowLeft}")
+  await waitFor(() => {
+    expect(snippet()).toBe('<ShimmerText fontSize={71} align="center" />')
+  })
+  expect(screen.getByRole("button", { name: "大标题" })).toHaveAttribute("aria-pressed", "false")
+
+  await user.click(screen.getByRole("button", { name: "重置" }))
+  expect(params()).toBe('{"fontSize":48,"align":"left"}')
+  expect(snippet()).toBe("<ShimmerText />")
+
+  expect(screen.getByLabelText("挂载")).toHaveTextContent("1")
+  await user.click(screen.getByRole("button", { name: "重放" }))
+  expect(screen.getByLabelText("挂载")).toHaveTextContent("2")
+  expect(params()).toBe('{"fontSize":48,"align":"left"}')
+})
+
+test("没有 Control 的 demo 也有重放", async () => {
   const user = userEvent.setup()
   render(<ComponentPreview Demo={Demo} />)
 
   expect(screen.getByRole("button", { name: "重放" })).toBeInTheDocument()
-  expect(screen.getByRole("radio", { name: "跟随站点" })).toBeChecked()
-  expect(screen.getByRole("radio", { name: "无" })).toBeChecked()
+  expect(screen.getByRole("region", { name: "组件预览" })).toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "跟随站点" })).not.toBeInTheDocument()
+  expect(screen.queryByRole("radio", { name: "网格" })).not.toBeInTheDocument()
   expect(screen.queryByRole("button", { name: "重置" })).not.toBeInTheDocument()
   expect(screen.queryByLabelText("当前配置")).not.toBeInTheDocument()
-
-  await user.click(screen.getByRole("radio", { name: "暗" }))
-  expect(screen.getByRole("region", { name: "组件预览，主题 暗，底纹 无" })).toBeInTheDocument()
 
   expect(screen.getByLabelText("挂载")).toHaveTextContent("1")
   await user.click(screen.getByRole("button", { name: "重放" }))

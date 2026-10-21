@@ -8,13 +8,22 @@ import { cn } from "@/lib/utils"
 export interface IntroPreloaderProps {
   className?: string
   children?: React.ReactNode
+  interval?: number
+  duration?: number
+  delay?: number
+  count?: number
+  color?: string
 }
 
 const STORAGE_KEY = "effect-ui-intro-preloader"
 const INTRO_EVENT = "effect-ui-intro"
 
-function IntroPreloader({ className, children }: IntroPreloaderProps) {
+function IntroPreloader({ className, children, interval, duration, delay, count, color }: IntroPreloaderProps) {
   const reduced = usePrefersReducedMotion()
+  const tickMs = interval === undefined || interval === 32 ? 32 : interval
+  const panels = count === undefined || count === 5 ? 5 : count
+  const curtainMs = duration === undefined || duration === 700 ? 700 : duration
+  const staggerMs = delay === undefined || delay === 70 ? 70 : delay
   const [progress, setProgress] = React.useState(0)
   const [phase, setPhase] = React.useState<"count" | "curtains" | "done">("count")
   const seen = React.useSyncExternalStore(
@@ -42,12 +51,12 @@ function IntroPreloader({ className, children }: IntroPreloaderProps) {
           setPhase("done")
         }, 900)
       }
-    }, 32)
+    }, tickMs)
     return () => {
       window.clearInterval(timer)
       window.clearTimeout(timeout)
     }
-  }, [reduced, seen])
+  }, [reduced, seen, tickMs])
 
   return (
     <div className={cn("relative min-h-80 overflow-hidden rounded-2xl border bg-zinc-950 text-white", className)}>
@@ -57,13 +66,14 @@ function IntroPreloader({ className, children }: IntroPreloaderProps) {
       {!reduced && !(seen && phase !== "curtains") ? (
         <div className="absolute inset-0 z-10">
           <div className="absolute inset-0 flex">
-            {Array.from({ length: 5 }, (_, index) => (
+            {Array.from({ length: panels }, (_, index) => (
               <span
                 key={index}
-                className="h-full flex-1 bg-zinc-950"
+                className={color ? "h-full flex-1" : "h-full flex-1 bg-zinc-950"}
                 style={{
                   transform: phase === "curtains" ? "translateY(-100%)" : "translateY(0)",
-                  transition: reduced ? "none" : `transform 700ms ${index * 70}ms ease`,
+                  transition: reduced ? "none" : `transform ${curtainMs}ms ${index * staggerMs}ms ease`,
+                  ...(color ? { backgroundColor: color } : null),
                 }}
               />
             ))}

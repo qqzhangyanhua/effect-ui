@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -359,6 +360,27 @@ export const batch2Components: ComponentMeta[] = [
         description: "动画时长（毫秒）。",
         control: { kind: "range", value: 900, min: 200, max: 3000, step: 50 },
       },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "开始前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "false",
+        description: "播完后是否重复。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
     ],
   },
   {
@@ -372,14 +394,39 @@ export const batch2Components: ComponentMeta[] = [
     target: "components/ui/text-rotate.tsx",
     props: [
       { name: "texts", type: "string[]", description: "轮换的文本。" },
-      { name: "interval", type: "number", defaultValue: "1800", description: "间隔毫秒。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1800",
+        description: "间隔毫秒。",
+        control: { kind: "range", value: 1800, min: 600, max: 3600, step: 100 },
+      },
       {
         name: "animation",
         type: '"slide" | "blur" | "glyph"',
         defaultValue: '"slide"',
         description: "切换动画。",
+        control: { kind: "select", value: "slide", options: ["slide", "blur", "glyph"] },
       },
+      ...textControls({ fontSize: 24, fontWeight: 600, align: "center" }),
       ...ui,
+    ],
+    presets: [
+      {
+        name: "text-rotate-1",
+        label: "滑动",
+        values: { interval: 1800, animation: "slide", fontSize: 36, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "text-rotate-2",
+        label: "模糊",
+        values: { interval: 1400, animation: "blur", fontSize: 28, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "text-rotate-3",
+        label: "字形",
+        values: { interval: 2200, animation: "glyph", fontSize: 48, fontWeight: 600, align: "center" },
+      },
     ],
   },
   {
@@ -393,7 +440,26 @@ export const batch2Components: ComponentMeta[] = [
     target: "components/ui/word-rotate.tsx",
     props: [
       { name: "words", type: "string[]", description: "轮换词列表。" },
-      { name: "interval", type: "number", defaultValue: "1800", description: "间隔毫秒。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1800",
+        description: "间隔毫秒。",
+        control: { kind: "range", value: 1800, min: 600, max: 3600, step: 100 },
+      },
+      ...textControls({ fontSize: 24, fontWeight: 400, align: "left" }),
+    ],
+    presets: [
+      {
+        name: "word-rotate-1",
+        label: "正文",
+        values: { interval: 1800, fontSize: 24, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "word-rotate-2",
+        label: "标题",
+        values: { interval: 1200, fontSize: 40, fontWeight: 700, align: "center" },
+      },
     ],
   },
   {
@@ -405,7 +471,29 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/morphing-text.tsx",
     target: "components/ui/morphing-text.tsx",
-    props: [{ name: "texts", type: "string[]", description: "文本序列。" }],
+    props: [
+      { name: "texts", type: "string[]", description: "文本序列。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "2200",
+        description: "间隔毫秒。不传则 2200。",
+        control: { kind: "range", value: 2200, min: 800, max: 4400, step: 100 },
+      },
+      ...textControls({ fontSize: 30, fontWeight: 600, align: "center" }),
+    ],
+    presets: [
+      {
+        name: "morphing-text-1",
+        label: "标题",
+        values: { interval: 2200, fontSize: 48, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "morphing-text-2",
+        label: "慢变",
+        values: { interval: 3600, fontSize: 24, fontWeight: 400, align: "left" },
+      },
+    ],
   },
   {
     name: "rolling-number",
@@ -416,7 +504,27 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/rolling-number.tsx",
     target: "components/ui/rolling-number.tsx",
-    props: [{ name: "value", type: "number", description: "当前数字。" }],
+    props: [
+      {
+        name: "value",
+        type: "number",
+        description: "当前数字。",
+        control: { kind: "range", value: 2048, min: 0, max: 9999, step: 1 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "center" }),
+    ],
+    presets: [
+      {
+        name: "rolling-number-1",
+        label: "大数字",
+        values: { value: 2048, fontSize: 64, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "rolling-number-2",
+        label: "小数",
+        values: { value: 86, fontSize: 32, fontWeight: 500, align: "left" },
+      },
+    ],
   },
   {
     name: "text-reveal",
@@ -427,7 +535,20 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-reveal.tsx",
     target: "components/ui/text-reveal.tsx",
-    props: [{ name: "text", type: "string", description: "段落文本。" }],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "段落文本。",
+        control: { kind: "text", value: "滚动这段文字，单词会依次从淡到实。" },
+      },
+      ...textControls({ fontSize: 18, fontWeight: 400, align: "left" }),
+      ...ui,
+    ],
+    presets: textPresets("text-reveal", "text", [
+      { label: "正文", content: "滚动这段文字，单词会依次从淡到实。", fontSize: 18, fontWeight: 400, align: "left" },
+      { label: "标题", content: "逐词显现", fontSize: 40, fontWeight: 700, align: "center" },
+    ]),
   },
   {
     name: "light-beams",
@@ -438,7 +559,35 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/light-beams.tsx",
     target: "components/ui/light-beams.tsx",
-    props: [{ name: "beams", type: "number", defaultValue: "6", description: "光束数量。" }],
+    props: [
+      {
+        name: "beams",
+        type: "number",
+        defaultValue: "6",
+        description: "光束数量。",
+        control: { kind: "range", value: 6, min: 2, max: 12, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "动画速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "光束颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.5",
+        description: "光束透明度。",
+        control: { kind: "range", value: 0.5, min: 0.15, max: 1, step: 0.05 },
+      },
+    ],
   },
   {
     name: "starfield",
@@ -449,7 +598,35 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/starfield.tsx",
     target: "components/ui/starfield.tsx",
-    props: [{ name: "count", type: "number", defaultValue: "90", description: "星星数量。" }],
+    props: [
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "90",
+        description: "星星数量。",
+        control: { kind: "range", value: 90, min: 30, max: 180, step: 10 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "穿梭速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "星星颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "1",
+        description: "星星大小。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
   },
   {
     name: "wave-background",
@@ -460,7 +637,36 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/wave-background.tsx",
     target: "components/ui/wave-background.tsx",
-    props: ui,
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "波动速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "波浪颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.25",
+        description: "波浪透明度。",
+        control: { kind: "range", value: 0.25, min: 0.08, max: 0.7, step: 0.01 },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "112",
+        description: "波浪高度。",
+        control: { kind: "range", value: 112, min: 48, max: 200, step: 4 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "noise-gradient",
@@ -471,7 +677,37 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/noise-gradient.tsx",
     target: "components/ui/noise-gradient.tsx",
-    props: ui,
+    props: [
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#7c3aed", "#d946ef", "#22d3ee"]',
+        description: "渐变颜色。",
+        control: { kind: "colors", value: ["#7c3aed", "#d946ef", "#22d3ee"] },
+      },
+      {
+        name: "angle",
+        type: "number",
+        defaultValue: "135",
+        description: "渐变角度。",
+        control: { kind: "range", value: 135, min: 0, max: 360, step: 15 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.25",
+        description: "噪点透明度。",
+        control: { kind: "range", value: 0.25, min: 0, max: 0.6, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        defaultValue: "1",
+        description: "噪点缩放。",
+        control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "animated-grid",
@@ -482,7 +718,35 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-grid.tsx",
     target: "components/ui/animated-grid.tsx",
-    props: [{ name: "cell", type: "number", defaultValue: "36", description: "单元格尺寸。" }],
+    props: [
+      {
+        name: "cell",
+        type: "number",
+        defaultValue: "36",
+        description: "单元格尺寸。",
+        control: { kind: "range", value: 36, min: 16, max: 72, step: 4 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "漂移速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "网格颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.15",
+        description: "线条透明度。",
+        control: { kind: "range", value: 0.15, min: 0.05, max: 0.5, step: 0.05 },
+      },
+    ],
   },
   {
     name: "retro-grid",
@@ -493,7 +757,43 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/retro-grid.tsx",
     target: "components/ui/retro-grid.tsx",
-    props: ui,
+    props: [
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "48",
+        description: "格子尺寸。",
+        control: { kind: "range", value: 48, min: 24, max: 80, step: 4 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "漂移速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "网格颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.28",
+        description: "线条透明度。",
+        control: { kind: "range", value: 0.28, min: 0.08, max: 0.6, step: 0.02 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        defaultValue: "62",
+        description: "透视角度。",
+        control: { kind: "range", value: 62, min: 40, max: 75, step: 1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "dock",
@@ -504,7 +804,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dock.tsx",
     target: "components/ui/dock.tsx",
-    props: [{ name: "magnification", type: "number", defaultValue: "52", description: "放大后宽度。" }],
+    props: [
+      { name: "magnification", type: "number", defaultValue: "52", description: "放大后宽度。", control: { kind: "range", value: 52, min: 40, max: 80, step: 2 } },
+      { name: "size", type: "number", description: "静止宽度（像素）。40 与不传相同。", control: { kind: "range", value: 40, min: 24, max: 64, step: 2 } },
+      { name: "gap", type: "number", description: "图标间距（像素）。8 与不传相同，仍是 gap-2。", control: { kind: "range", value: 8, min: 0, max: 24, step: 1 } },
+    ],
+    presets: [
+      { name: "dock-tight", label: "紧", values: { magnification: 44, size: 32, gap: 4 } },
+      { name: "dock-default", label: "默认", values: { magnification: 52, size: 40, gap: 8 } },
+      { name: "dock-wide", label: "宽", values: { magnification: 68, size: 48, gap: 12 } },
+    ],
   },
   {
     name: "marquee",
@@ -516,8 +825,16 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/marquee.tsx",
     target: "components/ui/marquee.tsx",
     props: [
-      { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "悬停暂停。" },
-      { name: "reverse", type: "boolean", defaultValue: "false", description: "反向滚动。" },
+      { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "悬停暂停。", control: { kind: "boolean", value: true } },
+      { name: "reverse", type: "boolean", defaultValue: "false", description: "反向滚动。", control: { kind: "boolean", value: false } },
+      { name: "repeat", type: "number", defaultValue: "2", description: "重复份数。", control: { kind: "range", value: 2, min: 1, max: 6, step: 1 } },
+      { name: "duration", type: "number", description: "滚动一周（毫秒）。28000 与不传相同，仍是 28 秒。", control: { kind: "range", value: 28000, min: 11200, max: 56000, step: 400 } },
+      { name: "gap", type: "number", description: "间距（像素）。16 与不传相同，仍是 1rem。", control: { kind: "range", value: 16, min: 0, max: 48, step: 1 } },
+    ],
+    presets: [
+      { name: "marquee-slow", label: "慢", values: { duration: 42000, gap: 24, repeat: 2, pauseOnHover: true, reverse: false } },
+      { name: "marquee-default", label: "默认", values: { duration: 28000, gap: 16, repeat: 2, pauseOnHover: true, reverse: false } },
+      { name: "marquee-fast", label: "快", values: { duration: 14000, gap: 8, repeat: 3, pauseOnHover: true, reverse: true } },
     ],
   },
   {
@@ -530,8 +847,14 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/orbiting-circles.tsx",
     target: "components/ui/orbiting-circles.tsx",
     props: [
-      { name: "radius", type: "number", defaultValue: "80", description: "轨道半径。" },
-      { name: "duration", type: "number", defaultValue: "12", description: "周期秒数。" },
+      { name: "radius", type: "number", defaultValue: "80", description: "轨道半径。", control: { kind: "range", value: 80, min: 32, max: 160, step: 4 } },
+      { name: "duration", type: "number", defaultValue: "12", description: "周期秒数。", control: { kind: "range", value: 12, min: 5, max: 24, step: 1 } },
+      { name: "size", type: "number", description: "图标边长（像素）。32 与不传相同，仍是 size-8。", control: { kind: "range", value: 32, min: 16, max: 64, step: 2 } },
+    ],
+    presets: [
+      { name: "orbiting-circles-tight", label: "紧", values: { radius: 48, duration: 8, size: 24 } },
+      { name: "orbiting-circles-default", label: "默认", values: { radius: 80, duration: 12, size: 32 } },
+      { name: "orbiting-circles-wide", label: "宽", values: { radius: 128, duration: 20, size: 40 } },
     ],
   },
   {
@@ -543,7 +866,17 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-list.tsx",
     target: "components/ui/animated-list.tsx",
-    props: [{ name: "items", type: "ReactNode[]", description: "列表项。" }],
+    props: [
+      { name: "items", type: "ReactNode[]", description: "列表项。" },
+      { name: "delay", type: "number", defaultValue: "1400", description: "逐条间隔（毫秒）。", control: { kind: "range", value: 1400, min: 560, max: 2800, step: 20 } },
+      { name: "duration", type: "number", description: "入场毫秒。280 与不传相同，仍是 0.28 秒。", control: { kind: "range", value: 280, min: 120, max: 560, step: 10 } },
+      { name: "gap", type: "number", description: "行距（像素）。8 与不传相同，仍是 gap-2。", control: { kind: "range", value: 8, min: 0, max: 24, step: 1 } },
+    ],
+    presets: [
+      { name: "animated-list-slow", label: "慢", values: { delay: 2200, duration: 420, gap: 14 } },
+      { name: "animated-list-default", label: "默认", values: { delay: 1400, duration: 280, gap: 8 } },
+      { name: "animated-list-fast", label: "快", values: { delay: 700, duration: 160, gap: 4 } },
+    ],
   },
   {
     name: "globe-sphere",
@@ -554,7 +887,17 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/globe-sphere.tsx",
     target: "components/ui/globe-sphere.tsx",
-    props: [{ name: "dots", type: "number", defaultValue: "48", description: "点数。" }],
+    props: [
+      { name: "dots", type: "number", defaultValue: "48", description: "点数。", control: { kind: "range", value: 48, min: 12, max: 96, step: 2 } },
+      { name: "duration", type: "number", description: "自转一周（毫秒）。16000 与不传相同，仍是 16 秒。", control: { kind: "range", value: 16000, min: 6400, max: 32000, step: 200 } },
+      { name: "size", type: "number", description: "球体边长（像素）。192 与不传相同，仍是 size-48。", control: { kind: "range", value: 192, min: 96, max: 320, step: 8 } },
+      { name: "color", type: "string", description: "点的颜色。不传则跟随主题。", control: { kind: "color" } },
+    ],
+    presets: [
+      { name: "globe-sphere-sparse", label: "疏", values: { dots: 24, duration: 24000, size: 144 } },
+      { name: "globe-sphere-default", label: "默认", values: { dots: 48, duration: 16000, size: 192 } },
+      { name: "globe-sphere-dense", label: "密", values: { dots: 80, duration: 10000, size: 240 } },
+    ],
   },
   {
     name: "confetti-burst",
@@ -565,7 +908,17 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/confetti-burst.tsx",
     target: "components/ui/confetti-burst.tsx",
-    props: [{ name: "pieces", type: "number", defaultValue: "18", description: "彩纸片数。" }],
+    props: [
+      { name: "pieces", type: "number", defaultValue: "18", description: "彩纸片数。", control: { kind: "range", value: 18, min: 6, max: 36, step: 1 } },
+      { name: "duration", type: "number", description: "散开毫秒。800 与不传相同。", control: { kind: "range", value: 800, min: 320, max: 1600, step: 20 } },
+      { name: "scale", type: "number", description: "飞散距离倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "colors", type: "string[]", description: "彩纸颜色。不传时仍是这五色。", control: { kind: "colors", value: ["#a78bfa", "#22d3ee", "#f472b6", "#facc15", "#34d399"] } },
+    ],
+    presets: [
+      { name: "confetti-burst-small", label: "小", values: { pieces: 8, duration: 500, scale: 0.6 } },
+      { name: "confetti-burst-default", label: "默认", values: { pieces: 18, duration: 800, scale: 1 } },
+      { name: "confetti-burst-big", label: "大", values: { pieces: 30, duration: 1200, scale: 1.6 } },
+    ],
   },
   {
     name: "cursor-trail",
@@ -576,7 +929,33 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/cursor-trail.tsx",
     target: "components/ui/cursor-trail.tsx",
-    props: [{ name: "dots", type: "number", defaultValue: "8", description: "拖尾点数。" }],
+    props: [
+      {
+        name: "dots",
+        type: "number",
+        defaultValue: "8",
+        description: "拖尾点数。",
+        control: { kind: "range", value: 8, min: 2, max: 24, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "点的直径（像素）。10 与不传相同。",
+        control: { kind: "range", value: 10, min: 4, max: 32, step: 1 },
+      },
+      { name: "color", type: "string", description: "点的颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "cursor-trail-short", label: "短", values: { dots: 4, size: 8, intensity: 0.7 } },
+      { name: "cursor-trail-default", label: "默认", values: { dots: 8, size: 10, intensity: 1 } },
+      { name: "cursor-trail-long", label: "长", values: { dots: 16, size: 14, intensity: 1 } },
+    ],
   },
   {
     name: "sparkles",
@@ -587,7 +966,18 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/sparkles.tsx",
     target: "components/ui/sparkles.tsx",
-    props: [{ name: "count", type: "number", defaultValue: "8", description: "星点数量。" }],
+    props: [
+      { name: "count", type: "number", defaultValue: "8", description: "星点数量。", control: { kind: "range", value: 8, min: 3, max: 16, step: 1 } },
+      { name: "duration", type: "number", description: "基础闪烁毫秒。1400 与不传相同，仍按点再错开 0.3 秒。", control: { kind: "range", value: 1400, min: 560, max: 2800, step: 20 } },
+      { name: "delay", type: "number", description: "相邻星点错开毫秒。120 与不传相同。", control: { kind: "range", value: 120, min: 0, max: 300, step: 10 } },
+      { name: "size", type: "number", description: "星点直径（像素）。4 与不传相同，仍是 size-1。", control: { kind: "range", value: 4, min: 2, max: 12, step: 1 } },
+      { name: "color", type: "string", description: "星点颜色。不传则仍是 amber-300。", control: { kind: "color" } },
+    ],
+    presets: [
+      { name: "sparkles-few", label: "少", values: { count: 4, duration: 2000, delay: 180, size: 4 } },
+      { name: "sparkles-default", label: "默认", values: { count: 8, duration: 1400, delay: 120, size: 4 } },
+      { name: "sparkles-many", label: "多", values: { count: 14, duration: 800, delay: 40, size: 6 } },
+    ],
   },
   {
     name: "border-beam",
@@ -603,9 +993,40 @@ export const batch2Components: ComponentMeta[] = [
         name: "duration",
         type: "number",
         defaultValue: "8",
-        description: "旋转周期。",
+        description: "旋转周期（秒）。",
         control: { kind: "range", value: 8, min: 1, max: 20, step: 0.5 },
       },
+      {
+        name: "colorFrom",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "光束起点色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "colorTo",
+        type: "string",
+        defaultValue: "var(--chart-2)",
+        description: "光束终点色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "描边厚度（像素）。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 1, max: 6, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "光束宽度的倍率。1 与不传相同，仍是 30% 到 70%。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "border-beam-slow", label: "慢", values: { duration: 14, size: 1, intensity: 0.5 } },
+      { name: "border-beam-default", label: "默认", values: { duration: 8, size: 1, intensity: 1 } },
+      { name: "border-beam-fast", label: "快", values: { duration: 3, size: 2, intensity: 1 } },
     ],
   },
   {
@@ -617,7 +1038,32 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/bento-grid.tsx",
     target: "components/ui/bento-grid.tsx",
-    props: ui,
+    props: [
+      {
+        name: "gap",
+        type: "number",
+        description: "间距（像素）。12 与不传相同。",
+        control: { kind: "range", value: 12, min: 0, max: 32, step: 1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "列数。3 与不传相同。",
+        control: { kind: "range", value: 3, min: 1, max: 6, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "行高（像素）。160 与不传相同，仍是 10rem。",
+        control: { kind: "range", value: 160, min: 80, max: 280, step: 4 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "bento-grid-tight", label: "紧", values: { gap: 4, count: 3, size: 120 } },
+      { name: "bento-grid-default", label: "默认", values: { gap: 12, count: 3, size: 160 } },
+      { name: "bento-grid-wide", label: "疏", values: { gap: 24, count: 2, size: 200 } },
+    ],
   },
   {
     name: "perspective-card",
@@ -628,7 +1074,26 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/perspective-card.tsx",
     target: "components/ui/perspective-card.tsx",
-    props: ui,
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        description: "横向倾斜角。16 与不传相同，纵向仍是 14°。",
+        control: { kind: "range", value: 16, min: 0, max: 32, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "内容浮起（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 1, max: 64, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "perspective-card-flat", label: "平", values: { angle: 4, size: 8 } },
+      { name: "perspective-card-default", label: "默认", values: { angle: 16, size: 28 } },
+      { name: "perspective-card-deep", label: "深", values: { angle: 28, size: 48 } },
+    ],
   },
   {
     name: "expandable-card",
@@ -640,8 +1105,18 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/expandable-card.tsx",
     target: "components/ui/expandable-card.tsx",
     props: [
-      { name: "title", type: "string", description: "标题。" },
+      {
+        name: "title",
+        type: "string",
+        description: "标题。",
+        control: { kind: "text", value: "可展开卡片" },
+      },
       { name: "preview", type: "ReactNode", description: "收起时摘要。" },
+    ],
+    presets: [
+      { name: "expandable-card-short", label: "短", values: { title: "说明" } },
+      { name: "expandable-card-default", label: "默认", values: { title: "可展开卡片" } },
+      { name: "expandable-card-long", label: "长", values: { title: "展开后看完整说明" } },
     ],
   },
   {
@@ -653,7 +1128,59 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/rainbow-button.tsx",
     target: "components/ui/rainbow-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "旋转时长（毫秒）。3000 与不传相同。",
+        control: { kind: "range", value: 3000, min: 1200, max: 6000, step: 100 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "彩虹色。这 6 个色与不传相同。",
+        control: {
+          kind: "colors",
+          value: ["#f43f5e", "#f59e0b", "#22c55e", "#06b6d4", "#8b5cf6", "#f43f5e"],
+        },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "描边厚度倍率。1 与不传相同，仍是 2px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      {
+        name: "rainbow-button-fast",
+        label: "快",
+        values: {
+          duration: 1600,
+          scale: 0.5,
+          colors: ["#f43f5e", "#f59e0b", "#22c55e", "#06b6d4", "#8b5cf6", "#f43f5e"],
+        },
+      },
+      {
+        name: "rainbow-button-default",
+        label: "默认",
+        values: {
+          duration: 3000,
+          scale: 1,
+          colors: ["#f43f5e", "#f59e0b", "#22c55e", "#06b6d4", "#8b5cf6", "#f43f5e"],
+        },
+      },
+      {
+        name: "rainbow-button-wide",
+        label: "宽",
+        values: {
+          duration: 4800,
+          scale: 1.5,
+          colors: ["#fb7185", "#fbbf24", "#4ade80", "#22d3ee", "#a78bfa", "#fb7185"],
+        },
+      },
+    ],
   },
   {
     name: "interactive-hover-button",
@@ -664,7 +1191,26 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/interactive-hover-button.tsx",
     target: "components/ui/interactive-hover-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "滑出时长（毫秒）。300 与不传相同。",
+        control: { kind: "range", value: 300, min: 120, max: 600, step: 20 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "滑出距离倍率。1 与不传相同，仍是 12px 与 24px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "interactive-hover-button-tight", label: "近", values: { duration: 160, scale: 0.5 } },
+      { name: "interactive-hover-button-default", label: "默认", values: { duration: 300, scale: 1 } },
+      { name: "interactive-hover-button-wide", label: "远", values: { duration: 480, scale: 1.5 } },
+    ],
   },
   {
     name: "gooey-button",
@@ -675,7 +1221,26 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gooey-button.tsx",
     target: "components/ui/gooey-button.tsx",
-    props: ui,
+    props: [
+      {
+        name: "scale",
+        type: "number",
+        description: "模糊倍率。1 与不传相同，仍是 stdDeviation 6。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "粘连强度倍率。1 与不传相同，仍是矩阵 18 与 -7。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "gooey-button-soft", label: "淡", values: { scale: 0.5, intensity: 0.5 } },
+      { name: "gooey-button-default", label: "默认", values: { scale: 1, intensity: 1 } },
+      { name: "gooey-button-thick", label: "浓", values: { scale: 1.5, intensity: 1 } },
+    ],
   },
   {
     name: "animated-tabs",
@@ -686,7 +1251,15 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-tabs.tsx",
     target: "components/ui/animated-tabs.tsx",
-    props: [{ name: "items", type: "AnimatedTabsItem[]", description: "选项卡数据。" }],
+    props: [
+      { name: "items", type: "AnimatedTabsItem[]", description: "选项卡数据。" },
+      { name: "gap", type: "number", description: "页签间距（像素）。4 与不传相同，仍是 gap-1。", control: { kind: "range", value: 4, min: 0, max: 16, step: 1 } },
+    ],
+    presets: [
+      { name: "animated-tabs-tight", label: "紧", values: { gap: 0 } },
+      { name: "animated-tabs-default", label: "默认", values: { gap: 4 } },
+      { name: "animated-tabs-wide", label: "宽", values: { gap: 12 } },
+    ],
   },
   {
     name: "floating-navbar",
@@ -697,7 +1270,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/floating-navbar.tsx",
     target: "components/ui/floating-navbar.tsx",
-    props: ui,
+    props: [
+      { name: "duration", type: "number", description: "收起毫秒。250 与不传相同，仍是 0.25 秒。", control: { kind: "range", value: 250, min: 100, max: 500, step: 10 } },
+      { name: "intensity", type: "number", description: "收起距离倍率。1 与不传相同，仍是 88 像素。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "floating-navbar-slow", label: "慢", values: { duration: 400, intensity: 0.6 } },
+      { name: "floating-navbar-default", label: "默认", values: { duration: 250, intensity: 1 } },
+      { name: "floating-navbar-fast", label: "快", values: { duration: 120, intensity: 1 } },
+    ],
   },
   {
     name: "animated-sidebar",
@@ -708,7 +1290,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-sidebar.tsx",
     target: "components/ui/animated-sidebar.tsx",
-    props: [{ name: "open", type: "boolean", description: "受控展开状态。" }],
+    props: [
+      { name: "open", type: "boolean", description: "受控展开状态。" },
+      { name: "size", type: "number", description: "侧栏宽度（像素）。224 与不传相同，仍是 w-56。", control: { kind: "range", value: 224, min: 160, max: 320, step: 8 } },
+      { name: "intensity", type: "number", description: "滑入距离倍率。1 与不传相同，仍是 24 像素。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "animated-sidebar-narrow", label: "窄", values: { size: 176, intensity: 0.6 } },
+      { name: "animated-sidebar-default", label: "默认", values: { size: 224, intensity: 1 } },
+      { name: "animated-sidebar-wide", label: "宽", values: { size: 288, intensity: 1 } },
+    ],
   },
   {
     name: "page-transition",
@@ -719,7 +1310,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/page-transition.tsx",
     target: "components/ui/page-transition.tsx",
-    props: [{ name: "transitionKey", type: "string", description: "切换键。" }],
+    props: [
+      { name: "transitionKey", type: "string", description: "切换键。" },
+      { name: "duration", type: "number", description: "淡入毫秒。350 与不传相同，仍是 0.35 秒。", control: { kind: "range", value: 350, min: 140, max: 700, step: 10 } },
+      { name: "intensity", type: "number", description: "位移和模糊倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "page-transition-slow", label: "慢", values: { duration: 560, intensity: 0.6 } },
+      { name: "page-transition-default", label: "默认", values: { duration: 350, intensity: 1 } },
+      { name: "page-transition-fast", label: "快", values: { duration: 180, intensity: 1 } },
+    ],
   },
   {
     name: "reveal-section",
@@ -730,6 +1330,15 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/reveal-section.tsx",
     target: "components/ui/reveal-section.tsx",
-    props: [{ name: "delay", type: "number", defaultValue: "0", description: "延迟秒数。" }],
+    props: [
+      { name: "delay", type: "number", defaultValue: "0", description: "延迟秒数。", control: { kind: "range", value: 0, min: 0, max: 1.2, step: 0.05 } },
+      { name: "speed", type: "number", description: "揭开倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "位移幅度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "reveal-section-slow", label: "慢", values: { delay: 0.4, speed: 0.6, intensity: 0.6 } },
+      { name: "reveal-section-default", label: "默认", values: { delay: 0, speed: 1, intensity: 1 } },
+      { name: "reveal-section-fast", label: "快", values: { delay: 0, speed: 1.8, intensity: 1 } },
+    ],
   },
 ]

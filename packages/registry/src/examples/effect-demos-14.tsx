@@ -16,33 +16,75 @@ import { TocScrollspy } from "../effects/toc-scrollspy"
 import { VortexBackground } from "../effects/vortex-background"
 import { WorldMapArcs } from "../effects/world-map-arcs"
 
-export function LensZoomDemo() {
-  return <LensZoom className="w-full" />
+export function LensZoomDemo({
+  zoom = 2.3,
+  lensSize = 148,
+  intensity,
+  color,
+}: {
+  zoom?: number
+  lensSize?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return <LensZoom className="w-full" zoom={zoom} lensSize={lensSize} intensity={intensity} color={color} />
 }
 
-export function WorldMapArcsDemo() {
-  return <WorldMapArcs className="w-full" />
+export function WorldMapArcsDemo({
+  colors = ["#67e8f9", "#bae6fd"],
+  speed = 1,
+  size = 0.7,
+}: {
+  colors?: string[]
+  speed?: number
+  size?: number
+} = {}) {
+  return <WorldMapArcs className="w-full" colors={colors} speed={speed} size={size} />
 }
 
-export function VortexBackgroundDemo() {
-  return <VortexBackground className="w-full" />
+export function VortexBackgroundDemo({
+  count = 96,
+  speed = 1,
+  color,
+  intensity = 0.32,
+}: {
+  count?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
+  return <VortexBackground className="w-full" count={count} speed={speed} color={color} intensity={intensity} />
 }
 
-export function BeamsCollisionDemo() {
-  return <BeamsCollision className="w-full" />
+export function BeamsCollisionDemo({
+  count = 6,
+  speed = 1,
+  color = "#cffafe",
+  intensity = 1,
+}: {
+  count?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
+  return <BeamsCollision className="w-full" count={count} speed={speed} color={color} intensity={intensity} />
 }
 
 export function PlaceholderVanishInputDemo() {
   return <PlaceholderVanishInput className="w-full" />
 }
 
-export function LinkPreviewDemo() {
+export function LinkPreviewDemo({ intensity, scale, speed, size }: { intensity?: number; scale?: number; speed?: number; size?: number } = {}) {
   return (
     <div className="flex min-h-56 w-full items-start justify-center">
       <LinkPreview
         href="#link-preview"
         title="效果预览"
         description="悬停或聚焦时弹出卡片，图片是内置色块。"
+        intensity={intensity}
+        scale={scale}
+        speed={speed}
+        size={size}
       >
         查看组件
       </LinkPreview>
@@ -50,24 +92,36 @@ export function LinkPreviewDemo() {
   )
 }
 
-export function AvatarGroupTooltipDemo() {
-  return <AvatarGroupTooltip className="w-full justify-center py-8" />
+export function AvatarGroupTooltipDemo({ max, scale, intensity, size, speed }: { max?: number; scale?: number; intensity?: number; size?: number; speed?: number } = {}) {
+  return <AvatarGroupTooltip className="w-full justify-center py-8" max={max} scale={scale} intensity={intensity} size={size} speed={speed} />
 }
 
-export function ShuffleGridHeroDemo() {
-  return <ShuffleGridHero className="w-full" />
+export function ShuffleGridHeroDemo({ interval = 1800 }: { interval?: number } = {}) {
+  return <ShuffleGridHero className="w-full" interval={interval} />
 }
 
-export function TocScrollspyDemo() {
-  return <TocScrollspy className="w-full" />
+export function TocScrollspyDemo({ duration, gap }: { duration?: number; gap?: number } = {}) {
+  return <TocScrollspy className="w-full" duration={duration} gap={gap} />
 }
 
-export function SortableListDemo() {
-  return <SortableList className="w-full" />
+export function SortableListDemo({ gap }: { gap?: number } = {}) {
+  return <SortableList className="w-full" gap={gap} />
 }
 
-export function KpiSparklineCardDemo() {
-  return <KpiSparklineCard className="w-full" />
+export function KpiSparklineCardDemo({
+  label = "本周访问",
+  value = 12840,
+  delta = 12.4,
+  color,
+  size,
+}: {
+  label?: string
+  value?: number
+  delta?: number
+  color?: string
+  size?: number
+} = {}) {
+  return <KpiSparklineCard className="w-full" label={label} value={value} delta={delta} color={color} size={size} />
 }
 
 export function CookieConsentDemo() {
@@ -78,8 +132,32 @@ export function CookieConsentDemo() {
   )
 }
 
-export function CountdownTimerDemo() {
-  return <CountdownTimer className="w-full" durationSeconds={36} confetti />
+export function CountdownTimerDemo({
+  durationSeconds = 36,
+  confetti = false,
+  gap,
+  speed,
+  duration,
+  fontSize,
+}: {
+  durationSeconds?: number
+  confetti?: boolean
+  gap?: number
+  speed?: number
+  duration?: number
+  fontSize?: number
+} = {}) {
+  return (
+    <CountdownTimer
+      className="w-full"
+      durationSeconds={durationSeconds}
+      confetti={confetti}
+      gap={gap}
+      speed={speed}
+      duration={duration}
+      fontSize={fontSize}
+    />
+  )
 }
 
 export function ImageCropperDemo() {

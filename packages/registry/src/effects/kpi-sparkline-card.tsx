@@ -12,6 +12,10 @@ export interface KpiSparklineCardProps {
   delta?: number
   series?: readonly number[]
   className?: string
+  /** 折线颜色。不传则跟随 currentColor。 */
+  color?: string
+  /** 折线盒子高度，像素。不传或 80 仍是 h-20。坐标仍按 72 计算。 */
+  size?: number
 }
 
 const SERIES = [18, 22, 19, 28, 26, 34, 31, 40, 38, 46] as const
@@ -33,11 +37,15 @@ function KpiSparklineCard({
   delta = 12.4,
   series = SERIES,
   className,
+  color,
+  size,
 }: KpiSparklineCardProps) {
   const reduced = usePrefersReducedMotion()
   const width = 280
-  const height = 72
-  const points = pointsOf(series, width, height)
+  const viewHeight = 72
+  const fitted = size === undefined || size === 80
+  const follow = color === undefined
+  const points = pointsOf(series, width, viewHeight)
   const [index, setIndex] = React.useState<number | null>(null)
   const active = index === null ? null : points[index]
   const path = points
@@ -72,8 +80,9 @@ function KpiSparklineCard({
         </span>
       </div>
       <svg
-        viewBox={`0 0 ${width} ${height}`}
-        className="mt-4 h-20 w-full outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        viewBox={`0 0 ${width} ${viewHeight}`}
+        className={cn("mt-4 w-full outline-none focus-visible:ring-2 focus-visible:ring-primary", fitted && "h-20")}
+        style={fitted ? undefined : { height: size }}
         role="img"
         aria-label={`${label}趋势，共 ${series.length} 个点`}
         tabIndex={0}
@@ -92,14 +101,20 @@ function KpiSparklineCard({
           select(current + (event.key === "ArrowRight" ? 1 : -1))
         }}
       >
-        <path d={path} fill="none" stroke="currentColor" strokeWidth={2} className="text-primary" />
+        <path
+          d={path}
+          fill="none"
+          stroke={follow ? "currentColor" : color}
+          strokeWidth={2}
+          className={follow ? "text-primary" : undefined}
+        />
         {active ? (
           <g>
             <line
               x1={active.x}
               x2={active.x}
               y1={4}
-              y2={height - 2}
+              y2={viewHeight - 2}
               stroke="currentColor"
               strokeOpacity={0.35}
             />

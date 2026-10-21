@@ -32,36 +32,71 @@ const swatch = (color: string) =>
 
 export function ShaderBackgroundsDemo({
   variant = "mesh",
+  colors,
+  speed = 1,
+  scale = 1,
 }: {
   variant?: "mesh" | "grain" | "dithering" | "metaballs" | "warp"
+  colors?: string[]
+  speed?: number
+  scale?: number
 } = {}) {
   return (
-    <ShaderBackground variant={variant} className="h-56 w-full rounded-xl">
+    <ShaderBackground variant={variant} colors={colors} speed={speed} scale={scale} className="h-56 w-full rounded-xl">
       <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderBackground>
   )
 }
 
-export function LiquidGlassDemo() {
+export function LiquidGlassDemo({ intensity, size }: { intensity?: number; size?: number } = {}) {
   return (
     <div className="relative w-full overflow-hidden rounded-xl">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#7c3aed,transparent_40%),radial-gradient(circle_at_80%_70%,#22d3ee,transparent_35%)]" />
       <div className="relative flex min-h-48 items-center justify-center p-8">
-        <LiquidGlass>液态玻璃 · 不支持时回退毛玻璃</LiquidGlass>
+        <LiquidGlass intensity={intensity} size={size}>液态玻璃 · 不支持时回退毛玻璃</LiquidGlass>
       </div>
     </div>
   )
 }
 
-export function BackgroundPathsDemo() {
+export function BackgroundPathsDemo({
+  count = 10,
+  color,
+  intensity = 0.45,
+  speed = 1,
+  duration = 2400,
+}: {
+  count?: number
+  color?: string
+  intensity?: number
+  speed?: number
+  duration?: number
+} = {}) {
   return (
     <Frame className="p-0">
-      <BackgroundPaths className="h-56 w-full" />
+      <BackgroundPaths
+        className="h-56 w-full"
+        count={count}
+        color={color}
+        intensity={intensity}
+        speed={speed}
+        duration={duration}
+      />
     </Frame>
   )
 }
 
-export function NumberFlowDemo() {
+export function NumberFlowDemo({
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   const [value, setValue] = useState(1280)
   return (
     <Frame>
@@ -70,33 +105,85 @@ export function NumberFlowDemo() {
         className="text-4xl font-semibold tabular-nums"
         onClick={() => setValue((current) => (current === 1280 ? 4860 : 1280))}
       >
-        <NumberFlow value={value} format={{ style: "currency", currency: "USD" }} />
+        <NumberFlow
+          value={value}
+          format={{ style: "currency", currency: "USD" }}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
+          letterSpacing={letterSpacing}
+          align={align}
+        />
       </button>
     </Frame>
   )
 }
 
-export function GlitchTextDemo({ text = "GLITCH" }: { text?: string } = {}) {
+export function GlitchTextDemo({
+  text = "GLITCH",
+  delay = 0,
+  loop = true,
+  interactive = false,
+  fontSize = 64,
+  fontWeight = 700,
+  letterSpacing = 0.08,
+  align = "left",
+}: {
+  text?: string
+  delay?: number
+  loop?: boolean
+  interactive?: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <Frame>
-      <GlitchText className="text-4xl font-semibold" text={text} />
+      <GlitchText
+        className="text-4xl font-semibold"
+        text={text}
+        delay={delay}
+        loop={loop}
+        interactive={interactive}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
     </Frame>
   )
 }
 
-export function ImageTrailDemo() {
+export function ImageTrailDemo({
+  gap,
+  count,
+  size,
+  intensity,
+}: {
+  gap?: number
+  count?: number
+  size?: number
+  intensity?: number
+} = {}) {
   return (
     <ImageTrail
       className="h-56 w-full rounded-xl border bg-muted/30"
       images={[swatch("#7c3aed"), swatch("#22d3ee"), swatch("#f472b6"), swatch("#f59e0b")]}
+      gap={gap}
+      count={count}
+      size={size}
+      intensity={intensity}
     />
   )
 }
 
-export function IconCloudDemo() {
+export function IconCloudDemo({ duration, size, scale }: { duration?: number; size?: number; scale?: number } = {}) {
   return (
     <Frame>
       <IconCloud
+        duration={duration}
+        size={size}
+        scale={scale}
         icons={[
           <Github key="gh" className="size-4" />,
           <Sparkles key="sp" className="size-4" />,
@@ -112,10 +199,10 @@ export function IconCloudDemo() {
   )
 }
 
-export function AnimatedThemeTogglerDemo() {
+export function AnimatedThemeTogglerDemo({ duration }: { duration?: number } = {}) {
   return (
     <Frame>
-      <AnimatedThemeToggler />
+      <AnimatedThemeToggler duration={duration} />
     </Frame>
   )
 }
@@ -131,11 +218,13 @@ export function MarketingBlocksDemo() {
   )
 }
 
-export function TerminalDemo() {
+export function TerminalDemo({ interval, color }: { interval?: number; color?: string } = {}) {
   return (
     <Terminal
       className="w-full max-w-lg"
       lines={["pnpm add @effect-ui/registry", "pnpm registry:build", "npx shadcn add ./r/terminal.json"]}
+      interval={interval}
+      color={color}
     />
   )
 }

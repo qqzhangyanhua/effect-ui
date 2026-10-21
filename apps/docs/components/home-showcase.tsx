@@ -3,14 +3,16 @@
 import { useState } from "react"
 import Link from "next/link"
 import { ArrowRight, Sparkles, Type, Wand2, Zap } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 
-import { AuroraText } from "@effect-ui/registry/effects/aurora-text"
-import { GradientText } from "@effect-ui/registry/effects/gradient-text"
 import { Meteors } from "@effect-ui/registry/effects/meteors"
+import { ScrambleText } from "@effect-ui/registry/effects/scramble-text"
 import { ShineBorder } from "@effect-ui/registry/effects/shine-border"
 import { ShimmerButton } from "@effect-ui/registry/effects/shimmer-button"
-import { SplitText } from "@effect-ui/registry/effects/split-text"
 import { SpotlightCard } from "@effect-ui/registry/effects/spotlight-card"
+import { TypingText } from "@effect-ui/registry/effects/typing-text"
+import { WordRotate } from "@effect-ui/registry/effects/word-rotate"
+import { HomeSectionBackdrop } from "@/components/home-section-backdrop"
 import { cn } from "@/lib/utils"
 
 const tabs = [
@@ -24,7 +26,9 @@ export function HomeShowcase() {
   const [activeTab, setActiveTab] = useState("text")
 
   return (
-    <section id="showcase" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-border/50">
+    <section id="showcase" className="relative overflow-hidden border-t border-border/50 py-16 sm:py-24">
+      <HomeSectionBackdrop variant="showcase" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center text-center">
         <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
           LIVE DEMO
@@ -37,40 +41,67 @@ export function HomeShowcase() {
         </p>
 
         {/* Category Switcher Tabs */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-1.5 rounded-xl border border-border/80 bg-muted/40 p-1">
+        <div
+          role="tablist"
+          aria-label="特效分类"
+          className="relative mt-8 flex flex-wrap items-center justify-center gap-1.5 rounded-xl border border-border/80 bg-muted/40 p-1"
+        >
           {tabs.map((tab) => {
             const Icon = tab.icon
+            const selected = activeTab === tab.id
             return (
               <button
                 key={tab.id}
                 type="button"
+                role="tab"
+                aria-selected={selected}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-medium transition-all",
-                  activeTab === tab.id
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
+                  "relative flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-medium transition-colors",
+                  selected ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                <Icon className="size-3.5" />
-                <span>{tab.label}</span>
+                {selected ? (
+                  <motion.span
+                    layoutId="home-showcase-tab"
+                    className="absolute inset-0 rounded-lg bg-background shadow-xs"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                ) : null}
+                <Icon className="relative z-10 size-3.5" />
+                <span className="relative z-10">{tab.label}</span>
               </button>
             )
           })}
         </div>
       </div>
 
-      {/* Tab Contents */}
-      <div className="mt-10">
+      <div className="relative mt-10 overflow-hidden rounded-3xl border border-border/70 bg-linear-to-b from-muted/30 to-background p-4 sm:p-6">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_8%,transparent),transparent)]"
+        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            role="tabpanel"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="relative"
+          >
         {activeTab === "text" && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
-              <span className="text-xs font-mono text-muted-foreground mb-4">AuroraText</span>
-              <AuroraText className="text-2xl sm:text-3xl font-bold">
-                流光溢彩的极光文字
-              </AuroraText>
+              <span className="text-xs font-mono text-muted-foreground mb-4">TypingText</span>
+              <TypingText
+                className="text-2xl sm:text-3xl font-bold"
+                text="光标跟着句子往下写"
+                loop
+              />
               <Link
-                href="/docs/aurora-text"
+                href="/docs/typing-text"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
               >
                 查看文档 <ArrowRight className="size-3" />
@@ -78,12 +109,15 @@ export function HomeShowcase() {
             </div>
 
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
-              <span className="text-xs font-mono text-muted-foreground mb-4">GradientText</span>
-              <GradientText className="text-2xl sm:text-3xl font-bold">
-                平滑流动的渐变色彩
-              </GradientText>
+              <span className="text-xs font-mono text-muted-foreground mb-4">ScrambleText</span>
+              <ScrambleText
+                className="text-2xl sm:text-3xl font-bold"
+                text="乱码慢慢还原成句"
+                duration={1400}
+                loop
+              />
               <Link
-                href="/docs/gradient-text"
+                href="/docs/scramble-text"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
               >
                 查看文档 <ArrowRight className="size-3" />
@@ -91,10 +125,13 @@ export function HomeShowcase() {
             </div>
 
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
-              <span className="text-xs font-mono text-muted-foreground mb-4">SplitText</span>
-              <SplitText className="text-2xl sm:text-3xl font-bold" text="逐字跃动的律动节奏" />
+              <span className="text-xs font-mono text-muted-foreground mb-4">WordRotate</span>
+              <WordRotate
+                className="text-2xl sm:text-3xl font-bold"
+                words={["句子滑上来", "再换下一句", "停在这一行"]}
+              />
               <Link
-                href="/docs/split-text"
+                href="/docs/word-rotate"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
               >
                 查看文档 <ArrowRight className="size-3" />
@@ -194,35 +231,38 @@ export function HomeShowcase() {
         )}
 
         {activeTab === "button" && (
-          <div className="flex flex-wrap items-center justify-center gap-6 rounded-2xl border border-border/80 bg-card p-12 min-h-[220px]">
+          <div className="flex min-h-[220px] flex-wrap items-center justify-center gap-6 rounded-2xl border border-border/80 bg-card/80 p-12 backdrop-blur-sm">
             <div className="flex flex-col items-center gap-3">
-              <ShimmerButton>
-                <span>探索全部组件</span>
+              <ShimmerButton asChild>
+                <Link href="/docs">探索全部组件</Link>
               </ShimmerButton>
-              <span className="text-xs text-muted-foreground font-mono">ShimmerButton</span>
+              <span className="font-mono text-xs text-muted-foreground">ShimmerButton</span>
             </div>
 
             <div className="flex flex-col items-center gap-3">
               <Link
                 href="/docs"
-                className="inline-flex h-10 items-center justify-center rounded-lg bg-foreground px-6 text-sm font-medium text-background hover:bg-foreground/90 transition-colors"
+                className="inline-flex h-10 items-center justify-center rounded-lg bg-foreground px-6 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
               >
                 立即开始 →
               </Link>
-              <span className="text-xs text-muted-foreground font-mono">Solid Button</span>
+              <span className="font-mono text-xs text-muted-foreground">Solid Button</span>
             </div>
 
             <div className="flex flex-col items-center gap-3">
               <Link
-                href="/docs/aurora-text"
-                className="inline-flex h-10 items-center justify-center rounded-lg border border-border bg-background px-6 text-sm font-medium text-foreground hover:bg-muted/60 transition-colors"
+                href="/#showcase"
+                className="inline-flex h-10 items-center justify-center rounded-lg border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted/60"
               >
                 浏览更多特效
               </Link>
-              <span className="text-xs text-muted-foreground font-mono">Outline Button</span>
+              <span className="font-mono text-xs text-muted-foreground">Outline Button</span>
             </div>
           </div>
         )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
       </div>
     </section>
   )

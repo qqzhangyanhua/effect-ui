@@ -13,6 +13,8 @@ export interface FlowingMenuItem {
 export interface FlowingMenuProps {
   className?: string
   items?: FlowingMenuItem[]
+  duration?: number
+  speed?: number
 }
 
 const DEFAULT_ITEMS: FlowingMenuItem[] = [
@@ -22,7 +24,7 @@ const DEFAULT_ITEMS: FlowingMenuItem[] = [
   { label: "Contact" },
 ]
 
-function FlowingMenu({ className, items = DEFAULT_ITEMS }: FlowingMenuProps) {
+function FlowingMenu({ className, items = DEFAULT_ITEMS, duration, speed }: FlowingMenuProps) {
   const reduced = usePrefersReducedMotion()
 
   return (
@@ -32,16 +34,31 @@ function FlowingMenu({ className, items = DEFAULT_ITEMS }: FlowingMenuProps) {
       </style>
       <ul className="divide-y border-y">
         {items.map((item) => (
-          <MenuRow key={item.label} label={item.label} reduced={reduced} />
+          <MenuRow key={item.label} label={item.label} reduced={reduced} duration={duration} speed={speed} />
         ))}
       </ul>
     </div>
   )
 }
 
-function MenuRow({ label, reduced }: { label: string; reduced: boolean }) {
+function MenuRow({
+  label,
+  reduced,
+  duration,
+  speed,
+}: {
+  label: string
+  reduced: boolean
+  duration?: number
+  speed?: number
+}) {
   const [presence, setPresence] = React.useState<"left" | "right" | null>(null)
   const band = `${label}  ·  `.repeat(8)
+  const slide = duration === undefined || duration === 380 ? 0.38 : duration / 1000
+  const marquee =
+    speed === undefined || speed === 1
+      ? "flowing-marquee 9s linear infinite"
+      : `flowing-marquee ${9 / speed}s linear infinite`
 
   return (
     <li
@@ -61,11 +78,11 @@ function MenuRow({ label, reduced }: { label: string; reduced: boolean }) {
             initial={reduced ? { x: 0 } : { x: presence === "left" ? "-100%" : "100%" }}
             animate={{ x: 0 }}
             exit={reduced ? { x: 0 } : { x: presence === "left" ? "-100%" : "100%" }}
-            transition={reduced ? { duration: 0 } : { duration: 0.38, ease: "easeOut" }}
+            transition={reduced ? { duration: 0 } : { duration: slide, ease: "easeOut" }}
           >
             <span
               className="flex w-max font-display text-5xl whitespace-nowrap sm:text-6xl"
-              style={reduced ? undefined : { animation: "flowing-marquee 9s linear infinite" }}
+              style={reduced ? undefined : { animation: marquee }}
             >
               <span className="px-4">{band}</span>
               <span className="px-4">{band}</span>

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 
 export interface XrayFluidRevealProps {
   className?: string
+  speed?: number
 }
 
 const VERT = `
@@ -91,14 +92,20 @@ function paintBone() {
   return canvas
 }
 
-function XrayFluidReveal({ className }: XrayFluidRevealProps) {
+function XrayFluidReveal({ className, speed }: XrayFluidRevealProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const pointerRef = React.useRef({ x: 0.5, y: 0.55, down: 0 })
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const rateRef = React.useRef(rate)
   const [fallback, setFallback] = React.useState(false)
   const [showBone, setShowBone] = React.useState(false)
   const showCanvas = !reduced && !fallback
+
+  React.useEffect(() => {
+    rateRef.current = rate
+  }, [rate])
 
   React.useEffect(() => {
     if (!showCanvas) return
@@ -162,7 +169,9 @@ function XrayFluidReveal({ className }: XrayFluidRevealProps) {
         read = write
         write = swap
         mixUniforms.u_mask.value = read.texture
-        mixUniforms.u_time.value = (performance.now() - started) / 1000
+        const elapsed = (performance.now() - started) / 1000
+        const rateNow = rateRef.current
+        mixUniforms.u_time.value = rateNow === 1 ? elapsed : elapsed * rateNow
         renderer.render({ scene: mixScene, camera })
         frame = window.requestAnimationFrame(tick)
       }

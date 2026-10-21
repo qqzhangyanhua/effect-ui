@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 
 export interface DatamoshTransitionProps {
   className?: string
+  speed?: number
+  intensity?: number
 }
 
 const VERT = `
@@ -72,15 +74,24 @@ function DatamoshFallback({ scene }: { scene: number }) {
   )
 }
 
-function DatamoshTransition({ className }: DatamoshTransitionProps) {
+function DatamoshTransition({ className, speed, intensity }: DatamoshTransitionProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const mix = React.useRef(0)
   const target = React.useRef(0)
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const reach = intensity === undefined || intensity === 1 ? 1 : intensity
+  const rateRef = React.useRef(rate)
+  const reachRef = React.useRef(reach)
   const [scene, setScene] = React.useState(0)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
+
+  React.useEffect(() => {
+    rateRef.current = rate
+    reachRef.current = reach
+  }, [rate, reach])
 
   React.useEffect(() => {
     if (!showCanvas) return
@@ -121,12 +132,17 @@ function DatamoshTransition({ className }: DatamoshTransitionProps) {
       observer.observe(host)
       const started = performance.now()
       const tick = () => {
+        const rateNow = rateRef.current
+        const reachNow = reachRef.current
         const delta = target.current - mix.current
-        mix.current += delta * 0.08
+        const follow = rateNow === 1 ? 0.08 : 0.08 * rateNow
+        mix.current += delta * follow
         if (Math.abs(delta) < 0.004) mix.current = target.current
-        uniforms.u_time.value = (performance.now() - started) / 1000
+        const elapsed = (performance.now() - started) / 1000
+        uniforms.u_time.value = rateNow === 1 ? elapsed : elapsed * rateNow
         uniforms.u_mix.value = mix.current
-        uniforms.u_glitch.value = Math.sin(Math.min(1, Math.abs(delta) * 4) * Math.PI) * 0.85
+        const wave = Math.sin(Math.min(1, Math.abs(delta) * 4) * Math.PI)
+        uniforms.u_glitch.value = reachNow === 1 ? wave * 0.85 : wave * 0.85 * reachNow
         renderer.render({ scene: sceneGraph, camera })
         frame = window.requestAnimationFrame(tick)
       }

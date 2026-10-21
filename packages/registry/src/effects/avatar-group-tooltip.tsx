@@ -15,6 +15,18 @@ export interface AvatarGroupTooltipProps {
   people?: readonly AvatarPerson[]
   max?: number
   className?: string
+  /** 悬停放大倍率。不传或 1 时悬停仍是 1.06。 */
+  scale?: number
+  /** 抬起距离倍率。不传或 1 时仍抬起 8px。 */
+  intensity?: number
+  /** 头像边长，像素。不传或 48 仍是 size-12。 */
+  size?: number
+  /** 弹簧倍率。不传或 1 时刚度 420、阻尼 24。 */
+  speed?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const PEOPLE: readonly AvatarPerson[] = [
@@ -30,8 +42,17 @@ function initial(name: string) {
   return name.slice(0, 1)
 }
 
-function AvatarGroupTooltip({ people = PEOPLE, max = 4, className }: AvatarGroupTooltipProps) {
+function AvatarGroupTooltip({ people = PEOPLE, max = 4, className, scale, intensity, size, speed }: AvatarGroupTooltipProps) {
   const reduced = usePrefersReducedMotion()
+  const hoverScale = scale === undefined || scale === 1 ? 1.06 : 1.06 * scale
+  const lift = intensity === undefined || intensity === 1 ? 8 : 8 * intensity
+  const edge = size === undefined || size === 48 ? 48 : size
+  const rate = pace(speed)
+  const spring = {
+    type: "spring" as const,
+    stiffness: rate === 1 ? 420 : 420 * rate,
+    damping: rate === 1 ? 24 : 24 * rate,
+  }
   const groupRef = React.useRef<HTMLDivElement>(null)
   const tipX = useMotionValue(0)
   const tipY = useMotionValue(0)
@@ -71,11 +92,14 @@ function AvatarGroupTooltip({ people = PEOPLE, max = 4, className }: AvatarGroup
           key={person.name}
           type="button"
           aria-label={person.name}
-          className="relative -ml-3 flex size-12 items-center justify-center rounded-full border-2 border-background text-sm font-medium text-white first:ml-0"
-          style={{ background: person.color }}
-          whileHover={reduced ? undefined : { y: -8, scale: 1.06, zIndex: 20 }}
-          whileFocus={reduced ? undefined : { y: -8, scale: 1.06, zIndex: 20 }}
-          transition={{ type: "spring", stiffness: 420, damping: 24 }}
+          className={cn(
+            "relative -ml-3 flex items-center justify-center rounded-full border-2 border-background text-sm font-medium text-white first:ml-0",
+            edge === 48 && "size-12",
+          )}
+          style={{ background: person.color, width: edge === 48 ? undefined : edge, height: edge === 48 ? undefined : edge }}
+          whileHover={reduced ? undefined : { y: -lift, scale: hoverScale, zIndex: 20 }}
+          whileFocus={reduced ? undefined : { y: -lift, scale: hoverScale, zIndex: 20 }}
+          transition={spring}
           onPointerMove={(event) => {
             place(event.clientX, event.clientY)
             setActive(person.name)
@@ -96,7 +120,11 @@ function AvatarGroupTooltip({ people = PEOPLE, max = 4, className }: AvatarGroup
         <button
           type="button"
           aria-label={`还有 ${extra.map((person) => person.name).join("、")}`}
-          className="relative -ml-3 flex size-12 items-center justify-center rounded-full border-2 border-background bg-muted text-sm font-medium"
+          className={cn(
+            "relative -ml-3 flex items-center justify-center rounded-full border-2 border-background bg-muted text-sm font-medium",
+            edge === 48 && "size-12",
+          )}
+          style={{ width: edge === 48 ? undefined : edge, height: edge === 48 ? undefined : edge }}
           onPointerMove={(event) => {
             place(event.clientX, event.clientY)
             setActive(`+${extra.length}`)
@@ -120,7 +148,7 @@ function AvatarGroupTooltip({ people = PEOPLE, max = 4, className }: AvatarGroup
           style={{ left: tipX, top: tipY, x: "-50%" }}
           initial={reduced ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 500, damping: 30 }}
+          transition={reduced ? { duration: 0 } : { type: "spring", stiffness: rate === 1 ? 500 : 500 * rate, damping: rate === 1 ? 30 : 30 * rate }}
         >
           {active}
         </motion.div>

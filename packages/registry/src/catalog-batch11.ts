@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -18,7 +19,17 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/view-transition-gallery.tsx",
     target: "components/ui/view-transition-gallery.tsx",
-    props: [{ name: "shots", type: "GalleryShot[]", description: "画廊条目。" }, ...ui],
+    props: [
+      { name: "shots", type: "GalleryShot[]", description: "画廊条目。" },
+      { name: "gap", type: "number", description: "缩略图间距（像素）。12 与不传相同，仍是 gap-3。", control: { kind: "range", value: 12, min: 0, max: 32, step: 1 } },
+      { name: "size", type: "number", description: "缩略图高度（像素）。112 与不传相同，仍是 h-28。", control: { kind: "range", value: 112, min: 64, max: 200, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "view-transition-gallery-tight", label: "紧", values: { gap: 8, size: 80 } },
+      { name: "view-transition-gallery-default", label: "默认", values: { gap: 12, size: 112 } },
+      { name: "view-transition-gallery-loose", label: "疏", values: { gap: 20, size: 160 } },
+    ],
   },
   {
     name: "scroll-timeline-reveal",
@@ -30,9 +41,32 @@ export const batch11Components: ComponentMeta[] = [
     file: "effects/scroll-timeline-reveal.tsx",
     target: "components/ui/scroll-timeline-reveal.tsx",
     props: [
-      { name: "mode", type: '"reveal" | "parallax"', defaultValue: '"reveal"', description: "显现或视差。" },
+      {
+        name: "mode",
+        type: '"reveal" | "parallax"',
+        defaultValue: '"reveal"',
+        description: "显现或视差。",
+        control: { kind: "select", value: "reveal", options: ["reveal", "parallax"] },
+      },
       { name: "children", type: "ReactNode", description: "被驱动的内容。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "不支持 view() 时的回退时长倍率。1 与不传相同，时长仍是 0.55 秒。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "位移幅度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "scroll-timeline-reveal", label: "显现", values: { mode: "reveal", speed: 1, intensity: 1 } },
+      { name: "scroll-timeline-parallax", label: "视差", values: { mode: "parallax", speed: 1, intensity: 1 } },
+      { name: "scroll-timeline-soft", label: "轻", values: { mode: "reveal", speed: 1, intensity: 0.4 } },
     ],
   },
   {
@@ -77,7 +111,45 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/intro-preloader.tsx",
     target: "components/ui/intro-preloader.tsx",
-    props: [{ name: "children", type: "ReactNode", description: "揭开后的内容。" }, ...ui],
+    props: [
+      { name: "children", type: "ReactNode", description: "揭开后的内容。" },
+      {
+        name: "interval",
+        type: "number",
+        description: "计数步进间隔（毫秒）。32 与不传相同，每步仍加 4。",
+        control: { kind: "range", value: 32, min: 8, max: 64, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "幕布揭开毫秒。700 与不传相同。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 10 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻幕布错开毫秒。70 与不传相同。",
+        control: { kind: "range", value: 70, min: 0, max: 200, step: 5 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "幕布条数。5 与不传相同。",
+        control: { kind: "range", value: 5, min: 2, max: 8, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "幕布颜色。不传则仍是 zinc-950。",
+        control: { kind: "color" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "intro-preloader-slow", label: "慢", values: { interval: 56, duration: 1200, delay: 120, count: 5 } },
+      { name: "intro-preloader-default", label: "默认", values: { interval: 32, duration: 700, delay: 70, count: 5 } },
+      { name: "intro-preloader-fast", label: "快", values: { interval: 16, duration: 360, delay: 20, count: 3 } },
+    ],
   },
   {
     name: "hero-3d-model",
@@ -103,7 +175,39 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/keycap-3d.tsx",
     target: "components/ui/keycap-3d.tsx",
-    props: [{ name: "keys", type: "string[]", description: "键帽字母。" }, ...ui],
+    props: [
+      { name: "keys", type: "string[]", description: "键帽字母。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "按下过渡（毫秒）。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 32, max: 160, step: 4 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "静止倾斜角。18 与不传相同，按下仍是 8°。",
+        control: { kind: "range", value: 18, min: 0, max: 40, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "按下深度的倍率。1 与不传相同，下移仍是 6px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "键间距（像素）。12 与不传相同。",
+        control: { kind: "range", value: 12, min: 0, max: 28, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "keycap-3d-flat", label: "平", values: { duration: 80, angle: 6, intensity: 0.4, gap: 12 } },
+      { name: "keycap-3d-default", label: "默认", values: { duration: 80, angle: 18, intensity: 1, gap: 12 } },
+      { name: "keycap-3d-loose", label: "疏", values: { duration: 120, angle: 18, intensity: 1, gap: 20 } },
+    ],
   },
   {
     name: "infinite-canvas-gallery",
@@ -114,7 +218,17 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/infinite-canvas-gallery.tsx",
     target: "components/ui/infinite-canvas-gallery.tsx",
-    props: [{ name: "tiles", type: "CanvasTile[]", description: "平铺的色块。" }, ...ui],
+    props: [
+      { name: "tiles", type: "CanvasTile[]", description: "平铺的色块。" },
+      { name: "gap", type: "number", description: "格子步长（像素）。168 与不传相同。", control: { kind: "range", value: 168, min: 80, max: 280, step: 4 } },
+      { name: "size", type: "number", description: "色块边长（像素）。160 与不传相同，仍是 size-40。", control: { kind: "range", value: 160, min: 80, max: 240, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "infinite-canvas-gallery-tight", label: "紧", values: { gap: 120, size: 120 } },
+      { name: "infinite-canvas-gallery-default", label: "默认", values: { gap: 168, size: 160 } },
+      { name: "infinite-canvas-gallery-loose", label: "疏", values: { gap: 220, size: 200 } },
+    ],
   },
   {
     name: "hover-image-list",
@@ -125,7 +239,17 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/hover-image-list.tsx",
     target: "components/ui/hover-image-list.tsx",
-    props: [{ name: "rows", type: "HoverRow[]", description: "文字行。" }, ...ui],
+    props: [
+      { name: "rows", type: "HoverRow[]", description: "文字行。" },
+      { name: "fontSize", type: "number", description: "标题字号（像素）。30 与不传相同，仍是 text-3xl。", control: { kind: "range", value: 30, min: 16, max: 56, step: 1 } },
+      { name: "size", type: "number", description: "跟随图宽度（像素）。144 与不传相同，仍是 w-36。", control: { kind: "range", value: 144, min: 72, max: 220, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "hover-image-list-small", label: "小", values: { fontSize: 22, size: 108 } },
+      { name: "hover-image-list-default", label: "默认", values: { fontSize: 30, size: 144 } },
+      { name: "hover-image-list-large", label: "大", values: { fontSize: 42, size: 180 } },
+    ],
   },
   {
     name: "text-variable-scroll",
@@ -136,7 +260,27 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-variable-scroll.tsx",
     target: "components/ui/text-variable-scroll.tsx",
-    props: [{ name: "text", type: "string", description: "逐字变化的句子。" }, ...ui],
+    props: [
+      {
+        name: "text",
+        type: "string",
+        description: "逐字变化的句子。",
+        control: { kind: "text", value: "Weight moves through the letters" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "字重波动幅度。不传则按原来的幅度。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...textControls({ fontSize: 60, align: "left", skipWeight: true }),
+      ...ui,
+    ],
+    presets: textPresets("variable-scroll", "text", [
+      { label: "原句", content: "Weight moves through the letters", fontSize: 60, align: "left", extra: { intensity: 1 } },
+      { label: "轻波", content: "轻轻起伏", fontSize: 36, align: "center", extra: { intensity: 0.35 } },
+      { label: "短句", content: "WAVE", fontSize: 72, align: "center", extra: { intensity: 0.8 } },
+    ]),
   },
   {
     name: "liquid-glass-tabbar",
@@ -147,7 +291,18 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/liquid-glass-tabbar.tsx",
     target: "components/ui/liquid-glass-tabbar.tsx",
-    props: [{ name: "tabs", type: "GlassTab[]", description: "页签。" }, ...ui],
+    props: [
+      { name: "tabs", type: "GlassTab[]", description: "页签。" },
+      { name: "speed", type: "number", description: "弹簧速度倍率。1 与不传相同，指示仍是 0.6 秒、圆点仍是 0.7 秒。", control: { kind: "range", value: 1, min: 0.4, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "回弹倍率。1 与不传相同，仍是 0.32 与 0.45。", control: { kind: "range", value: 1, min: 0, max: 2, step: 0.1 } },
+      { name: "scale", type: "number", description: "模糊倍率。1 与不传相同，仍是 stdDeviation 8。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "liquid-glass-tabbar-soft", label: "柔", values: { speed: 0.6, intensity: 0.5, scale: 0.7 } },
+      { name: "liquid-glass-tabbar-default", label: "默认", values: { speed: 1, intensity: 1, scale: 1 } },
+      { name: "liquid-glass-tabbar-lively", label: "活", values: { speed: 1.6, intensity: 1.4, scale: 1.4 } },
+    ],
   },
   {
     name: "dither-gradient",
@@ -158,7 +313,37 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dither-gradient.tsx",
     target: "components/ui/dither-gradient.tsx",
-    props: ui,
+    props: [
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#1a0d47", "#f57338", "#33bfd1"]',
+        description: "渐变使用的三色。",
+        control: { kind: "colors", value: ["#1a0d47", "#f57338", "#33bfd1"] },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "色带移动速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "5",
+        description: "抖动色阶数量。",
+        control: { kind: "range", value: 5, min: 2, max: 8, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "1",
+        description: "抖动阈值的强度。",
+        control: { kind: "range", value: 1, min: 0.4, max: 1.4, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "anchor-popover",

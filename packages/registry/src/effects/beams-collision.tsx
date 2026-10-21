@@ -9,6 +9,9 @@ import { cn } from "@/lib/utils"
 export interface BeamsCollisionProps {
   className?: string
   count?: number
+  speed?: number
+  color?: string
+  intensity?: number
 }
 
 interface Impact {
@@ -16,17 +19,44 @@ interface Impact {
   x: number
 }
 
-function ImpactSparks({ x }: { x: number }) {
+function playbackRate(speed: number) {
+  return Number.isFinite(speed) && speed > 0 ? speed : 1
+}
+
+function themeBeamColor(color: string | undefined) {
+  return color === undefined || color.toLowerCase() === "#cffafe"
+}
+
+function intensityStyle(intensity: number): React.CSSProperties {
+  if (intensity === 1) return {}
+  if (intensity > 1) return { filter: `brightness(${intensity})` }
+  return { opacity: intensity }
+}
+
+function ImpactSparks({
+  x,
+  color,
+  intensity,
+  themeColor,
+}: {
+  x: number
+  color: string
+  intensity: number
+  themeColor: boolean
+}) {
   return (
-    <span className="pointer-events-none absolute bottom-2" style={{ left: x }}>
+    <span className="pointer-events-none absolute bottom-2" style={{ left: x, ...intensityStyle(intensity) }}>
       {Array.from({ length: 9 }, (_, index) => {
         const angle = -180 + (index / 8) * 180
         const rad = (angle * Math.PI) / 180
         return (
           <motion.span
             key={index}
-            className="absolute top-0 left-0 h-0.5 w-3 origin-left rounded-full bg-cyan-100"
-            style={{ rotate: angle }}
+            className={cn(
+              "absolute top-0 left-0 h-0.5 w-3 origin-left rounded-full",
+              themeColor && "bg-cyan-100",
+            )}
+            style={{ rotate: angle, backgroundColor: themeColor ? undefined : color }}
             initial={{ x: 0, y: 0, opacity: 1, scaleX: 0.35 }}
             animate={{ x: Math.cos(rad) * 30, y: Math.sin(rad) * 24, opacity: 0, scaleX: 1 }}
             transition={{ duration: 0.42, ease: "easeOut" }}
@@ -37,20 +67,29 @@ function ImpactSparks({ x }: { x: number }) {
   )
 }
 
-function BeamsCollision({ className, count = 6 }: BeamsCollisionProps) {
+function BeamsCollision({
+  className,
+  count = 6,
+  speed = 1,
+  color,
+  intensity = 1,
+}: BeamsCollisionProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const impactId = React.useRef(0)
   const [impacts, setImpacts] = React.useState<Impact[]>([])
+  const rate = playbackRate(speed)
+  const themeColor = themeBeamColor(color)
+  const sparkColor = color ?? "#cffafe"
   const beams = React.useMemo(
     () =>
       Array.from({ length: Math.max(1, count) }, (_, index) => ({
         id: index,
         left: 10 + ((index + 0.5) * 80) / Math.max(1, count),
-        duration: 1.25 + (index % 3) * 0.32,
+        duration: (1.25 + (index % 3) * 0.32) / rate,
         delay: index * 0.16,
       })),
-    [count],
+    [count, rate],
   )
 
   const spawn = (leftPercent: number) => {
@@ -88,8 +127,13 @@ function BeamsCollision({ className, count = 6 }: BeamsCollisionProps) {
           style={{
             left: `${beam.left}%`,
             height: "24%",
-            background: "linear-gradient(to bottom, transparent, #67e8f9 70%, #ecfeff)",
-            boxShadow: "0 0 12px rgba(103,232,249,0.85)",
+            background: themeColor
+              ? "linear-gradient(to bottom, transparent, #67e8f9 70%, #ecfeff)"
+              : `linear-gradient(to bottom, transparent, ${sparkColor} 70%, ${sparkColor})`,
+            boxShadow: themeColor
+              ? "0 0 12px rgba(103,232,249,0.85)"
+              : `0 0 12px color-mix(in srgb, ${sparkColor} 85%, transparent)`,
+            ...intensityStyle(intensity),
             animation: reduced
               ? undefined
               : `effect-ui-beam-fall ${beam.duration}s linear ${beam.delay}s infinite`,
@@ -99,7 +143,7 @@ function BeamsCollision({ className, count = 6 }: BeamsCollisionProps) {
         />
       ))}
       {impacts.map((impact) => (
-        <ImpactSparks key={impact.id} x={impact.x} />
+        <ImpactSparks key={impact.id} x={impact.x} color={sparkColor} intensity={intensity} themeColor={themeColor} />
       ))}
     </div>
   )

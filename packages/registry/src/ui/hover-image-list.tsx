@@ -14,6 +14,8 @@ export interface HoverRow {
 export interface HoverImageListProps {
   rows?: HoverRow[]
   className?: string
+  fontSize?: number
+  size?: number
 }
 
 const defaultRows: HoverRow[] = [
@@ -23,7 +25,7 @@ const defaultRows: HoverRow[] = [
   { title: "花影台阶", meta: "04", tint: "#9d174d" },
 ]
 
-function HoverImageList({ rows = defaultRows, className }: HoverImageListProps) {
+function HoverImageList({ rows = defaultRows, className, fontSize, size }: HoverImageListProps) {
   const reduced = usePrefersReducedMotion()
   const frame = React.useRef<HTMLDivElement>(null)
   const [active, setActive] = React.useState<number | null>(null)
@@ -49,7 +51,12 @@ function HoverImageList({ rows = defaultRows, className }: HoverImageListProps) 
           onMouseEnter={() => setActive(index)}
           onFocus={() => setActive(index)}
         >
-          <span className="font-display text-3xl">{row.title}</span>
+          <span
+            className={fontSize === undefined || fontSize === 30 ? "font-display text-3xl" : "font-display"}
+            style={fontSize === undefined || fontSize === 30 ? undefined : { fontSize }}
+          >
+            {row.title}
+          </span>
           <span className="font-mono text-xs text-muted-foreground">{row.meta}</span>
           {reduced && active === index ? (
             <span className="ml-4 h-12 w-16 rounded-md" style={{ background: row.tint }} />
@@ -58,12 +65,17 @@ function HoverImageList({ rows = defaultRows, className }: HoverImageListProps) 
       ))}
       {!reduced && current ? (
         <div
-          className="pointer-events-none absolute z-10 h-28 w-36 rounded-xl shadow-xl"
+          className={
+            size === undefined || size === 144
+              ? "pointer-events-none absolute z-10 h-28 w-36 rounded-xl shadow-xl"
+              : "pointer-events-none absolute z-10 rounded-xl shadow-xl"
+          }
           style={{
             left: point.x,
             top: point.y,
             transform: "translate(-30%, -50%)",
             background: `linear-gradient(160deg, ${current.tint}, #09090b)`,
+            ...(size === undefined || size === 144 ? {} : { width: size, height: (size * 112) / 144 }),
           }}
         />
       ) : null}

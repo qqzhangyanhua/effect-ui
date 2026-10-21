@@ -8,10 +8,11 @@ effect-ui is a React UI and effects library distributed as a shadcn-compatible r
   - `src/templates/<name>/`: page templates (`registry:block`), each with `page.tsx`, `content.ts`, `theme.ts`. They import siblings with `./content` and `./theme`, not through the `@/components/ui/*` alias.
   - `src/hooks`, `src/lib`: hook and lib registry items.
   - `src/examples`: docs demos. `examples/index.ts` holds `demoMap`.
-  - `src/catalog.ts`: the component list. It spreads every `catalog-batch*.ts`.
+  - `src/catalog.ts`: the component list. It spreads every `catalog-batch*.ts`. `getCatalogGroups()` is what the docs nav, search, and index use. Components named `button`, `button-*`, `*-button`, `input`, `input-*`, or `*-input` are pulled into 按钮 and 输入. The docs sidebar has one link for each: `/docs/buttons` and `/docs/inputs`. Those pages list every member in a scrolling index and render them down the same page. `/docs/{name}` for a member redirects there. Their `category` stays put, so effect-prop checks and install JSON do not change. A new name in those patterns must be added to the family lists in `catalog.ts`.
   - `src/registry-item.ts`: turns a catalog entry plus a source reader into registry JSON.
   - `src/dependencies.ts`: derives each item's npm and registry dependencies from its source imports.
-  - `src/audit.ts`: registry consistency audit, run by `pnpm test`.
+  - `src/audit.ts`: registry consistency audit, run by `pnpm test`. For Effects it also checks prop names against `src/prop-vocabulary.ts`.
+  - `src/prop-vocabulary.ts`: shared names, types, control kinds, and groups for Effect props. The prose contract is `docs/effect-prop-vocabulary.md`.
 - `apps/docs/` (`@effect-ui/docs`): Next.js docs and demo site.
   - `app/page.tsx` (`/`), `app/docs/page.tsx` (`/docs`), `app/docs/[slug]/page.tsx` (`/docs/[slug]`), `app/preview/[slug]` (`/preview/[slug]`, full-screen demo for every visible item that has a demo; templates render the template component).
   - `app/r/[name]/route.ts`: `GET /r/[name]`, the public install endpoint.
@@ -55,6 +56,8 @@ Follow "新增组件" in `README.md`. In short:
 5. List the component name in the README component list.
 6. For ported code, update `THIRD_PARTY_NOTICES.md` and `CREDITS.md`, and add `licenses/<license>/<package>/LICENSE`. See `docs/dangerous-areas.md`.
 7. Run `pnpm registry:build` and commit the generated JSON.
+
+Effect props use the vocabulary above. Declare docs controls on the catalog entry (`docs/adr/0005-controls-declared-in-catalog.md`). Presets are docs-only (`docs/adr/0006-presets-are-docs-only.md`) and are omitted from registry JSON. A new prop is optional; leaving it out must match the previous render.
 
 `pnpm test` (the registry audit) fails when steps 2 through 5 or step 7 are missed.
 

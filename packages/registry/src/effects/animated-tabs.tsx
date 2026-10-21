@@ -18,10 +18,12 @@ export interface AnimatedTabsProps {
   defaultValue?: string
   value?: string
   onValueChange?: (value: string) => void
+  gap?: number
 }
 
-function AnimatedTabs({ items, className, defaultValue, value: valueProp, onValueChange }: AnimatedTabsProps) {
+function AnimatedTabs({ items, className, defaultValue, value: valueProp, onValueChange, gap }: AnimatedTabsProps) {
   const reduce = usePrefersReducedMotion()
+  const keepGap = gap === undefined || gap === 4
   const [uncontrolled, setUncontrolled] = React.useState(defaultValue ?? items[0]?.value ?? "")
   const value = valueProp ?? uncontrolled
   const setValue = (next: string) => {
@@ -32,7 +34,10 @@ function AnimatedTabs({ items, className, defaultValue, value: valueProp, onValu
 
   return (
     <div data-slot="animated-tabs" className={cn("w-full", className)}>
-      <div className="relative flex gap-1 rounded-full bg-muted p-1">
+      <div
+        className={keepGap ? "relative flex gap-1 rounded-full bg-muted p-1" : "relative flex rounded-full bg-muted p-1"}
+        style={keepGap ? undefined : { gap }}
+      >
         {items.map((item) => (
           <button
             key={item.value}

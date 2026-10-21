@@ -34,12 +34,32 @@ const gallery = [
 export function SplashCursorDemo({
   splatRadius = 0.012,
   fade = 0.975,
-}: { splatRadius?: number; fade?: number } = {}) {
-  return <SplashCursor className="h-56 w-full" splatRadius={splatRadius} fade={fade} />
+  speed,
+  intensity,
+  color,
+}: {
+  splatRadius?: number
+  fade?: number
+  speed?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return (
+    <SplashCursor
+      className="h-56 w-full"
+      splatRadius={splatRadius}
+      fade={fade}
+      speed={speed}
+      intensity={intensity}
+      color={color}
+    />
+  )
 }
 
 export function ShaderPack2Demo({
   variant = "god-rays",
+  speed = 1,
+  scale = 1,
 }: {
   variant?:
     | "liquid-metal"
@@ -50,30 +70,74 @@ export function ShaderPack2Demo({
     | "voronoi"
     | "swirl"
     | "fluted-glass"
+  speed?: number
+  scale?: number
 } = {}) {
   return (
-    <ShaderPack2 variant={variant} className="h-56 w-full rounded-xl">
+    <ShaderPack2 variant={variant} speed={speed} scale={scale} className="h-56 w-full rounded-xl">
       <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderPack2>
   )
 }
 
-export function TextAlongPathDemo() {
-  return <TextAlongPath className="h-36 w-full" text="effect-ui · text along a curve · MIT" />
+export function TextAlongPathDemo({
+  text = "effect-ui · text along a curve · MIT",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <TextAlongPath
+      className="h-36 w-full"
+      text={text}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function ScrollTypographyDemo() {
+export function ScrollTypographyDemo({
+  text = "Scroll Type",
+  variant = "blur",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  variant?: "clip" | "blur" | "scale" | "slide"
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <div className="h-40 w-full overflow-auto rounded-xl border p-4">
       <div className="h-10" />
-      <ScrollTypography text="Scroll Type" variant="blur" />
+      <ScrollTypography
+        text={text}
+        variant={variant}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
       <div className="h-24" />
     </div>
   )
 }
 
-export function ThreeDCarouselDemo() {
-  return <ThreeDCarousel className="w-full" items={gallery} />
+export function ThreeDCarouselDemo({ duration, size }: { duration?: number; size?: number } = {}) {
+  return <ThreeDCarousel className="w-full" items={gallery} duration={duration} size={size} />
 }
 
 export function SiriOrbDemo({ size = 160 }: { size?: number } = {}) {
@@ -88,14 +152,46 @@ export function AsciiRenderDemo() {
   return <AsciiRender className="w-full max-w-lg" src="https://picsum.photos/id/1025/400/260" />
 }
 
-export function LampHeadingDemo() {
-  return <LampHeading className="w-full" text="effect-ui" />
+export function LampHeadingDemo({
+  text = "effect-ui",
+  color,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  color?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <LampHeading
+      className="w-full"
+      text={text}
+      color={color}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function TracingBeamDemo() {
+export function TracingBeamDemo({
+  speed,
+  size,
+  color,
+}: {
+  speed?: number
+  size?: number
+  color?: string
+} = {}) {
   return (
     <div className="h-56 w-full overflow-auto rounded-xl border p-4">
-      <TracingBeam>
+      <TracingBeam speed={speed} size={size} color={color}>
         <p className="text-sm">滚动点亮竖线。</p>
         <p className="text-sm text-muted-foreground">灵感来自 tracing-beam，原创实现。</p>
         <SvgScrollPath />
@@ -104,11 +200,23 @@ export function TracingBeamDemo() {
   )
 }
 
-export function ContainerScroll3DDemo() {
+export function ContainerScroll3DDemo({
+  title = "滚动透视",
+  angle,
+  intensity,
+  speed,
+  scale,
+}: {
+  title?: string
+  angle?: number
+  intensity?: number
+  speed?: number
+  scale?: number
+} = {}) {
   return (
     <div className="h-56 w-full overflow-auto rounded-xl border p-4">
       <div className="h-8" />
-      <ContainerScroll3D>
+      <ContainerScroll3D title={title} angle={angle} intensity={intensity} speed={speed} scale={scale}>
         <div className="grid h-36 place-items-center bg-muted text-sm">透视卡片</div>
       </ContainerScroll3D>
       <div className="h-16" />
@@ -116,35 +224,44 @@ export function ContainerScroll3DDemo() {
   )
 }
 
-export function CircularGalleryDemo() {
-  return <CircularGallery className="w-full" items={gallery} />
+export function CircularGalleryDemo({ speed }: { speed?: number } = {}) {
+  return <CircularGallery className="w-full" items={gallery} speed={speed} />
 }
 
-export function GlowingEdgeDemo() {
+export function GlowingEdgeDemo({ duration, color, intensity, size }: { duration?: number; color?: string; intensity?: number; size?: number } = {}) {
   return (
-    <GlowingEdge className="w-72">
+    <GlowingEdge className="w-72" duration={duration} color={color} intensity={intensity} size={size}>
       <p className="font-medium">Linear 风格描边</p>
       <p className="mt-1 text-sm text-muted-foreground">灵感来自 Linear，原创实现。</p>
     </GlowingEdge>
   )
 }
 
-export function ScrollImageSequenceDemo() {
+export function ScrollImageSequenceDemo({
+  speed,
+  intensity,
+}: {
+  speed?: number
+  intensity?: number
+} = {}) {
   return (
     <div className="h-56 w-full overflow-auto rounded-xl border p-3">
       <div className="h-8" />
-      <ScrollImageSequence frames={frames} />
+      <ScrollImageSequence frames={frames} speed={speed} intensity={intensity} />
       <div className="h-16" />
     </div>
   )
 }
 
-export function PixelTransitionDemo() {
+export function PixelTransitionDemo({ count, duration, delay }: { count?: number; duration?: number; delay?: number } = {}) {
   return (
     <PixelTransition
       className="w-full max-w-lg"
       from="https://picsum.photos/id/1015/640/360"
       to="https://picsum.photos/id/1035/640/360"
+      count={count}
+      duration={duration}
+      delay={delay}
     />
   )
 }

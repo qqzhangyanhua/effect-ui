@@ -2,11 +2,20 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface GravityImageTrailProps {
   className?: string
+  size?: number
+  gap?: number
+  intensity?: number
+  speed?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 interface Tile {
@@ -38,18 +47,32 @@ function roundRect(
   ctx.closePath()
 }
 
-function GravityImageTrail({ className }: GravityImageTrailProps) {
+function GravityImageTrail({ className, size, gap, intensity, speed }: GravityImageTrailProps) {
   const reduced = usePrefersReducedMotion()
+  const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const tiles = React.useRef<Tile[]>([])
   const last = React.useRef({ x: -999, y: -999 })
   const count = React.useRef(0)
   const reducedRef = React.useRef(reduced)
+  const gravityRef = React.useRef(0.42)
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
   const apiRef = React.useRef<{ start: () => void; draw: () => void } | null>(null)
+  const tileSize = size === undefined ? 64 : size
+  const threshold = gap === undefined ? 28 : gap
+  const kick = pace(speed)
 
   React.useEffect(() => {
     reducedRef.current = reduced
-  }, [reduced])
+    gravityRef.current = 0.42 * (intensity === undefined || intensity === 1 ? 1 : intensity)
+  }, [reduced, intensity])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   React.useEffect(() => {
     const canvas = canvasRef.current
@@ -63,7 +86,7 @@ function GravityImageTrail({ className }: GravityImageTrailProps) {
 
     const sync = () => {
       const rect = canvas.getBoundingClientRect()
-      const dpr = window.devicePixelRatio || 1
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
       if (rect.width < 2 || rect.height < 2) return
       width = rect.width
       height = rect.height
@@ -93,7 +116,7 @@ function GravityImageTrail({ className }: GravityImageTrailProps) {
       const next: Tile[] = []
       for (const tile of tiles.current) {
         if (!reducedRef.current) {
-          tile.vy += 0.42
+          tile.vy += gravityRef.current
           tile.x += tile.vx
           tile.y += tile.vy
           if (tile.y + tile.size * 0.72 > floor) {
@@ -109,12 +132,12 @@ function GravityImageTrail({ className }: GravityImageTrailProps) {
       }
       tiles.current = next
       draw()
-      if (!reducedRef.current && next.length > 0) frame = window.requestAnimationFrame(step)
+      if (!reducedRef.current && activeRef.current && next.length > 0) frame = window.requestAnimationFrame(step)
       else running = false
     }
 
     const start = () => {
-      if (running || reducedRef.current) {
+      if (running || reducedRef.current || !activeRef.current) {
         draw()
         return
       }
@@ -131,10 +154,14 @@ function GravityImageTrail({ className }: GravityImageTrailProps) {
     draw()
 
     apiRef.current = { start, draw }
+    kickRef.current = () => {
+      if (activeRef.current && tiles.current.length > 0) start()
+    }
 
     return () => {
       running = false
       apiRef.current = null
+      kickRef.current = null
       window.cancelAnimationFrame(frame)
       observer.disconnect()
     }
@@ -146,15 +173,15 @@ function GravityImageTrail({ className }: GravityImageTrailProps) {
     const rect = canvas.getBoundingClientRect()
     const x = event.clientX - rect.left
     const y = event.clientY - rect.top
-    if (Math.hypot(x - last.current.x, y - last.current.y) < 28) return
+    if (Math.hypot(x - last.current.x, y - last.current.y) < threshold) return
     last.current = { x, y }
     count.current += 1
     tiles.current.push({
-      x: x - 28,
-      y: y - 18,
-      vx: (Math.random() - 0.5) * 3.2,
-      vy: Math.random() * -1.2,
-      size: 64,
+      x: x - tileSize * 0.4375,
+      y: y - tileSize * 0.28125,
+      vx: (Math.random() - 0.5) * 3.2 * kick,
+      vy: Math.random() * -1.2 * kick,
+      size: tileSize,
       hue: (count.current * 37) % 360,
       label: String(count.current).padStart(2, "0"),
       life: 1,
@@ -165,7 +192,7 @@ function GravityImageTrail({ className }: GravityImageTrailProps) {
   }
 
   return (
-    <div className={cn("relative h-80 w-full", className)}>
+    <div ref={hostRef} className={cn("relative h-80 w-full", className)}>
       <canvas
         ref={canvasRef}
         data-slot="gravity-image-trail"

@@ -9,6 +9,10 @@ import { cn } from "@/lib/utils"
 export interface ClickSparkProps {
   className?: string
   count?: number
+  duration?: number
+  scale?: number
+  size?: number
+  color?: string
   children?: React.ReactNode
 }
 
@@ -18,7 +22,7 @@ interface Spark {
   y: number
 }
 
-function ClickSpark({ className, count = 12, children }: ClickSparkProps) {
+function ClickSpark({ className, count = 12, duration, scale, size, color, children }: ClickSparkProps) {
   const reduced = usePrefersReducedMotion()
   const [sparks, setSparks] = React.useState<Spark[]>([])
   const timers = React.useRef<number[]>([])
@@ -42,7 +46,7 @@ function ClickSpark({ className, count = 12, children }: ClickSparkProps) {
     setSparks((current) => [...current.slice(-10), spark])
     const timer = window.setTimeout(() => {
       setSparks((current) => current.filter((item) => item.id !== spark.id))
-    }, 520)
+    }, duration === undefined || duration === 450 ? 520 : duration + 70)
     timers.current.push(timer)
   }
 
@@ -69,11 +73,26 @@ function ClickSpark({ className, count = 12, children }: ClickSparkProps) {
             return (
               <motion.span
                 key={index}
-                className="absolute top-0 left-0 h-0.5 w-3 origin-left rounded-full bg-amber-200"
-                style={{ rotate: angle }}
+                className={
+                  (size === undefined || size === 12) && !color
+                    ? "absolute top-0 left-0 h-0.5 w-3 origin-left rounded-full bg-amber-200"
+                    : cn(
+                        "absolute top-0 left-0 h-0.5 origin-left rounded-full",
+                        (size === undefined || size === 12) && "w-3",
+                        !color && "bg-amber-200",
+                      )
+                }
+                style={{
+                  rotate: angle,
+                  ...(size === undefined || size === 12 ? null : { width: size }),
+                  ...(color ? { backgroundColor: color } : null),
+                }}
                 initial={{ x: 4, scaleX: 0.3, opacity: 1 }}
-                animate={{ x: 22, scaleX: 1, opacity: 0 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
+                animate={{ x: scale === undefined || scale === 1 ? 22 : 22 * scale, scaleX: 1, opacity: 0 }}
+                transition={{
+                  duration: duration === undefined || duration === 450 ? 0.45 : duration / 1000,
+                  ease: "easeOut",
+                }}
               />
             )
           })}

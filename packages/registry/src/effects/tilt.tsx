@@ -10,23 +10,26 @@ export interface TiltProps {
   className?: string
   children?: React.ReactNode
   maxTilt?: number
+  speed?: number
+  intensity?: number
+  scale?: number
 }
 
-function Tilt({ className, children, maxTilt = 12 }: TiltProps) {
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
+}
+
+function Tilt({ className, children, maxTilt = 12, speed, intensity, scale }: TiltProps) {
   const reduceMotion = usePrefersReducedMotion()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [maxTilt, -maxTilt]), {
-    stiffness: 200,
-    damping: 18,
-  })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-maxTilt, maxTilt]), {
-    stiffness: 200,
-    damping: 18,
-  })
+  const tilt = maxTilt * (intensity === undefined || intensity === 1 ? 1 : intensity)
+  const spring = { stiffness: 200 * pace(speed), damping: 18 }
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [tilt, -tilt]), spring)
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-tilt, tilt]), spring)
 
   const onMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (reduceMotion) return
+    if (reduceMotion || window.matchMedia("(pointer: coarse)").matches) return
     const rect = event.currentTarget.getBoundingClientRect()
     x.set((event.clientX - rect.left) / rect.width - 0.5)
     y.set((event.clientY - rect.top) / rect.height - 0.5)
@@ -45,6 +48,7 @@ function Tilt({ className, children, maxTilt = 12 }: TiltProps) {
         rotateX: reduceMotion ? 0 : rotateX,
         rotateY: reduceMotion ? 0 : rotateY,
         transformPerspective: 900,
+        scale: scale === undefined || scale === 1 ? undefined : scale,
       }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}

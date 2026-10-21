@@ -16,6 +16,8 @@ export interface TocHeading {
 export interface TocScrollspyProps {
   headings?: readonly TocHeading[]
   className?: string
+  duration?: number
+  gap?: number
 }
 
 const HEADINGS: readonly TocHeading[] = [
@@ -47,8 +49,10 @@ const HEADINGS: readonly TocHeading[] = [
   },
 ]
 
-function TocScrollspy({ headings = HEADINGS, className }: TocScrollspyProps) {
+function TocScrollspy({ headings = HEADINGS, className, duration, gap }: TocScrollspyProps) {
   const reduced = usePrefersReducedMotion()
+  const seconds = duration === undefined || duration === 250 ? 0.25 : duration / 1000
+  const keepGap = gap === undefined || gap === 4
   const scrollerRef = React.useRef<HTMLDivElement>(null)
   const [active, setActive] = React.useState(headings[0]?.id ?? "")
   const [progress, setProgress] = React.useState(0)
@@ -93,7 +97,7 @@ function TocScrollspy({ headings = HEADINGS, className }: TocScrollspyProps) {
         <div className="absolute top-0 bottom-0 left-0 w-px bg-border" aria-hidden>
           <div className="w-px bg-primary" style={{ height: `${Math.round(progress * 100)}%` }} />
         </div>
-        <ul className="space-y-1">
+        <ul className={keepGap ? "space-y-1" : "flex flex-col"} style={keepGap ? undefined : { gap }}>
           {headings.map((heading) => {
             const current = heading.id === active
             return (
@@ -111,7 +115,7 @@ function TocScrollspy({ headings = HEADINGS, className }: TocScrollspyProps) {
                     <motion.span
                       layoutId="toc-scrollspy-indicator"
                       className="absolute inset-0 rounded-md bg-primary/15"
-                      transition={{ duration: reduced ? 0 : 0.25 }}
+                      transition={{ duration: reduced ? 0 : seconds }}
                     />
                   ) : null}
                   <span className={cn("relative", current ? "text-foreground" : "text-muted-foreground")}>

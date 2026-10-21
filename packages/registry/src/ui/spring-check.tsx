@@ -19,6 +19,7 @@ export interface SpringCheckProps
   strokeWidth?: number
   color?: string
   duration?: number
+  intensity?: number
 }
 
 function SpringCheck({
@@ -31,6 +32,7 @@ function SpringCheck({
   strokeWidth = 2,
   color,
   duration = 0.45,
+  intensity,
   ref,
   ...props
 }: SpringCheckProps) {
@@ -84,7 +86,15 @@ function SpringCheck({
               strokeLinejoin="round"
               initial={{ pathLength: reduced ? 1 : 0 }}
               animate={{ pathLength: 1 }}
-              transition={reduced ? { duration: 0 } : { type: "spring", duration, bounce: 0.3 }}
+              transition={
+                reduced
+                  ? { duration: 0 }
+                  : {
+                      type: "spring",
+                      duration,
+                      bounce: intensity === undefined || intensity === 0.3 ? 0.3 : intensity,
+                    }
+              }
             />
           )}
         </svg>

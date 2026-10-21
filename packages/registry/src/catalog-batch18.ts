@@ -20,9 +20,32 @@ export const batch18Components: ComponentMeta[] = [
     target: "components/ui/image-tube-scroll.tsx",
     props: [
       { name: "images", type: "string[]", description: "贴在内壁上的图片。省略时用内置色卡。" },
-      { name: "radius", type: "number", defaultValue: "1.35", description: "圆柱半径。" },
-      { name: "speed", type: "number", defaultValue: "1", description: "前进和旋转的速度。" },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "1.35",
+        description: "圆柱半径。",
+        control: { kind: "range", value: 1.35, min: 0.6, max: 2.4, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "前进和旋转的速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "卡片朝向圆心的倾斜。1 与不传相同，倾斜仍是 0.55。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "image-tube-default", label: "默认", values: { radius: 1.35, speed: 1, intensity: 1 } },
+      { name: "image-tube-tight", label: "收紧", values: { radius: 0.9, speed: 1, intensity: 1 } },
+      { name: "image-tube-fast", label: "加快", values: { radius: 1.35, speed: 1.8, intensity: 0.6 } },
     ],
   },
   {
@@ -46,10 +69,15 @@ export const batch18Components: ComponentMeta[] = [
     file: "effects/fireworks-show.tsx",
     target: "components/ui/fireworks-show.tsx",
     props: [
-      { name: "colors", type: "string[]", description: "烟花颜色。" },
-      { name: "auto", type: "boolean", defaultValue: "true", description: "是否自动发射。" },
-      { name: "intensity", type: "number", defaultValue: "1", description: "粒子数量和发射频率。" },
+      { name: "colors", type: "string[]", description: "烟花颜色。不传时仍是这五色。", control: { kind: "colors", value: ["#fde68a", "#fb7185", "#7dd3fc", "#c4b5fd", "#86efac"] } },
+      { name: "auto", type: "boolean", defaultValue: "true", description: "是否自动发射。", control: { kind: "boolean", value: true } },
+      { name: "intensity", type: "number", defaultValue: "1", description: "粒子数量和发射频率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
       ...ui,
+    ],
+    presets: [
+      { name: "fireworks-show-calm", label: "疏", values: { intensity: 0.4, auto: true } },
+      { name: "fireworks-show-default", label: "默认", values: { intensity: 1, auto: true } },
+      { name: "fireworks-show-manual", label: "手动", values: { intensity: 1, auto: false } },
     ],
   },
   {
@@ -61,7 +89,34 @@ export const batch18Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/wobble-line-cursor.tsx",
     target: "components/ui/wobble-line-cursor.tsx",
-    props: [{ name: "lines", type: "number", defaultValue: "5", description: "弦的数量。" }, ...ui],
+    props: [
+      {
+        name: "lines",
+        type: "number",
+        defaultValue: "5",
+        description: "弦的数量。",
+        control: { kind: "range", value: 5, min: 2, max: 12, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "拨动幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      { name: "color", type: "string", description: "弦的颜色。不传则用当前文字色。", control: { kind: "color" } },
+      ...ui,
+    ],
+    presets: [
+      { name: "wobble-few", label: "疏", values: { lines: 3, speed: 0.7, intensity: 0.6 } },
+      { name: "wobble-default", label: "默认", values: { lines: 5, speed: 1, intensity: 1 } },
+      { name: "wobble-many", label: "密", values: { lines: 9, speed: 1.5, intensity: 1 } },
+    ],
   },
   {
     name: "lego-pixelate",
@@ -74,9 +129,22 @@ export const batch18Components: ComponentMeta[] = [
     target: "components/ui/lego-pixelate.tsx",
     props: [
       { name: "image", type: "string", description: "要像素化的图片。省略时用内置画面。" },
-      { name: "blockSize", type: "number", defaultValue: "12", description: "起始时横向的块数，越小越粗。" },
-      { name: "trigger", type: '"hover" | "view"', defaultValue: "hover", description: "悬停或进入视口时还原。" },
+      { name: "blockSize", type: "number", defaultValue: "12", description: "起始时横向的块数，越小越粗。", control: { kind: "range", value: 12, min: 4, max: 28, step: 1 } },
+      {
+        name: "trigger",
+        type: '"hover" | "view"',
+        defaultValue: "hover",
+        description: "悬停或进入视口时还原。",
+        vocabularyExemption: "历史取值是 hover/view，不是 mount/hover/inView。",
+        control: { kind: "select", value: "hover", options: ["hover", "view"] },
+      },
+      { name: "speed", type: "number", description: "块数变化的倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "lego-pixelate-coarse", label: "粗", values: { blockSize: 6, speed: 0.6, trigger: "hover" } },
+      { name: "lego-pixelate-default", label: "默认", values: { blockSize: 12, speed: 1, trigger: "hover" } },
+      { name: "lego-pixelate-fine", label: "细", values: { blockSize: 20, speed: 1.6, trigger: "view" } },
     ],
   },
   {
@@ -103,7 +171,16 @@ export const batch18Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/curved-scrollbar.tsx",
     target: "components/ui/curved-scrollbar.tsx",
-    props: [{ name: "radius", type: "number", defaultValue: "28", description: "轨道圆角半径。" }, ...ui],
+    props: [
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "28",
+        description: "轨道圆角半径。",
+        control: { kind: "range", value: 28, min: 0, max: 64, step: 1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "particle-hourglass",
@@ -114,7 +191,45 @@ export const batch18Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/particle-hourglass.tsx",
     target: "components/ui/particle-hourglass.tsx",
-    props: [{ name: "progress", type: "number", defaultValue: "0.35", description: "0 表示沙都在上室，1 表示都落到下室。" }, ...ui],
+    props: [
+      { name: "progress", type: "number", defaultValue: "0.35", description: "0 表示沙都在上室，1 表示都落到下室。" },
+      {
+        name: "count",
+        type: "number",
+        description: "沙粒数量。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 16, max: 160, step: 1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "边框和沙粒颜色。不传时仍是这两色。",
+        control: { kind: "colors", value: ["#e7d7b1", "#f6d48a"] },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "落沙跟随倍率。1 与不传相同，每帧仍跟上 0.08。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "宽度（像素）。224 与不传相同，仍是 w-56。",
+        control: { kind: "range", value: 224, min: 120, max: 360, step: 4 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "沙粒列距（像素）。8 与不传相同，行距仍是 7。",
+        control: { kind: "range", value: 8, min: 0, max: 20, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "particle-hourglass-sparse", label: "疏", values: { count: 32, speed: 0.6, size: 180, gap: 12 } },
+      { name: "particle-hourglass-default", label: "默认", values: { count: 80, speed: 1, size: 224, gap: 8 } },
+      { name: "particle-hourglass-dense", label: "密", values: { count: 140, speed: 1.8, size: 280, gap: 4 } },
+    ],
   },
   {
     name: "invoice-preview",
@@ -126,9 +241,13 @@ export const batch18Components: ComponentMeta[] = [
     file: "effects/invoice-preview.tsx",
     target: "components/ui/invoice-preview.tsx",
     props: [
+      { name: "number", type: "string", defaultValue: "INV-2026-014", description: "单号。" },
+      { name: "from", type: "string", defaultValue: "效果界面工作室", description: "开票方。" },
+      { name: "to", type: "string", defaultValue: "北窗设计", description: "收票方。" },
       { name: "lines", type: "InvoiceLine[]", description: "明细。" },
       { name: "taxRate", type: "number", defaultValue: "0.06", description: "税率。" },
       { name: "currency", type: "string", defaultValue: "CNY", description: "货币代码。" },
+      { name: "locale", type: "string", defaultValue: "zh-CN", description: "地区。" },
       ...ui,
     ],
   },

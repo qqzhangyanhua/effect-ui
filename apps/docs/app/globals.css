@@ -3,7 +3,7 @@
 
 @source "../../../packages/registry/src/**/*.{ts,tsx}";
 
-@custom-variant dark (&:is(.dark *):not(:is(.theme-light, .theme-light *)));
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
@@ -43,8 +43,7 @@
   --color-sidebar-border: var(--sidebar-border);
 }
 
-:root,
-.theme-light {
+:root {
   --radius: 0.7rem;
   --background: oklch(0.985 0.01 95);
   --foreground: oklch(0.2 0.03 280);
@@ -211,10 +210,14 @@
 @keyframes pulse-ring {
   0% {
     transform: scale(1);
-    opacity: 0.55;
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0;
   }
   100% {
-    transform: scale(1.45);
+    transform: scale(2);
     opacity: 0;
   }
 }

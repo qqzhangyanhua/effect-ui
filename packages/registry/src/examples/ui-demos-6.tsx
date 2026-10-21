@@ -25,14 +25,16 @@ export function SquishSwitchDemo({
   size = "md",
   color = "#2563eb",
   squish = 0.35,
+  speed,
 }: {
   size?: "sm" | "md" | "lg"
   color?: string
   squish?: number
+  speed?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <SquishSwitch aria-label="压扁开关" size={size} color={color} squish={squish} defaultChecked />
+      <SquishSwitch aria-label="压扁开关" size={size} color={color} squish={squish} speed={speed} defaultChecked />
     </div>
   )
 }
@@ -40,9 +42,11 @@ export function SquishSwitchDemo({
 export function JellyRadioDemo({
   stiffness = 320,
   color = "#2563eb",
+  intensity,
 }: {
   stiffness?: number
   color?: string
+  intensity?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
@@ -50,6 +54,7 @@ export function JellyRadioDemo({
         aria-label="尺寸"
         stiffness={stiffness}
         color={color}
+        intensity={intensity}
         defaultValue="m"
         options={[
           { value: "s", label: "小" },
@@ -65,14 +70,16 @@ export function SpringCheckDemo({
   strokeWidth = 2,
   color = "#2563eb",
   duration = 0.45,
+  intensity,
 }: {
   strokeWidth?: number
   color?: string
   duration?: number
+  intensity?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <SpringCheck aria-label="弹簧勾选" strokeWidth={strokeWidth} color={color} duration={duration} defaultChecked />
+      <SpringCheck aria-label="弹簧勾选" strokeWidth={strokeWidth} color={color} duration={duration} intensity={intensity} defaultChecked />
     </div>
   )
 }
@@ -81,14 +88,18 @@ export function PeekRatingDemo({
   max = 5,
   allowHalf = false,
   color = "#eab308",
+  size,
+  intensity,
 }: {
   max?: number
   allowHalf?: boolean
   color?: string
+  size?: number
+  intensity?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <PeekRating aria-label="评分" max={max} allowHalf={allowHalf} color={color} defaultValue={3} />
+      <PeekRating aria-label="评分" max={max} allowHalf={allowHalf} color={color} size={size} intensity={intensity} defaultValue={3} />
     </div>
   )
 }
@@ -97,14 +108,16 @@ export function SlideToConfirmDemo({
   label = "滑动确认",
   threshold = 0.85,
   color = "#2563eb",
+  duration,
 }: {
   label?: string
   threshold?: number
   color?: string
+  duration?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <SlideToConfirm label={label} threshold={threshold} color={color} className="w-64" />
+      <SlideToConfirm label={label} threshold={threshold} color={color} duration={duration} className="w-64" />
     </div>
   )
 }
@@ -112,15 +125,21 @@ export function SlideToConfirmDemo({
 export function SwipeRowDemo({
   actionWidth = 88,
   direction = "left",
+  duration,
+  intensity,
 }: {
   actionWidth?: number
   direction?: "left" | "right"
+  duration?: number
+  intensity?: number
 } = {}) {
   return (
     <div className="mx-auto w-full max-w-sm p-6">
       <SwipeRow
         actionWidth={actionWidth}
         direction={direction}
+        duration={duration}
+        intensity={intensity}
         actions={<button type="button" className="bg-destructive px-3 text-sm text-white">删除</button>}
       >
         滑动这一行
@@ -132,13 +151,15 @@ export function SwipeRowDemo({
 export function FuseButtonDemo({
   holdMs = 800,
   color = "#2563eb",
+  scale,
 }: {
   holdMs?: number
   color?: string
+  scale?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <FuseButton holdMs={holdMs} color={color}>
+      <FuseButton holdMs={holdMs} color={color} scale={scale}>
         按住确认
       </FuseButton>
     </div>
@@ -149,14 +170,18 @@ export function PulseHeartDemo({
   size = 28,
   color = "#e11d48",
   burst = 8,
+  duration,
+  scale,
 }: {
   size?: number
   color?: string
   burst?: number
+  duration?: number
+  scale?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <PulseHeart size={size} color={color} burst={burst} />
+      <PulseHeart size={size} color={color} burst={burst} duration={duration} scale={scale} />
     </div>
   )
 }
@@ -166,15 +191,19 @@ export function LatticeLoaderDemo({
   cols = 4,
   speed = 1,
   color = "#2563eb",
+  size,
+  gap,
 }: {
   rows?: number
   cols?: number
   speed?: number
   color?: string
+  size?: number
+  gap?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-10">
-      <LatticeLoader rows={rows} cols={cols} speed={speed} color={color} />
+      <LatticeLoader rows={rows} cols={cols} speed={speed} color={color} size={size} gap={gap} />
     </div>
   )
 }
@@ -183,14 +212,16 @@ export function WarmTooltipDemo({
   delay = 200,
   side = "top",
   glow = true,
+  intensity,
 }: {
   delay?: number
   side?: "top" | "right" | "bottom" | "left"
   glow?: boolean
+  intensity?: number
 } = {}) {
   return (
     <div className="flex items-center justify-center p-16">
-      <WarmTooltip content="软光提示" delay={delay} side={side} glow={glow}>
+      <WarmTooltip content="软光提示" delay={delay} side={side} glow={glow} intensity={intensity}>
         <button type="button" className="rounded-md border px-3 py-1.5 text-sm">
           悬停查看
         </button>

@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -30,7 +31,30 @@ export const batch4Components: ComponentMeta[] = [
           options: ["mesh", "grain", "dithering", "metaballs", "warp"],
         },
       },
-      { name: "colors", type: "string[]", description: "调色板。dithering 使用前两色作为底/前景。" },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "调色板。dithering 使用前两色作为底/前景。",
+        control: {
+          kind: "colors",
+          follow: true,
+          value: ["#1e1b4b", "#7c3aed", "#22d3ee", "#0f172a"],
+        },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "动画速度倍率，1 保持库预设速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        defaultValue: "1",
+        description: "图案缩放，1 与库默认缩放一致。",
+        control: { kind: "range", value: 1, min: 0.6, max: 1.8, step: 0.1 },
+      },
       ...ui,
     ],
   },
@@ -43,7 +67,26 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/liquid-glass.tsx",
     target: "components/ui/liquid-glass.tsx",
-    props: ui,
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "回退毛玻璃的叠色倍率。1 与不传相同。库组件加载后忽略。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "回退模糊（像素）。24 与不传相同。库组件加载后忽略。",
+        control: { kind: "range", value: 24, min: 1, max: 48, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "liquid-glass-clear", label: "清", values: { intensity: 0.45, size: 8 } },
+      { name: "liquid-glass-default", label: "默认", values: { intensity: 1, size: 24 } },
+      { name: "liquid-glass-frost", label: "雾", values: { intensity: 1, size: 40 } },
+    ],
   },
   {
     name: "background-paths",
@@ -54,7 +97,43 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/background-paths.tsx",
     target: "components/ui/background-paths.tsx",
-    props: [{ name: "count", type: "number", defaultValue: "10", description: "路径条数。" }, ...ui],
+    props: [
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "10",
+        description: "路径条数。",
+        control: { kind: "range", value: 10, min: 4, max: 20, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "路径颜色，不传则跟随前景色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.45",
+        description: "描边不透明度。",
+        control: { kind: "range", value: 0.45, min: 0.15, max: 0.9, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "路径流动速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "2400",
+        description: "描线时长，单位毫秒。",
+        control: { kind: "range", value: 2400, min: 800, max: 4000, step: 100 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "number-flow",
@@ -71,7 +150,20 @@ export const batch4Components: ComponentMeta[] = [
       { name: "format", type: "Format", description: "数字格式（Intl 子集）。" },
       { name: "prefix", type: "string", description: "前缀。" },
       { name: "suffix", type: "string", description: "后缀。" },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "left" }),
       ...ui,
+    ],
+    presets: [
+      {
+        name: "number-flow-1",
+        label: "大数字",
+        values: { fontSize: 48, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "number-flow-2",
+        label: "正文",
+        values: { fontSize: 20, fontWeight: 400, align: "left" },
+      },
     ],
   },
   {
@@ -90,7 +182,69 @@ export const batch4Components: ComponentMeta[] = [
         description: "文本。",
         control: { kind: "text", value: "GLITCH" },
       },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "故障层开始前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "true",
+        description: "为假时故障层只走一轮。不传则一直循环。",
+        control: { kind: "boolean", value: true },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 64, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 700, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0.08, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
       ...ui,
+    ],
+    presets: [
+      {
+        name: "glitch-poster",
+        label: "海报",
+        values: { text: "GLITCH", fontSize: 80, fontWeight: 800, letterSpacing: 0.12, align: "center", loop: true },
+      },
+      {
+        name: "glitch-once",
+        label: "闪一下",
+        values: { text: "SIGNAL", fontSize: 36, fontWeight: 600, loop: false, delay: 200 },
+      },
+      {
+        name: "glitch-label",
+        label: "小标签",
+        values: { text: "LIVE", fontSize: 14, fontWeight: 700, letterSpacing: 0.2, align: "left" },
+      },
     ],
   },
   {
@@ -102,7 +256,39 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/image-trail.tsx",
     target: "components/ui/image-trail.tsx",
-    props: [{ name: "images", type: "string[]", description: "图片 URL 列表。" }, ...ui],
+    props: [
+      { name: "images", type: "string[]", description: "图片 URL 列表。" },
+      {
+        name: "gap",
+        type: "number",
+        description: "生成下一张前的移动距离（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 0, max: 80, step: 2 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "移动后仍保留的旧图张数，不含刚落下的一张。8 与不传相同。",
+        control: { kind: "range", value: 8, min: 1, max: 24, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "缩略图边长（像素）。64 与不传相同。",
+        control: { kind: "range", value: 64, min: 16, max: 160, step: 4 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度。0.8 与不传相同。",
+        control: { kind: "range", value: 0.8, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "image-trail-sparse", label: "疏", values: { gap: 48, count: 4, size: 48, intensity: 0.6 } },
+      { name: "image-trail-default", label: "默认", values: { gap: 28, count: 8, size: 64, intensity: 0.8 } },
+      { name: "image-trail-dense", label: "密", values: { gap: 12, count: 14, size: 80, intensity: 1 } },
+    ],
   },
   {
     name: "icon-cloud",
@@ -113,7 +299,18 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/icon-cloud.tsx",
     target: "components/ui/icon-cloud.tsx",
-    props: [{ name: "icons", type: "ReactNode[]", description: "图标节点。" }, ...ui],
+    props: [
+      { name: "icons", type: "ReactNode[]", description: "图标节点。" },
+      { name: "duration", type: "number", description: "自转一周（毫秒）。18000 与不传相同，仍是 18 秒。", control: { kind: "range", value: 18000, min: 7200, max: 36000, step: 200 } },
+      { name: "size", type: "number", description: "球面半径（像素）。90 与不传相同。", control: { kind: "range", value: 90, min: 48, max: 160, step: 2 } },
+      { name: "scale", type: "number", description: "图标倍率。1 与不传相同，仍是 36 像素。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "icon-cloud-small", label: "小", values: { duration: 26000, size: 64, scale: 0.8 } },
+      { name: "icon-cloud-default", label: "默认", values: { duration: 18000, size: 90, scale: 1 } },
+      { name: "icon-cloud-large", label: "大", values: { duration: 12000, size: 130, scale: 1.4 } },
+    ],
   },
   {
     name: "animated-theme-toggler",
@@ -124,7 +321,15 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-theme-toggler.tsx",
     target: "components/ui/animated-theme-toggler.tsx",
-    props: [{ name: "duration", type: "number", defaultValue: "500", description: "扩散时长（毫秒）。" }, ...ui],
+    props: [
+      { name: "duration", type: "number", defaultValue: "500", description: "扩散时长（毫秒）。", control: { kind: "range", value: 500, min: 200, max: 1000, step: 10 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "animated-theme-toggler-slow", label: "慢", values: { duration: 800 } },
+      { name: "animated-theme-toggler-default", label: "默认", values: { duration: 500 } },
+      { name: "animated-theme-toggler-fast", label: "快", values: { duration: 280 } },
+    ],
   },
   {
     name: "prompt-input",
@@ -157,6 +362,7 @@ export const batch4Components: ComponentMeta[] = [
       { name: "content", type: "string", description: "消息正文（助手侧按 Markdown 渲染）。" },
       { name: "streaming", type: "boolean", defaultValue: "false", description: "流式光标。" },
       { name: "name", type: "string", description: "助手名称。" },
+      { name: "actions", type: "ReactNode", description: "操作区。" },
       ...ui,
     ],
   },
@@ -171,6 +377,7 @@ export const batch4Components: ComponentMeta[] = [
     target: "components/ui/marketing-blocks.tsx",
     props: [
       { name: "variant", type: "string", description: "各区块的视觉变体（aurora/split/glass、cards/featured/compact 等）。" },
+      { name: "subtitle", type: "string", description: "Hero 副标题。" },
       ...ui,
     ],
   },
@@ -196,8 +403,14 @@ export const batch4Components: ComponentMeta[] = [
     target: "components/ui/terminal.tsx",
     props: [
       { name: "lines", type: "string[]", description: "命令行文本。" },
-      { name: "interval", type: "number", defaultValue: "700", description: "行间隔（毫秒）。" },
+      { name: "interval", type: "number", defaultValue: "700", description: "行间隔（毫秒）。", control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 } },
+      { name: "color", type: "string", description: "提示符颜色。不传则跟随主题。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "terminal-slow", label: "慢", values: { interval: 1100 } },
+      { name: "terminal-default", label: "默认", values: { interval: 700 } },
+      { name: "terminal-fast", label: "快", values: { interval: 360 } },
     ],
   },
   {

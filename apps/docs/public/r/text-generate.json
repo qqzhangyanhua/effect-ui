@@ -8,6 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
+    "text-style",
     "use-prefers-reduced-motion",
     "utils"
   ],
@@ -16,7 +17,7 @@
       "path": "registry/effects/text-generate.tsx",
       "type": "registry:ui",
       "target": "components/ui/text-generate.tsx",
-      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextGenerateProps {\n  text: string\n  className?: string\n}\n\nfunction TextGenerate({ text, className }: TextGenerateProps) {\n  const reduced = usePrefersReducedMotion()\n  const words = text.split(/\\s+/).filter((word) => word.length > 0)\n\n  return (\n    <p data-slot=\"text-generate\" className={cn(\"min-h-16 text-2xl leading-relaxed\", className)} aria-live=\"polite\">\n      {words.map((word, index) => (\n        <motion.span\n          key={`${index}-${word}`}\n          className=\"mr-[0.3em] inline-block\"\n          initial={reduced ? false : { opacity: 0, filter: \"blur(8px)\" }}\n          animate={{ opacity: 1, filter: \"blur(0px)\" }}\n          transition={{ duration: reduced ? 0 : 0.35 }}\n        >\n          {word}\n        </motion.span>\n      ))}\n    </p>\n  )\n}\n\nexport { TextGenerate }\n"
+      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { textStyle } from \"@/lib/text-style\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TextGenerateProps {\n  text: string\n  className?: string\n  /** 每个词显出的时长，毫秒。不传则 350。 */\n  duration?: number\n  /** 词与词之间的等待，毫秒。不传则一起显出。 */\n  delay?: number\n  fontSize?: number\n  fontWeight?: number\n  letterSpacing?: number\n  align?: \"left\" | \"center\" | \"right\"\n}\n\nfunction TextGenerate({\n  text,\n  className,\n  duration,\n  delay,\n  fontSize,\n  fontWeight,\n  letterSpacing,\n  align,\n}: TextGenerateProps) {\n  const reduced = usePrefersReducedMotion()\n  const words = text.split(/\\s+/).filter((word) => word.length > 0)\n\n  return (\n    <p\n      data-slot=\"text-generate\"\n      className={cn(\"min-h-16 text-2xl leading-relaxed\", className)}\n      style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}\n      aria-live=\"polite\"\n    >\n      {words.map((word, index) => (\n        <motion.span\n          key={`${index}-${word}`}\n          className=\"mr-[0.3em] inline-block\"\n          initial={reduced ? false : { opacity: 0, filter: \"blur(8px)\" }}\n          animate={{ opacity: 1, filter: \"blur(0px)\" }}\n          transition={{\n            duration: reduced ? 0 : (duration ?? 350) / 1000,\n            delay: reduced ? 0 : (index * (delay ?? 0)) / 1000,\n          }}\n        >\n          {word}\n        </motion.span>\n      ))}\n    </p>\n  )\n}\n\nexport { TextGenerate }\n"
     }
   ]
 }

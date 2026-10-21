@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -26,7 +27,33 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/coverflow-carousel.tsx",
     target: "components/ui/coverflow-carousel.tsx",
-    props: [{ name: "items", type: "CoverflowItem[]", description: "封面。" }, ...ui],
+    props: [
+      { name: "items", type: "CoverflowItem[]", description: "封面。" },
+      {
+        name: "angle",
+        type: "number",
+        description: "侧卡转角。42 与不传相同。",
+        control: { kind: "range", value: 42, min: 0, max: 80, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "侧卡缩放的倍率。1 与不传相同，侧卡仍是 0.82。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧倍率。1 与不传相同，刚度仍是 260。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "coverflow-carousel-flat", label: "平", values: { angle: 12, scale: 1, speed: 1 } },
+      { name: "coverflow-carousel-default", label: "默认", values: { angle: 42, scale: 1, speed: 1 } },
+      { name: "coverflow-carousel-tight", label: "挤", values: { angle: 64, scale: 0.8, speed: 1.4 } },
+    ],
   },
   {
     name: "book-flip",
@@ -40,7 +67,30 @@ export const batch9Components: ComponentMeta[] = [
     props: [
       { name: "title", type: "string", description: "封面标题。" },
       { name: "pages", type: "string[]", description: "内页文案。" },
+      {
+        name: "angle",
+        type: "number",
+        description: "打开角度。155 与不传相同。",
+        control: { kind: "range", value: 155, min: 0, max: 180, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧倍率。1 与不传相同，刚度仍是 120。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "封面两色。#7c3aed 与 #1e1b4b 和不传相同。",
+        control: { kind: "colors", value: ["#7c3aed", "#1e1b4b"] },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "book-flip-soft", label: "轻", values: { angle: 110, speed: 0.7, colors: ["#7c3aed", "#1e1b4b"] } },
+      { name: "book-flip-default", label: "默认", values: { angle: 155, speed: 1, colors: ["#7c3aed", "#1e1b4b"] } },
+      { name: "book-flip-ink", label: "墨", values: { angle: 170, speed: 1.4, colors: ["#0f172a", "#334155"] } },
     ],
   },
   {
@@ -55,7 +105,30 @@ export const batch9Components: ComponentMeta[] = [
     props: [
       { name: "label", type: "string", description: "文件夹标签。" },
       { name: "cards", type: "FolderCard[]", description: "弹出的卡片。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "扇出过渡（毫秒）。300 与不传相同。",
+        control: { kind: "range", value: 300, min: 120, max: 600, step: 20 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "扇开转角。14 与不传相同。",
+        control: { kind: "range", value: 14, min: 0, max: 40, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "扇开抬升的倍率。1 与不传相同，中心仍是 6.5rem。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "folder-reveal-soft", label: "收", values: { duration: 400, angle: 6, intensity: 0.5 } },
+      { name: "folder-reveal-default", label: "默认", values: { duration: 300, angle: 14, intensity: 1 } },
+      { name: "folder-reveal-wide", label: "开", values: { duration: 220, angle: 24, intensity: 1 } },
     ],
   },
   {
@@ -67,7 +140,27 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/box-carousel.tsx",
     target: "components/ui/box-carousel.tsx",
-    props: [{ name: "faces", type: "BoxFace[]", description: "最多四面。" }, ...ui],
+    props: [
+      { name: "faces", type: "BoxFace[]", description: "最多四面。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧倍率。1 与不传相同，刚度仍是 140。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "边长（像素）。176 与不传相同，仍是 size-44。",
+        control: { kind: "range", value: 176, min: 96, max: 280, step: 4 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "box-carousel-small", label: "小", values: { speed: 1, size: 128 } },
+      { name: "box-carousel-default", label: "默认", values: { speed: 1, size: 176 } },
+      { name: "box-carousel-brisk", label: "快", values: { speed: 1.8, size: 176 } },
+    ],
   },
   {
     name: "detent-dial",
@@ -94,7 +187,16 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/family-drawer.tsx",
     target: "components/ui/family-drawer.tsx",
-    props: [{ name: "steps", type: "FamilyStep[]", description: "步骤文案。" }, ...ui],
+    props: [
+      { name: "steps", type: "FamilyStep[]", description: "步骤文案。" },
+      { name: "intensity", type: "number", description: "步骤位移倍率。1 与不传相同，仍是 8 像素。", control: { kind: "range", value: 1, min: 0, max: 2, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "family-drawer-soft", label: "轻", values: { intensity: 0.5 } },
+      { name: "family-drawer-default", label: "默认", values: { intensity: 1 } },
+      { name: "family-drawer-high", label: "高", values: { intensity: 1.6 } },
+    ],
   },
   {
     name: "text-morph",
@@ -105,7 +207,30 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/text-morph.tsx",
     target: "components/ui/text-morph.tsx",
-    props: [{ name: "texts", type: "string[]", description: "轮换的文本。" }, ...ui],
+    props: [
+      { name: "texts", type: "string[]", description: "轮换的文本。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1800",
+        description: "间隔毫秒。不传则 1800。",
+        control: { kind: "range", value: 1800, min: 600, max: 3600, step: 100 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "center" }),
+      ...ui,
+    ],
+    presets: [
+      {
+        name: "text-morph-1",
+        label: "标题",
+        values: { interval: 1800, fontSize: 48, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "text-morph-2",
+        label: "慢变",
+        values: { interval: 2800, fontSize: 32, fontWeight: 500, align: "left" },
+      },
+    ],
   },
   {
     name: "orbiting-items-3d",
@@ -116,7 +241,17 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/orbiting-items-3d.tsx",
     target: "components/ui/orbiting-items-3d.tsx",
-    props: [{ name: "items", type: "string[]", description: "轨道上的标签。" }, ...ui],
+    props: [
+      { name: "items", type: "string[]", description: "轨道上的标签。" },
+      { name: "speed", type: "number", description: "环绕倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "size", type: "number", description: "轨道半径（像素）。108 与不传相同。", control: { kind: "range", value: 108, min: 64, max: 180, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "orbiting-items-3d-slow", label: "慢", values: { speed: 0.6, size: 80 } },
+      { name: "orbiting-items-3d-default", label: "默认", values: { speed: 1, size: 108 } },
+      { name: "orbiting-items-3d-fast", label: "快", values: { speed: 1.8, size: 140 } },
+    ],
   },
   {
     name: "apple-activity-card",
@@ -127,7 +262,27 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/apple-activity-card.tsx",
     target: "components/ui/apple-activity-card.tsx",
-    props: [{ name: "rings", type: "ActivityRing[]", description: "圆环标签、进度和颜色。" }, ...ui],
+    props: [
+      { name: "rings", type: "ActivityRing[]", description: "圆环标签、进度和颜色。" },
+      {
+        name: "size",
+        type: "number",
+        description: "画布边长（像素）。168 与不传相同。",
+        control: { kind: "range", value: 168, min: 96, max: 280, step: 4 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "填充时长（毫秒）。800 与不传相同，仍是 0.8 秒。",
+        control: { kind: "range", value: 800, min: 320, max: 1600, step: 20 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "apple-activity-small", label: "小", values: { size: 120, duration: 800 } },
+      { name: "apple-activity-default", label: "默认", values: { size: 168, duration: 800 } },
+      { name: "apple-activity-slow", label: "慢", values: { size: 168, duration: 1400 } },
+    ],
   },
   {
     name: "apple-cards-carousel",
@@ -138,7 +293,33 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/apple-cards-carousel.tsx",
     target: "components/ui/apple-cards-carousel.tsx",
-    props: [{ name: "cards", type: "AppleStoryCard[]", description: "故事卡片。" }, ...ui],
+    props: [
+      { name: "cards", type: "AppleStoryCard[]", description: "故事卡片。" },
+      {
+        name: "gap",
+        type: "number",
+        description: "卡片间距（像素）。12 与不传相同。",
+        control: { kind: "range", value: 12, min: 0, max: 32, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "卡片宽度（像素）。208 与不传相同，高度仍是 256。",
+        control: { kind: "range", value: 208, min: 140, max: 320, step: 4 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "展开遮罩的不透明度。0.6 与不传相同。",
+        control: { kind: "range", value: 0.6, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "apple-cards-tight", label: "紧", values: { gap: 4, size: 168, intensity: 0.6 } },
+      { name: "apple-cards-default", label: "默认", values: { gap: 12, size: 208, intensity: 0.6 } },
+      { name: "apple-cards-dim", label: "暗", values: { gap: 12, size: 208, intensity: 0.85 } },
+    ],
   },
   {
     name: "saas-template",

@@ -3,19 +3,36 @@
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 import { MarqueeAlongSvgPath } from "./marquee-along-svg-path"
 
 export interface CurvedLoopProps {
   text?: string
   className?: string
+  /** 沿弧线的速度倍率。不传时起始速度仍是 12。 */
+  speed?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 const ARC = "M 24 148 Q 270 8 516 148"
 
-function CurvedLoop({ text = "CURVED LOOP · ", className }: CurvedLoopProps) {
+function CurvedLoop({
+  text = "CURVED LOOP · ",
+  className,
+  speed,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: CurvedLoopProps) {
   const reduced = usePrefersReducedMotion()
-  const [velocity, setVelocity] = React.useState(12)
+  const base = speed === undefined || !Number.isFinite(speed) ? 12 : 12 * speed
+  const [dragged, setDragged] = React.useState<{ base: number; velocity: number } | null>(null)
+  const velocity = dragged !== null && dragged.base === base ? dragged.velocity : base
   const drag = React.useRef<{ x: number } | null>(null)
 
   return (
@@ -31,7 +48,10 @@ function CurvedLoop({ text = "CURVED LOOP · ", className }: CurvedLoopProps) {
           if (!previous || reduced) return
           const dx = event.clientX - previous.x
           drag.current = { x: event.clientX }
-          setVelocity((current) => Math.max(-28, Math.min(28, current + dx * 0.12)))
+          setDragged((current) => {
+            const start = current !== null && current.base === base ? current.velocity : base
+            return { base, velocity: Math.max(-28, Math.min(28, start + dx * 0.12)) }
+          })
         }}
         onPointerUp={() => {
           drag.current = null
@@ -48,7 +68,12 @@ function CurvedLoop({ text = "CURVED LOOP · ", className }: CurvedLoopProps) {
           showPath={false}
           className="min-h-48"
         >
-          <span className="font-display text-4xl whitespace-nowrap sm:text-5xl">{text}</span>
+          <span
+            className="font-display text-4xl whitespace-nowrap sm:text-5xl"
+            style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}
+          >
+            {text}
+          </span>
         </MarqueeAlongSvgPath>
       </div>
       <p className="text-center text-xs text-muted-foreground">

@@ -2,11 +2,18 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface GalaxySpiralProps {
   className?: string
+  arms?: number
+  radius?: number
+  count?: number
+  randomness?: number
+  speed?: number
+  colors?: readonly string[]
 }
 
 const VERT = `
@@ -55,6 +62,12 @@ function mulberry32(seed: number) {
   }
 }
 
+function useSynced<T>(prop: T | undefined, fallback: T): [T, (next: T) => void] {
+  const [draft, setDraft] = React.useState<{ prop: T | undefined; value: T } | null>(null)
+  const value = draft && Object.is(draft.prop, prop) ? draft.value : (prop ?? fallback)
+  return [value, (next) => setDraft({ prop, value: next })]
+}
+
 function hexToRgb(hex: string) {
   const value = Number.parseInt(hex.slice(1), 16)
   return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
@@ -88,17 +101,26 @@ function GalaxyFallback() {
   )
 }
 
-function GalaxySpiral({ className }: GalaxySpiralProps) {
+function GalaxySpiral({
+  className,
+  arms: armsProp,
+  radius: radiusProp,
+  count: countProp,
+  randomness: randomnessProp,
+  speed: speedProp,
+  colors: colorsProp,
+}: GalaxySpiralProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
-  const [arms, setArms] = React.useState(3)
-  const [radius, setRadius] = React.useState(1)
-  const [count, setCount] = React.useState(1800)
-  const [randomness, setRandomness] = React.useState(0.45)
-  const [speed, setSpeed] = React.useState(0.7)
-  const [inner, setInner] = React.useState("#f8e7b0")
-  const [outer, setOuter] = React.useState("#7dd3fc")
+  const active = useAnimationActive(hostRef)
+  const [arms, setArms] = useSynced(armsProp, 3)
+  const [radius, setRadius] = useSynced(radiusProp, 1)
+  const [count, setCount] = useSynced(countProp, 1800)
+  const [randomness, setRandomness] = useSynced(randomnessProp, 0.45)
+  const [speed, setSpeed] = useSynced(speedProp, 0.7)
+  const [inner, setInner] = useSynced(colorsProp?.[0], "#f8e7b0")
+  const [outer, setOuter] = useSynced(colorsProp?.[1], "#7dd3fc")
   const [fallback, setFallback] = React.useState(false)
   const live = React.useRef({ arms, radius, count, randomness, speed, inner, outer, tiltX: 0.35, tiltY: 0.2 })
   const drag = React.useRef<{ x: number; y: number; tiltX: number; tiltY: number } | null>(null)
@@ -109,7 +131,7 @@ function GalaxySpiral({ className }: GalaxySpiralProps) {
   }, [arms, radius, count, randomness, speed, inner, outer])
 
   React.useEffect(() => {
-    if (!showCanvas) return
+    if (!showCanvas || !active) return
     const canvas = canvasRef.current
     const host = hostRef.current
     if (!canvas || !host) return
@@ -118,7 +140,7 @@ function GalaxySpiral({ className }: GalaxySpiralProps) {
     const run = async () => {
       const ogl = await import("ogl")
       if (cancelled) return undefined
-      const renderer = new ogl.Renderer({ canvas, alpha: false, dpr: Math.min(window.devicePixelRatio || 1, 1.5) })
+      const renderer = new ogl.Renderer({ canvas, alpha: false, dpr: Math.min(window.devicePixelRatio || 1, 2) })
       const gl = renderer.gl
       if (!gl) {
         queueMicrotask(() => {
@@ -206,7 +228,7 @@ function GalaxySpiral({ className }: GalaxySpiralProps) {
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }
-  }, [showCanvas, count])
+  }, [active, showCanvas, count])
 
   return (
     <div data-slot="galaxy-spiral" className={cn("w-full space-y-3", className)}>

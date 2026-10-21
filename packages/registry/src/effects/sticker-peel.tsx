@@ -9,10 +9,23 @@ import { cn } from "@/lib/utils"
 export interface StickerPeelProps {
   className?: string
   label?: string
+  /** 揭开切口系数。不传或 0.55 与原来相同。 */
+  intensity?: number
+  /** 回弹倍率。不传或 1 时刚度 340、阻尼 22。 */
+  speed?: number
+  /** 贴纸边长，像素。不传或 224 仍是 h-56 w-56。 */
+  size?: number
 }
 
-function StickerPeel({ className, label = "STICKER" }: StickerPeelProps) {
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
+}
+
+function StickerPeel({ className, label = "STICKER", intensity, speed, size }: StickerPeelProps) {
   const reduced = usePrefersReducedMotion()
+  const cutGain = intensity === undefined || intensity === 0.55 ? 0.55 : intensity
+  const rate = pace(speed)
+  const edge = size === undefined || size === 224 ? 224 : size
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const drag = React.useRef<{ px: number; py: number } | null>(null)
@@ -20,7 +33,7 @@ function StickerPeel({ className, label = "STICKER" }: StickerPeelProps) {
   const clip = useTransform([x, y], ([latestX, latestY]) => {
     const dx = Math.max(0, -Number(latestX))
     const dy = Math.max(0, Number(latestY))
-    const cut = Math.min(86, (dx + dy) * 0.55)
+    const cut = Math.min(86, (dx + dy) * cutGain)
     return `polygon(0% 0%, ${100 - cut}% 0%, 100% ${cut}%, 100% 100%, 0% 100%)`
   })
   const fold = useTransform([x, y], ([latestX, latestY]) => {
@@ -31,8 +44,10 @@ function StickerPeel({ className, label = "STICKER" }: StickerPeelProps) {
 
   const springBack = () => {
     drag.current = null
-    void animate(x, 0, { type: "spring", stiffness: 340, damping: 22 })
-    void animate(y, 0, { type: "spring", stiffness: 340, damping: 22 })
+    const stiffness = rate === 1 ? 340 : 340 * rate
+    const damping = rate === 1 ? 22 : 22 * rate
+    void animate(x, 0, { type: "spring", stiffness, damping })
+    void animate(y, 0, { type: "spring", stiffness, damping })
   }
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -52,7 +67,11 @@ function StickerPeel({ className, label = "STICKER" }: StickerPeelProps) {
   }
 
   return (
-    <div data-slot="sticker-peel" className={cn("relative h-56 w-56", className)}>
+    <div
+      data-slot="sticker-peel"
+      className={cn("relative", edge === 224 && "h-56 w-56", className)}
+      style={edge === 224 ? undefined : { width: edge, height: edge }}
+    >
       <div className="absolute inset-0 rounded-2xl bg-white shadow-inner">
         <div className="absolute inset-3 rounded-xl border border-dashed border-zinc-300" />
         <p className="absolute bottom-4 left-4 text-xs tracking-[0.22em] text-zinc-400">WHITE BACK</p>

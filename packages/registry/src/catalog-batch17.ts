@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -18,7 +19,51 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/galaxy-spiral.tsx",
     target: "components/ui/galaxy-spiral.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "arms",
+        type: "number",
+        defaultValue: "3",
+        description: "旋臂数量。",
+        control: { kind: "range", value: 3, min: 2, max: 6, step: 1 },
+      },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "1",
+        description: "星系半径。",
+        control: { kind: "range", value: 1, min: 0.4, max: 1.4, step: 0.02 },
+      },
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "1800",
+        description: "粒子数量。",
+        control: { kind: "range", value: 1800, min: 600, max: 3200, step: 200 },
+      },
+      {
+        name: "randomness",
+        type: "number",
+        defaultValue: "0.45",
+        description: "粒子散开的随机度。",
+        control: { kind: "range", value: 0.45, min: 0, max: 1, step: 0.01 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "0.7",
+        description: "旋转速度。",
+        control: { kind: "range", value: 0.7, min: 0, max: 2, step: 0.01 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#f8e7b0", "#7dd3fc"]',
+        description: "内圈和外圈的颜色。",
+        control: { kind: "colors", value: ["#f8e7b0", "#7dd3fc"] },
+      },
+      ...ui,
+    ],
   },
   {
     name: "proximity-scale-grid",
@@ -29,7 +74,19 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/proximity-scale-grid.tsx",
     target: "components/ui/proximity-scale-grid.tsx",
-    props: [...ui],
+    props: [
+      { name: "count", type: "number", description: "横向格子数。18 与不传相同。", control: { kind: "range", value: 18, min: 8, max: 28, step: 1 } },
+      { name: "size", type: "number", description: "圆点半径（像素）。3.2 与不传相同。", control: { kind: "range", value: 3.2, min: 1, max: 8, step: 0.2 } },
+      { name: "speed", type: "number", description: "跟随倍率。1 与不传相同，每帧仍靠近 0.18。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "影响半径倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      { name: "color", type: "string", description: "格子颜色。不传则按距离变色。", control: { kind: "color" } },
+      ...ui,
+    ],
+    presets: [
+      { name: "proximity-scale-grid-sparse", label: "疏", values: { count: 10, size: 2, speed: 0.6, intensity: 0.5 } },
+      { name: "proximity-scale-grid-default", label: "默认", values: { count: 18, size: 3.2, speed: 1, intensity: 1 } },
+      { name: "proximity-scale-grid-dense", label: "密", values: { count: 26, size: 5, speed: 1.6, intensity: 1 } },
+    ],
   },
   {
     name: "polaroid-scroll-stack",
@@ -51,7 +108,32 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/scroll-svg-graph.tsx",
     target: "components/ui/scroll-svg-graph.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧刚度倍率。1 与不传相同，刚度仍是 140。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "面积起始不透明度。1 与不传相同，起始仍是 0.15。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "折线颜色。#c4b5fd 与不传相同，面积仍是 #a78bfa。",
+        control: { kind: "color", value: "#c4b5fd" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "scroll-graph-default", label: "默认", values: { speed: 1, intensity: 1, color: "#c4b5fd" } },
+      { name: "scroll-graph-fast", label: "加快", values: { speed: 1.8, intensity: 1, color: "#c4b5fd" } },
+      { name: "scroll-graph-solid", label: "实色", values: { speed: 1, intensity: 1, color: "#38bdf8" } },
+    ],
   },
   {
     name: "cloth-wind-banner",
@@ -62,7 +144,31 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/cloth-wind-banner.tsx",
     target: "components/ui/cloth-wind-banner.tsx",
-    props: [...ui],
+    props: [
+      { name: "texture", type: "string", description: "布面贴图地址，不传时用内置条纹。" },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.65",
+        description: "风力大小。",
+        control: { kind: "range", value: 0.65, min: 0, max: 1, step: 0.01 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "布面波动的速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#7c3aed", "#ea580c"]',
+        description: "无贴图时的两条纹颜色。",
+        control: { kind: "colors", value: ["#7c3aed", "#ea580c"] },
+      },
+      ...ui,
+    ],
   },
   {
     name: "xray-fluid-reveal",
@@ -73,7 +179,15 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/xray-fluid-reveal.tsx",
     target: "components/ui/xray-fluid-reveal.tsx",
-    props: [...ui],
+    props: [
+      { name: "speed", type: "number", description: "噪声流速倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "xray-fluid-reveal-slow", label: "慢", values: { speed: 0.6 } },
+      { name: "xray-fluid-reveal-default", label: "默认", values: { speed: 1 } },
+      { name: "xray-fluid-reveal-fast", label: "快", values: { speed: 1.8 } },
+    ],
   },
   {
     name: "petal-dissolve-text",
@@ -85,13 +199,72 @@ export const batch17Components: ComponentMeta[] = [
     file: "effects/petal-dissolve-text.tsx",
     target: "components/ui/petal-dissolve-text.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: "花瓣散开", description: "会散开的文字。" },
-      { name: "direction", type: '"forward" | "reverse"', defaultValue: "forward", description: "阈值线的推进方向。" },
-      { name: "duration", type: "number", defaultValue: "1400", description: "一次散开或重组的时长，单位毫秒。" },
-      { name: "color", type: "string", defaultValue: "#fb7185", description: "花瓣颜色。" },
-      { name: "trigger", type: '"view" | "hover" | "manual"', defaultValue: "manual", description: "进入视口、悬停或按钮触发。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: "花瓣散开",
+        description: "会散开的文字。",
+        control: { kind: "text", value: "花瓣散开" },
+      },
+      {
+        name: "direction",
+        type: '"forward" | "reverse"',
+        defaultValue: "forward",
+        description: "阈值线的推进方向。",
+        vocabularyExemption: "历史取值是 forward/reverse，不是 left/right/up/down。",
+        control: { kind: "select", value: "forward", options: ["forward", "reverse"] },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "1400",
+        description: "一次散开或重组的时长，单位毫秒。",
+        control: { kind: "range", value: 1400, min: 560, max: 2800, step: 100 },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "#fb7185",
+        description: "花瓣颜色。",
+        control: { kind: "color", value: "#fb7185" },
+      },
+      {
+        name: "trigger",
+        type: '"view" | "hover" | "manual"',
+        defaultValue: "manual",
+        description: "进入视口、悬停或按钮触发。",
+        vocabularyExemption: "历史取值是 view/hover/manual，不是 mount/hover/inView。",
+        control: { kind: "select", value: "manual", options: ["view", "hover", "manual"] },
+      },
+      ...textControls({ fontSize: 72, fontWeight: 400, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("petal", "text", [
+      {
+        label: "散开",
+        content: "花瓣散开",
+        fontSize: 72,
+        fontWeight: 400,
+        align: "left",
+        extra: { direction: "forward", duration: 1400, color: "#fb7185", trigger: "manual" },
+      },
+      {
+        label: "重组",
+        content: "再聚回来",
+        fontSize: 56,
+        fontWeight: 600,
+        align: "center",
+        extra: { direction: "reverse", duration: 1800, color: "#fb7185", trigger: "hover" },
+      },
+      {
+        label: "入场",
+        content: "看见才散",
+        fontSize: 48,
+        fontWeight: 500,
+        align: "center",
+        extra: { direction: "forward", duration: 1000, color: "#f43f5e", trigger: "view" },
+      },
+    ]),
   },
   {
     name: "data-tunnel",
@@ -102,7 +275,37 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/data-tunnel.tsx",
     target: "components/ui/data-tunnel.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "10",
+        description: "隧道环数。",
+        control: { kind: "range", value: 10, min: 4, max: 16, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "前进速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#0d3347", "#a6f2ff"]',
+        description: "底色和字形颜色。",
+        control: { kind: "colors", value: ["#0d3347", "#a6f2ff"] },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "1",
+        description: "字形亮度倍率。",
+        control: { kind: "range", value: 1, min: 0.4, max: 1.4, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "file-upload-queue",
@@ -128,7 +331,14 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/embed-code-generator.tsx",
     target: "components/ui/embed-code-generator.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "template",
+        type: "(values: EmbedValues) => { iframe: string; script: string }",
+        description: "代码模板。省略时生成默认 iframe 与 script。",
+      },
+      ...ui,
+    ],
   },
   {
     name: "social-post-feed",
@@ -139,7 +349,7 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/social-post-feed.tsx",
     target: "components/ui/social-post-feed.tsx",
-    props: [...ui],
+    props: [{ name: "posts", type: "SocialPost[]", description: "帖子列表。省略时用内置帖子。" }, ...ui],
   },
   {
     name: "comment-thread",
@@ -150,7 +360,11 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/comment-thread.tsx",
     target: "components/ui/comment-thread.tsx",
-    props: [...ui],
+    props: [
+      { name: "comments", type: "ThreadComment[]", description: "评论。省略时用内置评论。" },
+      { name: "people", type: "string[]", description: "可提及的人。省略时用内置名单。" },
+      ...ui,
+    ],
   },
   {
     name: "signature-pad",
@@ -172,7 +386,14 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/poll-vote.tsx",
     target: "components/ui/poll-vote.tsx",
-    props: [...ui],
+    props: [
+      { name: "question", type: "string", defaultValue: "这个功能什么时候发出去？", description: "问题。" },
+      { name: "options", type: "PollOption[]", description: "选项。省略时用内置选项。" },
+      { name: "mode", type: '"single" | "multiple"', defaultValue: '"single"', description: "单选或多选。" },
+      { name: "deadline", type: "number", description: "截止时间，毫秒时间戳。省略时为内置时刻之后两天。" },
+      { name: "now", type: "number", description: "当前时间，毫秒时间戳。省略时用内置时刻。" },
+      ...ui,
+    ],
   },
   {
     name: "schedule-slot-picker",
@@ -185,6 +406,7 @@ export const batch17Components: ComponentMeta[] = [
     target: "components/ui/schedule-slot-picker.tsx",
     props: [
       { name: "getSlots", type: "(date: Date) => ScheduleSlot[]", description: "某一天的可预约时段。" },
+      { name: "timeZone", type: "string", defaultValue: "Asia/Shanghai", description: "时区。" },
       ...ui,
     ],
   },
@@ -200,7 +422,31 @@ export const batch17Components: ComponentMeta[] = [
     props: [
       { name: "items", type: "ReactionItem[]", description: "表情、计数和是否已选。" },
       { name: "onToggle", type: "(emoji: string) => void", description: "切换某个表情。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "选中弹动时长（毫秒）。280 与不传相同。",
+        control: { kind: "range", value: 280, min: 120, max: 560, step: 10 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "选中放大倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "按钮间距（像素）。8 与不传相同。",
+        control: { kind: "range", value: 8, min: 0, max: 16, step: 1 },
+      },
+      { name: "color", type: "string", description: "选中颜色。不传则跟随主题。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "reaction-bar-fast", label: "快", values: { duration: 160, scale: 0.6, gap: 8 } },
+      { name: "reaction-bar-default", label: "默认", values: { duration: 280, scale: 1, gap: 8 } },
+      { name: "reaction-bar-large", label: "大", values: { duration: 420, scale: 1.6, gap: 12 } },
     ],
   },
 ]

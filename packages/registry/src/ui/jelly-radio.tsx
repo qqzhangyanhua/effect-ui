@@ -21,6 +21,7 @@ export interface JellyRadioProps {
   disabled?: boolean
   stiffness?: number
   color?: string
+  intensity?: number
   className?: string
   name?: string
   ref?: React.Ref<HTMLDivElement>
@@ -35,6 +36,7 @@ function JellyRadio({
   disabled,
   stiffness = 320,
   color,
+  intensity,
   className,
   name,
   ref,
@@ -72,7 +74,12 @@ function JellyRadio({
                 layoutId={layoutId}
                 className="absolute inset-0 rounded-full bg-primary"
                 style={fill}
-                transition={{ type: "spring", stiffness, damping: 14, mass: 0.55 }}
+                transition={{
+                  type: "spring",
+                  stiffness,
+                  damping: 14,
+                  mass: intensity === undefined || intensity === 0.55 ? 0.55 : intensity,
+                }}
               />
             )}
           </RadioGroupPrimitive.Indicator>

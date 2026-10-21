@@ -15,6 +15,9 @@ export interface ClipRevealItem {
 export interface ClipRevealMenuProps {
   items?: readonly ClipRevealItem[]
   className?: string
+  duration?: number
+  delay?: number
+  intensity?: number
 }
 
 const ITEMS: readonly ClipRevealItem[] = [
@@ -24,8 +27,13 @@ const ITEMS: readonly ClipRevealItem[] = [
   { id: "index", label: "索引", detail: "焦点留在菜单里" },
 ]
 
-function ClipRevealMenu({ items = ITEMS, className }: ClipRevealMenuProps) {
+function ClipRevealMenu({ items = ITEMS, className, duration, delay, intensity }: ClipRevealMenuProps) {
   const reduced = usePrefersReducedMotion()
+  const panel = duration === undefined || duration === 550 ? 0.55 : duration / 1000
+  const itemDuration = duration === undefined || duration === 550 ? 0.35 : (duration / 1000) * (0.35 / 0.55)
+  const lead = delay === undefined || delay === 120 ? 0.12 : delay / 1000
+  const stagger = delay === undefined || delay === 120 ? 0.06 : lead / 2
+  const rise = intensity === undefined || intensity === 1 ? 28 : 28 * intensity
   const panelId = React.useId()
   const buttonRef = React.useRef<HTMLButtonElement>(null)
   const firstRef = React.useRef<HTMLButtonElement>(null)
@@ -67,7 +75,7 @@ function ClipRevealMenu({ items = ITEMS, className }: ClipRevealMenuProps) {
           className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950 text-zinc-50"
           initial={reduced ? { clipPath: clip } : { clipPath: `circle(0% at ${origin.x}px ${origin.y}px)` }}
           animate={{ clipPath: clip }}
-          transition={{ duration: reduced ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : panel, ease: [0.22, 1, 0.36, 1] }}
           onKeyDown={(event) => {
             if (event.key === "Escape") {
               event.preventDefault()
@@ -93,9 +101,9 @@ function ClipRevealMenu({ items = ITEMS, className }: ClipRevealMenuProps) {
                   ref={index === 0 ? firstRef : undefined}
                   type="button"
                   className="block text-left"
-                  initial={reduced ? false : { y: 28, opacity: 0 }}
+                  initial={reduced ? false : { y: rise, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: reduced ? 0 : 0.35, delay: reduced ? 0 : 0.12 + index * 0.06 }}
+                  transition={{ duration: reduced ? 0 : itemDuration, delay: reduced ? 0 : lead + index * stagger }}
                   onClick={() => {
                     setOpen(false)
                     buttonRef.current?.focus()

@@ -50,7 +50,17 @@ function Circle({
   )
 }
 
-export function AnimatedBeamDemo() {
+export function AnimatedBeamDemo({
+  duration,
+  delay,
+  pathWidth,
+  curvature = 40,
+}: {
+  duration?: number
+  delay?: number
+  pathWidth?: number
+  curvature?: number
+} = {}) {
   const container = useRef<HTMLDivElement>(null)
   const a = useRef<HTMLDivElement>(null)
   const b = useRef<HTMLDivElement>(null)
@@ -61,17 +71,17 @@ export function AnimatedBeamDemo() {
         <Circle nodeRef={a} label="A" />
         <Circle nodeRef={b} label="Hub" />
         <Circle nodeRef={c} label="B" />
-        <AnimatedBeam containerRef={container} fromRef={a} toRef={b} curvature={40} />
-        <AnimatedBeam containerRef={container} fromRef={c} toRef={b} curvature={40} reverse />
+        <AnimatedBeam containerRef={container} fromRef={a} toRef={b} curvature={curvature} duration={duration} delay={delay} pathWidth={pathWidth} />
+        <AnimatedBeam containerRef={container} fromRef={c} toRef={b} curvature={curvature} reverse duration={duration} delay={delay} pathWidth={pathWidth} />
       </div>
     </Frame>
   )
 }
 
-export function MorphingDialogDemo() {
+export function MorphingDialogDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   return (
     <Frame>
-      <MorphingDialog>
+      <MorphingDialog duration={duration} intensity={intensity}>
         <MorphingDialogTrigger className="w-56 rounded-xl border bg-background p-4 shadow-sm">
           <MorphingDialogTitle>共享布局</MorphingDialogTitle>
           <p className="mt-1 text-sm text-muted-foreground">点击卡片展开。</p>
@@ -101,10 +111,10 @@ const after =
     `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/><text x="40" y="190" fill="white" font-size="42" font-family="sans-serif">After</text></svg>`,
   )
 
-export function ImageComparisonDemo() {
+export function ImageComparisonDemo({ enableHover = false, color, size }: { enableHover?: boolean; color?: string; size?: number } = {}) {
   return (
     <Frame>
-      <ImageComparison className="h-44 w-full max-w-md rounded-xl" enableHover>
+      <ImageComparison className="h-44 w-full max-w-md rounded-xl" enableHover={enableHover} color={color} size={size}>
         <ImageComparisonImage src={before} alt="Before" position="left" />
         <ImageComparisonImage src={after} alt="After" position="right" />
         <ImageComparisonSlider />
@@ -113,7 +123,17 @@ export function ImageComparisonDemo() {
   )
 }
 
-export function ProgressiveBlurDemo() {
+export function ProgressiveBlurDemo({
+  direction = "bottom",
+  blurLayers = 8,
+  blurIntensity = 0.25,
+  intensity,
+}: {
+  direction?: "top" | "right" | "bottom" | "left"
+  blurLayers?: number
+  blurIntensity?: number
+  intensity?: number
+} = {}) {
   return (
     <Frame>
       <div className="relative h-40 w-full max-w-md overflow-hidden rounded-xl border">
@@ -124,18 +144,32 @@ export function ProgressiveBlurDemo() {
             </div>
           ))}
         </div>
-        <ProgressiveBlur className="absolute inset-x-0 bottom-0 h-16" />
+        <ProgressiveBlur
+          className="absolute inset-x-0 bottom-0 h-16"
+          direction={direction}
+          blurLayers={blurLayers}
+          blurIntensity={blurIntensity}
+          intensity={intensity}
+        />
       </div>
     </Frame>
   )
 }
 
-export function ScrollProgressDemo() {
+export function ScrollProgressDemo({
+  size,
+  intensity,
+  color,
+}: {
+  size?: number
+  intensity?: number
+  color?: string
+} = {}) {
   const container = useRef<HTMLDivElement>(null)
   return (
     <Frame>
       <div className="w-full max-w-md overflow-hidden rounded-xl border">
-        <ScrollProgress containerRef={container} className="sticky top-0 z-10" />
+        <ScrollProgress containerRef={container} className="sticky top-0 z-10" size={size} intensity={intensity} color={color} />
         <div ref={container} className="h-40 overflow-auto p-4 text-sm leading-7">
           {Array.from({ length: 12 }, (_, index) => (
             <p key={index}>滚动这段内容，顶部进度条会跟着走。第 {index + 1} 段。</p>
@@ -146,13 +180,24 @@ export function ScrollProgressDemo() {
   )
 }
 
-export function ScrollVelocityDemo() {
+export function ScrollVelocityDemo({
+  baseVelocity = 5,
+  direction = 1,
+  speed,
+  intensity,
+}: {
+  baseVelocity?: number
+  direction?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  const way: 1 | -1 = direction === -1 ? -1 : 1
   return (
     <Frame>
       <div className="w-full">
         <p className="mb-3 text-center text-xs text-muted-foreground">滚动页面可改变速度</p>
-        <ScrollVelocity>
-          <ScrollVelocityRow className="text-2xl font-semibold tracking-tight">
+        <ScrollVelocity intensity={intensity}>
+          <ScrollVelocityRow className="text-2xl font-semibold tracking-tight" baseVelocity={baseVelocity} direction={way} speed={speed} intensity={intensity}>
             <span className="px-6">effect-ui</span>
             <span className="px-6">Motion</span>
             <span className="px-6">Registry</span>
@@ -164,11 +209,21 @@ export function ScrollVelocityDemo() {
   )
 }
 
-export function StackingCardsDemo() {
+export function StackingCardsDemo({
+  scaleMultiplier = 0.03,
+  intensity,
+  gap,
+  speed,
+}: {
+  scaleMultiplier?: number
+  intensity?: number
+  gap?: number
+  speed?: number
+} = {}) {
   const cards = ["设计", "开发", "发布"]
   return (
     <div className="h-64 w-full overflow-auto rounded-xl border">
-      <StackingCards totalCards={cards.length} className="min-h-[420px] px-4 pt-4">
+      <StackingCards totalCards={cards.length} scaleMultiplier={scaleMultiplier} intensity={intensity} gap={gap} speed={speed} className="min-h-[420px] px-4 pt-4">
         {cards.map((title, index) => (
           <StackingCardItem key={title} index={index} className="h-36">
             <div className="rounded-xl border bg-card p-5 shadow-sm">
@@ -182,11 +237,11 @@ export function StackingCardsDemo() {
   )
 }
 
-export function DynamicIslandDemo() {
+export function DynamicIslandDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   const [size, setSize] = useState<DynamicIslandSize>("idle")
   return (
     <Frame className="flex-col gap-4">
-      <DynamicIsland size={size}>
+      <DynamicIsland size={size} duration={duration} intensity={intensity}>
         {size === "compact" ? (
           <Signal className="mx-auto size-4" />
         ) : size === "expanded" ? (
@@ -231,10 +286,16 @@ export function VariableFontProximityDemo({
   label = "Move closer",
   radius = 90,
   falloff = "linear",
+  fontSize,
+  letterSpacing,
+  align,
 }: {
   label?: string
   radius?: number
   falloff?: "linear" | "exponential" | "gaussian"
+  fontSize?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 } = {}) {
   const container = useRef<HTMLDivElement>(null)
   return (
@@ -247,6 +308,9 @@ export function VariableFontProximityDemo({
           containerRef={container}
           radius={radius}
           falloff={falloff}
+          fontSize={fontSize}
+          letterSpacing={letterSpacing}
+          align={align}
           className="text-4xl tracking-tight"
         />
       </div>

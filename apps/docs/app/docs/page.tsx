@@ -1,12 +1,13 @@
 import Link from "next/link"
 
-import { getComponentsByCategory } from "@effect-ui/registry/catalog"
+import { getCatalogGroups } from "@effect-ui/registry/catalog"
 import { Badge } from "@effect-ui/registry/ui/badge"
 
+import { familyPath, type FamilyCluster } from "@/lib/family-path"
 import { getRegistryBaseUrl } from "@/lib/source"
 
 function DocsIndexPage() {
-  const groups = getComponentsByCategory()
+  const groups = getCatalogGroups()
   const baseUrl = getRegistryBaseUrl()
 
   return (
@@ -40,19 +41,45 @@ function DocsIndexPage() {
       <section className="space-y-4">
         <h2 className="text-xl font-medium">组件索引</h2>
         {groups.map((group) => (
-          <div key={group.category}>
-            <h3 className="mb-2 text-sm font-medium text-muted-foreground">{group.label}</h3>
-            <div className="flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <Link
-                  key={item.name}
-                  href={`/docs/${item.name}`}
-                  className="rounded-full border px-3 py-1 text-sm hover:bg-accent"
-                >
-                  {item.title}
-                </Link>
-              ))}
-            </div>
+          <div key={group.key} className="space-y-3">
+            <h3 className="text-sm font-medium text-muted-foreground">{group.label}</h3>
+            {group.key === "button" || group.key === "input" ? (
+              <Link
+                href={familyPath(group.key as FamilyCluster)}
+                className="inline-flex rounded-full border px-3 py-1 text-sm hover:bg-accent"
+              >
+                {group.label} · {group.items.length} 个，同一页滚动查看
+              </Link>
+            ) : group.sections.length > 0 ? (
+              group.sections.map((section) => (
+                <div key={section.key}>
+                  <p className="mb-2 text-xs text-muted-foreground">{section.label}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {section.items.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={`/docs/${item.name}`}
+                        className="rounded-full border px-3 py-1 text-sm hover:bg-accent"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={`/docs/${item.name}`}
+                    className="rounded-full border px-3 py-1 text-sm hover:bg-accent"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </section>

@@ -17,6 +17,8 @@ import { batch17Components } from "./catalog-batch17"
 import { batch18Components } from "./catalog-batch18"
 import { batch19Components } from "./catalog-batch19"
 import { batch20Components } from "./catalog-batch20"
+import type { VocabularyGroup } from "./prop-vocabulary"
+import { textControls, textPresets } from "./text-controls"
 
 export type ComponentCategory =
   | "ui"
@@ -83,15 +85,23 @@ export type SourceLibrary =
   | "three"
   | "original"
 
-export type ControlGroup = "外观" | "动画" | "交互"
+export type ControlGroup = VocabularyGroup
 
 export type ControlDef =
   | { kind: "range"; value: number; min: number; max: number; step?: number; group?: ControlGroup }
   | { kind: "select"; value: string; options: readonly string[]; group?: ControlGroup }
   | { kind: "color"; value?: string; group?: ControlGroup }
-  | { kind: "colors"; value: readonly string[]; group?: ControlGroup }
+  | { kind: "colors"; value: readonly string[]; follow?: boolean; group?: ControlGroup }
   | { kind: "boolean"; value: boolean; group?: ControlGroup }
   | { kind: "text"; value: string; group?: ControlGroup }
+
+export type PresetValue = string | number | boolean | readonly string[]
+
+export interface ControlPreset {
+  name: string
+  label: string
+  values: Readonly<Record<string, PresetValue>>
+}
 
 export interface PropDoc {
   name: string
@@ -100,6 +110,11 @@ export interface PropDoc {
   description: string
   /** 文档预览里读者可改的控件。`value` 是 demo 起始值，不是组件默认值。 */
   control?: ControlDef
+  /**
+   * 名字在参数词汇表里，但已发布的类型或取值不能改。
+   * 非空说明会让 audit 跳过这个 prop 的词汇表一致性检查。
+   */
+  vocabularyExemption?: string
 }
 
 export interface ComponentMeta {
@@ -113,6 +128,8 @@ export interface ComponentMeta {
   files?: readonly { file: string; type: string; target: string }[]
   /** 源码没有 import、但安装时必须一起装的 npm 包，例如另一个依赖的 peer。其余依赖从源码推导。 */
   extraDependencies?: string[]
+  /** 文档页预设。不进组件 props，也不进 registry JSON。 */
+  presets?: readonly ControlPreset[]
   file: string
   target: string
   props: PropDoc[]
@@ -233,6 +250,17 @@ export const components: ComponentMeta[] = [
     type: "registry:lib",
     file: "lib/utils.ts",
     target: "lib/utils.ts",
+    props: [],
+  },
+  {
+    name: "text-style",
+    title: "Text Style",
+    description: "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
+    category: "ui",
+    source: "original",
+    type: "registry:lib",
+    file: "lib/text-style.ts",
+    target: "lib/text-style.ts",
     props: [],
   },
   {
@@ -549,6 +577,61 @@ export const components: ComponentMeta[] = [
         description: "是否显示光标。",
         control: { kind: "boolean", value: true },
       },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "第一字出现前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时从头打。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 32, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 500, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
+    ],
+    presets: [
+      {
+        name: "typing-headline",
+        label: "标题",
+        values: { text: "把特效复制进你的项目", fontSize: 56, fontWeight: 700, align: "center", duration: 40 },
+      },
+      {
+        name: "typing-slow",
+        label: "慢打",
+        values: { text: "一行慢慢出现", fontSize: 20, fontWeight: 400, duration: 180, loop: true },
+      },
+      {
+        name: "typing-plain",
+        label: "正文",
+        values: { text: "适合说明的句子", fontSize: 16, fontWeight: 400, letterSpacing: 0, align: "left", loop: false },
+      },
     ],
   },
   {
@@ -560,7 +643,103 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gradient-text.tsx",
     target: "components/ui/gradient-text.tsx",
-    props: [{ name: "colors", type: "string", defaultValue: "from-violet-500 via-fuchsia-500 to-cyan-400", description: "Tailwind 渐变色类。" }],
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "文字内容。",
+        control: { kind: "text", value: "流动渐变" },
+      },
+      {
+        name: "colors",
+        type: "string",
+        defaultValue: "from-violet-500 via-fuchsia-500 to-cyan-400",
+        description: "Tailwind 渐变色类。",
+        vocabularyExemption: "历史 prop 是 Tailwind 渐变类字符串，不是 CSS 颜色数组。不改名、不改类型。",
+        control: { kind: "text", value: "from-violet-500 via-fuchsia-500 to-cyan-400" },
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "流动开始前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "true",
+        description: "为假时只走一轮。不传则一直循环。",
+        control: { kind: "boolean", value: true },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 48, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 700, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "center", options: ["left", "center", "right"] },
+      },
+    ],
+    presets: [
+      {
+        name: "gradient-hero",
+        label: "主标题",
+        values: {
+          children: "流动渐变",
+          colors: "from-violet-500 via-fuchsia-500 to-cyan-400",
+          fontSize: 64,
+          fontWeight: 700,
+          align: "center",
+        },
+      },
+      {
+        name: "gradient-warm",
+        label: "暖色",
+        values: {
+          children: "暖调标题",
+          colors: "from-orange-400 via-rose-500 to-amber-300",
+          fontSize: 40,
+          fontWeight: 600,
+          align: "left",
+        },
+      },
+      {
+        name: "gradient-quiet",
+        label: "弱对比",
+        values: {
+          children: "一句说明",
+          colors: "from-zinc-500 via-zinc-300 to-zinc-500",
+          fontSize: 18,
+          fontWeight: 400,
+          letterSpacing: 0.02,
+          loop: true,
+        },
+      },
+    ],
   },
   {
     name: "shimmer-text",
@@ -578,7 +757,48 @@ export const components: ComponentMeta[] = [
         description: "文字内容。",
         control: { kind: "text", value: "扫光文字即将上线" },
       },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 48, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 600, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
       ...uiProps,
+    ],
+    presets: [
+      {
+        name: "shimmer-display",
+        label: "大标题",
+        values: { children: "扫光标题", fontSize: 72, fontWeight: 700, letterSpacing: -0.04, align: "center" },
+      },
+      {
+        name: "shimmer-reading",
+        label: "正文",
+        values: { children: "一段可以阅读的文字", fontSize: 18, fontWeight: 400, letterSpacing: 0, align: "left" },
+      },
+      {
+        name: "shimmer-kicker",
+        label: "小标签",
+        values: { children: "NEW", fontSize: 14, fontWeight: 600, letterSpacing: 0.18, align: "left" },
+      },
     ],
   },
   {
@@ -590,7 +810,27 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/aurora-text.tsx",
     target: "components/ui/aurora-text.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "文字内容。",
+        control: { kind: "text", value: "极光标题" },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 600, align: "center" }),
+      {
+        name: "speed",
+        type: "number",
+        description: "流动速度倍率。不传则保持原来的 7 秒一轮。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...uiProps,
+    ],
+    presets: textPresets("aurora", "children", [
+      { label: "大标题", content: "极光标题", fontSize: 72, fontWeight: 700, align: "center", extra: { speed: 1 } },
+      { label: "正文", content: "流动的一句", fontSize: 18, fontWeight: 400, align: "left", extra: { speed: 0.6 } },
+      { label: "快闪", content: "AURORA", fontSize: 48, fontWeight: 600, align: "center", extra: { speed: 2 } },
+    ]),
   },
   {
     name: "split-text",
@@ -622,6 +862,61 @@ export const components: ComponentMeta[] = [
         description: "入场延迟（秒）。",
         control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
       },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "false",
+        description: "入场结束后再播一次。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "字号（像素）。不传则继承。",
+        control: { kind: "range", value: 40, min: 12, max: 96, step: 1 },
+      },
+      {
+        name: "fontWeight",
+        type: "number",
+        description: "字重。不传则继承。",
+        control: { kind: "range", value: 600, min: 100, max: 900, step: 100 },
+      },
+      {
+        name: "letterSpacing",
+        type: "number",
+        description: "字距（em）。不传则继承。",
+        control: { kind: "range", value: 0, min: -0.1, max: 0.5, step: 0.01 },
+      },
+      {
+        name: "align",
+        type: '"left" | "center" | "right"',
+        description: "对齐。不传则不设置。",
+        control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+      },
+    ],
+    presets: [
+      {
+        name: "split-headline",
+        label: "标题",
+        values: { text: "逐字显现的标题", fontSize: 64, fontWeight: 700, align: "center", by: "char", delay: 0 },
+      },
+      {
+        name: "split-words",
+        label: "按词",
+        values: { text: "按词错落出现", fontSize: 28, fontWeight: 500, by: "word", delay: 0.2 },
+      },
+      {
+        name: "split-quiet",
+        label: "正文",
+        values: { text: "轻轻进入的一句", fontSize: 18, fontWeight: 400, letterSpacing: 0.01, align: "left", delay: 0 },
+      },
     ],
   },
   {
@@ -633,7 +928,33 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/highlight-text.tsx",
     target: "components/ui/highlight-text.tsx",
-    props: [{ name: "color", type: "string", defaultValue: "var(--primary)", description: "高亮颜色。" }],
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "被强调的文字。",
+        control: { kind: "text", value: "关键句" },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "高亮颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "底纹展开时长，毫秒。不传则 550。",
+        control: { kind: "range", value: 550, min: 220, max: 1100, step: 10 },
+      },
+      ...textControls({ fontSize: 20, fontWeight: 400, align: "left" }),
+    ],
+    presets: textPresets("highlight", "children", [
+      { label: "正文", content: "关键句", fontSize: 20, fontWeight: 500, align: "left", extra: { duration: 550 } },
+      { label: "标题", content: "划重点", fontSize: 36, fontWeight: 700, align: "center", extra: { duration: 800 } },
+      { label: "快划", content: "注意", fontSize: 16, fontWeight: 600, align: "left", extra: { duration: 280 } },
+    ]),
   },
   {
     name: "count-up",
@@ -645,10 +966,51 @@ export const components: ComponentMeta[] = [
     file: "effects/count-up.tsx",
     target: "components/ui/count-up.tsx",
     props: [
-      { name: "value", type: "number", description: "目标数字。" },
-      { name: "direction", type: '"up" | "down"', defaultValue: '"up"', description: "计数方向。" },
-      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
-      { name: "decimalPlaces", type: "number", defaultValue: "0", description: "小数位。" },
+      {
+        name: "value",
+        type: "number",
+        description: "目标数字。",
+        control: { kind: "range", value: 1280, min: 0, max: 5000, step: 10 },
+      },
+      {
+        name: "direction",
+        type: '"up" | "down"',
+        defaultValue: '"up"',
+        description: "计数方向。",
+        control: { kind: "select", value: "up", options: ["up", "down"] },
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "延迟（秒）。已有单位，不改成毫秒。",
+        control: { kind: "range", value: 0, min: 0, max: 2, step: 0.1 },
+      },
+      {
+        name: "decimalPlaces",
+        type: "number",
+        defaultValue: "0",
+        description: "小数位。",
+        control: { kind: "range", value: 0, min: 0, max: 4, step: 1 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "left" }),
+    ],
+    presets: [
+      {
+        name: "count-up-1",
+        label: "大数字",
+        values: { value: 1280, direction: "up", delay: 0, decimalPlaces: 0, fontSize: 64, fontWeight: 700, align: "center" },
+      },
+      {
+        name: "count-up-2",
+        label: "小数",
+        values: { value: 99.5, direction: "up", delay: 0.2, decimalPlaces: 1, fontSize: 36, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "count-up-3",
+        label: "倒数",
+        values: { value: 80, direction: "down", delay: 0, decimalPlaces: 0, fontSize: 28, fontWeight: 600, align: "right" },
+      },
     ],
   },
   {
@@ -701,8 +1063,41 @@ export const components: ComponentMeta[] = [
     file: "effects/grid-pattern.tsx",
     target: "components/ui/grid-pattern.tsx",
     props: [
-      { name: "width", type: "number", defaultValue: "40", description: "单元格宽。" },
-      { name: "height", type: "number", defaultValue: "40", description: "单元格高。" },
+      {
+        name: "width",
+        type: "number",
+        defaultValue: "40",
+        description: "单元格宽。",
+        control: { kind: "range", value: 40, min: 8, max: 80, step: 4 },
+      },
+      {
+        name: "height",
+        type: "number",
+        defaultValue: "40",
+        description: "单元格高。",
+        control: { kind: "range", value: 40, min: 8, max: 80, step: 4 },
+      },
+      {
+        name: "x",
+        type: "number",
+        defaultValue: "-1",
+        description: "水平偏移。",
+        control: { kind: "range", value: -1, min: -20, max: 20, step: 1 },
+      },
+      {
+        name: "y",
+        type: "number",
+        defaultValue: "-1",
+        description: "垂直偏移。",
+        control: { kind: "range", value: -1, min: -20, max: 20, step: 1 },
+      },
+      {
+        name: "strokeDasharray",
+        type: "string",
+        defaultValue: "0",
+        description: "描边虚线。",
+        control: { kind: "text", value: "0" },
+      },
     ],
   },
   {
@@ -715,9 +1110,41 @@ export const components: ComponentMeta[] = [
     file: "effects/dot-pattern.tsx",
     target: "components/ui/dot-pattern.tsx",
     props: [
-      { name: "width", type: "number", defaultValue: "16", description: "水平间距。" },
-      { name: "height", type: "number", defaultValue: "16", description: "垂直间距。" },
-      { name: "cr", type: "number", defaultValue: "1", description: "圆点半径。" },
+      {
+        name: "width",
+        type: "number",
+        defaultValue: "16",
+        description: "水平间距。",
+        control: { kind: "range", value: 16, min: 4, max: 40, step: 1 },
+      },
+      {
+        name: "height",
+        type: "number",
+        defaultValue: "16",
+        description: "垂直间距。",
+        control: { kind: "range", value: 16, min: 4, max: 40, step: 1 },
+      },
+      {
+        name: "cx",
+        type: "number",
+        defaultValue: "1",
+        description: "圆心横坐标。",
+        control: { kind: "range", value: 1, min: 0, max: 8, step: 1 },
+      },
+      {
+        name: "cy",
+        type: "number",
+        defaultValue: "1",
+        description: "圆心纵坐标。",
+        control: { kind: "range", value: 1, min: 0, max: 8, step: 1 },
+      },
+      {
+        name: "cr",
+        type: "number",
+        defaultValue: "1",
+        description: "圆点半径。",
+        control: { kind: "range", value: 1, min: 0.5, max: 4, step: 0.5 },
+      },
     ],
   },
   {
@@ -729,7 +1156,35 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/meteors.tsx",
     target: "components/ui/meteors.tsx",
-    props: [{ name: "number", type: "number", defaultValue: "18", description: "流星数量。" }],
+    props: [
+      {
+        name: "number",
+        type: "number",
+        defaultValue: "18",
+        description: "流星数量。",
+        control: { kind: "range", value: 18, min: 4, max: 36, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "下落速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "流星颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "2",
+        description: "头部直径（像素）。",
+        control: { kind: "range", value: 2, min: 1, max: 6, step: 1 },
+      },
+    ],
   },
   {
     name: "aurora-background",
@@ -747,6 +1202,33 @@ export const components: ComponentMeta[] = [
         description: "前景内容。",
         control: { kind: "text", value: "极光铺在内容后面" },
       },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "流动速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.7",
+        description: "光晕不透明度。",
+        control: { kind: "range", value: 0.7, min: 0.2, max: 1, step: 0.05 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "三处光斑颜色。",
+        control: { kind: "colors", value: ["#7c3aed", "#22d3ee", "#f59e0b"], follow: true },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "64",
+        description: "模糊半径（像素）。",
+        control: { kind: "range", value: 64, min: 16, max: 96, step: 4 },
+      },
       ...uiProps,
     ],
   },
@@ -759,7 +1241,35 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/ripples.tsx",
     target: "components/ui/ripples.tsx",
-    props: [{ name: "rings", type: "number", defaultValue: "4", description: "圆环数量。" }],
+    props: [
+      {
+        name: "rings",
+        type: "number",
+        defaultValue: "4",
+        description: "圆环数量。",
+        control: { kind: "range", value: 4, min: 2, max: 8, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "扩散速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "圆环颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.2",
+        description: "圆环透明度。",
+        control: { kind: "range", value: 0.2, min: 0.05, max: 0.6, step: 0.05 },
+      },
+    ],
   },
   {
     name: "flickering-grid",
@@ -771,8 +1281,41 @@ export const components: ComponentMeta[] = [
     file: "effects/flickering-grid.tsx",
     target: "components/ui/flickering-grid.tsx",
     props: [
-      { name: "squareSize", type: "number", defaultValue: "4", description: "方块尺寸。" },
-      { name: "flickerChance", type: "number", defaultValue: "0.18", description: "每帧闪烁概率。" },
+      {
+        name: "squareSize",
+        type: "number",
+        defaultValue: "4",
+        description: "方块尺寸。",
+        control: { kind: "range", value: 4, min: 2, max: 16, step: 1 },
+      },
+      {
+        name: "gridGap",
+        type: "number",
+        defaultValue: "6",
+        description: "方块间距。",
+        control: { kind: "range", value: 6, min: 0, max: 20, step: 1 },
+      },
+      {
+        name: "flickerChance",
+        type: "number",
+        defaultValue: "0.18",
+        description: "每帧闪烁概率。",
+        control: { kind: "range", value: 0.18, min: 0.02, max: 0.6, step: 0.01 },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--foreground)",
+        description: "方块颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "maxOpacity",
+        type: "number",
+        defaultValue: "0.28",
+        description: "最大不透明度。",
+        control: { kind: "range", value: 0.28, min: 0.05, max: 0.8, step: 0.01 },
+      },
     ],
   },
   {
@@ -785,8 +1328,31 @@ export const components: ComponentMeta[] = [
     file: "effects/spotlight-card.tsx",
     target: "components/ui/spotlight-card.tsx",
     props: [
-      { name: "spotlightColor", type: "string", description: "聚光颜色。" },
-      { name: "radius", type: "number", defaultValue: "240", description: "聚光半径。" },
+      { name: "spotlightColor", type: "string", description: "聚光颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "240",
+        description: "聚光半径。",
+        control: { kind: "range", value: 240, min: 80, max: 480, step: 10 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "光斑显现速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "光斑边缘衰减。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "spotlight-soft", label: "柔和", values: { radius: 180, speed: 0.6, intensity: 0.55 } },
+      { name: "spotlight-default", label: "默认", values: { radius: 240, speed: 1, intensity: 1 } },
+      { name: "spotlight-tight", label: "收紧", values: { radius: 120, speed: 1.6, intensity: 1 } },
     ],
   },
   {
@@ -806,6 +1372,29 @@ export const components: ComponentMeta[] = [
         description: "吸附强度。",
         control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "位移幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "整体缩放。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "magnetic-light", label: "轻吸", values: { strength: 0.15, speed: 0.8, intensity: 0.6, scale: 1 } },
+      { name: "magnetic-default", label: "默认", values: { strength: 0.35, speed: 1, intensity: 1, scale: 1 } },
+      { name: "magnetic-strong", label: "强吸", values: { strength: 0.7, speed: 1.4, intensity: 1, scale: 1.1 } },
     ],
   },
   {
@@ -817,7 +1406,33 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/cursor-follow.tsx",
     target: "components/ui/cursor-follow.tsx",
-    props: [{ name: "size", type: "number", defaultValue: "28", description: "光标尺寸。" }],
+    props: [
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "28",
+        description: "光标尺寸（像素）。",
+        control: { kind: "range", value: 28, min: 8, max: 80, step: 2 },
+      },
+      { name: "color", type: "string", description: "光标颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "speed",
+        type: "number",
+        description: "跟随速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度。0.35 与不传相同。",
+        control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "cursor-follow-soft", label: "淡", values: { size: 36, speed: 0.7, intensity: 0.2 } },
+      { name: "cursor-follow-default", label: "默认", values: { size: 28, speed: 1, intensity: 0.35 } },
+      { name: "cursor-follow-bold", label: "醒目", values: { size: 16, speed: 1.8, intensity: 0.7 } },
+    ],
   },
   {
     name: "tilt",
@@ -836,6 +1451,29 @@ export const components: ComponentMeta[] = [
         description: "最大倾斜角度。",
         control: { kind: "range", value: 12, min: 0, max: 40, step: 1 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "回正速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "倾斜幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "整体缩放。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "tilt-flat", label: "平", values: { maxTilt: 4, speed: 0.8, intensity: 0.5, scale: 1 } },
+      { name: "tilt-default", label: "默认", values: { maxTilt: 12, speed: 1, intensity: 1, scale: 1 } },
+      { name: "tilt-steep", label: "陡", values: { maxTilt: 28, speed: 1.5, intensity: 1, scale: 1.05 } },
     ],
   },
   {
@@ -847,7 +1485,32 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glow-hover.tsx",
     target: "components/ui/glow-hover.tsx",
-    props: [{ name: "glowColor", type: "string", defaultValue: "var(--primary)", description: "发光颜色。" }],
+    props: [
+      { name: "glowColor", type: "string", defaultValue: "var(--primary)", description: "发光颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "speed",
+        type: "number",
+        description: "过渡速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "发光浓度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "发光模糊半径（像素）。40 与不传相同。",
+        control: { kind: "range", value: 40, min: 8, max: 96, step: 2 },
+      },
+    ],
+    presets: [
+      { name: "glow-soft", label: "柔光", values: { speed: 0.7, intensity: 0.45, size: 24 } },
+      { name: "glow-default", label: "默认", values: { speed: 1, intensity: 1, size: 40 } },
+      { name: "glow-wide", label: "散开", values: { speed: 1.4, intensity: 1, size: 72 } },
+    ],
   },
   {
     name: "flip-card",
@@ -861,6 +1524,17 @@ export const components: ComponentMeta[] = [
     props: [
       { name: "front", type: "ReactNode", description: "正面内容。" },
       { name: "back", type: "ReactNode", description: "背面内容。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "翻转动画时长（毫秒）。500 与不传相同。",
+        control: { kind: "range", value: 500, min: 200, max: 1000, step: 50 },
+      },
+    ],
+    presets: [
+      { name: "flip-card-fast", label: "快", values: { duration: 250 } },
+      { name: "flip-card-default", label: "默认", values: { duration: 500 } },
+      { name: "flip-card-slow", label: "慢", values: { duration: 900 } },
     ],
   },
   {
@@ -872,7 +1546,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glass-card.tsx",
     target: "components/ui/glass-card.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "玻璃叠色的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "背景模糊（像素）。24 与不传相同。",
+        control: { kind: "range", value: 24, min: 1, max: 48, step: 1 },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "glass-card-clear", label: "清", values: { intensity: 0.4, size: 8 } },
+      { name: "glass-card-default", label: "默认", values: { intensity: 1, size: 24 } },
+      { name: "glass-card-frost", label: "雾", values: { intensity: 1, size: 40 } },
+    ],
   },
   {
     name: "shine-border",
@@ -884,8 +1577,37 @@ export const components: ComponentMeta[] = [
     file: "effects/shine-border.tsx",
     target: "components/ui/shine-border.tsx",
     props: [
-      { name: "shineColor", type: "string", defaultValue: "var(--primary)", description: "高光颜色。" },
-      { name: "duration", type: "number", defaultValue: "10", description: "旋转周期（秒）。" },
+      {
+        name: "shineColor",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "高光颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "10",
+        description: "旋转周期（秒）。",
+        control: { kind: "range", value: 10, min: 4, max: 20, step: 0.5 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "描边厚度（像素）。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 1, max: 6, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "高光弧宽度的倍率。1 与不传相同，仍是 12% 到 28%。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "shine-border-thin", label: "细", values: { duration: 14, size: 1, intensity: 0.45 } },
+      { name: "shine-border-default", label: "默认", values: { duration: 10, size: 1, intensity: 1 } },
+      { name: "shine-border-wide", label: "宽", values: { duration: 6, size: 3, intensity: 1 } },
     ],
   },
   {
@@ -897,7 +1619,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/hover-lift.tsx",
     target: "components/ui/hover-lift.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "过渡时长（毫秒）。300 与不传相同。",
+        control: { kind: "range", value: 300, min: 120, max: 600, step: 20 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "上浮距离的倍率。1 与不传相同，仍是 6px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "hover-lift-soft", label: "轻", values: { duration: 400, intensity: 0.4 } },
+      { name: "hover-lift-default", label: "默认", values: { duration: 300, intensity: 1 } },
+      { name: "hover-lift-slow", label: "慢", values: { duration: 560, intensity: 1 } },
+    ],
   },
   {
     name: "ripple-button",
@@ -908,7 +1649,31 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/ripple-button.tsx",
     target: "components/ui/ripple-button.tsx",
-    props: [{ name: "rippleColor", type: "string", description: "波纹颜色。" }],
+    props: [
+      {
+        name: "rippleColor",
+        type: "string",
+        description: "波纹颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "波纹时长（毫秒）。650 与不传相同。",
+        control: { kind: "range", value: 650, min: 260, max: 1300, step: 10 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "波纹点倍率。1 与不传相同，仍是 size-4。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "ripple-button-small", label: "小", values: { duration: 400, scale: 0.5 } },
+      { name: "ripple-button-default", label: "默认", values: { duration: 650, scale: 1 } },
+      { name: "ripple-button-large", label: "大", values: { duration: 1100, scale: 1.5 } },
+    ],
   },
   {
     name: "shimmer-button",
@@ -919,7 +1684,25 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/shimmer-button.tsx",
     target: "components/ui/shimmer-button.tsx",
-    props: [{ name: "shimmerColor", type: "string", description: "光泽颜色。" }],
+    props: [
+      {
+        name: "shimmerColor",
+        type: "string",
+        description: "光泽颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "扫光时长（毫秒）。2200 与不传相同。",
+        control: { kind: "range", value: 2200, min: 880, max: 4400, step: 40 },
+      },
+    ],
+    presets: [
+      { name: "shimmer-button-fast", label: "快", values: { duration: 1200 } },
+      { name: "shimmer-button-default", label: "默认", values: { duration: 2200 } },
+      { name: "shimmer-button-slow", label: "慢", values: { duration: 3600 } },
+    ],
   },
   {
     name: "pulse-button",
@@ -930,7 +1713,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/pulse-button.tsx",
     target: "components/ui/pulse-button.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "脉冲时长（毫秒）。2000 与不传相同。",
+        control: { kind: "range", value: 2000, min: 800, max: 4000, step: 100 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "光环不透明度。0.4 与不传相同，仍是 bg-primary/40。",
+        control: { kind: "range", value: 0.4, min: 0, max: 1, step: 0.05 },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "pulse-button-soft", label: "柔", values: { duration: 2800, intensity: 0.2 } },
+      { name: "pulse-button-default", label: "默认", values: { duration: 2000, intensity: 0.4 } },
+      { name: "pulse-button-strong", label: "强", values: { duration: 1200, intensity: 0.8 } },
+    ],
   },
   {
     name: "neon-button",
@@ -941,7 +1743,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/neon-button.tsx",
     target: "components/ui/neon-button.tsx",
-    props: [{ name: "glowColor", type: "string", defaultValue: "var(--primary)", description: "霓虹颜色。" }],
+    props: [
+      {
+        name: "glowColor",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "霓虹颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "辉光倍率。1 与不传相同，仍是 18px 与 28px。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "neon-button-dim", label: "暗", values: { scale: 0.5 } },
+      { name: "neon-button-default", label: "默认", values: { scale: 1 } },
+      { name: "neon-button-bright", label: "亮", values: { scale: 2 } },
+    ],
   },
   {
     name: "spinner",
@@ -952,7 +1773,32 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/spinner.tsx",
     target: "components/ui/spinner.tsx",
-    props: [{ name: "size", type: "number", defaultValue: "28", description: "直径。" }],
+    props: [
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "28",
+        description: "直径（像素）。",
+        control: { kind: "range", value: 28, min: 12, max: 64, step: 2 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "转一圈的毫秒数。1000 与不传相同，仍是 animate-spin。",
+        control: { kind: "range", value: 1000, min: 400, max: 2000, step: 50 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "顶部描边颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+    ],
+    presets: [
+      { name: "spinner-small", label: "小", values: { size: 16, duration: 1600 } },
+      { name: "spinner-default", label: "默认", values: { size: 28, duration: 1000 } },
+      { name: "spinner-large", label: "大", values: { size: 48, duration: 600 } },
+    ],
   },
   {
     name: "orbit-loader",
@@ -964,8 +1810,43 @@ export const components: ComponentMeta[] = [
     file: "effects/orbit-loader.tsx",
     target: "components/ui/orbit-loader.tsx",
     props: [
-      { name: "size", type: "number", defaultValue: "56", description: "容器尺寸。" },
-      { name: "dots", type: "number", defaultValue: "6", description: "轨道点数。" },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "56",
+        description: "容器边长（像素）。",
+        control: { kind: "range", value: 56, min: 32, max: 120, step: 4 },
+      },
+      {
+        name: "dots",
+        type: "number",
+        defaultValue: "6",
+        description: "轨道点数。",
+        control: { kind: "range", value: 6, min: 3, max: 12, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "转一圈的毫秒数。1400 与不传相同。",
+        control: { kind: "range", value: 1400, min: 560, max: 2800, step: 20 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻点的错开毫秒。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 0, max: 200, step: 10 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "点的颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+    ],
+    presets: [
+      { name: "orbit-loader-sparse", label: "疏", values: { dots: 4, size: 48, duration: 2200, delay: 120 } },
+      { name: "orbit-loader-default", label: "默认", values: { dots: 6, size: 56, duration: 1400, delay: 80 } },
+      { name: "orbit-loader-dense", label: "密", values: { dots: 10, size: 80, duration: 800, delay: 40 } },
     ],
   },
   {
@@ -977,7 +1858,50 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dots-loader.tsx",
     target: "components/ui/dots-loader.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "count",
+        type: "number",
+        description: "点数。3 与不传相同。",
+        control: { kind: "range", value: 3, min: 1, max: 8, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "点的直径（像素）。8 与不传相同，仍是 size-2。",
+        control: { kind: "range", value: 8, min: 4, max: 20, step: 1 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "点间距（像素）。6 与不传相同，仍是 gap-1.5。",
+        control: { kind: "range", value: 6, min: 0, max: 16, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "弹跳周期（毫秒）。900 与不传相同。",
+        control: { kind: "range", value: 900, min: 360, max: 1800, step: 10 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻点的错开毫秒。120 与不传相同。",
+        control: { kind: "range", value: 120, min: 0, max: 300, step: 10 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "点的颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "dots-loader-sparse", label: "疏", values: { count: 2, gap: 12, duration: 1400, delay: 160 } },
+      { name: "dots-loader-default", label: "默认", values: { count: 3, size: 8, gap: 6, duration: 900, delay: 120 } },
+      { name: "dots-loader-dense", label: "密", values: { count: 5, size: 6, gap: 4, duration: 500, delay: 60 } },
+    ],
   },
   {
     name: "progress-ring",
@@ -989,9 +1913,43 @@ export const components: ComponentMeta[] = [
     file: "effects/progress-ring.tsx",
     target: "components/ui/progress-ring.tsx",
     props: [
-      { name: "value", type: "number", description: "0-100 进度。" },
-      { name: "size", type: "number", defaultValue: "72", description: "直径。" },
-      { name: "strokeWidth", type: "number", defaultValue: "6", description: "描边宽度。" },
+      {
+        name: "value",
+        type: "number",
+        description: "0-100 进度。",
+        control: { kind: "range", value: 72, min: 0, max: 100, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "72",
+        description: "直径（像素）。",
+        control: { kind: "range", value: 72, min: 40, max: 160, step: 2 },
+      },
+      {
+        name: "strokeWidth",
+        type: "number",
+        defaultValue: "6",
+        description: "描边宽度。",
+        control: { kind: "range", value: 6, min: 2, max: 16, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "进度过渡毫秒。500 与不传相同。",
+        control: { kind: "range", value: 500, min: 200, max: 1000, step: 10 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "进度弧颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+    ],
+    presets: [
+      { name: "progress-ring-thin", label: "细", values: { size: 56, strokeWidth: 3, duration: 800 } },
+      { name: "progress-ring-default", label: "默认", values: { size: 72, strokeWidth: 6, duration: 500 } },
+      { name: "progress-ring-thick", label: "粗", values: { size: 96, strokeWidth: 10, duration: 280 } },
     ],
   },
   {
@@ -1009,17 +1967,60 @@ export const components: ComponentMeta[] = [
         type: '"fade" | "blur" | "slide" | "clip"',
         defaultValue: '"fade"',
         description: "显现方式。",
+        control: { kind: "select", value: "fade", options: ["fade", "blur", "slide", "clip"] },
       },
       {
         name: "from",
         type: '"left" | "right" | "top" | "bottom"',
         defaultValue: '"bottom"',
         description: "滑入方向，仅 slide。",
+        control: { kind: "select", value: "bottom", options: ["left", "right", "top", "bottom"] },
       },
-      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
-      { name: "once", type: "boolean", defaultValue: "true", description: "是否只播放一次。" },
-      { name: "blur", type: "number", defaultValue: "8", description: "初始模糊像素，仅 blur。" },
-      { name: "as", type: '"div" | "section"', defaultValue: '"div"', description: "渲染元素。" },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "入场延迟（秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
+      {
+        name: "once",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否只播放一次。",
+        control: { kind: "boolean", value: true },
+      },
+      {
+        name: "blur",
+        type: "number",
+        defaultValue: "8",
+        description: "初始模糊像素，仅 blur。",
+        control: { kind: "range", value: 8, min: 0, max: 24, step: 1 },
+      },
+      {
+        name: "as",
+        type: '"div" | "section"',
+        defaultValue: '"div"',
+        description: "渲染元素。",
+        control: { kind: "select", value: "div", options: ["div", "section"] },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "入场速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "位移和模糊的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "reveal-fade", label: "淡入", values: { variant: "fade", from: "bottom", delay: 0, once: true, blur: 8, as: "div", speed: 1, intensity: 1 } },
+      { name: "reveal-slide", label: "滑入", values: { variant: "slide", from: "left", delay: 0.1, once: true, blur: 8, as: "div", speed: 1, intensity: 1 } },
+      { name: "reveal-blur", label: "模糊", values: { variant: "blur", from: "bottom", delay: 0, once: true, blur: 16, as: "div", speed: 1.4, intensity: 1 } },
     ],
   },
   {
@@ -1032,8 +2033,37 @@ export const components: ComponentMeta[] = [
     file: "effects/fade-in.tsx",
     target: "components/ui/fade-in.tsx",
     props: [
-      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
-      { name: "once", type: "boolean", defaultValue: "true", description: "是否只播放一次。" },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "入场延迟（秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
+      {
+        name: "once",
+        type: "boolean",
+        defaultValue: "true",
+        description: "是否只播放一次。",
+        control: { kind: "boolean", value: true },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "入场速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "上移距离的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "fade-in-soft", label: "轻", values: { delay: 0, once: true, speed: 1, intensity: 0.5 } },
+      { name: "fade-in-default", label: "默认", values: { delay: 0, once: true, speed: 1, intensity: 1 } },
+      { name: "fade-in-late", label: "延迟", values: { delay: 0.3, once: true, speed: 0.7, intensity: 1 } },
     ],
   },
   {
@@ -1046,8 +2076,37 @@ export const components: ComponentMeta[] = [
     file: "effects/slide-in.tsx",
     target: "components/ui/slide-in.tsx",
     props: [
-      { name: "from", type: '"left" | "right" | "top" | "bottom"', defaultValue: '"bottom"', description: "滑入方向。" },
-      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
+      {
+        name: "from",
+        type: '"left" | "right" | "top" | "bottom"',
+        defaultValue: '"bottom"',
+        description: "滑入方向。",
+        control: { kind: "select", value: "bottom", options: ["left", "right", "top", "bottom"] },
+      },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "入场延迟（秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "入场速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "滑入距离的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "slide-in-bottom", label: "从下", values: { from: "bottom", delay: 0, speed: 1, intensity: 1 } },
+      { name: "slide-in-left", label: "从左", values: { from: "left", delay: 0.1, speed: 1, intensity: 1 } },
+      { name: "slide-in-short", label: "短距", values: { from: "right", delay: 0, speed: 1.4, intensity: 0.4 } },
     ],
   },
   {
@@ -1059,7 +2118,38 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/stagger-list.tsx",
     target: "components/ui/stagger-list.tsx",
-    props: [{ name: "delay", type: "number", defaultValue: "0", description: "起始延迟（秒）。" }],
+    props: [
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "起始延迟（秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "错落速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "子项上移距离的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "列表间距（像素）。8 与不传相同，沿用 gap-2。",
+        control: { kind: "range", value: 8, min: 0, max: 32, step: 1 },
+      },
+    ],
+    presets: [
+      { name: "stagger-default", label: "默认", values: { delay: 0, speed: 1, intensity: 1, gap: 8 } },
+      { name: "stagger-tight", label: "紧凑", values: { delay: 0, speed: 1.4, intensity: 0.6, gap: 4 } },
+      { name: "stagger-loose", label: "疏松", values: { delay: 0.15, speed: 0.7, intensity: 1, gap: 16 } },
+    ],
   },
   {
     name: "parallax",
@@ -1070,7 +2160,38 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/parallax.tsx",
     target: "components/ui/parallax.tsx",
-    props: [{ name: "offset", type: "number", defaultValue: "80", description: "视差位移像素。" }],
+    props: [
+      {
+        name: "offset",
+        type: "number",
+        defaultValue: "80",
+        description: "视差位移像素。组件默认 80，文档预览从 40 起步。",
+        control: { kind: "range", value: 40, min: 0, max: 240, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动曲线倍率。1 与不传相同，位移仍随进度线性变化。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "位移幅度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "内容缩放。1 与不传相同，不额外缩放。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "parallax-preview", label: "预览", values: { offset: 40, speed: 1, intensity: 1, scale: 1 } },
+      { name: "parallax-deep", label: "更深", values: { offset: 120, speed: 1, intensity: 1, scale: 1 } },
+      { name: "parallax-soft", label: "轻", values: { offset: 40, speed: 1, intensity: 0.4, scale: 1.1 } },
+    ],
   },
   {
     name: "blur-fade",
@@ -1082,8 +2203,37 @@ export const components: ComponentMeta[] = [
     file: "effects/blur-fade.tsx",
     target: "components/ui/blur-fade.tsx",
     props: [
-      { name: "delay", type: "number", defaultValue: "0", description: "延迟（秒）。" },
-      { name: "blur", type: "number", defaultValue: "8", description: "初始模糊像素。" },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "入场延迟（秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 1.5, step: 0.05 },
+      },
+      {
+        name: "blur",
+        type: "number",
+        defaultValue: "8",
+        description: "初始模糊像素。",
+        control: { kind: "range", value: 8, min: 0, max: 24, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "入场速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "模糊和位移的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "blur-fade-default", label: "默认", values: { delay: 0, blur: 8, speed: 1, intensity: 1 } },
+      { name: "blur-fade-soft", label: "轻", values: { delay: 0, blur: 4, speed: 1, intensity: 0.5 } },
+      { name: "blur-fade-heavy", label: "重", values: { delay: 0.1, blur: 16, speed: 0.7, intensity: 1 } },
     ],
   },
   ...batch2Components,
@@ -1146,3 +2296,138 @@ export function getComponentsByCategory() {
 export const visibleComponents = components.filter(
   (item) => item.type === "registry:ui" || item.type === "registry:block",
 )
+
+export interface CatalogSection {
+  key: string
+  label: string
+  items: readonly ComponentMeta[]
+}
+
+export interface CatalogGroup {
+  key: string
+  label: string
+  items: readonly ComponentMeta[]
+  sections: readonly CatalogSection[]
+}
+
+interface FamilySectionSpec {
+  key: string
+  label: string
+  names: readonly string[]
+}
+
+const buttonFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["button", "button-group", "button-plus"] },
+  {
+    key: "motion",
+    label: "动效",
+    names: [
+      "fuse-button",
+      "hold-button",
+      "ripple-button",
+      "shimmer-button",
+      "pulse-button",
+      "neon-button",
+      "rainbow-button",
+      "interactive-hover-button",
+      "gooey-button",
+      "particle-button",
+      "tear-button",
+    ],
+  },
+]
+
+const inputFamilySections: readonly FamilySectionSpec[] = [
+  {
+    key: "base",
+    label: "基础",
+    names: ["input", "input-group", "input-otp", "input-plus", "floating-label-input"],
+  },
+  {
+    key: "specialized",
+    label: "专用",
+    names: ["tag-input", "phone-input", "currency-input", "coupon-input", "prompt-input"],
+  },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input"] },
+]
+
+/** 名字本身就是按钮或输入的组件。文档导航按这个归组，不改 category。 */
+export function componentCluster(name: string): "button" | "input" | undefined {
+  if (name === "button" || name.startsWith("button-") || name.endsWith("-button")) return "button"
+  if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"
+  return undefined
+}
+
+function buildFamilyGroup(
+  key: "button" | "input",
+  label: string,
+  specs: readonly FamilySectionSpec[],
+): CatalogGroup {
+  const listed = new Set(specs.flatMap((section) => section.names))
+  const sections: CatalogSection[] = specs.flatMap((section) => {
+    const items = section.names.flatMap((name) => {
+      const item = getComponent(name)
+      return item ? [item] : []
+    })
+    return items.length > 0 ? [{ key: section.key, label: section.label, items }] : []
+  })
+  const extras = visibleComponents.filter(
+    (item) => componentCluster(item.name) === key && !listed.has(item.name),
+  )
+  if (extras.length > 0) {
+    sections.push({ key: "other", label: "其他", items: extras })
+  }
+  return {
+    key,
+    label,
+    sections,
+    items: sections.flatMap((section) => [...section.items]),
+  }
+}
+
+export function getCatalogGroups(): CatalogGroup[] {
+  const clustered = new Set(
+    visibleComponents.flatMap((item) => (componentCluster(item.name) ? [item.name] : [])),
+  )
+  const groups: CatalogGroup[] = []
+  for (const category of categoryOrder) {
+    const items = components.filter(
+      (item) =>
+        item.category === category &&
+        (item.type === "registry:ui" || item.type === "registry:block") &&
+        !clustered.has(item.name),
+    )
+    if (items.length === 0) continue
+    if (category !== "ui") {
+      groups.push({ key: category, label: categoryLabels[category], items, sections: [] })
+      continue
+    }
+    const sections = uiSubgroupsOf(items).map((section) => ({
+      key: section.subgroup,
+      label: section.label,
+      items: section.items,
+    }))
+    groups.push({
+      key: category,
+      label: categoryLabels[category],
+      items: sections.flatMap((section) => [...section.items]),
+      sections,
+    })
+  }
+  const uiIndex = groups.findIndex((group) => group.key === "ui")
+  groups.splice(
+    uiIndex === -1 ? 0 : uiIndex + 1,
+    0,
+    buildFamilyGroup("button", "按钮", buttonFamilySections),
+    buildFamilyGroup("input", "输入", inputFamilySections),
+  )
+  return groups
+}
+
+export function relatedComponents(name: string): readonly ComponentMeta[] {
+  const cluster = componentCluster(name)
+  if (!cluster) return []
+  const group = getCatalogGroups().find((entry) => entry.key === cluster)
+  if (!group) return []
+  return group.items.filter((item) => item.name !== name)
+}

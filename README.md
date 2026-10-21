@@ -72,6 +72,10 @@ button · input · textarea · label · card · badge · separator · dialog · 
 
 use-mobile · use-prefers-reduced-motion · use-animation-active
 
+### 库
+
+text-style
+
 ### 文字动画
 
 | 组件 | 来源 |
@@ -194,10 +198,17 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | apple-activity-card | Kokonut UI（免费 MIT） |
 | apple-cards-carousel | 灵感来自 Aceternity，原创实现 |
 
-### 按钮特效
+### 按钮
+
+文档侧栏只有一个「按钮」入口，全部按钮在 `/docs/buttons` 同一页里向下滚动查看。
 
 | 组件 | 来源 |
 | --- | --- |
+| button | shadcn/ui |
+| button-group | shadcn/ui |
+| button-plus | 原创 |
+| fuse-button | 灵感来自 React Bits，原创实现，未打开源码 |
+| hold-button | Kokonut UI（免费 MIT） |
 | ripple-button | Animata |
 | shimmer-button | Magic UI |
 | pulse-button | Magic UI |
@@ -205,9 +216,26 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | rainbow-button | Magic UI |
 | interactive-hover-button | Magic UI |
 | gooey-button | 原创 |
-| hold-button | Kokonut UI（免费 MIT） |
 | particle-button | Kokonut UI（免费 MIT） |
 | tear-button | Kokonut UI（免费 MIT） |
+
+### 输入
+
+文档侧栏只有一个「输入」入口，全部输入在 `/docs/inputs` 同一页里向下滚动查看。
+
+| 组件 | 来源 |
+| --- | --- |
+| input | shadcn/ui |
+| input-group | shadcn/ui |
+| input-otp | shadcn/ui |
+| input-plus | 原创 |
+| floating-label-input | Smooth UI |
+| tag-input | Kibo UI |
+| phone-input | react-phone-number-input |
+| currency-input | 原创 |
+| coupon-input | 原创 |
+| prompt-input | prompt-kit |
+| placeholder-vanish-input | 灵感来自 Aceternity，原创实现 |
 
 ### 微交互
 
@@ -219,7 +247,6 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | peek-rating | 灵感来自 React Bits，原创实现，未打开源码 |
 | slide-to-confirm | 灵感来自 React Bits，原创实现，未打开源码 |
 | swipe-row | 灵感来自 React Bits，原创实现，未打开源码 |
-| fuse-button | 灵感来自 React Bits，原创实现，未打开源码 |
 | pulse-heart | 灵感来自 React Bits，原创实现，未打开源码 |
 | lattice-loader | 灵感来自 React Bits，原创实现，未打开源码 |
 | warm-tooltip | 灵感来自 React Bits，原创实现，未打开源码 |
@@ -364,7 +391,6 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | world-map-arcs | 灵感来自 Aceternity，原创实现 |
 | vortex-background | 灵感来自 Aceternity，原创实现 |
 | beams-collision | 灵感来自 Aceternity，原创实现 |
-| placeholder-vanish-input | 灵感来自 Aceternity，原创实现 |
 | link-preview | 灵感来自 Hover.dev，原创实现 |
 | avatar-group-tooltip | 灵感来自 Hover.dev，原创实现 |
 | shuffle-grid-hero | 灵感来自 Aceternity，原创实现 |
@@ -481,9 +507,7 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | singularity | 灵感来自 Codrops Singularity，原创实现 |
 | credit-card-form | 原创 |
 | cart-drawer | 原创 |
-| coupon-input | 原创 |
 | radial-gauge | 原创 |
-| funnel-chart | 原创 |
 | gantt-timeline | 原创 |
 | org-chart | 原创 |
 
@@ -523,9 +547,10 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 
 ### AI 对话
 
+`prompt-input` 在上方「输入」。
+
 | 组件 | 来源 |
 | --- | --- |
-| prompt-input | prompt-kit |
 | chat-message | prompt-kit |
 | siri-orb | Smooth UI |
 
@@ -535,13 +560,10 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | --- | --- |
 | dropzone | Kibo UI |
 | select-plus | 原创 |
-| button-plus | 原创 |
-| input-plus | 原创 |
 | switch-plus | 原创 |
 | checkbox-plus | 原创 |
 | radio-plus | 原创 |
 | multi-select | sersavan / Kibo UI |
-| tag-input | Kibo UI |
 | date-range-picker | Origin UI（仅 `apps/origin/` MIT） |
 | timeline | Origin UI |
 | stepper | Origin UI |
@@ -555,11 +577,8 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
 | infinite-scroll | 原创 |
 | masonry-gallery | react-photo-album |
 | lightbox | yet-another-react-lightbox |
-| phone-input | react-phone-number-input |
 | password-strength | 原创 |
-| currency-input | 原创 |
 | quantity-stepper | 原创 |
-| floating-label-input | Smooth UI |
 | emoji-picker | frimousse |
 | video-player | Kibo UI（原生 video） |
 | audio-waveform | wavesurfer.js（BSD-3） |
@@ -581,7 +600,7 @@ use-mobile · use-prefers-reduced-motion · use-animation-active
    - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`；按惯例同时加到 `apps/docs/package.json`（审计不检查这一项）。
 3. **demo**：`registry:ui` 和 `registry:block` 在 `packages/registry/src/examples/` 增加 Demo，并登记到 `examples/index.ts` 的 `demoMap`。`registry:lib` 和 `registry:hook` 不需要 demo 和 Props。模板的文档预览走 `/preview/{name}`。
    - 要在文档页上让读者改 props，把 `control` 写在 catalog 该 prop 上（`range` / `select` / `color` / `boolean` / `text`）。`control.value` 是 demo 起始值，`defaultValue` 仍是组件自己的默认值。Demo 写成带解构默认值的函数，默认值等于 `control.value`，例如 `export function XDemo({ speed = 1.2 }: { speed?: number } = {})`。没有 `control` 的 demo 保持无参函数。全屏页不放控件，直接渲染这个函数的默认值。
-4. **README** 组件列表写上独立组件名。
+4. **README** 组件列表写上独立组件名。名字是 `button`、`button-*`、`*-button`、`input`、`input-*` 或 `*-input` 的，写进 README 的「按钮」或「输入」表，并加到 `packages/registry/src/catalog.ts` 里对应分组。漏了分组，测试会失败。
 5. 运行 `pnpm registry:build`，更新根目录 `registry.json` 和 `apps/docs/public/r/`。
 
 ---

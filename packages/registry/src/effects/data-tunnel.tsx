@@ -2,11 +2,28 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface DataTunnelProps {
   className?: string
+  count?: number
+  speed?: number
+  colors?: readonly string[]
+  intensity?: number
+}
+
+const DEFAULT_COLORS = ["#0d3347", "#a6f2ff"] as const
+
+type Rgb = [number, number, number]
+
+function hexToRgb(hex: string, fallback: Rgb): Rgb {
+  const text = hex.trim().replace(/^#/, "")
+  const digits = text.length === 3 ? [...text].map((char) => `${char}${char}`).join("") : text
+  if (!/^[0-9a-fA-F]{6}$/.test(digits)) return fallback
+  const value = Number.parseInt(digits, 16)
+  return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
 }
 
 const VERT = `
@@ -30,10 +47,13 @@ void main() {
 const FRAG = `
 precision highp float;
 uniform sampler2D u_atlas;
+uniform vec3 u_bg;
+uniform vec3 u_glyph;
+uniform float u_intensity;
 varying vec2 vUv;
 void main() {
   float glyph = texture2D(u_atlas, vUv).r;
-  vec3 color = mix(vec3(0.05, 0.2, 0.28), vec3(0.65, 0.95, 1.0), glyph);
+  vec3 color = mix(u_bg, u_glyph * u_intensity, glyph);
   gl_FragColor = vec4(color, 0.35 + glyph * 0.65);
 }
 `
@@ -58,16 +78,36 @@ function paintAtlas() {
   return canvas
 }
 
-function DataTunnel({ className }: DataTunnelProps) {
+function playbackRate(speed: number) {
+  return Number.isFinite(speed) && speed > 0 ? speed : 1
+}
+
+function DataTunnel({
+  className,
+  count: ringCount = 10,
+  speed = 1,
+  colors = DEFAULT_COLORS,
+  intensity = 1,
+}: DataTunnelProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const boost = React.useRef(0)
+  const speedRef = React.useRef(playbackRate(speed))
+  const colorsRef = React.useRef(colors)
+  const intensityRef = React.useRef(intensity)
+  const active = useAnimationActive(hostRef)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
 
   React.useEffect(() => {
-    if (!showCanvas) return
+    speedRef.current = playbackRate(speed)
+    colorsRef.current = colors
+    intensityRef.current = intensity
+  }, [speed, colors, intensity])
+
+  React.useEffect(() => {
+    if (!showCanvas || !active) return
     const canvas = canvasRef.current
     const host = hostRef.current
     if (!canvas || !host) return
@@ -76,7 +116,7 @@ function DataTunnel({ className }: DataTunnelProps) {
     const run = async () => {
       const ogl = await import("ogl")
       if (cancelled) return undefined
-      const renderer = new ogl.Renderer({ canvas, alpha: false, dpr: Math.min(window.devicePixelRatio || 1, 1.5) })
+      const renderer = new ogl.Renderer({ canvas, alpha: false, dpr: Math.min(window.devicePixelRatio || 1, 2) })
       const gl = renderer.gl
       if (!gl) {
         queueMicrotask(() => {
@@ -86,7 +126,7 @@ function DataTunnel({ className }: DataTunnelProps) {
       }
       const camera = new ogl.Camera(gl, { fov: 42, near: 0.1, far: 20 })
       camera.position.z = 0.2
-      const rings = 10
+      const rings = Math.max(1, Math.round(ringCount))
       const segments = 14
       const count = rings * segments
       const centers = new Float32Array(count * 3)
@@ -110,7 +150,13 @@ function DataTunnel({ className }: DataTunnelProps) {
         aCell: { size: 1, data: cells, instanced: 1 },
       })
       const atlas = new ogl.Texture(gl, { image: paintAtlas(), minFilter: gl.LINEAR, magFilter: gl.LINEAR })
-      const uniforms = { u_depth: { value: 0 }, u_atlas: { value: atlas } }
+      const uniforms = {
+        u_depth: { value: 0 },
+        u_atlas: { value: atlas },
+        u_bg: { value: hexToRgb(colorsRef.current[0] ?? DEFAULT_COLORS[0], [0.05, 0.2, 0.28]) },
+        u_glyph: { value: hexToRgb(colorsRef.current[1] ?? DEFAULT_COLORS[1], [0.65, 0.95, 1]) },
+        u_intensity: { value: intensityRef.current },
+      }
       const program = new ogl.Program(gl, {
         vertex: VERT,
         fragment: FRAG,
@@ -135,7 +181,10 @@ function DataTunnel({ className }: DataTunnelProps) {
         speed += boost.current
         speed = Math.max(0.18, Math.min(2.4, speed * 0.96))
         boost.current *= 0.9
-        depth += speed * 0.04
+        depth += speed * 0.04 * speedRef.current
+        uniforms.u_bg.value = hexToRgb(colorsRef.current[0] ?? DEFAULT_COLORS[0], [0.05, 0.2, 0.28])
+        uniforms.u_glyph.value = hexToRgb(colorsRef.current[1] ?? DEFAULT_COLORS[1], [0.65, 0.95, 1])
+        uniforms.u_intensity.value = intensityRef.current
         uniforms.u_depth.value = depth
         const fov = 38 + speed * 16
         camera.fov = fov
@@ -163,7 +212,7 @@ function DataTunnel({ className }: DataTunnelProps) {
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }
-  }, [showCanvas])
+  }, [active, ringCount, showCanvas])
 
   return (
     <div data-slot="data-tunnel" className={cn("w-full space-y-2", className)}>

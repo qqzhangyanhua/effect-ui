@@ -2,6 +2,8 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface CircularGalleryItem {
@@ -12,13 +14,39 @@ export interface CircularGalleryItem {
 export interface CircularGalleryProps {
   items: CircularGalleryItem[]
   className?: string
+  /** 自转倍率。不传或 1 仍是每帧 0.004 弧度。 */
+  speed?: number
 }
 
-function CircularGallery({ items, className }: CircularGalleryProps) {
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
+}
+
+function CircularGallery({ items, className, speed }: CircularGalleryProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(canvasRef)
+  const reduced = usePrefersReducedMotion()
+  const activeRef = React.useRef(false)
+  const reducedRef = React.useRef(false)
+  const speedRef = React.useRef(speed)
+  const startRef = React.useRef<(() => void) | null>(null)
   const [fallback, setFallback] = React.useState(false)
   const [angle, setAngle] = React.useState(0)
   const drag = React.useRef({ active: false, last: 0 })
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) startRef.current?.()
+  }, [active])
+
+  React.useEffect(() => {
+    reducedRef.current = reduced
+    if (!reduced && activeRef.current) startRef.current?.()
+  }, [reduced])
+
+  React.useEffect(() => {
+    speedRef.current = speed
+  }, [speed])
 
   React.useEffect(() => {
     let cancelled = false
@@ -64,14 +92,30 @@ function CircularGallery({ items, className }: CircularGalleryProps) {
         let frame = 0
         let rot = 0
         const tick = () => {
-          rot += 0.004
+          if (activeRef.current && !reducedRef.current) {
+            const rate = pace(speedRef.current)
+            rot += rate === 1 ? 0.004 : 0.004 * rate
+          }
+          if (!activeRef.current) {
+            frame = 0
+            return
+          }
           scene.rotation.y = rot
           renderer.render({ scene, camera })
+          if (reducedRef.current) {
+            frame = 0
+            return
+          }
           frame = window.requestAnimationFrame(tick)
         }
-        frame = window.requestAnimationFrame(tick)
+        startRef.current = () => {
+          if (frame) return
+          frame = window.requestAnimationFrame(tick)
+        }
+        if (activeRef.current) startRef.current()
         window.addEventListener("resize", resize)
         return () => {
+          startRef.current = null
           window.cancelAnimationFrame(frame)
           window.removeEventListener("resize", resize)
         }

@@ -18,33 +18,51 @@ import { PricingCalculator } from "../sections/pricing-calculator"
 import { TelescopeZoomScroll } from "../sections/telescope-zoom-scroll"
 import { InboxSplitView } from "../templates/inbox-split-view"
 
-export function ImageTubeScrollDemo() {
-  return <ImageTubeScroll className="w-full" />
+export function ImageTubeScrollDemo({
+  radius = 1.35,
+  speed,
+  intensity,
+}: {
+  radius?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return <ImageTubeScroll className="w-full" radius={radius} speed={speed} intensity={intensity} />
 }
 
 export function DepthFogGalleryDemo() {
   return <DepthFogGallery className="w-full" />
 }
 
-export function FireworksShowDemo() {
-  return <FireworksShow className="w-full" />
+export function FireworksShowDemo({ colors, auto, intensity }: { colors?: string[]; auto?: boolean; intensity?: number } = {}) {
+  return <FireworksShow className="w-full" colors={colors} auto={auto} intensity={intensity} />
 }
 
-export function WobbleLineCursorDemo() {
-  return <WobbleLineCursor className="w-full" />
+export function WobbleLineCursorDemo({
+  lines = 5,
+  speed,
+  intensity,
+  color,
+}: {
+  lines?: number
+  speed?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return <WobbleLineCursor className="w-full" lines={lines} speed={speed} intensity={intensity} color={color} />
 }
 
-export function LegoPixelateDemo() {
-  return <LegoPixelate className="w-full" />
+export function LegoPixelateDemo({ blockSize, trigger, speed }: { blockSize?: number; trigger?: "hover" | "view"; speed?: number } = {}) {
+  return <LegoPixelate className="w-full" blockSize={blockSize} trigger={trigger} speed={speed} />
 }
 
 export function TelescopeZoomScrollDemo() {
   return <TelescopeZoomScroll className="w-full" />
 }
 
-export function CurvedScrollbarDemo() {
+export function CurvedScrollbarDemo({ radius = 28 }: { radius?: number } = {}) {
   return (
-    <CurvedScrollbar className="h-64 w-full">
+    <CurvedScrollbar className="h-64 w-full" radius={radius}>
       <div className="space-y-3 p-4 pr-8 text-sm">
         {Array.from({ length: 12 }, (_, index) => (
           <p key={index}>第 {index + 1} 段。轨道沿着圆角走，滑块跟着这段内容移动。</p>
@@ -54,7 +72,19 @@ export function CurvedScrollbarDemo() {
   )
 }
 
-export function ParticleHourglassDemo() {
+export function ParticleHourglassDemo({
+  count,
+  colors,
+  speed,
+  size,
+  gap,
+}: {
+  count?: number
+  colors?: string[]
+  speed?: number
+  size?: number
+  gap?: number
+} = {}) {
   const [progress, setProgress] = useState(0.35)
   return (
     <div className="space-y-3">
@@ -62,7 +92,7 @@ export function ParticleHourglassDemo() {
         进度
         <input aria-label="沙漏进度" type="range" min={0} max={1} step={0.01} value={progress} onChange={(event) => setProgress(Number(event.target.value))} />
       </label>
-      <ParticleHourglass progress={progress} />
+      <ParticleHourglass progress={progress} count={count} colors={colors} speed={speed} size={size} gap={gap} />
     </div>
   )
 }

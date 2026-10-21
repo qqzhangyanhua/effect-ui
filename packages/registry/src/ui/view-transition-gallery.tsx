@@ -16,6 +16,8 @@ export interface GalleryShot {
 export interface ViewTransitionGalleryProps {
   shots?: GalleryShot[]
   className?: string
+  gap?: number
+  size?: number
 }
 
 const defaultShots: GalleryShot[] = [
@@ -31,7 +33,9 @@ function canUseViewTransition() {
   return typeof document.startViewTransition === "function"
 }
 
-function ViewTransitionGallery({ shots = defaultShots, className }: ViewTransitionGalleryProps) {
+function ViewTransitionGallery({ shots = defaultShots, className, gap, size }: ViewTransitionGalleryProps) {
+  const gapPx = gap === undefined || gap === 12 ? undefined : gap
+  const thumbPx = size === undefined || size === 112 ? undefined : size
   const reduced = usePrefersReducedMotion()
   const native = React.useSyncExternalStore(
     () => () => {},
@@ -62,7 +66,7 @@ function ViewTransitionGallery({ shots = defaultShots, className }: ViewTransiti
     <LayoutGroup>
       <div className={cn("relative rounded-2xl border bg-background p-4", className)}>
         <p className="mb-3 text-xs tracking-[0.22em] text-muted-foreground uppercase">Shared element</p>
-        <div className="grid grid-cols-3 gap-3">
+        <div className={gapPx === undefined ? "grid grid-cols-3 gap-3" : "grid grid-cols-3"} style={gapPx === undefined ? undefined : { gap: gapPx }}>
           {shots.map((item) => (
             <button
               key={item.id}
@@ -73,8 +77,16 @@ function ViewTransitionGallery({ shots = defaultShots, className }: ViewTransiti
             >
               <motion.span
                 layoutId={useNative ? undefined : `shot-${item.id}`}
-                className="grid h-28 w-full place-items-end rounded-xl p-3 text-sm text-white"
-                style={{ background: `linear-gradient(160deg, ${item.tint}, #09090b)` }}
+                className={
+                  thumbPx === undefined
+                    ? "grid h-28 w-full place-items-end rounded-xl p-3 text-sm text-white"
+                    : "grid w-full place-items-end rounded-xl p-3 text-sm text-white"
+                }
+                style={
+                  thumbPx === undefined
+                    ? { background: `linear-gradient(160deg, ${item.tint}, #09090b)` }
+                    : { background: `linear-gradient(160deg, ${item.tint}, #09090b)`, height: thumbPx }
+                }
               >
                 {item.title}
               </motion.span>

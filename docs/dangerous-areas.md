@@ -20,6 +20,13 @@ Local agent cache: `.agent/` is written by agent tooling and gitignored. Do not 
 - `GET /r/[name]` in `apps/docs/app/r/[name]/route.ts`, plus the static files in `apps/docs/public/r/`. Users install from these URLs.
 - The shape of each item comes from `packages/registry/src/registry-item.ts`. Renaming a component, changing `target`, or changing that shape breaks existing install commands.
 
+## Effect props
+Adding a prop to an Effect changes the source users install with `shadcn add`. New props stay optional, and omitting them must render as before. Names, types, units, and control groups come from `docs/effect-prop-vocabulary.md`. Do not rename or repurpose a published prop.
+
+Presets live on the catalog entry only (`docs/adr/0006-presets-are-docs-only.md`). They must not become component props or show up in registry JSON.
+
+A port that gains props gets one line in `CREDITS.md` for that batch. If the file's license is Apache-2.0 or BSD-3-Clause, add the license's modification notice to the file header. MIT ports do not get that header.
+
 ## Licensing and Attribution
 Much of the registry is ported from third-party projects. This is the main legal risk in the repo.
 

@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -21,10 +22,16 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/text-pressure.tsx",
     target: "components/ui/text-pressure.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: '"PRESSURE"', description: "通栏文字。" },
-      { name: "radius", type: "number", defaultValue: "160", description: "指针影响半径，像素。" },
+      { name: "text", type: "string", defaultValue: '"PRESSURE"', description: "通栏文字。", control: { kind: "text", value: "PRESSURE" } },
+      { name: "radius", type: "number", defaultValue: "160", description: "指针影响半径，像素。", control: { kind: "range", value: 160, min: 40, max: 320, step: 10 } },
+      ...textControls({ fontSize: 64, align: "left", skipWeight: true }),
       ...ui,
     ],
+    presets: textPresets("pressure", "text", [
+      { label: "通栏", content: "PRESSURE", fontSize: 64, align: "left", extra: { radius: 160 } },
+      { label: "窄感应", content: "PUSH", fontSize: 48, align: "center", extra: { radius: 80 } },
+      { label: "宽感应", content: "NEAR", fontSize: 72, align: "center", extra: { radius: 280 } },
+    ]),
   },
   {
     name: "true-focus",
@@ -36,10 +43,33 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/true-focus.tsx",
     target: "components/ui/true-focus.tsx",
     props: [
-      { name: "sentence", type: "string", description: "按空白分词的句子。" },
-      { name: "interval", type: "number", defaultValue: "1400", description: "每个词停留的毫秒数。" },
+      {
+        name: "sentence",
+        type: "string",
+        description: "按空白分词的句子。",
+        control: { kind: "text", value: "把注意力交给正在发光的词" },
+      },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "1400",
+        description: "每个词停留的毫秒数。",
+        control: { kind: "range", value: 1400, min: 400, max: 2800, step: 100 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "角框颜色。不传则保持青色描边。",
+        control: { kind: "color" },
+      },
+      ...textControls({ fontSize: 36, fontWeight: 400, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("true-focus", "sentence", [
+      { label: "原句", content: "把注意力交给正在发光的词", fontSize: 36, fontWeight: 500, align: "center", extra: { interval: 1400 } },
+      { label: "快切", content: "看这里 再看那里", fontSize: 28, fontWeight: 600, align: "center", extra: { interval: 700 } },
+      { label: "慢切", content: "一次只亮一个词", fontSize: 24, fontWeight: 400, align: "left", extra: { interval: 2400 } },
+    ]),
   },
   {
     name: "split-flap-text",
@@ -51,9 +81,27 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/split-flap-text.tsx",
     target: "components/ui/split-flap-text.tsx",
     props: [
-      { name: "target", type: "string", defaultValue: '"GATE 12"', description: "目标字符串，字母会转成大写。" },
+      {
+        name: "target",
+        type: "string",
+        defaultValue: '"GATE 12"',
+        description: "目标字符串，字母会转成大写。",
+        control: { kind: "text", value: "GATE 12" },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "翻板速度倍率。不传则每格 80 毫秒。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...textControls({ fontSize: 24, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("split-flap", "target", [
+      { label: "登机口", content: "GATE 12", fontSize: 24, fontWeight: 600, align: "center", extra: { speed: 1 } },
+      { label: "快翻", content: "NOW", fontSize: 36, fontWeight: 700, align: "center", extra: { speed: 2 } },
+      { label: "慢翻", content: "WAIT", fontSize: 20, fontWeight: 500, align: "left", extra: { speed: 0.5 } },
+    ]),
   },
   {
     name: "curved-loop",
@@ -65,9 +113,27 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/curved-loop.tsx",
     target: "components/ui/curved-loop.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: '"CURVED LOOP · "', description: "沿弧线重复的文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: '"CURVED LOOP · "',
+        description: "沿弧线重复的文字。",
+        control: { kind: "text", value: "CURVED LOOP · " },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "循环速度倍率。不传则保持原来的基础速度。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...textControls({ fontSize: 48, fontWeight: 600, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("curved-loop", "text", [
+      { label: "原速", content: "CURVED LOOP · ", fontSize: 48, fontWeight: 600, align: "center", extra: { speed: 1 } },
+      { label: "慢", content: "SLOW LOOP · ", fontSize: 36, fontWeight: 500, align: "center", extra: { speed: 0.5 } },
+      { label: "快", content: "FAST · ", fontSize: 64, fontWeight: 700, align: "center", extra: { speed: 2 } },
+    ]),
   },
   {
     name: "fuzzy-text",
@@ -79,9 +145,33 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/fuzzy-text.tsx",
     target: "components/ui/fuzzy-text.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: '"SIGNAL"', description: "抖动的文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: '"SIGNAL"',
+        description: "抖动的文字。",
+        control: { kind: "text", value: "SIGNAL" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "抖动幅度。不传则按原来的幅度。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "文字颜色。不传则 #f4f4f5。",
+        control: { kind: "color", value: "#f4f4f5" },
+      },
+      ...textControls({ fontSize: 64, fontWeight: 700, align: "center" }),
       ...ui,
     ],
+    presets: textPresets("fuzzy", "text", [
+      { label: "信号", content: "SIGNAL", fontSize: 64, fontWeight: 700, align: "center", extra: { intensity: 1, color: "#f4f4f5" } },
+      { label: "轻抖", content: "NOISE", fontSize: 48, fontWeight: 500, align: "center", extra: { intensity: 0.3, color: "#e4e4e7" } },
+      { label: "贴左", content: "LEFT", fontSize: 40, fontWeight: 600, align: "left", extra: { intensity: 0.8, color: "#fafafa" } },
+    ]),
   },
   {
     name: "electric-border",
@@ -93,9 +183,17 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/electric-border.tsx",
     target: "components/ui/electric-border.tsx",
     props: [
-      { name: "color", type: "string", defaultValue: '"#67e8f9"', description: "描边和辉光颜色。" },
+      { name: "color", type: "string", defaultValue: '"#67e8f9"', description: "描边和辉光颜色。#67e8f9 与不传相同。", control: { kind: "color", value: "#67e8f9" } },
+      { name: "speed", type: "number", description: "电弧抖动倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "scale", type: "number", description: "位移倍率。1 与不传相同，位移仍是 14。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "intensity", type: "number", description: "辉光强度。1 与不传相同，仍是 8px。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
       { name: "children", type: "ReactNode", description: "边框内的内容。" },
       ...ui,
+    ],
+    presets: [
+      { name: "electric-border-calm", label: "稳", values: { speed: 0.6, scale: 0.6, intensity: 0.4 } },
+      { name: "electric-border-default", label: "默认", values: { speed: 1, scale: 1, intensity: 1 } },
+      { name: "electric-border-hot", label: "烈", values: { speed: 1.8, scale: 1.6, intensity: 1 } },
     ],
   },
   {
@@ -109,7 +207,30 @@ export const batch13Components: ComponentMeta[] = [
     target: "components/ui/sticker-peel.tsx",
     props: [
       { name: "label", type: "string", defaultValue: '"STICKER"', description: "贴纸正面文字。" },
+      {
+        name: "intensity",
+        type: "number",
+        description: "揭开切口的系数。0.55 与不传相同。",
+        control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹倍率。1 与不传相同，刚度仍是 340。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "边长（像素）。224 与不传相同。",
+        control: { kind: "range", value: 224, min: 120, max: 320, step: 4 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "sticker-peel-small", label: "小", values: { intensity: 0.55, speed: 1, size: 160 } },
+      { name: "sticker-peel-default", label: "默认", values: { intensity: 0.55, speed: 1, size: 224 } },
+      { name: "sticker-peel-deep", label: "深", values: { intensity: 0.9, speed: 1.4, size: 224 } },
     ],
   },
   {
@@ -122,9 +243,18 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/click-spark.tsx",
     target: "components/ui/click-spark.tsx",
     props: [
-      { name: "count", type: "number", defaultValue: "12", description: "每圈火花条数。" },
+      { name: "count", type: "number", defaultValue: "12", description: "每圈火花条数。", control: { kind: "range", value: 12, min: 4, max: 24, step: 1 } },
+      { name: "duration", type: "number", description: "迸出毫秒。450 与不传相同。", control: { kind: "range", value: 450, min: 180, max: 900, step: 10 } },
+      { name: "scale", type: "number", description: "飞出距离倍率。1 与不传相同，终点仍是 22px。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "size", type: "number", description: "火花长度（像素）。12 与不传相同，仍是 w-3。", control: { kind: "range", value: 12, min: 4, max: 28, step: 2 } },
+      { name: "color", type: "string", description: "火花颜色。不传则仍是 amber-200。", control: { kind: "color" } },
       { name: "children", type: "ReactNode", description: "可点击区域里的内容。" },
       ...ui,
+    ],
+    presets: [
+      { name: "click-spark-short", label: "短", values: { count: 6, duration: 280, scale: 0.6, size: 8 } },
+      { name: "click-spark-default", label: "默认", values: { count: 12, duration: 450, scale: 1, size: 12 } },
+      { name: "click-spark-long", label: "长", values: { count: 18, duration: 700, scale: 1.6, size: 20 } },
     ],
   },
   {
@@ -136,7 +266,39 @@ export const batch13Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glare-hover.tsx",
     target: "components/ui/glare-hover.tsx",
-    props: [{ name: "children", type: "ReactNode", description: "卡片内容。" }, ...ui],
+    props: [
+      { name: "children", type: "ReactNode", description: "卡片内容。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "扫光速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "高光浓度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "光带宽度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "光带颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "glare-soft", label: "淡", values: { speed: 0.6, intensity: 0.45, scale: 0.8 } },
+      { name: "glare-default", label: "默认", values: { speed: 1, intensity: 1, scale: 1, color: "#ffffff" } },
+      { name: "glare-wide", label: "宽", values: { speed: 1.6, intensity: 1, scale: 1.6 } },
+    ],
   },
   {
     name: "card-swap",
@@ -149,8 +311,37 @@ export const batch13Components: ComponentMeta[] = [
     target: "components/ui/card-swap.tsx",
     props: [
       { name: "cards", type: "CardSwapCard[]", description: "卡片。每项含 id、kicker、title、tone。" },
-      { name: "interval", type: "number", defaultValue: "2400", description: "换位间隔，毫秒。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "2400",
+        description: "换位间隔，毫秒。",
+        control: { kind: "range", value: 2400, min: 960, max: 4800, step: 40 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "落下动画（毫秒）。460 与不传相同。",
+        control: { kind: "range", value: 460, min: 180, max: 920, step: 20 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "舞台俯仰角。16 与不传相同。",
+        control: { kind: "range", value: 16, min: 0, max: 40, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "堆叠缩放的倍率。1 与不传相同，三张仍是 1、0.94、0.88。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "card-swap-slow", label: "慢", values: { interval: 3600, duration: 700, angle: 16, scale: 1 } },
+      { name: "card-swap-default", label: "默认", values: { interval: 2400, duration: 460, angle: 16, scale: 1 } },
+      { name: "card-swap-flat", label: "平", values: { interval: 2400, duration: 460, angle: 4, scale: 0.8 } },
     ],
   },
   {
@@ -164,7 +355,14 @@ export const batch13Components: ComponentMeta[] = [
     target: "components/ui/flowing-menu.tsx",
     props: [
       { name: "items", type: "FlowingMenuItem[]", description: "菜单项，每项含 label。" },
+      { name: "duration", type: "number", description: "滑入毫秒。380 与不传相同，仍是 0.38 秒。", control: { kind: "range", value: 380, min: 150, max: 760, step: 10 } },
+      { name: "speed", type: "number", description: "跑马灯倍率。1 与不传相同，仍是 9 秒。", control: { kind: "range", value: 1, min: 0.4, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "flowing-menu-slow", label: "慢", values: { duration: 560, speed: 0.6 } },
+      { name: "flowing-menu-default", label: "默认", values: { duration: 380, speed: 1 } },
+      { name: "flowing-menu-fast", label: "快", values: { duration: 200, speed: 1.8 } },
     ],
   },
   {
@@ -176,7 +374,17 @@ export const batch13Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dome-gallery.tsx",
     target: "components/ui/dome-gallery.tsx",
-    props: ui,
+    props: [
+      { name: "count", type: "number", description: "球面色块数。20 与不传相同。", control: { kind: "range", value: 20, min: 8, max: 32, step: 1 } },
+      { name: "speed", type: "number", description: "自转倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "size", type: "number", description: "色块离球心的距离（像素）。168 与不传相同。", control: { kind: "range", value: 168, min: 80, max: 280, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "dome-gallery-small", label: "小", values: { count: 12, speed: 0.6, size: 120 } },
+      { name: "dome-gallery-default", label: "默认", values: { count: 20, speed: 1, size: 168 } },
+      { name: "dome-gallery-large", label: "大", values: { count: 28, speed: 1.6, size: 220 } },
+    ],
   },
   {
     name: "elastic-slider",
@@ -191,7 +399,15 @@ export const batch13Components: ComponentMeta[] = [
       { name: "min", type: "number", defaultValue: "0", description: "最小值。" },
       { name: "max", type: "number", defaultValue: "100", description: "最大值。" },
       { name: "defaultValue", type: "number", defaultValue: "42", description: "初始值。" },
+      { name: "color", type: "string", description: "填充颜色。不传则跟随主题。", control: { kind: "color" } },
+      { name: "scale", type: "number", description: "拉长幅度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "speed", type: "number", description: "回弹倍率。1 与不传相同，刚度仍是 460。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "elastic-slider-soft", label: "软", values: { scale: 0.6, speed: 0.6 } },
+      { name: "elastic-slider-default", label: "默认", values: { scale: 1, speed: 1 } },
+      { name: "elastic-slider-tight", label: "紧", values: { scale: 1.6, speed: 1.8 } },
     ],
   },
   {
@@ -209,6 +425,28 @@ export const batch13Components: ComponentMeta[] = [
         type: "boolean",
         defaultValue: "true",
         description: "原点是否跟随指针。关闭后原点自行摆动。",
+        control: { kind: "boolean", value: true, group: "交互" },
+      },
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "14",
+        description: "光束条数。",
+        control: { kind: "range", value: 14, min: 6, max: 24, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "光束摆动的速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#ffc261", "#73adff"]',
+        description: "暖色和冷色。",
+        control: { kind: "colors", value: ["#ffc261", "#73adff"] },
       },
       ...ui,
     ],
@@ -222,6 +460,36 @@ export const batch13Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/hyperspeed.tsx",
     target: "components/ui/hyperspeed.tsx",
-    props: ui,
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "巡航速度倍率，按住仍加速到当前巡航的 4.4 倍。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "46",
+        description: "灯轨条数。",
+        control: { kind: "range", value: 46, min: 16, max: 64, step: 2 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#ff526b", "#6bc7ff"]',
+        description: "两侧灯的颜色。",
+        control: { kind: "colors", value: ["#ff526b", "#6bc7ff"] },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "1",
+        description: "灯轨亮度倍率。",
+        control: { kind: "range", value: 1, min: 0.4, max: 1.6, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
 ]

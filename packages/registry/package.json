@@ -13,6 +13,7 @@
     "./lib/utils": "./src/lib/utils.ts",
     "./hooks/*": "./src/hooks/*",
     "./catalog": "./src/catalog.ts",
+    "./prop-vocabulary": "./src/prop-vocabulary.ts",
     "./registry-item": "./src/registry-item.ts"
   },
   "dependencies": {

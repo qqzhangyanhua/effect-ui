@@ -2,6 +2,8 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
+import { textStyle } from "@/lib/text-style"
 import { cn } from "@/lib/utils"
 
 export type VfxKind = "glitch" | "glow" | "crt" | "rgb-shift" | "pixelate"
@@ -10,6 +12,12 @@ export interface VfxElementProps {
   effects?: VfxKind[]
   className?: string
   children?: React.ReactNode
+  /** 特效强度。不传则按开关原样叠加。 */
+  intensity?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 }
 
 const COMBINED = `
@@ -82,17 +90,28 @@ function useReducedMotion() {
   )
 }
 
-function VfxElement({ effects = ["glitch"], className, children }: VfxElementProps) {
+function VfxElement({
+  effects = ["glitch"],
+  className,
+  children,
+  intensity,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: VfxElementProps) {
   const hostRef = React.useRef<HTMLDivElement>(null)
   const targetRef = React.useRef<HTMLDivElement>(null)
   const reduced = useReducedMotion()
+  const active = useAnimationActive(hostRef)
   const [fallback, setFallback] = React.useState(false)
   const key = effects.join(",")
+  const gain = intensity === undefined ? 1 : intensity
 
   React.useEffect(() => {
     const host = hostRef.current
     const target = targetRef.current
-    if (!host || !target || reduced) return
+    if (!host || !target || reduced || !active) return
 
     let disposed = false
     let instance: { destroy: () => void } | null = null
@@ -115,11 +134,11 @@ function VfxElement({ effects = ["glitch"], className, children }: VfxElementPro
         shader: COMBINED,
         overflow: 28,
         uniforms: {
-          uGlitch: flag(selected, "glitch"),
-          uGlow: flag(selected, "glow"),
-          uCrt: flag(selected, "crt"),
-          uRgb: flag(selected, "rgb-shift"),
-          uPixel: flag(selected, "pixelate"),
+          uGlitch: flag(selected, "glitch") * gain,
+          uGlow: flag(selected, "glow") * gain,
+          uCrt: flag(selected, "crt") * gain,
+          uRgb: flag(selected, "rgb-shift") * gain,
+          uPixel: flag(selected, "pixelate") * gain,
         },
       })
     })
@@ -128,13 +147,14 @@ function VfxElement({ effects = ["glitch"], className, children }: VfxElementPro
       disposed = true
       instance?.destroy()
     }
-  }, [key, reduced])
+  }, [active, gain, key, reduced])
 
   return (
     <div ref={hostRef} className={cn("relative overflow-hidden rounded-xl", className)}>
       <div
         ref={targetRef}
         className={cn("grid min-h-40 place-items-center bg-zinc-950 px-6 py-8 text-center text-white", (fallback || reduced) && fallbackClass(effects))}
+        style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}
       >
         {children ?? <p className="font-display text-3xl">VFX</p>}
       </div>

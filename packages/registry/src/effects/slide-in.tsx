@@ -7,6 +7,8 @@ import { Reveal } from "./reveal"
 export interface SlideInProps extends HTMLMotionProps<"div"> {
   from?: "left" | "right" | "top" | "bottom"
   delay?: number
+  speed?: number
+  intensity?: number
 }
 
 function SlideIn({
@@ -14,6 +16,8 @@ function SlideIn({
   children,
   from = "bottom",
   delay = 0,
+  speed,
+  intensity,
   ...props
 }: SlideInProps) {
   return (
@@ -23,6 +27,8 @@ function SlideIn({
       from={from}
       className={className}
       delay={delay}
+      speed={speed}
+      intensity={intensity}
       {...props}
     >
       {children}

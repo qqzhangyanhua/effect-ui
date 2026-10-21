@@ -4,25 +4,19 @@ import type { ReactNode } from "react"
 
 import { AuroraBackground } from "../effects/aurora-background"
 import { AuroraText } from "../effects/aurora-text"
-import { BlurFade } from "../effects/blur-fade"
 import { CountUp } from "../effects/count-up"
-import { CursorFollow } from "../effects/cursor-follow"
 import { DotPattern } from "../effects/dot-pattern"
 import { DotsLoader } from "../effects/dots-loader"
-import { FadeIn } from "../effects/fade-in"
 import { FlickeringGrid } from "../effects/flickering-grid"
 import { FlipCard } from "../effects/flip-card"
 import { GlassCard } from "../effects/glass-card"
-import { GlowHover } from "../effects/glow-hover"
 import { GradientText } from "../effects/gradient-text"
 import { GridPattern } from "../effects/grid-pattern"
 import { HighlightText } from "../effects/highlight-text"
 import { HoverLift } from "../effects/hover-lift"
-import { Magnetic } from "../effects/magnetic"
 import { Meteors } from "../effects/meteors"
 import { NeonButton } from "../effects/neon-button"
 import { OrbitLoader } from "../effects/orbit-loader"
-import { Parallax } from "../effects/parallax"
 import { Particles } from "../effects/particles"
 import { ProgressRing } from "../effects/progress-ring"
 import { PulseButton } from "../effects/pulse-button"
@@ -32,14 +26,9 @@ import { Ripples } from "../effects/ripples"
 import { ShimmerButton } from "../effects/shimmer-button"
 import { ShimmerText } from "../effects/shimmer-text"
 import { ShineBorder } from "../effects/shine-border"
-import { SlideIn } from "../effects/slide-in"
 import { Spinner } from "../effects/spinner"
 import { SplitText } from "../effects/split-text"
-import { SpotlightCard } from "../effects/spotlight-card"
-import { StaggerList } from "../effects/stagger-list"
-import { Tilt } from "../effects/tilt"
 import { TypingText } from "../effects/typing-text"
-import { Button } from "../ui/button"
 
 function PreviewFrame({ children }: { children: ReactNode }) {
   return (
@@ -54,11 +43,23 @@ export function TypingTextDemo({
   duration = 80,
   loop = true,
   cursor = true,
+  delay = 0,
+  interactive = false,
+  fontSize = 32,
+  fontWeight = 500,
+  letterSpacing = 0,
+  align = "left",
 }: Partial<{
   text: string
   duration: number
   loop: boolean
   cursor: boolean
+  delay: number
+  interactive: boolean
+  fontSize: number
+  fontWeight: number
+  letterSpacing: number
+  align: "left" | "center" | "right"
 }> = {}) {
   return (
     <TypingText
@@ -67,50 +68,213 @@ export function TypingTextDemo({
       duration={duration}
       loop={loop}
       cursor={cursor}
+      delay={delay}
+      interactive={interactive}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
     />
   )
 }
 
-export function GradientTextDemo() {
+export function GradientTextDemo({
+  children = "流动渐变",
+  colors = "from-violet-500 via-fuchsia-500 to-cyan-400",
+  delay = 0,
+  loop = true,
+  interactive = false,
+  fontSize = 48,
+  fontWeight = 700,
+  letterSpacing = 0,
+  align = "center",
+}: {
+  children?: string
+  colors?: string
+  delay?: number
+  loop?: boolean
+  interactive?: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
-    <GradientText className="text-4xl font-semibold tracking-tight">
-      Effect UI
+    <GradientText
+      className="text-4xl font-semibold tracking-tight"
+      colors={colors}
+      delay={delay}
+      loop={loop}
+      interactive={interactive}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    >
+      {children}
     </GradientText>
   )
 }
 
-export function ShimmerTextDemo({ children = "扫光文字即将上线" }: { children?: string } = {}) {
-  return <ShimmerText className="text-2xl font-medium">{children}</ShimmerText>
+export function ShimmerTextDemo({
+  children = "扫光文字即将上线",
+  fontSize = 48,
+  fontWeight = 600,
+  letterSpacing = 0,
+  align = "left",
+}: {
+  children?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <ShimmerText
+      className="text-2xl font-medium"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    >
+      {children}
+    </ShimmerText>
+  )
 }
 
-export function AuroraTextDemo() {
-  return <AuroraText className="text-4xl font-semibold">极光标题</AuroraText>
+export function AuroraTextDemo({
+  children = "极光标题",
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+  speed,
+}: {
+  children?: string
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+  speed?: number
+} = {}) {
+  return (
+    <AuroraText
+      className="text-4xl font-semibold"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+      speed={speed}
+    >
+      {children}
+    </AuroraText>
+  )
 }
 
 export function SplitTextDemo({
   text = "逐字显现的标题",
   by = "char",
   delay = 0,
+  loop = false,
+  interactive = false,
+  fontSize = 40,
+  fontWeight = 600,
+  letterSpacing = 0,
+  align = "left",
 }: {
   text?: string
   by?: "char" | "word"
   delay?: number
+  loop?: boolean
+  interactive?: boolean
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
 } = {}) {
-  return <SplitText className="text-3xl font-medium" text={text} by={by} delay={delay} />
+  return (
+    <SplitText
+      className="text-3xl font-medium"
+      text={text}
+      by={by}
+      delay={delay}
+      loop={loop}
+      interactive={interactive}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function HighlightTextDemo() {
+export function HighlightTextDemo({
+  children = "关键句",
+  color,
+  duration,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  children?: string
+  color?: string
+  duration?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <p className="text-xl">
-      把 <HighlightText>关键句</HighlightText> 用底纹强调出来
+      把{" "}
+      <HighlightText
+        color={color}
+        duration={duration}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      >
+        {children}
+      </HighlightText>{" "}
+      用底纹强调出来
     </p>
   )
 }
 
-export function CountUpDemo() {
+export function CountUpDemo({
+  value = 1280,
+  direction = "up",
+  delay = 0,
+  decimalPlaces = 0,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  value?: number
+  direction?: "up" | "down"
+  delay?: number
+  decimalPlaces?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   return (
     <div className="flex items-end gap-2">
-      <CountUp className="text-5xl font-semibold" value={1280} />
+      <CountUp
+        className="text-5xl font-semibold"
+        value={value}
+        direction={direction}
+        delay={delay}
+        decimalPlaces={decimalPlaces}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        letterSpacing={letterSpacing}
+        align={align}
+      />
       <span className="pb-1 text-muted-foreground">components</span>
     </div>
   )
@@ -135,29 +299,63 @@ export function ParticlesDemo({
   )
 }
 
-export function GridPatternDemo() {
+export function GridPatternDemo({
+  width = 40,
+  height = 40,
+  x = -1,
+  y = -1,
+  strokeDasharray = "0",
+}: {
+  width?: number
+  height?: number
+  x?: number
+  y?: number
+  strokeDasharray?: string
+} = {}) {
   return (
     <PreviewFrame>
-      <GridPattern />
+      <GridPattern width={width} height={height} x={x} y={y} strokeDasharray={strokeDasharray} />
       <p className="relative z-10 text-sm">网格底纹</p>
     </PreviewFrame>
   )
 }
 
-export function DotPatternDemo() {
+export function DotPatternDemo({
+  width = 16,
+  height = 16,
+  cx = 1,
+  cy = 1,
+  cr = 1,
+}: {
+  width?: number
+  height?: number
+  cx?: number
+  cy?: number
+  cr?: number
+} = {}) {
   return (
     <PreviewFrame>
-      <DotPattern />
+      <DotPattern width={width} height={height} cx={cx} cy={cy} cr={cr} />
       <p className="relative z-10 text-sm">圆点底纹</p>
     </PreviewFrame>
   )
 }
 
-export function MeteorsDemo() {
+export function MeteorsDemo({
+  number = 18,
+  speed = 1,
+  color = undefined,
+  size = 2,
+}: {
+  number?: number
+  speed?: number
+  color?: string
+  size?: number
+} = {}) {
   return (
     <PreviewFrame>
       <div className="absolute inset-0 bg-zinc-950" />
-      <Meteors />
+      <Meteors number={number} speed={speed} color={color} size={size} />
       <p className="relative z-10 text-sm text-zinc-100">流星雨</p>
     </PreviewFrame>
   )
@@ -165,81 +363,81 @@ export function MeteorsDemo() {
 
 export function AuroraBackgroundDemo({
   children = "极光铺在内容后面",
-}: { children?: string } = {}) {
+  speed = 1,
+  intensity = 0.7,
+  colors = undefined,
+  size = 64,
+}: {
+  children?: string
+  speed?: number
+  intensity?: number
+  colors?: string[]
+  size?: number
+} = {}) {
   return (
-    <AuroraBackground className="flex min-h-48 w-full items-center justify-center p-10">
+    <AuroraBackground
+      speed={speed}
+      intensity={intensity}
+      colors={colors}
+      size={size}
+      className="flex min-h-48 w-full items-center justify-center p-10"
+    >
       <p className="text-lg font-medium">{children}</p>
     </AuroraBackground>
   )
 }
 
-export function RipplesDemo() {
+export function RipplesDemo({
+  rings = 4,
+  speed = 1,
+  color = undefined,
+  intensity = 0.2,
+}: {
+  rings?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
   return (
     <PreviewFrame>
-      <Ripples />
+      <Ripples rings={rings} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">涟漪扩散</p>
     </PreviewFrame>
   )
 }
 
-export function FlickeringGridDemo() {
+export function FlickeringGridDemo({
+  squareSize = 4,
+  gridGap = 6,
+  flickerChance = 0.18,
+  color = undefined,
+  maxOpacity = 0.28,
+}: {
+  squareSize?: number
+  gridGap?: number
+  flickerChance?: number
+  color?: string
+  maxOpacity?: number
+} = {}) {
   return (
     <PreviewFrame>
-      <FlickeringGrid />
+      <FlickeringGrid
+        squareSize={squareSize}
+        gridGap={gridGap}
+        flickerChance={flickerChance}
+        color={color}
+        maxOpacity={maxOpacity}
+      />
       <p className="relative z-10 text-sm">闪烁网格</p>
     </PreviewFrame>
   )
 }
 
-export function SpotlightCardDemo() {
-  return (
-    <SpotlightCard className="w-full max-w-sm">
-      <h3 className="text-lg font-medium">Spotlight</h3>
-      <p className="mt-2 text-sm text-muted-foreground">指针移上去，光斑会跟着走。</p>
-    </SpotlightCard>
-  )
-}
-
-export function MagneticDemo({ strength = 0.35 }: { strength?: number } = {}) {
-  return (
-    <Magnetic strength={strength}>
-      <Button>磁性按钮</Button>
-    </Magnetic>
-  )
-}
-
-export function CursorFollowDemo() {
-  return (
-    <CursorFollow className="flex min-h-48 w-full items-center justify-center rounded-xl border bg-zinc-950 text-zinc-100">
-      <p>在区域内移动指针</p>
-    </CursorFollow>
-  )
-}
-
-export function TiltDemo({ maxTilt = 12 }: { maxTilt?: number } = {}) {
-  return (
-    <Tilt className="w-full max-w-sm" maxTilt={maxTilt}>
-      <div className="rounded-xl border bg-card p-6 shadow-sm">
-        <h3 className="font-medium">3D Tilt</h3>
-        <p className="mt-2 text-sm text-muted-foreground">指针移动时卡片会倾斜。</p>
-      </div>
-    </Tilt>
-  )
-}
-
-export function GlowHoverDemo() {
-  return (
-    <GlowHover className="w-full max-w-sm border bg-card p-6">
-      <h3 className="font-medium">Glow Hover</h3>
-      <p className="mt-2 text-sm text-muted-foreground">悬停时出现柔光和上浮。</p>
-    </GlowHover>
-  )
-}
-
-export function FlipCardDemo() {
+export function FlipCardDemo({ duration }: { duration?: number } = {}) {
   return (
     <FlipCard
       className="h-44 w-72"
+      duration={duration}
       front={
         <div className="flex h-full items-center justify-center rounded-xl border bg-card">
           正面 · 悬停翻转
@@ -254,10 +452,10 @@ export function FlipCardDemo() {
   )
 }
 
-export function GlassCardDemo() {
+export function GlassCardDemo({ intensity, size }: { intensity?: number; size?: number } = {}) {
   return (
     <div className="relative w-full max-w-sm overflow-hidden rounded-2xl bg-linear-to-br from-violet-600 to-cyan-500 p-8">
-      <GlassCard>
+      <GlassCard intensity={intensity} size={size}>
         <h3 className="font-medium">Glass</h3>
         <p className="mt-2 text-sm text-foreground/80">毛玻璃叠在彩色背景上。</p>
       </GlassCard>
@@ -265,122 +463,129 @@ export function GlassCardDemo() {
   )
 }
 
-export function ShineBorderDemo() {
+export function ShineBorderDemo({ shineColor, duration, size, intensity }: { shineColor?: string; duration?: number; size?: number; intensity?: number } = {}) {
   return (
-    <ShineBorder className="w-full max-w-sm">
+    <ShineBorder className="w-full max-w-sm" shineColor={shineColor} duration={duration} size={size} intensity={intensity}>
       <h3 className="font-medium">Shine Border</h3>
       <p className="mt-2 text-sm text-muted-foreground">描边高光持续旋转。</p>
     </ShineBorder>
   )
 }
 
-export function HoverLiftDemo() {
+export function HoverLiftDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   return (
-    <HoverLift className="w-full max-w-sm">
+    <HoverLift className="w-full max-w-sm" duration={duration} intensity={intensity}>
       <h3 className="font-medium">Hover Lift</h3>
       <p className="mt-2 text-sm text-muted-foreground">悬停抬起并加深阴影。</p>
     </HoverLift>
   )
 }
 
-export function RippleButtonDemo() {
-  return <RippleButton>点击出现波纹</RippleButton>
+export function RippleButtonDemo({ rippleColor, duration, scale }: { rippleColor?: string; duration?: number; scale?: number } = {}) {
+  return <RippleButton rippleColor={rippleColor} duration={duration} scale={scale}>点击出现波纹</RippleButton>
 }
 
-export function ShimmerButtonDemo() {
-  return <ShimmerButton>Shimmer</ShimmerButton>
+export function ShimmerButtonDemo({ shimmerColor, duration }: { shimmerColor?: string; duration?: number } = {}) {
+  return <ShimmerButton shimmerColor={shimmerColor} duration={duration}>Shimmer</ShimmerButton>
 }
 
-export function PulseButtonDemo() {
-  return <PulseButton>脉冲</PulseButton>
+export function PulseButtonDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
+  return <PulseButton duration={duration} intensity={intensity}>脉冲</PulseButton>
 }
 
-export function NeonButtonDemo() {
-  return <NeonButton>Neon</NeonButton>
+export function NeonButtonDemo({ glowColor, scale }: { glowColor?: string; scale?: number } = {}) {
+  return <NeonButton glowColor={glowColor} scale={scale}>Neon</NeonButton>
 }
 
-export function SpinnerDemo() {
-  return <Spinner />
+export function SpinnerDemo({ size, duration, color }: { size?: number; duration?: number; color?: string } = {}) {
+  return <Spinner size={size} duration={duration} color={color} />
 }
 
-export function OrbitLoaderDemo() {
-  return <OrbitLoader />
+export function OrbitLoaderDemo({
+  size,
+  dots,
+  duration,
+  delay,
+  color,
+}: {
+  size?: number
+  dots?: number
+  duration?: number
+  delay?: number
+  color?: string
+} = {}) {
+  return <OrbitLoader size={size} dots={dots} duration={duration} delay={delay} color={color} />
 }
 
-export function DotsLoaderDemo() {
-  return <DotsLoader />
+export function DotsLoaderDemo({
+  count,
+  size,
+  gap,
+  duration,
+  delay,
+  color,
+}: {
+  count?: number
+  size?: number
+  gap?: number
+  duration?: number
+  delay?: number
+  color?: string
+} = {}) {
+  return <DotsLoader count={count} size={size} gap={gap} duration={duration} delay={delay} color={color} />
 }
 
-export function ProgressRingDemo() {
-  return <ProgressRing value={72} />
+export function ProgressRingDemo({
+  value = 72,
+  size,
+  strokeWidth,
+  duration,
+  color,
+}: {
+  value?: number
+  size?: number
+  strokeWidth?: number
+  duration?: number
+  color?: string
+} = {}) {
+  return <ProgressRing value={value} size={size} strokeWidth={strokeWidth} duration={duration} color={color} />
 }
 
-export function RevealDemo() {
+export function RevealDemo({
+  variant = "fade",
+  from = "bottom",
+  delay = 0,
+  once = true,
+  blur = 8,
+  as = "div",
+  speed,
+  intensity,
+}: {
+  variant?: "fade" | "blur" | "slide" | "clip"
+  from?: "left" | "right" | "top" | "bottom"
+  delay?: number
+  once?: boolean
+  blur?: number
+  as?: "div" | "section"
+  speed?: number
+  intensity?: number
+} = {}) {
+  const label = variant === "blur" ? "模糊显现" : variant === "slide" ? "滑入" : variant === "clip" ? "裁切揭开" : "淡入"
   return (
-    <div className="grid w-full gap-3 sm:grid-cols-2">
-      <Reveal variant="fade" className="rounded-xl border bg-card p-4">
-        淡入
-      </Reveal>
-      <Reveal variant="blur" delay={0.05} className="rounded-xl border bg-card p-4">
-        模糊显现
-      </Reveal>
-      <Reveal variant="slide" from="left" delay={0.1} className="rounded-xl border bg-card p-4">
-        从左滑入
-      </Reveal>
-      <Reveal as="section" variant="clip" delay={0.15} className="rounded-xl border bg-card p-4">
-        裁切揭开
-      </Reveal>
-    </div>
+    <Reveal
+      variant={variant}
+      from={from}
+      delay={delay}
+      once={once}
+      blur={blur}
+      as={as}
+      speed={speed}
+      intensity={intensity}
+      className="w-full rounded-xl border bg-card p-4"
+    >
+      {label}
+    </Reveal>
   )
 }
 
-export function FadeInDemo() {
-  return (
-    <FadeIn className="rounded-xl border bg-card p-6">
-      滚动到这里时淡入
-    </FadeIn>
-  )
-}
 
-export function SlideInDemo() {
-  return (
-    <div className="flex gap-4">
-      <SlideIn from="left" className="rounded-xl border bg-card p-4">
-        从左滑入
-      </SlideIn>
-      <SlideIn from="right" delay={0.1} className="rounded-xl border bg-card p-4">
-        从右滑入
-      </SlideIn>
-    </div>
-  )
-}
-
-export function StaggerListDemo() {
-  return (
-    <StaggerList className="w-full max-w-sm">
-      <div className="rounded-lg border bg-card px-3 py-2">第一项</div>
-      <div className="rounded-lg border bg-card px-3 py-2">第二项</div>
-      <div className="rounded-lg border bg-card px-3 py-2">第三项</div>
-    </StaggerList>
-  )
-}
-
-export function ParallaxDemo() {
-  return (
-    <div className="h-40 w-full overflow-auto rounded-xl border">
-      <div className="flex h-80 items-center justify-center bg-muted/40">
-        <Parallax offset={40}>
-          <p className="text-lg font-medium">滚动这块区域看视差</p>
-        </Parallax>
-      </div>
-    </div>
-  )
-}
-
-export function BlurFadeDemo() {
-  return (
-    <BlurFade className="rounded-xl border bg-card p-6">
-      从模糊到清晰
-    </BlurFade>
-  )
-}

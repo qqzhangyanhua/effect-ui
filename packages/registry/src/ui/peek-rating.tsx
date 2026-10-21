@@ -14,6 +14,8 @@ export interface PeekRatingProps {
   readOnly?: boolean
   disabled?: boolean
   color?: string
+  size?: number
+  intensity?: number
   className?: string
   ref?: React.Ref<HTMLDivElement>
   "aria-label"?: string
@@ -43,6 +45,8 @@ function PeekRating({
   readOnly = false,
   disabled = false,
   color,
+  size,
+  intensity,
   className,
   ref,
   "aria-label": ariaLabel = "评分",
@@ -57,6 +61,7 @@ function PeekRating({
   const { count, steps } = starSteps(max, allowHalf)
   const shown = preview ?? selected
   const locked = readOnly || disabled
+  const starPx = size === undefined || size === 28 ? undefined : size
 
   const commit = (next: number) => {
     if (locked) return
@@ -96,8 +101,12 @@ function PeekRating({
           const filled = shown >= star
           const half = !filled && shown >= star - 0.5
           return (
-            <span key={star} className="relative size-7 text-muted-foreground">
-              <Star filled={filled} half={half} reduced={reduced} />
+            <span
+              key={star}
+              className={starPx === undefined ? "relative size-7 text-muted-foreground" : "relative text-muted-foreground"}
+              style={starPx === undefined ? undefined : { width: starPx, height: starPx }}
+            >
+              <Star filled={filled} half={half} reduced={reduced} size={starPx} intensity={intensity} />
               {steps
                 .filter((step) => step === star || step === star - 0.5)
                 .map((step) => (
@@ -137,16 +146,35 @@ function PeekRating({
   )
 }
 
-function Star({ filled, half, reduced }: { filled: boolean; half: boolean; reduced: boolean }) {
+function Star({
+  filled,
+  half,
+  reduced,
+  size,
+  intensity,
+}: {
+  filled: boolean
+  half: boolean
+  reduced: boolean
+  size?: number
+  intensity?: number
+}) {
+  const faded = !filled && !(intensity === undefined || intensity === 0.25)
   return (
-    <svg viewBox="0 0 24 24" className="size-7" aria-hidden>
+    <svg
+      viewBox="0 0 24 24"
+      className={size === undefined ? "size-7" : undefined}
+      style={size === undefined ? undefined : { width: size, height: size }}
+      aria-hidden
+    >
       <path
         d="m12 3.2 2.4 5.2 5.7.7-4.2 3.9 1.1 5.6L12 16.8 6.9 18.6 8 13 3.9 9.1l5.7-.7L12 3.2Z"
         className={cn(
           "fill-current",
           reduced ? "transition-none" : "transition-opacity",
-          filled ? "opacity-100" : "opacity-25",
+          filled ? "opacity-100" : !faded && "opacity-25",
         )}
+        style={faded ? { opacity: intensity } : undefined}
       />
       {half ? (
         <path

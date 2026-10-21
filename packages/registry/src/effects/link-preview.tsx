@@ -16,6 +16,18 @@ export interface LinkPreviewProps {
   image?: string
   children: React.ReactNode
   className?: string
+  /** 弹出上移距离倍率。不传或 1 时起始仍是 10px。 */
+  intensity?: number
+  /** 弹出起始缩放倍率。不传或 1 时起始仍是 0.92。 */
+  scale?: number
+  /** 弹簧倍率。不传或 1 时刚度 460、阻尼 28。 */
+  speed?: number
+  /** 卡片宽度，像素。不传或 256 仍是 w-64。 */
+  size?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 function PreviewArt() {
@@ -29,9 +41,13 @@ function PreviewArt() {
   )
 }
 
-function LinkPreview({ href, title, description, image, children, className }: LinkPreviewProps) {
+function LinkPreview({ href, title, description, image, children, className, intensity, scale, speed, size }: LinkPreviewProps) {
   const reduced = usePrefersReducedMotion()
   const [open, setOpen] = React.useState(false)
+  const rise = intensity === undefined || intensity === 1 ? 10 : 10 * intensity
+  const startScale = scale === undefined || scale === 1 ? 0.92 : 0.92 * scale
+  const rate = pace(speed)
+  const width = size === undefined || size === 256 ? 256 : size
 
   return (
     <a
@@ -52,11 +68,18 @@ function LinkPreview({ href, title, description, image, children, className }: L
       {children}
       {open ? (
         <motion.div
-          className="absolute top-full left-1/2 z-20 mt-2 w-64 overflow-hidden rounded-xl border bg-popover text-popover-foreground no-underline shadow-xl"
-          style={{ x: "-50%" }}
-          initial={reduced ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 10, scale: 0.92 }}
+          className={cn(
+            "absolute top-full left-1/2 z-20 mt-2 overflow-hidden rounded-xl border bg-popover text-popover-foreground no-underline shadow-xl",
+            width === 256 && "w-64",
+          )}
+          style={{ x: "-50%", width: width === 256 ? undefined : width }}
+          initial={reduced ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: rise, scale: startScale }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 460, damping: 28 }}
+          transition={
+            reduced
+              ? { duration: 0 }
+              : { type: "spring", stiffness: rate === 1 ? 460 : 460 * rate, damping: rate === 1 ? 28 : 28 * rate }
+          }
         >
           {image ? (
             <img src={image} alt="" className="h-28 w-full object-cover" />

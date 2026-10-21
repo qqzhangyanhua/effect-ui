@@ -13,6 +13,18 @@ export interface GradientCard {
 export interface GradientCarousel3dProps {
   items?: GradientCard[]
   className?: string
+  /** 拖拽灵敏度倍率。不传或 1 时仍除以 180。 */
+  speed?: number
+  /** 侧向转角。不传或 42 仍是 42°。 */
+  angle?: number
+  /** 卡片缩放倍率。不传或 1 时中心仍是 1.18。 */
+  scale?: number
+  /** 色相跟随倍率。不传或 1 时仍是位移乘 8。 */
+  intensity?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const DEFAULTS: GradientCard[] = [
@@ -28,7 +40,12 @@ function mod(value: number, length: number) {
   return ((value % length) + length) % length
 }
 
-function GradientCarousel3d({ items = DEFAULTS, className }: GradientCarousel3dProps) {
+function GradientCarousel3d({ items = DEFAULTS, className, speed, angle, scale, intensity }: GradientCarousel3dProps) {
+  const rate = pace(speed)
+  const turn = angle === undefined || angle === 42 ? 42 : angle
+  const gain = scale === undefined || scale === 1 ? 1 : scale
+  const hueGain = intensity === undefined || intensity === 1 ? 1 : intensity
+  const divisor = rate === 1 ? 180 : 180 / rate
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const offsetRef = React.useRef(0)
@@ -106,8 +123,8 @@ function GradientCarousel3d({ items = DEFAULTS, className }: GradientCarousel3dP
       onPointerMove={(event) => {
         const drag = dragRef.current
         if (!drag) return
-        const next = drag.offset - (event.clientX - drag.x) / 180
-        velocityRef.current = (drag.last - event.clientX) / 180
+        const next = drag.offset - (event.clientX - drag.x) / divisor
+        velocityRef.current = (drag.last - event.clientX) / divisor
         drag.last = event.clientX
         offsetRef.current = next
         setOffset(next)
@@ -123,14 +140,14 @@ function GradientCarousel3d({ items = DEFAULTS, className }: GradientCarousel3dP
           const item = items[index]
           if (!item) return null
           const delta = base + slot - offset
-          const scale = 1.18 - Math.min(Math.abs(delta), 3) * 0.12
-          const hue = (index * 46 + offset * 8) % 360
+          const cardScale = (1.18 - Math.min(Math.abs(delta), 3) * 0.12) * (gain === 1 ? 1 : gain)
+          const hue = (index * 46 + offset * (hueGain === 1 ? 8 : 8 * hueGain)) % 360
           return (
             <article
               key={`${item.title}-${slot}`}
               className="absolute top-1/2 left-1/2 h-44 w-56 rounded-2xl p-4 text-slate-950 shadow-xl"
               style={{
-                transform: `translate(-50%, -50%) rotateY(${delta * -42}deg) translateZ(280px) scale(${scale})`,
+                transform: `translate(-50%, -50%) rotateY(${delta * -turn}deg) translateZ(280px) scale(${cardScale})`,
                 backgroundImage: `linear-gradient(160deg, hsl(${hue} 86% 70%), hsl(${(hue + 36) % 360} 72% 42%))`,
               }}
             >

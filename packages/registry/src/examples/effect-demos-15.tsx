@@ -20,36 +20,105 @@ import { TextGenerate } from "../effects/text-generate"
 
 const STREAM = ["把", "句子", "逐词", "从", "模糊", "里", "显出来"]
 
-export function GhostTrailTextDemo() {
-  return <GhostTrailText className="w-full" />
+export function GhostTrailTextDemo({
+  text = "GHOST",
+  count,
+  intensity,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  text?: string
+  count?: number
+  intensity?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
+  return (
+    <GhostTrailText
+      className="w-full"
+      text={text}
+      count={count}
+      intensity={intensity}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
-export function GravityImageTrailDemo() {
-  return <GravityImageTrail className="w-full" />
+export function GravityImageTrailDemo({
+  size,
+  gap,
+  intensity,
+  speed,
+}: {
+  size?: number
+  gap?: number
+  intensity?: number
+  speed?: number
+} = {}) {
+  return <GravityImageTrail className="w-full" size={size} gap={gap} intensity={intensity} speed={speed} />
 }
 
-export function SquareLensDistortionDemo() {
-  return <SquareLensDistortion className="w-full" />
+export function SquareLensDistortionDemo({
+  speed,
+  intensity,
+  scale,
+  color,
+}: {
+  speed?: number
+  intensity?: number
+  scale?: number
+  color?: string
+} = {}) {
+  return <SquareLensDistortion className="w-full" speed={speed} intensity={intensity} scale={scale} color={color} />
 }
 
-export function DualWaveTextListDemo() {
-  return <DualWaveTextList className="w-full" />
+export function DualWaveTextListDemo({ scale }: { scale?: number } = {}) {
+  return <DualWaveTextList className="w-full" scale={scale} />
 }
 
-export function ClipRevealMenuDemo() {
-  return <ClipRevealMenu className="w-full" />
+export function ClipRevealMenuDemo({ duration, delay, intensity }: { duration?: number; delay?: number; intensity?: number } = {}) {
+  return <ClipRevealMenu className="w-full" duration={duration} delay={delay} intensity={intensity} />
 }
 
-export function StickyGridScrollDemo() {
-  return <StickyGridScroll className="w-full" />
+export function StickyGridScrollDemo({
+  intensity,
+  speed,
+}: {
+  intensity?: number
+  speed?: number
+} = {}) {
+  return <StickyGridScroll className="w-full" intensity={intensity} speed={speed} />
 }
 
-export function SvgMaskScrollTransitionDemo() {
-  return <SvgMaskScrollTransition className="w-full" />
+export function SvgMaskScrollTransitionDemo({
+  intensity,
+  speed,
+  count,
+}: {
+  intensity?: number
+  speed?: number
+  count?: number
+} = {}) {
+  return <SvgMaskScrollTransition className="w-full" intensity={intensity} speed={speed} count={count} />
 }
 
-export function MacbookScrollDemo() {
-  return <MacbookScroll className="w-full" />
+export function MacbookScrollDemo({
+  intensity,
+  scale,
+  speed,
+}: {
+  intensity?: number
+  scale?: number
+  speed?: number
+} = {}) {
+  return <MacbookScroll className="w-full" intensity={intensity} scale={scale} speed={speed} />
 }
 
 export function FacetedFilterBarDemo() {
@@ -68,7 +137,21 @@ export function GroupedChecklistDemo() {
   return <GroupedChecklist className="w-full" />
 }
 
-export function TextGenerateDemo() {
+export function TextGenerateDemo({
+  duration,
+  delay,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  align,
+}: {
+  duration?: number
+  delay?: number
+  fontSize?: number
+  fontWeight?: number
+  letterSpacing?: number
+  align?: "left" | "center" | "right"
+} = {}) {
   const [count, setCount] = React.useState(1)
 
   React.useEffect(() => {
@@ -77,7 +160,18 @@ export function TextGenerateDemo() {
     return () => window.clearTimeout(id)
   }, [count])
 
-  return <TextGenerate className="w-full" text={STREAM.slice(0, count).join(" ")} />
+  return (
+    <TextGenerate
+      className="w-full"
+      text={STREAM.slice(0, count).join(" ")}
+      duration={duration}
+      delay={delay}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      align={align}
+    />
+  )
 }
 
 export function ColumnConfigPanelDemo() {

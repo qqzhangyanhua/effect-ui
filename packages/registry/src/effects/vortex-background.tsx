@@ -2,12 +2,17 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface VortexBackgroundProps {
   className?: string
   children?: React.ReactNode
+  count?: number
+  speed?: number
+  color?: string
+  intensity?: number
 }
 
 type Noise2D = (x: number, y: number) => number
@@ -32,26 +37,35 @@ function runVortex(
   host: HTMLElement,
   ctx: CanvasRenderingContext2D,
   noise: Noise2D,
+  options: {
+    countRef: React.RefObject<number>
+    speedRef: React.RefObject<number>
+    colorRef: React.RefObject<string | undefined>
+    intensityRef: React.RefObject<number>
+  },
 ) {
   let frame = 0
   let running = false
-  let visible = true
   let width = 0
   let height = 0
   const particles: Particle[] = []
 
   const sync = () => {
     const rect = host.getBoundingClientRect()
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const nextCount = Math.max(1, Math.round(options.countRef.current ?? 96))
     if (rect.width < 2 || rect.height < 2) return
-    if (rect.width === width && rect.height === height) return
-    width = rect.width
-    height = rect.height
-    canvas.width = Math.round(width * dpr)
-    canvas.height = Math.round(height * dpr)
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    const sizeChanged = rect.width !== width || rect.height !== height
+    if (!sizeChanged && particles.length === nextCount) return
+    if (sizeChanged) {
+      width = rect.width
+      height = rect.height
+      canvas.width = Math.round(width * dpr)
+      canvas.height = Math.round(height * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
     particles.length = 0
-    for (let index = 0; index < 96; index += 1) {
+    for (let index = 0; index < nextCount; index += 1) {
       const particle: Particle = { angle: 0, radius: 0, size: 1, hue: 190 }
       resetParticle(particle, width, height, false)
       particles.push(particle)
@@ -59,25 +73,30 @@ function runVortex(
   }
 
   const tick = (now: number) => {
-    const time = now * 0.00012
+    const rawSpeed = options.speedRef.current
+    const rate = typeof rawSpeed === "number" && Number.isFinite(rawSpeed) && rawSpeed > 0 ? rawSpeed : 1
+    const nextCount = Math.max(1, Math.round(options.countRef.current ?? 96))
+    if (particles.length !== nextCount) sync()
+    const time = now * 0.00012 * rate
     ctx.globalCompositeOperation = "source-over"
-    ctx.fillStyle = "rgba(9, 9, 11, 0.32)"
+    ctx.fillStyle = `rgba(9, 9, 11, ${options.intensityRef.current ?? 0.32})`
     ctx.fillRect(0, 0, width, height)
     const cx = width / 2
     const cy = height / 2
     const maxR = Math.hypot(width, height) * 0.46
     ctx.globalCompositeOperation = "lighter"
+    const paint = options.colorRef.current
     for (const particle of particles) {
       const swirl = noise(Math.cos(particle.angle) * 1.3 + time, Math.sin(particle.angle) * 1.3)
       const radial = noise(particle.radius * 0.012, time * 2 + particle.angle)
-      particle.angle += 0.014 + swirl * 0.02
+      particle.angle += (0.014 + swirl * 0.02) * rate
       particle.radius += -0.45 + radial * 0.6
       if (particle.radius < 8 || particle.radius > maxR) resetParticle(particle, width, height, true)
       const x = cx + Math.cos(particle.angle) * particle.radius
       const y = cy + Math.sin(particle.angle) * particle.radius * 0.7
-      ctx.fillStyle = `hsla(${particle.hue}, 92%, 72%, 0.92)`
+      ctx.fillStyle = paint ?? `hsla(${particle.hue}, 92%, 72%, 0.92)`
       ctx.shadowBlur = 10
-      ctx.shadowColor = `hsla(${particle.hue}, 95%, 68%, 0.95)`
+      ctx.shadowColor = paint ?? `hsla(${particle.hue}, 95%, 68%, 0.95)`
       ctx.beginPath()
       ctx.arc(x, y, particle.size, 0, Math.PI * 2)
       ctx.fill()
@@ -100,21 +119,14 @@ function runVortex(
 
   const resize = new ResizeObserver(() => {
     sync()
-    if (visible) start()
+    start()
   })
   resize.observe(host)
-  const intersection = new IntersectionObserver(([entry]) => {
-    visible = Boolean(entry?.isIntersecting)
-    if (visible) start()
-    else stop()
-  })
-  intersection.observe(host)
   start()
 
   return () => {
     stop()
     resize.disconnect()
-    intersection.disconnect()
   }
 }
 
@@ -132,15 +144,34 @@ function SwirlFallback({ animate }: { animate: boolean }) {
   )
 }
 
-function VortexBackground({ className, children }: VortexBackgroundProps) {
+function VortexBackground({
+  className,
+  children,
+  count = 96,
+  speed = 1,
+  color,
+  intensity = 0.32,
+}: VortexBackgroundProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const countRef = React.useRef(count)
+  const speedRef = React.useRef(speed)
+  const colorRef = React.useRef(color)
+  const intensityRef = React.useRef(intensity)
+  const active = useAnimationActive(hostRef)
   const [failed, setFailed] = React.useState(false)
   const showCanvas = !reduced && !failed
 
   React.useEffect(() => {
-    if (!showCanvas) return
+    countRef.current = count
+    speedRef.current = speed
+    colorRef.current = color
+    intensityRef.current = intensity
+  }, [count, speed, color, intensity])
+
+  React.useEffect(() => {
+    if (!showCanvas || !active) return
     const canvas = canvasRef.current
     const host = hostRef.current
     if (!canvas || !host) return
@@ -151,7 +182,12 @@ function VortexBackground({ className, children }: VortexBackgroundProps) {
     void import("simplex-noise")
       .then(({ createNoise2D }) => {
         if (cancelled) return
-        stop = runVortex(canvas, host, ctx, createNoise2D())
+        stop = runVortex(canvas, host, ctx, createNoise2D(), {
+          countRef,
+          speedRef,
+          colorRef,
+          intensityRef,
+        })
       })
       .catch(() => {
         if (!cancelled) setFailed(true)
@@ -160,7 +196,7 @@ function VortexBackground({ className, children }: VortexBackgroundProps) {
       cancelled = true
       stop()
     }
-  }, [showCanvas])
+  }, [active, showCanvas])
 
   return (
     <div

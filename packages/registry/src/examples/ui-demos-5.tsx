@@ -295,10 +295,10 @@ export function NotificationCenterDemo() {
   return <NotificationCenter />
 }
 
-export function DashboardBlocksDemo() {
-  return <DashboardBlocks className="w-full" />
+export function DashboardBlocksDemo({ variant }: { variant?: "analytics" | "sales" | "ops" } = {}) {
+  return <DashboardBlocks className="w-full" variant={variant} />
 }
 
-export function EcommerceBlocksDemo() {
-  return <EcommerceBlocks className="w-full" />
+export function EcommerceBlocksDemo({ view }: { view?: "store" | "gallery" | "checkout" } = {}) {
+  return <EcommerceBlocks className="w-full" view={view} />
 }

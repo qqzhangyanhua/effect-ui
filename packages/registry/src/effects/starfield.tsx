@@ -2,10 +2,14 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface StarfieldProps extends React.HTMLAttributes<HTMLCanvasElement> {
   count?: number
+  speed?: number
+  color?: string
+  size?: number
 }
 
 function watchDevicePixelRatio(onChange: () => void) {
@@ -20,10 +24,24 @@ function watchDevicePixelRatio(onChange: () => void) {
   return () => media.removeEventListener("change", handle)
 }
 
-function Starfield({ className, count = 90, ...props }: StarfieldProps) {
+function playbackSpeed(speed: number) {
+  return Number.isFinite(speed) && speed > 0 ? speed : 1
+}
+
+function Starfield({
+  className,
+  count = 90,
+  speed = 1,
+  color,
+  size = 1,
+  ...props
+}: StarfieldProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(canvasRef)
+  const rate = playbackSpeed(speed)
 
   React.useEffect(() => {
+    if (!active) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext("2d")
@@ -31,7 +49,6 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
 
     let frame = 0
     let running = false
-    let visible = false
     let width = 0
     let height = 0
     let dpr = 0
@@ -45,7 +62,7 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
     }))
 
     const syncSize = (nextWidth: number, nextHeight: number) => {
-      const nextDpr = window.devicePixelRatio || 1
+      const nextDpr = Math.min(window.devicePixelRatio || 1, 2)
       if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
       if (nextWidth === width && nextHeight === height && nextDpr === dpr) return
       width = nextWidth
@@ -59,14 +76,14 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
       for (const star of stars) {
-        star.z -= 0.002
+        star.z -= 0.002 * rate
         if (star.z <= 0) star.z = 1
         const x = (star.x - 0.5) * (1 / star.z) * width + width / 2
         const y = (star.y - 0.5) * (1 / star.z) * height + height / 2
         ctx.globalAlpha = 1 - star.z
-        ctx.fillStyle = "currentColor"
+        ctx.fillStyle = color ?? "currentColor"
         ctx.beginPath()
-        ctx.arc(x, y, star.s * (1 - star.z + 0.2), 0, Math.PI * 2)
+        ctx.arc(x, y, star.s * (1 - star.z + 0.2) * size, 0, Math.PI * 2)
         ctx.fill()
       }
       if (!reducedMotion) frame = window.requestAnimationFrame(draw)
@@ -78,7 +95,7 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
     }
 
     const start = () => {
-      if (width <= 0 || height <= 0) return
+      if (!active || width <= 0 || height <= 0) return
       if (reducedMotion) {
         stop()
         draw()
@@ -93,10 +110,10 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
       reducedMotion = motionMedia.matches
       if (reducedMotion) {
         stop()
-        if (visible && width > 0 && height > 0) draw()
+        if (width > 0 && height > 0) draw()
         return
       }
-      if (visible) start()
+      start()
     }
     motionMedia.addEventListener("change", onMotionChange)
 
@@ -104,37 +121,33 @@ function Starfield({ className, count = 90, ...props }: StarfieldProps) {
       const entry = entries[0]
       if (!entry) return
       syncSize(entry.contentRect.width, entry.contentRect.height)
-      if (visible) start()
-    })
-
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      visible = Boolean(entry?.isIntersecting)
-      if (visible) start()
-      else stop()
+      start()
     })
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
-      if (reducedMotion && visible) start()
+      if (reducedMotion) start()
     })
 
     resizeObserver.observe(canvas)
-    intersectionObserver.observe(canvas)
 
     return () => {
       stop()
       resizeObserver.disconnect()
-      intersectionObserver.disconnect()
       stopDprWatch()
       motionMedia.removeEventListener("change", onMotionChange)
     }
-  }, [count])
+  }, [active, color, count, rate, size])
 
   return (
     <canvas
       ref={canvasRef}
       data-slot="starfield"
-      className={cn("pointer-events-none absolute inset-0 size-full text-foreground", className)}
+      className={cn(
+        "pointer-events-none absolute inset-0 size-full",
+        color === undefined && "text-foreground",
+        className,
+      )}
       {...props}
     />
   )

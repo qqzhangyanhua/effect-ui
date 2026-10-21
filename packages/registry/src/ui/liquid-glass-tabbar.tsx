@@ -14,6 +14,9 @@ export interface GlassTab {
 export interface LiquidGlassTabbarProps {
   tabs?: GlassTab[]
   className?: string
+  speed?: number
+  intensity?: number
+  scale?: number
 }
 
 const defaultTabs: GlassTab[] = [
@@ -23,17 +26,23 @@ const defaultTabs: GlassTab[] = [
   { id: "you", label: "我的" },
 ]
 
-function LiquidGlassTabbar({ tabs = defaultTabs, className }: LiquidGlassTabbarProps) {
+function LiquidGlassTabbar({ tabs = defaultTabs, className, speed, intensity, scale }: LiquidGlassTabbarProps) {
   const reduced = usePrefersReducedMotion()
   const [index, setIndex] = React.useState(0)
   const filterId = React.useId().replace(/:/g, "")
   const active = tabs[index] ?? tabs[0]
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const pill = rate === 1 ? 0.6 : 0.6 / rate
+  const blob = rate === 1 ? 0.7 : 0.7 / rate
+  const pillBounce = intensity === undefined || intensity === 1 ? 0.32 : 0.32 * intensity
+  const blobBounce = intensity === undefined || intensity === 1 ? 0.45 : 0.45 * intensity
+  const deviation = scale === undefined || scale === 1 ? 8 : 8 * scale
 
   return (
     <div className={cn("relative grid place-items-center rounded-2xl border bg-[linear-gradient(180deg,#1e1b4b,#0f172a)] p-8", className)}>
       <svg className="absolute size-0" aria-hidden>
         <filter id={filterId}>
-          <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation={deviation === 8 ? "8" : String(deviation)} result="blur" />
           <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" />
         </filter>
       </svg>
@@ -48,12 +57,12 @@ function LiquidGlassTabbar({ tabs = defaultTabs, className }: LiquidGlassTabbarP
               left: `${(index / tabs.length) * 100}%`,
               width: `${100 / tabs.length}%`,
             }}
-            transition={reduced ? { duration: 0 } : { type: "spring", bounce: 0.32, duration: 0.6 }}
+            transition={reduced ? { duration: 0 } : { type: "spring", bounce: pillBounce, duration: pill }}
           />
           <motion.span
             className="absolute top-1/2 size-8 -translate-y-1/2 rounded-full bg-white/80"
             animate={{ left: `calc(${((index + 0.5) / tabs.length) * 100}% - 1rem)` }}
-            transition={reduced ? { duration: 0 } : { type: "spring", bounce: 0.45, duration: 0.7 }}
+            transition={reduced ? { duration: 0 } : { type: "spring", bounce: blobBounce, duration: blob }}
           />
         </div>
         {tabs.map((tab, tabIndex) => (

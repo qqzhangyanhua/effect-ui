@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useMotionValueEvent, useScroll } from "motion/react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
@@ -10,6 +11,7 @@ export interface ImageTubeScrollProps {
   images?: string[]
   radius?: number
   speed?: number
+  intensity?: number
   className?: string
 }
 
@@ -40,14 +42,18 @@ function paintCard(label: string, color: string) {
   return canvas
 }
 
-function ImageTubeScroll({ images, radius = 1.35, speed = 1, className }: ImageTubeScrollProps) {
+function ImageTubeScroll({ images, radius = 1.35, speed = 1, intensity, className }: ImageTubeScrollProps) {
   const reduced = usePrefersReducedMotion()
   const sectionRef = React.useRef<HTMLElement>(null)
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
   const progressRef = React.useRef(0)
   const speedRef = React.useRef(speed)
   const radiusRef = React.useRef(radius)
+  const intensityRef = React.useRef(intensity)
   const dragRef = React.useRef<{ x: number; speed: number } | null>(null)
   const [fallback, setFallback] = React.useState(false)
   const [dragSpeed, setDragSpeed] = React.useState<number | null>(null)
@@ -67,6 +73,15 @@ function ImageTubeScroll({ images, radius = 1.35, speed = 1, className }: ImageT
   React.useEffect(() => {
     radiusRef.current = radius
   }, [radius])
+
+  React.useEffect(() => {
+    intensityRef.current = intensity
+  }, [intensity])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   React.useEffect(() => {
     if (!showCanvas) return
@@ -152,25 +167,34 @@ function ImageTubeScroll({ images, radius = 1.35, speed = 1, className }: ImageT
       const observer = new ResizeObserver(resize)
       observer.observe(host)
       const tick = () => {
+        if (!activeRef.current) {
+          frame = 0
+          return
+        }
         const progress = progressRef.current
         const currentRadius = radiusRef.current
         const spacing = 2.35
         const travel = Math.max(rings - 1, 1) * spacing
         const paced = Math.min(1, progress * Math.max(speedRef.current, 0.35))
+        const tilt = intensityRef.current === undefined || intensityRef.current === 1 ? 0.55 : 0.55 * intensityRef.current
         tube.rotation.z = progress * Math.PI * 2 * speedRef.current
         camera.position.z = 1.7 - paced * travel
         for (const record of records) {
           const z = -record.layer * spacing
           record.mesh.position.set(Math.sin(record.angle) * currentRadius, Math.cos(record.angle) * currentRadius, z)
-          record.mesh.rotation.x = -Math.cos(record.angle) * 0.55
-          record.mesh.rotation.y = Math.sin(record.angle) * 0.55
+          record.mesh.rotation.x = -Math.cos(record.angle) * tilt
+          record.mesh.rotation.y = Math.sin(record.angle) * tilt
           record.mesh.rotation.z = 0
         }
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         observer.disconnect()
         gl.getExtension("WEBGL_lose_context")?.loseContext()
@@ -182,6 +206,7 @@ function ImageTubeScroll({ images, radius = 1.35, speed = 1, className }: ImageT
     })
     return () => {
       cancelled = true
+      kickRef.current = null
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }

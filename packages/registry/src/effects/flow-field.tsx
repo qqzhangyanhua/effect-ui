@@ -2,10 +2,14 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface FlowFieldProps {
   density?: number
+  speed?: number
+  color?: string
+  size?: number
   className?: string
 }
 
@@ -26,10 +30,12 @@ function watchDevicePixelRatio(onChange: () => void) {
   return () => media.removeEventListener("change", handle)
 }
 
-function FlowField({ density = 70, className }: FlowFieldProps) {
+function FlowField({ density = 70, speed = 1, color, size = 1, className }: FlowFieldProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(canvasRef)
 
   React.useEffect(() => {
+    if (!active) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext("2d")
@@ -37,7 +43,6 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
 
     let frame = 0
     let running = false
-    let visible = false
     let width = 0
     let height = 0
     let dpr = 0
@@ -47,7 +52,7 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
     const dots: Dot[] = []
 
     const syncSize = (nextWidth: number, nextHeight: number) => {
-      const nextDpr = window.devicePixelRatio || 1
+      const nextDpr = Math.min(window.devicePixelRatio || 1, 2)
       if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
       if (nextWidth !== width || nextHeight !== height || nextDpr !== dpr) {
         width = nextWidth
@@ -69,9 +74,10 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
     const tick = () => {
       ctx.fillStyle = "color-mix(in oklab, var(--background) 18%, transparent)"
       ctx.fillRect(0, 0, width, height)
-      ctx.strokeStyle = "color-mix(in oklab, var(--primary) 70%, transparent)"
-      ctx.lineWidth = 1
-      time += 0.006
+      ctx.strokeStyle = color ?? "color-mix(in oklab, var(--primary) 70%, transparent)"
+      ctx.lineWidth = size
+      const rate = Number.isFinite(speed) && speed > 0 ? speed : 1
+      time += 0.006 * rate
       for (const dot of dots) {
         const angle = Math.sin(dot.x * 0.02 + time) + Math.cos(dot.y * 0.02 - time)
         const nx = dot.x + Math.cos(angle) * 1.6
@@ -96,7 +102,7 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
     }
 
     const start = () => {
-      if (width <= 0 || height <= 0) return
+      if (!active || width <= 0 || height <= 0) return
       if (reducedMotion) {
         stop()
         tick()
@@ -111,10 +117,10 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
       reducedMotion = motionMedia.matches
       if (reducedMotion) {
         stop()
-        if (visible && width > 0 && height > 0) tick()
+        if (width > 0 && height > 0) tick()
         return
       }
-      if (visible) start()
+      start()
     }
     motionMedia.addEventListener("change", onMotionChange)
 
@@ -122,31 +128,23 @@ function FlowField({ density = 70, className }: FlowFieldProps) {
       const entry = entries[0]
       if (!entry) return
       syncSize(entry.contentRect.width, entry.contentRect.height)
-      if (visible) start()
-    })
-
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      visible = Boolean(entry?.isIntersecting)
-      if (visible) start()
-      else stop()
+      start()
     })
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
-      if (reducedMotion && visible) start()
+      if (reducedMotion) start()
     })
 
     resizeObserver.observe(canvas)
-    intersectionObserver.observe(canvas)
 
     return () => {
       stop()
       resizeObserver.disconnect()
-      intersectionObserver.disconnect()
       stopDprWatch()
       motionMedia.removeEventListener("change", onMotionChange)
     }
-  }, [density])
+  }, [active, color, density, size, speed])
 
   return <canvas ref={canvasRef} className={cn("size-full min-h-48 rounded-xl border bg-background", className)} />
 }

@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { textControls, textPresets } from "./text-controls"
 
 const ui: PropDoc[] = [
   {
@@ -19,9 +20,33 @@ export const batch15Components: ComponentMeta[] = [
     file: "effects/ghost-trail-text.tsx",
     target: "components/ui/ghost-trail-text.tsx",
     props: [
-      { name: "text", type: "string", defaultValue: "GHOST", description: "标题文字。" },
+      {
+        name: "text",
+        type: "string",
+        defaultValue: "GHOST",
+        description: "标题文字。",
+        control: { kind: "text", value: "GHOST" },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "残影层数。不传则 4。",
+        control: { kind: "range", value: 4, min: 1, max: 12, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "残影位移和模糊。不传则 1。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...textControls({ fontSize: 72, fontWeight: 600, align: "left" }),
       ...ui,
     ],
+    presets: textPresets("ghost", "text", [
+      { label: "原样", content: "GHOST", fontSize: 72, fontWeight: 600, align: "left", extra: { count: 4, intensity: 1 } },
+      { label: "多层", content: "TRAIL", fontSize: 56, fontWeight: 700, align: "center", extra: { count: 8, intensity: 0.7 } },
+      { label: "淡", content: "SOFT", fontSize: 48, fontWeight: 500, align: "left", extra: { count: 2, intensity: 0.3 } },
+    ]),
   },
   {
     name: "gravity-image-trail",
@@ -32,7 +57,38 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gravity-image-trail.tsx",
     target: "components/ui/gravity-image-trail.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "size",
+        type: "number",
+        description: "色块边长（像素）。64 与不传相同。",
+        control: { kind: "range", value: 64, min: 24, max: 128, step: 4 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "生成下一块前的移动距离（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 0, max: 80, step: 2 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "重力倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "初速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "gravity-slow", label: "缓", values: { size: 48, gap: 40, intensity: 0.45, speed: 0.6 } },
+      { name: "gravity-default", label: "默认", values: { size: 64, gap: 28, intensity: 1, speed: 1 } },
+      { name: "gravity-fast", label: "急", values: { size: 80, gap: 16, intensity: 1, speed: 1.8 } },
+    ],
   },
   {
     name: "square-lens-distortion",
@@ -43,7 +99,38 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/square-lens-distortion.tsx",
     target: "components/ui/square-lens-distortion.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        description: "扭曲节奏倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "波纹幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "镜片大小倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "镜片描边颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "square-lens-small", label: "小", values: { speed: 0.6, intensity: 0.4, scale: 0.7, color: "#ffffff" } },
+      { name: "square-lens-default", label: "默认", values: { speed: 1, intensity: 1, scale: 1, color: "#ffffff" } },
+      { name: "square-lens-wide", label: "大", values: { speed: 1.6, intensity: 1, scale: 1.6, color: "#ffffff" } },
+    ],
   },
   {
     name: "dual-wave-text-list",
@@ -56,7 +143,13 @@ export const batch15Components: ComponentMeta[] = [
     target: "components/ui/dual-wave-text-list.tsx",
     props: [
       { name: "rows", type: "WaveRow[]", description: "左右两列共用的条目。" },
+      { name: "scale", type: "number", description: "波浪幅度倍率。1 与不传相同，位移仍是 16 像素。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "dual-wave-text-list-small", label: "小", values: { scale: 0.6 } },
+      { name: "dual-wave-text-list-default", label: "默认", values: { scale: 1 } },
+      { name: "dual-wave-text-list-large", label: "大", values: { scale: 1.6 } },
     ],
   },
   {
@@ -70,7 +163,15 @@ export const batch15Components: ComponentMeta[] = [
     target: "components/ui/clip-reveal-menu.tsx",
     props: [
       { name: "items", type: "ClipRevealItem[]", description: "菜单条目。" },
+      { name: "duration", type: "number", description: "展开毫秒。550 与不传相同，面板仍是 0.55 秒，条目仍是 0.35 秒。", control: { kind: "range", value: 550, min: 220, max: 1100, step: 10 } },
+      { name: "delay", type: "number", description: "首条延迟毫秒。120 与不传相同，仍是 0.12 秒，错开仍是 0.06 秒。", control: { kind: "range", value: 120, min: 0, max: 400, step: 10 } },
+      { name: "intensity", type: "number", description: "升起距离倍率。1 与不传相同，仍是 28 像素。", control: { kind: "range", value: 1, min: 0, max: 2, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "clip-reveal-menu-slow", label: "慢", values: { duration: 800, delay: 200, intensity: 0.6 } },
+      { name: "clip-reveal-menu-default", label: "默认", values: { duration: 550, delay: 120, intensity: 1 } },
+      { name: "clip-reveal-menu-fast", label: "快", values: { duration: 280, delay: 40, intensity: 1.4 } },
     ],
   },
   {
@@ -82,7 +183,25 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/sticky-grid-scroll.tsx",
     target: "components/ui/sticky-grid-scroll.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "两侧位移和中间放大的强度。1 与不传相同，末端缩放仍是 3.8。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动曲线倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "sticky-grid-default", label: "默认", values: { intensity: 1, speed: 1 } },
+      { name: "sticky-grid-soft", label: "轻", values: { intensity: 0.45, speed: 1 } },
+    ],
   },
   {
     name: "svg-mask-scroll-transition",
@@ -93,7 +212,32 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/svg-mask-scroll-transition.tsx",
     target: "components/ui/svg-mask-scroll-transition.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "遮罩展开幅度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动曲线倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "条纹数量。7 与不传相同。",
+        control: { kind: "range", value: 7, min: 1, max: 16, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "svg-mask-default", label: "默认", values: { intensity: 1, speed: 1, count: 7 } },
+      { name: "svg-mask-soft", label: "轻", values: { intensity: 0.5, speed: 1, count: 7 } },
+      { name: "svg-mask-dense", label: "密纹", values: { intensity: 1, speed: 1, count: 12 } },
+    ],
   },
   {
     name: "macbook-scroll",
@@ -104,7 +248,32 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/macbook-scroll.tsx",
     target: "components/ui/macbook-scroll.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "开合角度的强度。1 与不传相同，从 -68 度打开。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "画面末端缩放的倍率。1 与不传相同，末端仍是 1.7。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "滚动曲线倍率。1 与不传相同，开合仍在进度 0.62 处完成。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "macbook-default", label: "默认", values: { intensity: 1, scale: 1, speed: 1 } },
+      { name: "macbook-soft", label: "轻", values: { intensity: 0.5, scale: 0.7, speed: 1 } },
+      { name: "macbook-wide", label: "放大", values: { intensity: 1, scale: 1.5, speed: 1.2 } },
+    ],
   },
   {
     name: "faceted-filter-bar",
@@ -176,7 +345,37 @@ export const batch15Components: ComponentMeta[] = [
     target: "components/ui/text-generate.tsx",
     props: [
       { name: "text", type: "string", description: "当前全文。流式输入时把已到达的词拼进来。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "每个词显出的时长，毫秒。不传则 350。",
+        control: { kind: "range", value: 350, min: 140, max: 700, step: 10 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "词与词的错开，毫秒。不传则 0。",
+        control: { kind: "range", value: 0, min: 0, max: 400, step: 10 },
+      },
+      ...textControls({ fontSize: 24, fontWeight: 400, align: "left" }),
       ...ui,
+    ],
+    presets: [
+      {
+        name: "text-generate-1",
+        label: "逐词",
+        values: { duration: 350, delay: 0, fontSize: 24, fontWeight: 500, align: "left" },
+      },
+      {
+        name: "text-generate-2",
+        label: "错开",
+        values: { duration: 280, delay: 80, fontSize: 32, fontWeight: 600, align: "center" },
+      },
+      {
+        name: "text-generate-3",
+        label: "慢显",
+        values: { duration: 600, delay: 40, fontSize: 18, fontWeight: 400, align: "left" },
+      },
     ],
   },
   {

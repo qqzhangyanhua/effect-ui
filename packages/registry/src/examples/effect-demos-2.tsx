@@ -456,7 +456,7 @@ export function AnimatedSidebarDemo() {
   )
 }
 
-export function PageTransitionDemo() {
+export function PageTransitionDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   const [key, setKey] = useState("a")
   return (
     <div className="space-y-3">
@@ -467,16 +467,16 @@ export function PageTransitionDemo() {
       >
         切换页面
       </button>
-      <PageTransition transitionKey={key} className="rounded-xl border bg-card p-6">
+      <PageTransition transitionKey={key} className="rounded-xl border bg-card p-6" duration={duration} intensity={intensity}>
         当前视图：{key === "a" ? "概览" : "详情"}
       </PageTransition>
     </div>
   )
 }
 
-export function RevealSectionDemo() {
+export function RevealSectionDemo({ delay, speed, intensity }: { delay?: number; speed?: number; intensity?: number } = {}) {
   return (
-    <RevealSection className="rounded-xl border bg-card p-6">
+    <RevealSection className="rounded-xl border bg-card p-6" delay={delay} speed={speed} intensity={intensity}>
       滚动到这里时区块揭开
     </RevealSection>
   )

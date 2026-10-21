@@ -190,11 +190,13 @@ export function MarketingBlocksDemo() {
   )
 }
 
-export function TerminalDemo() {
+export function TerminalDemo({ interval, color }: { interval?: number; color?: string } = {}) {
   return (
     <Terminal
       className="w-full max-w-lg"
       lines={["pnpm add @effect-ui/registry", "pnpm registry:build", "npx shadcn add ./r/terminal.json"]}
+      interval={interval}
+      color={color}
     />
   )
 }

@@ -4184,6 +4184,7 @@
       "description": "灵感来自 dot-matrix reveal，原创实现：点阵涟漪揭开下层内容。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [

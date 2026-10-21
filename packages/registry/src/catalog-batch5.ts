@@ -373,8 +373,13 @@ export const batch5Components: ComponentMeta[] = [
     file: "ui/dashboard-blocks.tsx",
     target: "components/ui/dashboard-blocks.tsx",
     props: [
-      { name: "variant", type: '"analytics" | "sales" | "ops"', defaultValue: '"analytics"', description: "看板变体。" },
+      { name: "variant", type: '"analytics" | "sales" | "ops"', defaultValue: '"analytics"', description: "看板变体。", control: { kind: "select", value: "analytics", options: ["analytics", "sales", "ops"] } },
       ...ui,
+    ],
+    presets: [
+      { name: "dashboard-blocks-analytics", label: "分析", values: { variant: "analytics" } },
+      { name: "dashboard-blocks-sales", label: "销售", values: { variant: "sales" } },
+      { name: "dashboard-blocks-ops", label: "运维", values: { variant: "ops" } },
     ],
   },
   {
@@ -387,8 +392,13 @@ export const batch5Components: ComponentMeta[] = [
     file: "ui/ecommerce-blocks.tsx",
     target: "components/ui/ecommerce-blocks.tsx",
     props: [
-      { name: "view", type: '"store" | "gallery" | "checkout"', defaultValue: '"store"', description: "展示哪一组。" },
+      { name: "view", type: '"store" | "gallery" | "checkout"', defaultValue: '"store"', description: "展示哪一组。", control: { kind: "select", value: "store", options: ["store", "gallery", "checkout"] } },
       ...ui,
+    ],
+    presets: [
+      { name: "ecommerce-blocks-store", label: "店铺", values: { view: "store" } },
+      { name: "ecommerce-blocks-gallery", label: "画廊", values: { view: "gallery" } },
+      { name: "ecommerce-blocks-checkout", label: "结账", values: { view: "checkout" } },
     ],
   },
   {

@@ -16,8 +16,8 @@ import { SmoothScrollProvider } from "../ui/smooth-scroll-provider"
 import { TextVariableScroll } from "../effects/text-variable-scroll"
 import { ViewTransitionGallery } from "../ui/view-transition-gallery"
 
-export function ViewTransitionGalleryDemo() {
-  return <ViewTransitionGallery className="w-full" />
+export function ViewTransitionGalleryDemo({ gap, size }: { gap?: number; size?: number } = {}) {
+  return <ViewTransitionGallery className="w-full" gap={gap} size={size} />
 }
 
 export function ScrollTimelineRevealDemo({

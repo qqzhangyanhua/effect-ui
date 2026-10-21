@@ -160,9 +160,21 @@ export function EvervaultCardDemo({ interval, color, size, count, intensity }: {
   return <EvervaultCard className="w-full max-w-sm" text="SECURE" interval={interval} color={color} size={size} count={count} intensity={intensity} />
 }
 
-export function CanvasRevealDemo() {
+export function CanvasRevealDemo({
+  gap,
+  speed,
+  size,
+  intensity,
+  color,
+}: {
+  gap?: number
+  speed?: number
+  size?: number
+  intensity?: number
+  color?: string
+} = {}) {
   return (
-    <CanvasReveal className="w-full">
+    <CanvasReveal className="w-full" gap={gap} speed={speed} size={size} intensity={intensity} color={color}>
       <p className="font-medium">点阵揭开</p>
       <p className="mt-1 text-sm text-muted-foreground">移动指针扩散涟漪。</p>
     </CanvasReveal>

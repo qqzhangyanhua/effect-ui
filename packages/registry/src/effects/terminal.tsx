@@ -9,9 +9,10 @@ export interface TerminalProps {
   lines: string[]
   className?: string
   interval?: number
+  color?: string
 }
 
-function Terminal({ lines, className, interval = 700 }: TerminalProps) {
+function Terminal({ lines, className, interval = 700, color }: TerminalProps) {
   const [count, setCount] = React.useState(1)
   const reduce = usePrefersReducedMotion()
   const shown = reduce ? lines.length : count
@@ -32,7 +33,9 @@ function Terminal({ lines, className, interval = 700 }: TerminalProps) {
       <pre className="min-h-40 p-4 font-mono text-xs leading-6">
         {lines.map((line, index) => (
           <div key={line} className={index < shown ? undefined : "hidden motion-reduce:block"}>
-            <span className="text-emerald-400">❯ </span>
+            <span className={color ? undefined : "text-emerald-400"} style={color ? { color } : undefined}>
+              ❯{" "}
+            </span>
             {line}
           </div>
         ))}

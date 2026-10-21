@@ -13,7 +13,7 @@
       "path": "registry/effects/reveal-section.tsx",
       "type": "registry:ui",
       "target": "components/ui/reveal-section.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface RevealSectionProps {\n  className?: string\n  children?: React.ReactNode\n  delay?: number\n}\n\nfunction RevealSection({ className, children, delay = 0 }: RevealSectionProps) {\n  return (\n    <Reveal\n      data-slot=\"reveal-section\"\n      as=\"section\"\n      variant=\"clip\"\n      className={className}\n      delay={delay}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { RevealSection }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Reveal } from \"./reveal\"\n\nexport interface RevealSectionProps {\n  className?: string\n  children?: React.ReactNode\n  delay?: number\n  speed?: number\n  intensity?: number\n}\n\nfunction RevealSection({ className, children, delay = 0, speed, intensity }: RevealSectionProps) {\n  return (\n    <Reveal\n      data-slot=\"reveal-section\"\n      as=\"section\"\n      variant=\"clip\"\n      className={className}\n      delay={delay}\n      speed={speed}\n      intensity={intensity}\n    >\n      {children}\n    </Reveal>\n  )\n}\n\nexport { RevealSection }\n"
     }
   ]
 }

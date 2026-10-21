@@ -16,8 +16,8 @@ import { ShareInvitePanel } from "../effects/share-invite-panel"
 import { SketchHatchImage } from "../effects/sketch-hatch-image"
 import { ThumbnailFlowPath } from "../effects/thumbnail-flow-path"
 
-export function DatamoshTransitionDemo() {
-  return <DatamoshTransition className="w-full" />
+export function DatamoshTransitionDemo({ speed, intensity }: { speed?: number; intensity?: number } = {}) {
+  return <DatamoshTransition className="w-full" speed={speed} intensity={intensity} />
 }
 
 export function LoomThreadsMarqueeDemo({ speed }: { speed?: number } = {}) {

@@ -461,7 +461,15 @@ export const batch6Components: ComponentMeta[] = [
     props: [
       { name: "from", type: "string", description: "起始图。" },
       { name: "to", type: "string", description: "目标图。" },
+      { name: "count", type: "number", description: "像素格数。48 与不传相同。", control: { kind: "range", value: 48, min: 16, max: 80, step: 4 } },
+      { name: "duration", type: "number", description: "淡出毫秒。500 与不传相同，仍是 duration-500。", control: { kind: "range", value: 500, min: 200, max: 1000, step: 10 } },
+      { name: "delay", type: "number", description: "错开毫秒。28 与不传相同。", control: { kind: "range", value: 28, min: 0, max: 56, step: 2 } },
       ...ui,
+    ],
+    presets: [
+      { name: "pixel-transition-slow", label: "慢", values: { count: 32, duration: 800, delay: 48 } },
+      { name: "pixel-transition-default", label: "默认", values: { count: 48, duration: 500, delay: 28 } },
+      { name: "pixel-transition-fast", label: "快", values: { count: 64, duration: 240, delay: 8 } },
     ],
   },
 ]

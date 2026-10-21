@@ -253,12 +253,15 @@ export function ScrollImageSequenceDemo({
   )
 }
 
-export function PixelTransitionDemo() {
+export function PixelTransitionDemo({ count, duration, delay }: { count?: number; duration?: number; delay?: number } = {}) {
   return (
     <PixelTransition
       className="w-full max-w-lg"
       from="https://picsum.photos/id/1015/640/360"
       to="https://picsum.photos/id/1035/640/360"
+      count={count}
+      duration={duration}
+      delay={delay}
     />
   )
 }

@@ -19,7 +19,17 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/view-transition-gallery.tsx",
     target: "components/ui/view-transition-gallery.tsx",
-    props: [{ name: "shots", type: "GalleryShot[]", description: "画廊条目。" }, ...ui],
+    props: [
+      { name: "shots", type: "GalleryShot[]", description: "画廊条目。" },
+      { name: "gap", type: "number", description: "缩略图间距（像素）。12 与不传相同，仍是 gap-3。", control: { kind: "range", value: 12, min: 0, max: 32, step: 1 } },
+      { name: "size", type: "number", description: "缩略图高度（像素）。112 与不传相同，仍是 h-28。", control: { kind: "range", value: 112, min: 64, max: 200, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "view-transition-gallery-tight", label: "紧", values: { gap: 8, size: 80 } },
+      { name: "view-transition-gallery-default", label: "默认", values: { gap: 12, size: 112 } },
+      { name: "view-transition-gallery-loose", label: "疏", values: { gap: 20, size: 160 } },
+    ],
   },
   {
     name: "scroll-timeline-reveal",

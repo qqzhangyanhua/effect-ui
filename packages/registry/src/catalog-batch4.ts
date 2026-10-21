@@ -393,8 +393,14 @@ export const batch4Components: ComponentMeta[] = [
     target: "components/ui/terminal.tsx",
     props: [
       { name: "lines", type: "string[]", description: "命令行文本。" },
-      { name: "interval", type: "number", defaultValue: "700", description: "行间隔（毫秒）。" },
+      { name: "interval", type: "number", defaultValue: "700", description: "行间隔（毫秒）。", control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 } },
+      { name: "color", type: "string", description: "提示符颜色。不传则跟随主题。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "terminal-slow", label: "慢", values: { interval: 1100 } },
+      { name: "terminal-default", label: "默认", values: { interval: 700 } },
+      { name: "terminal-fast", label: "快", values: { interval: 360 } },
     ],
   },
   {

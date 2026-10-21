@@ -391,7 +391,19 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/canvas-reveal.tsx",
     target: "components/ui/canvas-reveal.tsx",
-    props: [{ name: "gap", type: "number", defaultValue: "10", description: "点阵间距。" }, ...ui],
+    props: [
+      { name: "gap", type: "number", defaultValue: "10", description: "点阵间距（像素）。10 与不传相同。", control: { kind: "range", value: 10, min: 4, max: 24, step: 1 } },
+      { name: "speed", type: "number", description: "涟漪扩散倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "size", type: "number", description: "静止点边长（像素）。2.2 与不传相同。", control: { kind: "range", value: 2.2, min: 0.8, max: 6, step: 0.2 } },
+      { name: "intensity", type: "number", description: "点的不透明度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      { name: "color", type: "string", description: "点的颜色。#09090b 与不传相同。", control: { kind: "color", value: "#09090b" } },
+      ...ui,
+    ],
+    presets: [
+      { name: "canvas-reveal-calm", label: "疏", values: { gap: 16, speed: 0.6, size: 1.4, intensity: 0.5, color: "#09090b" } },
+      { name: "canvas-reveal-default", label: "默认", values: { gap: 10, speed: 1, size: 2.2, intensity: 1, color: "#09090b" } },
+      { name: "canvas-reveal-dense", label: "密", values: { gap: 6, speed: 1.6, size: 3.2, intensity: 1, color: "#e4e4e7" } },
+    ],
   },
   {
     name: "letter-glitch-wall",

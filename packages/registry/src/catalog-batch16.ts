@@ -18,7 +18,16 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/datamosh-transition.tsx",
     target: "components/ui/datamosh-transition.tsx",
-    props: [...ui],
+    props: [
+      { name: "speed", type: "number", description: "切换和扫描倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "拖影强度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "datamosh-transition-slow", label: "慢", values: { speed: 0.6, intensity: 0.45 } },
+      { name: "datamosh-transition-default", label: "默认", values: { speed: 1, intensity: 1 } },
+      { name: "datamosh-transition-hard", label: "强", values: { speed: 1.8, intensity: 1 } },
+    ],
   },
   {
     name: "loom-threads-marquee",

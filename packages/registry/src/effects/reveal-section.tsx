@@ -8,9 +8,11 @@ export interface RevealSectionProps {
   className?: string
   children?: React.ReactNode
   delay?: number
+  speed?: number
+  intensity?: number
 }
 
-function RevealSection({ className, children, delay = 0 }: RevealSectionProps) {
+function RevealSection({ className, children, delay = 0, speed, intensity }: RevealSectionProps) {
   return (
     <Reveal
       data-slot="reveal-section"
@@ -18,6 +20,8 @@ function RevealSection({ className, children, delay = 0 }: RevealSectionProps) {
       variant="clip"
       className={className}
       delay={delay}
+      speed={speed}
+      intensity={intensity}
     >
       {children}
     </Reveal>

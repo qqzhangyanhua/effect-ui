@@ -1275,7 +1275,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/page-transition.tsx",
     target: "components/ui/page-transition.tsx",
-    props: [{ name: "transitionKey", type: "string", description: "切换键。" }],
+    props: [
+      { name: "transitionKey", type: "string", description: "切换键。" },
+      { name: "duration", type: "number", description: "淡入毫秒。350 与不传相同，仍是 0.35 秒。", control: { kind: "range", value: 350, min: 140, max: 700, step: 10 } },
+      { name: "intensity", type: "number", description: "位移和模糊倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "page-transition-slow", label: "慢", values: { duration: 560, intensity: 0.6 } },
+      { name: "page-transition-default", label: "默认", values: { duration: 350, intensity: 1 } },
+      { name: "page-transition-fast", label: "快", values: { duration: 180, intensity: 1 } },
+    ],
   },
   {
     name: "reveal-section",
@@ -1286,6 +1295,15 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/reveal-section.tsx",
     target: "components/ui/reveal-section.tsx",
-    props: [{ name: "delay", type: "number", defaultValue: "0", description: "延迟秒数。" }],
+    props: [
+      { name: "delay", type: "number", defaultValue: "0", description: "延迟秒数。", control: { kind: "range", value: 0, min: 0, max: 1.2, step: 0.05 } },
+      { name: "speed", type: "number", description: "揭开倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "位移幅度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "reveal-section-slow", label: "慢", values: { delay: 0.4, speed: 0.6, intensity: 0.6 } },
+      { name: "reveal-section-default", label: "默认", values: { delay: 0, speed: 1, intensity: 1 } },
+      { name: "reveal-section-fast", label: "快", values: { delay: 0, speed: 1.8, intensity: 1 } },
+    ],
   },
 ]

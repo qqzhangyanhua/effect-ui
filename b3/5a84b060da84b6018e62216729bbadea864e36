@@ -1,0 +1,178 @@
+apps/docs/public/r/gradient-text.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 9,17
+apps/docs/public/r/shimmer-text.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 16
+apps/docs/components/control-panel.tsx
+  s_41575d7c37a4ee::t_7bae63b7071765 103
+  s_41575d7c37a4ee::t_22b69f570e38a2 118
+  s_41575d7c37a4ee::t_a95efd153a26fd 130-145
+  s_41575d7c37a4ee::t_52154eeddf782d 18
+  s_41575d7c37a4ee::t_4d64b0c57fce09 78,82-88
+  s_41575d7c37a4ee::t_249af6c99873f3 42,47,53
+  s_41575d7c37a4ee::t_2bbb9908f177ee 21
+  s_41575d7c37a4ee::t_7b3359952ba2bd 89-90
+packages/registry/src/effects/scramble-text.tsx
+  s_41575d7c37a4ee::t_4f13825476758c 36
+  s_41575d7c37a4ee::t_1437a0401bc41e 65
+  s_41575d7c37a4ee::t_404fea7cf051ff 54
+  s_41575d7c37a4ee::t_2e8edc7caeee7c 14-19,22-33,41-43,50-53,55-63,68-71,74-75
+  s_41575d7c37a4ee::t_663bba42cd46dc 72-73
+packages/registry/src/effects/split-text.tsx
+  s_41575d7c37a4ee::t_25c44ebc4a8509 53-58,66-69,77,82,84-85,88
+  s_41575d7c37a4ee::t_b3a4b51b99080d 11,15-26
+  s_41575d7c37a4ee::t_c2add1161255a1 61
+  s_41575d7c37a4ee::t_fe68c42ba417cd 70
+  s_41575d7c37a4ee::t_b8ccd7e967adef 83,86-87
+  s_41575d7c37a4ee::t_21937d449df2dd 74
+docs/effect-prop-vocabulary.md
+  s_41575d7c37a4ee::t_43bc39d1ac16c1 39-42
+  s_41575d7c37a4ee::t_8dc429a6a5f396 10-11
+  s_41575d7c37a4ee::t_4e54611d9a4e4c 19
+  s_41575d7c37a4ee::t_a3957d861057e0 43-45
+  s_41575d7c37a4ee::t_05506d9f9a1145 15-17
+  s_41575d7c37a4ee::t_1a01555afce345 5
+CREDITS.md
+  s_41575d7c37a4ee::t_783846eaa7825f 28
+CONTEXT.md
+  s_41575d7c37a4ee::t_585123a702f447 45-48
+  s_41575d7c37a4ee::t_e085eb98acb0be 27-30
+packages/registry/src/audit.repo.test.ts
+  s_41575d7c37a4ee::t_0d7a65d793ef32 118-121
+  s_41575d7c37a4ee::t_caa13e72392647 122,135-141
+  s_41575d7c37a4ee::t_674f3e10bf9da7 123-134
+docs/testing.md
+  s_41575d7c37a4ee::t_6958d7bc3dc845 33
+  s_41575d7c37a4ee::t_c2ccbe4b5c6009 34
+docs/project-map.md
+  s_41575d7c37a4ee::t_69c35aa86f9095 14-15
+  s_41575d7c37a4ee::t_fca21b180c6526 60-61
+packages/registry/package.json
+  s_41575d7c37a4ee::t_36e660192edefe 16
+packages/registry/src/catalog-batch2.ts
+  s_41575d7c37a4ee::t_638fad5d7c361c 362-382
+packages/registry/src/effects/gradient-text.tsx
+  s_41575d7c37a4ee::t_1ac31533741b3c 1-2,5
+  s_41575d7c37a4ee::t_7fcdcdb30a7412 9,11-24,30-36,38,43-46,48-50,60,62,65
+  s_41575d7c37a4ee::t_a0c9eff9232f86 47
+  s_41575d7c37a4ee::t_2841fd3f3f5c2d 53
+  s_41575d7c37a4ee::t_f367e7dcdfc2c5 63-64
+  s_41575d7c37a4ee::t_5b6b87a3550766 41-42
+packages/registry/src/prop-vocabulary.ts
+  s_41575d7c37a4ee::t_a3e45574f249f2 1
+  s_41575d7c37a4ee::t_343e87faf3dbd6 61-63
+  s_41575d7c37a4ee::t_a33642ae06c5fe 51-60
+  s_41575d7c37a4ee::t_c30ed5e493b863 2-50,64-75
+apps/docs/public/r/scramble-text.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 17
+docs/adr/0006-presets-are-docs-only.md
+  s_41575d7c37a4ee::t_0e2cfe38593f26 1-10
+apps/docs/components/component-preview.tsx
+  s_41575d7c37a4ee::t_499f870c0ce14a 5-6,14,19,22
+packages/registry/src/effects/split-text.test.tsx
+  s_41575d7c37a4ee::t_04df30d1ffb20b 1-44,46
+  s_41575d7c37a4ee::t_f2417f6560e32b 45
+packages/registry/src/catalog-batch4.ts
+  s_41575d7c37a4ee::t_868838a4718e04 93-137,140-155
+  s_41575d7c37a4ee::t_5f36bc2e7855b3 156
+packages/registry/src/catalog-batch3.ts
+  s_41575d7c37a4ee::t_2e609bcccbbea3 60-66
+  s_41575d7c37a4ee::t_6c0e8cc2ae98d0 92-98
+packages/registry/src/catalog-batch17.ts
+  s_41575d7c37a4ee::t_490e46f032a211 98-104
+  s_41575d7c37a4ee::t_1bce4ecfcf757a 89-95
+apps/docs/app/docs/[slug]/page.tsx
+  s_41575d7c37a4ee::t_359d45c14e81c0 136
+packages/registry/src/audit.ts
+  s_41575d7c37a4ee::t_4d35169c07ebc2 24
+  s_41575d7c37a4ee::t_76af0f499e3523 3
+  s_41575d7c37a4ee::t_277c1ec00170dd 36
+  s_41575d7c37a4ee::t_205e482447c2d9 189-191
+  s_41575d7c37a4ee::t_15d647109e7196 23
+  s_41575d7c37a4ee::t_9d5804405cf4b0 183-188,192-268
+  s_41575d7c37a4ee::t_3fcbd99f3e6045 448
+  s_41575d7c37a4ee::t_5beeddc9a62d14 35
+  s_41575d7c37a4ee::t_db9d32708a8951 449
+  s_41575d7c37a4ee::t_71e73b28f9bc25 269-338
+packages/registry/src/effects/glitch-text.test.tsx
+  s_41575d7c37a4ee::t_504fea04ad1575 9-22,28
+  s_41575d7c37a4ee::t_9da8297be8a678 1-8,23-27,29-40,57
+  s_41575d7c37a4ee::t_83d90ccec94919 41-56
+packages/registry/src/effects/glitch-text.tsx
+  s_41575d7c37a4ee::t_d5b06a416525b7 5
+  s_41575d7c37a4ee::t_8e25254908a75e 3-4,11-24,27-37,40-43,51,53-56,59-60
+  s_41575d7c37a4ee::t_0eb0d19b2897da 38-39,44-48,52,57-58,64,71
+  s_41575d7c37a4ee::t_b72fd7ce3f03bc 49
+packages/registry/src/effects/typing-text.test.tsx
+  s_41575d7c37a4ee::t_a023c6efa50392 1-62
+docs/dangerous-areas.md
+  s_41575d7c37a4ee::t_0badfb7bf9fb02 23-29
+apps/docs/public/r/glitch-text.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 9,17
+apps/docs/public/r/registry.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 475,2797
+registry.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 475,2797
+apps/docs/public/r/typing-text.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 17
+packages/registry/src/effects/shimmer-text.test.tsx
+  s_41575d7c37a4ee::t_12fc1a49dd6d33 1-28,34
+  s_41575d7c37a4ee::t_095b7d81fc72bc 29-33
+packages/registry/src/catalog.ts
+  s_41575d7c37a4ee::t_c57be49417393e 129-130
+  s_41575d7c37a4ee::t_fe99c0ccbb556a 747-750,752-770
+  s_41575d7c37a4ee::t_bb4ff90cf146ff 96-103
+  s_41575d7c37a4ee::t_c0c9f09a1ec440 633-634,641-645,728-729
+  s_41575d7c37a4ee::t_685d34a317886e 751
+  s_41575d7c37a4ee::t_e6778aa92f791d 773-789
+  s_41575d7c37a4ee::t_0e70eef3d00296 567-621
+  s_41575d7c37a4ee::t_18394f0dbc1ca4 19
+  s_41575d7c37a4ee::t_a186a63101f764 86
+  s_41575d7c37a4ee::t_acf6299a18ce1c 635-640,646-727
+  s_41575d7c37a4ee::t_ad584b0de3d436 111-115
+  s_41575d7c37a4ee::t_811b926c86f159 832-886
+apps/docs/lib/preview-controls.ts
+  s_41575d7c37a4ee::t_c2b642bf35cc7f 2
+  s_41575d7c37a4ee::t_f7d5bf643b8a44 13-18,21-30,32-33,46-47
+  s_41575d7c37a4ee::t_0b31b02845e127 181
+apps/docs/public/r/split-text.json
+  s_41575d7c37a4ee::t_2d982f3d2e5ad0 19
+apps/docs/components/component-preview.test.tsx
+  s_41575d7c37a4ee::t_a8e2222cd7ee01 234-255
+  s_41575d7c37a4ee::t_e80bf8a6e2ddbb 256-298
+packages/registry/src/audit.test.ts
+  s_41575d7c37a4ee::t_fe6e26a4eff21d 704-749
+  s_41575d7c37a4ee::t_97ec49261d0973 535-655,750-762
+  s_41575d7c37a4ee::t_d430fe1ebdc5d7 656-703
+packages/registry/src/effects/gradient-text.test.tsx
+  s_41575d7c37a4ee::t_887edd84b6369d 51
+  s_41575d7c37a4ee::t_32910ce7b01c11 1-8,23-27,29-37,40-50,52
+  s_41575d7c37a4ee::t_b48ea96f5e098a 9-22,28
+  s_41575d7c37a4ee::t_1304d77fb1fe57 38-39
+packages/registry/src/effects/shimmer-text.tsx
+  s_41575d7c37a4ee::t_47b1f34c71fda7 5-25,27,36
+  s_41575d7c37a4ee::t_e6f64844803e2d 26
+packages/registry/src/effects/typing-text.tsx
+  s_41575d7c37a4ee::t_eeb52710dd2226 80
+  s_41575d7c37a4ee::t_98bee486980b84 11-12,14-15,17-24,30,32,34-37,39,45-49,57-59,71,74-79
+  s_41575d7c37a4ee::t_930274227c87af 86,88-93
+packages/registry/src/catalog-batch12.ts
+  s_41575d7c37a4ee::t_ab0be752b5a863 35
+packages/registry/src/effects/scramble-text.test.tsx
+  s_41575d7c37a4ee::t_3e51560abd5f67 1-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "b35a84b060da84b6018e62216729bbadea864e36",
+  "prompts": {},
+  "sessions": {
+    "s_41575d7c37a4ee": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "2246df2a-df97-451b-8275-77e72af16c51",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

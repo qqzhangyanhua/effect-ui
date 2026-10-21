@@ -1,0 +1,26 @@
+apps/docs/app/globals.css
+  s_212d5913124ebc::t_7f92aa6ad5f53d 213-217,220
+apps/docs/public/r/pulse-button.json
+  s_212d5913124ebc::t_8bbdda8baa190a 17
+packages/registry/src/effects/pulse-button.tsx
+  s_212d5913124ebc::t_f0dc7bca1021d4 61
+  s_212d5913124ebc::t_c766b95bb16351 34-35
+packages/registry/src/effects/button-vocabulary.test.tsx
+  s_212d5913124ebc::t_d7735ffffcd48d 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ab388c0dec9922d326df714b5536ecd3e28bc3a8",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

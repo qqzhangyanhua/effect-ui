@@ -31,8 +31,8 @@ function PulseButton({
         aria-hidden
         className={
           alpha === undefined
-            ? "absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full bg-primary/40"
-            : "absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full"
+            ? "pointer-events-none absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full bg-primary/40"
+            : "pointer-events-none absolute inset-0 -z-10 animate-[pulse-ring_2s_ease-out_infinite] motion-reduce:animate-none rounded-full"
         }
         style={
           timed && alpha === undefined
@@ -58,7 +58,7 @@ function PulseButton({
       size={size}
       asChild={asChild}
       className={cn(
-        "relative rounded-full",
+        "relative isolate overflow-visible rounded-full",
         variant == null && "hover:bg-primary",
         size == null && "h-10 px-6",
         className,

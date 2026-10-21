@@ -1,0 +1,19 @@
+docs/effect-prop-vocabulary.md
+  s_d76ff22271df09::t_fd5db9ad4dbce8 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "8b0a6cc694d863a7768336eba974a3b6b61094f0",
+  "prompts": {},
+  "sessions": {
+    "s_d76ff22271df09": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c2a-1a2e-7ee3-8343-d561aabdd4b5",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

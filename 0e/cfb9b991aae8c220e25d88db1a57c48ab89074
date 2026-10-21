@@ -1,0 +1,68 @@
+apps/docs/app/docs/buttons/page.tsx
+  s_212d5913124ebc::t_11684f9af971d7 1-20
+docs/project-map.md
+  s_212d5913124ebc::t_a6cc1492a8c489 11
+apps/docs/components/component-search.tsx
+  s_212d5913124ebc::t_754920b24725e9 21-23,25-26
+  s_212d5913124ebc::t_f17a7be3f4baa9 18
+  s_212d5913124ebc::t_ffbc642150dffd 7
+  s_212d5913124ebc::t_6ebb4c2a9dfba0 56-57
+apps/docs/components/site-nav.tsx
+  s_212d5913124ebc::t_a9ff2ae8536ea4 51
+  s_212d5913124ebc::t_055e9b24c25778 9-11
+  s_212d5913124ebc::t_ebb481a14ff6ce 7
+  s_212d5913124ebc::t_180f7c3f9c8ce2 88,92,94-95
+  s_212d5913124ebc::t_bed4377100796f 115-116
+  s_212d5913124ebc::t_34d3e08a8e004d 64-87
+  s_212d5913124ebc::t_cd14c2512c03af 8
+apps/docs/components/family-index.tsx
+  s_212d5913124ebc::t_21fc509b752d3c 1-75
+README.md
+  s_212d5913124ebc::t_9598da177ce455 581
+  s_212d5913124ebc::t_6f96aa8bd10d43 528-529
+  s_212d5913124ebc::t_5dc6d413c50716 201,207-211,222-223,225-238
+  s_212d5913124ebc::t_5de3e7d399fc56 224
+  s_212d5913124ebc::t_a01b4d92a4060a 203
+  s_212d5913124ebc::t_a1b43ce70f9e22 202
+  s_212d5913124ebc::t_e45dfa09a3b6a2 239
+apps/docs/app/docs/page.tsx
+  s_212d5913124ebc::t_75e2c4167697eb 3
+  s_212d5913124ebc::t_42df967b75a8d1 46-53
+  s_212d5913124ebc::t_e9b39bcb3aa7e2 6
+  s_212d5913124ebc::t_8bb18568853082 44-45,54-82
+  s_212d5913124ebc::t_9443dec181cd90 10
+apps/docs/components/family-gallery.tsx
+  s_212d5913124ebc::t_ca74cba7d82409 57
+  s_212d5913124ebc::t_cb08b87c29708f 1-56,58-85
+packages/registry/src/catalog.ts
+  s_212d5913124ebc::t_cec93389639063 2292-2384,2387-2392,2394,2397-2402,2410-2426
+  s_212d5913124ebc::t_95f2c8a57387ec 2385-2386,2393,2395-2396,2403-2409
+packages/registry/src/catalog-groups.test.ts
+  s_212d5913124ebc::t_d826b2eefe963e 1-66
+apps/docs/app/docs/[slug]/page.tsx
+  s_212d5913124ebc::t_78146b7524b5eb 2,7
+  s_212d5913124ebc::t_ba90aa0ffb6c5d 89
+  s_212d5913124ebc::t_43446cd3778932 18
+  s_212d5913124ebc::t_f515e5f06063de 70-71
+  s_212d5913124ebc::t_f3bfcda7be27a7 8
+apps/docs/lib/family-path.ts
+  s_212d5913124ebc::t_77ecb0be97ed55 1-5
+apps/docs/app/docs/inputs/page.tsx
+  s_212d5913124ebc::t_2f5021f0ea4d0f 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0ecfb9b991aae8c220e25d88db1a57c48ab89074",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

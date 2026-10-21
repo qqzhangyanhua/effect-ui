@@ -1,0 +1,20 @@
+apps/docs/components/control-panel.tsx
+  s_298c3ee3d5ace8::t_3c2eaf01ea1ea9 107-108,111-122,125-126,136
+  s_298c3ee3d5ace8::t_ee80168c1456dc 154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ac63efc0d3a059fdac89ded7171bb7088cdd4b2c",
+  "prompts": {},
+  "sessions": {
+    "s_298c3ee3d5ace8": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "7c5498af-93d6-43b4-88ca-dbccf894f491",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

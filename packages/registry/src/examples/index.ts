@@ -422,7 +422,6 @@ const demoMap: Record<string, ComponentType> = {
   "cart-drawer": effectDemos19.CartDrawerDemo,
   "coupon-input": effectDemos19.CouponInputDemo,
   "radial-gauge": effectDemos19.RadialGaugeDemo,
-  "funnel-chart": effectDemos19.FunnelChartDemo,
   "gantt-timeline": effectDemos19.GanttTimelineDemo,
   "org-chart": effectDemos19.OrgChartDemo,
 }

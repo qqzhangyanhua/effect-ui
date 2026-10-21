@@ -286,17 +286,6 @@ export const batch19Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "funnel-chart",
-    title: "Funnel Chart",
-    description: "纯 SVG 漏斗。宽度按数值，显示转化率和流失率，悬停高亮，入场逐层展开。",
-    category: "utility",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/funnel-chart.tsx",
-    target: "components/ui/funnel-chart.tsx",
-    props: [{ name: "stages", type: "FunnelStage[]", description: "阶段和数值。" }, ...ui],
-  },
-  {
     name: "gantt-timeline",
     title: "Gantt Timeline",
     description: "任务条、依赖箭头和今日线。可按日、周、月缩放，拖动改日期，拉伸改时长。",

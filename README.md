@@ -487,7 +487,6 @@ text-style
 | cart-drawer | 原创 |
 | coupon-input | 原创 |
 | radial-gauge | 原创 |
-| funnel-chart | 原创 |
 | gantt-timeline | 原创 |
 | org-chart | 原创 |
 

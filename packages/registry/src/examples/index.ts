@@ -28,6 +28,7 @@ import * as effectDemos26 from "./effect-demos-26"
 import * as effectDemos27 from "./effect-demos-27"
 import * as effectDemos28 from "./effect-demos-28"
 import * as effectDemos29 from "./effect-demos-29"
+import * as effectDemos30 from "./effect-demos-30"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -552,6 +553,21 @@ const demoMap: Record<string, ComponentType> = {
   "vector-editor-toolbar": effectDemos29.VectorEditorToolbarDemo,
   "unlock-face-id": effectDemos29.UnlockFaceIdDemo,
   "music-toggle": effectDemos29.MusicToggleDemo,
+  "perspective-text-3d": effectDemos30.PerspectiveText3DDemo,
+  "scroll-image-reveal": effectDemos30.ScrollImageRevealDemo,
+  "svg-clip-mask": effectDemos30.SvgClipMaskDemo,
+  "depth-parallax-words": effectDemos30.DepthParallaxWordsDemo,
+  "prism-sweep-transition": effectDemos30.PrismSweepTransitionDemo,
+  orb: effectDemos30.OrbDemo,
+  "splash-mask": effectDemos30.SplashMaskDemo,
+  "morph-icon": effectDemos30.MorphIconDemo,
+  "hover-expand": effectDemos30.HoverExpandDemo,
+  "inline-testimonials": effectDemos30.InlineTestimonialsDemo,
+  "count-badge": effectDemos30.CountBadgeDemo,
+  "social-selector": effectDemos30.SocialSelectorDemo,
+  "github-stars-animation": effectDemos30.GitHubStarsAnimationDemo,
+  "expandable-navbar": effectDemos30.ExpandableNavbarDemo,
+  "reviews-carousel": effectDemos30.ReviewsCarouselDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -10245,6 +10245,322 @@
           "target": "components/ui/music-toggle.tsx"
         }
       ]
+    },
+    {
+      "name": "perspective-text-3d",
+      "type": "registry:ui",
+      "title": "Perspective Text 3D",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/perspective-text-3d/index.tsx 按行或按词沿 Z 轴拉开，并随滚动、指针或静态角度倾斜。减弱动效时改成普通段落。离开视口后平面停在 0 度，不再跟指针或滚动弹簧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/perspective-text-3d.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/perspective-text-3d.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-image-reveal",
+      "type": "registry:ui",
+      "title": "Scroll Image Reveal",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/scroll-image-reveal/index.tsx 滚动驱动擦除、百叶、幕布、圆形或缩放显现。减弱动效时直接完全打开。离开视口后停在当前进度。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-image-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-image-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "svg-clip-mask",
+      "type": "registry:ui",
+      "title": "SVG Clip Mask",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/svg-clip-mask/index.tsx 内容裁进 SVG 形状，并按循环、滚动或悬停变形。减弱动效或离开视口后停在当前路径。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/svg-clip-mask.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/svg-clip-mask.tsx"
+        }
+      ]
+    },
+    {
+      "name": "depth-parallax-words",
+      "type": "registry:ui",
+      "title": "Depth Parallax Words",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/depth-parallax-words/index.tsx 每个词从放大、上移和模糊落到可读位置。减弱动效时直接显示落定状态。triggerOnView 时离开视口前停在起始状态。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/depth-parallax-words.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/depth-parallax-words.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prism-sweep-transition",
+      "type": "registry:ui",
+      "title": "Prism Sweep Transition",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/prism-sweep-transition/index.tsx 棱镜色散扫过两种状态。着色器保持原样，绘制用 ogl。减弱动效时立刻换内容。离开视口后停止绘制，进度仍会走完。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/prism-sweep-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/prism-sweep-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orb",
+      "type": "registry:ui",
+      "title": "Orb",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/orb/index.tsx 带光照的球体，内部是流动大理石。着色器保持原样，绘制用 ogl。WebGL 2 不可用时退回径向渐变。减弱动效时停在相位 0。离开视口后停在当前帧。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "splash-mask",
+      "type": "registry:ui",
+      "title": "Splash Mask",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 把子内容裁进水花或水滴路径。路径内联，不请求外部 SVG。减弱动效或离开视口后暂停内部 video。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/splash-mask.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/splash-mask.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morph-icon",
+      "type": "registry:ui",
+      "title": "Morph Icon",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/morph-icon/index.tsx 描边在菜单、播放、搜索等图标状态之间变形。减弱动效或离开视口后过渡时间为 0。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morph-icon.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morph-icon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-expand",
+      "type": "registry:ui",
+      "title": "Hover Expand",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/hover-expand/index.tsx 一排图片条，悬停或选中的一条变宽。没有精细指针时改成点击。减弱动效或离开视口后弹簧时间为 0。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-expand.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-expand.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inline-testimonials",
+      "type": "registry:ui",
+      "title": "Inline Testimonials",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/inline-testimonials/index.tsx 正文里的头像展开成评价卡片。{{id}} 标记对应 testimonials。减弱动效或离开视口后进出场时间为 0。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inline-testimonials.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inline-testimonials.tsx"
+        }
+      ]
+    },
+    {
+      "name": "count-badge",
+      "type": "registry:ui",
+      "title": "Count Badge",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/count-badge/index.tsx 圆点、数字或在线状态。数字超过 max 时显示 99+。减弱动效或离开视口后数字不再滚动。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/count-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/count-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-selector",
+      "type": "registry:ui",
+      "title": "Social Selector",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/social-selector/index.tsx 选择一个平台并预览账号。减弱动效或离开视口后指示条不再做弹簧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/social-selector.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/social-selector.tsx"
+        }
+      ]
+    },
+    {
+      "name": "github-stars-animation",
+      "type": "registry:ui",
+      "title": "GitHub Stars Animation",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/github-stars-animation/index.tsx 星标数字滚动，旁边叠头像。只有传入 apiEndpoint 才会请求网络；同时给了 stargazers 和 starCount 时直接使用。减弱动效或离开视口后数字直接跳到终值。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/github-stars-animation.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/github-stars-animation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-navbar",
+      "type": "registry:ui",
+      "title": "Expandable Navbar",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/expandable-navbar/index.tsx 导航项展开下拉面板，宽高平滑变化。减弱动效或离开视口后弹簧时间为 0。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/expandable-navbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/expandable-navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reviews-carousel",
+      "type": "registry:ui",
+      "title": "Reviews Carousel",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/reviews-carousel/index.tsx 评价卡片堆叠，带自动播放、圆点和左右按钮。减弱动效或离开视口后停止自动播放，卡片弹簧时间为 0。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reviews-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reviews-carousel.tsx"
+        }
+      ]
     }
   ]
 }

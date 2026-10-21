@@ -24,6 +24,7 @@ import { batch24Components } from "./catalog-batch24"
 import { batch25Components } from "./catalog-batch25"
 import { batch26Components } from "./catalog-batch26"
 import { batch27Components } from "./catalog-batch27"
+import { batch28Components } from "./catalog-batch28"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -71,6 +72,7 @@ export type SourceLibrary =
   | "Tailark"
   | "Eldora UI"
   | "Smooth UI"
+  | "UI Layouts"
   | "TanStack Virtual"
   | "frimousse"
   | "wavesurfer.js"
@@ -217,6 +219,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   Tailark: "https://tailark.com",
   "Eldora UI": "https://www.eldoraui.site",
   "Smooth UI": "https://smoothui.dev",
+  "UI Layouts": "https://ui-layouts.com",
   "TanStack Virtual": "https://tanstack.com/virtual",
   frimousse: "https://frimousse.liveblocks.io",
   "wavesurfer.js": "https://wavesurfer.xyz",
@@ -2269,6 +2272,7 @@ export const components: ComponentMeta[] = [
   ...batch25Components,
   ...batch26Components,
   ...batch27Components,
+  ...batch28Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

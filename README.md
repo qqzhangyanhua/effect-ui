@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 透视字、棱镜与水花
+
+登记在 `catalog-batch28.ts`。上一批色波、点阵与置顶已占用 `catalog-batch27.ts`。十四项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。`splash-mask` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT），源文件 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 。没有新增依赖。`prism-sweep-transition` 与 `orb` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止绘制、变形、数字滚动和自动播放。减弱动效时透视字改成普通段落，棱镜直接换内容，球体停在相位 0，星标数字直接跳到终值。没有传入 `apiEndpoint` 时，星标组件不请求网络。
+
+| 组件 | 来源 |
+| --- | --- |
+| perspective-text-3d | SmoothUI，MIT |
+| scroll-image-reveal | SmoothUI，MIT |
+| svg-clip-mask | SmoothUI，MIT |
+| depth-parallax-words | SmoothUI，MIT |
+| prism-sweep-transition | SmoothUI，MIT |
+| orb | SmoothUI，MIT |
+| splash-mask | UI Layouts，MIT |
+| morph-icon | SmoothUI，MIT |
+| hover-expand | SmoothUI，MIT |
+| inline-testimonials | SmoothUI，MIT |
+| count-badge | SmoothUI，MIT |
+| social-selector | SmoothUI，MIT |
+| github-stars-animation | SmoothUI，MIT |
+| expandable-navbar | SmoothUI，MIT |
+| reviews-carousel | SmoothUI，MIT |
+
 ### 色波、点阵与置顶
 
 登记在 `catalog-batch27.ts`。上一批极光、液态金属与时长已占用 `catalog-batch26.ts`。`novatrix-background` 移植自 Eldora UI（MIT，Copyright Mudunuri Bhaskara Karthikeya Varma），源文件 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 。其余十四项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`novatrix-background` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止动画帧、衰减、自动旋转和扫描倒计时。减弱动效时色波停住，手绘不挂画布，色差过渡直接换内容，点阵直接显示，滚动字停在峰值字重。

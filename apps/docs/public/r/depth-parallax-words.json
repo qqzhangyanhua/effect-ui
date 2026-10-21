@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "depth-parallax-words",
+  "type": "registry:ui",
+  "title": "Depth Parallax Words",
+  "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/depth-parallax-words/index.tsx 每个词从放大、上移和模糊落到可读位置。减弱动效时直接显示落定状态。triggerOnView 时离开视口前停在起始状态。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/depth-parallax-words.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/depth-parallax-words.tsx",
+      "content": "\"use client\"\n\n// Ported from SmoothUI (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/depth-parallax-words/index.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\n\nimport { motion, useInView } from \"motion/react\";\nimport { useRef } from \"react\";\n\n/**\n * DepthParallaxWords — per-word depth motion with scale, vertical drift and blur for layered readability.\n * From the animate-text catalog (`depth-parallax-words`).\n */\nexport interface DepthParallaxWordsProps {\n  children: string;\n  className?: string;\n  /** Delay before the animation starts, in milliseconds. */\n  delay?: number;\n  /** Per-word stagger, in milliseconds. */\n  stagger?: number;\n  /** Animate only once the text scrolls into view. */\n  triggerOnView?: boolean;\n}\n\nconst DURATION_S = 0.7;\nconst MS = 1000;\nconst EASE = [0.22, 1, 0.36, 1] as const;\n\nexport function DepthParallaxWords({\n  children,\n  className = \"\",\n  delay = 0,\n  stagger = 70,\n  triggerOnView = false,\n}: DepthParallaxWordsProps) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const inView = useInView(ref, { once: true });\n  const prefersReducedMotion = usePrefersReducedMotion();\n  const motionOn = useAnimationActive(ref);\n  const play = (!triggerOnView || inView) && motionOn && !prefersReducedMotion;\n  const words = children.split(\" \");\n\n  return (\n    <span aria-label={children} className={className} data-reduced={prefersReducedMotion ? \"true\" : \"false\"} data-slot=\"depth-parallax-words\" ref={ref}>\n      {words.map((word, index) => (\n        // biome-ignore lint/suspicious/noArrayIndexKey: words have no stable id\n        <span key={index}>\n          <motion.span\n            animate={\n              play\n                ? { filter: \"blur(0px)\", opacity: 1, scale: 1, y: 0 }\n                : undefined\n            }\n            aria-hidden=\"true\"\n            initial={\n              prefersReducedMotion\n                ? { opacity: 1 }\n                : { filter: \"blur(3px)\", opacity: 0, scale: 0.92, y: 18 }\n            }\n            style={{ display: \"inline-block\", whiteSpace: \"pre\" }}\n            transition={\n              prefersReducedMotion\n                ? { duration: 0 }\n                : {\n                    delay: delay / MS + (index * stagger) / MS,\n                    duration: DURATION_S,\n                    ease: EASE,\n                  }\n            }\n          >\n            {word}\n          </motion.span>\n          {index < words.length - 1 && (\n            <span\n              aria-hidden=\"true\"\n              style={{ display: \"inline-block\", whiteSpace: \"pre\" }}\n            >\n              {\" \"}\n            </span>\n          )}\n        </span>\n      ))}\n    </span>\n  );\n}\n"
+    }
+  ]
+}

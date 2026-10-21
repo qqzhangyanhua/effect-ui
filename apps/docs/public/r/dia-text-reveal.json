@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dia-text-reveal",
+  "type": "registry:ui",
+  "title": "Dia Text Reveal",
+  "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dia-text-reveal.tsx 文字按字母被斜向渐变遮罩扫出。减弱动效时立刻显示全文。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/dia-text-reveal.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/dia-text-reveal.tsx",
+      "content": "\"use client\"\n\n// Ported from Magic UI (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dia-text-reveal.tsx\n\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface DiaTextRevealProps {\n  text?: string\n  duration?: number\n  className?: string\n}\n\nfunction DiaTextReveal({ text = \"斜向扫过这段文字\", duration = 1.2, className }: DiaTextRevealProps) {\n  const reduced = usePrefersReducedMotion()\n  const letters = Array.from(text)\n  const step = letters.length > 1 ? duration / letters.length : 0\n\n  return (\n    <span data-slot=\"dia-text-reveal\" className={cn(\"inline-flex flex-wrap text-4xl font-semibold\", className)}>\n      {letters.map((letter, index) => {\n        const shown = letter === \" \" ? \"\\u00a0\" : letter\n        if (reduced) {\n          return (\n            <span key={`${letter}-${index}`} className=\"text-foreground\">\n              {shown}\n            </span>\n          )\n        }\n        return (\n          <motion.span\n            key={`${letter}-${index}`}\n            className=\"inline-block bg-[linear-gradient(135deg,var(--foreground)_42%,transparent_68%)] bg-size-[220%_220%] bg-clip-text text-transparent\"\n            initial={{ opacity: 0, y: \"0.35em\", backgroundPosition: \"100% 100%\" }}\n            animate={{ opacity: 1, y: 0, backgroundPosition: \"0% 0%\" }}\n            transition={{ duration: 0.45, delay: index * step, ease: \"easeOut\" }}\n          >\n            {shown}\n          </motion.span>\n        )\n      })}\n    </span>\n  )\n}\n\nexport { DiaTextReveal }\n"
+    }
+  ]
+}

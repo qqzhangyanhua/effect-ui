@@ -533,6 +533,28 @@ text-style
 | team-members-table | 灵感来自 Supabase 与 Browserbase，原创实现 |
 | help-center-index | 灵感来自 Notion 帮助中心，原创实现 |
 
+### 字符点阵、视频对话框与会话
+
+登记在 `catalog-batch21.ts`。上一批光栅组件已占用 `catalog-batch20.ts`。动效与两个交互组件移植自 Magic UI（MIT，Copyright (c) Magic UI），并改成 effect-ui 的 props 与 Tailwind v4 主题变量。其余五项为原创实现，版式参考 Mobbin 里的产品界面，没有复制文案或标志。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时暂停动画帧。减弱动效时点阵、透视网格和粒子停在静帧，文字立刻显示，视频暂停并露出封面，光标恢复系统样式，斜纹不再漂移。
+
+| 组件 | 来源 |
+| --- | --- |
+| glyph-matrix | Magic UI，MIT |
+| dia-text-reveal | Magic UI，MIT |
+| warp-background | Magic UI，MIT |
+| backlight | Magic UI，MIT |
+| floating-3d-particles | Magic UI，MIT |
+| video-text | Magic UI，MIT |
+| smooth-cursor | Magic UI，MIT |
+| line-shadow-text | Magic UI，MIT |
+| hero-video-dialog | Magic UI，MIT |
+| animated-subscribe-button | Magic UI，MIT |
+| audit-log-table | 灵感来自 Gumloop 与 Base44（经由 Mobbin），原创实现 |
+| notification-preferences | 灵感来自 Unify 与 SoundCloud（经由 Mobbin），原创实现 |
+| data-export-dialog | 灵感来自 Klaviyo 与 Square（经由 Mobbin），原创实现 |
+| two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
+| active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

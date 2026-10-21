@@ -21,6 +21,7 @@ import * as effectDemos19 from "./effect-demos-19"
 import * as effectDemos20 from "./effect-demos-20"
 import * as effectDemos21 from "./effect-demos-21"
 import * as effectDemos22 from "./effect-demos-22"
+import * as effectDemos23 from "./effect-demos-23"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -440,6 +441,21 @@ const demoMap: Record<string, ComponentType> = {
   "usage-meter": effectDemos22.UsageMeterDemo,
   "team-members-table": effectDemos22.TeamMembersTableDemo,
   "help-center-index": effectDemos22.HelpCenterIndexDemo,
+  "glyph-matrix": effectDemos23.GlyphMatrixDemo,
+  "dia-text-reveal": effectDemos23.DiaTextRevealDemo,
+  "warp-background": effectDemos23.WarpBackgroundDemo,
+  backlight: effectDemos23.BacklightDemo,
+  "floating-3d-particles": effectDemos23.Floating3DParticlesDemo,
+  "video-text": effectDemos23.VideoTextDemo,
+  "smooth-cursor": effectDemos23.SmoothCursorDemo,
+  "line-shadow-text": effectDemos23.LineShadowTextDemo,
+  "hero-video-dialog": effectDemos23.HeroVideoDialogDemo,
+  "animated-subscribe-button": effectDemos23.AnimatedSubscribeButtonDemo,
+  "audit-log-table": effectDemos23.AuditLogTableDemo,
+  "notification-preferences": effectDemos23.NotificationPreferencesDemo,
+  "data-export-dialog": effectDemos23.DataExportDialogDemo,
+  "two-factor-setup": effectDemos23.TwoFactorSetupDemo,
+  "active-sessions-list": effectDemos23.ActiveSessionsListDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

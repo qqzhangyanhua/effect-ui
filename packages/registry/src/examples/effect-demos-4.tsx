@@ -32,11 +32,17 @@ const swatch = (color: string) =>
 
 export function ShaderBackgroundsDemo({
   variant = "mesh",
+  colors,
+  speed = 1,
+  scale = 1,
 }: {
   variant?: "mesh" | "grain" | "dithering" | "metaballs" | "warp"
+  colors?: string[]
+  speed?: number
+  scale?: number
 } = {}) {
   return (
-    <ShaderBackground variant={variant} className="h-56 w-full rounded-xl">
+    <ShaderBackground variant={variant} colors={colors} speed={speed} scale={scale} className="h-56 w-full rounded-xl">
       <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderBackground>
   )
@@ -53,10 +59,29 @@ export function LiquidGlassDemo() {
   )
 }
 
-export function BackgroundPathsDemo() {
+export function BackgroundPathsDemo({
+  count = 10,
+  color,
+  intensity = 0.45,
+  speed = 1,
+  duration = 2400,
+}: {
+  count?: number
+  color?: string
+  intensity?: number
+  speed?: number
+  duration?: number
+} = {}) {
   return (
     <Frame className="p-0">
-      <BackgroundPaths className="h-56 w-full" />
+      <BackgroundPaths
+        className="h-56 w-full"
+        count={count}
+        color={color}
+        intensity={intensity}
+        speed={speed}
+        duration={duration}
+      />
     </Frame>
   )
 }

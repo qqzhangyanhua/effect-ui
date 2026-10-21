@@ -20,16 +20,44 @@ export function LensZoomDemo() {
   return <LensZoom className="w-full" />
 }
 
-export function WorldMapArcsDemo() {
-  return <WorldMapArcs className="w-full" />
+export function WorldMapArcsDemo({
+  colors = ["#67e8f9", "#bae6fd"],
+  speed = 1,
+  size = 0.7,
+}: {
+  colors?: string[]
+  speed?: number
+  size?: number
+} = {}) {
+  return <WorldMapArcs className="w-full" colors={colors} speed={speed} size={size} />
 }
 
-export function VortexBackgroundDemo() {
-  return <VortexBackground className="w-full" />
+export function VortexBackgroundDemo({
+  count = 96,
+  speed = 1,
+  color,
+  intensity = 0.32,
+}: {
+  count?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
+  return <VortexBackground className="w-full" count={count} speed={speed} color={color} intensity={intensity} />
 }
 
-export function BeamsCollisionDemo() {
-  return <BeamsCollision className="w-full" />
+export function BeamsCollisionDemo({
+  count = 6,
+  speed = 1,
+  color = "#cffafe",
+  intensity = 1,
+}: {
+  count?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
+  return <BeamsCollision className="w-full" count={count} speed={speed} color={color} intensity={intensity} />
 }
 
 export function PlaceholderVanishInputDemo() {

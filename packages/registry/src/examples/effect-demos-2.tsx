@@ -114,54 +114,128 @@ export function TextRevealDemo() {
   )
 }
 
-export function LightBeamsDemo() {
+export function LightBeamsDemo({
+  beams = 6,
+  speed = 1,
+  color,
+  intensity = 0.5,
+}: {
+  beams?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
   return (
     <Frame>
-      <LightBeams />
+      <LightBeams beams={beams} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">光束</p>
     </Frame>
   )
 }
 
-export function StarfieldDemo() {
+export function StarfieldDemo({
+  count = 90,
+  speed = 1,
+  color,
+  size = 1,
+}: {
+  count?: number
+  speed?: number
+  color?: string
+  size?: number
+} = {}) {
   return (
     <Frame>
       <div className="absolute inset-0 bg-zinc-950" />
-      <Starfield className="text-white" />
+      <Starfield className="text-white" count={count} speed={speed} color={color} size={size} />
       <p className="relative z-10 text-sm text-zinc-100">星空</p>
     </Frame>
   )
 }
 
-export function WaveBackgroundDemo() {
+export function WaveBackgroundDemo({
+  speed = 1,
+  color,
+  intensity = 0.25,
+  size = 112,
+}: {
+  speed?: number
+  color?: string
+  intensity?: number
+  size?: number
+} = {}) {
   return (
-    <WaveBackground className="flex min-h-40 w-full items-center justify-center p-8">
+    <WaveBackground
+      className="flex min-h-40 w-full items-center justify-center p-8"
+      speed={speed}
+      color={color}
+      intensity={intensity}
+      size={size}
+    >
       波浪背景
     </WaveBackground>
   )
 }
 
-export function NoiseGradientDemo() {
+export function NoiseGradientDemo({
+  colors = ["#7c3aed", "#d946ef", "#22d3ee"],
+  angle = 135,
+  intensity = 0.25,
+  scale = 1,
+}: {
+  colors?: string[]
+  angle?: number
+  intensity?: number
+  scale?: number
+} = {}) {
   return (
-    <NoiseGradient className="flex min-h-40 w-full items-center justify-center p-8 text-white">
+    <NoiseGradient
+      className="flex min-h-40 w-full items-center justify-center p-8 text-white"
+      colors={colors}
+      angle={angle}
+      intensity={intensity}
+      scale={scale}
+    >
       噪点渐变
     </NoiseGradient>
   )
 }
 
-export function AnimatedGridDemo() {
+export function AnimatedGridDemo({
+  cell = 36,
+  speed = 1,
+  color,
+  intensity = 0.15,
+}: {
+  cell?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
   return (
     <Frame>
-      <AnimatedGrid />
+      <AnimatedGrid cell={cell} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">漂移网格</p>
     </Frame>
   )
 }
 
-export function RetroGridDemo() {
+export function RetroGridDemo({
+  size = 48,
+  speed = 1,
+  color,
+  intensity = 0.28,
+  angle = 62,
+}: {
+  size?: number
+  speed?: number
+  color?: string
+  intensity?: number
+  angle?: number
+} = {}) {
   return (
     <Frame>
-      <RetroGrid />
+      <RetroGrid size={size} speed={speed} color={color} intensity={intensity} angle={angle} />
       <p className="relative z-10 text-sm">复古透视网格</p>
     </Frame>
   )

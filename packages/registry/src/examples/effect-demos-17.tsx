@@ -19,8 +19,32 @@ import { SignaturePad } from "../effects/signature-pad"
 import { SocialPostFeed } from "../effects/social-post-feed"
 import { XrayFluidReveal } from "../effects/xray-fluid-reveal"
 
-export function GalaxySpiralDemo() {
-  return <GalaxySpiral className="w-full" />
+export function GalaxySpiralDemo({
+  arms = 3,
+  radius = 1,
+  count = 1800,
+  randomness = 0.45,
+  speed = 0.7,
+  colors = ["#f8e7b0", "#7dd3fc"],
+}: {
+  arms?: number
+  radius?: number
+  count?: number
+  randomness?: number
+  speed?: number
+  colors?: string[]
+} = {}) {
+  return (
+    <GalaxySpiral
+      className="w-full"
+      arms={arms}
+      radius={radius}
+      count={count}
+      randomness={randomness}
+      speed={speed}
+      colors={colors}
+    />
+  )
 }
 
 export function ProximityScaleGridDemo() {
@@ -35,8 +59,16 @@ export function ScrollSvgGraphDemo() {
   return <ScrollSvgGraph className="w-full" />
 }
 
-export function ClothWindBannerDemo() {
-  return <ClothWindBanner className="w-full" />
+export function ClothWindBannerDemo({
+  intensity = 0.65,
+  speed = 1,
+  colors = ["#7c3aed", "#ea580c"],
+}: {
+  intensity?: number
+  speed?: number
+  colors?: string[]
+} = {}) {
+  return <ClothWindBanner className="w-full" intensity={intensity} speed={speed} colors={colors} />
 }
 
 export function XrayFluidRevealDemo() {
@@ -47,8 +79,18 @@ export function PetalDissolveTextDemo() {
   return <PetalDissolveText className="w-full" />
 }
 
-export function DataTunnelDemo() {
-  return <DataTunnel className="w-full" />
+export function DataTunnelDemo({
+  count = 10,
+  speed = 1,
+  colors = ["#0d3347", "#a6f2ff"],
+  intensity = 1,
+}: {
+  count?: number
+  speed?: number
+  colors?: string[]
+  intensity?: number
+} = {}) {
+  return <DataTunnel className="w-full" count={count} speed={speed} colors={colors} intensity={intensity} />
 }
 
 export function FileUploadQueueDemo() {

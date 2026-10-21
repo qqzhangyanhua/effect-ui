@@ -583,6 +583,7 @@
       "description": "跟随指针的粒子背景。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -685,6 +686,7 @@
       "description": "随机闪烁的像素网格。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -1787,6 +1789,7 @@
       "description": "星空穿梭背景。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -2722,6 +2725,7 @@
         "@paper-design/shaders-react"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -3634,6 +3638,7 @@
       "description": "流场线粒子背景。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -3687,6 +3692,8 @@
         "@paper-design/shaders-react"
       ],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3978,6 +3985,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4142,6 +4150,7 @@
       "description": "灵感来自 letter glitch wall，原创实现：字符墙随机翻跳。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4176,6 +4185,7 @@
       "description": "原创 GLSL 闪电：噪声折线与辉光，无 WebGL 时回退渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4193,6 +4203,7 @@
       "description": "原创虹彩噪声背景着色器，无 WebGL 时回退锥形渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4210,6 +4221,7 @@
       "description": "原创丝绸褶皱噪声背景着色器，无 WebGL 时回退线性渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -5428,6 +5440,7 @@
       "description": "原创 Bayer 抖动渐变着色器。无 WebGL 时回退点阵渐变，减弱动效时停在一帧。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5931,6 +5944,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5951,6 +5965,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6009,6 +6024,7 @@
         "simplex-noise"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6696,6 +6712,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6846,6 +6863,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6925,6 +6943,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6983,6 +7002,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],

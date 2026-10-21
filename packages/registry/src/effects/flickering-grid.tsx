@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface FlickeringGridProps extends React.HTMLAttributes<HTMLCanvasElement> {
@@ -34,16 +35,16 @@ function FlickeringGrid({
   ...props
 }: FlickeringGridProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(canvasRef)
 
   React.useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas || !active) return
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
     let frame = 0
     let running = false
-    let visible = false
     let width = 0
     let height = 0
     let dpr = 0
@@ -51,7 +52,7 @@ function FlickeringGrid({
     let reducedMotion = motionMedia.matches
 
     const syncSize = (nextWidth: number, nextHeight: number) => {
-      const nextDpr = window.devicePixelRatio || 1
+      const nextDpr = Math.min(window.devicePixelRatio || 1, 2)
       if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
       if (nextWidth === width && nextHeight === height && nextDpr === dpr) return
       width = nextWidth
@@ -97,10 +98,10 @@ function FlickeringGrid({
       reducedMotion = motionMedia.matches
       if (reducedMotion) {
         stop()
-        if (visible && width > 0 && height > 0) paint()
+        if (width > 0 && height > 0) paint()
         return
       }
-      if (visible) start()
+      start()
     }
     motionMedia.addEventListener("change", onMotionChange)
 
@@ -108,31 +109,23 @@ function FlickeringGrid({
       const entry = entries[0]
       if (!entry) return
       syncSize(entry.contentRect.width, entry.contentRect.height)
-      if (visible) start()
-    })
-
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      visible = Boolean(entry?.isIntersecting)
-      if (visible) start()
-      else stop()
+      start()
     })
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
-      if (reducedMotion && visible) start()
+      if (reducedMotion) start()
     })
 
     resizeObserver.observe(canvas)
-    intersectionObserver.observe(canvas)
 
     return () => {
       stop()
       resizeObserver.disconnect()
-      intersectionObserver.disconnect()
       stopDprWatch()
       motionMedia.removeEventListener("change", onMotionChange)
     }
-  }, [color, flickerChance, gridGap, maxOpacity, squareSize])
+  }, [active, color, flickerChance, gridGap, maxOpacity, squareSize])
 
   return (
     <canvas

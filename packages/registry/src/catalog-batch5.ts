@@ -1,5 +1,7 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 
+import { batch5Backgrounds } from "./catalog-batch5-backgrounds"
+
 const ui: PropDoc[] = [
   {
     name: "className",
@@ -447,26 +449,5 @@ export const batch5Components: ComponentMeta[] = [
     target: "components/ui/tear-button.tsx",
     props: ui,
   },
-  {
-    name: "flow-field",
-    title: "Flow Field",
-    description: "流场线粒子背景。",
-    category: "backgrounds",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/flow-field.tsx",
-    target: "components/ui/flow-field.tsx",
-    props: [{ name: "density", type: "number", defaultValue: "70", description: "粒子数。" }, ...ui],
-  },
-  {
-    name: "halftone",
-    title: "Halftone",
-    description: "半调网点，随鼠标放大。",
-    category: "backgrounds",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/halftone.tsx",
-    target: "components/ui/halftone.tsx",
-    props: [{ name: "gap", type: "number", defaultValue: "14", description: "网点间距。" }, ...ui],
-  },
+  ...batch5Backgrounds,
 ]

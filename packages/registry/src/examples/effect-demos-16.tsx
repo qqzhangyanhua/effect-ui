@@ -48,8 +48,20 @@ export function ShaderGridWideDemo() {
   return <ShaderGridWide className="w-full" />
 }
 
-export function SeaWavesBackgroundDemo() {
-  return <SeaWavesBackground className="w-full" />
+export function SeaWavesBackgroundDemo({
+  intensity = 0.15,
+  speed = 1,
+  colors = ["#05142e", "#0d597a", "#dbe8f2"],
+  scale = 1,
+}: {
+  intensity?: number
+  speed?: number
+  colors?: string[]
+  scale?: number
+} = {}) {
+  return (
+    <SeaWavesBackground className="w-full" intensity={intensity} speed={speed} colors={colors} scale={scale} />
+  )
 }
 
 export function CinemaSeatPickerDemo() {

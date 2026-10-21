@@ -99,7 +99,37 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/sea-waves-background.tsx",
     target: "components/ui/sea-waves-background.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.15",
+        description: "海况，0 是平静，1 是风暴。",
+        control: { kind: "range", value: 0.15, min: 0, max: 1, step: 0.01 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "波浪时间倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#05142e", "#0d597a", "#dbe8f2"]',
+        description: "深海、近岸和天空的颜色。",
+        control: { kind: "colors", value: ["#05142e", "#0d597a", "#dbe8f2"] },
+      },
+      {
+        name: "scale",
+        type: "number",
+        defaultValue: "1",
+        description: "波浪空间频率倍率。",
+        control: { kind: "range", value: 1, min: 0.6, max: 1.8, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "cinema-seat-picker",

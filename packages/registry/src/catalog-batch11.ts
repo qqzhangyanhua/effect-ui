@@ -158,7 +158,37 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dither-gradient.tsx",
     target: "components/ui/dither-gradient.tsx",
-    props: ui,
+    props: [
+      {
+        name: "colors",
+        type: "string[]",
+        defaultValue: '["#1a0d47", "#f57338", "#33bfd1"]',
+        description: "渐变使用的三色。",
+        control: { kind: "colors", value: ["#1a0d47", "#f57338", "#33bfd1"] },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "色带移动速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        defaultValue: "5",
+        description: "抖动色阶数量。",
+        control: { kind: "range", value: 5, min: 2, max: 8, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "1",
+        description: "抖动阈值的强度。",
+        control: { kind: "range", value: 1, min: 0.4, max: 1.4, step: 0.1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "anchor-popover",

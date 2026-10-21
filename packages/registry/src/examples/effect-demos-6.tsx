@@ -40,6 +40,8 @@ export function SplashCursorDemo({
 
 export function ShaderPack2Demo({
   variant = "god-rays",
+  speed = 1,
+  scale = 1,
 }: {
   variant?:
     | "liquid-metal"
@@ -50,9 +52,11 @@ export function ShaderPack2Demo({
     | "voronoi"
     | "swirl"
     | "fluted-glass"
+  speed?: number
+  scale?: number
 } = {}) {
   return (
-    <ShaderPack2 variant={variant} className="h-56 w-full rounded-xl">
+    <ShaderPack2 variant={variant} speed={speed} scale={scale} className="h-56 w-full rounded-xl">
       <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderPack2>
   )

@@ -87,7 +87,7 @@ export type ControlDef =
   | { kind: "range"; value: number; min: number; max: number; step?: number; group?: ControlGroup }
   | { kind: "select"; value: string; options: readonly string[]; group?: ControlGroup }
   | { kind: "color"; value?: string; group?: ControlGroup }
-  | { kind: "colors"; value: readonly string[]; group?: ControlGroup }
+  | { kind: "colors"; value: readonly string[]; follow?: boolean; group?: ControlGroup }
   | { kind: "boolean"; value: boolean; group?: ControlGroup }
   | { kind: "text"; value: string; group?: ControlGroup }
 
@@ -699,8 +699,41 @@ export const components: ComponentMeta[] = [
     file: "effects/grid-pattern.tsx",
     target: "components/ui/grid-pattern.tsx",
     props: [
-      { name: "width", type: "number", defaultValue: "40", description: "单元格宽。" },
-      { name: "height", type: "number", defaultValue: "40", description: "单元格高。" },
+      {
+        name: "width",
+        type: "number",
+        defaultValue: "40",
+        description: "单元格宽。",
+        control: { kind: "range", value: 40, min: 8, max: 80, step: 4 },
+      },
+      {
+        name: "height",
+        type: "number",
+        defaultValue: "40",
+        description: "单元格高。",
+        control: { kind: "range", value: 40, min: 8, max: 80, step: 4 },
+      },
+      {
+        name: "x",
+        type: "number",
+        defaultValue: "-1",
+        description: "水平偏移。",
+        control: { kind: "range", value: -1, min: -20, max: 20, step: 1 },
+      },
+      {
+        name: "y",
+        type: "number",
+        defaultValue: "-1",
+        description: "垂直偏移。",
+        control: { kind: "range", value: -1, min: -20, max: 20, step: 1 },
+      },
+      {
+        name: "strokeDasharray",
+        type: "string",
+        defaultValue: "0",
+        description: "描边虚线。",
+        control: { kind: "text", value: "0" },
+      },
     ],
   },
   {
@@ -713,9 +746,41 @@ export const components: ComponentMeta[] = [
     file: "effects/dot-pattern.tsx",
     target: "components/ui/dot-pattern.tsx",
     props: [
-      { name: "width", type: "number", defaultValue: "16", description: "水平间距。" },
-      { name: "height", type: "number", defaultValue: "16", description: "垂直间距。" },
-      { name: "cr", type: "number", defaultValue: "1", description: "圆点半径。" },
+      {
+        name: "width",
+        type: "number",
+        defaultValue: "16",
+        description: "水平间距。",
+        control: { kind: "range", value: 16, min: 4, max: 40, step: 1 },
+      },
+      {
+        name: "height",
+        type: "number",
+        defaultValue: "16",
+        description: "垂直间距。",
+        control: { kind: "range", value: 16, min: 4, max: 40, step: 1 },
+      },
+      {
+        name: "cx",
+        type: "number",
+        defaultValue: "1",
+        description: "圆心横坐标。",
+        control: { kind: "range", value: 1, min: 0, max: 8, step: 1 },
+      },
+      {
+        name: "cy",
+        type: "number",
+        defaultValue: "1",
+        description: "圆心纵坐标。",
+        control: { kind: "range", value: 1, min: 0, max: 8, step: 1 },
+      },
+      {
+        name: "cr",
+        type: "number",
+        defaultValue: "1",
+        description: "圆点半径。",
+        control: { kind: "range", value: 1, min: 0.5, max: 4, step: 0.5 },
+      },
     ],
   },
   {
@@ -727,7 +792,35 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/meteors.tsx",
     target: "components/ui/meteors.tsx",
-    props: [{ name: "number", type: "number", defaultValue: "18", description: "流星数量。" }],
+    props: [
+      {
+        name: "number",
+        type: "number",
+        defaultValue: "18",
+        description: "流星数量。",
+        control: { kind: "range", value: 18, min: 4, max: 36, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "下落速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "流星颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "2",
+        description: "头部直径（像素）。",
+        control: { kind: "range", value: 2, min: 1, max: 6, step: 1 },
+      },
+    ],
   },
   {
     name: "aurora-background",
@@ -745,6 +838,33 @@ export const components: ComponentMeta[] = [
         description: "前景内容。",
         control: { kind: "text", value: "极光铺在内容后面" },
       },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "流动速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.7",
+        description: "光晕不透明度。",
+        control: { kind: "range", value: 0.7, min: 0.2, max: 1, step: 0.05 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "三处光斑颜色。",
+        control: { kind: "colors", value: ["#7c3aed", "#22d3ee", "#f59e0b"], follow: true },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "64",
+        description: "模糊半径（像素）。",
+        control: { kind: "range", value: 64, min: 16, max: 96, step: 4 },
+      },
       ...uiProps,
     ],
   },
@@ -757,7 +877,35 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/ripples.tsx",
     target: "components/ui/ripples.tsx",
-    props: [{ name: "rings", type: "number", defaultValue: "4", description: "圆环数量。" }],
+    props: [
+      {
+        name: "rings",
+        type: "number",
+        defaultValue: "4",
+        description: "圆环数量。",
+        control: { kind: "range", value: 4, min: 2, max: 8, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "扩散速度倍率。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "圆环颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.2",
+        description: "圆环透明度。",
+        control: { kind: "range", value: 0.2, min: 0.05, max: 0.6, step: 0.05 },
+      },
+    ],
   },
   {
     name: "flickering-grid",
@@ -769,8 +917,41 @@ export const components: ComponentMeta[] = [
     file: "effects/flickering-grid.tsx",
     target: "components/ui/flickering-grid.tsx",
     props: [
-      { name: "squareSize", type: "number", defaultValue: "4", description: "方块尺寸。" },
-      { name: "flickerChance", type: "number", defaultValue: "0.18", description: "每帧闪烁概率。" },
+      {
+        name: "squareSize",
+        type: "number",
+        defaultValue: "4",
+        description: "方块尺寸。",
+        control: { kind: "range", value: 4, min: 2, max: 16, step: 1 },
+      },
+      {
+        name: "gridGap",
+        type: "number",
+        defaultValue: "6",
+        description: "方块间距。",
+        control: { kind: "range", value: 6, min: 0, max: 20, step: 1 },
+      },
+      {
+        name: "flickerChance",
+        type: "number",
+        defaultValue: "0.18",
+        description: "每帧闪烁概率。",
+        control: { kind: "range", value: 0.18, min: 0.02, max: 0.6, step: 0.01 },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--foreground)",
+        description: "方块颜色。",
+        control: { kind: "color" },
+      },
+      {
+        name: "maxOpacity",
+        type: "number",
+        defaultValue: "0.28",
+        description: "最大不透明度。",
+        control: { kind: "range", value: 0.28, min: 0.05, max: 0.8, step: 0.01 },
+      },
     ],
   },
   {

@@ -29,8 +29,18 @@ export function MouseFlowmapDemo() {
   return <MouseFlowmap className="h-56 w-full" />
 }
 
-export function GpgpuParticlesDemo() {
-  return <GpgpuParticles className="h-56 w-full" text="effect-ui" />
+export function GpgpuParticlesDemo({
+  count = 1400,
+  text = "effect-ui",
+  speed = 1,
+  size = 2.4,
+}: {
+  count?: number
+  text?: string
+  speed?: number
+  size?: number
+} = {}) {
+  return <GpgpuParticles className="h-56 w-full" count={count} text={text} speed={speed} size={size} />
 }
 
 export function PolylineRibbonCursorDemo() {
@@ -88,29 +98,70 @@ export function CanvasRevealDemo() {
 export function LetterGlitchWallDemo({
   rows = 8,
   cols = 18,
-}: { rows?: number; cols?: number } = {}) {
-  return <LetterGlitchWall className="h-48 w-full" rows={rows} cols={cols} />
+  speed = 1,
+  color,
+}: {
+  rows?: number
+  cols?: number
+  speed?: number
+  color?: string
+} = {}) {
+  return <LetterGlitchWall className="h-48 w-full" rows={rows} cols={cols} speed={speed} color={color} />
 }
 
 export function TargetCursorDemo({ className = "w-full" }: { className?: string } = {}) {
   return <TargetCursor className={className} />
 }
 
-export function LightningDemo({ hue = 3.8 }: { hue?: number } = {}) {
-  return <Lightning className="h-52 w-full" hue={hue} />
+export function LightningDemo({
+  hue = 3.8,
+  speed = 1,
+  intensity = 1,
+  count = 4,
+}: {
+  hue?: number
+  speed?: number
+  intensity?: number
+  count?: number
+} = {}) {
+  return <Lightning className="h-52 w-full" hue={hue} speed={speed} intensity={intensity} count={count} />
 }
 
-export function IridescenceDemo({ children = "虹彩噪声" }: { children?: string } = {}) {
+export function IridescenceDemo({
+  children = "虹彩噪声",
+  speed = 1,
+  scale = 1,
+  intensity = 0.85,
+  color,
+}: {
+  children?: string
+  speed?: number
+  scale?: number
+  intensity?: number
+  color?: string
+} = {}) {
   return (
-    <Iridescence className="h-52 w-full">
+    <Iridescence className="h-52 w-full" speed={speed} scale={scale} intensity={intensity} color={color}>
       <div className="grid h-52 place-items-center text-sm text-white/80">{children}</div>
     </Iridescence>
   )
 }
 
-export function SilkDemo({ children = "丝绸褶皱" }: { children?: string } = {}) {
+export function SilkDemo({
+  children = "丝绸褶皱",
+  colors = ["#120d1f", "#472e6b", "#c7b8db"],
+  speed = 1,
+  scale = 1,
+  intensity = 0.35,
+}: {
+  children?: string
+  colors?: string[]
+  speed?: number
+  scale?: number
+  intensity?: number
+} = {}) {
   return (
-    <Silk className="h-52 w-full">
+    <Silk className="h-52 w-full" colors={colors} speed={speed} scale={scale} intensity={intensity}>
       <div className="grid h-52 place-items-center text-sm text-white/80">{children}</div>
     </Silk>
   )

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 interface Particle {
@@ -40,18 +41,18 @@ function Particles({
   ...props
 }: ParticlesProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(canvasRef)
   const particles = React.useRef<Particle[]>([])
   const mouse = React.useRef({ x: 0, y: 0 })
 
   React.useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas || !active) return
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
     let frame = 0
     let running = false
-    let visible = false
     let width = 0
     let height = 0
     let dpr = 0
@@ -59,7 +60,7 @@ function Particles({
     let reducedMotion = motionMedia.matches
 
     const syncSize = (nextWidth: number, nextHeight: number) => {
-      const nextDpr = window.devicePixelRatio || 1
+      const nextDpr = Math.min(window.devicePixelRatio || 1, 2)
       if (nextWidth * nextDpr < 1 || nextHeight * nextDpr < 1) return
       const sizeChanged = nextWidth !== width || nextHeight !== height
       if (!sizeChanged && nextDpr === dpr) return
@@ -136,10 +137,10 @@ function Particles({
       reducedMotion = motionMedia.matches
       if (reducedMotion) {
         stop()
-        if (visible && width > 0 && height > 0) draw()
+        if (width > 0 && height > 0) draw()
         return
       }
-      if (visible) start()
+      start()
     }
     motionMedia.addEventListener("change", onMotionChange)
 
@@ -147,33 +148,25 @@ function Particles({
       const entry = entries[0]
       if (!entry) return
       syncSize(entry.contentRect.width, entry.contentRect.height)
-      if (visible) start()
-    })
-
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      visible = Boolean(entry?.isIntersecting)
-      if (visible) start()
-      else stop()
+      start()
     })
 
     const stopDprWatch = watchDevicePixelRatio(() => {
       syncSize(width, height)
-      if (reducedMotion && visible) start()
+      if (reducedMotion) start()
     })
 
     resizeObserver.observe(canvas)
-    intersectionObserver.observe(canvas)
     canvas.addEventListener("mousemove", onMove)
 
     return () => {
       stop()
       resizeObserver.disconnect()
-      intersectionObserver.disconnect()
       stopDprWatch()
       motionMedia.removeEventListener("change", onMotionChange)
       canvas.removeEventListener("mousemove", onMove)
     }
-  }, [color, ease, quantity, staticity])
+  }, [active, color, ease, quantity, staticity])
 
   return (
     <canvas

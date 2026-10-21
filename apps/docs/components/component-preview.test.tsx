@@ -103,6 +103,20 @@ test("滑块、开关、文本和选项改值后，demo 收到新值", async () 
   expect(snippet()).toContain('direction="right"')
 })
 
+test("colors 可以一开始跟随主题，关掉之后才把调色板传给 demo", async () => {
+  const user = renderPreview([
+    { name: "colors", control: { kind: "colors", value: ["#ff0000", "#00ff00"], follow: true } },
+  ])
+
+  expect(params()).toBe("{}")
+  expect(snippet()).toBe("<Aurora />")
+  expect(screen.getByRole("switch", { name: "colors 跟随主题" })).toBeChecked()
+
+  await user.click(screen.getByRole("switch", { name: "colors 跟随主题" }))
+  expect(params()).toBe('{"colors":["#ff0000","#00ff00"]}')
+  expect(snippet()).toBe('<Aurora colors={["#ff0000", "#00ff00"]} />')
+})
+
 test("colors 的数量固定，改一个颜色只改那一项", async () => {
   const user = renderPreview([
     { name: "colors", control: { kind: "colors", value: ["#ff0000", "#00ff00"] } },

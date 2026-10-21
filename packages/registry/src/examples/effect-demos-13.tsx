@@ -68,10 +68,30 @@ export function ElasticSliderDemo() {
   return <ElasticSlider className="w-full" />
 }
 
-export function LightRaysDemo() {
-  return <LightRays className="w-full" />
+export function LightRaysDemo({
+  followMouse = true,
+  count = 14,
+  speed = 1,
+  colors = ["#ffc261", "#73adff"],
+}: {
+  followMouse?: boolean
+  count?: number
+  speed?: number
+  colors?: string[]
+} = {}) {
+  return <LightRays className="w-full" followMouse={followMouse} count={count} speed={speed} colors={colors} />
 }
 
-export function HyperspeedDemo() {
-  return <Hyperspeed className="w-full" />
+export function HyperspeedDemo({
+  speed = 1,
+  count = 46,
+  colors = ["#ff526b", "#6bc7ff"],
+  intensity = 1,
+}: {
+  speed?: number
+  count?: number
+  colors?: string[]
+  intensity?: number
+} = {}) {
+  return <Hyperspeed className="w-full" speed={speed} count={count} colors={colors} intensity={intensity} />
 }

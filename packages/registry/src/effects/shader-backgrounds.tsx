@@ -1,6 +1,6 @@
 "use client"
 
-import type { ReactNode } from "react"
+import { useRef, type ReactNode } from "react"
 import {
   Dithering,
   GrainGradient,
@@ -9,6 +9,7 @@ import {
   Warp,
 } from "@paper-design/shaders-react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
@@ -23,6 +24,8 @@ export interface ShaderBackgroundProps {
   variant?: ShaderBackgroundVariant
   className?: string
   colors?: string[]
+  speed?: number
+  scale?: number
   children?: ReactNode
 }
 
@@ -34,19 +37,52 @@ const defaults: Record<ShaderBackgroundVariant, string[]> = {
   warp: ["#020617", "#6366f1", "#f59e0b"],
 }
 
+const presetSpeed: Record<ShaderBackgroundVariant, number> = {
+  mesh: 1,
+  grain: 1,
+  dithering: 1,
+  metaballs: 1,
+  warp: 1,
+}
+
+// defaultPreset.params.scale。对象尺寸默认是 1，dithering 自己写成 0.6。
+const presetScale: Record<ShaderBackgroundVariant, number> = {
+  mesh: 1,
+  grain: 1,
+  dithering: 0.6,
+  metaballs: 1,
+  warp: 1,
+}
+
+function librarySpeed(preset: number, speed: number, paused: boolean) {
+  if (paused) return 0
+  const rate = Number.isFinite(speed) && speed > 0 ? speed : 1
+  if (rate === 1) return undefined
+  return preset * rate
+}
+
+function libraryScale(preset: number, scale: number) {
+  if (scale === 1) return undefined
+  return preset * scale
+}
+
 function ShaderLayer({
   variant,
   colors,
+  speed,
+  scale,
 }: {
   variant: ShaderBackgroundVariant
   colors: string[]
+  speed: number | undefined
+  scale: number | undefined
 }) {
-  const reducedMotion = usePrefersReducedMotion()
   const shared = {
     className: "size-full",
     width: "100%",
     height: "100%",
-    speed: reducedMotion ? 0 : undefined,
+    speed,
+    scale,
   }
 
   if (variant === "grain") {
@@ -74,17 +110,25 @@ function ShaderBackground({
   variant = "mesh",
   className,
   colors,
+  speed = 1,
+  scale = 1,
   children,
 }: ShaderBackgroundProps) {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const active = useAnimationActive(rootRef)
+  const reducedMotion = usePrefersReducedMotion()
   const palette = colors ?? defaults[variant]
+  const motionSpeed = librarySpeed(presetSpeed[variant], speed, !active || reducedMotion)
+  const motionScale = libraryScale(presetScale[variant], scale)
 
   return (
     <div
+      ref={rootRef}
       className={cn("relative min-h-48 overflow-hidden", className)}
       style={{ background: `linear-gradient(135deg, ${palette.join(", ")})` }}
     >
       <div className="absolute inset-0">
-        <ShaderLayer variant={variant} colors={palette} />
+        <ShaderLayer variant={variant} colors={palette} speed={motionSpeed} scale={motionScale} />
       </div>
       {children ? <div className="relative z-10">{children}</div> : null}
     </div>

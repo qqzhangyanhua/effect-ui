@@ -33,10 +33,30 @@ export function TearButtonDemo() {
   return <TearButton>撕开</TearButton>
 }
 
-export function FlowFieldDemo() {
-  return <FlowField className="h-48 w-full" />
+export function FlowFieldDemo({
+  density = 70,
+  speed = 1,
+  color,
+  size = 1,
+}: {
+  density?: number
+  speed?: number
+  color?: string
+  size?: number
+} = {}) {
+  return <FlowField className="h-48 w-full" density={density} speed={speed} color={color} size={size} />
 }
 
-export function HalftoneDemo() {
-  return <Halftone className="h-48 w-full" />
+export function HalftoneDemo({
+  gap = 14,
+  color,
+  intensity = 0.55,
+  size = 180,
+}: {
+  gap?: number
+  color?: string
+  intensity?: number
+  size?: number
+} = {}) {
+  return <Halftone className="h-48 w-full" gap={gap} color={color} intensity={intensity} size={size} />
 }

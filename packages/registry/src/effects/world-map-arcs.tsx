@@ -21,7 +21,12 @@ export interface WorldMapArcsProps {
   className?: string
   cities?: readonly WorldMapCity[]
   routes?: readonly WorldMapRoute[]
+  colors?: readonly string[]
+  speed?: number
+  size?: number
 }
+
+const DEFAULT_COLORS = ["#67e8f9", "#bae6fd"] as const
 
 const LAND: readonly (readonly [number, number])[][] = [
   [
@@ -147,8 +152,15 @@ function WorldMapArcs({
   className,
   cities = DEFAULT_CITIES,
   routes = DEFAULT_ROUTES,
+  colors = DEFAULT_COLORS,
+  speed = 1,
+  size = 0.7,
 }: WorldMapArcsProps) {
   const reduced = usePrefersReducedMotion()
+  const arc = colors[0] ?? DEFAULT_COLORS[0]
+  const dots = colors[1] ?? DEFAULT_COLORS[1]
+  const rate = Number.isFinite(speed) && speed > 0 ? speed : 1
+  const pulse = 2.2 / rate
   const byName = new Map(cities.map((city) => [city.name, city]))
   const paths = routes.flatMap((route) => {
     const from = byName.get(route.from)
@@ -165,15 +177,15 @@ function WorldMapArcs({
       <svg viewBox="0 0 100 72" className="h-auto w-full" role="img" aria-labelledby="world-map-arcs-title">
         <title id="world-map-arcs-title">点状世界地图，城市之间有发光弧线</title>
         {DOTS.map((dot) => (
-          <circle key={`${dot.x}-${dot.y}`} cx={dot.x} cy={dot.y} r={0.38} fill="rgba(186,230,253,0.85)" />
+          <circle key={`${dot.x}-${dot.y}`} cx={dot.x} cy={dot.y} r={0.38} fill={dots} opacity={0.85} />
         ))}
         {paths.map((path, index) => (
           <g key={path.id}>
-            <path d={path.d} fill="none" stroke="rgba(103,232,249,0.28)" strokeWidth={1.15} />
+            <path d={path.d} fill="none" stroke={arc} strokeOpacity={0.28} strokeWidth={1.15} />
             <motion.path
               d={path.d}
               fill="none"
-              stroke="#67e8f9"
+              stroke={arc}
               strokeWidth={0.42}
               strokeLinecap="round"
               initial={{ pathLength: reduced ? 1 : 0 }}
@@ -192,9 +204,9 @@ function WorldMapArcs({
               strokeWidth={0.28}
               initial={false}
               animate={reduced ? { r: 1.5, opacity: 0.45 } : { r: [1.1, 2.6, 1.1], opacity: [0.85, 0, 0.85] }}
-              transition={reduced ? { duration: 0 } : { duration: 2.2, repeat: Infinity, delay: index * 0.15 }}
+              transition={reduced ? { duration: 0 } : { duration: pulse, repeat: Infinity, delay: index * 0.15 }}
             />
-            <circle cx={city.x} cy={city.y} r={0.7} fill="#ecfeff" />
+            <circle cx={city.x} cy={city.y} r={size} fill="#ecfeff" />
             <text x={city.x + 1.4} y={city.y - 1.2} fill="#e0f2fe" fontSize={2.35}>
               {city.name}
             </text>

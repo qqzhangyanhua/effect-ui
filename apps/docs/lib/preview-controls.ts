@@ -43,7 +43,10 @@ function groupedFields(fields: readonly ControlField[]) {
 }
 
 function initialValue(field: ControlField): ControlValue | undefined {
-  if (field.control.kind === "colors") return [...field.control.value]
+  if (field.control.kind === "colors") {
+    if (field.control.follow) return undefined
+    return [...field.control.value]
+  }
   return field.control.value
 }
 

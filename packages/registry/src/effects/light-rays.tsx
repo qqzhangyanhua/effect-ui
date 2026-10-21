@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
@@ -9,6 +10,21 @@ export interface LightRaysProps {
   className?: string
   /** 为 true 时原点跟随指针；否则原点自己缓慢摆动。 */
   followMouse?: boolean
+  count?: number
+  speed?: number
+  colors?: readonly string[]
+}
+
+const DEFAULT_COLORS = ["#ffc261", "#73adff"] as const
+
+type Rgb = [number, number, number]
+
+function hexToRgb(hex: string, fallback: Rgb): Rgb {
+  const text = hex.trim().replace(/^#/, "")
+  const digits = text.length === 3 ? [...text].map((char) => `${char}${char}`).join("") : text
+  if (!/^[0-9a-fA-F]{6}$/.test(digits)) return fallback
+  const value = Number.parseInt(digits, 16)
+  return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
 }
 
 const VERT = `
@@ -25,7 +41,11 @@ const FRAG = `
 precision highp float;
 uniform vec2 u_resolution;
 uniform float u_time;
+uniform float u_speed;
+uniform float u_count;
 uniform vec2 u_origin;
+uniform vec3 u_warm;
+uniform vec3 u_cool;
 varying vec2 vUv;
 
 float hash(float n) {
@@ -38,20 +58,19 @@ void main() {
   float ang = atan(p.y, p.x);
   float dist = length(p);
   float glow = 0.0;
-  for (int i = 0; i < 14; i++) {
+  for (int i = 0; i < 24; i++) {
     float fi = float(i);
+    float beamOn = step(fi + 0.5, u_count);
     float base = hash(fi) * 6.2831853;
-    float sway = sin(u_time * (0.35 + hash(fi + 4.0) * 0.85) + fi) * 0.14;
+    float sway = sin(u_time * u_speed * (0.35 + hash(fi + 4.0) * 0.85) + fi) * 0.14;
     float delta = abs(mod(ang - base - sway + 3.1415926, 6.2831853) - 3.1415926);
     float width = 0.01 + hash(fi + 9.0) * 0.04;
     float beam = smoothstep(width, 0.0, delta);
     float falloff = exp(-dist * (1.05 + hash(fi + 2.0) * 1.5));
-    glow += beam * falloff;
+    glow += beam * falloff * beamOn;
   }
   float core = exp(-dist * 16.0);
-  vec3 warm = vec3(1.0, 0.76, 0.38);
-  vec3 cool = vec3(0.45, 0.68, 1.0);
-  vec3 col = mix(cool, warm, 0.72) * glow * 1.55 + warm * core;
+  vec3 col = mix(u_cool, u_warm, 0.72) * glow * 1.55 + u_warm * core;
   float alpha = clamp(glow * 1.25 + core, 0.0, 1.0);
   gl_FragColor = vec4(col, alpha);
 }
@@ -71,15 +90,36 @@ function RayFallback() {
   )
 }
 
-function LightRays({ className, followMouse = true }: LightRaysProps) {
+function playbackRate(speed: number) {
+  return Number.isFinite(speed) && speed > 0 ? speed : 1
+}
+
+function LightRays({
+  className,
+  followMouse = true,
+  count = 14,
+  speed = 1,
+  colors = DEFAULT_COLORS,
+}: LightRaysProps) {
   const reduced = usePrefersReducedMotion()
+  const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const pointer = React.useRef({ x: 0.5, y: 0.72 })
+  const countRef = React.useRef(count)
+  const speedRef = React.useRef(playbackRate(speed))
+  const colorsRef = React.useRef(colors)
+  const active = useAnimationActive(hostRef)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
 
   React.useEffect(() => {
-    if (!showCanvas) return
+    countRef.current = count
+    speedRef.current = playbackRate(speed)
+    colorsRef.current = colors
+  }, [count, speed, colors])
+
+  React.useEffect(() => {
+    if (!showCanvas || !active) return
     const canvas = canvasRef.current
     if (!canvas) return
     let cancelled = false
@@ -91,7 +131,7 @@ function LightRays({ className, followMouse = true }: LightRaysProps) {
       const renderer = new ogl.Renderer({
         canvas,
         alpha: true,
-        dpr: Math.min(window.devicePixelRatio || 1, 1.5),
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
       })
       const gl = renderer.gl
       if (!gl) {
@@ -107,8 +147,12 @@ function LightRays({ className, followMouse = true }: LightRaysProps) {
       const geometry = new ogl.Plane(gl, { width: 2, height: 2 })
       const uniforms = {
         u_time: { value: 0 },
+        u_speed: { value: 1 },
+        u_count: { value: countRef.current },
         u_resolution: { value: [canvas.clientWidth, canvas.clientHeight] },
         u_origin: { value: [0.5, 0.28] },
+        u_warm: { value: hexToRgb(colorsRef.current[0] ?? DEFAULT_COLORS[0], [1, 0.76, 0.38]) },
+        u_cool: { value: hexToRgb(colorsRef.current[1] ?? DEFAULT_COLORS[1], [0.45, 0.68, 1]) },
       }
       const program = new ogl.Program(gl, {
         vertex: VERT,
@@ -133,9 +177,14 @@ function LightRays({ className, followMouse = true }: LightRaysProps) {
       const started = performance.now()
       const tick = () => {
         const time = (performance.now() - started) / 1000
+        const rate = speedRef.current
         uniforms.u_time.value = time
-        const originX = followMouse ? pointer.current.x : 0.5 + Math.sin(time * 0.35) * 0.08
-        const originY = followMouse ? pointer.current.y : 0.72 + Math.sin(time * 0.22) * 0.04
+        uniforms.u_speed.value = rate
+        uniforms.u_count.value = countRef.current
+        uniforms.u_warm.value = hexToRgb(colorsRef.current[0] ?? DEFAULT_COLORS[0], [1, 0.76, 0.38])
+        uniforms.u_cool.value = hexToRgb(colorsRef.current[1] ?? DEFAULT_COLORS[1], [0.45, 0.68, 1])
+        const originX = followMouse ? pointer.current.x : 0.5 + Math.sin(time * 0.35 * rate) * 0.08
+        const originY = followMouse ? pointer.current.y : 0.72 + Math.sin(time * 0.22 * rate) * 0.04
         uniforms.u_origin.value = [originX, 1 - originY]
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
@@ -162,10 +211,11 @@ function LightRays({ className, followMouse = true }: LightRaysProps) {
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }
-  }, [followMouse, showCanvas])
+  }, [active, followMouse, showCanvas])
 
   return (
     <div
+      ref={hostRef}
       data-slot="light-rays"
       className={cn("relative h-72 w-full overflow-hidden rounded-xl bg-[#07060b]", className)}
       onPointerMove={(event) => {

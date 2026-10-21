@@ -2,11 +2,28 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface HyperspeedProps {
   className?: string
+  speed?: number
+  count?: number
+  colors?: readonly string[]
+  intensity?: number
+}
+
+const DEFAULT_COLORS = ["#ff526b", "#6bc7ff"] as const
+
+type Rgb = [number, number, number]
+
+function hexToRgb(hex: string, fallback: Rgb): Rgb {
+  const text = hex.trim().replace(/^#/, "")
+  const digits = text.length === 3 ? [...text].map((char) => `${char}${char}`).join("") : text
+  if (!/^[0-9a-fA-F]{6}$/.test(digits)) return fallback
+  const value = Number.parseInt(digits, 16)
+  return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
 }
 
 const VERT = `
@@ -24,6 +41,10 @@ precision highp float;
 uniform vec2 u_resolution;
 uniform float u_time;
 uniform float u_speed;
+uniform float u_count;
+uniform float u_intensity;
+uniform vec3 u_lampA;
+uniform vec3 u_lampB;
 varying vec2 vUv;
 
 float hash(float n) {
@@ -38,8 +59,9 @@ void main() {
   vec3 col = vec3(0.012, 0.016, 0.04);
   float road = smoothstep(0.22, 0.02, abs(p.x) * 0.35 + max(p.y, 0.0) * 0.05);
   col += vec3(0.03, 0.035, 0.06) * road;
-  for (int i = 0; i < 46; i++) {
+  for (int i = 0; i < 64; i++) {
     float fi = float(i);
+    float useStreak = step(fi + 0.5, u_count);
     float side = hash(fi) > 0.5 ? 1.0 : -1.0;
     float spread = 0.12 + hash(fi + 3.1) * 0.7;
     float aim = side * spread + 1.5708;
@@ -48,8 +70,8 @@ void main() {
     float streakCenter = mix(0.05, 1.25, head);
     float along = smoothstep(0.16, 0.0, abs(dist - streakCenter));
     float streak = smoothstep(0.05, 0.0, delta) * along * smoothstep(0.0, 0.06, dist);
-    vec3 lamp = side > 0.0 ? vec3(1.0, 0.32, 0.42) : vec3(0.42, 0.78, 1.0);
-    col += lamp * streak * (0.55 + u_speed * 0.22);
+    vec3 lamp = side > 0.0 ? u_lampA : u_lampB;
+    col += lamp * streak * (0.55 + u_speed * 0.22) * u_intensity * useStreak;
   }
   float vignette = smoothstep(1.25, 0.15, dist);
   gl_FragColor = vec4(col * vignette, 1.0);
@@ -89,17 +111,40 @@ function HighwayFallback({ live }: { live: boolean }) {
   )
 }
 
-function Hyperspeed({ className }: HyperspeedProps) {
+function playbackRate(speed: number) {
+  return Number.isFinite(speed) && speed > 0 ? speed : 1
+}
+
+function Hyperspeed({
+  className,
+  speed = 1,
+  count = 46,
+  colors = DEFAULT_COLORS,
+  intensity = 1,
+}: HyperspeedProps) {
   const reduced = usePrefersReducedMotion()
+  const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const labelRef = React.useRef<HTMLSpanElement>(null)
   const holding = React.useRef(false)
-  const speed = React.useRef(1)
+  const velocity = React.useRef(speed)
+  const speedRef = React.useRef(playbackRate(speed))
+  const countRef = React.useRef(count)
+  const colorsRef = React.useRef(colors)
+  const intensityRef = React.useRef(intensity)
+  const active = useAnimationActive(hostRef)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
 
   React.useEffect(() => {
-    if (!showCanvas) return
+    speedRef.current = playbackRate(speed)
+    countRef.current = count
+    colorsRef.current = colors
+    intensityRef.current = intensity
+  }, [speed, count, colors, intensity])
+
+  React.useEffect(() => {
+    if (!showCanvas || !active) return
     const canvas = canvasRef.current
     if (!canvas) return
     let cancelled = false
@@ -111,7 +156,7 @@ function Hyperspeed({ className }: HyperspeedProps) {
       const renderer = new ogl.Renderer({
         canvas,
         alpha: false,
-        dpr: Math.min(window.devicePixelRatio || 1, 1.5),
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
       })
       const gl = renderer.gl
       if (!gl) {
@@ -127,7 +172,11 @@ function Hyperspeed({ className }: HyperspeedProps) {
       const geometry = new ogl.Plane(gl, { width: 2, height: 2 })
       const uniforms = {
         u_time: { value: 0 },
-        u_speed: { value: 1 },
+        u_speed: { value: velocity.current },
+        u_count: { value: countRef.current },
+        u_intensity: { value: intensityRef.current },
+        u_lampA: { value: hexToRgb(colorsRef.current[0] ?? DEFAULT_COLORS[0], [1, 0.32, 0.42]) },
+        u_lampB: { value: hexToRgb(colorsRef.current[1] ?? DEFAULT_COLORS[1], [0.42, 0.78, 1]) },
         u_resolution: { value: [canvas.clientWidth, canvas.clientHeight] },
       }
       const program = new ogl.Program(gl, { vertex: VERT, fragment: FRAG, uniforms })
@@ -146,11 +195,16 @@ function Hyperspeed({ className }: HyperspeedProps) {
       if (canvas.parentElement) observer.observe(canvas.parentElement)
       const started = performance.now()
       const tick = () => {
-        const target = holding.current ? 4.4 : 1
-        speed.current += (target - speed.current) * 0.045
+        const cruise = speedRef.current
+        const target = holding.current ? cruise * 4.4 : cruise
+        velocity.current += (target - velocity.current) * 0.045
         uniforms.u_time.value = (performance.now() - started) / 1000
-        uniforms.u_speed.value = speed.current
-        if (labelRef.current) labelRef.current.textContent = speed.current.toFixed(1)
+        uniforms.u_speed.value = velocity.current
+        uniforms.u_count.value = countRef.current
+        uniforms.u_intensity.value = intensityRef.current
+        uniforms.u_lampA.value = hexToRgb(colorsRef.current[0] ?? DEFAULT_COLORS[0], [1, 0.32, 0.42])
+        uniforms.u_lampB.value = hexToRgb(colorsRef.current[1] ?? DEFAULT_COLORS[1], [0.42, 0.78, 1])
+        if (labelRef.current) labelRef.current.textContent = velocity.current.toFixed(1)
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
@@ -176,10 +230,11 @@ function Hyperspeed({ className }: HyperspeedProps) {
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }
-  }, [showCanvas])
+  }, [active, showCanvas])
 
   return (
     <div
+      ref={hostRef}
       data-slot="hyperspeed"
       className={cn("relative h-72 w-full touch-none overflow-hidden rounded-xl bg-[#05060f] select-none", className)}
       onPointerDown={(event) => {

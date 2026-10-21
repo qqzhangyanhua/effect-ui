@@ -64,8 +64,20 @@ export function LiquidGlassTabbarDemo() {
   return <LiquidGlassTabbar className="w-full" />
 }
 
-export function DitherGradientDemo() {
-  return <DitherGradient className="w-full" />
+export function DitherGradientDemo({
+  colors = ["#1a0d47", "#f57338", "#33bfd1"],
+  speed = 1,
+  count = 5,
+  intensity = 1,
+}: {
+  colors?: string[]
+  speed?: number
+  count?: number
+  intensity?: number
+} = {}) {
+  return (
+    <DitherGradient className="w-full" colors={colors} speed={speed} count={count} intensity={intensity} />
+  )
 }
 
 export function AnchorPopoverDemo() {

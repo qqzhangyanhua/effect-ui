@@ -135,29 +135,63 @@ export function ParticlesDemo({
   )
 }
 
-export function GridPatternDemo() {
+export function GridPatternDemo({
+  width = 40,
+  height = 40,
+  x = -1,
+  y = -1,
+  strokeDasharray = "0",
+}: {
+  width?: number
+  height?: number
+  x?: number
+  y?: number
+  strokeDasharray?: string
+} = {}) {
   return (
     <PreviewFrame>
-      <GridPattern />
+      <GridPattern width={width} height={height} x={x} y={y} strokeDasharray={strokeDasharray} />
       <p className="relative z-10 text-sm">网格底纹</p>
     </PreviewFrame>
   )
 }
 
-export function DotPatternDemo() {
+export function DotPatternDemo({
+  width = 16,
+  height = 16,
+  cx = 1,
+  cy = 1,
+  cr = 1,
+}: {
+  width?: number
+  height?: number
+  cx?: number
+  cy?: number
+  cr?: number
+} = {}) {
   return (
     <PreviewFrame>
-      <DotPattern />
+      <DotPattern width={width} height={height} cx={cx} cy={cy} cr={cr} />
       <p className="relative z-10 text-sm">圆点底纹</p>
     </PreviewFrame>
   )
 }
 
-export function MeteorsDemo() {
+export function MeteorsDemo({
+  number = 18,
+  speed = 1,
+  color = undefined,
+  size = 2,
+}: {
+  number?: number
+  speed?: number
+  color?: string
+  size?: number
+} = {}) {
   return (
     <PreviewFrame>
       <div className="absolute inset-0 bg-zinc-950" />
-      <Meteors />
+      <Meteors number={number} speed={speed} color={color} size={size} />
       <p className="relative z-10 text-sm text-zinc-100">流星雨</p>
     </PreviewFrame>
   )
@@ -165,27 +199,71 @@ export function MeteorsDemo() {
 
 export function AuroraBackgroundDemo({
   children = "极光铺在内容后面",
-}: { children?: string } = {}) {
+  speed = 1,
+  intensity = 0.7,
+  colors = undefined,
+  size = 64,
+}: {
+  children?: string
+  speed?: number
+  intensity?: number
+  colors?: string[]
+  size?: number
+} = {}) {
   return (
-    <AuroraBackground className="flex min-h-48 w-full items-center justify-center p-10">
+    <AuroraBackground
+      speed={speed}
+      intensity={intensity}
+      colors={colors}
+      size={size}
+      className="flex min-h-48 w-full items-center justify-center p-10"
+    >
       <p className="text-lg font-medium">{children}</p>
     </AuroraBackground>
   )
 }
 
-export function RipplesDemo() {
+export function RipplesDemo({
+  rings = 4,
+  speed = 1,
+  color = undefined,
+  intensity = 0.2,
+}: {
+  rings?: number
+  speed?: number
+  color?: string
+  intensity?: number
+} = {}) {
   return (
     <PreviewFrame>
-      <Ripples />
+      <Ripples rings={rings} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">涟漪扩散</p>
     </PreviewFrame>
   )
 }
 
-export function FlickeringGridDemo() {
+export function FlickeringGridDemo({
+  squareSize = 4,
+  gridGap = 6,
+  flickerChance = 0.18,
+  color = undefined,
+  maxOpacity = 0.28,
+}: {
+  squareSize?: number
+  gridGap?: number
+  flickerChance?: number
+  color?: string
+  maxOpacity?: number
+} = {}) {
   return (
     <PreviewFrame>
-      <FlickeringGrid />
+      <FlickeringGrid
+        squareSize={squareSize}
+        gridGap={gridGap}
+        flickerChance={flickerChance}
+        color={color}
+        maxOpacity={maxOpacity}
+      />
       <p className="relative z-10 text-sm">闪烁网格</p>
     </PreviewFrame>
   )

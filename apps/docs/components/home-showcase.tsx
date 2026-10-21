@@ -12,6 +12,7 @@ import { ShimmerButton } from "@effect-ui/registry/effects/shimmer-button"
 import { SpotlightCard } from "@effect-ui/registry/effects/spotlight-card"
 import { TypingText } from "@effect-ui/registry/effects/typing-text"
 import { WordRotate } from "@effect-ui/registry/effects/word-rotate"
+import { HomeSectionBackdrop } from "@/components/home-section-backdrop"
 import { cn } from "@/lib/utils"
 
 const tabs = [
@@ -25,7 +26,9 @@ export function HomeShowcase() {
   const [activeTab, setActiveTab] = useState("text")
 
   return (
-    <section id="showcase" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-border/50">
+    <section id="showcase" className="relative overflow-hidden border-t border-border/50 py-16 sm:py-24">
+      <HomeSectionBackdrop variant="showcase" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center text-center">
         <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
           LIVE DEMO
@@ -259,6 +262,7 @@ export function HomeShowcase() {
         )}
           </motion.div>
         </AnimatePresence>
+      </div>
       </div>
     </section>
   )

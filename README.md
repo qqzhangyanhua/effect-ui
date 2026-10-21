@@ -511,6 +511,28 @@ text-style
 | gantt-timeline | 原创 |
 | org-chart | 原创 |
 
+### 光栅、状态页与帮助中心
+
+登记在 `catalog-batch20.ts`。上一批光管组件已占用 `catalog-batch19.ts`。未打开 Codrops、Linear、Better Stack、Eventbrite、Vercel、ClickUp、Mintlify、fal、v0、Sprig、Supabase、Browserbase 或 Notion 的源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 只懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光栅改为点击切换，光束直接显示成品，回声不复制，超空间文字交叉淡入，旋涡改为静态图标，雨面停在静帧，钥匙孔改为普通图片序列，橡皮筋松手后不再振荡。
+
+| 组件 | 来源 |
+| --- | --- |
+| lenticular-card | 灵感来自 Codrops R3F Lenticular Material，原创实现 |
+| card-beam-scanner | 灵感来自 Codrops Card Beam Animation，原创实现 |
+| repetition-image-hover | 灵感来自 Codrops Repetition Image Animation，原创实现 |
+| hyperspace-text | 灵感来自 Codrops Hyperspace Text，原创实现 |
+| tiled-swirl-loader | 灵感来自 Codrops Tiled Swirl，原创实现 |
+| rain-puddle | 灵感来自 Codrops Puddle in rain，原创实现 |
+| keyhole-scroll-reveal | 灵感来自 Codrops Scroll-Synced Slideshow with Keyhole Effect，原创实现 |
+| rubber-band-drag | 灵感来自 Liam Egan Rubber banding，原创实现 |
+| uptime-bars | 灵感来自 Linear 状态页与 Better Stack，原创实现 |
+| status-page | 灵感来自 Eventbrite 与 Linear 状态页，原创实现 |
+| integrations-directory | 灵感来自 Vercel 与 ClickUp，原创实现 |
+| api-key-manager | 灵感来自 Mintlify、fal 与 v0，原创实现 |
+| usage-meter | 灵感来自 Sprig，原创实现 |
+| team-members-table | 灵感来自 Supabase 与 Browserbase，原创实现 |
+| help-center-index | 灵感来自 Notion 帮助中心，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "repetition-image-hover",
+  "type": "registry:ui",
+  "title": "Repetition Image Hover",
+  "description": "灵感来自 Codrops Repetition Image Animation，原创实现。悬停时向光标方向叠出逐渐缩小的回声副本。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/repetition-image-hover.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/repetition-image-hover.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useSpring } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface RepetitionImageHoverProps {\n  label?: string\n  layers?: number\n  className?: string\n}\n\nfunction Echo({\n  index,\n  count,\n  nx,\n  ny,\n  hovering,\n  label,\n}: {\n  index: number\n  count: number\n  nx: number\n  ny: number\n  hovering: boolean\n  label: string\n}) {\n  const factor = index / Math.max(count - 1, 1)\n  const x = useSpring(0, { stiffness: 220, damping: 18 })\n  const y = useSpring(0, { stiffness: 220, damping: 18 })\n  React.useEffect(() => {\n    x.set(hovering ? nx * factor * 1.7 : 0)\n    y.set(hovering ? ny * factor * 1.7 : 0)\n  }, [factor, hovering, nx, ny, x, y])\n  const scale = 1 - factor * 0.55\n  const opacity = hovering || index === 0 ? 1 - factor * 0.62 : 0\n  return (\n    <motion.div\n      aria-hidden={index === 0 ? undefined : true}\n      className=\"absolute top-1/2 left-1/2 flex h-48 w-64 items-end rounded-2xl p-4 text-slate-950 shadow-lg\"\n      style={{\n        x,\n        y,\n        scale,\n        opacity,\n        zIndex: count - index,\n        marginLeft: \"-8rem\",\n        marginTop: \"-6rem\",\n        backgroundImage: `linear-gradient(145deg, hsl(${18 + index * 16} 82% ${68 - index * 6}%), hsl(${32 + index * 10} 70% 42%))`,\n      }}\n    >\n      <span className=\"text-lg font-medium\">{label}</span>\n    </motion.div>\n  )\n}\n\nfunction RepetitionImageHover({ label = \"回声\", layers = 5, className }: RepetitionImageHoverProps) {\n  const reduced = usePrefersReducedMotion()\n  const count = Math.min(8, Math.max(2, Math.round(layers)))\n  const [point, setPoint] = React.useState({ x: 0, y: 0, hovering: false })\n\n  if (reduced) {\n    return (\n      <div data-slot=\"repetition-image-hover\" className={cn(\"relative h-72\", className)}>\n        <div className=\"absolute top-1/2 left-1/2 flex h-48 w-64 -translate-x-1/2 -translate-y-1/2 items-end rounded-2xl bg-linear-to-br from-orange-300 to-rose-500 p-4 text-lg text-slate-950\">{label}</div>\n      </div>\n    )\n  }\n\n  return (\n    <div\n      data-slot=\"repetition-image-hover\"\n      className={cn(\"relative h-80 overflow-hidden rounded-xl border bg-slate-950\", className)}\n      onPointerMove={(event) => {\n        const rect = event.currentTarget.getBoundingClientRect()\n        const dx = event.clientX - (rect.left + rect.width / 2)\n        const dy = event.clientY - (rect.top + rect.height / 2)\n        const length = Math.hypot(dx, dy)\n        if (length < 8) {\n          setPoint({ x: 140, y: 0, hovering: true })\n          return\n        }\n        const reach = Math.max(140, Math.min(170, length))\n        setPoint({\n          x: (dx / length) * reach,\n          y: (dy / length) * Math.min(64, reach),\n          hovering: true,\n        })\n      }}\n      onPointerLeave={() => setPoint({ x: 0, y: 0, hovering: false })}\n    >\n      {Array.from({ length: count }, (_, index) => (\n        <Echo key={index} index={index} count={count} nx={point.x} ny={point.y} hovering={point.hovering} label={label} />\n      ))}\n    </div>\n  )\n}\n\nexport { RepetitionImageHover }\n"
+    }
+  ]
+}

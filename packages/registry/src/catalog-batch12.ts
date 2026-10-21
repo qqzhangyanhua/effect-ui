@@ -47,8 +47,19 @@ export const batch12Components: ComponentMeta[] = [
         description: "按下时的压扁幅度，0 到 1。",
         control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧速度倍率。1 与不传相同，刚度仍是 520。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "squish-switch-light", label: "轻", values: { size: "sm", squish: 0.15, speed: 0.6 } },
+      { name: "squish-switch-default", label: "默认", values: { size: "md", squish: 0.35, speed: 1 } },
+      { name: "squish-switch-heavy", label: "重", values: { size: "lg", squish: 0.7, speed: 1.8 } },
     ],
   },
   {
@@ -78,8 +89,19 @@ export const batch12Components: ComponentMeta[] = [
         description: "指示器颜色。缺省用 primary。",
         control: { kind: "color", value: "#2563eb" },
       },
+      {
+        name: "intensity",
+        type: "number",
+        description: "指示器弹簧质量。0.55 与不传相同。",
+        control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 },
+      },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "jelly-radio-soft", label: "软", values: { stiffness: 160, intensity: 0.8 } },
+      { name: "jelly-radio-default", label: "默认", values: { stiffness: 320, intensity: 0.55 } },
+      { name: "jelly-radio-snappy", label: "弹", values: { stiffness: 640, intensity: 0.35 } },
     ],
   },
   {
@@ -116,8 +138,19 @@ export const batch12Components: ComponentMeta[] = [
         description: "弹簧绘制秒数。",
         control: { kind: "range", value: 0.45, min: 0.15, max: 1.2, step: 0.05 },
       },
+      {
+        name: "intensity",
+        type: "number",
+        description: "弹簧回弹。0.3 与不传相同。",
+        control: { kind: "range", value: 0.3, min: 0, max: 1, step: 0.05 },
+      },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "spring-check-slow", label: "慢", values: { duration: 0.8, intensity: 0.15, strokeWidth: 1.5 } },
+      { name: "spring-check-default", label: "默认", values: { duration: 0.45, intensity: 0.3, strokeWidth: 2 } },
+      { name: "spring-check-fast", label: "快", values: { duration: 0.2, intensity: 0.6, strokeWidth: 3.5 } },
     ],
   },
   {
@@ -154,8 +187,25 @@ export const batch12Components: ComponentMeta[] = [
         description: "星星颜色。缺省用 currentColor。",
         control: { kind: "color", value: "#eab308" },
       },
+      {
+        name: "size",
+        type: "number",
+        description: "星星边长（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 16, max: 48, step: 2 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "空星透明度。0.25 与不传相同。",
+        control: { kind: "range", value: 0.25, min: 0, max: 1, step: 0.05 },
+      },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "peek-rating-few", label: "少", values: { max: 3, size: 20, intensity: 0.15 } },
+      { name: "peek-rating-default", label: "默认", values: { max: 5, size: 28, intensity: 0.25, allowHalf: false } },
+      { name: "peek-rating-half", label: "半星", values: { max: 5, allowHalf: true, size: 36, intensity: 0.25 } },
     ],
   },
   {
@@ -188,9 +238,20 @@ export const batch12Components: ComponentMeta[] = [
         description: "滑块颜色。缺省用 primary。",
         control: { kind: "color", value: "#2563eb" },
       },
+      {
+        name: "duration",
+        type: "number",
+        description: "松手回弹时长（毫秒）。150 与不传相同。",
+        control: { kind: "range", value: 150, min: 60, max: 300, step: 10 },
+      },
       { name: "onConfirm", type: "() => void", description: "越过阈值或按下 Enter / Space 时回调一次，然后复位。" },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "slide-to-confirm-loose", label: "松", values: { threshold: 0.6, duration: 220 } },
+      { name: "slide-to-confirm-default", label: "默认", values: { threshold: 0.85, duration: 150 } },
+      { name: "slide-to-confirm-tight", label: "紧", values: { threshold: 1, duration: 80 } },
     ],
   },
   {
@@ -219,8 +280,25 @@ export const batch12Components: ComponentMeta[] = [
         description: "向哪一侧滑动来露出操作。",
         control: { kind: "select", value: "left", options: ["left", "right"] },
       },
+      {
+        name: "duration",
+        type: "number",
+        description: "松手回位时长（毫秒）。150 与不传相同。",
+        control: { kind: "range", value: 150, min: 60, max: 300, step: 10 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "滑开阈值，相对操作区宽度。0.4 与不传相同。",
+        control: { kind: "range", value: 0.4, min: 0, max: 1, step: 0.05 },
+      },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "swipe-row-narrow", label: "窄", values: { actionWidth: 56, direction: "left", duration: 100, intensity: 0.25 } },
+      { name: "swipe-row-default", label: "默认", values: { actionWidth: 88, direction: "left", duration: 150, intensity: 0.4 } },
+      { name: "swipe-row-right", label: "右", values: { actionWidth: 120, direction: "right", duration: 240, intensity: 0.7 } },
     ],
   },
   {
@@ -247,9 +325,20 @@ export const batch12Components: ComponentMeta[] = [
         description: "引信环颜色。缺省用 currentColor。",
         control: { kind: "color", value: "#2563eb" },
       },
+      {
+        name: "scale",
+        type: "number",
+        description: "引信环视觉倍率。1 与不传相同，圆环几何仍是半径 46。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
       { name: "onComplete", type: "() => void", description: "按满后回调。提前松开不会调用。" },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "fuse-button-short", label: "短", values: { holdMs: 500, scale: 0.7 } },
+      { name: "fuse-button-default", label: "默认", values: { holdMs: 800, scale: 1 } },
+      { name: "fuse-button-long", label: "长", values: { holdMs: 1500, scale: 1.4 } },
     ],
   },
   {
@@ -285,8 +374,25 @@ export const batch12Components: ComponentMeta[] = [
         description: "激活时的粒子数量。",
         control: { kind: "range", value: 8, min: 0, max: 16, step: 1 },
       },
+      {
+        name: "duration",
+        type: "number",
+        description: "心跳时长（毫秒）。350 与不传相同。",
+        control: { kind: "range", value: 350, min: 140, max: 700, step: 10 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "心跳放大倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
       disabled,
       className,
+    ],
+    presets: [
+      { name: "pulse-heart-small", label: "小", values: { size: 20, burst: 4, duration: 240, scale: 0.6 } },
+      { name: "pulse-heart-default", label: "默认", values: { size: 28, burst: 8, duration: 350, scale: 1 } },
+      { name: "pulse-heart-large", label: "大", values: { size: 48, burst: 14, duration: 560, scale: 1.6 } },
     ],
   },
   {
@@ -326,7 +432,24 @@ export const batch12Components: ComponentMeta[] = [
         description: "点的颜色。缺省用 currentColor。",
         control: { kind: "color", value: "#2563eb" },
       },
+      {
+        name: "size",
+        type: "number",
+        description: "点的边长（像素）。6 与不传相同。",
+        control: { kind: "range", value: 6, min: 2, max: 12, step: 1 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "点间距（像素）。6 与不传相同。",
+        control: { kind: "range", value: 6, min: 0, max: 16, step: 1 },
+      },
       className,
+    ],
+    presets: [
+      { name: "lattice-loader-sparse", label: "疏", values: { rows: 3, cols: 3, size: 4, gap: 10, speed: 0.6 } },
+      { name: "lattice-loader-default", label: "默认", values: { rows: 4, cols: 4, size: 6, gap: 6, speed: 1 } },
+      { name: "lattice-loader-dense", label: "密", values: { rows: 6, cols: 6, size: 8, gap: 2, speed: 1.8 } },
     ],
   },
   {
@@ -362,7 +485,13 @@ export const batch12Components: ComponentMeta[] = [
         description: "是否带柔光。减弱动效时关闭。",
         control: { kind: "boolean", value: true },
       },
+      { name: "intensity", type: "number", description: "柔光强度。1 与不传相同。没有柔光时不起作用。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
       className,
+    ],
+    presets: [
+      { name: "warm-tooltip-plain", label: "无光", values: { glow: false, delay: 200, intensity: 1 } },
+      { name: "warm-tooltip-default", label: "默认", values: { glow: true, delay: 200, intensity: 1, side: "top" } },
+      { name: "warm-tooltip-dim", label: "弱光", values: { glow: true, intensity: 0.45 } },
     ],
   },
 ]

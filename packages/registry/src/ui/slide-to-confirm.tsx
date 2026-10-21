@@ -9,6 +9,7 @@ export interface SlideToConfirmProps {
   label?: string
   threshold?: number
   color?: string
+  duration?: number
   disabled?: boolean
   onConfirm?: () => void
   className?: string
@@ -19,6 +20,7 @@ function SlideToConfirm({
   label = "滑动确认",
   threshold = 0.85,
   color,
+  duration,
   disabled = false,
   onConfirm,
   className,
@@ -31,6 +33,7 @@ function SlideToConfirm({
   const [percent, setPercent] = React.useState(0)
   const [dragging, setDragging] = React.useState(false)
   const limit = Math.min(1, Math.max(0, threshold)) * 100
+  const snapBack = duration === undefined || duration === 150
 
   const publish = (next: number) => {
     const clamped = Math.min(100, Math.max(0, Math.round(next)))
@@ -76,12 +79,20 @@ function SlideToConfirm({
         disabled={disabled}
         className={cn(
           "absolute top-1 bottom-1 left-1 w-10 rounded-full bg-primary text-primary-foreground shadow-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed",
-          !reduced && !dragging && "transition-[left] duration-150",
+          !reduced && !dragging && (snapBack ? "transition-[left] duration-150" : "transition-[left]"),
         )}
-        style={{
-          left: `calc(${percent} * (100% - 2.75rem) / 100)`,
-          background: color,
-        }}
+        style={
+          snapBack || reduced || dragging
+            ? {
+                left: `calc(${percent} * (100% - 2.75rem) / 100)`,
+                background: color,
+              }
+            : {
+                left: `calc(${percent} * (100% - 2.75rem) / 100)`,
+                background: color,
+                transitionDuration: `${duration}ms`,
+              }
+        }
         onPointerDown={(event) => {
           if (disabled || event.button !== 0) return
           draggingRef.current = true

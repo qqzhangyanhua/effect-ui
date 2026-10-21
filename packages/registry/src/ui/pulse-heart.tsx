@@ -14,6 +14,8 @@ export interface PulseHeartProps {
   size?: number
   color?: string
   burst?: number
+  duration?: number
+  scale?: number
   disabled?: boolean
   className?: string
   ref?: React.Ref<HTMLButtonElement>
@@ -27,6 +29,8 @@ function PulseHeart({
   size = 28,
   color,
   burst = 8,
+  duration,
+  scale,
   disabled = false,
   className,
   ref,
@@ -65,8 +69,12 @@ function PulseHeart({
         height={size}
         aria-hidden
         initial={false}
-        animate={reduced || burstId === 0 ? { scale: 1 } : { scale: [1, 1.22, 1] }}
-        transition={{ duration: reduced ? 0 : 0.35 }}
+        animate={
+          reduced || burstId === 0
+            ? { scale: 1 }
+            : { scale: scale === undefined || scale === 1 ? [1, 1.22, 1] : [1, 1 + 0.22 * scale, 1] }
+        }
+        transition={{ duration: reduced ? 0 : duration === undefined || duration === 350 ? 0.35 : duration / 1000 }}
       >
         <path
           d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9z"

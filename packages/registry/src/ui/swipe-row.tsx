@@ -10,6 +10,8 @@ export interface SwipeRowProps {
   actions?: React.ReactNode
   actionWidth?: number
   direction?: "left" | "right"
+  duration?: number
+  intensity?: number
   disabled?: boolean
   className?: string
   ref?: React.Ref<HTMLDivElement>
@@ -20,6 +22,8 @@ function SwipeRow({
   actions,
   actionWidth = 88,
   direction = "left",
+  duration,
+  intensity,
   disabled = false,
   className,
   ref,
@@ -31,13 +35,15 @@ function SwipeRow({
   const startX = React.useRef<number | null>(null)
   const dragRef = React.useRef(0)
   const width = Math.max(1, actionWidth)
+  const openAt = intensity === undefined || intensity === 0.4 ? width * 0.4 : width * intensity
+  const snapBack = duration === undefined || duration === 150
   const resting = open ? (direction === "left" ? -width : width) : 0
   const offset = dragging ? resting + drag : resting
 
   const finish = () => {
     if (startX.current === null) return
     const traveled = dragRef.current
-    const shouldOpen = direction === "right" ? traveled > width * 0.4 : traveled < -width * 0.4
+    const shouldOpen = direction === "right" ? traveled > openAt : traveled < -openAt
     setOpen(shouldOpen)
     startX.current = null
     dragRef.current = 0
@@ -65,9 +71,13 @@ function SwipeRow({
       <div
         className={cn(
           "relative z-10 bg-background px-3 py-3",
-          !reduced && !dragging && "transition-transform duration-150",
+          !reduced && !dragging && (snapBack ? "transition-transform duration-150" : "transition-transform"),
         )}
-        style={{ transform: `translateX(${offset}px)` }}
+        style={
+          snapBack || reduced || dragging
+            ? { transform: `translateX(${offset}px)` }
+            : { transform: `translateX(${offset}px)`, transitionDuration: `${duration}ms` }
+        }
         onPointerDown={(event) => {
           if (disabled || event.button !== 0) return
           startX.current = event.clientX

@@ -197,8 +197,8 @@ export function DomeGalleryDemo() {
   return <DomeGallery className="w-full" />
 }
 
-export function ElasticSliderDemo() {
-  return <ElasticSlider className="w-full" />
+export function ElasticSliderDemo({ color, scale, speed }: { color?: string; scale?: number; speed?: number } = {}) {
+  return <ElasticSlider className="w-full" color={color} scale={scale} speed={speed} />
 }
 
 export function LightRaysDemo({

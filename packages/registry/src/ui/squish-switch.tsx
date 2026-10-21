@@ -18,6 +18,7 @@ export interface SquishSwitchProps
   size?: keyof typeof tracks
   color?: string
   squish?: number
+  speed?: number
 }
 
 function SquishSwitch({
@@ -25,6 +26,7 @@ function SquishSwitch({
   size = "md",
   color,
   squish = 0.35,
+  speed,
   disabled,
   checked,
   defaultChecked,
@@ -88,7 +90,13 @@ function SquishSwitch({
             scaleX: pressed && !reduced ? 1 + amount * 0.7 : 1,
             scaleY: pressed && !reduced ? 1 - amount * 0.45 : 1,
           }}
-          transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 520, damping: 18 }}
+          transition={
+            reduced
+              ? { duration: 0 }
+              : speed === undefined || speed === 1
+                ? { type: "spring", stiffness: 520, damping: 18 }
+                : { type: "spring", stiffness: 520 * speed, damping: 18 }
+          }
         />
       </SwitchPrimitive.Thumb>
     </SwitchPrimitive.Root>

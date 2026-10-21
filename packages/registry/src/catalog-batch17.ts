@@ -383,7 +383,31 @@ export const batch17Components: ComponentMeta[] = [
     props: [
       { name: "items", type: "ReactionItem[]", description: "表情、计数和是否已选。" },
       { name: "onToggle", type: "(emoji: string) => void", description: "切换某个表情。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "选中弹动时长（毫秒）。280 与不传相同。",
+        control: { kind: "range", value: 280, min: 120, max: 560, step: 10 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "选中放大倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "按钮间距（像素）。8 与不传相同。",
+        control: { kind: "range", value: 8, min: 0, max: 16, step: 1 },
+      },
+      { name: "color", type: "string", description: "选中颜色。不传则跟随主题。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "reaction-bar-fast", label: "快", values: { duration: 160, scale: 0.6, gap: 8 } },
+      { name: "reaction-bar-default", label: "默认", values: { duration: 280, scale: 1, gap: 8 } },
+      { name: "reaction-bar-large", label: "大", values: { duration: 420, scale: 1.6, gap: 12 } },
     ],
   },
 ]

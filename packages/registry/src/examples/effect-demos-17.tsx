@@ -162,7 +162,17 @@ export function ScheduleSlotPickerDemo() {
   return <ScheduleSlotPicker className="w-full" />
 }
 
-export function ReactionBarDemo() {
+export function ReactionBarDemo({
+  duration,
+  scale,
+  gap,
+  color,
+}: {
+  duration?: number
+  scale?: number
+  gap?: number
+  color?: string
+} = {}) {
   const [items, setItems] = useState<ReactionItem[]>([
     { emoji: "👍", count: 3 },
     { emoji: "❤️", count: 1 },
@@ -171,6 +181,10 @@ export function ReactionBarDemo() {
   return (
     <ReactionBar
       items={items}
+      duration={duration}
+      scale={scale}
+      gap={gap}
+      color={color}
       onToggle={(emoji) =>
         setItems((current) =>
           current.map((item) =>

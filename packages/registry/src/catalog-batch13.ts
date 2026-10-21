@@ -377,7 +377,25 @@ export const batch13Components: ComponentMeta[] = [
       { name: "min", type: "number", defaultValue: "0", description: "最小值。" },
       { name: "max", type: "number", defaultValue: "100", description: "最大值。" },
       { name: "defaultValue", type: "number", defaultValue: "42", description: "初始值。" },
+      { name: "color", type: "string", description: "填充颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "scale",
+        type: "number",
+        description: "拉长幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹倍率。1 与不传相同，刚度仍是 460。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "elastic-slider-soft", label: "软", values: { scale: 0.6, speed: 0.6 } },
+      { name: "elastic-slider-default", label: "默认", values: { scale: 1, speed: 1 } },
+      { name: "elastic-slider-tight", label: "紧", values: { scale: 1.6, speed: 1.8 } },
     ],
   },
   {

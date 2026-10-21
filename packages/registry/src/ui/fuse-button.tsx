@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 export interface FuseButtonProps extends Omit<React.ComponentProps<typeof Button>, "color"> {
   holdMs?: number
   color?: string
+  scale?: number
   onComplete?: () => void
 }
 
@@ -18,6 +19,7 @@ const ringLength = 2 * Math.PI * ringRadius
 function FuseButton({
   holdMs = 800,
   color,
+  scale,
   onComplete,
   children = "按住确认",
   className,
@@ -100,7 +102,16 @@ function FuseButton({
       }}
       {...props}
     >
-      <svg aria-hidden viewBox="0 0 100 100" className="pointer-events-none absolute -inset-1 size-[calc(100%+8px)]">
+      <svg
+        aria-hidden
+        viewBox="0 0 100 100"
+        className="pointer-events-none absolute -inset-1 size-[calc(100%+8px)]"
+        style={
+          scale === undefined || scale === 1
+            ? undefined
+            : { transform: `scale(${scale})`, transformOrigin: "center" }
+        }
+      >
         <circle cx="50" cy="50" r={ringRadius} fill="none" stroke="currentColor" strokeOpacity="0.25" strokeWidth="4" />
         <circle
           cx="50"

@@ -359,6 +359,27 @@ export const batch2Components: ComponentMeta[] = [
         description: "动画时长（毫秒）。",
         control: { kind: "range", value: 900, min: 200, max: 3000, step: 50 },
       },
+      {
+        name: "delay",
+        type: "number",
+        defaultValue: "0",
+        description: "开始前的等待（毫秒）。",
+        control: { kind: "range", value: 0, min: 0, max: 2000, step: 50 },
+      },
+      {
+        name: "loop",
+        type: "boolean",
+        defaultValue: "false",
+        description: "播完后是否重复。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "interactive",
+        type: "boolean",
+        defaultValue: "false",
+        description: "精细指针移入时重播。触屏上忽略移入。",
+        control: { kind: "boolean", value: false },
+      },
     ],
   },
   {

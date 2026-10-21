@@ -24,6 +24,10 @@ _Avoid_: wave, release, drop
 A shadcn-style building block that is assembled from parts by the caller, such as `Select` with `SelectTrigger` and `SelectItem`. It stays close to its upstream shape and is never given features beyond it.
 _Avoid_: base component, raw component
 
+**Effect**:
+A component in one of nine categories — text, backgrounds, cursor, decor, cards, buttons, micro, loaders, and scroll. Besides its visual props, an Effect can take typography props, behavior switches, and pointer interaction.
+_Avoid_: animation, special effect
+
 **Composite component**:
 A props-driven component built on one or more primitives that covers a common scenario in a single call, such as a select with search, multiple values and a clear button. It is a separate catalog entry that depends on its primitives, so the user can pick either layer. A catalog entry that was already a composite component is upgraded in place instead of getting a second entry.
 _Avoid_: aggregate component, wrapper, enhanced component
@@ -37,6 +41,10 @@ _Avoid_: example, preview (that is the page region the demo sits in), story
 **Control**:
 A demo prop that the reader can change live on the docs page. The catalog entry declares which props are controls and how each one is edited; a demo without controls is static.
 _Avoid_: knob, playground prop, 属性面板项
+
+**Preset**:
+A named set of control values declared on a catalog entry. Choosing it on the docs page sets those controls together. It is not a component prop and is not part of the registry item.
+_Avoid_: theme, variant
 
 ### Provenance
 

@@ -133,6 +133,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
               Demo={Demo}
               componentName={primary ? componentExportName(primary.code) : ""}
               controls={controls}
+              presets={item.presets}
             />
           )
         }

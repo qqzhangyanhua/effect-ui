@@ -245,6 +245,71 @@ test("重置恢复全部 Start value", async () => {
   expect(screen.getByRole("textbox", { name: "colors 颜色 1" })).toHaveValue("#ff0000")
 })
 
+test("文字分组排在外观之前，文字内容排在同组最前", () => {
+  render(
+    <ComponentPreview
+      Demo={Demo}
+      componentName="ShimmerText"
+      controls={[
+        { name: "fontSize", control: { kind: "range", value: 48, min: 16, max: 96, step: 1 } },
+        { name: "text", control: { kind: "text", value: "标题" } },
+        { name: "color", control: { kind: "color", value: "#000000" } },
+      ]}
+    />,
+  )
+
+  const headings = screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent)
+  expect(headings).toEqual(["文字", "外观"])
+  const textGroup = screen.getByRole("region", { name: "文字" })
+  const names = within(textGroup).getAllByRole("textbox").map((field) => field.getAttribute("id"))
+  const labels = within(textGroup).getAllByText(/^(text|fontSize)$/)
+  expect(labels.map((label) => label.textContent)).toEqual(["text", "fontSize"])
+  expect(names.length).toBeGreaterThan(0)
+})
+
+test("套用预设后预览和复制配置一起变，重置和重放仍可用", async () => {
+  const user = userEvent.setup()
+  render(
+    <ComponentPreview
+      Demo={Demo}
+      componentName="ShimmerText"
+      controls={[
+        { name: "fontSize", defaultValue: "48", control: { kind: "range", value: 48, min: 12, max: 96, step: 1 } },
+        {
+          name: "align",
+          defaultValue: '"left"',
+          control: { kind: "select", value: "left", options: ["left", "center", "right"] },
+        },
+      ]}
+      presets={[{ name: "shimmer-display", label: "大标题", values: { fontSize: 72, align: "center" } }]}
+    />,
+  )
+
+  expect(params()).toBe('{"fontSize":48,"align":"left"}')
+  expect(snippet()).toBe("<ShimmerText />")
+
+  await user.click(screen.getByRole("button", { name: "大标题" }))
+  expect(params()).toBe('{"fontSize":72,"align":"center"}')
+  expect(snippet()).toBe('<ShimmerText fontSize={72} align="center" />')
+  expect(screen.getByRole("button", { name: "大标题" })).toHaveAttribute("aria-pressed", "true")
+
+  await user.click(screen.getByRole("slider", { name: "fontSize" }))
+  await user.keyboard("{ArrowLeft}")
+  await waitFor(() => {
+    expect(snippet()).toBe('<ShimmerText fontSize={71} align="center" />')
+  })
+  expect(screen.getByRole("button", { name: "大标题" })).toHaveAttribute("aria-pressed", "false")
+
+  await user.click(screen.getByRole("button", { name: "重置" }))
+  expect(params()).toBe('{"fontSize":48,"align":"left"}')
+  expect(snippet()).toBe("<ShimmerText />")
+
+  expect(screen.getByLabelText("挂载")).toHaveTextContent("1")
+  await user.click(screen.getByRole("button", { name: "重放" }))
+  expect(screen.getByLabelText("挂载")).toHaveTextContent("2")
+  expect(params()).toBe('{"fontSize":48,"align":"left"}')
+})
+
 test("没有 Control 的 demo 也有重放、主题和底纹", async () => {
   const user = userEvent.setup()
   render(<ComponentPreview Demo={Demo} />)

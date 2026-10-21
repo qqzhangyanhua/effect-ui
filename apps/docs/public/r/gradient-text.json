@@ -6,6 +6,7 @@
   "description": "流动渐变文字。",
   "dependencies": [],
   "registryDependencies": [
+    "use-prefers-reduced-motion",
     "utils"
   ],
   "files": [
@@ -13,7 +14,7 @@
       "path": "registry/effects/gradient-text.tsx",
       "type": "registry:ui",
       "target": "components/ui/gradient-text.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  colors?: string\n}\n\nfunction GradientText({\n  className,\n  colors = \"from-violet-500 via-fuchsia-500 to-cyan-400\",\n  children,\n  ...props\n}: GradientTextProps) {\n  return (\n    <span\n      data-slot=\"gradient-text\"\n      className={cn(\n        \"inline-block animate-[gradient-shift_6s_ease_infinite] bg-linear-to-r bg-size-[200%_auto] bg-clip-text text-transparent motion-reduce:animate-none\",\n        colors,\n        className,\n      )}\n      {...props}\n    >\n      {children}\n    </span>\n  )\n}\n\nexport { GradientText }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {\n  /** Tailwind 渐变类。不是 CSS 颜色数组。 */\n  colors?: string\n  /** 流动开始前的等待（毫秒）。不传则立刻开始。 */\n  delay?: number\n  /** 为假时只走一轮。不传则保持原来的无限循环。 */\n  loop?: boolean\n  /** 精细指针移入时重播。触屏上忽略移入。 */\n  interactive?: boolean\n  fontSize?: number\n  fontWeight?: number\n  letterSpacing?: number\n  align?: \"left\" | \"center\" | \"right\"\n}\n\nfunction coarsePointer() {\n  return window.matchMedia(\"(pointer: coarse)\").matches\n}\n\nfunction GradientText({\n  className,\n  colors = \"from-violet-500 via-fuchsia-500 to-cyan-400\",\n  delay = 0,\n  loop = true,\n  interactive = false,\n  fontSize,\n  fontWeight,\n  letterSpacing,\n  align,\n  children,\n  style,\n  ...props\n}: GradientTextProps) {\n  const reduced = usePrefersReducedMotion()\n  const [replay, setReplay] = React.useState(0)\n  const nextStyle: React.CSSProperties = { ...style }\n  if (fontSize !== undefined) nextStyle.fontSize = fontSize\n  if (fontWeight !== undefined) nextStyle.fontWeight = fontWeight\n  if (letterSpacing !== undefined) nextStyle.letterSpacing = `${letterSpacing}em`\n  if (align !== undefined) nextStyle.textAlign = align\n  if (delay > 0) nextStyle.animationDelay = `${delay}ms`\n  if (!loop) nextStyle.animationIterationCount = 1\n\n  return (\n    <span\n      key={replay}\n      data-slot=\"gradient-text\"\n      className={cn(\n        \"inline-block animate-[gradient-shift_6s_ease_infinite] bg-linear-to-r bg-size-[200%_auto] bg-clip-text text-transparent motion-reduce:animate-none\",\n        colors,\n        className,\n      )}\n      style={Object.keys(nextStyle).length > 0 ? nextStyle : undefined}\n      {...props}\n      onPointerEnter={() => {\n        if (reduced || !interactive || coarsePointer()) return\n        setReplay((current) => current + 1)\n      }}\n    >\n      {children}\n    </span>\n  )\n}\n\nexport { GradientText }\n"
     }
   ]
 }

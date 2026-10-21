@@ -19,6 +19,7 @@ import { batch19Components } from "./catalog-batch19"
 import { batch20Components } from "./catalog-batch20"
 import { batch21Components } from "./catalog-batch21"
 import { batch22Components } from "./catalog-batch22"
+import { batch23Components } from "./catalog-batch23"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -2259,6 +2260,7 @@ export const components: ComponentMeta[] = [
   ...batch20Components,
   ...batch21Components,
   ...batch22Components,
+  ...batch23Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2338,6 +2340,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "particle-button",
       "tear-button",
       "animated-subscribe-button",
+      "copy-button",
     ],
   },
 ]

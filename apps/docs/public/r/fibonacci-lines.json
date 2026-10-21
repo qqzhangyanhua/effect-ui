@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fibonacci-lines",
+  "type": "registry:ui",
+  "title": "Fibonacci Lines",
+  "description": "移植自 Animata，MIT，Copyright (c) Animata。 https://github.com/codse/animata/blob/main/animata/container/fibonacci-lines.tsx 按斐波那契数列转出的装饰线框，线段依次描出。减弱动效时线段同时出现。离开视口时暂停描线。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/fibonacci-lines.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/fibonacci-lines.tsx",
+      "content": "\"use client\"\n\n// Ported from Animata (MIT) — https://github.com/codse/animata/blob/main/animata/container/fibonacci-lines.tsx\n\nimport { useRef, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FibonacciLinesProps {\n  className?: string\n  children?: ReactNode\n}\n\nconst FIBONACCI = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]\n\nconst FRAME = (() => {\n  const directions = [\n    [1, 0],\n    [0, 1],\n    [-1, 0],\n    [0, -1],\n  ] as const\n  let x = 0\n  let y = 0\n  let direction = 0\n  const lines: { x1: number; y1: number; x2: number; y2: number }[] = []\n  for (const length of FIBONACCI) {\n    const step = directions[direction] ?? [1, 0]\n    const x2 = x + step[0] * length\n    const y2 = y + step[1] * length\n    lines.push({ x1: x, y1: y, x2, y2 })\n    x = x2\n    y = y2\n    direction = (direction + 1) % 4\n  }\n  const xs = lines.flatMap((line) => [line.x1, line.x2])\n  const ys = lines.flatMap((line) => [line.y1, line.y2])\n  const minX = Math.min(...xs)\n  const minY = Math.min(...ys)\n  const maxX = Math.max(...xs)\n  const maxY = Math.max(...ys)\n  const pad = 12\n  return {\n    viewBox: `${minX - pad} ${minY - pad} ${maxX - minX + pad * 2} ${maxY - minY + pad * 2}`,\n    lines,\n  }\n})()\n\nconst FIBONACCI_CSS = `\n.fibonacci-line {\n  stroke-dashoffset: 1;\n  animation: fibonacci-draw 0.7s ease forwards;\n}\n@keyframes fibonacci-draw {\n  to { stroke-dashoffset: 0; }\n}\n`\n\nfunction FibonacciLines({ className, children }: FibonacciLinesProps) {\n  const wrapRef = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const active = useAnimationActive(wrapRef)\n\n  return (\n    <div\n      ref={wrapRef}\n      data-slot=\"fibonacci-lines\"\n      data-reduced={reduced ? \"true\" : undefined}\n      className={cn(\"relative flex h-64 w-full items-center justify-center text-foreground\", className)}\n    >\n      <style>{FIBONACCI_CSS}</style>\n      <svg viewBox={FRAME.viewBox} className=\"absolute inset-0 h-full w-full\" aria-hidden=\"true\">\n        {FRAME.lines.map((line, index) => (\n          <line\n            key={`${line.x2}-${line.y2}`}\n            x1={line.x1}\n            y1={line.y1}\n            x2={line.x2}\n            y2={line.y2}\n            pathLength={1}\n            stroke=\"currentColor\"\n            strokeWidth={1.6}\n            strokeLinecap=\"round\"\n            vectorEffect=\"non-scaling-stroke\"\n            strokeDasharray={1}\n            strokeDashoffset={reduced ? 0 : undefined}\n            className={reduced ? undefined : \"fibonacci-line\"}\n            style={{\n              animationDelay: `${index * 0.08}s`,\n              animationPlayState: !reduced && active ? \"running\" : \"paused\",\n            }}\n          />\n        ))}\n      </svg>\n      {children ? <div className=\"relative z-10 px-6 text-center\">{children}</div> : null}\n    </div>\n  )\n}\n\nexport { FibonacciLines }\n"
+    }
+  ]
+}

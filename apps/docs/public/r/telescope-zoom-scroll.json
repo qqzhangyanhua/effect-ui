@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "telescope-zoom-scroll",
+  "type": "registry:ui",
+  "title": "Telescope Zoom Scroll",
+  "description": "灵感来自 Codrops Telescope Zoom，原创实现。圆形视窗随滚动放大，外圈刻度一起旋转，揭开下一张画面。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/telescope-zoom-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/telescope-zoom-scroll.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useMotionValue, useMotionValueEvent, useScroll, useTransform } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TelescopeZoomScrollProps {\n  before?: string\n  after?: string\n  className?: string\n}\n\nfunction TelescopeZoomScroll({\n  before = \"先看见圆窗里的海岸。\",\n  after = \"再把整片夜空揭开。\",\n  className,\n}: TelescopeZoomScrollProps) {\n  const reduced = usePrefersReducedMotion()\n  const ref = React.useRef<HTMLElement>(null)\n  const stageRef = React.useRef<HTMLDivElement>(null)\n  const boxRef = React.useRef({ width: 800, height: 600 })\n  const { scrollYProgress } = useScroll({ target: ref, offset: [\"start start\", \"end end\"] })\n  const radius = useMotionValue(72)\n  const clip = useTransform(radius, (value) => `circle(${value}px at 50% 50%)`)\n  const diameter = useTransform(radius, (value) => value * 2)\n  const rotate = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 140])\n\n  const applyRadius = React.useCallback(\n    (progress: number) => {\n      const { width, height } = boxRef.current\n      const min = Math.min(width, height) * 0.11\n      const max = Math.hypot(width, height) / 2 + 28\n      radius.set(min + (max - min) * progress)\n    },\n    [radius],\n  )\n\n  useMotionValueEvent(scrollYProgress, \"change\", applyRadius)\n\n  React.useEffect(() => {\n    const stage = stageRef.current\n    if (!stage || reduced) return\n    const measure = () => {\n      const box = stage.getBoundingClientRect()\n      boxRef.current = { width: Math.max(box.width, 1), height: Math.max(box.height, 1) }\n      applyRadius(scrollYProgress.get())\n    }\n    measure()\n    const observer = new ResizeObserver(measure)\n    observer.observe(stage)\n    return () => observer.disconnect()\n  }, [applyRadius, reduced, scrollYProgress])\n\n  if (reduced) {\n    return (\n      <section data-slot=\"telescope-zoom-scroll\" className={cn(\"grid gap-4 bg-slate-950 p-8 text-white\", className)}>\n        <h2 className=\"text-3xl\">{after}</h2>\n      </section>\n    )\n  }\n\n  return (\n    <section ref={ref} data-slot=\"telescope-zoom-scroll\" className={cn(\"relative h-[220vh] bg-slate-950 text-white\", className)}>\n      <div ref={stageRef} className=\"sticky top-0 h-svh overflow-hidden\">\n        <div className=\"absolute inset-0 flex items-end bg-linear-to-b from-sky-700 to-amber-200 p-10\">\n          <h2 className=\"text-4xl\">{before}</h2>\n        </div>\n        <motion.div style={{ clipPath: clip }} className=\"absolute inset-0 flex items-end bg-linear-to-b from-indigo-950 to-slate-900 p-10\">\n          <h2 className=\"text-4xl\">{after}</h2>\n        </motion.div>\n        <motion.div style={{ width: diameter, height: diameter, x: \"-50%\", y: \"-50%\", rotate }} className=\"pointer-events-none absolute top-1/2 left-1/2\">\n          <svg viewBox=\"0 0 100 100\" className=\"size-full\" aria-hidden>\n            <circle cx=\"50\" cy=\"50\" r=\"48\" fill=\"none\" stroke=\"white\" strokeOpacity=\"0.8\" strokeWidth=\"0.7\" strokeDasharray=\"1.5 2.6\" />\n            <circle cx=\"50\" cy=\"50\" r=\"44\" fill=\"none\" stroke=\"white\" strokeOpacity=\"0.35\" strokeWidth=\"0.35\" />\n          </svg>\n        </motion.div>\n      </div>\n    </section>\n  )\n}\n\nexport { TelescopeZoomScroll }\n"
+    }
+  ]
+}

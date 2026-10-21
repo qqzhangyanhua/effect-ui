@@ -443,6 +443,28 @@ use-mobile · use-prefers-reduced-motion
 | schedule-slot-picker | 灵感来自 Calendly 与 Cal.com，原创实现 |
 | reaction-bar | 原创，帖子与评论共用 |
 
+### 管道、沙漏与收件箱
+
+登记在 `catalog-batch18.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。减弱动效时烟花不渲染，沙漏改成进度条，图片管道和乐高像素改成静态画面。
+
+| 组件 | 来源 |
+| --- | --- |
+| image-tube-scroll | 灵感来自 Codrops Scroll-Driven 3D Image Tube，原创实现 |
+| depth-fog-gallery | 灵感来自 Codrops Atmospheric Depth Gallery，原创实现 |
+| fireworks-show | 灵感来自 Codrops Fireworks 2026，原创实现 |
+| wobble-line-cursor | 灵感来自 Codrops Cursor Line Wobble，原创实现 |
+| lego-pixelate | 灵感来自 Codrops Lego pixellation，原创实现 |
+| telescope-zoom-scroll | 灵感来自 Codrops Telescope Zoom，原创实现 |
+| curved-scrollbar | 灵感来自 Codrops Custom curved corner scrollbars，原创实现 |
+| particle-hourglass | 灵感来自 Codrops Sands of Time，原创实现 |
+| invoice-preview | 原创 |
+| shortcuts-dialog | 原创 |
+| pricing-calculator | 原创 |
+| plan-compare-table | 原创 |
+| mention-textarea | 原创 |
+| inbox-split-view | 原创 |
+| timezone-clock | 原创 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

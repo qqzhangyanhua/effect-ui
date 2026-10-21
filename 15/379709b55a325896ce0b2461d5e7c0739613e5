@@ -1,0 +1,55 @@
+packages/registry/src/effects/click-spark.tsx
+  s_6e6548ca6927de::t_1b49ea87ed78b7 12-15,25,49,76-89,91-95
+packages/registry/src/catalog-batch13.ts
+  s_6e6548ca6927de::t_8f50ecd09018a4 198-201,205-209,258-262,266-270
+packages/registry/src/effects/sparkles.tsx
+  s_6e6548ca6927de::t_eb2354c98aa0ab 9-12,15-18,25-33,37-40
+packages/registry/src/effects/confetti-burst.tsx
+  s_6e6548ca6927de::t_a5810d20c052db 19-21,28-30,35-37,44-46,50,67
+apps/docs/public/r/registry.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 5846
+apps/docs/public/r/click-spark.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 19
+CREDITS.md
+  s_6e6548ca6927de::t_a7f37962f0e5a7 32
+apps/docs/public/r/sparkles.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 16
+packages/registry/src/effects/electric-border.tsx
+  s_6e6548ca6927de::t_564e6850205825 5,12-14,18-25,27-28,32-34,37,44-45,47,52,56,72,85
+packages/registry/src/effects/burst-icons.tsx
+  s_6e6548ca6927de::t_45d99e304dfa0e 12-15,21-25,51,57-59,73-74,80-81,91-95,97,101-104
+registry.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 5846
+apps/docs/public/r/confetti-burst.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 16
+packages/registry/src/examples/effect-demos-7.tsx
+  s_6e6548ca6927de::t_28509cd3e65be4 145-146
+apps/docs/public/r/electric-border.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 9,18
+packages/registry/src/examples/effect-demos-2.tsx
+  s_6e6548ca6927de::t_5740eb130a4db7 372-373,376-377
+packages/registry/src/catalog-batch7.ts
+  s_6e6548ca6927de::t_f06aefa5dd0732 299-311
+packages/registry/src/examples/effect-demos-13.tsx
+  s_6e6548ca6927de::t_a89f09104e42e8 162-163,170-171
+apps/docs/public/r/burst-icons.json
+  s_6e6548ca6927de::t_b09a7f63922f4c 19
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_4f6e8f0ad4bf62 868-878,926-937
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "15379709b55a325896ce0b2461d5e7c0739613e5",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

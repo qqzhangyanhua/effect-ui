@@ -1,0 +1,152 @@
+apps/docs/public/r/audio-spectrum.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 17
+packages/registry/src/effects/audio-spectrum.tsx
+  s_6e6548ca6927de::t_07d932a6bd12ee 14-15,20,29-35,39-41,56,59,147-154,158-160,163
+packages/registry/src/catalog-batch7.ts
+  s_6e6548ca6927de::t_bb5812043294e9 325-327,330-333
+  s_6e6548ca6927de::t_1f5dc15ea6f551 334
+packages/registry/src/catalog-batch18.ts
+  s_6e6548ca6927de::t_47f85440b3faa5 72-74,77-81,132-141,144-148
+apps/docs/public/r/lego-pixelate.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+apps/docs/public/r/orbiting-circles.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 16
+packages/registry/src/catalog-batch4.ts
+  s_6e6548ca6927de::t_24ebee08229f65 302-313
+packages/registry/src/effects/lego-pixelate.tsx
+  s_6e6548ca6927de::t_bdfb05a0977979 12
+  s_6e6548ca6927de::t_c1ba3625cb048e 67,72-73,80-81,137-138
+packages/registry/src/effects/loom-threads-marquee.tsx
+  s_6e6548ca6927de::t_3e943981a8e961 10,65,69-70,78-79,117-121
+packages/registry/src/examples/effect-demos-16.tsx
+  s_6e6548ca6927de::t_a3938fea0e74ca 23-24,61-62
+apps/docs/public/r/loom-threads-marquee.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+packages/registry/src/effects/showcase-vocabulary.test.tsx
+  s_6e6548ca6927de::t_20f4ef18f1d601 188-193
+  s_6e6548ca6927de::t_eb9e0d16281a82 185-187
+  s_6e6548ca6927de::t_fbd15249ee0167 194-196
+apps/docs/public/r/proximity-scale-grid.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 17
+apps/docs/public/r/registry.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 4150,4747,5967
+packages/registry/src/effects/marquee-along-svg-path.tsx
+  s_6e6548ca6927de::t_cf23533f5ce602 7,67-68,70-76,90,92,96
+apps/docs/public/r/liquid-morph-slideshow.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+packages/registry/src/examples/effect-demos-14.tsx
+  s_6e6548ca6927de::t_e003574c738ff3 107-108
+packages/registry/src/catalog-batch13.ts
+  s_6e6548ca6927de::t_82b58303cc3093 382-392,408-409
+apps/docs/public/r/marquee.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 16
+packages/registry/src/effects/thumbnail-flow-path.tsx
+  s_6e6548ca6927de::t_a0624d7e70cc26 10-13,27,40-44,46,76-87,92,99,102
+  s_6e6548ca6927de::t_568e0cbb9ec90a 111-112
+apps/docs/public/r/dual-wave-text-list.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+apps/docs/public/r/marquee-along-svg-path.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 11,19
+packages/registry/src/catalog-batch3.ts
+  s_6e6548ca6927de::t_328aaf98c3bde4 27-34
+packages/registry/src/catalog-batch14.ts
+  s_6e6548ca6927de::t_b2e94d77e8fb0e 325,328-331
+  s_6e6548ca6927de::t_58cfbbe76f6c38 332
+packages/registry/src/examples/effect-demos-3.tsx
+  s_6e6548ca6927de::t_b128acd54ea7bd 53,64-65
+packages/registry/src/examples/effect-demos-11.tsx
+  s_6e6548ca6927de::t_5fd0296d828334 71-72,75-76
+packages/registry/src/examples/effect-demos-17.tsx
+  s_6e6548ca6927de::t_cdda4c95476155 50-51,82-83
+packages/registry/src/effects/proximity-scale-grid.tsx
+  s_6e6548ca6927de::t_bc5b3cd40c9dcb 10-14,26,48,50-52,56-57,63-64,67,72-74,77,80,82-83,88,99-101,121
+packages/registry/src/ui/hover-image-list.tsx
+  s_6e6548ca6927de::t_acb5152521fd42 17-18,28,54-59,68-72,78
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_4f77598328a850 819-828,841-848,860-870,881-891
+packages/registry/src/catalog-batch19.ts
+  s_6e6548ca6927de::t_c674d75ba10caf 67-69,72-76,212-214,217-221
+packages/registry/src/examples/effect-demos-4.tsx
+  s_6e6548ca6927de::t_8eb96a4f563747 152,156-158
+packages/registry/src/catalog-batch9.ts
+  s_6e6548ca6927de::t_e3c9b194a3225b 235-245
+packages/registry/src/effects/infinite-canvas-gallery.tsx
+  s_6e6548ca6927de::t_4d533c7efe4d16 16-17,31,38-40,45,71-74,120-124,126,128
+apps/docs/public/r/sortable-list.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+packages/registry/src/prop-vocabulary.ts
+  s_6e6548ca6927de::t_71b5def2ecd429 24
+apps/docs/public/r/orbiting-items-3d.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 9,18
+packages/registry/src/examples/effect-demos-15.tsx
+  s_6e6548ca6927de::t_13872d6e5ca113 82-83
+apps/docs/public/r/thumbnail-flow-path.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 17
+packages/registry/src/catalog-batch16.ts
+  s_6e6548ca6927de::t_5eb68cbf9c7f64 32-40,167-178
+apps/docs/public/r/globe-sphere.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 16
+apps/docs/public/r/xray-fluid-reveal.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+packages/registry/src/examples/effect-demos-18.tsx
+  s_6e6548ca6927de::t_e43a64a0db6843 37-38,55-56
+apps/docs/public/r/icon-cloud.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 16
+packages/registry/src/examples/effect-demos-13.tsx
+  s_6e6548ca6927de::t_101a613bba65f6 196-197
+packages/registry/src/examples/effect-demos-9.tsx
+  s_6e6548ca6927de::t_b83db7b45bfe7e 69-70
+packages/registry/src/catalog-batch17.ts
+  s_6e6548ca6927de::t_91e283c217ff0a 77-89,182-190
+packages/registry/src/catalog-batch15.ts
+  s_6e6548ca6927de::t_209b109a17dcf1 146,149-152
+  s_6e6548ca6927de::t_117f59b31341a8 153
+packages/registry/src/examples/effect-demos-2.tsx
+  s_6e6548ca6927de::t_5a1041928d8115 327,329,331,337-338,340-343,348,352-354,356,362-363
+packages/registry/src/effects/dome-gallery.tsx
+  s_6e6548ca6927de::t_1a40d326ce6f80 6,12-14,52,54-59,64-72,75-77,82,84,94,123,132
+packages/registry/src/effects/dual-wave-text-list.tsx
+  s_6e6548ca6927de::t_6741d37a9d8a88 19,38,47,50,53,74,80,133,151
+packages/registry/src/examples/effect-demos-7.tsx
+  s_6e6548ca6927de::t_ddb80ac3989a2b 149,151
+apps/docs/public/r/infinite-canvas-gallery.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 17
+packages/registry/src/effects/xray-fluid-reveal.tsx
+  s_6e6548ca6927de::t_b5c8e525eeb5b5 10,95,100-101,106-109,172-174
+apps/docs/public/r/hover-image-list.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 17
+CREDITS.md
+  s_6e6548ca6927de::t_817cf27b6a743a 32
+packages/registry/src/effects/globe-sphere.tsx
+  s_6e6548ca6927de::t_ef3c17109c8d81 12-19,24-26,30
+packages/registry/src/effects/sortable-list.tsx
+  s_6e6548ca6927de::t_33c11c1e4561bc 19,86,108-109
+apps/docs/public/r/animated-list.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 19
+packages/registry/src/effects/liquid-morph-slideshow.tsx
+  s_6e6548ca6927de::t_87c69a037b9111 12,41,47-48,56-57,169-170
+apps/docs/public/r/dome-gallery.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 11,20
+packages/registry/src/examples/effect-demos-19.tsx
+  s_6e6548ca6927de::t_e59281197ffb99 33-34,100-101
+registry.json
+  s_6e6548ca6927de::t_22f8e51c69be1f 4150,4747,5967
+packages/registry/src/catalog-batch11.ts
+  s_6e6548ca6927de::t_5f8a96e283855e 211-221,232-242
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "7ed90287a39055bc58b10041e5080359e6450f4b",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

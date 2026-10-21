@@ -465,6 +465,28 @@ use-mobile · use-prefers-reduced-motion
 | inbox-split-view | 原创 |
 | timezone-clock | 原创 |
 
+### 光管、频谱与组织图
+
+登记在 `catalog-batch19.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光管不渲染，液体幻灯改为交叉淡入，波场和黑洞停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，仪表指针直接到位，卡面不翻转。
+
+| 组件 | 来源 |
+| --- | --- |
+| tubes-cursor | 灵感来自 Codrops Tubes Cursor，原创实现 |
+| liquid-morph-slideshow | 灵感来自 Codrops Liquid Morphology Slideshow，原创实现 |
+| wavefield-neon | 灵感来自 Codrops Wavefield Shader，原创实现 |
+| gradient-carousel-3d | 灵感来自 Codrops Infinite 3D Gradient Carousel，原创实现 |
+| text-3d-scroll | 灵感来自 Codrops 3D Text Scroll Animations，原创实现 |
+| rolling-text-hover | 灵感来自 Codrops Rolling text，原创实现 |
+| audio-spectrum | 灵感来自 Spotify visualiser，原创实现。实时频谱，和静态 audio-waveform 不同 |
+| singularity | 灵感来自 Codrops Singularity，原创实现 |
+| credit-card-form | 原创 |
+| cart-drawer | 原创 |
+| coupon-input | 原创 |
+| radial-gauge | 原创 |
+| funnel-chart | 原创 |
+| gantt-timeline | 原创 |
+| org-chart | 原创 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

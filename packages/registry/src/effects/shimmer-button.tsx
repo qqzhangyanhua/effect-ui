@@ -33,7 +33,9 @@ function ShimmerButton({
           ...(timed ? {} : { animationDuration: `${ms}ms` }),
         }}
       />
-      <span className="relative z-10">{slotted ? slotted.props.children : children}</span>
+      <span className="relative z-10 inline-flex items-center gap-2 whitespace-nowrap">
+        {slotted ? slotted.props.children : children}
+      </span>
     </>
   )
 

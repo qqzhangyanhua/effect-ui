@@ -1,0 +1,165 @@
+packages/registry/src/catalog-batch18.ts
+  s_4113808860c32f::t_5ed0dada30f384 174-183
+  s_f57771bba2a350::t_078ffba1dfe546 244-246,250
+packages/registry/src/prop-type-text.ts
+  s_53e9be31cbddf4::t_15b82b3e85af6f 281-283
+  s_53e9be31cbddf4::t_55dadb52f149c6 391-556,558,560-563,565-595,597-598,610-747
+  s_53e9be31cbddf4::t_5037e91a328d22 271-279,284-299,303-304,306-390
+  s_53e9be31cbddf4::t_3f66fc75c531a7 105-125,127-136,141-143,146,159-161,164,177-179,182,198-200,203
+  s_53e9be31cbddf4::t_3d976ab21df201 300-302,305
+  s_53e9be31cbddf4::t_d7b46dbbd14bf5 126
+  s_53e9be31cbddf4::t_793d49564e8bd6 557,559,564
+  s_53e9be31cbddf4::t_b4048a597fefc5 280
+  s_53e9be31cbddf4::t_65ebffe4e9d68e 596,599-609
+packages/registry/src/examples/effect-demos-18.tsx
+  s_4113808860c32f::t_e06d423e0d8e35 63,65
+docs/testing.md
+  s_53e9be31cbddf4::t_1024e6bb39a51a 33
+  s_70509bf3b4bcff::t_f87cdad8dbd814 34
+packages/registry/src/examples/effect-demos-14.tsx
+  s_4113808860c32f::t_5a305f2e5f38fb 136-137,143-144,153-154
+  s_4113808860c32f::t_c24c01580c716b 111-124
+  s_4113808860c32f::t_83412250faa0a8 99-100
+packages/registry/src/audit.issue-75.test.ts
+  s_f57771bba2a350::t_3b060abcb44838 1-52
+packages/registry/src/audit.issue-76.test.ts
+  s_961f5da0197962::t_a6c1cac84bd0d4 1-42
+packages/registry/src/examples/effect-demos.tsx
+  s_652f7e4d148a0b::t_d16c4aebedc17f 46-51,57-62,71-76,81-101,103-114,119-142
+  s_652f7e4d148a0b::t_4487627fd57e17 178-183,188-193,195-208
+  s_4113808860c32f::t_57ac9d16d7bbb7 539,545,551
+packages/registry/src/catalog.ts
+  s_4113808860c32f::t_0f62fca2f4313d 1915-1920
+packages/registry/src/catalog-batch3.ts
+  s_f57771bba2a350::t_6fc7e047fa38a9 322-324
+  s_70509bf3b4bcff::t_057e644cec7af0 481
+  s_93fcf320ea0c33::t_ae0a1bac50d3cf 26-27,30,32-38
+  s_70509bf3b4bcff::t_ba6f3d68e67deb 501
+packages/registry/src/audit.issue-74.test.ts
+  s_4113808860c32f::t_30c546d8101c39 1-81
+packages/registry/src/audit.issue-72.test.ts
+  s_652f7e4d148a0b::t_1bedff7a5faa50 1-73
+packages/registry/src/audit.issue-73.test.ts
+  s_93fcf320ea0c33::t_57d80c7803e3c6 1-69
+packages/registry/src/examples/effect-demos-3.tsx
+  s_93fcf320ea0c33::t_56f4e74cc95555 53-63,74-75
+packages/registry/src/catalog-batch17.ts
+  s_f57771bba2a350::t_19777fb8b5f5e2 334-341
+  s_f57771bba2a350::t_a6df7cbfe37f25 352
+  s_f57771bba2a350::t_51a04ce71fe490 363-367
+  s_f57771bba2a350::t_34071996edf9f9 409
+  s_f57771bba2a350::t_6839df26e20474 389-396
+packages/registry/src/audit.ts
+  s_53e9be31cbddf4::t_411915a0e3d36a 347,352-356,366
+  s_53e9be31cbddf4::t_76e0f5e5fbad28 548
+  s_53e9be31cbddf4::t_16fb230360ce71 32-33
+  s_53e9be31cbddf4::t_50150feccdaee2 392-393,396,404,406-422
+  s_53e9be31cbddf4::t_bceb69b5987c39 504
+  s_53e9be31cbddf4::t_7c3f13ed2ffe97 570-572
+  s_53e9be31cbddf4::t_2d904fe44e107a 365,367-391,394-395,397-403,405,423-451
+  s_53e9be31cbddf4::t_0a52f766be7a41 2-8
+packages/registry/src/catalog-batch4.ts
+  s_961f5da0197962::t_04dbf0578275fe 380
+  s_f57771bba2a350::t_8ffdab1accf7bd 365
+packages/registry/src/examples/effect-demos-2.tsx
+  s_652f7e4d148a0b::t_8cbcd75937acce 50-69
+packages/registry/src/audit.test.ts
+  s_53e9be31cbddf4::t_48577df84d1e6e 763-875,946-962
+  s_53e9be31cbddf4::t_cb0f92fb712ec3 876-945
+  s_53e9be31cbddf4::t_2343947daa0469 6
+packages/registry/src/catalog-batch6.ts
+  s_961f5da0197962::t_55682c40ec2a42 299
+packages/registry/src/audit.repo.test.ts
+  s_53e9be31cbddf4::t_ad20c4327fb154 117-124
+packages/registry/src/examples/effect-demos-19.tsx
+  s_4113808860c32f::t_641fd9f226c142 36-45
+  s_4113808860c32f::t_12bc79731e9d70 136-143
+apps/docs/lib/usage.test.ts
+  s_652f7e4d148a0b::t_3ab07a210f784b 8-17,19-30
+  s_652f7e4d148a0b::t_cdcab27d10ba6d 42-46,49-58
+  s_652f7e4d148a0b::t_1125c458ac7da1 70-75,80-89
+packages/registry/src/catalog-batch5.ts
+  s_961f5da0197962::t_5a6e07071e75a6 396-398
+packages/registry/src/examples/effect-demos-4.tsx
+  s_652f7e4d148a0b::t_1ef5406090fc4a 121-139,142-152
+packages/registry/src/catalog-batch12.ts
+  s_70509bf3b4bcff::t_99c2f03d77604d 300
+  s_70509bf3b4bcff::t_58b350281ca533 453
+  s_70509bf3b4bcff::t_c3af93f3e8e688 496
+  s_70509bf3b4bcff::t_b6134f242c1418 395
+  s_70509bf3b4bcff::t_6032331dd25acd 100
+  s_70509bf3b4bcff::t_47283cd9753471 205
+  s_70509bf3b4bcff::t_fa354c72af4c6c 252
+packages/registry/src/catalog-batch14.ts
+  s_4113808860c32f::t_d3472fbee69d7a 351-371
+  s_4113808860c32f::t_a1f0f8a13949bc 294
+  s_4113808860c32f::t_c09bcc00bd0f7b 419-432
+packages/registry/src/catalog-batch19.ts
+  s_4113808860c32f::t_5da65fe9c097af 88-90
+  s_4113808860c32f::t_63b13802a9e33a 283-284
+  s_f57771bba2a350::t_839ca77cb58ef2 257-258
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ecbf911dd8164ead6352be1260d2dad5ecd6a883",
+  "prompts": {},
+  "sessions": {
+    "s_4113808860c32f": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "cb4e693f-88fc-4951-b047-d5ba0085aaad",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_53e9be31cbddf4": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c72b652f-4fd1-4229-b91a-21056fc7f80a",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_652f7e4d148a0b": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "ec5c9461-f099-4777-9115-c3646522b9e7",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_70509bf3b4bcff": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "216a2fe4-538f-4d01-ae33-48071c78ec3e",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_93fcf320ea0c33": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "120979c6-9805-47c2-a8dc-8c1e9a12e5d1",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_961f5da0197962": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "a54779b0-c353-456b-8cb3-f6358be5814b",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_f57771bba2a350": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1524d174-39df-4c5d-b447-7ffbdfe4772d",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

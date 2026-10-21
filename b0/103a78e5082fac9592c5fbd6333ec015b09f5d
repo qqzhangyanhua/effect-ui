@@ -1,0 +1,55 @@
+packages/registry/src/examples/effect-demos-5.tsx
+  s_6e6548ca6927de::t_0d8dc5d85461a1 54-55,58-59,62-63
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_251139e66d9b2f 1067-1119,1130-1149,1160-1179
+packages/registry/src/effects/button-vocabulary.test.tsx
+  s_6e6548ca6927de::t_2bdea0a2e4ac5a 144,159
+  s_6e6548ca6927de::t_f1a8887e6d797a 4,189-195
+  s_6e6548ca6927de::t_80ff7609a43679 1-3
+  s_6e6548ca6927de::t_01bb82cb5c87ea 5-7,141-143
+  s_6e6548ca6927de::t_9ba4036545dde0 145-147,156-158
+  s_6e6548ca6927de::t_056454a847ea99 160-162,186-188
+  s_6e6548ca6927de::t_4bd7b3a5baafd4 196-198
+packages/registry/src/catalog-batch5.ts
+  s_6e6548ca6927de::t_3ee81e4f20cbc6 498-504,508-512,523-548,559-578
+packages/registry/src/effects/gooey-button.tsx
+  s_6e6548ca6927de::t_491b72597e5b72 30-31,37,41-44
+  s_6e6548ca6927de::t_8dd48863ff9208 45
+packages/registry/src/effects/neon-button.tsx
+  s_6e6548ca6927de::t_20db3e4395bec7 22,30-31,43-44
+  s_6e6548ca6927de::t_a58b90cd16365f 39-41,45
+  s_6e6548ca6927de::t_12c6e2f60c73d2 32-33
+  s_6e6548ca6927de::t_ccab694e0a79e8 38
+  s_6e6548ca6927de::t_05e5d73bcecec7 42
+  s_6e6548ca6927de::t_806d67a78f2123 46
+packages/registry/src/catalog.ts
+  s_6e6548ca6927de::t_3de83a715616df 1651-1675,1686-1704,1715-1734,1745-1764
+packages/registry/src/effects/shimmer-button.tsx
+  s_6e6548ca6927de::t_02ad10d0accd83 33
+packages/registry/src/examples/effect-demos.tsx
+  s_6e6548ca6927de::t_e77bb8f8d72559 389-390,393-394,397-398,401-402
+packages/registry/src/effects/pulse-button.tsx
+  s_6e6548ca6927de::t_7b6ddf6a3dd4e1 27,32-45
+  s_6e6548ca6927de::t_57127160207cc4 25-26
+  s_6e6548ca6927de::t_47d8a61c576ef9 46-48
+CREDITS.md
+  s_6e6548ca6927de::t_7b10d300db7c70 31
+packages/registry/src/examples/effect-demos-2.tsx
+  s_6e6548ca6927de::t_328c25ba41e48c 421-422,425-426,429-430
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "b0103a78e5082fac9592c5fbd6333ec015b09f5d",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

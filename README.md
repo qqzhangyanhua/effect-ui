@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 色波、点阵与置顶
+
+登记在 `catalog-batch27.ts`。上一批极光、液态金属与时长已占用 `catalog-batch26.ts`。`novatrix-background` 移植自 Eldora UI（MIT，Copyright Mudunuri Bhaskara Karthikeya Varma），源文件 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 。其余十四项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`novatrix-background` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止动画帧、衰减、自动旋转和扫描倒计时。减弱动效时色波停住，手绘不挂画布，色差过渡直接换内容，点阵直接显示，滚动字停在峰值字重。
+
+| 组件 | 来源 |
+| --- | --- |
+| novatrix-background | Eldora UI，MIT |
+| drawing-cursor | SmoothUI，MIT |
+| emboss-surface | SmoothUI，MIT |
+| chroma-blur-transition | SmoothUI，MIT |
+| arcade-pixel | SmoothUI，MIT |
+| kinetic-type-scroll | SmoothUI，MIT |
+| orbital-image-wheel | SmoothUI，MIT |
+| dither-chart | SmoothUI，MIT |
+| card-swipe-deck | SmoothUI，MIT |
+| pinned-list | SmoothUI，MIT |
+| grid-loader | SmoothUI，MIT |
+| squircle | SmoothUI，MIT |
+| vector-editor-toolbar | SmoothUI，MIT |
+| unlock-face-id | SmoothUI，MIT |
+| music-toggle | SmoothUI，MIT |
+
 ### 极光、液态金属与时长
 
 登记在 `catalog-batch26.ts`。上一批收据、液面与裁切已占用 `catalog-batch25.ts`。十五项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，SDF 过渡直接换内容，环境光只取一帧，勒索信不再晃动，时长数字不再滚动。

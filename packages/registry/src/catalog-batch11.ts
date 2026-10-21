@@ -101,7 +101,45 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/intro-preloader.tsx",
     target: "components/ui/intro-preloader.tsx",
-    props: [{ name: "children", type: "ReactNode", description: "揭开后的内容。" }, ...ui],
+    props: [
+      { name: "children", type: "ReactNode", description: "揭开后的内容。" },
+      {
+        name: "interval",
+        type: "number",
+        description: "计数步进间隔（毫秒）。32 与不传相同，每步仍加 4。",
+        control: { kind: "range", value: 32, min: 8, max: 64, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "幕布揭开毫秒。700 与不传相同。",
+        control: { kind: "range", value: 700, min: 280, max: 1400, step: 10 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻幕布错开毫秒。70 与不传相同。",
+        control: { kind: "range", value: 70, min: 0, max: 200, step: 5 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "幕布条数。5 与不传相同。",
+        control: { kind: "range", value: 5, min: 2, max: 8, step: 1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "幕布颜色。不传则仍是 zinc-950。",
+        control: { kind: "color" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "intro-preloader-slow", label: "慢", values: { interval: 56, duration: 1200, delay: 120, count: 5 } },
+      { name: "intro-preloader-default", label: "默认", values: { interval: 32, duration: 700, delay: 70, count: 5 } },
+      { name: "intro-preloader-fast", label: "快", values: { interval: 16, duration: 360, delay: 20, count: 3 } },
+    ],
   },
   {
     name: "hero-3d-model",

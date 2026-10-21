@@ -402,20 +402,56 @@ export function NeonButtonDemo({ glowColor, scale }: { glowColor?: string; scale
   return <NeonButton glowColor={glowColor} scale={scale}>Neon</NeonButton>
 }
 
-export function SpinnerDemo() {
-  return <Spinner />
+export function SpinnerDemo({ size, duration, color }: { size?: number; duration?: number; color?: string } = {}) {
+  return <Spinner size={size} duration={duration} color={color} />
 }
 
-export function OrbitLoaderDemo() {
-  return <OrbitLoader />
+export function OrbitLoaderDemo({
+  size,
+  dots,
+  duration,
+  delay,
+  color,
+}: {
+  size?: number
+  dots?: number
+  duration?: number
+  delay?: number
+  color?: string
+} = {}) {
+  return <OrbitLoader size={size} dots={dots} duration={duration} delay={delay} color={color} />
 }
 
-export function DotsLoaderDemo() {
-  return <DotsLoader />
+export function DotsLoaderDemo({
+  count,
+  size,
+  gap,
+  duration,
+  delay,
+  color,
+}: {
+  count?: number
+  size?: number
+  gap?: number
+  duration?: number
+  delay?: number
+  color?: string
+} = {}) {
+  return <DotsLoader count={count} size={size} gap={gap} duration={duration} delay={delay} color={color} />
 }
 
-export function ProgressRingDemo() {
-  return <ProgressRing value={72} />
+export function ProgressRingDemo({
+  size,
+  strokeWidth,
+  duration,
+  color,
+}: {
+  size?: number
+  strokeWidth?: number
+  duration?: number
+  color?: string
+} = {}) {
+  return <ProgressRing value={72} size={size} strokeWidth={strokeWidth} duration={duration} color={color} />
 }
 
 export function RevealDemo({

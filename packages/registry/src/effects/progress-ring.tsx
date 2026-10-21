@@ -8,12 +8,16 @@ export interface ProgressRingProps extends React.HTMLAttributes<HTMLDivElement> 
   value: number
   size?: number
   strokeWidth?: number
+  duration?: number
+  color?: string
 }
 
 function ProgressRing({
   value,
   size = 72,
   strokeWidth = 6,
+  duration,
+  color,
   className,
   ...props
 }: ProgressRingProps) {
@@ -47,8 +51,17 @@ function ProgressRing({
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="currentColor"
-          className="text-primary transition-[stroke-dashoffset] duration-500 motion-reduce:transition-none"
+          stroke={color ?? "currentColor"}
+          className={
+            !color && (duration === undefined || duration === 500)
+              ? "text-primary transition-[stroke-dashoffset] duration-500 motion-reduce:transition-none"
+              : cn(
+                  "transition-[stroke-dashoffset] motion-reduce:transition-none",
+                  !color && "text-primary",
+                  (duration === undefined || duration === 500) && "duration-500",
+                )
+          }
+          style={duration === undefined || duration === 500 ? undefined : { transitionDuration: `${duration}ms` }}
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}

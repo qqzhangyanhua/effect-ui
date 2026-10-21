@@ -7376,6 +7376,7 @@
       "description": "灵感来自 Codrops Sands of Time，原创实现。沙粒从上室流到下室并堆积，可用作加载或倒计时。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],

@@ -164,7 +164,45 @@ export const batch18Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/particle-hourglass.tsx",
     target: "components/ui/particle-hourglass.tsx",
-    props: [{ name: "progress", type: "number", defaultValue: "0.35", description: "0 表示沙都在上室，1 表示都落到下室。" }, ...ui],
+    props: [
+      { name: "progress", type: "number", defaultValue: "0.35", description: "0 表示沙都在上室，1 表示都落到下室。" },
+      {
+        name: "count",
+        type: "number",
+        description: "沙粒数量。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 16, max: 160, step: 1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "边框和沙粒颜色。不传时仍是这两色。",
+        control: { kind: "colors", value: ["#e7d7b1", "#f6d48a"] },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "落沙跟随倍率。1 与不传相同，每帧仍跟上 0.08。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "宽度（像素）。224 与不传相同，仍是 w-56。",
+        control: { kind: "range", value: 224, min: 120, max: 360, step: 4 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "沙粒列距（像素）。8 与不传相同，行距仍是 7。",
+        control: { kind: "range", value: 8, min: 0, max: 20, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "particle-hourglass-sparse", label: "疏", values: { count: 32, speed: 0.6, size: 180, gap: 12 } },
+      { name: "particle-hourglass-default", label: "默认", values: { count: 80, speed: 1, size: 224, gap: 8 } },
+      { name: "particle-hourglass-dense", label: "密", values: { count: 140, speed: 1.8, size: 280, gap: 4 } },
+    ],
   },
   {
     name: "invoice-preview",

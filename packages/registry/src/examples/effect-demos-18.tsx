@@ -72,7 +72,19 @@ export function CurvedScrollbarDemo() {
   )
 }
 
-export function ParticleHourglassDemo() {
+export function ParticleHourglassDemo({
+  count,
+  colors,
+  speed,
+  size,
+  gap,
+}: {
+  count?: number
+  colors?: string[]
+  speed?: number
+  size?: number
+  gap?: number
+} = {}) {
   const [progress, setProgress] = useState(0.35)
   return (
     <div className="space-y-3">
@@ -80,7 +92,7 @@ export function ParticleHourglassDemo() {
         进度
         <input aria-label="沙漏进度" type="range" min={0} max={1} step={0.01} value={progress} onChange={(event) => setProgress(Number(event.target.value))} />
       </label>
-      <ParticleHourglass progress={progress} />
+      <ParticleHourglass progress={progress} count={count} colors={colors} speed={speed} size={size} gap={gap} />
     </div>
   )
 }

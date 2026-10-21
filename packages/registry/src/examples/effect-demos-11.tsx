@@ -44,8 +44,20 @@ export function SectionHorizontalScrollDemo() {
   return <SectionHorizontalScroll className="w-full" />
 }
 
-export function IntroPreloaderDemo() {
-  return <IntroPreloader className="w-full" />
+export function IntroPreloaderDemo({
+  interval,
+  duration,
+  delay,
+  count,
+  color,
+}: {
+  interval?: number
+  duration?: number
+  delay?: number
+  count?: number
+  color?: string
+} = {}) {
+  return <IntroPreloader className="w-full" interval={interval} duration={duration} delay={delay} count={count} color={color} />
 }
 
 export function Hero3DModelDemo() {

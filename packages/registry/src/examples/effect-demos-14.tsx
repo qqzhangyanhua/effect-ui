@@ -120,8 +120,28 @@ export function CookieConsentDemo() {
   )
 }
 
-export function CountdownTimerDemo() {
-  return <CountdownTimer className="w-full" durationSeconds={36} confetti />
+export function CountdownTimerDemo({
+  gap,
+  speed,
+  duration,
+  fontSize,
+}: {
+  gap?: number
+  speed?: number
+  duration?: number
+  fontSize?: number
+} = {}) {
+  return (
+    <CountdownTimer
+      className="w-full"
+      durationSeconds={36}
+      confetti
+      gap={gap}
+      speed={speed}
+      duration={duration}
+      fontSize={fontSize}
+    />
+  )
 }
 
 export function ImageCropperDemo() {

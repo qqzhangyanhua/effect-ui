@@ -388,7 +388,36 @@ export const batch14Components: ComponentMeta[] = [
       { name: "durationSeconds", type: "number", defaultValue: "86400", description: "从挂载开始的倒计时秒数。" },
       { name: "confetti", type: "boolean", defaultValue: "false", description: "结束时是否放纸屑。" },
       { name: "onComplete", type: "() => void", description: "倒计时到 0 时调用一次。" },
+      {
+        name: "gap",
+        type: "number",
+        description: "单位间距（像素）。16 与不传相同，仍是 gap-4。",
+        control: { kind: "range", value: 16, min: 0, max: 40, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "数字滚动倍率。1 与不传相同，刚度仍是 220。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "结束纸屑的毫秒数。900 与不传相同。",
+        control: { kind: "range", value: 900, min: 360, max: 1800, step: 20 },
+      },
+      {
+        name: "fontSize",
+        type: "number",
+        description: "数字字号（像素）。36 与不传相同，仍是 text-4xl。",
+        control: { kind: "range", value: 36, min: 16, max: 72, step: 2 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "countdown-timer-tight", label: "紧", values: { gap: 8, speed: 1.6, fontSize: 28, duration: 500 } },
+      { name: "countdown-timer-default", label: "默认", values: { gap: 16, speed: 1, fontSize: 36, duration: 900 } },
+      { name: "countdown-timer-loose", label: "松", values: { gap: 24, speed: 0.6, fontSize: 48, duration: 1400 } },
     ],
   },
   {

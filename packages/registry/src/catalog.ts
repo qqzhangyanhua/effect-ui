@@ -1772,7 +1772,32 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/spinner.tsx",
     target: "components/ui/spinner.tsx",
-    props: [{ name: "size", type: "number", defaultValue: "28", description: "直径。" }],
+    props: [
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "28",
+        description: "直径（像素）。",
+        control: { kind: "range", value: 28, min: 12, max: 64, step: 2 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "转一圈的毫秒数。1000 与不传相同，仍是 animate-spin。",
+        control: { kind: "range", value: 1000, min: 400, max: 2000, step: 50 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "顶部描边颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+    ],
+    presets: [
+      { name: "spinner-small", label: "小", values: { size: 16, duration: 1600 } },
+      { name: "spinner-default", label: "默认", values: { size: 28, duration: 1000 } },
+      { name: "spinner-large", label: "大", values: { size: 48, duration: 600 } },
+    ],
   },
   {
     name: "orbit-loader",
@@ -1784,8 +1809,43 @@ export const components: ComponentMeta[] = [
     file: "effects/orbit-loader.tsx",
     target: "components/ui/orbit-loader.tsx",
     props: [
-      { name: "size", type: "number", defaultValue: "56", description: "容器尺寸。" },
-      { name: "dots", type: "number", defaultValue: "6", description: "轨道点数。" },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "56",
+        description: "容器边长（像素）。",
+        control: { kind: "range", value: 56, min: 32, max: 120, step: 4 },
+      },
+      {
+        name: "dots",
+        type: "number",
+        defaultValue: "6",
+        description: "轨道点数。",
+        control: { kind: "range", value: 6, min: 3, max: 12, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "转一圈的毫秒数。1400 与不传相同。",
+        control: { kind: "range", value: 1400, min: 560, max: 2800, step: 20 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻点的错开毫秒。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 0, max: 200, step: 10 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "点的颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+    ],
+    presets: [
+      { name: "orbit-loader-sparse", label: "疏", values: { dots: 4, size: 48, duration: 2200, delay: 120 } },
+      { name: "orbit-loader-default", label: "默认", values: { dots: 6, size: 56, duration: 1400, delay: 80 } },
+      { name: "orbit-loader-dense", label: "密", values: { dots: 10, size: 80, duration: 800, delay: 40 } },
     ],
   },
   {
@@ -1797,7 +1857,50 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dots-loader.tsx",
     target: "components/ui/dots-loader.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "count",
+        type: "number",
+        description: "点数。3 与不传相同。",
+        control: { kind: "range", value: 3, min: 1, max: 8, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "点的直径（像素）。8 与不传相同，仍是 size-2。",
+        control: { kind: "range", value: 8, min: 4, max: 20, step: 1 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "点间距（像素）。6 与不传相同，仍是 gap-1.5。",
+        control: { kind: "range", value: 6, min: 0, max: 16, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "弹跳周期（毫秒）。900 与不传相同。",
+        control: { kind: "range", value: 900, min: 360, max: 1800, step: 10 },
+      },
+      {
+        name: "delay",
+        type: "number",
+        description: "相邻点的错开毫秒。120 与不传相同。",
+        control: { kind: "range", value: 120, min: 0, max: 300, step: 10 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "点的颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "dots-loader-sparse", label: "疏", values: { count: 2, gap: 12, duration: 1400, delay: 160 } },
+      { name: "dots-loader-default", label: "默认", values: { count: 3, size: 8, gap: 6, duration: 900, delay: 120 } },
+      { name: "dots-loader-dense", label: "密", values: { count: 5, size: 6, gap: 4, duration: 500, delay: 60 } },
+    ],
   },
   {
     name: "progress-ring",
@@ -1810,8 +1913,37 @@ export const components: ComponentMeta[] = [
     target: "components/ui/progress-ring.tsx",
     props: [
       { name: "value", type: "number", description: "0-100 进度。" },
-      { name: "size", type: "number", defaultValue: "72", description: "直径。" },
-      { name: "strokeWidth", type: "number", defaultValue: "6", description: "描边宽度。" },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "72",
+        description: "直径（像素）。",
+        control: { kind: "range", value: 72, min: 40, max: 160, step: 2 },
+      },
+      {
+        name: "strokeWidth",
+        type: "number",
+        defaultValue: "6",
+        description: "描边宽度。",
+        control: { kind: "range", value: 6, min: 2, max: 16, step: 1 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "进度过渡毫秒。500 与不传相同。",
+        control: { kind: "range", value: 500, min: 200, max: 1000, step: 10 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "进度弧颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+    ],
+    presets: [
+      { name: "progress-ring-thin", label: "细", values: { size: 56, strokeWidth: 3, duration: 800 } },
+      { name: "progress-ring-default", label: "默认", values: { size: 72, strokeWidth: 6, duration: 500 } },
+      { name: "progress-ring-thick", label: "粗", values: { size: 96, strokeWidth: 10, duration: 280 } },
     ],
   },
   {

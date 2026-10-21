@@ -1,0 +1,97 @@
+apps/docs/public/r/peek-rating.json
+  s_6e6548ca6927de::t_0e1742eeace593 17
+packages/registry/src/examples/effect-demos-17.tsx
+  s_6e6548ca6927de::t_8966e6247b0413 165-175,184-187
+packages/registry/src/ui/peek-rating.tsx
+  s_6e6548ca6927de::t_3fa821bf81500b 17-18,48-49,64,104-105,107-109,149-162,164-169,175,177
+  s_6e6548ca6927de::t_af2e43824a2383 106
+packages/registry/src/examples/effect-demos-13.tsx
+  s_6e6548ca6927de::t_fd4fef904f5912 200-201
+packages/registry/src/catalog-batch12.ts
+  s_6e6548ca6927de::t_2d0685fe32202d 488
+  s_6e6548ca6927de::t_ea218d2617e363 50-55,59-63,92-97,101-105,141-146,150-154,190-201,205-209,241-246,251-255,283-294,298-302,328-330,332-333,338-342,377-388,392-396,435-446,449-453,491-495
+  s_6e6548ca6927de::t_81b11711db2327 331
+CREDITS.md
+  s_6e6548ca6927de::t_9f958b66cd2441 32
+apps/docs/public/r/slide-to-confirm.json
+  s_6e6548ca6927de::t_0e1742eeace593 17
+apps/docs/public/r/lattice-loader.json
+  s_6e6548ca6927de::t_0e1742eeace593 17
+packages/registry/src/ui/fuse-button.tsx
+  s_6e6548ca6927de::t_1a4ecca94d326e 105-114
+  s_6e6548ca6927de::t_bb6a8f8f218727 12,22
+apps/docs/public/r/swipe-row.json
+  s_6e6548ca6927de::t_0e1742eeace593 17
+apps/docs/public/r/spring-check.json
+  s_6e6548ca6927de::t_0e1742eeace593 20
+packages/registry/src/ui/micro-vocabulary.test.tsx
+  s_6e6548ca6927de::t_f7db09b416fdc7 182
+  s_6e6548ca6927de::t_51d4bf313e1e5d 1-2,6-18,20-35,41-80,93-130,135-148,150-151,209-246
+  s_6e6548ca6927de::t_33526eebb3d4da 4-5,19,149,152-181
+  s_6e6548ca6927de::t_13b2c90139686d 36-40
+  s_6e6548ca6927de::t_9a354075fcf8ff 81-92,131-134,183-208
+  s_6e6548ca6927de::t_ef1abb9dee3e7d 3
+packages/registry/src/effects/elastic-slider.tsx
+  s_6e6548ca6927de::t_6b6833f0a2eea2 34-35
+  s_6e6548ca6927de::t_54412be381ab2e 32-33,38
+  s_6e6548ca6927de::t_eb1946e5ddb5c8 14-16,19-27,36,64-70,115-120
+packages/registry/src/ui/lattice-loader.tsx
+  s_6e6548ca6927de::t_70f2967531d3b6 13-14,25-26,35-36,49,66-73
+  s_6e6548ca6927de::t_7c11d08c3a5ac9 45,60-63
+apps/docs/public/r/warm-tooltip.json
+  s_6e6548ca6927de::t_0e1742eeace593 20
+apps/docs/public/r/jelly-radio.json
+  s_6e6548ca6927de::t_0e1742eeace593 20
+packages/registry/src/ui/spring-check.tsx
+  s_6e6548ca6927de::t_21b23d87726add 22,35,89-97
+packages/registry/src/ui/pulse-heart.tsx
+  s_6e6548ca6927de::t_11af61a0ada385 17-18,32-33,72-77
+apps/docs/public/r/squish-switch.json
+  s_6e6548ca6927de::t_0e1742eeace593 20
+packages/registry/src/ui/warm-tooltip.tsx
+  s_6e6548ca6927de::t_2c1167e85eaedb 16,27,33,46,49-55
+packages/registry/src/examples/ui-demos-6.tsx
+  s_6e6548ca6927de::t_b391e90fccd015 28,33,37,45,49,57,73,78,82,91-92,97-98,102,111,116,120,128-129,133-134,141-142,154,158,162,173-174,179-180,184,194-195,201-202,206,215,220,224
+packages/registry/src/ui/slide-to-confirm.tsx
+  s_6e6548ca6927de::t_facd6d67d1bec1 82,84-95
+  s_6e6548ca6927de::t_2ca16c82bce8c3 12,23,36
+packages/registry/src/effects/reaction-bar.tsx
+  s_6e6548ca6927de::t_17f36456b11223 19-22,25,27,30-32,34,42,44-56
+  s_6e6548ca6927de::t_1e89e58ebd1227 33,57-63
+packages/registry/src/catalog-batch13.ts
+  s_6e6548ca6927de::t_f5742e131ca841 380-392,395-398
+  s_6e6548ca6927de::t_edfc8a9577d861 399
+apps/docs/public/r/fuse-button.json
+  s_6e6548ca6927de::t_943ef3db11df59 18
+apps/docs/public/r/elastic-slider.json
+  s_6e6548ca6927de::t_943ef3db11df59 19
+apps/docs/public/r/pulse-heart.json
+  s_6e6548ca6927de::t_0e1742eeace593 20
+packages/registry/src/ui/swipe-row.tsx
+  s_6e6548ca6927de::t_77397e58978707 13-14,25-26,38-39,46,74,76-80
+packages/registry/src/catalog-batch17.ts
+  s_6e6548ca6927de::t_cf663d9ea62dc1 386-404,407-410
+  s_6e6548ca6927de::t_f37e3cd60f5e01 411
+packages/registry/src/ui/jelly-radio.tsx
+  s_6e6548ca6927de::t_7d34a0bf6f85dd 24,39,77-82
+packages/registry/src/ui/squish-switch.tsx
+  s_6e6548ca6927de::t_6c92ecbdcdaf99 21,29,93-99
+apps/docs/public/r/reaction-bar.json
+  s_6e6548ca6927de::t_0e1742eeace593 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0fb24beb1782c5c0896b787998e6d9b16400560b",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

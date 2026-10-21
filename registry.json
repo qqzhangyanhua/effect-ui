@@ -9941,6 +9941,310 @@
           "target": "components/ui/interactive-image-selector.tsx"
         }
       ]
+    },
+    {
+      "name": "novatrix-background",
+      "type": "registry:ui",
+      "title": "Novatrix Background",
+      "description": "移植自 Eldora UI，MIT，Copyright Mudunuri Bhaskara Karthikeya Varma。 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 全屏流动色波，指针可以搅动它。着色器保持原样，绘制用 ogl。WebGL 不可用时退回径向渐变。减弱动效或离开视口后停在当前帧。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/novatrix-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/novatrix-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drawing-cursor",
+      "type": "registry:ui",
+      "title": "Drawing Cursor",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/drawing-cursor/index.tsx 指针后面留下会淡出的手绘线，可以清空或导出。没有精细指针或减弱动效时不挂画布。离开视口后停止衰减帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drawing-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drawing-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "emboss-surface",
+      "type": "registry:ui",
+      "title": "Emboss Surface",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/emboss-surface/index.tsx 浮雕或凹雕材质，光源可以跟着指针。减弱动效、离开视口或没有精细指针时光源固定。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/emboss-surface.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/emboss-surface.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chroma-blur-transition",
+      "type": "registry:ui",
+      "title": "Chroma Blur Transition",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/chroma-blur-transition/index.tsx 色差和模糊扫过内容。着色器保持原样。减弱动效时直接换内容。离开视口后停止绘制，进度仍会走完。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chroma-blur-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chroma-blur-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arcade-pixel",
+      "type": "registry:ui",
+      "title": "Arcade Pixel",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/arcade-pixel/index.tsx 点阵文字或像素画，可以加 CRT 扫描线和辉光。减弱动效或 animate 为 none 时直接显示。离开视口后暂停剩余进度。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/arcade-pixel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/arcade-pixel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kinetic-type-scroll",
+      "type": "registry:ui",
+      "title": "Kinetic Type Scroll",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/kinetic-type-scroll/index.tsx 滚动时每个词放大、变粗、升起，过了峰再落回去。减弱动效时停在峰值字重。离开视口时停在静息样式。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/kinetic-type-scroll.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kinetic-type-scroll.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbital-image-wheel",
+      "type": "registry:ui",
+      "title": "Orbital Image Wheel",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/orbital-image-wheel/index.tsx 一圈图片会自动转或被拖动，松手后吸附，并高亮转到顶部的那张。减弱动效时不做惯性。离开视口后停止自动旋转和惯性。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbital-image-wheel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbital-image-wheel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dither-chart",
+      "type": "registry:ui",
+      "title": "Dither Chart",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/dither-chart/index.tsx 用抖动点阵画图表。减弱动效或 animate 为 false 时直接画完。离开视口后暂停，回到视口继续剩余进度。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dither-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dither-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-swipe-deck",
+      "type": "registry:ui",
+      "title": "Card Swipe Deck",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/card-swipe-deck/index.tsx 可以左右滑掉的卡片叠，带 Nope 和 Like 印戳。减弱动效或离开视口时立刻收下，不再飞出。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/card-swipe-deck.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card-swipe-deck.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pinned-list",
+      "type": "registry:ui",
+      "title": "Pinned List",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pinned-list/index.tsx 钉住的条目会弹进置顶组。减弱动效或离开视口时不做弹簧，置顶状态仍然切换。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pinned-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pinned-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "grid-loader",
+      "type": "registry:ui",
+      "title": "Grid Loader",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/grid-loader/index.tsx 3×3 点阵加载，有多种图案，以及 pulse、sequence、stagger。减弱动效、static 或离开视口时停在当前图案。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/grid-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/grid-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "squircle",
+      "type": "registry:ui",
+      "title": "Squircle",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/squircle/index.tsx iOS 风格的平滑圆角裁切。路径按容器尺寸生成，没有动画。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/squircle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/squircle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "vector-editor-toolbar",
+      "type": "registry:ui",
+      "title": "Vector Editor Toolbar",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/vector-editor-toolbar/index.tsx 设计工具条，带子菜单、单键快捷键和属性面板。减弱动效时切换没有过渡。离开视口后不再响应快捷键。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/vector-editor-toolbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/vector-editor-toolbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "unlock-face-id",
+      "type": "registry:ui",
+      "title": "Unlock Face ID",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/unlock-face-id/index.tsx Face ID 扫描。成功后模糊内容变清晰。离开视口时暂停倒计时，回来后续完剩余时间。减弱动效时不做抖动和描边。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/unlock-face-id.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/unlock-face-id.tsx"
+        }
+      ]
+    },
+    {
+      "name": "music-toggle",
+      "type": "registry:ui",
+      "title": "Music Toggle",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/music-toggle/index.tsx 迷你播放开关：封面旋转、波形柱和可拖的进度环。减弱动效或离开视口时封面和波形停住。不传 src 时只做视觉。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/music-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/music-toggle.tsx"
+        }
+      ]
     }
   ]
 }

@@ -27,6 +27,7 @@ import * as effectDemos25 from "./effect-demos-25"
 import * as effectDemos26 from "./effect-demos-26"
 import * as effectDemos27 from "./effect-demos-27"
 import * as effectDemos28 from "./effect-demos-28"
+import * as effectDemos29 from "./effect-demos-29"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -536,6 +537,21 @@ const demoMap: Record<string, ComponentType> = {
   "switchboard-card": effectDemos28.SwitchboardCardDemo,
   "time-machine-stack": effectDemos28.TimeMachineStackDemo,
   "interactive-image-selector": effectDemos28.InteractiveImageSelectorDemo,
+  "novatrix-background": effectDemos29.NovatrixBackgroundDemo,
+  "drawing-cursor": effectDemos29.DrawingCursorDemo,
+  "emboss-surface": effectDemos29.EmbossSurfaceDemo,
+  "chroma-blur-transition": effectDemos29.ChromaBlurTransitionDemo,
+  "arcade-pixel": effectDemos29.ArcadePixelDemo,
+  "kinetic-type-scroll": effectDemos29.KineticTypeScrollDemo,
+  "orbital-image-wheel": effectDemos29.OrbitalImageWheelDemo,
+  "dither-chart": effectDemos29.DitherChartDemo,
+  "card-swipe-deck": effectDemos29.CardSwipeDeckDemo,
+  "pinned-list": effectDemos29.PinnedListDemo,
+  "grid-loader": effectDemos29.GridLoaderDemo,
+  "squircle": effectDemos29.SquircleDemo,
+  "vector-editor-toolbar": effectDemos29.VectorEditorToolbarDemo,
+  "unlock-face-id": effectDemos29.UnlockFaceIdDemo,
+  "music-toggle": effectDemos29.MusicToggleDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -56,7 +56,38 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/mouse-flowmap.tsx",
     target: "components/ui/mouse-flowmap.tsx",
-    props: [{ name: "image", type: "string", description: "被扭曲的图片 URL。" }, ...ui],
+    props: [
+      {
+        name: "image",
+        type: "string",
+        description: "被扭曲的图片 URL。",
+        control: { kind: "text", value: "https://picsum.photos/id/1015/960/540" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "扭曲衰减。0.28 与不传相同。",
+        control: { kind: "range", value: 0.28, min: 0, max: 1, step: 0.01 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "指针速度放大倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "速度写入倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "flowmap-calm", label: "轻", values: { intensity: 0.12, speed: 0.6, scale: 0.7 } },
+      { name: "flowmap-default", label: "默认", values: { intensity: 0.28, speed: 1, scale: 1 } },
+      { name: "flowmap-strong", label: "强", values: { intensity: 0.55, speed: 1.8, scale: 1.4 } },
+    ],
   },
   {
     name: "gpgpu-particles",
@@ -109,9 +140,38 @@ export const batch7Components: ComponentMeta[] = [
     file: "effects/polyline-ribbon-cursor.tsx",
     target: "components/ui/polyline-ribbon-cursor.tsx",
     props: [
-      { name: "color", type: "string", defaultValue: '"#a78bfa"', description: "丝带颜色。" },
-      { name: "points", type: "number", defaultValue: "18", description: "控制点数量。" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"#a78bfa"',
+        description: "丝带颜色。",
+        control: { kind: "color", value: "#a78bfa" },
+      },
+      {
+        name: "points",
+        type: "number",
+        defaultValue: "18",
+        description: "控制点数量。",
+        control: { kind: "range", value: 18, min: 4, max: 40, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "丝带跟随速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "粗细倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "ribbon-thin", label: "细", values: { color: "#a78bfa", points: 10, speed: 0.6, intensity: 0.45 } },
+      { name: "ribbon-default", label: "默认", values: { color: "#a78bfa", points: 18, speed: 1, intensity: 1 } },
+      { name: "ribbon-long", label: "长", values: { color: "#67e8f9", points: 28, speed: 1.4, intensity: 1 } },
     ],
   },
   {
@@ -300,6 +360,30 @@ export const batch7Components: ComponentMeta[] = [
         description: "额外 Tailwind 类名，与主题变量兼容。",
         control: { kind: "text", value: "w-full" },
       },
+      {
+        name: "size",
+        type: "number",
+        description: "空闲时括号边长（像素）。",
+        control: { kind: "range", value: 28, min: 12, max: 80, step: 2 },
+      },
+      { name: "color", type: "string", description: "括号颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "speed",
+        type: "number",
+        description: "吸附速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "角标臂长倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "target-tight", label: "小", values: { size: 18, speed: 0.7, intensity: 0.6 } },
+      { name: "target-default", label: "默认", values: { size: 28, speed: 1, intensity: 1 } },
+      { name: "target-wide", label: "大", values: { size: 48, speed: 1.6, intensity: 1 } },
     ],
   },
   {

@@ -2,11 +2,56 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface SketchHatchImageProps {
   className?: string
+  count?: number
+  intensity?: number
+  angle?: number
+  color?: string
+}
+
+const PENCIL: [number, number, number] = [0.16, 0.15, 0.13]
+
+function hatchAngle(angle: number | undefined) {
+  if (angle === undefined || angle === 46) return 0.8
+  return (angle * Math.PI) / 180
+}
+
+function cssToUnit(input: string): [number, number, number] | undefined {
+  const text = input.trim()
+  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(text)
+  const raw = hex?.[1]
+  if (raw) {
+    const full = raw.length === 3 ? `${raw[0]}${raw[0]}${raw[1]}${raw[1]}${raw[2]}${raw[2]}` : raw
+    return [
+      Number.parseInt(full.slice(0, 2), 16) / 255,
+      Number.parseInt(full.slice(2, 4), 16) / 255,
+      Number.parseInt(full.slice(4, 6), 16) / 255,
+    ]
+  }
+  const rgb = /^rgba?\(\s*([\d.]+)[\s,/]+([\d.]+)[\s,/]+([\d.]+)/i.exec(text)
+  if (!rgb?.[1] || !rgb[2] || !rgb[3]) return undefined
+  return [Number(rgb[1]) / 255, Number(rgb[2]) / 255, Number(rgb[3]) / 255]
+}
+
+function readCssColor(input: string, allowDom = true): [number, number, number] | undefined {
+  const direct = cssToUnit(input)
+  if (direct || !allowDom || typeof document === "undefined") return direct
+  const probe = document.createElement("span")
+  probe.style.color = input
+  document.body.appendChild(probe)
+  const computed = getComputedStyle(probe).color
+  probe.remove()
+  return cssToUnit(computed)
+}
+
+function pencilColor(color: string | undefined, allowDom = true): [number, number, number] {
+  if (!color || color.toLowerCase() === "#292621") return PENCIL
+  return readCssColor(color, allowDom) ?? PENCIL
 }
 
 const VERT = `
@@ -22,6 +67,10 @@ void main() {
 const FRAG = `
 precision highp float;
 uniform vec2 u_mouse;
+uniform float u_angle;
+uniform float u_density;
+uniform float u_reveal;
+uniform vec3 u_pencil;
 varying vec2 vUv;
 
 vec3 photo(vec2 uv) {
@@ -36,12 +85,12 @@ vec3 photo(vec2 uv) {
 void main() {
   vec3 picture = photo(vUv);
   float luma = dot(picture, vec3(0.3, 0.59, 0.11));
-  float angle = 0.8;
+  float angle = u_angle;
   vec2 rotated = mat2(cos(angle), -sin(angle), sin(angle), cos(angle)) * vUv;
-  float density = 28.0 + (1.0 - luma) * 70.0;
+  float density = u_density + (1.0 - luma) * 70.0;
   float hatch = smoothstep(0.42, 0.58, fract(rotated.y * density));
-  vec3 pencil = mix(vec3(0.16, 0.15, 0.13), vec3(0.94, 0.92, 0.86), hatch);
-  float reveal = smoothstep(0.2, 0.1, length(vUv - u_mouse));
+  vec3 pencil = mix(u_pencil, vec3(0.94, 0.92, 0.86), hatch);
+  float reveal = smoothstep(0.2 * u_reveal, 0.1 * u_reveal, length(vUv - u_mouse));
   vec3 color = mix(pencil, picture, reveal);
   gl_FragColor = vec4(color, 1.0);
 }
@@ -63,7 +112,7 @@ function SketchFallback({ x, y }: { x: number; y: number }) {
   )
 }
 
-function SketchHatchImage({ className }: SketchHatchImageProps) {
+function SketchHatchImage({ className, count, intensity, angle, color }: SketchHatchImageProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
@@ -71,6 +120,25 @@ function SketchHatchImage({ className }: SketchHatchImageProps) {
   const [spot, setSpot] = React.useState({ x: 0.7, y: 0.35 })
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
+  const countRef = React.useRef(count)
+  const intensityRef = React.useRef(intensity)
+  const angleRef = React.useRef(angle)
+  const pencilRef = React.useRef(pencilColor(color, false))
+
+  React.useEffect(() => {
+    countRef.current = count
+    intensityRef.current = intensity
+    angleRef.current = angle
+    pencilRef.current = pencilColor(color)
+  }, [count, intensity, angle, color])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   const moveTo = (x: number, y: number, paint: boolean) => {
     const next = { x: Math.min(0.95, Math.max(0.05, x)), y: Math.min(0.95, Math.max(0.05, y)) }
@@ -100,7 +168,13 @@ function SketchHatchImage({ className }: SketchHatchImageProps) {
       camera.position.z = 1
       const scene = new ogl.Transform()
       const geometry = new ogl.Plane(gl, { width: 2, height: 2 })
-      const uniforms = { u_mouse: { value: [0.7, 0.65] } }
+      const uniforms = {
+        u_mouse: { value: [0.7, 0.65] },
+        u_angle: { value: 0.8 },
+        u_density: { value: 28 },
+        u_reveal: { value: 1 },
+        u_pencil: { value: PENCIL },
+      }
       const program = new ogl.Program(gl, { vertex: VERT, fragment: FRAG, uniforms })
       const mesh = new ogl.Mesh(gl, { geometry, program })
       mesh.setParent(scene)
@@ -112,12 +186,25 @@ function SketchHatchImage({ className }: SketchHatchImageProps) {
       const observer = new ResizeObserver(resize)
       observer.observe(host)
       const tick = () => {
+        if (!activeRef.current) {
+          frame = 0
+          return
+        }
+        const reveal = intensityRef.current
         uniforms.u_mouse.value = [pointer.current.x, 1 - pointer.current.y]
+        uniforms.u_angle.value = hatchAngle(angleRef.current)
+        uniforms.u_density.value = countRef.current === undefined ? 28 : countRef.current
+        uniforms.u_reveal.value = reveal === undefined || reveal === 1 ? 1 : reveal
+        uniforms.u_pencil.value = pencilRef.current
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         observer.disconnect()
         gl.getExtension("WEBGL_lose_context")?.loseContext()
@@ -133,6 +220,7 @@ function SketchHatchImage({ className }: SketchHatchImageProps) {
     })
     return () => {
       cancelled = true
+      kickRef.current = null
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }

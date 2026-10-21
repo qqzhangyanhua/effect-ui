@@ -3702,6 +3702,8 @@
       "description": "WebGL 流体喷溅光标。移植自 PavelDoGreat/WebGL-Fluid-Simulation（MIT），无 WebGL 时回退渐变。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -4001,6 +4003,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4040,6 +4043,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4204,6 +4208,7 @@
       "description": "灵感来自 target cursor，原创实现：四角括号吸附到 data-target。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -6341,6 +6346,7 @@
       "description": "灵感来自 Codrops，原创实现。沿指针路径生成色块，它们下落、弹起后淡出。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6361,6 +6367,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6678,6 +6685,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -6736,6 +6744,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -7505,6 +7514,7 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],

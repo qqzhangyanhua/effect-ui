@@ -2,11 +2,24 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface ShaderGridWideProps {
   className?: string
+  intensity?: number
+  speed?: number
+  count?: number
+  scale?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
+}
+
+function cells(count: number | undefined) {
+  return count === undefined ? 6 : count
 }
 
 const VERT = `
@@ -23,6 +36,9 @@ const FRAG = `
 precision highp float;
 uniform vec2 u_mouse;
 uniform float u_velocity;
+uniform float u_warp;
+uniform float u_falloff;
+uniform vec2 u_grid;
 varying vec2 vUv;
 
 vec3 cellColor(float x, float y) {
@@ -35,9 +51,9 @@ void main() {
   vec2 uv = vUv;
   vec2 delta = uv - u_mouse;
   float dist = length(delta);
-  uv += delta / max(dist, 0.08) * exp(-dist * dist * 14.0) * 0.07;
+  uv += delta / max(dist, 0.08) * exp(-dist * dist * u_falloff) * u_warp;
   uv.y += u_velocity * 0.22 * sin(uv.x * 9.0);
-  vec2 grid = uv * vec2(6.0, 3.0);
+  vec2 grid = uv * u_grid;
   vec2 cell = floor(grid);
   vec2 local = fract(grid);
   float inside = step(0.05, local.x) * step(0.05, local.y) * step(local.x, 0.95) * step(local.y, 0.95);
@@ -56,7 +72,7 @@ function GridFallback() {
   )
 }
 
-function ShaderGridWide({ className }: ShaderGridWideProps) {
+function ShaderGridWide({ className, intensity, speed, count, scale }: ShaderGridWideProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
@@ -64,6 +80,25 @@ function ShaderGridWide({ className }: ShaderGridWideProps) {
   const velocity = React.useRef(0)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
+  const intensityRef = React.useRef(intensity)
+  const speedRef = React.useRef(pace(speed))
+  const countRef = React.useRef(cells(count))
+  const scaleRef = React.useRef(scale)
+
+  React.useEffect(() => {
+    intensityRef.current = intensity
+    speedRef.current = pace(speed)
+    countRef.current = cells(count)
+    scaleRef.current = scale
+  }, [intensity, speed, count, scale])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   React.useEffect(() => {
     if (!showCanvas) return
@@ -87,7 +122,13 @@ function ShaderGridWide({ className }: ShaderGridWideProps) {
       camera.position.z = 1
       const scene = new ogl.Transform()
       const geometry = new ogl.Plane(gl, { width: 2, height: 2 })
-      const uniforms = { u_mouse: { value: [0.5, 0.5] }, u_velocity: { value: 0 } }
+      const uniforms = {
+        u_mouse: { value: [0.5, 0.5] },
+        u_velocity: { value: 0 },
+        u_warp: { value: 0.07 },
+        u_falloff: { value: 14 },
+        u_grid: { value: [6, 3] },
+      }
       const program = new ogl.Program(gl, { vertex: VERT, fragment: FRAG, uniforms })
       const mesh = new ogl.Mesh(gl, { geometry, program })
       mesh.setParent(scene)
@@ -99,14 +140,28 @@ function ShaderGridWide({ className }: ShaderGridWideProps) {
       const observer = new ResizeObserver(resize)
       observer.observe(host)
       const tick = () => {
+        if (!activeRef.current) {
+          frame = 0
+          return
+        }
         velocity.current *= 0.9
+        const columns = countRef.current
+        const sized = scaleRef.current
+        const gain = intensityRef.current
         uniforms.u_mouse.value = [pointer.current.x, 1 - pointer.current.y]
-        uniforms.u_velocity.value = velocity.current
+        uniforms.u_velocity.value = velocity.current * (gain === undefined || gain === 1 ? 1 : gain)
+        uniforms.u_warp.value = 0.07 * speedRef.current
+        uniforms.u_falloff.value = 14 / (sized === undefined || sized === 1 ? 1 : sized)
+        uniforms.u_grid.value = [columns, columns / 2]
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         observer.disconnect()
         gl.getExtension("WEBGL_lose_context")?.loseContext()
@@ -122,6 +177,7 @@ function ShaderGridWide({ className }: ShaderGridWideProps) {
     })
     return () => {
       cancelled = true
+      kickRef.current = null
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }

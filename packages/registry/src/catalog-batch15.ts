@@ -57,7 +57,38 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gravity-image-trail.tsx",
     target: "components/ui/gravity-image-trail.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "size",
+        type: "number",
+        description: "色块边长（像素）。64 与不传相同。",
+        control: { kind: "range", value: 64, min: 24, max: 128, step: 4 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "生成下一块前的移动距离（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 0, max: 80, step: 2 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "重力倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "初速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "gravity-slow", label: "缓", values: { size: 48, gap: 40, intensity: 0.45, speed: 0.6 } },
+      { name: "gravity-default", label: "默认", values: { size: 64, gap: 28, intensity: 1, speed: 1 } },
+      { name: "gravity-fast", label: "急", values: { size: 80, gap: 16, intensity: 1, speed: 1.8 } },
+    ],
   },
   {
     name: "square-lens-distortion",
@@ -68,7 +99,38 @@ export const batch15Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/square-lens-distortion.tsx",
     target: "components/ui/square-lens-distortion.tsx",
-    props: [...ui],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        description: "扭曲节奏倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "波纹幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "镜片大小倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "镜片描边颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "square-lens-small", label: "小", values: { speed: 0.6, intensity: 0.4, scale: 0.7, color: "#ffffff" } },
+      { name: "square-lens-default", label: "默认", values: { speed: 1, intensity: 1, scale: 1, color: "#ffffff" } },
+      { name: "square-lens-wide", label: "大", values: { speed: 1.6, intensity: 1, scale: 1.6, color: "#ffffff" } },
+    ],
   },
   {
     name: "dual-wave-text-list",

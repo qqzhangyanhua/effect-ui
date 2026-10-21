@@ -10,7 +10,6 @@ import { AnimatedTabs } from "../effects/animated-tabs"
 import { BentoCard, BentoGrid } from "../effects/bento-grid"
 import { BorderBeam } from "../effects/border-beam"
 import { ConfettiBurst } from "../effects/confetti-burst"
-import { CursorTrail } from "../effects/cursor-trail"
 import { Dock } from "../effects/dock"
 import { ExpandableCard } from "../effects/expandable-card"
 import { FloatingNavbar } from "../effects/floating-navbar"
@@ -372,14 +371,6 @@ export function GlobeSphereDemo() {
 
 export function ConfettiBurstDemo() {
   return <ConfettiBurst>庆祝一下</ConfettiBurst>
-}
-
-export function CursorTrailDemo() {
-  return (
-    <CursorTrail className="flex min-h-40 w-full items-center justify-center rounded-xl border">
-      <p className="text-sm text-muted-foreground">在区域内移动指针</p>
-    </CursorTrail>
-  )
 }
 
 export function SparklesDemo() {

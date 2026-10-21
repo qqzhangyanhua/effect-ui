@@ -51,12 +51,32 @@ export function GhostTrailTextDemo({
   )
 }
 
-export function GravityImageTrailDemo() {
-  return <GravityImageTrail className="w-full" />
+export function GravityImageTrailDemo({
+  size,
+  gap,
+  intensity,
+  speed,
+}: {
+  size?: number
+  gap?: number
+  intensity?: number
+  speed?: number
+} = {}) {
+  return <GravityImageTrail className="w-full" size={size} gap={gap} intensity={intensity} speed={speed} />
 }
 
-export function SquareLensDistortionDemo() {
-  return <SquareLensDistortion className="w-full" />
+export function SquareLensDistortionDemo({
+  speed,
+  intensity,
+  scale,
+  color,
+}: {
+  speed?: number
+  intensity?: number
+  scale?: number
+  color?: string
+} = {}) {
+  return <SquareLensDistortion className="w-full" speed={speed} intensity={intensity} scale={scale} color={color} />
 }
 
 export function DualWaveTextListDemo() {

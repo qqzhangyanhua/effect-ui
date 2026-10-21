@@ -237,7 +237,39 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/image-trail.tsx",
     target: "components/ui/image-trail.tsx",
-    props: [{ name: "images", type: "string[]", description: "图片 URL 列表。" }, ...ui],
+    props: [
+      { name: "images", type: "string[]", description: "图片 URL 列表。" },
+      {
+        name: "gap",
+        type: "number",
+        description: "生成下一张前的移动距离（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 0, max: 80, step: 2 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "移动后仍保留的旧图张数，不含刚落下的一张。8 与不传相同。",
+        control: { kind: "range", value: 8, min: 1, max: 24, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "缩略图边长（像素）。64 与不传相同。",
+        control: { kind: "range", value: 64, min: 16, max: 160, step: 4 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度。0.8 与不传相同。",
+        control: { kind: "range", value: 0.8, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "image-trail-sparse", label: "疏", values: { gap: 48, count: 4, size: 48, intensity: 0.6 } },
+      { name: "image-trail-default", label: "默认", values: { gap: 28, count: 8, size: 64, intensity: 0.8 } },
+      { name: "image-trail-dense", label: "密", values: { gap: 12, count: 14, size: 80, intensity: 1 } },
+    ],
   },
   {
     name: "icon-cloud",

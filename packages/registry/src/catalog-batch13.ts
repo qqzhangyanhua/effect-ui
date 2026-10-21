@@ -238,7 +238,39 @@ export const batch13Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glare-hover.tsx",
     target: "components/ui/glare-hover.tsx",
-    props: [{ name: "children", type: "ReactNode", description: "卡片内容。" }, ...ui],
+    props: [
+      { name: "children", type: "ReactNode", description: "卡片内容。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "扫光速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "高光浓度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "光带宽度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "光带颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "glare-soft", label: "淡", values: { speed: 0.6, intensity: 0.45, scale: 0.8 } },
+      { name: "glare-default", label: "默认", values: { speed: 1, intensity: 1, scale: 1, color: "#ffffff" } },
+      { name: "glare-wide", label: "宽", values: { speed: 1.6, intensity: 1, scale: 1.6 } },
+    ],
   },
   {
     name: "card-swap",

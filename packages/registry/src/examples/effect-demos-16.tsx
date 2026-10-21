@@ -32,8 +32,18 @@ export function HologramCardDemo() {
   )
 }
 
-export function SketchHatchImageDemo() {
-  return <SketchHatchImage className="w-full" />
+export function SketchHatchImageDemo({
+  count,
+  intensity,
+  angle,
+  color,
+}: {
+  count?: number
+  intensity?: number
+  angle?: number
+  color?: string
+} = {}) {
+  return <SketchHatchImage className="w-full" count={count} intensity={intensity} angle={angle} color={color} />
 }
 
 export function Scroll3dImageRotateDemo() {
@@ -44,8 +54,18 @@ export function ThumbnailFlowPathDemo() {
   return <ThumbnailFlowPath className="w-full" />
 }
 
-export function ShaderGridWideDemo() {
-  return <ShaderGridWide className="w-full" />
+export function ShaderGridWideDemo({
+  intensity,
+  speed,
+  count,
+  scale,
+}: {
+  intensity?: number
+  speed?: number
+  count?: number
+  scale?: number
+} = {}) {
+  return <ShaderGridWide className="w-full" intensity={intensity} speed={speed} count={count} scale={scale} />
 }
 
 export function SeaWavesBackgroundDemo({

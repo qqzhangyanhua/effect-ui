@@ -16,8 +16,18 @@ import { WavefieldNeon } from "../effects/wavefield-neon"
 import { GanttTimeline } from "../sections/gantt-timeline"
 import { OrgChart } from "../sections/org-chart"
 
-export function TubesCursorDemo() {
-  return <TubesCursor className="w-full" />
+export function TubesCursorDemo({
+  tubes = 4,
+  speed,
+  intensity,
+  scale,
+}: {
+  tubes?: number
+  speed?: number
+  intensity?: number
+  scale?: number
+} = {}) {
+  return <TubesCursor className="w-full" tubes={tubes} speed={speed} intensity={intensity} scale={scale} />
 }
 
 export function LiquidMorphSlideshowDemo() {

@@ -1327,8 +1327,31 @@ export const components: ComponentMeta[] = [
     file: "effects/spotlight-card.tsx",
     target: "components/ui/spotlight-card.tsx",
     props: [
-      { name: "spotlightColor", type: "string", description: "聚光颜色。" },
-      { name: "radius", type: "number", defaultValue: "240", description: "聚光半径。" },
+      { name: "spotlightColor", type: "string", description: "聚光颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "240",
+        description: "聚光半径。",
+        control: { kind: "range", value: 240, min: 80, max: 480, step: 10 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "光斑显现速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "光斑边缘衰减。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "spotlight-soft", label: "柔和", values: { radius: 180, speed: 0.6, intensity: 0.55 } },
+      { name: "spotlight-default", label: "默认", values: { radius: 240, speed: 1, intensity: 1 } },
+      { name: "spotlight-tight", label: "收紧", values: { radius: 120, speed: 1.6, intensity: 1 } },
     ],
   },
   {
@@ -1348,6 +1371,29 @@ export const components: ComponentMeta[] = [
         description: "吸附强度。",
         control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "位移幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "整体缩放。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "magnetic-light", label: "轻吸", values: { strength: 0.15, speed: 0.8, intensity: 0.6, scale: 1 } },
+      { name: "magnetic-default", label: "默认", values: { strength: 0.35, speed: 1, intensity: 1, scale: 1 } },
+      { name: "magnetic-strong", label: "强吸", values: { strength: 0.7, speed: 1.4, intensity: 1, scale: 1.1 } },
     ],
   },
   {
@@ -1359,7 +1405,33 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/cursor-follow.tsx",
     target: "components/ui/cursor-follow.tsx",
-    props: [{ name: "size", type: "number", defaultValue: "28", description: "光标尺寸。" }],
+    props: [
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "28",
+        description: "光标尺寸（像素）。",
+        control: { kind: "range", value: 28, min: 8, max: 80, step: 2 },
+      },
+      { name: "color", type: "string", description: "光标颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "speed",
+        type: "number",
+        description: "跟随速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度。0.35 与不传相同。",
+        control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "cursor-follow-soft", label: "淡", values: { size: 36, speed: 0.7, intensity: 0.2 } },
+      { name: "cursor-follow-default", label: "默认", values: { size: 28, speed: 1, intensity: 0.35 } },
+      { name: "cursor-follow-bold", label: "醒目", values: { size: 16, speed: 1.8, intensity: 0.7 } },
+    ],
   },
   {
     name: "tilt",
@@ -1378,6 +1450,29 @@ export const components: ComponentMeta[] = [
         description: "最大倾斜角度。",
         control: { kind: "range", value: 12, min: 0, max: 40, step: 1 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "回正速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "倾斜幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "整体缩放。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+    ],
+    presets: [
+      { name: "tilt-flat", label: "平", values: { maxTilt: 4, speed: 0.8, intensity: 0.5, scale: 1 } },
+      { name: "tilt-default", label: "默认", values: { maxTilt: 12, speed: 1, intensity: 1, scale: 1 } },
+      { name: "tilt-steep", label: "陡", values: { maxTilt: 28, speed: 1.5, intensity: 1, scale: 1.05 } },
     ],
   },
   {
@@ -1389,7 +1484,32 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glow-hover.tsx",
     target: "components/ui/glow-hover.tsx",
-    props: [{ name: "glowColor", type: "string", defaultValue: "var(--primary)", description: "发光颜色。" }],
+    props: [
+      { name: "glowColor", type: "string", defaultValue: "var(--primary)", description: "发光颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "speed",
+        type: "number",
+        description: "过渡速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "发光浓度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "发光模糊半径（像素）。40 与不传相同。",
+        control: { kind: "range", value: 40, min: 8, max: 96, step: 2 },
+      },
+    ],
+    presets: [
+      { name: "glow-soft", label: "柔光", values: { speed: 0.7, intensity: 0.45, size: 24 } },
+      { name: "glow-default", label: "默认", values: { speed: 1, intensity: 1, size: 40 } },
+      { name: "glow-wide", label: "散开", values: { speed: 1.4, intensity: 1, size: 72 } },
+    ],
   },
   {
     name: "flip-card",

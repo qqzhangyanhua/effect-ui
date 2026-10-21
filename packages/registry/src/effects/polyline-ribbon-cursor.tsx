@@ -2,12 +2,19 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface PolylineRibbonCursorProps {
   className?: string
   color?: string
   points?: number
+  speed?: number
+  intensity?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 function useReducedMotion() {
@@ -22,12 +29,29 @@ function useReducedMotion() {
   )
 }
 
-function PolylineRibbonCursor({ className, color = "#a78bfa", points = 18 }: PolylineRibbonCursorProps) {
+function PolylineRibbonCursor({ className, color = "#a78bfa", points = 18, speed, intensity }: PolylineRibbonCursorProps) {
+  const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const reduced = useReducedMotion()
   const [fallback, setFallback] = React.useState(false)
   const [trail, setTrail] = React.useState<string>("")
   const mouse = React.useRef({ x: 0, y: 0 })
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
+  const speedRef = React.useRef(pace(speed))
+  const gain = intensity === undefined || intensity === 1 ? 1 : intensity
+  const gainRef = React.useRef(gain)
+
+  React.useEffect(() => {
+    speedRef.current = pace(speed)
+    gainRef.current = intensity === undefined || intensity === 1 ? 1 : intensity
+  }, [speed, intensity])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
 
   React.useEffect(() => {
     const canvas = canvasRef.current
@@ -49,7 +73,7 @@ function PolylineRibbonCursor({ className, color = "#a78bfa", points = 18 }: Pol
       const polyline = new ogl.Polyline(gl, {
         points: curve,
         uniforms: {
-          uThickness: { value: 18 },
+          uThickness: { value: 18 * gainRef.current },
           uColor: { value: new ogl.Color(color) },
         },
       })
@@ -64,20 +88,31 @@ function PolylineRibbonCursor({ className, color = "#a78bfa", points = 18 }: Pol
       resize()
 
       const tick = () => {
+        if (!activeRef.current) {
+          frame = 0
+          return
+        }
         const { width, height } = canvas.getBoundingClientRect()
         const nx = (mouse.current.x / Math.max(width, 1)) * 2 - 1
         const ny = -((mouse.current.y / Math.max(height, 1)) * 2 - 1)
-        curve[0]?.lerp(new ogl.Vec3(nx, ny, 0), 0.45)
+        const rate = speedRef.current
+        curve[0]?.lerp(new ogl.Vec3(nx, ny, 0), 0.45 * rate)
         for (let i = 1; i < curve.length; i += 1) {
-          curve[i]?.lerp(curve[i - 1] ?? new ogl.Vec3(), 0.32)
+          curve[i]?.lerp(curve[i - 1] ?? new ogl.Vec3(), 0.32 * rate)
         }
+        const thickness = polyline.mesh.program.uniforms.uThickness
+        if (thickness) thickness.value = 18 * gainRef.current
         polyline.updateGeometry()
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       window.addEventListener("resize", resize)
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         window.removeEventListener("resize", resize)
       }
@@ -88,12 +123,15 @@ function PolylineRibbonCursor({ className, color = "#a78bfa", points = 18 }: Pol
     })
     return () => {
       cancelled = true
+      kickRef.current = null
       void cleanup.then((fn) => fn?.())
     }
   }, [color, points, reduced])
 
   return (
     <div
+      ref={hostRef}
+      data-slot="polyline-ribbon-cursor"
       className={cn("relative min-h-52 overflow-hidden rounded-xl border bg-zinc-950", className)}
       onPointerMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect()
@@ -108,7 +146,7 @@ function PolylineRibbonCursor({ className, color = "#a78bfa", points = 18 }: Pol
     >
       {fallback || reduced ? (
         <svg className="absolute inset-0 size-full">
-          <polyline points={trail} fill="none" stroke={color} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points={trail} fill="none" stroke={color} strokeWidth={6 * gain} strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ) : (
         <canvas ref={canvasRef} className="absolute inset-0 size-full" />

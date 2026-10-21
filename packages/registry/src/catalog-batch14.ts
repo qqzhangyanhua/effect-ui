@@ -20,9 +20,38 @@ export const batch14Components: ComponentMeta[] = [
     target: "components/ui/lens-zoom.tsx",
     props: [
       { name: "src", type: "string", description: "图片地址。缺省为内置色块，不请求外链。" },
-      { name: "zoom", type: "number", defaultValue: "2.3", description: "镜片放大倍数。" },
-      { name: "lensSize", type: "number", defaultValue: "148", description: "镜片直径，像素。" },
+      {
+        name: "zoom",
+        type: "number",
+        defaultValue: "2.3",
+        description: "镜片放大倍数。",
+        control: { kind: "range", value: 2.3, min: 1, max: 4, step: 0.1 },
+      },
+      {
+        name: "lensSize",
+        type: "number",
+        defaultValue: "148",
+        description: "镜片直径，像素。",
+        control: { kind: "range", value: 148, min: 64, max: 280, step: 4 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "放大倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "镜片描边颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "lens-small", label: "小", values: { zoom: 1.6, lensSize: 96, intensity: 1 } },
+      { name: "lens-default", label: "默认", values: { zoom: 2.3, lensSize: 148, intensity: 1, color: "#ffffff" } },
+      { name: "lens-close", label: "近", values: { zoom: 3.4, lensSize: 200, intensity: 1 } },
     ],
   },
   {

@@ -171,8 +171,18 @@ export function ClickSparkDemo() {
   return <ClickSpark className="w-full" />
 }
 
-export function GlareHoverDemo() {
-  return <GlareHover className="w-full" />
+export function GlareHoverDemo({
+  speed,
+  intensity,
+  scale,
+  color,
+}: {
+  speed?: number
+  intensity?: number
+  scale?: number
+  color?: string
+} = {}) {
+  return <GlareHover className="w-full" speed={speed} intensity={intensity} scale={scale} color={color} />
 }
 
 export function CardSwapDemo() {

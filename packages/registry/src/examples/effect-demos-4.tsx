@@ -126,11 +126,25 @@ export function GlitchTextDemo({ text = "GLITCH" }: { text?: string } = {}) {
   )
 }
 
-export function ImageTrailDemo() {
+export function ImageTrailDemo({
+  gap,
+  count,
+  size,
+  intensity,
+}: {
+  gap?: number
+  count?: number
+  size?: number
+  intensity?: number
+} = {}) {
   return (
     <ImageTrail
       className="h-56 w-full rounded-xl border bg-muted/30"
       images={[swatch("#7c3aed"), swatch("#22d3ee"), swatch("#f472b6"), swatch("#f59e0b")]}
+      gap={gap}
+      count={count}
+      size={size}
+      intensity={intensity}
     />
   )
 }

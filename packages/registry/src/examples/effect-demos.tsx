@@ -5,18 +5,15 @@ import type { ReactNode } from "react"
 import { AuroraBackground } from "../effects/aurora-background"
 import { AuroraText } from "../effects/aurora-text"
 import { CountUp } from "../effects/count-up"
-import { CursorFollow } from "../effects/cursor-follow"
 import { DotPattern } from "../effects/dot-pattern"
 import { DotsLoader } from "../effects/dots-loader"
 import { FlickeringGrid } from "../effects/flickering-grid"
 import { FlipCard } from "../effects/flip-card"
 import { GlassCard } from "../effects/glass-card"
-import { GlowHover } from "../effects/glow-hover"
 import { GradientText } from "../effects/gradient-text"
 import { GridPattern } from "../effects/grid-pattern"
 import { HighlightText } from "../effects/highlight-text"
 import { HoverLift } from "../effects/hover-lift"
-import { Magnetic } from "../effects/magnetic"
 import { Meteors } from "../effects/meteors"
 import { NeonButton } from "../effects/neon-button"
 import { OrbitLoader } from "../effects/orbit-loader"
@@ -31,10 +28,7 @@ import { ShimmerText } from "../effects/shimmer-text"
 import { ShineBorder } from "../effects/shine-border"
 import { Spinner } from "../effects/spinner"
 import { SplitText } from "../effects/split-text"
-import { SpotlightCard } from "../effects/spotlight-card"
-import { Tilt } from "../effects/tilt"
 import { TypingText } from "../effects/typing-text"
-import { Button } from "../ui/button"
 
 function PreviewFrame({ children }: { children: ReactNode }) {
   return (
@@ -341,51 +335,6 @@ export function FlickeringGridDemo({
       />
       <p className="relative z-10 text-sm">闪烁网格</p>
     </PreviewFrame>
-  )
-}
-
-export function SpotlightCardDemo() {
-  return (
-    <SpotlightCard className="w-full max-w-sm">
-      <h3 className="text-lg font-medium">Spotlight</h3>
-      <p className="mt-2 text-sm text-muted-foreground">指针移上去，光斑会跟着走。</p>
-    </SpotlightCard>
-  )
-}
-
-export function MagneticDemo({ strength = 0.35 }: { strength?: number } = {}) {
-  return (
-    <Magnetic strength={strength}>
-      <Button>磁性按钮</Button>
-    </Magnetic>
-  )
-}
-
-export function CursorFollowDemo() {
-  return (
-    <CursorFollow className="flex min-h-48 w-full items-center justify-center rounded-xl border bg-zinc-950 text-zinc-100">
-      <p>在区域内移动指针</p>
-    </CursorFollow>
-  )
-}
-
-export function TiltDemo({ maxTilt = 12 }: { maxTilt?: number } = {}) {
-  return (
-    <Tilt className="w-full max-w-sm" maxTilt={maxTilt}>
-      <div className="rounded-xl border bg-card p-6 shadow-sm">
-        <h3 className="font-medium">3D Tilt</h3>
-        <p className="mt-2 text-sm text-muted-foreground">指针移动时卡片会倾斜。</p>
-      </div>
-    </Tilt>
-  )
-}
-
-export function GlowHoverDemo() {
-  return (
-    <GlowHover className="w-full max-w-sm border bg-card p-6">
-      <h3 className="font-medium">Glow Hover</h3>
-      <p className="mt-2 text-sm text-muted-foreground">悬停时出现柔光和上浮。</p>
-    </GlowHover>
   )
 }
 

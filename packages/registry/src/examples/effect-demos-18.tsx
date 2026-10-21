@@ -30,8 +30,18 @@ export function FireworksShowDemo() {
   return <FireworksShow className="w-full" />
 }
 
-export function WobbleLineCursorDemo() {
-  return <WobbleLineCursor className="w-full" />
+export function WobbleLineCursorDemo({
+  lines = 5,
+  speed,
+  intensity,
+  color,
+}: {
+  lines?: number
+  speed?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return <WobbleLineCursor className="w-full" lines={lines} speed={speed} intensity={intensity} color={color} />
 }
 
 export function LegoPixelateDemo() {

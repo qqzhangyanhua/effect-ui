@@ -19,6 +19,7 @@ import * as effectDemos17 from "./effect-demos-17"
 import * as effectDemos18 from "./effect-demos-18"
 import * as effectDemos19 from "./effect-demos-19"
 import * as effectDemos20 from "./effect-demos-20"
+import * as effectDemos21 from "./effect-demos-21"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -61,11 +62,11 @@ const demoMap: Record<string, ComponentType> = {
   "aurora-background": effectDemos.AuroraBackgroundDemo,
   ripples: effectDemos.RipplesDemo,
   "flickering-grid": effectDemos.FlickeringGridDemo,
-  "spotlight-card": effectDemos.SpotlightCardDemo,
-  magnetic: effectDemos.MagneticDemo,
-  "cursor-follow": effectDemos.CursorFollowDemo,
-  tilt: effectDemos.TiltDemo,
-  "glow-hover": effectDemos.GlowHoverDemo,
+  "spotlight-card": effectDemos21.SpotlightCardDemo,
+  magnetic: effectDemos21.MagneticDemo,
+  "cursor-follow": effectDemos21.CursorFollowDemo,
+  tilt: effectDemos21.TiltDemo,
+  "glow-hover": effectDemos21.GlowHoverDemo,
   "flip-card": effectDemos.FlipCardDemo,
   "glass-card": effectDemos.GlassCardDemo,
   "shine-border": effectDemos.ShineBorderDemo,
@@ -129,7 +130,7 @@ const demoMap: Record<string, ComponentType> = {
   "animated-list": effectDemos2.AnimatedListDemo,
   "globe-sphere": effectDemos2.GlobeSphereDemo,
   "confetti-burst": effectDemos2.ConfettiBurstDemo,
-  "cursor-trail": effectDemos2.CursorTrailDemo,
+  "cursor-trail": effectDemos21.CursorTrailDemo,
   sparkles: effectDemos2.SparklesDemo,
   "border-beam": effectDemos2.BorderBeamDemo,
   "bento-grid": effectDemos2.BentoGridDemo,

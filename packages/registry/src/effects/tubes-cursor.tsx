@@ -2,12 +2,20 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface TubesCursorProps {
   tubes?: number
   className?: string
+  speed?: number
+  intensity?: number
+  scale?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const PALETTES = [
@@ -27,12 +35,18 @@ function hexToRgb(hex: string) {
   ]
 }
 
-function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
+function TubesCursor({ tubes = 4, className, speed, intensity, scale }: TubesCursorProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const pointerRef = React.useRef({ x: 0.5, y: 0.55 })
   const paletteRef = React.useRef(0)
+  const active = useAnimationActive(hostRef)
+  const activeRef = React.useRef(false)
+  const kickRef = React.useRef<(() => void) | null>(null)
+  const speedRef = React.useRef(pace(speed))
+  const intensityRef = React.useRef(intensity)
+  const scaleRef = React.useRef(scale)
   const count = Math.min(5, Math.max(3, Math.round(tubes)))
   const [palette, setPalette] = React.useState(0)
   const [fallback, setFallback] = React.useState(false)
@@ -43,6 +57,17 @@ function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
   }, [palette])
 
   React.useEffect(() => {
+    speedRef.current = pace(speed)
+    intensityRef.current = intensity
+    scaleRef.current = scale
+  }, [speed, intensity, scale])
+
+  React.useEffect(() => {
+    activeRef.current = active
+    if (active) kickRef.current?.()
+  }, [active])
+
+  React.useEffect(() => {
     if (!show) return
     const canvas = canvasRef.current
     const host = hostRef.current
@@ -50,7 +75,6 @@ function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
     let cancelled = false
     let frame = 0
     let running = true
-    const visibleRef = { current: true }
 
     const run = async () => {
       const ogl = await import("ogl")
@@ -147,18 +171,21 @@ function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
 
       const tick = () => {
         if (!running) return
-        if (!visibleRef.current) {
+        if (!activeRef.current) {
           frame = 0
           return
         }
         time += 0.016
+        const rate = speedRef.current
+        const thick = intensityRef.current === undefined || intensityRef.current === 1 ? 1 : intensityRef.current
+        const depth = scaleRef.current === undefined || scaleRef.current === 1 ? 1 : scaleRef.current
         const paletteIndex = paletteRef.current % PALETTES.length
         const colors = PALETTES[paletteIndex]?.colors ?? PALETTES[0].colors
         const pointer = pointerRef.current
         ribbons.forEach((ribbon, tube) => {
           const head = heads[tube]
           if (!head) return
-          const follow = 0.22 - tube * 0.035
+          const follow = (0.22 - tube * 0.035) * rate
           head.x += (pointer.x - head.x) * follow
           head.y += (pointer.y + (tube - (count - 1) / 2) * 0.08 - head.y) * follow
           const trail = trails[tube]
@@ -183,12 +210,12 @@ function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
             const dx = next.x - prev.x
             const dy = next.y - prev.y
             const length = Math.hypot(dx, dy) || 1
-            const thickness = 0.14 + tube * 0.02
+            const thickness = (0.14 + tube * 0.02) * thick
             const nx = (-dy / length) * thickness
             const ny = (dx / length) * thickness
             const x = (sample.x - 0.5) * 6.4
             const y = (0.5 - sample.y) * 2.6 + Math.sin(point * 0.28 + tube) * 0.16
-            const z = Math.sin(point * 0.22 + time * 0.6 + tube) * 0.55
+            const z = Math.sin(point * 0.22 + time * 0.6 + tube) * 0.55 * depth
             const slot = point * 6
             pos[slot] = x + nx
             pos[slot + 1] = y + ny
@@ -219,16 +246,14 @@ function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
         frame = window.requestAnimationFrame(tick)
       }
 
-      const viewObserver = new IntersectionObserver((entries) => {
-        visibleRef.current = entries.some((entry) => entry.isIntersecting)
-        if (visibleRef.current && running && frame === 0) frame = window.requestAnimationFrame(tick)
-      })
-      viewObserver.observe(host)
-      frame = window.requestAnimationFrame(tick)
+      kickRef.current = () => {
+        if (activeRef.current && running && frame === 0) frame = window.requestAnimationFrame(tick)
+      }
+      kickRef.current()
       return () => {
+        kickRef.current = null
         window.cancelAnimationFrame(frame)
         resizeObserver.disconnect()
-        viewObserver.disconnect()
         gl.getExtension("WEBGL_lose_context")?.loseContext()
       }
     }
@@ -240,6 +265,7 @@ function TubesCursor({ tubes = 4, className }: TubesCursorProps) {
     return () => {
       cancelled = true
       running = false
+      kickRef.current = null
       window.cancelAnimationFrame(frame)
       void job.then((cleanup) => cleanup?.())
     }

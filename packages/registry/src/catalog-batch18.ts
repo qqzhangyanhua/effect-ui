@@ -61,7 +61,34 @@ export const batch18Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/wobble-line-cursor.tsx",
     target: "components/ui/wobble-line-cursor.tsx",
-    props: [{ name: "lines", type: "number", defaultValue: "5", description: "弦的数量。" }, ...ui],
+    props: [
+      {
+        name: "lines",
+        type: "number",
+        defaultValue: "5",
+        description: "弦的数量。",
+        control: { kind: "range", value: 5, min: 2, max: 12, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "拨动幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      { name: "color", type: "string", description: "弦的颜色。不传则用当前文字色。", control: { kind: "color" } },
+      ...ui,
+    ],
+    presets: [
+      { name: "wobble-few", label: "疏", values: { lines: 3, speed: 0.7, intensity: 0.6 } },
+      { name: "wobble-default", label: "默认", values: { lines: 5, speed: 1, intensity: 1 } },
+      { name: "wobble-many", label: "密", values: { lines: 9, speed: 1.5, intensity: 1 } },
+    ],
   },
   {
     name: "lego-pixelate",

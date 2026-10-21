@@ -34,7 +34,25 @@ export const batch6Components: ComponentMeta[] = [
         description: "每帧衰减。",
         control: { kind: "range", value: 0.975, min: 0.9, max: 0.995, step: 0.001 },
       },
+      {
+        name: "speed",
+        type: "number",
+        description: "色相变化速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "喷溅颜色亮度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      { name: "color", type: "string", description: "固定喷溅颜色。不传则沿用色相循环。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "splash-fine", label: "细", values: { splatRadius: 0.006, fade: 0.99, speed: 0.6, intensity: 0.7 } },
+      { name: "splash-default", label: "默认", values: { splatRadius: 0.012, fade: 0.975, speed: 1, intensity: 1 } },
+      { name: "splash-wide", label: "铺开", values: { splatRadius: 0.028, fade: 0.94, speed: 1.6, intensity: 1 } },
     ],
   },
   {

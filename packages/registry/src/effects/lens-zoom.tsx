@@ -12,6 +12,8 @@ export interface LensZoomProps {
   src?: string
   zoom?: number
   lensSize?: number
+  intensity?: number
+  color?: string
   className?: string
 }
 
@@ -57,9 +59,12 @@ function pointFrom(target: HTMLDivElement, clientX: number, clientY: number): Le
   }
 }
 
-function LensZoom({ src, zoom = 2.3, lensSize = 148, className }: LensZoomProps) {
+function LensZoom({ src, zoom = 2.3, lensSize = 148, intensity, color, className }: LensZoomProps) {
   const reduced = usePrefersReducedMotion()
   const [lens, setLens] = React.useState<LensPoint | null>(null)
+  const zoomAmount = zoom * (intensity === undefined || intensity === 1 ? 1 : intensity)
+  const border = color?.trim().toLowerCase()
+  const keepBorder = !border || border === "#fff" || border === "#ffffff" || border === "white"
 
   const move = (target: HTMLDivElement, clientX: number, clientY: number) => {
     if (reduced) return
@@ -108,8 +113,17 @@ function LensZoom({ src, zoom = 2.3, lensSize = 148, className }: LensZoomProps)
       <Artwork src={src} />
       {lens && !reduced ? (
         <div
-          className="pointer-events-none absolute z-10 rounded-full border-2 border-white shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
-          style={{ width: lensSize, height: lensSize, left: lens.x - lensSize / 2, top: lens.y - lensSize / 2 }}
+          className={cn(
+            "pointer-events-none absolute z-10 rounded-full border-2 shadow-[0_12px_40px_rgba(0,0,0,0.35)]",
+            keepBorder && "border-white",
+          )}
+          style={{
+            width: lensSize,
+            height: lensSize,
+            left: lens.x - lensSize / 2,
+            top: lens.y - lensSize / 2,
+            borderColor: keepBorder ? undefined : color,
+          }}
         >
           <div className="absolute inset-0 overflow-hidden rounded-full bg-zinc-950">
             <div
@@ -118,7 +132,7 @@ function LensZoom({ src, zoom = 2.3, lensSize = 148, className }: LensZoomProps)
                 width: lens.w,
                 height: lens.h,
                 transformOrigin: "top left",
-                transform: `translate(${lensSize / 2 - lens.x * zoom}px, ${lensSize / 2 - lens.y * zoom}px) scale(${zoom})`,
+                transform: `translate(${lensSize / 2 - lens.x * zoomAmount}px, ${lensSize / 2 - lens.y * zoomAmount}px) scale(${zoomAmount})`,
               }}
             >
               <Artwork src={src} />

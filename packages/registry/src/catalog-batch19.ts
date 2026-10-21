@@ -19,7 +19,39 @@ export const batch19Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/tubes-cursor.tsx",
     target: "components/ui/tubes-cursor.tsx",
-    props: [{ name: "tubes", type: "number", defaultValue: "4", description: "管道数量，限制在 3 到 5。" }, ...ui],
+    props: [
+      {
+        name: "tubes",
+        type: "number",
+        defaultValue: "4",
+        description: "管道数量，限制在 3 到 5。",
+        control: { kind: "range", value: 4, min: 3, max: 5, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "跟随速度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "管道粗细倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "前后摆动幅度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "tubes-few", label: "少", values: { tubes: 3, speed: 0.6, intensity: 0.6, scale: 0.7 } },
+      { name: "tubes-default", label: "默认", values: { tubes: 4, speed: 1, intensity: 1, scale: 1 } },
+      { name: "tubes-many", label: "多", values: { tubes: 5, speed: 1.6, intensity: 1, scale: 1.4 } },
+    ],
   },
   {
     name: "liquid-morph-slideshow",

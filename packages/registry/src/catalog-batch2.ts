@@ -876,7 +876,33 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/cursor-trail.tsx",
     target: "components/ui/cursor-trail.tsx",
-    props: [{ name: "dots", type: "number", defaultValue: "8", description: "拖尾点数。" }],
+    props: [
+      {
+        name: "dots",
+        type: "number",
+        defaultValue: "8",
+        description: "拖尾点数。",
+        control: { kind: "range", value: 8, min: 2, max: 24, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "点的直径（像素）。10 与不传相同。",
+        control: { kind: "range", value: 10, min: 4, max: 32, step: 1 },
+      },
+      { name: "color", type: "string", description: "点的颜色。不传则跟随主题。", control: { kind: "color" } },
+      {
+        name: "intensity",
+        type: "number",
+        description: "不透明度倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "cursor-trail-short", label: "短", values: { dots: 4, size: 8, intensity: 0.7 } },
+      { name: "cursor-trail-default", label: "默认", values: { dots: 8, size: 10, intensity: 1 } },
+      { name: "cursor-trail-long", label: "长", values: { dots: 16, size: 14, intensity: 1 } },
+    ],
   },
   {
     name: "sparkles",

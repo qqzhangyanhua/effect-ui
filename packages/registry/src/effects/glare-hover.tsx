@@ -8,10 +8,30 @@ import { cn } from "@/lib/utils"
 export interface GlareHoverProps {
   className?: string
   children?: React.ReactNode
+  speed?: number
+  intensity?: number
+  scale?: number
+  color?: string
 }
 
-function GlareHover({ className, children }: GlareHoverProps) {
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
+}
+
+function plainWhite(color: string | undefined) {
+  if (!color) return true
+  const value = color.trim().toLowerCase()
+  return value === "#fff" || value === "#ffffff" || value === "white"
+}
+
+function GlareHover({ className, children, speed, intensity, scale, color }: GlareHoverProps) {
   const reduced = usePrefersReducedMotion()
+  const keepSpeed = speed === undefined || speed === 1
+  const white = plainWhite(color)
+  const keepBand = (intensity === undefined || intensity === 1) && white
+  const keepScale = scale === undefined || scale === 1
+  const alpha = 0.75 * (intensity ?? 1)
+  const band = white ? `rgb(255 255 255 / ${alpha})` : color
 
   return (
     <div
@@ -30,7 +50,17 @@ function GlareHover({ className, children }: GlareHoverProps) {
       {reduced ? null : (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-y-[-20%] -left-1/3 w-1/2 rotate-12 bg-linear-to-r from-transparent via-white/75 to-transparent opacity-0 transition duration-700 ease-out group-hover:translate-x-[280%] group-hover:opacity-100 motion-reduce:hidden"
+          className={cn(
+            "pointer-events-none absolute inset-y-[-20%] -left-1/3 rotate-12 opacity-0 transition ease-out pointer-fine:group-hover:translate-x-[280%] pointer-fine:group-hover:opacity-100 pointer-coarse:translate-x-[40%] pointer-coarse:opacity-100 motion-reduce:hidden",
+            keepSpeed && "duration-700",
+            keepScale && "w-1/2",
+            keepBand && "bg-linear-to-r from-transparent via-white/75 to-transparent",
+          )}
+          style={{
+            transitionDuration: keepSpeed ? undefined : `${700 / pace(speed)}ms`,
+            width: keepScale ? undefined : `${50 * (scale ?? 1)}%`,
+            backgroundImage: keepBand ? undefined : `linear-gradient(to right, transparent, ${band}, transparent)`,
+          }}
         />
       )}
     </div>

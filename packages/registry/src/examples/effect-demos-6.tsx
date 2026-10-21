@@ -34,8 +34,26 @@ const gallery = [
 export function SplashCursorDemo({
   splatRadius = 0.012,
   fade = 0.975,
-}: { splatRadius?: number; fade?: number } = {}) {
-  return <SplashCursor className="h-56 w-full" splatRadius={splatRadius} fade={fade} />
+  speed,
+  intensity,
+  color,
+}: {
+  splatRadius?: number
+  fade?: number
+  speed?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return (
+    <SplashCursor
+      className="h-56 w-full"
+      splatRadius={splatRadius}
+      fade={fade}
+      speed={speed}
+      intensity={intensity}
+      color={color}
+    />
+  )
 }
 
 export function ShaderPack2Demo({

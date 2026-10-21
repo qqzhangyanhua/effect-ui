@@ -16,8 +16,18 @@ import { TocScrollspy } from "../effects/toc-scrollspy"
 import { VortexBackground } from "../effects/vortex-background"
 import { WorldMapArcs } from "../effects/world-map-arcs"
 
-export function LensZoomDemo() {
-  return <LensZoom className="w-full" />
+export function LensZoomDemo({
+  zoom = 2.3,
+  lensSize = 148,
+  intensity,
+  color,
+}: {
+  zoom?: number
+  lensSize?: number
+  intensity?: number
+  color?: string
+} = {}) {
+  return <LensZoom className="w-full" zoom={zoom} lensSize={lensSize} intensity={intensity} color={color} />
 }
 
 export function WorldMapArcsDemo({

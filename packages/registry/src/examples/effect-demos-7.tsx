@@ -47,8 +47,18 @@ export function VfxElementDemo({
   )
 }
 
-export function MouseFlowmapDemo() {
-  return <MouseFlowmap className="h-56 w-full" />
+export function MouseFlowmapDemo({
+  image = "https://picsum.photos/id/1015/960/540",
+  intensity,
+  speed,
+  scale,
+}: {
+  image?: string
+  intensity?: number
+  speed?: number
+  scale?: number
+} = {}) {
+  return <MouseFlowmap className="h-56 w-full" image={image} intensity={intensity} speed={speed} scale={scale} />
 }
 
 export function GpgpuParticlesDemo({
@@ -65,8 +75,20 @@ export function GpgpuParticlesDemo({
   return <GpgpuParticles className="h-56 w-full" count={count} text={text} speed={speed} size={size} />
 }
 
-export function PolylineRibbonCursorDemo() {
-  return <PolylineRibbonCursor className="h-56 w-full" />
+export function PolylineRibbonCursorDemo({
+  color = "#a78bfa",
+  points = 18,
+  speed,
+  intensity,
+}: {
+  color?: string
+  points?: number
+  speed?: number
+  intensity?: number
+} = {}) {
+  return (
+    <PolylineRibbonCursor className="h-56 w-full" color={color} points={points} speed={speed} intensity={intensity} />
+  )
 }
 
 export function PixelCanvasCardDemo() {
@@ -161,8 +183,20 @@ export function LetterGlitchWallDemo({
   return <LetterGlitchWall className="h-48 w-full" rows={rows} cols={cols} speed={speed} color={color} />
 }
 
-export function TargetCursorDemo({ className = "w-full" }: { className?: string } = {}) {
-  return <TargetCursor className={className} />
+export function TargetCursorDemo({
+  className = "w-full",
+  size = 28,
+  color,
+  speed,
+  intensity,
+}: {
+  className?: string
+  size?: number
+  color?: string
+  speed?: number
+  intensity?: number
+} = {}) {
+  return <TargetCursor className={className} size={size} color={color} speed={speed} intensity={intensity} />
 }
 
 export function LightningDemo({

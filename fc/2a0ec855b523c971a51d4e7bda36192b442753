@@ -1,0 +1,224 @@
+packages/registry/src/examples/effect-demos-7.tsx
+  s_6e6548ca6927de::t_78e41a756d0f64 94,96,103-104,159-160
+packages/registry/src/examples/effect-demos-4.tsx
+  s_6e6548ca6927de::t_95232a1c813a2d 51,56
+apps/docs/public/r/perspective-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+packages/registry/src/examples/effect-demos-19.tsx
+  s_6e6548ca6927de::t_277a28deed599d 41-42
+packages/registry/src/examples/effect-demos-14.tsx
+  s_6e6548ca6927de::t_f8ae62b14745de 77,84-87,95-96,111-112
+packages/registry/src/effects/evervault-card.tsx
+  s_6e6548ca6927de::t_bf2ecd07b70e3b 5-6,9-10,14-23
+  s_6e6548ca6927de::t_c6fdd2e2cb30ec 32-35,49-53,65
+  s_6e6548ca6927de::t_c9928abee1293c 36-48,54,56-60,63,66,68,72,85-88,90,92,103-104
+packages/registry/src/effects/gradient-carousel-3d.tsx
+  s_6e6548ca6927de::t_03767377602756 16-27,43-48,126-127,143-144,150
+apps/docs/public/r/border-beam.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+apps/docs/public/r/book-flip.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+packages/registry/src/effects/bento-grid.tsx
+  s_6e6548ca6927de::t_c0b0cf3e86c118 5-22,27-30,33-42
+packages/registry/src/effects/atropos-card.tsx
+  s_6e6548ca6927de::t_9b340bcee7da04 13-14,17-22,36,39-40
+packages/registry/src/effects/hover-lift.tsx
+  s_6e6548ca6927de::t_da01217676009b 5-10,12-15,20-22,25-27,29-31,33
+  s_6e6548ca6927de::t_05d5a9f60e8942 28,32
+packages/registry/src/effects/pixel-canvas-card.tsx
+  s_6e6548ca6927de::t_4855d182870f0a 5,86,116-118,134
+CREDITS.md
+  s_6e6548ca6927de::t_9bccad45c1f318 30
+apps/docs/public/r/glass-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+packages/registry/src/effects/holographic-foil.tsx
+  s_6e6548ca6927de::t_3a983bce86c8e9 83
+  s_6e6548ca6927de::t_446bd50bb4f4f3 7-8,12-24,27,29-31,42-43,63-66,68-71,78-81
+packages/registry/src/effects/glowing-edge.tsx
+  s_6e6548ca6927de::t_875f29940c4ba7 3,6-7,11-18,21-27,29,32-44
+packages/registry/src/effects/sticker-peel.tsx
+  s_6e6548ca6927de::t_83bef7e8be303a 12-17,20-24,26-28,36,47-50
+  s_6e6548ca6927de::t_f1617b762472de 70-74
+packages/registry/src/effects/shine-border.tsx
+  s_6e6548ca6927de::t_c6ba5812083303 7,9-12,20-21,24-25,39-43
+packages/registry/src/catalog-batch9.ts
+  s_6e6548ca6927de::t_eff6459f07c930 30-56,70-87,90-94,108-125,128-132,143-163,246-266,277-303
+apps/docs/public/r/keycap-3d.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 17
+packages/registry/src/effects/morphing-dialog.tsx
+  s_6e6548ca6927de::t_ccf667a3fe8d28 27-37,41-42,50
+apps/docs/public/r/evervault-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 9-10
+  s_6e6548ca6927de::t_acf797f52e0d85 18
+apps/docs/public/r/flip-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+packages/registry/src/examples/effect-demos-3.tsx
+  s_6e6548ca6927de::t_31c7b5d4b1d4ba 71,74,104,107
+packages/registry/src/catalog-batch3.ts
+  s_6e6548ca6927de::t_e44675175a10e1 38-57,68-93
+packages/registry/src/catalog-batch4.ts
+  s_6e6548ca6927de::t_761c243ce11da0 81
+  s_6e6548ca6927de::t_fb1fc84d4c6e2e 70-80,82-89
+packages/registry/src/effects/card-vocabulary.test.tsx
+  s_6e6548ca6927de::t_f93ceeeafab3bb 362
+  s_6e6548ca6927de::t_f33c55c718060a 1-3,5-71,76-225,227-267,269-282,284-312,315-327,329-361,363-367,369-385,387-421,424-426,433-438,441,445-446,448-494
+  s_6e6548ca6927de::t_09ec9a48b33c66 422,427-431
+  s_6e6548ca6927de::t_01d736b03a1749 4,72-75,226,268,283
+  s_6e6548ca6927de::t_a2f77fc952cb6b 447
+  s_6e6548ca6927de::t_b66e96780c00af 313-314,328,368,386,423,432,439-440,442-444
+apps/docs/public/r/apple-activity-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+packages/registry/src/catalog-batch7.ts
+  s_6e6548ca6927de::t_833ebe0f9fcd73 238-239,327-365
+  s_6e6548ca6927de::t_a1740dce469dfe 187-206,209-213,227-232,235-237
+apps/docs/public/r/pixel-canvas-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 9,17
+registry.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 3916-3917,3935,4071,4167-4168
+apps/docs/public/r/liquid-glass.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 18
+packages/registry/src/examples/effect-demos-9.tsx
+  s_6e6548ca6927de::t_4e129c6ed440b4 19-20,23-24,27-28,31-32,73-74,77-78
+packages/registry/src/effects/flip-card.tsx
+  s_6e6548ca6927de::t_9058b6f0e1d33d 10-11,14,16,28-29,32
+packages/registry/src/ui/keycap-3d.tsx
+  s_6e6548ca6927de::t_1bda7476fcacd8 11-18,23,26-31,52,55,63-66,68-76
+packages/registry/src/effects/three-d-carousel.tsx
+  s_6e6548ca6927de::t_3343c3dfac05e9 15-18,21-23,32-39,49
+packages/registry/src/catalog-batch5.ts
+  s_6e6548ca6927de::t_84532dd1658252 403-443
+packages/registry/src/effects/glass-card.tsx
+  s_6e6548ca6927de::t_3351ad45cd1a74 5-10,12-14,19-21,27
+  s_6e6548ca6927de::t_13aa8b6d7d4278 24-26,28-37
+apps/docs/public/r/card-swap.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+apps/docs/public/r/folder-reveal.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 17
+packages/registry/src/effects/folder-reveal.tsx
+  s_6e6548ca6927de::t_cc9b5e850f615f 17-22,31,34-37,53-54,56-59,69-70,75,77
+packages/registry/src/effects/coverflow-carousel.tsx
+  s_6e6548ca6927de::t_b2cc4cd85a2f07 17-26,37,41-43,61-62,66-70
+packages/registry/src/catalog.ts
+  s_6e6548ca6927de::t_b0178d4ba531c6 1526-1536,1548-1558,1560-1567,1579-1609,1621-1640
+  s_6e6548ca6927de::t_c1de62e844e7ab 1559
+packages/registry/src/effects/image-comparison.tsx
+  s_6e6548ca6927de::t_193cc7d2d80652 10-11,28-29,34-37,52,105,107-108,111-121
+packages/registry/src/examples/effect-demos-2.tsx
+  s_6e6548ca6927de::t_acd2f17bdc2e6f 380,382,389,391,400,402,409,413
+packages/registry/src/effects/box-carousel.tsx
+  s_6e6548ca6927de::t_57c325de656763 17-24,34,38-39,45-46,48-50,58
+packages/registry/src/catalog-batch14.ts
+  s_6e6548ca6927de::t_b0804623e9f644 351-352,358
+  s_6e6548ca6927de::t_654ce433869313 201-224,227-231,244-274,277-281,342-350,353,356-357,359-360
+packages/registry/src/effects/liquid-glass.tsx
+  s_6e6548ca6927de::t_6f4a4bdc8ec7ae 11-14,22-24,28-30,33-40,47,66-70
+apps/docs/public/r/circular-gallery.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 11-12,20
+packages/registry/src/examples/effect-demos.tsx
+  s_6e6548ca6927de::t_107ca5ca596f33 341,345,360,363,371,373,380,382
+packages/registry/src/effects/perspective-card.tsx
+  s_6e6548ca6927de::t_bb8bcc7196370e 12-15,18,20-22,25,29,57-62
+packages/registry/src/effects/book-flip.tsx
+  s_6e6548ca6927de::t_26bd0ca1040601 9-10,15-31,38-40,46-48,66-76
+apps/docs/public/r/holographic-foil.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+apps/docs/public/r/bento-grid.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+apps/docs/public/r/morphing-dialog.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 20
+packages/registry/src/effects/hologram-card.tsx
+  s_6e6548ca6927de::t_c4ced3b6af8ab5 73-75
+  s_6e6548ca6927de::t_818be1146f6a6f 8-11,16-21,28-30,33-39,45-46,49-57,60-63,67-70,77-81
+packages/registry/src/effects/apple-activity-card.tsx
+  s_6e6548ca6927de::t_5e547453481030 17-20,29,31-34,38,40,42,45,52,57
+packages/registry/src/effects/border-beam.tsx
+  s_6e6548ca6927de::t_289965f68fe01d 6,10-13,22-23,26-27,38-42
+packages/registry/src/catalog-batch2.ts
+  s_6e6548ca6927de::t_a90844d252ed5c 1024
+  s_6e6548ca6927de::t_4f1fb8f43373e1 932,935-965,977-1002,1013-1023,1025-1032,1044-1049,1052-1056
+packages/registry/src/catalog-batch16.ts
+  s_6e6548ca6927de::t_def5891e1d44df 46-63,66-69
+  s_6e6548ca6927de::t_c9458f47d03031 70
+packages/registry/src/catalog-batch19.ts
+  s_6e6548ca6927de::t_f16f640bbc9150 97-129
+apps/docs/public/r/atropos-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 18
+apps/docs/public/r/gradient-carousel-3d.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 17
+packages/registry/src/examples/effect-demos-11.tsx
+  s_6e6548ca6927de::t_733008e72b4d9f 55-56
+packages/registry/src/examples/effect-demos-16.tsx
+  s_6e6548ca6927de::t_d9165bb76e7723 27,30
+packages/registry/src/examples/effect-demos-13.tsx
+  s_6e6548ca6927de::t_38e0fcb9b4a553 166-167,188-189
+apps/docs/public/r/hologram-card.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 17
+apps/docs/public/r/apple-cards-carousel.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+packages/registry/src/catalog-batch13.ts
+  s_6e6548ca6927de::t_a61e46b951e7f8 214-231,234-238,309-333,336-339
+  s_6e6548ca6927de::t_b85cae806c96cf 340
+apps/docs/public/r/hover-lift.json
+  s_6e6548ca6927de::t_d9b9058f793501 16
+packages/registry/src/examples/effect-demos-6.tsx
+  s_6e6548ca6927de::t_4d2d085bee278d 139-140,227-228,231,233
+packages/registry/src/effects/circular-gallery.tsx
+  s_6e6548ca6927de::t_df8331a9885c3a 5-6,17-18,21-25,27-32,37-50,95-102,105-112,115,118
+packages/registry/src/effects/card-swap.tsx
+  s_6e6548ca6927de::t_ba0731aed988ec 19,21-26,41,43-45,62,74-78,82-83
+  s_6e6548ca6927de::t_6a0a271db32511 68
+packages/registry/src/catalog-batch6.ts
+  s_6e6548ca6927de::t_5c4a7e15b6c2f7 173-193,364-378,389-420
+apps/docs/public/r/coverflow-carousel.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+apps/docs/public/r/sticker-peel.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+apps/docs/public/r/3d-carousel.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+apps/docs/public/r/avatar-group-tooltip.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+apps/docs/public/r/registry.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 3916-3917,3935,4071,4167-4168
+packages/registry/src/effects/kpi-sparkline-card.tsx
+  s_6e6548ca6927de::t_3b97da3088b761 17,45-46,48,83-85,117
+  s_6e6548ca6927de::t_7a8ae6cd8c4da3 104-110
+  s_6e6548ca6927de::t_4c98f6bd5e3bd3 15-16,18,40-41,47
+apps/docs/public/r/shine-border.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 16
+packages/registry/src/examples/effect-demos-5.tsx
+  s_6e6548ca6927de::t_70359d62f9df3f 11,13
+packages/registry/src/effects/apple-cards-carousel.tsx
+  s_6e6548ca6927de::t_bda76cab7264b6 19-24,33,37-39,43,50-54,64-65
+packages/registry/src/effects/link-preview.tsx
+  s_6e6548ca6927de::t_1c762be3d90fda 19-30,44,47-50,71-76,78-82
+apps/docs/public/r/image-comparison.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 18
+apps/docs/public/r/kpi-sparkline-card.json
+  s_6e6548ca6927de::t_acf797f52e0d85 18
+packages/registry/src/effects/avatar-group-tooltip.tsx
+  s_6e6548ca6927de::t_6d17374e08114a 18-29,45,47-55,95-102,123-127,151
+apps/docs/public/r/box-carousel.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+packages/registry/src/catalog-batch11.ts
+  s_6e6548ca6927de::t_52cc46295e4031 130-162
+apps/docs/public/r/glowing-edge.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 9,17
+apps/docs/public/r/link-preview.json
+  s_6e6548ca6927de::t_926b2e0c311e5c 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "fc2a0ec855b523c971a51d4e7bda36192b442753",
+  "prompts": {},
+  "sessions": {
+    "s_6e6548ca6927de": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15cc6-19cb-7181-84f9-fad0fe3caac7",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

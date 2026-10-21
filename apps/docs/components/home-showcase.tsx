@@ -4,13 +4,13 @@ import { useState } from "react"
 import Link from "next/link"
 import { ArrowRight, Sparkles, Type, Wand2, Zap } from "lucide-react"
 
-import { AuroraText } from "@effect-ui/registry/effects/aurora-text"
-import { GradientText } from "@effect-ui/registry/effects/gradient-text"
 import { Meteors } from "@effect-ui/registry/effects/meteors"
+import { ScrambleText } from "@effect-ui/registry/effects/scramble-text"
 import { ShineBorder } from "@effect-ui/registry/effects/shine-border"
 import { ShimmerButton } from "@effect-ui/registry/effects/shimmer-button"
-import { SplitText } from "@effect-ui/registry/effects/split-text"
 import { SpotlightCard } from "@effect-ui/registry/effects/spotlight-card"
+import { TypingText } from "@effect-ui/registry/effects/typing-text"
+import { WordRotate } from "@effect-ui/registry/effects/word-rotate"
 import { cn } from "@/lib/utils"
 
 const tabs = [
@@ -65,12 +65,14 @@ export function HomeShowcase() {
         {activeTab === "text" && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
-              <span className="text-xs font-mono text-muted-foreground mb-4">AuroraText</span>
-              <AuroraText className="text-2xl sm:text-3xl font-bold">
-                流光溢彩的极光文字
-              </AuroraText>
+              <span className="text-xs font-mono text-muted-foreground mb-4">TypingText</span>
+              <TypingText
+                className="text-2xl sm:text-3xl font-bold"
+                text="光标跟着句子往下写"
+                loop
+              />
               <Link
-                href="/docs/aurora-text"
+                href="/docs/typing-text"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
               >
                 查看文档 <ArrowRight className="size-3" />
@@ -78,12 +80,15 @@ export function HomeShowcase() {
             </div>
 
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
-              <span className="text-xs font-mono text-muted-foreground mb-4">GradientText</span>
-              <GradientText className="text-2xl sm:text-3xl font-bold">
-                平滑流动的渐变色彩
-              </GradientText>
+              <span className="text-xs font-mono text-muted-foreground mb-4">ScrambleText</span>
+              <ScrambleText
+                className="text-2xl sm:text-3xl font-bold"
+                text="乱码慢慢还原成句"
+                duration={1400}
+                loop
+              />
               <Link
-                href="/docs/gradient-text"
+                href="/docs/scramble-text"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
               >
                 查看文档 <ArrowRight className="size-3" />
@@ -91,10 +96,13 @@ export function HomeShowcase() {
             </div>
 
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
-              <span className="text-xs font-mono text-muted-foreground mb-4">SplitText</span>
-              <SplitText className="text-2xl sm:text-3xl font-bold" text="逐字跃动的律动节奏" />
+              <span className="text-xs font-mono text-muted-foreground mb-4">WordRotate</span>
+              <WordRotate
+                className="text-2xl sm:text-3xl font-bold"
+                words={["句子滑上来", "再换下一句", "停在这一行"]}
+              />
               <Link
-                href="/docs/split-text"
+                href="/docs/word-rotate"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
               >
                 查看文档 <ArrowRight className="size-3" />

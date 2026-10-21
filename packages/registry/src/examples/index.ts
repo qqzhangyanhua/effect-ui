@@ -24,6 +24,7 @@ import * as effectDemos22 from "./effect-demos-22"
 import * as effectDemos23 from "./effect-demos-23"
 import * as effectDemos24 from "./effect-demos-24"
 import * as effectDemos25 from "./effect-demos-25"
+import * as effectDemos26 from "./effect-demos-26"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -488,6 +489,21 @@ const demoMap: Record<string, ComponentType> = {
   "floating-panel": effectDemos25.FloatingPanelDemo,
   "copy-button": effectDemos25.CopyButtonDemo,
   "feature-voting": effectDemos25.FeatureVotingDemo,
+  "activity-terrain": effectDemos26.ActivityTerrainDemo,
+  "cradle-text": effectDemos26.CradleTextDemo,
+  "drape-background": effectDemos26.DrapeBackgroundDemo,
+  "plucked-text": effectDemos26.PluckedTextDemo,
+  "swoosh-text": effectDemos26.SwooshTextDemo,
+  "topo-background": effectDemos26.TopoBackgroundDemo,
+  "shape-hero": effectDemos26.ShapeHeroDemo,
+  "pull-cord": effectDemos26.PullCordDemo,
+  "ai-context-meter": effectDemos26.AIContextMeterDemo,
+  "ai-tool-approval": effectDemos26.AIToolApprovalDemo,
+  "marking-menu": effectDemos26.MarkingMenuDemo,
+  "wheel-picker": effectDemos26.WheelPickerDemo,
+  "undo-button": effectDemos26.UndoButtonDemo,
+  "focal-point-picker": effectDemos26.FocalPointPickerDemo,
+  "synced-transcript": effectDemos26.SyncedTranscriptDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

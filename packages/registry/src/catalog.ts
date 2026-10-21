@@ -20,6 +20,7 @@ import { batch20Components } from "./catalog-batch20"
 import { batch21Components } from "./catalog-batch21"
 import { batch22Components } from "./catalog-batch22"
 import { batch23Components } from "./catalog-batch23"
+import { batch24Components } from "./catalog-batch24"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -2261,6 +2262,7 @@ export const components: ComponentMeta[] = [
   ...batch21Components,
   ...batch22Components,
   ...batch23Components,
+  ...batch24Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2341,6 +2343,8 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "tear-button",
       "animated-subscribe-button",
       "copy-button",
+      "pull-cord",
+      "undo-button",
     ],
   },
 ]
@@ -2361,7 +2365,8 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
 
 /** 名字本身就是按钮或输入的组件。文档导航按这个归组，不改 category。 */
 export function componentCluster(name: string): "button" | "input" | undefined {
-  if (name === "button" || name.startsWith("button-") || name.endsWith("-button")) return "button"
+  // 拉绳开关名字不带 button，文档导航仍归到按钮组。
+  if (name === "button" || name.startsWith("button-") || name.endsWith("-button") || name === "pull-cord") return "button"
   if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"
   return undefined
 }

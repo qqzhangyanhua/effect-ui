@@ -9031,6 +9031,304 @@
           "target": "components/ui/feature-voting.tsx"
         }
       ]
+    },
+    {
+      "name": "activity-terrain",
+      "type": "registry:ui",
+      "title": "Activity Terrain",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/activity-terrain.tsx 把每日次数画成可拖动的立体地形，也能切回平面热力。方向键可读每一天。减弱动效时直接落到目标角度。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/activity-terrain.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/activity-terrain.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cradle-text",
+      "type": "registry:ui",
+      "title": "Cradle Text",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/cradle-text.tsx 字母像牛顿摇篮一样悬挂、碰撞。第一次进入视口会抬起首字母再放开。减弱动效时不播放开场，也不接受拖拽。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cradle-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cradle-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drape-background",
+      "type": "registry:ui",
+      "title": "Drape Background",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/drape-background.tsx 画布上的褶皱布帘，指针可以推开或抓住拖动。减弱动效时没有风，也不能拖。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drape-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drape-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "plucked-text",
+      "type": "registry:ui",
+      "title": "Plucked Text",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/plucked-text.tsx 字挂在一根弦上，拖拽或扫过会拨响。减弱动效时松手直接回到直线。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/plucked-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/plucked-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swoosh-text",
+      "type": "registry:ui",
+      "title": "Swoosh Text",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/swoosh-text.tsx 分层挤出的字，指针带动光向，按下会把字母按进厚度里。减弱动效时保持 45° 固定挤出。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/swoosh-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/swoosh-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "topo-background",
+      "type": "registry:ui",
+      "title": "Topo Background",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/topo-background.tsx 用噪声画出流动等高线。指针会隆起一座小山，点击发出一圈波纹。减弱动效时地图静止。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/topo-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/topo-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shape-hero",
+      "type": "registry:ui",
+      "title": "Shape Hero",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/shape-hero.tsx 标题周围掉下一堆可拖拽的几何形状，静止后物理休眠。减弱动效时先把堆叠算稳再显示。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shape-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shape-hero.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pull-cord",
+      "type": "registry:ui",
+      "title": "Pull Cord",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/pull-cord.tsx 台灯拉绳。拉过阈值就切换开关，松手后绳子荡回。屏幕阅读器和键盘使用隐藏的 switch，空格或回车会轻拉一下。减弱动效时松手直接回到静止。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pull-cord.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pull-cord.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-context-meter",
+      "type": "registry:ui",
+      "title": "AI Context Meter",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-context-meter.tsx 分段的上下文用量。接近上限时颜色变暖，演示对话会自己增长并压缩。减弱动效时数字直接跳到目标。离开视口后停止补间和演示计时。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ai-context-meter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ai-context-meter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-tool-approval",
+      "type": "registry:ui",
+      "title": "AI Tool Approval",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx 工具调用前的批准卡：允许一次、始终允许、拒绝。破坏性调用要按住确认。减弱动效时卡片直接切换。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ai-tool-approval.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ai-tool-approval.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marking-menu",
+      "type": "registry:ui",
+      "title": "Marking Menu",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/marking-menu.tsx 在按下的位置张开径向菜单，拖到一项松手即选中。也可以点右上角按钮再用方向键选择。笔迹在离开视口后停止绘制。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/marking-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/marking-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:ui",
+      "title": "Wheel Picker",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/wheel-picker.tsx iOS 风格的三维滚轮，松手后吸附并带一点惯性。每一列是 spinbutton，可用方向键调整。减弱动效时直接跳到目标。离开视口后停止弹簧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wheel-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wheel-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "undo-button",
+      "type": "registry:ui",
+      "title": "Undo Button",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/undo-button.tsx 点击后打开倒计时，时间走完才真正提交，期间可以撤销。悬停会暂停计时。⌘Z / Ctrl+Z 也能撤销。减弱动效时标签直接切换。离开视口后停止倒计时帧。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/undo-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/undo-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "focal-point-picker",
+      "type": "registry:ui",
+      "title": "Focal Point Picker",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/focal-point-picker.tsx 拖动图片上的焦点，旁边的裁切预览跟着变。方向键以 0.01 步进，按住 Shift 为 0.1。图片用 <img> 渲染。减弱动效时焦点不再滑过去。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/focal-point-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/focal-point-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "synced-transcript",
+      "type": "registry:ui",
+      "title": "Synced Transcript",
+      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/synced-transcript.tsx 播放时高亮当前词并跟着滚动，点击一句会跳到那里。减弱动效时滚动不再平滑。离开视口后停止播放帧。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/synced-transcript.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/synced-transcript.tsx"
+        }
+      ]
     }
   ]
 }

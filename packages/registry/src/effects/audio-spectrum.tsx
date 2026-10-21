@@ -11,11 +11,13 @@ export interface AudioSpectrumProps {
   src?: string
   mode?: SpectrumMode
   className?: string
+  size?: number
+  color?: string
 }
 
 const STATIC = [18, 36, 58, 44, 70, 32, 50, 24, 40, 62, 28, 46]
 
-function AudioSpectrum({ src, mode = "bars", className }: AudioSpectrumProps) {
+function AudioSpectrum({ src, mode = "bars", className, size, color }: AudioSpectrumProps) {
   const reduced = usePrefersReducedMotion()
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const hostRef = React.useRef<HTMLDivElement>(null)
@@ -24,10 +26,19 @@ function AudioSpectrum({ src, mode = "bars", className }: AudioSpectrumProps) {
   const [playing, setPlaying] = React.useState<"none" | "tone" | "mic" | "file">("none")
   const [error, setError] = React.useState("")
   const [currentMode, setCurrentMode] = React.useState<SpectrumMode>(mode)
+  const [incomingMode, setIncomingMode] = React.useState(mode)
+  if (incomingMode !== mode) {
+    setIncomingMode(mode)
+    setCurrentMode(mode)
+  }
+  const sizeRef = React.useRef(size)
+  const colorRef = React.useRef(color)
 
   React.useEffect(() => {
     modeRef.current = currentMode
-  }, [currentMode])
+    sizeRef.current = size
+    colorRef.current = color
+  }, [color, currentMode, size])
 
   React.useEffect(() => {
     if (!reduced) return
@@ -42,10 +53,10 @@ function AudioSpectrum({ src, mode = "bars", className }: AudioSpectrumProps) {
     context.clearRect(0, 0, width, height)
     STATIC.forEach((value, index) => {
       const barWidth = width / STATIC.length - 6
-      context.fillStyle = "#38bdf8"
+      context.fillStyle = color ?? "#38bdf8"
       context.fillRect(index * (barWidth + 6) + 3, height - value, barWidth, value)
     })
-  }, [reduced])
+  }, [color, reduced])
 
   React.useEffect(() => {
     if (reduced || playing === "none") return
@@ -133,14 +144,23 @@ function AudioSpectrum({ src, mode = "bars", className }: AudioSpectrumProps) {
       if (labelRef.current) labelRef.current.textContent = `${Math.round(level * 100)}`
       context2d.clearRect(0, 0, width, height)
       const hue = 205 - level * 170
-      context2d.strokeStyle = `hsl(${hue} 90% 62%)`
-      context2d.fillStyle = `hsl(${hue} 90% 62%)`
+      const paint = colorRef.current
+      if (paint) {
+        context2d.strokeStyle = paint
+        context2d.fillStyle = paint
+      } else {
+        context2d.strokeStyle = `hsl(${hue} 90% 62%)`
+        context2d.fillStyle = `hsl(${hue} 90% 62%)`
+      }
       if (modeRef.current === "circle") {
         const cx = width / 2
         const cy = height / 2
+        const reach = sizeRef.current === undefined || sizeRef.current === 48 ? 1 : sizeRef.current / 48
+        const inner = reach === 1 ? 28 : 28 * reach
+        const outer = reach === 1 ? 48 : 48 * reach
         data.forEach((value, index) => {
           const angle = (index / data.length) * Math.PI * 2
-          const radius = 28 + (value / 255) * 48
+          const radius = inner + (value / 255) * outer
           context2d.beginPath()
           context2d.moveTo(cx, cy)
           context2d.lineTo(cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius)

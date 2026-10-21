@@ -64,9 +64,15 @@ export const batch19Components: ComponentMeta[] = [
     target: "components/ui/liquid-morph-slideshow.tsx",
     props: [
       { name: "images", type: "string[]", description: "幻灯图片。省略时用内置色块。" },
-      { name: "interval", type: "number", defaultValue: "3200", description: "自动切换间隔，毫秒。" },
-      { name: "intensity", type: "number", defaultValue: "0.45", description: "噪声位移强度。" },
+      { name: "interval", type: "number", defaultValue: "3200", description: "自动切换间隔，毫秒。", control: { kind: "range", value: 3200, min: 1280, max: 6400, step: 40 } },
+      { name: "intensity", type: "number", defaultValue: "0.45", description: "噪声位移强度。0.45 与不传相同。", control: { kind: "range", value: 0.45, min: 0, max: 1, step: 0.05 } },
+      { name: "speed", type: "number", description: "液体流速倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "liquid-morph-slideshow-slow", label: "慢", values: { interval: 4800, intensity: 0.2, speed: 0.6 } },
+      { name: "liquid-morph-slideshow-default", label: "默认", values: { interval: 3200, intensity: 0.45, speed: 1 } },
+      { name: "liquid-morph-slideshow-fast", label: "快", values: { interval: 1600, intensity: 0.8, speed: 1.6 } },
     ],
   },
   {
@@ -203,8 +209,15 @@ export const batch19Components: ComponentMeta[] = [
     target: "components/ui/audio-spectrum.tsx",
     props: [
       { name: "src", type: "string", description: "可选音频地址。" },
-      { name: "mode", type: '"bars" | "circle" | "wave"', defaultValue: "bars", description: "可视化形状。" },
+      { name: "mode", type: '"bars" | "circle" | "wave"', defaultValue: "bars", description: "可视化形状。", control: { kind: "select", value: "bars", options: ["bars", "circle", "wave"] } },
+      { name: "size", type: "number", description: "环形半径（像素）。48 与不传相同。条形和波形不受影响。", control: { kind: "range", value: 48, min: 24, max: 96, step: 2 } },
+      { name: "color", type: "string", description: "频谱颜色。不传则按音量变色。", control: { kind: "color" } },
       ...ui,
+    ],
+    presets: [
+      { name: "audio-spectrum-bars", label: "条形", values: { mode: "bars", size: 48 } },
+      { name: "audio-spectrum-circle", label: "环形", values: { mode: "circle", size: 64 } },
+      { name: "audio-spectrum-wave", label: "波形", values: { mode: "wave", size: 48 } },
     ],
   },
   {

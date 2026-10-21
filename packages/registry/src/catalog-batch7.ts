@@ -322,9 +322,15 @@ export const batch7Components: ComponentMeta[] = [
     props: [
       { name: "path", type: "string", description: "SVG path d。" },
       { name: "viewBox", type: "string", defaultValue: '"0 0 540 180"', description: "SVG viewBox。" },
-      { name: "baseVelocity", type: "number", defaultValue: "8", description: "基础速度。" },
-      { name: "repeat", type: "number", defaultValue: "2", description: "子项重复次数。" },
+      { name: "baseVelocity", type: "number", defaultValue: "8", description: "基础速度，每秒前进的路径百分比。", control: { kind: "range", value: 8, min: 2, max: 24, step: 1 } },
+      { name: "repeat", type: "number", defaultValue: "2", description: "子项重复次数。", control: { kind: "range", value: 2, min: 1, max: 6, step: 1 } },
+      { name: "showPath", type: "boolean", defaultValue: "true", description: "是否画出路径。", control: { kind: "boolean", value: true } },
       ...ui,
+    ],
+    presets: [
+      { name: "marquee-along-svg-path-slow", label: "慢", values: { baseVelocity: 3, repeat: 2, showPath: true } },
+      { name: "marquee-along-svg-path-default", label: "默认", values: { baseVelocity: 8, repeat: 2, showPath: true } },
+      { name: "marquee-along-svg-path-fast", label: "快", values: { baseVelocity: 16, repeat: 4, showPath: true } },
     ],
   },
   {

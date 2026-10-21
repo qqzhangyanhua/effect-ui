@@ -74,7 +74,19 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/proximity-scale-grid.tsx",
     target: "components/ui/proximity-scale-grid.tsx",
-    props: [...ui],
+    props: [
+      { name: "count", type: "number", description: "横向格子数。18 与不传相同。", control: { kind: "range", value: 18, min: 8, max: 28, step: 1 } },
+      { name: "size", type: "number", description: "圆点半径（像素）。3.2 与不传相同。", control: { kind: "range", value: 3.2, min: 1, max: 8, step: 0.2 } },
+      { name: "speed", type: "number", description: "跟随倍率。1 与不传相同，每帧仍靠近 0.18。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "影响半径倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      { name: "color", type: "string", description: "格子颜色。不传则按距离变色。", control: { kind: "color" } },
+      ...ui,
+    ],
+    presets: [
+      { name: "proximity-scale-grid-sparse", label: "疏", values: { count: 10, size: 2, speed: 0.6, intensity: 0.5 } },
+      { name: "proximity-scale-grid-default", label: "默认", values: { count: 18, size: 3.2, speed: 1, intensity: 1 } },
+      { name: "proximity-scale-grid-dense", label: "密", values: { count: 26, size: 5, speed: 1.6, intensity: 1 } },
+    ],
   },
   {
     name: "polaroid-scroll-stack",
@@ -167,7 +179,15 @@ export const batch17Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/xray-fluid-reveal.tsx",
     target: "components/ui/xray-fluid-reveal.tsx",
-    props: [...ui],
+    props: [
+      { name: "speed", type: "number", description: "噪声流速倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "xray-fluid-reveal-slow", label: "慢", values: { speed: 0.6 } },
+      { name: "xray-fluid-reveal-default", label: "默认", values: { speed: 1 } },
+      { name: "xray-fluid-reveal-fast", label: "快", values: { speed: 1.8 } },
+    ],
   },
   {
     name: "petal-dissolve-text",

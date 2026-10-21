@@ -79,8 +79,8 @@ export function SquareLensDistortionDemo({
   return <SquareLensDistortion className="w-full" speed={speed} intensity={intensity} scale={scale} color={color} />
 }
 
-export function DualWaveTextListDemo() {
-  return <DualWaveTextList className="w-full" />
+export function DualWaveTextListDemo({ scale }: { scale?: number } = {}) {
+  return <DualWaveTextList className="w-full" scale={scale} />
 }
 
 export function ClipRevealMenuDemo() {

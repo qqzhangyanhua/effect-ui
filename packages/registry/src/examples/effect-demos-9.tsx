@@ -66,8 +66,8 @@ export function TextMorphDemo({
   )
 }
 
-export function OrbitingItems3DDemo() {
-  return <OrbitingItems3D />
+export function OrbitingItems3DDemo({ speed, size }: { speed?: number; size?: number } = {}) {
+  return <OrbitingItems3D speed={speed} size={size} />
 }
 
 export function AppleActivityCardDemo({ size, duration }: { size?: number; duration?: number } = {}) {

@@ -322,7 +322,13 @@ export const batch14Components: ComponentMeta[] = [
     props: [
       { name: "items", type: "SortableItem[]", description: "列表项。" },
       { name: "onReorder", type: "(items: SortableItem[]) => void", description: "顺序变化时回调。" },
+      { name: "gap", type: "number", description: "行距（像素）。8 与不传相同，仍是 gap-2。", control: { kind: "range", value: 8, min: 0, max: 24, step: 1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "sortable-list-tight", label: "紧", values: { gap: 4 } },
+      { name: "sortable-list-default", label: "默认", values: { gap: 8 } },
+      { name: "sortable-list-loose", label: "疏", values: { gap: 16 } },
     ],
   },
   {

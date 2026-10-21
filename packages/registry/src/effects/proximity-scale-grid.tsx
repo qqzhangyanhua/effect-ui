@@ -7,6 +7,11 @@ import { cn } from "@/lib/utils"
 
 export interface ProximityScaleGridProps {
   className?: string
+  count?: number
+  size?: number
+  speed?: number
+  intensity?: number
+  color?: string
 }
 
 type CellShape = "dot" | "square" | "plus"
@@ -18,7 +23,7 @@ function mix(from: number, to: number, amount: number) {
   return from + (to - from) * amount
 }
 
-function ProximityScaleGrid({ className }: ProximityScaleGridProps) {
+function ProximityScaleGrid({ className, count, size, speed, intensity, color }: ProximityScaleGridProps) {
   const reduced = usePrefersReducedMotion()
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const [shape, setShape] = React.useState<CellShape>("dot")
@@ -40,38 +45,47 @@ function ProximityScaleGrid({ className }: ProximityScaleGridProps) {
     if (!context) return
     context.setTransform(dpr, 0, 0, dpr, 0, 0)
     context.clearRect(0, 0, rect.width, rect.height)
-    const cols = 18
+    const cols = count === undefined || count === 18 ? 18 : count
     const rows = 9
+    const dot = size === undefined || size === 3.2 ? 3.2 : size
+    const unit = size === undefined || size === 3.2 ? 1 : size / 3.2
+    const reach = intensity === undefined || intensity === 1 ? 1 : intensity
     const gapX = rect.width / cols
     const gapY = rect.height / rows
     const pointer = reduced ? { x: -9999, y: -9999 } : current.current
+    const inner = reach === 1 ? 28 : 28 * reach
+    const outer = reach === 1 ? 140 : 140 * reach
     for (let row = 0; row < rows; row += 1) {
       for (let col = 0; col < cols; col += 1) {
         const x = gapX * (col + 0.5)
         const y = gapY * (row + 0.5)
         const distance = Math.hypot(x - pointer.x, y - pointer.y)
-        const influence = reduced ? 0 : 1 - Math.min(Math.max((distance - 28) / 140, 0), 1)
+        const influence =
+          reduced || reach === 0 ? 0 : 1 - Math.min(Math.max((distance - inner) / outer, 0), 1)
         const scale = 0.55 + influence * influence * (3 - 2 * influence) * 1.35
         const hue = mix(222, 168, influence)
-        context.fillStyle = `hsl(${hue} 82% ${mix(62, 70, influence)}%)`
+        context.fillStyle = color ?? `hsl(${hue} 82% ${mix(62, 70, influence)}%)`
         context.save()
         context.translate(x, y)
         context.scale(scale, scale)
         const kind = shape
+        const half = unit === 1 ? 3.2 : 3.2 * unit
+        const arm = unit === 1 ? 3.4 : 3.4 * unit
+        const thick = unit === 1 ? 1 : unit
         if (kind === "dot") {
           context.beginPath()
-          context.arc(0, 0, 3.2, 0, Math.PI * 2)
+          context.arc(0, 0, dot, 0, Math.PI * 2)
           context.fill()
         } else if (kind === "square") {
-          context.fillRect(-3.2, -3.2, 6.4, 6.4)
+          context.fillRect(-half, -half, half * 2, half * 2)
         } else {
-          context.fillRect(-3.4, -1, 6.8, 2)
-          context.fillRect(-1, -3.4, 2, 6.8)
+          context.fillRect(-arm, -thick, arm * 2, thick * 2)
+          context.fillRect(-thick, -arm, thick * 2, arm * 2)
         }
         context.restore()
       }
     }
-  }, [reduced, shape])
+  }, [color, count, intensity, reduced, shape, size])
 
   const wakeRef = React.useRef<() => void>(() => {})
 
@@ -82,8 +96,9 @@ function ProximityScaleGrid({ className }: ProximityScaleGridProps) {
       const from = current.current
       const to = target.current
       const before = Math.hypot(from.x - to.x, from.y - to.y)
-      from.x += (to.x - from.x) * 0.18
-      from.y += (to.y - from.y) * 0.18
+      const follow = speed === undefined || speed === 1 ? 0.18 : 0.18 * speed
+      from.x += (to.x - from.x) * follow
+      from.y += (to.y - from.y) * follow
       draw()
       const after = Math.hypot(from.x - to.x, from.y - to.y)
       if (after < 0.35 && before < 0.35) {
@@ -103,7 +118,7 @@ function ProximityScaleGrid({ className }: ProximityScaleGridProps) {
     }
     draw()
     return () => window.cancelAnimationFrame(frameId)
-  }, [draw, reduced])
+  }, [draw, reduced, speed])
 
   return (
     <div data-slot="proximity-scale-grid" className={cn("w-full space-y-3", className)}>

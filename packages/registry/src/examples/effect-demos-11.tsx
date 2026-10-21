@@ -68,12 +68,12 @@ export function Keycap3DDemo({ duration, angle, intensity, gap }: { duration?: n
   return <Keycap3D className="w-full" duration={duration} angle={angle} intensity={intensity} gap={gap} />
 }
 
-export function InfiniteCanvasGalleryDemo() {
-  return <InfiniteCanvasGallery className="w-full" />
+export function InfiniteCanvasGalleryDemo({ gap, size }: { gap?: number; size?: number } = {}) {
+  return <InfiniteCanvasGallery className="w-full" gap={gap} size={size} />
 }
 
-export function HoverImageListDemo() {
-  return <HoverImageList className="w-full" />
+export function HoverImageListDemo({ fontSize, size }: { fontSize?: number; size?: number } = {}) {
+  return <HoverImageList className="w-full" fontSize={fontSize} size={size} />
 }
 
 export function TextVariableScrollDemo({

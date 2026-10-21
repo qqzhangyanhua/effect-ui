@@ -208,7 +208,17 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/infinite-canvas-gallery.tsx",
     target: "components/ui/infinite-canvas-gallery.tsx",
-    props: [{ name: "tiles", type: "CanvasTile[]", description: "平铺的色块。" }, ...ui],
+    props: [
+      { name: "tiles", type: "CanvasTile[]", description: "平铺的色块。" },
+      { name: "gap", type: "number", description: "格子步长（像素）。168 与不传相同。", control: { kind: "range", value: 168, min: 80, max: 280, step: 4 } },
+      { name: "size", type: "number", description: "色块边长（像素）。160 与不传相同，仍是 size-40。", control: { kind: "range", value: 160, min: 80, max: 240, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "infinite-canvas-gallery-tight", label: "紧", values: { gap: 120, size: 120 } },
+      { name: "infinite-canvas-gallery-default", label: "默认", values: { gap: 168, size: 160 } },
+      { name: "infinite-canvas-gallery-loose", label: "疏", values: { gap: 220, size: 200 } },
+    ],
   },
   {
     name: "hover-image-list",
@@ -219,7 +229,17 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/hover-image-list.tsx",
     target: "components/ui/hover-image-list.tsx",
-    props: [{ name: "rows", type: "HoverRow[]", description: "文字行。" }, ...ui],
+    props: [
+      { name: "rows", type: "HoverRow[]", description: "文字行。" },
+      { name: "fontSize", type: "number", description: "标题字号（像素）。30 与不传相同，仍是 text-3xl。", control: { kind: "range", value: 30, min: 16, max: 56, step: 1 } },
+      { name: "size", type: "number", description: "跟随图宽度（像素）。144 与不传相同，仍是 w-36。", control: { kind: "range", value: 144, min: 72, max: 220, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "hover-image-list-small", label: "小", values: { fontSize: 22, size: 108 } },
+      { name: "hover-image-list-default", label: "默认", values: { fontSize: 30, size: 144 } },
+      { name: "hover-image-list-large", label: "大", values: { fontSize: 42, size: 180 } },
+    ],
   },
   {
     name: "text-variable-scroll",

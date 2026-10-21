@@ -143,7 +143,13 @@ export const batch15Components: ComponentMeta[] = [
     target: "components/ui/dual-wave-text-list.tsx",
     props: [
       { name: "rows", type: "WaveRow[]", description: "左右两列共用的条目。" },
+      { name: "scale", type: "number", description: "波浪幅度倍率。1 与不传相同，位移仍是 16 像素。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "dual-wave-text-list-small", label: "小", values: { scale: 0.6 } },
+      { name: "dual-wave-text-list-default", label: "默认", values: { scale: 1 } },
+      { name: "dual-wave-text-list-large", label: "大", values: { scale: 1.6 } },
     ],
   },
   {

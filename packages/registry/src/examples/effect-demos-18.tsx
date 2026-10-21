@@ -34,8 +34,8 @@ export function DepthFogGalleryDemo() {
   return <DepthFogGallery className="w-full" />
 }
 
-export function FireworksShowDemo() {
-  return <FireworksShow className="w-full" />
+export function FireworksShowDemo({ colors, auto, intensity }: { colors?: string[]; auto?: boolean; intensity?: number } = {}) {
+  return <FireworksShow className="w-full" colors={colors} auto={auto} intensity={intensity} />
 }
 
 export function WobbleLineCursorDemo({
@@ -52,8 +52,8 @@ export function WobbleLineCursorDemo({
   return <WobbleLineCursor className="w-full" lines={lines} speed={speed} intensity={intensity} color={color} />
 }
 
-export function LegoPixelateDemo() {
-  return <LegoPixelate className="w-full" />
+export function LegoPixelateDemo({ blockSize, trigger, speed }: { blockSize?: number; trigger?: "hover" | "view"; speed?: number } = {}) {
+  return <LegoPixelate className="w-full" blockSize={blockSize} trigger={trigger} speed={speed} />
 }
 
 export function TelescopeZoomScrollDemo() {

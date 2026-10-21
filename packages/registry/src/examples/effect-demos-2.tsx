@@ -324,49 +324,43 @@ export function DockDemo() {
   )
 }
 
-export function MarqueeDemo() {
+export function MarqueeDemo({ pauseOnHover, reverse, repeat, duration, gap }: { pauseOnHover?: boolean; reverse?: boolean; repeat?: number; duration?: number; gap?: number } = {}) {
   return (
-    <Marquee className="w-80">
+    <Marquee className="w-80" pauseOnHover={pauseOnHover} reverse={reverse} repeat={repeat} duration={duration} gap={gap}>
       {["Dock", "Marquee", "Orbit", "Bento"].map((item) => (
-        <Badge key={item} variant="secondary">
-          {item}
-        </Badge>
+        <Badge key={item} variant="secondary">{item}</Badge>
       ))}
     </Marquee>
   )
 }
 
-export function OrbitingCirclesDemo() {
+export function OrbitingCirclesDemo({ radius, duration, size }: { radius?: number; duration?: number; size?: number } = {}) {
+  const chip = "grid size-8 place-items-center rounded-full text-xs"
   return (
-    <OrbitingCircles>
-      <span className="grid size-8 place-items-center rounded-full bg-primary text-xs text-primary-foreground">
-        A
-      </span>
-      <span className="grid size-8 place-items-center rounded-full bg-chart-2 text-xs">
-        B
-      </span>
-      <span className="grid size-8 place-items-center rounded-full bg-chart-3 text-xs">
-        C
-      </span>
+    <OrbitingCircles radius={radius} duration={duration} size={size}>
+      <span className={`${chip} bg-primary text-primary-foreground`}>A</span>
+      <span className={`${chip} bg-chart-2`}>B</span>
+      <span className={`${chip} bg-chart-3`}>C</span>
     </OrbitingCircles>
   )
 }
 
-export function AnimatedListDemo() {
+export function AnimatedListDemo({ delay, duration, gap }: { delay?: number; duration?: number; gap?: number } = {}) {
   return (
     <AnimatedList
       className="w-64"
+      delay={delay}
+      duration={duration}
+      gap={gap}
       items={["新组件已发布", "Registry 构建完成", "文档站已更新"].map((text) => (
-        <div key={text} className="rounded-lg border bg-card px-3 py-2 text-sm">
-          {text}
-        </div>
+        <div key={text} className="rounded-lg border bg-card px-3 py-2 text-sm">{text}</div>
       ))}
     />
   )
 }
 
-export function GlobeSphereDemo() {
-  return <GlobeSphere className="[transform-style:preserve-3d]" />
+export function GlobeSphereDemo({ dots, duration, size, color }: { dots?: number; duration?: number; size?: number; color?: string } = {}) {
+  return <GlobeSphere className="[transform-style:preserve-3d]" dots={dots} duration={duration} size={size} color={color} />
 }
 
 export function ConfettiBurstDemo({ pieces, duration, scale, colors }: { pieces?: number; duration?: number; scale?: number; colors?: string[] } = {}) {

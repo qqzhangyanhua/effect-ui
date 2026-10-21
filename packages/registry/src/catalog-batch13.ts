@@ -379,7 +379,17 @@ export const batch13Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dome-gallery.tsx",
     target: "components/ui/dome-gallery.tsx",
-    props: ui,
+    props: [
+      { name: "count", type: "number", description: "球面色块数。20 与不传相同。", control: { kind: "range", value: 20, min: 8, max: 32, step: 1 } },
+      { name: "speed", type: "number", description: "自转倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "size", type: "number", description: "色块离球心的距离（像素）。168 与不传相同。", control: { kind: "range", value: 168, min: 80, max: 280, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "dome-gallery-small", label: "小", values: { count: 12, speed: 0.6, size: 120 } },
+      { name: "dome-gallery-default", label: "默认", values: { count: 20, speed: 1, size: 168 } },
+      { name: "dome-gallery-large", label: "大", values: { count: 28, speed: 1.6, size: 220 } },
+    ],
   },
   {
     name: "elastic-slider",
@@ -395,18 +405,8 @@ export const batch13Components: ComponentMeta[] = [
       { name: "max", type: "number", defaultValue: "100", description: "最大值。" },
       { name: "defaultValue", type: "number", defaultValue: "42", description: "初始值。" },
       { name: "color", type: "string", description: "填充颜色。不传则跟随主题。", control: { kind: "color" } },
-      {
-        name: "scale",
-        type: "number",
-        description: "拉长幅度倍率。1 与不传相同。",
-        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
-      },
-      {
-        name: "speed",
-        type: "number",
-        description: "回弹倍率。1 与不传相同，刚度仍是 460。",
-        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
-      },
+      { name: "scale", type: "number", description: "拉长幅度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "speed", type: "number", description: "回弹倍率。1 与不传相同，刚度仍是 460。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
     ],
     presets: [

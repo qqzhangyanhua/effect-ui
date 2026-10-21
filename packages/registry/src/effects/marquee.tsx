@@ -6,6 +6,8 @@ export interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
   pauseOnHover?: boolean
   reverse?: boolean
   repeat?: number
+  duration?: number
+  gap?: number
 }
 
 function Marquee({
@@ -14,17 +16,20 @@ function Marquee({
   pauseOnHover = true,
   reverse = false,
   repeat = 2,
+  duration,
+  gap,
   ...props
 }: MarqueeProps) {
+  const durationToken =
+    duration === undefined || duration === 28000 ? "[--duration:28s]" : `[--duration:${duration}ms]`
+  const gapToken = gap === undefined || gap === 16 ? "[--gap:1rem]" : `[--gap:${gap}px]`
+  const track =
+    durationToken === "[--duration:28s]" && gapToken === "[--gap:1rem]"
+      ? "flex overflow-hidden [--duration:28s] [--gap:1rem]"
+      : `flex overflow-hidden ${durationToken} ${gapToken}`
+
   return (
-    <div
-      data-slot="marquee"
-      className={cn(
-        "flex overflow-hidden [--duration:28s] [--gap:1rem]",
-        className,
-      )}
-      {...props}
-    >
+    <div data-slot="marquee" className={cn(track, className)} {...props}>
       {Array.from({ length: repeat }, (_, index) => (
         <div
           key={index}

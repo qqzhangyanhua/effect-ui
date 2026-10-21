@@ -21,6 +21,7 @@ export const effectCategories: ReadonlySet<string> = new Set([
   "micro",
   "loaders",
   "scroll",
+  "showcase",
 ])
 
 export const propVocabulary: readonly VocabularyWord[] = [

@@ -30,8 +30,8 @@ export function TubesCursorDemo({
   return <TubesCursor className="w-full" tubes={tubes} speed={speed} intensity={intensity} scale={scale} />
 }
 
-export function LiquidMorphSlideshowDemo() {
-  return <LiquidMorphSlideshow className="w-full" />
+export function LiquidMorphSlideshowDemo({ interval, intensity, speed }: { interval?: number; intensity?: number; speed?: number } = {}) {
+  return <LiquidMorphSlideshow className="w-full" interval={interval} intensity={intensity} speed={speed} />
 }
 
 export function WavefieldNeonDemo() {
@@ -97,8 +97,8 @@ export function RollingTextHoverDemo({
   )
 }
 
-export function AudioSpectrumDemo() {
-  return <AudioSpectrum className="w-full" />
+export function AudioSpectrumDemo({ mode, size, color }: { mode?: "bars" | "circle" | "wave"; size?: number; color?: string } = {}) {
+  return <AudioSpectrum className="w-full" mode={mode} size={size} color={color} />
 }
 
 export function SingularityDemo() {

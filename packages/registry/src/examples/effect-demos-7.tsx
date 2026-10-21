@@ -146,9 +146,9 @@ export function BurstIconsDemo({ count, colors, duration, scale, size }: { count
   return <BurstIcons count={count} colors={colors} duration={duration} scale={scale} size={size} />
 }
 
-export function MarqueeAlongSvgPathDemo() {
+export function MarqueeAlongSvgPathDemo({ baseVelocity, repeat, showPath }: { baseVelocity?: number; repeat?: number; showPath?: boolean } = {}) {
   return (
-    <MarqueeAlongSvgPath className="h-44 w-full text-muted-foreground">
+    <MarqueeAlongSvgPath className="h-44 w-full text-muted-foreground" baseVelocity={baseVelocity} repeat={repeat} showPath={showPath}>
       <span className="rounded-full border bg-background px-3 py-1 text-xs">alpha</span>
       <span className="rounded-full border bg-background px-3 py-1 text-xs">beta</span>
       <span className="rounded-full border bg-background px-3 py-1 text-xs">gamma</span>

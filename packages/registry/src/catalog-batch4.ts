@@ -299,7 +299,18 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/icon-cloud.tsx",
     target: "components/ui/icon-cloud.tsx",
-    props: [{ name: "icons", type: "ReactNode[]", description: "图标节点。" }, ...ui],
+    props: [
+      { name: "icons", type: "ReactNode[]", description: "图标节点。" },
+      { name: "duration", type: "number", description: "自转一周（毫秒）。18000 与不传相同，仍是 18 秒。", control: { kind: "range", value: 18000, min: 7200, max: 36000, step: 200 } },
+      { name: "size", type: "number", description: "球面半径（像素）。90 与不传相同。", control: { kind: "range", value: 90, min: 48, max: 160, step: 2 } },
+      { name: "scale", type: "number", description: "图标倍率。1 与不传相同，仍是 36 像素。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "icon-cloud-small", label: "小", values: { duration: 26000, size: 64, scale: 0.8 } },
+      { name: "icon-cloud-default", label: "默认", values: { duration: 18000, size: 90, scale: 1 } },
+      { name: "icon-cloud-large", label: "大", values: { duration: 12000, size: 130, scale: 1.4 } },
+    ],
   },
   {
     name: "animated-theme-toggler",

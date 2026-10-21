@@ -9,6 +9,7 @@ export interface LiquidMorphSlideshowProps {
   images?: string[]
   interval?: number
   intensity?: number
+  speed?: number
   className?: string
 }
 
@@ -37,12 +38,14 @@ function paintFrame(label: string, from: string, to: string) {
   return canvas
 }
 
-function LiquidMorphSlideshow({ images, interval = 3200, intensity = 0.45, className }: LiquidMorphSlideshowProps) {
+function LiquidMorphSlideshow({ images, interval = 3200, intensity = 0.45, speed, className }: LiquidMorphSlideshowProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const indexRef = React.useRef(0)
   const intensityRef = React.useRef(intensity)
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const rateRef = React.useRef(rate)
   const count = images?.length ? images.length : FRAMES.length
   const [caption, setCaption] = React.useState(0)
   const [fallback, setFallback] = React.useState(false)
@@ -50,7 +53,8 @@ function LiquidMorphSlideshow({ images, interval = 3200, intensity = 0.45, class
 
   React.useEffect(() => {
     intensityRef.current = intensity
-  }, [intensity])
+    rateRef.current = rate
+  }, [intensity, rate])
 
   React.useEffect(() => {
     const timer = window.setInterval(() => {
@@ -162,7 +166,8 @@ function LiquidMorphSlideshow({ images, interval = 3200, intensity = 0.45, class
           frame = 0
           return
         }
-        time += 0.016
+        const rateNow = rateRef.current
+        time += rateNow === 1 ? 0.016 : 0.016 * rateNow
         const target = indexRef.current % textures.length
         if (target !== shown) mix = Math.min(1, mix + 0.028 + intensityRef.current * 0.02)
         if (mix >= 1) {

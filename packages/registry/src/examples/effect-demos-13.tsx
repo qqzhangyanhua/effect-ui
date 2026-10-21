@@ -193,8 +193,8 @@ export function FlowingMenuDemo() {
   return <FlowingMenu className="w-full" />
 }
 
-export function DomeGalleryDemo() {
-  return <DomeGallery className="w-full" />
+export function DomeGalleryDemo({ count, speed, size }: { count?: number; speed?: number; size?: number } = {}) {
+  return <DomeGallery className="w-full" count={count} speed={speed} size={size} />
 }
 
 export function ElasticSliderDemo({ color, scale, speed }: { color?: string; scale?: number; speed?: number } = {}) {

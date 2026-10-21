@@ -104,8 +104,8 @@ export function TocScrollspyDemo() {
   return <TocScrollspy className="w-full" />
 }
 
-export function SortableListDemo() {
-  return <SortableList className="w-full" />
+export function SortableListDemo({ gap }: { gap?: number } = {}) {
+  return <SortableList className="w-full" gap={gap} />
 }
 
 export function KpiSparklineCardDemo({ color, size }: { color?: string; size?: number } = {}) {

@@ -69,10 +69,15 @@ export const batch18Components: ComponentMeta[] = [
     file: "effects/fireworks-show.tsx",
     target: "components/ui/fireworks-show.tsx",
     props: [
-      { name: "colors", type: "string[]", description: "烟花颜色。" },
-      { name: "auto", type: "boolean", defaultValue: "true", description: "是否自动发射。" },
-      { name: "intensity", type: "number", defaultValue: "1", description: "粒子数量和发射频率。" },
+      { name: "colors", type: "string[]", description: "烟花颜色。不传时仍是这五色。", control: { kind: "colors", value: ["#fde68a", "#fb7185", "#7dd3fc", "#c4b5fd", "#86efac"] } },
+      { name: "auto", type: "boolean", defaultValue: "true", description: "是否自动发射。", control: { kind: "boolean", value: true } },
+      { name: "intensity", type: "number", defaultValue: "1", description: "粒子数量和发射频率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
       ...ui,
+    ],
+    presets: [
+      { name: "fireworks-show-calm", label: "疏", values: { intensity: 0.4, auto: true } },
+      { name: "fireworks-show-default", label: "默认", values: { intensity: 1, auto: true } },
+      { name: "fireworks-show-manual", label: "手动", values: { intensity: 1, auto: false } },
     ],
   },
   {
@@ -124,9 +129,22 @@ export const batch18Components: ComponentMeta[] = [
     target: "components/ui/lego-pixelate.tsx",
     props: [
       { name: "image", type: "string", description: "要像素化的图片。省略时用内置画面。" },
-      { name: "blockSize", type: "number", defaultValue: "12", description: "起始时横向的块数，越小越粗。" },
-      { name: "trigger", type: '"hover" | "view"', defaultValue: "hover", description: "悬停或进入视口时还原。" },
+      { name: "blockSize", type: "number", defaultValue: "12", description: "起始时横向的块数，越小越粗。", control: { kind: "range", value: 12, min: 4, max: 28, step: 1 } },
+      {
+        name: "trigger",
+        type: '"hover" | "view"',
+        defaultValue: "hover",
+        description: "悬停或进入视口时还原。",
+        vocabularyExemption: "历史取值是 hover/view，不是 mount/hover/inView。",
+        control: { kind: "select", value: "hover", options: ["hover", "view"] },
+      },
+      { name: "speed", type: "number", description: "块数变化的倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "lego-pixelate-coarse", label: "粗", values: { blockSize: 6, speed: 0.6, trigger: "hover" } },
+      { name: "lego-pixelate-default", label: "默认", values: { blockSize: 12, speed: 1, trigger: "hover" } },
+      { name: "lego-pixelate-fine", label: "细", values: { blockSize: 20, speed: 1.6, trigger: "view" } },
     ],
   },
   {

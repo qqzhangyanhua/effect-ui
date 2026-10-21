@@ -24,6 +24,14 @@ export const batch3Components: ComponentMeta[] = [
       { name: "fromRef", type: "RefObject<HTMLElement>", description: "起点节点。" },
       { name: "toRef", type: "RefObject<HTMLElement>", description: "终点节点。" },
       { name: "curvature", type: "number", defaultValue: "0", description: "曲线拱起。" },
+      { name: "duration", type: "number", defaultValue: "5", description: "光束周期（秒）。", control: { kind: "range", value: 5, min: 2, max: 10, step: 0.5 } },
+      { name: "delay", type: "number", defaultValue: "0", description: "光束延迟（秒）。", control: { kind: "range", value: 0, min: 0, max: 3, step: 0.1 } },
+      { name: "pathWidth", type: "number", defaultValue: "2", description: "线宽。", control: { kind: "range", value: 2, min: 1, max: 6, step: 1 } },
+    ],
+    presets: [
+      { name: "animated-beam-slow", label: "慢", values: { duration: 8, delay: 0.4, pathWidth: 2 } },
+      { name: "animated-beam-default", label: "默认", values: { duration: 5, delay: 0, pathWidth: 2 } },
+      { name: "animated-beam-fast", label: "快", values: { duration: 3, delay: 0, pathWidth: 4 } },
     ],
   },
   {

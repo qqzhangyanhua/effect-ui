@@ -9,6 +9,7 @@ export interface LegoPixelateProps {
   image?: string
   blockSize?: number
   trigger?: "hover" | "view"
+  speed?: number
   className?: string
 }
 
@@ -63,18 +64,21 @@ function paintScene() {
   return canvas
 }
 
-function LegoPixelate({ image, blockSize = 12, trigger = "hover", className }: LegoPixelateProps) {
+function LegoPixelate({ image, blockSize = 12, trigger = "hover", speed, className }: LegoPixelateProps) {
   const reduced = usePrefersReducedMotion()
   const hostRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const targetRef = React.useRef(blockSize)
+  const rate = speed === undefined || speed === 1 ? 1 : speed
+  const rateRef = React.useRef(rate)
   const [fallback, setFallback] = React.useState(false)
   const showCanvas = !reduced && !fallback
   const preview = image
 
   React.useEffect(() => {
     targetRef.current = blockSize
-  }, [blockSize])
+    rateRef.current = rate
+  }, [blockSize, rate])
 
   React.useEffect(() => {
     if (trigger !== "view" || !showCanvas) return
@@ -130,7 +134,8 @@ function LegoPixelate({ image, blockSize = 12, trigger = "hover", className }: L
       const observer = new ResizeObserver(resize)
       observer.observe(host)
       const tick = () => {
-        uniforms.u_blocks.value += (targetRef.current - uniforms.u_blocks.value) * 0.08
+        const follow = rateRef.current === 1 ? 0.08 : 0.08 * rateRef.current
+        uniforms.u_blocks.value += (targetRef.current - uniforms.u_blocks.value) * follow
         renderer.render({ scene, camera })
         frame = window.requestAnimationFrame(tick)
       }

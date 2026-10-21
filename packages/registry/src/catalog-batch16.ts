@@ -29,7 +29,15 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/loom-threads-marquee.tsx",
     target: "components/ui/loom-threads-marquee.tsx",
-    props: [...ui],
+    props: [
+      { name: "speed", type: "number", description: "拆丝和流动的倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "loom-threads-marquee-slow", label: "慢", values: { speed: 0.6 } },
+      { name: "loom-threads-marquee-default", label: "默认", values: { speed: 1 } },
+      { name: "loom-threads-marquee-fast", label: "快", values: { speed: 1.8 } },
+    ],
   },
   {
     name: "hologram-card",
@@ -156,7 +164,18 @@ export const batch16Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/thumbnail-flow-path.tsx",
     target: "components/ui/thumbnail-flow-path.tsx",
-    props: [...ui],
+    props: [
+      { name: "duration", type: "number", description: "飞行毫秒。1350 与不传相同，仍是 1.35 秒。", control: { kind: "range", value: 1350, min: 540, max: 2700, step: 10 } },
+      { name: "delay", type: "number", description: "相邻缩略图的错开（毫秒）。120 与不传相同，仍是 0.12 秒。", control: { kind: "range", value: 120, min: 0, max: 300, step: 10 } },
+      { name: "size", type: "number", description: "飞行时边长（像素）。64 与不传相同，仍是 size-16。", control: { kind: "range", value: 64, min: 32, max: 96, step: 4 } },
+      { name: "gap", type: "number", description: "落进网格后的间距（像素）。12 与不传相同，仍是 gap-3。", control: { kind: "range", value: 12, min: 0, max: 24, step: 1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "thumbnail-flow-path-slow", label: "慢", values: { duration: 2000, delay: 180, size: 48, gap: 16 } },
+      { name: "thumbnail-flow-path-default", label: "默认", values: { duration: 1350, delay: 120, size: 64, gap: 12 } },
+      { name: "thumbnail-flow-path-fast", label: "快", values: { duration: 800, delay: 40, size: 80, gap: 8 } },
+    ],
   },
   {
     name: "shader-grid-wide",

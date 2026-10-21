@@ -20,8 +20,8 @@ export function DatamoshTransitionDemo() {
   return <DatamoshTransition className="w-full" />
 }
 
-export function LoomThreadsMarqueeDemo() {
-  return <LoomThreadsMarquee className="w-full" />
+export function LoomThreadsMarqueeDemo({ speed }: { speed?: number } = {}) {
+  return <LoomThreadsMarquee className="w-full" speed={speed} />
 }
 
 export function HologramCardDemo({ duration, intensity, color }: { duration?: number; intensity?: number; color?: string } = {}) {
@@ -58,8 +58,8 @@ export function Scroll3dImageRotateDemo({
   return <Scroll3dImageRotate className="w-full" angle={angle} speed={speed} intensity={intensity} />
 }
 
-export function ThumbnailFlowPathDemo() {
-  return <ThumbnailFlowPath className="w-full" />
+export function ThumbnailFlowPathDemo({ duration, delay, size, gap }: { duration?: number; delay?: number; size?: number; gap?: number } = {}) {
+  return <ThumbnailFlowPath className="w-full" duration={duration} delay={delay} size={size} gap={gap} />
 }
 
 export function ShaderGridWideDemo({

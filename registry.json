@@ -4147,6 +4147,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4743,6 +4744,7 @@
       "description": "图标在倾斜 3D 轨道上环绕，前后有遮挡。移植 Animata（MIT）交互。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],
@@ -5962,6 +5964,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],

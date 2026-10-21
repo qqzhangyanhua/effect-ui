@@ -816,8 +816,16 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/marquee.tsx",
     target: "components/ui/marquee.tsx",
     props: [
-      { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "悬停暂停。" },
-      { name: "reverse", type: "boolean", defaultValue: "false", description: "反向滚动。" },
+      { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "悬停暂停。", control: { kind: "boolean", value: true } },
+      { name: "reverse", type: "boolean", defaultValue: "false", description: "反向滚动。", control: { kind: "boolean", value: false } },
+      { name: "repeat", type: "number", defaultValue: "2", description: "重复份数。", control: { kind: "range", value: 2, min: 1, max: 6, step: 1 } },
+      { name: "duration", type: "number", description: "滚动一周（毫秒）。28000 与不传相同，仍是 28 秒。", control: { kind: "range", value: 28000, min: 11200, max: 56000, step: 400 } },
+      { name: "gap", type: "number", description: "间距（像素）。16 与不传相同，仍是 1rem。", control: { kind: "range", value: 16, min: 0, max: 48, step: 1 } },
+    ],
+    presets: [
+      { name: "marquee-slow", label: "慢", values: { duration: 42000, gap: 24, repeat: 2, pauseOnHover: true, reverse: false } },
+      { name: "marquee-default", label: "默认", values: { duration: 28000, gap: 16, repeat: 2, pauseOnHover: true, reverse: false } },
+      { name: "marquee-fast", label: "快", values: { duration: 14000, gap: 8, repeat: 3, pauseOnHover: true, reverse: true } },
     ],
   },
   {
@@ -830,8 +838,14 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/orbiting-circles.tsx",
     target: "components/ui/orbiting-circles.tsx",
     props: [
-      { name: "radius", type: "number", defaultValue: "80", description: "轨道半径。" },
-      { name: "duration", type: "number", defaultValue: "12", description: "周期秒数。" },
+      { name: "radius", type: "number", defaultValue: "80", description: "轨道半径。", control: { kind: "range", value: 80, min: 32, max: 160, step: 4 } },
+      { name: "duration", type: "number", defaultValue: "12", description: "周期秒数。", control: { kind: "range", value: 12, min: 5, max: 24, step: 1 } },
+      { name: "size", type: "number", description: "图标边长（像素）。32 与不传相同，仍是 size-8。", control: { kind: "range", value: 32, min: 16, max: 64, step: 2 } },
+    ],
+    presets: [
+      { name: "orbiting-circles-tight", label: "紧", values: { radius: 48, duration: 8, size: 24 } },
+      { name: "orbiting-circles-default", label: "默认", values: { radius: 80, duration: 12, size: 32 } },
+      { name: "orbiting-circles-wide", label: "宽", values: { radius: 128, duration: 20, size: 40 } },
     ],
   },
   {
@@ -843,7 +857,17 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-list.tsx",
     target: "components/ui/animated-list.tsx",
-    props: [{ name: "items", type: "ReactNode[]", description: "列表项。" }],
+    props: [
+      { name: "items", type: "ReactNode[]", description: "列表项。" },
+      { name: "delay", type: "number", defaultValue: "1400", description: "逐条间隔（毫秒）。", control: { kind: "range", value: 1400, min: 560, max: 2800, step: 20 } },
+      { name: "duration", type: "number", description: "入场毫秒。280 与不传相同，仍是 0.28 秒。", control: { kind: "range", value: 280, min: 120, max: 560, step: 10 } },
+      { name: "gap", type: "number", description: "行距（像素）。8 与不传相同，仍是 gap-2。", control: { kind: "range", value: 8, min: 0, max: 24, step: 1 } },
+    ],
+    presets: [
+      { name: "animated-list-slow", label: "慢", values: { delay: 2200, duration: 420, gap: 14 } },
+      { name: "animated-list-default", label: "默认", values: { delay: 1400, duration: 280, gap: 8 } },
+      { name: "animated-list-fast", label: "快", values: { delay: 700, duration: 160, gap: 4 } },
+    ],
   },
   {
     name: "globe-sphere",
@@ -854,7 +878,17 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/globe-sphere.tsx",
     target: "components/ui/globe-sphere.tsx",
-    props: [{ name: "dots", type: "number", defaultValue: "48", description: "点数。" }],
+    props: [
+      { name: "dots", type: "number", defaultValue: "48", description: "点数。", control: { kind: "range", value: 48, min: 12, max: 96, step: 2 } },
+      { name: "duration", type: "number", description: "自转一周（毫秒）。16000 与不传相同，仍是 16 秒。", control: { kind: "range", value: 16000, min: 6400, max: 32000, step: 200 } },
+      { name: "size", type: "number", description: "球体边长（像素）。192 与不传相同，仍是 size-48。", control: { kind: "range", value: 192, min: 96, max: 320, step: 8 } },
+      { name: "color", type: "string", description: "点的颜色。不传则跟随主题。", control: { kind: "color" } },
+    ],
+    presets: [
+      { name: "globe-sphere-sparse", label: "疏", values: { dots: 24, duration: 24000, size: 144 } },
+      { name: "globe-sphere-default", label: "默认", values: { dots: 48, duration: 16000, size: 192 } },
+      { name: "globe-sphere-dense", label: "密", values: { dots: 80, duration: 10000, size: 240 } },
+    ],
   },
   {
     name: "confetti-burst",

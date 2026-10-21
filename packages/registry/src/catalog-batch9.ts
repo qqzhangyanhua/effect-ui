@@ -232,7 +232,17 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/orbiting-items-3d.tsx",
     target: "components/ui/orbiting-items-3d.tsx",
-    props: [{ name: "items", type: "string[]", description: "轨道上的标签。" }, ...ui],
+    props: [
+      { name: "items", type: "string[]", description: "轨道上的标签。" },
+      { name: "speed", type: "number", description: "环绕倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "size", type: "number", description: "轨道半径（像素）。108 与不传相同。", control: { kind: "range", value: 108, min: 64, max: 180, step: 4 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "orbiting-items-3d-slow", label: "慢", values: { speed: 0.6, size: 80 } },
+      { name: "orbiting-items-3d-default", label: "默认", values: { speed: 1, size: 108 } },
+      { name: "orbiting-items-3d-fast", label: "快", values: { speed: 1.8, size: 140 } },
+    ],
   },
   {
     name: "apple-activity-card",

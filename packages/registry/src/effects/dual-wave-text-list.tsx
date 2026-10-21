@@ -16,6 +16,7 @@ export interface WaveRow {
 export interface DualWaveTextListProps {
   rows?: readonly WaveRow[]
   className?: string
+  scale?: number
 }
 
 const ROWS: readonly WaveRow[] = [
@@ -34,6 +35,7 @@ function WaveButton({
   progress,
   active,
   reduced,
+  reach,
   onSelect,
 }: {
   row: WaveRow
@@ -42,11 +44,13 @@ function WaveButton({
   progress: MotionValue<number>
   active: boolean
   reduced: boolean
+  reach: number
   onSelect: (id: string) => void
 }) {
+  const amplitude = reach === 1 ? 16 : 16 * reach
   const y = useTransform(progress, (value) => {
     const wave = Math.sin(value * Math.PI * 4 + index * 0.7)
-    return (side === "left" ? wave : -wave) * 16
+    return (side === "left" ? wave : -wave) * amplitude
   })
   return (
     <motion.button
@@ -67,12 +71,13 @@ function WaveButton({
   )
 }
 
-function DualWaveTextList({ rows = ROWS, className }: DualWaveTextListProps) {
+function DualWaveTextList({ rows = ROWS, className, scale }: DualWaveTextListProps) {
   const reduced = usePrefersReducedMotion()
   const scrollerRef = React.useRef<HTMLDivElement>(null)
   const progress = useMotionValue(0)
   const [active, setActive] = React.useState(rows[0]?.id ?? "")
   const current = rows.find((row) => row.id === active) ?? rows[0]
+  const reach = scale === undefined || scale === 1 ? 1 : scale
 
   const sync = (element: HTMLDivElement) => {
     const max = element.scrollHeight - element.clientHeight
@@ -125,6 +130,7 @@ function DualWaveTextList({ rows = ROWS, className }: DualWaveTextListProps) {
               progress={progress}
               active={row.id === active}
               reduced={reduced}
+              reach={reach}
               onSelect={setActive}
             />
           ))}
@@ -142,6 +148,7 @@ function DualWaveTextList({ rows = ROWS, className }: DualWaveTextListProps) {
               progress={progress}
               active={row.id === active}
               reduced={reduced}
+              reach={reach}
               onSelect={setActive}
             />
           ))}

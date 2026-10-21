@@ -47,8 +47,8 @@ export function GalaxySpiralDemo({
   )
 }
 
-export function ProximityScaleGridDemo() {
-  return <ProximityScaleGrid className="w-full" />
+export function ProximityScaleGridDemo({ count, size, speed, intensity, color }: { count?: number; size?: number; speed?: number; intensity?: number; color?: string } = {}) {
+  return <ProximityScaleGrid className="w-full" count={count} size={size} speed={speed} intensity={intensity} color={color} />
 }
 
 export function PolaroidScrollStackDemo() {
@@ -79,8 +79,8 @@ export function ClothWindBannerDemo({
   return <ClothWindBanner className="w-full" intensity={intensity} speed={speed} colors={colors} />
 }
 
-export function XrayFluidRevealDemo() {
-  return <XrayFluidReveal className="w-full" />
+export function XrayFluidRevealDemo({ speed }: { speed?: number } = {}) {
+  return <XrayFluidReveal className="w-full" speed={speed} />
 }
 
 export function PetalDissolveTextDemo({

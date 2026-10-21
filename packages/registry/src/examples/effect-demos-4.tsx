@@ -149,10 +149,13 @@ export function ImageTrailDemo({
   )
 }
 
-export function IconCloudDemo() {
+export function IconCloudDemo({ duration, size, scale }: { duration?: number; size?: number; scale?: number } = {}) {
   return (
     <Frame>
       <IconCloud
+        duration={duration}
+        size={size}
+        scale={scale}
         icons={[
           <Github key="gh" className="size-4" />,
           <Sparkles key="sp" className="size-4" />,

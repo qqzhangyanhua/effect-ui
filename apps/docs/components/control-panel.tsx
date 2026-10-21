@@ -104,33 +104,36 @@ function ControlledPreview({
 
   return (
     <div className="@container">
-      <div className="flex flex-col gap-4 @3xl:flex-row @3xl:items-start">
-        <PreviewFrame className="min-w-0 @3xl:flex-1">
+      <div className="flex flex-col gap-4">
+        <PreviewFrame className="min-w-0">
           <DemoView Demo={Demo} values={applied} />
         </PreviewFrame>
-        <div className="space-y-4 rounded-xl border bg-card p-4 @3xl:w-80 @3xl:shrink-0">
+        <section aria-label="属性" className="space-y-5 rounded-xl border bg-card p-4 @3xl:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-sm font-medium">属性</h2>
+            <div className="flex flex-wrap gap-2">
+              <Button type="button" variant="outline" size="sm" onClick={reset}>
+                重置
+              </Button>
+              <Button type="button" variant="outline" size="sm" onClick={copy}>
+                {copied ? "已复制" : "复制当前配置"}
+              </Button>
+            </div>
+          </div>
           {grouped ? (
             groupedFields(controls).map((group) => (
-              <section key={group.group} aria-label={group.group} className="space-y-4">
-                <h3 className="text-sm font-medium">{group.group}</h3>
+              <section key={group.group} aria-label={group.group} className="space-y-3">
+                <h3 className="text-xs font-medium tracking-wide text-muted-foreground">{group.group}</h3>
                 <ControlGrid fields={group.fields} values={draft} onChange={setValue} onFollow={toggleFollow} />
               </section>
             ))
           ) : (
             <ControlGrid fields={controls} values={draft} onChange={setValue} onFollow={toggleFollow} />
           )}
-          <div className="flex flex-wrap justify-end gap-2">
-            <Button type="button" variant="outline" size="sm" onClick={reset}>
-              重置
-            </Button>
-            <Button type="button" variant="outline" size="sm" onClick={copy}>
-              {copied ? "已复制" : "复制当前配置"}
-            </Button>
-          </div>
           <pre aria-label="当前配置" className="overflow-x-auto rounded-md bg-muted px-3 py-2 font-mono text-xs">
             {snippet}
           </pre>
-        </div>
+        </section>
       </div>
     </div>
   )
@@ -148,7 +151,7 @@ function ControlGrid({
   onFollow: (field: ControlField, follow: boolean) => void
 }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 @3xl:grid-cols-1">
+    <div className="grid gap-x-6 gap-y-4 @xl:grid-cols-2 @4xl:grid-cols-3">
       {fields.map((field) => (
         <ControlWidget
           key={field.name}

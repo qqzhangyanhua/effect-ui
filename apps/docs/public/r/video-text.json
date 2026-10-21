@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-text",
+  "type": "registry:ui",
+  "title": "Video Text",
+  "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/video-text.tsx 视频在大字遮罩里播放。减弱动效时暂停视频并显示 poster。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/video-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/video-text.tsx",
+      "content": "\"use client\"\n\n/* eslint-disable @next/next/no-img-element -- registry 组件不能依赖 next/image */\n\n// Ported from Magic UI (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/video-text.tsx\n\nimport * as React from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface VideoTextProps {\n  src: string\n  poster?: string\n  children?: React.ReactNode\n  fontSize?: number\n  fontWeight?: number\n  className?: string\n}\n\nfunction VideoText({\n  src,\n  poster,\n  children = \"北窗\",\n  fontSize = 18,\n  fontWeight = 700,\n  className,\n}: VideoTextProps) {\n  const reduced = usePrefersReducedMotion()\n  const videoRef = React.useRef<HTMLVideoElement>(null)\n  const content = React.Children.toArray(children).join(\"\")\n  const mask = `url(\"data:image/svg+xml,${encodeURIComponent(\n    `<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><text x='50%' y='54%' text-anchor='middle' dominant-baseline='middle' font-size='${fontSize}vw' font-weight='${fontWeight}' font-family='sans-serif'>${content}</text></svg>`,\n  )}\")`\n\n  React.useEffect(() => {\n    const video = videoRef.current\n    if (!video) return\n    if (reduced) {\n      video.pause()\n      return\n    }\n    void video.play().catch(() => undefined)\n  }, [reduced, src])\n\n  return (\n    <div data-slot=\"video-text\" className={cn(\"relative h-48 w-full overflow-hidden rounded-xl bg-muted\", className)}>\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          maskImage: mask,\n          WebkitMaskImage: mask,\n          maskRepeat: \"no-repeat\",\n          WebkitMaskRepeat: \"no-repeat\",\n          maskPosition: \"center\",\n          WebkitMaskPosition: \"center\",\n          maskSize: \"contain\",\n          WebkitMaskSize: \"contain\",\n        }}\n      >\n        {reduced && poster ? (\n          <img src={poster} alt=\"\" className=\"h-full w-full object-cover\" />\n        ) : (\n          <video\n            ref={videoRef}\n            className=\"h-full w-full object-cover\"\n            src={src}\n            poster={poster}\n            muted\n            loop\n            playsInline\n            autoPlay={!reduced}\n          />\n        )}\n      </div>\n      <span className=\"sr-only\">{content}</span>\n    </div>\n  )\n}\n\nexport { VideoText }\n"
+    }
+  ]
+}

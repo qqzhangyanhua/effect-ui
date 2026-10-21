@@ -8086,6 +8086,302 @@
           "target": "components/ui/help-center-index.tsx"
         }
       ]
+    },
+    {
+      "name": "glyph-matrix",
+      "type": "registry:ui",
+      "title": "Glyph Matrix",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/glyph-matrix.tsx 字符点阵可显示文字或图案，随机闪烁并向上滚动。减弱动效时停在静态网格。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glyph-matrix.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glyph-matrix.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dia-text-reveal",
+      "type": "registry:ui",
+      "title": "Dia Text Reveal",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dia-text-reveal.tsx 文字按字母被斜向渐变遮罩扫出。减弱动效时立刻显示全文。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dia-text-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dia-text-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warp-background",
+      "type": "registry:ui",
+      "title": "Warp Background",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/warp-background.tsx 透视网格四面汇向中心，光束沿网格流动，并包裹子内容。减弱动效时只留静态网格。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/warp-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/warp-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "backlight",
+      "type": "registry:ui",
+      "title": "Backlight",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/backlight.tsx 用 SVG 滤镜在子图片或视频后面铺一层同色模糊辉光。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/backlight.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/backlight.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-3d-particles",
+      "type": "registry:ui",
+      "title": "Floating 3D Particles",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/floating-3d-particles.tsx 伪 3D 粒子场按深度缩放，并跟随光标产生视差。减弱动效时停在一帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/floating-3d-particles.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floating-3d-particles.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-text",
+      "type": "registry:ui",
+      "title": "Video Text",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/video-text.tsx 视频在大字遮罩里播放。减弱动效时暂停视频并显示 poster。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/video-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/video-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smooth-cursor",
+      "type": "registry:ui",
+      "title": "Smooth Cursor",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx 自定义箭头光标用弹簧跟随，并随速度旋转、压扁。减弱动效时恢复系统光标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/smooth-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/smooth-cursor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "line-shadow-text",
+      "type": "registry:ui",
+      "title": "Line Shadow Text",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/line-shadow-text.tsx 文字带一层错位的斜条纹阴影，并缓慢漂移。减弱动效时条纹静止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/line-shadow-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/line-shadow-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-video-dialog",
+      "type": "registry:ui",
+      "title": "Hero Video Dialog",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/hero-video-dialog.tsx 封面居中播放按钮在悬停时放大，打开全屏视频对话框。支持五种入场方向，Esc 关闭并困住焦点，iframe 只在打开后挂载。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hero-video-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-video-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-subscribe-button",
+      "type": "registry:ui",
+      "title": "Animated Subscribe Button",
+      "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx Subscribe 切换为 Subscribed ✓，并带颜色过渡。由 subscribed 与 onChange 控制，带 aria-pressed。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-subscribe-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-subscribe-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "audit-log-table",
+      "type": "registry:ui",
+      "title": "Audit Log Table",
+      "description": "灵感来自 Gumloop 活动记录与 Base44 日志（经由 Mobbin），原创实现。时间、头像、彩色动作标签、对象和 IP。可按动作和日期筛选，点行展开 JSON，虚拟滚动。新事件插到顶部并高亮两秒。",
+      "dependencies": [
+        "@tanstack/react-virtual"
+      ],
+      "registryDependencies": [
+        "json-viewer",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/audit-log-table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/audit-log-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "notification-preferences",
+      "type": "registry:ui",
+      "title": "Notification Preferences",
+      "description": "灵感来自 Unify 通知矩阵与 SoundCloud 通知设置（经由 Mobbin），原创实现。事件按组排成行，邮件、应用内、推送和 Slack 为列。单元格是开关，行和列都能全选。有改动时滑出保存和撤销条。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "switch",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/notification-preferences.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/notification-preferences.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-export-dialog",
+      "type": "registry:ui",
+      "title": "Data Export Dialog",
+      "description": "灵感来自 Klaviyo 字段勾选与 Square 导出对话框（经由 Mobbin），原创实现。CSV、JSON、XLSX 三个页签，字段可勾选并用 sortable-list 拖动排序，另选日期范围。导出过程显示进度，完成后给出下载。",
+      "dependencies": [],
+      "registryDependencies": [
+        "checkbox",
+        "dialog",
+        "sortable-list",
+        "tabs",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/data-export-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-export-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "two-factor-setup",
+      "type": "registry:ui",
+      "title": "Two Factor Setup",
+      "description": "灵感来自 Basecamp 两步验证与 Dropbox Dash 恢复码（经由 Mobbin），原创实现。三步横向滑动：传入的二维码和可复制密钥、六位验证码（错误时晃动）、可复制或下载的恢复码，以及必须勾选的已保存确认。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "input-otp",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/two-factor-setup.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/two-factor-setup.tsx"
+        }
+      ]
+    },
+    {
+      "name": "active-sessions-list",
+      "type": "registry:ui",
+      "title": "Active Sessions List",
+      "description": "灵感来自 Railway 会话列表与 Replit 登出确认（经由 Mobbin），原创实现。设备用内联 SVG，显示浏览器、系统、城市和相对时间，当前设备有标记。可登出一台或其余全部，都要确认。被移除的行会收起。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/active-sessions-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/active-sessions-list.tsx"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "backlight",
+  "type": "registry:ui",
+  "title": "Backlight",
+  "description": "移植自 Magic UI，MIT，Copyright (c) Magic UI。 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/backlight.tsx 用 SVG 滤镜在子图片或视频后面铺一层同色模糊辉光。",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/backlight.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/backlight.tsx",
+      "content": "\"use client\"\n\n// Ported from Magic UI (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/backlight.tsx\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface BacklightProps {\n  children?: React.ReactElement\n  blur?: number\n  className?: string\n}\n\nfunction Backlight({ children, blur = 18, className }: BacklightProps) {\n  const id = React.useId()\n  return (\n    <div data-slot=\"backlight\" className={cn(\"relative inline-grid\", className)}>\n      <svg width=\"0\" height=\"0\" aria-hidden className=\"absolute\">\n        <filter id={id} x=\"-50%\" y=\"-50%\" width=\"200%\" height=\"200%\">\n          <feGaussianBlur in=\"SourceGraphic\" stdDeviation={blur} result=\"blurred\" />\n          <feColorMatrix in=\"blurred\" type=\"saturate\" values=\"4\" />\n          <feComposite in=\"SourceGraphic\" operator=\"over\" />\n        </filter>\n      </svg>\n      <div style={{ filter: `url(#${id})` }}>{children}</div>\n    </div>\n  )\n}\n\nexport { Backlight }\n"
+    }
+  ]
+}

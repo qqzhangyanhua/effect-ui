@@ -1,0 +1,308 @@
+packages/registry/src/effects/shader-backgrounds.tsx
+  s_d76ff22271df09::t_965fe729627289 48-56,62-66,78,122,131
+  s_f8a8c47a3603c9::t_3fff4b1bb30fcf 3,12,27-28,40-47,57-58,67-68,72-73,77,84-85,113-114,117-119,121,126
+  s_d76ff22271df09::t_24345a3a2a42b5 59-61
+packages/registry/src/catalog-batch4.ts
+  s_f8a8c47a3603c9::t_e1cb849685b02d 33-56,80-116
+packages/registry/src/effects/cloth-wind-banner.tsx
+  s_fb8f983cc79180::t_6311bccf87aadd 5,12-18,30,38-40,72,79
+  s_fb8f983cc79180::t_bb78425080d4c2 89-97,104-110,115,117-118,131,140,152-155,168,185,187-196,199,224,253
+  s_d76ff22271df09::t_bd10856ec2ac91 100-103,116,126
+  s_fb8f983cc79180::t_32413f1b7229b2 19-22,119,127-128
+packages/registry/src/examples/effect-demos-14.tsx
+  s_fb8f983cc79180::t_c9079a66529097 23-32,35-46,49-60
+packages/registry/src/examples/effect-demos-6.tsx
+  s_f8a8c47a3603c9::t_1a92d63c18521f 43-44,55-56,59
+packages/registry/src/catalog-batch7.ts
+  s_521539287d7ec5::t_6d8c97246b4f19 52-79,223-235,274-294,314-340,360-387
+apps/docs/public/r/wave-background.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+packages/registry/src/examples/effect-demos-7.tsx
+  s_521539287d7ec5::t_dbb5c9f081d8b4 32-43,101-109,116-142,144
+  s_521539287d7ec5::t_96dd806e101d62 150-162,164
+registry.json
+  s_d76ff22271df09::t_038daef9b4bc91 586,689,1792,2728,3641,3695-3696,3988,4153,4188,4206,4224,5443,5947,5968,6027,6715,6866,6946,7005
+apps/docs/public/r/sea-waves-background.json
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+  s_d76ff22271df09::t_038daef9b4bc91 11
+packages/registry/src/effects/meteors.tsx
+  s_1595a37672749a::t_fd5d4f1cba643d 7-9,12-23,25,36,40,42-43,50,53-54,56-58,60-65
+  s_1595a37672749a::t_ce9de34e392fca 41,46-47,55,59
+packages/registry/src/examples/effect-demos-17.tsx
+  s_fb8f983cc79180::t_f650949b5ba326 22-47,62-71,82-93
+packages/registry/src/examples/effect-demos-2.tsx
+  s_9377c1755c3bce::t_d06d93e3de795b 180-190,192-198,204-214,217,223-235,238
+  s_9377c1755c3bce::t_e016cfd76f8f9e 117-127,130,136-146,150,156-166,168-174
+apps/docs/public/r/flickering-grid.json
+  s_d76ff22271df09::t_038daef9b4bc91 9,17
+apps/docs/public/r/vortex-background.json
+  s_d76ff22271df09::t_038daef9b4bc91 11,20
+packages/registry/src/examples/effect-demos.tsx
+  s_1595a37672749a::t_4f059958bd50e0 138-150,153,159-171,174,180-190,194,202-212,214-220,226-236,239,245-257,260-266
+apps/docs/lib/preview-controls.ts
+  s_d76ff22271df09::t_94ce93a0f66192 46-49
+packages/registry/src/effects/gpgpu-particles.tsx
+  s_521539287d7ec5::t_35f8914e40c7c2 5,12-13,104-111,113,118,127,135,158-161,165,179-180
+  s_521539287d7ec5::t_49359b5e42812f 119-120,122-123
+  s_d76ff22271df09::t_95b1fdfa5c9913 100-103,117,121
+  s_521539287d7ec5::t_6543eab1833821 206,210
+apps/docs/public/r/silk.json
+  s_d76ff22271df09::t_038daef9b4bc91 9
+  s_d76ff22271df09::t_e4aa4fcba13ab2 17
+packages/registry/src/catalog-batch16.ts
+  s_fb8f983cc79180::t_ea770960863231 102-132
+apps/docs/public/r/particles.json
+  s_d76ff22271df09::t_038daef9b4bc91 9,17
+apps/docs/public/r/letter-glitch-wall.json
+  s_d76ff22271df09::t_038daef9b4bc91 9,17
+packages/registry/src/effects/lightning.tsx
+  s_521539287d7ec5::t_eb184e456e7c6e 94-95,97
+  s_521539287d7ec5::t_df688d5d4a170b 5,11-13,28-29,44-45,54,87-88,90,101
+  s_521539287d7ec5::t_79602b7caf3db7 127,135-136,144-146,156,159
+  s_d76ff22271df09::t_cec63b0498bb54 83-86,93,96
+apps/docs/public/r/hyperspeed.json
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+  s_d76ff22271df09::t_038daef9b4bc91 11
+packages/registry/src/effects/data-tunnel.tsx
+  s_d76ff22271df09::t_e32ae06082f1fb 81-84,96,104
+  s_fb8f983cc79180::t_1d6f822df00579 105-107
+  s_fb8f983cc79180::t_6ce257bed89e68 5,11-26,50-52,56,85-91,97-99,110,119,129
+  s_fb8f983cc79180::t_85193735216168 153-159,184-187,215
+  s_fb8f983cc79180::t_58e333ccceef59 108-109
+packages/registry/src/catalog-batch11.ts
+  s_521539287d7ec5::t_832a240a2a6f0e 161-191
+apps/docs/public/r/light-beams.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+packages/registry/src/catalog-batch6.ts
+  s_f8a8c47a3603c9::t_3f985e456705ec 70-83
+apps/docs/public/r/halftone.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+packages/registry/src/effects/vortex-background.tsx
+  s_fb8f983cc79180::t_5bd3835efadb90 5,12-15,40-45,55-56,58-66,68,78-80,82,88,92,97,99,122,147-154,158-162,174,185-190,199
+  s_fb8f983cc79180::t_71f5f73a377d87 167-171
+  s_d76ff22271df09::t_670161f03a8bf2 76-77
+  s_287f358c6b1ad7::t_d0438f7610b79a 172-173
+packages/registry/src/effects/flickering-grid.tsx
+  s_1595a37672749a::t_22db8b986ab71d 5,38,42,55,101,104,112,117,128
+packages/registry/src/effects/halftone.tsx
+  s_f8a8c47a3603c9::t_9b9e045ef24486 9-11,15-23,35,45,47,69
+packages/registry/src/effects/light-rays.tsx
+  s_fb8f983cc79180::t_1d726bf1156da6 116,118-119
+  s_d76ff22271df09::t_d9c251793f7200 93-96,109
+  s_fb8f983cc79180::t_2715ee18063272 5,13-27,44-45,47-48,61,65,73,97-103,105,108,110-111,122
+  s_fb8f983cc79180::t_8fb29e72eda738 63,70
+  s_d76ff22271df09::t_d20219d30fb104 117
+  s_fb8f983cc79180::t_bf5fa130069fd9 134,150-151,154-155,180,182-187,214,218
+  s_fb8f983cc79180::t_f6f2c9a97b58a3 120-121
+apps/docs/public/r/meteors.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+packages/registry/src/catalog-batch5-backgrounds.ts
+  s_d76ff22271df09::t_14ed8e22695f1b 1-92
+apps/docs/public/r/light-rays.json
+  s_d76ff22271df09::t_038daef9b4bc91 11
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+apps/docs/public/r/cloth-wind-banner.json
+  s_d76ff22271df09::t_038daef9b4bc91 11
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+packages/registry/src/effects/aurora-background.tsx
+  s_1595a37672749a::t_5889dcb22f0d3b 5-25,30-33,36-37,49,51-54
+apps/docs/public/r/galaxy-spiral.json
+  s_d76ff22271df09::t_038daef9b4bc91 11,20
+packages/registry/src/catalog-batch13.ts
+  s_fb8f983cc79180::t_748b27ee5766ee 212-233,247-277
+packages/registry/src/effects/galaxy-spiral.tsx
+  s_fb8f983cc79180::t_91a291b83f1b21 5,11-16,104-112,116,134,143,231
+  s_fb8f983cc79180::t_876685ff25feda 65-70,117-123
+packages/registry/src/catalog-batch2.ts
+  s_9377c1755c3bce::t_d54248fcec122e 441-469,480-508,519-548,559-589,600-628,639-675
+apps/docs/public/r/background-paths.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+packages/registry/src/effects/ripples.tsx
+  s_1595a37672749a::t_22f3bc6a22cca2 7-9,12-32,45-48,51-52
+packages/registry/src/effects/silk.tsx
+  s_521539287d7ec5::t_4ea4e4f455a534 5,11-14,17-18,28-33,51-52,54-56,74-75,77-78
+  s_521539287d7ec5::t_3da8e7176e9526 73,76,153-155
+  s_d76ff22271df09::t_c4e4656aa0ac08 79,93-96,110,113
+  s_521539287d7ec5::t_750dccb171b690 97-105,107,118,144,152,164-169,179,182
+  s_521539287d7ec5::t_547cab4f6e5828 111-112,114
+  s_d76ff22271df09::t_712951ddeb8884 80
+packages/registry/src/effects/letter-glitch-wall.tsx
+  s_d76ff22271df09::t_1386b0584e77d6 39-40
+  s_521539287d7ec5::t_f509743862a10f 5,12-13,25-33,38,42,49,54
+packages/registry/src/effects/starfield.tsx
+  s_9377c1755c3bce::t_324c84e6897df3 146-150
+  s_f8a8c47a3603c9::t_c2b3265dcbd180 5,10-12,27-38,40-41,44,65,79,84,86,98,113,116,124,129,140
+packages/registry/src/examples/effect-demos-4.tsx
+  s_f8a8c47a3603c9::t_db4b2df299eaef 35-37,40-42,45,62-74,77-84
+packages/registry/src/effects/hyperspeed.tsx
+  s_fb8f983cc79180::t_43432b18a89f45 159,175-179,198-200,202-207,233,237
+  s_d76ff22271df09::t_44a34bd636a4f0 114-117,131,140
+  s_fb8f983cc79180::t_93f4db86d2c8f1 5,11-26,44-47,62,73,118-124,126,130,132-135,147
+  s_fb8f983cc79180::t_bfadae8d384d7a 64,74
+  s_fb8f983cc79180::t_6aa54a81bb090c 141-144
+  s_fb8f983cc79180::t_a2269a7f8679e0 145-146
+packages/registry/src/catalog-batch17.ts
+  s_fb8f983cc79180::t_7fac761054a00a 21-65,109-133,173-203
+packages/registry/src/examples/effect-demos-5.tsx
+  s_f8a8c47a3603c9::t_3b01b4361b87f4 36-47,50-61
+packages/registry/src/effects/shader-pack-2.tsx
+  s_f8a8c47a3603c9::t_5bbb9a5ba8e2aa 3,15-16,33-34,50-60,73-74,83-93,95-96,107-118,122
+  s_d76ff22271df09::t_ddf36af32d294b 75-77
+  s_d76ff22271df09::t_62a44a172a3e8d 61-72,78-82,94,119,124
+  s_d76ff22271df09::t_0bd25678e616b1 120
+packages/registry/src/effects/sea-waves-background.tsx
+  s_fb8f983cc79180::t_e81416d073a7a6 5,11-20,27-32,49-53,57,69-71,96-102,106,108-110,123,132
+  s_fb8f983cc79180::t_c1291c6d55bfee 21-26,111,118-120
+  s_d76ff22271df09::t_f4ee862b36f6bb 92-95,107,117
+  s_fb8f983cc79180::t_2cf46e9ba2534d 144-152,167-171,195
+apps/docs/public/r/retro-grid.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+apps/docs/public/r/gpgpu-particles.json
+  s_d76ff22271df09::t_038daef9b4bc91 11
+  s_d76ff22271df09::t_e4aa4fcba13ab2 19
+packages/registry/src/catalog-batch14.ts
+  s_fb8f983cc79180::t_5548cbbdf4f4c0 40-60,76-102,116-127,129-137
+  s_d76ff22271df09::t_ad5d0efa9df787 128
+packages/registry/src/effects/world-map-arcs.tsx
+  s_d76ff22271df09::t_a71151555354c1 162-163
+  s_fb8f983cc79180::t_cdae70ee08519b 24-26,29-30,155-157,160-161,180,184,188,207,209
+apps/docs/public/r/lightning.json
+  s_d76ff22271df09::t_038daef9b4bc91 9
+  s_d76ff22271df09::t_e4aa4fcba13ab2 17
+packages/registry/src/examples/effect-demos-16.tsx
+  s_fb8f983cc79180::t_22574053f7b0df 51-64
+packages/registry/src/effects/iridescence.tsx
+  s_521539287d7ec5::t_494beac4cfe576 67,70,147
+  s_d76ff22271df09::t_6c6fc8b06237fe 87-90,104,107
+  s_521539287d7ec5::t_462ecf32805c23 5,11-14,26-29,46-47,51,68-69,71-74,91-99,101,112
+  s_521539287d7ec5::t_27e3b3a7511b33 105-106,108
+  s_521539287d7ec5::t_6913a1885a62ca 138,146,156-159,169,172
+packages/registry/src/catalog-batch5.ts
+  s_d76ff22271df09::t_7d497a524fb315 3-4,452
+apps/docs/public/r/world-map-arcs.json
+  s_d76ff22271df09::t_038daef9b4bc91 19
+apps/docs/public/r/data-tunnel.json
+  s_d76ff22271df09::t_038daef9b4bc91 11
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+apps/docs/public/r/dither-gradient.json
+  s_d76ff22271df09::t_e4aa4fcba13ab2 18
+  s_d76ff22271df09::t_038daef9b4bc91 9
+packages/registry/src/effects/dither-gradient.tsx
+  s_521539287d7ec5::t_471e83ce2a7be9 94-100,103,110,114,146-151,155,171-176,182
+  s_521539287d7ec5::t_03908a95daa8f8 106-107,109
+  s_521539287d7ec5::t_db105ffac982e9 70,73,156-158
+  s_d76ff22271df09::t_885f543895a267 90-93,105,108
+  s_521539287d7ec5::t_3677534b86311c 5,11-14,17-18,28-33,59,61-64,71-72,74-76
+  s_521539287d7ec5::t_21dd3834890b5c 77
+apps/docs/public/r/animated-grid.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+apps/docs/public/r/beams-collision.json
+  s_d76ff22271df09::t_e4aa4fcba13ab2 19
+apps/docs/public/r/flow-field.json
+  s_d76ff22271df09::t_038daef9b4bc91 9,17
+packages/registry/src/effects/beams-collision.tsx
+  s_fb8f983cc79180::t_51434fb7e7a3f3 12-14,70-73,75-76,89,92
+  s_d76ff22271df09::t_560f0a73d24742 22-46,48,55-59,74,81-83,130-132,136,146
+  s_d76ff22271df09::t_922aeb779e1557 133-135
+apps/docs/public/r/registry.json
+  s_d76ff22271df09::t_038daef9b4bc91 586,689,1792,2728,3641,3695-3696,3988,4153,4188,4206,4224,5443,5947,5968,6027,6715,6866,6946,7005
+apps/docs/public/r/ripples.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+packages/registry/src/effects/flow-field.tsx
+  s_f8a8c47a3603c9::t_e449771241f277 5,10-12,33,35,55,77-78,105,147
+  s_d76ff22271df09::t_43b468213a0618 79-80
+  s_f8a8c47a3603c9::t_9237a6bd3e9de9 38,120,123,131,136
+apps/docs/public/r/aurora-background.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+apps/docs/public/r/noise-gradient.json
+  s_d76ff22271df09::t_038daef9b4bc91 16
+apps/docs/public/r/shader-pack-2.json
+  s_d76ff22271df09::t_038daef9b4bc91 11-12
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+packages/registry/src/effects/background-paths.tsx
+  s_f8a8c47a3603c9::t_a55018180463e6 8-11,14-21,26,34-38,45-46
+  s_d76ff22271df09::t_3e86c80d5dd857 27,53
+packages/registry/src/effects/particles.tsx
+  s_1595a37672749a::t_999c0b6c368213 5,44,50,63,140,143,151,156,169
+apps/docs/public/r/iridescence.json
+  s_d76ff22271df09::t_038daef9b4bc91 9
+  s_d76ff22271df09::t_e4aa4fcba13ab2 17
+apps/docs/components/component-preview.test.tsx
+  s_d76ff22271df09::t_2da301674b6fb2 106-119
+apps/docs/public/r/shader-backgrounds.json
+  s_d76ff22271df09::t_038daef9b4bc91 11
+  s_d76ff22271df09::t_e4aa4fcba13ab2 20
+packages/registry/src/examples/effect-demos-11.tsx
+  s_521539287d7ec5::t_a45b06170bccd6 67-80
+apps/docs/public/r/starfield.json
+  s_d76ff22271df09::t_038daef9b4bc91 9,17
+packages/registry/src/examples/effect-demos-13.tsx
+  s_fb8f983cc79180::t_5c94fa26acb961 71-82,85-96
+packages/registry/src/catalog.ts
+  s_d76ff22271df09::t_ebde15c66c7c28 90
+  s_1595a37672749a::t_7fb8212e4fe85d 702-736,749-783,795-823,841-867,880-908,920-954
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "a617a46fae3c3a682895beddf93385ec590afc9b",
+  "prompts": {},
+  "sessions": {
+    "s_1595a37672749a": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c3d-3c21-7a60-884b-acf5f9baff80",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_287f358c6b1ad7": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "a9cdc9e9-5e6d-4c95-b9e9-c1c6f24bb0aa",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_521539287d7ec5": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c3d-3c22-7c20-a5f1-983487acfbc9",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_9377c1755c3bce": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c3d-3c22-7c20-a5f1-9818f9a318ea",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_d76ff22271df09": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c2a-1a2e-7ee3-8343-d561aabdd4b5",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_f8a8c47a3603c9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c3d-3c22-7c20-a5f1-982b00af7dcc",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_fb8f983cc79180": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15c3d-3c22-7c20-a5f1-98402861b521",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

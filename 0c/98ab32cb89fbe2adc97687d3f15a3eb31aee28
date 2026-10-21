@@ -1,0 +1,28 @@
+apps/docs/components/family-gallery.test.tsx
+  s_212d5913124ebc::t_4e1a5f37c762b6 1-15,27-57,59,61-64
+  s_212d5913124ebc::t_a8c5fc56b81d4a 16-26
+  s_212d5913124ebc::t_9061b8747bc26d 58,60
+apps/docs/app/docs/buttons/page.tsx
+  s_212d5913124ebc::t_7a7d8b368ae693 15
+apps/docs/app/docs/inputs/page.tsx
+  s_212d5913124ebc::t_716aaa490bca41 15
+apps/docs/components/family-gallery.tsx
+  s_212d5913124ebc::t_b1009dae6aad0e 8,12,14,28-37,47-87,95-101,110-115,117-141
+  s_212d5913124ebc::t_db5b5481dceb5e 44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0c98ab32cb89fbe2adc97687d3f15a3eb31aee28",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

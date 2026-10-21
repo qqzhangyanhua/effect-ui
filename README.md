@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 极光、液态金属与时长
+
+登记在 `catalog-batch26.ts`。上一批收据、液面与裁切已占用 `catalog-batch25.ts`。十五项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，SDF 过渡直接换内容，环境光只取一帧，勒索信不再晃动，时长数字不再滚动。
+
+| 组件 | 来源 |
+| --- | --- |
+| aurora-curtain | SmoothUI，MIT |
+| gravity-stars | SmoothUI，MIT |
+| magnetic-field | SmoothUI，MIT |
+| ransom-note | SmoothUI，MIT |
+| liquid-metal | SmoothUI，MIT |
+| sdf-blob-transition | SmoothUI，MIT |
+| video-ambient | SmoothUI，MIT |
+| pixel-brush-canvas | SmoothUI，MIT |
+| duration-picker | SmoothUI，MIT |
+| exposure-slider | SmoothUI，MIT |
+| scrubber | SmoothUI，MIT |
+| breakpoint-indicator | SmoothUI，MIT |
+| switchboard-card | SmoothUI，MIT |
+| time-machine-stack | SmoothUI，MIT |
+| interactive-image-selector | SmoothUI，MIT |
+
 ### 收据、液面与裁切
 
 登记在 `catalog-batch25.ts`。上一批地形、摇篮字与转录已占用 `catalog-batch24.ts`。十五项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面和支出环直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。

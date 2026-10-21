@@ -166,7 +166,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/educlopez/smoothui
 - 许可：MIT
 - 版权：Copyright (c) 2024 Eduardo Calvo
-- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`、`coverflow-carousel`、`book-flip`、`folder-reveal`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）
+- 衍生组件：`holographic-foil`、`floating-label-input`、`siri-orb`、`ascii-render`、`coverflow-carousel`、`book-flip`、`folder-reveal`（按免费组件的交互重写，未拷贝 Spectrum 或 Aceternity 代码）、`aurora-curtain`、`gravity-stars`、`magnetic-field`、`ransom-note`、`liquid-metal`、`sdf-blob-transition`、`video-ambient`、`pixel-brush-canvas`、`duration-picker`、`exposure-slider`、`scrubber`、`breakpoint-indicator`、`switchboard-card`、`time-machine-stack`、`interactive-image-selector`。后十五项按 SmoothUI 源码移植；`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 的着色器保持原样，WebGL 样板改用 `ogl`。
 
 ## frimousse
 

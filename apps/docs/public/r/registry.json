@@ -9639,6 +9639,308 @@
           "target": "components/ui/clip-trimmer.tsx"
         }
       ]
+    },
+    {
+      "name": "aurora-curtain",
+      "type": "registry:ui",
+      "title": "Aurora Curtain",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/aurora-curtain/index.tsx 内容背后的极光丝带。着色器保持原样，绘制改用 ogl。WebGL2 不可用时退回径向渐变。减弱动效或离开视口后停在当前帧。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/aurora-curtain.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/aurora-curtain.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gravity-stars",
+      "type": "registry:ui",
+      "title": "Gravity Stars",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/gravity-stars/index.tsx 星点会朝指针聚拢，近处可以连线。减弱动效时星场静止。离开视口后停止动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gravity-stars.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gravity-stars.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-field",
+      "type": "registry:ui",
+      "title": "Magnetic Field",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/magnetic-field/index.tsx 子元素或 items 会吸附、排斥或绕着指针转。没有精细指针、减弱动效或离开视口时回到原位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magnetic-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magnetic-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ransom-note",
+      "type": "registry:ui",
+      "title": "Ransom Note",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ransom-note/index.tsx 每个字用随机字体、底色和旋转拼成勒索信。assemble 飞入，jitter 持续晃动。减弱动效或离开视口时 jitter 停住。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ransom-note.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ransom-note.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal",
+      "type": "registry:ui",
+      "title": "Liquid Metal",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/liquid-metal/index.tsx 液态金属表面，指针可以推动流场，也可以把材质裁成文字。着色器保持原样，绘制改用 ogl。减弱动效或没有 WebGL2 时用静态渐变。离开视口后停止动画帧。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-metal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-metal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sdf-blob-transition",
+      "type": "registry:ui",
+      "title": "SDF Blob Transition",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/sdf-blob-transition/index.tsx transitionKey 变化时，用 SDF 遮罩在旧内容和新内容之间过渡。变体有 circle、warped、merge、radial、final。着色器保持原样，绘制改用 ogl。减弱动效时直接换内容。离开视口后停止绘制。",
+      "dependencies": [
+        "ogl"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sdf-blob-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sdf-blob-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-ambient",
+      "type": "registry:ui",
+      "title": "Video Ambient",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/video-ambient/index.tsx 从视频画面取样，在背后铺一层环境光。减弱动效时只取一帧。离开视口或暂停时停止取样。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/video-ambient.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/video-ambient.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pixel-brush-canvas",
+      "type": "registry:ui",
+      "title": "Pixel Brush Canvas",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pixel-brush-canvas/index.tsx 像素画布，带画笔、橡皮、填充、直线、矩形、网格和导出。调色板下标仍叫 color。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pixel-brush-canvas.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pixel-brush-canvas.tsx"
+        }
+      ]
+    },
+    {
+      "name": "duration-picker",
+      "type": "registry:ui",
+      "title": "Duration Picker",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/duration-picker/index.tsx 分段的时、分、秒输入。滚轮、拖动和方向键都能改。减弱动效时数字不再滚动。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/duration-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/duration-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "exposure-slider",
+      "type": "registry:ui",
+      "title": "Exposure Slider",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/exposure-slider/index.tsx 相机曝光刻度条，旁边有圆形指示。减弱动效时拖动不再用弹簧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/exposure-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/exposure-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scrubber",
+      "type": "registry:ui",
+      "title": "Scrubber",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/scrubber/index.tsx 按住左右拖改变数值。减弱动效时没有弹簧过渡。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scrubber.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scrubber.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breakpoint-indicator",
+      "type": "registry:ui",
+      "title": "Breakpoint Indicator",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/breakpoint-indicator/index.tsx 开发用角标，显示当前 Tailwind 断点和视口尺寸。默认快捷键是 b。生产构建里默认不启用，演示会显式打开。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/breakpoint-indicator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/breakpoint-indicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switchboard-card",
+      "type": "registry:ui",
+      "title": "Switchboard Card",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/switchboard-card/index.tsx 卡片顶部是一排指示灯。randomLights 时灯会随机亮灭。减弱动效或离开视口后灯停住。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/switchboard-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switchboard-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "time-machine-stack",
+      "type": "registry:ui",
+      "title": "Time Machine Stack",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/time-machine-stack/index.tsx 卡片沿纵深叠放，滚轮或点击会翻到下一张。减弱动效时没有弹簧，只保留最前面一张。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/time-machine-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/time-machine-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "interactive-image-selector",
+      "type": "registry:ui",
+      "title": "Interactive Image Selector",
+      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/interactive-image-selector/index.tsx 图片网格可以多选，然后分享或删除。减弱动效时去掉缩放和旋转。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/interactive-image-selector.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/interactive-image-selector.tsx"
+        }
+      ]
     }
   ]
 }

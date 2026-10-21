@@ -227,11 +227,11 @@ export function StackingCardsDemo({
   )
 }
 
-export function DynamicIslandDemo() {
+export function DynamicIslandDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   const [size, setSize] = useState<DynamicIslandSize>("idle")
   return (
     <Frame className="flex-col gap-4">
-      <DynamicIsland size={size}>
+      <DynamicIsland size={size} duration={duration} intensity={intensity}>
         {size === "compact" ? (
           <Signal className="mx-auto size-4" />
         ) : size === "expanded" ? (

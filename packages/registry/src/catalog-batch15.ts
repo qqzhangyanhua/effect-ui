@@ -163,7 +163,15 @@ export const batch15Components: ComponentMeta[] = [
     target: "components/ui/clip-reveal-menu.tsx",
     props: [
       { name: "items", type: "ClipRevealItem[]", description: "菜单条目。" },
+      { name: "duration", type: "number", description: "展开毫秒。550 与不传相同，面板仍是 0.55 秒，条目仍是 0.35 秒。", control: { kind: "range", value: 550, min: 220, max: 1100, step: 10 } },
+      { name: "delay", type: "number", description: "首条延迟毫秒。120 与不传相同，仍是 0.12 秒，错开仍是 0.06 秒。", control: { kind: "range", value: 120, min: 0, max: 400, step: 10 } },
+      { name: "intensity", type: "number", description: "升起距离倍率。1 与不传相同，仍是 28 像素。", control: { kind: "range", value: 1, min: 0, max: 2, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "clip-reveal-menu-slow", label: "慢", values: { duration: 800, delay: 200, intensity: 0.6 } },
+      { name: "clip-reveal-menu-default", label: "默认", values: { duration: 550, delay: 120, intensity: 1 } },
+      { name: "clip-reveal-menu-fast", label: "快", values: { duration: 280, delay: 40, intensity: 1.4 } },
     ],
   },
   {

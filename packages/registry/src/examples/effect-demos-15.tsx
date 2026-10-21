@@ -83,8 +83,8 @@ export function DualWaveTextListDemo({ scale }: { scale?: number } = {}) {
   return <DualWaveTextList className="w-full" scale={scale} />
 }
 
-export function ClipRevealMenuDemo() {
-  return <ClipRevealMenu className="w-full" />
+export function ClipRevealMenuDemo({ duration, delay, intensity }: { duration?: number; delay?: number; intensity?: number } = {}) {
+  return <ClipRevealMenu className="w-full" duration={duration} delay={delay} intensity={intensity} />
 }
 
 export function StickyGridScrollDemo({

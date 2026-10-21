@@ -804,7 +804,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dock.tsx",
     target: "components/ui/dock.tsx",
-    props: [{ name: "magnification", type: "number", defaultValue: "52", description: "放大后宽度。" }],
+    props: [
+      { name: "magnification", type: "number", defaultValue: "52", description: "放大后宽度。", control: { kind: "range", value: 52, min: 40, max: 80, step: 2 } },
+      { name: "size", type: "number", description: "静止宽度（像素）。40 与不传相同。", control: { kind: "range", value: 40, min: 24, max: 64, step: 2 } },
+      { name: "gap", type: "number", description: "图标间距（像素）。8 与不传相同，仍是 gap-2。", control: { kind: "range", value: 8, min: 0, max: 24, step: 1 } },
+    ],
+    presets: [
+      { name: "dock-tight", label: "紧", values: { magnification: 44, size: 32, gap: 4 } },
+      { name: "dock-default", label: "默认", values: { magnification: 52, size: 40, gap: 8 } },
+      { name: "dock-wide", label: "宽", values: { magnification: 68, size: 48, gap: 12 } },
+    ],
   },
   {
     name: "marquee",
@@ -1242,7 +1251,15 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-tabs.tsx",
     target: "components/ui/animated-tabs.tsx",
-    props: [{ name: "items", type: "AnimatedTabsItem[]", description: "选项卡数据。" }],
+    props: [
+      { name: "items", type: "AnimatedTabsItem[]", description: "选项卡数据。" },
+      { name: "gap", type: "number", description: "页签间距（像素）。4 与不传相同，仍是 gap-1。", control: { kind: "range", value: 4, min: 0, max: 16, step: 1 } },
+    ],
+    presets: [
+      { name: "animated-tabs-tight", label: "紧", values: { gap: 0 } },
+      { name: "animated-tabs-default", label: "默认", values: { gap: 4 } },
+      { name: "animated-tabs-wide", label: "宽", values: { gap: 12 } },
+    ],
   },
   {
     name: "floating-navbar",
@@ -1253,7 +1270,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/floating-navbar.tsx",
     target: "components/ui/floating-navbar.tsx",
-    props: ui,
+    props: [
+      { name: "duration", type: "number", description: "收起毫秒。250 与不传相同，仍是 0.25 秒。", control: { kind: "range", value: 250, min: 100, max: 500, step: 10 } },
+      { name: "intensity", type: "number", description: "收起距离倍率。1 与不传相同，仍是 88 像素。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "floating-navbar-slow", label: "慢", values: { duration: 400, intensity: 0.6 } },
+      { name: "floating-navbar-default", label: "默认", values: { duration: 250, intensity: 1 } },
+      { name: "floating-navbar-fast", label: "快", values: { duration: 120, intensity: 1 } },
+    ],
   },
   {
     name: "animated-sidebar",
@@ -1264,7 +1290,16 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-sidebar.tsx",
     target: "components/ui/animated-sidebar.tsx",
-    props: [{ name: "open", type: "boolean", description: "受控展开状态。" }],
+    props: [
+      { name: "open", type: "boolean", description: "受控展开状态。" },
+      { name: "size", type: "number", description: "侧栏宽度（像素）。224 与不传相同，仍是 w-56。", control: { kind: "range", value: 224, min: 160, max: 320, step: 8 } },
+      { name: "intensity", type: "number", description: "滑入距离倍率。1 与不传相同，仍是 24 像素。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "animated-sidebar-narrow", label: "窄", values: { size: 176, intensity: 0.6 } },
+      { name: "animated-sidebar-default", label: "默认", values: { size: 224, intensity: 1 } },
+      { name: "animated-sidebar-wide", label: "宽", values: { size: 288, intensity: 1 } },
+    ],
   },
   {
     name: "page-transition",

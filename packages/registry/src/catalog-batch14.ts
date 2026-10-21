@@ -307,7 +307,14 @@ export const batch14Components: ComponentMeta[] = [
     target: "components/ui/toc-scrollspy.tsx",
     props: [
       { name: "headings", type: "TocHeading[]", description: "目录项、锚点 id 和正文。" },
+      { name: "duration", type: "number", description: "指示器滑动毫秒。250 与不传相同，仍是 0.25 秒。", control: { kind: "range", value: 250, min: 100, max: 500, step: 10 } },
+      { name: "gap", type: "number", description: "目录间距（像素）。4 与不传相同，仍是 space-y-1。", control: { kind: "range", value: 4, min: 0, max: 16, step: 1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "toc-scrollspy-slow", label: "慢", values: { duration: 400, gap: 8 } },
+      { name: "toc-scrollspy-default", label: "默认", values: { duration: 250, gap: 4 } },
+      { name: "toc-scrollspy-tight", label: "紧", values: { duration: 140, gap: 2 } },
     ],
   },
   {

@@ -321,7 +321,15 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/animated-theme-toggler.tsx",
     target: "components/ui/animated-theme-toggler.tsx",
-    props: [{ name: "duration", type: "number", defaultValue: "500", description: "扩散时长（毫秒）。" }, ...ui],
+    props: [
+      { name: "duration", type: "number", defaultValue: "500", description: "扩散时长（毫秒）。", control: { kind: "range", value: 500, min: 200, max: 1000, step: 10 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "animated-theme-toggler-slow", label: "慢", values: { duration: 800 } },
+      { name: "animated-theme-toggler-default", label: "默认", values: { duration: 500 } },
+      { name: "animated-theme-toggler-fast", label: "快", values: { duration: 280 } },
+    ],
   },
   {
     name: "prompt-input",

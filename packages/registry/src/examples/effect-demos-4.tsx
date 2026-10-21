@@ -171,10 +171,10 @@ export function IconCloudDemo({ duration, size, scale }: { duration?: number; si
   )
 }
 
-export function AnimatedThemeTogglerDemo() {
+export function AnimatedThemeTogglerDemo({ duration }: { duration?: number } = {}) {
   return (
     <Frame>
-      <AnimatedThemeToggler />
+      <AnimatedThemeToggler duration={duration} />
     </Frame>
   )
 }

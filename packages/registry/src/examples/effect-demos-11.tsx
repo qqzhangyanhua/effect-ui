@@ -101,8 +101,8 @@ export function TextVariableScrollDemo({
   )
 }
 
-export function LiquidGlassTabbarDemo() {
-  return <LiquidGlassTabbar className="w-full" />
+export function LiquidGlassTabbarDemo({ speed, intensity, scale }: { speed?: number; intensity?: number; scale?: number } = {}) {
+  return <LiquidGlassTabbar className="w-full" speed={speed} intensity={intensity} scale={scale} />
 }
 
 export function DitherGradientDemo({

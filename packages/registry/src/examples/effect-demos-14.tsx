@@ -100,8 +100,8 @@ export function ShuffleGridHeroDemo() {
   return <ShuffleGridHero className="w-full" />
 }
 
-export function TocScrollspyDemo() {
-  return <TocScrollspy className="w-full" />
+export function TocScrollspyDemo({ duration, gap }: { duration?: number; gap?: number } = {}) {
+  return <TocScrollspy className="w-full" duration={duration} gap={gap} />
 }
 
 export function SortableListDemo({ gap }: { gap?: number } = {}) {

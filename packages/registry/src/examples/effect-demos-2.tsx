@@ -314,9 +314,9 @@ export function RetroGridDemo({
   )
 }
 
-export function DockDemo() {
+export function DockDemo({ magnification, size, gap }: { magnification?: number; size?: number; gap?: number } = {}) {
   return (
-    <Dock>
+    <Dock magnification={magnification} size={size} gap={gap}>
       <Home className="size-5" />
       <Star className="size-5" />
       <Sparkle className="size-5" />
@@ -424,10 +424,11 @@ export function GooeyButtonDemo({ scale, intensity }: { scale?: number; intensit
   return <GooeyButton scale={scale} intensity={intensity}>Gooey</GooeyButton>
 }
 
-export function AnimatedTabsDemo() {
+export function AnimatedTabsDemo({ gap }: { gap?: number } = {}) {
   return (
     <AnimatedTabs
       className="w-80"
+      gap={gap}
       items={[
         { value: "one", label: "预览", content: "实时预览区域" },
         { value: "two", label: "代码", content: "npx shadcn add …" },
@@ -436,10 +437,10 @@ export function AnimatedTabsDemo() {
   )
 }
 
-export function FloatingNavbarDemo() {
+export function FloatingNavbarDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   return (
     <div className="h-40 w-full overflow-auto rounded-xl border">
-      <FloatingNavbar>
+      <FloatingNavbar duration={duration} intensity={intensity}>
         <span className="text-sm">Home</span>
         <span className="text-sm">Docs</span>
       </FloatingNavbar>
@@ -448,9 +449,9 @@ export function FloatingNavbarDemo() {
   )
 }
 
-export function AnimatedSidebarDemo() {
+export function AnimatedSidebarDemo({ size, intensity }: { size?: number; intensity?: number } = {}) {
   return (
-    <AnimatedSidebar>
+    <AnimatedSidebar size={size} intensity={intensity}>
       <p className="text-sm">侧栏内容</p>
     </AnimatedSidebar>
   )

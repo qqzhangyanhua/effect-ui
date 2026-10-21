@@ -187,7 +187,16 @@ export const batch9Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/family-drawer.tsx",
     target: "components/ui/family-drawer.tsx",
-    props: [{ name: "steps", type: "FamilyStep[]", description: "步骤文案。" }, ...ui],
+    props: [
+      { name: "steps", type: "FamilyStep[]", description: "步骤文案。" },
+      { name: "intensity", type: "number", description: "步骤位移倍率。1 与不传相同，仍是 8 像素。", control: { kind: "range", value: 1, min: 0, max: 2, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "family-drawer-soft", label: "轻", values: { intensity: 0.5 } },
+      { name: "family-drawer-default", label: "默认", values: { intensity: 1 } },
+      { name: "family-drawer-high", label: "高", values: { intensity: 1.6 } },
+    ],
   },
   {
     name: "text-morph",

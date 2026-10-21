@@ -17,13 +17,18 @@ const sizes: Record<DynamicIslandSize, { width: number; height: number; radius: 
 
 export interface DynamicIslandProps {
   size?: DynamicIslandSize
+  duration?: number
+  intensity?: number
   className?: string
   children?: React.ReactNode
 }
 
-function DynamicIsland({ size = "idle", className, children }: DynamicIslandProps) {
+function DynamicIsland({ size = "idle", duration, intensity, className, children }: DynamicIslandProps) {
   const reduceMotion = usePrefersReducedMotion()
   const preset = sizes[size]
+  const blur = intensity === undefined || intensity === 1 ? 6 : 6 * intensity
+  const shown = reduceMotion ? 0.15 : duration === undefined || duration === 180 ? 0.18 : duration / 1000
+  const soft = blur === 6 ? "blur(6px)" : `blur(${blur}px)`
   return (
     <motion.div
       layout={!reduceMotion}
@@ -42,10 +47,10 @@ function DynamicIsland({ size = "idle", className, children }: DynamicIslandProp
         <motion.div
           key={size}
           className="flex size-full items-center px-3"
-          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: "blur(6px)" }}
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: soft }}
           animate={reduceMotion ? { opacity: 1 } : { opacity: 1, filter: "blur(0px)" }}
-          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: "blur(6px)" }}
-          transition={{ duration: reduceMotion ? 0.15 : 0.18 }}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, filter: soft }}
+          transition={{ duration: shown }}
         >
           {children}
         </motion.div>

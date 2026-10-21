@@ -189,8 +189,8 @@ export function CardSwapDemo({ interval, duration, angle, scale }: { interval?: 
   return <CardSwap className="w-full" interval={interval} duration={duration} angle={angle} scale={scale} />
 }
 
-export function FlowingMenuDemo() {
-  return <FlowingMenu className="w-full" />
+export function FlowingMenuDemo({ duration, speed }: { duration?: number; speed?: number } = {}) {
+  return <FlowingMenu className="w-full" duration={duration} speed={speed} />
 }
 
 export function DomeGalleryDemo({ count, speed, size }: { count?: number; speed?: number; size?: number } = {}) {

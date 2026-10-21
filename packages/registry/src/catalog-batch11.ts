@@ -291,7 +291,18 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/liquid-glass-tabbar.tsx",
     target: "components/ui/liquid-glass-tabbar.tsx",
-    props: [{ name: "tabs", type: "GlassTab[]", description: "页签。" }, ...ui],
+    props: [
+      { name: "tabs", type: "GlassTab[]", description: "页签。" },
+      { name: "speed", type: "number", description: "弹簧速度倍率。1 与不传相同，指示仍是 0.6 秒、圆点仍是 0.7 秒。", control: { kind: "range", value: 1, min: 0.4, max: 2.5, step: 0.1 } },
+      { name: "intensity", type: "number", description: "回弹倍率。1 与不传相同，仍是 0.32 与 0.45。", control: { kind: "range", value: 1, min: 0, max: 2, step: 0.1 } },
+      { name: "scale", type: "number", description: "模糊倍率。1 与不传相同，仍是 stdDeviation 8。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "liquid-glass-tabbar-soft", label: "柔", values: { speed: 0.6, intensity: 0.5, scale: 0.7 } },
+      { name: "liquid-glass-tabbar-default", label: "默认", values: { speed: 1, intensity: 1, scale: 1 } },
+      { name: "liquid-glass-tabbar-lively", label: "活", values: { speed: 1.6, intensity: 1.4, scale: 1.4 } },
+    ],
   },
   {
     name: "dither-gradient",

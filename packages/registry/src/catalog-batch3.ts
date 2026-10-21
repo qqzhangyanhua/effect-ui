@@ -277,7 +277,22 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/dynamic-island.tsx",
     target: "components/ui/dynamic-island.tsx",
-    props: [{ name: "size", type: '"compact" | "idle" | "expanded" | "tall"', defaultValue: '"idle"', description: "尺寸预设。" }],
+    props: [
+      {
+        name: "size",
+        type: '"compact" | "idle" | "expanded" | "tall"',
+        defaultValue: '"idle"',
+        description: "尺寸预设。",
+        vocabularyExemption: "历史取值是 compact/idle/expanded/tall，不是像素。",
+      },
+      { name: "duration", type: "number", description: "内容淡入毫秒。180 与不传相同，仍是 0.18 秒。减弱动效时仍是 0.15 秒。", control: { kind: "range", value: 180, min: 80, max: 360, step: 10 } },
+      { name: "intensity", type: "number", description: "模糊倍率。1 与不传相同，仍是 6 像素。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
+    ],
+    presets: [
+      { name: "dynamic-island-slow", label: "慢", values: { duration: 280, intensity: 0.5 } },
+      { name: "dynamic-island-default", label: "默认", values: { duration: 180, intensity: 1 } },
+      { name: "dynamic-island-fast", label: "快", values: { duration: 100, intensity: 1 } },
+    ],
   },
   {
     name: "variable-font-proximity",

@@ -36,8 +36,8 @@ export function DetentDialDemo() {
   return <DetentDial />
 }
 
-export function FamilyDrawerDemo() {
-  return <FamilyDrawer className="max-w-sm" />
+export function FamilyDrawerDemo({ intensity }: { intensity?: number } = {}) {
+  return <FamilyDrawer className="max-w-sm" intensity={intensity} />
 }
 
 export function TextMorphDemo({

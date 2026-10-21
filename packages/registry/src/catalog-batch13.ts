@@ -22,20 +22,8 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/text-pressure.tsx",
     target: "components/ui/text-pressure.tsx",
     props: [
-      {
-        name: "text",
-        type: "string",
-        defaultValue: '"PRESSURE"',
-        description: "通栏文字。",
-        control: { kind: "text", value: "PRESSURE" },
-      },
-      {
-        name: "radius",
-        type: "number",
-        defaultValue: "160",
-        description: "指针影响半径，像素。",
-        control: { kind: "range", value: 160, min: 40, max: 320, step: 10 },
-      },
+      { name: "text", type: "string", defaultValue: '"PRESSURE"', description: "通栏文字。", control: { kind: "text", value: "PRESSURE" } },
+      { name: "radius", type: "number", defaultValue: "160", description: "指针影响半径，像素。", control: { kind: "range", value: 160, min: 40, max: 320, step: 10 } },
       ...textControls({ fontSize: 64, align: "left", skipWeight: true }),
       ...ui,
     ],
@@ -367,7 +355,14 @@ export const batch13Components: ComponentMeta[] = [
     target: "components/ui/flowing-menu.tsx",
     props: [
       { name: "items", type: "FlowingMenuItem[]", description: "菜单项，每项含 label。" },
+      { name: "duration", type: "number", description: "滑入毫秒。380 与不传相同，仍是 0.38 秒。", control: { kind: "range", value: 380, min: 150, max: 760, step: 10 } },
+      { name: "speed", type: "number", description: "跑马灯倍率。1 与不传相同，仍是 9 秒。", control: { kind: "range", value: 1, min: 0.4, max: 2.5, step: 0.1 } },
       ...ui,
+    ],
+    presets: [
+      { name: "flowing-menu-slow", label: "慢", values: { duration: 560, speed: 0.6 } },
+      { name: "flowing-menu-default", label: "默认", values: { duration: 380, speed: 1 } },
+      { name: "flowing-menu-fast", label: "快", values: { duration: 200, speed: 1.8 } },
     ],
   },
   {

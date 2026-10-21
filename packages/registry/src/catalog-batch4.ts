@@ -362,6 +362,7 @@ export const batch4Components: ComponentMeta[] = [
       { name: "content", type: "string", description: "消息正文（助手侧按 Markdown 渲染）。" },
       { name: "streaming", type: "boolean", defaultValue: "false", description: "流式光标。" },
       { name: "name", type: "string", description: "助手名称。" },
+      { name: "actions", type: "ReactNode", description: "操作区。" },
       ...ui,
     ],
   },
@@ -376,6 +377,7 @@ export const batch4Components: ComponentMeta[] = [
     target: "components/ui/marketing-blocks.tsx",
     props: [
       { name: "variant", type: "string", description: "各区块的视觉变体（aurora/split/glass、cards/featured/compact 等）。" },
+      { name: "subtitle", type: "string", description: "Hero 副标题。" },
       ...ui,
     ],
   },

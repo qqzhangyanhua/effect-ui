@@ -1912,7 +1912,12 @@ export const components: ComponentMeta[] = [
     file: "effects/progress-ring.tsx",
     target: "components/ui/progress-ring.tsx",
     props: [
-      { name: "value", type: "number", description: "0-100 进度。" },
+      {
+        name: "value",
+        type: "number",
+        description: "0-100 进度。",
+        control: { kind: "range", value: 72, min: 0, max: 100, step: 1 },
+      },
       {
         name: "size",
         type: "number",
@@ -2289,3 +2294,138 @@ export function getComponentsByCategory() {
 export const visibleComponents = components.filter(
   (item) => item.type === "registry:ui" || item.type === "registry:block",
 )
+
+export interface CatalogSection {
+  key: string
+  label: string
+  items: readonly ComponentMeta[]
+}
+
+export interface CatalogGroup {
+  key: string
+  label: string
+  items: readonly ComponentMeta[]
+  sections: readonly CatalogSection[]
+}
+
+interface FamilySectionSpec {
+  key: string
+  label: string
+  names: readonly string[]
+}
+
+const buttonFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["button", "button-group", "button-plus"] },
+  {
+    key: "motion",
+    label: "动效",
+    names: [
+      "fuse-button",
+      "hold-button",
+      "ripple-button",
+      "shimmer-button",
+      "pulse-button",
+      "neon-button",
+      "rainbow-button",
+      "interactive-hover-button",
+      "gooey-button",
+      "particle-button",
+      "tear-button",
+    ],
+  },
+]
+
+const inputFamilySections: readonly FamilySectionSpec[] = [
+  {
+    key: "base",
+    label: "基础",
+    names: ["input", "input-group", "input-otp", "input-plus", "floating-label-input"],
+  },
+  {
+    key: "specialized",
+    label: "专用",
+    names: ["tag-input", "phone-input", "currency-input", "coupon-input", "prompt-input"],
+  },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input"] },
+]
+
+/** 名字本身就是按钮或输入的组件。文档导航按这个归组，不改 category。 */
+export function componentCluster(name: string): "button" | "input" | undefined {
+  if (name === "button" || name.startsWith("button-") || name.endsWith("-button")) return "button"
+  if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"
+  return undefined
+}
+
+function buildFamilyGroup(
+  key: "button" | "input",
+  label: string,
+  specs: readonly FamilySectionSpec[],
+): CatalogGroup {
+  const listed = new Set(specs.flatMap((section) => section.names))
+  const sections: CatalogSection[] = specs.flatMap((section) => {
+    const items = section.names.flatMap((name) => {
+      const item = getComponent(name)
+      return item ? [item] : []
+    })
+    return items.length > 0 ? [{ key: section.key, label: section.label, items }] : []
+  })
+  const extras = visibleComponents.filter(
+    (item) => componentCluster(item.name) === key && !listed.has(item.name),
+  )
+  if (extras.length > 0) {
+    sections.push({ key: "other", label: "其他", items: extras })
+  }
+  return {
+    key,
+    label,
+    sections,
+    items: sections.flatMap((section) => [...section.items]),
+  }
+}
+
+export function getCatalogGroups(): CatalogGroup[] {
+  const clustered = new Set(
+    visibleComponents.flatMap((item) => (componentCluster(item.name) ? [item.name] : [])),
+  )
+  const groups: CatalogGroup[] = []
+  for (const category of categoryOrder) {
+    const items = components.filter(
+      (item) =>
+        item.category === category &&
+        (item.type === "registry:ui" || item.type === "registry:block") &&
+        !clustered.has(item.name),
+    )
+    if (items.length === 0) continue
+    if (category !== "ui") {
+      groups.push({ key: category, label: categoryLabels[category], items, sections: [] })
+      continue
+    }
+    const sections = uiSubgroupsOf(items).map((section) => ({
+      key: section.subgroup,
+      label: section.label,
+      items: section.items,
+    }))
+    groups.push({
+      key: category,
+      label: categoryLabels[category],
+      items: sections.flatMap((section) => [...section.items]),
+      sections,
+    })
+  }
+  const uiIndex = groups.findIndex((group) => group.key === "ui")
+  groups.splice(
+    uiIndex === -1 ? 0 : uiIndex + 1,
+    0,
+    buildFamilyGroup("button", "按钮", buttonFamilySections),
+    buildFamilyGroup("input", "输入", inputFamilySections),
+  )
+  return groups
+}
+
+export function relatedComponents(name: string): readonly ComponentMeta[] {
+  const cluster = componentCluster(name)
+  if (!cluster) return []
+  const group = getCatalogGroups().find((entry) => entry.key === cluster)
+  if (!group) return []
+  return group.items.filter((item) => item.name !== name)
+}

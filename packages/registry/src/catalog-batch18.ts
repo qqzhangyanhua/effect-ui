@@ -171,7 +171,16 @@ export const batch18Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/curved-scrollbar.tsx",
     target: "components/ui/curved-scrollbar.tsx",
-    props: [{ name: "radius", type: "number", defaultValue: "28", description: "轨道圆角半径。" }, ...ui],
+    props: [
+      {
+        name: "radius",
+        type: "number",
+        defaultValue: "28",
+        description: "轨道圆角半径。",
+        control: { kind: "range", value: 28, min: 0, max: 64, step: 1 },
+      },
+      ...ui,
+    ],
   },
   {
     name: "particle-hourglass",
@@ -232,9 +241,13 @@ export const batch18Components: ComponentMeta[] = [
     file: "effects/invoice-preview.tsx",
     target: "components/ui/invoice-preview.tsx",
     props: [
+      { name: "number", type: "string", defaultValue: "INV-2026-014", description: "单号。" },
+      { name: "from", type: "string", defaultValue: "效果界面工作室", description: "开票方。" },
+      { name: "to", type: "string", defaultValue: "北窗设计", description: "收票方。" },
       { name: "lines", type: "InvoiceLine[]", description: "明细。" },
       { name: "taxRate", type: "number", defaultValue: "0.06", description: "税率。" },
       { name: "currency", type: "string", defaultValue: "CNY", description: "货币代码。" },
+      { name: "locale", type: "string", defaultValue: "zh-CN", description: "地区。" },
       ...ui,
     ],
   },

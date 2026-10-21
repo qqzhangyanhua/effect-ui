@@ -97,6 +97,7 @@ export const batch12Components: ComponentMeta[] = [
       },
       disabled,
       className,
+      { name: "ref", type: "React.Ref<HTMLDivElement>", description: "单选组根节点的 ref。" },
     ],
     presets: [
       { name: "jelly-radio-soft", label: "软", values: { stiffness: 160, intensity: 0.8 } },
@@ -201,6 +202,7 @@ export const batch12Components: ComponentMeta[] = [
       },
       disabled,
       className,
+      { name: "ref", type: "React.Ref<HTMLDivElement>", description: "评分根节点的 ref。" },
     ],
     presets: [
       { name: "peek-rating-few", label: "少", values: { max: 3, size: 20, intensity: 0.15 } },
@@ -247,6 +249,7 @@ export const batch12Components: ComponentMeta[] = [
       { name: "onConfirm", type: "() => void", description: "越过阈值或按下 Enter / Space 时回调一次，然后复位。" },
       disabled,
       className,
+      { name: "ref", type: "React.Ref<HTMLButtonElement>", description: "滑块按钮的 ref。" },
     ],
     presets: [
       { name: "slide-to-confirm-loose", label: "松", values: { threshold: 0.6, duration: 220 } },
@@ -294,6 +297,7 @@ export const batch12Components: ComponentMeta[] = [
       },
       disabled,
       className,
+      { name: "ref", type: "React.Ref<HTMLDivElement>", description: "行根节点的 ref。" },
     ],
     presets: [
       { name: "swipe-row-narrow", label: "窄", values: { actionWidth: 56, direction: "left", duration: 100, intensity: 0.25 } },
@@ -388,6 +392,7 @@ export const batch12Components: ComponentMeta[] = [
       },
       disabled,
       className,
+      { name: "ref", type: "React.Ref<HTMLButtonElement>", description: "心形按钮的 ref。" },
     ],
     presets: [
       { name: "pulse-heart-small", label: "小", values: { size: 20, burst: 4, duration: 240, scale: 0.6 } },
@@ -445,6 +450,7 @@ export const batch12Components: ComponentMeta[] = [
         control: { kind: "range", value: 6, min: 0, max: 16, step: 1 },
       },
       className,
+      { name: "ref", type: "React.Ref<HTMLDivElement>", description: "点阵根节点的 ref。" },
     ],
     presets: [
       { name: "lattice-loader-sparse", label: "疏", values: { rows: 3, cols: 3, size: 4, gap: 10, speed: 0.6 } },
@@ -487,6 +493,7 @@ export const batch12Components: ComponentMeta[] = [
       },
       { name: "intensity", type: "number", description: "柔光强度。1 与不传相同。没有柔光时不起作用。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
       className,
+      { name: "ref", type: "React.Ref<HTMLDivElement>", description: "提示内容节点的 ref。" },
     ],
     presets: [
       { name: "warm-tooltip-plain", label: "无光", values: { glow: false, delay: 200, intensity: 1 } },

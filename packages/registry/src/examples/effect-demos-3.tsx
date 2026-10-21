@@ -50,7 +50,17 @@ function Circle({
   )
 }
 
-export function AnimatedBeamDemo({ duration, delay, pathWidth }: { duration?: number; delay?: number; pathWidth?: number } = {}) {
+export function AnimatedBeamDemo({
+  duration,
+  delay,
+  pathWidth,
+  curvature = 40,
+}: {
+  duration?: number
+  delay?: number
+  pathWidth?: number
+  curvature?: number
+} = {}) {
   const container = useRef<HTMLDivElement>(null)
   const a = useRef<HTMLDivElement>(null)
   const b = useRef<HTMLDivElement>(null)
@@ -61,8 +71,8 @@ export function AnimatedBeamDemo({ duration, delay, pathWidth }: { duration?: nu
         <Circle nodeRef={a} label="A" />
         <Circle nodeRef={b} label="Hub" />
         <Circle nodeRef={c} label="B" />
-        <AnimatedBeam containerRef={container} fromRef={a} toRef={b} curvature={40} duration={duration} delay={delay} pathWidth={pathWidth} />
-        <AnimatedBeam containerRef={container} fromRef={c} toRef={b} curvature={40} reverse duration={duration} delay={delay} pathWidth={pathWidth} />
+        <AnimatedBeam containerRef={container} fromRef={a} toRef={b} curvature={curvature} duration={duration} delay={delay} pathWidth={pathWidth} />
+        <AnimatedBeam containerRef={container} fromRef={c} toRef={b} curvature={curvature} reverse duration={duration} delay={delay} pathWidth={pathWidth} />
       </div>
     </Frame>
   )

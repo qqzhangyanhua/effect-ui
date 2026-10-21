@@ -85,9 +85,9 @@ export const batch19Components: ComponentMeta[] = [
     file: "effects/wavefield-neon.tsx",
     target: "components/ui/wavefield-neon.tsx",
     props: [
-      { name: "color", type: "string", defaultValue: "#22d3ee", description: "线条颜色。" },
-      { name: "density", type: "number", defaultValue: "18", description: "线条数量。" },
-      { name: "amplitude", type: "number", defaultValue: "0.28", description: "起伏幅度。" },
+      { name: "color", type: "string", defaultValue: "#22d3ee", description: "线条颜色。", control: { kind: "color", value: "#22d3ee" } },
+      { name: "density", type: "number", defaultValue: "18", description: "线条数量。", control: { kind: "range", value: 18, min: 8, max: 28, step: 1 } },
+      { name: "amplitude", type: "number", defaultValue: "0.28", description: "起伏幅度。", control: { kind: "range", value: 0.28, min: 0, max: 1, step: 0.01 } },
       ...ui,
     ],
   },
@@ -254,6 +254,8 @@ export const batch19Components: ComponentMeta[] = [
     props: [
       { name: "catalog", type: "CartProduct[]", description: "可加入的商品。" },
       { name: "freeShippingAt", type: "number", defaultValue: "100", description: "免运费门槛。" },
+      { name: "currency", type: "string", defaultValue: "CNY", description: "货币代码。" },
+      { name: "locale", type: "string", defaultValue: "zh-CN", description: "地区。" },
       ...ui,
     ],
   },
@@ -278,8 +280,8 @@ export const batch19Components: ComponentMeta[] = [
     file: "effects/radial-gauge.tsx",
     target: "components/ui/radial-gauge.tsx",
     props: [
-      { name: "value", type: "number", defaultValue: "42", description: "当前值。" },
-      { name: "variant", type: '"semi" | "three-quarter"', defaultValue: "semi", description: "圆弧范围。" },
+      { name: "value", type: "number", defaultValue: "42", description: "当前值。", control: { kind: "range", value: 64, min: 0, max: 100, step: 1 } },
+      { name: "variant", type: '"semi" | "three-quarter"', defaultValue: "semi", description: "圆弧范围。", control: { kind: "select", value: "semi", options: ["semi", "three-quarter"] } },
       { name: "segments", type: "GaugeSegment[]", description: "分段颜色。" },
       { name: "thresholds", type: "number[]", description: "阈值刻度。" },
       ...ui,

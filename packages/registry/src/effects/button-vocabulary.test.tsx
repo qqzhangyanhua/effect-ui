@@ -83,6 +83,8 @@ test("canonical props match the previous render", () => {
     plain.container.querySelector("feColorMatrix")?.getAttribute("values"),
   )
   expect(plain.container.querySelector(".size-8")?.className).toBe(same.container.querySelector(".size-8")?.className)
+  expect(plain.container.querySelector("filter")?.getAttribute("x")).toBe("-80%")
+  expect(plain.container.querySelector(".size-8")?.className).toContain("translate-x-[70%]")
 })
 
 test("new props change the effect", () => {
@@ -99,6 +101,7 @@ test("new props change the effect", () => {
 
   const pulse = render(<PulseButton duration={1200} intensity={0.8}>脉冲</PulseButton>)
   const ring = byClass(pulse, "pulse-ring")
+  expect(buttonOf(pulse).className).toContain("isolate")
   expect(ring?.className).not.toContain("bg-primary/40")
   expect(ring?.className).toContain("motion-reduce:animate-none")
   expect(ring?.getAttribute("style")).toContain("80%")

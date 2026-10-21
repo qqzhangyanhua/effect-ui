@@ -3,7 +3,7 @@ import { expect, test } from "vitest"
 import { auditRegistry, type AuditCatalogEntry } from "./audit"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
 
-const source = `export interface ButtonProps {
+const source = `interface ButtonProps {
   className?: string
   speed?: number
   variant?: string
@@ -758,6 +758,206 @@ test("基础组件用了同名词也不做词汇表检查", () => {
       ]),
     ).filter((issue) => issue.type === "vocabulary-mismatch"),
   ).toEqual([])
+})
+
+const ranged = { kind: "range", value: 1, min: 0, max: 2 }
+
+test("带 Control 的 prop 被 Demo 接住并传给组件时不报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }, { name: "text", control: { kind: "text", value: "标题" } }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n  text?: string\n}\nexport function ButtonDemo({ speed, text }: { speed?: number; text?: string } = {}) {\n  return <Button speed={speed}>{text}</Button>\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([])
+})
+
+test("Control 不在 Demo 参数里时报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo() {\n  return <Button />\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([
+    {
+      name: "button",
+      type: "control-not-in-demo",
+      description: "控件 “speed” 不在 Demo 的参数里。",
+    },
+  ])
+})
+
+test("Control 在 Demo 参数里但没有传给组件时报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo({ speed }: { speed?: number } = {}) {\n  return <Button />\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([
+    {
+      name: "button",
+      type: "control-not-in-demo",
+      description: "控件 “speed” 在 Demo 参数里，但没有传给组件。",
+    },
+  ])
+})
+
+test("没有 Control 的 prop 不报 control-not-in-demo", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo() {\n  return <Button />\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([])
+})
+
+test("导出 Props 的自有字段已经写进 catalog 时不报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }] })],
+    {
+      "ui/button.tsx":
+        "interface SharedProps {\n  glow?: boolean\n}\nexport interface ButtonState {\n  extra?: boolean\n}\nexport interface ButtonProps {\n  speed?: number\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-catalog")).toEqual([])
+})
+
+test("导出 Props 的自有字段没有写进 catalog 时报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }] })],
+    {
+      "ui/button.tsx":
+        "export type ButtonProps = React.HTMLAttributes<HTMLDivElement> & {\n  speed?: number\n  autoSize?: boolean | { minRows?: number; maxRows?: number }\n  glow?: boolean\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-catalog")).toEqual([
+    {
+      name: "button",
+      type: "prop-not-in-catalog",
+      description: "Prop “autoSize” 没有写进 catalog 的 props。",
+    },
+    {
+      name: "button",
+      type: "prop-not-in-catalog",
+      description: "Prop “glow” 没有写进 catalog 的 props。",
+    },
+  ])
+})
+
+test("HTML 属性和事件回调没有写进 catalog 时不报告", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  className?: string\n  \"aria-label\"?: string\n  onValueChange?: (value: string) => void\n  once?: boolean\n  glow?: boolean\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-catalog")).toEqual([
+    {
+      name: "button",
+      type: "prop-not-in-catalog",
+      description: "Prop “once” 没有写进 catalog 的 props。",
+    },
+    {
+      name: "button",
+      type: "prop-not-in-catalog",
+      description: "Prop “glow” 没有写进 catalog 的 props。",
+    },
+  ])
+})
+
+test("测试文件和字符串里的 Demo 不会盖过 examples 里的 Demo", () => {
+  const passing = "export function ButtonDemo({ speed }: { speed?: number } = {}) {\n  return <Button speed={speed} />\n}\n"
+  const real = "export function ButtonDemo() {\n  return <Button />\n}\n"
+  const component = "export interface ButtonProps {\n  speed?: number\n}\n"
+  const input = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }] })],
+    {
+      "audit.test.ts": passing,
+      "ui/button.tsx": `${component}${passing}`,
+      "examples/ui-demos.tsx": `const sample = ${JSON.stringify(passing)}\n${real}`,
+    },
+  )
+  input.sourceFiles = ["audit.test.ts", "ui/button.tsx", "examples/ui-demos.tsx"]
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([
+    {
+      name: "button",
+      type: "control-not-in-demo",
+      description: "控件 “speed” 不在 Demo 的参数里。",
+    },
+  ])
+
+  input.sourceFiles = ["examples/ui-demos.tsx", "ui/button.tsx", "audit.test.ts"]
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([
+    {
+      name: "button",
+      type: "control-not-in-demo",
+      description: "控件 “speed” 不在 Demo 的参数里。",
+    },
+  ])
+})
+
+test("同名 Demo 没有 examples 来源时不采用先扫到的那份", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }] })],
+    {
+      "ui/other.tsx": "export function ButtonDemo() {\n  return <Button />\n}\n",
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo({ speed }: { speed?: number } = {}) {\n  return <Button speed={speed} />\n}\n",
+    },
+  )
+  input.sourceFiles = ["ui/other.tsx", "ui/button.tsx"]
+  expect(auditRegistry(input).filter((issue) => issue.type === "control-not-in-demo")).toEqual([])
+})
+
+test("表达式里的 JSX 属性和布尔简写算传给组件，对象简写不算", () => {
+  const passed = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }, { name: "reverse", control: { kind: "boolean", value: true } }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n  reverse?: boolean\n}\nexport function ButtonDemo({ speed, reverse }: { speed?: number; reverse?: boolean } = {}) {\n  return (\n    <div>\n      {condition ? <Button speed={speed} /> : null}\n      {items.map(() => <Button reverse />)}\n      <span>x</span>\n      {speed}\n    </div>\n  )\n}\n",
+    },
+  )
+  expect(auditRegistry(passed).filter((issue) => issue.type === "control-not-in-demo")).toEqual([])
+
+  const shorthand = withSource(
+    [entry({ props: [{ name: "speed", control: ranged }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo({ speed }: { speed?: number } = {}) {\n  const props = { speed }\n  return <Button>{{ speed }}</Button>\n}\n",
+    },
+  )
+  expect(auditRegistry(shorthand).filter((issue) => issue.type === "control-not-in-demo")).toEqual([
+    {
+      name: "button",
+      type: "control-not-in-demo",
+      description: "控件 “speed” 在 Demo 参数里，但没有传给组件。",
+    },
+  ])
+})
+
+test("同一 registry 项导出的子组件 Props 算在这条 catalog 上", () => {
+  const input = withSource(
+    [entry({ props: [{ name: "speed" }] })],
+    {
+      "ui/button.tsx":
+        "export interface ButtonProps {\n  speed?: number\n}\nexport interface IconProps {\n  glyph?: string\n}\n",
+    },
+  )
+  expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-catalog")).toEqual([
+    {
+      name: "button",
+      type: "prop-not-in-catalog",
+      description: "Prop “glyph” 没有写进 catalog 的 props。",
+    },
+  ])
 })
 
 test("select 控件起始值不在选项中时报告", () => {

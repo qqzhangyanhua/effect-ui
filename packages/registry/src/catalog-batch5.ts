@@ -393,6 +393,9 @@ export const batch5Components: ComponentMeta[] = [
     target: "components/ui/ecommerce-blocks.tsx",
     props: [
       { name: "view", type: '"store" | "gallery" | "checkout"', defaultValue: '"store"', description: "展示哪一组。", control: { kind: "select", value: "store", options: ["store", "gallery", "checkout"] } },
+      { name: "product", type: "Product", description: "商品卡的商品，含 id、名称、价格和图片。" },
+      { name: "images", type: "string[]", description: "画廊图片地址。" },
+      { name: "items", type: "CartItem[]", description: "购物车行项目，含商品和数量。" },
       ...ui,
     ],
     presets: [

@@ -1,0 +1,25 @@
+apps/docs/components/preview-frame.tsx
+  s_212d5913124ebc::t_4423a2f7ca8dc9 3,8-10,18-20
+apps/docs/components/component-preview.test.tsx
+  s_212d5913124ebc::t_18e58f47c32426 309,314-316
+  s_212d5913124ebc::t_82dcdf39216acc 205-213
+apps/docs/app/globals.css
+  s_212d5913124ebc::t_db2798a2d35f78 46
+  s_212d5913124ebc::t_11f1369cba3ffc 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "a28b7b89d25c2ef5641a6050e71565f9ed187807",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

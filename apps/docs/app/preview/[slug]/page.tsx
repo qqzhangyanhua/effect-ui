@@ -54,7 +54,6 @@ async function PreviewPage({ params }: PreviewPageProps) {
   if (!item || !Demo) notFound()
 
   const Template = item.category === "templates" ? templateComponents[slug] : undefined
-  if (item.category === "templates" && !Template) notFound()
 
   return (
     <div className="relative min-h-svh">

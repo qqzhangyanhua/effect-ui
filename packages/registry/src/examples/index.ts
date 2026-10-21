@@ -16,6 +16,7 @@ import * as effectDemos14 from "./effect-demos-14"
 import * as effectDemos15 from "./effect-demos-15"
 import * as effectDemos16 from "./effect-demos-16"
 import * as effectDemos17 from "./effect-demos-17"
+import * as effectDemos18 from "./effect-demos-18"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -391,6 +392,21 @@ const demoMap: Record<string, ComponentType> = {
   "poll-vote": effectDemos17.PollVoteDemo,
   "schedule-slot-picker": effectDemos17.ScheduleSlotPickerDemo,
   "reaction-bar": effectDemos17.ReactionBarDemo,
+  "image-tube-scroll": effectDemos18.ImageTubeScrollDemo,
+  "depth-fog-gallery": effectDemos18.DepthFogGalleryDemo,
+  "fireworks-show": effectDemos18.FireworksShowDemo,
+  "wobble-line-cursor": effectDemos18.WobbleLineCursorDemo,
+  "lego-pixelate": effectDemos18.LegoPixelateDemo,
+  "telescope-zoom-scroll": effectDemos18.TelescopeZoomScrollDemo,
+  "curved-scrollbar": effectDemos18.CurvedScrollbarDemo,
+  "particle-hourglass": effectDemos18.ParticleHourglassDemo,
+  "invoice-preview": effectDemos18.InvoicePreviewDemo,
+  "shortcuts-dialog": effectDemos18.ShortcutsDialogDemo,
+  "pricing-calculator": effectDemos18.PricingCalculatorDemo,
+  "plan-compare-table": effectDemos18.PlanCompareTableDemo,
+  "mention-textarea": effectDemos18.MentionTextareaDemo,
+  "inbox-split-view": effectDemos18.InboxSplitViewDemo,
+  "timezone-clock": effectDemos18.TimezoneClockDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

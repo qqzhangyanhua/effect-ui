@@ -9,12 +9,20 @@ import { cn } from "@/lib/utils"
 export interface BurstIconsProps {
   className?: string
   count?: number
+  colors?: readonly string[]
+  duration?: number
+  scale?: number
+  size?: number
 }
 
 const ICONS = [Heart, Star, Sparkles, Zap]
 const COLORS = ["#f43f5e", "#f59e0b", "#22d3ee", "#a78bfa"]
 
-function BurstIcons({ className, count = 10 }: BurstIconsProps) {
+function BurstIcons({ className, count = 10, colors, duration, scale, size }: BurstIconsProps) {
+  const palette = colors ?? COLORS
+  const reach = scale === undefined || scale === 1 ? 1 : scale
+  const durationMs = duration === undefined || duration === 700 ? undefined : duration
+  const iconSize = size === undefined || size === 16 ? undefined : size
   const [burst, setBurst] = React.useState(0)
   const reduced = React.useSyncExternalStore(
     (onStoreChange) => {
@@ -40,13 +48,15 @@ function BurstIcons({ className, count = 10 }: BurstIconsProps) {
         ? Array.from({ length: count }, (_, index) => {
             const Icon = ICONS[index % ICONS.length] ?? Star
             const angle = (index / count) * Math.PI * 2
-            const distance = reduced ? 0 : 56 + (index % 3) * 10
+            const distance = reduced ? 0 : (56 + (index % 3) * 10) * reach
             return (
               <BurstPiece
                 key={`${burst}-${index}`}
                 angle={angle}
                 distance={distance}
-                color={COLORS[index % COLORS.length] ?? "#a78bfa"}
+                color={palette[index % palette.length] ?? "#a78bfa"}
+                durationMs={durationMs}
+                iconSize={iconSize}
                 Icon={Icon}
               />
             )
@@ -60,11 +70,15 @@ function BurstPiece({
   angle,
   distance,
   color,
+  durationMs,
+  iconSize,
   Icon,
 }: {
   angle: number
   distance: number
   color: string
+  durationMs?: number
+  iconSize?: number
   Icon: typeof Star
 }) {
   const progress = useMotionValue(0)
@@ -74,13 +88,20 @@ function BurstPiece({
   const scale = useTransform(progress, [0, 0.3, 1], [0.4, 1.15, 0.2])
 
   React.useEffect(() => {
-    const control = animate(progress, 1, { duration: 0.7, ease: "easeOut" })
+    const control = animate(
+      progress,
+      1,
+      durationMs === undefined ? { duration: 0.7, ease: "easeOut" } : { duration: durationMs / 1000, ease: "easeOut" },
+    )
     return () => control.stop()
-  }, [progress])
+  }, [progress, durationMs])
 
   return (
     <motion.span className="pointer-events-none absolute" style={{ x, y, opacity, scale, color }}>
-      <Icon className="size-4" />
+      <Icon
+        className={iconSize === undefined ? "size-4" : undefined}
+        style={iconSize === undefined ? undefined : { width: iconSize, height: iconSize }}
+      />
     </motion.span>
   )
 }

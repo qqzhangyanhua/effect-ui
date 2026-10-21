@@ -142,8 +142,8 @@ export function RoughAnnotationDemo({
   )
 }
 
-export function BurstIconsDemo() {
-  return <BurstIcons />
+export function BurstIconsDemo({ count, colors, duration, scale, size }: { count?: number; colors?: string[]; duration?: number; scale?: number; size?: number } = {}) {
+  return <BurstIcons count={count} colors={colors} duration={duration} scale={scale} size={size} />
 }
 
 export function MarqueeAlongSvgPathDemo() {

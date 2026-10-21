@@ -159,16 +159,16 @@ export function FuzzyTextDemo({
   )
 }
 
-export function ElectricBorderDemo() {
-  return <ElectricBorder className="w-full" />
+export function ElectricBorderDemo({ color, speed, scale, intensity }: { color?: string; speed?: number; scale?: number; intensity?: number } = {}) {
+  return <ElectricBorder className="w-full" color={color} speed={speed} scale={scale} intensity={intensity} />
 }
 
 export function StickerPeelDemo({ intensity, speed, size }: { intensity?: number; speed?: number; size?: number } = {}) {
   return <StickerPeel intensity={intensity} speed={speed} size={size} />
 }
 
-export function ClickSparkDemo() {
-  return <ClickSpark className="w-full" />
+export function ClickSparkDemo({ count, duration, scale, size, color }: { count?: number; duration?: number; scale?: number; size?: number; color?: string } = {}) {
+  return <ClickSpark className="w-full" count={count} duration={duration} scale={scale} size={size} color={color} />
 }
 
 export function GlareHoverDemo({

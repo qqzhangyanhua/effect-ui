@@ -5843,6 +5843,7 @@
       "description": "灵感来自 React Bits，原创实现。用 SVG feTurbulence 和 feDisplacementMap 做爆裂发光边。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "use-prefers-reduced-motion",
         "utils"
       ],

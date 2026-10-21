@@ -296,7 +296,19 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/burst-icons.tsx",
     target: "components/ui/burst-icons.tsx",
-    props: [{ name: "count", type: "number", defaultValue: "10", description: "图标数量。" }, ...ui],
+    props: [
+      { name: "count", type: "number", defaultValue: "10", description: "图标数量。", control: { kind: "range", value: 10, min: 4, max: 20, step: 1 } },
+      { name: "colors", type: "string[]", description: "图标颜色。不传时仍是这四色。", control: { kind: "colors", value: ["#f43f5e", "#f59e0b", "#22d3ee", "#a78bfa"] } },
+      { name: "duration", type: "number", description: "飞出毫秒。700 与不传相同。", control: { kind: "range", value: 700, min: 280, max: 1400, step: 20 } },
+      { name: "scale", type: "number", description: "飞出距离倍率。1 与不传相同，最近仍是 56px。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "size", type: "number", description: "图标边长（像素）。16 与不传相同，仍是 size-4。", control: { kind: "range", value: 16, min: 8, max: 32, step: 2 } },
+      ...ui,
+    ],
+    presets: [
+      { name: "burst-icons-small", label: "小", values: { count: 6, duration: 500, scale: 0.6, size: 12 } },
+      { name: "burst-icons-default", label: "默认", values: { count: 10, duration: 700, scale: 1, size: 16 } },
+      { name: "burst-icons-large", label: "大", values: { count: 16, duration: 1000, scale: 1.6, size: 24 } },
+    ],
   },
   {
     name: "marquee-along-svg-path",

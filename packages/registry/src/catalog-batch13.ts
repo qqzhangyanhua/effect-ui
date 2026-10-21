@@ -195,9 +195,17 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/electric-border.tsx",
     target: "components/ui/electric-border.tsx",
     props: [
-      { name: "color", type: "string", defaultValue: '"#67e8f9"', description: "描边和辉光颜色。" },
+      { name: "color", type: "string", defaultValue: '"#67e8f9"', description: "描边和辉光颜色。#67e8f9 与不传相同。", control: { kind: "color", value: "#67e8f9" } },
+      { name: "speed", type: "number", description: "电弧抖动倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
+      { name: "scale", type: "number", description: "位移倍率。1 与不传相同，位移仍是 14。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "intensity", type: "number", description: "辉光强度。1 与不传相同，仍是 8px。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
       { name: "children", type: "ReactNode", description: "边框内的内容。" },
       ...ui,
+    ],
+    presets: [
+      { name: "electric-border-calm", label: "稳", values: { speed: 0.6, scale: 0.6, intensity: 0.4 } },
+      { name: "electric-border-default", label: "默认", values: { speed: 1, scale: 1, intensity: 1 } },
+      { name: "electric-border-hot", label: "烈", values: { speed: 1.8, scale: 1.6, intensity: 1 } },
     ],
   },
   {
@@ -247,9 +255,18 @@ export const batch13Components: ComponentMeta[] = [
     file: "effects/click-spark.tsx",
     target: "components/ui/click-spark.tsx",
     props: [
-      { name: "count", type: "number", defaultValue: "12", description: "每圈火花条数。" },
+      { name: "count", type: "number", defaultValue: "12", description: "每圈火花条数。", control: { kind: "range", value: 12, min: 4, max: 24, step: 1 } },
+      { name: "duration", type: "number", description: "迸出毫秒。450 与不传相同。", control: { kind: "range", value: 450, min: 180, max: 900, step: 10 } },
+      { name: "scale", type: "number", description: "飞出距离倍率。1 与不传相同，终点仍是 22px。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "size", type: "number", description: "火花长度（像素）。12 与不传相同，仍是 w-3。", control: { kind: "range", value: 12, min: 4, max: 28, step: 2 } },
+      { name: "color", type: "string", description: "火花颜色。不传则仍是 amber-200。", control: { kind: "color" } },
       { name: "children", type: "ReactNode", description: "可点击区域里的内容。" },
       ...ui,
+    ],
+    presets: [
+      { name: "click-spark-short", label: "短", values: { count: 6, duration: 280, scale: 0.6, size: 8 } },
+      { name: "click-spark-default", label: "默认", values: { count: 12, duration: 450, scale: 1, size: 12 } },
+      { name: "click-spark-long", label: "长", values: { count: 18, duration: 700, scale: 1.6, size: 20 } },
     ],
   },
   {

@@ -865,7 +865,17 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/confetti-burst.tsx",
     target: "components/ui/confetti-burst.tsx",
-    props: [{ name: "pieces", type: "number", defaultValue: "18", description: "彩纸片数。" }],
+    props: [
+      { name: "pieces", type: "number", defaultValue: "18", description: "彩纸片数。", control: { kind: "range", value: 18, min: 6, max: 36, step: 1 } },
+      { name: "duration", type: "number", description: "散开毫秒。800 与不传相同。", control: { kind: "range", value: 800, min: 320, max: 1600, step: 20 } },
+      { name: "scale", type: "number", description: "飞散距离倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 } },
+      { name: "colors", type: "string[]", description: "彩纸颜色。不传时仍是这五色。", control: { kind: "colors", value: ["#a78bfa", "#22d3ee", "#f472b6", "#facc15", "#34d399"] } },
+    ],
+    presets: [
+      { name: "confetti-burst-small", label: "小", values: { pieces: 8, duration: 500, scale: 0.6 } },
+      { name: "confetti-burst-default", label: "默认", values: { pieces: 18, duration: 800, scale: 1 } },
+      { name: "confetti-burst-big", label: "大", values: { pieces: 30, duration: 1200, scale: 1.6 } },
+    ],
   },
   {
     name: "cursor-trail",
@@ -913,7 +923,18 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/sparkles.tsx",
     target: "components/ui/sparkles.tsx",
-    props: [{ name: "count", type: "number", defaultValue: "8", description: "星点数量。" }],
+    props: [
+      { name: "count", type: "number", defaultValue: "8", description: "星点数量。", control: { kind: "range", value: 8, min: 3, max: 16, step: 1 } },
+      { name: "duration", type: "number", description: "基础闪烁毫秒。1400 与不传相同，仍按点再错开 0.3 秒。", control: { kind: "range", value: 1400, min: 560, max: 2800, step: 20 } },
+      { name: "delay", type: "number", description: "相邻星点错开毫秒。120 与不传相同。", control: { kind: "range", value: 120, min: 0, max: 300, step: 10 } },
+      { name: "size", type: "number", description: "星点直径（像素）。4 与不传相同，仍是 size-1。", control: { kind: "range", value: 4, min: 2, max: 12, step: 1 } },
+      { name: "color", type: "string", description: "星点颜色。不传则仍是 amber-300。", control: { kind: "color" } },
+    ],
+    presets: [
+      { name: "sparkles-few", label: "少", values: { count: 4, duration: 2000, delay: 180, size: 4 } },
+      { name: "sparkles-default", label: "默认", values: { count: 8, duration: 1400, delay: 120, size: 4 } },
+      { name: "sparkles-many", label: "多", values: { count: 14, duration: 800, delay: 40, size: 6 } },
+    ],
   },
   {
     name: "border-beam",

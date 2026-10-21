@@ -369,12 +369,12 @@ export function GlobeSphereDemo() {
   return <GlobeSphere className="[transform-style:preserve-3d]" />
 }
 
-export function ConfettiBurstDemo() {
-  return <ConfettiBurst>庆祝一下</ConfettiBurst>
+export function ConfettiBurstDemo({ pieces, duration, scale, colors }: { pieces?: number; duration?: number; scale?: number; colors?: string[] } = {}) {
+  return <ConfettiBurst pieces={pieces} duration={duration} scale={scale} colors={colors}>庆祝一下</ConfettiBurst>
 }
 
-export function SparklesDemo() {
-  return <Sparkles className="px-6 py-3 text-2xl font-medium">Sparkles</Sparkles>
+export function SparklesDemo({ count, duration, delay, size, color }: { count?: number; duration?: number; delay?: number; size?: number; color?: string } = {}) {
+  return <Sparkles className="px-6 py-3 text-2xl font-medium" count={count} duration={duration} delay={delay} size={size} color={color}>Sparkles</Sparkles>
 }
 
 export function BorderBeamDemo({ duration = 8, colorFrom, colorTo, size, intensity }: { duration?: number; colorFrom?: string; colorTo?: string; size?: number; intensity?: number } = {}) {

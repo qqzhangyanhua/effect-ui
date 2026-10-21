@@ -1,0 +1,27 @@
+packages/registry/src/effects/gooey-button.tsx
+  s_212d5913124ebc::t_96e56ea0ed2f3a 65
+  s_212d5913124ebc::t_c2ede57c074296 26
+  s_212d5913124ebc::t_97038aee00292f 36
+  s_212d5913124ebc::t_2922a0eac6346e 53-54
+apps/docs/public/r/gooey-button.json
+  s_212d5913124ebc::t_ccefc41d61f5c8 17
+packages/registry/src/effects/button-vocabulary.test.tsx
+  s_212d5913124ebc::t_37de3261f086f4 87
+  s_212d5913124ebc::t_6ea1e44eee31de 86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "7328d9eb5b7ba0ec2d5c58164d6753c0c829c036",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

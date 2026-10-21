@@ -26,6 +26,7 @@ import * as effectDemos24 from "./effect-demos-24"
 import * as effectDemos25 from "./effect-demos-25"
 import * as effectDemos26 from "./effect-demos-26"
 import * as effectDemos27 from "./effect-demos-27"
+import * as effectDemos28 from "./effect-demos-28"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -520,6 +521,21 @@ const demoMap: Record<string, ComponentType> = {
   "timezone-planner": effectDemos27.TimezonePlannerDemo,
   "currency-transfer": effectDemos27.CurrencyTransferDemo,
   "clip-trimmer": effectDemos27.ClipTrimmerDemo,
+  "aurora-curtain": effectDemos28.AuroraCurtainDemo,
+  "gravity-stars": effectDemos28.GravityStarsDemo,
+  "magnetic-field": effectDemos28.MagneticFieldDemo,
+  "ransom-note": effectDemos28.RansomNoteDemo,
+  "liquid-metal": effectDemos28.LiquidMetalDemo,
+  "sdf-blob-transition": effectDemos28.SdfBlobTransitionDemo,
+  "video-ambient": effectDemos28.VideoAmbientDemo,
+  "pixel-brush-canvas": effectDemos28.PixelBrushCanvasDemo,
+  "duration-picker": effectDemos28.DurationPickerDemo,
+  "exposure-slider": effectDemos28.ExposureSliderDemo,
+  "scrubber": effectDemos28.ScrubberDemo,
+  "breakpoint-indicator": effectDemos28.BreakpointIndicatorDemo,
+  "switchboard-card": effectDemos28.SwitchboardCardDemo,
+  "time-machine-stack": effectDemos28.TimeMachineStackDemo,
+  "interactive-image-selector": effectDemos28.InteractiveImageSelectorDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -1,0 +1,43 @@
+apps/docs/app/page.tsx
+  s_212d5913124ebc::t_f545d9fc6f00c7 2
+  s_212d5913124ebc::t_9f59b3a55eb365 6-8,19-23,26-27,46-47,54-63,89,125,129-133,143,152,168,178
+apps/docs/components/home-showcase.tsx
+  s_212d5913124ebc::t_4a0e6f130b552e 41-45,48,53-54,57-58,61-69,76-90
+  s_212d5913124ebc::t_4471dc6c553e56 6
+  s_212d5913124ebc::t_cbeec23be088d7 231,233-234,236,242,246,251-252,256,260-261
+packages/registry/src/effects/shimmer-button.tsx
+  s_212d5913124ebc::t_ec1486e2bfa235 36-38
+apps/docs/components/home-principles-grid.tsx
+  s_212d5913124ebc::t_55baaf83d4fb84 1-54
+apps/docs/components/home-hero-extras.tsx
+  s_212d5913124ebc::t_74ffef20574101 1-11,17,19-22,24-61
+  s_212d5913124ebc::t_53b31769a589ba 12-16,18,23
+apps/docs/public/r/shimmer-button.json
+  s_212d5913124ebc::t_dd2ed491bad9f1 17
+apps/docs/components/hero-showcase.tsx
+  s_212d5913124ebc::t_d813db2c7131d7 42
+  s_212d5913124ebc::t_4ece537d91c47a 3
+  s_212d5913124ebc::t_7634f320fa0c70 50
+  s_212d5913124ebc::t_dd4626a524f2d6 90-93
+  s_212d5913124ebc::t_cc305acb9c9a0f 94
+  s_212d5913124ebc::t_77caf70dc0c2ff 16,18-41,43-49,51-77,80,82-89,99-101,103-115,119,122,131-133,137-153,155-162,164-187,192-199,201-218,220-251,255,258-259,261,266,270,276-278,280,282,285-286,288,293-294,296-297,300,303
+  s_212d5913124ebc::t_073399d035ca6f 102
+apps/docs/components/home-feature-grid.tsx
+  s_212d5913124ebc::t_c7652796566b81 1-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "8812c9970df1ed9152c8b06ece9cde41950354f4",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

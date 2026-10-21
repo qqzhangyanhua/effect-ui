@@ -4,7 +4,6 @@ import { AudioSpectrum } from "../effects/audio-spectrum"
 import { CartDrawer } from "../effects/cart-drawer"
 import { CouponInput } from "../effects/coupon-input"
 import { CreditCardForm } from "../effects/credit-card-form"
-import { FunnelChart } from "../effects/funnel-chart"
 import { GradientCarousel3d } from "../effects/gradient-carousel-3d"
 import { LiquidMorphSlideshow } from "../effects/liquid-morph-slideshow"
 import { RadialGauge } from "../effects/radial-gauge"
@@ -128,10 +127,6 @@ export function CouponInputDemo() {
 
 export function RadialGaugeDemo() {
   return <RadialGauge value={64} thresholds={[80]} />
-}
-
-export function FunnelChartDemo() {
-  return <FunnelChart />
 }
 
 export function GanttTimelineDemo() {

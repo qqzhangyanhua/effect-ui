@@ -7766,26 +7766,6 @@
       ]
     },
     {
-      "name": "funnel-chart",
-      "type": "registry:ui",
-      "title": "Funnel Chart",
-      "description": "纯 SVG 漏斗。宽度按数值，显示转化率和流失率，悬停高亮，入场逐层展开。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/funnel-chart.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/funnel-chart.tsx"
-        }
-      ]
-    },
-    {
       "name": "gantt-timeline",
       "type": "registry:ui",
       "title": "Gantt Timeline",

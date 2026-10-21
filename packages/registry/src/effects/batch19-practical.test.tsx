@@ -8,7 +8,6 @@ import "@testing-library/jest-dom/vitest"
 import { CartDrawer } from "./cart-drawer"
 import { CouponInput } from "./coupon-input"
 import { CreditCardForm } from "./credit-card-form"
-import { FunnelChart } from "./funnel-chart"
 import { RadialGauge } from "./radial-gauge"
 import { GanttTimeline } from "../sections/gantt-timeline"
 import { OrgChart } from "../sections/org-chart"
@@ -76,11 +75,6 @@ test("仪表盘露出当前值", () => {
   render(<RadialGauge value={42} />)
   expect(screen.getByRole("meter", { name: "仪表" })).toHaveAttribute("aria-valuenow", "42")
   expect(screen.getByText("42")).toBeInTheDocument()
-})
-
-test("漏斗写出转化和流失", () => {
-  render(<FunnelChart />)
-  expect(screen.getByText("注册 转化 64% · 流失 36%")).toBeInTheDocument()
 })
 
 test("甘特图可以切换周视图", async () => {

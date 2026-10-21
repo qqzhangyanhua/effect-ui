@@ -15,6 +15,7 @@ import { batch15Components } from "./catalog-batch15"
 import { batch16Components } from "./catalog-batch16"
 import { batch17Components } from "./catalog-batch17"
 import { batch18Components } from "./catalog-batch18"
+import { batch19Components } from "./catalog-batch19"
 
 export type ComponentCategory =
   | "ui"
@@ -1101,6 +1102,7 @@ export const components: ComponentMeta[] = [
   ...batch16Components,
   ...batch17Components,
   ...batch18Components,
+  ...batch19Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

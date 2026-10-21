@@ -12,7 +12,7 @@ function InputsDocsPage() {
     <FamilyGallery
       cluster="input"
       title="输入"
-      description="文本输入和专用输入都在这一页。用上面的名单滚到某一个，页面向下是全部预览。"
+      description="文本输入和专用输入都在这一页。用上面的名单滚到某一个，每一项都有预览、用法和源码。"
     />
   )
 }

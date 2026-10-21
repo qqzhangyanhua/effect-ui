@@ -1,0 +1,42 @@
+apps/docs/components/home-hero-title.tsx
+  s_212d5913124ebc::t_f6347e6b3c9964 7-8,10
+  s_212d5913124ebc::t_f2dcb81c537324 1-6,9,11-13
+apps/docs/components/home-section-heading.tsx
+  s_212d5913124ebc::t_e1de01ebe6157e 1-54
+apps/docs/components/home-showcase.tsx
+  s_212d5913124ebc::t_1ccf74a0953945 15
+  s_212d5913124ebc::t_aaeb5f2784272b 266
+  s_212d5913124ebc::t_2b627d205982e6 29-31
+apps/docs/components/home-terminal.tsx
+  s_212d5913124ebc::t_cde8415a12d6b7 106-107
+  s_212d5913124ebc::t_17a7a33ada37aa 6
+  s_212d5913124ebc::t_d92c01cc5106ad 41-46
+apps/docs/components/home-section-backdrop.tsx
+  s_212d5913124ebc::t_8e8138b2575226 1-85
+apps/docs/components/home-cta-band.tsx
+  s_212d5913124ebc::t_ce5dca73c35765 1-47
+apps/docs/app/page.tsx
+  s_212d5913124ebc::t_31d2f2b2189ec7 127-129
+  s_212d5913124ebc::t_6ee81a23ae6ac0 5-6,8,11,13,25-30,33,43,79-90,93,109-119,130-138,140-141,145
+  s_212d5913124ebc::t_116338488d9fd1 101,106-108
+  s_212d5913124ebc::t_f1c71e2e1fa077 75-77
+  s_212d5913124ebc::t_437354c408c828 147-149
+  s_212d5913124ebc::t_f3c59e57cea6cf 15
+  s_212d5913124ebc::t_3e35eaba78e46e 146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "1f90fc12ef9f890e56b2d99743277a464eee496b",
+  "prompts": {},
+  "sessions": {
+    "s_212d5913124ebc": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "607e0e2b-9b42-4292-9727-a6e5733ca6b4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

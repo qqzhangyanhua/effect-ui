@@ -74,13 +74,17 @@ export function PlaceholderVanishInputDemo() {
   return <PlaceholderVanishInput className="w-full" />
 }
 
-export function LinkPreviewDemo() {
+export function LinkPreviewDemo({ intensity, scale, speed, size }: { intensity?: number; scale?: number; speed?: number; size?: number } = {}) {
   return (
     <div className="flex min-h-56 w-full items-start justify-center">
       <LinkPreview
         href="#link-preview"
         title="效果预览"
         description="悬停或聚焦时弹出卡片，图片是内置色块。"
+        intensity={intensity}
+        scale={scale}
+        speed={speed}
+        size={size}
       >
         查看组件
       </LinkPreview>
@@ -88,8 +92,8 @@ export function LinkPreviewDemo() {
   )
 }
 
-export function AvatarGroupTooltipDemo() {
-  return <AvatarGroupTooltip className="w-full justify-center py-8" />
+export function AvatarGroupTooltipDemo({ max, scale, intensity, size, speed }: { max?: number; scale?: number; intensity?: number; size?: number; speed?: number } = {}) {
+  return <AvatarGroupTooltip className="w-full justify-center py-8" max={max} scale={scale} intensity={intensity} size={size} speed={speed} />
 }
 
 export function ShuffleGridHeroDemo() {
@@ -104,8 +108,8 @@ export function SortableListDemo() {
   return <SortableList className="w-full" />
 }
 
-export function KpiSparklineCardDemo() {
-  return <KpiSparklineCard className="w-full" />
+export function KpiSparklineCardDemo({ color, size }: { color?: string; size?: number } = {}) {
+  return <KpiSparklineCard className="w-full" color={color} size={size} />
 }
 
 export function CookieConsentDemo() {

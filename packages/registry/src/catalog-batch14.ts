@@ -198,7 +198,36 @@ export const batch14Components: ComponentMeta[] = [
       { name: "description", type: "string", description: "卡片说明。" },
       { name: "image", type: "string", description: "页面图地址。缺省为内置色块。" },
       { name: "children", type: "ReactNode", description: "链接文字。" },
+      {
+        name: "intensity",
+        type: "number",
+        description: "弹出上移的倍率。1 与不传相同，起始仍是 10px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "弹出起始缩放的倍率。1 与不传相同，起始仍是 0.92。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧倍率。1 与不传相同，刚度仍是 460。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "卡片宽度（像素）。256 与不传相同。",
+        control: { kind: "range", value: 256, min: 160, max: 400, step: 4 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "link-preview-soft", label: "轻", values: { intensity: 0.4, scale: 1, speed: 0.7, size: 256 } },
+      { name: "link-preview-default", label: "默认", values: { intensity: 1, scale: 1, speed: 1, size: 256 } },
+      { name: "link-preview-wide", label: "宽", values: { intensity: 1, scale: 0.8, speed: 1.4, size: 320 } },
     ],
   },
   {
@@ -212,8 +241,43 @@ export const batch14Components: ComponentMeta[] = [
     target: "components/ui/avatar-group-tooltip.tsx",
     props: [
       { name: "people", type: "AvatarPerson[]", description: "姓名和头像底色。" },
-      { name: "max", type: "number", defaultValue: "4", description: "直接展示的人数，其余计入 +N。" },
+      {
+        name: "max",
+        type: "number",
+        defaultValue: "4",
+        description: "直接展示的人数，其余计入 +N。",
+        control: { kind: "range", value: 4, min: 1, max: 8, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "悬停放大的倍率。1 与不传相同，悬停仍是 1.06。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "抬起距离的倍率。1 与不传相同，仍是 8px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "头像边长（像素）。48 与不传相同。",
+        control: { kind: "range", value: 48, min: 28, max: 80, step: 2 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "弹簧倍率。1 与不传相同，刚度仍是 420。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "avatar-group-compact", label: "小", values: { max: 3, scale: 1, intensity: 0.4, size: 36, speed: 1 } },
+      { name: "avatar-group-default", label: "默认", values: { max: 4, scale: 1, intensity: 1, size: 48, speed: 1 } },
+      { name: "avatar-group-pop", label: "抬", values: { max: 5, scale: 1.3, intensity: 1, size: 48, speed: 1.6 } },
     ],
   },
   {
@@ -275,7 +339,24 @@ export const batch14Components: ComponentMeta[] = [
       { name: "value", type: "number", defaultValue: "12840", description: "主数字。" },
       { name: "delta", type: "number", defaultValue: "12.4", description: "涨跌百分比。" },
       { name: "series", type: "number[]", description: "折线数据。" },
+      {
+        name: "color",
+        type: "string",
+        description: "折线颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "折线盒子高度（像素）。80 与不传相同，仍是 h-20。",
+        control: { kind: "range", value: 80, min: 36, max: 140, step: 2 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "kpi-sparkline-short", label: "矮", values: { size: 48 } },
+      { name: "kpi-sparkline-default", label: "默认", values: { size: 80 } },
+      { name: "kpi-sparkline-tall", label: "高", values: { size: 110 } },
     ],
   },
   {

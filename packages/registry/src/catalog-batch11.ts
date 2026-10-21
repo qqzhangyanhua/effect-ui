@@ -127,7 +127,39 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/keycap-3d.tsx",
     target: "components/ui/keycap-3d.tsx",
-    props: [{ name: "keys", type: "string[]", description: "键帽字母。" }, ...ui],
+    props: [
+      { name: "keys", type: "string[]", description: "键帽字母。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "按下过渡（毫秒）。80 与不传相同。",
+        control: { kind: "range", value: 80, min: 32, max: 160, step: 4 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "静止倾斜角。18 与不传相同，按下仍是 8°。",
+        control: { kind: "range", value: 18, min: 0, max: 40, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "按下深度的倍率。1 与不传相同，下移仍是 6px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        description: "键间距（像素）。12 与不传相同。",
+        control: { kind: "range", value: 12, min: 0, max: 28, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "keycap-3d-flat", label: "平", values: { duration: 80, angle: 6, intensity: 0.4, gap: 12 } },
+      { name: "keycap-3d-default", label: "默认", values: { duration: 80, angle: 18, intensity: 1, gap: 12 } },
+      { name: "keycap-3d-loose", label: "疏", values: { duration: 120, angle: 18, intensity: 1, gap: 20 } },
+    ],
   },
   {
     name: "infinite-canvas-gallery",

@@ -52,8 +52,8 @@ export function Hero3DModelDemo() {
   return <Hero3DModel className="w-full" />
 }
 
-export function Keycap3DDemo() {
-  return <Keycap3D className="w-full" />
+export function Keycap3DDemo({ duration, angle, intensity, gap }: { duration?: number; angle?: number; intensity?: number; gap?: number } = {}) {
+  return <Keycap3D className="w-full" duration={duration} angle={angle} intensity={intensity} gap={gap} />
 }
 
 export function InfiniteCanvasGalleryDemo() {

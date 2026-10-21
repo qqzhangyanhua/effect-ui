@@ -7,10 +7,13 @@ import { cn } from "@/lib/utils"
 export interface FlipCardProps extends React.HTMLAttributes<HTMLDivElement> {
   front: React.ReactNode
   back: React.ReactNode
+  /** 翻转动画时长，毫秒。不传或 500 与原来的 duration-500 相同。 */
+  duration?: number
 }
 
-function FlipCard({ className, front, back, ...props }: FlipCardProps) {
+function FlipCard({ className, front, back, duration, ...props }: FlipCardProps) {
   const [flipped, setFlipped] = React.useState(false)
+  const timed = duration === undefined || duration === 500
 
   return (
     <div
@@ -22,9 +25,11 @@ function FlipCard({ className, front, back, ...props }: FlipCardProps) {
     >
       <div
         className={cn(
-          "relative h-full w-full transition-transform duration-500 motion-reduce:transition-none [transform-style:preserve-3d]",
+          "relative h-full w-full transition-transform motion-reduce:transition-none [transform-style:preserve-3d]",
+          timed && "duration-500",
           flipped && "[transform:rotateY(180deg)] motion-reduce:transform-none",
         )}
+        style={timed ? undefined : { transitionDuration: `${duration}ms` }}
       >
         <div
           className={cn(

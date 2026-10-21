@@ -24,10 +24,22 @@ function useMorphingDialog() {
   return context
 }
 
-function MorphingDialog({ children }: { children: React.ReactNode }) {
+function MorphingDialog({
+  children,
+  duration,
+  intensity,
+}: {
+  children: React.ReactNode
+  /** 弹簧时长，毫秒。不传或 450 仍是 0.45 秒。 */
+  duration?: number
+  /** 弹簧回弹。不传或 0.15 与原来相同。 */
+  intensity?: number
+}) {
   const [open, setOpen] = React.useState(false)
   const id = React.useId()
   const reduceMotion = usePrefersReducedMotion()
+  const seconds = duration === undefined || duration === 450 ? 0.45 : duration / 1000
+  const bounce = intensity === undefined || intensity === 0.15 ? 0.15 : intensity
   return (
     <MorphingDialogContext.Provider value={{ open, setOpen, id }}>
       <MotionConfig
@@ -35,7 +47,7 @@ function MorphingDialog({ children }: { children: React.ReactNode }) {
         transition={
           reduceMotion
             ? { duration: 0.15 }
-            : { type: "spring", bounce: 0.15, duration: 0.45 }
+            : { type: "spring", bounce, duration: seconds }
         }
       >
         {children}

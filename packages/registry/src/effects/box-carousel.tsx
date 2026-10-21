@@ -14,6 +14,14 @@ export interface BoxFace {
 export interface BoxCarouselProps {
   faces?: BoxFace[]
   className?: string
+  /** 弹簧倍率。不传或 1 时刚度 140、阻尼 20。 */
+  speed?: number
+  /** 立方体边长，像素。不传或 176 仍是 size-44，厚度仍是 5.5rem。 */
+  size?: number
+}
+
+function pace(speed: number | undefined) {
+  return speed === undefined || !Number.isFinite(speed) || speed <= 0 ? 1 : speed
 }
 
 const defaultFaces: BoxFace[] = [
@@ -23,18 +31,23 @@ const defaultFaces: BoxFace[] = [
   { title: "西", tint: "#f59e0b" },
 ]
 
-function BoxCarousel({ faces = defaultFaces.slice(0, 4), className }: BoxCarouselProps) {
+function BoxCarousel({ faces = defaultFaces.slice(0, 4), className, speed, size }: BoxCarouselProps) {
   const reduced = usePrefersReducedMotion()
   const [index, setIndex] = React.useState(0)
   const shown = faces.slice(0, 4)
+  const rate = pace(speed)
+  const edge = size === undefined || size === 176 ? 176 : size
 
   return (
     <div className={cn("grid place-items-center gap-4 py-4", className)}>
       <div className="[perspective:900px]">
         <motion.div
-          className="relative size-44 [transform-style:preserve-3d]"
+          className={cn("relative [transform-style:preserve-3d]", edge === 176 && "size-44")}
+          style={edge === 176 ? undefined : { width: edge, height: edge }}
           animate={{ rotateY: reduced ? 0 : index * -90 }}
-          transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 140, damping: 20 }}
+          transition={
+            reduced ? { duration: 0 } : { type: "spring", stiffness: rate === 1 ? 140 : 140 * rate, damping: rate === 1 ? 20 : 20 * rate }
+          }
         >
           {shown.map((face, faceIndex) => (
             <div
@@ -42,7 +55,7 @@ function BoxCarousel({ faces = defaultFaces.slice(0, 4), className }: BoxCarouse
               className="absolute inset-0 grid place-items-center rounded-xl border border-white/20 text-xl font-medium text-white"
               style={{
                 background: face.tint,
-                transform: `rotateY(${faceIndex * 90}deg) translateZ(5.5rem)`,
+                transform: `rotateY(${faceIndex * 90}deg) translateZ(${edge === 176 ? "5.5rem" : `${edge / 2}px`})`,
                 backfaceVisibility: "hidden",
               }}
             >

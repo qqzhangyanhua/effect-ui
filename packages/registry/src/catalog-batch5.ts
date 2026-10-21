@@ -400,7 +400,47 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/holographic-foil.tsx",
     target: "components/ui/holographic-foil.tsx",
-    props: ui,
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        description: "倾斜角。14 与不传相同。",
+        control: { kind: "range", value: 14, min: 0, max: 28, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "箔膜不透明度。0.8 与不传相同。",
+        control: { kind: "range", value: 0.8, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "镭射色。这 6 个色与不传相同。",
+        control: {
+          kind: "colors",
+          value: ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"],
+        },
+      },
+      ...ui,
+    ],
+    presets: [
+      {
+        name: "holographic-foil-soft",
+        label: "淡",
+        values: { angle: 8, intensity: 0.4, colors: ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"] },
+      },
+      {
+        name: "holographic-foil-default",
+        label: "默认",
+        values: { angle: 14, intensity: 0.8, colors: ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"] },
+      },
+      {
+        name: "holographic-foil-cool",
+        label: "冷",
+        values: { angle: 22, intensity: 1, colors: ["#67e8f9", "#818cf8", "#22d3ee", "#a78bfa", "#38bdf8", "#67e8f9"] },
+      },
+    ],
   },
   {
     name: "spoiler-text",

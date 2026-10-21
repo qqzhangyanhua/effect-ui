@@ -16,20 +16,20 @@ import { DevtoolTemplate } from "../templates/devtool/page"
 import { PortfolioTemplate } from "../templates/portfolio/page"
 import { SaasTemplate } from "../templates/saas/page"
 
-export function CoverflowCarouselDemo() {
-  return <CoverflowCarousel className="max-w-xl" />
+export function CoverflowCarouselDemo({ angle, scale, speed }: { angle?: number; scale?: number; speed?: number } = {}) {
+  return <CoverflowCarousel className="max-w-xl" angle={angle} scale={scale} speed={speed} />
 }
 
-export function BookFlipDemo() {
-  return <BookFlip />
+export function BookFlipDemo({ angle, speed, colors }: { angle?: number; speed?: number; colors?: string[] } = {}) {
+  return <BookFlip angle={angle} speed={speed} colors={colors} />
 }
 
-export function FolderRevealDemo() {
-  return <FolderReveal />
+export function FolderRevealDemo({ duration, angle, intensity }: { duration?: number; angle?: number; intensity?: number } = {}) {
+  return <FolderReveal duration={duration} angle={angle} intensity={intensity} />
 }
 
-export function BoxCarouselDemo() {
-  return <BoxCarousel />
+export function BoxCarouselDemo({ speed, size }: { speed?: number; size?: number } = {}) {
+  return <BoxCarousel speed={speed} size={size} />
 }
 
 export function DetentDialDemo() {
@@ -70,12 +70,12 @@ export function OrbitingItems3DDemo() {
   return <OrbitingItems3D />
 }
 
-export function AppleActivityCardDemo() {
-  return <AppleActivityCard />
+export function AppleActivityCardDemo({ size, duration }: { size?: number; duration?: number } = {}) {
+  return <AppleActivityCard size={size} duration={duration} />
 }
 
-export function AppleCardsCarouselDemo() {
-  return <AppleCardsCarousel />
+export function AppleCardsCarouselDemo({ gap, size, intensity }: { gap?: number; size?: number; intensity?: number } = {}) {
+  return <AppleCardsCarousel gap={gap} size={size} intensity={intensity} />
 }
 
 export function SaasTemplateDemo() {

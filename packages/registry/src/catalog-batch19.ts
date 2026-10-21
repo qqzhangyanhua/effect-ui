@@ -94,7 +94,39 @@ export const batch19Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gradient-carousel-3d.tsx",
     target: "components/ui/gradient-carousel-3d.tsx",
-    props: [{ name: "items", type: "GradientCard[]", description: "卡片标题和说明。" }, ...ui],
+    props: [
+      { name: "items", type: "GradientCard[]", description: "卡片标题和说明。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "拖拽灵敏度的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "侧向转角。42 与不传相同。",
+        control: { kind: "range", value: 42, min: 0, max: 80, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "卡片缩放的倍率。1 与不传相同，中心仍是 1.18。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "色相跟随的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "gradient-carousel-flat", label: "平", values: { speed: 1, angle: 12, scale: 1, intensity: 0.3 } },
+      { name: "gradient-carousel-default", label: "默认", values: { speed: 1, angle: 42, scale: 1, intensity: 1 } },
+      { name: "gradient-carousel-fast", label: "快", values: { speed: 1.8, angle: 60, scale: 0.8, intensity: 1 } },
+    ],
   },
   {
     name: "text-3d-scroll",

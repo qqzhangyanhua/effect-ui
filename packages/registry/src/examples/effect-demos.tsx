@@ -338,10 +338,11 @@ export function FlickeringGridDemo({
   )
 }
 
-export function FlipCardDemo() {
+export function FlipCardDemo({ duration }: { duration?: number } = {}) {
   return (
     <FlipCard
       className="h-44 w-72"
+      duration={duration}
       front={
         <div className="flex h-full items-center justify-center rounded-xl border bg-card">
           正面 · 悬停翻转
@@ -356,10 +357,10 @@ export function FlipCardDemo() {
   )
 }
 
-export function GlassCardDemo() {
+export function GlassCardDemo({ intensity, size }: { intensity?: number; size?: number } = {}) {
   return (
     <div className="relative w-full max-w-sm overflow-hidden rounded-2xl bg-linear-to-br from-violet-600 to-cyan-500 p-8">
-      <GlassCard>
+      <GlassCard intensity={intensity} size={size}>
         <h3 className="font-medium">Glass</h3>
         <p className="mt-2 text-sm text-foreground/80">毛玻璃叠在彩色背景上。</p>
       </GlassCard>
@@ -367,18 +368,18 @@ export function GlassCardDemo() {
   )
 }
 
-export function ShineBorderDemo() {
+export function ShineBorderDemo({ shineColor, duration, size, intensity }: { shineColor?: string; duration?: number; size?: number; intensity?: number } = {}) {
   return (
-    <ShineBorder className="w-full max-w-sm">
+    <ShineBorder className="w-full max-w-sm" shineColor={shineColor} duration={duration} size={size} intensity={intensity}>
       <h3 className="font-medium">Shine Border</h3>
       <p className="mt-2 text-sm text-muted-foreground">描边高光持续旋转。</p>
     </ShineBorder>
   )
 }
 
-export function HoverLiftDemo() {
+export function HoverLiftDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   return (
-    <HoverLift className="w-full max-w-sm">
+    <HoverLift className="w-full max-w-sm" duration={duration} intensity={intensity}>
       <h3 className="font-medium">Hover Lift</h3>
       <p className="mt-2 text-sm text-muted-foreground">悬停抬起并加深阴影。</p>
     </HoverLift>

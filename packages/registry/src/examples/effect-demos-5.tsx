@@ -8,9 +8,9 @@ import { ParticleButton } from "../effects/particle-button"
 import { SpoilerText } from "../effects/spoiler-text"
 import { TearButton } from "../effects/tear-button"
 
-export function HolographicFoilDemo() {
+export function HolographicFoilDemo({ angle, intensity, colors }: { angle?: number; intensity?: number; colors?: string[] } = {}) {
   return (
-    <HolographicFoil className="w-72 bg-zinc-950 text-white">
+    <HolographicFoil className="w-72 bg-zinc-950 text-white" angle={angle} intensity={intensity} colors={colors}>
       <p className="text-xs tracking-[0.2em] uppercase opacity-70">Smooth UI</p>
       <p className="mt-2 font-display text-2xl">Holographic Foil</p>
     </HolographicFoil>

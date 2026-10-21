@@ -43,7 +43,30 @@ export const batch16Components: ComponentMeta[] = [
     props: [
       { name: "title", type: "string", defaultValue: "全息卡片", description: "卡片标题。" },
       { name: "detail", type: "string", description: "说明文字。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "扫描一周（毫秒）。1100 与不传相同，仍是 1.1 秒。",
+        control: { kind: "range", value: 1100, min: 440, max: 2200, step: 20 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "扫描线和闪烁的强度。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "辉光颜色。#67e8f9 与不传相同。",
+        control: { kind: "color", value: "#67e8f9" },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "hologram-card-dim", label: "淡", values: { duration: 1600, intensity: 0.4, color: "#67e8f9" } },
+      { name: "hologram-card-default", label: "默认", values: { duration: 1100, intensity: 1, color: "#67e8f9" } },
+      { name: "hologram-card-alert", label: "警", values: { duration: 700, intensity: 1, color: "#f43f5e" } },
     ],
   },
   {

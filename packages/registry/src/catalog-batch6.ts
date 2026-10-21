@@ -170,7 +170,27 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/three-d-carousel.tsx",
     target: "components/ui/three-d-carousel.tsx",
-    props: [{ name: "items", type: "{ title: string; src: string }[]", description: "卡片。" }, ...ui],
+    props: [
+      { name: "items", type: "{ title: string; src: string }[]", description: "卡片。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "切换时长（毫秒）。500 与不传相同。",
+        control: { kind: "range", value: 500, min: 200, max: 1000, step: 50 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "环半径（像素）。180 与不传相同。",
+        control: { kind: "range", value: 180, min: 80, max: 280, step: 10 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "3d-carousel-near", label: "近", values: { duration: 500, size: 120 } },
+      { name: "3d-carousel-default", label: "默认", values: { duration: 500, size: 180 } },
+      { name: "3d-carousel-slow", label: "慢", values: { duration: 900, size: 220 } },
+    ],
   },
   {
     name: "siri-orb",
@@ -341,7 +361,21 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/circular-gallery.tsx",
     target: "components/ui/circular-gallery.tsx",
-    props: [{ name: "items", type: "{ src: string; title: string }[]", description: "图片。" }, ...ui],
+    props: [
+      { name: "items", type: "{ src: string; title: string }[]", description: "图片。" },
+      {
+        name: "speed",
+        type: "number",
+        description: "自转倍率。1 与不传相同，每帧仍是 0.004 弧度。离开视口后停下。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "circular-gallery-slow", label: "慢", values: { speed: 0.4 } },
+      { name: "circular-gallery-default", label: "默认", values: { speed: 1 } },
+      { name: "circular-gallery-fast", label: "快", values: { speed: 2 } },
+    ],
   },
   {
     name: "glowing-edge",
@@ -352,7 +386,38 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glowing-edge.tsx",
     target: "components/ui/glowing-edge.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "旋转一周（毫秒）。6000 与不传相同，仍是 6 秒。",
+        control: { kind: "range", value: 6000, min: 2400, max: 12000, step: 100 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "描边颜色。#7c3aed 与不传相同。",
+        control: { kind: "color", value: "#7c3aed" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "色带张角的倍率。1 与不传相同，仍是 70° 到 140°。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "描边厚度（像素）。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 1, max: 8, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "glowing-edge-soft", label: "细", values: { duration: 8000, color: "#7c3aed", intensity: 0.45, size: 1 } },
+      { name: "glowing-edge-default", label: "默认", values: { duration: 6000, color: "#7c3aed", intensity: 1, size: 1 } },
+      { name: "glowing-edge-hot", label: "热", values: { duration: 3200, color: "#f59e0b", intensity: 1, size: 3 } },
+    ],
   },
   {
     name: "scroll-image-sequence",

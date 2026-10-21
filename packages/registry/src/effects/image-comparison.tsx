@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 
 interface ImageComparisonContextValue {
   position: ReturnType<typeof useSpring>
+  color?: string
+  size?: number
 }
 
 const ImageComparisonContext = React.createContext<ImageComparisonContextValue | null>(null)
@@ -23,10 +25,16 @@ function ImageComparison({
   children,
   className,
   enableHover = false,
+  color,
+  size,
 }: {
   children: React.ReactNode
   className?: string
   enableHover?: boolean
+  /** 滑块颜色。不传或 #ffffff 仍是白。 */
+  color?: string
+  /** 滑块厚度，像素。不传或 2 仍是 2px。 */
+  size?: number
 }) {
   const [dragging, setDragging] = React.useState(false)
   const raw = useMotionValue(50)
@@ -41,7 +49,7 @@ function ImageComparison({
   }
 
   return (
-    <ImageComparisonContext.Provider value={{ position }}>
+    <ImageComparisonContext.Provider value={{ position, color, size }}>
       <div
         className={cn("relative select-none overflow-hidden", enableHover && "cursor-ew-resize", className)}
         onMouseMove={move}
@@ -94,12 +102,23 @@ function ImageComparisonSlider({
   className?: string
   children?: React.ReactNode
 }) {
-  const { position } = useImageComparison()
+  const { position, color, size } = useImageComparison()
   const left = useTransform(position, (value) => `${value}%`)
+  const painted = color === undefined || color.toLowerCase() === "#ffffff"
+  const thin = size === undefined || size === 2
   return (
     <motion.div
-      className={cn("absolute inset-y-0 w-0.5 -translate-x-1/2 cursor-ew-resize bg-white shadow", className)}
-      style={{ left }}
+      className={cn(
+        "absolute inset-y-0 -translate-x-1/2 cursor-ew-resize shadow",
+        painted && "bg-white",
+        thin && "w-0.5",
+        className,
+      )}
+      style={{
+        left,
+        ...(painted ? {} : { backgroundColor: color }),
+        ...(thin ? {} : { width: size }),
+      }}
     >
       {children}
     </motion.div>

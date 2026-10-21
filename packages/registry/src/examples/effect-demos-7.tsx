@@ -91,17 +91,17 @@ export function PolylineRibbonCursorDemo({
   )
 }
 
-export function PixelCanvasCardDemo() {
+export function PixelCanvasCardDemo({ colors, gap, speed }: { colors?: string[]; gap?: number; speed?: number } = {}) {
   return (
-    <PixelCanvasCard className="w-full max-w-sm">
+    <PixelCanvasCard className="w-full max-w-sm" colors={colors} gap={gap} speed={speed}>
       <p className="font-medium">Pixel Canvas</p>
       <p className="mt-1 text-sm text-muted-foreground">悬停点亮像素。</p>
     </PixelCanvasCard>
   )
 }
 
-export function AtroposCardDemo() {
-  return <AtroposCard className="w-full" />
+export function AtroposCardDemo({ intensity }: { intensity?: number } = {}) {
+  return <AtroposCard className="w-full" intensity={intensity} />
 }
 
 export function RoughAnnotationDemo({
@@ -156,8 +156,8 @@ export function MarqueeAlongSvgPathDemo() {
   )
 }
 
-export function EvervaultCardDemo() {
-  return <EvervaultCard className="w-full max-w-sm" text="SECURE" />
+export function EvervaultCardDemo({ interval, color, size, count, intensity }: { interval?: number; color?: string; size?: number; count?: number; intensity?: number } = {}) {
+  return <EvervaultCard className="w-full max-w-sm" text="SECURE" interval={interval} color={color} size={size} count={count} intensity={intensity} />
 }
 
 export function CanvasRevealDemo() {

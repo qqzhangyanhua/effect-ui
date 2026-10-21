@@ -929,9 +929,40 @@ export const batch2Components: ComponentMeta[] = [
         name: "duration",
         type: "number",
         defaultValue: "8",
-        description: "旋转周期。",
+        description: "旋转周期（秒）。",
         control: { kind: "range", value: 8, min: 1, max: 20, step: 0.5 },
       },
+      {
+        name: "colorFrom",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "光束起点色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "colorTo",
+        type: "string",
+        defaultValue: "var(--chart-2)",
+        description: "光束终点色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "描边厚度（像素）。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 1, max: 6, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "光束宽度的倍率。1 与不传相同，仍是 30% 到 70%。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "border-beam-slow", label: "慢", values: { duration: 14, size: 1, intensity: 0.5 } },
+      { name: "border-beam-default", label: "默认", values: { duration: 8, size: 1, intensity: 1 } },
+      { name: "border-beam-fast", label: "快", values: { duration: 3, size: 2, intensity: 1 } },
     ],
   },
   {
@@ -943,7 +974,32 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/bento-grid.tsx",
     target: "components/ui/bento-grid.tsx",
-    props: ui,
+    props: [
+      {
+        name: "gap",
+        type: "number",
+        description: "间距（像素）。12 与不传相同。",
+        control: { kind: "range", value: 12, min: 0, max: 32, step: 1 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "列数。3 与不传相同。",
+        control: { kind: "range", value: 3, min: 1, max: 6, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "行高（像素）。160 与不传相同，仍是 10rem。",
+        control: { kind: "range", value: 160, min: 80, max: 280, step: 4 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "bento-grid-tight", label: "紧", values: { gap: 4, count: 3, size: 120 } },
+      { name: "bento-grid-default", label: "默认", values: { gap: 12, count: 3, size: 160 } },
+      { name: "bento-grid-wide", label: "疏", values: { gap: 24, count: 2, size: 200 } },
+    ],
   },
   {
     name: "perspective-card",
@@ -954,7 +1010,26 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/perspective-card.tsx",
     target: "components/ui/perspective-card.tsx",
-    props: ui,
+    props: [
+      {
+        name: "angle",
+        type: "number",
+        description: "横向倾斜角。16 与不传相同，纵向仍是 14°。",
+        control: { kind: "range", value: 16, min: 0, max: 32, step: 1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "内容浮起（像素）。28 与不传相同。",
+        control: { kind: "range", value: 28, min: 1, max: 64, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "perspective-card-flat", label: "平", values: { angle: 4, size: 8 } },
+      { name: "perspective-card-default", label: "默认", values: { angle: 16, size: 28 } },
+      { name: "perspective-card-deep", label: "深", values: { angle: 28, size: 48 } },
+    ],
   },
   {
     name: "expandable-card",
@@ -966,8 +1041,18 @@ export const batch2Components: ComponentMeta[] = [
     file: "effects/expandable-card.tsx",
     target: "components/ui/expandable-card.tsx",
     props: [
-      { name: "title", type: "string", description: "标题。" },
+      {
+        name: "title",
+        type: "string",
+        description: "标题。",
+        control: { kind: "text", value: "可展开卡片" },
+      },
       { name: "preview", type: "ReactNode", description: "收起时摘要。" },
+    ],
+    presets: [
+      { name: "expandable-card-short", label: "短", values: { title: "说明" } },
+      { name: "expandable-card-default", label: "默认", values: { title: "可展开卡片" } },
+      { name: "expandable-card-long", label: "长", values: { title: "展开后看完整说明" } },
     ],
   },
   {

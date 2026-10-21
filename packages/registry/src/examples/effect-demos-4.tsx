@@ -48,12 +48,12 @@ export function ShaderBackgroundsDemo({
   )
 }
 
-export function LiquidGlassDemo() {
+export function LiquidGlassDemo({ intensity, size }: { intensity?: number; size?: number } = {}) {
   return (
     <div className="relative w-full overflow-hidden rounded-xl">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#7c3aed,transparent_40%),radial-gradient(circle_at_80%_70%,#22d3ee,transparent_35%)]" />
       <div className="relative flex min-h-48 items-center justify-center p-8">
-        <LiquidGlass>液态玻璃 · 不支持时回退毛玻璃</LiquidGlass>
+        <LiquidGlass intensity={intensity} size={size}>液态玻璃 · 不支持时回退毛玻璃</LiquidGlass>
       </div>
     </div>
   )

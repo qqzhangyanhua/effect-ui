@@ -163,8 +163,8 @@ export function ElectricBorderDemo() {
   return <ElectricBorder className="w-full" />
 }
 
-export function StickerPeelDemo() {
-  return <StickerPeel />
+export function StickerPeelDemo({ intensity, speed, size }: { intensity?: number; speed?: number; size?: number } = {}) {
+  return <StickerPeel intensity={intensity} speed={speed} size={size} />
 }
 
 export function ClickSparkDemo() {
@@ -185,8 +185,8 @@ export function GlareHoverDemo({
   return <GlareHover className="w-full" speed={speed} intensity={intensity} scale={scale} color={color} />
 }
 
-export function CardSwapDemo() {
-  return <CardSwap className="w-full" />
+export function CardSwapDemo({ interval, duration, angle, scale }: { interval?: number; duration?: number; angle?: number; scale?: number } = {}) {
+  return <CardSwap className="w-full" interval={interval} duration={duration} angle={angle} scale={scale} />
 }
 
 export function FlowingMenuDemo() {

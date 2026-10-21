@@ -1523,6 +1523,17 @@ export const components: ComponentMeta[] = [
     props: [
       { name: "front", type: "ReactNode", description: "正面内容。" },
       { name: "back", type: "ReactNode", description: "背面内容。" },
+      {
+        name: "duration",
+        type: "number",
+        description: "翻转动画时长（毫秒）。500 与不传相同。",
+        control: { kind: "range", value: 500, min: 200, max: 1000, step: 50 },
+      },
+    ],
+    presets: [
+      { name: "flip-card-fast", label: "快", values: { duration: 250 } },
+      { name: "flip-card-default", label: "默认", values: { duration: 500 } },
+      { name: "flip-card-slow", label: "慢", values: { duration: 900 } },
     ],
   },
   {
@@ -1534,7 +1545,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/glass-card.tsx",
     target: "components/ui/glass-card.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "玻璃叠色的倍率。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "背景模糊（像素）。24 与不传相同。",
+        control: { kind: "range", value: 24, min: 1, max: 48, step: 1 },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "glass-card-clear", label: "清", values: { intensity: 0.4, size: 8 } },
+      { name: "glass-card-default", label: "默认", values: { intensity: 1, size: 24 } },
+      { name: "glass-card-frost", label: "雾", values: { intensity: 1, size: 40 } },
+    ],
   },
   {
     name: "shine-border",
@@ -1546,8 +1576,37 @@ export const components: ComponentMeta[] = [
     file: "effects/shine-border.tsx",
     target: "components/ui/shine-border.tsx",
     props: [
-      { name: "shineColor", type: "string", defaultValue: "var(--primary)", description: "高光颜色。" },
-      { name: "duration", type: "number", defaultValue: "10", description: "旋转周期（秒）。" },
+      {
+        name: "shineColor",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "高光颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "10",
+        description: "旋转周期（秒）。",
+        control: { kind: "range", value: 10, min: 4, max: 20, step: 0.5 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "描边厚度（像素）。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 1, max: 6, step: 1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "高光弧宽度的倍率。1 与不传相同，仍是 12% 到 28%。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+    ],
+    presets: [
+      { name: "shine-border-thin", label: "细", values: { duration: 14, size: 1, intensity: 0.45 } },
+      { name: "shine-border-default", label: "默认", values: { duration: 10, size: 1, intensity: 1 } },
+      { name: "shine-border-wide", label: "宽", values: { duration: 6, size: 3, intensity: 1 } },
     ],
   },
   {
@@ -1559,7 +1618,26 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/hover-lift.tsx",
     target: "components/ui/hover-lift.tsx",
-    props: uiProps,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "过渡时长（毫秒）。300 与不传相同。",
+        control: { kind: "range", value: 300, min: 120, max: 600, step: 20 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "上浮距离的倍率。1 与不传相同，仍是 6px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...uiProps,
+    ],
+    presets: [
+      { name: "hover-lift-soft", label: "轻", values: { duration: 400, intensity: 0.4 } },
+      { name: "hover-lift-default", label: "默认", values: { duration: 300, intensity: 1 } },
+      { name: "hover-lift-slow", label: "慢", values: { duration: 560, intensity: 1 } },
+    ],
   },
   {
     name: "ripple-button",

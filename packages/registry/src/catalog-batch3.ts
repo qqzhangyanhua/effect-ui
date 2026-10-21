@@ -35,7 +35,26 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/morphing-dialog.tsx",
     target: "components/ui/morphing-dialog.tsx",
-    props: ui,
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        description: "弹簧时长（毫秒）。450 与不传相同，仍是 0.45 秒。",
+        control: { kind: "range", value: 450, min: 180, max: 900, step: 10 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "弹簧回弹。0.15 与不传相同。",
+        control: { kind: "range", value: 0.15, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "morphing-dialog-soft", label: "柔", values: { duration: 700, intensity: 0 } },
+      { name: "morphing-dialog-default", label: "默认", values: { duration: 450, intensity: 0.15 } },
+      { name: "morphing-dialog-snappy", label: "弹", values: { duration: 280, intensity: 0.4 } },
+    ],
   },
   {
     name: "image-comparison",
@@ -46,7 +65,32 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/image-comparison.tsx",
     target: "components/ui/image-comparison.tsx",
-    props: [{ name: "enableHover", type: "boolean", defaultValue: "false", description: "悬停即可滑动。" }],
+    props: [
+      {
+        name: "enableHover",
+        type: "boolean",
+        defaultValue: "false",
+        description: "悬停即可滑动。",
+        control: { kind: "boolean", value: false },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "滑块颜色。#ffffff 与不传相同。",
+        control: { kind: "color", value: "#ffffff" },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "滑块厚度（像素）。2 与不传相同。",
+        control: { kind: "range", value: 2, min: 1, max: 12, step: 1 },
+      },
+    ],
+    presets: [
+      { name: "image-comparison-drag", label: "拖动", values: { enableHover: false, color: "#ffffff", size: 2 } },
+      { name: "image-comparison-hover", label: "悬停", values: { enableHover: true, color: "#ffffff", size: 2 } },
+      { name: "image-comparison-bold", label: "粗", values: { enableHover: true, color: "#f59e0b", size: 6 } },
+    ],
   },
   {
     name: "progressive-blur",

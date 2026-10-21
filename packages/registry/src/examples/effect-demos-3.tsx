@@ -68,10 +68,10 @@ export function AnimatedBeamDemo() {
   )
 }
 
-export function MorphingDialogDemo() {
+export function MorphingDialogDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
   return (
     <Frame>
-      <MorphingDialog>
+      <MorphingDialog duration={duration} intensity={intensity}>
         <MorphingDialogTrigger className="w-56 rounded-xl border bg-background p-4 shadow-sm">
           <MorphingDialogTitle>共享布局</MorphingDialogTitle>
           <p className="mt-1 text-sm text-muted-foreground">点击卡片展开。</p>
@@ -101,10 +101,10 @@ const after =
     `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#4f46e5"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/><text x="40" y="190" fill="white" font-size="42" font-family="sans-serif">After</text></svg>`,
   )
 
-export function ImageComparisonDemo() {
+export function ImageComparisonDemo({ enableHover = false, color, size }: { enableHover?: boolean; color?: string; size?: number } = {}) {
   return (
     <Frame>
-      <ImageComparison className="h-44 w-full max-w-md rounded-xl" enableHover>
+      <ImageComparison className="h-44 w-full max-w-md rounded-xl" enableHover={enableHover} color={color} size={size}>
         <ImageComparisonImage src={before} alt="Before" position="left" />
         <ImageComparisonImage src={after} alt="After" position="right" />
         <ImageComparisonSlider />

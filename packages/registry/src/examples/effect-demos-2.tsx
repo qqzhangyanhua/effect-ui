@@ -377,18 +377,18 @@ export function SparklesDemo() {
   return <Sparkles className="px-6 py-3 text-2xl font-medium">Sparkles</Sparkles>
 }
 
-export function BorderBeamDemo({ duration = 8 }: { duration?: number } = {}) {
+export function BorderBeamDemo({ duration = 8, colorFrom, colorTo, size, intensity }: { duration?: number; colorFrom?: string; colorTo?: string; size?: number; intensity?: number } = {}) {
   return (
-    <BorderBeam className="w-72" duration={duration}>
+    <BorderBeam className="w-72" duration={duration} colorFrom={colorFrom} colorTo={colorTo} size={size} intensity={intensity}>
       <h3 className="font-medium">Border Beam</h3>
       <p className="mt-2 text-sm text-muted-foreground">光束沿着边框跑。</p>
     </BorderBeam>
   )
 }
 
-export function BentoGridDemo() {
+export function BentoGridDemo({ gap, count, size }: { gap?: number; count?: number; size?: number } = {}) {
   return (
-    <BentoGrid className="max-w-lg">
+    <BentoGrid className="max-w-lg" gap={gap} count={count} size={size}>
       <BentoCard colSpan={2}>宽卡片</BentoCard>
       <BentoCard>窄</BentoCard>
       <BentoCard>A</BentoCard>
@@ -397,20 +397,20 @@ export function BentoGridDemo() {
   )
 }
 
-export function PerspectiveCardDemo() {
+export function PerspectiveCardDemo({ angle, size }: { angle?: number; size?: number } = {}) {
   return (
-    <PerspectiveCard className="w-72">
+    <PerspectiveCard className="w-72" angle={angle} size={size}>
       <h3 className="font-medium">Perspective</h3>
       <p className="mt-2 text-sm text-muted-foreground">指针移动时透视倾斜。</p>
     </PerspectiveCard>
   )
 }
 
-export function ExpandableCardDemo() {
+export function ExpandableCardDemo({ title = "可展开卡片" }: { title?: string } = {}) {
   return (
     <ExpandableCard
       className="max-w-sm"
-      title="可展开卡片"
+      title={title}
       preview="点击查看更多细节"
     >
       这里是展开后的说明，适合放次要内容。

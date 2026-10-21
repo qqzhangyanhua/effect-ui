@@ -211,7 +211,30 @@ export const batch13Components: ComponentMeta[] = [
     target: "components/ui/sticker-peel.tsx",
     props: [
       { name: "label", type: "string", defaultValue: '"STICKER"', description: "贴纸正面文字。" },
+      {
+        name: "intensity",
+        type: "number",
+        description: "揭开切口的系数。0.55 与不传相同。",
+        control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        description: "回弹倍率。1 与不传相同，刚度仍是 340。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "边长（像素）。224 与不传相同。",
+        control: { kind: "range", value: 224, min: 120, max: 320, step: 4 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "sticker-peel-small", label: "小", values: { intensity: 0.55, speed: 1, size: 160 } },
+      { name: "sticker-peel-default", label: "默认", values: { intensity: 0.55, speed: 1, size: 224 } },
+      { name: "sticker-peel-deep", label: "深", values: { intensity: 0.9, speed: 1.4, size: 224 } },
     ],
   },
   {
@@ -283,8 +306,37 @@ export const batch13Components: ComponentMeta[] = [
     target: "components/ui/card-swap.tsx",
     props: [
       { name: "cards", type: "CardSwapCard[]", description: "卡片。每项含 id、kicker、title、tone。" },
-      { name: "interval", type: "number", defaultValue: "2400", description: "换位间隔，毫秒。" },
+      {
+        name: "interval",
+        type: "number",
+        defaultValue: "2400",
+        description: "换位间隔，毫秒。",
+        control: { kind: "range", value: 2400, min: 960, max: 4800, step: 40 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        description: "落下动画（毫秒）。460 与不传相同。",
+        control: { kind: "range", value: 460, min: 180, max: 920, step: 20 },
+      },
+      {
+        name: "angle",
+        type: "number",
+        description: "舞台俯仰角。16 与不传相同。",
+        control: { kind: "range", value: 16, min: 0, max: 40, step: 1 },
+      },
+      {
+        name: "scale",
+        type: "number",
+        description: "堆叠缩放的倍率。1 与不传相同，三张仍是 1、0.94、0.88。",
+        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "card-swap-slow", label: "慢", values: { interval: 3600, duration: 700, angle: 16, scale: 1 } },
+      { name: "card-swap-default", label: "默认", values: { interval: 2400, duration: 460, angle: 16, scale: 1 } },
+      { name: "card-swap-flat", label: "平", values: { interval: 2400, duration: 460, angle: 4, scale: 0.8 } },
     ],
   },
   {

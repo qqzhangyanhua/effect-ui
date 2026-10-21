@@ -24,10 +24,10 @@ export function LoomThreadsMarqueeDemo() {
   return <LoomThreadsMarquee className="w-full" />
 }
 
-export function HologramCardDemo() {
+export function HologramCardDemo({ duration, intensity, color }: { duration?: number; intensity?: number; color?: string } = {}) {
   return (
     <div className="flex w-full justify-center py-6">
-      <HologramCard />
+      <HologramCard duration={duration} intensity={intensity} color={color} />
     </div>
   )
 }

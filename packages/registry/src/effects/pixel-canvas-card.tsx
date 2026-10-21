@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { cn } from "@/lib/utils"
 
 export interface PixelCanvasCardProps {
@@ -82,6 +83,7 @@ function PixelCanvasCard({
   children,
 }: PixelCanvasCardProps) {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
+  const active = useAnimationActive(canvasRef)
   const pixels = React.useRef<Pixel[]>([])
   const mode = React.useRef<"appear" | "disappear" | null>(null)
 
@@ -111,6 +113,9 @@ function PixelCanvasCard({
     init()
     const observer = new ResizeObserver(init)
     observer.observe(canvas)
+    if (!active) {
+      return () => observer.disconnect()
+    }
     let frame = 0
     const tick = () => {
       const current = mode.current
@@ -126,7 +131,7 @@ function PixelCanvasCard({
       observer.disconnect()
       window.cancelAnimationFrame(frame)
     }
-  }, [colors, gap, speed])
+  }, [colors, gap, speed, active])
 
   return (
     <div

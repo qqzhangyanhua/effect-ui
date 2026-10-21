@@ -136,8 +136,8 @@ export function ScrollTypographyDemo({
   )
 }
 
-export function ThreeDCarouselDemo() {
-  return <ThreeDCarousel className="w-full" items={gallery} />
+export function ThreeDCarouselDemo({ duration, size }: { duration?: number; size?: number } = {}) {
+  return <ThreeDCarousel className="w-full" items={gallery} duration={duration} size={size} />
 }
 
 export function SiriOrbDemo({ size = 160 }: { size?: number } = {}) {
@@ -224,13 +224,13 @@ export function ContainerScroll3DDemo({
   )
 }
 
-export function CircularGalleryDemo() {
-  return <CircularGallery className="w-full" items={gallery} />
+export function CircularGalleryDemo({ speed }: { speed?: number } = {}) {
+  return <CircularGallery className="w-full" items={gallery} speed={speed} />
 }
 
-export function GlowingEdgeDemo() {
+export function GlowingEdgeDemo({ duration, color, intensity, size }: { duration?: number; color?: string; intensity?: number; size?: number } = {}) {
   return (
-    <GlowingEdge className="w-72">
+    <GlowingEdge className="w-72" duration={duration} color={color} intensity={intensity} size={size}>
       <p className="font-medium">Linear 风格描边</p>
       <p className="mt-1 text-sm text-muted-foreground">灵感来自 Linear，原创实现。</p>
     </GlowingEdge>

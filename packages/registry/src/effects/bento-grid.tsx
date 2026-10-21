@@ -2,14 +2,44 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-function BentoGrid({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+function BentoGrid({
+  className,
+  gap,
+  count,
+  size,
+  style,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & {
+  /** 间距，像素。不传或 12 仍是 gap-3。 */
+  gap?: number
+  /** 列数。不传或 3 仍是三列。 */
+  count?: number
+  /** 行高，像素。不传或 160 仍是 10rem。 */
+  size?: number
+}) {
+  const spaced = gap === undefined || gap === 12
+  const columns = count === undefined || count === 3
+  const rows = size === undefined || size === 160
   return (
     <div
       data-slot="bento-grid"
       className={cn(
-        "grid w-full auto-rows-[10rem] grid-cols-3 gap-3",
+        "grid w-full",
+        rows && "auto-rows-[10rem]",
+        columns && "grid-cols-3",
+        spaced && "gap-3",
         className,
       )}
+      style={
+        spaced && columns && rows
+          ? style
+          : {
+              ...style,
+              ...(spaced ? {} : { gap }),
+              ...(columns ? {} : { gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }),
+              ...(rows ? {} : { gridAutoRows: `${size}px` }),
+            }
+      }
       {...props}
     />
   )

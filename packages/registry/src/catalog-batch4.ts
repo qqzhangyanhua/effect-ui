@@ -67,7 +67,26 @@ export const batch4Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/liquid-glass.tsx",
     target: "components/ui/liquid-glass.tsx",
-    props: ui,
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        description: "回退毛玻璃的叠色倍率。1 与不传相同。库组件加载后忽略。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "回退模糊（像素）。24 与不传相同。库组件加载后忽略。",
+        control: { kind: "range", value: 24, min: 1, max: 48, step: 1 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "liquid-glass-clear", label: "清", values: { intensity: 0.45, size: 8 } },
+      { name: "liquid-glass-default", label: "默认", values: { intensity: 1, size: 24 } },
+      { name: "liquid-glass-frost", label: "雾", values: { intensity: 1, size: 40 } },
+    ],
   },
   {
     name: "background-paths",

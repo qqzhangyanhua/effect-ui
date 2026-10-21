@@ -3913,6 +3913,8 @@
         "ogl"
       ],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3930,6 +3932,7 @@
       "description": "灵感来自 Linear 发光描边，原创实现：旋转锥形渐变边。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -4065,6 +4068,7 @@
       "description": "移植 hexagoncircle/pixel-canvas（MIT）：悬停时像素从中心闪现。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
         "utils"
       ],
       "files": [
@@ -4160,6 +4164,8 @@
       "description": "灵感来自 encrypted card，原创实现：乱码字符在悬停处揭开明文。",
       "dependencies": [],
       "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [

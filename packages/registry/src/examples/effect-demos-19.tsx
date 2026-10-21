@@ -38,8 +38,8 @@ export function WavefieldNeonDemo() {
   return <WavefieldNeon className="w-full" />
 }
 
-export function GradientCarousel3dDemo() {
-  return <GradientCarousel3d className="w-full" />
+export function GradientCarousel3dDemo({ speed, angle, scale, intensity }: { speed?: number; angle?: number; scale?: number; intensity?: number } = {}) {
+  return <GradientCarousel3d className="w-full" speed={speed} angle={angle} scale={scale} intensity={intensity} />
 }
 
 export function Text3dScrollDemo({

@@ -184,10 +184,32 @@ export const batch7Components: ComponentMeta[] = [
     file: "effects/pixel-canvas-card.tsx",
     target: "components/ui/pixel-canvas-card.tsx",
     props: [
-      { name: "colors", type: "string[]", description: "像素颜色。" },
-      { name: "gap", type: "number", defaultValue: "6", description: "像素间距。" },
-      { name: "speed", type: "number", defaultValue: "35", description: "闪烁速度。" },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "像素颜色。这三个色与不传相同。",
+        control: { kind: "colors", value: ["#e0f2fe", "#7dd3fc", "#0ea5e9"] },
+      },
+      {
+        name: "gap",
+        type: "number",
+        defaultValue: "6",
+        description: "像素间距（像素）。6 与不传相同。",
+        control: { kind: "range", value: 6, min: 4, max: 50, step: 1 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "35",
+        description: "闪烁的绝对速度。35 与不传相同，范围仍是 0 到 100，不是 0.25–2.5 倍率。离开视口后不再跑帧。",
+        control: { kind: "range", value: 35, min: 0, max: 100, step: 1 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "pixel-canvas-sparse", label: "疏", values: { colors: ["#e0f2fe", "#7dd3fc", "#0ea5e9"], gap: 16, speed: 20 } },
+      { name: "pixel-canvas-default", label: "默认", values: { colors: ["#e0f2fe", "#7dd3fc", "#0ea5e9"], gap: 6, speed: 35 } },
+      { name: "pixel-canvas-warm", label: "暖", values: { colors: ["#ffedd5", "#fdba74", "#ea580c"], gap: 8, speed: 60 } },
     ],
   },
   {
@@ -202,7 +224,18 @@ export const batch7Components: ComponentMeta[] = [
     props: [
       { name: "title", type: "string", description: "标题。" },
       { name: "subtitle", type: "string", description: "副标题。" },
+      {
+        name: "intensity",
+        type: "number",
+        description: "图层错开的倍率。1 与不传相同，偏移仍是 -8、-2、6。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
       ...ui,
+    ],
+    presets: [
+      { name: "atropos-card-flat", label: "平", values: { intensity: 0.3 } },
+      { name: "atropos-card-default", label: "默认", values: { intensity: 1 } },
+      { name: "atropos-card-mid", label: "半", values: { intensity: 0.6 } },
     ],
   },
   {
@@ -291,7 +324,45 @@ export const batch7Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/evervault-card.tsx",
     target: "components/ui/evervault-card.tsx",
-    props: [{ name: "text", type: "string", defaultValue: '"SECURE"', description: "揭开的明文。" }, ...ui],
+    props: [
+      { name: "text", type: "string", defaultValue: '"SECURE"', description: "揭开的明文。" },
+      {
+        name: "interval",
+        type: "number",
+        description: "乱码刷新间隔（毫秒）。90 与不传相同。离开视口后停止。",
+        control: { kind: "range", value: 90, min: 36, max: 180, step: 2 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "字符颜色。#34d399 与不传相同，仍是 emerald-400。",
+        control: { kind: "color", value: "#34d399" },
+      },
+      {
+        name: "size",
+        type: "number",
+        description: "揭开光斑半径（像素）。90 与不传相同。",
+        control: { kind: "range", value: 90, min: 24, max: 180, step: 2 },
+      },
+      {
+        name: "count",
+        type: "number",
+        description: "字符个数。240 与不传相同。",
+        control: { kind: "range", value: 240, min: 80, max: 400, step: 10 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        description: "静止时文字的清晰度倍率。1 与不传相同，仍是 15% 不透明、模糊 4px。",
+        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
+      },
+      ...ui,
+    ],
+    presets: [
+      { name: "evervault-card-calm", label: "慢", values: { interval: 160, color: "#34d399", size: 120, count: 160, intensity: 0.6 } },
+      { name: "evervault-card-default", label: "默认", values: { interval: 90, color: "#34d399", size: 90, count: 240, intensity: 1 } },
+      { name: "evervault-card-dense", label: "密", values: { interval: 50, color: "#67e8f9", size: 60, count: 360, intensity: 1 } },
+    ],
   },
   {
     name: "canvas-reveal",

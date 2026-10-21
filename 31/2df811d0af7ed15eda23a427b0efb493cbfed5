@@ -1,0 +1,78 @@
+apps/docs/components/component-preview.tsx
+  s_b5d0014d68f5d1::t_ce5065d5e292d4 5-6,21,23
+README.md
+  s_b5d0014d68f5d1::t_81df82e533a6a3 73
+registry.json
+  s_b5d0014d68f5d1::t_ef934ceb050c61 55-68
+  s_b5d0014d68f5d1::t_00ff059d529303 54
+packages/registry/src/prop-type-text.ts
+  s_b5d0014d68f5d1::t_34f9cee0b4fb7e 231
+  s_b5d0014d68f5d1::t_bf4955e04616e0 1-230,232-234,237-242,247,249-252,254-272,275-278
+  s_b5d0014d68f5d1::t_305370dfc42542 235-236,243,253
+  s_b5d0014d68f5d1::t_b7a82131ae7455 244-246,248
+  s_b5d0014d68f5d1::t_3fd4b499fab726 273-274
+packages/registry/src/ui/aspect-ratio.tsx
+  s_b5d0014d68f5d1::t_58d46793127bea 7,10
+apps/docs/public/r/aspect-ratio.json
+  s_b5d0014d68f5d1::t_ef934ceb050c61 16
+packages/registry/src/catalog.ts
+  s_b5d0014d68f5d1::t_fa8b3ef43b857f 84-85,87-92,258-266
+  s_b5d0014d68f5d1::t_34ba8c3194d9fa 267-268
+apps/docs/public/r/checkbox-plus.json
+  s_b5d0014d68f5d1::t_ef934ceb050c61 19
+packages/registry/src/ui/select-plus.test.tsx
+  s_b5d0014d68f5d1::t_c6673e4c9bc5a9 4,260-261
+packages/registry/src/ui/checkbox-plus.tsx
+  s_b5d0014d68f5d1::t_7644c9a54e42c5 48,59
+packages/registry/src/hooks/use-animation-active.test.tsx
+  s_b5d0014d68f5d1::t_d8391ae78cbf80 1-2,4-62,66-67,71-72,76-77,81-102
+  s_b5d0014d68f5d1::t_0265de38202fd6 3,63-65,68-70,73-75,78-80
+packages/registry/src/hooks/use-animation-active.ts
+  s_b5d0014d68f5d1::t_43d39153493d29 1-30
+apps/docs/public/r/use-animation-active.json
+  s_b5d0014d68f5d1::t_ef934ceb050c61 1-17
+packages/registry/src/audit.test.ts
+  s_b5d0014d68f5d1::t_f056c5e82fe5e0 6-17,349-352,367-370,385
+  s_b5d0014d68f5d1::t_bf6c41afc429da 422,502-533
+  s_b5d0014d68f5d1::t_4172b9cffc8a9e 534
+vitest.config.mts
+  s_b5d0014d68f5d1::t_2313d93fa1ceac 49-51
+  s_b5d0014d68f5d1::t_3816846af83b69 44-48
+apps/docs/components/control-panel.tsx
+  s_b5d0014d68f5d1::t_07a7cb12a86895 310,324,328,332
+  s_b5d0014d68f5d1::t_9d985b3adcf73e 338-342,349,351
+  s_b5d0014d68f5d1::t_44da013f7148ac 4,18,20-35,51,56,59-61,70-81,84,102-104,106-132,139-164,166-167,174,177,179,183,188,190,199-208,212-224,266,317,323,359
+apps/docs/components/component-preview.test.tsx
+  s_b5d0014d68f5d1::t_e5e47498b5f597 1-3,6-140,143-208,210-229,232-250
+  s_b5d0014d68f5d1::t_3f68a7f8350686 230-231
+  s_b5d0014d68f5d1::t_068ff7a0642a73 209
+  s_b5d0014d68f5d1::t_e22431f0d77d20 4-5,141-142
+packages/registry/src/audit.ts
+  s_b5d0014d68f5d1::t_30490c78aff89a 2,22,178-191,306
+apps/docs/lib/preview-controls.ts
+  s_b5d0014d68f5d1::t_1d23d742c1fd73 139
+  s_b5d0014d68f5d1::t_a720ec357c4c2a 1-138,140-183
+apps/docs/components/preview-frame.tsx
+  s_b5d0014d68f5d1::t_1cc0c6c60ee6d1 1-109
+apps/docs/app/globals.css
+  s_b5d0014d68f5d1::t_f3e68414ffa660 6,46-47
+apps/docs/public/r/registry.json
+  s_b5d0014d68f5d1::t_ef934ceb050c61 55-68
+  s_b5d0014d68f5d1::t_5e13edfec9102f 54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "312df811d0af7ed15eda23a427b0efb493cbfed5",
+  "prompts": {},
+  "sessions": {
+    "s_b5d0014d68f5d1": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a159ce-132f-77d2-b125-6cdb4a6582e8",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

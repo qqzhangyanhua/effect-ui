@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "transition-panel",
+  "type": "registry:ui",
+  "title": "Transition Panel",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/transition-panel.tsx 由 activeIndex 控制的容器，按方向滑动并带模糊。减弱动效时只淡入淡出。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/transition-panel.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/transition-panel.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/transition-panel.tsx\n\nimport { useState, type ReactNode } from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TransitionPanelProps {\n  children?: ReactNode\n  activeIndex: number\n  direction?: \"left\" | \"right\" | \"up\" | \"down\"\n  className?: string\n}\n\nfunction TransitionPanel({ children, activeIndex, direction = \"right\", className }: TransitionPanelProps) {\n  const reduced = usePrefersReducedMotion()\n  const [previous, setPrevious] = useState(activeIndex)\n  const delta = activeIndex === previous ? 1 : activeIndex > previous ? 1 : -1\n  if (activeIndex !== previous) setPrevious(activeIndex)\n  const panels = Array.isArray(children) ? children : [children]\n  const vertical = direction === \"up\" || direction === \"down\"\n  const sign = (direction === \"left\" || direction === \"up\" ? -1 : 1) * delta\n  const offset = sign * 28\n  const hidden = reduced\n    ? { opacity: 0 }\n    : vertical\n      ? { opacity: 0, y: offset, filter: \"blur(6px)\" }\n      : { opacity: 0, x: offset, filter: \"blur(6px)\" }\n  const shown = reduced ? { opacity: 1 } : vertical ? { opacity: 1, y: 0, filter: \"blur(0px)\" } : { opacity: 1, x: 0, filter: \"blur(0px)\" }\n\n  return (\n    <div data-slot=\"transition-panel\" data-reduced={reduced ? \"true\" : \"false\"} className={cn(\"relative w-full overflow-hidden\", className)}>\n      <AnimatePresence mode=\"popLayout\" initial={false}>\n        <motion.div\n          key={activeIndex}\n          initial={hidden}\n          animate={shown}\n          exit={hidden}\n          transition={reduced ? { duration: 0.15 } : { type: \"spring\", bounce: 0.08, duration: 0.4 }}\n        >\n          {panels[activeIndex]}\n        </motion.div>\n      </AnimatePresence>\n    </div>\n  )\n}\n\nexport { TransitionPanel }\n"
+    }
+  ]
+}

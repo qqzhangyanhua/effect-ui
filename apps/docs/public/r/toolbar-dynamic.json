@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar-dynamic",
+  "type": "registry:ui",
+  "title": "Toolbar Dynamic",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/toolbar-dynamic.tsx 紧凑工具栏，搜索图标在 MotionConfig 弹簧下展开成输入框。条目可配置。减弱动效时宽度立即切换。",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-click-outside",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/toolbar-dynamic.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/toolbar-dynamic.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/toolbar-dynamic.tsx\n\nimport { useRef, useState, type ReactNode } from \"react\"\nimport { ArrowLeft, Search } from \"lucide-react\"\nimport { MotionConfig, motion } from \"motion/react\"\n\nimport { useClickOutside } from \"@/hooks/use-click-outside\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ToolbarDynamicProps {\n  items?: readonly { id: string; label: string; icon: ReactNode }[]\n  placeholder?: string\n  className?: string\n}\n\nfunction ToolbarDynamic({ items = [], placeholder = \"搜索\", className }: ToolbarDynamicProps) {\n  const reduced = usePrefersReducedMotion()\n  const [open, setOpen] = useState(false)\n  const rootRef = useRef<HTMLDivElement>(null)\n  useClickOutside(rootRef, () => setOpen(false))\n\n  return (\n    <MotionConfig transition={reduced ? { duration: 0 } : { type: \"spring\", bounce: 0.12, duration: 0.28 }}>\n      <div ref={rootRef} data-slot=\"toolbar-dynamic\" data-reduced={reduced ? \"true\" : \"false\"} className={cn(\"w-fit\", className)}>\n        <motion.div\n          className=\"overflow-hidden rounded-xl border bg-popover p-2 text-popover-foreground shadow-sm\"\n          initial={false}\n          animate={{ width: open ? 280 : \"auto\" }}\n        >\n          {open ? (\n            <div className=\"flex items-center gap-2\">\n              <button type=\"button\" aria-label=\"返回\" className=\"grid size-9 place-items-center rounded-lg hover:bg-muted\" onClick={() => setOpen(false)}>\n                <ArrowLeft className=\"size-5\" />\n              </button>\n              <input autoFocus aria-label={placeholder} placeholder={placeholder} className=\"h-9 w-full bg-transparent text-sm outline-none\" />\n            </div>\n          ) : (\n            <div className=\"flex items-center gap-1\">\n              {items.map((item) => (\n                <button key={item.id} type=\"button\" aria-label={item.label} className=\"grid size-9 place-items-center rounded-lg hover:bg-muted\">\n                  {item.icon}\n                </button>\n              ))}\n              <button type=\"button\" aria-label={placeholder} className=\"grid size-9 place-items-center rounded-lg hover:bg-muted\" onClick={() => setOpen(true)}>\n                <Search className=\"size-5\" />\n              </button>\n            </div>\n          )}\n        </motion.div>\n      </div>\n    </MotionConfig>\n  )\n}\n\nexport { ToolbarDynamic }\n"
+    }
+  ]
+}

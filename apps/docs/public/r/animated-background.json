@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-background",
+  "type": "registry:ui",
+  "title": "Animated Background",
+  "description": "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelick（Julien Thibeaut）。 https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx 共享高亮背景，用 layoutId 滑到悬停或选中的子项。和 animated-tabs 不同，这是通用原语。减弱动效时高亮直接跳到目标。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/animated-background.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/animated-background.tsx",
+      "content": "\"use client\"\n\n// Ported from Motion Primitives (MIT) — https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx\n\nimport { Children, cloneElement, isValidElement, useId, useState, type ReactElement, type ReactNode } from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface AnimatedBackgroundProps {\n  children?: ReactNode\n  defaultValue?: string\n  value?: string\n  onValueChange?: (id: string | null) => void\n  enableHover?: boolean\n  className?: string\n}\n\nfunction AnimatedBackground({ children, defaultValue, value, onValueChange, enableHover = false, className }: AnimatedBackgroundProps) {\n  const reduced = usePrefersReducedMotion()\n  const layoutId = useId()\n  const [internal, setInternal] = useState<string | null>(defaultValue ?? null)\n  const active = value !== undefined ? value : internal\n  const select = (id: string | null) => {\n    if (value === undefined) setInternal(id)\n    onValueChange?.(id)\n  }\n\n  return (\n    <div data-slot=\"animated-background\" data-reduced={reduced ? \"true\" : \"false\"} className=\"inline-flex gap-1\">\n      {Children.map(children, (child) => {\n        if (!isValidElement(child)) return child\n        const element = child as ReactElement<{ \"data-id\"?: string; className?: string; children?: ReactNode }>\n        const id = element.props[\"data-id\"] ?? \"\"\n        return cloneElement(\n          element,\n          {\n            className: cn(\"relative inline-flex\", element.props.className),\n            \"data-checked\": active === id ? \"true\" : \"false\",\n            onMouseEnter: enableHover ? () => select(id) : undefined,\n            onMouseLeave: enableHover ? () => select(null) : undefined,\n            onClick: enableHover ? undefined : () => select(id),\n          } as never,\n          <>\n            <AnimatePresence initial={false}>\n              {active === id ? (\n                <motion.div\n                  layoutId={reduced ? undefined : layoutId}\n                  className={cn(\"absolute inset-0 rounded-lg bg-muted\", className)}\n                  transition={reduced ? { duration: 0 } : { type: \"spring\", bounce: 0.16, duration: 0.4 }}\n                  initial={{ opacity: reduced ? 1 : 0 }}\n                  animate={{ opacity: 1 }}\n                  exit={{ opacity: 0 }}\n                />\n              ) : null}\n            </AnimatePresence>\n            <span className=\"relative z-10\">{element.props.children}</span>\n          </>,\n        )\n      })}\n    </div>\n  )\n}\n\nexport { AnimatedBackground }\n"
+    }
+  ]
+}

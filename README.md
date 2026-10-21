@@ -555,6 +555,30 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 漫画字、霓虹边框与反馈
+
+登记在 `catalog-batch22.ts`。上一批字符点阵已占用 `catalog-batch21.ts`。`comic-text`、`neon-gradient-card`、`cool-mode`、`pixel-image`、`geo-patterns` 移植自 Magic UI（MIT，Copyright (c) Magic UI）。`border-trail`、`glow-effect`、`text-shimmer-wave`、`morphing-popover`、`toolbar-dynamic`、`toolbar-expandable`、`transition-panel`、`animated-background`、`disclosure` 移植自 Motion Primitives（MIT，Copyright (c) 2024 ibelick，Julien Thibeaut）。`use-click-outside` 与 `use-measure` 是原创钩子，后者用 ResizeObserver 测量尺寸。`feedback-widget` 灵感来自常见 SaaS 反馈组件，原创实现。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧。减弱动效时漫画字不弹跳，霓虹和辉光静止，粒子不出现，像素图直接上色，边框圆点停住，文字只变色，弹层改为淡入，工具栏宽度和高度立即切换，高亮直接跳转，折叠立即展开。
+
+| 组件 | 来源 |
+| --- | --- |
+| use-click-outside | 原创 |
+| use-measure | 原创 |
+| comic-text | Magic UI，MIT |
+| neon-gradient-card | Magic UI，MIT |
+| cool-mode | Magic UI，MIT |
+| pixel-image | Magic UI，MIT |
+| geo-patterns | Magic UI，MIT |
+| border-trail | Motion Primitives，MIT |
+| glow-effect | Motion Primitives，MIT |
+| text-shimmer-wave | Motion Primitives，MIT |
+| morphing-popover | Motion Primitives，MIT |
+| toolbar-dynamic | Motion Primitives，MIT |
+| toolbar-expandable | Motion Primitives，MIT |
+| transition-panel | Motion Primitives，MIT |
+| animated-background | Motion Primitives，MIT |
+| disclosure | Motion Primitives，MIT |
+| feedback-widget | 灵感来自常见 SaaS 反馈组件，原创实现 |
+
 ### 整页模板
 
 每个模板是多文件 registry 条目（`page.tsx` + `content.ts` + `theme.ts`），由现有区块组合。文档页提供 `/preview/{name}` 全屏预览；重 WebGL 懒加载，`prefers-reduced-motion` 时不挂载这些模块。

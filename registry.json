@@ -11852,6 +11852,291 @@
           "target": "components/ui/tab-navigation.tsx"
         }
       ]
+    },
+    {
+      "name": "grid-tilt-card",
+      "type": "registry:ui",
+      "title": "Grid Tilt Card",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 kennyotsu。https://github.com/uiverse-io/galaxy/blob/main/Cards/kennyotsu_witty-deer-12.html 5×5 追踪格用纯 CSS 把卡片倾斜。减弱动效时不旋转，标题直接显示。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/grid-tilt-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/grid-tilt-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "layered-glass-card",
+      "type": "registry:ui",
+      "title": "Layered Glass Card",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 Smit-Prajapati。https://github.com/uiverse-io/galaxy/blob/main/Cards/Smit-Prajapati_smart-liger-5.html 透视下叠五层同心圆。中心图形由 icon 传入，不带 Uiverse 标志。减弱动效时不旋转、不探出。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/layered-glass-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/layered-glass-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "eye-blink-loader",
+      "type": "registry:ui",
+      "title": "Eye Blink Loader",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 mobinkakei。https://github.com/uiverse-io/galaxy/blob/main/loaders/mobinkakei_tricky-duck-12.html 两只眼睛移动并眨眼。size、color 可配。减弱动效或离开视口时停住。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/eye-blink-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/eye-blink-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "css-pattern-background",
+      "type": "registry:ui",
+      "title": "CSS Pattern Background",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 条纹作者 jeremyssocial，圆点作者 elijahgummer，蜂巢作者 mobinkakei。https://github.com/uiverse-io/galaxy/blob/main/Patterns/jeremyssocial_afraid-sheep-52.html variant 可选 stripes、dots、honeycomb。颜色、size、speed 可配。减弱动效或离开视口时停止滚动。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/css-pattern-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/css-pattern-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heartbeat-button",
+      "type": "registry:ui",
+      "title": "Heartbeat Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/HeartbeatButton.tsx 按钮按 buttonheartbeat 缩放并放出光环。关键帧从 tailwind.config.ts 迁出。减弱动效或离开视口时不跳。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/heartbeat-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/heartbeat-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neubrutalism-button",
+      "type": "registry:ui",
+      "title": "Neubrutalism Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/NeubrutalismButton.tsx 色块错开在实心底上，悬停再抬起，按下贴回。减弱动效时不再位移。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/neubrutalism-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/neubrutalism-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "3d-button",
+      "type": "registry:ui",
+      "title": "3D Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/3DButton.tsx 悬停时白色圆从中心扩散，按下略微下沉。减弱动效时圆不扩散、按钮不下沉。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/3d-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/3d-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-fade",
+      "type": "registry:ui",
+      "title": "Image Fade",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/effects/ImageFade.tsx 用 mask 沿 direction 把图片边缘渐隐。fadeSize 是实色开始的百分比。减弱动效时去掉遮罩，显示完整图片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/image-fade.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/image-fade.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-circle",
+      "type": "registry:ui",
+      "title": "Progress Circle",
+      "description": "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。 https://github.com/tremorlabs/tremor/blob/main/src/components/ProgressCircle/ProgressCircle.tsx 环形进度。tailwind-variants 已改成 cva。减弱动效时弧长直接到位。",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progress-circle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress-circle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "callout",
+      "type": "registry:ui",
+      "title": "Callout",
+      "description": "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。 https://github.com/tremorlabs/tremor/blob/main/src/components/Callout/Callout.tsx 带标题和图标的提示条。tailwind-variants 已改成 cva。没有动画，减弱动效下外观不变。",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/callout.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/callout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expanding-icon-tabs",
+      "type": "registry:ui",
+      "title": "Expanding Icon Tabs",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/tabs/IconTabs.tsx role=tablist 的图标标签，选中项展开文字。可用 value 受控。framer-motion 已改为 motion/react。减弱动效时文字直接出现。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-controllable-state",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/expanding-icon-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/expanding-icon-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slide-toggle",
+      "type": "registry:ui",
+      "title": "Slide Toggle",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/toggle/SlideToggle.tsx role=switch 的滑动开关，可用 checked 受控。framer-motion 已改为 motion/react。减弱动效时旋钮直接到位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-controllable-state",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/slide-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slide-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heart-like-button",
+      "type": "registry:ui",
+      "title": "Heart Like Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 LilaRest。https://github.com/uiverse-io/galaxy/blob/main/Buttons/LilaRest_loud-walrus-26.html 心形喜欢按钮，aria-pressed 跟随 liked。悬停时心会跳。减弱动效或离开视口时不跳。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-controllable-state",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/heart-like-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/heart-like-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "download-size-button",
+      "type": "registry:ui",
+      "title": "Download Size Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 satyamchaudharydev。https://github.com/uiverse-io/galaxy/blob/main/Buttons/satyamchaudharydev_afraid-yak-30.html 悬停时文字换成下载图标，并显示文件大小。传入 href 时渲染链接。减弱动效时切换不过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/download-size-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/download-size-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "achievement-toast",
+      "type": "registry:ui",
+      "title": "Achievement Toast",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 WittyHydra。https://github.com/uiverse-io/galaxy/blob/main/Notifications/WittyHydra_nervous-zebra-0.html 成就条从上滑入，标题翻转出现。减弱动效时直接展开。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/achievement-toast.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/achievement-toast.tsx"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "3d-button",
+  "type": "registry:ui",
+  "title": "3D Button",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/3DButton.tsx 悬停时白色圆从中心扩散，按下略微下沉。减弱动效时圆不扩散、按钮不下沉。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/3d-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/3d-button.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI（MIT，(c) 2024 SyntaxUI）— https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/3DButton.tsx\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { type ButtonHTMLAttributes, type ReactNode } from \"react\"\n\nexport interface ThreeDButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"children\" | \"color\"> {\n  children?: ReactNode\n  color?: string\n}\n\nexport function ThreeDButton({ children = \"立体\", color = \"var(--primary)\", className, ...props }: ThreeDButtonProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n\n  return (\n    <button\n      {...props}\n      className={cn(\n        \"group relative inline-flex items-center justify-center overflow-hidden rounded-lg border-b-2 border-foreground/40 px-4 py-1 text-primary-foreground shadow-lg\",\n        prefersReducedMotion ? \"transition-none\" : \"transition duration-100 active:translate-y-0.5 active:shadow-none\",\n        className,\n      )}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"3d-button\"\n      style={{ background: color }}\n      type=\"button\"\n    >\n      <span\n        className={cn(\n          \"absolute h-0 w-0 rounded-full bg-primary-foreground opacity-20\",\n          prefersReducedMotion ? \"transition-none\" : \"transition-all duration-300 ease-out group-hover:h-32 group-hover:w-32\",\n        )}\n      />\n      <span className=\"relative font-medium\">{children}</span>\n    </button>\n  )\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "callout",
+  "type": "registry:ui",
+  "title": "Callout",
+  "description": "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。 https://github.com/tremorlabs/tremor/blob/main/src/components/Callout/Callout.tsx 带标题和图标的提示条。tailwind-variants 已改成 cva。没有动画，减弱动效下外观不变。",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/callout.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/callout.tsx",
+      "content": "\"use client\"\n\n// Copyright 2025 Tremor\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//     http://www.apache.org/licenses/LICENSE-2.0\n//\n// Modified by effect-ui: replaced tailwind-variants tv() with cva, and cx with cn.\n// Ported from Tremor Raw（Apache-2.0，(c) 2025 Tremor）— https://github.com/tremorlabs/tremor/blob/main/src/components/Callout/Callout.tsx\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { cva } from \"class-variance-authority\"\nimport { type HTMLAttributes, type ReactNode } from \"react\"\n\nexport type CalloutVariant = \"default\" | \"success\" | \"error\" | \"warning\" | \"neutral\"\n\nconst calloutVariants = cva(\"flex flex-col overflow-hidden rounded-md p-4 text-sm\", {\n  variants: {\n    variant: {\n      default: \"bg-primary/10 text-primary\",\n      success: \"bg-emerald-500/10 text-emerald-800 dark:text-emerald-300\",\n      error: \"bg-destructive/10 text-destructive\",\n      warning: \"bg-amber-500/10 text-amber-900 dark:text-amber-200\",\n      neutral: \"bg-muted text-muted-foreground\",\n    },\n  },\n  defaultVariants: { variant: \"default\" },\n})\n\nexport interface CalloutProps extends Omit<HTMLAttributes<HTMLDivElement>, \"title\"> {\n  title: string\n  icon?: ReactNode\n  variant?: CalloutVariant\n}\n\nexport function Callout({ title, icon, variant = \"default\", className, children, ...props }: CalloutProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  return (\n    <div\n      {...props}\n      className={cn(calloutVariants({ variant }), className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"callout\"\n      data-variant={variant}\n      role=\"note\"\n    >\n      <div className=\"flex items-start\">\n        {icon ? <span className=\"mt-0.5 mr-1.5 inline-flex shrink-0\">{icon}</span> : null}\n        <span className=\"font-semibold\">{title}</span>\n      </div>\n      {children ? <div className=\"mt-2 overflow-y-auto\">{children}</div> : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

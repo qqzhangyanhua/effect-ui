@@ -33,6 +33,7 @@ import * as effectDemos31 from "./effect-demos-31"
 import * as effectDemos32 from "./effect-demos-32"
 import * as effectDemos33 from "./effect-demos-33"
 import * as effectDemos34 from "./effect-demos-34"
+import * as effectDemos35 from "./effect-demos-35"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -632,6 +633,21 @@ const demoMap: Record<string, ComponentType> = {
   "category-bar": effectDemos34.CategoryBarDemo,
   "bar-list": effectDemos34.BarListDemo,
   "tab-navigation": effectDemos34.TabNavigationDemo,
+  "grid-tilt-card": effectDemos35.GridTiltCardDemo,
+  "layered-glass-card": effectDemos35.LayeredGlassCardDemo,
+  "eye-blink-loader": effectDemos35.EyeBlinkLoaderDemo,
+  "css-pattern-background": effectDemos35.CssPatternBackgroundDemo,
+  "heartbeat-button": effectDemos35.HeartbeatButtonDemo,
+  "neubrutalism-button": effectDemos35.NeubrutalismButtonDemo,
+  "3d-button": effectDemos35.ThreeDButtonDemo,
+  "image-fade": effectDemos35.ImageFadeDemo,
+  "progress-circle": effectDemos35.ProgressCircleDemo,
+  callout: effectDemos35.CalloutDemo,
+  "expanding-icon-tabs": effectDemos35.ExpandingIconTabsDemo,
+  "slide-toggle": effectDemos35.SlideToggleDemo,
+  "heart-like-button": effectDemos35.HeartLikeButtonDemo,
+  "download-size-button": effectDemos35.DownloadSizeButtonDemo,
+  "achievement-toast": effectDemos35.AchievementToastDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

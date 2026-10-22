@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-toggle",
+  "type": "registry:ui",
+  "title": "Slide Toggle",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/toggle/SlideToggle.tsx role=switch 的滑动开关，可用 checked 受控。framer-motion 已改为 motion/react。减弱动效时旋钮直接到位。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-controllable-state",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/slide-toggle.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/slide-toggle.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI（MIT，(c) 2024 SyntaxUI）— https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/toggle/SlideToggle.tsx\n// framer-motion 已改为 motion/react。\n\nimport { useControllableState } from \"@/hooks/use-controllable-state\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion } from \"motion/react\"\nimport { type ButtonHTMLAttributes } from \"react\"\n\nexport interface SlideToggleProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"onChange\"> {\n  checked?: boolean\n  defaultChecked?: boolean\n  onCheckedChange?: (checked: boolean) => void\n  onLabel?: string\n  offLabel?: string\n}\n\nexport function SlideToggle({\n  checked,\n  defaultChecked = false,\n  onCheckedChange,\n  onLabel,\n  offLabel,\n  className,\n  ...props\n}: SlideToggleProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const [on, setOn] = useControllableState({\n    value: checked,\n    defaultValue: defaultChecked,\n    onChange: onCheckedChange,\n  })\n  const spring = prefersReducedMotion ? { duration: 0 } : { type: \"spring\" as const, bounce: 0, duration: 0.45 }\n\n  return (\n    <button\n      {...props}\n      aria-checked={on}\n      className={cn(\n        \"relative inline-flex h-7 min-w-12 items-center overflow-hidden rounded-full bg-muted px-1 text-xs\",\n        className,\n      )}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"slide-toggle\"\n      data-state={on ? \"on\" : \"off\"}\n      onClick={(event) => {\n        props.onClick?.(event)\n        if (!event.defaultPrevented) setOn(!on)\n      }}\n      role=\"switch\"\n      type=\"button\"\n    >\n      <motion.span\n        animate={{ scaleX: on ? 1 : 0, opacity: on ? 1 : 0 }}\n        className=\"absolute inset-0 origin-left rounded-full bg-primary\"\n        initial={false}\n        transition={spring}\n      />\n      <motion.span\n        animate={{ left: on ? \"calc(100% - 1.35rem)\" : \"0.15rem\" }}\n        className=\"absolute z-10 size-5 rounded-full bg-background shadow\"\n        initial={false}\n        transition={spring}\n      />\n      {onLabel && offLabel ? (\n        <span className={cn(\"relative z-10 px-6 font-medium\", on ? \"text-primary-foreground\" : \"text-muted-foreground\")}>\n          {on ? onLabel : offLabel}\n        </span>\n      ) : (\n        <span className=\"inline-block h-5 w-10\" />\n      )}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

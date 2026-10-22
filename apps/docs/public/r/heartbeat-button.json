@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "heartbeat-button",
+  "type": "registry:ui",
+  "title": "Heartbeat Button",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/HeartbeatButton.tsx 按钮按 buttonheartbeat 缩放并放出光环。关键帧从 tailwind.config.ts 迁出。减弱动效或离开视口时不跳。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/heartbeat-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/heartbeat-button.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI（MIT，(c) 2024 SyntaxUI）— https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/HeartbeatButton.tsx\n// buttonheartbeat 关键帧来自 SyntaxUI tailwind.config.ts。\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { useRef, type ButtonHTMLAttributes, type ReactNode } from \"react\"\n\nexport interface HeartbeatButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"children\" | \"color\"> {\n  children?: ReactNode\n  color?: string\n}\n\nexport function HeartbeatButton({ children = \"心跳\", color = \"var(--destructive)\", className, ...props }: HeartbeatButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const animate = !prefersReducedMotion && motionOn\n\n  return (\n    <button\n      {...props}\n      ref={ref}\n      className={cn(\"rounded-md px-4 py-1 text-sm font-medium text-primary-foreground\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"heartbeat-button\"\n      style={{\n        background: color,\n        animation: animate ? \"effect-ui-heartbeat 2s infinite ease-in-out\" : \"none\",\n        [\"--hb\" as string]: color,\n      }}\n      type=\"button\"\n    >\n      <style>{`\n        @keyframes effect-ui-heartbeat {\n          0% { box-shadow: 0 0 0 0 var(--hb); transform: scale(1); }\n          50% { box-shadow: 0 0 0 7px color-mix(in oklab, var(--hb), transparent); transform: scale(1.05); }\n          100% { box-shadow: 0 0 0 0 transparent; transform: scale(1); }\n        }\n      `}</style>\n      {children}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

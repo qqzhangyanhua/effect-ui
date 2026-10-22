@@ -1,0 +1,77 @@
+packages/registry/src/audit-coverage.ts
+  s_1f7fae292b4abd::t_822a7eb9bb1011 152-165
+  s_1f7fae292b4abd::t_23e2cddf9f70e1 26-33,35-60,75-80
+  s_1f7fae292b4abd::t_cf2e6e17935f98 61-74
+  s_1f7fae292b4abd::t_a01b344b885ee3 34
+  s_1f7fae292b4abd::t_e5d21e618c3362 107-111,117
+docs/testing.md
+  s_1f7fae292b4abd::t_fd32e9b13f121f 34
+packages/registry/src/audit.ts
+  s_1f7fae292b4abd::t_3801105a2b9e7f 686,693-694,701-713
+  s_1f7fae292b4abd::t_af75815c497ed7 6,8,10
+  s_1f7fae292b4abd::t_273ffc53dc2884 48-49
+  s_1f7fae292b4abd::t_d9ee4783c14866 649,651,655-656,659-662,664,666-672,683-685,687-692,695-700
+  s_1f7fae292b4abd::t_689af352cb1632 7
+  s_1f7fae292b4abd::t_14478770b72c0d 657-658,663,665
+packages/registry/src/catalog-batch34.ts
+  s_1f7fae292b4abd::t_efb109722d2b4d 55,57-58
+  s_1f7fae292b4abd::t_8f9527131f8391 157,159-160
+  s_1f7fae292b4abd::t_4b7c187f80ae4d 23-24
+  s_1f7fae292b4abd::t_cdcb9c2e525cd5 39-41
+  s_1f7fae292b4abd::t_1a7e74c862ed4e 75-76
+  s_1f7fae292b4abd::t_0b3e3e1c4cf795 139
+  s_1f7fae292b4abd::t_3db7ccece2e092 142-143
+  s_1f7fae292b4abd::t_4ecf442e0df3c2 106,108-109
+  s_1f7fae292b4abd::t_12165fb2e0f1eb 25
+  s_1f7fae292b4abd::t_5f56a49ee645d2 73
+  s_1f7fae292b4abd::t_e9ffd4cf7f1198 123,125-126
+  s_1f7fae292b4abd::t_7b8c43f73a145a 89-91
+packages/registry/src/examples/effect-demos-36.tsx
+  s_1f7fae292b4abd::t_e6952d0567af27 84,94
+  s_1f7fae292b4abd::t_79f65d1ed9f87a 33-41,44,49-57,60-62,67-75,78,83,85-91,99-107,110,115-123,126,131-139,142,147,149-151,153-155,170-178,181
+  s_1f7fae292b4abd::t_2a0bcb34a09a7e 148,152,156-161,164-165
+packages/registry/src/examples/effect-demos-37.tsx
+  s_1f7fae292b4abd::t_d361856698941d 187-195,198,203-211,216-219
+  s_1f7fae292b4abd::t_7151fd4ac148da 39-47,50,55-63,66-72,77-85,88,93-101,104
+  s_1f7fae292b4abd::t_9b209493f1ff9c 154-162,166-167,171
+  s_1f7fae292b4abd::t_3baf9be043ee57 125-133
+  s_1f7fae292b4abd::t_67e8876b193de4 138
+packages/registry/src/audit-coverage.test.ts
+  s_1f7fae292b4abd::t_eab40746ede4b0 170-183
+  s_1f7fae292b4abd::t_025ce9f3cff22e 26,29
+  s_1f7fae292b4abd::t_d40893a7664830 32
+  s_1f7fae292b4abd::t_cf00662cd25668 122-157,159-169,184-200
+  s_1f7fae292b4abd::t_fd6558e5a4ecf8 158
+packages/registry/src/catalog-batch35.ts
+  s_1f7fae292b4abd::t_ba11bcddb95b05 259,261-262
+  s_1f7fae292b4abd::t_dcae1700ebfc18 115-117
+  s_1f7fae292b4abd::t_401a5e9c7a6840 156
+  s_1f7fae292b4abd::t_400c4c814c495f 72-73,75
+  s_1f7fae292b4abd::t_6d96de086de01c 56-58
+  s_1f7fae292b4abd::t_dfadb07ae7e7a3 239-241
+  s_1f7fae292b4abd::t_7e3d06a49b555d 196-198
+  s_1f7fae292b4abd::t_00ec8ea323e8a7 157-158
+  s_1f7fae292b4abd::t_48dcaa3681a9bd 95-96,98
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_fc316628aac093 31-40,43-45
+  s_1f7fae292b4abd::t_a926e885d5b2cb 8-9,11
+  s_1f7fae292b4abd::t_89cdd0868e4b5c 13,15,41-42,46-49,55-59,61,66-70,74
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_d1d6004b932e8d 5-6,9-12,16-17,19-26,29-30,33,35,37,40-43,45,50-51,57,59-60,66,68,72-75,77-78,81-82,84,87,91,93-94,98-100,102,104-106,108,111-118,121-125,127-130,133-134,136-137,139-141,149-155,158-159,161,164-165,179,181-182,184-188,190,192-193,195,199-200,206-207,209-211,217-226,228,230,232-236,240-243,246,248-251,253-254,257-258,260-266,268,271-272,274-276,278-279,282-286,290,292,294-296,298,300-304,323,326-327,329,332,334-336,338,340,342-348,350,352-356,358-361,365,367-372,375-377,379,381,384-385,387,389,392-394,406-408,410-411,414,417-418,420
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "1b534bec868ef49f0dcd191fb37ed4704f6125c2",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

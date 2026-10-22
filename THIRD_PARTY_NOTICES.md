@@ -102,9 +102,10 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 ## prompt-kit
 
 - 仓库：https://github.com/ibelick/prompt-kit
+- 许可文件：`LICENCE.md`
 - 许可：MIT
-- 版权：Copyright (c) 2024 ibelick
-- 衍生组件：`prompt-input`、`chat-message`（流式 Markdown 用 `react-markdown`）。未移植 Vercel AI Elements（Apache，官方即将弃用），仅作交互参考。
+- 版权：Copyright (c) 2025 Julien Thibeaut
+- 衍生组件：`prompt-input`、`chat-message`（流式 Markdown 用 `react-markdown`），以及 `ai-loader`、`response-stream`（同时导出 `useTextStream`）、`thinking-bar`、`chain-of-thought`、`reasoning`、`source`、`tool`、`system-message`、`feedback-bar`、`prompt-suggestion`、`generated-image`。`@/components/ui/*` 换成 effect-ui 已有组件。`reasoning` 渲染 children，不使用 markdown。`source` 的 `showFavicon` 默认关闭，只使用 `faviconSrc`，不请求 Google favicon。`generated-image` 由 `image` 改名，卸载时 revoke object URL。`ai-loader` 的关键帧来自 `app/globals.css`。未移植 Vercel AI Elements（Apache，官方即将弃用），仅作交互参考。
 
 ## Tailark blocks（免费）
 
@@ -209,7 +210,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/uiverse-io/galaxy
 - 许可：MIT
 - 版权：Copyright (c) 2023 Uiverse.io
-- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu），以及 `check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。`plus-share-burst` 的图标由调用方传入。
+- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu），以及 `check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal），以及 `book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。`plus-share-burst` 的图标由调用方传入。
 
 ## shadcn-ui-expansions
 

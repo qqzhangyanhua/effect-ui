@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retro-press-button",
+  "type": "registry:ui",
+  "title": "Retro Press Button",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 TanimMahbub。https://github.com/uiverse-io/galaxy/blob/main/Buttons/TanimMahbub_selfish-goat-90.html 按下时下沉的复古按钮。color 与 shadowColor 可配。减弱动效时按下仍然到位，但没有过渡。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/retro-press-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/retro-press-button.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author TanimMahbub）— https://github.com/uiverse-io/galaxy/blob/main/Buttons/TanimMahbub_selfish-goat-90.html. Modified for effect-ui.\n\nimport type { ButtonHTMLAttributes, CSSProperties } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface RetroPressButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  color?: string\n  shadowColor?: string\n}\n\nexport function RetroPressButton({ color = \"var(--primary)\", shadowColor = \"var(--foreground)\", className, style, type = \"button\", children, ...props }: RetroPressButtonProps) {\n  const reduced = usePrefersReducedMotion()\n  const painted = {\n    \"--retro-press-color\": color,\n    \"--retro-press-shadow\": shadowColor,\n    ...style,\n  } as CSSProperties\n\n  return (\n    <button\n      {...props}\n      className={cn(\n        \"inline-block cursor-pointer rounded-lg px-8 py-3 font-mono text-[22px] font-semibold tracking-wide text-primary-foreground uppercase\",\n        \"bg-(--retro-press-color) shadow-[0_0_0_3px_var(--retro-press-shadow),0_6px_0_var(--retro-press-shadow)]\",\n        \"hover:brightness-95 active:translate-y-0.5 active:shadow-[0_0_0_3px_var(--retro-press-shadow),0_4px_0_var(--retro-press-shadow)]\",\n        reduced ? \"transition-none\" : \"transition-all duration-100\",\n        className,\n      )}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"retro-press-button\"\n      style={painted}\n      type={type}\n    >\n      {children}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

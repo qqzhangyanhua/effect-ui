@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "thinking-bar",
+  "type": "registry:ui",
+  "title": "Thinking Bar",
+  "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/thinking-bar.tsx 思考中的文字条，可停止或点开。减弱动效或离开视口时文字不再扫光。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/thinking-bar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/thinking-bar.tsx",
+      "content": "\"use client\"\n\n// Ported from prompt-kit (MIT, (c) 2025 Julien Thibeaut) — https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/thinking-bar.tsx. Modified for effect-ui.\n\nimport { ChevronRight } from \"lucide-react\"\nimport { useRef } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ThinkingBarProps {\n  className?: string\n  text?: string\n  onStop?: () => void\n  stopLabel?: string\n  onClick?: () => void\n}\n\nexport function ThinkingBar({ className, text = \"思考中\", onStop, stopLabel = \"立即回答\", onClick }: ThinkingBarProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const active = !reduced && motionOn\n  const label = (\n    <span\n      className={cn(\"font-medium\", active ? \"bg-clip-text text-transparent\" : \"text-foreground\")}\n      style={\n        active\n          ? {\n              backgroundImage: \"linear-gradient(to right, var(--muted-foreground) 40%, var(--foreground) 60%, var(--muted-foreground) 80%)\",\n              backgroundSize: \"200% auto\",\n              animation: \"thinking-bar-shimmer 4s linear infinite\",\n            }\n          : undefined\n      }\n    >\n      {text}\n    </span>\n  )\n\n  return (\n    <div ref={ref} className={cn(\"flex w-full items-center justify-between gap-3\", className)} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"thinking-bar\">\n      <style>{\"@keyframes thinking-bar-shimmer { from { background-position: 200% 50%; } to { background-position: -200% 50%; } }\"}</style>\n      {onClick ? (\n        <button className=\"flex items-center gap-1 text-sm\" type=\"button\" onClick={onClick}>\n          {label}\n          <ChevronRight aria-hidden className=\"size-4 text-muted-foreground\" />\n        </button>\n      ) : (\n        label\n      )}\n      {onStop ? (\n        <button className=\"border-b border-dotted border-muted-foreground/50 text-sm text-muted-foreground hover:border-foreground hover:text-foreground\" type=\"button\" onClick={onStop}>\n          {stopLabel}\n        </button>\n      ) : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

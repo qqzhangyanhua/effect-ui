@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 提示词套件与加载指示
+
+登记在 `catalog-batch37.ts`。上一批可变字体已占用 `catalog-batch36.ts`。`ai-loader`、`response-stream`、`thinking-bar`、`chain-of-thought`、`reasoning`、`source`、`tool`、`system-message`、`feedback-bar`、`prompt-suggestion`、`generated-image` 移植自 prompt-kit（许可文件 `LICENCE.md`，MIT，Copyright (c) 2025 Julien Thibeaut）。`@/components/ui/*` 换成已有组件。`reasoning` 渲染 children。`source` 默认不显示图标，也不请求 Google favicon。`generated-image` 由 `image` 改名。`book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。没有新增依赖。减弱动效时加载指示停住、文字流立即显示全文、思考条不再扫光、书页合上、地图钉停住、发光方块停在四角、复古按钮按下没有过渡、思维链和工具卡不再播放折叠动画、推理区直接展开、来源悬停不再延迟、反馈和提示词按钮没有过渡、生成图占位不脉冲。
+
+| 组件 | 来源 |
+| --- | --- |
+| ai-loader | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| response-stream | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| thinking-bar | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| book-page-loader | Uiverse galaxy，MIT，作者 vinodjangid07 |
+| map-pin-loader | Uiverse galaxy，MIT，作者 vikramsinghnegi |
+| glow-corner-loader | Uiverse galaxy，MIT，作者 NlghtM4re |
+| retro-press-button | Uiverse galaxy，MIT，作者 TanimMahbub |
+| chain-of-thought | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| reasoning | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| source | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| tool | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| system-message | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| feedback-bar | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| prompt-suggestion | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| generated-image | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+
 ### 可变字体、开关与资料卡
 
 登记在 `catalog-batch36.ts`。上一批全息文字已占用 `catalog-batch35.ts`。`variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float` 移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho）。`lodash` 的 debounce 改成组件内手写，`clsx` 改成 `cn`。`check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card` 移植自 Spectrum UI（Apache-2.0，(c) Spectrum UI / arihantcodes）。`use-typewriter` 移植到 `hooks/`。`framer-motion` 已换成 `motion/react`。示例凭据、提示词、社交入口、转账数字和 GitHub 用户放在 demo。资料卡默认不发请求。没有新增依赖。减弱动效时可变字体保持起始字重、字母不交换、下划线不再过渡、路径元素停在起点、漂浮回到原位、开关直接到位、分享菜单直接出现、星星不缩放、账号卡和对话卡直接显示第一组文案、登录卡直接出现、转账按钮不再缩放。

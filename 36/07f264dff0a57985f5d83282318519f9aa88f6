@@ -1,0 +1,83 @@
+packages/registry/src/effects/card-toss-stack.test.tsx
+  s_1f7fae292b4abd::t_e8d69afb0d4d80 1-125
+packages/registry/src/effects/sticky-note-board.test.tsx
+  s_1f7fae292b4abd::t_a07f46508022d2 1-116
+README.md
+  s_1f7fae292b4abd::t_2e4d26287d61b3 593-602
+apps/docs/public/r/sticky-note-board.json
+  s_1f7fae292b4abd::t_937fb505bb20de 17
+  s_1f7fae292b4abd::t_cd142fe6990845 1-16,18-20
+packages/registry/src/examples/index.ts
+  s_1f7fae292b4abd::t_2122be25b56685 39
+  s_1f7fae292b4abd::t_ed53b4fe75a97c 685-687
+packages/registry/src/effects/sticky-note-board.tsx
+  s_1f7fae292b4abd::t_88cfe222774a5b 51-58
+  s_1f7fae292b4abd::t_9a88e034c09a6d 79-82,84
+  s_1f7fae292b4abd::t_f62b115b96c99d 72
+  s_1f7fae292b4abd::t_38391e90d92772 215
+  s_1f7fae292b4abd::t_e1a3858ca82219 210
+  s_1f7fae292b4abd::t_153201e7967b8f 78,83,85
+  s_1f7fae292b4abd::t_58dc0990faba2b 90,127,141,150,165,204
+  s_1f7fae292b4abd::t_b1e5810cbfca3b 47-48
+  s_1f7fae292b4abd::t_e16d6909f4169c 21
+  s_1f7fae292b4abd::t_c98b3258e90975 164,166-168
+  s_1f7fae292b4abd::t_614626f7aef634 178,181
+  s_1f7fae292b4abd::t_91feb67cf53c31 65
+  s_1f7fae292b4abd::t_d12909f1125b5d 1-20,22-46,49-50,59-64,66-71,73-77,86-89,91-126,128-140,142-149,151-163,169-177,179-180,182-203,205-209,211-214,216-228
+packages/registry/src/effects/card-toss-stack.tsx
+  s_1f7fae292b4abd::t_8f83e1a06fa190 1-63,69-254
+  s_1f7fae292b4abd::t_220a15fca9e845 64-68
+CREDITS.md
+  s_1f7fae292b4abd::t_7ce89cdcdfa8f9 23
+packages/registry/src/audit-coverage.ts
+  s_1f7fae292b4abd::t_42f9944fdc7ce7 83
+  s_1f7fae292b4abd::t_80ff1158b77600 3
+packages/registry/src/examples/effect-demos-38.tsx
+  s_1f7fae292b4abd::t_e77cc51a7c5698 45,50,54
+  s_1f7fae292b4abd::t_8d1d9be74cc514 1-44,46-49,51-53,55-57
+packages/registry/src/effects/toss-to-trash.test.tsx
+  s_1f7fae292b4abd::t_a1afa29588d055 1-76,78-122
+  s_1f7fae292b4abd::t_72820a2361e653 77
+packages/registry/src/catalog-batch36.ts
+  s_1f7fae292b4abd::t_14d27994f54c34 1-104,106-114
+  s_1f7fae292b4abd::t_b60920a4e8f072 105
+apps/docs/public/r/toss-to-trash.json
+  s_1f7fae292b4abd::t_937fb505bb20de 17
+  s_1f7fae292b4abd::t_cc198ce853148c 1-16,18-20
+packages/registry/src/effects/toss-to-trash.tsx
+  s_1f7fae292b4abd::t_5e1b4e3259052c 93-94,109-110
+  s_1f7fae292b4abd::t_81675090aec933 228
+  s_1f7fae292b4abd::t_fc527a9c3ac59d 72
+  s_1f7fae292b4abd::t_7e23bf2d86de24 183
+  s_1f7fae292b4abd::t_3a8c74dd98fb17 67-71
+  s_1f7fae292b4abd::t_68f351a01699d6 41-42
+  s_1f7fae292b4abd::t_0326ffad918f07 176
+  s_1f7fae292b4abd::t_0ec8b2b3cf2ad5 1-40,43-66,73-92,95-108,111-121,133-137,140-175,177-182,184-210,212-227,229-236
+  s_1f7fae292b4abd::t_eedb138663e87a 122-132,138-139
+  s_1f7fae292b4abd::t_b9bcc6b08c1858 211
+packages/registry/src/catalog.ts
+  s_1f7fae292b4abd::t_db3c0dbf26808a 35
+  s_1f7fae292b4abd::t_1af33eb03a803f 2303
+apps/docs/public/r/card-toss-stack.json
+  s_1f7fae292b4abd::t_28ea0ff39ffe16 1-20
+apps/docs/public/r/registry.json
+  s_1f7fae292b4abd::t_3f8775dfe7c551 12809-12862
+registry.json
+  s_1f7fae292b4abd::t_39ae13359a2a99 12809-12862
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "3607f264dff0a57985f5d83282318519f9aa88f6",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

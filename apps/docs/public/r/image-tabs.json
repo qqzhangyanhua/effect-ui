@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-tabs",
+  "type": "registry:ui",
+  "title": "Image Tabs",
+  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/image-tabs.tsx 受控图文标签。宽屏把图片放在右侧，窄屏放进当前标签。图片用 img。减弱动效时没有颜色过渡。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-media-query",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/image-tabs.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/image-tabs.tsx",
+      "content": "\"use client\"\n\n// Ported from UI Layouts (MIT, (c) 2024 UI LAYOUT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/image-tabs.tsx. Modified for effect-ui.\n\nimport { useMediaQuery } from \"@/hooks/use-media-query\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport type { HTMLAttributes } from \"react\"\n\nexport interface ImageTab {\n  id: string\n  title: string\n  description: string\n  imageUrl: string\n  imageAlt: string\n}\n\nexport interface ImageTabsProps extends HTMLAttributes<HTMLDivElement> {\n  tabs: readonly ImageTab[]\n  value: string\n  onValueChange: (value: string) => void\n}\n\nexport function ImageTabs({ tabs, value, onValueChange, className, ...props }: ImageTabsProps) {\n  const reduced = usePrefersReducedMotion()\n  const desktop = useMediaQuery(\"(min-width: 768px)\")\n  const active = tabs.find((tab) => tab.id === value) ?? tabs[0]\n  return (\n    <div\n      {...props}\n      className={cn(\"grid w-full gap-4 md:grid-cols-[minmax(0,16rem)_1fr]\", className)}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"image-tabs\"\n    >\n      <div className=\"flex flex-col gap-2\" role=\"tablist\">\n        {tabs.map((tab) => {\n          const selected = tab.id === active?.id\n          return (\n            <button\n              aria-selected={selected}\n              className={cn(\n                \"rounded-lg border px-4 py-3 text-left\",\n                selected ? \"border-primary bg-muted\" : \"border-transparent bg-background\",\n                reduced ? \"transition-none\" : \"transition-colors\",\n              )}\n              key={tab.id}\n              onClick={() => onValueChange(tab.id)}\n              role=\"tab\"\n              type=\"button\"\n            >\n              <span className=\"block font-semibold\">{tab.title}</span>\n              {selected ? <span className=\"mt-2 block text-sm text-muted-foreground\">{tab.description}</span> : null}\n              {selected && !desktop ? (\n                // eslint-disable-next-line @next/next/no-img-element -- registry 组件用 img，不引入 next/image\n                <img alt={tab.imageAlt} className=\"mt-3 h-36 w-full rounded-md object-cover\" src={tab.imageUrl} />\n              ) : null}\n            </button>\n          )\n        })}\n      </div>\n      {desktop && active ? (\n        // eslint-disable-next-line @next/next/no-img-element -- registry 组件用 img，不引入 next/image\n        <img alt={active.imageAlt} className=\"h-72 w-full rounded-xl object-cover\" src={active.imageUrl} />\n      ) : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

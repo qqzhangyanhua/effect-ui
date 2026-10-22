@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-blur-text",
+  "type": "registry:ui",
+  "title": "Scroll Blur Text",
+  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/scroll-text.tsx 按词拆开，进入视口后从 direction 方向消掉模糊。减弱动效时立即显示全文。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scroll-blur-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-blur-text.tsx",
+      "content": "\"use client\"\n\n// Ported from UI Layouts (MIT, (c) 2024 UI LAYOUT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/scroll-text.tsx. Modified for effect-ui.\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { useRef, type CSSProperties, type HTMLAttributes, type ReactNode } from \"react\"\n\nexport interface ScrollBlurTextProps extends HTMLAttributes<HTMLElement> {\n  text: string\n  direction?: \"up\" | \"down\" | \"left\" | \"right\"\n  as?: \"h1\" | \"h2\" | \"p\" | \"span\" | \"div\"\n  children?: ReactNode\n}\n\nfunction hiddenOffset(direction: NonNullable<ScrollBlurTextProps[\"direction\"]>) {\n  if (direction === \"left\") return \"translateX(-1.5rem)\"\n  if (direction === \"right\") return \"translateX(1.5rem)\"\n  if (direction === \"up\") return \"translateY(-1.5rem)\"\n  return \"translateY(1.5rem)\"\n}\n\nexport function ScrollBlurText({\n  text,\n  direction = \"down\",\n  as = \"h2\",\n  className,\n  ...props\n}: ScrollBlurTextProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const seen = useAnimationActive(ref)\n  const visible = reduced || seen\n  const words = text.split(/\\s+/).filter((word) => word.length > 0)\n  const classNames = cn(\"inline-flex flex-wrap gap-x-[0.35em]\", className)\n  const body = words.map((word, index) => {\n    const style: CSSProperties = {\n      opacity: visible ? 1 : 0,\n      filter: visible ? \"blur(0px)\" : \"blur(10px)\",\n      transform: visible ? \"none\" : hiddenOffset(direction),\n      transition: reduced ? \"none\" : `opacity 0.4s ease ${index * 0.1}s, filter 0.4s ease ${index * 0.1}s, transform 0.4s ease ${index * 0.1}s`,\n    }\n    return (\n      <span className=\"inline-block\" key={`${word}-${index}`} style={style}>\n        {word}\n      </span>\n    )\n  })\n  return (\n    <div ref={ref} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"scroll-blur-text\" data-state={visible ? \"visible\" : \"hidden\"}>\n      {as === \"h1\" ? <h1 {...props} className={classNames}>{body}</h1> : null}\n      {as === \"h2\" ? <h2 {...props} className={classNames}>{body}</h2> : null}\n      {as === \"p\" ? <p {...props} className={classNames}>{body}</p> : null}\n      {as === \"span\" ? <span {...props} className={classNames}>{body}</span> : null}\n      {as === \"div\" ? <div {...props} className={classNames}>{body}</div> : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

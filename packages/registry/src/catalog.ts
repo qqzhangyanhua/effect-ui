@@ -34,6 +34,7 @@ import { batch34Components } from "./catalog-batch34"
 import { batch35Components } from "./catalog-batch35"
 import { batch36Components } from "./catalog-batch36"
 import { batch37Components } from "./catalog-batch37"
+import { batch38Components } from "./catalog-batch38"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -84,6 +85,7 @@ export type SourceLibrary =
   | "Eldora UI"
   | "Smooth UI"
   | "UI Layouts"
+  | "shadcn-chat"
   | "TanStack Virtual"
   | "frimousse"
   | "wavesurfer.js"
@@ -241,6 +243,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Eldora UI": "https://www.eldoraui.site",
   "Smooth UI": "https://smoothui.dev",
   "UI Layouts": "https://ui-layouts.com",
+  "shadcn-chat": "https://github.com/jakobhoeg/shadcn-chat",
   "TanStack Virtual": "https://tanstack.com/virtual",
   frimousse: "https://frimousse.liveblocks.io",
   "wavesurfer.js": "https://wavesurfer.xyz",
@@ -2303,6 +2306,7 @@ export const components: ComponentMeta[] = [
   ...batch35Components,
   ...batch36Components,
   ...batch37Components,
+  ...batch38Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2402,6 +2406,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "follow-button",
       "share-button",
       "retro-press-button",
+      "liquid-gradient-button",
     ],
   },
 ]

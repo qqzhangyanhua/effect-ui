@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-blocks-grid",
+  "type": "registry:ui",
+  "title": "Hover Blocks Grid",
+  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/blocks.tsx 按容器尺寸铺开的方块网格。active 标出常亮格子，悬停再点亮一格。减弱动效时颜色没有过渡。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/hover-blocks-grid.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hover-blocks-grid.tsx",
+      "content": "\"use client\"\n\n// Ported from UI Layouts (MIT, (c) 2024 UI LAYOUT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/blocks.tsx. Modified for effect-ui.\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { useEffect, useRef, useState, type HTMLAttributes } from \"react\"\n\nexport interface HoverBlocksGridProps extends HTMLAttributes<HTMLDivElement> {\n  active?: readonly (readonly [number, number])[]\n  blockColor?: string\n  borderColor?: string\n}\n\nexport function HoverBlocksGrid({\n  active = [],\n  blockColor = \"color-mix(in oklab, var(--foreground) 12%, transparent)\",\n  borderColor = \"color-mix(in oklab, var(--foreground) 10%, transparent)\",\n  className,\n  ...props\n}: HoverBlocksGridProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const [box, setBox] = useState({ width: 0, height: 0 })\n  const [hover, setHover] = useState<string | null>(null)\n  const lit = new Set(active.map(([column, row]) => `${column}:${row}`))\n\n  useEffect(() => {\n    const node = ref.current\n    if (!node) return\n    const observer = new ResizeObserver((entries) => {\n      const entry = entries[entries.length - 1]\n      if (!entry) return\n      setBox({ width: entry.contentRect.width, height: entry.contentRect.height })\n    })\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [])\n\n  const block = box.width > 0 ? Math.max(16, box.width * 0.06) : 24\n  const columns = Math.max(1, Math.floor(box.width / block))\n  const rows = Math.max(1, Math.floor((box.height || 160) / block))\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      className={cn(\"relative grid h-56 w-full overflow-hidden\", className)}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"hover-blocks-grid\"\n      style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}\n    >\n      {Array.from({ length: columns * rows }, (_, index) => {\n        const column = Math.floor(index / rows)\n        const row = index % rows\n        const key = `${column}:${row}`\n        const on = lit.has(key) || hover === key\n        return (\n          <div\n            key={key}\n            className={cn(\"border\", reduced ? \"transition-none\" : \"transition-colors duration-150\")}\n            onMouseEnter={() => setHover(key)}\n            onMouseLeave={() => setHover((current) => (current === key ? null : current))}\n            style={{\n              borderColor,\n              background: on ? blockColor : \"transparent\",\n              height: block,\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

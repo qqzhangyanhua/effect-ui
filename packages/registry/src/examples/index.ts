@@ -38,6 +38,7 @@ import * as effectDemos36 from "./effect-demos-36"
 import * as effectDemos37 from "./effect-demos-37"
 import * as effectDemos38 from "./effect-demos-38"
 import * as effectDemos39 from "./effect-demos-39"
+import * as effectDemos40 from "./effect-demos-40"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -713,6 +714,21 @@ const demoMap: Record<string, ComponentType> = {
   "feedback-bar": effectDemos39.FeedbackBarDemo,
   "prompt-suggestion": effectDemos39.PromptSuggestionDemo,
   "generated-image": effectDemos39.GeneratedImageDemo,
+  "blur-vignette": effectDemos40.BlurVignetteDemo,
+  "liquid-gradient-button": effectDemos40.LiquidGradientButtonDemo,
+  "hover-blocks-grid": effectDemos40.HoverBlocksGridDemo,
+  "char-shimmer-loader": effectDemos40.CharShimmerLoaderDemo,
+  "spotlight-group": effectDemos40.SpotlightGroupDemo,
+  "timeline-reveal": effectDemos40.TimelineRevealDemo,
+  "scroll-blur-text": effectDemos40.ScrollBlurTextDemo,
+  "hatch-divider": effectDemos40.HatchDividerDemo,
+  "expandable-chat": effectDemos40.ExpandableChatDemo,
+  "chat-message-list": effectDemos40.ChatMessageListDemo,
+  "image-tabs": effectDemos40.ImageTabsDemo,
+  "progressive-carousel": effectDemos40.ProgressiveCarouselDemo,
+  "agent-intro-sequence": effectDemos40.AgentIntroSequenceDemo,
+  "hover-image-reveal": effectDemos40.HoverImageRevealDemo,
+  "message-loading": effectDemos40.MessageLoadingDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

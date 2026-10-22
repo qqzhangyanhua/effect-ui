@@ -13410,6 +13410,310 @@
           "target": "components/ui/generated-image.tsx"
         }
       ]
+    },
+    {
+      "name": "use-media-query",
+      "type": "registry:hook",
+      "title": "Use Media Query",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/hooks/use-media-query.tsx 订阅一条媒体查询。服务端固定返回 false。image-tabs、progressive-carousel、hover-image-reveal 用它区分宽屏。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-media-query.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-media-query.ts"
+        }
+      ]
+    },
+    {
+      "name": "blur-vignette",
+      "type": "registry:ui",
+      "title": "Blur Vignette",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/blur-vignette.tsx 用遮罩把模糊留在四周。子组件 BlurVignetteArticle 读取同一组半径和模糊。减弱动效时模糊降为 0。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blur-vignette.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blur-vignette.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-gradient-button",
+      "type": "registry:ui",
+      "title": "Liquid Gradient Button",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/liquid-gradient.tsx 多层色块旋转形成的液态按钮。colors 覆盖色板。示例链接放在 demo。减弱动效或离开视口时色块停住。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-gradient-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-gradient-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-blocks-grid",
+      "type": "registry:ui",
+      "title": "Hover Blocks Grid",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/blocks.tsx 按容器尺寸铺开的方块网格。active 标出常亮格子，悬停再点亮一格。减弱动效时颜色没有过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-blocks-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-blocks-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "char-shimmer-loader",
+      "type": "registry:ui",
+      "title": "Char Shimmer Loader",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/shimmer-loader.tsx 字符格扫光，并轮换 labels 与 icons。示例文案放在 demo。减弱动效时直接显示最后一条和 100%。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/char-shimmer-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/char-shimmer-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-group",
+      "type": "registry:ui",
+      "title": "Spotlight Group",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/spotlight.tsx 三种模式：proximity、hover-focus、cursor-flow。减弱动效时不再跟随指针，只保留卡片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spotlight-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spotlight-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "timeline-reveal",
+      "type": "registry:ui",
+      "title": "Timeline Reveal",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/timeline-animation.tsx 进入视口后按 animationNum 依次去掉模糊。减弱动效时立即清晰。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/timeline-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/timeline-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-blur-text",
+      "type": "registry:ui",
+      "title": "Scroll Blur Text",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/scroll-text.tsx 按词拆开，进入视口后从 direction 方向消掉模糊。减弱动效时立即显示全文。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-blur-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-blur-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hatch-divider",
+      "type": "registry:ui",
+      "title": "Hatch Divider",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/gap-pattern.tsx 斜向细线分隔。没有连续动画，减弱动效时外观相同。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hatch-divider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hatch-divider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-chat",
+      "type": "registry:ui",
+      "title": "Expandable Chat",
+      "description": "移植自 shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk。 https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/expandable-chat.tsx 可展开的对话壳，含 Header、Body、Footer。position 与 size 可配。减弱动效时展开没有过渡。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/expandable-chat.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/expandable-chat.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chat-message-list",
+      "type": "registry:ui",
+      "title": "Chat Message List",
+      "description": "移植自 shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk。 https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/chat-message-list.tsx 消息列表，自动滚到底部。useAutoScroll 来自 https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/hooks/useAutoScroll.tsx，内联在组件里。离开底部后出现回到底部。减弱动效时滚动不使用平滑。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chat-message-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chat-message-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-tabs",
+      "type": "registry:ui",
+      "title": "Image Tabs",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/image-tabs.tsx 受控图文标签。宽屏把图片放在右侧，窄屏放进当前标签。图片用 img。减弱动效时没有颜色过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-media-query",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/image-tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/image-tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-carousel",
+      "type": "registry:ui",
+      "title": "Progressive Carousel",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/progressive-carousel.tsx 进度条走完后切到下一张。未传 vertical 时，宽屏用纵向进度。图片用 img，示例图放在 demo。减弱动效或离开视口时停止自动播放。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-media-query",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progressive-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progressive-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "agent-intro-sequence",
+      "type": "registry:ui",
+      "title": "Agent Intro Sequence",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/terminal-ui.tsx 按 sequence 播放分隔线、字符扫光、逐行打字和消息。打字来自 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/typing-writter.tsx。完成后调用 onComplete。示例 SEQUENCE 放在 demo。减弱动效时一次显示全部并调用 onComplete。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "char-shimmer-loader",
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/agent-intro-sequence.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/agent-intro-sequence.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-image-reveal",
+      "type": "registry:ui",
+      "title": "Hover Image Reveal",
+      "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/image-reveal/image-reveal.tsx 悬停文字行时显示图片。items 含 label、img、alt。宽屏图片跟随指针，窄屏或减弱动效时图片停在行内。已有原创组件占用 hover-image-list，因此登记为 hover-image-reveal。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-media-query",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-image-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-image-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-loading",
+      "type": "registry:ui",
+      "title": "Message Loading",
+      "description": "移植自 shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk。 https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/message-loading.tsx 三个点上下跳动，表示正在输入。减弱动效或离开视口时点停在原位。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/message-loading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/message-loading.tsx"
+        }
+      ]
     }
   ]
 }

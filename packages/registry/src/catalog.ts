@@ -38,6 +38,7 @@ import { batch38Components } from "./catalog-batch38"
 import { batch39Components } from "./catalog-batch39"
 import { batch40Components } from "./catalog-batch40"
 import { batch41Components } from "./catalog-batch41"
+import { batch42Components } from "./catalog-batch42"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -115,6 +116,7 @@ export type SourceLibrary =
   | "HyperUI"
   | "Meraki UI"
   | "Spectrum UI"
+  | "Flowbite"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -242,6 +244,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   HyperUI: "https://github.com/markmead/hyperui",
   "Meraki UI": "https://github.com/merakiuilabs/merakiui",
   "Spectrum UI": "https://github.com/arihantcodes/spectrum-ui",
+  Flowbite: "https://github.com/themesberg/flowbite",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2319,6 +2322,7 @@ export const components: ComponentMeta[] = [
   ...batch39Components,
   ...batch40Components,
   ...batch41Components,
+  ...batch42Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2426,6 +2430,9 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "flower-burst-button",
       "scroll-cue-button",
       "flicker-reflect-button",
+      "printer-icon-button",
+      "tilt-sweep-button",
+      "fly-around-button",
     ],
   },
 ]
@@ -2449,9 +2456,10 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "newsletter-input",
       "pin-display-input",
       "file-input",
+      "category-search-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input"] },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input"] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [

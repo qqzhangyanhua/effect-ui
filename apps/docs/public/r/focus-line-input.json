@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "focus-line-input",
+  "type": "registry:ui",
+  "title": "Focus Line Input",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 TechByElijah。https://github.com/uiverse-io/galaxy/blob/main/Inputs/TechByElijah_fluffy-dolphin-33.html 聚焦时下划线宽度从 0 到 100%，输入框用 0.3 秒放大到 1.02，不来回弹。lineColor 可配，其余输入属性透传。减弱动效或离开视口时下划线立即展开，不再放大。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/focus-line-input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/focus-line-input.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author TechByElijah）— https://github.com/uiverse-io/galaxy/blob/main/Inputs/TechByElijah_fluffy-dolphin-33.html. Modified for effect-ui.\n\nimport { useRef, type CSSProperties, type InputHTMLAttributes } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FocusLineInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, \"size\"> {\n  lineColor?: string\n}\n\nexport function FocusLineInput({ lineColor = \"var(--primary)\", className, style, ...props }: FocusLineInputProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced\n  const painted = { \"--focus-line\": lineColor, ...style } as CSSProperties\n\n  return (\n    <div\n      ref={ref}\n      className=\"relative w-fit max-w-full\"\n      data-motion={moving ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"focus-line-input\"\n      style={painted}\n    >\n      <style>\n        {`[data-slot=\"focus-line-input\"] input{transition:background-color .3s ease,box-shadow .3s ease}\n[data-slot=\"focus-line-input\"] input:hover{background:var(--muted)}\n[data-slot=\"focus-line-input\"] input:focus{outline:none;background:var(--background);box-shadow:0 4px 6px rgba(0,0,0,.1)}\n[data-slot=\"focus-line-input\"] input:focus+[data-part=\"line\"]{width:100%}\n[data-slot=\"focus-line-input\"][data-reduced=\"true\"] [data-part=\"line\"]{transition:none}\n[data-slot=\"focus-line-input\"][data-motion=\"on\"] input:focus{animation:focus-line-input-pop .3s ease forwards}\n@keyframes focus-line-input-pop{from{transform:scale(1);box-shadow:0 0 0 rgba(0,0,0,.1)}to{transform:scale(1.02);box-shadow:0 4px 8px rgba(0,0,0,.1)}}`}\n      </style>\n      <input\n        {...props}\n        className={cn(\n          \"block w-full max-w-[200px] rounded-md border-0 bg-muted px-4 py-[0.6em] text-base text-foreground shadow-[0_2px_4px_rgba(0,0,0,0.1)] placeholder:text-muted-foreground\",\n          className,\n        )}\n      />\n      <div\n        aria-hidden=\"true\"\n        className=\"absolute bottom-0 left-0 h-0.5 w-0 bg-[var(--focus-line)] transition-[width] duration-300 ease-out\"\n        data-part=\"line\"\n      />\n    </div>\n  )\n}\n"
+    }
+  ]
+}

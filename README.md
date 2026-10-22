@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### UNO 卡、会议控制与分类搜索
+
+登记在 `catalog-batch42.ts`。上一批吃豆加载已占用 `catalog-batch41.ts`。`uno-card`（作者 nanda248）、`transaction-card`（作者 Admin12121）、`printer-icon-button`（作者 Admin12121）、`pendulum-social-card`（作者 SouravBandyopadhyay）、`tilt-sweep-button`（作者 EddyBel）、`focus-line-input`（作者 TechByElijah）、`word-wheel-card`（作者 NotReal22）、`fly-around-button`（作者 Bastiennnn）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`bottom-navigation`、`meeting-control-bar`、`list-group`、`time-range-picker`、`blockquote`、`featured-gallery`、`category-search-input` 移植自 Flowbite（MIT，Copyright (c) 2023 Bergside Inc.）。Tailwind HTML 改成 React 状态，图标用已有的 lucide-react。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时光带、进纸、摆锤、扫光、下划线放大、词盘、飞图标停住，交易卡和 POS 并排静止，图库直接换图，导航和会议条不再做颜色过渡。
+
+| 组件 | 来源 |
+| --- | --- |
+| uno-card | Uiverse galaxy，MIT，作者 nanda248 |
+| transaction-card | Uiverse galaxy，MIT，作者 Admin12121 |
+| printer-icon-button | Uiverse galaxy，MIT，作者 Admin12121 |
+| pendulum-social-card | Uiverse galaxy，MIT，作者 SouravBandyopadhyay |
+| tilt-sweep-button | Uiverse galaxy，MIT，作者 EddyBel |
+| focus-line-input | Uiverse galaxy，MIT，作者 TechByElijah |
+| word-wheel-card | Uiverse galaxy，MIT，作者 NotReal22 |
+| fly-around-button | Uiverse galaxy，MIT，作者 Bastiennnn |
+| bottom-navigation | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| meeting-control-bar | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| list-group | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| time-range-picker | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| blockquote | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| featured-gallery | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| category-search-input | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+
 ### 吃豆加载、形状遮罩与页脚
 
 登记在 `catalog-batch41.ts`。上一批书签爆发已占用 `catalog-batch40.ts`。`pacman-loader`（作者 andrew-demchenk0）、`battery-loader`（作者 JaydipPrajapati1910）、`ringed-planet-loader`（作者 Admin12121）、`pixel-bird-loader`（作者 Subaashbala）、`phone-ring-loader`（作者 bociKond）、`glass-clock-loader`（作者 Subaashbala）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`hover-gallery`、`icon-swap`、`shape-mask`、`form-validator`、`corner-indicator`、`filter-chips`、`file-input`、`tick-range` 移植自 daisyUI（MIT，Copyright (c) 2020 Pouya Saadeghi）。`site-footer` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。CSS 改成 React 与 Tailwind v4，主题色用现有 token。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时吃豆嘴保持张开、电池停在半格或给定电量、星球环停在倾斜角度、像素鸟停在扇翅中段、电话不再摇晃、时钟指针停住、画廊切换不再过渡、图标交换不再旋转过渡、筛选不再缩放、页脚链接不再做颜色过渡。`mask-image` 不可用时形状遮罩退回圆角，`:user-invalid` 不可用时表单在失焦时用 `checkValidity`。

@@ -1,0 +1,44 @@
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_ec0a8294cc2c80 1-239
+packages/registry/src/hooks/batch35-gestures.test.tsx
+  s_1f7fae292b4abd::t_938d89620123ff 1-2,4-46
+  s_1f7fae292b4abd::t_bf10a06d4918a5 3
+packages/registry/src/audit.ts
+  s_1f7fae292b4abd::t_7654a90d647510 43-47
+  s_1f7fae292b4abd::t_3cd25b346e034f 626,629-658
+  s_1f7fae292b4abd::t_8008e7be41eebb 1-9
+  s_1f7fae292b4abd::t_1dd294459bdfc9 74-75
+  s_1f7fae292b4abd::t_e4ce23878e4749 659
+packages/registry/src/audit.repo.test.ts
+  s_1f7fae292b4abd::t_e8a03845b13fc6 65
+  s_1f7fae292b4abd::t_85368a33bdc967 8
+packages/registry/src/audit-coverage.ts
+  s_1f7fae292b4abd::t_ef8f23b2f5f52c 88
+  s_1f7fae292b4abd::t_be8ae307fd1004 1-87,89-150
+packages/registry/src/audit-coverage.test.ts
+  s_1f7fae292b4abd::t_c890b2c200852c 1-127
+docs/testing.md
+  s_1f7fae292b4abd::t_40c393aac6463a 34-35
+docs/component-standard.md
+  s_1f7fae292b4abd::t_c908b9061e1fea 1-41
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_7bd7cbc471b092 1-58
+packages/registry/src/audit.test.ts
+  s_1f7fae292b4abd::t_a0d20172eac50a 624-626
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "4009c516d2190f8b01b4aed1c81db58c4df9d09c",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

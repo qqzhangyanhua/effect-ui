@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-text",
+  "type": "registry:ui",
+  "title": "Noise Text",
+  "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/noisetext/noisetext.tsx 玻璃标签上铺一层程序生成的噪点。噪点画在组件里，不请求外部动图。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/noise-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/noise-text.tsx",
+      "content": "\"use client\"\n\n// Ported from Sera UI (MIT, (c) 2025 Sera UI) — https://github.com/seraui/seraui/blob/main/src/app/docs/noisetext/noisetext.tsx\n\nimport { useId, useRef, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface NoiseTextProps {\n  children?: ReactNode\n  color?: string\n  intensity?: number\n  fontSize?: number\n  duration?: number\n  className?: string\n}\n\nfunction cssName(id: string) {\n  return `noise-${id.replace(/[^a-zA-Z0-9_-]/g, \"\")}`\n}\n\nexport function NoiseText({\n  children = \"Noise\",\n  color = \"var(--foreground)\",\n  intensity = 0.35,\n  fontSize = 16,\n  duration = 1400,\n  className,\n}: NoiseTextProps) {\n  const rootRef = useRef<HTMLSpanElement>(null)\n  const live = useAnimationActive(rootRef)\n  const reduced = usePrefersReducedMotion()\n  const filterId = cssName(useId())\n  const animation = `${filterId}-flicker`\n  const moving = live && !reduced\n  const grain = Math.max(0, Math.min(1, intensity))\n\n  return (\n    <span\n      ref={rootRef}\n      className={cn(\n        \"relative inline-flex overflow-hidden rounded-lg border border-border bg-card/80 px-4 py-2 shadow-sm\",\n        className,\n      )}\n    >\n      <svg aria-hidden=\"true\" className=\"absolute h-0 w-0\">\n        <filter id={filterId}>\n          <feTurbulence type=\"fractalNoise\" baseFrequency=\"0.85\" numOctaves=\"2\" stitchTiles=\"stitch\" />\n        </filter>\n      </svg>\n      <style>{`@keyframes ${animation} { from { opacity: ${grain * 0.45}; } to { opacity: ${grain}; } }`}</style>\n      <span\n        aria-hidden=\"true\"\n        className=\"pointer-events-none absolute inset-0 motion-reduce:animate-none\"\n        style={{\n          filter: `url(#${filterId})`,\n          opacity: moving ? undefined : grain,\n          mixBlendMode: \"multiply\",\n          animationName: moving ? animation : \"none\",\n          animationDuration: `${Math.max(400, duration)}ms`,\n          animationIterationCount: \"infinite\",\n          animationDirection: \"alternate\",\n          animationPlayState: moving ? \"running\" : \"paused\",\n        }}\n      />\n      <span className=\"relative font-medium\" style={{ color, fontSize: `${fontSize}px` }}>\n        {children}\n      </span>\n    </span>\n  )\n}\n"
+    }
+  ]
+}

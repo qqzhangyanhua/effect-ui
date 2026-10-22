@@ -600,6 +600,7 @@ text-style
 | toss-to-trash | 原创 |
 | sticky-note-board | 原创 |
 
+<<<<<<< HEAD
 ### 罐子与球池
 
 登记在 `catalog-batch37.ts`。上一批抛掷已占用 `catalog-batch36.ts`。`tag-jar`、`coin-jar`、`ball-pit` 是原创实现，不是移植。标签落入玻璃罐并堆起，拖动罐子会把它们摇散；打赏硬币落入罐中叠成一柱；头像球会被指针拨开。`matter-js` 已经是依赖，没有新增 npm 依赖。减弱动效时不启动物理引擎，也不申请动画帧，只留下静止的一叠。
@@ -609,6 +610,17 @@ text-style
 | tag-jar | 原创 |
 | coin-jar | 原创 |
 | ball-pit | 原创 |
+=======
+### 挂绳弹簧
+
+登记在 `catalog-batch38.ts`。上一批抛掷已占用 `catalog-batch36.ts`，`catalog-batch37.ts` 留给另一个议题。`lanyard-badge`、`jelly-button`、`spring-drawer` 是原创实现，不是移植。各自用 Verlet 和弹簧积分，配合 `requestAnimationFrame`，没有新增依赖，也没有使用 matter-js。减弱动效时不跑积分循环：工牌竖直挂着，按钮不压扁，抽屉直接开合。
+
+| 组件 | 来源 |
+| --- | --- |
+| lanyard-badge | 原创 |
+| jelly-button | 原创 |
+| spring-drawer | 原创 |
+>>>>>>> issue-110
 
 ### 色相波浪、杠杆开关与验证码
 

@@ -34,6 +34,7 @@ import { batch34Components } from "./catalog-batch34"
 import { batch35Components } from "./catalog-batch35"
 import { batch36Components } from "./catalog-batch36"
 import { batch37Components } from "./catalog-batch37"
+import { batch38Components } from "./catalog-batch38"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -2302,7 +2303,11 @@ export const components: ComponentMeta[] = [
   ...batch34Components,
   ...batch35Components,
   ...batch36Components,
+<<<<<<< HEAD
   ...batch37Components,
+=======
+  ...batch38Components,
+>>>>>>> issue-110
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

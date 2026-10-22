@@ -36,6 +36,7 @@ import * as effectDemos34 from "./effect-demos-34"
 import * as effectDemos35 from "./effect-demos-35"
 import * as effectDemos36 from "./effect-demos-36"
 import * as effectDemos37 from "./effect-demos-37"
+import * as effectDemos38 from "./effect-demos-38"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -681,6 +682,21 @@ const demoMap: Record<string, ComponentType> = {
   "faq-tabs-card": effectDemos37.FaqTabsCardDemo,
   "nav-list-card": effectDemos37.NavListCardDemo,
   "folder-float": effectDemos37.FolderFloatDemo,
+  "variable-font-hover-by-letter": effectDemos38.VariableFontHoverByLetterDemo,
+  "letter-swap-pingpong": effectDemos38.LetterSwapPingPongDemo,
+  "random-letter-swap": effectDemos38.RandomLetterSwapDemo,
+  "underline-hover-link": effectDemos38.UnderlineHoverLinkDemo,
+  "element-along-svg-path": effectDemos38.ElementAlongSvgPathDemo,
+  float: effectDemos38.FloatDemo,
+  "check-cross-switch": effectDemos38.CheckCrossSwitchDemo,
+  "plus-share-burst": effectDemos38.PlusShareBurstDemo,
+  "star-rating": effectDemos38.StarRatingDemo,
+  "account-access-card": effectDemos38.AccountAccessCardDemo,
+  "ai-chat-card": effectDemos38.AiChatCardDemo,
+  "login-card": effectDemos38.LoginCardDemo,
+  "transfer-funds-card": effectDemos38.TransferFundsCardDemo,
+  "http-status-lookup": effectDemos38.HttpStatusLookupDemo,
+  "github-profile-card": effectDemos38.GitHubProfileCardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

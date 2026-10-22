@@ -9,3 +9,8 @@ effect-ui redistributes modified Spectrum UI components.
 Modifications: framer-motion replaced with motion/react, next-themes removed,
 reduced motion handled with use-prefers-reduced-motion, example copy moved
 to props or demos, and each ported file marked Modified.
+Additional modified components: star-rating, account-access-card, ai-chat-card,
+login-card, transfer-funds-card, http-status-lookup, github-profile-card,
+and the use-typewriter hook. Login social brands and sample account data stay
+in demos. The profile card does not fetch unless the user submits a name,
+or a username is passed with fetching enabled. Avatars use img.

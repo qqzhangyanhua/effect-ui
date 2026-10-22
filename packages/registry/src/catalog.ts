@@ -48,6 +48,7 @@ import { batch48Components } from "./catalog-batch48"
 import { batch49Components } from "./catalog-batch49"
 import { batch50Components } from "./catalog-batch50"
 import { batch51Components } from "./catalog-batch51"
+import { batch52Components } from "./catalog-batch52"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -129,6 +130,7 @@ export type SourceLibrary =
   | "Neobrutalism"
   | "Arc Library"
   | "ns-ui"
+  | "AI Canvas"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -261,6 +263,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
   "Arc Library": "https://github.com/kuratlielia/arc-library",
   "ns-ui": "https://github.com/nikolas-sapa/ns-ui",
+  "AI Canvas": "https://github.com/uiNerd16/aicanvas",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2347,6 +2350,7 @@ export const components: ComponentMeta[] = [
   ...batch49Components,
   ...batch50Components,
   ...batch51Components,
+  ...batch52Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

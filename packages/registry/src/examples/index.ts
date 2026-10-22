@@ -52,6 +52,7 @@ import * as effectDemos50 from "./effect-demos-50"
 import * as effectDemos51 from "./effect-demos-51"
 import * as effectDemos52 from "./effect-demos-52"
 import * as effectDemos53 from "./effect-demos-53"
+import * as effectDemos54 from "./effect-demos-54"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -849,6 +850,20 @@ const demoMap: Record<string, ComponentType> = {
   "due-slip": effectDemos53.DueSlipDemo,
   "contra-strike": effectDemos53.ContraStrikeDemo,
   "galley-bracket": effectDemos53.GalleyBracketDemo,
+  "blind-pull-toggle": effectDemos54.BlindPullToggleDemo,
+  "danger-stripes": effectDemos54.DangerStripesDemo,
+  "flip-calendar": effectDemos54.FlipCalendarDemo,
+  "slice-type": effectDemos54.SliceTypeDemo,
+  "stack-tower": effectDemos54.StackTowerDemo,
+  "taga-toggle": effectDemos54.TagaToggleDemo,
+  "diamond-grid": effectDemos54.DiamondGridDemo,
+  "wild-morph": effectDemos54.WildMorphDemo,
+  "mood-tracker": effectDemos54.MoodTrackerDemo,
+  "voice-chat-pill": effectDemos54.VoiceChatPillDemo,
+  "job-listing-cards": effectDemos54.JobListingCardsDemo,
+  "new-project-modal": effectDemos54.NewProjectModalDemo,
+  "music-player-card": effectDemos54.MusicPlayerCardDemo,
+  "label-cards": effectDemos54.LabelCardsDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

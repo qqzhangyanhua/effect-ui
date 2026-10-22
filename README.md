@@ -557,6 +557,21 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 点阵光晕、星环与分步加载
+
+登记在 `catalog-batch44.ts`。上一批灯板已占用 `catalog-batch43.ts`。`dotted-glow-background`、`sticky-banner`、`multi-step-loader`、`stateful-button`、`tweet-card` 移植自 Velora UI（MIT，Copyright (c) 2026 Aigars Silkalns）。`star-ring-orbit`、`neo-star-shapes`、`caption-image-card` 移植自 Neobrutalism components（MIT，Copyright (c) 2023 Samuel Breznjak）。没有移植 Velora 里和 Aceternity 概念重合的组件。品牌渐变改成主题色，示例色放在 demo。关键帧写在组件内部。没有新增依赖。减弱动效时点阵停在当前帧，星环停转，公告直接收起，分步加载不再转圈，异步按钮不再缩成圆形。
+
+| 组件 | 来源 |
+| --- | --- |
+| dotted-glow-background | Velora UI，MIT |
+| star-ring-orbit | Neobrutalism components，MIT |
+| sticky-banner | Velora UI，MIT |
+| multi-step-loader | Velora UI，MIT |
+| stateful-button | Velora UI，MIT |
+| tweet-card | Velora UI，MIT |
+| neo-star-shapes | Neobrutalism components，MIT |
+| caption-image-card | Neobrutalism components，MIT |
+
 ### 灯板、光环与折页卡片
 
 登记在 `catalog-batch43.ts`。上一批 UNO 卡已占用 `catalog-batch42.ts`。`lightboard`、`cosmic-button`、`glow-track-button`、`halo-badge`、`halo-switch`、`shift-card`、`squiggle-arrow`、`security-checkpoint`、`speech-bubble`、`folded-card`、`side-panel`、`collab-avatar`、`elapsed-timer`、`neumorph-button`、`texture-card` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`next/link` 改成 `a`，`clsx` 改成 `cn`。侧栏高度用 ResizeObserver，没有加入 react-use-measure。关键帧写在组件内部。示例色、文案和链接放在 demo。没有新增依赖。减弱动效时灯板停在当前帧，星环和光斑停住，徽章光圈和开关弹簧停住，班次卡片直接展开，安检线和计时图标停住，气泡光标不再呼吸，拟态按钮不再缩放。

@@ -39,6 +39,20 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Jordan-Gilliam
 - 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）、`family-drawer`（多步骤展开面板，按 Cult UI 结构重写）、`distorted-glass`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/distorted-glass.tsx）、`merging-bubbles`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/merging-bubbles.tsx）、`svg-bands`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/svg-bands.tsx）、`popover-form`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/popover-form.tsx）、`floating-panel`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/floating-panel.tsx）、`copy-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/copy-button.tsx）、`feature-voting`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/feature-voting.tsx）、`lightboard`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/lightboard.tsx）、`cosmic-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/cosmic-button.tsx）、`glow-track-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/glow-button.tsx）、`halo-badge`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/halo-badge.tsx）、`halo-switch`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/halo-switch.tsx）、`shift-card`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx）、`squiggle-arrow`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/squiggle-arrow.tsx）、`security-checkpoint`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/security-checkpoint.tsx）、`speech-bubble`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx）、`folded-card`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/folded-card.tsx）、`side-panel`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/side-panel.tsx）、`collab-avatar`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/collab-avatar.tsx）、`elapsed-timer`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/timer.tsx）、`neumorph-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/neumorph-button.tsx）、`texture-card`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx）
 
+## Velora UI
+
+- 仓库：https://github.com/ColorlibHQ/velora-ui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Aigars Silkalns
+- 衍生组件：`dotted-glow-background`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/dotted-glow-background.tsx）、`sticky-banner`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/sticky-banner.tsx）、`multi-step-loader`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/multi-step-loader.tsx）、`stateful-button`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/stateful-button.tsx）、`tweet-card`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/tweet-card.tsx）
+
+## Neobrutalism
+
+- 仓库：https://github.com/ekmas/neobrutalism-components
+- 许可：MIT
+- 版权：Copyright (c) 2023 Samuel Breznjak
+- 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
+
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy

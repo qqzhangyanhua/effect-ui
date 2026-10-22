@@ -40,6 +40,7 @@ import { batch40Components } from "./catalog-batch40"
 import { batch41Components } from "./catalog-batch41"
 import { batch42Components } from "./catalog-batch42"
 import { batch43Components } from "./catalog-batch43"
+import { batch44Components } from "./catalog-batch44"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -118,6 +119,8 @@ export type SourceLibrary =
   | "Meraki UI"
   | "Spectrum UI"
   | "Flowbite"
+  | "Velora UI"
+  | "Neobrutalism"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -246,6 +249,8 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Meraki UI": "https://github.com/merakiuilabs/merakiui",
   "Spectrum UI": "https://github.com/arihantcodes/spectrum-ui",
   Flowbite: "https://github.com/themesberg/flowbite",
+  "Velora UI": "https://github.com/ColorlibHQ/velora-ui",
+  Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2325,6 +2330,7 @@ export const components: ComponentMeta[] = [
   ...batch41Components,
   ...batch42Components,
   ...batch43Components,
+  ...batch44Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2438,6 +2444,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "cosmic-button",
       "glow-track-button",
       "neumorph-button",
+      "stateful-button",
     ],
   },
 ]

@@ -1,0 +1,40 @@
+packages/registry/src/effects/backgrounds-batch1.test.tsx
+  s_1f7fae292b4abd::t_aded8bc1f17389 148
+  s_1f7fae292b4abd::t_386416a4ca446f 139-141
+  s_1f7fae292b4abd::t_971f2bbac12ae5 87-90
+  s_1f7fae292b4abd::t_d04e9d77eaf6e8 226
+  s_1f7fae292b4abd::t_96ab66319a6c50 242,244,246,249,252
+  s_1f7fae292b4abd::t_7fe577c02eec92 200
+  s_1f7fae292b4abd::t_4dd2e2aa0da279 245
+  s_1f7fae292b4abd::t_0f71a67c6e97cd 239
+  s_1f7fae292b4abd::t_40f7714f23b7ee 1-6,15-57,73-86,91-117,119-138,142-147,149-193,195-199,201-218,221-225,227-238,240-241,243,247-248,250-251,253-338
+  s_968b355c1a916d::t_2ed1da6e4c36dc 7-14
+  s_1f7fae292b4abd::t_1d36e430a125b1 58-72
+  s_1f7fae292b4abd::t_04791f25f0e7e7 118
+  s_1f7fae292b4abd::t_525c96c28a4220 194
+  s_1f7fae292b4abd::t_c9da6556c5ad83 219-220
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "208ec9588c70f93f260c36f4cd0688bb7c60e688",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_968b355c1a916d": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "8e47a03e-6a64-4d38-8820-b564bb2cc26d",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

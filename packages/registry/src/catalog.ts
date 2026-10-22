@@ -2396,16 +2396,78 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
   { key: "motion", label: "动效", names: ["placeholder-vanish-input"] },
 ]
 
-/** 名字本身就是按钮或输入的组件。文档导航按这个归组，不改 category。 */
-export function componentCluster(name: string): "button" | "input" | undefined {
+const checkboxFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["checkbox"] },
+  { key: "plus", label: "增强", names: ["checkbox-plus"] },
+  { key: "motion", label: "动效", names: ["spring-check"] },
+]
+
+const switchFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["switch"] },
+  { key: "plus", label: "增强", names: ["switch-plus"] },
+  { key: "motion", label: "动效", names: ["squish-switch", "labeled-toggle"] },
+]
+
+const radioFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["radio-group"] },
+  { key: "plus", label: "增强", names: ["radio-plus", "choicebox"] },
+  { key: "motion", label: "动效", names: ["jelly-radio"] },
+]
+
+const selectFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["select", "native-select", "combobox"] },
+  { key: "plus", label: "增强", names: ["select-plus", "multi-select"] },
+]
+
+const textareaFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["textarea"] },
+  { key: "plus", label: "增强", names: ["autosize-textarea", "mention-textarea"] },
+]
+
+const sliderFamilySections: readonly FamilySectionSpec[] = [
+  { key: "base", label: "基础", names: ["slider"] },
+  { key: "plus", label: "增强", names: ["dual-range-slider"] },
+]
+
+export type ComponentCluster =
+  | "button"
+  | "input"
+  | "checkbox"
+  | "switch"
+  | "radio"
+  | "select"
+  | "textarea"
+  | "slider"
+
+const controlFamilyGroups: readonly {
+  key: ComponentCluster
+  label: string
+  sections: readonly FamilySectionSpec[]
+}[] = [
+  { key: "checkbox", label: "复选", sections: checkboxFamilySections },
+  { key: "switch", label: "开关", sections: switchFamilySections },
+  { key: "radio", label: "单选", sections: radioFamilySections },
+  { key: "select", label: "选择", sections: selectFamilySections },
+  { key: "textarea", label: "多行文本", sections: textareaFamilySections },
+  { key: "slider", label: "滑块", sections: sliderFamilySections },
+]
+
+const controlClusterByName = new Map<string, ComponentCluster>(
+  controlFamilyGroups.flatMap((group) =>
+    group.sections.flatMap((section) => section.names.map((name) => [name, group.key] as const)),
+  ),
+)
+
+/** 文档导航按这个归组，不改 category。 */
+export function componentCluster(name: string): ComponentCluster | undefined {
   // 拉绳开关名字不带 button，文档导航仍归到按钮组。
   if (name === "button" || name.startsWith("button-") || name.endsWith("-button") || name === "pull-cord") return "button"
   if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"
-  return undefined
+  return controlClusterByName.get(name)
 }
 
 function buildFamilyGroup(
-  key: "button" | "input",
+  key: ComponentCluster,
   label: string,
   specs: readonly FamilySectionSpec[],
 ): CatalogGroup {
@@ -2466,6 +2528,7 @@ export function getCatalogGroups(): CatalogGroup[] {
     0,
     buildFamilyGroup("button", "按钮", buttonFamilySections),
     buildFamilyGroup("input", "输入", inputFamilySections),
+    ...controlFamilyGroups.map((group) => buildFamilyGroup(group.key, group.label, group.sections)),
   )
   return groups
 }

@@ -6,9 +6,7 @@ import { usePathname } from "next/navigation"
 import type { ComponentMeta } from "@effect-ui/registry/catalog"
 import { getCatalogGroups } from "@effect-ui/registry/catalog"
 
-import { familyPath, type FamilyCluster } from "@/lib/family-path"
-
-const familyClusters: ReadonlySet<string> = new Set<FamilyCluster>(["button", "input"])
+import { familyPath, isFamilyCluster } from "@/lib/family-path"
 
 function NavLinks({
   items,
@@ -62,8 +60,8 @@ function SiteNav({ onSelectCurrent }: { onSelectCurrent?: () => void }) {
         开始
       </Link>
       {groups.map((group) => {
-        if (familyClusters.has(group.key)) {
-          const href = familyPath(group.key as FamilyCluster)
+        if (isFamilyCluster(group.key)) {
+          const href = familyPath(group.key)
           const isActive = pathname === href
           return (
             <div key={group.key} className="mb-6">

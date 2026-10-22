@@ -8,14 +8,33 @@ import {
   visibleComponents,
 } from "./catalog"
 
-test("按钮和输入各自只出现在对应分组，并且紧跟在基础组件后面", () => {
+test("按钮、输入和六个控件族各自只出现在对应分组，并且紧跟在基础组件后面", () => {
   const groups = getCatalogGroups()
   const keys = groups.map((group) => group.key)
   const uiIndex = keys.indexOf("ui")
 
-  expect(keys[uiIndex + 1]).toBe("button")
-  expect(keys[uiIndex + 2]).toBe("input")
+  expect(keys.slice(uiIndex, uiIndex + 9)).toEqual([
+    "ui",
+    "button",
+    "input",
+    "checkbox",
+    "switch",
+    "radio",
+    "select",
+    "textarea",
+    "slider",
+  ])
   expect(keys).not.toContain("buttons")
+  expect(keys).not.toContain("form")
+
+  const ui = groups.find((group) => group.key === "ui")
+  const formNames = ui?.sections.find((section) => section.key === "form")?.items.map((item) => item.name) ?? []
+  expect(formNames).toEqual(
+    expect.arrayContaining(["label", "field", "form", "calendar", "date-picker", "toggle", "toggle-group", "image-cropper", "share-invite-panel"]),
+  )
+  expect(formNames).not.toContain("checkbox")
+  expect(formNames).not.toContain("switch")
+  expect(formNames).not.toContain("labeled-toggle")
 
   const button = groups.find((group) => group.key === "button")
   const input = groups.find((group) => group.key === "input")
@@ -24,32 +43,58 @@ test("按钮和输入各自只出现在对应分组，并且紧跟在基础组�
   expect(button?.items[0]?.name).toBe("button")
   expect(input?.items[0]?.name).toBe("input")
 
-  const buttonNames = new Set(button?.items.map((item) => item.name))
-  const inputNames = new Set(input?.items.map((item) => item.name))
-  expect(buttonNames.has("fuse-button")).toBe(true)
-  expect(buttonNames.has("shimmer-button")).toBe(true)
-  expect(buttonNames.has("button-plus")).toBe(true)
-  expect(inputNames.has("prompt-input")).toBe(true)
-  expect(inputNames.has("coupon-input")).toBe(true)
-  expect(inputNames.has("placeholder-vanish-input")).toBe(true)
+  expect(groups.find((group) => group.key === "checkbox")?.items.map((item) => item.name)).toEqual([
+    "checkbox",
+    "checkbox-plus",
+    "spring-check",
+  ])
+  expect(groups.find((group) => group.key === "switch")?.items.map((item) => item.name)).toEqual([
+    "switch",
+    "switch-plus",
+    "squish-switch",
+    "labeled-toggle",
+  ])
+  expect(groups.find((group) => group.key === "radio")?.items.map((item) => item.name)).toEqual([
+    "radio-group",
+    "radio-plus",
+    "choicebox",
+    "jelly-radio",
+  ])
+  expect(groups.find((group) => group.key === "select")?.items.map((item) => item.name)).toEqual([
+    "select",
+    "native-select",
+    "combobox",
+    "select-plus",
+    "multi-select",
+  ])
+  expect(groups.find((group) => group.key === "textarea")?.items.map((item) => item.name)).toEqual([
+    "textarea",
+    "autosize-textarea",
+    "mention-textarea",
+  ])
+  expect(groups.find((group) => group.key === "slider")?.items.map((item) => item.name)).toEqual([
+    "slider",
+    "dual-range-slider",
+  ])
 
+  const clustered = new Map(groups.filter((group) => group.key !== "ui").map((group) => [group.key, new Set(group.items.map((item) => item.name))]))
   for (const item of visibleComponents) {
     const cluster = componentCluster(item.name)
-    if (cluster === "button") {
-      expect(buttonNames.has(item.name)).toBe(true)
-      expect(inputNames.has(item.name)).toBe(false)
-    } else if (cluster === "input") {
-      expect(inputNames.has(item.name)).toBe(true)
-      expect(buttonNames.has(item.name)).toBe(false)
+    if (!cluster) continue
+    expect(clustered.get(cluster)?.has(item.name)).toBe(true)
+    for (const [key, names] of clustered) {
+      if (key !== cluster) expect(names.has(item.name)).toBe(false)
     }
   }
 
+  const familyKeys = new Set(["button", "input", "checkbox", "switch", "radio", "select", "textarea", "slider"])
   const elsewhere = groups
-    .filter((group) => group.key !== "button" && group.key !== "input")
+    .filter((group) => !familyKeys.has(group.key))
     .flatMap((group) => group.items.map((item) => item.name))
   expect(elsewhere.some((name) => componentCluster(name))).toBe(false)
-  expect(button?.sections.some((section) => section.key === "other")).toBe(false)
-  expect(input?.sections.some((section) => section.key === "other")).toBe(false)
+  for (const key of familyKeys) {
+    expect(groups.find((group) => group.key === key)?.sections.some((section) => section.key === "other")).toBe(false)
+  }
 })
 
 test("同类链接列出同组其他组件，类别分组仍保留原 category", () => {
@@ -58,9 +103,14 @@ test("同类链接列出同组其他组件，类别分组仍保留原 category",
   expect(related).toContain("fuse-button")
   expect(related).not.toContain("shimmer-button")
   expect(relatedComponents("card")).toEqual([])
+  expect(relatedComponents("checkbox").map((item) => item.name)).toEqual(["checkbox-plus", "spring-check"])
+  expect(relatedComponents("switch").map((item) => item.name)).not.toContain("checkbox")
 
   const byCategory = getComponentsByCategory().flatMap((group) => group.items)
   expect(byCategory.find((item) => item.name === "button")?.category).toBe("ui")
   expect(byCategory.find((item) => item.name === "shimmer-button")?.category).toBe("buttons")
   expect(byCategory.find((item) => item.name === "prompt-input")?.category).toBe("ai")
+  expect(byCategory.find((item) => item.name === "checkbox")?.category).toBe("ui")
+  expect(byCategory.find((item) => item.name === "checkbox-plus")?.category).toBe("utility")
+  expect(byCategory.find((item) => item.name === "spring-check")?.category).toBe("micro")
 })

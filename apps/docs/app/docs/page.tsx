@@ -3,7 +3,7 @@ import Link from "next/link"
 import { getCatalogGroups } from "@effect-ui/registry/catalog"
 import { Badge } from "@effect-ui/registry/ui/badge"
 
-import { familyPath, type FamilyCluster } from "@/lib/family-path"
+import { familyPath, isFamilyCluster } from "@/lib/family-path"
 import { getRegistryBaseUrl } from "@/lib/source"
 
 function DocsIndexPage() {
@@ -43,9 +43,9 @@ function DocsIndexPage() {
         {groups.map((group) => (
           <div key={group.key} className="space-y-3">
             <h3 className="text-sm font-medium text-muted-foreground">{group.label}</h3>
-            {group.key === "button" || group.key === "input" ? (
+            {isFamilyCluster(group.key) ? (
               <Link
-                href={familyPath(group.key as FamilyCluster)}
+                href={familyPath(group.key)}
                 className="inline-flex rounded-full border px-3 py-1 text-sm hover:bg-accent"
               >
                 {group.label} · {group.items.length} 个，同一页滚动查看

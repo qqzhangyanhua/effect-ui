@@ -53,6 +53,7 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
     "switch-plus",
     "squish-switch",
     "labeled-toggle",
+    "halo-switch",
   ])
   expect(groups.find((group) => group.key === "radio")?.items.map((item) => item.name)).toEqual([
     "radio-group",

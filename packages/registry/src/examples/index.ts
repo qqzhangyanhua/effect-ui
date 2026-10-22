@@ -43,6 +43,7 @@ import * as effectDemos41 from "./effect-demos-41"
 import * as effectDemos42 from "./effect-demos-42"
 import * as effectDemos43 from "./effect-demos-43"
 import * as effectDemos44 from "./effect-demos-44"
+import * as effectDemos45 from "./effect-demos-45"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -793,6 +794,21 @@ const demoMap: Record<string, ComponentType> = {
   "blockquote": effectDemos44.BlockquoteDemo,
   "featured-gallery": effectDemos44.FeaturedGalleryDemo,
   "category-search-input": effectDemos44.CategorySearchInputDemo,
+  lightboard: effectDemos45.LightBoardDemo,
+  "cosmic-button": effectDemos45.CosmicButtonDemo,
+  "glow-track-button": effectDemos45.GlowTrackButtonDemo,
+  "halo-badge": effectDemos45.HaloBadgeDemo,
+  "halo-switch": effectDemos45.HaloSwitchDemo,
+  "shift-card": effectDemos45.ShiftCardDemo,
+  "squiggle-arrow": effectDemos45.SquiggleArrowDemo,
+  "security-checkpoint": effectDemos45.SecurityCheckpointDemo,
+  "speech-bubble": effectDemos45.SpeechBubbleDemo,
+  "folded-card": effectDemos45.FoldedCardDemo,
+  "side-panel": effectDemos45.SidePanelDemo,
+  "collab-avatar": effectDemos45.CollabAvatarDemo,
+  "elapsed-timer": effectDemos45.ElapsedTimerDemo,
+  "neumorph-button": effectDemos45.NeumorphButtonDemo,
+  "texture-card": effectDemos45.TextureCardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

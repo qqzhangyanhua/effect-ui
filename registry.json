@@ -12423,6 +12423,363 @@
       ]
     },
     {
+      "name": "use-dismiss",
+      "type": "registry:hook",
+      "title": "Use Dismiss",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/lib/hooks/use-dismiss.ts 在 Escape 或外部按下时关闭浮层。behavior 为 consume 时吞掉随后的点击。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-dismiss.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-dismiss.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-hover-gesture",
+      "type": "registry:hook",
+      "title": "Use Hover Gesture",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/lib/hooks/use-hover-gesture.ts 把指针进入和离开配成一对。触控按下不算悬停。isHoveringPointer 已内联，不另加依赖。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-hover-gesture.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-hover-gesture.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-tap-gesture",
+      "type": "registry:hook",
+      "title": "Use Tap Gesture",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/lib/hooks/use-tap-gesture.ts 在 pointerdown 记下指针类型和当时的状态，供随后的 click 读取。键盘激活会丢掉这条记录。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-tap-gesture.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-tap-gesture.ts"
+        }
+      ]
+    },
+    {
+      "name": "hologram-text",
+      "type": "registry:ui",
+      "title": "Hologram Text",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/animatedtext/components/hologram-text.tsx 全息扫描文字。text、scanDuration、chromaJitter 可配。已去掉 next-themes 和 styled-jsx。减弱动效或离开视口时文字保持可见并停止闪烁。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hologram-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hologram-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ink-morph",
+      "type": "registry:ui",
+      "title": "Ink Morph",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/animatedtext/components/ink-morph.tsx SVG 湍流把文字从墨迹收到清晰。intensityFrom、intensityTo、settleMs、colorStart、colorEnd 可配。减弱动效或离开视口时直接显示终点颜色，位移为 0。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ink-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ink-morph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbital-text",
+      "type": "registry:ui",
+      "title": "Orbital Text",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/animatedtext/components/orbital-text.tsx 字符沿轨道收拢。radius、duration、decay 可配。根节点保留 aria-label。初值按序号确定。减弱动效或离开视口时直接落位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbital-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbital-text.tsx"
+        },
+        {
+          "path": "registry/effects/orbital-char.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbital-char.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scratch-card",
+      "type": "registry:ui",
+      "title": "Scratch Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/scratch-card/scratch-card.tsx 2D canvas 刮刮卡。brushSize、revealThreshold、onReveal、onProgress、revealAnnouncement 可配。Enter 或空格直接揭开。减弱动效时不生成粉尘，箔层立刻消失。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scratch-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scratch-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skeleton-reveal",
+      "type": "registry:ui",
+      "title": "Skeleton Reveal",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/skeleton-reveal.tsx 骨架脉冲后交叉淡入内容。loading、skeleton、pulseCount、pulseDuration、revealDuration 可配。嵌入的过渡来自 transitions.dev（Jakub Antalík）。减弱动效或离开视口时不脉冲。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/skeleton-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/skeleton-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-states",
+      "type": "registry:ui",
+      "title": "Text States",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/text-states.tsx 状态文字向上退出、从下方进入。text、duration、translateY、blur 可配。嵌入的交换来自 transitions.dev（Jakub Antalík）。减弱动效时直接换成新文字。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-states.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-states.tsx"
+        }
+      ]
+    },
+    {
+      "name": "notification-bell",
+      "type": "registry:ui",
+      "title": "Notification Bell",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/notification-bell/notification-bell.tsx 未读数增加时铃铛摆动。count、max、dot、ringOnMount 可配。减弱动效时不摆动、不闪点。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/notification-bell.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/notification-bell.tsx"
+        }
+      ]
+    },
+    {
+      "name": "async-morph-button",
+      "type": "registry:ui",
+      "title": "Async Morph Button",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/morph-button/morph-button.tsx 异步按钮在加载、成功、失败之间变形。onAction、状态 label、resetDelay、受控 state 可配。加载旋转在减弱动效或离开视口时停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/async-morph-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/async-morph-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "face-rating",
+      "type": "registry:ui",
+      "title": "Face Rating",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/face-rating/face-rating.tsx 五档表情评分，支持受控和非受控，方向键在单选组里移动。colors 可配。减弱动效时不弹跳，过渡时长为 0。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/face-rating.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/face-rating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "follow-button",
+      "type": "registry:ui",
+      "title": "Follow Button",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/follow-button/follow-button.tsx 关注按钮，aria-pressed 反映状态，悬停已关注时预览取消。支持受控。减弱动效时不形变、不下沉。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/follow-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/follow-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "share-button",
+      "type": "registry:ui",
+      "title": "Share Button",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/share-button/share-button.tsx 分享按钮展开动作。actions、copyValue、direction、closeOnSelect 可配。方向键和 Tab 在动作间移动，Escape 关闭。减弱动效时只淡入淡出。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/share-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/share-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "task-checkbox",
+      "type": "registry:ui",
+      "title": "Task Checkbox",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/task-checkbox/task-checkbox.tsx 任务勾选，role 为 checkbox，支持受控。勾选时划掉标签并放出少量纸屑。colors 可配。减弱动效时立刻勾选，不爆开。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/task-checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/task-checkbox.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-action-bar",
+      "type": "registry:ui",
+      "title": "Expandable Action Bar",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/motion/expandable-action-bar.tsx 悬停或聚焦时展开动作标签。触控第一次点按只展开。依赖 use-dismiss、use-hover-gesture、use-tap-gesture。减弱动效时标签直接显隐。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-dismiss",
+        "use-hover-gesture",
+        "use-prefers-reduced-motion",
+        "use-tap-gesture",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/expandable-action-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/expandable-action-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "faq-tabs-card",
+      "type": "registry:ui",
+      "title": "FAQ Tabs Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/faq-tabs-card.tsx 页签切换常见问题。示例文案由 tabs 传入。减弱动效时页签和答案直接切换。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/faq-tabs-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/faq-tabs-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "nav-list-card",
+      "type": "registry:ui",
+      "title": "Nav List Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，Made by Arihant。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/nav-list-card.tsx 卡片式导航列表。items 由调用方传入，示例数据在 demo。有 href 时渲染链接。减弱动效时行不再位移。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/nav-list-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/nav-list-card.tsx"
+        }
+      ]
+    },
+    {
       "name": "folder-float",
       "type": "registry:ui",
       "title": "Folder Float",

@@ -104,6 +104,7 @@ export type SourceLibrary =
   | "ReUI"
   | "Tremor Raw"
   | "Uiverse"
+  | "Spectrum UI"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -227,6 +228,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   ReUI: "https://reui.io",
   "Tremor Raw": "https://raw.tremor.so",
   Uiverse: "https://uiverse.io",
+  "Spectrum UI": "https://github.com/arihantcodes/spectrum-ui",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2392,6 +2394,9 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "heart-like-button",
       "download-size-button",
       "lift-gradient-border-button",
+      "async-morph-button",
+      "follow-button",
+      "share-button",
     ],
   },
 ]

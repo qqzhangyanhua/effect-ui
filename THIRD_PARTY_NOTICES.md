@@ -392,6 +392,17 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - npm：`simplex-noise` 4.0.3
 - 衍生组件：`vortex-background`（动态 `import("simplex-noise")` 的 `createNoise2D`，未修改上游源码）
 
+## Spectrum UI（Apache-2.0）
+
+- 仓库：https://github.com/arihantcodes/spectrum-ui
+- 许可：Apache-2.0
+- 署名：Made by Arihant。上游 LICENSE 附录是未填写的 Apache 模板，仓库没有自带 NOTICE。
+- LICENSE：`licenses/apache/spectrum-ui/LICENSE`
+- NOTICE：`licenses/apache/spectrum-ui/NOTICE`
+- 修改：`framer-motion` 改为 `motion/react`，去掉 `next-themes`，减弱动效用 `use-prefers-reduced-motion`，示例文案改为 props 或 demo，文件头标明 Modified。
+- 衍生组件：`hologram-text`、`ink-morph`、`orbital-text`、`orbital-char`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card`，以及钩子 `use-dismiss`、`use-hover-gesture`、`use-tap-gesture`。
+- `skeleton-reveal` 与 `text-states` 嵌入的过渡样式来自 transitions.dev（Jakub Antalík），经 Spectrum UI 再分发。
+
 ## fuse.js（Apache-2.0）
 
 - 仓库：https://github.com/krisk/Fuse
@@ -401,4 +412,4 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - npm：`fuse.js` 7.5.0
 - 衍生组件：`resource-search-hero`（动态 `import("fuse.js")`，未修改上游源码）
 
-完整 MIT / Apache-2.0 / BSD-3-Clause 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`、`licenses/apache/fuse.js/`、`licenses/bsd/`、`licenses/mit/`，以及本仓库 `LICENSE`。
+完整 MIT / Apache-2.0 / BSD-3-Clause 许可文本见各上游仓库的 LICENSE 文件、`licenses/apache/paper-shaders/`、`licenses/apache/fuse.js/`、`licenses/apache/spectrum-ui/`、`licenses/bsd/`、`licenses/mit/`，以及本仓库 `LICENSE`。

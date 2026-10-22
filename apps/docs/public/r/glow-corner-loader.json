@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-corner-loader",
+  "type": "registry:ui",
+  "title": "Glow Corner Loader",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 NlghtM4re。https://github.com/uiverse-io/galaxy/blob/main/loaders/NlghtM4re_popular-crab-99.html 四枚发光方块沿四角转动。colors 决定每枚颜色。减弱动效或离开视口时方块停在四个角。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glow-corner-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glow-corner-loader.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author NlghtM4re）— https://github.com/uiverse-io/galaxy/blob/main/loaders/NlghtM4re_popular-crab-99.html. Modified for effect-ui.\n\nimport { useRef, type HTMLAttributes } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nconst REST = [\n  { x: -30, y: -30 },\n  { x: 30, y: -30 },\n  { x: 30, y: 30 },\n  { x: -30, y: 30 },\n] as const\n\nexport interface GlowCornerLoaderProps extends HTMLAttributes<HTMLDivElement> {\n  colors?: string[]\n  duration?: number\n}\n\nexport function GlowCornerLoader({\n  colors = [\"var(--chart-1)\", \"var(--chart-2)\", \"var(--chart-3)\", \"var(--chart-4)\"],\n  duration = 4,\n  className,\n  ...props\n}: GlowCornerLoaderProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const active = !reduced && motionOn\n  const cycle = Math.max(0.4, duration)\n\n  return (\n    <div {...props} ref={ref} aria-label=\"加载中\" className={cn(\"relative inline-flex size-28 items-center justify-center\", className)} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"glow-corner-loader\" role=\"status\">\n      <style>{`\n        @keyframes glow-corner-loader-move {\n          0% { transform: translate(-30px, -30px); }\n          25% { transform: translate(30px, -30px); }\n          50% { transform: translate(30px, 30px); }\n          75% { transform: translate(-30px, 30px); }\n          100% { transform: translate(-30px, -30px); }\n        }\n      `}</style>\n      {REST.map((corner, index) => {\n        const color = colors[index % Math.max(colors.length, 1)] ?? \"var(--primary)\"\n        return (\n          <span\n            key={corner.x + corner.y}\n            aria-hidden\n            className=\"absolute size-7\"\n            style={{\n              backgroundColor: color,\n              boxShadow: `0 7px 29px ${color}`,\n              transform: active ? undefined : `translate(${corner.x}px, ${corner.y}px)`,\n              animation: active ? `glow-corner-loader-move ${cycle}s infinite ${-index - 1}s` : \"none\",\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

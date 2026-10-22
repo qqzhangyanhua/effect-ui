@@ -37,6 +37,16 @@ import { batch37Components } from "./catalog-batch37"
 import { batch38Components } from "./catalog-batch38"
 import { batch39Components } from "./catalog-batch39"
 import { batch40Components } from "./catalog-batch40"
+import { batch41Components } from "./catalog-batch41"
+import { batch42Components } from "./catalog-batch42"
+import { batch43Components } from "./catalog-batch43"
+import { batch44Components } from "./catalog-batch44"
+import { batch45Components } from "./catalog-batch45"
+import { batch46Components } from "./catalog-batch46"
+import { batch47Components } from "./catalog-batch47"
+import { batch48Components } from "./catalog-batch48"
+import { batch49Components } from "./catalog-batch49"
+import { batch50Components } from "./catalog-batch50"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -87,6 +97,7 @@ export type SourceLibrary =
   | "Eldora UI"
   | "Smooth UI"
   | "UI Layouts"
+  | "shadcn-chat"
   | "TanStack Virtual"
   | "frimousse"
   | "Base UI"
@@ -107,8 +118,15 @@ export type SourceLibrary =
   | "three"
   | "ReUI"
   | "Tremor Raw"
+  | "daisyUI"
   | "Uiverse"
+  | "HyperUI"
+  | "Meraki UI"
   | "Spectrum UI"
+  | "Flowbite"
+  | "Velora UI"
+  | "Neobrutalism"
+  | "Arc Library"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -231,8 +249,15 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   SyntaxUI: "https://syntaxui.com",
   ReUI: "https://reui.io",
   "Tremor Raw": "https://raw.tremor.so",
+  daisyUI: "https://github.com/saadeghi/daisyui",
   Uiverse: "https://uiverse.io",
+  HyperUI: "https://github.com/markmead/hyperui",
+  "Meraki UI": "https://github.com/merakiuilabs/merakiui",
   "Spectrum UI": "https://github.com/arihantcodes/spectrum-ui",
+  Flowbite: "https://github.com/themesberg/flowbite",
+  "Velora UI": "https://github.com/ColorlibHQ/velora-ui",
+  Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
+  "Arc Library": "https://github.com/kuratlielia/arc-library",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -243,6 +268,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Eldora UI": "https://www.eldoraui.site",
   "Smooth UI": "https://smoothui.dev",
   "UI Layouts": "https://ui-layouts.com",
+  "shadcn-chat": "https://github.com/jakobhoeg/shadcn-chat",
   "TanStack Virtual": "https://tanstack.com/virtual",
   frimousse: "https://frimousse.liveblocks.io",
   "Base UI": "https://base-ui.com",
@@ -2307,6 +2333,16 @@ export const components: ComponentMeta[] = [
   ...batch38Components,
   ...batch39Components,
   ...batch40Components,
+  ...batch41Components,
+  ...batch42Components,
+  ...batch43Components,
+  ...batch44Components,
+  ...batch45Components,
+  ...batch46Components,
+  ...batch47Components,
+  ...batch48Components,
+  ...batch49Components,
+  ...batch50Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2406,6 +2442,23 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "follow-button",
       "share-button",
       "jelly-button",
+      "retro-press-button",
+      "liquid-gradient-button",
+      "glitch-slice-button",
+      "send-arrow-button",
+      "trash-delete-button",
+      "circular-text-button",
+      "flower-burst-button",
+      "scroll-cue-button",
+      "flicker-reflect-button",
+      "printer-icon-button",
+      "tilt-sweep-button",
+      "fly-around-button",
+      "cosmic-button",
+      "glow-track-button",
+      "neumorph-button",
+      "stateful-button",
+      "split-button",
     ],
   },
 ]
@@ -2428,9 +2481,11 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "mic-search-input",
       "newsletter-input",
       "pin-display-input",
+      "file-input",
+      "category-search-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input"] },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input"] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [
@@ -2442,7 +2497,7 @@ const checkboxFamilySections: readonly FamilySectionSpec[] = [
 const switchFamilySections: readonly FamilySectionSpec[] = [
   { key: "base", label: "基础", names: ["switch"] },
   { key: "plus", label: "增强", names: ["switch-plus"] },
-  { key: "motion", label: "动效", names: ["squish-switch", "labeled-toggle"] },
+  { key: "motion", label: "动效", names: ["squish-switch", "labeled-toggle", "halo-switch"] },
 ]
 
 const radioFamilySections: readonly FamilySectionSpec[] = [

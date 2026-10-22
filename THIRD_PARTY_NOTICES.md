@@ -37,14 +37,35 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/nolly-studio/cult-ui
 - 许可：MIT
 - 版权：Copyright (c) 2023 Jordan-Gilliam
-- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）、`family-drawer`（多步骤展开面板，按 Cult UI 结构重写）、`distorted-glass`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/distorted-glass.tsx）、`merging-bubbles`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/merging-bubbles.tsx）、`svg-bands`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/svg-bands.tsx）、`popover-form`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/popover-form.tsx）、`floating-panel`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/floating-panel.tsx）、`copy-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/copy-button.tsx）、`feature-voting`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/feature-voting.tsx）
+- 衍生组件：`glow-hover`、`hover-lift`、`expandable-card`、`dynamic-island`、`3d-carousel`、`section-sticky-feature-scroll`（粘性特性滚动结构）、`family-drawer`（多步骤展开面板，按 Cult UI 结构重写）、`distorted-glass`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/distorted-glass.tsx）、`merging-bubbles`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/merging-bubbles.tsx）、`svg-bands`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/svg-bands.tsx）、`popover-form`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/popover-form.tsx）、`floating-panel`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/floating-panel.tsx）、`copy-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/copy-button.tsx）、`feature-voting`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/feature-voting.tsx）、`lightboard`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/lightboard.tsx）、`cosmic-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/cosmic-button.tsx）、`glow-track-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/glow-button.tsx）、`halo-badge`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/halo-badge.tsx）、`halo-switch`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/halo-switch.tsx）、`shift-card`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx）、`squiggle-arrow`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/squiggle-arrow.tsx）、`security-checkpoint`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/security-checkpoint.tsx）、`speech-bubble`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx）、`folded-card`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/folded-card.tsx）、`side-panel`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/side-panel.tsx）、`collab-avatar`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/collab-avatar.tsx）、`elapsed-timer`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/timer.tsx）、`neumorph-button`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/neumorph-button.tsx）、`texture-card`（https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx）
+
+## Velora UI
+
+- 仓库：https://github.com/ColorlibHQ/velora-ui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Aigars Silkalns
+- 衍生组件：`dotted-glow-background`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/dotted-glow-background.tsx）、`sticky-banner`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/sticky-banner.tsx）、`multi-step-loader`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/multi-step-loader.tsx）、`stateful-button`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/stateful-button.tsx）、`tweet-card`（https://github.com/ColorlibHQ/velora-ui/blob/main/src/components/velora/tweet-card.tsx）
+
+## Neobrutalism
+
+- 仓库：https://github.com/ekmas/neobrutalism-components
+- 许可：MIT
+- 版权：Copyright (c) 2023 Samuel Breznjak
+- 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
+
+## Arc Library
+
+- 仓库：https://github.com/kuratlielia/arc-library
+- 许可：MIT
+- 版权：Copyright (c) 2026 Elia Kuratli
+- 衍生组件：`theme-switch-transitions`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/theme-switch/theme-switch.tsx）、`floating-button-group`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/floating-button-group/floating-button-group.tsx）、`morph-select`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/morph-select/morph-select.tsx）、`streamgraph`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/streamgraph/streamgraph.tsx）、`waffle-chart`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/waffle-chart/waffle-chart.tsx）、`treemap`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/treemap/treemap.tsx）、`slope-chart`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/slope-chart/slope-chart.tsx）、`ridgeline`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/ridgeline/ridgeline.tsx）、`split-button`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/split-button/split-button.tsx）、`shortcut-recorder`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/shortcut-recorder/shortcut-recorder.tsx）、`inline-edit`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/inline-edit/inline-edit.tsx）、`expandable-text`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/expandable-text/expandable-text.tsx）、`brush-chart`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/brush-chart/brush-chart.tsx）、`user-menu`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/user-menu/user-menu.tsx）、`password-field`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/password-field/password-field.tsx）
 
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）、`box-carousel`（四面立方体旋转，按 Fancy 交互重写）
+- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）、`box-carousel`（四面立方体旋转，按 Fancy 交互重写）、`variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float`
 
 ## Kibo UI
 
@@ -102,9 +123,10 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 ## prompt-kit
 
 - 仓库：https://github.com/ibelick/prompt-kit
+- 许可文件：`LICENCE.md`
 - 许可：MIT
-- 版权：Copyright (c) 2024 ibelick
-- 衍生组件：`prompt-input`、`chat-message`（流式 Markdown 用 `react-markdown`）。未移植 Vercel AI Elements（Apache，官方即将弃用），仅作交互参考。
+- 版权：Copyright (c) 2025 Julien Thibeaut
+- 衍生组件：`prompt-input`、`chat-message`（流式 Markdown 用 `react-markdown`），以及 `ai-loader`、`response-stream`（同时导出 `useTextStream`）、`thinking-bar`、`chain-of-thought`、`reasoning`、`source`、`tool`、`system-message`、`feedback-bar`、`prompt-suggestion`、`generated-image`。`@/components/ui/*` 换成 effect-ui 已有组件。`reasoning` 渲染 children，不使用 markdown。`source` 的 `showFavicon` 默认关闭，只使用 `faviconSrc`，不请求 Google favicon。`generated-image` 由 `image` 改名，卸载时 revoke object URL。`ai-loader` 的关键帧来自 `app/globals.css`。未移植 Vercel AI Elements（Apache，官方即将弃用），仅作交互参考。
 
 ## Tailark blocks（免费）
 
@@ -173,14 +195,21 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/ui-layouts/uilayouts
 - 许可：MIT
 - 版权：Copyright (c) 2024 UI LAYOUT
-- 衍生组件：`splash-mask`。路径来自 `clip-path-water-splash.tsx`，内联进组件，不请求外部 SVG。
+- 衍生组件：`splash-mask`。路径来自 `clip-path-water-splash.tsx`，内联进组件，不请求外部 SVG。本批另加 `blur-vignette`、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`spotlight-group`、`timeline-reveal`、`scroll-blur-text`、`hatch-divider`、`image-tabs`、`progressive-carousel`、`agent-intro-sequence`、`hover-image-reveal`，以及 hook `use-media-query`。`next/image` 改为 `img`。示例链接和示例数据放在 demo。`agent-intro-sequence` 同时带上 `typing-writter` 与 `shimmer-loader` 的行为，序列由 props 传入。原创组件已占用 `hover-image-list`，图片行登记为 `hover-image-reveal`。
+
+## shadcn-chat
+
+- 仓库：https://github.com/jakobhoeg/shadcn-chat
+- 许可：MIT
+- 版权：Copyright (c) 2024 Jakob Hoeg Mørk
+- 衍生组件：`expandable-chat`、`chat-message-list`、`message-loading`。`useAutoScroll` 内联在 `chat-message-list`，不单独登记。
 
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`pixel-trail`、`screensaver`、`media-between-text`、`letter-3d-swap`、`vertical-cut-reveal`、`text-cursor-proximity`、`elastic-line`、`breathing-text`、`text-highlighter`，以及 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events`。本批另加 `css-box`、`drag-elements`、`scroll-and-swap-text`、`underline-to-background`、`parallax-floating`、`pixelate-svg-filter`、`gooey-svg-filter`、`animated-gradient-with-svg`，以及 hook `use-debounced-dimensions`。
+- 衍生组件：`pixel-trail`、`screensaver`、`media-between-text`、`letter-3d-swap`、`vertical-cut-reveal`、`text-cursor-proximity`、`elastic-line`、`breathing-text`、`text-highlighter`，以及 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events`。本批另加 `css-box`、`drag-elements`、`scroll-and-swap-text`、`underline-to-background`、`parallax-floating`、`pixelate-svg-filter`、`gooey-svg-filter`、`animated-gradient-with-svg`，以及 hook `use-debounced-dimensions`。再加 `variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float`。这六项的 `lodash` debounce 改为组件内手写，`clsx` 改为 `cn`。
 
 ## SyntaxUI
 
@@ -209,7 +238,35 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/uiverse-io/galaxy
 - 许可：MIT
 - 版权：Copyright (c) 2023 Uiverse.io
-- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。
+- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu），以及 `check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal），以及 `book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub），以及 `glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0），以及 `bookmark-burst-toggle`（作者 Galahhad）、`lock-toggle`（作者 mobinkakei）、`circular-text-button`（作者 Creatlydev）、`flower-burst-button`（作者 yaroslavas2001）、`scroll-cue-button`（作者 ArturCodeCraft）、`flicker-reflect-button`（作者 John-CFO）、`glow-search-input`（作者 siraj-ha）、`propeller-orb`（作者 Lakshay-art），以及 `pacman-loader`（作者 andrew-demchenk0）、`battery-loader`（作者 JaydipPrajapati1910）、`ringed-planet-loader`（作者 Admin12121）、`pixel-bird-loader`（作者 Subaashbala）、`phone-ring-loader`（作者 bociKond）、`glass-clock-loader`（作者 Subaashbala），以及 `uno-card`（作者 nanda248）、`transaction-card`（作者 Admin12121）、`printer-icon-button`（作者 Admin12121）、`pendulum-social-card`（作者 SouravBandyopadhyay）、`tilt-sweep-button`（作者 EddyBel）、`focus-line-input`（作者 TechByElijah）、`word-wheel-card`（作者 NotReal22）、`fly-around-button`（作者 Bastiennnn）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。`plus-share-burst` 的图标由调用方传入。`glass-clock-loader` 将源文件里无效的 `16ss` 改为 16 秒。`fly-around-button` 的图标由调用方传入。
+
+## Flowbite
+
+- 仓库：https://github.com/themesberg/flowbite
+- 许可：MIT
+- 版权：Copyright (c) 2023 Bergside Inc.
+- 衍生组件：`bottom-navigation`、`meeting-control-bar`、`list-group`、`time-range-picker`、`blockquote`、`featured-gallery`、`category-search-input`。Tailwind HTML 已改写为 React 状态，`data-*` 交互改为组件状态。图标使用仓库已有的 lucide-react。示例图片、文案和链接由调用方传入。
+
+## daisyUI
+
+- 仓库：https://github.com/saadeghi/daisyui
+- 许可：MIT
+- 版权：Copyright (c) 2020 Pouya Saadeghi
+- 衍生组件：`hover-gallery`、`icon-swap`、`shape-mask`、`form-validator`、`corner-indicator`、`filter-chips`、`file-input`、`tick-range`。组件 CSS 已改写为 React 与 Tailwind v4，主题色映射到 effect-ui 的 token。`shape-mask` 在不支持 `mask-image` 时退回圆角。`form-validator` 在不支持 `:user-invalid` 时于失焦调用 `checkValidity`。
+
+## HyperUI
+
+- 仓库：https://github.com/markmead/hyperui
+- 许可：MIT
+- 版权：Copyright (c) Mark Mead
+- 衍生组件：`details-list`、`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards`、`collapsible-side-menu`。Tailwind HTML 已改写为 React。亮色与暗色示例合并为主题色和 `dark:` 变体。示例图片与文案由调用方传入。
+
+## Meraki UI
+
+- 仓库：https://github.com/merakiuilabs/merakiui
+- 许可：MIT
+- 版权：Copyright (c) 2021 Khatab Wedaa
+- 衍生组件：`not-found-page`、`multi-level-dropdown`、`file-manager-table`、`email-template`、`signup-split-page`、`step-modal`、`portfolio-filter-grid`，以及 `site-footer`。Tailwind 与 Alpine HTML 已改写为 React 状态，过渡使用已有的 `motion/react`。示例图片、文案和链接由调用方传入。`email-template` 改为表格和内联样式。`site-footer` 的订阅只回调邮箱，不发请求。
 
 ## shadcn-ui-expansions
 
@@ -390,8 +447,8 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 署名：Made by Arihant。上游 LICENSE 附录是未填写的 Apache 模板，仓库没有自带 NOTICE。
 - LICENSE：`licenses/apache/spectrum-ui/LICENSE`
 - NOTICE：`licenses/apache/spectrum-ui/NOTICE`
-- 修改：`framer-motion` 改为 `motion/react`，去掉 `next-themes`，减弱动效用 `use-prefers-reduced-motion`，示例文案改为 props 或 demo，文件头标明 Modified。
-- 衍生组件：`hologram-text`、`ink-morph`、`orbital-text`、`orbital-char`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card`，以及钩子 `use-dismiss`、`use-hover-gesture`、`use-tap-gesture`。
+- 修改：`framer-motion` 改为 `motion/react`，去掉 `next-themes`，减弱动效用 `use-prefers-reduced-motion`，示例文案改为 props 或 demo，文件头标明 Modified。资料卡默认不发网络请求，头像用 `img`。
+- 衍生组件：`hologram-text`、`ink-morph`、`orbital-text`、`orbital-char`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card`，以及钩子 `use-dismiss`、`use-hover-gesture`、`use-tap-gesture`。另加 `star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card`，以及钩子 `use-typewriter`。
 - `skeleton-reveal` 与 `text-states` 嵌入的过渡样式来自 transitions.dev（Jakub Antalík），经 Spectrum UI 再分发。
 
 ## fuse.js（Apache-2.0）

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "propeller-orb",
+  "type": "registry:ui",
+  "title": "Propeller Orb",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 Lakshay-art。https://github.com/uiverse-io/galaxy/blob/main/Cards/Lakshay-art_shy-puma-30.html 径向圆球加旋转螺旋桨，悬停时桨叶加快、机翼倾斜。size、speed、colors 可配，根节点 aria-hidden。示例色放在 demo。减弱动效或离开视口时桨叶停住，机翼不再倾斜。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/propeller-orb.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/propeller-orb.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse.io (MIT), author Lakshay-art — https://github.com/uiverse-io/galaxy/blob/main/Cards/Lakshay-art_shy-puma-30.html. Modified for effect-ui.\n\nimport { useRef, type CSSProperties, type HTMLAttributes } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PropellerOrbProps extends HTMLAttributes<HTMLDivElement> {\n  /** 圆球直径，单位像素。 */\n  size?: number\n  /** 螺旋桨转一圈的秒数。悬停时按源站比例加快。 */\n  speed?: number\n  /** 径向、机翼和桨叶用色。不传时使用源站色板。 */\n  colors?: string[]\n}\n\nexport function PropellerOrb({\n  size = 200,\n  speed = 1.5,\n  colors,\n  className,\n  style,\n  ...props\n}: PropellerOrbProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced\n  const core = colors?.[0] ?? \"black\"\n  const mid = colors?.[1] ?? \"rgb(69, 11, 11)\"\n  const ring = colors?.[2] ?? \"red\"\n  const bladeA = colors?.[3] ?? \"rgb(255, 179, 0)\"\n  const bladeB = colors?.[4] ?? \"rgb(244, 205, 205)\"\n  const bladeC = colors?.[5] ?? \"rgb(5, 56, 99)\"\n  const propLight = colors?.[6] ?? \"#eee\"\n  const propShade = colors?.[7] ?? \"#777\"\n  const fast = Math.max(speed * (0.35 / 1.5), 0.2)\n  const painted = {\n    width: size,\n    height: size,\n    \"--orb\": size,\n    \"--propeller-speed\": `${Math.max(speed, 0.2)}s`,\n    \"--propeller-fast\": `${fast}s`,\n    \"--blade-a\": bladeA,\n    \"--blade-b\": bladeB,\n    \"--blade-c\": bladeC,\n    \"--prop-light\": propLight,\n    \"--prop-shade\": propShade,\n    backgroundImage: `radial-gradient(circle, ${core} 25%, ${mid} 45%, ${ring} 46%, ${core}, ${ring})`,\n    ...style,\n  } as CSSProperties\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      aria-hidden=\"true\"\n      className={cn(\"propeller-orb relative rounded-full\", className)}\n      data-motion={moving ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"propeller-orb\"\n      style={painted}\n    >\n      <style>\n        {`[data-slot=\"propeller-orb\"]::before{content:\"\";position:absolute;height:calc(var(--orb) * .3px);width:calc(var(--orb) * 2.1px);bottom:calc(var(--orb) * -.1px);left:calc(var(--orb) * -.5px);z-index:-1;border-radius:30px 30px 70% 70%;transform-origin:50% 0%;background-image:linear-gradient(180deg,var(--blade-a) 20%,var(--blade-b),var(--blade-a) 30%,var(--blade-c) 90%)}\n[data-slot=\"propeller-orb\"]::after{content:\"\";position:absolute;height:calc(var(--orb) * 1.4px);width:calc(var(--orb) * .15px);top:calc(var(--orb) * -.15px);left:calc(var(--orb) * .425px);border-radius:9999px;z-index:1;background-image:linear-gradient(0deg,var(--blade-a),var(--prop-shade) 25px,var(--prop-light),var(--prop-shade) calc(100% - 25px),var(--blade-a))}\n[data-slot=\"propeller-orb\"][data-motion=\"on\"]::before{transition:all 1s linear}\n[data-slot=\"propeller-orb\"][data-motion=\"on\"]:hover::before{transform:rotate(20deg);left:calc(var(--orb) * -.55px)}\n[data-slot=\"propeller-orb\"][data-motion=\"on\"]::after{animation:propeller-orb-spin var(--propeller-speed) linear infinite}\n[data-slot=\"propeller-orb\"][data-motion=\"on\"]:hover::after{animation-duration:var(--propeller-fast)}\n@keyframes propeller-orb-spin{to{transform:rotateZ(360deg)}}`}\n      </style>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

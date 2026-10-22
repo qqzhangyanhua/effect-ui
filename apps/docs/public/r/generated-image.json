@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "generated-image",
+  "type": "registry:ui",
+  "title": "Generated Image",
+  "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/image.tsx 由 image 改名。支持 base64 或 uint8Array 加 mediaType。alt 必填。uint8Array 生成的 object URL 在卸载或更换时 revoke。没有图片时显示占位，减弱动效时占位不脉冲。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/generated-image.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/generated-image.tsx",
+      "content": "\"use client\"\n\n// Ported from prompt-kit (MIT, (c) 2025 Julien Thibeaut) — https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/image.tsx. Modified for effect-ui.\n\nimport { useEffect, useState, type ImgHTMLAttributes } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface GeneratedImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, \"src\" | \"alt\"> {\n  alt: string\n  base64?: string\n  uint8Array?: Uint8Array\n  mediaType?: string\n}\n\nexport function GeneratedImage({ base64, uint8Array, mediaType = \"image/png\", className, alt, ...props }: GeneratedImageProps) {\n  const reduced = usePrefersReducedMotion()\n  const [objectUrl, setObjectUrl] = useState<string | undefined>()\n  const base64Src = base64 ? `data:${mediaType};base64,${base64}` : undefined\n\n  useEffect(() => {\n    if (!uint8Array || base64Src) return\n    const copy = new Uint8Array(uint8Array.byteLength)\n    copy.set(uint8Array)\n    const url = URL.createObjectURL(new Blob([copy], { type: mediaType }))\n    const timer = window.setTimeout(() => setObjectUrl(url), 0)\n    return () => {\n      window.clearTimeout(timer)\n      URL.revokeObjectURL(url)\n    }\n  }, [base64Src, mediaType, uint8Array])\n\n  const src = base64Src ?? objectUrl\n  if (!src) {\n    return <div aria-label={alt} className={cn(\"h-24 max-w-full overflow-hidden rounded-md bg-muted\", !reduced && \"animate-pulse\", className)} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"generated-image\" role=\"img\" />\n  }\n\n  return (\n    // eslint-disable-next-line @next/next/no-img-element -- registry 组件用 img，不引入 next/image\n    <img {...props} alt={alt} className={cn(\"h-auto max-w-full overflow-hidden rounded-md\", className)} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"generated-image\" role=\"img\" src={src} />\n  )\n}\n"
+    }
+  ]
+}

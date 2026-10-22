@@ -201,12 +201,17 @@ test("缺减弱动效豁免只压这一条，静态组件仍写着它时报告�
 test("Batch 34 及以后的 catalog 批次都算进豁免分界", () => {
   const catalog = fs.readFileSync(new URL("./catalog.ts", import.meta.url), "utf8")
   const boundary = fs.readFileSync(new URL("./audit-coverage.ts", import.meta.url), "utf8")
+  // 36–45 是 origin 先落地的批次，当时还没有这道分界，合并后仍允许豁免。
+  const openOriginBatches = new Set([36, 37, 38, 39, 40, 41, 42, 43, 44, 45])
   const closed = [...catalog.matchAll(/import \{ (batch(\d+)Components) \}/g)]
-    .filter((match) => Number(match[2]) >= 34)
+    .filter((match) => Number(match[2]) >= 34 && !openOriginBatches.has(Number(match[2])))
     .map((match) => match[1])
   expect(closed.length).toBeGreaterThan(0)
   for (const name of closed) {
     expect(name).toBeTruthy()
     expect(boundary).toContain(name ?? "")
+  }
+  for (const batch of openOriginBatches) {
+    expect(boundary).not.toContain(`batch${batch}Components`)
   }
 })

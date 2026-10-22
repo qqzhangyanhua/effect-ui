@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hatch-divider",
+  "type": "registry:ui",
+  "title": "Hatch Divider",
+  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/gap-pattern.tsx 斜向细线分隔。没有连续动画，减弱动效时外观相同。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/hatch-divider.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hatch-divider.tsx",
+      "content": "\"use client\"\n\n// Ported from UI Layouts (MIT, (c) 2024 UI LAYOUT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/gap-pattern.tsx. Modified for effect-ui.\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport type { HTMLAttributes } from \"react\"\n\nexport interface HatchDividerProps extends HTMLAttributes<HTMLDivElement> {\n  stripe?: string\n}\n\nexport function HatchDivider({ stripe = \"var(--border)\", className, ...props }: HatchDividerProps) {\n  const reduced = usePrefersReducedMotion()\n  return (\n    <div\n      {...props}\n      aria-hidden\n      className={cn(\"h-6 w-full border-y bg-card\", className)}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"hatch-divider\"\n      style={{\n        backgroundImage: `repeating-linear-gradient(135deg, ${stripe} 0px 1px, transparent 1px 10px)`,\n      }}\n    />\n  )\n}\n"
+    }
+  ]
+}

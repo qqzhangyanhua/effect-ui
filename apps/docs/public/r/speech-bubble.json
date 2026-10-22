@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "speech-bubble",
+  "type": "registry:ui",
+  "title": "Speech Bubble",
+  "description": "移植自 Cult UI，MIT，Copyright (c) 2023 Jordan-Gilliam。 https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx 圆角气泡配右侧尾巴。showCursor 为 true 时在 md 以上显示一枚会呼吸的光标，周期 1.4 秒。减弱动效或离开视口时光标停住，文字仍在。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/speech-bubble.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/speech-bubble.tsx",
+      "content": "\"use client\"\n\n// Ported from Cult UI (MIT, (c) 2023 Jordan-Gilliam) — https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx. Modified for effect-ui.\n\nimport { useRef, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpeechBubbleProps {\n  children?: ReactNode\n  className?: string\n  showCursor?: boolean\n}\n\nexport function SpeechBubble({ children, className, showCursor = true }: SpeechBubbleProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced\n  return (\n    <div ref={ref} className={cn(\"mr-12\", className)} data-motion={moving ? \"on\" : \"off\"} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"speech-bubble\">\n      <style>\n        {`@keyframes speech-bubble-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }\n[data-slot=\"speech-bubble\"][data-motion=\"on\"] [data-slot=\"speech-bubble-cursor\"] { animation: speech-bubble-pulse 1.4s ease-in-out infinite; }`}\n      </style>\n      <div className=\"relative flex w-fit items-center rounded-full bg-foreground px-6 py-6 text-background lg:px-10 lg:py-5\" data-slot=\"speech-bubble-body\">\n        <svg\n          aria-hidden=\"true\"\n          className=\"absolute right-[-17px] bottom-0 h-6 -rotate-5 fill-foreground md:right-[-7px] md:h-auto lg:right-[-9px]\"\n          data-slot=\"speech-bubble-tail\"\n          fill=\"none\"\n          focusable=\"false\"\n          height=\"45\"\n          viewBox=\"0 0 53 45\"\n          width=\"53\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path className=\"fill-foreground\" d=\"M44 0H0V0C0 24.8528 20.1472 45 45 45H53V45C47.1396 36.535 44 26.4842 44 16.1886V0Z\" />\n        </svg>\n        <p className=\"relative text-balance text-base font-semibold leading-[0.9] tracking-[-0.06em] text-background md:text-2xl lg:text-[2rem]\" data-slot=\"speech-bubble-text\">\n          {children}\n        </p>\n        {showCursor ? <span aria-hidden className=\"relative ml-2 hidden h-6 w-4 bg-muted-foreground md:block\" data-slot=\"speech-bubble-cursor\" /> : null}\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

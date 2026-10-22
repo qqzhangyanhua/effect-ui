@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-swap",
+  "type": "registry:ui",
+  "title": "Icon Swap",
+  "description": "移植自 daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi。 https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/swap.css on 与 off 叠在同一格。effect 为 rotate 时按下转到 0 度、松开转到 -45 度；flip 时绕 Y 轴翻转并保留 3D。pressed 可以是 mixed，这时显示 indeterminate。按钮带 aria-pressed。减弱动效时不再过渡，状态仍然切换。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/icon-swap.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/icon-swap.tsx",
+      "content": "\"use client\"\n\n// Ported from daisyUI（MIT，(c) 2020 Pouya Saadeghi）— https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/swap.css. Modified for effect-ui.\n\nimport { useState, type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface IconSwapProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"onToggle\"> {\n  on: ReactNode\n  off: ReactNode\n  indeterminate?: ReactNode\n  effect?: \"rotate\" | \"flip\"\n  pressed?: boolean | \"mixed\"\n  onPressedChange?: (pressed: boolean) => void\n}\n\nfunction layerStyle(visible: boolean, transform: string, reduced: boolean): CSSProperties {\n  return {\n    opacity: visible ? 1 : 0,\n    transform,\n    transition: reduced ? \"none\" : \"transform 0.2s cubic-bezier(0, 0, 0.2, 1), opacity 0.2s cubic-bezier(0, 0, 0.2, 1)\",\n    backfaceVisibility: \"hidden\",\n  }\n}\n\nexport function IconSwap({\n  on,\n  off,\n  indeterminate,\n  effect = \"rotate\",\n  pressed,\n  onPressedChange,\n  className,\n  ...props\n}: IconSwapProps) {\n  const reduced = usePrefersReducedMotion()\n  const [uncontrolled, setUncontrolled] = useState(false)\n  const current = pressed ?? uncontrolled\n  const mixed = current === \"mixed\"\n  const onVisible = current === true\n  const offVisible = current === false && !mixed\n\n  function pose(kind: \"on\" | \"off\" | \"mixed\") {\n    if (effect === \"flip\") {\n      if (kind === \"on\") return onVisible || mixed ? \"rotateY(0deg)\" : \"rotateY(180deg)\"\n      if (kind === \"off\") return offVisible ? \"rotateY(0deg)\" : \"rotateY(-180deg)\"\n      return \"rotateY(0deg)\"\n    }\n    if (kind === \"on\") return onVisible ? \"rotate(0deg)\" : \"rotate(45deg)\"\n    if (kind === \"off\") return offVisible ? \"rotate(0deg)\" : \"rotate(-45deg)\"\n    return \"rotate(0deg)\"\n  }\n\n  return (\n    <button\n      {...props}\n      type=\"button\"\n      aria-pressed={mixed ? \"mixed\" : onVisible}\n      className={cn(\"relative inline-grid cursor-pointer place-items-center border-0 bg-transparent p-0 align-middle select-none\", className)}\n      data-effect={effect}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"icon-swap\"\n      data-state={mixed ? \"mixed\" : onVisible ? \"on\" : \"off\"}\n      onClick={(event) => {\n        props.onClick?.(event)\n        if (event.defaultPrevented) return\n        const next = current !== true\n        if (pressed === undefined) setUncontrolled(next)\n        onPressedChange?.(next)\n      }}\n      style={effect === \"flip\" ? { transformStyle: \"preserve-3d\", perspective: \"20rem\" } : undefined}\n    >\n      <span aria-hidden={!offVisible} className=\"col-start-1 row-start-1\" data-layer=\"off\" style={layerStyle(offVisible, pose(\"off\"), reduced)}>\n        {off}\n      </span>\n      <span aria-hidden={!onVisible} className=\"col-start-1 row-start-1\" data-layer=\"on\" style={layerStyle(onVisible, pose(\"on\"), reduced)}>\n        {on}\n      </span>\n      {indeterminate != null ? (\n        <span aria-hidden={!mixed} className=\"col-start-1 row-start-1\" data-layer=\"indeterminate\" style={layerStyle(mixed, pose(\"mixed\"), reduced)}>\n          {indeterminate}\n        </span>\n      ) : null}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

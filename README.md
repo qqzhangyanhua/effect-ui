@@ -573,6 +573,221 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 主题切换、图表与账号菜单
+
+登记在 `catalog-batch45.ts`。上一批点阵光晕已占用 `catalog-batch44.ts`。`theme-switch-transitions`、`floating-button-group`、`morph-select`、`streamgraph`、`waffle-chart`、`treemap`、`slope-chart`、`ridgeline`、`split-button`、`shortcut-recorder`、`inline-edit`、`expandable-text`、`brush-chart`、`user-menu`、`password-field` 移植自 Arc Library（MIT，Copyright (c) 2026 Elia Kuratli）。CSS module 改成组件内样式，Arc 颜色变量映射到 effect-ui 主题变量，`motion` 换成 `motion/react`。图标用已有的 lucide-react，菜单和提示用已有的 Radix dropdown-menu、popover、tooltip、dialog。没有新增依赖。图表保留 `<title>` 和屏幕阅读摘要。减弱动效或离开视口时旋转、滑动、弹簧高度和描线停住，直接显示终态。
+
+| 组件 | 来源 |
+| --- | --- |
+| theme-switch-transitions | Arc Library，MIT |
+| floating-button-group | Arc Library，MIT |
+| morph-select | Arc Library，MIT |
+| streamgraph | Arc Library，MIT |
+| waffle-chart | Arc Library，MIT |
+| treemap | Arc Library，MIT |
+| slope-chart | Arc Library，MIT |
+| ridgeline | Arc Library，MIT |
+| split-button | Arc Library，MIT |
+| shortcut-recorder | Arc Library，MIT |
+| inline-edit | Arc Library，MIT |
+| expandable-text | Arc Library，MIT |
+| brush-chart | Arc Library，MIT |
+| user-menu | Arc Library，MIT |
+| password-field | Arc Library，MIT |
+
+### 点阵光晕、星环与分步加载
+
+登记在 `catalog-batch44.ts`。上一批灯板已占用 `catalog-batch43.ts`。`dotted-glow-background`、`sticky-banner`、`multi-step-loader`、`stateful-button`、`tweet-card` 移植自 Velora UI（MIT，Copyright (c) 2026 Aigars Silkalns）。`star-ring-orbit`、`neo-star-shapes`、`caption-image-card` 移植自 Neobrutalism components（MIT，Copyright (c) 2023 Samuel Breznjak）。没有移植 Velora 里和 Aceternity 概念重合的组件。品牌渐变改成主题色，示例色放在 demo。关键帧写在组件内部。没有新增依赖。减弱动效时点阵停在当前帧，星环停转，公告直接收起，分步加载不再转圈，异步按钮不再缩成圆形。
+
+| 组件 | 来源 |
+| --- | --- |
+| dotted-glow-background | Velora UI，MIT |
+| star-ring-orbit | Neobrutalism components，MIT |
+| sticky-banner | Velora UI，MIT |
+| multi-step-loader | Velora UI，MIT |
+| stateful-button | Velora UI，MIT |
+| tweet-card | Velora UI，MIT |
+| neo-star-shapes | Neobrutalism components，MIT |
+| caption-image-card | Neobrutalism components，MIT |
+
+### 灯板、光环与折页卡片
+
+登记在 `catalog-batch43.ts`。上一批 UNO 卡已占用 `catalog-batch42.ts`。`lightboard`、`cosmic-button`、`glow-track-button`、`halo-badge`、`halo-switch`、`shift-card`、`squiggle-arrow`、`security-checkpoint`、`speech-bubble`、`folded-card`、`side-panel`、`collab-avatar`、`elapsed-timer`、`neumorph-button`、`texture-card` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`next/link` 改成 `a`，`clsx` 改成 `cn`。侧栏高度用 ResizeObserver，没有加入 react-use-measure。关键帧写在组件内部。示例色、文案和链接放在 demo。没有新增依赖。减弱动效时灯板停在当前帧，星环和光斑停住，徽章光圈和开关弹簧停住，班次卡片直接展开，安检线和计时图标停住，气泡光标不再呼吸，拟态按钮不再缩放。
+
+| 组件 | 来源 |
+| --- | --- |
+| lightboard | Cult UI，MIT |
+| cosmic-button | Cult UI，MIT |
+| glow-track-button | Cult UI，MIT |
+| halo-badge | Cult UI，MIT |
+| halo-switch | Cult UI，MIT |
+| shift-card | Cult UI，MIT |
+| squiggle-arrow | Cult UI，MIT |
+| security-checkpoint | Cult UI，MIT |
+| speech-bubble | Cult UI，MIT |
+| folded-card | Cult UI，MIT |
+| side-panel | Cult UI，MIT |
+| collab-avatar | Cult UI，MIT |
+| elapsed-timer | Cult UI，MIT |
+| neumorph-button | Cult UI，MIT |
+| texture-card | Cult UI，MIT |
+
+### UNO 卡、会议控制与分类搜索
+
+登记在 `catalog-batch42.ts`。上一批吃豆加载已占用 `catalog-batch41.ts`。`uno-card`（作者 nanda248）、`transaction-card`（作者 Admin12121）、`printer-icon-button`（作者 Admin12121）、`pendulum-social-card`（作者 SouravBandyopadhyay）、`tilt-sweep-button`（作者 EddyBel）、`focus-line-input`（作者 TechByElijah）、`word-wheel-card`（作者 NotReal22）、`fly-around-button`（作者 Bastiennnn）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`bottom-navigation`、`meeting-control-bar`、`list-group`、`time-range-picker`、`blockquote`、`featured-gallery`、`category-search-input` 移植自 Flowbite（MIT，Copyright (c) 2023 Bergside Inc.）。Tailwind HTML 改成 React 状态，图标用已有的 lucide-react。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时光带、进纸、摆锤、扫光、下划线放大、词盘、飞图标停住，交易卡和 POS 并排静止，图库直接换图，导航和会议条不再做颜色过渡。
+
+| 组件 | 来源 |
+| --- | --- |
+| uno-card | Uiverse galaxy，MIT，作者 nanda248 |
+| transaction-card | Uiverse galaxy，MIT，作者 Admin12121 |
+| printer-icon-button | Uiverse galaxy，MIT，作者 Admin12121 |
+| pendulum-social-card | Uiverse galaxy，MIT，作者 SouravBandyopadhyay |
+| tilt-sweep-button | Uiverse galaxy，MIT，作者 EddyBel |
+| focus-line-input | Uiverse galaxy，MIT，作者 TechByElijah |
+| word-wheel-card | Uiverse galaxy，MIT，作者 NotReal22 |
+| fly-around-button | Uiverse galaxy，MIT，作者 Bastiennnn |
+| bottom-navigation | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| meeting-control-bar | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| list-group | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| time-range-picker | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| blockquote | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| featured-gallery | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+| category-search-input | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
+
+### 吃豆加载、形状遮罩与页脚
+
+登记在 `catalog-batch41.ts`。上一批书签爆发已占用 `catalog-batch40.ts`。`pacman-loader`（作者 andrew-demchenk0）、`battery-loader`（作者 JaydipPrajapati1910）、`ringed-planet-loader`（作者 Admin12121）、`pixel-bird-loader`（作者 Subaashbala）、`phone-ring-loader`（作者 bociKond）、`glass-clock-loader`（作者 Subaashbala）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`hover-gallery`、`icon-swap`、`shape-mask`、`form-validator`、`corner-indicator`、`filter-chips`、`file-input`、`tick-range` 移植自 daisyUI（MIT，Copyright (c) 2020 Pouya Saadeghi）。`site-footer` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。CSS 改成 React 与 Tailwind v4，主题色用现有 token。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时吃豆嘴保持张开、电池停在半格或给定电量、星球环停在倾斜角度、像素鸟停在扇翅中段、电话不再摇晃、时钟指针停住、画廊切换不再过渡、图标交换不再旋转过渡、筛选不再缩放、页脚链接不再做颜色过渡。`mask-image` 不可用时形状遮罩退回圆角，`:user-invalid` 不可用时表单在失焦时用 `checkValidity`。
+
+| 组件 | 来源 |
+| --- | --- |
+| pacman-loader | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
+| battery-loader | Uiverse galaxy，MIT，作者 JaydipPrajapati1910 |
+| ringed-planet-loader | Uiverse galaxy，MIT，作者 Admin12121 |
+| pixel-bird-loader | Uiverse galaxy，MIT，作者 Subaashbala |
+| phone-ring-loader | Uiverse galaxy，MIT，作者 bociKond |
+| glass-clock-loader | Uiverse galaxy，MIT，作者 Subaashbala |
+| hover-gallery | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| icon-swap | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| shape-mask | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| form-validator | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| corner-indicator | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| filter-chips | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| file-input | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| tick-range | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
+| site-footer | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+
+### 书签爆发、注册分页与作品筛选
+
+登记在 `catalog-batch40.ts`。上一批故障切片已占用 `catalog-batch39.ts`。`bookmark-burst-toggle`（作者 Galahhad）、`lock-toggle`（作者 mobinkakei）、`circular-text-button`（作者 Creatlydev）、`flower-burst-button`（作者 yaroslavas2001）、`scroll-cue-button`（作者 ArturCodeCraft）、`flicker-reflect-button`（作者 John-CFO）、`glow-search-input`（作者 siraj-ha）、`propeller-orb`（作者 Lakshay-art）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`not-found-page`、`multi-level-dropdown`、`file-manager-table`、`email-template`、`signup-split-page`、`step-modal`、`portfolio-filter-grid` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。Alpine 改成 React 状态，过渡用已有的 `motion/react`。示例图片、文案和链接放在 demo。邮件模板用表格和内联样式。没有新增依赖。减弱动效时书签不再爆发、锁扣不再画线、环形文字停止旋转、花朵不再自转、滚动箭头停住、霓虹不再闪、搜索光晕不再对调、螺旋桨停住、404 按钮和注册按钮不再做颜色过渡、菜单直接出现、文件行按钮不再过渡、步骤遮罩直接出现、作品过滤立即完成。
+
+| 组件 | 来源 |
+| --- | --- |
+| bookmark-burst-toggle | Uiverse galaxy，MIT，作者 Galahhad |
+| lock-toggle | Uiverse galaxy，MIT，作者 mobinkakei |
+| circular-text-button | Uiverse galaxy，MIT，作者 Creatlydev |
+| flower-burst-button | Uiverse galaxy，MIT，作者 yaroslavas2001 |
+| scroll-cue-button | Uiverse galaxy，MIT，作者 ArturCodeCraft |
+| flicker-reflect-button | Uiverse galaxy，MIT，作者 John-CFO |
+| glow-search-input | Uiverse galaxy，MIT，作者 siraj-ha |
+| propeller-orb | Uiverse galaxy，MIT，作者 Lakshay-art |
+| not-found-page | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| multi-level-dropdown | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| file-manager-table | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| email-template | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| signup-split-page | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| step-modal | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| portfolio-filter-grid | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+
+### 故障切片、粗野套件与营销区块
+
+登记在 `catalog-batch39.ts`。上一批布局模糊已占用 `catalog-batch38.ts`。`glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`details-list`、`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards`、`collapsible-side-menu` 移植自 HyperUI（MIT，Copyright (c) Mark Mead）。亮色和暗色 HTML 合并成主题色加 `dark:` 变体。示例图片、文案和链接放在 demo。`neo-brutal-kit` 一个条目导出 NeoCard、Alert、Badge、Input、Select、Textarea、Checkbox、Progress、Tabs。没有新增依赖。减弱动效时切片不再错位、发送光晕停住、删除提示直接出现、霓虹卡片放平、图钉和星星不再缩放、模糊色块保持清晰、游走光点停住、详情列表和统计卡保持原样、博客阴影不再过渡、粗野控件没有过渡、联系按钮没有颜色过渡、成员链接不再改变透明度、侧栏箭头没有旋转过渡。
+
+| 组件 | 来源 |
+| --- | --- |
+| glitch-slice-button | Uiverse galaxy，MIT，作者 namecho |
+| send-arrow-button | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
+| trash-delete-button | Uiverse galaxy，MIT，作者 boryanakrasteva |
+| neon-hold-card | Uiverse galaxy，MIT，作者 htwarriors108 |
+| pin-toggle | Uiverse galaxy，MIT，作者 vinodjangid07 |
+| blur-unveil-card | Uiverse galaxy，MIT，作者 Javierrocadev |
+| glow-wander-card | Uiverse galaxy，MIT，作者 codebykay101 |
+| star-favorite-toggle | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
+| details-list | HyperUI，MIT，Copyright (c) Mark Mead |
+| blog-card | HyperUI，MIT，Copyright (c) Mark Mead |
+| neo-brutal-kit | HyperUI，MIT，Copyright (c) Mark Mead |
+| contact-form | HyperUI，MIT，Copyright (c) Mark Mead |
+| team-section | HyperUI，MIT，Copyright (c) Mark Mead |
+| stat-trend-cards | HyperUI，MIT，Copyright (c) Mark Mead |
+| collapsible-side-menu | HyperUI，MIT，Copyright (c) Mark Mead |
+
+### 布局模糊、液态按钮与对话壳
+
+登记在 `catalog-batch38.ts`。上一批提示词套件已占用 `catalog-batch37.ts`。`blur-vignette`、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`spotlight-group`、`timeline-reveal`、`scroll-blur-text`、`hatch-divider`、`image-tabs`、`progressive-carousel`、`agent-intro-sequence`、`hover-image-reveal` 与钩子 `use-media-query` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT）。`expandable-chat`、`chat-message-list`、`message-loading` 移植自 shadcn-chat（MIT，Copyright (c) 2024 Jakob Hoeg Mørk）。`useAutoScroll` 内联在 `chat-message-list`。`next/image` 改为 `img`。示例链接、色板和图片放在 demo。`agent-intro-sequence` 的序列由 props 传入。原创组件已占用 `hover-image-list`，这次的图片行登记为 `hover-image-reveal`。没有新增依赖。减弱动效时暗角不再模糊、液态色块停住、方块没有颜色过渡、字符条直接显示最后一句、聚光不再跟随指针、时间线和滚动文字立即清晰、斜线分隔保持原样、对话壳没有展开过渡、消息列表不平滑滚动、标签没有颜色过渡、轮播停止自动播放、介绍序列一次显示并结束、窄屏或减弱动效时图片停在行内、输入点停住。
+
+| 组件 | 来源 |
+| --- | --- |
+| use-media-query | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| blur-vignette | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| liquid-gradient-button | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| hover-blocks-grid | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| char-shimmer-loader | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| spotlight-group | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| timeline-reveal | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| scroll-blur-text | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| hatch-divider | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| expandable-chat | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
+| chat-message-list | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
+| image-tabs | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| progressive-carousel | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| agent-intro-sequence | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| hover-image-reveal | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| message-loading | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
+
+### 提示词套件与加载指示
+
+登记在 `catalog-batch37.ts`。上一批可变字体已占用 `catalog-batch36.ts`。`ai-loader`、`response-stream`、`thinking-bar`、`chain-of-thought`、`reasoning`、`source`、`tool`、`system-message`、`feedback-bar`、`prompt-suggestion`、`generated-image` 移植自 prompt-kit（许可文件 `LICENCE.md`，MIT，Copyright (c) 2025 Julien Thibeaut）。`@/components/ui/*` 换成已有组件。`reasoning` 渲染 children。`source` 默认不显示图标，也不请求 Google favicon。`generated-image` 由 `image` 改名。`book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。没有新增依赖。减弱动效时加载指示停住、文字流立即显示全文、思考条不再扫光、书页合上、地图钉停住、发光方块停在四角、复古按钮按下没有过渡、思维链和工具卡不再播放折叠动画、推理区直接展开、来源悬停不再延迟、反馈和提示词按钮没有过渡、生成图占位不脉冲。
+
+| 组件 | 来源 |
+| --- | --- |
+| ai-loader | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| response-stream | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| thinking-bar | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| book-page-loader | Uiverse galaxy，MIT，作者 vinodjangid07 |
+| map-pin-loader | Uiverse galaxy，MIT，作者 vikramsinghnegi |
+| glow-corner-loader | Uiverse galaxy，MIT，作者 NlghtM4re |
+| retro-press-button | Uiverse galaxy，MIT，作者 TanimMahbub |
+| chain-of-thought | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| reasoning | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| source | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| tool | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| system-message | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| feedback-bar | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| prompt-suggestion | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+| generated-image | prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut |
+
+### 可变字体、开关与资料卡
+
+登记在 `catalog-batch36.ts`。上一批全息文字已占用 `catalog-batch35.ts`。`variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float` 移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho）。`lodash` 的 debounce 改成组件内手写，`clsx` 改成 `cn`。`check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card` 移植自 Spectrum UI（Apache-2.0，(c) Spectrum UI / arihantcodes）。`use-typewriter` 移植到 `hooks/`。`framer-motion` 已换成 `motion/react`。示例凭据、提示词、社交入口、转账数字和 GitHub 用户放在 demo。资料卡默认不发请求。没有新增依赖。减弱动效时可变字体保持起始字重、字母不交换、下划线不再过渡、路径元素停在起点、漂浮回到原位、开关直接到位、分享菜单直接出现、星星不缩放、账号卡和对话卡直接显示第一组文案、登录卡直接出现、转账按钮不再缩放。
+
+| 组件 | 来源 |
+| --- | --- |
+| variable-font-hover-by-letter | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| letter-swap-pingpong | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| random-letter-swap | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| underline-hover-link | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| element-along-svg-path | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| float | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| check-cross-switch | Uiverse galaxy，MIT，作者 misaraadel |
+| plus-share-burst | Uiverse galaxy，MIT，作者 neerajbaniwal |
+| star-rating | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| account-access-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| ai-chat-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| login-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| transfer-funds-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| http-status-lookup | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| github-profile-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| use-typewriter | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+
 ### 全息文字、刮刮卡与评分
 
 登记在 `catalog-batch35.ts`。上一批色相波浪已占用 `catalog-batch34.ts`。`hologram-text`、`ink-morph`、`orbital-text`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card` 移植自 Spectrum UI（Apache-2.0，Made by Arihant）。`use-dismiss`、`use-hover-gesture`、`use-tap-gesture` 一并移植到 `hooks/`。`framer-motion` 已换成 `motion/react`，去掉了 `next-themes`。`faq-tabs-card` 的示例文案由 `tabs` 传入，`nav-list-card` 的示例数据在 demo。每个移植文件都标明 Modified。没有新增依赖。减弱动效时全息文字停止闪烁并保持可见、墨迹直接落到终点、轨道字符直接落位、刮刮卡不生成粉尘、骨架不脉冲、状态文字直接替换、铃铛不摆动、异步按钮的加载旋转停止、表情不弹跳、关注按钮不形变、分享菜单只淡入、任务勾选不爆开、动作条标签直接显隐、常见问题直接切换、导航行不再位移。
@@ -608,7 +823,7 @@ text-style
 
 ### 抛掷
 
-登记在 `catalog-batch36.ts`。上一批全息文字与文件夹便签已占用 `catalog-batch35.ts`。`card-toss-stack`、`toss-to-trash`、`sticky-note-board` 是原创实现，不是移植。每个组件自己算拖拽惯性，没有抽共享 hook，也没有新增依赖。减弱动效时卡片直接拿走、条目直接删除、便利贴停在落点并且不再倾斜。
+登记在 `catalog-batch46.ts`。origin 的新批次已占用 `catalog-batch36.ts` 到 `catalog-batch45.ts`。`card-toss-stack`、`toss-to-trash`、`sticky-note-board` 是原创实现，不是移植。每个组件自己算拖拽惯性，没有抽共享 hook，也没有新增依赖。减弱动效时卡片直接拿走、条目直接删除、便利贴停在落点并且不再倾斜。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -618,7 +833,7 @@ text-style
 
 ### 罐子与球池
 
-登记在 `catalog-batch37.ts`。上一批抛掷已占用 `catalog-batch36.ts`。`tag-jar`、`coin-jar`、`ball-pit` 是原创实现，不是移植。标签落入玻璃罐并堆起，拖动罐子会把它们摇散；打赏硬币落入罐中叠成一柱；头像球会被指针拨开。`matter-js` 已经是依赖，没有新增 npm 依赖。减弱动效时不启动物理引擎，也不申请动画帧，只留下静止的一叠。
+登记在 `catalog-batch47.ts`。上一批抛掷已占用 `catalog-batch46.ts`。`tag-jar`、`coin-jar`、`ball-pit` 是原创实现，不是移植。标签落入玻璃罐并堆起，拖动罐子会把它们摇散；打赏硬币落入罐中叠成一柱；头像球会被指针拨开。`matter-js` 已经是依赖，没有新增 npm 依赖。减弱动效时不启动物理引擎，也不申请动画帧，只留下静止的一叠。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -628,7 +843,7 @@ text-style
 
 ### 挂绳弹簧
 
-登记在 `catalog-batch38.ts`。上一批罐子与球池已占用 `catalog-batch37.ts`。`lanyard-badge`、`jelly-button`、`spring-drawer` 是原创实现，不是移植。各自用 Verlet 和弹簧积分，配合 `requestAnimationFrame`，没有新增依赖，也没有使用 matter-js。减弱动效时不跑积分循环：工牌竖直挂着，按钮不压扁，抽屉直接开合。
+登记在 `catalog-batch48.ts`。上一批罐子与球池已占用 `catalog-batch47.ts`。`lanyard-badge`、`jelly-button`、`spring-drawer` 是原创实现，不是移植。各自用 Verlet 和弹簧积分，配合 `requestAnimationFrame`，没有新增依赖，也没有使用 matter-js。减弱动效时不跑积分循环：工牌竖直挂着，按钮不压扁，抽屉直接开合。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -638,7 +853,7 @@ text-style
 
 ### 吸附芯片、文件夹扇形与落点
 
-登记在 `catalog-batch39.ts`。上一批挂绳弹簧已占用 `catalog-batch38.ts`。`magnet-chips`、`folder-stack`、`physics-dropzone` 是原创实现，不是移植。没有新增依赖。`physics-dropzone` 使用仓库里已经安装的 `matter-js`。`magnet-chips` 和 `folder-stack` 只用自己的指针和动画帧。减弱动效时芯片立刻对齐、文件夹不播放扇形动画、文件直接出现在堆里，并且不启动物理引擎、不申请动画帧。
+登记在 `catalog-batch49.ts`。上一批挂绳弹簧已占用 `catalog-batch48.ts`。`magnet-chips`、`folder-stack`、`physics-dropzone` 是原创实现，不是移植。没有新增依赖。`physics-dropzone` 使用仓库里已经安装的 `matter-js`。`magnet-chips` 和 `folder-stack` 只用自己的指针和动画帧。减弱动效时芯片立刻对齐、文件夹不播放扇形动画、文件直接出现在堆里，并且不启动物理引擎、不申请动画帧。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -648,7 +863,7 @@ text-style
 
 ### 上传与回应
 
-登记在 `catalog-batch40.ts`。上一批吸附芯片已占用 `catalog-batch39.ts`。`upload-orbit`、`empty-state-scene`、`reaction-tray` 是原创实现，不是移植。没有新增依赖。减弱动效时文件停在完成的一行、插画保持静止、表情计数立刻更新，不再绕圈、漂浮或弹出。
+登记在 `catalog-batch50.ts`。上一批吸附芯片已占用 `catalog-batch49.ts`。`upload-orbit`、`empty-state-scene`、`reaction-tray` 是原创实现，不是移植。没有新增依赖。减弱动效时文件停在完成的一行、插画保持静止、表情计数立刻更新，不再绕圈、漂浮或弹出。
 
 | 组件 | 来源 |
 | --- | --- |

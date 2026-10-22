@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-image-reveal",
+  "type": "registry:ui",
+  "title": "Hover Image Reveal",
+  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/image-reveal/image-reveal.tsx 悬停文字行时显示图片。items 含 label、img、alt。宽屏图片跟随指针，窄屏或减弱动效时图片停在行内。已有原创组件占用 hover-image-list，因此登记为 hover-image-reveal。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-media-query",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/hover-image-reveal.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hover-image-reveal.tsx",
+      "content": "\"use client\"\n\n// Ported from UI Layouts (MIT, (c) 2024 UI LAYOUT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/image-reveal/image-reveal.tsx. Modified for effect-ui.\n\nimport { useMediaQuery } from \"@/hooks/use-media-query\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { useRef, useState, type HTMLAttributes, type MouseEvent } from \"react\"\n\nexport interface HoverImageRevealItem {\n  label: string\n  img: string\n  alt: string\n}\n\nexport interface HoverImageRevealProps extends HTMLAttributes<HTMLDivElement> {\n  items: readonly HoverImageRevealItem[]\n}\n\nexport function HoverImageReveal({ items, className, ...props }: HoverImageRevealProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const desktop = useMediaQuery(\"(min-width: 768px)\")\n  const [active, setActive] = useState<number | null>(null)\n  const [point, setPoint] = useState({ x: 0, y: 0 })\n  const current = active === null ? undefined : items[active]\n  const follow = desktop && !reduced\n\n  const move = (event: MouseEvent<HTMLDivElement>) => {\n    if (!follow || !ref.current) return\n    const box = ref.current.getBoundingClientRect()\n    setPoint({ x: event.clientX - box.left, y: event.clientY - box.top })\n  }\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      className={cn(\"relative w-full\", className)}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"hover-image-reveal\"\n      onMouseLeave={() => setActive(null)}\n      onMouseMove={move}\n    >\n      {items.map((item, index) => (\n        <button\n          className=\"flex w-full items-center justify-between border-b py-4 text-left last:border-b-0\"\n          key={`${item.label}-${index}`}\n          onFocus={() => setActive(index)}\n          onMouseEnter={() => setActive(index)}\n          type=\"button\"\n        >\n          <span className=\"font-display text-3xl\">{item.label}</span>\n          {!follow && active === index ? (\n            // eslint-disable-next-line @next/next/no-img-element -- registry 组件用 img，不引入 next/image\n            <img alt={item.alt} className=\"ml-4 h-16 w-24 rounded-md object-cover\" src={item.img} />\n          ) : null}\n        </button>\n      ))}\n      {follow && current ? (\n        // eslint-disable-next-line @next/next/no-img-element -- registry 组件用 img，不引入 next/image\n        <img\n          alt={current.alt}\n          className=\"pointer-events-none absolute z-10 h-36 w-48 rounded-lg object-cover shadow-xl\"\n          src={current.img}\n          style={{ left: point.x, top: point.y, transform: \"translate(-30%, -50%)\" }}\n        />\n      ) : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

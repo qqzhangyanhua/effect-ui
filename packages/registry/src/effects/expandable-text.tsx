@@ -1,0 +1,190 @@
+"use client";
+
+// Ported from Arc Library (MIT, (c) 2026 Elia Kuratli) — https://github.com/kuratlielia/arc-library/blob/main/registry/components/expandable-text/expandable-text.tsx
+
+import { useAnimationActive } from "@/hooks/use-animation-active";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+
+import { useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore , createContext, useContext} from "react";
+import type { CSSProperties, FocusEvent, HTMLAttributes, ReactNode } from "react";
+import { ChevronDown } from "lucide-react";
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
+import type { AnimationPlaybackControls } from "motion/react";
+const ArcQuiet = createContext(false);
+
+function useArcReduced() {
+  const prefer = usePrefersReducedMotion();
+  const quiet = useContext(ArcQuiet);
+  return prefer || quiet;
+}
+
+const styles: Record<string, string> = new Proxy({} as Record<string, string>, { get: (_target, key) => (typeof key === "string" ? "expandable-text-" + key : "") });
+
+const arcCss = ":where([class^=\"expandable-text-\"], [class*=\" expandable-text-\"]) {\n  --surface: var(--background);\n  --surface-raised: var(--popover);\n  --surface-muted: var(--muted);\n  --text-secondary: var(--muted-foreground);\n  --text-muted: var(--muted-foreground);\n  --border-subtle: color-mix(in oklab, var(--border) 65%, var(--background));\n  --border-strong: color-mix(in oklab, var(--foreground) 28%, var(--border));\n  --accent: var(--primary);\n  --accent-strong: var(--primary);\n  --accent-foreground: var(--primary-foreground);\n  --accent-subtle: color-mix(in oklab, var(--primary) 12%, transparent);\n  --danger: var(--destructive);\n  --success: var(--primary);\n  --warning: var(--destructive);\n  --control-on: var(--primary);\n  --control-glyph: var(--primary-foreground);\n  --shadow-resting: 0 1px 2px oklch(0% 0 0 / .035);\n  --shadow-raised: 0 6px 18px oklch(0% 0 0 / .065), 0 1px 3px oklch(0% 0 0 / .035);\n  --shadow-floating: 0 20px 48px oklch(0% 0 0 / .105), 0 3px 10px oklch(0% 0 0 / .045);\n  --radius-control: 1.125rem;\n  --radius-panel: 1.625rem;\n  --radius-surface: 2.125rem;\n  --radius-pill: 9999px;\n  --control-height-sm: 2.25rem;\n  --control-height-md: 2.75rem;\n  --control-height-lg: 3.125rem;\n  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;\n  --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem;\n  --text-xs: .75rem; --text-sm: .875rem; --text-base: 1rem;\n  --tracking-body: -.01em; --leading-body: 1.4;\n  --font-body: inherit; --font-display: inherit;\n  --ease-enter: cubic-bezier(.16, 1, .3, 1);\n  --ease-standard: cubic-bezier(.22, 1, .36, 1);\n  --ease-exit: cubic-bezier(.7, 0, .84, 0);\n  --ease-in-out: cubic-bezier(.65, 0, .35, 1);\n  --ease-spring: linear(0, 0.0213, 0.0739, 0.1443, 0.2235, 0.305, 0.3849, 0.4606, 0.5305, 0.594, 0.6508, 0.7011, 0.7452, 0.7836, 0.8168, 0.8454, 0.8699, 0.8907, 0.9084, 0.9234, 0.9361, 0.9467, 0.9557, 0.9632, 0.9694, 0.9747, 0.979, 0.9826, 0.9857, 0.9882, 0.9902, 0.992, 0.9934, 0.9946, 0.9955, 0.9963, 1);\n  --duration-instant: 120ms; --duration-fast: 160ms; --duration-standard: 240ms; --duration-considered: 480ms; --duration-spring: 580ms;\n  --series-1: var(--primary);\n  --series-2: #7128a5;\n  --series-3: #e58f00;\n  --series-4: #009e84;\n  color: var(--foreground);\n}\n.dark :where([class^=\"expandable-text-\"], [class*=\" expandable-text-\"]) { --series-1: #55adff; --series-2: #9c37be; --series-3: #e66e00; --series-4: #00a861; }\n@supports (color: oklch(from red clamp(.4, l * sign(max(c - .02, 0)) + .5, .8) c h)) {\n  :where([class^=\"expandable-text-\"], [class*=\" expandable-text-\"]) {\n    --series-1: oklch(from var(--accent) calc(l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0)))) calc(c * sign(max(c - .02, 0)) + .15 * (1 - sign(max(c - .02, 0)))) calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0)))));\n    --series-2: oklch(from var(--accent) clamp(.45, l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0))) - 0.25, .76) .19 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 57));\n    --series-3: oklch(from var(--accent) clamp(.45, l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0))) + 0.14, .76) .18 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 184));\n    --series-4: oklch(from var(--accent) clamp(.45, l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0))), .76) .21 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 292));\n  }\n  .dark :where([class^=\"expandable-text-\"], [class*=\" expandable-text-\"]) {\n    --series-1: oklch(from var(--accent) calc(l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0)))) calc(c * sign(max(c - .02, 0)) + .15 * (1 - sign(max(c - .02, 0)))) calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0)))));\n    --series-2: oklch(from var(--accent) clamp(.485, l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0))) - 0.19, .665) .21 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 66));\n    --series-3: oklch(from var(--accent) clamp(.485, l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0))) + 0.02, .665) .21 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 175));\n    --series-4: oklch(from var(--accent) clamp(.485, l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0))) - 0.1, .665) .18 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 270));\n  }\n}\n.expandable-text-root { --expandable-text-lines: 3; display: grid; justify-items: start; gap: var(--space-2); min-width: 0; color: var(--text-secondary); font-size: var(--text-sm); line-height: var(--leading-body); letter-spacing: var(--tracking-body); }\n/* Height is owned by motion while it moves; at rest the clamp is plain CSS, so it follows every width and font change for free. */\n.expandable-text-content { position: relative; width: 100%; min-width: 0; overflow: hidden; overflow-wrap: anywhere; }\n.expandable-text-content[data-clamped] { max-height: calc(var(--expandable-text-lines) * 1.4em); max-height: calc(var(--expandable-text-lines) * 1lh); }\n/* Exactly `lines` lines tall in the text's own line height; measured to decide whether the toggle is needed. */\n.expandable-text-probe { position: absolute; top: 0; left: 0; width: 0; height: calc(var(--expandable-text-lines) * 1.4em); height: calc(var(--expandable-text-lines) * 1lh); visibility: hidden; pointer-events: none; }\n.expandable-text-inner > :first-child { margin-top: 0; }\n.expandable-text-inner > :last-child { margin-bottom: 0; }\n.expandable-text-inner p { margin: 0 0 .75em; }\n.expandable-text-toggle { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 28px; margin: 0 0 0 -2px; padding: 0 2px; border: 0; border-radius: 8px; background: transparent; color: var(--foreground); font: inherit; font-weight: 500; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: color var(--duration-fast) var(--ease-standard); }\n@media (hover: hover) and (pointer: fine) { .expandable-text-toggle:hover { color: var(--text-secondary); } }\n.expandable-text-toggle:active { color: var(--text-muted); }\n.expandable-text-labels { display: inline-grid; justify-items: start; }\n/* The labels crossfade with a short vertical drift and a brief blur, timed to the opening. */\n.expandable-text-label { grid-area: 1 / 1; opacity: 0; filter: blur(2px); transform: translateY(-4px); transition: opacity var(--duration-standard) var(--ease-standard), transform var(--duration-considered) var(--ease-standard), filter var(--duration-standard) var(--ease-standard); pointer-events: none; }\n.expandable-text-label[data-active] { opacity: 1; filter: blur(0); transform: none; }\n.expandable-text-label + .expandable-text-label:not([data-active]) { transform: translateY(4px); }\n.expandable-text-icon { display: inline-flex; color: var(--text-muted); }\n@media (prefers-reduced-motion: reduce) { .expandable-text-toggle, .expandable-text-label { transition: none; } }\n\n.expandable-text-toggle { min-height: 2.75rem; }\n\n";
+
+function ArcStyle() {
+  return <style>{arcCss}</style>;
+}
+
+
+/**
+ * Long text clamped to a few lines with a soft fade over the last one. Read more opens it to its full height with a calm ease out,
+ * and Show less closes it again, bringing the start of the text back into view when it had scrolled away. The toggle only appears when the text
+ * really overflows its lines, and stays correct as the width or font changes.
+ */
+export interface ExpandableTextProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  /** The text. Plain strings, paragraphs, and inline links all work; the whole text stays available to screen readers while clamped. */
+  children: ReactNode;
+  /** How many lines show while collapsed. */
+  lines?: number;
+  /** Controlled open state. */
+  expanded?: boolean;
+  defaultExpanded?: boolean;
+  onExpandedChange?: (expanded: boolean) => void;
+  /** Toggle label while collapsed. */
+  moreLabel?: string;
+  /** Toggle label while open. */
+  lessLabel?: string;
+}
+
+const noop = () => () => {};
+/** A soft ease out: it answers the click at once, then spends most of its time settling, so a long paragraph glides open instead of snapping. */
+const ease = [0.32, 0.5, 0.2, 1] as const;
+/** Opening takes 500 to 600ms and closing 400 to 450ms, growing gently with the distance the text travels. */
+const openDuration = (distance: number) => 0.5 + Math.min(distance / 1600, 0.1);
+const closeDuration = (distance: number) => 0.4 + Math.min(distance / 2000, 0.05);
+
+/** Reduced motion only counts after hydration, so the server and the first client render agree. */
+function useReduced() {
+  const hydrated = useSyncExternalStore(noop, () => true, () => false);
+  const reduced = useArcReduced();
+  return hydrated && reduced;
+}
+
+export function ExpandableText({ children, lines = 3, expanded: expandedProp, defaultExpanded = false, onExpandedChange, moreLabel = "Read more", lessLabel = "Show less", className, style, ...props }: ExpandableTextProps) {
+  const [uncontrolled, setUncontrolled] = useState(defaultExpanded);
+  const expanded = expandedProp ?? uncontrolled;
+  // Long text is the common case, so the server renders the toggle and the first measurement removes it when the text fits.
+  const [overflowing, setOverflowing] = useState(true);
+  const [animating, setAnimating] = useState(false);
+  // The state the DOM has settled in. The clamp only changes once a move ends, so the height can be read before anything lifts.
+  const [settled, setSettled] = useState(expanded);
+  const preferReduced = useReduced();
+  const contentId = useId();
+  const root = useRef<HTMLDivElement>(null);
+  const arcLive = useAnimationActive(root);
+  const reduced = preferReduced || !arcLive;
+  const content = useRef<HTMLDivElement>(null);
+  const inner = useRef<HTMLDivElement>(null);
+  const probe = useRef<HTMLSpanElement>(null);
+  const clampHeight = useRef(0);
+  const range = useRef({ from: 0, to: 0 });
+  const running = useRef<AnimationPlaybackControls | null>(null);
+  const lastExpanded = useRef(expanded);
+  /** 0 is clamped, 1 is fully open. Height, the fade, and the chevron all follow this one value, so they always move in step. */
+  const progress = useMotionValue(expanded ? 1 : 0);
+  const height = useMotionValue<number | "auto">("auto");
+  const rotate = useTransform(progress, [0, 1], [0, 180]);
+  // The fade eases away as the text opens and only returns as it nears the clamp again. While the height moves, newly revealed lines
+  // rise through the soft edge instead of being uncovered by a hard line.
+  const maskImage = useTransform(progress, value => {
+    const fade = Math.pow(1 - Math.min(Math.max(value, 0), 1), 1.35);
+    return fade <= 0.002 ? "none" : `linear-gradient(to bottom, #000 calc(100% - 1.6lh), rgb(0 0 0 / ${(1 - fade * 0.96).toFixed(3)}) 100%)`;
+  });
+
+  useEffect(() => progress.on("change", value => {
+    if (!running.current) return;
+    const { from, to } = range.current;
+    height.set(from + (to - from) * value);
+  }), [progress, height]);
+
+  // The probe is exactly `lines` lines tall in the text's own line height, so fonts, sizes, and wrapping never need to be computed by hand.
+  useLayoutEffect(() => {
+    const probeNode = probe.current, innerNode = inner.current;
+    if (!probeNode || !innerNode) return;
+    const measure = () => {
+      clampHeight.current = probeNode.getBoundingClientRect().height;
+      setOverflowing(innerNode.getBoundingClientRect().height > clampHeight.current + 1);
+    };
+    measure();
+    if (typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(measure);
+    observer.observe(probeNode);
+    observer.observe(innerNode);
+    return () => observer.disconnect();
+  }, [lines]);
+
+  // Animate whenever the open state changes, from the toggle or a controlled prop. A change mid-flight carries on from the current height.
+  useLayoutEffect(() => {
+    if (lastExpanded.current === expanded) return;
+    lastExpanded.current = expanded;
+    const node = content.current, innerNode = inner.current;
+    running.current?.stop();
+    running.current = null;
+    if (!node || !innerNode || reduced) { progress.set(expanded ? 1 : 0); height.set("auto"); setAnimating(false); setSettled(expanded); return; }
+    const full = innerNode.getBoundingClientRect().height;
+    const clamp = Math.min(clampHeight.current, full);
+    const current = node.getBoundingClientRect().height;
+    // Progress maps the clamp to 0 and the full height to 1; resync it to the real height in case the text reflowed since the last move.
+    range.current = { from: clamp, to: full };
+    const span = Math.max(full - clamp, 1);
+    progress.jump(Math.min(Math.max((current - clamp) / span, 0), 1));
+    // Pin the current height before the clamp lifts, so nothing jumps for a frame.
+    node.style.height = `${current}px`;
+    height.set(current);
+    setAnimating(true);
+    const target = expanded ? 1 : 0;
+    const distance = Math.abs(target - progress.get()) * span;
+    running.current = animate(progress, target, {
+      duration: expanded ? openDuration(distance) : closeDuration(distance),
+      ease: [...ease],
+      onComplete: () => { running.current = null; height.set("auto"); setAnimating(false); setSettled(expanded); },
+    });
+  }, [expanded, reduced, progress, height]);
+
+  useEffect(() => () => running.current?.stop(), []);
+
+  const setExpanded = (next: boolean) => {
+    if (next === expanded) return;
+    // Closing from far down the page would leave the reader below the text; bring its start back into view as it closes.
+    const node = root.current;
+    if (!next && node && node.getBoundingClientRect().top < 0) node.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
+    if (expandedProp === undefined) setUncontrolled(next);
+    onExpandedChange?.(next);
+  };
+
+  // A link or button hidden below the clamp opens the text when it receives keyboard focus.
+  const onFocusCapture = (event: FocusEvent<HTMLDivElement>) => {
+    props.onFocusCapture?.(event);
+    if (expanded || !overflowing || event.target === content.current || !content.current?.contains(event.target)) return;
+    const box = content.current?.getBoundingClientRect(), target = event.target.getBoundingClientRect();
+    if (box && target.bottom > box.bottom + 1) setExpanded(true);
+  };
+
+  const clamped = !settled && !animating && overflowing;
+  const masked = overflowing && (!settled || animating);
+  return <ArcQuiet.Provider value={!arcLive}><ArcStyle /><div {...props} ref={root} data-slot="expandable-text" data-reduced={preferReduced ? "true" : "false"} data-motion={arcLive && !preferReduced ? "on" : "off"}  onFocusCapture={onFocusCapture} className={[styles.root, className].filter(Boolean).join(" ")} style={{ ...style, "--expandable-text-lines": lines } as CSSProperties}>
+    <motion.div
+      ref={content}
+      id={contentId}
+      className={styles.content}
+      data-clamped={clamped ? "" : undefined}
+      style={{ height, WebkitMaskImage: masked ? maskImage : "none", maskImage: masked ? maskImage : "none" }}
+    >
+      <span ref={probe} className={styles.probe} aria-hidden="true" />
+      <div ref={inner} className={styles.inner}>{children}</div>
+    </motion.div>
+    {overflowing && <button type="button" className={styles.toggle} aria-expanded={expanded} aria-controls={contentId} onClick={() => setExpanded(!expanded)}>
+      {/* Both labels share one grid cell, so the button keeps the wider width and the chevron never jumps as they crossfade. */}
+      <span className={styles.labels}>
+        <span className={styles.label} data-active={!expanded || undefined} aria-hidden={expanded || undefined}>{moreLabel}</span>
+        <span className={styles.label} data-active={expanded || undefined} aria-hidden={!expanded || undefined}>{lessLabel}</span>
+      </span>
+      <motion.span className={styles.icon} aria-hidden="true" style={{ rotate }}>
+        <ChevronDown width={16} height={16} strokeWidth={1.75} />
+      </motion.span>
+    </button>}
+  </div></ArcQuiet.Provider>;
+}
+
+export default ExpandableText;

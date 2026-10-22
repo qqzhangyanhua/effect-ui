@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 注意力按钮、附件气泡与分段条
+
+登记在 `catalog-batch32.ts`。上一批斜切滚动已占用 `catalog-batch31.ts`。八个动效移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`stitches-button` 在 SyntaxUI 的 credits.md 里归于 Saud。`framer-motion` 已换成 `motion/react`，`hover-spring-features` 用 `<img>` 代替 `next/image`。四个实用组件移植自 ReUI（MIT，Copyright (c) 2025 Keenthemes Inc.）。`category-bar`、`bar-list`、`tab-navigation` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改。没有新增依赖。没有使用 Hero Patterns。减弱动效时注意力动画不播放、叶子不摇、完成按钮直接完成、色块和霓虹与涟漪停住、功能卡不上移、追踪标题不闪。
+
+| 组件 | 来源 |
+| --- | --- |
+| hover-attention-button | SyntaxUI，MIT |
+| eco-mode-button | SyntaxUI，MIT |
+| rotating-complete-button | SyntaxUI，MIT |
+| morphing-shapes-loader | SyntaxUI，MIT |
+| neon-glow-loader | SyntaxUI，MIT |
+| ripple-wave-loader | SyntaxUI，MIT |
+| hover-spring-features | SyntaxUI，MIT |
+| stitches-button | SyntaxUI，MIT，原作者 Saud |
+| attachment | ReUI，MIT |
+| bubble | ReUI，MIT |
+| marker | ReUI，MIT |
+| trace | ReUI，MIT |
+| category-bar | Tremor Raw，Apache-2.0 |
+| bar-list | Tremor Raw，Apache-2.0 |
+| tab-navigation | Tremor Raw，Apache-2.0 |
+
 ### 斜切滚动、星座加载与短视频
 
 登记在 `catalog-batch31.ts`。上一批立方体已占用 `catalog-batch30.ts`。八个动效和 `labeled-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI），源文件在 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/ 。原文件的 `framer-motion` 已换成 `motion/react`。六个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks）。没有新增依赖。`mini-calendar` 用已安装的 `@radix-ui/react-slot` 代替 `radix-ui` 伞包。减弱动效时斜切滚动停住、星座和漩涡静止、粒子收成圆点、方块停转、emoji 只弹出一个、跃迁按钮只变色、落字直接显示、状态点不闪、故事卡片不缩放、短视频不自动播放、开关旋钮直接到位。

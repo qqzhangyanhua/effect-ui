@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-complete-button",
+  "type": "registry:ui",
+  "title": "Rotating Complete Button",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/RotatingCompleteButton.tsx 点击后先进入处理中，箭头旋转 180°，再变成完成。减弱动效时直接完成。",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/rotating-complete-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/rotating-complete-button.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI (MIT, (c) 2024 SyntaxUI) — https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/RotatingCompleteButton.tsx\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { Check, ChevronRight } from \"lucide-react\"\nimport { motion } from \"motion/react\"\nimport { useRef, useState, type ButtonHTMLAttributes } from \"react\"\n\ntype Phase = \"idle\" | \"loading\" | \"done\"\n\nexport interface RotatingCompleteButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"children\"> {\n  idleLabel?: string\n  loadingLabel?: string\n  doneLabel?: string\n  duration?: number\n}\n\nexport function RotatingCompleteButton({\n  idleLabel = \"标为完成\",\n  loadingLabel = \"处理中\",\n  doneLabel = \"完成 ✓\",\n  duration = 700,\n  className,\n  ...props\n}: RotatingCompleteButtonProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const [phase, setPhase] = useState<Phase>(\"idle\")\n  const timer = useRef(0)\n\n  return (\n    <button\n      {...props}\n      className={cn(\n        \"inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-semibold text-white\",\n        phase === \"done\" ? \"bg-green-600\" : \"bg-red-500\",\n        className,\n      )}\n      data-phase={phase}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"rotating-complete-button\"\n      disabled={phase === \"loading\" || props.disabled}\n      onClick={(event) => {\n        if (phase !== \"idle\") return\n        props.onClick?.(event)\n        if (prefersReducedMotion || duration <= 0) {\n          setPhase(\"done\")\n          return\n        }\n        setPhase(\"loading\")\n        window.clearTimeout(timer.current)\n        timer.current = window.setTimeout(() => setPhase(\"done\"), duration)\n      }}\n      type=\"button\"\n    >\n      {phase === \"done\" ? (\n        <span>{doneLabel}</span>\n      ) : (\n        <span>{phase === \"loading\" ? loadingLabel : idleLabel}</span>\n      )}\n      {phase === \"done\" ? (\n        <Check aria-hidden=\"true\" className=\"size-4\" />\n      ) : (\n        <motion.span\n          animate={{ rotate: phase === \"loading\" ? 180 : 0 }}\n          transition={{ duration: prefersReducedMotion ? 0 : 0.45 }}\n        >\n          <ChevronRight aria-hidden=\"true\" className=\"size-4\" />\n        </motion.span>\n      )}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

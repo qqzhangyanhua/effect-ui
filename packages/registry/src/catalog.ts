@@ -28,6 +28,7 @@ import { batch28Components } from "./catalog-batch28"
 import { batch29Components } from "./catalog-batch29"
 import { batch30Components } from "./catalog-batch30"
 import { batch31Components } from "./catalog-batch31"
+import { batch32Components } from "./catalog-batch32"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -97,6 +98,8 @@ export type SourceLibrary =
   | "cobe"
   | "Lenis"
   | "three"
+  | "ReUI"
+  | "Tremor Raw"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -217,6 +220,8 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "shadcn-ui-expansions": "https://github.com/hsuanyi-chou/shadcn-ui-expansions",
   "Kibo UI": "https://www.kibo-ui.com",
   SyntaxUI: "https://syntaxui.com",
+  ReUI: "https://reui.io",
+  "Tremor Raw": "https://raw.tremor.so",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2283,6 +2288,7 @@ export const components: ComponentMeta[] = [
   ...batch29Components,
   ...batch30Components,
   ...batch31Components,
+  ...batch32Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2368,6 +2374,10 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "attract-button",
       "loading-button",
       "star-wars-button",
+      "hover-attention-button",
+      "eco-mode-button",
+      "rotating-complete-button",
+      "stitches-button",
     ],
   },
 ]

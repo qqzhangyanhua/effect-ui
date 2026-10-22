@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "category-search-input",
+  "type": "registry:ui",
+  "title": "Category Search Input",
+  "description": "移植自 Flowbite，MIT，Copyright (c) 2023 Bergside Inc.。 https://github.com/themesberg/flowbite/blob/main/content/forms/search-input.md 分类下拉、搜索框和提交按钮。Esc 清空查询。提交时调用 onSearch，不发起请求。categories、value、onValueChange 可配。减弱动效时不再做颜色过渡。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/category-search-input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/category-search-input.tsx",
+      "content": "\"use client\"\n\n// Ported from Flowbite (MIT, (c) 2023 Bergside Inc.) — https://github.com/themesberg/flowbite/blob/main/content/forms/search-input.md. Modified for effect-ui.\n\nimport { useId, useRef, type FormHTMLAttributes } from \"react\"\nimport { Search } from \"lucide-react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CategorySearchValue {\n  category: string\n  query: string\n}\n\nexport interface CategorySearchInputProps extends Omit<FormHTMLAttributes<HTMLFormElement>, \"onSubmit\"> {\n  categories: readonly { value: string; label: string }[]\n  value: CategorySearchValue\n  onValueChange?: (value: CategorySearchValue) => void\n  onSearch?: (value: CategorySearchValue) => void\n}\n\nexport function CategorySearchInput({\n  categories,\n  value,\n  onValueChange,\n  onSearch,\n  className,\n  ...props\n}: CategorySearchInputProps) {\n  const ref = useRef<HTMLFormElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const categoryId = useId()\n  const queryId = useId()\n\n  return (\n    <form\n      {...props}\n      ref={ref}\n      className={cn(\"w-full max-w-2xl\", className)}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"category-search-input\"\n      onSubmit={(event) => {\n        event.preventDefault()\n        onSearch?.(value)\n      }}\n      role=\"search\"\n    >\n      <div className={cn(\"flex rounded-md shadow-sm\", reduced ? \"transition-none\" : \"transition-colors\")}>\n        <label className=\"sr-only\" htmlFor={categoryId}>\n          分类\n        </label>\n        <select\n          className=\"shrink-0 rounded-s-md border border-border bg-muted px-3 py-2.5 text-sm text-foreground\"\n          id={categoryId}\n          onChange={(event) => onValueChange?.({ ...value, category: event.target.value })}\n          value={value.category}\n        >\n          {categories.map((category) => (\n            <option key={category.value} value={category.value}>\n              {category.label}\n            </option>\n          ))}\n        </select>\n        <label className=\"sr-only\" htmlFor={queryId}>\n          搜索\n        </label>\n        <input\n          className=\"min-w-0 flex-1 border-y border-border bg-muted px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground\"\n          id={queryId}\n          onChange={(event) => onValueChange?.({ ...value, query: event.target.value })}\n          onKeyDown={(event) => {\n            if (event.key === \"Escape\") onValueChange?.({ ...value, query: \"\" })\n          }}\n          placeholder=\"搜索\"\n          type=\"search\"\n          value={value.query}\n        />\n        <button className=\"inline-flex items-center gap-1.5 rounded-e-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground\" type=\"submit\">\n          <Search aria-hidden=\"true\" className=\"size-4\" />\n          搜索\n        </button>\n      </div>\n    </form>\n  )\n}\n"
+    }
+  ]
+}

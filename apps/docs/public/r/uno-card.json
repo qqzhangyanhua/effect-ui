@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "uno-card",
+  "type": "registry:ui",
+  "title": "Uno Card",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 nanda248。https://github.com/uiverse-io/galaxy/blob/main/Cards/nanda248_average-goat-70.html 四色菱形牌面，两条 aliceblue 光带以 rotate(45deg) 从左扫到右，悬停时牌面抬起 5px 并藏起光带。colors、size、children 可配。示例四色放在 demo。减弱动效或离开视口时光带停住，牌面仍可读，悬停仍可抬起。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/uno-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/uno-card.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author nanda248）— https://github.com/uiverse-io/galaxy/blob/main/Cards/nanda248_average-goat-70.html. Modified for effect-ui.\n\nimport { useRef, type CSSProperties, type HTMLAttributes, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nconst fallback = [\"#FF2400\", \"#1F51FF\", \"#FFEA00\", \"#50C878\"]\n\nexport interface UnoCardProps extends HTMLAttributes<HTMLDivElement> {\n  colors?: string[]\n  size?: number\n  children?: ReactNode\n}\n\nfunction Quadrants({ colors, className }: { colors: string[]; className?: string }) {\n  return (\n    <div className={cn(\"grid grid-cols-2 border-white\", className)} style={{ borderRadius: \"50%\", transform: \"skew(-25deg)\" }}>\n      {colors.map((color, index) => (\n        <span\n          key={`${color}-${index}`}\n          style={{\n            backgroundColor: color,\n            borderTopLeftRadius: index === 0 ? \"100%\" : undefined,\n            borderTopRightRadius: index === 1 ? \"100%\" : undefined,\n            borderBottomLeftRadius: index === 2 ? \"100%\" : undefined,\n            borderBottomRightRadius: index === 3 ? \"100%\" : undefined,\n          }}\n        />\n      ))}\n    </div>\n  )\n}\n\nexport function UnoCard({ colors, size = 176, children, className, style, ...props }: UnoCardProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced\n  const palette = [0, 1, 2, 3].map((index) => colors?.[index] ?? fallback[index] ?? \"#FF2400\")\n  const painted = { fontSize: size / 11, ...style } as CSSProperties\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      className={cn(\n        \"relative flex items-center justify-center overflow-hidden border-[6px] border-[#F5F5DC] bg-[#28282B] text-white transition-transform duration-500 hover:-translate-y-[5px]\",\n        className,\n      )}\n      data-motion={moving ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"uno-card\"\n      style={{ width: \"11em\", height: \"14.8em\", borderRadius: 5, ...painted }}\n    >\n      <style>\n        {`[data-slot=\"uno-card\"][data-motion=\"on\"]::before,[data-slot=\"uno-card\"][data-motion=\"on\"]::after{content:\"\";position:absolute;background:aliceblue;animation:uno-card-glider 1.8s infinite linear}\n[data-slot=\"uno-card\"][data-motion=\"on\"]::before{height:130%;width:1em;opacity:.14;animation-delay:.05s}\n[data-slot=\"uno-card\"][data-motion=\"on\"]::after{height:120%;width:.8em;opacity:.1}\n[data-slot=\"uno-card\"]:hover::before,[data-slot=\"uno-card\"]:hover::after{visibility:hidden}\n@keyframes uno-card-glider{0%{transform:rotate(45deg) translate(-12em,1.2em)}100%{transform:rotate(45deg) translate(18em,-2.8em)}}`}\n      </style>\n      <Quadrants className=\"absolute top-[0.3em] left-[0.6em] h-[3em] w-[1.5em] border\" colors={palette} />\n      <Quadrants className=\"h-[14em] w-[8em] border-4\" colors={palette} />\n      <Quadrants className=\"absolute right-[0.6em] bottom-[0.3em] h-[3em] w-[1.5em] border\" colors={palette} />\n      {children ? <div className=\"pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-center text-[0.8em] font-semibold\">{children}</div> : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

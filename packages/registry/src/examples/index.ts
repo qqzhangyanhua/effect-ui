@@ -42,6 +42,7 @@ import * as effectDemos40 from "./effect-demos-40"
 import * as effectDemos41 from "./effect-demos-41"
 import * as effectDemos42 from "./effect-demos-42"
 import * as effectDemos43 from "./effect-demos-43"
+import * as effectDemos44 from "./effect-demos-44"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -777,6 +778,21 @@ const demoMap: Record<string, ComponentType> = {
   "file-input": effectDemos43.FileInputDemo,
   "tick-range": effectDemos43.TickRangeDemo,
   "site-footer": effectDemos43.SiteFooterDemo,
+  "uno-card": effectDemos44.UnoCardDemo,
+  "transaction-card": effectDemos44.TransactionCardDemo,
+  "printer-icon-button": effectDemos44.PrinterIconButtonDemo,
+  "pendulum-social-card": effectDemos44.PendulumSocialCardDemo,
+  "tilt-sweep-button": effectDemos44.TiltSweepButtonDemo,
+  "focus-line-input": effectDemos44.FocusLineInputDemo,
+  "word-wheel-card": effectDemos44.WordWheelCardDemo,
+  "fly-around-button": effectDemos44.FlyAroundButtonDemo,
+  "bottom-navigation": effectDemos44.BottomNavigationDemo,
+  "meeting-control-bar": effectDemos44.MeetingControlBarDemo,
+  "list-group": effectDemos44.ListGroupDemo,
+  "time-range-picker": effectDemos44.TimeRangePickerDemo,
+  "blockquote": effectDemos44.BlockquoteDemo,
+  "featured-gallery": effectDemos44.FeaturedGalleryDemo,
+  "category-search-input": effectDemos44.CategorySearchInputDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

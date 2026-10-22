@@ -23,13 +23,13 @@ function widget(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
 
 function input(
   catalog: readonly AuditCatalogEntry[],
-  extras: { tests?: Record<string, string>; exemptions?: AuditInput["exemptions"] } = {},
+  extras: { tests?: Record<string, string>; exemptions?: AuditInput["exemptions"]; sources?: Record<string, string> } = {},
 ): AuditInput {
   const sources: Record<string, string> = {}
-  for (const entry of catalog) sources[entry.file] = source
+  for (const entry of catalog) sources[entry.file] = extras.sources?.[entry.file] ?? source
   return {
     catalog,
-    readSource: (file) => sources[file] ?? extras.tests?.[file],
+    readSource: (file) => sources[file] ?? extras.sources?.[file] ?? extras.tests?.[file],
     sourceFiles: [...Object.keys(sources), ...Object.keys(extras.tests ?? {})],
     demoNames: catalog.map((entry) => entry.name),
     readme: catalog.map((entry) => entry.name).join(" "),
@@ -117,6 +117,85 @@ test("未知名字、Batch 34 以后的组件、不合法条目分别报错，�
     "hue-wave-loader",
     "widget",
   ])
+})
+
+function booleanControls(count: number) {
+  return Array.from({ length: count }, (_, index) => ({
+    name: `p${index}`,
+    control: { kind: "boolean" as const, value: false },
+  }))
+}
+
+const animatedSource = 'export function Widget() { return <div className="animate-pulse" /> }\n'
+
+test("Effect 只有 2 个控件时报控件不足，3 个和基础组件不报", () => {
+  expect(ofType([widget({ props: booleanControls(2) })], {}, "insufficient-controls")).toEqual(["widget"])
+  expect(ofType([widget({ props: booleanControls(3) })], {}, "insufficient-controls")).toEqual([])
+  expect(ofType([widget({ category: "ui", props: [] })], {}, "insufficient-controls")).toEqual([])
+  expect(ofType([widget({ category: undefined })], {}, "insufficient-controls")).toEqual([])
+})
+
+test("控件不足豁免只压这一条，达标后变成过期豁免", () => {
+  const listed = [{ name: "widget", gaps: ["控件不足"], reason: "落地前已有缺口" }]
+  expect(ofType([widget({ props: booleanControls(2) })], { exemptions: listed }, "insufficient-controls")).toEqual([])
+  expect(
+    ofType(
+      [widget({ props: booleanControls(2) })],
+      { exemptions: [{ name: "widget", gaps: ["缺测试"], reason: "只有测试" }] },
+      "insufficient-controls",
+    ),
+  ).toEqual(["widget"])
+  expect(ofType([widget({ props: booleanControls(3) })], { exemptions: listed }, "stale-exemption")).toEqual(["widget"])
+})
+
+test("有动画特征且没有减弱动效时报错，静态组件和已处理的不报", () => {
+  const animated = { sources: { "effects/widget.tsx": animatedSource } }
+  expect(ofType([widget()], animated, "missing-reduced-motion")).toEqual(["widget"])
+  expect(ofType([widget()], {}, "missing-reduced-motion")).toEqual([])
+  expect(ofType([widget({ category: "ui" })], animated, "missing-reduced-motion")).toEqual([])
+  const reduced = {
+    sources: {
+      "effects/widget.tsx": "export function Widget() { usePrefersReducedMotion(); return <div className=\"animate-pulse\" /> }\n",
+    },
+  }
+  expect(ofType([widget()], reduced, "missing-reduced-motion")).toEqual([])
+  const motionReduce = {
+    sources: { "effects/widget.tsx": 'export function Widget() { return <div className="motion-reduce:hidden animate-pulse" /> }\n' },
+  }
+  expect(ofType([widget()], motionReduce, "missing-reduced-motion")).toEqual([])
+  const media = {
+    sources: { "effects/widget.tsx": 'export function Widget() { return <div className="animate-pulse" data-mode="prefers-reduced-motion" /> }\n' },
+  }
+  expect(ofType([widget()], media, "missing-reduced-motion")).toEqual([])
+  const transitionClass = {
+    sources: { "effects/widget.tsx": 'export function Widget() { return <div className="transition duration-200" /> }\n' },
+  }
+  expect(ofType([widget()], transitionClass, "missing-reduced-motion")).toEqual(["widget"])
+  const extraFile = widget({
+    files: [{ file: "effects/widget-char.tsx", type: "registry:ui", target: "components/ui/widget-char.tsx" }],
+  })
+  expect(
+    ofType(
+      [extraFile],
+      { sources: { "effects/widget.tsx": source, "effects/widget-char.tsx": "export const frame = `@keyframes spin {}`\n" } },
+      "missing-reduced-motion",
+    ),
+  ).toEqual(["widget"])
+})
+
+test("缺减弱动效豁免只压这一条，静态组件仍写着它时报告过期", () => {
+  const listed = [{ name: "widget", gaps: ["缺减弱动效"], reason: "落地前已有缺口" }]
+  const animated = { sources: { "effects/widget.tsx": animatedSource }, exemptions: listed }
+  expect(ofType([widget()], animated, "missing-reduced-motion")).toEqual([])
+  expect(ofType([widget()], animated, "stale-exemption")).toEqual([])
+  expect(ofType([widget()], { exemptions: listed }, "stale-exemption")).toEqual(["widget"])
+  expect(
+    ofType(
+      [widget()],
+      { sources: { "effects/widget.tsx": animatedSource }, exemptions: [{ name: "widget", gaps: ["控件不足"], reason: "只有控件" }] },
+      "missing-reduced-motion",
+    ),
+  ).toEqual(["widget"])
 })
 
 test("Batch 34 及以后的 catalog 批次都算进豁免分界", () => {

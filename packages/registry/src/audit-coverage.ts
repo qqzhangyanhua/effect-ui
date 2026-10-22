@@ -23,6 +23,61 @@ export function requiresComponentTest(category: string | undefined): boolean {
   return effectCategories.has(category) || baseCategories.has(category)
 }
 
+export function isEffectCategory(category: string | undefined): boolean {
+  return typeof category === "string" && effectCategories.has(category)
+}
+
+/** 动画特征。审计和豁免生成都用这一份，不做语义分析。 */
+const animationPatterns = [
+  /@keyframes\b/,
+  /\bkeyframes\b/,
+  /(?:^|[\s"'`[])(?:transition|animate)(?:[-:]|\b)/,
+  /requestAnimationFrame/,
+  /from ["']matter-js["']/,
+  /from ["']motion\//,
+  /framer-motion/,
+]
+
+/** 减弱动效特征。命中任意一条即视为已处理。 */
+const reducedMotionPatterns = [/usePrefersReducedMotion/, /motion-reduce:/, /prefers-reduced-motion/]
+
+export function controlCount(props: readonly unknown[]): number {
+  let count = 0
+  for (const prop of props) {
+    if (!hasControl(prop)) continue
+    count += 1
+  }
+  return count
+}
+
+export function sourceHasAnimation(source: string): boolean {
+  return animationPatterns.some((pattern) => pattern.test(source))
+}
+
+export function sourceHandlesReducedMotion(source: string): boolean {
+  return reducedMotionPatterns.some((pattern) => pattern.test(source))
+}
+
+export function sourceFilesFor(entry: { file: string; files?: readonly { file: string }[] }): readonly string[] {
+  const extra = entry.files?.map((file) => file.file) ?? []
+  const files = extra.includes(entry.file) ? extra : [entry.file, ...extra]
+  return files.length > 0 ? files : [entry.file]
+}
+
+export function insufficientControls(category: string | undefined, props: readonly unknown[]): boolean {
+  return isEffectCategory(category) && controlCount(props) < 3
+}
+
+export function missingReducedMotion(category: string | undefined, source: string): boolean {
+  return isEffectCategory(category) && sourceHasAnimation(source) && !sourceHandlesReducedMotion(source)
+}
+
+function hasControl(prop: unknown): boolean {
+  if (typeof prop !== "object" || prop === null || !("control" in prop)) return false
+  const control = prop.control
+  return typeof control === "object" && control !== null
+}
+
 export function exemptionClosedNames(): ReadonlySet<string> {
   return new Set([...batch34Components, ...batch35Components].map((entry) => entry.name))
 }
@@ -49,11 +104,17 @@ export function componentIsTested(entry: RegistryCatalogEntry, tested: ReadonlyS
   return registryFiles(entry).some((file) => tested.has(file.file))
 }
 
+export interface ExemptionStatus {
+  controlsSufficient?: (name: string) => boolean
+  motionSatisfied?: (name: string) => boolean
+}
+
 export function exemptionProblems(
   exemptions: readonly AuditExemption[],
   catalogNames: ReadonlySet<string>,
   closedNames: ReadonlySet<string>,
   testedGap: (name: string) => boolean,
+  status: ExemptionStatus = {},
 ): { name: string; type: ExemptionProblemType; description: string }[] {
   const problems: { name: string; type: ExemptionProblemType; description: string }[] = []
   for (const entry of exemptions) {
@@ -86,6 +147,20 @@ export function exemptionProblems(
         name: entry.name,
         type: "stale-exemption",
         description: `「${entry.name}」的「缺测试」豁免已经过期。`,
+      })
+    }
+    if (entry.gaps.includes("控件不足") && status.controlsSufficient?.(entry.name)) {
+      problems.push({
+        name: entry.name,
+        type: "stale-exemption",
+        description: `「${entry.name}」的「控件不足」豁免已经过期。`,
+      })
+    }
+    if (entry.gaps.includes("缺减弱动效") && status.motionSatisfied?.(entry.name)) {
+      problems.push({
+        name: entry.name,
+        type: "stale-exemption",
+        description: `「${entry.name}」的「缺减弱动效」豁免已经过期。`,
       })
     }
   }

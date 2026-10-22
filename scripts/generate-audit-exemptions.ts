@@ -5,10 +5,14 @@ import { fileURLToPath } from "node:url"
 import {
   componentIsTested,
   exemptionClosedNames,
+  insufficientControls,
+  missingReducedMotion,
   requiresComponentTest,
+  sourceFilesFor,
   testedSourceFiles,
+  type AuditGap,
 } from "../packages/registry/src/audit-coverage.ts"
-import { components } from "../packages/registry/src/catalog.ts"
+import { components, type ComponentMeta } from "../packages/registry/src/catalog.ts"
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const registrySrc = path.join(root, "packages/registry/src")
@@ -24,26 +28,50 @@ function listFiles(dir: string, prefix = ""): string[] {
   return files
 }
 
+function readEntrySource(entry: ComponentMeta): string | undefined {
+  const parts: string[] = []
+  for (const file of sourceFilesFor(entry)) {
+    const full = path.join(registrySrc, file)
+    if (!fs.existsSync(full)) continue
+    parts.push(fs.readFileSync(full, "utf8"))
+  }
+  return parts.length === 0 ? undefined : parts.join("\n")
+}
+
+function gapsFor(entry: ComponentMeta, tested: ReadonlySet<string>): AuditGap[] {
+  const gaps: AuditGap[] = []
+  if (insufficientControls(entry.category, entry.props)) gaps.push("控件不足")
+  const source = readEntrySource(entry)
+  if (source !== undefined && missingReducedMotion(entry.category, source)) gaps.push("缺减弱动效")
+  if (requiresComponentTest(entry.category) && !componentIsTested(entry, tested)) gaps.push("缺测试")
+  return gaps
+}
+
 const tests = listFiles(registrySrc)
   .filter((file) => /\.test\.tsx?$/.test(file))
   .map((file) => ({ file, text: fs.readFileSync(path.join(registrySrc, file), "utf8") }))
 const tested = testedSourceFiles(tests)
 const closed = exemptionClosedNames()
-const blocked = components.filter(
-  (entry) => requiresComponentTest(entry.category) && closed.has(entry.name) && !componentIsTested(entry, tested),
-)
+const blocked = components.flatMap((entry) => {
+  if (!closed.has(entry.name)) return []
+  const gaps = gapsFor(entry, tested)
+  return gaps.length > 0 ? [`${entry.name}：${gaps.join("、")}`] : []
+})
 if (blocked.length > 0) {
-  console.error(blocked.map((entry) => `${entry.name} 属于 Batch 34 及以后，但没有测试导入`).join("\n"))
+  console.error(["Batch 34 及以后不能进豁免名单，这些组件还没达标：", ...blocked].join("\n"))
   process.exit(1)
 }
 
 const rows = components
-  .filter((entry) => requiresComponentTest(entry.category) && !closed.has(entry.name) && !componentIsTested(entry, tested))
-  .map((entry) => ({ name: entry.name, gaps: ["缺测试"] as const, reason: "落地前已有缺口" }))
+  .flatMap((entry) => {
+    if (closed.has(entry.name)) return []
+    const gaps = gapsFor(entry, tested)
+    return gaps.length > 0 ? [{ name: entry.name, gaps }] : []
+  })
   .sort((left, right) => left.name.localeCompare(right.name))
 
 const body = rows
-  .map((row) => `  { name: "${row.name}", gaps: ["缺测试"], reason: "落地前已有缺口" },`)
+  .map((row) => `  { name: "${row.name}", gaps: ${JSON.stringify(row.gaps)}, reason: "落地前已有缺口" },`)
   .join("\n")
 
 const source = `import type { AuditExemption } from "./audit-coverage"

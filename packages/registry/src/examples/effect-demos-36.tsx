@@ -30,77 +30,155 @@ const accordionItems = [
   { value: "grow", title: "进度记录", content: "标题按钮带有展开状态。" },
 ]
 
-export function HueWaveLoaderDemo() {
+export function HueWaveLoaderDemo({
+  bars = 10,
+  color,
+  duration = 1.5,
+}: {
+  bars?: number
+  color?: string
+  duration?: number
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <HueWaveLoader />
+      <HueWaveLoader bars={bars} color={color} duration={duration} />
     </div>
   )
 }
 
-export function LiftGradientBorderButtonDemo() {
+export function LiftGradientBorderButtonDemo({
+  children = "发送消息",
+  disabled = false,
+  className = "",
+}: {
+  children?: string
+  disabled?: boolean
+  className?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <LiftGradientBorderButton />
+      <LiftGradientBorderButton className={className} disabled={disabled}>
+        {children}
+      </LiftGradientBorderButton>
     </div>
   )
 }
 
-export function LeverSwitchDemo() {
+export function LeverSwitchDemo({
+  defaultChecked = false,
+  disabled = false,
+  className = "text-[28px]",
+}: {
+  defaultChecked?: boolean
+  disabled?: boolean
+  className?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <LeverSwitch className="text-[28px]" />
+      <LeverSwitch className={className} defaultChecked={defaultChecked} disabled={disabled} />
     </div>
   )
 }
 
-export function Neon3dRadioDemo() {
-  const [value, setValue] = useState("no")
+export function Neon3dRadioDemo({
+  defaultValue = "no",
+  color,
+  className = "",
+}: {
+  defaultValue?: string
+  color?: string
+  className?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <Neon3dRadio onValueChange={setValue} options={radioOptions} value={value} />
+      <Neon3dRadio className={className} color={color} defaultValue={defaultValue} options={radioOptions} />
     </div>
   )
 }
 
-export function StarRibbonNotificationDemo() {
+export function StarRibbonNotificationDemo({
+  title = "升级了",
+  message = "按开始",
+  stars = 3,
+}: {
+  title?: string
+  message?: string
+  stars?: number
+} = {}) {
   return (
     <div className="flex justify-center px-10 py-8">
-      <StarRibbonNotification />
+      <StarRibbonNotification message={message} stars={stars} title={title} />
     </div>
   )
 }
 
-export function MoonSunSwitchDemo() {
+export function MoonSunSwitchDemo({
+  defaultChecked = false,
+  disabled = false,
+  className = "text-[22px]",
+}: {
+  defaultChecked?: boolean
+  disabled?: boolean
+  className?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <MoonSunSwitch className="text-[22px]" />
+      <MoonSunSwitch className={className} defaultChecked={defaultChecked} disabled={disabled} />
     </div>
   )
 }
 
-export function GlowLightSwitchDemo() {
+export function GlowLightSwitchDemo({
+  defaultChecked = false,
+  disabled = false,
+  className = "",
+}: {
+  defaultChecked?: boolean
+  disabled?: boolean
+  className?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <GlowLightSwitch />
+      <GlowLightSwitch className={className} defaultChecked={defaultChecked} disabled={disabled} />
     </div>
   )
 }
 
-export function HamburgerMorphDemo() {
-  const [open, setOpen] = useState(false)
+export function HamburgerMorphDemo({
+  open = false,
+  disabled = false,
+  className = "",
+}: {
+  open?: boolean
+  disabled?: boolean
+  className?: string
+} = {}) {
+  const [current, setCurrent] = useState(open)
+  const [tracked, setTracked] = useState(open)
+  if (tracked !== open) {
+    setTracked(open)
+    setCurrent(open)
+  }
   return (
     <div className="flex items-center justify-center gap-4 px-6 py-10">
-      <HamburgerMorph onOpenChange={setOpen} open={open} />
-      <span className="text-sm text-muted-foreground">{open ? "已展开" : "已收起"}</span>
+      <HamburgerMorph className={className} disabled={disabled} onOpenChange={setCurrent} open={current} />
+      <span className="text-sm text-muted-foreground">{current ? "已展开" : "已收起"}</span>
     </div>
   )
 }
 
-export function NeubrutalismToggleDemo() {
+export function NeubrutalismToggleDemo({
+  defaultChecked = false,
+  disabled = false,
+  className = "scale-150",
+}: {
+  defaultChecked?: boolean
+  disabled?: boolean
+  className?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <NeubrutalismToggle className="scale-150" />
+      <NeubrutalismToggle className={className} defaultChecked={defaultChecked} disabled={disabled} />
     </div>
   )
 }

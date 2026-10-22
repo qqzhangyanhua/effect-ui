@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 色相波浪、杠杆开关与验证码
+
+登记在 `catalog-batch34.ts`。上一批倾斜卡片已占用 `catalog-batch33.ts`。`hue-wave-loader`、`lift-gradient-border-button`、`lever-switch`、`neon-3d-radio`、`star-ribbon-notification`、`moon-sun-switch`、`glow-light-switch`、`hamburger-morph`、`mic-search-input`、`social-follow-tooltip`、`copy-field`、`newsletter-input`、`pin-display-input` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4。`neubrutalism-toggle`、`minimal-accordion` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`neubrutalism-toggle` 额外署 Ethan Pollack。`minimal-accordion` 的 `framer-motion` 已换成 `motion/react`。没有新增依赖。减弱动效时色相波浪和绶带停住、渐变按钮不上抬、杠杆与日月与灯光与粗野开关直接到位、单选不旋转、汉堡立刻变成叉、手风琴直接展开、麦克风按钮不过渡、关注提示直接出现、复制状态直接切换、订阅按钮不过渡、验证码格子保持静止。
+
+| 组件 | 来源 |
+| --- | --- |
+| hue-wave-loader | Uiverse galaxy，MIT，作者 SmookyDev |
+| lift-gradient-border-button | Uiverse galaxy，MIT，作者 SelfMadeSystem |
+| lever-switch | Uiverse galaxy，MIT，作者 Praashoo7 |
+| neon-3d-radio | Uiverse galaxy，MIT，作者 Saiyed-Tanvir |
+| star-ribbon-notification | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
+| moon-sun-switch | Uiverse galaxy，MIT，作者 satyamchaudharydev |
+| glow-light-switch | Uiverse galaxy，MIT，作者 elijahgummer |
+| hamburger-morph | Uiverse galaxy，MIT，作者 elijahgummer |
+| neubrutalism-toggle | SyntaxUI，MIT，作者 Ethan Pollack |
+| minimal-accordion | SyntaxUI，MIT |
+| mic-search-input | Uiverse galaxy，MIT，作者 vinodjangid07 |
+| social-follow-tooltip | Uiverse galaxy，MIT，作者 vinodjangid07 |
+| copy-field | Uiverse galaxy，MIT，作者 omriluz |
+| newsletter-input | Uiverse galaxy，MIT，作者 deepak16375 |
+| pin-display-input | Uiverse galaxy，MIT，作者 barisdogansutcu |
+
 ### 倾斜卡片、图案背景与环形进度
 
 登记在 `catalog-batch33.ts`。上一批注意力按钮已占用 `catalog-batch32.ts`。`grid-tilt-card`、`layered-glass-card`、`eye-blink-loader`、`css-pattern-background`、`heart-like-button`、`download-size-button`、`achievement-toast` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4，并去掉 Uiverse 标志。`heartbeat-button`、`neubrutalism-button`、`3d-button`、`image-fade`、`expanding-icon-tabs`、`slide-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`framer-motion` 已换成 `motion/react`，`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`progress-circle`、`callout` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改，`tv` 改成 `cva`。没有新增依赖。减弱动效时倾斜和分层不再动、眼睛和图案停住、心跳不跳、粗野按钮不位移、立体圆不扩散、图片去掉遮罩、弧长直接到位、标签文字直接出现、开关旋钮直接到位、喜欢不心跳、下载切换不过渡、成就条直接展开。

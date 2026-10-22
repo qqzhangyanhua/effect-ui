@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hamburger-morph",
+  "type": "registry:ui",
+  "title": "Hamburger Morph",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 elijahgummer。https://github.com/uiverse-io/galaxy/blob/main/Checkboxes/elijahgummer_afraid-walrus-18.html 三条线变成叉。使用 button，带 aria-expanded，以及 open / onOpenChange。减弱动效时立刻变形，没有延迟。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-controllable-state",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/hamburger-morph.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hamburger-morph.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author elijahgummer）— https://github.com/uiverse-io/galaxy/blob/main/Checkboxes/elijahgummer_afraid-walrus-18.html\n\nimport { useControllableState } from \"@/hooks/use-controllable-state\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { type ButtonHTMLAttributes } from \"react\"\n\nexport interface HamburgerMorphProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"onChange\"> {\n  open?: boolean\n  defaultOpen?: boolean\n  onOpenChange?: (open: boolean) => void\n}\n\nexport function HamburgerMorph({\n  open,\n  defaultOpen = false,\n  onOpenChange,\n  className,\n  ...props\n}: HamburgerMorphProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const [expanded, setExpanded] = useControllableState({\n    value: open,\n    defaultValue: defaultOpen,\n    onChange: onOpenChange,\n  })\n\n  return (\n    <button\n      {...props}\n      aria-expanded={expanded}\n      aria-label={props[\"aria-label\"] ?? \"菜单\"}\n      className={cn(\"relative inline-flex h-6 w-9 items-center justify-center\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"hamburger-morph\"\n      data-state={expanded ? \"open\" : \"closed\"}\n      onClick={(event) => {\n        props.onClick?.(event)\n        if (!event.defaultPrevented) setExpanded(!expanded)\n      }}\n      type=\"button\"\n    >\n      {[0, 1, 2].map((index) => (\n        <span\n          key={index}\n          aria-hidden\n          className={cn(\n            \"absolute left-0 h-1 w-full rounded-full bg-foreground\",\n            prefersReducedMotion ? \"transition-none\" : \"transition-transform duration-300\",\n            index === 0 && (expanded ? \"top-2.5 -rotate-45 scale-x-75\" : \"top-0\"),\n            index === 1 && (expanded ? \"top-2.5 opacity-0\" : \"top-2.5\"),\n            index === 2 && (expanded ? \"top-2.5 rotate-45 scale-x-75\" : \"top-5\"),\n          )}\n        />\n      ))}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

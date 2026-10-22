@@ -187,7 +187,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/SyntaxUI/syntaxui
 - 许可：MIT
 - 版权：Copyright (c) 2024 SyntaxUI
-- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`，以及 `hover-attention-button`、`eco-mode-button`、`rotating-complete-button`、`morphing-shapes-loader`、`neon-glow-loader`、`ripple-wave-loader`、`hover-spring-features`、`stitches-button`，以及 `heartbeat-button`、`neubrutalism-button`、`3d-button`、`image-fade`、`expanding-icon-tabs`、`slide-toggle`。原 `framer-motion` 导入已改为 `motion/react`。`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`stitches-button` 的原作者是 Saud（https://twitter.com/via_saud），见 SyntaxUI `credits.md`。未移植 Hero Patterns 背景。
+- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`，以及 `hover-attention-button`、`eco-mode-button`、`rotating-complete-button`、`morphing-shapes-loader`、`neon-glow-loader`、`ripple-wave-loader`、`hover-spring-features`、`stitches-button`，以及 `heartbeat-button`、`neubrutalism-button`、`3d-button`、`image-fade`、`expanding-icon-tabs`、`slide-toggle`，以及 `neubrutalism-toggle`、`minimal-accordion`。原 `framer-motion` 导入已改为 `motion/react`。`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`stitches-button` 的原作者是 Saud（https://twitter.com/via_saud），`neubrutalism-toggle` 的原作者是 Ethan Pollack（https://epoll31.github.io），见 SyntaxUI `credits.md`。未移植 Hero Patterns 背景。
 
 ## ReUI
 
@@ -209,7 +209,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/uiverse-io/galaxy
 - 许可：MIT
 - 版权：Copyright (c) 2023 Uiverse.io
-- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。
+- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。
 
 ## shadcn-ui-expansions
 

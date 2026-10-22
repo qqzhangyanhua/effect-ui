@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter-input",
+  "type": "registry:ui",
+  "title": "Newsletter Input",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 deepak16375。https://github.com/uiverse-io/galaxy/blob/main/Inputs/deepak16375_neat-impala-82.html 邮箱订阅表单。onSubmit、status、placeholder、buttonLabel 可配。status 由父组件控制。减弱动效时按钮不再过渡。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/newsletter-input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/newsletter-input.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author deepak16375）— https://github.com/uiverse-io/galaxy/blob/main/Inputs/deepak16375_neat-impala-82.html\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { useId, type FormEvent, type HTMLAttributes } from \"react\"\n\nexport interface NewsletterInputProps extends Omit<HTMLAttributes<HTMLFormElement>, \"onSubmit\"> {\n  onSubmit?: (email: string) => void\n  status?: \"idle\" | \"loading\" | \"success\" | \"error\"\n  placeholder?: string\n  buttonLabel?: string\n}\n\nexport function NewsletterInput({\n  onSubmit,\n  status = \"idle\",\n  placeholder = \"输入邮箱\",\n  buttonLabel = \"订阅\",\n  className,\n  ...props\n}: NewsletterInputProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const inputId = useId()\n  const statusText = status === \"loading\" ? \"正在提交\" : status === \"success\" ? \"订阅成功\" : status === \"error\" ? \"订阅失败\" : \"\"\n\n  function submit(event: FormEvent<HTMLFormElement>) {\n    event.preventDefault()\n    if (status === \"loading\") return\n    const email = String(new FormData(event.currentTarget).get(\"email\") ?? \"\")\n    onSubmit?.(email)\n  }\n\n  return (\n    <form\n      {...props}\n      aria-label=\"订阅邮件\"\n      className={cn(\"inline-flex flex-wrap items-center gap-2\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"newsletter-input\"\n      onSubmit={submit}\n    >\n      <input\n        aria-label=\"邮箱\"\n        autoComplete=\"email\"\n        className=\"max-w-[190px] rounded-s-lg border-2 border-border bg-background px-4 py-3 text-base text-foreground outline-none\"\n        id={inputId}\n        name=\"email\"\n        placeholder={placeholder}\n        required\n        type=\"email\"\n      />\n      <button\n        className={cn(\n          \"-ml-2 rounded-e-lg bg-primary px-4 py-3 text-base text-primary-foreground\",\n          prefersReducedMotion ? \"transition-none\" : \"transition-opacity\",\n          status === \"loading\" && \"opacity-70\",\n        )}\n        disabled={status === \"loading\"}\n        type=\"submit\"\n      >\n        {status === \"loading\" ? \"提交中\" : buttonLabel}\n      </button>\n      {statusText ? (\n        <p className=\"text-sm text-muted-foreground\" role=\"status\">\n          {statusText}\n        </p>\n      ) : null}\n    </form>\n  )\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-follow-tooltip",
+  "type": "registry:ui",
+  "title": "Social Follow Tooltip",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 vinodjangid07。https://github.com/uiverse-io/galaxy/blob/main/Tooltips/vinodjangid07_mighty-elephant-52.html 关注按钮悬停时浮出账号和数字。icon、name、handle、stats、href 可配。减弱动效时提示直接出现。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/social-follow-tooltip.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/social-follow-tooltip.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author vinodjangid07）— https://github.com/uiverse-io/galaxy/blob/main/Tooltips/vinodjangid07_mighty-elephant-52.html\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { type HTMLAttributes, type ReactNode } from \"react\"\n\nexport interface SocialFollowTooltipProps extends HTMLAttributes<HTMLElement> {\n  icon?: ReactNode\n  name?: string\n  handle?: string\n  stats?: string\n  href?: string\n}\n\nfunction PersonIcon() {\n  return (\n    <svg aria-hidden className=\"h-4 w-auto fill-current\" viewBox=\"0 0 95 114\">\n      <rect height=\"57\" rx=\"28.5\" width=\"57\" x=\"19\" />\n      <path d=\"M0 109.5C0 83.3 21.3 62 47.5 62S95 83.3 95 109.5V114H0v-4.5z\" />\n    </svg>\n  )\n}\n\nexport function SocialFollowTooltip({\n  icon,\n  name = \"关注\",\n  handle,\n  stats = \"45k\",\n  href,\n  className,\n  ...props\n}: SocialFollowTooltipProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const classes = cn(\n    \"group/follow relative inline-flex cursor-pointer items-center gap-2.5 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground\",\n    className,\n  )\n  const body = (\n    <>\n      <style>{`\n        [data-slot=\"social-follow-tooltip\"] .follow-tip {\n          top: 0.4rem;\n          opacity: 0;\n          transition: top 0.3s, opacity 0.3s;\n        }\n        [data-slot=\"social-follow-tooltip\"]:hover .follow-tip,\n        [data-slot=\"social-follow-tooltip\"]:focus-within .follow-tip {\n          top: -2.4rem;\n          opacity: 1;\n        }\n        [data-slot=\"social-follow-tooltip\"][data-reduced=\"true\"] .follow-tip {\n          transition: none;\n        }\n      `}</style>\n      <span\n        aria-hidden\n        className=\"follow-tip pointer-events-none absolute left-1/2 -translate-x-1/2 rounded-xl border border-border bg-popover px-2 py-1 text-xs font-medium whitespace-nowrap text-popover-foreground shadow-sm\"\n      >\n        {handle ? `@${handle} · ${stats}` : stats}\n        <span className=\"absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 border-r border-b border-border bg-popover\" />\n      </span>\n      {icon ?? <PersonIcon />}\n      <span>{name}</span>\n    </>\n  )\n\n  if (href) {\n    return (\n      <a {...props} className={classes} data-reduced={prefersReducedMotion ? \"true\" : \"false\"} data-slot=\"social-follow-tooltip\" href={href}>\n        {body}\n      </a>\n    )\n  }\n\n  return (\n    <div {...props} className={classes} data-reduced={prefersReducedMotion ? \"true\" : \"false\"} data-slot=\"social-follow-tooltip\" tabIndex={0}>\n      {body}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

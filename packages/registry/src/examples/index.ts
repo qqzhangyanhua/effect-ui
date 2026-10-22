@@ -54,6 +54,7 @@ import * as effectDemos52 from "./effect-demos-52"
 import * as effectDemos53 from "./effect-demos-53"
 import * as effectDemos54 from "./effect-demos-54"
 import * as effectDemos55 from "./effect-demos-55"
+import * as effectDemos56 from "./effect-demos-56"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -879,6 +880,21 @@ const demoMap: Record<string, ComponentType> = {
   "overflow-actions": effectDemos55.OverflowActionsDemo,
   "preview-rail": effectDemos55.PreviewRailDemo,
   "wallet-card": effectDemos55.WalletCardDemo,
+  "analog-stick": effectDemos56.AnalogStickDemo,
+  "paper-shred-button": effectDemos56.PaperShredButtonDemo,
+  "scan-document": effectDemos56.ScanDocumentDemo,
+  "dynamic-grid-gallery": effectDemos56.DynamicGridGalleryDemo,
+  "photo-albums": effectDemos56.PhotoAlbumsDemo,
+  "gooey-navbar": effectDemos56.GooeyNavbarDemo,
+  "overlapping-slider": effectDemos56.OverlappingSliderDemo,
+  "get-in-touch": effectDemos56.GetInTouchDemo,
+  "client-card": effectDemos56.ClientCardDemo,
+  "corner-video": effectDemos56.CornerVideoDemo,
+  "create-menu": effectDemos56.CreateMenuDemo,
+  "day-picker": effectDemos56.DayPickerDemo,
+  "stacked-list": effectDemos56.StackedListDemo,
+  "discover-search-pill": effectDemos56.DiscoverSearchPillDemo,
+  "tactile-rocker": effectDemos56.TactileRockerDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

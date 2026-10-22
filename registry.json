@@ -16263,6 +16263,318 @@
           "target": "components/ui/wallet-card.tsx"
         }
       ]
+    },
+    {
+      "name": "analog-stick",
+      "type": "registry:ui",
+      "title": "Analog Stick",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/analog-stick.tsx 方向压力盘。指针、触屏按住和方向键都会把摇杆拨向对应方向。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/analog-stick.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/analog-stick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-shred-button",
+      "type": "registry:ui",
+      "title": "Paper Shred Button",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/paper-shred-button.tsx 碎纸按钮。预览时抽出一张文件，点击后剪成纸条落下。和打印机图标按钮不是同一件事。焦点和精细指针都能预览。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/paper-shred-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/paper-shred-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scan-document",
+      "type": "registry:ui",
+      "title": "Scan Document",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/scan-document.tsx 扫描文件。点击后文件翻面，扫描条来回走过。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scan-document.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scan-document.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-grid-gallery",
+      "type": "registry:ui",
+      "title": "Dynamic Grid Gallery",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/dynamic-grid-gallery.tsx 三列两行的图片网格。悬停、点按或焦点会放大所在行列。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dynamic-grid-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dynamic-grid-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "photo-albums",
+      "type": "registry:ui",
+      "title": "Photo Albums",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/photo-albums.tsx 相册封面叠成扇形。点击封面展开全部照片，返回再叠回去。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/photo-albums.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/photo-albums.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-navbar",
+      "type": "registry:ui",
+      "title": "Gooey Navbar",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/gooey-navbar.tsx 导航胶囊之间拉出液态桥。和单个黏液按钮不同，这里是一整条导航。焦点、方向键和点击都能选中。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gooey-navbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gooey-navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "overlapping-slider",
+      "type": "registry:ui",
+      "title": "Overlapping Slider",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/overlapping-slider.tsx 名片叠成一排。拖拽、点击卡片，或用两侧箭头切换。当前卡片左侧的卡片会后缩。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/overlapping-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/overlapping-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "get-in-touch",
+      "type": "registry:ui",
+      "title": "Get In Touch",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch.tsx 联系按钮。悬停或聚焦时头像滑到一起，再展开邀请文案。按钮外壳来自 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch-button.tsx。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/get-in-touch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/get-in-touch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "client-card",
+      "type": "registry:ui",
+      "title": "Client Card",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/client-card.tsx 客户卡片。左侧头像堆叠可以展开，右侧显示付款和截止日期。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/client-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/client-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "corner-video",
+      "type": "registry:ui",
+      "title": "Corner Video",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/corner-video.tsx 角落里的视频。可以静音、放大、拖动进度和收起。没有画面时显示占位。离开视口或减弱动效时暂停。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/corner-video.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/corner-video.tsx"
+        }
+      ]
+    },
+    {
+      "name": "create-menu",
+      "type": "registry:ui",
+      "title": "Create Menu",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/create-menu.tsx 创建菜单。按钮展开成一列操作，点外面或按 Esc 收起。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/create-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/create-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "day-picker",
+      "type": "registry:ui",
+      "title": "Day Picker",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/day-picker.tsx 频率选择。每日、每周、每月、每年。选每周时再点星期。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/day-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/day-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stacked-list",
+      "type": "registry:ui",
+      "title": "Stacked List",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/stacked-list.tsx 在线成员列表。底部目录条展开后可以搜索全部成员。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stacked-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stacked-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "discover-search-pill",
+      "type": "registry:ui",
+      "title": "Discover Search Pill",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/discover-button.tsx 发现搜索条。收起时是搜索按钮和热门、收藏两个页签，展开后变成输入框和关闭按钮。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/discover-search-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/discover-search-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tactile-rocker",
+      "type": "registry:ui",
+      "title": "Tactile Rocker",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/tactile-button.tsx 摇杆开关。按下后保持倾斜，再按一次弹回。指示灯跟着开关亮起。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tactile-rocker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tactile-rocker.tsx"
+        }
+      ]
     }
   ]
 }

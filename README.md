@@ -573,6 +573,28 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 摇杆、碎纸与液桥
+
+登记在 `catalog-batch54.ts`。下压已占用 `catalog-batch53.ts`。`analog-stick`、`paper-shred-button`、`scan-document`、`dynamic-grid-gallery`、`photo-albums`、`gooey-navbar`、`overlapping-slider`、`get-in-touch`、`client-card`、`corner-video`、`create-menu`、`day-picker`、`stacked-list`、`discover-search-pill`、`tactile-rocker` 移植自 uselayouts（MIT，Copyright (c) 2025 Urvish Mali）。`discover-search-pill` 来自 `discover-button`，`tactile-rocker` 来自 `tactile-button`，并做成保持倾斜的开关。`get-in-touch` 内联了同目录的按钮外壳。`@hugeicons` 改成 `lucide-react`，`framer-motion` 改成 `motion/react`，`next/image` 和 `next/link` 改成 `img` 与 `a`。碎纸按钮抽出文件再剪成纸条，和打印机图标按钮不同。液桥导航是一整条导航，和单个黏液按钮不同。颜色控件使用主题变量。示例图片用内联图形。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| analog-stick | uselayouts，MIT |
+| paper-shred-button | uselayouts，MIT |
+| scan-document | uselayouts，MIT |
+| dynamic-grid-gallery | uselayouts，MIT |
+| photo-albums | uselayouts，MIT |
+| gooey-navbar | uselayouts，MIT |
+| overlapping-slider | uselayouts，MIT |
+| get-in-touch | uselayouts，MIT |
+| client-card | uselayouts，MIT |
+| corner-video | uselayouts，MIT |
+| create-menu | uselayouts，MIT |
+| day-picker | uselayouts，MIT |
+| stacked-list | uselayouts，MIT |
+| discover-search-pill | uselayouts，MIT |
+| tactile-rocker | uselayouts，MIT |
+
 ### 下压、色带与弧选
 
 登记在 `catalog-batch53.ts`。百叶已占用 `catalog-batch52.ts`。`press-depth`、`value-flash`、`blur-up-image`、`typing-indicator`、`new-items-pill` 移植自 interior（MIT，Copyright (c) 2026 ozzy）。`chromatic-text-reveal`、`action-swap`、`pull-to-refresh`、`arc-picker`、`knockout-bracket`、`ruler-slider`、`overflow-actions`、`preview-rail`、`wallet-card` 移植自 beUI（MIT，Copyright (c) 2026 Saurabh Chauhan）。`action-swap` 用 `variant` 收拢模糊、滚动、逐字三种换法。`ruler-slider` 对应源文件 `range-slider-ruler`。钱包的换字复用 `action-swap`。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## uselayouts
+
+- 仓库：https://github.com/iurvish/uselayouts
+- 许可：MIT
+- 版权：Copyright (c) 2025 Urvish Mali
+- 衍生组件：`analog-stick`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/analog-stick.tsx）、`paper-shred-button`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/paper-shred-button.tsx）、`scan-document`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/scan-document.tsx）、`dynamic-grid-gallery`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/dynamic-grid-gallery.tsx）、`photo-albums`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/photo-albums.tsx）、`gooey-navbar`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/gooey-navbar.tsx）、`overlapping-slider`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/overlapping-slider.tsx）、`get-in-touch`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch.tsx，按钮外壳 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch-button.tsx）、`client-card`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/client-card.tsx）、`corner-video`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/corner-video.tsx）、`create-menu`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/create-menu.tsx）、`day-picker`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/day-picker.tsx）、`stacked-list`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/stacked-list.tsx）、`discover-search-pill`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/discover-button.tsx）、`tactile-rocker`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/tactile-button.tsx）
+
 ## interior
 
 - 仓库：https://github.com/ddoemonn/interior

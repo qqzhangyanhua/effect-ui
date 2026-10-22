@@ -25,7 +25,7 @@ Root `package.json`:
 
 Typecheck excludes `packages/registry/src/**/*.test.ts` and `*.test.tsx`. Tests under `apps/docs` are included. Vitest does not type-check on its own.
 
-`pnpm lint` currently reports 2 `react-hooks/incompatible-library` warnings, in `data-table.tsx` and `virtual-list.tsx`. They are expected and do not fail the check.
+`pnpm lint` currently reports warnings but no errors, for example `react-hooks/incompatible-library` in `data-table.tsx` and `virtual-list.tsx`, and `@next/next/no-img-element` in components that intentionally use `<img>`. They are expected and do not fail the check.
 
 ## Tests
 - `packages/registry/src/registry-item.test.ts`: registry JSON shape, derived dependency lists, and missing-file errors.

@@ -7,7 +7,6 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { AIBranches } from "./ai-branches"
 import { AICitations } from "./ai-citations"
 import { AITextLoading } from "./ai-text-loading"
 import { AITokenAlternatives } from "./ai-token-alternatives"
@@ -154,7 +153,7 @@ test("铁屑按钮、加载短句、录音和头像能读出控件", () => {
   cleanup()
 })
 
-test("引用、替换词、分支和汇款卡能打开各自的下一步", () => {
+test("引用、替换词和汇款卡能打开各自的下一步", () => {
   reduceMotion = true
   const cites = render(<AICitations />)
   expect(slot(cites.container, "ai-citations")).toHaveAttribute("data-reduced", "true")
@@ -171,13 +170,6 @@ test("引用、替换词、分支和汇款卡能打开各自的下一步", () =>
   fireEvent.click(screen.getByRole("option", { name: /Yes/ }))
   expect(screen.getByRole("button", { name: /Yes, 23% likely/ })).toBeInTheDocument()
   tokens.unmount()
-
-  const branches = render(<AIBranches title="行程" />)
-  expect(slot(branches.container, "ai-branches")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByText("行程")).toBeInTheDocument()
-  fireEvent.click(screen.getAllByRole("button", { name: "Edit message" })[0]!)
-  expect(screen.getByRole("textbox")).toBeInTheDocument()
-  branches.unmount()
 
   const transfer = render(<CurrencyTransfer status="processing" />)
   expect(slot(transfer.container, "currency-transfer")).toHaveAttribute("data-reduced", "true")

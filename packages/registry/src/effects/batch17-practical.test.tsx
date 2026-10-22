@@ -9,11 +9,9 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
-import { CommentThread } from "./comment-thread"
 import { EmbedCodeGenerator } from "./embed-code-generator"
 import { FileUploadQueue } from "./file-upload-queue"
 import { PollVote } from "./poll-vote"
-import { ScheduleSlotPicker } from "./schedule-slot-picker"
 import { SignaturePad } from "./signature-pad"
 import { SocialPostFeed } from "./social-post-feed"
 
@@ -68,18 +66,6 @@ test("帖子可以反应，也可以发布和展开", async () => {
   expect(screen.getByText("今晚看星系")).toBeInTheDocument()
 })
 
-test("讨论可以发送、提及和标为已解决", async () => {
-  const user = userEvent.setup()
-  render(<CommentThread />)
-  expect(screen.getByText("@周宁")).toBeInTheDocument()
-  await user.type(screen.getByRole("textbox", { name: "评论" }), "好的")
-  await user.keyboard("{Control>}{Enter}{/Control}")
-  expect(screen.getByText("好的")).toBeInTheDocument()
-  await user.click(screen.getAllByRole("button", { name: "更多" })[0]!)
-  await user.click(screen.getByRole("button", { name: "标为已解决" }))
-  expect(screen.getAllByText("已解决").length).toBeGreaterThan(0)
-})
-
 test("输入姓名可以生成签名再清除", async () => {
   const user = userEvent.setup()
   render(<SignaturePad />)
@@ -98,14 +84,4 @@ test("投票后显示比例和总票数", async () => {
   expect(screen.getByText("共 37 票")).toBeInTheDocument()
   expect(screen.getByRole("radio", { name: /本周发布/ })).toHaveAttribute("aria-checked", "true")
   expect(screen.getByText(/截止/)).toBeInTheDocument()
-})
-
-test("时段选择跳过已占，确认后保留时间", async () => {
-  const user = userEvent.setup()
-  render(<ScheduleSlotPicker />)
-  expect(screen.getByRole("radio", { name: /14:00/ })).toBeDisabled()
-  await user.click(screen.getByRole("radio", { name: /09:00/ }))
-  await user.click(screen.getByRole("button", { name: "确认" }))
-  expect(screen.getByText("已确认")).toBeInTheDocument()
-  expect(screen.getByText(/09:00/)).toBeInTheDocument()
 })

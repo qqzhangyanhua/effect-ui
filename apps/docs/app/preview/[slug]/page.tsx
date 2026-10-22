@@ -5,16 +5,8 @@ import type { ComponentType } from "react"
 import { getComponent, visibleComponents } from "@effect-ui/registry/catalog"
 import { getDemo } from "@effect-ui/registry/examples/index"
 import { AgencyTemplate } from "@effect-ui/registry/templates/agency/page"
-import { AiProductTemplate } from "@effect-ui/registry/templates/ai-product/page"
-import { DevtoolTemplate } from "@effect-ui/registry/templates/devtool/page"
-import { PortfolioTemplate } from "@effect-ui/registry/templates/portfolio/page"
-import { SaasTemplate } from "@effect-ui/registry/templates/saas/page"
 
 const templateComponents: Record<string, ComponentType> = {
-  "saas-template": SaasTemplate,
-  "ai-product-template": AiProductTemplate,
-  "devtool-template": DevtoolTemplate,
-  "portfolio-template": PortfolioTemplate,
   "agency-template": AgencyTemplate,
 }
 

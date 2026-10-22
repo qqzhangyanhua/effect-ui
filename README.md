@@ -72,7 +72,7 @@ button · input · textarea · label · card · badge · separator · dialog · 
 
 ### Hooks
 
-use-mobile · use-prefers-reduced-motion · use-animation-active
+use-mobile · use-prefers-reduced-motion · use-animation-active · use-click-outside · use-measure · use-controllable-state · use-dimensions · use-mouse-position · use-mouse-position-ref · use-elastic-line-events · use-debounced-dimensions · use-dismiss · use-hover-gesture · use-tap-gesture
 
 ### 库
 
@@ -220,6 +220,27 @@ text-style
 | gooey-button | 原创 |
 | particle-button | Kokonut UI（免费 MIT） |
 | tear-button | Kokonut UI（免费 MIT） |
+| animated-subscribe-button | Magic UI |
+| copy-button | Cult UI |
+| pull-cord | Kokonut UI（免费 MIT） |
+| undo-button | Kokonut UI（免费 MIT） |
+| attract-button | Kokonut UI（免费 MIT） |
+| loading-button | shadcn-ui-expansions |
+| star-wars-button | SyntaxUI |
+| hover-attention-button | SyntaxUI |
+| eco-mode-button | SyntaxUI |
+| rotating-complete-button | SyntaxUI |
+| stitches-button | SyntaxUI（原作者 Saud） |
+| heartbeat-button | SyntaxUI |
+| neubrutalism-button | SyntaxUI |
+| 3d-button | SyntaxUI |
+| heart-like-button | Uiverse galaxy（作者 LilaRest） |
+| download-size-button | Uiverse galaxy（作者 satyamchaudharydev） |
+| lift-gradient-border-button | Uiverse galaxy（作者 SelfMadeSystem） |
+| async-morph-button | Spectrum UI（Apache-2.0） |
+| follow-button | Spectrum UI（Apache-2.0） |
+| share-button | Spectrum UI（Apache-2.0） |
+| jelly-button | 原创 |
 
 ### 输入
 
@@ -237,6 +258,9 @@ text-style
 | currency-input | 原创 |
 | coupon-input | 原创 |
 | prompt-input | prompt-kit |
+| mic-search-input | Uiverse galaxy（作者 vinodjangid07） |
+| newsletter-input | Uiverse galaxy（作者 deepak16375） |
+| pin-display-input | Uiverse galaxy（作者 barisdogansutcu） |
 | placeholder-vanish-input | 灵感来自 Aceternity，原创实现 |
 
 ### 微交互
@@ -252,6 +276,9 @@ text-style
 | pulse-heart | 灵感来自 React Bits，原创实现，未打开源码 |
 | lattice-loader | 灵感来自 React Bits，原创实现，未打开源码 |
 | warm-tooltip | 灵感来自 React Bits，原创实现，未打开源码 |
+| elastic-slider | 灵感来自 React Bits，原创实现 |
+| reaction-bar | 原创 |
+| reaction-tray | 原创 |
 
 ### 加载
 
@@ -450,7 +477,7 @@ text-style
 
 ### 星系、布料与协作表单
 
-登记在 `catalog-batch17.ts`（`catalog-batch16.ts` 已用于织物、海面与协作清单）。未打开这些来源的源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 一律懒加载已有的 OGL，失败或减弱动效时用 CSS 画面。`signature-pad` 只用画布，不引入签名库。`reaction-bar` 由帖子和评论共用。Cal.com 为 AGPL，只借鉴交互。
+登记在 `catalog-batch17.ts`（`catalog-batch16.ts` 已用于织物、海面与协作清单）。未打开这些来源的源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 一律懒加载已有的 OGL，失败或减弱动效时用 CSS 画面。`signature-pad` 只用画布，不引入签名库。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -465,11 +492,9 @@ text-style
 | file-upload-queue | 灵感来自 Dropbox 与 Google Drive，原创实现 |
 | embed-code-generator | 灵感来自 Readymag，原创实现 |
 | social-post-feed | 灵感来自 Campsite，原创实现 |
-| comment-thread | 灵感来自 GitHub、Linear 与 Figma，原创实现 |
 | signature-pad | 灵感来自 DocuSign，原创实现 |
 | poll-vote | 灵感来自 X 与 Slack，原创实现 |
-| schedule-slot-picker | 灵感来自 Calendly 与 Cal.com，原创实现 |
-| reaction-bar | 原创，帖子与评论共用 |
+| reaction-bar | 原创 |
 
 ### 管道、沙漏与收件箱
 
@@ -490,12 +515,11 @@ text-style
 | pricing-calculator | 原创 |
 | plan-compare-table | 原创 |
 | mention-textarea | 原创 |
-| inbox-split-view | 原创 |
 | timezone-clock | 原创 |
 
 ### 光管、频谱与组织图
 
-登记在 `catalog-batch19.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光管不渲染，液体幻灯改为交叉淡入，波场和黑洞停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，仪表指针直接到位，卡面不翻转。
+登记在 `catalog-batch19.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光管不渲染，液体幻灯改为交叉淡入，波场和黑洞停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，卡面不翻转。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -505,17 +529,15 @@ text-style
 | gradient-carousel-3d | 灵感来自 Codrops Infinite 3D Gradient Carousel，原创实现 |
 | text-3d-scroll | 灵感来自 Codrops 3D Text Scroll Animations，原创实现 |
 | rolling-text-hover | 灵感来自 Codrops Rolling text，原创实现 |
-| audio-spectrum | 灵感来自 Spotify visualiser，原创实现。实时频谱，和静态 audio-waveform 不同 |
+| audio-spectrum | 灵感来自 Spotify visualiser，原创实现。实时频谱 |
 | singularity | 灵感来自 Codrops Singularity，原创实现 |
 | credit-card-form | 原创 |
-| cart-drawer | 原创 |
-| radial-gauge | 原创 |
 | gantt-timeline | 原创 |
 | org-chart | 原创 |
 
 ### 光栅、状态页与帮助中心
 
-登记在 `catalog-batch20.ts`。上一批光管组件已占用 `catalog-batch19.ts`。未打开 Codrops、Linear、Better Stack、Eventbrite、Vercel、ClickUp、Mintlify、fal、v0、Sprig、Supabase、Browserbase 或 Notion 的源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 只懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光栅改为点击切换，光束直接显示成品，回声不复制，超空间文字交叉淡入，旋涡改为静态图标，雨面停在静帧，钥匙孔改为普通图片序列，橡皮筋松手后不再振荡。
+登记在 `catalog-batch20.ts`。上一批光管组件已占用 `catalog-batch19.ts`。未打开 Codrops、Linear、Better Stack、Eventbrite、Vercel、ClickUp、Mintlify、fal、v0 或 Notion 的源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 只懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光栅改为点击切换，光束直接显示成品，回声不复制，超空间文字交叉淡入，旋涡改为静态图标，雨面停在静帧，钥匙孔改为普通图片序列，橡皮筋松手后不再振荡。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -531,13 +553,11 @@ text-style
 | status-page | 灵感来自 Eventbrite 与 Linear 状态页，原创实现 |
 | integrations-directory | 灵感来自 Vercel 与 ClickUp，原创实现 |
 | api-key-manager | 灵感来自 Mintlify、fal 与 v0，原创实现 |
-| usage-meter | 灵感来自 Sprig，原创实现 |
-| team-members-table | 灵感来自 Supabase 与 Browserbase，原创实现 |
 | help-center-index | 灵感来自 Notion 帮助中心，原创实现 |
 
 ### 字符点阵、视频对话框与会话
 
-登记在 `catalog-batch21.ts`。上一批光栅组件已占用 `catalog-batch20.ts`。动效与两个交互组件移植自 Magic UI（MIT，Copyright (c) Magic UI），并改成 effect-ui 的 props 与 Tailwind v4 主题变量。其余五项为原创实现，版式参考 Mobbin 里的产品界面，没有复制文案或标志。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时暂停动画帧。减弱动效时点阵、透视网格和粒子停在静帧，文字立刻显示，视频暂停并露出封面，光标恢复系统样式，斜纹不再漂移。
+登记在 `catalog-batch21.ts`。上一批光栅组件已占用 `catalog-batch20.ts`。动效与两个交互组件移植自 Magic UI（MIT，Copyright (c) Magic UI），并改成 effect-ui 的 props 与 Tailwind v4 主题变量。其余一项为原创实现，版式参考 Mobbin 里的产品界面，没有复制文案或标志。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时暂停动画帧。减弱动效时点阵、透视网格和粒子停在静帧，文字立刻显示，视频暂停并露出封面，光标恢复系统样式，斜纹不再漂移。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -551,10 +571,6 @@ text-style
 | line-shadow-text | Magic UI，MIT |
 | hero-video-dialog | Magic UI，MIT |
 | animated-subscribe-button | Magic UI，MIT |
-| audit-log-table | 灵感来自 Gumloop 与 Base44（经由 Mobbin），原创实现 |
-| notification-preferences | 灵感来自 Unify 与 SoundCloud（经由 Mobbin），原创实现 |
-| data-export-dialog | 灵感来自 Klaviyo 与 Square（经由 Mobbin），原创实现 |
-| two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
 ### 全息文字、刮刮卡与评分
@@ -823,7 +839,7 @@ text-style
 
 ### 极光、液态金属与时长
 
-登记在 `catalog-batch26.ts`。上一批收据、液面与裁切已占用 `catalog-batch25.ts`。十五项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，SDF 过渡直接换内容，环境光只取一帧，勒索信不再晃动，时长数字不再滚动。
+登记在 `catalog-batch26.ts`。上一批收据、液面与裁切已占用 `catalog-batch25.ts`。十四项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，SDF 过渡直接换内容，环境光只取一帧，勒索信不再晃动，时长数字不再滚动。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -838,14 +854,13 @@ text-style
 | duration-picker | SmoothUI，MIT |
 | exposure-slider | SmoothUI，MIT |
 | scrubber | SmoothUI，MIT |
-| breakpoint-indicator | SmoothUI，MIT |
 | switchboard-card | SmoothUI，MIT |
 | time-machine-stack | SmoothUI，MIT |
 | interactive-image-selector | SmoothUI，MIT |
 
 ### 收据、液面与裁切
 
-登记在 `catalog-batch25.ts`。上一批地形、摇篮字与转录已占用 `catalog-batch24.ts`。十五项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面和支出环直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。
+登记在 `catalog-batch25.ts`。上一批地形、摇篮字与转录已占用 `catalog-batch24.ts`。十四项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面和支出环直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -860,7 +875,6 @@ text-style
 | spending-ring | kokonutUI，MIT |
 | ai-citations | kokonutUI，MIT |
 | ai-token-alternatives | kokonutUI，MIT |
-| ai-branches | kokonutUI，MIT |
 | timezone-planner | kokonutUI，MIT |
 | currency-transfer | kokonutUI，MIT |
 | clip-trimmer | kokonutUI，MIT |
@@ -940,10 +954,6 @@ text-style
 
 | 组件 | 来源 |
 | --- | --- |
-| saas-template | 原创（组合 nav-morphing / hero-shader / 落地页区块 / footer-curtain-reveal） |
-| ai-product-template | 原创（组合 hero-ai-prompt / iridescence / chat-message / siri-orb / shimmer-text） |
-| devtool-template | 原创（组合 terminal / code-block / flickering-grid / timeline / footer-shader-wordmark） |
-| portfolio-template | Magic UI portfolio（MIT） |
 | agency-template | 灵感来自 Awwwards，原创实现 |
 
 ### AI 对话
@@ -973,7 +983,6 @@ text-style
 | kanban | Kibo UI |
 | rich-text-editor | Kibo UI / Tiptap |
 | tree-view | 原创 |
-| onboarding-tour | 原创 |
 | virtual-list | TanStack Virtual |
 | infinite-scroll | 原创 |
 | masonry-gallery | react-photo-album |
@@ -982,12 +991,9 @@ text-style
 | quantity-stepper | 原创 |
 | emoji-picker | frimousse |
 | video-player | Kibo UI（原生 video） |
-| audio-waveform | wavesurfer.js（BSD-3） |
-| toast-stack | Kokonut UI（免费 MIT） |
 | notification-center | Kokonut UI（免费 MIT） |
 | gravity | matter-js |
 | ascii-render | Smooth UI |
-| detent-dial | Kokonut UI（免费 MIT） |
 
 ## 新增组件
 

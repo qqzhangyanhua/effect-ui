@@ -48,7 +48,6 @@ const nextConfig: NextConfig = {
     "yet-another-react-lightbox",
     "react-phone-number-input",
     "frimousse",
-    "wavesurfer.js",
     "matter-js",
     "ogl",
     "@vfx-js/core",

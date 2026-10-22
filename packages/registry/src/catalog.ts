@@ -89,7 +89,6 @@ export type SourceLibrary =
   | "UI Layouts"
   | "TanStack Virtual"
   | "frimousse"
-  | "wavesurfer.js"
   | "Base UI"
   | "react-photo-album"
   | "yet-another-react-lightbox"
@@ -246,7 +245,6 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "UI Layouts": "https://ui-layouts.com",
   "TanStack Virtual": "https://tanstack.com/virtual",
   frimousse: "https://frimousse.liveblocks.io",
-  "wavesurfer.js": "https://wavesurfer.xyz",
   "Base UI": "https://base-ui.com",
   "react-photo-album": "https://react-photo-album.com",
   "yet-another-react-lightbox": "https://yet-another-react-lightbox.com",

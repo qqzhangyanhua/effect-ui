@@ -441,20 +441,4 @@ export const batch4Components: ComponentMeta[] = [
     target: "components/ui/tree-view.tsx",
     props: [{ name: "nodes", type: "TreeNode[]", description: "树节点，含子级 children。" }, ...ui],
   },
-  {
-    name: "onboarding-tour",
-    title: "Onboarding Tour",
-    description: "高亮遮罩 + 步骤卡片的产品引导。",
-    category: "utility",
-    source: "original",
-    type: "registry:ui",
-    file: "ui/onboarding-tour.tsx",
-    target: "components/ui/onboarding-tour.tsx",
-    props: [
-      { name: "steps", type: "TourStep[]", description: "步骤（selector / title / description）。" },
-      { name: "open", type: "boolean", defaultValue: "false", description: "是否打开。" },
-      { name: "onOpenChange", type: "(open: boolean) => void", description: "开关变化。" },
-      ...ui,
-    ],
-  },
 ]

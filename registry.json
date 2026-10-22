@@ -3034,24 +3034,6 @@
       ]
     },
     {
-      "name": "onboarding-tour",
-      "type": "registry:ui",
-      "title": "Onboarding Tour",
-      "description": "高亮遮罩 + 步骤卡片的产品引导。",
-      "dependencies": [],
-      "registryDependencies": [
-        "button",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/onboarding-tour.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/onboarding-tour.tsx"
-        }
-      ]
-    },
-    {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
@@ -3470,43 +3452,6 @@
           "path": "registry/ui/video-player.tsx",
           "type": "registry:ui",
           "target": "components/ui/video-player.tsx"
-        }
-      ]
-    },
-    {
-      "name": "audio-waveform",
-      "type": "registry:ui",
-      "title": "Audio Waveform",
-      "description": "wavesurfer.js 音频波形与播放。",
-      "dependencies": [
-        "lucide-react",
-        "wavesurfer.js"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/audio-waveform.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/audio-waveform.tsx"
-        }
-      ]
-    },
-    {
-      "name": "toast-stack",
-      "type": "registry:ui",
-      "title": "Toast Stack",
-      "description": "堆叠 toast，支持成功/失败与撤销。",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/toast-stack.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/toast-stack.tsx"
         }
       ]
     },
@@ -4688,24 +4633,6 @@
       ]
     },
     {
-      "name": "detent-dial",
-      "type": "registry:ui",
-      "title": "Detent Dial",
-      "description": "带刻度吸附的旋钮。仅参考 Kokonut UI 免费 MIT，未使用 Pro。",
-      "dependencies": [],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/detent-dial.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/detent-dial.tsx"
-        }
-      ]
-    },
-    {
       "name": "family-drawer",
       "type": "registry:ui",
       "title": "Family Drawer",
@@ -4799,140 +4726,6 @@
           "path": "registry/effects/apple-cards-carousel.tsx",
           "type": "registry:ui",
           "target": "components/ui/apple-cards-carousel.tsx"
-        }
-      ]
-    },
-    {
-      "name": "saas-template",
-      "type": "registry:block",
-      "title": "SaaS Template",
-      "description": "多文件模板：导航、着色器 Hero、logo 墙、bento、粘性特性、定价、评价和幕布页脚。WebGL 懒加载。",
-      "dependencies": [],
-      "registryDependencies": [
-        "footer-curtain-reveal",
-        "hero-shader",
-        "marketing-blocks",
-        "nav-morphing",
-        "section-animated-bento",
-        "section-logo-cloud",
-        "section-pricing-flow",
-        "section-sticky-feature-scroll",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/saas/page.tsx",
-          "type": "registry:page",
-          "target": "app/saas/page.tsx"
-        },
-        {
-          "path": "registry/templates/saas/content.ts",
-          "type": "registry:file",
-          "target": "app/saas/content.ts"
-        },
-        {
-          "path": "registry/templates/saas/theme.ts",
-          "type": "registry:file",
-          "target": "app/saas/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "ai-product-template",
-      "type": "registry:block",
-      "title": "AI Product Template",
-      "description": "多文件模板：可关掉底的 AI 提示框叠在懒加载虹彩上，加对话、光球和定价。",
-      "dependencies": [],
-      "registryDependencies": [
-        "chat-message",
-        "footer-giant-wordmark",
-        "hero-ai-prompt",
-        "iridescence",
-        "section-pricing-flow",
-        "shimmer-text",
-        "siri-orb",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/ai-product/page.tsx",
-          "type": "registry:page",
-          "target": "app/ai-product/page.tsx"
-        },
-        {
-          "path": "registry/templates/ai-product/content.ts",
-          "type": "registry:file",
-          "target": "app/ai-product/content.ts"
-        },
-        {
-          "path": "registry/templates/ai-product/theme.ts",
-          "type": "registry:file",
-          "target": "app/ai-product/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "devtool-template",
-      "type": "registry:block",
-      "title": "Devtool Template",
-      "description": "多文件模板：终端 Hero、闪烁网格、集成轨道、前后代码、更新日志和着色器字标。",
-      "dependencies": [],
-      "registryDependencies": [
-        "code-block",
-        "flickering-grid",
-        "footer-shader-wordmark",
-        "orbiting-circles",
-        "terminal",
-        "timeline",
-        "tracing-beam",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/devtool/page.tsx",
-          "type": "registry:page",
-          "target": "app/devtool/page.tsx"
-        },
-        {
-          "path": "registry/templates/devtool/content.ts",
-          "type": "registry:file",
-          "target": "app/devtool/content.ts"
-        },
-        {
-          "path": "registry/templates/devtool/theme.ts",
-          "type": "registry:file",
-          "target": "app/devtool/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "portfolio-template",
-      "type": "registry:block",
-      "title": "Portfolio Template",
-      "description": "简历式单页。结构参考 Magic UI portfolio（MIT）：分段显现、项目卡、经历、联系和 Dock。",
-      "dependencies": [],
-      "registryDependencies": [
-        "atropos-card",
-        "blur-fade",
-        "dock",
-        "shimmer-button",
-        "timeline"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/portfolio/page.tsx",
-          "type": "registry:page",
-          "target": "app/portfolio/page.tsx"
-        },
-        {
-          "path": "registry/templates/portfolio/content.ts",
-          "type": "registry:file",
-          "target": "app/portfolio/content.ts"
-        },
-        {
-          "path": "registry/templates/portfolio/theme.ts",
-          "type": "registry:file",
-          "target": "app/portfolio/theme.ts"
         }
       ]
     },
@@ -7145,25 +6938,6 @@
       ]
     },
     {
-      "name": "comment-thread",
-      "type": "registry:ui",
-      "title": "Comment Thread",
-      "description": "灵感来自 GitHub、Linear 与 Figma，原创实现。按 parentId 组成最多三层的评论树，提及高亮，可标为已解决，编辑或删除，⌘ Enter 发送。",
-      "dependencies": [],
-      "registryDependencies": [
-        "combobox",
-        "reaction-bar",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/comment-thread.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/comment-thread.tsx"
-        }
-      ]
-    },
-    {
       "name": "signature-pad",
       "type": "registry:ui",
       "title": "Signature Pad",
@@ -7201,31 +6975,10 @@
       ]
     },
     {
-      "name": "schedule-slot-picker",
-      "type": "registry:ui",
-      "title": "Schedule Slot Picker",
-      "description": "灵感来自 Calendly 与 Cal.com，原创实现。日历选出日期后列出时段，可切换 12/24 小时和时区。选中后拆成时间和确认。Cal.com 为 AGPL，只借鉴交互。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/schedule-slot-picker.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/schedule-slot-picker.tsx"
-        }
-      ]
-    },
-    {
       "name": "reaction-bar",
       "type": "registry:ui",
       "title": "Reaction Bar",
-      "description": "帖子和评论共用的表情反应条。计数用数字滚动，选中时轻轻弹一下。",
+      "description": "表情反应条。计数用数字滚动，选中时轻轻弹一下。",
       "dependencies": [
         "motion"
       ],
@@ -7488,26 +7241,6 @@
       ]
     },
     {
-      "name": "inbox-split-view",
-      "type": "registry:ui",
-      "title": "Inbox Split View",
-      "description": "收件箱分栏。左栏有未读、星标和多选，右栏是正文，j / k 移动。窄屏变成单栏滑动，宽屏可以拖动分栏。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "resizable",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/inbox-split-view.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/inbox-split-view.tsx"
-        }
-      ]
-    },
-    {
       "name": "timezone-clock",
       "type": "registry:ui",
       "title": "Timezone Clock",
@@ -7652,7 +7385,7 @@
       "name": "audio-spectrum",
       "type": "registry:ui",
       "title": "Audio Spectrum",
-      "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。和静态的 audio-waveform 不同。",
+      "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。",
       "dependencies": [],
       "registryDependencies": [
         "use-prefers-reduced-motion",
@@ -7707,29 +7440,6 @@
       ]
     },
     {
-      "name": "cart-drawer",
-      "type": "registry:ui",
-      "title": "Cart Drawer",
-      "description": "右侧购物车抽屉。可改数量、移除，显示小计和免运费进度。加购时图标跳动并带计数。",
-      "dependencies": [
-        "lucide-react",
-        "motion"
-      ],
-      "registryDependencies": [
-        "quantity-stepper",
-        "sheet",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/cart-drawer.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/cart-drawer.tsx"
-        }
-      ]
-    },
-    {
       "name": "coupon-input",
       "type": "registry:ui",
       "title": "Coupon Input",
@@ -7746,27 +7456,6 @@
           "path": "registry/effects/coupon-input.tsx",
           "type": "registry:ui",
           "target": "components/ui/coupon-input.tsx"
-        }
-      ]
-    },
-    {
-      "name": "radial-gauge",
-      "type": "registry:ui",
-      "title": "Radial Gauge",
-      "description": "半圆或四分之三圆仪表。分段配色，指针有弹性，中心数字滚动，可标阈值。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "number-flow",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/radial-gauge.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/radial-gauge.tsx"
         }
       ]
     },
@@ -8038,43 +7727,6 @@
       ]
     },
     {
-      "name": "usage-meter",
-      "type": "registry:ui",
-      "title": "Usage Meter",
-      "description": "灵感来自 Sprig，原创实现。已用和额度进度条，超过八成变黄、超过额度变红，可堆叠多个指标。",
-      "dependencies": [],
-      "registryDependencies": [
-        "number-flow",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/usage-meter.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/usage-meter.tsx"
-        }
-      ]
-    },
-    {
-      "name": "team-members-table",
-      "type": "registry:ui",
-      "title": "Team Members Table",
-      "description": "灵感来自 Supabase 与 Browserbase，原创实现。角色、邀请状态、搜索，以及批量改角色或移除。",
-      "dependencies": [],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/team-members-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/team-members-table.tsx"
-        }
-      ]
-    },
-    {
       "name": "help-center-index",
       "type": "registry:ui",
       "title": "Help Center Index",
@@ -8280,91 +7932,6 @@
           "path": "registry/effects/animated-subscribe-button.tsx",
           "type": "registry:ui",
           "target": "components/ui/animated-subscribe-button.tsx"
-        }
-      ]
-    },
-    {
-      "name": "audit-log-table",
-      "type": "registry:ui",
-      "title": "Audit Log Table",
-      "description": "灵感来自 Gumloop 活动记录与 Base44 日志（经由 Mobbin），原创实现。时间、头像、彩色动作标签、对象和 IP。可按动作和日期筛选，点行展开 JSON，虚拟滚动。新事件插到顶部并高亮两秒。",
-      "dependencies": [
-        "@tanstack/react-virtual"
-      ],
-      "registryDependencies": [
-        "json-viewer",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/audit-log-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/audit-log-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notification-preferences",
-      "type": "registry:ui",
-      "title": "Notification Preferences",
-      "description": "灵感来自 Unify 通知矩阵与 SoundCloud 通知设置（经由 Mobbin），原创实现。事件按组排成行，邮件、应用内、推送和 Slack 为列。单元格是开关，行和列都能全选。有改动时滑出保存和撤销条。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "checkbox",
-        "switch",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/notification-preferences.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/notification-preferences.tsx"
-        }
-      ]
-    },
-    {
-      "name": "data-export-dialog",
-      "type": "registry:ui",
-      "title": "Data Export Dialog",
-      "description": "灵感来自 Klaviyo 字段勾选与 Square 导出对话框（经由 Mobbin），原创实现。CSV、JSON、XLSX 三个页签，字段可勾选并用 sortable-list 拖动排序，另选日期范围。导出过程显示进度，完成后给出下载。",
-      "dependencies": [],
-      "registryDependencies": [
-        "checkbox",
-        "dialog",
-        "sortable-list",
-        "tabs",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/data-export-dialog.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/data-export-dialog.tsx"
-        }
-      ]
-    },
-    {
-      "name": "two-factor-setup",
-      "type": "registry:ui",
-      "title": "Two Factor Setup",
-      "description": "灵感来自 Basecamp 两步验证与 Dropbox Dash 恢复码（经由 Mobbin），原创实现。三步横向滑动：传入的二维码和可复制密钥、六位验证码（错误时晃动）、可复制或下载的恢复码，以及必须勾选的已保存确认。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "checkbox",
-        "input-otp",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/two-factor-setup.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/two-factor-setup.tsx"
         }
       ]
     },
@@ -9562,28 +9129,6 @@
       ]
     },
     {
-      "name": "ai-branches",
-      "type": "registry:ui",
-      "title": "AI Branches",
-      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-branches.tsx 编辑一条消息会分出新分支，也可以在分支之间切换。减弱动效时回复整段出现。离开视口后暂停逐词写入。",
-      "dependencies": [
-        "lucide-react",
-        "motion"
-      ],
-      "registryDependencies": [
-        "use-animation-active",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/ai-branches.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/ai-branches.tsx"
-        }
-      ]
-    },
-    {
       "name": "timezone-planner",
       "type": "registry:ui",
       "title": "Timezone Planner",
@@ -9866,26 +9411,6 @@
           "path": "registry/effects/scrubber.tsx",
           "type": "registry:ui",
           "target": "components/ui/scrubber.tsx"
-        }
-      ]
-    },
-    {
-      "name": "breakpoint-indicator",
-      "type": "registry:ui",
-      "title": "Breakpoint Indicator",
-      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/breakpoint-indicator/index.tsx 开发用角标，显示当前 Tailwind 断点和视口尺寸。默认快捷键是 b。生产构建里默认不启用，演示会显式打开。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/breakpoint-indicator.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/breakpoint-indicator.tsx"
         }
       ]
     },

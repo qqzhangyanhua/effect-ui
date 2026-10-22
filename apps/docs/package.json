@@ -91,7 +91,6 @@
     "tailwind-merge": "^3.3.1",
     "three": "^0.186.1",
     "vaul": "^1.1.2",
-    "wavesurfer.js": "^8.0.2",
     "yet-another-react-lightbox": "^3.32.2",
     "zod": "^4.6.7"
   },

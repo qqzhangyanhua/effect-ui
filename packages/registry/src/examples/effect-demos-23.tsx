@@ -6,17 +6,13 @@ import { useState } from "react"
 
 import { ActiveSessionsList, type ActiveSession } from "../effects/active-sessions-list"
 import { AnimatedSubscribeButton } from "../effects/animated-subscribe-button"
-import { AuditLogTable, type AuditEvent } from "../effects/audit-log-table"
 import { Backlight } from "../effects/backlight"
-import { DataExportDialog } from "../effects/data-export-dialog"
 import { DiaTextReveal } from "../effects/dia-text-reveal"
 import { Floating3DParticles } from "../effects/floating-3d-particles"
 import { GlyphMatrix } from "../effects/glyph-matrix"
 import { HeroVideoDialog } from "../effects/hero-video-dialog"
 import { LineShadowText } from "../effects/line-shadow-text"
-import { NotificationPreferences, type NotificationMatrix } from "../effects/notification-preferences"
 import { SmoothCursor } from "../effects/smooth-cursor"
-import { TwoFactorSetup } from "../effects/two-factor-setup"
 import { VideoText } from "../effects/video-text"
 import { WarpBackground } from "../effects/warp-background"
 
@@ -27,44 +23,6 @@ const poster =
   )
 
 const videoSrc = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-
-const qrSrc =
-  "data:image/svg+xml," +
-  encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><rect width="29" height="29" fill="white"/>${Array.from({ length: 29 }, (_, y) =>
-      Array.from({ length: 29 }, (_, x) => ((x * 7 + y * 3) % 5 < 2 ? `<rect x="${x}" y="${y}" width="1" height="1"/>` : "")).join(""),
-    ).join("")}</svg>`,
-  )
-
-function seedEvents(): AuditEvent[] {
-  return Array.from({ length: 24 }, (_, index) => {
-    const action = ["创建", "更新", "删除", "登录"][index % 4] ?? "更新"
-    return {
-      id: `evt-${index}`,
-      time: `2026-10-${String((index % 20) + 1).padStart(2, "0")}T08:${String(index % 60).padStart(2, "0")}:00.000Z`,
-      actor: { name: index % 2 === 0 ? "林夏" : "周宁" },
-      action,
-      target: `项目 ${index + 1}`,
-      ip: `10.0.0.${index + 4}`,
-      details: { id: `evt-${index}`, action, note: index === 0 ? "north-window" : "ok" },
-    }
-  })
-}
-
-function seedMatrix(): NotificationMatrix {
-  const events = ["sign-in", "billing", "mention", "assign"]
-  return Object.fromEntries(
-    events.map((event, index) => [
-      event,
-      {
-        email: index % 2 === 0,
-        "in-app": index % 2 === 1,
-        push: true,
-        slack: false,
-      },
-    ]),
-  )
-}
 
 const sessions: ActiveSession[] = [
   { id: "here", device: "desktop", browser: "Chrome", os: "macOS", city: "上海", lastActive: new Date().toISOString(), current: true },
@@ -128,62 +86,6 @@ export function HeroVideoDialogDemo() {
 export function AnimatedSubscribeButtonDemo() {
   const [subscribed, setSubscribed] = useState(false)
   return <AnimatedSubscribeButton subscribed={subscribed} onChange={setSubscribed} />
-}
-
-export function AuditLogTableDemo() {
-  const [events, setEvents] = useState(seedEvents)
-  return (
-    <div className="w-full space-y-3">
-      <button
-        type="button"
-        className="h-9 rounded-md border px-3 text-sm"
-        onClick={() =>
-          setEvents((current) => [
-            {
-              id: `evt-new-${current.length}`,
-              time: new Date().toISOString(),
-              actor: { name: "林夏" },
-              action: "创建",
-              target: "新事件",
-              ip: "10.1.1.8",
-              details: { fresh: true },
-            },
-            ...current,
-          ])
-        }
-      >
-        插入事件
-      </button>
-      <AuditLogTable events={events} />
-    </div>
-  )
-}
-
-export function NotificationPreferencesDemo() {
-  const [value, setValue] = useState(seedMatrix)
-  return <NotificationPreferences value={value} onChange={setValue} />
-}
-
-export function DataExportDialogDemo() {
-  return (
-    <DataExportDialog
-      onExport={async (options) => {
-        await new Promise((resolve) => setTimeout(resolve, 400))
-        return new Blob([JSON.stringify(options)], { type: "application/json" })
-      }}
-    />
-  )
-}
-
-export function TwoFactorSetupDemo() {
-  return (
-    <TwoFactorSetup
-      qrSrc={qrSrc}
-      secret="NORTH-WINDOW-91"
-      recoveryCodes={["4qog-gxfx", "yajc-2zkq", "pb3c-6gvr", "hv5n-ckiy"]}
-      onVerify={async (code) => code === "123456"}
-    />
-  )
 }
 
 export function ActiveSessionsListDemo() {

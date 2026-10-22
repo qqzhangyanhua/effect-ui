@@ -1,0 +1,709 @@
+packages/registry/src/catalog-batch50.ts
+  s_307160b37d2896::t_9a2b63337baf9e 1-103
+apps/docs/public/r/glow-track-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/feedback-bar.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-45
+apps/docs/public/r/neumorph-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-24
+packages/registry/src/effects/glow-corner-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-64
+packages/registry/src/effects/neumorph-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-82
+packages/registry/src/effects/send-arrow-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-60
+apps/docs/public/r/glow-wander-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+THIRD_PARTY_NOTICES.md
+  s_307160b37d2896::t_ea5053bc508507 40-61,68,126,128-129,198-205,212,241-269,450-451
+apps/docs/public/r/spotlight-group.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/user-menu.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+apps/docs/public/r/featured-gallery.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/floating-button-group.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-352
+apps/docs/public/r/http-status-lookup.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/lightboard.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-336
+apps/docs/public/r/password-field.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/portfolio-filter-grid.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+apps/docs/public/r/progressive-carousel.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/examples/effect-demos-44.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-201
+apps/docs/public/r/file-input.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/category-search-input.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-86
+apps/docs/public/r/caption-image-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/hover-blocks-grid.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/examples/effect-demos-42.tsx
+  s_307160b37d2896::t_ea5053bc508507 3-124,129-155,157-170,175-191,193-205,209-226
+apps/docs/public/r/feedback-bar.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/catalog-batch41.ts
+  s_307160b37d2896::t_ea5053bc508507 1-266
+packages/registry/src/effects/batch44-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-119
+packages/registry/src/effects/list-group.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-130
+apps/docs/public/r/hatch-divider.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/response-stream.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/github-profile-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-271
+apps/docs/public/r/account-access-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/catalog-batch44.ts
+  s_307160b37d2896::t_ea5053bc508507 1-154
+packages/registry/src/effects/stateful-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-125
+apps/docs/public/r/printer-icon-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+CREDITS.md
+  s_307160b37d2896::t_b0ebb26c75c572 33-37
+  s_307160b37d2896::t_ea5053bc508507 21-30
+apps/docs/public/r/expandable-chat.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/tick-range.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-96
+packages/registry/src/audit-coverage.test.ts
+  s_307160b37d2896::t_bb6aa072f43f3c 204-205,207,214-215
+  s_307160b37d2896::t_a35d9237807a04 216
+apps/docs/public/r/pixel-bird-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/streamgraph.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-437
+apps/docs/public/r/halo-badge.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/catalog-groups.test.ts
+  s_307160b37d2896::t_ea5053bc508507 56
+packages/registry/src/catalog-batch48.ts
+  s_307160b37d2896::t_9a2b63337baf9e 1-99
+packages/registry/src/examples/effect-demos-49.tsx
+  s_307160b37d2896::t_9a2b63337baf9e 1-53
+packages/registry/src/effects/collapsible-side-menu.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-105
+packages/registry/src/examples/effect-demos-48.tsx
+  s_307160b37d2896::t_9a2b63337baf9e 1-57
+apps/docs/public/r/book-page-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/theme-switch-transitions.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-121
+apps/docs/public/r/details-list.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/multi-level-dropdown.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/batch36-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-175
+apps/docs/public/r/collab-avatar.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/catalog-batch43.ts
+  s_307160b37d2896::t_ea5053bc508507 1-279
+packages/registry/src/effects/lock-toggle.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-85
+apps/docs/public/r/shift-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/underline-hover-link.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-99
+packages/registry/src/examples/effect-demos-41.tsx
+  s_307160b37d2896::t_ea5053bc508507 3,5-194,196-206,211-225,227-233,238,240-265
+packages/registry/src/effects/chat-message-list.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-109
+apps/docs/public/r/char-shimmer-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/check-cross-switch.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-67
+packages/registry/src/effects/form-validator.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-72
+apps/docs/public/r/focus-line-input.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/waffle-chart.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/catalog-batch42.ts
+  s_307160b37d2896::t_ea5053bc508507 1-269
+apps/docs/public/r/star-rating.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/ai-chat-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-25
+apps/docs/public/r/thinking-bar.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/catalog-batch38.ts
+  s_307160b37d2896::t_ea5053bc508507 4-7,11-26,28-29,31-35,40-42,44-247,249-250,252,257-261,263-264,266
+packages/registry/src/effects/team-section.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-60
+packages/registry/src/examples/effect-demos-50.tsx
+  s_307160b37d2896::t_9a2b63337baf9e 1-53
+packages/registry/src/effects/ai-chat-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-128
+apps/docs/public/r/check-cross-switch.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/letter-swap-pingpong.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/effects/details-list.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-53
+packages/registry/src/effects/waffle-chart.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-344
+packages/registry/src/examples/effect-demos-43.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-175
+packages/registry/src/effects/spotlight-group.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-112
+apps/docs/public/r/star-ring-orbit.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/bottom-navigation.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/icon-swap.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-88
+packages/registry/src/effects/word-wheel-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-76
+apps/docs/public/r/plus-share-burst.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/audit-exemptions.ts
+  s_307160b37d2896::t_e501aac4ead01c 8,11,13,38-41,43-44,46,53,60,62,67,72,83,102,112,126,133,140,143,145,147,151,154,156,165,168-170,172-173,182-183,203,206,208,212,215,234-235,240,244-245,248,255,257,261-262,267,271,273-274,280,286,290,292,294,301,305-306,310,312,319,326,329-330,338-339,356,358,362,365,376,386-388,390-392,394-395,401,422,425,428,438-439,441,443-444,446,450,461,463,471,476
+apps/docs/public/r/propeller-orb.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/neo-brutal-kit.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-286
+packages/registry/src/examples/index.ts
+  s_307160b37d2896::t_1f624c2cf0e179 49-53,821-835
+  s_307160b37d2896::t_ea5053bc508507 44-48,678-820
+packages/registry/src/examples/effect-demos-51.tsx
+  s_307160b37d2896::t_9a2b63337baf9e 1-53
+packages/registry/src/examples/effect-demos-38.tsx
+  s_307160b37d2896::t_ea5053bc508507 3-204
+apps/docs/public/r/uno-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/ringed-planet-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-162
+apps/docs/public/r/login-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/featured-gallery.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-117
+packages/registry/src/effects/char-shimmer-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-173
+apps/docs/public/r/trash-delete-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/ringed-planet-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/http-status-lookup.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-121
+packages/registry/src/effects/expandable-text.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-190
+apps/docs/public/r/registry.json
+  s_307160b37d2896::t_59e6c7c9eb909b 15136-15138
+  s_307160b37d2896::t_ea5053bc508507 12335-15135
+packages/registry/src/catalog-batch40.ts
+  s_307160b37d2896::t_ea5053bc508507 4-7,11-15,17-18,20-22,27-31,33-34,36-40,45-266,268-269,271-272
+packages/registry/src/effects/blog-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-127
+apps/docs/public/r/glitch-slice-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/icon-swap.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/tilt-sweep-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-64
+apps/docs/public/r/circular-text-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/elapsed-timer.json
+  s_307160b37d2896::t_ea5053bc508507 1-24
+apps/docs/public/r/dotted-glow-background.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/shortcut-recorder.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+apps/docs/public/r/security-checkpoint.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/pacman-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-104
+apps/docs/public/r/chain-of-thought.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/split-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-152
+apps/docs/public/r/squiggle-arrow.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/step-modal.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-154
+packages/registry/src/effects/filter-chips.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-78
+packages/registry/src/effects/flower-burst-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-88
+apps/docs/public/r/shape-mask.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/lock-toggle.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/retro-press-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-41
+apps/docs/public/r/hover-image-reveal.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/fly-around-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-47
+packages/registry/src/effects/squiggle-arrow.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-80
+apps/docs/public/r/flicker-reflect-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/message-loading.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/image-tabs.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/glow-corner-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/variable-font-hover-by-letter.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/step-modal.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/file-manager-table.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-137
+packages/registry/src/effects/glow-track-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-111
+packages/registry/src/effects/scroll-blur-text.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-60
+packages/registry/src/effects/system-message.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-54
+packages/registry/src/effects/generated-image.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-43
+apps/docs/public/r/morph-select.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/shape-mask.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-90
+packages/registry/src/effects/circular-text-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-120
+packages/registry/src/effects/plus-share-burst.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-82
+apps/docs/public/r/texture-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/reasoning.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/pin-toggle.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/catalog.ts
+  s_307160b37d2896::t_ea5053bc508507 40-44,100,121,123-124,126-129,252,254-255,257-260,271,2336-2340,2445-2461,2484-2485,2488,2500
+  s_307160b37d2896::t_1032266f8b2536 45-49,2341-2345
+apps/docs/public/r/agent-intro-sequence.json
+  s_307160b37d2896::t_ea5053bc508507 1-24
+apps/docs/public/r/stateful-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/batch45-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-220
+packages/registry/src/effects/portfolio-filter-grid.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-94
+packages/registry/src/effects/glitch-slice-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-101
+packages/registry/src/effects/neon-hold-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-96
+packages/registry/src/effects/hover-image-reveal.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-72
+packages/registry/src/effects/uno-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-72
+packages/registry/src/examples/effect-demos-46.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-108
+apps/docs/public/r/timeline-reveal.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/sticky-banner.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/phone-ring-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-76
+packages/registry/src/effects/blur-unveil-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-55
+packages/registry/src/effects/hover-blocks-grid.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-75
+apps/docs/public/r/pendulum-social-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/neo-star-shapes.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-104
+apps/docs/public/r/expandable-text.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/security-checkpoint.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-150
+apps/docs/public/r/map-pin-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/signup-split-page.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/use-typewriter.json
+  s_307160b37d2896::t_ea5053bc508507 1-19
+packages/registry/src/hooks/use-typewriter.ts
+  s_307160b37d2896::t_ea5053bc508507 1-81
+apps/docs/public/r/word-wheel-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/source.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/battery-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-63
+packages/registry/src/effects/bottom-navigation.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-168
+packages/registry/src/effects/timeline-reveal.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-54
+packages/registry/src/effects/site-footer.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-141
+packages/registry/src/examples/effect-demos-52.tsx
+  s_307160b37d2896::t_9a2b63337baf9e 1-53
+packages/registry/src/effects/star-rating.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-167
+packages/registry/src/effects/image-tabs.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-68
+apps/docs/public/r/tweet-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+licenses/apache/spectrum-ui/NOTICE
+  s_307160b37d2896::t_ea5053bc508507 12-16
+packages/registry/src/effects/progressive-carousel.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-112
+packages/registry/src/effects/login-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-108
+apps/docs/public/r/hover-gallery.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/batch37-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-157
+packages/registry/src/effects/contact-form.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-107
+packages/registry/src/effects/liquid-gradient-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-126
+apps/docs/public/r/neo-star-shapes.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/bookmark-burst-toggle.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/form-validator.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/random-letter-swap.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-118
+apps/docs/public/r/glow-search-input.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/chain-of-thought.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-97
+apps/docs/public/r/cosmic-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/neo-brutal-kit.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/pin-toggle.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-66
+packages/registry/src/effects/shortcut-recorder.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-554
+packages/registry/src/effects/tool.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-104
+apps/docs/public/r/neon-hold-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/retro-press-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/flicker-reflect-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-60
+packages/registry/src/effects/element-along-svg-path.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-125
+packages/registry/src/effects/password-field.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-106
+packages/registry/src/effects/blur-vignette.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-107
+apps/docs/public/r/use-media-query.json
+  s_307160b37d2896::t_ea5053bc508507 1-17
+packages/registry/src/effects/book-page-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-33
+packages/registry/src/effects/hover-gallery.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-90
+apps/docs/public/r/github-profile-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/chat-message-list.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+apps/docs/public/r/theme-switch-transitions.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/account-access-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-173
+apps/docs/public/r/blockquote.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/corner-indicator.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-54
+packages/registry/src/effects/glass-clock-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-104
+packages/registry/src/effects/ai-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-216
+packages/registry/src/effects/cosmic-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-73
+packages/registry/src/effects/batch43-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-125
+packages/registry/src/effects/source.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-97
+apps/docs/public/r/liquid-gradient-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/texture-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-84
+packages/registry/src/effects/tweet-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-63
+packages/registry/src/effects/variable-font-hover-by-letter.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-107
+packages/registry/src/effects/caption-image-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-39
+packages/registry/src/catalog-batch36.ts
+  s_307160b37d2896::t_ea5053bc508507 5-11,14-18,20-21,23-100,102-106,108-128,133-202,204,206-207,209-224,229-231,233,235-236,238-329
+packages/registry/src/effects/user-menu.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-463
+packages/registry/src/effects/inline-edit.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-400
+apps/docs/public/r/battery-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/scroll-cue-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/transfer-funds-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/blockquote.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-101
+packages/registry/src/effects/map-pin-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-38
+packages/registry/src/effects/brush-chart.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-498
+packages/registry/src/effects/transaction-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-71
+apps/docs/public/r/float.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/email-template.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-121
+apps/docs/public/r/floating-button-group.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/not-found-page.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-132
+packages/registry/src/effects/response-stream.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-295
+apps/docs/public/r/generated-image.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/treemap.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/effects/glow-wander-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-81
+apps/docs/public/r/lightboard.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/file-input.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-75
+apps/docs/public/r/category-search-input.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/effects/thinking-bar.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-60
+packages/registry/src/examples/effect-demos-40.tsx
+  s_307160b37d2896::t_ea5053bc508507 3-4,6-198,200-202,207,209-210,215,217-219
+apps/docs/public/r/streamgraph.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+registry.json
+  s_307160b37d2896::t_ea5053bc508507 12335-15135
+  s_307160b37d2896::t_59e6c7c9eb909b 15136-15138
+packages/registry/src/effects/speech-bubble.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-49
+apps/docs/public/r/multi-step-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/side-panel.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/examples/effect-demos-45.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-166
+apps/docs/public/r/scroll-blur-text.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/catalog-batch37.ts
+  s_307160b37d2896::t_ea5053bc508507 4-7,11-15,17-18,20-22,27-31,33-34,36-44,49-53,55-56,58-264
+packages/registry/src/effects/collab-avatar.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-68
+apps/docs/public/r/tool.json
+  s_307160b37d2896::t_ea5053bc508507 1-24
+apps/docs/public/r/speech-bubble.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/bookmark-burst-toggle.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-88
+apps/docs/public/r/system-message.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/dotted-glow-background.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-202
+packages/registry/src/effects/propeller-orb.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-78
+packages/registry/src/effects/slope-chart.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-297
+apps/docs/public/r/filter-chips.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/inline-edit.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+packages/registry/src/effects/multi-step-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-233
+packages/registry/src/effects/scroll-cue-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-71
+packages/registry/src/effects/transfer-funds-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-111
+apps/docs/public/r/phone-ring-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/hatch-divider.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-28
+apps/docs/public/r/blog-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/catalog-batch45.ts
+  s_307160b37d2896::t_ea5053bc508507 1-392
+apps/docs/public/r/slope-chart.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/tilt-sweep-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/email-template.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/brush-chart.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/folded-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/glass-clock-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/prompt-suggestion.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/split-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-24
+packages/registry/src/effects/expandable-chat.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-102
+packages/registry/src/effects/printer-icon-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-68
+packages/registry/src/effects/glow-search-input.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-78
+apps/docs/public/r/random-letter-swap.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/effects/shift-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-75
+packages/registry/src/effects/stat-trend-cards.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-50
+packages/registry/src/effects/agent-intro-sequence.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-214
+apps/docs/public/r/send-arrow-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/fly-around-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/time-range-picker.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-132
+packages/registry/src/effects/reasoning.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-111
+packages/registry/src/effects/batch40-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-191
+apps/docs/public/r/blur-vignette.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/flower-burst-button.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+apps/docs/public/r/collapsible-side-menu.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/treemap.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-372
+apps/docs/public/r/ridgeline.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/element-along-svg-path.json
+  s_307160b37d2896::t_ea5053bc508507 1-23
+apps/docs/public/r/star-favorite-toggle.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/transaction-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/morph-select.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-503
+apps/docs/public/r/team-section.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/underline-hover-link.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/elapsed-timer.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-140
+packages/registry/src/effects/star-ring-orbit.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-128
+apps/docs/public/r/tick-range.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/focus-line-input.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-54
+packages/registry/src/effects/pixel-bird-loader.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-170
+packages/registry/src/effects/side-panel.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-60
+packages/registry/src/effects/trash-delete-button.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-81
+packages/registry/src/catalog-batch47.ts
+  s_307160b37d2896::t_9a2b63337baf9e 1-117
+apps/docs/public/r/not-found-page.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/batch38-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-136
+packages/registry/src/effects/halo-switch.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-162
+packages/registry/src/hooks/use-media-query.ts
+  s_307160b37d2896::t_ea5053bc508507 1-17
+apps/docs/public/r/meeting-control-bar.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+apps/docs/public/r/file-manager-table.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/examples/effect-demos-47.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-266
+apps/docs/public/r/pacman-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/meeting-control-bar.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-110
+apps/docs/public/r/halo-switch.json
+  s_307160b37d2896::t_ea5053bc508507 1-24
+apps/docs/public/r/corner-indicator.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/ai-loader.json
+  s_307160b37d2896::t_ea5053bc508507 1-21
+packages/registry/src/effects/pendulum-social-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-61
+apps/docs/public/r/blur-unveil-card.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/prompt-suggestion.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-54
+packages/registry/src/effects/star-favorite-toggle.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-65
+apps/docs/public/r/contact-form.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/folded-card.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-96
+apps/docs/public/r/stat-trend-cards.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/catalog-batch39.ts
+  s_307160b37d2896::t_ea5053bc508507 4-7,11-123,125,127-128,130-133,138-155,157-203,205-206,208-212,217-233,235-249,251-252,254
+packages/registry/src/effects/multi-level-dropdown.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-188
+packages/registry/src/catalog-batch49.ts
+  s_307160b37d2896::t_9a2b63337baf9e 1-100
+packages/registry/src/effects/signup-split-page.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-180
+README.md
+  s_307160b37d2896::t_65c087a68e9ac4 826,836,846
+  s_307160b37d2896::t_f227c114fd4c9c 856,866
+  s_307160b37d2896::t_ea5053bc508507 576-790
+packages/registry/src/effects/letter-swap-pingpong.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-114
+packages/registry/src/effects/sticky-banner.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-96
+packages/registry/src/effects/batch41-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-172
+packages/registry/src/examples/effect-demos-39.tsx
+  s_307160b37d2896::t_ea5053bc508507 3,5-169,171-173,178-179,181-186,191,193-194
+apps/docs/public/r/list-group.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+apps/docs/public/r/site-footer.json
+  s_307160b37d2896::t_ea5053bc508507 1-20
+packages/registry/src/effects/batch39-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-187
+packages/registry/src/effects/float.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-81
+packages/registry/src/effects/halo-badge.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-156
+apps/docs/public/r/time-range-picker.json
+  s_307160b37d2896::t_ea5053bc508507 1-22
+packages/registry/src/effects/batch42-practical.test.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-202
+packages/registry/src/effects/message-loading.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-44
+packages/registry/src/effects/ridgeline.tsx
+  s_307160b37d2896::t_ea5053bc508507 1-394
+packages/registry/src/catalog-batch46.ts
+  s_307160b37d2896::t_9a2b63337baf9e 1-114
+packages/registry/src/audit-coverage.ts
+  s_307160b37d2896::t_ee3f54fa59a7ef 3-7,88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "c43ffe77b716f3e52fa0547d0adac9c0ae33e505",
+  "prompts": {},
+  "sessions": {
+    "s_307160b37d2896": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a163d6-5d56-7233-91b5-7dfd6862e8c8",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

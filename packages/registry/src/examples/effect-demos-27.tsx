@@ -60,9 +60,17 @@ export function AttractButtonDemo() {
   )
 }
 
-export function DotFieldDemo() {
+export function DotFieldDemo({
+  spacing = 16,
+  interactive = true,
+  seed = 7,
+}: {
+  spacing?: number
+  interactive?: boolean
+  seed?: number
+} = {}) {
   return (
-    <DotField className="min-h-96 w-full">
+    <DotField className="min-h-96 w-full" spacing={spacing} interactive={interactive} seed={seed}>
       <p className="relative z-10 text-lg font-medium">点阵</p>
     </DotField>
   )

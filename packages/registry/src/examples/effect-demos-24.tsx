@@ -51,10 +51,18 @@ export function PixelImageDemo() {
   return <PixelImage src={pixelSrc} className="h-64 max-w-xl" />
 }
 
-export function GeoPatternsDemo() {
+export function GeoPatternsDemo({
+  variant = "hexagon",
+  direction = "left",
+  gap = 8,
+}: {
+  variant?: "hexagon" | "striped"
+  direction?: "left" | "right" | "up" | "down"
+  gap?: number
+} = {}) {
   return (
     <div className="relative h-64 w-full overflow-hidden rounded-xl border bg-background">
-      <GeoPatterns highlights={[[1, 1], [3, 2]]} />
+      <GeoPatterns variant={variant} direction={direction} gap={gap} highlights={[[1, 1], [3, 2]]} />
     </div>
   )
 }

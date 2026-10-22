@@ -20,9 +20,9 @@ export const batch27Components: ComponentMeta[] = [
     file: "effects/novatrix-background.tsx",
     target: "components/ui/novatrix-background.tsx",
     props: [
-      { name: "amplitude", type: "number", defaultValue: "0.1", description: "指针把波形推开的幅度。" },
-      { name: "mouseReact", type: "boolean", defaultValue: "false", description: "指针搅动色波。" },
-      { name: "speed", type: "number", defaultValue: "1", description: "流动的时间倍率。" },
+      { name: "amplitude", type: "number", defaultValue: "0.1", description: "指针把波形推开的幅度。", control: { kind: "range", value: 0.1, min: 0, max: 0.4, step: 0.01 } },
+      { name: "mouseReact", type: "boolean", defaultValue: "false", description: "指针搅动色波。", control: { kind: "boolean", value: true } },
+      { name: "speed", type: "number", defaultValue: "1", description: "流动的时间倍率。", control: { kind: "range", value: 0.8, min: 0.25, max: 2.5, step: 0.1 } },
       ...ui,
     ],
   },

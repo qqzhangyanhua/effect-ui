@@ -147,10 +147,18 @@ export function GooeySvgFilterDemo() {
   )
 }
 
-export function AnimatedGradientDemo() {
+export function AnimatedGradientDemo({
+  colors = ["#312e81", "#6366f1", "#f59e0b"],
+  speed = 8,
+  blur = "medium",
+}: {
+  colors?: string[]
+  speed?: number
+  blur?: "light" | "medium" | "heavy"
+} = {}) {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-2xl border">
-      <AnimatedGradient blur="medium" colors={["#312e81", "#6366f1", "#f59e0b"]} speed={8} />
+      <AnimatedGradient colors={colors} speed={speed} blur={blur} />
     </div>
   )
 }

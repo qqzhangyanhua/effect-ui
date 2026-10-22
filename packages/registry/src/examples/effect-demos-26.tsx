@@ -28,8 +28,16 @@ export function CradleTextDemo() {
   return <CradleText className="w-full" text="摇篮" />
 }
 
-export function DrapeBackgroundDemo() {
-  return <DrapeBackground className="min-h-96 w-full" />
+export function DrapeBackgroundDemo({
+  wind = 1,
+  pleat = 34,
+  interactive = true,
+}: {
+  wind?: number
+  pleat?: number
+  interactive?: boolean
+} = {}) {
+  return <DrapeBackground className="min-h-96 w-full" wind={wind} pleat={pleat} interactive={interactive} />
 }
 
 export function PluckedTextDemo() {
@@ -40,8 +48,16 @@ export function SwooshTextDemo() {
   return <SwooshText className="w-full text-center" text="挤出" />
 }
 
-export function TopoBackgroundDemo() {
-  return <TopoBackground className="min-h-96 w-full" />
+export function TopoBackgroundDemo({
+  interval = 0.07,
+  speed = 1,
+  interactive = true,
+}: {
+  interval?: number
+  speed?: number
+  interactive?: boolean
+} = {}) {
+  return <TopoBackground className="min-h-96 w-full" interval={interval} speed={speed} interactive={interactive} />
 }
 
 export function ShapeHeroDemo() {

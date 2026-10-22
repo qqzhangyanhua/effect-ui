@@ -156,9 +156,9 @@ export const batch30Components: ComponentMeta[] = [
     file: "effects/animated-gradient-with-svg.tsx",
     target: "components/ui/animated-gradient-with-svg.tsx",
     props: [
-      { name: "colors", type: "string[]", description: "色块颜色。" },
-      { name: "speed", type: "number", defaultValue: "5", description: "漂移一圈的秒数。" },
-      { name: "blur", type: '"light" | "medium" | "heavy"', defaultValue: "light", description: "模糊程度。" },
+      { name: "colors", type: "string[]", description: "色块颜色。", control: { kind: "colors", value: ["#312e81", "#6366f1", "#f59e0b"] } },
+      { name: "speed", type: "number", defaultValue: "5", description: "漂移一圈的秒数。", control: { kind: "range", value: 8, min: 1, max: 20, step: 1 } },
+      { name: "blur", type: '"light" | "medium" | "heavy"', defaultValue: "light", description: "模糊程度。", control: { kind: "select", value: "medium", options: ["light", "medium", "heavy"] } },
       ...ui,
     ],
   },

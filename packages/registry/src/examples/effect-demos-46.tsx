@@ -21,10 +21,18 @@ const scene = `data:image/svg+xml,${encodeURIComponent(
 
 const steps = [{ text: "核对清单" }, { text: "写入记录" }, { text: "通知相关的人" }]
 
-export function DottedGlowBackgroundDemo() {
+export function DottedGlowBackgroundDemo({
+  gap = 16,
+  opacity = 0.3,
+  speed = 1,
+}: {
+  gap?: number
+  opacity?: number
+  speed?: number
+} = {}) {
   return (
     <div className="relative h-64 w-full overflow-hidden rounded-xl border bg-background text-muted-foreground" style={{ ["--brand" as string]: "#3b5bdb" }}>
-      <DottedGlowBackground gap={16} opacity={0.3} />
+      <DottedGlowBackground gap={gap} opacity={opacity} speed={speed} />
       <p className="relative px-6 py-8 text-sm text-foreground">光晕从点阵上慢慢走过</p>
     </div>
   )

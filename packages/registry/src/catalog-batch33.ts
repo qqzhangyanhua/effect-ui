@@ -72,10 +72,10 @@ export const batch33Components: ComponentMeta[] = [
     file: "effects/css-pattern-background.tsx",
     target: "components/ui/css-pattern-background.tsx",
     props: [
-      { name: "variant", type: '"stripes" | "dots" | "honeycomb"', defaultValue: "stripes", description: "条纹、圆点或蜂巢。" },
-      { name: "color", type: "string", defaultValue: "var(--primary)", description: "图案主色。" },
+      { name: "variant", type: '"stripes" | "dots" | "honeycomb"', defaultValue: "stripes", description: "条纹、圆点或蜂巢。", control: { kind: "select", value: "stripes", options: ["stripes", "dots", "honeycomb"] } },
+      { name: "color", type: "string", defaultValue: "var(--primary)", description: "图案主色。", control: { kind: "color" } },
       { name: "size", type: "number", description: "图案尺寸。条纹默认 40，圆点默认 30，蜂巢默认 4。" },
-      { name: "speed", type: "number", description: "循环秒数。条纹默认 4，圆点默认 8，蜂巢默认 5。" },
+      { name: "speed", type: "number", description: "循环秒数。条纹默认 4，圆点默认 8，蜂巢默认 5。", control: { kind: "range", value: 4, min: 1, max: 16, step: 1 } },
       ...ui,
     ],
   },

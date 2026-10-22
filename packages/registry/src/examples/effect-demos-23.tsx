@@ -30,17 +30,33 @@ const sessions: ActiveSession[] = [
   { id: "pad", device: "tablet", browser: "Firefox", os: "Android", city: "成都", lastActive: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString() },
 ]
 
-export function GlyphMatrixDemo() {
-  return <GlyphMatrix text="北窗" className="h-56 w-full" />
+export function GlyphMatrixDemo({
+  text = "北窗",
+  glyphs = "01·•+*/\\<>=",
+  cellSize = 16,
+}: {
+  text?: string
+  glyphs?: string
+  cellSize?: number
+} = {}) {
+  return <GlyphMatrix text={text} glyphs={glyphs} cellSize={cellSize} className="h-56 w-full" />
 }
 
 export function DiaTextRevealDemo() {
   return <DiaTextReveal text="斜向扫过这段文字" />
 }
 
-export function WarpBackgroundDemo() {
+export function WarpBackgroundDemo({
+  perspective = 120,
+  beamsPerSide = 3,
+  beamSize = 8,
+}: {
+  perspective?: number
+  beamsPerSide?: number
+  beamSize?: number
+} = {}) {
   return (
-    <WarpBackground className="h-80 w-full">
+    <WarpBackground className="h-80 w-full" perspective={perspective} beamsPerSide={beamsPerSide} beamSize={beamSize}>
       <p className="mx-auto w-fit rounded-xl border bg-card px-4 py-3 text-sm">网格中的内容</p>
     </WarpBackground>
   )
@@ -54,10 +70,18 @@ export function BacklightDemo() {
   )
 }
 
-export function Floating3DParticlesDemo() {
+export function Floating3DParticlesDemo({
+  quantity = 90,
+  color = "#8b5cf6",
+  size = 4,
+}: {
+  quantity?: number
+  color?: string
+  size?: number
+} = {}) {
   return (
     <div className="relative h-72 w-full overflow-hidden rounded-xl border bg-background">
-      <Floating3DParticles />
+      <Floating3DParticles quantity={quantity} color={color} size={size} />
     </div>
   )
 }

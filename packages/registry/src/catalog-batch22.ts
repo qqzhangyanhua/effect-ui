@@ -105,9 +105,9 @@ export const batch22Components: ComponentMeta[] = [
     file: "effects/geo-patterns.tsx",
     target: "components/ui/geo-patterns.tsx",
     props: [
-      { name: "variant", type: '"hexagon" | "striped"', defaultValue: '"hexagon"', description: "图案种类。" },
-      { name: "direction", type: '"left" | "right" | "up" | "down"', defaultValue: '"left"', description: "斜纹走向；六边形在 left/right 时平顶，up/down 时尖顶。" },
-      { name: "gap", type: "number", defaultValue: "8", description: "格子间距，像素。" },
+      { name: "variant", type: '"hexagon" | "striped"', defaultValue: '"hexagon"', description: "图案种类。", control: { kind: "select", value: "hexagon", options: ["hexagon", "striped"] } },
+      { name: "direction", type: '"left" | "right" | "up" | "down"', defaultValue: '"left"', description: "斜纹走向；六边形在 left/right 时平顶，up/down 时尖顶。", control: { kind: "select", value: "left", options: ["left", "right", "up", "down"] } },
+      { name: "gap", type: "number", defaultValue: "8", description: "格子间距，像素。", control: { kind: "range", value: 8, min: 2, max: 24, step: 1 } },
       { name: "radius", type: "number", defaultValue: "28", description: "六边形半径，像素。" },
       { name: "highlights", type: "readonly [number, number][]", description: "要填色的六边形列行坐标。" },
       { name: "fade", type: "boolean", defaultValue: "true", description: "边缘径向淡出。" },

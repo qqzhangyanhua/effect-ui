@@ -66,9 +66,9 @@ export const batch29Components: ComponentMeta[] = [
     file: "effects/pixel-trail.tsx",
     target: "components/ui/pixel-trail.tsx",
     props: [
-      { name: "pixelSize", type: "number", defaultValue: "20", description: "格子边长，像素。" },
-      { name: "fadeDuration", type: "number", defaultValue: "500", description: "点亮后淡出的时长，毫秒。" },
-      { name: "delay", type: "number", defaultValue: "0", description: "淡出前的延迟，毫秒。" },
+      { name: "pixelSize", type: "number", defaultValue: "20", description: "格子边长，像素。", control: { kind: "range", value: 16, min: 8, max: 48, step: 1 } },
+      { name: "fadeDuration", type: "number", defaultValue: "500", description: "点亮后淡出的时长，毫秒。", control: { kind: "range", value: 700, min: 0, max: 2000, step: 50 } },
+      { name: "delay", type: "number", defaultValue: "0", description: "淡出前的延迟，毫秒。", control: { kind: "range", value: 0, min: 0, max: 800, step: 20 } },
       { name: "pixelClassName", type: "string", description: "单个格子的类名，用来上色。" },
       ...ui,
     ],

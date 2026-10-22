@@ -95,9 +95,9 @@ export const batch25Components: ComponentMeta[] = [
     target: "components/ui/dot-field.tsx",
     props: [
       { name: "children", type: "ReactNode", description: "叠在点阵上的内容。传入 null 只留背景。" },
-      { name: "spacing", type: "number", defaultValue: "16", description: "点与点的间距，像素。" },
-      { name: "interactive", type: "boolean", defaultValue: "true", description: "滑动推动点，点击发出冲击波。" },
-      { name: "seed", type: "number", defaultValue: "7", description: "半色调种子，同一页每次打开相同。" },
+      { name: "spacing", type: "number", defaultValue: "16", description: "点与点的间距，像素。", control: { kind: "range", value: 16, min: 8, max: 40, step: 1 } },
+      { name: "interactive", type: "boolean", defaultValue: "true", description: "滑动推动点，点击发出冲击波。", control: { kind: "boolean", value: true } },
+      { name: "seed", type: "number", defaultValue: "7", description: "半色调种子，同一页每次打开相同。", control: { kind: "range", value: 7, min: 1, max: 40, step: 1 } },
       ...ui,
     ],
   },

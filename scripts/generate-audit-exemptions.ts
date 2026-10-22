@@ -70,8 +70,26 @@ const rows = components
   })
   .sort((left, right) => left.name.localeCompare(right.name))
 
+/** 控件不足但已发布 prop 不够 3 个。重新生成时保留这条说明。 */
+const statedControlReasons: Readonly<Record<string, string>> = {
+  singularity: "只有 className，没有已发布的可调 prop。",
+  "rain-puddle": "只有 className，没有已发布的可调 prop。",
+  "distorted-glass": "只有 children，没有已发布的数值或颜色 prop。",
+  "merging-bubbles": "已发布的可调项只有数量和颜色两组，不够 3 个 Control。",
+  "svg-bands": "已发布的可调项只有颜色一组，不够 3 个 Control。",
+  "hover-blocks-grid": "已发布的可调项是两色和一组坐标，坐标不适合做成单个控件。",
+}
+
+function exemptionReason(name: string, gaps: readonly string[]): string {
+  if (gaps.length === 1 && gaps[0] === "控件不足") {
+    const stated = statedControlReasons[name]
+    if (stated) return stated
+  }
+  return "落地前已有缺口"
+}
+
 const body = rows
-  .map((row) => `  { name: "${row.name}", gaps: ${JSON.stringify(row.gaps)}, reason: "落地前已有缺口" },`)
+  .map((row) => `  { name: "${row.name}", gaps: ${JSON.stringify(row.gaps)}, reason: ${JSON.stringify(exemptionReason(row.name, row.gaps))} },`)
   .join("\n")
 
 const source = `import type { AuditExemption } from "./audit-coverage"

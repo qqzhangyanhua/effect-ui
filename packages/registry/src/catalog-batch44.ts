@@ -16,10 +16,10 @@ export const batch44Components: ComponentMeta[] = [
     file: "effects/dotted-glow-background.tsx",
     target: "components/ui/dotted-glow-background.tsx",
     props: [
-      { name: "gap", type: "number", defaultValue: "18", description: "点与点的间距，单位像素，最小按 4 处理。" },
+      { name: "gap", type: "number", defaultValue: "18", description: "点与点的间距，单位像素，最小按 4 处理。", control: { kind: "range", value: 16, min: 4, max: 36, step: 1 } },
       { name: "radius", type: "number", defaultValue: "1.2", description: "未点亮时的点半径，单位像素。" },
-      { name: "opacity", type: "number", defaultValue: "0.25", description: "未点亮点的不透明度，0 到 1。" },
-      { name: "speed", type: "number", defaultValue: "1", description: "光晕移动的速度倍数。" },
+      { name: "opacity", type: "number", defaultValue: "0.25", description: "未点亮点的不透明度，0 到 1。", control: { kind: "range", value: 0.3, min: 0, max: 1, step: 0.05 } },
+      { name: "speed", type: "number", defaultValue: "1", description: "光晕移动的速度倍数。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
       { name: "glows", type: "number", defaultValue: "3", description: "同时漂移的光晕数量。" },
       { name: "pauseOnHover", type: "boolean", defaultValue: "true", description: "指针在父元素上时停住。父元素内部焦点始终会停住。" },
       ...ui,

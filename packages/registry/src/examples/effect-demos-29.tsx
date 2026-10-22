@@ -41,9 +41,17 @@ const tools: VectorTool[] = [
   },
 ]
 
-export function NovatrixBackgroundDemo() {
+export function NovatrixBackgroundDemo({
+  amplitude = 0.1,
+  mouseReact = true,
+  speed = 0.8,
+}: {
+  amplitude?: number
+  mouseReact?: boolean
+  speed?: number
+} = {}) {
   return (
-    <NovatrixBackground className="h-64 w-full rounded-2xl" color={[0.55, 0.75, 1]} mouseReact speed={0.8} />
+    <NovatrixBackground className="h-64 w-full rounded-2xl" color={[0.55, 0.75, 1]} amplitude={amplitude} mouseReact={mouseReact} speed={speed} />
   )
 }
 

@@ -30,11 +30,19 @@ const swatch = (color: string) =>
     `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="80"><rect width="160" height="80" fill="${color}"/></svg>`,
   )}`
 
-export function PixelTrailDemo() {
+export function PixelTrailDemo({
+  pixelSize = 16,
+  fadeDuration = 700,
+  delay = 0,
+}: {
+  pixelSize?: number
+  fadeDuration?: number
+  delay?: number
+} = {}) {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-2xl border bg-zinc-950">
       <p className="pointer-events-none absolute top-4 left-4 z-10 text-sm text-zinc-300">指针划过会点亮格子</p>
-      <PixelTrail fadeDuration={700} pixelClassName="bg-indigo-400" pixelSize={16} />
+      <PixelTrail pixelSize={pixelSize} fadeDuration={fadeDuration} delay={delay} pixelClassName="bg-indigo-400" />
     </div>
   )
 }

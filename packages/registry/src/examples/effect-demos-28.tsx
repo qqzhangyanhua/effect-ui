@@ -26,17 +26,33 @@ const poster = `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="640" height="360" fill="#0f172a"/><circle cx="180" cy="140" r="70" fill="#38bdf8"/><circle cx="430" cy="210" r="96" fill="#f59e0b"/></svg>`,
 )}`
 
-export function AuroraCurtainDemo() {
+export function AuroraCurtainDemo({
+  bands = 4,
+  speed = 1,
+  intensity = 0.9,
+}: {
+  bands?: number
+  speed?: number
+  intensity?: number
+} = {}) {
   return (
-    <AuroraCurtain className="h-64 w-full rounded-2xl" intensity={0.9} noise={0.35}>
+    <AuroraCurtain className="h-64 w-full rounded-2xl" bands={bands} speed={speed} intensity={intensity} noise={0.35}>
       <div className="flex h-64 items-end p-6 text-2xl font-semibold text-white">极光帷幕</div>
     </AuroraCurtain>
   )
 }
 
-export function GravityStarsDemo() {
+export function GravityStarsDemo({
+  color = "#e2e8f0",
+  count = 80,
+  speed = 1,
+}: {
+  color?: string
+  count?: number
+  speed?: number
+} = {}) {
   return (
-    <GravityStars className="h-64 w-full rounded-2xl bg-slate-950" color="#e2e8f0" count={80}>
+    <GravityStars className="h-64 w-full rounded-2xl bg-slate-950" color={color} count={count} speed={speed}>
       <div className="flex h-64 items-end p-6 text-sm text-slate-200">把指针移近星群</div>
     </GravityStars>
   )
@@ -58,9 +74,17 @@ export function RansomNoteDemo() {
   return <RansomNote animate="assemble" className="text-3xl" text="北窗夜航" />
 }
 
-export function LiquidMetalDemo() {
+export function LiquidMetalDemo({
+  variant = "gold",
+  speed = 1,
+  distortion = 1,
+}: {
+  variant?: "chrome" | "gold" | "mercury" | "oil"
+  speed?: number
+  distortion?: number
+} = {}) {
   return (
-    <LiquidMetal className="h-56 w-full" variant="gold">
+    <LiquidMetal className="h-56 w-full" variant={variant} speed={speed} distortion={distortion}>
       <div className="flex h-56 items-end p-6 text-2xl font-semibold text-white">液态金属</div>
     </LiquidMetal>
   )

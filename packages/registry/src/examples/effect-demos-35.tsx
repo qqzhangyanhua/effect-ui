@@ -56,10 +56,18 @@ export function EyeBlinkLoaderDemo() {
   )
 }
 
-export function CssPatternBackgroundDemo() {
+export function CssPatternBackgroundDemo({
+  variant = "stripes",
+  color,
+  speed = 4,
+}: {
+  variant?: "stripes" | "dots" | "honeycomb"
+  color?: string
+  speed?: number
+} = {}) {
   return (
     <div className="mx-auto grid w-[720px] max-w-full grid-cols-3 gap-3 p-6">
-      <CssPatternBackground className="h-36 w-full rounded-xl" variant="stripes" />
+      <CssPatternBackground className="h-36 w-full rounded-xl" variant={variant} color={color} speed={speed} />
       <CssPatternBackground className="h-36 w-full rounded-xl" color="#38bdf8" variant="dots" />
       <CssPatternBackground className="h-36 w-full rounded-xl" color="#f5f5f4" size={4} variant="honeycomb" />
     </div>

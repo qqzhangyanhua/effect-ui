@@ -23,16 +23,32 @@ const actions = [
   { label: "分享", icon: <Share2 className="size-4" /> },
 ]
 
-export function BoidsEcosystemDemo() {
+export function BoidsEcosystemDemo({
+  count = 80,
+  colors = ["#f5f5f4", "#fde68a", "#93c5fd", "#fca5a5"],
+  cursorRadius = 90,
+}: {
+  count?: number
+  colors?: string[]
+  cursorRadius?: number
+} = {}) {
   return (
-    <BoidsEcosystem className="w-full">
+    <BoidsEcosystem className="w-full" count={count} colors={colors} cursorRadius={cursorRadius}>
       <p className="text-sm text-white">把指针移进鸟群</p>
     </BoidsEcosystem>
   )
 }
 
-export function ShootingStarsDemo() {
-  return <ShootingStars className="w-full" frequency={1.4} angle={32} color="#fde68a" />
+export function ShootingStarsDemo({
+  frequency = 1.4,
+  angle = 32,
+  color = "#fde68a",
+}: {
+  frequency?: number
+  angle?: number
+  color?: string
+} = {}) {
+  return <ShootingStars className="w-full" frequency={frequency} angle={angle} color={color} />
 }
 
 export function FibonacciLinesDemo() {

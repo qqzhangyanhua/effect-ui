@@ -36,6 +36,7 @@ import * as effectDemos34 from "./effect-demos-34"
 import * as effectDemos35 from "./effect-demos-35"
 import * as effectDemos36 from "./effect-demos-36"
 import * as effectDemos37 from "./effect-demos-37"
+import * as effectDemos38 from "./effect-demos-38"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -681,6 +682,9 @@ const demoMap: Record<string, ComponentType> = {
   "faq-tabs-card": effectDemos37.FaqTabsCardDemo,
   "nav-list-card": effectDemos37.NavListCardDemo,
   "folder-float": effectDemos37.FolderFloatDemo,
+  "card-toss-stack": effectDemos38.CardTossStackDemo,
+  "toss-to-trash": effectDemos38.TossToTrashDemo,
+  "sticky-note-board": effectDemos38.StickyNoteBoardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

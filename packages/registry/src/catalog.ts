@@ -50,6 +50,7 @@ import { batch50Components } from "./catalog-batch50"
 import { batch51Components } from "./catalog-batch51"
 import { batch52Components } from "./catalog-batch52"
 import { batch53Components } from "./catalog-batch53"
+import { batch54Components } from "./catalog-batch54"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -134,6 +135,7 @@ export type SourceLibrary =
   | "AI Canvas"
   | "interior"
   | "beUI"
+  | "uselayouts"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -269,6 +271,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "AI Canvas": "https://github.com/uiNerd16/aicanvas",
   interior: "https://github.com/ddoemonn/interior",
   beUI: "https://github.com/starc007/ui-components",
+  uselayouts: "https://github.com/iurvish/uselayouts",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2357,6 +2360,7 @@ export const components: ComponentMeta[] = [
   ...batch51Components,
   ...batch52Components,
   ...batch53Components,
+  ...batch54Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2476,6 +2480,8 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "button-retry-backoff",
       "press-depth",
       "action-swap",
+      "paper-shred-button",
+      "get-in-touch",
     ],
   },
 ]
@@ -2576,7 +2582,8 @@ export function componentCluster(name: string): ComponentCluster | undefined {
     name.endsWith("-button") ||
     name === "pull-cord" ||
     name === "press-depth" ||
-    name === "action-swap"
+    name === "action-swap" ||
+    name === "get-in-touch"
   )
     return "button"
   if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"

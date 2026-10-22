@@ -573,6 +573,28 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 铅锤、棘轮与书脊
+
+登记在 `catalog-batch51.ts`。抛掷已占用 `catalog-batch46.ts`。`success-plumb-bob`、`checkbox-domino-run`、`autosave-ratchet`、`button-retry-backoff`、`craze-rule`、`banner-tear-stub`、`feed-escapement`、`cruet-settle`、`undo-ghost-row`、`container-box-drawing`、`transfer-list-siphon`、`drill-down-spines`、`due-slip`、`contra-strike`、`galley-bracket` 移植自 ns-ui（MIT，Copyright (c) 2026 Nikolas Sapalidis）。ns-ui 的颜色变量映射到 effect-ui 主题变量，能写成 Tailwind 的静态样式不再内联。没有新增依赖。状态变化仍走 aria-live。减弱动效保持原来的终态或离散步进。离开视口时动画帧和 CSS 动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| success-plumb-bob | ns-ui，MIT |
+| checkbox-domino-run | ns-ui，MIT |
+| autosave-ratchet | ns-ui，MIT |
+| button-retry-backoff | ns-ui，MIT |
+| craze-rule | ns-ui，MIT |
+| banner-tear-stub | ns-ui，MIT |
+| feed-escapement | ns-ui，MIT |
+| cruet-settle | ns-ui，MIT |
+| undo-ghost-row | ns-ui，MIT |
+| container-box-drawing | ns-ui，MIT |
+| transfer-list-siphon | ns-ui，MIT |
+| drill-down-spines | ns-ui，MIT |
+| due-slip | ns-ui，MIT |
+| contra-strike | ns-ui，MIT |
+| galley-bracket | ns-ui，MIT |
+
 ### 主题切换、图表与账号菜单
 
 登记在 `catalog-batch45.ts`。上一批点阵光晕已占用 `catalog-batch44.ts`。`theme-switch-transitions`、`floating-button-group`、`morph-select`、`streamgraph`、`waffle-chart`、`treemap`、`slope-chart`、`ridgeline`、`split-button`、`shortcut-recorder`、`inline-edit`、`expandable-text`、`brush-chart`、`user-menu`、`password-field` 移植自 Arc Library（MIT，Copyright (c) 2026 Elia Kuratli）。CSS module 改成组件内样式，Arc 颜色变量映射到 effect-ui 主题变量，`motion` 换成 `motion/react`。图标用已有的 lucide-react，菜单和提示用已有的 Radix dropdown-menu、popover、tooltip、dialog。没有新增依赖。图表保留 `<title>` 和屏幕阅读摘要。减弱动效或离开视口时旋转、滑动、弹簧高度和描线停住，直接显示终态。

@@ -47,6 +47,7 @@ import { batch47Components } from "./catalog-batch47"
 import { batch48Components } from "./catalog-batch48"
 import { batch49Components } from "./catalog-batch49"
 import { batch50Components } from "./catalog-batch50"
+import { batch51Components } from "./catalog-batch51"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -127,6 +128,7 @@ export type SourceLibrary =
   | "Velora UI"
   | "Neobrutalism"
   | "Arc Library"
+  | "ns-ui"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -258,6 +260,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Velora UI": "https://github.com/ColorlibHQ/velora-ui",
   Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
   "Arc Library": "https://github.com/kuratlielia/arc-library",
+  "ns-ui": "https://github.com/nikolas-sapa/ns-ui",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2343,6 +2346,7 @@ export const components: ComponentMeta[] = [
   ...batch48Components,
   ...batch49Components,
   ...batch50Components,
+  ...batch51Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2459,6 +2463,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "neumorph-button",
       "stateful-button",
       "split-button",
+      "button-retry-backoff",
     ],
   },
 ]

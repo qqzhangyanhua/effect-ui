@@ -5,6 +5,7 @@ import { batch47Components } from "./catalog-batch47"
 import { batch48Components } from "./catalog-batch48"
 import { batch49Components } from "./catalog-batch49"
 import { batch50Components } from "./catalog-batch50"
+import { batch51Components } from "./catalog-batch51"
 import { effectCategories } from "./prop-vocabulary"
 import { registryFiles, type RegistryCatalogEntry } from "./registry-item"
 
@@ -85,7 +86,7 @@ function hasControl(prop: unknown): boolean {
 
 export function exemptionClosedNames(): ReadonlySet<string> {
   return new Set(
-    [...batch34Components, ...batch35Components, ...batch46Components, ...batch47Components, ...batch48Components, ...batch49Components, ...batch50Components].map((entry) => entry.name),
+    [...batch34Components, ...batch35Components, ...batch46Components, ...batch47Components, ...batch48Components, ...batch49Components, ...batch50Components, ...batch51Components].map((entry) => entry.name),
   )
 }
 

@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## ns-ui
+
+- 仓库：https://github.com/nikolas-sapa/ns-ui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Nikolas Sapalidis
+- 衍生组件：`success-plumb-bob`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/loud/success-plumb-bob/component.tsx）、`checkbox-domino-run`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/checkbox-domino-run/component.tsx）、`autosave-ratchet`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/autosave-ratchet/component.tsx）、`button-retry-backoff`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/button-retry-backoff/component.tsx）、`craze-rule`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/craze-rule/component.tsx）、`banner-tear-stub`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/banner-tear-stub/component.tsx）、`feed-escapement`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/feed-escapement/component.tsx）、`cruet-settle`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/cruet-settle/component.tsx）、`undo-ghost-row`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/undo-ghost-row/component.tsx）、`container-box-drawing`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/container-box-drawing/component.tsx）、`transfer-list-siphon`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/transfer-list-siphon/component.tsx）、`drill-down-spines`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/drill-down-spines/component.tsx）、`due-slip`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/due-slip/component.tsx）、`contra-strike`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/contra-strike/component.tsx）、`galley-bracket`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/galley-bracket/component.tsx）
+
 ## Arc Library
 
 - 仓库：https://github.com/kuratlielia/arc-library

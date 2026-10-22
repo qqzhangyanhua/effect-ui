@@ -2407,6 +2407,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "async-morph-button",
       "follow-button",
       "share-button",
+      "jelly-button",
     ],
   },
 ]

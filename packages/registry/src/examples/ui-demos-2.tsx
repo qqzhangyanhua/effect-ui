@@ -405,14 +405,18 @@ export function ProgressDemo() {
 
 export function RadioGroupDemo() {
   return (
-    <RadioGroup defaultValue="a" className="flex gap-4">
+    <RadioGroup defaultValue="docs" className="flex gap-4">
       <div className="flex items-center gap-2">
-        <RadioGroupItem value="a" id="a" />
-        <Label htmlFor="a">A</Label>
+        <RadioGroupItem value="docs" id="radio-docs" />
+        <Label htmlFor="radio-docs">文档</Label>
       </div>
       <div className="flex items-center gap-2">
-        <RadioGroupItem value="b" id="b" />
-        <Label htmlFor="b">B</Label>
+        <RadioGroupItem value="registry" id="radio-registry" />
+        <Label htmlFor="radio-registry">Registry</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <RadioGroupItem value="off" id="radio-off" disabled />
+        <Label htmlFor="radio-off">禁用</Label>
       </div>
     </RadioGroup>
   )

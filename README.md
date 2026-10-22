@@ -66,6 +66,8 @@ registry.json          shadcn 兼容总表
 
 ### 基础组件（shadcn/ui）
 
+复选、开关、单选、选择、多行文本、滑块各自收成一个文档入口，已有的增强和动效跟基础组件在同一页里向下滚动查看。路径是 `/docs/checkboxes`、`/docs/switches`、`/docs/radios`、`/docs/selects`、`/docs/textareas`、`/docs/sliders`。
+
 button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table · field · input-group · button-group · kbd · empty · item · native-select · combobox · date-picker · typography · direction
 
 ### Hooks

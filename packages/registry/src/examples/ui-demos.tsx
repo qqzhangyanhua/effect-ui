@@ -73,7 +73,13 @@ export function InputDemo() {
 }
 
 export function TextareaDemo() {
-  return <Textarea className="max-w-md" placeholder="写一段组件使用备注…" />
+  return (
+    <div className="grid w-full max-w-md gap-3">
+      <Textarea placeholder="写一段组件使用备注…" />
+      <Textarea placeholder="禁用" disabled />
+      <Textarea defaultValue="格式不对" aria-invalid />
+    </div>
+  )
 }
 
 export function LabelDemo() {
@@ -211,27 +217,59 @@ export function SonnerDemo() {
 
 export function SwitchDemo() {
   return (
-    <div className="flex items-center gap-3">
-      <Switch id="dark-preview" />
-      <Label htmlFor="dark-preview">夜间模式预览</Label>
+    <div className="flex flex-wrap items-center gap-6">
+      <div className="flex items-center gap-2">
+        <Switch id="switch-off" />
+        <Label htmlFor="switch-off">关</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Switch id="switch-on" defaultChecked />
+        <Label htmlFor="switch-on">开</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Switch id="switch-disabled" disabled />
+        <Label htmlFor="switch-disabled">禁用</Label>
+      </div>
     </div>
   )
 }
 
 export function CheckboxDemo() {
   return (
-    <div className="flex items-center gap-2">
-      <Checkbox id="newsletter" defaultChecked />
-      <Label htmlFor="newsletter">订阅更新</Label>
+    <div className="flex flex-wrap items-center gap-6">
+      <div className="flex items-center gap-2">
+        <Checkbox id="checkbox-off" />
+        <Label htmlFor="checkbox-off">未选</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="checkbox-on" defaultChecked />
+        <Label htmlFor="checkbox-on">已选</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="checkbox-mixed" checked="indeterminate" onCheckedChange={() => undefined} />
+        <Label htmlFor="checkbox-mixed">半选</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="checkbox-disabled" disabled />
+        <Label htmlFor="checkbox-disabled">禁用</Label>
+      </div>
     </div>
   )
 }
 
-export function SelectDemo() {
+function SelectSample({
+  placeholder,
+  disabled,
+  defaultValue,
+}: {
+  placeholder: string
+  disabled?: boolean
+  defaultValue?: string
+}) {
   return (
-    <Select defaultValue="motion">
+    <Select defaultValue={defaultValue} disabled={disabled}>
       <SelectTrigger>
-        <SelectValue placeholder="选择特效" />
+        <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="motion">Motion</SelectItem>
@@ -239,6 +277,16 @@ export function SelectDemo() {
         <SelectItem value="canvas">Canvas</SelectItem>
       </SelectContent>
     </Select>
+  )
+}
+
+export function SelectDemo() {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SelectSample placeholder="选择特效" defaultValue="motion" />
+      <SelectSample placeholder="占位" />
+      <SelectSample placeholder="禁用" disabled />
+    </div>
   )
 }
 
@@ -285,9 +333,12 @@ export function AvatarDemo() {
 export function SliderDemo() {
   const [value, setValue] = React.useState<number[]>([42])
   return (
-    <div className="w-full max-w-sm space-y-2">
-      <Slider value={value} onValueChange={setValue} max={100} step={1} />
-      <p className="text-sm text-muted-foreground">当前值：{value[0]}</p>
+    <div className="grid w-full max-w-sm gap-6">
+      <div className="space-y-2">
+        <Slider value={value} onValueChange={setValue} max={100} step={1} />
+        <p className="text-sm text-muted-foreground">当前值：{value[0]}</p>
+      </div>
+      <Slider defaultValue={[20]} max={100} step={1} disabled />
     </div>
   )
 }

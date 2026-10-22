@@ -573,6 +573,27 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 奖状、日记与补全
+
+登记在 `catalog-batch59.ts`。折页、液团与徽章已占用 `catalog-batch58.ts`。`inline-action`、`emoji-spree-choice-chips`、`award`、`journal-navigation`、`tooltip-navbar`、`carousel-navigator`、`labeled-progress-indicator`、`frequency-selector`、`status-picker`、`quick-paste`、`contextual-ai-bar`、`predictive-text`、`feature-tour`、`budget-card` 移植自 Watermelon UI（MIT，Copyright (c) 2025-present Watermelon Contributors），提交 `86052b8`。竖向提示条并进 `tooltip-navbar` 的 `direction`。`gauge` 的接口和配色与 Animate UI 的仪表盘重合，没有移植。液态按钮、涟漪按钮、图标按钮和径向开场同样没有移植。远程图片改成主题色占位，没有请求 `assets.watermelon.sh`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| inline-action | Watermelon UI，MIT |
+| emoji-spree-choice-chips | Watermelon UI，MIT |
+| award | Watermelon UI，MIT |
+| journal-navigation | Watermelon UI，MIT |
+| tooltip-navbar | Watermelon UI，MIT |
+| carousel-navigator | Watermelon UI，MIT |
+| labeled-progress-indicator | Watermelon UI，MIT |
+| frequency-selector | Watermelon UI，MIT |
+| status-picker | Watermelon UI，MIT |
+| quick-paste | Watermelon UI，MIT |
+| contextual-ai-bar | Watermelon UI，MIT |
+| predictive-text | Watermelon UI，MIT |
+| feature-tour | Watermelon UI，MIT |
+| budget-card | Watermelon UI，MIT |
+
 ### 折页、液团与徽章
 
 登记在 `catalog-batch58.ts`。火漆、货车与案头已占用 `catalog-batch57.ts`。`progress-fold-button`、`magic-tab`、`magic-input`、`blueprint-grid`、`liquid-metaballs`、`spin-viewer`、`progressive-card-reveal`、`inertia-gallery`、`agent-timeline`、`agent-flow`、`comment-pin`、`presence-facepile`、`stack-badge`、`store-badge` 移植自 GodUI（MIT，Copyright (c) 2026 Lucas Bassetti），提交 `1f632a7`。`framer-motion` 改成 `motion/react`。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。主题色改成主题变量。弹簧参数写在组件里。图标用 `lucide-react`。评论钉和头像墙各自内联了姓名哈希，没有新建 presence 模块。旋转查看器的示例帧是内联 SVG，没有图片文件。商店徽章去掉了二维码，没有加入 `uqr`。液团位置按序号播种。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

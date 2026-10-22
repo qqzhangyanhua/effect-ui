@@ -59,6 +59,7 @@ import * as effectDemos57 from "./effect-demos-57"
 import * as effectDemos58 from "./effect-demos-58"
 import * as effectDemos59 from "./effect-demos-59"
 import * as effectDemos60 from "./effect-demos-60"
+import * as effectDemos61 from "./effect-demos-61"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -958,6 +959,20 @@ const demoMap: Record<string, ComponentType> = {
   "presence-facepile": effectDemos60.PresenceFacepileDemo,
   "stack-badge": effectDemos60.StackBadgeDemo,
   "store-badge": effectDemos60.StoreBadgeDemo,
+  "inline-action": effectDemos61.InlineActionDemo,
+  "emoji-spree-choice-chips": effectDemos61.EmojiSpreeChoiceChipsDemo,
+  "award": effectDemos61.AwardDemo,
+  "journal-navigation": effectDemos61.JournalNavigationDemo,
+  "tooltip-navbar": effectDemos61.TooltipNavbarDemo,
+  "carousel-navigator": effectDemos61.CarouselNavigatorDemo,
+  "labeled-progress-indicator": effectDemos61.LabeledProgressIndicatorDemo,
+  "frequency-selector": effectDemos61.FrequencySelectorDemo,
+  "status-picker": effectDemos61.StatusPickerDemo,
+  "quick-paste": effectDemos61.QuickPasteDemo,
+  "contextual-ai-bar": effectDemos61.ContextualAiBarDemo,
+  "predictive-text": effectDemos61.PredictiveTextDemo,
+  "feature-tour": effectDemos61.FeatureTourDemo,
+  "budget-card": effectDemos61.BudgetCardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

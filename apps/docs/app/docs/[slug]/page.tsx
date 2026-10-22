@@ -24,15 +24,22 @@ interface DocsPageProps {
   params: Promise<{ slug: string }>
 }
 
-function componentExportName(source: string) {
+function componentExportName(source: string, slug = "") {
   const match = source.match(/export\s*\{([^}]+)\}/)
   const body = match?.[1]
-  if (!body) return ""
-  for (const part of body.split(",")) {
-    const name = part.trim()
-    if (name.length === 0 || name.startsWith("type ")) continue
-    return name.split(/\s+as\s+/)[0]?.trim() ?? ""
+  if (body) {
+    for (const part of body.split(",")) {
+      const name = part.trim()
+      if (name.length === 0 || name.startsWith("type ")) continue
+      return name.split(/\s+as\s+/)[0]?.trim() ?? ""
+    }
   }
+  const expected = slug
+    .split("-")
+    .filter((part) => part.length > 0)
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join("")
+  if (expected.length > 0 && new RegExp(`export\\s+function\\s+${expected}\\b`).test(source)) return expected
   return ""
 }
 
@@ -135,7 +142,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
           ) : (
             <ComponentPreview
               Demo={Demo}
-              componentName={primary ? componentExportName(primary.code) : ""}
+              componentName={primary ? componentExportName(primary.code, item.name) : ""}
               controls={controls}
               presets={item.presets}
             />

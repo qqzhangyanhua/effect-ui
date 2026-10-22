@@ -51,7 +51,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/shadcnblocks/kibo（原 haydenbleasel/kibo）
 - 许可：MIT
 - 版权：Copyright (c) 2023 — Present shadcnblocks
-- 衍生组件：`dropzone`、`tag-input`、`color-picker`、`code-block`、`kanban`、`rich-text-editor`、`video-player`（按 Kibo 风格封装原生 `<video>`，未引入 Vidstack）、`announcement`、`banner`、`pill`、`relative-time`、`ticker`、`dialog-stack`、`choicebox`。只使用 https://github.com/shadcnblocks/kibo 这份 MIT 仓库，未使用 shadcnblocks 的付费区块。
+- 衍生组件：`dropzone`、`tag-input`、`color-picker`、`code-block`、`kanban`、`rich-text-editor`、`video-player`（按 Kibo 风格封装原生 `<video>`，未引入 Vidstack）、`announcement`、`banner`、`pill`、`relative-time`、`ticker`、`dialog-stack`、`choicebox`、`snippet`、`status`、`stories`、`mini-calendar`、`reel`、`cursor`。只使用 https://github.com/shadcnblocks/kibo 这份 MIT 仓库，未使用 shadcnblocks 的付费区块。`mini-calendar` 用 `@radix-ui/react-slot` 代替 `radix-ui` 伞包。
 
 ## Origin UI（coss.com/origin）
 
@@ -181,6 +181,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
 - 衍生组件：`pixel-trail`、`screensaver`、`media-between-text`、`letter-3d-swap`、`vertical-cut-reveal`、`text-cursor-proximity`、`elastic-line`、`breathing-text`、`text-highlighter`，以及 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events`。本批另加 `css-box`、`drag-elements`、`scroll-and-swap-text`、`underline-to-background`、`parallax-floating`、`pixelate-svg-filter`、`gooey-svg-filter`、`animated-gradient-with-svg`，以及 hook `use-debounced-dimensions`。
+
+## SyntaxUI
+
+- 仓库：https://github.com/SyntaxUI/syntaxui
+- 许可：MIT
+- 版权：Copyright (c) 2024 SyntaxUI
+- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`。原 `framer-motion` 导入已改为 `motion/react`。
 
 ## shadcn-ui-expansions
 

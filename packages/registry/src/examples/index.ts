@@ -31,6 +31,7 @@ import * as effectDemos29 from "./effect-demos-29"
 import * as effectDemos30 from "./effect-demos-30"
 import * as effectDemos31 from "./effect-demos-31"
 import * as effectDemos32 from "./effect-demos-32"
+import * as effectDemos33 from "./effect-demos-33"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -600,6 +601,21 @@ const demoMap: Record<string, ComponentType> = {
   ticker: effectDemos32.TickerDemo,
   "dialog-stack": effectDemos32.DialogStackDemo,
   choicebox: effectDemos32.ChoiceboxDemo,
+  "skewed-infinite-scroll": effectDemos33.SkewedInfiniteScrollDemo,
+  "constellation-loader": effectDemos33.ConstellationLoaderDemo,
+  "particle-swarm-loader": effectDemos33.ParticleSwarmLoaderDemo,
+  "spinning-cube-loader": effectDemos33.SpinningCubeLoaderDemo,
+  "whirlpool-loader": effectDemos33.WhirlpoolLoaderDemo,
+  "emoji-confetti": effectDemos33.EmojiConfettiDemo,
+  "star-wars-button": effectDemos33.StarWarsButtonDemo,
+  "text-drop": effectDemos33.TextDropDemo,
+  snippet: effectDemos33.SnippetDemo,
+  status: effectDemos33.StatusDemo,
+  stories: effectDemos33.StoriesDemo,
+  "mini-calendar": effectDemos33.MiniCalendarDemo,
+  reel: effectDemos33.ReelDemo,
+  cursor: effectDemos33.CursorDemo,
+  "labeled-toggle": effectDemos33.LabeledToggleDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

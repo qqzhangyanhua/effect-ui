@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinning-cube-loader",
+  "type": "registry:ui",
+  "title": "Spinning Cube Loader",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/SpinningCubeLoader.tsx 带透视的方块同时绕 X 和 Y 转一圈。size、color、duration 可配。减弱动效或离开视口时停在一个斜角。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/spinning-cube-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/spinning-cube-loader.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI (MIT, (c) 2024 SyntaxUI) — https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/SpinningCubeLoader.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion } from \"motion/react\"\nimport { useRef } from \"react\"\n\nexport interface SpinningCubeLoaderProps {\n  size?: number\n  color?: string\n  duration?: number\n  className?: string\n}\n\nexport function SpinningCubeLoader({\n  size = 64,\n  color = \"#fb3a5d\",\n  duration = 2,\n  className,\n}: SpinningCubeLoaderProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const animate = !prefersReducedMotion && motionOn\n\n  return (\n    <div\n      className={cn(\"grid place-items-center\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"spinning-cube-loader\"\n      ref={ref}\n      style={{ perspective: 280 }}\n    >\n      <motion.div\n        animate={animate ? { rotateX: 360, rotateY: 360 } : { rotateX: 18, rotateY: 24 }}\n        className=\"rounded-2xl\"\n        style={{ width: size, height: size, background: color }}\n        transition={animate ? { duration, ease: \"easeInOut\", repeat: Infinity } : { duration: 0 }}\n      />\n    </div>\n  )\n}\n"
+    }
+  ]
+}

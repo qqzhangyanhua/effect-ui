@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 斜切滚动、星座加载与短视频
+
+登记在 `catalog-batch31.ts`。上一批立方体已占用 `catalog-batch30.ts`。八个动效和 `labeled-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI），源文件在 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/ 。原文件的 `framer-motion` 已换成 `motion/react`。六个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks）。没有新增依赖。`mini-calendar` 用已安装的 `@radix-ui/react-slot` 代替 `radix-ui` 伞包。减弱动效时斜切滚动停住、星座和漩涡静止、粒子收成圆点、方块停转、emoji 只弹出一个、跃迁按钮只变色、落字直接显示、状态点不闪、故事卡片不缩放、短视频不自动播放、开关旋钮直接到位。
+
+| 组件 | 来源 |
+| --- | --- |
+| skewed-infinite-scroll | SyntaxUI，MIT |
+| constellation-loader | SyntaxUI，MIT |
+| particle-swarm-loader | SyntaxUI，MIT |
+| spinning-cube-loader | SyntaxUI，MIT |
+| whirlpool-loader | SyntaxUI，MIT |
+| emoji-confetti | SyntaxUI，MIT |
+| star-wars-button | SyntaxUI，MIT |
+| text-drop | SyntaxUI，MIT |
+| labeled-toggle | SyntaxUI，MIT |
+| snippet | Kibo UI，MIT |
+| status | Kibo UI，MIT |
+| stories | Kibo UI，MIT |
+| mini-calendar | Kibo UI，MIT |
+| reel | Kibo UI，MIT |
+| cursor | Kibo UI，MIT |
+
 ### 立方体、粘连滤镜与堆叠对话框
 
 登记在 `catalog-batch30.ts`。上一批像素拖尾已占用 `catalog-batch29.ts`。八个动效移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho），源文件在 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/ 。`use-debounced-dimensions` 来自同一仓库的 `src/hooks`。`parallax-floating` 复用已有的 `use-mouse-position-ref`。七个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks），不是 shadcnblocks 的付费区块。没有新增依赖。`dialog-stack` 用 `createPortal` 代替 `radix-ui` 伞包。减弱动效时盒子直接转向、拖拽没有惯性、滚动字保持静态、下划线立刻铺开、指针漂浮停住、像素化和粘连演示不再动画、渐变色块静止、状态点不闪、堆叠对话框不做过渡。

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-drop",
+  "type": "registry:ui",
+  "title": "Text Drop",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/text/text-drop/TextDrop.tsx 字母从上方落下再落到原位。DropCharacters 已并进同一组件。text、stagger、delay 可配。减弱动效时直接显示整句。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/text-drop.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/text-drop.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI (MIT, (c) 2024 SyntaxUI) — https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/text/text-drop/TextDrop.tsx\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion } from \"motion/react\"\n\nexport interface TextDropProps {\n  text: string\n  stagger?: number\n  delay?: number\n  className?: string\n}\n\nconst letter = {\n  hidden: { y: \"120%\", opacity: 0 },\n  visible: { y: \"0%\", opacity: 1 },\n}\n\nexport function TextDrop({ text, stagger = 0.035, delay = 0, className }: TextDropProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n\n  if (prefersReducedMotion) {\n    return (\n      <span className={cn(\"inline-block text-3xl font-semibold\", className)} data-reduced=\"true\" data-slot=\"text-drop\">\n        {text}\n      </span>\n    )\n  }\n\n  const words = text.split(\" \")\n  return (\n    <motion.span\n      animate=\"visible\"\n      className={cn(\"inline-block text-3xl font-semibold\", className)}\n      data-reduced=\"false\"\n      data-slot=\"text-drop\"\n      initial=\"hidden\"\n      transition={{ staggerChildren: stagger, delayChildren: delay }}\n    >\n      {words.map((word, wordIndex) => (\n        <span className=\"inline-block whitespace-nowrap\" key={`${word}-${wordIndex}`}>\n          {[...word, wordIndex < words.length - 1 ? \"\\u00A0\" : \"\"].map((char, charIndex) =>\n            char ? (\n              <span className=\"inline-block overflow-hidden\" key={`${char}-${charIndex}`}>\n                <motion.span\n                  className=\"inline-block\"\n                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}\n                  variants={letter}\n                >\n                  {char}\n                </motion.span>\n              </span>\n            ) : null,\n          )}\n        </span>\n      ))}\n    </motion.span>\n  )\n}\n"
+    }
+  ]
+}

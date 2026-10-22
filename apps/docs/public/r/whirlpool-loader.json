@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "whirlpool-loader",
+  "type": "registry:ui",
+  "title": "Whirlpool Loader",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/WhirlpoolLoader.tsx 点沿着 5 圈螺旋从半径 5 排到 95，整体缓慢旋转。segments、rotations、duration、color 可配。减弱动效或离开视口时螺旋停住。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/whirlpool-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/whirlpool-loader.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI (MIT, (c) 2024 SyntaxUI) — https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/WhirlpoolLoader.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion } from \"motion/react\"\nimport { useMemo, useRef } from \"react\"\n\nexport interface WhirlpoolLoaderProps {\n  segments?: number\n  rotations?: number\n  duration?: number\n  color?: string\n  className?: string\n}\n\nexport function WhirlpoolLoader({\n  segments = 50,\n  rotations = 5,\n  duration = 20,\n  color = \"#fb3a5d\",\n  className,\n}: WhirlpoolLoaderProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const animate = !prefersReducedMotion && motionOn\n  const dots = useMemo(() => {\n    const count = Math.max(segments, 1)\n    return Array.from({ length: count }, (_, index) => {\n      const angle = (index / count) * Math.PI * 2 * rotations\n      const radius = 5 + (90 * index) / Math.max(count - 1, 1)\n      return {\n        x: Math.round(Math.cos(angle) * radius * 1e4) / 1e4,\n        y: Math.round(Math.sin(angle) * radius * 1e4) / 1e4,\n        r: Math.round((1.6 + (index / count) * 2.4) * 1e4) / 1e4,\n      }\n    })\n  }, [rotations, segments])\n\n  return (\n    <div\n      className={cn(\"grid h-60 w-60 place-items-center\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"whirlpool-loader\"\n      ref={ref}\n    >\n      <svg aria-hidden=\"true\" className=\"size-full\" viewBox=\"-100 -100 200 200\">\n        <motion.g\n          initial={false}\n          animate={animate ? { rotate: 360 } : { rotate: 0 }}\n          transition={animate ? { duration, repeat: Infinity, ease: \"linear\" } : { duration: 0 }}\n        >\n          {dots.map((dot, index) => (\n            <motion.circle\n              initial={false}\n              animate={animate ? { scale: [0.6, 1, 0.6], opacity: [0.45, 1, 0.45] } : { scale: 1, opacity: 1 }}\n              cx={dot.x}\n              cy={dot.y}\n              fill={color}\n              key={`${dot.x}-${dot.y}`}\n              r={dot.r}\n              transition={\n                animate\n                  ? { duration: 1.6, delay: (index / dots.length) * 1.2, repeat: Infinity, ease: \"easeInOut\" }\n                  : { duration: 0 }\n              }\n            />\n          ))}\n        </motion.g>\n      </svg>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

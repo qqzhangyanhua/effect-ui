@@ -37,6 +37,7 @@ import { batch37Components } from "./catalog-batch37"
 import { batch38Components } from "./catalog-batch38"
 import { batch39Components } from "./catalog-batch39"
 import { batch40Components } from "./catalog-batch40"
+import { batch41Components } from "./catalog-batch41"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -109,6 +110,7 @@ export type SourceLibrary =
   | "three"
   | "ReUI"
   | "Tremor Raw"
+  | "daisyUI"
   | "Uiverse"
   | "HyperUI"
   | "Meraki UI"
@@ -235,6 +237,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   SyntaxUI: "https://syntaxui.com",
   ReUI: "https://reui.io",
   "Tremor Raw": "https://raw.tremor.so",
+  daisyUI: "https://github.com/saadeghi/daisyui",
   Uiverse: "https://uiverse.io",
   HyperUI: "https://github.com/markmead/hyperui",
   "Meraki UI": "https://github.com/merakiuilabs/merakiui",
@@ -2315,6 +2318,7 @@ export const components: ComponentMeta[] = [
   ...batch38Components,
   ...batch39Components,
   ...batch40Components,
+  ...batch41Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2444,6 +2448,7 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "mic-search-input",
       "newsletter-input",
       "pin-display-input",
+      "file-input",
     ],
   },
   { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input"] },

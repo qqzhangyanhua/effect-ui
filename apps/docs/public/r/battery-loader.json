@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "battery-loader",
+  "type": "registry:ui",
+  "title": "Battery Loader",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 JaydipPrajapati1910。https://github.com/uiverse-io/galaxy/blob/main/loaders/JaydipPrajapati1910_strong-zebra-9.html 电量用 repeating-linear-gradient，以 steps(6) 把 background-size 放到 120%。color、duration、value 可配。value 为 0 到 100 时停在该百分比。示例绿放在 demo。减弱动效或离开视口时停在半格，正极仍在。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/battery-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/battery-loader.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author JaydipPrajapati1910）— https://github.com/uiverse-io/galaxy/blob/main/loaders/JaydipPrajapati1910_strong-zebra-9.html. Modified for effect-ui.\n\nimport { useRef, type HTMLAttributes } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BatteryLoaderProps extends HTMLAttributes<HTMLDivElement> {\n  color?: string\n  duration?: number\n  value?: number\n}\n\nconst keyframes = `\n@keyframes battery-loader-fill {\n  100% { background-size: 120% 100%; }\n}\n`\n\nexport function BatteryLoader({ color = \"var(--primary)\", duration = 2, value, className, ...props }: BatteryLoaderProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const hasValue = typeof value === \"number\" && Number.isFinite(value)\n  const active = !reduced && motionOn && !hasValue\n  const cycle = Math.max(0.2, duration)\n  const fill = hasValue ? Math.min(100, Math.max(0, value)) : undefined\n  const nub = `linear-gradient(#0000 calc(50% - 14px), ${color} 0 calc(50% - 10px), #0000 0 calc(50% + 10px), ${color} 0 calc(50% + 14px), #0000 0) left / 100% 100% no-repeat, linear-gradient(${color} calc(50% - 10px), #0000 0 calc(50% + 10px), ${color} 0) left / 4px 100% no-repeat, linear-gradient(#0000 calc(50% - 10px), ${color} 0 calc(50% + 10px), #0000 0) right / 4px 100% no-repeat`\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      aria-label=\"加载中\"\n      className={cn(\"relative box-border\", className)}\n      data-fill={fill ?? (active ? \"animated\" : \"50\")}\n      data-motion={active ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"battery-loader\"\n      role=\"status\"\n      style={{\n        width: 160,\n        height: 80,\n        border: `4px solid ${color}`,\n        borderRightColor: \"transparent\",\n        padding: 6,\n        backgroundImage: `repeating-linear-gradient(90deg, ${color} 0 20px, transparent 0 30px)`,\n        backgroundRepeat: \"no-repeat\",\n        backgroundOrigin: \"content-box\",\n        backgroundClip: \"content-box\",\n        backgroundPosition: \"left center\",\n        backgroundSize: fill === undefined ? (active ? \"0% 100%\" : \"50% 100%\") : `${fill}% 100%`,\n        animation: active ? `battery-loader-fill ${cycle}s infinite steps(6)` : \"none\",\n      }}\n    >\n      <style>{keyframes}</style>\n      <span aria-hidden className=\"absolute\" style={{ top: -4, bottom: -4, left: \"100%\", width: 20, background: nub }} />\n    </div>\n  )\n}\n"
+    }
+  ]
+}

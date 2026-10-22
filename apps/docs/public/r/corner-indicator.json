@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "corner-indicator",
+  "type": "registry:ui",
+  "title": "Corner Indicator",
+  "description": "移植自 daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi。 https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/indicator.css 在内容的角上放一个或多个标记。垂直位置是 top、middle、bottom，水平位置是 start、center、end，默认右上。从右到左书写时 start 和 end 对调。items 与 children 可配。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/corner-indicator.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/corner-indicator.tsx",
+      "content": "\"use client\"\n\n// Ported from daisyUI（MIT，(c) 2020 Pouya Saadeghi）— https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/indicator.css. Modified for effect-ui.\n\nimport type { HTMLAttributes, ReactNode } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CornerIndicatorItem {\n  label?: ReactNode\n  children?: ReactNode\n  vertical?: \"top\" | \"middle\" | \"bottom\"\n  horizontal?: \"start\" | \"center\" | \"end\"\n}\n\nexport interface CornerIndicatorProps extends HTMLAttributes<HTMLDivElement> {\n  items?: CornerIndicatorItem[]\n  children?: ReactNode\n}\n\nconst places = `\n[data-slot=\"corner-indicator\"] [data-part=\"item\"] { position: absolute; z-index: 1; white-space: nowrap; }\n[data-slot=\"corner-indicator\"] [data-vertical=\"top\"] { top: 0; bottom: auto; --indicator-y: -50%; }\n[data-slot=\"corner-indicator\"] [data-vertical=\"middle\"] { top: 50%; bottom: auto; --indicator-y: -50%; }\n[data-slot=\"corner-indicator\"] [data-vertical=\"bottom\"] { top: auto; bottom: 0; --indicator-y: 50%; }\n[data-slot=\"corner-indicator\"] [data-horizontal=\"start\"] { left: 0; right: auto; --indicator-x: -50%; }\n[data-slot=\"corner-indicator\"] [data-horizontal=\"center\"] { left: 50%; right: auto; --indicator-x: -50%; }\n[data-slot=\"corner-indicator\"] [data-horizontal=\"end\"] { left: auto; right: 0; --indicator-x: 50%; }\n[dir=\"rtl\"] [data-slot=\"corner-indicator\"] [data-horizontal=\"start\"] { left: auto; right: 0; --indicator-x: 50%; }\n[dir=\"rtl\"] [data-slot=\"corner-indicator\"] [data-horizontal=\"end\"] { left: 0; right: auto; --indicator-x: -50%; }\n[dir=\"rtl\"] [data-slot=\"corner-indicator\"] [data-horizontal=\"center\"] { left: auto; right: 50%; --indicator-x: 50%; }\n[data-slot=\"corner-indicator\"] [data-part=\"item\"] { translate: var(--indicator-x) var(--indicator-y); }\n`\n\nexport function CornerIndicator({ items = [], children, className, ...props }: CornerIndicatorProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <div {...props} className={cn(\"relative inline-flex w-max\", className)} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"corner-indicator\">\n      <style>{places}</style>\n      {children}\n      {items.map((item, index) => {\n        const vertical = item.vertical ?? \"top\"\n        const horizontal = item.horizontal ?? \"end\"\n        return (\n          <span key={`${vertical}-${horizontal}-${index}`} className=\"rounded-full bg-primary px-1.5 text-xs text-primary-foreground\" data-horizontal={horizontal} data-part=\"item\" data-vertical={vertical}>\n            {item.children ?? item.label}\n          </span>\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

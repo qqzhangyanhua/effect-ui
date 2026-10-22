@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-validator",
+  "type": "registry:ui",
+  "title": "Form Validator",
+  "description": "移植自 daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi。 https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/validator.css 原生输入在 :user-valid 时用图表色描边，:user-invalid 或 aria-invalid 时用危险色，并显示 hint。hint 通过 aria-describedby 关联。不支持 :user-invalid 时，失焦走 checkValidity 并写入 aria-invalid。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/form-validator.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/form-validator.tsx",
+      "content": "\"use client\"\n\n// Ported from daisyUI（MIT，(c) 2020 Pouya Saadeghi）— https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/validator.css. Modified for effect-ui.\n\nimport { useId, useState, type InputHTMLAttributes, type ReactNode } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FormValidatorProps extends Omit<InputHTMLAttributes<HTMLInputElement>, \"size\"> {\n  label?: ReactNode\n  hint?: ReactNode\n}\n\nconst rules = `\n[data-slot=\"form-validator\"]:has(:user-valid) input {\n  border-color: var(--chart-2);\n}\n[data-slot=\"form-validator\"]:has(:user-invalid) input,\n[data-slot=\"form-validator\"]:has([aria-invalid=\"true\"]) input,\n[data-slot=\"form-validator\"][data-invalid=\"true\"] input {\n  border-color: var(--destructive);\n}\n[data-slot=\"form-validator\"] [data-part=\"hint\"] {\n  visibility: hidden;\n  margin-top: 0.5rem;\n  font-size: 0.75rem;\n  color: var(--muted-foreground);\n}\n[data-slot=\"form-validator\"]:has(:user-invalid) [data-part=\"hint\"],\n[data-slot=\"form-validator\"]:has([aria-invalid=\"true\"]) [data-part=\"hint\"],\n[data-slot=\"form-validator\"][data-invalid=\"true\"] [data-part=\"hint\"] {\n  visibility: visible;\n  color: var(--destructive);\n}\n`\n\nexport function FormValidator({ label, hint, className, id, ...props }: FormValidatorProps) {\n  const reduced = usePrefersReducedMotion()\n  const generated = useId()\n  const inputId = id ?? generated\n  const hintId = `${inputId}-hint`\n  const [invalid, setInvalid] = useState(false)\n\n  return (\n    <div className={cn(\"grid gap-1\", className)} data-invalid={invalid ? \"true\" : \"false\"} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"form-validator\">\n      <style>{rules}</style>\n      {label != null ? (\n        <label className=\"text-sm text-foreground\" htmlFor={inputId}>\n          {label}\n        </label>\n      ) : null}\n      <input\n        {...props}\n        aria-describedby={hint != null ? hintId : props[\"aria-describedby\"]}\n        aria-invalid={invalid ? true : props[\"aria-invalid\"]}\n        className=\"h-10 rounded-md border border-border bg-background px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n        id={inputId}\n        onBlur={(event) => {\n          props.onBlur?.(event)\n          if (event.defaultPrevented) return\n          setInvalid(!event.currentTarget.checkValidity())\n        }}\n      />\n      {hint != null ? (\n        <p data-part=\"hint\" data-state={invalid ? \"invalid\" : \"idle\"} id={hintId}>\n          {hint}\n        </p>\n      ) : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

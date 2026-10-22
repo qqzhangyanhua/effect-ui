@@ -41,6 +41,7 @@ import * as effectDemos39 from "./effect-demos-39"
 import * as effectDemos40 from "./effect-demos-40"
 import * as effectDemos41 from "./effect-demos-41"
 import * as effectDemos42 from "./effect-demos-42"
+import * as effectDemos43 from "./effect-demos-43"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -761,6 +762,21 @@ const demoMap: Record<string, ComponentType> = {
   "signup-split-page": effectDemos42.SignupSplitPageDemo,
   "step-modal": effectDemos42.StepModalDemo,
   "portfolio-filter-grid": effectDemos42.PortfolioFilterGridDemo,
+  "pacman-loader": effectDemos43.PacmanLoaderDemo,
+  "battery-loader": effectDemos43.BatteryLoaderDemo,
+  "ringed-planet-loader": effectDemos43.RingedPlanetLoaderDemo,
+  "pixel-bird-loader": effectDemos43.PixelBirdLoaderDemo,
+  "phone-ring-loader": effectDemos43.PhoneRingLoaderDemo,
+  "glass-clock-loader": effectDemos43.GlassClockLoaderDemo,
+  "hover-gallery": effectDemos43.HoverGalleryDemo,
+  "icon-swap": effectDemos43.IconSwapDemo,
+  "shape-mask": effectDemos43.ShapeMaskDemo,
+  "form-validator": effectDemos43.FormValidatorDemo,
+  "corner-indicator": effectDemos43.CornerIndicatorDemo,
+  "filter-chips": effectDemos43.FilterChipsDemo,
+  "file-input": effectDemos43.FileInputDemo,
+  "tick-range": effectDemos43.TickRangeDemo,
+  "site-footer": effectDemos43.SiteFooterDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

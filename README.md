@@ -555,6 +555,29 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 立方体、粘连滤镜与堆叠对话框
+
+登记在 `catalog-batch30.ts`。上一批像素拖尾已占用 `catalog-batch29.ts`。八个动效移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho），源文件在 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/ 。`use-debounced-dimensions` 来自同一仓库的 `src/hooks`。`parallax-floating` 复用已有的 `use-mouse-position-ref`。七个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks），不是 shadcnblocks 的付费区块。没有新增依赖。`dialog-stack` 用 `createPortal` 代替 `radix-ui` 伞包。减弱动效时盒子直接转向、拖拽没有惯性、滚动字保持静态、下划线立刻铺开、指针漂浮停住、像素化和粘连演示不再动画、渐变色块静止、状态点不闪、堆叠对话框不做过渡。
+
+| 组件 | 来源 |
+| --- | --- |
+| css-box | Fancy Components，MIT |
+| drag-elements | Fancy Components，MIT |
+| scroll-and-swap-text | Fancy Components，MIT |
+| underline-to-background | Fancy Components，MIT |
+| parallax-floating | Fancy Components，MIT |
+| pixelate-svg-filter | Fancy Components，MIT |
+| gooey-svg-filter | Fancy Components，MIT |
+| animated-gradient-with-svg | Fancy Components，MIT |
+| announcement | Kibo UI，MIT |
+| banner | Kibo UI，MIT |
+| pill | Kibo UI，MIT |
+| relative-time | Kibo UI，MIT |
+| ticker | Kibo UI，MIT |
+| dialog-stack | Kibo UI，MIT |
+| choicebox | Kibo UI，MIT |
+| use-debounced-dimensions | Fancy Components，MIT |
+
 ### 像素拖尾、弹性线与高亮
 
 登记在 `catalog-batch29.ts`。上一批透视字已占用 `catalog-batch28.ts`。九个动效移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho），源文件在 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/ 。配套 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events` 来自同一仓库的 `src/hooks`。六个实用组件移植自 shadcn-ui-expansions（MIT，Copyright (c) 2024 shadcnui-expansions），源文件在 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/ 。没有新增依赖。`pixel-trail` 用 `useId` 代替 `uuid`。`heading-with-anchor` 用 `<a>` 代替 `next/link`。`responsive-modal` 继续使用仓库里已有的 `tw-animate-css`。离开视口后暂停屏保、弹性线和靠近指针的插值。减弱动效时不留拖尾、屏保停在起点、字母不翻转、裁切文字直接显示、荧光笔直接铺满、加载图标不旋转。

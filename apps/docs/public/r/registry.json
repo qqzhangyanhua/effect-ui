@@ -10936,6 +10936,310 @@
           "target": "components/ui/responsive-modal.tsx"
         }
       ]
+    },
+    {
+      "name": "use-debounced-dimensions",
+      "type": "registry:hook",
+      "title": "Use Debounced Dimensions",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/hooks/use-debounced-dimensions.ts 读取元素宽高，resize 停 250ms 后再量。首次测量放在微任务里。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-debounced-dimensions.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-debounced-dimensions.ts"
+        }
+      ]
+    },
+    {
+      "name": "css-box",
+      "type": "registry:ui",
+      "title": "CSS Box",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/css-box.tsx 纯 CSS 六面盒子。draggable 时拖动旋转，刚度阻尼走弹簧。ref 可以转到指定面。减弱动效或离开视口时直接转到目标角度，不走弹簧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/css-box.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/css-box.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drag-elements",
+      "type": "registry:ui",
+      "title": "Drag Elements",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/drag-elements.tsx 一组可拖动的元素，带惯性和回弹。selectedOnTop 把正在拖的元素放到最前。减弱动效时关掉惯性。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drag-elements.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drag-elements.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-and-swap-text",
+      "type": "registry:ui",
+      "title": "Scroll And Swap Text",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/scroll-and-swap-text.tsx 滚动时文字向上滚出，同一段文字从下方滚入。进度跟 containerRef 的滚动，并用 springConfig 平滑。减弱动效时只显示静态文字。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-and-swap-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-and-swap-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "underline-to-background",
+      "type": "registry:ui",
+      "title": "Underline To Background",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/underline-to-background.tsx 悬停时下划线向上铺成背景，文字变成 targetTextColor。高度和间距按字号比例计算。减弱动效时立刻切换。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/underline-to-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/underline-to-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "parallax-floating",
+      "type": "registry:ui",
+      "title": "Parallax Floating",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/image/parallax-floating.tsx Floating 里的 FloatingElement 按 depth 反向跟着指针漂移。和现有的滚动 parallax 不同，这个只看指针。减弱动效或离开视口时停在原位。复用已有的 use-mouse-position-ref。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-mouse-position-ref",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/parallax-floating.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/parallax-floating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pixelate-svg-filter",
+      "type": "registry:ui",
+      "title": "Pixelate SVG Filter",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/filter/pixelate-svg-filter.tsx SVG 滤镜，用 filter: url(#id) 把元素打成像素块。size 控制颗粒，crossLayers 补上横向和纵向的备用层。滤镜本身不动画，演示里悬停时用 Motion 改变 size。减弱动效时 size 保持静止。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/effects/pixelate-svg-filter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pixelate-svg-filter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-svg-filter",
+      "type": "registry:ui",
+      "title": "Gooey SVG Filter",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/filter/gooey-svg-filter.tsx 通用粘连滤镜：模糊加上透明度阈值，靠近的元素会融成一块。和现有的 gooey-button 不同，这个滤镜可以套在任意元素上。滤镜是静态的，演示里的圆点动画在减弱动效时关掉。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/effects/gooey-svg-filter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gooey-svg-filter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-gradient-with-svg",
+      "type": "registry:ui",
+      "title": "Animated Gradient With SVG",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/background/animated-gradient-with-svg.tsx 几团模糊色块在容器里按 CSS 动画漂移，叠成流动渐变。colors、speed、blur 可配。尺寸用 use-debounced-dimensions。减弱动效或离开视口时色块静止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-debounced-dimensions",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/animated-gradient-with-svg.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/animated-gradient-with-svg.tsx"
+        }
+      ]
+    },
+    {
+      "name": "announcement",
+      "type": "registry:ui",
+      "title": "Announcement",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/announcement/index.tsx 胶囊公告，由 Announcement、AnnouncementTag、AnnouncementTitle 组成。themed 打开主题色，悬停时阴影略加重。",
+      "dependencies": [],
+      "registryDependencies": [
+        "badge",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/announcement.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/announcement.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner",
+      "type": "registry:ui",
+      "title": "Banner",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/banner/index.tsx 页顶通知条，由 Banner、BannerIcon、BannerTitle、BannerAction、BannerClose 组成。visible 和 defaultVisible 支持受控与非受控。inset 使用圆角。关闭时调用 onClose。状态用仓库里已有的 use-controllable-state。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-controllable-state",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/banner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/banner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pill",
+      "type": "registry:ui",
+      "title": "Pill",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/pill/index.tsx 状态胶囊，可以放头像、头像组、状态点、涨跌、按钮和图标。PillIndicator 的 variant 是 success、error、warning、info，pulse 控制闪烁。减弱动效时不闪。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "relative-time",
+      "type": "registry:ui",
+      "title": "Relative Time",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/relative-time/index.tsx 多时区时钟。每个 RelativeTimeZone 用 zone 显示该时区的日期和时间。time 可受控，并有 onTimeChange。dateFormatOptions 和 timeFormatOptions 传给 Intl。未受控时每秒更新，离开视口后暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-controllable-state",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/relative-time.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/relative-time.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ticker",
+      "type": "registry:ui",
+      "title": "Ticker",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/ticker/index.tsx 行情条目：图标、代码、价格和涨跌。涨为绿色，跌为红色，isPercent 时按百分比显示。价格用 Intl.NumberFormat，currency 和 locale 可配。",
+      "dependencies": [],
+      "registryDependencies": [
+        "avatar",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ticker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ticker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog-stack",
+      "type": "registry:ui",
+      "title": "Dialog Stack",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/dialog-stack/index.tsx 多步堆叠对话框。前面的步骤缩小并留在后面，clickable 时可以点回去。DialogStackNext 和 DialogStackPrevious 切换步骤。open 支持受控和非受控。传送用 react-dom 的 createPortal，不依赖 radix-ui 伞包。减弱动效时不做缩放过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-controllable-state",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dialog-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "choicebox",
+      "type": "registry:ui",
+      "title": "Choicebox",
+      "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/choicebox/index.tsx 卡片式单选，基于仓库里的 radio-group。每一项有标题、副标题、说明和指示器。原来的 field 组件换成普通 label。",
+      "dependencies": [],
+      "registryDependencies": [
+        "radio-group",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/choicebox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/choicebox.tsx"
+        }
+      ]
     }
   ]
 }

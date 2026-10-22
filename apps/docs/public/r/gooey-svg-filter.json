@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gooey-svg-filter",
+  "type": "registry:ui",
+  "title": "Gooey SVG Filter",
+  "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/filter/gooey-svg-filter.tsx 通用粘连滤镜：模糊加上透明度阈值，靠近的元素会融成一块。和现有的 gooey-button 不同，这个滤镜可以套在任意元素上。滤镜是静态的，演示里的圆点动画在减弱动效时关掉。",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/effects/gooey-svg-filter.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/gooey-svg-filter.tsx",
+      "content": "\"use client\"\n\n// Ported from Fancy Components (MIT, (c) 2024 Daniel Petho) — https://github.com/danielpetho/fancy/blob/main/src/fancy/components/filter/gooey-svg-filter.tsx\n\nimport { useId } from \"react\"\n\nexport interface GooeySvgFilterProps {\n  id?: string\n  strength?: number\n}\n\nexport function GooeySvgFilter({ id, strength = 10 }: GooeySvgFilterProps) {\n  const reactId = useId().replace(/:/g, \"\")\n  const filterId = id ?? `gooey-${reactId}`\n\n  return (\n    <svg aria-hidden=\"true\" className=\"pointer-events-none absolute hidden\" data-slot=\"gooey-svg-filter\">\n      <defs>\n        <filter id={filterId}>\n          <feGaussianBlur in=\"SourceGraphic\" result=\"blur-sm\" stdDeviation={strength} />\n          <feColorMatrix in=\"blur-sm\" result=\"goo\" type=\"matrix\" values=\"1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9\" />\n          <feComposite in=\"SourceGraphic\" in2=\"goo\" operator=\"atop\" />\n        </filter>\n      </defs>\n    </svg>\n  )\n}\n"
+    }
+  ]
+}

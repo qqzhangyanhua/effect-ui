@@ -1,0 +1,24 @@
+packages/registry/src/effects/backgrounds-batch2.test.tsx
+  s_1f7fae292b4abd::t_71e3d0c0ae331f 3
+  s_1f7fae292b4abd::t_41188b971f660e 205-207,212-213
+  s_1f7fae292b4abd::t_692ca6af8bb9d6 335
+  s_1f7fae292b4abd::t_66c01e2956abc4 269
+  s_1f7fae292b4abd::t_675dbc6108b604 1-2,4-204,208-211,214-268,270-334,336-363,365-366
+  s_1f7fae292b4abd::t_b16d8f481bf7f0 364
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0cc3915199bf8c3687fa390064e01d1c86adc987",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

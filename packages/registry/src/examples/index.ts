@@ -32,6 +32,7 @@ import * as effectDemos30 from "./effect-demos-30"
 import * as effectDemos31 from "./effect-demos-31"
 import * as effectDemos32 from "./effect-demos-32"
 import * as effectDemos33 from "./effect-demos-33"
+import * as effectDemos34 from "./effect-demos-34"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -616,6 +617,21 @@ const demoMap: Record<string, ComponentType> = {
   reel: effectDemos33.ReelDemo,
   cursor: effectDemos33.CursorDemo,
   "labeled-toggle": effectDemos33.LabeledToggleDemo,
+  "hover-attention-button": effectDemos34.HoverAttentionButtonDemo,
+  "eco-mode-button": effectDemos34.EcoModeButtonDemo,
+  "rotating-complete-button": effectDemos34.RotatingCompleteButtonDemo,
+  "morphing-shapes-loader": effectDemos34.MorphingShapesLoaderDemo,
+  "neon-glow-loader": effectDemos34.NeonGlowLoaderDemo,
+  "ripple-wave-loader": effectDemos34.RippleWaveLoaderDemo,
+  "hover-spring-features": effectDemos34.HoverSpringFeaturesDemo,
+  "stitches-button": effectDemos34.StitchesButtonDemo,
+  attachment: effectDemos34.AttachmentDemo,
+  bubble: effectDemos34.BubbleDemo,
+  marker: effectDemos34.MarkerDemo,
+  trace: effectDemos34.TraceDemo,
+  "category-bar": effectDemos34.CategoryBarDemo,
+  "bar-list": effectDemos34.BarListDemo,
+  "tab-navigation": effectDemos34.TabNavigationDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

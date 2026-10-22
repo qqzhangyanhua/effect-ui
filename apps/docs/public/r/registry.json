@@ -11549,6 +11549,309 @@
           "target": "components/ui/labeled-toggle.tsx"
         }
       ]
+    },
+    {
+      "name": "hover-attention-button",
+      "type": "registry:ui",
+      "title": "Hover Attention Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/animations/hover/HoverJiggleButton.tsx 把摇晃、弹出、脉冲、欢呼和上下震动收成一个按钮，用 effect 切换。减弱动效或离开视口时不播放。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-attention-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-attention-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "eco-mode-button",
+      "type": "registry:ui",
+      "title": "Eco Mode Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/EcoModeButton.tsx 点击后叶子摇摆，绿色从左侧铺满。可受控。减弱动效时直接切换，叶子不摇。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-controllable-state",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/eco-mode-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/eco-mode-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rotating-complete-button",
+      "type": "registry:ui",
+      "title": "Rotating Complete Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/RotatingCompleteButton.tsx 点击后先进入处理中，箭头旋转 180°，再变成完成。减弱动效时直接完成。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rotating-complete-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rotating-complete-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morphing-shapes-loader",
+      "type": "registry:ui",
+      "title": "Morphing Shapes Loader",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/MorphingShapesLoader.tsx 色块在圆形和圆角方形之间来回变形。count、size、colors、duration 可配。减弱动效或离开视口时停在圆角方形。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morphing-shapes-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morphing-shapes-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neon-glow-loader",
+      "type": "registry:ui",
+      "title": "Neon Glow Loader",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/NeonGlowLoader.tsx 三个霓虹点依次发光缩放。colors、size、duration 可配。减弱动效或离开视口时保持静止光点。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/neon-glow-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/neon-glow-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-wave-loader",
+      "type": "registry:ui",
+      "title": "Ripple Wave Loader",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/RippleWaveLoader.tsx 一排竖条错相位起伏。count、color、duration 可配。减弱动效或离开视口时竖条站直。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ripple-wave-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ripple-wave-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-spring-features",
+      "type": "registry:ui",
+      "title": "Hover Spring Features",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/blocks/features/HoverSpringFeatures.tsx 功能卡片在悬停时用弹簧上移。图片用 img，不依赖 next/image。减弱动效或离开视口时不上移。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-spring-features.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-spring-features.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stitches-button",
+      "type": "registry:ui",
+      "title": "Stitches Button",
+      "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/button/StitchesButton.tsx 虚线内边像缝线，按下时内阴影收进去。SyntaxUI 的 credits.md 把这个按钮归于 Saud（https://twitter.com/via_saud）。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stitches-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stitches-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "移植自 ReUI，MIT，Copyright (c) 2025 Keenthemes Inc。 https://github.com/keenthemes/reui/blob/main/registry/bases/radix/ui/attachment.tsx 文件或图片附件卡，有横向和纵向，以及 default、sm、xs 三种尺寸。状态有 idle、uploading、processing、error、done。Slot 来自 @radix-ui/react-slot。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/attachment.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/attachment.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "移植自 ReUI，MIT，Copyright (c) 2025 Keenthemes Inc。 https://github.com/keenthemes/reui/blob/main/registry/bases/radix/ui/bubble.tsx 聊天气泡原语，有多种变体，并可以挂 emoji 反应。它比现有的 chat-message 更底层。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bubble.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bubble.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "移植自 ReUI，MIT，Copyright (c) 2025 Keenthemes Inc。 https://github.com/keenthemes/reui/blob/main/registry/bases/radix/ui/marker.tsx 消息流里的分隔，例如“今天”或系统提示。变体有 default、separator、border。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/marker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/marker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "trace",
+      "type": "registry:ui",
+      "title": "Trace",
+      "description": "移植自 ReUI，MIT，Copyright (c) 2025 Keenthemes Inc。 https://github.com/keenthemes/reui/blob/main/registry/bases/radix/ui/trace.tsx AI 推理或执行步骤。每一步可以折叠。状态有 running、error、pending。减弱动效时标题不闪，折叠没有动画。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "collapsible",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/trace.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/trace.tsx"
+        }
+      ]
+    },
+    {
+      "name": "category-bar",
+      "type": "registry:ui",
+      "title": "Category Bar",
+      "description": "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。 https://github.com/tremorlabs/tremor/blob/main/src/components/CategoryBar/CategoryBar.tsx 分段比例条，可放标记和两端刻度。颜色用 CSS 颜色，提示用现有 tooltip。",
+      "dependencies": [],
+      "registryDependencies": [
+        "tooltip",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/category-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/category-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bar-list",
+      "type": "registry:ui",
+      "title": "Bar List",
+      "description": "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。 https://github.com/tremorlabs/tremor/blob/main/src/components/BarList/BarList.tsx 横向条形排行。可按数值排序，行可以点击，也可以是链接。减弱动效时不做宽度过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bar-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bar-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tab-navigation",
+      "type": "registry:ui",
+      "title": "Tab Navigation",
+      "description": "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。 https://github.com/tremorlabs/tremor/blob/main/src/components/TabNavigation/TabNavigation.tsx 页面级标签导航，每一项都是链接。Tremor 的 LICENSE 注明它用了 shadcn、radix-ui/themes 和 Medusa 的 MIT 片段。",
+      "dependencies": [
+        "@radix-ui/react-navigation-menu"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tab-navigation.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tab-navigation.tsx"
+        }
+      ]
     }
   ]
 }

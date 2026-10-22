@@ -187,7 +187,22 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/SyntaxUI/syntaxui
 - 许可：MIT
 - 版权：Copyright (c) 2024 SyntaxUI
-- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`。原 `framer-motion` 导入已改为 `motion/react`。
+- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`，以及 `hover-attention-button`、`eco-mode-button`、`rotating-complete-button`、`morphing-shapes-loader`、`neon-glow-loader`、`ripple-wave-loader`、`hover-spring-features`、`stitches-button`。原 `framer-motion` 导入已改为 `motion/react`。`stitches-button` 的原作者是 Saud（https://twitter.com/via_saud），见 SyntaxUI `credits.md`。未移植 Hero Patterns 背景。
+
+## ReUI
+
+- 仓库：https://github.com/keenthemes/reui
+- 许可：MIT
+- 版权：Copyright (c) 2025 Keenthemes Inc
+- 衍生组件：`attachment`、`bubble`、`marker`、`trace`。`Slot.Root` 换成 `@radix-ui/react-slot`。折叠用现有的 collapsible。
+
+## Tremor Raw
+
+- 仓库：https://github.com/tremorlabs/tremor
+- 许可：Apache-2.0
+- 版权：Copyright 2025 Tremor
+- 修改说明：移植时把 `cx` 换成 `cn`，图表色类换成 CSS 颜色，Tremor Tooltip 换成本地 tooltip。`tab-navigation` 还包含 Tremor LICENSE 中注明的 shadcn、radix-ui/themes 与 Medusa MIT 片段。
+- 衍生组件：`category-bar`、`bar-list`、`tab-navigation`。
 
 ## shadcn-ui-expansions
 

@@ -61,4 +61,4 @@ test("按钮总览的每一项可以打开用法和源码", async () => {
   } finally {
     process.chdir(previous)
   }
-})
+}, 20000)

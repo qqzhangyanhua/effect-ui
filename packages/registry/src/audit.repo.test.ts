@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url"
 import { expect, test } from "vitest"
 
 import { auditRegistry, type AuditInput, type AuditStaticJson } from "./audit"
+import { auditExemptions } from "./audit-exemptions"
 import { components } from "./catalog"
 import { demoNames } from "./examples/index"
 import { buildRegistryItem } from "./registry-item"
@@ -61,6 +62,7 @@ function repoInput(): AuditInput {
     readme: fs.readFileSync(path.join(repoRoot, "README.md"), "utf8"),
     staticJson: staticJson(),
     packageDependencies: Object.keys(packageJson.dependencies ?? {}),
+    exemptions: auditExemptions,
   }
 }
 

@@ -1,3 +1,12 @@
+import {
+  activeExemptionGaps,
+  componentIsTested,
+  exemptionClosedNames,
+  exemptionProblems,
+  requiresComponentTest,
+  testedSourceFiles,
+  type AuditExemption,
+} from "./audit-coverage"
 import { deriveDependencies } from "./dependencies"
 import {
   catalogDemoNames,
@@ -31,6 +40,11 @@ export type AuditIssueType =
   | "prop-not-in-type"
   | "control-not-in-demo"
   | "prop-not-in-catalog"
+  | "missing-test"
+  | "stale-exemption"
+  | "unknown-exemption"
+  | "closed-batch-exemption"
+  | "invalid-exemption"
 
 export interface AuditIssue {
   name: string
@@ -57,6 +71,8 @@ export interface AuditInput {
   readme: string
   staticJson: AuditStaticJson
   packageDependencies: readonly string[]
+  /** 省略时不套用豁免。仓库审计要传入 audit-exemptions.ts。 */
+  exemptions?: readonly AuditExemption[]
 }
 
 const componentSourceDirs: Record<string, true> = {
@@ -607,5 +623,37 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
     }
   }
 
+  pushCoverageIssues(issues, input, catalogNames)
   return issues
+}
+
+function pushCoverageIssues(
+  issues: AuditIssue[],
+  input: AuditInput,
+  catalogNames: ReadonlySet<string>,
+): void {
+  const tests = input.sourceFiles.flatMap((file) => {
+    if (!/\.test\.tsx?$/.test(file)) return []
+    const text = input.readSource(file)
+    return text === undefined ? [] : [{ file, text }]
+  })
+  const tested = testedSourceFiles(tests)
+  const closedNames = exemptionClosedNames()
+  const exemptions = input.exemptions ?? []
+  const testedGap = (name: string) => {
+    const entry = input.catalog.find((item) => item.name === name)
+    if (!entry || !requiresComponentTest(entry.category)) return true
+    return componentIsTested(entry, tested)
+  }
+  issues.push(...exemptionProblems(exemptions, catalogNames, closedNames, testedGap))
+  const suppressed = activeExemptionGaps(exemptions, catalogNames, closedNames)
+  for (const entry of input.catalog) {
+    if (!requiresComponentTest(entry.category) || componentIsTested(entry, tested)) continue
+    if (suppressed.get(entry.name)?.has("缺测试")) continue
+    issues.push({
+      name: entry.name,
+      type: "missing-test",
+      description: "没有任何测试文件导入该组件源码。",
+    })
+  }
 }

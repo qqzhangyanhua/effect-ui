@@ -1,0 +1,51 @@
+CREDITS.md
+  s_1f7fae292b4abd::t_33925ec60d5c7d 26
+packages/registry/src/audit-coverage.ts
+  s_1f7fae292b4abd::t_01707a361993cc 87
+  s_1f7fae292b4abd::t_c39d6c106eb109 6
+README.md
+  s_1f7fae292b4abd::t_ab9a5bb8c8456b 625
+  s_1f7fae292b4abd::t_7259e8621d483d 623-624,626-632
+apps/docs/public/r/folder-stack.json
+  s_1f7fae292b4abd::t_fd4bbdd6decbe5 1-20
+apps/docs/public/r/magnet-chips.json
+  s_1f7fae292b4abd::t_263e371f461bdc 1-20
+apps/docs/public/r/physics-dropzone.json
+  s_1f7fae292b4abd::t_8702f3ddd7b7f0 1-22
+packages/registry/src/catalog-batch39.ts
+  s_1f7fae292b4abd::t_8ebc8059894f57 1-100
+packages/registry/src/catalog.ts
+  s_1f7fae292b4abd::t_9da5f6c9a28944 38,2309
+packages/registry/src/effects/folder-stack.test.tsx
+  s_1f7fae292b4abd::t_ad55e72464ff6f 1-176
+packages/registry/src/effects/folder-stack.tsx
+  s_1f7fae292b4abd::t_d4b55032704339 1-276
+packages/registry/src/effects/magnet-chips.test.tsx
+  s_1f7fae292b4abd::t_9d2fc66f933893 1-132
+packages/registry/src/effects/magnet-chips.tsx
+  s_1f7fae292b4abd::t_9cfc03e38d5863 1-236
+packages/registry/src/effects/physics-dropzone.test.tsx
+  s_1f7fae292b4abd::t_c76dcf333a5756 1-147
+packages/registry/src/effects/physics-dropzone.tsx
+  s_1f7fae292b4abd::t_ab61e3f4eaf6e4 1-337
+packages/registry/src/examples/effect-demos-41.tsx
+  s_1f7fae292b4abd::t_8a089397073eaf 1-53
+packages/registry/src/examples/index.ts
+  s_1f7fae292b4abd::t_dd35e69bb8443b 42,697-699
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "2c25375f4ffb166e2642c5a88f753db52007de57",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

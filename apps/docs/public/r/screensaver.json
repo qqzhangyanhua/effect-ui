@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "screensaver",
+  "type": "registry:ui",
+  "title": "Screensaver",
+  "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/screensaver.tsx 子元素在 containerRef 里以恒定速度反弹，像 DVD 屏保。减弱动效时停在 startPosition。离开视口或标签页隐藏时暂停逐帧位移。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-dimensions",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/screensaver.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/screensaver.tsx",
+      "content": "\"use client\"\n\n// Ported from Fancy Components (MIT, (c) 2024 Daniel Petho) — https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/screensaver.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { useDimensions } from \"@/hooks/use-dimensions\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion, useAnimationFrame, useMotionValue } from \"motion/react\"\nimport { useEffect, useRef, type RefObject } from \"react\"\n\nexport interface ScreensaverProps {\n  children: React.ReactNode\n  containerRef: RefObject<HTMLElement | null>\n  speed?: number\n  startPosition?: { x: number; y: number }\n  startAngle?: number\n  className?: string\n}\n\nexport function Screensaver({\n  children,\n  speed = 3,\n  startPosition = { x: 0, y: 0 },\n  startAngle = 45,\n  containerRef,\n  className,\n}: ScreensaverProps) {\n  const elementRef = useRef<HTMLDivElement>(null)\n  const x = useMotionValue(0)\n  const y = useMotionValue(0)\n  const angle = useRef((startAngle * Math.PI) / 180)\n  const containerDimensions = useDimensions(containerRef)\n  const elementDimensions = useDimensions(elementRef)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(elementRef)\n  const paused = prefersReducedMotion || !motionOn\n  const startX = startPosition.x\n  const startY = startPosition.y\n\n  useEffect(() => {\n    if (!containerDimensions.width || !containerDimensions.height) return\n    const initialX = (startX / 100) * (containerDimensions.width - (elementDimensions.width || 0))\n    const initialY = (startY / 100) * (containerDimensions.height - (elementDimensions.height || 0))\n    x.set(initialX)\n    y.set(initialY)\n  }, [containerDimensions.height, containerDimensions.width, elementDimensions.height, elementDimensions.width, startX, startY, x, y])\n\n  useAnimationFrame(() => {\n    if (paused) return\n    const dx = Math.cos(angle.current) * speed\n    const dy = Math.sin(angle.current) * speed\n    let nextX = x.get() + dx\n    let nextY = y.get() + dy\n\n    if (nextX <= 0 || nextX + elementDimensions.width >= containerDimensions.width) {\n      angle.current = Math.PI - angle.current\n      nextX = Math.max(0, Math.min(nextX, containerDimensions.width - elementDimensions.width))\n    }\n    if (nextY <= 0 || nextY + elementDimensions.height >= containerDimensions.height) {\n      angle.current = -angle.current\n      nextY = Math.max(0, Math.min(nextY, containerDimensions.height - elementDimensions.height))\n    }\n\n    x.set(nextX)\n    y.set(nextY)\n  })\n\n  return (\n    <motion.div\n      className={cn(\"transform will-change-transform\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"screensaver\"\n      ref={elementRef}\n      style={{ position: \"absolute\", top: 0, left: 0, x, y }}\n    >\n      {children}\n    </motion.div>\n  )\n}\n"
+    }
+  ]
+}

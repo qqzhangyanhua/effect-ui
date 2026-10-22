@@ -555,6 +555,32 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 像素拖尾、弹性线与高亮
+
+登记在 `catalog-batch29.ts`。上一批透视字已占用 `catalog-batch28.ts`。九个动效移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho），源文件在 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/ 。配套 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events` 来自同一仓库的 `src/hooks`。六个实用组件移植自 shadcn-ui-expansions（MIT，Copyright (c) 2024 shadcnui-expansions），源文件在 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/ 。没有新增依赖。`pixel-trail` 用 `useId` 代替 `uuid`。`heading-with-anchor` 用 `<a>` 代替 `next/link`。`responsive-modal` 继续使用仓库里已有的 `tw-animate-css`。离开视口后暂停屏保、弹性线和靠近指针的插值。减弱动效时不留拖尾、屏保停在起点、字母不翻转、裁切文字直接显示、荧光笔直接铺满、加载图标不旋转。
+
+| 组件 | 来源 |
+| --- | --- |
+| pixel-trail | Fancy Components，MIT |
+| screensaver | Fancy Components，MIT |
+| media-between-text | Fancy Components，MIT |
+| letter-3d-swap | Fancy Components，MIT |
+| vertical-cut-reveal | Fancy Components，MIT |
+| text-cursor-proximity | Fancy Components，MIT |
+| elastic-line | Fancy Components，MIT |
+| breathing-text | Fancy Components，MIT |
+| text-highlighter | Fancy Components，MIT |
+| autosize-textarea | shadcn-ui-expansions，MIT |
+| loading-button | shadcn-ui-expansions，MIT |
+| progress-with-value | shadcn-ui-expansions，MIT |
+| dual-range-slider | shadcn-ui-expansions，MIT |
+| heading-with-anchor | shadcn-ui-expansions，MIT |
+| responsive-modal | shadcn-ui-expansions，MIT |
+| use-dimensions | Fancy Components，MIT |
+| use-mouse-position | Fancy Components，MIT |
+| use-mouse-position-ref | Fancy Components，MIT |
+| use-elastic-line-events | Fancy Components，MIT |
+
 ### 透视字、棱镜与水花
 
 登记在 `catalog-batch28.ts`。上一批色波、点阵与置顶已占用 `catalog-batch27.ts`。十四项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。`splash-mask` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT），源文件 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 。没有新增依赖。`prism-sweep-transition` 与 `orb` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止绘制、变形、数字滚动和自动播放。减弱动效时透视字改成普通段落，棱镜直接换内容，球体停在相位 0，星标数字直接跳到终值。没有传入 `apiEndpoint` 时，星标组件不请求网络。

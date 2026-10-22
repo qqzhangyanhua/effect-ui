@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-elastic-line-events",
+  "type": "registry:hook",
+  "title": "Use Elastic Line Events",
+  "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/hooks/use-elastic-line-events.ts 判断指针是否抓到线，并算出弯曲控制点。状态更新放在微任务里。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-dimensions",
+    "use-mouse-position"
+  ],
+  "files": [
+    {
+      "path": "registry/hooks/use-elastic-line-events.ts",
+      "type": "registry:hook",
+      "target": "hooks/use-elastic-line-events.ts",
+      "content": "\"use client\"\n\n// Ported from Fancy Components (MIT, (c) 2024 Daniel Petho) — https://github.com/danielpetho/fancy/blob/main/src/hooks/use-elastic-line-events.ts\n\nimport { useEffect, useState, type RefObject } from \"react\"\n\nimport { useDimensions } from \"@/hooks/use-dimensions\"\nimport { useMousePosition } from \"@/hooks/use-mouse-position\"\n\nexport interface ElasticLineEvents {\n  isGrabbed: boolean\n  controlPoint: { x: number; y: number }\n}\n\nexport function useElasticLineEvents(\n  containerRef: RefObject<SVGSVGElement | null>,\n  isVertical: boolean,\n  grabThreshold: number,\n  releaseThreshold: number,\n): ElasticLineEvents {\n  const mousePosition = useMousePosition(containerRef)\n  const dimensions = useDimensions(containerRef)\n  const [isGrabbed, setIsGrabbed] = useState(false)\n  const [controlPoint, setControlPoint] = useState({ x: 0, y: 0 })\n\n  useEffect(() => {\n    queueMicrotask(() => {\n      if (!containerRef.current) return\n      const { width, height } = dimensions\n      if (width <= 0 || height <= 0) return\n      const { x, y } = mousePosition\n      const isOutsideBounds = x < 0 || x > width || y < 0 || y > height\n\n      if (isOutsideBounds) {\n        setIsGrabbed(false)\n        return\n      }\n\n      let distance: number\n      let next: { x: number; y: number }\n      if (isVertical) {\n        const midX = width / 2\n        distance = Math.abs(x - midX)\n        next = { x: midX + 2.2 * (x - midX), y }\n      } else {\n        const midY = height / 2\n        distance = Math.abs(y - midY)\n        next = { x, y: midY + 2.2 * (y - midY) }\n      }\n\n      setControlPoint(next)\n      if (!isGrabbed && distance < grabThreshold) setIsGrabbed(true)\n      else if (isGrabbed && distance > releaseThreshold) setIsGrabbed(false)\n    })\n  }, [containerRef, dimensions, grabThreshold, isGrabbed, isVertical, mousePosition, releaseThreshold])\n\n  return { isGrabbed, controlPoint }\n}\n"
+    }
+  ]
+}

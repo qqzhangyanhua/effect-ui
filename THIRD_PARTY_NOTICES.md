@@ -175,6 +175,20 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2024 UI LAYOUT
 - 衍生组件：`splash-mask`。路径来自 `clip-path-water-splash.tsx`，内联进组件，不请求外部 SVG。
 
+## Fancy Components
+
+- 仓库：https://github.com/danielpetho/fancy
+- 许可：MIT
+- 版权：Copyright (c) 2024 Daniel Petho
+- 衍生组件：`pixel-trail`、`screensaver`、`media-between-text`、`letter-3d-swap`、`vertical-cut-reveal`、`text-cursor-proximity`、`elastic-line`、`breathing-text`、`text-highlighter`，以及 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events`。
+
+## shadcn-ui-expansions
+
+- 仓库：https://github.com/hsuanyi-chou/shadcn-ui-expansions
+- 许可：MIT
+- 版权：Copyright (c) 2024 shadcnui-expansions
+- 衍生组件：`autosize-textarea`、`loading-button`、`progress-with-value`、`dual-range-slider`、`heading-with-anchor`、`responsive-modal`。`heading-with-anchor` 用 `<a>` 代替 `next/link`。
+
 ## frimousse
 
 - 仓库：https://github.com/liveblocks/frimousse

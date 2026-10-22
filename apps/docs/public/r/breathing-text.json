@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breathing-text",
+  "type": "registry:ui",
+  "title": "Breathing Text",
+  "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/breathing-text.tsx 可变字体的字重或字宽逐字呼吸。需要字体支持 font-variation-settings。减弱动效或离开视口时停在 fromFontVariationSettings。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/breathing-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/breathing-text.tsx",
+      "content": "\"use client\"\n\n// Ported from Fancy Components (MIT, (c) 2024 Daniel Petho) — https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/breathing-text.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion, type Transition, type Variants } from \"motion/react\"\nimport { useRef, type ElementType } from \"react\"\n\nexport interface BreathingTextProps extends React.HTMLAttributes<HTMLElement> {\n  children: React.ReactNode\n  as?: ElementType\n  fromFontVariationSettings: string\n  toFontVariationSettings: string\n  transition?: Transition\n  staggerDuration?: number\n  staggerFrom?: \"first\" | \"last\" | \"center\" | number\n  repeatDelay?: number\n}\n\nconst defaultTransition: Transition = { duration: 1.5, ease: \"easeInOut\" }\n\nfunction customIndex(index: number, total: number, staggerFrom: \"first\" | \"last\" | \"center\" | number) {\n  if (typeof staggerFrom === \"number\") return Math.abs(index - staggerFrom)\n  if (staggerFrom === \"first\") return index\n  if (staggerFrom === \"last\") return total - 1 - index\n  return Math.abs(index - Math.floor(total / 2))\n}\n\nexport function BreathingText({\n  children,\n  as = \"span\",\n  fromFontVariationSettings,\n  toFontVariationSettings,\n  transition = defaultTransition,\n  staggerDuration = 0.1,\n  staggerFrom = \"first\",\n  repeatDelay = 0.1,\n  className,\n  ...props\n}: BreathingTextProps) {\n  const hostRef = useRef<HTMLElement>(null)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(hostRef)\n  const breathing = !prefersReducedMotion && motionOn\n  const letters = String(children ?? \"\").split(\"\")\n  const Tag = as as \"span\"\n  const label = typeof children === \"string\" || typeof children === \"number\" ? String(children) : letters.join(\"\")\n\n  const letterVariants: Variants = {\n    initial: { fontVariationSettings: fromFontVariationSettings },\n    animate: (index: number) => ({\n      fontVariationSettings: toFontVariationSettings,\n      transition: {\n        ...transition,\n        repeat: Infinity,\n        repeatType: \"mirror\",\n        delay: index * staggerDuration,\n        repeatDelay,\n      },\n    }),\n  }\n\n  return (\n    <Tag\n      {...props}\n      className={cn(\n        \"relative after:pointer-events-none after:invisible after:absolute after:h-0 after:overflow-hidden after:font-black after:select-none after:content-[attr(data-text)]\",\n        className,\n      )}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"breathing-text\"\n      data-text={label}\n      ref={hostRef as React.Ref<HTMLSpanElement>}\n    >\n      {letters.map((letter, index) => (\n        <motion.span\n          animate={breathing ? \"animate\" : \"initial\"}\n          aria-hidden\n          className=\"inline-block whitespace-pre\"\n          custom={customIndex(index, letters.length, staggerFrom)}\n          initial=\"initial\"\n          key={`${letter}-${index}`}\n          variants={letterVariants}\n        >\n          {letter}\n        </motion.span>\n      ))}\n      <span className=\"sr-only\">{children}</span>\n    </Tag>\n  )\n}\n"
+    }
+  ]
+}

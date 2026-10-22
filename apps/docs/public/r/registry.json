@@ -10561,6 +10561,381 @@
           "target": "components/ui/reviews-carousel.tsx"
         }
       ]
+    },
+    {
+      "name": "use-dimensions",
+      "type": "registry:hook",
+      "title": "Use Dimensions",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/hooks/use-dimensions.ts 读取元素宽高。首次测量放到微任务里，避免在 effect 里同步 setState。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-dimensions.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-dimensions.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-mouse-position",
+      "type": "registry:hook",
+      "title": "Use Mouse Position",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/hooks/use-mouse-position.ts 用 state 记录指针相对容器的坐标。触摸点缺失时不更新。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-mouse-position.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-mouse-position.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-mouse-position-ref",
+      "type": "registry:hook",
+      "title": "Use Mouse Position Ref",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/hooks/use-mouse-position-ref.ts 把指针坐标写进 ref，给逐帧效果读取，不触发渲染。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-mouse-position-ref.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-mouse-position-ref.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-elastic-line-events",
+      "type": "registry:hook",
+      "title": "Use Elastic Line Events",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/hooks/use-elastic-line-events.ts 判断指针是否抓到线，并算出弯曲控制点。状态更新放在微任务里。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-dimensions",
+        "use-mouse-position"
+      ],
+      "files": [
+        {
+          "path": "registry/hooks/use-elastic-line-events.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-elastic-line-events.ts"
+        }
+      ]
+    },
+    {
+      "name": "pixel-trail",
+      "type": "registry:ui",
+      "title": "Pixel Trail",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/background/pixel-trail.tsx 把容器分成像素格，指针经过时点亮，再按 fadeDuration 淡出。减弱动效或离开视口时不留下拖尾。用 useId 代替 uuid。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-dimensions",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pixel-trail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pixel-trail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "screensaver",
+      "type": "registry:ui",
+      "title": "Screensaver",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/screensaver.tsx 子元素在 containerRef 里以恒定速度反弹，像 DVD 屏保。减弱动效时停在 startPosition。离开视口或标签页隐藏时暂停逐帧位移。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-dimensions",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/screensaver.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/screensaver.tsx"
+        }
+      ]
+    },
+    {
+      "name": "media-between-text",
+      "type": "registry:ui",
+      "title": "Media Between Text",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/media-between-text.tsx 图片或视频夹在两段文字中间，从零宽度展开。triggerType 可以是 hover、inView 或 ref。减弱动效时直接完全展开，视频暂停。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/media-between-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/media-between-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "letter-3d-swap",
+      "type": "registry:ui",
+      "title": "Letter 3D Swap",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/letter-3d-swap.tsx 悬停时每个字母像方块一样翻到第二面。staggerFrom 可以是 first、last、center、random 或数字。减弱动效时不翻转，只显示正面。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/letter-3d-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/letter-3d-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "vertical-cut-reveal",
+      "type": "registry:ui",
+      "title": "Vertical Cut Reveal",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/vertical-cut-reveal.tsx 文字从裁切蒙版下方升起，可按字符、词或行拆开。ref 暴露 startAnimation 和 reset。减弱动效时直接显示完整文字。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/vertical-cut-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/vertical-cut-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-cursor-proximity",
+      "type": "registry:ui",
+      "title": "Text Cursor Proximity",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/text-cursor-proximity.tsx 靠近指针的字母按距离在 styles 的 from 和 to 之间插值。falloff 可以是 linear、exponential 或 gaussian。减弱动效或离开视口时保持 from。逐帧逻辑在字母组件外，避免在循环里调用 hook。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-mouse-position-ref",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-cursor-proximity.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-cursor-proximity.tsx"
+        }
+      ]
+    },
+    {
+      "name": "elastic-line",
+      "type": "registry:ui",
+      "title": "Elastic Line",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/physics/elastic-line.tsx 指针靠近时拉弯 SVG 直线，松开后弹回。可水平或垂直。减弱动效时是一条不交互的直线。离开视口后不再跟手。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-dimensions",
+        "use-elastic-line-events",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/elastic-line.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/elastic-line.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breathing-text",
+      "type": "registry:ui",
+      "title": "Breathing Text",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/breathing-text.tsx 可变字体的字重或字宽逐字呼吸。需要字体支持 font-variation-settings。减弱动效或离开视口时停在 fromFontVariationSettings。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/breathing-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/breathing-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-highlighter",
+      "type": "registry:ui",
+      "title": "Text Highlighter",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/text-highlighter.tsx 荧光笔从 ltr、rtl、ttb 或 btt 涂开。triggerType 可以是 hover、ref、inView 或 auto。ref 暴露 animate 和 reset。减弱动效时直接铺满高亮。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/text-highlighter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-highlighter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "autosize-textarea",
+      "type": "registry:ui",
+      "title": "Autosize Textarea",
+      "description": "移植自 shadcn-ui-expansions，MIT，Copyright (c) 2024 shadcnui-expansions。 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/autosize-textarea.tsx 文本框随内容在 minHeight 和 maxHeight 之间增高。ref 暴露 textArea 和 focus，并导出 useAutosizeTextArea。没有动画。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/autosize-textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/autosize-textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "loading-button",
+      "type": "registry:ui",
+      "title": "Loading Button",
+      "description": "移植自 shadcn-ui-expansions，MIT，Copyright (c) 2024 shadcnui-expansions。 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/loading-button.tsx 加载时显示 Loader2 并禁用按钮，支持 cva 的 variant、size 和 asChild。减弱动效时图标不旋转，并设置 aria-busy。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/loading-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/loading-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-with-value",
+      "type": "registry:ui",
+      "title": "Progress With Value",
+      "description": "移植自 shadcn-ui-expansions，MIT，Copyright (c) 2024 shadcnui-expansions。 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/progress-with-value.tsx 带数值标签的进度条。position 可以贴在起点、终点、跟随条的末端，或放到条的外面。减弱动效时指示条没有宽度过渡。",
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progress-with-value.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress-with-value.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dual-range-slider",
+      "type": "registry:ui",
+      "title": "Dual Range Slider",
+      "description": "移植自 shadcn-ui-expansions，MIT，Copyright (c) 2024 shadcnui-expansions。 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/dual-range-slider.tsx 两个滑块组成范围，每个滑块可以显示数值。labelPosition 为 top 或 bottom。",
+      "dependencies": [
+        "@radix-ui/react-slider"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dual-range-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dual-range-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "heading-with-anchor",
+      "type": "registry:ui",
+      "title": "Heading With Anchor",
+      "description": "移植自 shadcn-ui-expansions，MIT，Copyright (c) 2024 shadcnui-expansions。 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/heading-with-anchor.tsx h1 到 h6 以及段落变体。悬停时显示 # 锚点，点击把带 hash 的地址复制到剪贴板。用 <a> 代替 next/link。也导出 H1 到 H6 和 P。",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/heading-with-anchor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/heading-with-anchor.tsx"
+        }
+      ]
+    },
+    {
+      "name": "responsive-modal",
+      "type": "registry:ui",
+      "title": "Responsive Modal",
+      "description": "移植自 shadcn-ui-expansions，MIT，Copyright (c) 2024 shadcnui-expansions。 https://github.com/hsuanyi-chou/shadcn-ui-expansions/blob/main/components/ui/responsive-modal.tsx 宽屏居中对话框，窄屏从 top、bottom、left 或 right 滑入。动画类来自已安装的 tw-animate-css。减弱动效时只淡入淡出。",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/responsive-modal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/responsive-modal.tsx"
+        }
+      ]
     }
   ]
 }

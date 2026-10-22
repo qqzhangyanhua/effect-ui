@@ -25,6 +25,7 @@ import { batch25Components } from "./catalog-batch25"
 import { batch26Components } from "./catalog-batch26"
 import { batch27Components } from "./catalog-batch27"
 import { batch28Components } from "./catalog-batch28"
+import { batch29Components } from "./catalog-batch29"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -62,6 +63,7 @@ export type SourceLibrary =
   | "Motion Primitives"
   | "Cult UI"
   | "Fancy Components"
+  | "shadcn-ui-expansions"
   | "Kibo UI"
   | "Origin UI"
   | "Paper Shaders"
@@ -209,6 +211,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Motion Primitives": "https://motion-primitives.com",
   "Cult UI": "https://www.cult-ui.com",
   "Fancy Components": "https://www.fancycomponents.dev",
+  "shadcn-ui-expansions": "https://github.com/hsuanyi-chou/shadcn-ui-expansions",
   "Kibo UI": "https://www.kibo-ui.com",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
@@ -2273,6 +2276,7 @@ export const components: ComponentMeta[] = [
   ...batch26Components,
   ...batch27Components,
   ...batch28Components,
+  ...batch29Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2356,6 +2360,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "pull-cord",
       "undo-button",
       "attract-button",
+      "loading-button",
     ],
   },
 ]

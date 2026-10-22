@@ -29,6 +29,7 @@ import * as effectDemos27 from "./effect-demos-27"
 import * as effectDemos28 from "./effect-demos-28"
 import * as effectDemos29 from "./effect-demos-29"
 import * as effectDemos30 from "./effect-demos-30"
+import * as effectDemos31 from "./effect-demos-31"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -568,6 +569,21 @@ const demoMap: Record<string, ComponentType> = {
   "github-stars-animation": effectDemos30.GitHubStarsAnimationDemo,
   "expandable-navbar": effectDemos30.ExpandableNavbarDemo,
   "reviews-carousel": effectDemos30.ReviewsCarouselDemo,
+  "pixel-trail": effectDemos31.PixelTrailDemo,
+  screensaver: effectDemos31.ScreensaverDemo,
+  "media-between-text": effectDemos31.MediaBetweenTextDemo,
+  "letter-3d-swap": effectDemos31.Letter3DSwapDemo,
+  "vertical-cut-reveal": effectDemos31.VerticalCutRevealDemo,
+  "text-cursor-proximity": effectDemos31.TextCursorProximityDemo,
+  "elastic-line": effectDemos31.ElasticLineDemo,
+  "breathing-text": effectDemos31.BreathingTextDemo,
+  "autosize-textarea": effectDemos31.AutosizeTextareaDemo,
+  "loading-button": effectDemos31.LoadingButtonDemo,
+  "progress-with-value": effectDemos31.ProgressWithValueDemo,
+  "dual-range-slider": effectDemos31.DualRangeSliderDemo,
+  "heading-with-anchor": effectDemos31.HeadingWithAnchorDemo,
+  "responsive-modal": effectDemos31.ResponsiveModalDemo,
+  "text-highlighter": effectDemos31.TextHighlighterDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -165,7 +165,6 @@ export function SafeTriangle({
         {label}
       </button>
       <div className={cn("ml-12 w-40", open ? "" : "invisible absolute")}>
-        <div aria-hidden="true" className="mb-2 h-8 rounded-md bg-primary/15" />
         <div ref={menuRef} role="menu" aria-hidden={open ? undefined : true} className="rounded-lg border border-border bg-popover p-1 text-popover-foreground shadow-md">
           {items.map((item) => (
             <button

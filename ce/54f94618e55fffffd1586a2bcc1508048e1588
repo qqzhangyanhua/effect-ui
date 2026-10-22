@@ -1,0 +1,67 @@
+packages/registry/src/effects/ball-pit.tsx
+  s_8c564725168ef0::t_c371b4d58ce73a 1-103,105-134,136-264
+  s_8c564725168ef0::t_e15974391c793f 104
+  s_8c564725168ef0::t_c17c72d23decd3 135
+packages/registry/src/effects/coin-jar.test.tsx
+  s_8c564725168ef0::t_37eb69b43b07c5 93
+  s_8c564725168ef0::t_b5ae54edf4560d 1-3,5-64,69-92,94-123,125-127
+  s_8c564725168ef0::t_6f904751989662 65-68
+  s_8c564725168ef0::t_5140c08d722e08 124
+  s_8c564725168ef0::t_2b6702dcca6a90 4
+packages/registry/src/examples/index.ts
+  s_8c564725168ef0::t_28d8b51cfc7357 689-691
+  s_8c564725168ef0::t_9f718746ca3899 40
+packages/registry/src/effects/coin-jar.tsx
+  s_8c564725168ef0::t_11afebe7e669bb 11
+  s_8c564725168ef0::t_a33d414e8c5faf 1-10,12-115,117-153,155-268
+  s_8c564725168ef0::t_4c240736b302ba 154
+  s_8c564725168ef0::t_a83a6fa1573956 116
+packages/registry/src/effects/tag-jar.tsx
+  s_8c564725168ef0::t_cfcad41bdeed56 157
+  s_8c564725168ef0::t_f41292f5c3bd52 126
+  s_8c564725168ef0::t_5fabd43fa28224 1-125,127-156,158-307
+packages/registry/src/examples/effect-demos-39.tsx
+  s_8c564725168ef0::t_31f4ebb2b26be2 1-53
+CREDITS.md
+  s_8c564725168ef0::t_b0ea96f48e4f56 24
+README.md
+  s_8c564725168ef0::t_7a60104f3b6230 603-612
+packages/registry/src/audit-coverage.ts
+  s_8c564725168ef0::t_41d1c953f4b830 4
+  s_8c564725168ef0::t_c7ae5bd8001242 84-86
+packages/registry/src/catalog.ts
+  s_8c564725168ef0::t_4191794c6169bc 36
+  s_8c564725168ef0::t_0aaf4d003e7c82 2305
+packages/registry/src/effects/ball-pit.test.tsx
+  s_8c564725168ef0::t_1ed4b23fb02dc8 1-126
+packages/registry/src/catalog-batch37.ts
+  s_8c564725168ef0::t_0b4e798627ea90 1-117
+packages/registry/src/effects/tag-jar.test.tsx
+  s_8c564725168ef0::t_1de6001596b80d 1-127
+apps/docs/public/r/ball-pit.json
+  s_8c564725168ef0::t_4281db37dfbaed 1-22
+apps/docs/public/r/coin-jar.json
+  s_8c564725168ef0::t_49aab26cc7ecdb 1-22
+apps/docs/public/r/registry.json
+  s_8c564725168ef0::t_4d165e809904a5 12863-12922
+apps/docs/public/r/tag-jar.json
+  s_8c564725168ef0::t_f2a188cbc2e717 1-22
+registry.json
+  s_8c564725168ef0::t_42d2688d1d0650 12863-12922
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ce54f94618e55fffffd1586a2bcc1508048e1588",
+  "prompts": {},
+  "sessions": {
+    "s_8c564725168ef0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e8e08581-df6a-4bb0-8a6a-8fba52f3a758",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

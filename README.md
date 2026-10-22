@@ -573,6 +573,27 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 百叶、斜纹与翻页
+
+登记在 `catalog-batch52.ts`。抛掷已占用 `catalog-batch46.ts`，ns-ui 已占用 `catalog-batch51.ts`。`blind-pull-toggle`、`danger-stripes`、`flip-calendar`、`slice-type`、`stack-tower`、`taga-toggle`、`diamond-grid`、`wild-morph`、`mood-tracker`、`voice-chat-pill`、`job-listing-cards`、`new-project-modal`、`music-player-card`、`label-cards` 移植自 AI Canvas（MIT，Copyright (c) 2026 AI Canvas）。`framer-motion` 改成 `motion/react`，Phosphor 图标改成 `lucide-react`，字体改成 `--font-sans`。颜色控件使用主题变量。职位品牌标志只放在示例里。音乐卡不打包音频。没有新增依赖。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| blind-pull-toggle | AI Canvas，MIT |
+| danger-stripes | AI Canvas，MIT |
+| flip-calendar | AI Canvas，MIT |
+| slice-type | AI Canvas，MIT |
+| stack-tower | AI Canvas，MIT |
+| taga-toggle | AI Canvas，MIT |
+| diamond-grid | AI Canvas，MIT |
+| wild-morph | AI Canvas，MIT |
+| mood-tracker | AI Canvas，MIT |
+| voice-chat-pill | AI Canvas，MIT |
+| job-listing-cards | AI Canvas，MIT |
+| new-project-modal | AI Canvas，MIT |
+| music-player-card | AI Canvas，MIT |
+| label-cards | AI Canvas，MIT |
+
 ### 铅锤、棘轮与书脊
 
 登记在 `catalog-batch51.ts`。抛掷已占用 `catalog-batch46.ts`。`success-plumb-bob`、`checkbox-domino-run`、`autosave-ratchet`、`button-retry-backoff`、`craze-rule`、`banner-tear-stub`、`feed-escapement`、`cruet-settle`、`undo-ghost-row`、`container-box-drawing`、`transfer-list-siphon`、`drill-down-spines`、`due-slip`、`contra-strike`、`galley-bracket` 移植自 ns-ui（MIT，Copyright (c) 2026 Nikolas Sapalidis）。ns-ui 的颜色变量映射到 effect-ui 主题变量，能写成 Tailwind 的静态样式不再内联。没有新增依赖。状态变化仍走 aria-live。减弱动效保持原来的终态或离散步进。离开视口时动画帧和 CSS 动画暂停，回到视口再继续。

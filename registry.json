@@ -15683,6 +15683,289 @@
           "target": "components/ui/galley-bracket.tsx"
         }
       ]
+    },
+    {
+      "name": "blind-pull-toggle",
+      "type": "registry:ui",
+      "title": "Blind Pull Toggle",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/blind-pull-toggle/index.tsx 百叶帘拉绳开关。拉下时帘片合拢，再拉一次打开。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blind-pull-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blind-pull-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "danger-stripes",
+      "type": "registry:ui",
+      "title": "Danger Stripes",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/danger-stripes/index.tsx 危险斜纹。指针进入、按下或进入视口时斜纹被推开，离开后回位。触控用按下和松开，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/danger-stripes.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/danger-stripes.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-calendar",
+      "type": "registry:ui",
+      "title": "Flip Calendar",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/flip-calendar/index.tsx 翻页日历。拖动或点前后一天，日期在 1 到 31 之间循环。value 受控时由外部决定当前日。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flip-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flip-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slice-type",
+      "type": "registry:ui",
+      "title": "Slice Type",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/slice-type/index.tsx 首字母从上下两个词之间切开。鼠标移入展开，触控按下切换。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/slice-type.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slice-type.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stack-tower",
+      "type": "registry:ui",
+      "title": "Stack Tower",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/stack-tower/index.tsx 圆柱上的词排成塔，缓慢转动。指针按下时该行用强调色。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stack-tower.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stack-tower.tsx"
+        }
+      ]
+    },
+    {
+      "name": "taga-toggle",
+      "type": "registry:ui",
+      "title": "Taga Toggle",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/taga-toggle/index.tsx 笑脸开关。拨动时表情在轨道上换边。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/taga-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/taga-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diamond-grid",
+      "type": "registry:ui",
+      "title": "Diamond Grid",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/diamond-grid/index.tsx 菱形格上的游走光点，画在 canvas 上。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/diamond-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/diamond-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wild-morph",
+      "type": "registry:ui",
+      "title": "Wild Morph",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/wild-morph/index.tsx 拖动文字四角做透视变形。触控同样可以拖。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wild-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wild-morph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mood-tracker",
+      "type": "registry:ui",
+      "title": "Mood Tracker",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/mood-tracker/index.tsx 六个心情脸和一条滑杆。保存后按钮短时间显示已记录。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mood-tracker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mood-tracker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voice-chat-pill",
+      "type": "registry:ui",
+      "title": "Voice Chat Pill",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/voice-chat-pill/index.tsx 语音会话胶囊。说话人轮换，点开后从按钮位置展开成名单。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/voice-chat-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/voice-chat-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "job-listing-cards",
+      "type": "registry:ui",
+      "title": "Job Listing Cards",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/ai-job-cards/index.tsx 职位卡片叠成三叠，拖动或点下一张把最前面的卡片换到后面。品牌标志由调用方传入，缺省是公司名首字母。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/job-listing-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/job-listing-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "new-project-modal",
+      "type": "registry:ui",
+      "title": "New Project Modal",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/new-project-modal/index.tsx 从按钮长出的新建项目对话框。Tab 在对话框内循环，Escape 关闭。标题为空时不能创建。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/new-project-modal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/new-project-modal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "music-player-card",
+      "type": "registry:ui",
+      "title": "Music Player Card",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/glass-music-player/index.tsx 玻璃音乐卡。进度是计时器，不加载音频文件。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/music-player-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/music-player-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label-cards",
+      "type": "registry:ui",
+      "title": "Label Cards",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/label-cards/index.tsx 散开的标签卡。点一张就把它摆正，再点一次散回去。键盘上 Enter 和空格同样可选。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/label-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label-cards.tsx"
+        }
+      ]
     }
   ]
 }

@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## AI Canvas
+
+- 仓库：https://github.com/uiNerd16/aicanvas
+- 许可：MIT
+- 版权：Copyright (c) 2026 AI Canvas
+- 衍生组件：`blind-pull-toggle`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/blind-pull-toggle/index.tsx）、`danger-stripes`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/danger-stripes/index.tsx）、`flip-calendar`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/flip-calendar/index.tsx）、`slice-type`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/slice-type/index.tsx）、`stack-tower`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/stack-tower/index.tsx）、`taga-toggle`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/taga-toggle/index.tsx）、`diamond-grid`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/diamond-grid/index.tsx）、`wild-morph`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/wild-morph/index.tsx）、`mood-tracker`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/mood-tracker/index.tsx）、`voice-chat-pill`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/voice-chat-pill/index.tsx）、`job-listing-cards`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/ai-job-cards/index.tsx）、`new-project-modal`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/new-project-modal/index.tsx）、`music-player-card`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/glass-music-player/index.tsx）、`label-cards`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/label-cards/index.tsx）
+
 ## ns-ui
 
 - 仓库：https://github.com/nikolas-sapa/ns-ui

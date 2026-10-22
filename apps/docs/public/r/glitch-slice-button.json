@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glitch-slice-button",
+  "type": "registry:ui",
+  "title": "Glitch Slice Button",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 namecho。https://github.com/uiverse-io/galaxy/blob/main/Buttons/namecho_slippery-moth-23.html 悬停时用切片错位。colors 依次是切片色、错位色、强调色，示例色放在 demo。减弱动效或离开视口时切片不再播放。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glitch-slice-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glitch-slice-button.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author namecho）— https://github.com/uiverse-io/galaxy/blob/main/Buttons/namecho_slippery-moth-23.html. Modified for effect-ui.\n\nimport { useRef, type ButtonHTMLAttributes, type CSSProperties } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nconst CSS = `\n[data-slot=\"glitch-slice-button\"] {\n  --slice-0: inset(50% 50% 50% 50%);\n  --slice-1: inset(80% -6px 0 0);\n  --slice-2: inset(50% -6px 30% 0);\n  --slice-3: inset(10% -6px 85% 0);\n  --slice-4: inset(40% -6px 43% 0);\n  --slice-5: inset(80% -6px 5% 0);\n}\n[data-slot=\"glitch-slice-button\"]::after {\n  content: attr(data-label);\n  position: absolute;\n  inset: 0;\n  display: block;\n  padding: inherit;\n  letter-spacing: inherit;\n  line-height: inherit;\n  font: inherit;\n  color: inherit;\n  background: linear-gradient(45deg, transparent 3%, var(--glitch-ghost) 3%, var(--glitch-ghost) 5%, var(--glitch-slice) 5%);\n  text-shadow: -3px -3px 0 var(--glitch-accent), 3px 3px 0 var(--glitch-ghost);\n  clip-path: var(--slice-0);\n  pointer-events: none;\n}\n[data-slot=\"glitch-slice-button\"][data-motion=\"on\"]:hover::after {\n  animation: glitch-slice-button-glitch 1s steps(2, end);\n}\n@keyframes glitch-slice-button-glitch {\n  0% { clip-path: var(--slice-1); transform: translate(-20px, -10px); }\n  10% { clip-path: var(--slice-3); transform: translate(10px, 10px); }\n  20% { clip-path: var(--slice-1); transform: translate(-10px, 10px); }\n  30% { clip-path: var(--slice-3); transform: translate(0, 5px); }\n  40% { clip-path: var(--slice-2); transform: translate(-5px, 0); }\n  50% { clip-path: var(--slice-3); transform: translate(5px, 0); }\n  60% { clip-path: var(--slice-4); transform: translate(5px, 10px); }\n  70% { clip-path: var(--slice-2); transform: translate(-10px, 10px); }\n  80% { clip-path: var(--slice-5); transform: translate(20px, -10px); }\n  90% { clip-path: var(--slice-1); transform: translate(-10px, 0); }\n  100% { clip-path: var(--slice-1); transform: translate(0); }\n}\n`\n\nexport interface GlitchSliceButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  /** 切片层文字，与按钮可见文字一致。 */\n  label: string\n  /** 依次是切片色、错位色、强调色。不传时使用主题色。 */\n  colors?: string[]\n}\n\nexport function GlitchSliceButton({\n  label,\n  colors,\n  className,\n  style,\n  type = \"button\",\n  children,\n  ...props\n}: GlitchSliceButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const slice = colors?.[0] ?? \"var(--destructive)\"\n  const ghost = colors?.[1] ?? \"var(--primary)\"\n  const accent = colors?.[2] ?? \"var(--accent)\"\n  const painted = {\n    \"--glitch-slice\": slice,\n    \"--glitch-ghost\": ghost,\n    \"--glitch-accent\": accent,\n    ...style,\n  } as CSSProperties\n\n  return (\n    <button\n      {...props}\n      ref={ref}\n      className={cn(\n        \"relative cursor-pointer border-0 bg-[linear-gradient(45deg,transparent_5%,var(--glitch-slice)_5%)] px-5 py-4 text-lg tracking-[3px] text-primary-foreground shadow-[6px_0_0_var(--glitch-ghost)]\",\n        className,\n      )}\n      data-label={label}\n      data-motion={motionOn && !reduced ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"glitch-slice-button\"\n      style={painted}\n      type={type}\n    >\n      <style>{CSS}</style>\n      {children ?? label}\n    </button>\n  )\n}\n"
+    }
+  ]
+}

@@ -217,7 +217,14 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/uiverse-io/galaxy
 - 许可：MIT
 - 版权：Copyright (c) 2023 Uiverse.io
-- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu），以及 `check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal），以及 `book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。`plus-share-burst` 的图标由调用方传入。
+- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu），以及 `check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal），以及 `book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub），以及 `glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。`plus-share-burst` 的图标由调用方传入。
+
+## HyperUI
+
+- 仓库：https://github.com/markmead/hyperui
+- 许可：MIT
+- 版权：Copyright (c) Mark Mead
+- 衍生组件：`details-list`、`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards`、`collapsible-side-menu`。Tailwind HTML 已改写为 React。亮色与暗色示例合并为主题色和 `dark:` 变体。示例图片与文案由调用方传入。
 
 ## shadcn-ui-expansions
 

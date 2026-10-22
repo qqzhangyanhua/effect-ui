@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "trash-delete-button",
+  "type": "registry:ui",
+  "title": "Trash Delete Button",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 boryanakrasteva。https://github.com/uiverse-io/galaxy/blob/main/Buttons/boryanakrasteva_tidy-falcon-17.html 垃圾桶图标，悬停放大并露出提示。提示文案放在 demo。减弱动效时提示直接出现，图标不再缩放。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/trash-delete-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/trash-delete-button.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author boryanakrasteva）— https://github.com/uiverse-io/galaxy/blob/main/Buttons/boryanakrasteva_tidy-falcon-17.html. Modified for effect-ui.\n\nimport type { ButtonHTMLAttributes, CSSProperties } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nconst CSS = `\n[data-slot=\"trash-delete-button\"]::after {\n  content: attr(data-tooltip);\n  position: absolute;\n  top: -130%;\n  left: 50%;\n  transform: translateX(-50%);\n  width: max-content;\n  border-radius: 5px;\n  background: var(--trash-color);\n  padding: 4px 8px;\n  color: var(--primary-foreground);\n  font-size: 12px;\n  letter-spacing: 0.04em;\n  text-transform: uppercase;\n  opacity: 0;\n  visibility: hidden;\n  transition: opacity 0.2s linear 0.2s, top 0.2s linear 0.2s;\n  pointer-events: none;\n}\n[data-slot=\"trash-delete-button\"][data-reduced=\"true\"]::after {\n  transition: none;\n}\n[data-slot=\"trash-delete-button\"]:hover::after,\n[data-slot=\"trash-delete-button\"]:focus-visible::after {\n  visibility: visible;\n  opacity: 1;\n  top: -160%;\n}\n`\n\nexport interface TrashDeleteButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  /** 悬停提示，同时作为按钮的无障碍名称。 */\n  tooltip?: string\n  /** 悬停时的图标色。不传时使用危险色。 */\n  color?: string\n}\n\nexport function TrashDeleteButton({\n  tooltip = \"删除\",\n  color = \"var(--destructive)\",\n  className,\n  style,\n  type = \"button\",\n  ...props\n}: TrashDeleteButtonProps) {\n  const reduced = usePrefersReducedMotion()\n  const painted = { \"--trash-color\": color, ...style } as CSSProperties\n\n  return (\n    <button\n      {...props}\n      aria-label={props[\"aria-label\"] ?? tooltip}\n      className={cn(\"group relative cursor-pointer border-0 bg-transparent p-2 text-foreground\", className)}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"trash-delete-button\"\n      data-tooltip={tooltip}\n      style={painted}\n      type={type}\n    >\n      <style>{CSS}</style>\n      <svg\n        aria-hidden=\"true\"\n        className={cn(\"size-5 fill-current group-hover:fill-(--trash-color)\", reduced ? \"transition-none\" : \"transition duration-200 group-hover:scale-150\")}\n        viewBox=\"0 0 15 17.5\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path transform=\"translate(-2.5 -1.25)\" d=\"M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z\" />\n      </svg>\n    </button>\n  )\n}\n"
+    }
+  ]
+}

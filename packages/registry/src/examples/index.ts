@@ -39,6 +39,7 @@ import * as effectDemos37 from "./effect-demos-37"
 import * as effectDemos38 from "./effect-demos-38"
 import * as effectDemos39 from "./effect-demos-39"
 import * as effectDemos40 from "./effect-demos-40"
+import * as effectDemos41 from "./effect-demos-41"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -729,6 +730,21 @@ const demoMap: Record<string, ComponentType> = {
   "agent-intro-sequence": effectDemos40.AgentIntroSequenceDemo,
   "hover-image-reveal": effectDemos40.HoverImageRevealDemo,
   "message-loading": effectDemos40.MessageLoadingDemo,
+  "glitch-slice-button": effectDemos41.GlitchSliceButtonDemo,
+  "send-arrow-button": effectDemos41.SendArrowButtonDemo,
+  "trash-delete-button": effectDemos41.TrashDeleteButtonDemo,
+  "neon-hold-card": effectDemos41.NeonHoldCardDemo,
+  "pin-toggle": effectDemos41.PinToggleDemo,
+  "blur-unveil-card": effectDemos41.BlurUnveilCardDemo,
+  "glow-wander-card": effectDemos41.GlowWanderCardDemo,
+  "star-favorite-toggle": effectDemos41.StarFavoriteToggleDemo,
+  "details-list": effectDemos41.DetailsListDemo,
+  "blog-card": effectDemos41.BlogCardDemo,
+  "neo-brutal-kit": effectDemos41.NeoBrutalKitDemo,
+  "contact-form": effectDemos41.ContactFormDemo,
+  "team-section": effectDemos41.TeamSectionDemo,
+  "stat-trend-cards": effectDemos41.StatTrendCardsDemo,
+  "collapsible-side-menu": effectDemos41.CollapsibleSideMenuDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

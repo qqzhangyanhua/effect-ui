@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pin-toggle",
+  "type": "registry:ui",
+  "title": "Pin Toggle",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 vinodjangid07。https://github.com/uiverse-io/galaxy/blob/main/Checkboxes/vinodjangid07_sour-rabbit-84.html 大头针按下切换。用 pressed、onPressedChange 和 aria-pressed，而不是隐藏复选框。示例色放在 demo。减弱动效时不再缩放。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/pin-toggle.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/pin-toggle.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author vinodjangid07）— https://github.com/uiverse-io/galaxy/blob/main/Checkboxes/vinodjangid07_sour-rabbit-84.html. Modified for effect-ui.\n\nimport { useState, type ButtonHTMLAttributes, type CSSProperties } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PinToggleProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, \"color\"> {\n  pressed?: boolean\n  defaultPressed?: boolean\n  onPressedChange?: (pressed: boolean) => void\n  /** 按下后的大头针颜色。不传时使用主色。 */\n  color?: string\n}\n\nexport function PinToggle({\n  pressed,\n  defaultPressed = false,\n  onPressedChange,\n  color = \"var(--primary)\",\n  className,\n  style,\n  type = \"button\",\n  ...props\n}: PinToggleProps) {\n  const reduced = usePrefersReducedMotion()\n  const [uncontrolled, setUncontrolled] = useState(defaultPressed)\n  const on = pressed ?? uncontrolled\n  const painted = { \"--pin-color\": color, ...style } as CSSProperties\n\n  return (\n    <button\n      {...props}\n      aria-pressed={on}\n      className={cn(\n        \"grid size-11 cursor-pointer place-items-center rounded-[10px] border-0 bg-transparent text-foreground hover:bg-[color-mix(in_oklab,var(--pin-color)_18%,transparent)]\",\n        reduced ? \"transition-none\" : \"transition active:scale-90\",\n        className,\n      )}\n      data-pressed={on ? \"true\" : \"false\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"pin-toggle\"\n      onClick={(event) => {\n        props.onClick?.(event)\n        if (event.defaultPrevented) return\n        const next = !on\n        if (pressed === undefined) setUncontrolled(next)\n        onPressedChange?.(next)\n      }}\n      style={painted}\n      type={type}\n    >\n      <svg aria-hidden=\"true\" className=\"h-8 w-auto rotate-35\" fill=\"none\" viewBox=\"0 0 75 100\">\n        <line stroke={on ? \"var(--pin-color)\" : \"currentColor\"} strokeWidth=\"12\" x1=\"37\" x2=\"37\" y1=\"64\" y2=\"100\" />\n        <path\n          d=\"M16.5 36V4.5H58.5V36V53.75V54.9752L59.1862 55.9903L66.9674 67.5H8.03256L15.8138 55.9903L16.5 54.9752V53.75V36Z\"\n          fill={on ? \"var(--pin-color)\" : \"transparent\"}\n          stroke={on ? \"var(--pin-color)\" : \"currentColor\"}\n          strokeWidth=\"10\"\n        />\n      </svg>\n    </button>\n  )\n}\n"
+    }
+  ]
+}

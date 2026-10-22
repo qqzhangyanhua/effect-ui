@@ -49,6 +49,7 @@ import { batch49Components } from "./catalog-batch49"
 import { batch50Components } from "./catalog-batch50"
 import { batch51Components } from "./catalog-batch51"
 import { batch52Components } from "./catalog-batch52"
+import { batch53Components } from "./catalog-batch53"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -131,6 +132,8 @@ export type SourceLibrary =
   | "Arc Library"
   | "ns-ui"
   | "AI Canvas"
+  | "interior"
+  | "beUI"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -264,6 +267,8 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Arc Library": "https://github.com/kuratlielia/arc-library",
   "ns-ui": "https://github.com/nikolas-sapa/ns-ui",
   "AI Canvas": "https://github.com/uiNerd16/aicanvas",
+  interior: "https://github.com/ddoemonn/interior",
+  beUI: "https://github.com/starc007/ui-components",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2351,6 +2356,7 @@ export const components: ComponentMeta[] = [
   ...batch50Components,
   ...batch51Components,
   ...batch52Components,
+  ...batch53Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2468,6 +2474,8 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "stateful-button",
       "split-button",
       "button-retry-backoff",
+      "press-depth",
+      "action-swap",
     ],
   },
 ]
@@ -2561,8 +2569,16 @@ const controlClusterByName = new Map<string, ComponentCluster>(
 
 /** 文档导航按这个归组，不改 category。 */
 export function componentCluster(name: string): ComponentCluster | undefined {
-  // 拉绳开关名字不带 button，文档导航仍归到按钮组。
-  if (name === "button" || name.startsWith("button-") || name.endsWith("-button") || name === "pull-cord") return "button"
+  // 拉绳开关、下压和换字的名字不带 button，文档导航仍归到按钮组。
+  if (
+    name === "button" ||
+    name.startsWith("button-") ||
+    name.endsWith("-button") ||
+    name === "pull-cord" ||
+    name === "press-depth" ||
+    name === "action-swap"
+  )
+    return "button"
   if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"
   return controlClusterByName.get(name)
 }

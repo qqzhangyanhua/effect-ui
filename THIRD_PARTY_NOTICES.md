@@ -53,6 +53,20 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## interior
+
+- 仓库：https://github.com/ddoemonn/interior
+- 许可：MIT
+- 版权：Copyright (c) 2026 ozzy
+- 衍生组件：`press-depth`（https://github.com/ddoemonn/interior/blob/main/components/interior/press-depth.tsx）、`value-flash`（https://github.com/ddoemonn/interior/blob/main/components/interior/value-flash.tsx）、`blur-up-image`（https://github.com/ddoemonn/interior/blob/main/components/interior/blur-up-image.tsx）、`typing-indicator`（https://github.com/ddoemonn/interior/blob/main/components/interior/typing-indicator.tsx）、`new-items-pill`（https://github.com/ddoemonn/interior/blob/main/components/interior/new-items-pill.tsx）
+
+## beUI
+
+- 仓库：https://github.com/starc007/ui-components
+- 许可：MIT
+- 版权：Copyright (c) 2026 Saurabh Chauhan
+- 衍生组件：`chromatic-text-reveal`（https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx）、`action-swap`（https://github.com/starc007/ui-components/blob/main/components/motion/action-swap.tsx）、`pull-to-refresh`（https://github.com/starc007/ui-components/blob/main/components/motion/pull-to-refresh.tsx）、`arc-picker`（https://github.com/starc007/ui-components/blob/main/components/motion/arc-picker.tsx）、`knockout-bracket`（https://github.com/starc007/ui-components/blob/main/components/motion/knockout-bracket.tsx）、`ruler-slider`（https://github.com/starc007/ui-components/blob/main/components/motion/range-slider-ruler.tsx）、`overflow-actions`（https://github.com/starc007/ui-components/blob/main/components/motion/overflow-actions.tsx）、`preview-rail`（https://github.com/starc007/ui-components/blob/main/components/motion/preview-rail.tsx）、`wallet-card`（https://github.com/starc007/ui-components/blob/main/components/motion/wallet-card/index.tsx）
+
 ## AI Canvas
 
 - 仓库：https://github.com/uiNerd16/aicanvas

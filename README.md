@@ -573,6 +573,27 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 下压、色带与弧选
+
+登记在 `catalog-batch53.ts`。百叶已占用 `catalog-batch52.ts`。`press-depth`、`value-flash`、`blur-up-image`、`typing-indicator`、`new-items-pill` 移植自 interior（MIT，Copyright (c) 2026 ozzy）。`chromatic-text-reveal`、`action-swap`、`pull-to-refresh`、`arc-picker`、`knockout-bracket`、`ruler-slider`、`overflow-actions`、`preview-rail`、`wallet-card` 移植自 beUI（MIT，Copyright (c) 2026 Saurabh Chauhan）。`action-swap` 用 `variant` 收拢模糊、滚动、逐字三种换法。`ruler-slider` 对应源文件 `range-slider-ruler`。钱包的换字复用 `action-swap`。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| press-depth | interior，MIT |
+| value-flash | interior，MIT |
+| blur-up-image | interior，MIT |
+| chromatic-text-reveal | beUI，MIT |
+| action-swap | beUI，MIT |
+| pull-to-refresh | beUI，MIT |
+| arc-picker | beUI，MIT |
+| new-items-pill | interior，MIT |
+| typing-indicator | interior，MIT |
+| knockout-bracket | beUI，MIT |
+| ruler-slider | beUI，MIT |
+| overflow-actions | beUI，MIT |
+| preview-rail | beUI，MIT |
+| wallet-card | beUI，MIT |
+
 ### 百叶、斜纹与翻页
 
 登记在 `catalog-batch52.ts`。抛掷已占用 `catalog-batch46.ts`，ns-ui 已占用 `catalog-batch51.ts`。`blind-pull-toggle`、`danger-stripes`、`flip-calendar`、`slice-type`、`stack-tower`、`taga-toggle`、`diamond-grid`、`wild-morph`、`mood-tracker`、`voice-chat-pill`、`job-listing-cards`、`new-project-modal`、`music-player-card`、`label-cards` 移植自 AI Canvas（MIT，Copyright (c) 2026 AI Canvas）。`framer-motion` 改成 `motion/react`，Phosphor 图标改成 `lucide-react`，字体改成 `--font-sans`。颜色控件使用主题变量。职位品牌标志只放在示例里。音乐卡不打包音频。没有新增依赖。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

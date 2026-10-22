@@ -41,6 +41,7 @@ import { batch41Components } from "./catalog-batch41"
 import { batch42Components } from "./catalog-batch42"
 import { batch43Components } from "./catalog-batch43"
 import { batch44Components } from "./catalog-batch44"
+import { batch45Components } from "./catalog-batch45"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -121,6 +122,7 @@ export type SourceLibrary =
   | "Flowbite"
   | "Velora UI"
   | "Neobrutalism"
+  | "Arc Library"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -251,6 +253,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   Flowbite: "https://github.com/themesberg/flowbite",
   "Velora UI": "https://github.com/ColorlibHQ/velora-ui",
   Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
+  "Arc Library": "https://github.com/kuratlielia/arc-library",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2331,6 +2334,7 @@ export const components: ComponentMeta[] = [
   ...batch42Components,
   ...batch43Components,
   ...batch44Components,
+  ...batch45Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2445,6 +2449,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "glow-track-button",
       "neumorph-button",
       "stateful-button",
+      "split-button",
     ],
   },
 ]

@@ -15292,6 +15292,315 @@
           "target": "components/ui/caption-image-card.tsx"
         }
       ]
+    },
+    {
+      "name": "theme-switch-transitions",
+      "type": "registry:ui",
+      "title": "Theme Switch Transitions",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/theme-switch/theme-switch.tsx 亮暗切换按钮，variant 为 reveal、eclipse、split、rise。两枚图标沿同一方向旋转交换。theme 受控，onThemeChange 带回下一个主题、变体和触发元素。减弱动效或离开视口时图标直接换到终态，不再旋转。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/theme-switch-transitions.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/theme-switch-transitions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-button-group",
+      "type": "registry:ui",
+      "title": "Floating Button Group",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/floating-button-group/floating-button-group.tsx 工具栏。一块高亮在按钮之间弹簧移动，按下时略微缩小。方向键、Home 和 End 移动焦点。仅图标或带 shortcut 的项用 Radix tooltip。离开视口时高亮不再滑动。",
+      "dependencies": [
+        "@radix-ui/react-tooltip",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/floating-button-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floating-button-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "morph-select",
+      "type": "registry:ui",
+      "title": "Morph Select",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/morph-select/morph-select.tsx 触发器长成列表。高亮在选项间滑动，选中的文字飞回触发器。可搜索，键盘列表和 600 毫秒内的逐字查找。减弱动效或离开视口时表面直接到位。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morph-select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morph-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "streamgraph",
+      "type": "registry:ui",
+      "title": "Streamgraph",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/streamgraph/streamgraph.tsx 多层时间堆叠。第一条穿过中部，其余上下交替，offset 为 zero 时从基线堆起。图例可隐藏图层。进入视口后从中线胀开，离开时停住，减弱动效直接画满。SVG 带 title，并有屏幕阅读摘要。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/streamgraph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/streamgraph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "waffle-chart",
+      "type": "registry:ui",
+      "title": "Waffle Chart",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/waffle-chart/waffle-chart.tsx 单位格图。最大余数分配格子，数据变化时格子尽量少移动。中性类别用方、圆和框三种形状。进入视口后格子落入，离开视口保持已经落下的格子，减弱动效直接显示终态。带 title 和屏幕阅读摘要。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/waffle-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/waffle-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "treemap",
+      "type": "registry:ui",
+      "title": "Treemap",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/treemap/treemap.tsx 矩形树图，squarify 布局。点击有子节点的块下钻，面包屑可以回到上层。进入视口后色块从中心长出，离开时停在当前一帧，减弱动效直接到位。带 title 和屏幕阅读摘要。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/treemap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/treemap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slope-chart",
+      "type": "registry:ui",
+      "title": "Slope Chart",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/slope-chart/slope-chart.tsx 两个时点的斜率图。标签用 spread 避开重叠。进入视口后线条画出，离开视口后保持终态，减弱动效直接显示。带 title 和屏幕阅读摘要。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/slope-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slope-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ridgeline",
+      "type": "registry:ui",
+      "title": "Ridgeline",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/ridgeline/ridgeline.tsx 山脊图。高斯核密度，带宽默认 Silverman。进入视口后山脊自下而上长出，离开时停住，减弱动效直接画完。带 title 和屏幕阅读摘要。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ridgeline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ridgeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-button",
+      "type": "registry:ui",
+      "title": "Split Button",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/split-button/split-button.tsx 主按钮和菜单合成一颗胶囊。主标签按字符变形，宽度只在标签变化后的一小段时间里弹簧跟随。菜单用 Radix dropdown。减弱动效或离开视口时文字直接替换。",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/split-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/split-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shortcut-recorder",
+      "type": "registry:ui",
+      "title": "Shortcut Recorder",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/shortcut-recorder/shortcut-recorder.tsx 录键盘快捷键。mod 在 Mac 上是 ⌘，在其他平台是 Ctrl。已占用或系统保留的组合会先询问。同文件还导出 ShortcutKbd、ShortcutKeys 和 ShortcutList。减弱动效或离开视口时键帽不再缩放。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shortcut-recorder.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shortcut-recorder.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inline-edit",
+      "type": "registry:ui",
+      "title": "Inline Edit",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/inline-edit/inline-edit.tsx 点一下就地编辑。Enter 保存，Shift+Enter 在多行时换行，Escape 还原。onSave 返回的 Promise 显示保存中，拒绝则回滚。勾号沿路径画出。减弱动效或离开视口时高度和文字直接切换。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inline-edit.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inline-edit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-text",
+      "type": "registry:ui",
+      "title": "Expandable Text",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/expandable-text/expandable-text.tsx 按行数夹住文字，末行渐隐。展开时高度、遮罩和箭头一起动。文字放得下时不显示开关。焦点进到被夹住的链接里会展开。减弱动效或离开视口时高度直接到位。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/expandable-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/expandable-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "brush-chart",
+      "type": "registry:ui",
+      "title": "Brush Chart",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/brush-chart/brush-chart.tsx 时间序列总览加主图。可以拖窗口、拉两端或在总览上新选一段，最小跨度默认 7 天。进入视口后折线从左画出，离开时停住，减弱动效直接画完。带 title 和屏幕阅读摘要。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/brush-chart.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/brush-chart.tsx"
+        }
+      ]
+    },
+    {
+      "name": "user-menu",
+      "type": "registry:ui",
+      "title": "User Menu",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/user-menu/user-menu.tsx 头像账号菜单。状态点在 available、busy、away 之间变形。主题是 light、dark、system，应用主题由调用方决定。窄于 640px 时变成底部抽屉。onSignOut 返回 Promise 时显示进行中。减弱动效或离开视口时面板不再缩放。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/user-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/user-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "password-field",
+      "type": "registry:ui",
+      "title": "Password Field",
+      "description": "移植自 Arc Library，MIT，Copyright (c) 2026 Elia Kuratli。 https://github.com/kuratlielia/arc-library/blob/main/registry/components/password-field/password-field.tsx 密码框。一只眼睛被斜线划开，说明文字按词交叉淡入，消息行高度跟着内容弹簧变化。显示和隐藏切换后输入框短暂解析。减弱动效或离开视口时不再模糊、不再改高度。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/password-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/password-field.tsx"
+        }
+      ]
     }
   ]
 }

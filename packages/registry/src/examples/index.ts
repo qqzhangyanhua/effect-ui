@@ -45,6 +45,7 @@ import * as effectDemos43 from "./effect-demos-43"
 import * as effectDemos44 from "./effect-demos-44"
 import * as effectDemos45 from "./effect-demos-45"
 import * as effectDemos46 from "./effect-demos-46"
+import * as effectDemos47 from "./effect-demos-47"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -818,6 +819,21 @@ const demoMap: Record<string, ComponentType> = {
   "tweet-card": effectDemos46.TweetCardDemo,
   "neo-star-shapes": effectDemos46.NeoStarShapesDemo,
   "caption-image-card": effectDemos46.CaptionImageCardDemo,
+  "theme-switch-transitions": effectDemos47.ThemeSwitchTransitionsDemo,
+  "floating-button-group": effectDemos47.FloatingButtonGroupDemo,
+  "morph-select": effectDemos47.MorphSelectDemo,
+  streamgraph: effectDemos47.StreamgraphDemo,
+  "waffle-chart": effectDemos47.WaffleChartDemo,
+  treemap: effectDemos47.TreemapDemo,
+  "slope-chart": effectDemos47.SlopeChartDemo,
+  ridgeline: effectDemos47.RidgelineDemo,
+  "split-button": effectDemos47.SplitButtonDemo,
+  "shortcut-recorder": effectDemos47.ShortcutRecorderDemo,
+  "inline-edit": effectDemos47.InlineEditDemo,
+  "expandable-text": effectDemos47.ExpandableTextDemo,
+  "brush-chart": effectDemos47.BrushChartDemo,
+  "user-menu": effectDemos47.UserMenuDemo,
+  "password-field": effectDemos47.PasswordFieldDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

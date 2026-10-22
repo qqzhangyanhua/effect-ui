@@ -1,0 +1,106 @@
+"use client";
+
+// Ported from Arc Library (MIT, (c) 2026 Elia Kuratli) — https://github.com/kuratlielia/arc-library/blob/main/registry/components/password-field/password-field.tsx
+
+import { useAnimationActive } from "@/hooks/use-animation-active";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { forwardRef, useEffect, useId, useRef, useState , createContext, useContext} from "react";
+import type { InputHTMLAttributes } from "react";
+import { AnimatePresence, motion } from "motion/react";
+const ArcQuiet = createContext(false);
+
+function useArcReduced() {
+  const prefer = usePrefersReducedMotion();
+  const quiet = useContext(ArcQuiet);
+  return prefer || quiet;
+}
+
+const motionTokens = {
+  duration: { instant: 0.12, fast: 0.16, exit: 0.18, standard: 0.24, considered: 0.48 },
+  ease: {
+    enter: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    exit: [0.7, 0, 0.84, 0] as [number, number, number, number],
+    standard: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    inOut: [0.65, 0, 0.35, 1] as [number, number, number, number],
+  },
+  spring: {
+    responsive: { type: "spring" as const, stiffness: 520, damping: 44 },
+    gentle: { type: "spring" as const, stiffness: 340, damping: 34 },
+    snappy: { type: "spring" as const, visualDuration: 0.26, bounce: 0 },
+    smooth: { type: "spring" as const, visualDuration: 0.4, bounce: 0 },
+    morph: { type: "spring" as const, visualDuration: 0.42, bounce: 0 },
+  },
+  stagger: { char: 0.016, word: 0.04, line: 0.08, item: 0.035 },
+  blur: { subtle: 2, soft: 4, text: 8 },
+};
+
+const styles: Record<string, string> = new Proxy({} as Record<string, string>, { get: (_target, key) => (typeof key === "string" ? "password-field-" + key : "") });
+
+const arcCss = ":where([class^=\"password-field-\"], [class*=\" password-field-\"]) {\n  --surface: var(--background);\n  --surface-raised: var(--popover);\n  --surface-muted: var(--muted);\n  --text-secondary: var(--muted-foreground);\n  --text-muted: var(--muted-foreground);\n  --border-subtle: color-mix(in oklab, var(--border) 65%, var(--background));\n  --border-strong: color-mix(in oklab, var(--foreground) 28%, var(--border));\n  --accent: var(--primary);\n  --accent-strong: var(--primary);\n  --accent-foreground: var(--primary-foreground);\n  --accent-subtle: color-mix(in oklab, var(--primary) 12%, transparent);\n  --danger: var(--destructive);\n  --success: var(--primary);\n  --warning: var(--destructive);\n  --control-on: var(--primary);\n  --control-glyph: var(--primary-foreground);\n  --shadow-resting: 0 1px 2px oklch(0% 0 0 / .035);\n  --shadow-raised: 0 6px 18px oklch(0% 0 0 / .065), 0 1px 3px oklch(0% 0 0 / .035);\n  --shadow-floating: 0 20px 48px oklch(0% 0 0 / .105), 0 3px 10px oklch(0% 0 0 / .045);\n  --radius-control: 1.125rem;\n  --radius-panel: 1.625rem;\n  --radius-surface: 2.125rem;\n  --radius-pill: 9999px;\n  --control-height-sm: 2.25rem;\n  --control-height-md: 2.75rem;\n  --control-height-lg: 3.125rem;\n  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;\n  --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem;\n  --text-xs: .75rem; --text-sm: .875rem; --text-base: 1rem;\n  --tracking-body: -.01em; --leading-body: 1.4;\n  --font-body: inherit; --font-display: inherit;\n  --ease-enter: cubic-bezier(.16, 1, .3, 1);\n  --ease-standard: cubic-bezier(.22, 1, .36, 1);\n  --ease-exit: cubic-bezier(.7, 0, .84, 0);\n  --ease-in-out: cubic-bezier(.65, 0, .35, 1);\n  --ease-spring: linear(0, 0.0213, 0.0739, 0.1443, 0.2235, 0.305, 0.3849, 0.4606, 0.5305, 0.594, 0.6508, 0.7011, 0.7452, 0.7836, 0.8168, 0.8454, 0.8699, 0.8907, 0.9084, 0.9234, 0.9361, 0.9467, 0.9557, 0.9632, 0.9694, 0.9747, 0.979, 0.9826, 0.9857, 0.9882, 0.9902, 0.992, 0.9934, 0.9946, 0.9955, 0.9963, 1);\n  --duration-instant: 120ms; --duration-fast: 160ms; --duration-standard: 240ms; --duration-considered: 480ms; --duration-spring: 580ms;\n  --series-1: var(--primary);\n  --series-2: #7128a5;\n  --series-3: #e58f00;\n  --series-4: #009e84;\n  color: var(--foreground);\n}\n.dark :where([class^=\"password-field-\"], [class*=\" password-field-\"]) { --series-1: #55adff; --series-2: #9c37be; --series-3: #e66e00; --series-4: #00a861; }\n@supports (color: oklch(from red clamp(.4, l * sign(max(c - .02, 0)) + .5, .8) c h)) {\n  :where([class^=\"password-field-\"], [class*=\" password-field-\"]) {\n    --series-1: oklch(from var(--accent) calc(l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0)))) calc(c * sign(max(c - .02, 0)) + .15 * (1 - sign(max(c - .02, 0)))) calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0)))));\n    --series-2: oklch(from var(--accent) clamp(.45, l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0))) - 0.25, .76) .19 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 57));\n    --series-3: oklch(from var(--accent) clamp(.45, l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0))) + 0.14, .76) .18 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 184));\n    --series-4: oklch(from var(--accent) clamp(.45, l * sign(max(c - .02, 0)) + .58 * (1 - sign(max(c - .02, 0))), .76) .21 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 292));\n  }\n  .dark :where([class^=\"password-field-\"], [class*=\" password-field-\"]) {\n    --series-1: oklch(from var(--accent) calc(l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0)))) calc(c * sign(max(c - .02, 0)) + .15 * (1 - sign(max(c - .02, 0)))) calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0)))));\n    --series-2: oklch(from var(--accent) clamp(.485, l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0))) - 0.19, .665) .21 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 66));\n    --series-3: oklch(from var(--accent) clamp(.485, l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0))) + 0.02, .665) .21 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 175));\n    --series-4: oklch(from var(--accent) clamp(.485, l * sign(max(c - .02, 0)) + .73 * (1 - sign(max(c - .02, 0))) - 0.1, .665) .18 calc(h * sign(max(c - .02, 0)) + 250 * (1 - sign(max(c - .02, 0))) + 270));\n  }\n}\n/* No row gap: grid tracks clamp a negative margin at zero, so a closed message row would still pay the gap. Each row carries its own space instead. */\n.password-field-field { display: grid; min-width: 0; }\n.password-field-field label { margin-bottom: var(--space-2); font-size: var(--text-sm); font-weight: 500; }\n/* Focus shows as a darker border only; the shell never changes size. The toggle sits with an even inset on top, bottom and right. */\n.password-field-shell { display: flex; min-height: var(--control-height-md); align-items: center; border: 1px solid var(--border-strong); border-radius: var(--radius-control); padding: 0 calc((var(--control-height-md) - 2px - 30px) / 2) 0 var(--space-3); background: var(--surface); transition: border-color var(--duration-fast) var(--ease-standard); }\n@media (hover: hover) and (pointer: fine) { .password-field-shell:hover:not(:focus-within) { border-color: var(--foreground); } }\n.password-field-shell:focus-within { border-color: var(--foreground); }\n.password-field-shell:has(.password-field-input[aria-invalid=\"true\"]) { border-color: var(--danger); }\n.password-field-input { width: 100%; min-width: 0; border: 0; background: transparent; color: var(--foreground); font: inherit; font-size: var(--text-sm); line-height: var(--leading-body); outline: 0; }\n.password-field-input::placeholder { color: var(--text-muted); }\n/* Switching between dots and characters resolves in place instead of snapping. Swapping the keyframe name restarts it. */\n.password-field-input[data-reveal=\"shown\"] { animation: password-field-resolve-shown var(--duration-standard) var(--ease-enter); }\n.password-field-input[data-reveal=\"hidden\"] { animation: password-field-resolve-hidden var(--duration-standard) var(--ease-enter); }\n@keyframes password-field-resolve-shown { from { opacity: .35; filter: blur(2px); } }\n@keyframes password-field-resolve-hidden { from { opacity: .35; filter: blur(2px); } }\n.password-field-shell button { display: grid; width: 30px; height: 30px; flex: 0 0 auto; place-items: center; border: 0; border-radius: var(--radius-control); background: transparent; color: var(--text-muted); transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard), transform var(--duration-spring) var(--ease-spring); }\n@media (hover: hover) and (pointer: fine) { .password-field-shell button:hover { background: var(--surface-muted); color: var(--foreground); } }\n.password-field-shell button:active { transform: scale(.96); transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard), transform 100ms var(--ease-standard); }\n.password-field-shell button[aria-pressed=\"true\"] { color: var(--foreground); }\n/* The row's space is padding inside the clipped slot, so the height animates from a true zero. */\n.password-field-messageSlot { display: block; overflow: hidden; }\n.password-field-hint { display: block; padding-top: var(--space-2); color: var(--text-muted); font-size: var(--text-xs); line-height: var(--leading-body); }\n/* Words are measured against this box when they pop out to leave, so it must be the positioned parent. */\n.password-field-words { position: relative; display: block; }\n.password-field-word { display: inline-block; white-space: pre; }\n.password-field-srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }\n@media (prefers-reduced-motion: reduce) { .password-field-shell, .password-field-shell button { transition: none; } .password-field-shell button:active { transform: none; } .password-field-input[data-reveal] { animation: none; } }\n\n.password-field-shell button { width: 2.75rem; height: 2.75rem; }\n\n";
+
+function ArcStyle() {
+  return <style>{arcCss}</style>;
+}
+
+/** The toggle's names. Both have English defaults; pass the ones you translate. */
+export interface PasswordFieldMessages { showPassword: string; hidePassword: string }
+export const defaultPasswordFieldMessages: PasswordFieldMessages = { showPassword: "Show password", hidePassword: "Hide password" };
+export interface PasswordFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+  label: string;
+  description?: string;
+  /** Translated or reworded toggle names. */
+  messages?: Partial<PasswordFieldMessages>;
+}
+/** One eye that a slash draws across, cutting the outline beneath it, instead of swapping two icons. */
+function EyeMorph({ slashed }: { slashed: boolean }) {
+  const reduced = useArcReduced(); const maskId = `eye-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const slash = { pathLength: slashed ? 1 : 0, opacity: slashed ? 1 : 0 };
+  const transition = reduced ? { duration: 0 } : { pathLength: { duration: motionTokens.duration.standard, ease: motionTokens.ease.standard }, opacity: { duration: motionTokens.duration.instant } };
+  return <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="white" stroke="none" /><motion.path d="M2 2l20 20" stroke="black" strokeWidth={5} initial={false} animate={slash} transition={transition} /></mask>
+    <g mask={`url(#${maskId})`}><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx="12" cy="12" r="3" /></g>
+    <motion.path d="M2 2l20 20" initial={false} animate={slash} transition={transition} />
+  </svg>;
+}
+/** Changed words rise in and unblur while unchanged words hold still. Assistive tech reads the plain copy. */
+function MotionText({ text }: { text: string }) {
+  const reduced = useArcReduced();
+  const words = text.split(" ");
+  return <><span className={styles.srOnly}>{text}</span><span className={styles.words} aria-hidden="true"><AnimatePresence initial={false} mode="popLayout">{words.map((word, index) => <motion.span key={`${index}:${word}`} className={styles.word}
+    initial={reduced ? { opacity: 0 } : { opacity: 0, y: "0.35em", filter: `blur(${motionTokens.blur.soft}px)` }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    exit={reduced ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, y: "-0.35em", filter: `blur(${motionTokens.blur.subtle}px)`, transition: { duration: motionTokens.duration.exit, ease: motionTokens.ease.exit } }}
+    transition={reduced ? { duration: motionTokens.duration.instant } : { duration: motionTokens.duration.standard, ease: motionTokens.ease.enter }}>{index < words.length - 1 ? `${word} ` : word}</motion.span>)}</AnimatePresence></span></>;
+}
+
+/** Helper and error copy: the row opens its height on a spring, then the words settle in. */
+function FieldMessage({ id, text, className, alert }: { id?: string; text?: string; className?: string; alert?: boolean }) {
+  return <AnimatePresence initial={false}>{text ? <MessageRow key="message" id={id} text={text} className={className} alert={alert} /> : null}</AnimatePresence>;
+}
+
+/** The row tracks the measured copy, so a longer message that wraps opens its next line instead of snapping. */
+function MessageRow({ id, text, className, alert }: { id?: string; text: string; className?: string; alert?: boolean }) {
+  const reduced = useArcReduced();
+  const copyRef = useRef<HTMLSpanElement>(null);
+  const [height, setHeight] = useState<number | "auto">("auto");
+  useEffect(() => {
+    const node = copyRef.current;
+    if (!node || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(([entry]) => { if (entry) setHeight(entry.borderBoxSize?.[0]?.blockSize ?? node.offsetHeight); });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+  return <motion.span className={styles.messageSlot} initial={{ height: 0, opacity: 0 }} animate={{ height, opacity: 1 }} exit={{ height: 0, opacity: 0, transition: reduced ? { duration: 0 } : { height: motionTokens.spring.smooth, opacity: { duration: motionTokens.duration.instant } } }} transition={reduced ? { duration: 0 } : { height: motionTokens.spring.smooth, opacity: { duration: motionTokens.duration.fast } }}>
+    <motion.span ref={copyRef} id={id} className={className} role={alert ? "alert" : undefined} initial={reduced ? false : { y: "0.35em", filter: `blur(${motionTokens.blur.soft}px)` }} animate={{ y: 0, filter: "blur(0px)" }} transition={{ duration: reduced ? 0 : motionTokens.duration.standard, ease: motionTokens.ease.enter }}><MotionText text={text} /></motion.span>
+  </motion.span>;
+}
+
+export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(function PasswordField({ label, description, messages: messagesProp, id, className, ...props }, ref) {
+  const arcHost = useRef<HTMLDivElement>(null);
+  const preferReduced = useArcReduced();
+  const arcLive = useAnimationActive(arcHost);
+  const messages = { ...defaultPasswordFieldMessages, ...messagesProp };
+  const generated = useId(); const controlId = id ?? generated; const [visible, setVisible] = useState(false); const [toggled, setToggled] = useState(false);
+  const hintId = description ? `${controlId}-description` : undefined;
+  // data-reveal only appears after the first toggle, so the value resolves on each change but never on mount.
+  return <ArcQuiet.Provider value={!arcLive}><ArcStyle /><div data-slot="password-field" data-reduced={preferReduced ? "true" : "false"} data-motion={arcLive && !preferReduced ? "on" : "off"}  ref={arcHost} className={styles.field}><label htmlFor={controlId}>{label}</label><div className={styles.shell}><input {...props} ref={ref} id={controlId} type={visible ? "text" : "password"} data-reveal={toggled ? (visible ? "shown" : "hidden") : undefined} aria-describedby={[props["aria-describedby"], hintId].filter(Boolean).join(" ") || undefined} className={[styles.input, className].filter(Boolean).join(" ")} /><button type="button" onClick={() => { setVisible(current => !current); setToggled(true); }} aria-label={visible ? messages.hidePassword : messages.showPassword} aria-pressed={visible}><EyeMorph slashed={visible} /></button></div><FieldMessage id={hintId} text={description} className={styles.hint} /></div></ArcQuiet.Provider>;
+});

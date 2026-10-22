@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-input",
+  "type": "registry:ui",
+  "title": "File Input",
+  "description": "移植自 daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi。 https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/fileinput.css 原生 file 输入。fieldSize 从 xs 到 xl，color 画在选择按钮上，ghost 去掉外框。accept、multiple、onFilesChange 可配。焦点有描边。减弱动效时背景不再过渡。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/file-input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/file-input.tsx",
+      "content": "\"use client\"\n\n// Ported from daisyUI（MIT，(c) 2020 Pouya Saadeghi）— https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/fileinput.css. Modified for effect-ui.\n\nimport type { InputHTMLAttributes } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FileInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, \"size\" | \"type\"> {\n  fieldSize?: \"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"\n  ghost?: boolean\n  color?: string\n  onFilesChange?: (files: File[]) => void\n}\n\nconst heights = { xs: \"1.5rem\", sm: \"2rem\", md: \"2.5rem\", lg: \"3rem\", xl: \"3.5rem\" }\nconst typeSizes = { xs: \"0.6875rem\", sm: \"0.75rem\", md: \"0.875rem\", lg: \"1.125rem\", xl: \"1.125rem\" }\n\nconst rules = `\n[data-slot=\"file-input\"]::file-selector-button {\n  height: 100%;\n  margin-right: 1rem;\n  margin-left: -1px;\n  border: 0;\n  padding: 0 1rem;\n  font-weight: 600;\n  cursor: pointer;\n  background: var(--file-accent, var(--primary));\n  color: var(--file-fg, var(--primary-foreground));\n}\n[data-slot=\"file-input\"][data-ghost=\"true\"] {\n  background: transparent;\n  border-color: transparent;\n  box-shadow: none;\n}\n[data-slot=\"file-input\"]:focus {\n  outline: 2px solid var(--ring);\n  outline-offset: 2px;\n}\n`\n\nexport function FileInput({ fieldSize = \"md\", ghost = false, color, onFilesChange, className, ...props }: FileInputProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <>\n      <style>{rules}</style>\n      <input\n        {...props}\n        className={cn(\n          \"inline-flex w-full max-w-xs cursor-pointer items-center rounded-md border border-border bg-background pe-3 align-middle text-foreground select-none\",\n          className,\n        )}\n        data-field-size={fieldSize}\n        data-ghost={ghost ? \"true\" : \"false\"}\n        data-reduced={reduced ? \"true\" : \"false\"}\n        data-slot=\"file-input\"\n        style={{\n          height: heights[fieldSize],\n          fontSize: typeSizes[fieldSize],\n          [\"--file-accent\" as string]: color ?? \"var(--primary)\",\n          [\"--file-fg\" as string]: \"var(--primary-foreground)\",\n          transition: reduced ? \"none\" : \"background-color 0.2s\",\n        }}\n        type=\"file\"\n        onChange={(event) => {\n          props.onChange?.(event)\n          const list = event.target.files\n          onFilesChange?.(list ? Array.from(list) : [])\n        }}\n      />\n    </>\n  )\n}\n"
+    }
+  ]
+}

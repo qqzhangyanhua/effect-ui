@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-gallery",
+  "type": "registry:ui",
+  "title": "Hover Gallery",
+  "description": "移植自 daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi。 https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/hovergallery.css 一次只显示一张图。指针在画面上横向移动时切换索引，触摸按住拖动同样切图，progress 打开底部进度条。images 可以是地址或带 alt 的对象。示例图放在 demo。减弱动效时切换不再过渡。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/hover-gallery.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hover-gallery.tsx",
+      "content": "\"use client\"\n\n// Ported from daisyUI（MIT，(c) 2020 Pouya Saadeghi）— https://github.com/saadeghi/daisyui/blob/main/packages/daisyui/src/components/hovergallery.css. Modified for effect-ui.\n\nimport { useRef, useState, type HTMLAttributes, type PointerEvent } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HoverGalleryImage {\n  src: string\n  alt: string\n}\n\nexport interface HoverGalleryProps extends HTMLAttributes<HTMLDivElement> {\n  images: readonly (string | HoverGalleryImage)[]\n  alt?: string\n  progress?: boolean\n}\n\nfunction frameOf(image: string | HoverGalleryImage, alt: string | undefined, index: number): HoverGalleryImage {\n  if (typeof image === \"string\") return { src: image, alt: alt ?? `图片 ${index + 1}` }\n  return image\n}\n\nexport function HoverGallery({ images, alt, progress = false, className, ...props }: HoverGalleryProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = useState(0)\n  const [dragging, setDragging] = useState(false)\n  const count = images.length\n  const safeIndex = count === 0 ? 0 : Math.min(index, count - 1)\n  const current = count === 0 ? undefined : frameOf(images[safeIndex] ?? images[0] ?? \"\", alt, safeIndex)\n\n  function scrub(clientX: number) {\n    const node = ref.current\n    if (!node || count === 0) return\n    const rect = node.getBoundingClientRect()\n    const ratio = rect.width <= 0 ? 0 : (clientX - rect.left) / rect.width\n    const next = Math.min(count - 1, Math.max(0, Math.floor(Math.min(1, Math.max(0, ratio)) * count)))\n    setIndex(next)\n  }\n\n  function onPointerDown(event: PointerEvent<HTMLDivElement>) {\n    if (event.pointerType === \"touch\" || event.pointerType === \"pen\") {\n      setDragging(true)\n      event.currentTarget.setPointerCapture(event.pointerId)\n      scrub(event.clientX)\n    }\n  }\n\n  function onPointerMove(event: PointerEvent<HTMLDivElement>) {\n    if (event.pointerType === \"mouse\" || dragging) scrub(event.clientX)\n  }\n\n  function onPointerUp() {\n    setDragging(false)\n  }\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      className={cn(\"relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted\", className)}\n      data-index={safeIndex}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"hover-gallery\"\n      onPointerDown={onPointerDown}\n      onPointerMove={onPointerMove}\n      onPointerUp={onPointerUp}\n      onPointerCancel={onPointerUp}\n    >\n      {current ? (\n        // eslint-disable-next-line @next/next/no-img-element -- registry 组件用 img，不引入 next/image\n        <img\n          alt={current.alt}\n          className=\"size-full object-cover\"\n          draggable={false}\n          src={current.src}\n          style={{ transition: reduced ? \"none\" : \"opacity 160ms linear\" }}\n        />\n      ) : null}\n      {progress && count > 0 ? (\n        <span aria-hidden className=\"absolute inset-x-3 bottom-3 h-1 overflow-hidden rounded-full bg-background/70\" data-part=\"progress\">\n          <span className=\"block h-full bg-primary\" style={{ width: `${((safeIndex + 1) / count) * 100}%`, transition: reduced ? \"none\" : \"width 160ms linear\" }} />\n        </span>\n      ) : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

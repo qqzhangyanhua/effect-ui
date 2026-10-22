@@ -39,6 +39,7 @@ import * as effectDemos37 from "./effect-demos-37"
 import * as effectDemos38 from "./effect-demos-38"
 import * as effectDemos39 from "./effect-demos-39"
 import * as effectDemos40 from "./effect-demos-40"
+import * as effectDemos41 from "./effect-demos-41"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -693,6 +694,9 @@ const demoMap: Record<string, ComponentType> = {
   "lanyard-badge": effectDemos40.LanyardBadgeDemo,
   "jelly-button": effectDemos40.JellyButtonDemo,
   "spring-drawer": effectDemos40.SpringDrawerDemo,
+  "magnet-chips": effectDemos41.MagnetChipsDemo,
+  "folder-stack": effectDemos41.FolderStackDemo,
+  "physics-dropzone": effectDemos41.PhysicsDropzoneDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -1,0 +1,52 @@
+packages/registry/src/audit-coverage.ts
+  s_1f7fae292b4abd::t_987294232658e1 86
+  s_1f7fae292b4abd::t_0ac3c21babf853 5,88-90
+CREDITS.md
+  s_1f7fae292b4abd::t_e22afbfa33ab6d 26
+  s_1f7fae292b4abd::t_b130d8654cdc05 27-28
+  s_1f7fae292b4abd::t_97685c99fbb2a1 24
+apps/docs/public/r/jelly-button.json
+  s_1f7fae292b4abd::t_47efdbdc7277f3 1-20
+apps/docs/public/r/lanyard-badge.json
+  s_1f7fae292b4abd::t_0775e41b9f1ae0 1-20
+apps/docs/public/r/spring-drawer.json
+  s_1f7fae292b4abd::t_aa3f415af925ec 1-20
+packages/registry/src/catalog-batch38.ts
+  s_1f7fae292b4abd::t_057fd9fe613575 1-99
+packages/registry/src/effects/jelly-button.test.tsx
+  s_1f7fae292b4abd::t_389d88db70bb4a 1-114
+packages/registry/src/effects/jelly-button.tsx
+  s_1f7fae292b4abd::t_34d030d5ed4101 1-212
+packages/registry/src/effects/lanyard-badge.test.tsx
+  s_1f7fae292b4abd::t_114544f294f6f2 1-114
+packages/registry/src/effects/lanyard-badge.tsx
+  s_1f7fae292b4abd::t_99d6521efb87a6 1-320
+packages/registry/src/effects/spring-drawer.test.tsx
+  s_1f7fae292b4abd::t_41f2924db45350 1-132
+packages/registry/src/effects/spring-drawer.tsx
+  s_1f7fae292b4abd::t_4dd4c20188cc59 1-252
+packages/registry/src/examples/effect-demos-40.tsx
+  s_1f7fae292b4abd::t_65d0c0dc40b6cd 1-53
+README.md
+  s_1f7fae292b4abd::t_0700cf43945ddd 603,613-623
+packages/registry/src/catalog.ts
+  s_1f7fae292b4abd::t_d596b84d11bd92 37,2306,2308-2310
+packages/registry/src/examples/index.ts
+  s_1f7fae292b4abd::t_9781962ecb6909 41,690,694-698
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "5b264704442d0f6a2dc1095996ce76d6e633cbbe",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

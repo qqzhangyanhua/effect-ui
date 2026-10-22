@@ -2303,11 +2303,8 @@ export const components: ComponentMeta[] = [
   ...batch34Components,
   ...batch35Components,
   ...batch36Components,
-<<<<<<< HEAD
   ...batch37Components,
-=======
   ...batch38Components,
->>>>>>> issue-110
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

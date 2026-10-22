@@ -687,15 +687,12 @@ const demoMap: Record<string, ComponentType> = {
   "card-toss-stack": effectDemos38.CardTossStackDemo,
   "toss-to-trash": effectDemos38.TossToTrashDemo,
   "sticky-note-board": effectDemos38.StickyNoteBoardDemo,
-<<<<<<< HEAD
   "tag-jar": effectDemos39.TagJarDemo,
   "coin-jar": effectDemos39.CoinJarDemo,
   "ball-pit": effectDemos39.BallPitDemo,
-=======
   "lanyard-badge": effectDemos40.LanyardBadgeDemo,
   "jelly-button": effectDemos40.JellyButtonDemo,
   "spring-drawer": effectDemos40.SpringDrawerDemo,
->>>>>>> issue-110
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

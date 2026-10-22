@@ -83,11 +83,7 @@ function hasControl(prop: unknown): boolean {
 
 export function exemptionClosedNames(): ReadonlySet<string> {
   return new Set(
-<<<<<<< HEAD
-    [...batch34Components, ...batch35Components, ...batch36Components, ...batch37Components].map((entry) => entry.name),
-=======
-    [...batch34Components, ...batch35Components, ...batch36Components, ...batch38Components].map((entry) => entry.name),
->>>>>>> issue-110
+    [...batch34Components, ...batch35Components, ...batch36Components, ...batch37Components, ...batch38Components].map((entry) => entry.name),
   )
 }
 

@@ -53,6 +53,7 @@ import * as effectDemos51 from "./effect-demos-51"
 import * as effectDemos52 from "./effect-demos-52"
 import * as effectDemos53 from "./effect-demos-53"
 import * as effectDemos54 from "./effect-demos-54"
+import * as effectDemos55 from "./effect-demos-55"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -864,6 +865,20 @@ const demoMap: Record<string, ComponentType> = {
   "new-project-modal": effectDemos54.NewProjectModalDemo,
   "music-player-card": effectDemos54.MusicPlayerCardDemo,
   "label-cards": effectDemos54.LabelCardsDemo,
+  "press-depth": effectDemos55.PressDepthDemo,
+  "value-flash": effectDemos55.ValueFlashDemo,
+  "blur-up-image": effectDemos55.BlurUpImageDemo,
+  "chromatic-text-reveal": effectDemos55.ChromaticTextRevealDemo,
+  "action-swap": effectDemos55.ActionSwapDemo,
+  "pull-to-refresh": effectDemos55.PullToRefreshDemo,
+  "arc-picker": effectDemos55.ArcPickerDemo,
+  "new-items-pill": effectDemos55.NewItemsPillDemo,
+  "typing-indicator": effectDemos55.TypingIndicatorDemo,
+  "knockout-bracket": effectDemos55.KnockoutBracketDemo,
+  "ruler-slider": effectDemos55.RulerSliderDemo,
+  "overflow-actions": effectDemos55.OverflowActionsDemo,
+  "preview-rail": effectDemos55.PreviewRailDemo,
+  "wallet-card": effectDemos55.WalletCardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

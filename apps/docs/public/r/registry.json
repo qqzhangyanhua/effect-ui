@@ -15966,6 +15966,303 @@
           "target": "components/ui/label-cards.tsx"
         }
       ]
+    },
+    {
+      "name": "press-depth",
+      "type": "registry:ui",
+      "title": "Press Depth",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/press-depth.tsx 按下时按钮沉进底槽，并朝指针倾斜。键盘空格和回车同样按下。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/press-depth.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/press-depth.tsx"
+        }
+      ]
+    },
+    {
+      "name": "value-flash",
+      "type": "registry:ui",
+      "title": "Value Flash",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/value-flash.tsx 数字变化时滚动换位，并按涨跌着色。读屏在停顿后播报。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/value-flash.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/value-flash.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-up-image",
+      "type": "registry:ui",
+      "title": "Blur Up Image",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/blur-up-image.tsx 图片从模糊显到清晰。加载失败时留一块占位。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blur-up-image.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blur-up-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chromatic-text-reveal",
+      "type": "registry:ui",
+      "title": "Chromatic Text Reveal",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx 色带扫过前缀后面的词，再换下一个。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chromatic-text-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chromatic-text-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "action-swap",
+      "type": "registry:ui",
+      "title": "Action Swap",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/action-swap.tsx 一个按钮在几条文案之间切换。variant 选择模糊、滚动或逐字三种换法。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/action-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/action-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pull-to-refresh",
+      "type": "registry:ui",
+      "title": "Pull To Refresh",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/pull-to-refresh.tsx 在顶部下拉刷新。触控、指针和隐藏的刷新按钮都能触发。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pull-to-refresh.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pull-to-refresh.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-picker",
+      "type": "registry:ui",
+      "title": "Arc Picker",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/arc-picker.tsx 沿弧线拖动、滚动或用方向键选择一项。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/arc-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/arc-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "new-items-pill",
+      "type": "registry:ui",
+      "title": "New Items Pill",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/new-items-pill.tsx 列表离开顶部后，新条目堆成一颗可跳回的药丸。读屏延迟播报。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/new-items-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/new-items-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typing-indicator",
+      "type": "registry:ui",
+      "title": "Typing Indicator",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/typing-indicator.tsx 有人正在输入时冒出气泡和名字。读屏播报整句。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/typing-indicator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/typing-indicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "knockout-bracket",
+      "type": "registry:ui",
+      "title": "Knockout Bracket",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/knockout-bracket.tsx 单败淘汰赛对阵。左右按钮翻页，对阵图跟着平移。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/knockout-bracket.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/knockout-bracket.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ruler-slider",
+      "type": "registry:ui",
+      "title": "Ruler Slider",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/range-slider-ruler.tsx 刻度在指针下滑动。拖动带惯性，方向键按步进移动。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ruler-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ruler-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "overflow-actions",
+      "type": "registry:ui",
+      "title": "Overflow Actions",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/overflow-actions.tsx 主操作常驻，其余收在一个按钮里。悬停放大只在有悬停的设备上出现。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/overflow-actions.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/overflow-actions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "preview-rail",
+      "type": "registry:ui",
+      "title": "Preview Rail",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/preview-rail.tsx 一排刻度。鼠标悬停、触控点按或键盘聚焦时展开预览。带链接的项第一次点按只打开预览。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-dismiss",
+        "use-hover-gesture",
+        "use-prefers-reduced-motion",
+        "use-tap-gesture",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/preview-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/preview-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wallet-card",
+      "type": "registry:ui",
+      "title": "Wallet Card",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/wallet-card/index.tsx 账户切换、余额显隐、搜索和收发操作。余额换字复用 action-swap。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "action-swap",
+        "use-animation-active",
+        "use-dismiss",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wallet-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wallet-card.tsx"
+        }
+      ]
     }
   ]
 }

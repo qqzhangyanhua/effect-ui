@@ -1,0 +1,11 @@
+Spectrum UI
+https://github.com/arihantcodes/spectrum-ui
+
+Made by Arihant.
+Licensed under the Apache License, Version 2.0.
+The upstream LICENSE appendix is the unfilled Apache template and the repository does not ship its own NOTICE file.
+
+effect-ui redistributes modified Spectrum UI components.
+Modifications: framer-motion replaced with motion/react, next-themes removed,
+reduced motion handled with use-prefers-reduced-motion, example copy moved
+to props or demos, and each ported file marked Modified.

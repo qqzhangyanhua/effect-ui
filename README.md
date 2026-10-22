@@ -557,6 +557,31 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 全息文字、刮刮卡与评分
+
+登记在 `catalog-batch35.ts`。上一批色相波浪已占用 `catalog-batch34.ts`。`hologram-text`、`ink-morph`、`orbital-text`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card` 移植自 Spectrum UI（Apache-2.0，Made by Arihant）。`use-dismiss`、`use-hover-gesture`、`use-tap-gesture` 一并移植到 `hooks/`。`framer-motion` 已换成 `motion/react`，去掉了 `next-themes`。`faq-tabs-card` 的示例文案由 `tabs` 传入，`nav-list-card` 的示例数据在 demo。每个移植文件都标明 Modified。没有新增依赖。减弱动效时全息文字停止闪烁并保持可见、墨迹直接落到终点、轨道字符直接落位、刮刮卡不生成粉尘、骨架不脉冲、状态文字直接替换、铃铛不摆动、异步按钮的加载旋转停止、表情不弹跳、关注按钮不形变、分享菜单只淡入、任务勾选不爆开、动作条标签直接显隐、常见问题直接切换、导航行不再位移。
+
+| 组件 | 来源 |
+| --- | --- |
+| hologram-text | Spectrum UI，Apache-2.0，Made by Arihant |
+| ink-morph | Spectrum UI，Apache-2.0，Made by Arihant |
+| orbital-text | Spectrum UI，Apache-2.0，Made by Arihant |
+| scratch-card | Spectrum UI，Apache-2.0，Made by Arihant |
+| skeleton-reveal | Spectrum UI，Apache-2.0，Made by Arihant |
+| text-states | Spectrum UI，Apache-2.0，Made by Arihant |
+| notification-bell | Spectrum UI，Apache-2.0，Made by Arihant |
+| async-morph-button | Spectrum UI，Apache-2.0，Made by Arihant |
+| face-rating | Spectrum UI，Apache-2.0，Made by Arihant |
+| follow-button | Spectrum UI，Apache-2.0，Made by Arihant |
+| share-button | Spectrum UI，Apache-2.0，Made by Arihant |
+| task-checkbox | Spectrum UI，Apache-2.0，Made by Arihant |
+| expandable-action-bar | Spectrum UI，Apache-2.0，Made by Arihant |
+| faq-tabs-card | Spectrum UI，Apache-2.0，Made by Arihant |
+| nav-list-card | Spectrum UI，Apache-2.0，Made by Arihant |
+| use-dismiss | Spectrum UI，Apache-2.0，Made by Arihant |
+| use-hover-gesture | Spectrum UI，Apache-2.0，Made by Arihant |
+| use-tap-gesture | Spectrum UI，Apache-2.0，Made by Arihant |
+
 ### 色相波浪、杠杆开关与验证码
 
 登记在 `catalog-batch34.ts`。上一批倾斜卡片已占用 `catalog-batch33.ts`。`hue-wave-loader`、`lift-gradient-border-button`、`lever-switch`、`neon-3d-radio`、`star-ribbon-notification`、`moon-sun-switch`、`glow-light-switch`、`hamburger-morph`、`mic-search-input`、`social-follow-tooltip`、`copy-field`、`newsletter-input`、`pin-display-input` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4。`neubrutalism-toggle`、`minimal-accordion` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`neubrutalism-toggle` 额外署 Ethan Pollack。`minimal-accordion` 的 `framer-motion` 已换成 `motion/react`。没有新增依赖。减弱动效时色相波浪和绶带停住、渐变按钮不上抬、杠杆与日月与灯光与粗野开关直接到位、单选不旋转、汉堡立刻变成叉、手风琴直接展开、麦克风按钮不过渡、关注提示直接出现、复制状态直接切换、订阅按钮不过渡、验证码格子保持静止。

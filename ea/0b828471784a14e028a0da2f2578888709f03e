@@ -1,0 +1,19 @@
+apps/docs/components/theme-provider.server.test.tsx
+  s_0d457f6052e4b0::t_fe1e67be51074c 1-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ea0b828471784a14e028a0da2f2578888709f03e",
+  "prompts": {},
+  "sessions": {
+    "s_0d457f6052e4b0": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "17facf63-64f3-4074-9007-ac9de752b97f",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

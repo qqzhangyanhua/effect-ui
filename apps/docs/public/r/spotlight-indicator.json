@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-indicator",
+  "type": "registry:ui",
+  "title": "Spotlight Indicator",
+  "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/spotlight-indicator.tsx 竖向导航。当前项左边有一条主题色指示。点击切换，不依赖悬停。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/spotlight-indicator.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/spotlight-indicator.tsx",
+      "content": "\"use client\"\n\n// Ported from MicroKit (MIT, (c) 2026 Henrique Barone) — https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/spotlight-indicator.tsx\n\nimport { useEffect, useRef, useState } from \"react\"\nimport { Clock, Heart, Layers, type LucideIcon } from \"lucide-react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpotlightIndicatorProps {\n  className?: string\n}\n\nconst items: { label: string; icon: LucideIcon }[] = [\n  { label: \"All components\", icon: Layers },\n  { label: \"Recently viewed\", icon: Clock },\n  { label: \"Favorites\", icon: Heart },\n]\n\nexport function SpotlightIndicator({ className }: SpotlightIndicatorProps) {\n  const navRef = useRef<HTMLDivElement>(null)\n  const barRef = useRef<HTMLSpanElement>(null)\n  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(navRef)\n  const [active, setActive] = useState(0)\n\n  useEffect(() => {\n    const nav = navRef.current\n    const bar = barRef.current\n    const button = buttonRefs.current[active]\n    if (!nav || !bar || !button) return\n    const navRect = nav.getBoundingClientRect()\n    const buttonRect = button.getBoundingClientRect()\n    bar.style.top = `${buttonRect.top - navRect.top + 4}px`\n    bar.style.height = `${Math.max(8, buttonRect.height - 8)}px`\n  }, [active])\n\n  return (\n    <div\n      ref={navRef}\n      data-slot=\"spotlight-indicator\"\n      data-motion={live && !reduced ? \"on\" : \"off\"}\n      className={cn(\"relative flex w-56 flex-col gap-0.5 rounded-lg border border-border bg-card p-1.5\", className)}\n    >\n      <span\n        ref={barRef}\n        aria-hidden=\"true\"\n        className=\"pointer-events-none absolute left-1 w-0.5 rounded-sm bg-primary motion-reduce:transition-none\"\n        style={{\n          background: \"var(--primary)\",\n          boxShadow: \"2px 0 8px color-mix(in srgb, var(--primary) 55%, transparent)\",\n          transition: reduced || !live ? \"none\" : \"top 300ms cubic-bezier(.4,0,.2,1), height 300ms cubic-bezier(.4,0,.2,1)\",\n        }}\n      />\n      {items.map(({ label, icon: Icon }, index) => (\n        <button\n          key={label}\n          ref={(element) => {\n            buttonRefs.current[index] = element\n          }}\n          type=\"button\"\n          aria-pressed={active === index}\n          className={cn(\n            \"flex items-center gap-2.5 rounded-md bg-transparent px-3 py-2 text-left text-xs text-muted-foreground hover:bg-muted hover:text-foreground motion-reduce:transition-none\",\n            active === index && \"text-foreground\",\n          )}\n          onClick={() => setActive(index)}\n        >\n          <Icon className={active === index ? \"text-primary\" : \"opacity-40\"} size={15} aria-hidden=\"true\" />\n          {label}\n        </button>\n      ))}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

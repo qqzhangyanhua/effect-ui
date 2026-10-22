@@ -60,6 +60,7 @@ import * as effectDemos58 from "./effect-demos-58"
 import * as effectDemos59 from "./effect-demos-59"
 import * as effectDemos60 from "./effect-demos-60"
 import * as effectDemos61 from "./effect-demos-61"
+import * as effectDemos62 from "./effect-demos-62"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -973,6 +974,18 @@ const demoMap: Record<string, ComponentType> = {
   "predictive-text": effectDemos61.PredictiveTextDemo,
   "feature-tour": effectDemos61.FeatureTourDemo,
   "budget-card": effectDemos61.BudgetCardDemo,
+  "wavy-threads-background": effectDemos62.WavyThreadsBackgroundDemo,
+  "rolling-letters-animation": effectDemos62.RollingLettersAnimationDemo,
+  "arc-cards": effectDemos62.ArcCardsDemo,
+  "tilt-image-carousel": effectDemos62.TiltImageCarouselDemo,
+  "hover-glide-cards": effectDemos62.HoverGlideCardsDemo,
+  "progress-ring-check": effectDemos62.ProgressRingCheckDemo,
+  "cursor-edge-glow-button": effectDemos62.CursorEdgeGlowButtonDemo,
+  "secure-purchase-button": effectDemos62.SecurePurchaseButtonDemo,
+  "blur-glide-menu": effectDemos62.BlurGlideMenuDemo,
+  "spotlight-indicator": effectDemos62.SpotlightIndicatorDemo,
+  "section-navigator": effectDemos62.SectionNavigatorDemo,
+  "preview-hover-toolbar": effectDemos62.PreviewHoverToolbarDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

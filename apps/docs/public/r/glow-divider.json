@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-divider",
+  "type": "registry:ui",
+  "title": "Glow Divider",
+  "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/glowline/glowline.tsx 一条会呼吸的发光分隔线。这不是卡片边缘的 glowing-edge，也不是容器光晕 glow-effect。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/glow-divider.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/glow-divider.tsx",
+      "content": "\"use client\"\n\n// Ported from Sera UI (MIT, (c) 2025 Sera UI) — https://github.com/seraui/seraui/blob/main/src/app/docs/glowline/glowline.tsx\n\nimport { useId, useRef } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface GlowDividerProps {\n  color?: string\n  duration?: number\n  intensity?: number\n  size?: number\n  orientation?: \"horizontal\" | \"vertical\"\n  className?: string\n}\n\nfunction cssName(id: string) {\n  return `glow-${id.replace(/[^a-zA-Z0-9_-]/g, \"\")}`\n}\n\nexport function GlowDivider({\n  color = \"var(--primary)\",\n  duration = 2400,\n  intensity = 1,\n  size = 2,\n  orientation = \"horizontal\",\n  className,\n}: GlowDividerProps) {\n  const rootRef = useRef<HTMLDivElement>(null)\n  const live = useAnimationActive(rootRef)\n  const reduced = usePrefersReducedMotion()\n  const animation = cssName(useId())\n  const vertical = orientation === \"vertical\"\n  const moving = live && !reduced\n  const blur = 8 * intensity\n\n  return (\n    <div\n      ref={rootRef}\n      role=\"separator\"\n      aria-orientation={orientation}\n      className={cn(\"relative\", vertical ? \"h-36 w-8\" : \"h-8 w-full\", className)}\n    >\n      <style>{`@keyframes ${animation} { from { opacity: 0.45; } to { opacity: 1; } }`}</style>\n      <span\n        aria-hidden=\"true\"\n        className=\"absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 motion-reduce:animate-none\"\n        style={{\n          width: vertical ? `${size}px` : \"100%\",\n          height: vertical ? \"100%\" : `${size}px`,\n          background: `linear-gradient(${vertical ? \"to bottom\" : \"to right\"}, transparent, ${color}, transparent)`,\n          boxShadow: `0 0 ${blur}px ${color}`,\n          opacity: moving ? undefined : 0.9,\n          animationName: moving ? animation : \"none\",\n          animationDuration: `${Math.max(400, duration)}ms`,\n          animationIterationCount: \"infinite\",\n          animationDirection: \"alternate\",\n          animationTimingFunction: \"ease-in-out\",\n          animationPlayState: moving ? \"running\" : \"paused\",\n        }}\n      />\n    </div>\n  )\n}\n"
+    }
+  ]
+}

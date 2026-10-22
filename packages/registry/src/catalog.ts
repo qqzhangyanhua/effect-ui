@@ -51,6 +51,7 @@ import { batch51Components } from "./catalog-batch51"
 import { batch52Components } from "./catalog-batch52"
 import { batch53Components } from "./catalog-batch53"
 import { batch54Components } from "./catalog-batch54"
+import { batch55Components } from "./catalog-batch55"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -136,6 +137,9 @@ export type SourceLibrary =
   | "interior"
   | "beUI"
   | "uselayouts"
+  | "Spell UI"
+  | "Sera UI"
+  | "HextaUI"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -272,6 +276,9 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   interior: "https://github.com/ddoemonn/interior",
   beUI: "https://github.com/starc007/ui-components",
   uselayouts: "https://github.com/iurvish/uselayouts",
+  "Spell UI": "https://github.com/xxtomm/spell-ui",
+  "Sera UI": "https://github.com/seraui/seraui",
+  HextaUI: "https://github.com/preetsuthar17/HextaUI",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2361,6 +2368,7 @@ export const components: ComponentMeta[] = [
   ...batch52Components,
   ...batch53Components,
   ...batch54Components,
+  ...batch55Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2482,6 +2490,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "action-swap",
       "paper-shred-button",
       "get-in-touch",
+      "flow-button",
     ],
   },
 ]
@@ -2508,7 +2517,7 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "category-search-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input"] },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input", "exploding-input"] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [

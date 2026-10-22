@@ -573,6 +573,28 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 键入爆炸、色带与持键
+
+登记在 `catalog-batch55.ts`。摇杆已占用 `catalog-batch54.ts`。`exploding-input`、`flow-button`、`logos-carousel`、`bars-spinner`、`band-wave-text`、`fallback-avatar` 移植自 Spell UI（MIT，Copyright (c) 2025 Spell UI）。`glow-divider`、`noise-text`、`verify-badge`、`gift-card`、`network-graph` 移植自 Sera UI（MIT，Copyright (c) 2025 Sera UI）。`invalid-shake`、`safe-triangle`、`held-keys`、`delayed-loading` 移植自 HextaUI（MIT，Copyright (c) 2026 Preet Suthar）。`framer-motion` 改成 `motion/react` 的写法没有引入运行时，连线用 CSS。`@tabler/icons-react` 没有使用。`clsx` 与 `twMerge` 改成 `cn`。HextaUI 的动效判断改成共享的 `usePrefersReducedMotion`。`fallback-avatar` 不用 WebGL，按名字画 CSS 渐变。`gift-card` 去掉了来源里的品牌名称和标志。键入爆炸是输入框光标处的粒子，和消息气泡 `text-explode` 不同。标志轮换按组纵向交错，和 `section-logo-cloud` 不同。色带从文字底部扫过，和 `gradient-text`、`text-shimmer-wave` 不同。发光分隔线是一条线，和 `glowing-edge`、`glow-effect` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw、three 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| exploding-input | Spell UI，MIT |
+| flow-button | Spell UI，MIT |
+| logos-carousel | Spell UI，MIT |
+| bars-spinner | Spell UI，MIT |
+| band-wave-text | Spell UI，MIT |
+| glow-divider | Sera UI，MIT |
+| noise-text | Sera UI，MIT |
+| invalid-shake | HextaUI，MIT |
+| fallback-avatar | Spell UI，MIT |
+| verify-badge | Sera UI，MIT |
+| gift-card | Sera UI，MIT |
+| safe-triangle | HextaUI，MIT |
+| held-keys | HextaUI，MIT |
+| delayed-loading | HextaUI，MIT |
+| network-graph | Sera UI，MIT |
+
 ### 摇杆、碎纸与液桥
 
 登记在 `catalog-batch54.ts`。下压已占用 `catalog-batch53.ts`。`analog-stick`、`paper-shred-button`、`scan-document`、`dynamic-grid-gallery`、`photo-albums`、`gooey-navbar`、`overlapping-slider`、`get-in-touch`、`client-card`、`corner-video`、`create-menu`、`day-picker`、`stacked-list`、`discover-search-pill`、`tactile-rocker` 移植自 uselayouts（MIT，Copyright (c) 2025 Urvish Mali）。`discover-search-pill` 来自 `discover-button`，`tactile-rocker` 来自 `tactile-button`，并做成保持倾斜的开关。`get-in-touch` 内联了同目录的按钮外壳。`@hugeicons` 改成 `lucide-react`，`framer-motion` 改成 `motion/react`，`next/image` 和 `next/link` 改成 `img` 与 `a`。碎纸按钮抽出文件再剪成纸条，和打印机图标按钮不同。液桥导航是一整条导航，和单个黏液按钮不同。颜色控件使用主题变量。示例图片用内联图形。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

@@ -16575,6 +16575,287 @@
           "target": "components/ui/tactile-rocker.tsx"
         }
       ]
+    },
+    {
+      "name": "exploding-input",
+      "type": "registry:ui",
+      "title": "Exploding Input",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/exploding-input.tsx 键入时在光标处炸开刚输入的字符。这是输入框本身的粒子，不是消息气泡的 text-explode。焦点里打字即可，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/exploding-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/exploding-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flow-button",
+      "type": "registry:ui",
+      "title": "Flow Button",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/flow-button.tsx 胶囊按钮外圈有一圈流动虚线。静止时虚线仍在。悬停、焦点和触屏按下都会让虚线流动。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flow-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flow-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logos-carousel",
+      "type": "registry:ui",
+      "title": "Logos Carousel",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/logos-carousel.tsx 标志按组纵向交错换场。这不是横向滚动的 section-logo-cloud。减弱动效时停在第一组。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/logos-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/logos-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bars-spinner",
+      "type": "registry:ui",
+      "title": "Bars Spinner",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/bars-spinner.tsx 放射短条依次明暗。减弱动效时短条停在固定透明度，并保留文字。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bars-spinner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bars-spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "band-wave-text",
+      "type": "registry:ui",
+      "title": "Band Wave Text",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/gradient-wave-text.tsx 色带从文字底部扫过。这不是整段渐变的 gradient-text，也不是逐字起伏的 text-shimmer-wave。减弱动效时色带停在中段。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/band-wave-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/band-wave-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glow-divider",
+      "type": "registry:ui",
+      "title": "Glow Divider",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/glowline/glowline.tsx 一条会呼吸的发光分隔线。这不是卡片边缘的 glowing-edge，也不是容器光晕 glow-effect。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glow-divider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glow-divider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "noise-text",
+      "type": "registry:ui",
+      "title": "Noise Text",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/noisetext/noisetext.tsx 玻璃标签上铺一层程序生成的噪点。噪点画在组件里，不请求外部动图。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/noise-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/noise-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "invalid-shake",
+      "type": "registry:ui",
+      "title": "Invalid Shake",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-invalid-shake.ts 提交无效邮箱时字段横向抖动，并写出错误。键盘回车同样会提交。减弱动效时只保留错误文字。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/invalid-shake.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/invalid-shake.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fallback-avatar",
+      "type": "registry:ui",
+      "title": "Fallback Avatar",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/fallback-avatar.tsx 按名字生成双色渐变和首字母。原实现用 WebGL，这里改成 CSS 渐变。悬停、焦点和触屏按下会让色块慢慢漂移。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fallback-avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fallback-avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "verify-badge",
+      "type": "registry:ui",
+      "title": "Verify Badge",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/verify-badge/verify-badge.tsx 基础、金色和高级三种验证徽章。高级徽章的虚线圈在减弱动效时不再旋转。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/verify-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/verify-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gift-card",
+      "type": "registry:ui",
+      "title": "Gift Card",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/amazongift/amazongift.tsx 礼品卡。来源里的品牌名称和标志已去掉，金额和文案都由 props 决定。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gift-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gift-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safe-triangle",
+      "type": "registry:ui",
+      "title": "Safe Triangle",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/components/ui/safe-area.tsx 触发器到菜单之间的安全三角。点击、回车和 Escape 都能开关。触屏点开后菜单保持，不靠悬停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/safe-triangle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/safe-triangle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "held-keys",
+      "type": "registry:ui",
+      "title": "Held Keys",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-held-keys.ts 显示当前按住的物理键。松开、窗口失焦或页面隐藏时清空。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/held-keys.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/held-keys.tsx"
+        }
+      ]
+    },
+    {
+      "name": "delayed-loading",
+      "type": "registry:ui",
+      "title": "Delayed Loading",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-delayed-loading.ts 加载指示晚一点出现，并至少停留一段时间，避免闪一下。按钮可以来回切换。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/delayed-loading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/delayed-loading.tsx"
+        }
+      ]
+    },
+    {
+      "name": "network-graph",
+      "type": "registry:ui",
+      "title": "Network Graph",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/network/network.tsx 中心和周围节点之间轮流连线。头像是首字母，不请求外链图片。点击节点会连到它。减弱动效时停在第一条连线。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/network-graph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/network-graph.tsx"
+        }
+      ]
     }
   ]
 }

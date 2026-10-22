@@ -55,6 +55,7 @@ import * as effectDemos53 from "./effect-demos-53"
 import * as effectDemos54 from "./effect-demos-54"
 import * as effectDemos55 from "./effect-demos-55"
 import * as effectDemos56 from "./effect-demos-56"
+import * as effectDemos57 from "./effect-demos-57"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -895,6 +896,21 @@ const demoMap: Record<string, ComponentType> = {
   "stacked-list": effectDemos56.StackedListDemo,
   "discover-search-pill": effectDemos56.DiscoverSearchPillDemo,
   "tactile-rocker": effectDemos56.TactileRockerDemo,
+  "exploding-input": effectDemos57.ExplodingInputDemo,
+  "flow-button": effectDemos57.FlowButtonDemo,
+  "logos-carousel": effectDemos57.LogosCarouselDemo,
+  "bars-spinner": effectDemos57.BarsSpinnerDemo,
+  "band-wave-text": effectDemos57.BandWaveTextDemo,
+  "glow-divider": effectDemos57.GlowDividerDemo,
+  "noise-text": effectDemos57.NoiseTextDemo,
+  "invalid-shake": effectDemos57.InvalidShakeDemo,
+  "fallback-avatar": effectDemos57.FallbackAvatarDemo,
+  "verify-badge": effectDemos57.VerifyBadgeDemo,
+  "gift-card": effectDemos57.GiftCardDemo,
+  "safe-triangle": effectDemos57.SafeTriangleDemo,
+  "held-keys": effectDemos57.HeldKeysDemo,
+  "delayed-loading": effectDemos57.DelayedLoadingDemo,
+  "network-graph": effectDemos57.NetworkGraphDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

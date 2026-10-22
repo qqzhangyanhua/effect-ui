@@ -53,6 +53,27 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## Spell UI
+
+- 仓库：https://github.com/xxtomm/spell-ui
+- 许可：MIT
+- 版权：Copyright (c) 2025 Spell UI
+- 衍生组件：`exploding-input`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/exploding-input.tsx）、`flow-button`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/flow-button.tsx）、`logos-carousel`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/logos-carousel.tsx）、`bars-spinner`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/bars-spinner.tsx）、`band-wave-text`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/gradient-wave-text.tsx）、`fallback-avatar`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/fallback-avatar.tsx）
+
+## Sera UI
+
+- 仓库：https://github.com/seraui/seraui
+- 许可：MIT
+- 版权：Copyright (c) 2025 Sera UI
+- 衍生组件：`glow-divider`（https://github.com/seraui/seraui/blob/main/src/app/docs/glowline/glowline.tsx）、`noise-text`（https://github.com/seraui/seraui/blob/main/src/app/docs/noisetext/noisetext.tsx）、`verify-badge`（https://github.com/seraui/seraui/blob/main/src/app/docs/verify-badge/verify-badge.tsx）、`gift-card`（https://github.com/seraui/seraui/blob/main/src/app/docs/amazongift/amazongift.tsx）、`network-graph`（https://github.com/seraui/seraui/blob/main/src/app/docs/network/network.tsx）
+
+## HextaUI
+
+- 仓库：https://github.com/preetsuthar17/HextaUI
+- 许可：MIT
+- 版权：Copyright (c) 2026 Preet Suthar
+- 衍生组件：`invalid-shake`（https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-invalid-shake.ts）、`safe-triangle`（https://github.com/preetsuthar17/HextaUI/blob/main/components/ui/safe-area.tsx）、`held-keys`（https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-held-keys.ts）、`delayed-loading`（https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-delayed-loading.ts）
+
 ## uselayouts
 
 - 仓库：https://github.com/iurvish/uselayouts

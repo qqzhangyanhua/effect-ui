@@ -8,7 +8,6 @@ import "@testing-library/jest-dom/vitest"
 MotionGlobalConfig.skipAnimations = true
 
 import { AuroraCurtain } from "./aurora-curtain"
-import { BreakpointIndicator } from "./breakpoint-indicator"
 import { DurationPicker } from "./duration-picker"
 import { ExposureSlider } from "./exposure-slider"
 import { GravityStars } from "./gravity-stars"
@@ -167,10 +166,6 @@ test("其余 SmoothUI 组件都挂上槽位", () => {
 
   const exposure = render(<ExposureSlider defaultValue={0} />)
   expect(slot(exposure.container, "exposure-slider")).toBeTruthy()
-  cleanup()
-
-  const badge = render(<BreakpointIndicator enabled fixed={false} />)
-  expect(slot(badge.container, "breakpoint-indicator")).toHaveAttribute("aria-live", "polite")
   cleanup()
 
   const board = render(<SwitchboardCard subtitle="灯还在。" title="交换台" />)

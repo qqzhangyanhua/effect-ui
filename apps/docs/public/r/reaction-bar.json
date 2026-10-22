@@ -3,7 +3,7 @@
   "name": "reaction-bar",
   "type": "registry:ui",
   "title": "Reaction Bar",
-  "description": "帖子和评论共用的表情反应条。计数用数字滚动，选中时轻轻弹一下。",
+  "description": "表情反应条。计数用数字滚动，选中时轻轻弹一下。",
   "dependencies": [
     "motion"
   ],

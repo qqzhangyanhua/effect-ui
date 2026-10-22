@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface PixelTransitionProps {
@@ -14,6 +15,7 @@ export interface PixelTransitionProps {
 }
 
 function PixelTransition({ from, to, className, count, duration, delay }: PixelTransitionProps) {
+  const reduced = usePrefersReducedMotion()
   const [revealed, setRevealed] = React.useState(false)
   const cells = count === undefined || count === 48 ? 48 : count
   const columns = cells / 4
@@ -25,21 +27,21 @@ function PixelTransition({ from, to, className, count, duration, delay }: PixelT
       type="button"
       onClick={() => setRevealed((value) => !value)}
       className={cn("relative block aspect-video w-full overflow-hidden rounded-xl border", className)}
+      data-reduced={reduced ? "true" : undefined}
     >
       <span className="absolute inset-0 bg-cover" style={{ backgroundImage: `url(${revealed ? to : from})` }} />
       <span className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
         {Array.from({ length: cells }, (_, index) => (
           <span
             key={index}
-            className={
-              fadeMs === undefined
-                ? "bg-zinc-950 transition-opacity duration-500"
-                : "bg-zinc-950 transition-opacity"
-            }
+            className={cn(
+              "bg-zinc-950 motion-reduce:transition-none",
+              reduced ? "transition-none" : fadeMs === undefined ? "transition-opacity duration-500" : "transition-opacity",
+            )}
             style={{
               opacity: revealed ? 0 : 0.35 + ((index * 17) % 7) * 0.08,
-              transitionDelay: `${(index % columns) * stagger}ms`,
-              ...(fadeMs === undefined ? {} : { transitionDuration: `${fadeMs}ms` }),
+              transitionDelay: reduced ? "0ms" : `${(index % columns) * stagger}ms`,
+              ...(reduced ? { transitionDuration: "0ms" } : fadeMs === undefined ? {} : { transitionDuration: `${fadeMs}ms` }),
             }}
           />
         ))}

@@ -2,6 +2,8 @@
 
 import { type HTMLMotionProps } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+
 import { Reveal } from "./reveal"
 
 export interface SlideInProps extends HTMLMotionProps<"div"> {
@@ -20,12 +22,14 @@ function SlideIn({
   intensity,
   ...props
 }: SlideInProps) {
+  const reduced = usePrefersReducedMotion()
   return (
     <Reveal
+      data-reduced={reduced ? "true" : undefined}
       data-slot="slide-in"
       variant="slide"
       from={from}
-      className={className}
+      className={className ? `${className} motion-reduce:animate-none` : "motion-reduce:animate-none"}
       delay={delay}
       speed={speed}
       intensity={intensity}

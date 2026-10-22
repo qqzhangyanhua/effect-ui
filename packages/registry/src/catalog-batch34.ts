@@ -20,9 +20,9 @@ export const batch34Components: ComponentMeta[] = [
     file: "effects/hue-wave-loader.tsx",
     target: "components/ui/hue-wave-loader.tsx",
     props: [
-      { name: "bars", type: "number", defaultValue: "10", description: "竖条数量。" },
-      { name: "color", type: "string", defaultValue: "var(--destructive)", description: "竖条颜色，动画里会做色相旋转。" },
-      { name: "duration", type: "number", defaultValue: "1.5", description: "一轮波浪的秒数。" },
+      { name: "bars", type: "number", defaultValue: "10", description: "竖条数量。", control: { kind: "range", value: 10, min: 4, max: 20, step: 1 } },
+      { name: "color", type: "string", defaultValue: "var(--destructive)", description: "竖条颜色，动画里会做色相旋转。", control: { kind: "color" } },
+      { name: "duration", type: "number", defaultValue: "1.5", description: "一轮波浪的秒数。", control: { kind: "range", value: 1.5, min: 0.6, max: 3, step: 0.1 } },
       ...ui,
     ],
   },
@@ -36,8 +36,9 @@ export const batch34Components: ComponentMeta[] = [
     file: "effects/lift-gradient-border-button.tsx",
     target: "components/ui/lift-gradient-border-button.tsx",
     props: [
-      { name: "children", type: "ReactNode", description: "按钮文字。" },
-      ...ui,
+      { name: "children", type: "ReactNode", description: "按钮文字。", control: { kind: "text", value: "发送消息" } },
+      { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用按钮。", control: { kind: "boolean", value: false } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "" } },
     ],
   },
   {
@@ -51,9 +52,10 @@ export const batch34Components: ComponentMeta[] = [
     target: "components/ui/lever-switch.tsx",
     props: [
       { name: "checked", type: "boolean", description: "受控开关状态。" },
-      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。" },
+      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。", control: { kind: "boolean", value: false } },
       { name: "onCheckedChange", type: "(checked: boolean) => void", description: "状态变化时调用。" },
-      ...ui,
+      { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用开关。", control: { kind: "boolean", value: false } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "text-[28px]" } },
     ],
   },
   {
@@ -68,10 +70,10 @@ export const batch34Components: ComponentMeta[] = [
     props: [
       { name: "options", type: "{ value: string; label: string }[]", description: "选项列表。" },
       { name: "value", type: "string", description: "受控选中值。" },
-      { name: "defaultValue", type: "string", defaultValue: "", description: "非受控时的初始值。" },
+      { name: "defaultValue", type: "string", defaultValue: "", description: "非受控时的初始值。", control: { kind: "text", value: "no" } },
       { name: "onValueChange", type: "(value: string) => void", description: "选中值变化时调用。" },
-      { name: "color", type: "string", defaultValue: "var(--primary)", description: "描边、选中条的颜色。" },
-      ...ui,
+      { name: "color", type: "string", defaultValue: "var(--primary)", description: "描边、选中条的颜色。", control: { kind: "color" } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "" } },
     ],
   },
   {
@@ -84,9 +86,9 @@ export const batch34Components: ComponentMeta[] = [
     file: "effects/star-ribbon-notification.tsx",
     target: "components/ui/star-ribbon-notification.tsx",
     props: [
-      { name: "title", type: "string", defaultValue: "升级了", description: "绶带主标题。" },
-      { name: "message", type: "string", defaultValue: "按开始", description: "标题下的一行小字。" },
-      { name: "stars", type: "number", defaultValue: "3", description: "浮动星星的数量。" },
+      { name: "title", type: "string", defaultValue: "升级了", description: "绶带主标题。", control: { kind: "text", value: "升级了" } },
+      { name: "message", type: "string", defaultValue: "按开始", description: "标题下的一行小字。", control: { kind: "text", value: "按开始" } },
+      { name: "stars", type: "number", defaultValue: "3", description: "浮动星星的数量。", control: { kind: "range", value: 3, min: 1, max: 8, step: 1 } },
       ...ui,
     ],
   },
@@ -101,9 +103,10 @@ export const batch34Components: ComponentMeta[] = [
     target: "components/ui/moon-sun-switch.tsx",
     props: [
       { name: "checked", type: "boolean", description: "受控开关状态。打开时显示月牙。" },
-      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。" },
+      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。", control: { kind: "boolean", value: false } },
       { name: "onCheckedChange", type: "(checked: boolean) => void", description: "状态变化时调用。" },
-      ...ui,
+      { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用开关。", control: { kind: "boolean", value: false } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "text-[22px]" } },
     ],
   },
   {
@@ -117,9 +120,10 @@ export const batch34Components: ComponentMeta[] = [
     target: "components/ui/glow-light-switch.tsx",
     props: [
       { name: "checked", type: "boolean", description: "受控开关状态。" },
-      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。" },
+      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。", control: { kind: "boolean", value: false } },
       { name: "onCheckedChange", type: "(checked: boolean) => void", description: "状态变化时调用。" },
-      ...ui,
+      { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用开关。", control: { kind: "boolean", value: false } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "" } },
     ],
   },
   {
@@ -132,10 +136,11 @@ export const batch34Components: ComponentMeta[] = [
     file: "effects/hamburger-morph.tsx",
     target: "components/ui/hamburger-morph.tsx",
     props: [
-      { name: "open", type: "boolean", description: "受控展开状态。" },
+      { name: "open", type: "boolean", description: "受控展开状态。", control: { kind: "boolean", value: false } },
       { name: "defaultOpen", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。" },
       { name: "onOpenChange", type: "(open: boolean) => void", description: "展开状态变化时调用。" },
-      ...ui,
+      { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用按钮。", control: { kind: "boolean", value: false } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "" } },
     ],
   },
   {
@@ -149,9 +154,10 @@ export const batch34Components: ComponentMeta[] = [
     target: "components/ui/neubrutalism-toggle.tsx",
     props: [
       { name: "checked", type: "boolean", description: "受控开关状态。" },
-      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。" },
+      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。", control: { kind: "boolean", value: false } },
       { name: "onCheckedChange", type: "(checked: boolean) => void", description: "状态变化时调用。" },
-      ...ui,
+      { name: "disabled", type: "boolean", defaultValue: "false", description: "禁用开关。", control: { kind: "boolean", value: false } },
+      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "scale-150" } },
     ],
   },
   {

@@ -1,12 +1,10 @@
 "use client"
 
 import { AudioSpectrum } from "../effects/audio-spectrum"
-import { CartDrawer } from "../effects/cart-drawer"
 import { CouponInput } from "../effects/coupon-input"
 import { CreditCardForm } from "../effects/credit-card-form"
 import { GradientCarousel3d } from "../effects/gradient-carousel-3d"
 import { LiquidMorphSlideshow } from "../effects/liquid-morph-slideshow"
-import { RadialGauge } from "../effects/radial-gauge"
 import { RollingTextHover } from "../effects/rolling-text-hover"
 import { Singularity } from "../effects/singularity"
 import { Text3dScroll } from "../effects/text-3d-scroll"
@@ -116,10 +114,6 @@ export function CreditCardFormDemo() {
   return <CreditCardForm />
 }
 
-export function CartDrawerDemo() {
-  return <CartDrawer className="w-full" />
-}
-
 export function CouponInputDemo() {
   return (
     <CouponInput
@@ -131,16 +125,6 @@ export function CouponInputDemo() {
       }}
     />
   )
-}
-
-export function RadialGaugeDemo({
-  value = 64,
-  variant = "semi",
-}: {
-  value?: number
-  variant?: "semi" | "three-quarter"
-} = {}) {
-  return <RadialGauge value={value} variant={variant} thresholds={[80]} />
 }
 
 export function GanttTimelineDemo() {

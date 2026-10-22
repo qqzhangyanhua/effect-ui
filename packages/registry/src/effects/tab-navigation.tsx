@@ -11,6 +11,7 @@
 // Modified by effect-ui: replaced cx with cn and the blue/gray palette with theme tokens.
 // Ported from Tremor Raw (Apache-2.0) — https://github.com/tremorlabs/tremor/blob/main/src/components/TabNavigation/TabNavigation.tsx
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
@@ -37,6 +38,7 @@ export interface TabNavigationLinkProps {
 }
 
 export function TabNavigationLink({ href, active = false, disabled = false, children, className }: TabNavigationLinkProps) {
+  const reduced = usePrefersReducedMotion()
   return (
     <NavigationMenuPrimitive.Item className="flex">
       <NavigationMenuPrimitive.Link active={active} asChild>
@@ -44,14 +46,16 @@ export function TabNavigationLink({ href, active = false, disabled = false, chil
           aria-current={active ? "page" : undefined}
           aria-disabled={disabled || undefined}
           className={cn(
-            "-mb-px flex items-center border-b-2 border-transparent px-3 pb-2 text-sm font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground",
+            "-mb-px flex items-center border-b-2 border-transparent px-3 pb-2 text-sm font-medium text-muted-foreground transition-colors motion-reduce:transition-none hover:border-border hover:text-foreground",
+            reduced && "transition-none",
             active && "border-primary text-primary",
             disabled && "pointer-events-none text-muted-foreground/40",
             className,
           )}
+          data-reduced={reduced ? "true" : undefined}
+          data-slot="tab-navigation-link"
           href={href}
           onClick={disabled ? (event) => event.preventDefault() : undefined}
-          data-slot="tab-navigation-link"
         >
           {children}
         </a>

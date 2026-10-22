@@ -42,6 +42,11 @@ import { batch42Components } from "./catalog-batch42"
 import { batch43Components } from "./catalog-batch43"
 import { batch44Components } from "./catalog-batch44"
 import { batch45Components } from "./catalog-batch45"
+import { batch46Components } from "./catalog-batch46"
+import { batch47Components } from "./catalog-batch47"
+import { batch48Components } from "./catalog-batch48"
+import { batch49Components } from "./catalog-batch49"
+import { batch50Components } from "./catalog-batch50"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -95,7 +100,6 @@ export type SourceLibrary =
   | "shadcn-chat"
   | "TanStack Virtual"
   | "frimousse"
-  | "wavesurfer.js"
   | "Base UI"
   | "react-photo-album"
   | "yet-another-react-lightbox"
@@ -267,7 +271,6 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "shadcn-chat": "https://github.com/jakobhoeg/shadcn-chat",
   "TanStack Virtual": "https://tanstack.com/virtual",
   frimousse: "https://frimousse.liveblocks.io",
-  "wavesurfer.js": "https://wavesurfer.xyz",
   "Base UI": "https://base-ui.com",
   "react-photo-album": "https://react-photo-album.com",
   "yet-another-react-lightbox": "https://yet-another-react-lightbox.com",
@@ -2335,6 +2338,11 @@ export const components: ComponentMeta[] = [
   ...batch43Components,
   ...batch44Components,
   ...batch45Components,
+  ...batch46Components,
+  ...batch47Components,
+  ...batch48Components,
+  ...batch49Components,
+  ...batch50Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2433,6 +2441,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "async-morph-button",
       "follow-button",
       "share-button",
+      "jelly-button",
       "retro-press-button",
       "liquid-gradient-button",
       "glitch-slice-button",

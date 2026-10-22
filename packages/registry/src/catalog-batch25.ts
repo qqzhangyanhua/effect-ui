@@ -214,25 +214,6 @@ export const batch25Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "ai-branches",
-    title: "AI Branches",
-    description: `${kokonut} ${file("ai-branches")} 编辑一条消息会分出新分支，也可以在分支之间切换。减弱动效时回复整段出现。离开视口后暂停逐词写入。`,
-    category: "ai",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/ai-branches.tsx",
-    target: "components/ui/ai-branches.tsx",
-    props: [
-      {
-        name: "messages",
-        type: '{ id: string; role: "user" | "assistant"; text: string; parent?: string }[]',
-        description: "所有分支上的消息。同一父节点的兄弟就是分叉。",
-      },
-      { name: "reply", type: "(prompt: string) => string", description: "给编辑后的消息写回复。省略时用演示文案。" },
-      ...ui,
-    ],
-  },
-  {
     name: "timezone-planner",
     title: "Timezone Planner",
     description: `${kokonut} ${file("timezone-planner")} 拖动表盘，在多个时区里找一段都醒着的会议时间，并标出睡眠带和夏令时。方向键可移动。减弱动效或离开视口时表盘不再滑动。`,

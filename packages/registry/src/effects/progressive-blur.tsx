@@ -1,7 +1,5 @@
 "use client"
 
-import { motion } from "motion/react"
-
 import { cn } from "@/lib/utils"
 
 const ANGLES = {
@@ -40,7 +38,7 @@ function ProgressiveBlur({
         const gradient = `linear-gradient(${angle}deg, ${stops})`
         const blur = gain === 1 ? index * blurIntensity : index * blurIntensity * gain
         return (
-          <motion.div
+          <div
             key={index}
             className="absolute inset-0 rounded-[inherit]"
             style={{

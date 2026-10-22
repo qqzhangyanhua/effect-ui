@@ -1,6 +1,5 @@
 "use client"
 
-import { AIBranches } from "../effects/ai-branches"
 import { AICitations } from "../effects/ai-citations"
 import { AITextLoading } from "../effects/ai-text-loading"
 import { AITokenAlternatives } from "../effects/ai-token-alternatives"
@@ -121,14 +120,6 @@ export function AITokenAlternativesDemo() {
   return (
     <div className="flex w-full justify-center">
       <AITokenAlternatives className="w-full" />
-    </div>
-  )
-}
-
-export function AIBranchesDemo() {
-  return (
-    <div className="flex w-full justify-center">
-      <AIBranches className="w-full" title="行程" />
     </div>
   )
 }

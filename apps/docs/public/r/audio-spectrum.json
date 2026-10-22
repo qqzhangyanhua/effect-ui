@@ -3,7 +3,7 @@
   "name": "audio-spectrum",
   "type": "registry:ui",
   "title": "Audio Spectrum",
-  "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。和静态的 audio-waveform 不同。",
+  "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。",
   "dependencies": [],
   "registryDependencies": [
     "use-prefers-reduced-motion",

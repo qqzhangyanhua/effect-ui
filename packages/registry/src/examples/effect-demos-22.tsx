@@ -7,10 +7,8 @@ import { LenticularCard } from "../effects/lenticular-card"
 import { RainPuddle } from "../effects/rain-puddle"
 import { RepetitionImageHover } from "../effects/repetition-image-hover"
 import { RubberBandDrag } from "../effects/rubber-band-drag"
-import { TeamMembersTable } from "../effects/team-members-table"
 import { TiledSwirlLoader } from "../effects/tiled-swirl-loader"
 import { UptimeBars } from "../effects/uptime-bars"
-import { UsageMeter } from "../effects/usage-meter"
 import { HelpCenterIndex } from "../sections/help-center-index"
 import { IntegrationsDirectory } from "../sections/integrations-directory"
 import { KeyholeScrollReveal } from "../sections/keyhole-scroll-reveal"
@@ -85,14 +83,6 @@ export function ApiKeyManagerDemo() {
       onRevoke={async () => {}}
     />
   )
-}
-
-export function UsageMeterDemo() {
-  return <UsageMeter />
-}
-
-export function TeamMembersTableDemo() {
-  return <TeamMembersTable />
 }
 
 export function HelpCenterIndexDemo() {

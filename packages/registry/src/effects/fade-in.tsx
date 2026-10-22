@@ -2,6 +2,8 @@
 
 import { type HTMLMotionProps } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
+
 import { Reveal } from "./reveal"
 
 export interface FadeInProps extends HTMLMotionProps<"div"> {
@@ -12,11 +14,13 @@ export interface FadeInProps extends HTMLMotionProps<"div"> {
 }
 
 function FadeIn({ className, children, delay = 0, once = true, speed, intensity, ...props }: FadeInProps) {
+  const reduced = usePrefersReducedMotion()
   return (
     <Reveal
+      data-reduced={reduced ? "true" : undefined}
       data-slot="fade-in"
       variant="fade"
-      className={className}
+      className={className ? `${className} motion-reduce:animate-none` : "motion-reduce:animate-none"}
       delay={delay}
       once={once}
       speed={speed}

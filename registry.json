@@ -1050,7 +1050,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "reveal"
+        "reveal",
+        "use-prefers-reduced-motion"
       ],
       "files": [
         {
@@ -1069,7 +1070,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "reveal"
+        "reveal",
+        "use-prefers-reduced-motion"
       ],
       "files": [
         {
@@ -1128,7 +1130,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "reveal"
+        "reveal",
+        "use-prefers-reduced-motion"
       ],
       "files": [
         {
@@ -2309,6 +2312,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2324,9 +2328,7 @@
       "type": "registry:ui",
       "title": "Progressive Blur",
       "description": "内容边缘的渐进模糊遮罩。",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "utils"
       ],
@@ -2347,6 +2349,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3031,24 +3034,6 @@
       ]
     },
     {
-      "name": "onboarding-tour",
-      "type": "registry:ui",
-      "title": "Onboarding Tour",
-      "description": "高亮遮罩 + 步骤卡片的产品引导。",
-      "dependencies": [],
-      "registryDependencies": [
-        "button",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/onboarding-tour.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/onboarding-tour.tsx"
-        }
-      ]
-    },
-    {
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
@@ -3471,43 +3456,6 @@
       ]
     },
     {
-      "name": "audio-waveform",
-      "type": "registry:ui",
-      "title": "Audio Waveform",
-      "description": "wavesurfer.js 音频波形与播放。",
-      "dependencies": [
-        "lucide-react",
-        "wavesurfer.js"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/audio-waveform.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/audio-waveform.tsx"
-        }
-      ]
-    },
-    {
-      "name": "toast-stack",
-      "type": "registry:ui",
-      "title": "Toast Stack",
-      "description": "堆叠 toast，支持成功/失败与撤销。",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/toast-stack.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/toast-stack.tsx"
-        }
-      ]
-    },
-    {
       "name": "notification-center",
       "type": "registry:ui",
       "title": "Notification Center",
@@ -3782,6 +3730,7 @@
       "description": "透视圆环 3D 轮播。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3970,6 +3919,7 @@
       "description": "灵感来自 pixel transition，原创实现：像素格淡出切换画面。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -4683,24 +4633,6 @@
       ]
     },
     {
-      "name": "detent-dial",
-      "type": "registry:ui",
-      "title": "Detent Dial",
-      "description": "带刻度吸附的旋钮。仅参考 Kokonut UI 免费 MIT，未使用 Pro。",
-      "dependencies": [],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/detent-dial.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/detent-dial.tsx"
-        }
-      ]
-    },
-    {
       "name": "family-drawer",
       "type": "registry:ui",
       "title": "Family Drawer",
@@ -4794,140 +4726,6 @@
           "path": "registry/effects/apple-cards-carousel.tsx",
           "type": "registry:ui",
           "target": "components/ui/apple-cards-carousel.tsx"
-        }
-      ]
-    },
-    {
-      "name": "saas-template",
-      "type": "registry:block",
-      "title": "SaaS Template",
-      "description": "多文件模板：导航、着色器 Hero、logo 墙、bento、粘性特性、定价、评价和幕布页脚。WebGL 懒加载。",
-      "dependencies": [],
-      "registryDependencies": [
-        "footer-curtain-reveal",
-        "hero-shader",
-        "marketing-blocks",
-        "nav-morphing",
-        "section-animated-bento",
-        "section-logo-cloud",
-        "section-pricing-flow",
-        "section-sticky-feature-scroll",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/saas/page.tsx",
-          "type": "registry:page",
-          "target": "app/saas/page.tsx"
-        },
-        {
-          "path": "registry/templates/saas/content.ts",
-          "type": "registry:file",
-          "target": "app/saas/content.ts"
-        },
-        {
-          "path": "registry/templates/saas/theme.ts",
-          "type": "registry:file",
-          "target": "app/saas/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "ai-product-template",
-      "type": "registry:block",
-      "title": "AI Product Template",
-      "description": "多文件模板：可关掉底的 AI 提示框叠在懒加载虹彩上，加对话、光球和定价。",
-      "dependencies": [],
-      "registryDependencies": [
-        "chat-message",
-        "footer-giant-wordmark",
-        "hero-ai-prompt",
-        "iridescence",
-        "section-pricing-flow",
-        "shimmer-text",
-        "siri-orb",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/ai-product/page.tsx",
-          "type": "registry:page",
-          "target": "app/ai-product/page.tsx"
-        },
-        {
-          "path": "registry/templates/ai-product/content.ts",
-          "type": "registry:file",
-          "target": "app/ai-product/content.ts"
-        },
-        {
-          "path": "registry/templates/ai-product/theme.ts",
-          "type": "registry:file",
-          "target": "app/ai-product/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "devtool-template",
-      "type": "registry:block",
-      "title": "Devtool Template",
-      "description": "多文件模板：终端 Hero、闪烁网格、集成轨道、前后代码、更新日志和着色器字标。",
-      "dependencies": [],
-      "registryDependencies": [
-        "code-block",
-        "flickering-grid",
-        "footer-shader-wordmark",
-        "orbiting-circles",
-        "terminal",
-        "timeline",
-        "tracing-beam",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/devtool/page.tsx",
-          "type": "registry:page",
-          "target": "app/devtool/page.tsx"
-        },
-        {
-          "path": "registry/templates/devtool/content.ts",
-          "type": "registry:file",
-          "target": "app/devtool/content.ts"
-        },
-        {
-          "path": "registry/templates/devtool/theme.ts",
-          "type": "registry:file",
-          "target": "app/devtool/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "portfolio-template",
-      "type": "registry:block",
-      "title": "Portfolio Template",
-      "description": "简历式单页。结构参考 Magic UI portfolio（MIT）：分段显现、项目卡、经历、联系和 Dock。",
-      "dependencies": [],
-      "registryDependencies": [
-        "atropos-card",
-        "blur-fade",
-        "dock",
-        "shimmer-button",
-        "timeline"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/portfolio/page.tsx",
-          "type": "registry:page",
-          "target": "app/portfolio/page.tsx"
-        },
-        {
-          "path": "registry/templates/portfolio/content.ts",
-          "type": "registry:file",
-          "target": "app/portfolio/content.ts"
-        },
-        {
-          "path": "registry/templates/portfolio/theme.ts",
-          "type": "registry:file",
-          "target": "app/portfolio/theme.ts"
         }
       ]
     },
@@ -7140,25 +6938,6 @@
       ]
     },
     {
-      "name": "comment-thread",
-      "type": "registry:ui",
-      "title": "Comment Thread",
-      "description": "灵感来自 GitHub、Linear 与 Figma，原创实现。按 parentId 组成最多三层的评论树，提及高亮，可标为已解决，编辑或删除，⌘ Enter 发送。",
-      "dependencies": [],
-      "registryDependencies": [
-        "combobox",
-        "reaction-bar",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/comment-thread.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/comment-thread.tsx"
-        }
-      ]
-    },
-    {
       "name": "signature-pad",
       "type": "registry:ui",
       "title": "Signature Pad",
@@ -7196,31 +6975,10 @@
       ]
     },
     {
-      "name": "schedule-slot-picker",
-      "type": "registry:ui",
-      "title": "Schedule Slot Picker",
-      "description": "灵感来自 Calendly 与 Cal.com，原创实现。日历选出日期后列出时段，可切换 12/24 小时和时区。选中后拆成时间和确认。Cal.com 为 AGPL，只借鉴交互。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/schedule-slot-picker.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/schedule-slot-picker.tsx"
-        }
-      ]
-    },
-    {
       "name": "reaction-bar",
       "type": "registry:ui",
       "title": "Reaction Bar",
-      "description": "帖子和评论共用的表情反应条。计数用数字滚动，选中时轻轻弹一下。",
+      "description": "表情反应条。计数用数字滚动，选中时轻轻弹一下。",
       "dependencies": [
         "motion"
       ],
@@ -7483,26 +7241,6 @@
       ]
     },
     {
-      "name": "inbox-split-view",
-      "type": "registry:ui",
-      "title": "Inbox Split View",
-      "description": "收件箱分栏。左栏有未读、星标和多选，右栏是正文，j / k 移动。窄屏变成单栏滑动，宽屏可以拖动分栏。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "resizable",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/templates/inbox-split-view.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/inbox-split-view.tsx"
-        }
-      ]
-    },
-    {
       "name": "timezone-clock",
       "type": "registry:ui",
       "title": "Timezone Clock",
@@ -7647,7 +7385,7 @@
       "name": "audio-spectrum",
       "type": "registry:ui",
       "title": "Audio Spectrum",
-      "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。和静态的 audio-waveform 不同。",
+      "description": "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。",
       "dependencies": [],
       "registryDependencies": [
         "use-prefers-reduced-motion",
@@ -7702,29 +7440,6 @@
       ]
     },
     {
-      "name": "cart-drawer",
-      "type": "registry:ui",
-      "title": "Cart Drawer",
-      "description": "右侧购物车抽屉。可改数量、移除，显示小计和免运费进度。加购时图标跳动并带计数。",
-      "dependencies": [
-        "lucide-react",
-        "motion"
-      ],
-      "registryDependencies": [
-        "quantity-stepper",
-        "sheet",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/cart-drawer.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/cart-drawer.tsx"
-        }
-      ]
-    },
-    {
       "name": "coupon-input",
       "type": "registry:ui",
       "title": "Coupon Input",
@@ -7741,27 +7456,6 @@
           "path": "registry/effects/coupon-input.tsx",
           "type": "registry:ui",
           "target": "components/ui/coupon-input.tsx"
-        }
-      ]
-    },
-    {
-      "name": "radial-gauge",
-      "type": "registry:ui",
-      "title": "Radial Gauge",
-      "description": "半圆或四分之三圆仪表。分段配色，指针有弹性，中心数字滚动，可标阈值。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "number-flow",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/radial-gauge.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/radial-gauge.tsx"
         }
       ]
     },
@@ -8033,43 +7727,6 @@
       ]
     },
     {
-      "name": "usage-meter",
-      "type": "registry:ui",
-      "title": "Usage Meter",
-      "description": "灵感来自 Sprig，原创实现。已用和额度进度条，超过八成变黄、超过额度变红，可堆叠多个指标。",
-      "dependencies": [],
-      "registryDependencies": [
-        "number-flow",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/usage-meter.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/usage-meter.tsx"
-        }
-      ]
-    },
-    {
-      "name": "team-members-table",
-      "type": "registry:ui",
-      "title": "Team Members Table",
-      "description": "灵感来自 Supabase 与 Browserbase，原创实现。角色、邀请状态、搜索，以及批量改角色或移除。",
-      "dependencies": [],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/team-members-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/team-members-table.tsx"
-        }
-      ]
-    },
-    {
       "name": "help-center-index",
       "type": "registry:ui",
       "title": "Help Center Index",
@@ -8247,6 +7904,7 @@
       ],
       "registryDependencies": [
         "dialog",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -8274,91 +7932,6 @@
           "path": "registry/effects/animated-subscribe-button.tsx",
           "type": "registry:ui",
           "target": "components/ui/animated-subscribe-button.tsx"
-        }
-      ]
-    },
-    {
-      "name": "audit-log-table",
-      "type": "registry:ui",
-      "title": "Audit Log Table",
-      "description": "灵感来自 Gumloop 活动记录与 Base44 日志（经由 Mobbin），原创实现。时间、头像、彩色动作标签、对象和 IP。可按动作和日期筛选，点行展开 JSON，虚拟滚动。新事件插到顶部并高亮两秒。",
-      "dependencies": [
-        "@tanstack/react-virtual"
-      ],
-      "registryDependencies": [
-        "json-viewer",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/audit-log-table.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/audit-log-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "notification-preferences",
-      "type": "registry:ui",
-      "title": "Notification Preferences",
-      "description": "灵感来自 Unify 通知矩阵与 SoundCloud 通知设置（经由 Mobbin），原创实现。事件按组排成行，邮件、应用内、推送和 Slack 为列。单元格是开关，行和列都能全选。有改动时滑出保存和撤销条。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "checkbox",
-        "switch",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/notification-preferences.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/notification-preferences.tsx"
-        }
-      ]
-    },
-    {
-      "name": "data-export-dialog",
-      "type": "registry:ui",
-      "title": "Data Export Dialog",
-      "description": "灵感来自 Klaviyo 字段勾选与 Square 导出对话框（经由 Mobbin），原创实现。CSV、JSON、XLSX 三个页签，字段可勾选并用 sortable-list 拖动排序，另选日期范围。导出过程显示进度，完成后给出下载。",
-      "dependencies": [],
-      "registryDependencies": [
-        "checkbox",
-        "dialog",
-        "sortable-list",
-        "tabs",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/data-export-dialog.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/data-export-dialog.tsx"
-        }
-      ]
-    },
-    {
-      "name": "two-factor-setup",
-      "type": "registry:ui",
-      "title": "Two Factor Setup",
-      "description": "灵感来自 Basecamp 两步验证与 Dropbox Dash 恢复码（经由 Mobbin），原创实现。三步横向滑动：传入的二维码和可复制密钥、六位验证码（错误时晃动）、可复制或下载的恢复码，以及必须勾选的已保存确认。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "checkbox",
-        "input-otp",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/two-factor-setup.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/two-factor-setup.tsx"
         }
       ]
     },
@@ -9556,28 +9129,6 @@
       ]
     },
     {
-      "name": "ai-branches",
-      "type": "registry:ui",
-      "title": "AI Branches",
-      "description": "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-branches.tsx 编辑一条消息会分出新分支，也可以在分支之间切换。减弱动效时回复整段出现。离开视口后暂停逐词写入。",
-      "dependencies": [
-        "lucide-react",
-        "motion"
-      ],
-      "registryDependencies": [
-        "use-animation-active",
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/ai-branches.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/ai-branches.tsx"
-        }
-      ]
-    },
-    {
       "name": "timezone-planner",
       "type": "registry:ui",
       "title": "Timezone Planner",
@@ -9860,26 +9411,6 @@
           "path": "registry/effects/scrubber.tsx",
           "type": "registry:ui",
           "target": "components/ui/scrubber.tsx"
-        }
-      ]
-    },
-    {
-      "name": "breakpoint-indicator",
-      "type": "registry:ui",
-      "title": "Breakpoint Indicator",
-      "description": "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/breakpoint-indicator/index.tsx 开发用角标，显示当前 Tailwind 断点和视口尺寸。默认快捷键是 b。生产构建里默认不启用，演示会显式打开。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "use-prefers-reduced-motion",
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/breakpoint-indicator.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/breakpoint-indicator.tsx"
         }
       ]
     },
@@ -11113,6 +10644,7 @@
       "dependencies": [],
       "registryDependencies": [
         "badge",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -11843,6 +11375,7 @@
         "@radix-ui/react-navigation-menu"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -12788,6 +12321,7 @@
         "matter-js"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -15599,6 +15133,284 @@
           "path": "registry/effects/password-field.tsx",
           "type": "registry:ui",
           "target": "components/ui/password-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card-toss-stack",
+      "type": "registry:ui",
+      "title": "Card Toss Stack",
+      "description": "原创实现。叠在上面的卡片可以拖拽，松手后按出手速度惯性飞出并移走。方向键也能甩出。拖得不够远会回到原位。减弱动效时直接拿走，不再飞。没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/card-toss-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card-toss-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toss-to-trash",
+      "type": "registry:ui",
+      "title": "Toss To Trash",
+      "description": "原创实现。把条目向下拖过一段距离，或拖到垃圾桶上，松手后沿抛物线落入并删除。Delete、Backspace 或向下方向键同样可以扔。减弱动效时直接删除。没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/toss-to-trash.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toss-to-trash.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sticky-note-board",
+      "type": "registry:ui",
+      "title": "Sticky Note Board",
+      "description": "原创实现。便利贴可以拖动，松手后按出手速度继续滑一段，并随横向速度倾斜。方向键每次挪 24 像素。减弱动效时停在落点，不再滑、不再倾斜。没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sticky-note-board.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sticky-note-board.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag-jar",
+      "type": "registry:ui",
+      "title": "Tag Jar",
+      "description": "原创实现。标签从罐口落下，在玻璃罐里堆成一叠。拖动罐子或按方向键会把它们摇散。减弱动效时不启动 matter-js，标签直接叠在罐底。没有新增依赖。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tag-jar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tag-jar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "coin-jar",
+      "type": "registry:ui",
+      "title": "Coin Jar",
+      "description": "原创实现。点击或按向下键，把打赏硬币投入罐中，硬币落下后叠成一柱。减弱动效时不启动 matter-js，投入的硬币直接出现在罐底。没有新增依赖。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/coin-jar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/coin-jar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ball-pit",
+      "type": "registry:ui",
+      "title": "Ball Pit",
+      "description": "原创实现。头像球待在球池里，指针靠近或按方向键会把它们拨开。减弱动效时不启动 matter-js，球保持静止，拨动只改变位置。没有新增依赖。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ball-pit.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ball-pit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lanyard-badge",
+      "type": "registry:ui",
+      "title": "Lanyard Badge",
+      "description": "原创实现。工牌挂在 Verlet 绳上，拖动后会摆动并弹回竖直。方向键也能拨一下。减弱动效时保持竖直，不再积分。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lanyard-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lanyard-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "jelly-button",
+      "type": "registry:ui",
+      "title": "Jelly Button",
+      "description": "原创实现。按下时按钮被弹簧压扁，松手后弹回，点击仍然触发。回车和空格同样会按下。减弱动效时不压扁。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/jelly-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/jelly-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spring-drawer",
+      "type": "registry:ui",
+      "title": "Spring Drawer",
+      "description": "原创实现。拉手拖动抽屉，松手后按出手速度惯性滑开或关上。甩得够快会直接弹到另一侧。方向键和回车也能开关。减弱动效时直接开合。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spring-drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spring-drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnet-chips",
+      "type": "registry:ui",
+      "title": "Magnet Chips",
+      "description": "原创实现。筛选芯片拖进对齐区后，沿动画帧吸到同一行。方向键或回车也能放进去。减弱动效时立刻对齐，不申请动画帧。只用组件自己的指针和动画帧，不使用 matter-js，没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magnet-chips.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magnet-chips.tsx"
+        }
+      ]
+    },
+    {
+      "name": "folder-stack",
+      "type": "registry:ui",
+      "title": "Folder Stack",
+      "description": "原创实现。叠放的纸质文件夹。细指针悬停时扇形展开，离开后收回。触屏或粗指针悬停不展开，点击才切换。文件夹可以拖出去。减弱动效时不播放扇形动画，拖出后直接拿走，不申请动画帧。不使用 matter-js，没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/folder-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/folder-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "physics-dropzone",
+      "type": "registry:ui",
+      "title": "Physics Dropzone",
+      "description": "原创实现。文件图标拖进落点后，由已安装的 matter-js 落到一堆，并显示进度。方向键或回车也能放进去。减弱动效时不创建物理引擎、不申请动画帧，文件直接出现在堆里并且进度已满。没有新增依赖。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/physics-dropzone.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/physics-dropzone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "upload-orbit",
+      "type": "registry:ui",
+      "title": "Upload Orbit",
+      "description": "原创实现。上传时文件沿圆环公转，完成后收成一行。回车、空格或指针可以开始并完成。减弱动效时文件直接待在完成的一行，不再绕圈。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/upload-orbit.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/upload-orbit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "empty-state-scene",
+      "type": "registry:ui",
+      "title": "Empty State Scene",
+      "description": "原创实现。空状态插画里的零件自己上下漂，指针或方向键可以把它们拨开，松手后慢慢漂回去。减弱动效时插画静止，拨动只改位置。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/empty-state-scene.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/empty-state-scene.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reaction-tray",
+      "type": "registry:ui",
+      "title": "Reaction Tray",
+      "description": "原创实现。选一个表情后它先弹起，再落回自己的计数。回车、空格或指针都可以选。减弱动效时不弹出，计数立刻加一。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reaction-tray.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reaction-tray.tsx"
         }
       ]
     }

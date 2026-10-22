@@ -8,9 +8,7 @@ import "@testing-library/jest-dom/vitest"
 import { ApiKeyManager } from "./api-key-manager"
 import { HyperspaceText } from "./hyperspace-text"
 import { LenticularCard } from "./lenticular-card"
-import { TeamMembersTable } from "./team-members-table"
 import { UptimeBars } from "./uptime-bars"
-import { UsageMeter } from "./usage-meter"
 import { HelpCenterIndex } from "../sections/help-center-index"
 import { IntegrationsDirectory } from "../sections/integrations-directory"
 import { StatusPage } from "../templates/status-page"
@@ -121,23 +119,6 @@ test("新密钥只显示一次，确认后才吊销", async () => {
   await user.click(screen.getByRole("button", { name: "确认吊销" }))
   expect(onRevoke).toHaveBeenCalledWith("old")
   expect(screen.queryByText("旧钥匙")).not.toBeInTheDocument()
-})
-
-test("用量超过八成变黄，超过额度变红", () => {
-  render(<UsageMeter />)
-  expect(screen.getByRole("meter", { name: "页面访问" })).toHaveAttribute("data-tone", "warn")
-  expect(screen.getByRole("meter", { name: "席位" })).toHaveAttribute("data-tone", "over")
-  expect(screen.getByText("8600")).toBeInTheDocument()
-  expect(screen.getByText("重置于 2026-11-01")).toBeInTheDocument()
-})
-
-test("成员表可搜索，重发邀请进入倒计时", async () => {
-  const user = userEvent.setup()
-  render(<TeamMembersTable cooldown={12} />)
-  await user.type(screen.getByRole("textbox", { name: "搜索成员" }), "周宁")
-  expect(screen.queryByText("林夏")).not.toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "重发邀请" }))
-  expect(screen.getByRole("button", { name: "12s" })).toBeDisabled()
 })
 
 test("帮助中心搜索高亮并提示剩余篇数", async () => {

@@ -3,7 +3,6 @@
 import { useState } from "react"
 
 import { ClothWindBanner } from "../effects/cloth-wind-banner"
-import { CommentThread } from "../effects/comment-thread"
 import { DataTunnel } from "../effects/data-tunnel"
 import { EmbedCodeGenerator } from "../effects/embed-code-generator"
 import { FileUploadQueue } from "../effects/file-upload-queue"
@@ -13,7 +12,6 @@ import { PolaroidScrollStack } from "../sections/polaroid-scroll-stack"
 import { PollVote } from "../effects/poll-vote"
 import { ReactionBar, type ReactionItem } from "../effects/reaction-bar"
 import { ProximityScaleGrid } from "../effects/proximity-scale-grid"
-import { ScheduleSlotPicker } from "../effects/schedule-slot-picker"
 import { ScrollSvgGraph } from "../effects/scroll-svg-graph"
 import { SignaturePad } from "../effects/signature-pad"
 import { SocialPostFeed } from "../effects/social-post-feed"
@@ -146,20 +144,12 @@ export function SocialPostFeedDemo() {
   return <SocialPostFeed className="w-full" />
 }
 
-export function CommentThreadDemo() {
-  return <CommentThread className="w-full" />
-}
-
 export function SignaturePadDemo() {
   return <SignaturePad className="w-full" />
 }
 
 export function PollVoteDemo() {
   return <PollVote className="w-full" />
-}
-
-export function ScheduleSlotPickerDemo() {
-  return <ScheduleSlotPicker className="w-full" />
 }
 
 export function ReactionBarDemo({

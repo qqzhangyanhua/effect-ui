@@ -3,7 +3,6 @@
 import { useState } from "react"
 
 import { AuroraCurtain } from "../effects/aurora-curtain"
-import { BreakpointIndicator } from "../effects/breakpoint-indicator"
 import { DurationPicker } from "../effects/duration-picker"
 import { ExposureSlider } from "../effects/exposure-slider"
 import { GravityStars } from "../effects/gravity-stars"
@@ -109,14 +108,6 @@ export function ExposureSliderDemo() {
 
 export function ScrubberDemo() {
   return <Scrubber defaultValue={1.5} label="光圈" max={8} min={1} step={0.1} ticks={8} />
-}
-
-export function BreakpointIndicatorDemo() {
-  return (
-    <div className="relative h-24 w-full rounded-2xl border">
-      <BreakpointIndicator enabled fixed={false} position="bottom-left" showSize />
-    </div>
-  )
 }
 
 export function SwitchboardCardDemo() {

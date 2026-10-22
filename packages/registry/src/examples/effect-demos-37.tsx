@@ -36,34 +36,72 @@ const faqTabs = [
   },
 ]
 
-export function HologramTextDemo() {
+export function HologramTextDemo({
+  text = "全息",
+  scanDuration = 1800,
+  chromaJitter = 0.8,
+}: {
+  text?: string
+  scanDuration?: number
+  chromaJitter?: number
+} = {}) {
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10">
-      <HologramText text="全息" />
+      <HologramText chromaJitter={chromaJitter} scanDuration={scanDuration} text={text} />
     </div>
   )
 }
 
-export function InkMorphDemo() {
+export function InkMorphDemo({
+  text = "墨迹",
+  intensityFrom = 0.28,
+  settleMs = 2000,
+}: {
+  text?: string
+  intensityFrom?: number
+  settleMs?: number
+} = {}) {
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10">
-      <InkMorphText text="墨迹" colorStart="var(--primary)" colorEnd="var(--foreground)" />
+      <InkMorphText
+        colorEnd="var(--foreground)"
+        colorStart="var(--primary)"
+        intensityFrom={intensityFrom}
+        settleMs={settleMs}
+        text={text}
+      />
     </div>
   )
 }
 
-export function OrbitalTextDemo() {
+export function OrbitalTextDemo({
+  text = "轨道",
+  radius = 18,
+  decay = 0.9,
+}: {
+  text?: string
+  radius?: number
+  decay?: number
+} = {}) {
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10">
-      <OrbitalText text="轨道" />
+      <OrbitalText decay={decay} radius={radius} text={text} />
     </div>
   )
 }
 
-export function ScratchCardDemo() {
+export function ScratchCardDemo({
+  revealThreshold = 0.5,
+  brushSize = 28,
+  overlayLabel = "刮开查看",
+}: {
+  revealThreshold?: number
+  brushSize?: number
+  overlayLabel?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <ScratchCard className="h-40 w-72" overlayLabel="刮开查看">
+      <ScratchCard brushSize={brushSize} className="h-40 w-72" overlayLabel={overlayLabel} revealThreshold={revealThreshold}>
         <div className="flex h-40 items-center justify-center text-sm">隐藏的优惠码 SPECTRUM</div>
       </ScratchCard>
     </div>
@@ -84,12 +122,20 @@ export function SkeletonRevealDemo() {
   )
 }
 
-export function TextStatesDemo() {
+export function TextStatesDemo({
+  duration = 150,
+  translateY = 4,
+  blur = 2,
+}: {
+  duration?: number
+  translateY?: number
+  blur?: number
+} = {}) {
   const [saved, setSaved] = useState(false)
   return (
     <div className="flex justify-center px-6 py-10">
       <button type="button" className="rounded-full bg-foreground px-4 py-2 text-sm text-background" onClick={() => setSaved((value) => !value)}>
-        <TextStates text={saved ? "已保存" : "保存"} />
+        <TextStates blur={blur} duration={duration} text={saved ? "已保存" : "保存"} translateY={translateY} />
       </button>
     </div>
   )
@@ -105,16 +151,24 @@ export function NotificationBellDemo() {
   )
 }
 
-export function AsyncMorphButtonDemo() {
+export function AsyncMorphButtonDemo({
+  loadingLabel = "保存中",
+  successLabel = "已保存",
+  errorLabel = "失败",
+}: {
+  loadingLabel?: string
+  successLabel?: string
+  errorLabel?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
       <MorphButton
-        loadingLabel="保存中"
-        successLabel="已保存"
-        errorLabel="失败"
+        errorLabel={errorLabel}
+        loadingLabel={loadingLabel}
         onAction={async () => {
           await new Promise((resolve) => window.setTimeout(resolve, 600))
         }}
+        successLabel={successLabel}
       >
         保存更改
       </MorphButton>
@@ -130,21 +184,39 @@ export function FaceRatingDemo() {
   )
 }
 
-export function FollowButtonDemo() {
+export function FollowButtonDemo({
+  followLabel = "关注",
+  followingLabel = "已关注",
+  unfollowLabel = "取消关注",
+}: {
+  followLabel?: string
+  followingLabel?: string
+  unfollowLabel?: string
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <FollowButton followLabel="关注" followingLabel="已关注" unfollowLabel="取消关注" />
+      <FollowButton followLabel={followLabel} followingLabel={followingLabel} unfollowLabel={unfollowLabel} />
     </div>
   )
 }
 
-export function ShareButtonDemo() {
+export function ShareButtonDemo({
+  direction = "right",
+  label = "分享",
+  closeOnSelect = true,
+}: {
+  direction?: "left" | "right"
+  label?: string
+  closeOnSelect?: boolean
+} = {}) {
   return (
     <div className="flex justify-center px-6 py-16">
       <ShareButton
-        label="分享"
-        copyValue="https://github.com/arihantcodes/spectrum-ui"
         actions={[{ icon: <Link2 size={15} />, label: "复制标题", onSelect: () => undefined }]}
+        closeOnSelect={closeOnSelect}
+        copyValue="https://github.com/arihantcodes/spectrum-ui"
+        direction={direction}
+        label={label}
       />
     </div>
   )
@@ -200,7 +272,7 @@ export function FolderFloatDemo({
   closeOnSelect = true,
   physics = true,
   drift = 0.5,
-  folderColor = "#3f3f46",
+  folderColor,
   spread = 180,
   lift = 26,
   tilt = 8,

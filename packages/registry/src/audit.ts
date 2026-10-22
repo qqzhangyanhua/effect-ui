@@ -1,3 +1,16 @@
+import {
+  activeExemptionGaps,
+  componentIsTested,
+  exemptionClosedNames,
+  exemptionProblems,
+  insufficientControls,
+  isEffectCategory,
+  missingReducedMotion,
+  requiresComponentTest,
+  sourceFilesFor,
+  testedSourceFiles,
+  type AuditExemption,
+} from "./audit-coverage"
 import { deriveDependencies } from "./dependencies"
 import {
   catalogDemoNames,
@@ -31,6 +44,13 @@ export type AuditIssueType =
   | "prop-not-in-type"
   | "control-not-in-demo"
   | "prop-not-in-catalog"
+  | "missing-test"
+  | "insufficient-controls"
+  | "missing-reduced-motion"
+  | "stale-exemption"
+  | "unknown-exemption"
+  | "closed-batch-exemption"
+  | "invalid-exemption"
 
 export interface AuditIssue {
   name: string
@@ -57,6 +77,8 @@ export interface AuditInput {
   readme: string
   staticJson: AuditStaticJson
   packageDependencies: readonly string[]
+  /** 省略时不套用豁免。仓库审计要传入 audit-exemptions.ts。 */
+  exemptions?: readonly AuditExemption[]
 }
 
 const componentSourceDirs: Record<string, true> = {
@@ -607,5 +629,86 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
     }
   }
 
+  pushCoverageIssues(issues, input, catalogNames)
   return issues
+}
+
+function pushCoverageIssues(
+  issues: AuditIssue[],
+  input: AuditInput,
+  catalogNames: ReadonlySet<string>,
+): void {
+  const tests = input.sourceFiles.flatMap((file) => {
+    if (!/\.test\.tsx?$/.test(file)) return []
+    const text = input.readSource(file)
+    return text === undefined ? [] : [{ file, text }]
+  })
+  const tested = testedSourceFiles(tests)
+  const closedNames = exemptionClosedNames()
+  const exemptions = input.exemptions ?? []
+  const entryByName = (name: string) => input.catalog.find((item) => item.name === name)
+  const testedGap = (name: string) => {
+    const entry = entryByName(name)
+    if (!entry || !requiresComponentTest(entry.category)) return true
+    return componentIsTested(entry, tested)
+  }
+  const controlsSufficient = (name: string) => {
+    const entry = entryByName(name)
+    if (!entry) return true
+    return !insufficientControls(entry.category, entry.props)
+  }
+  const motionSatisfied = (name: string) => {
+    const entry = entryByName(name)
+    if (!entry || !isEffectCategory(entry.category)) return true
+    const text = readCatalogSource(entry, input.readSource)
+    if (text === undefined) return false
+    return !missingReducedMotion(entry.category, text)
+  }
+  issues.push(
+    ...exemptionProblems(exemptions, catalogNames, closedNames, testedGap, {
+      controlsSufficient,
+      motionSatisfied,
+    }),
+  )
+  const suppressed = activeExemptionGaps(exemptions, catalogNames, closedNames)
+  for (const entry of input.catalog) {
+    if (!requiresComponentTest(entry.category) || componentIsTested(entry, tested)) continue
+    if (suppressed.get(entry.name)?.has("缺测试")) continue
+    issues.push({
+      name: entry.name,
+      type: "missing-test",
+      description: "没有任何测试文件导入该组件源码。",
+    })
+  }
+  for (const entry of input.catalog) {
+    if (!isEffectCategory(entry.category)) continue
+    const gaps = suppressed.get(entry.name)
+    if (insufficientControls(entry.category, entry.props) && !gaps?.has("控件不足")) {
+      issues.push({
+        name: entry.name,
+        type: "insufficient-controls",
+        description: "Effect 组件的可调控件少于 3 个。",
+      })
+    }
+    const text = readCatalogSource(entry, input.readSource)
+    if (text !== undefined && missingReducedMotion(entry.category, text) && !gaps?.has("缺减弱动效")) {
+      issues.push({
+        name: entry.name,
+        type: "missing-reduced-motion",
+        description: "Effect 组件有动画特征，但没有减弱动效处理。",
+      })
+    }
+  }
+}
+
+function readCatalogSource(
+  entry: { file: string; files?: readonly { file: string }[] },
+  readSource: (file: string) => string | undefined,
+): string | undefined {
+  const parts: string[] = []
+  for (const file of sourceFilesFor(entry)) {
+    const text = readSource(file)
+    if (text !== undefined) parts.push(text)
+  }
+  return parts.length === 0 ? undefined : parts.join("\n")
 }

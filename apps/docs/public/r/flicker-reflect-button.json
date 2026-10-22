@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flicker-reflect-button",
+  "type": "registry:ui",
+  "title": "Flicker Reflect Button",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 John-CFO。https://github.com/uiverse-io/galaxy/blob/main/Buttons/John-CFO_green-rabbit-93.html 霓虹闪烁两秒，带 -webkit-box-reflect。悬停时按钮本身变成黑底直角。glowColor 是彩色光晕，flicker 可关掉闪烁。文案放在 demo。减弱动效或离开视口时不再闪，倒影仍在。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/flicker-reflect-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/flicker-reflect-button.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse.io (MIT), author John-CFO — https://github.com/uiverse-io/galaxy/blob/main/Buttons/John-CFO_green-rabbit-93.html. Modified for effect-ui.\n\nimport { useRef, type ButtonHTMLAttributes, type CSSProperties } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FlickerReflectButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  /** 底部彩色光晕。悬停时按钮本身变成黑底直角，而不是另加一层方块。 */\n  glowColor?: string\n  /** 为 false 时关掉霓虹闪烁，倒影仍保留。 */\n  flicker?: boolean\n}\n\nexport function FlickerReflectButton({\n  glowColor = \"#1f4c65\",\n  flicker = true,\n  className,\n  style,\n  type = \"button\",\n  children,\n  ...props\n}: FlickerReflectButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced && flicker\n  const painted = {\n    boxShadow: `0 0 60px ${glowColor}`,\n    WebkitBoxReflect: \"below 10px linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4))\",\n    ...style,\n  } as CSSProperties\n\n  return (\n    <button\n      {...props}\n      ref={ref}\n      className={cn(\n        \"h-14 w-[13.2rem] cursor-pointer border-[5px] border-white bg-[rgb(83,82,82)] text-[1.8rem] font-bold text-[rgb(234,234,234)] uppercase\",\n        reduced ? \"rounded-[5px] transition-none\" : \"rounded-[5px] transition duration-500 hover:rounded-none hover:bg-black\",\n        moving && \"animate-[flicker-reflect_2s_linear_infinite_both]\",\n        className,\n      )}\n      data-flicker={moving ? \"true\" : \"false\"}\n      data-motion={motionOn && !reduced ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"flicker-reflect-button\"\n      style={{ ...painted, filter: \"drop-shadow(0 0 10px white)\" }}\n      type={type}\n    >\n      <style>\n        {`@keyframes flicker-reflect{0%,41.99%,43.01%,47.99%,49.01%,100%{opacity:1}42%,43%,48%,49%{opacity:0}}`}\n      </style>\n      <span className=\"font-[Arial,Helvetica,sans-serif]\">{children}</span>\n    </button>\n  )\n}\n"
+    }
+  ]
+}

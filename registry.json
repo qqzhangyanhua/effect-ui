@@ -13988,6 +13988,296 @@
           "target": "components/ui/collapsible-side-menu.tsx"
         }
       ]
+    },
+    {
+      "name": "bookmark-burst-toggle",
+      "type": "registry:ui",
+      "title": "Bookmark Burst Toggle",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 Galahhad。https://github.com/uiverse-io/galaxy/blob/main/Checkboxes/Galahhad_mighty-warthog-42.html 勾选后书签填上金色，圆环和八点阴影爆发。checked、onCheckedChange、color 可配，示例色放在 demo。减弱动效或离开视口时不再缩放和爆发，填充仍然切换。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bookmark-burst-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bookmark-burst-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lock-toggle",
+      "type": "registry:ui",
+      "title": "Lock Toggle",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 mobinkakei。https://github.com/uiverse-io/galaxy/blob/main/Checkboxes/mobinkakei_strange-frog-14.html 锁扣抬起，三条高光线划过。用 locked、onLockedChange 和 aria-pressed。示例红绿色放在 demo。减弱动效或离开视口时不再画线，开合状态仍然切换。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lock-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lock-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "circular-text-button",
+      "type": "registry:ui",
+      "title": "Circular Text Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 Creatlydev。https://github.com/uiverse-io/galaxy/blob/main/Buttons/Creatlydev_fresh-goose-83.html 文字按字拆开绕圈旋转，悬停时圆钮变黑并放大到 1.05，箭头互换。text 自动拆分，可传 href 或 onClick。示例句子放在 demo。减弱动效或离开视口时停止旋转，悬停不再缩放。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/circular-text-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/circular-text-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flower-burst-button",
+      "type": "registry:ui",
+      "title": "Flower Burst Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 yaroslavas2001。https://github.com/uiverse-io/galaxy/blob/main/Buttons/yaroslavas2001_lovely-fox-50.html 六朵四瓣花在悬停时长大并换成蓝色渐变，分别以 15、13、16、17、20、15 秒旋转。label 和 petalColors 可配。减弱动效或离开视口时不再旋转，花瓣仍会变大。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flower-burst-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flower-burst-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-cue-button",
+      "type": "registry:ui",
+      "title": "Scroll Cue Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 ArturCodeCraft。https://github.com/uiverse-io/galaxy/blob/main/Buttons/ArturCodeCraft_afraid-fish-22.html 箭头向下滑动。targetId 平滑滚动，href 作为链接，autoPlay 让循环不必等待悬停。文案放在 demo。减弱动效时不再滑动，滚动改为立刻到位。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scroll-cue-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-cue-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flicker-reflect-button",
+      "type": "registry:ui",
+      "title": "Flicker Reflect Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 John-CFO。https://github.com/uiverse-io/galaxy/blob/main/Buttons/John-CFO_green-rabbit-93.html 霓虹闪烁两秒，带 -webkit-box-reflect。悬停时按钮本身变成黑底直角。glowColor 是彩色光晕，flicker 可关掉闪烁。文案放在 demo。减弱动效或离开视口时不再闪，倒影仍在。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flicker-reflect-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flicker-reflect-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glow-search-input",
+      "type": "registry:ui",
+      "title": "Glow Search Input",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 siraj-ha。https://github.com/uiverse-io/galaxy/blob/main/Inputs/siraj-ha_serious-moose-70.html 静止时是左右两团光晕，只有悬停才对调旋转。value、onChange、onFilterClick、colors 可配。示例色和占位符放在 demo。减弱动效或离开视口时不再旋转，静止光晕保留。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glow-search-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glow-search-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "propeller-orb",
+      "type": "registry:ui",
+      "title": "Propeller Orb",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 Lakshay-art。https://github.com/uiverse-io/galaxy/blob/main/Cards/Lakshay-art_shy-puma-30.html 径向圆球加旋转螺旋桨，悬停时桨叶加快、机翼倾斜。size、speed、colors 可配，根节点 aria-hidden。示例色放在 demo。减弱动效或离开视口时桨叶停住，机翼不再倾斜。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/propeller-orb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/propeller-orb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "not-found-page",
+      "type": "registry:ui",
+      "title": "Not Found Page",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/404-pages/CenteredWithLinks.html 与 https://github.com/merakiuilabs/merakiui/blob/main/components/404-pages/Image.html。variant 为 centered 或 image。links、onBack、homeHref 可配。示例文案和图片放在 demo。减弱动效时按钮不再做颜色过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/not-found-page.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/not-found-page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-level-dropdown",
+      "type": "registry:ui",
+      "title": "Multi Level Dropdown",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/dropdowns/MultiLevelWithIcons.html 嵌套菜单。方向键、Esc 和外部点击可关闭，role 为 menu。示例条目放在 demo。减弱动效时菜单直接出现，不再缩放。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/multi-level-dropdown.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/multi-level-dropdown.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-manager-table",
+      "type": "registry:ui",
+      "title": "File Manager Table",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/tables/Files.html 文件图标、名称和大小、状态徽章、修改时间、全选和行菜单。files、selected、onSelectedChange 可配。示例行放在 demo。减弱动效时行按钮不再做颜色过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/file-manager-table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/file-manager-table.tsx"
+        }
+      ]
+    },
+    {
+      "name": "email-template",
+      "type": "registry:ui",
+      "title": "Email Template",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/email-templates/Verification.html、https://github.com/merakiuilabs/merakiui/blob/main/components/email-templates/Welcome.html 与 https://github.com/merakiuilabs/merakiui/blob/main/components/email-templates/Invite.html。表格加内联样式。variant 为 verification、welcome 或 invite。brand、title、body、cta 可配。示例文案放在 demo。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/email-template.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/email-template.tsx"
+        }
+      ]
+    },
+    {
+      "name": "signup-split-page",
+      "type": "registry:ui",
+      "title": "Signup Split Page",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/sign-in-and-registration/SignUpPageWithSideImage.html 侧图加表单，客户和合作者切换，原生校验。image、onSubmit、status 可配。示例文案和图片放在 demo。减弱动效时按钮不再做颜色过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/signup-split-page.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/signup-split-page.tsx"
+        }
+      ]
+    },
+    {
+      "name": "step-modal",
+      "type": "registry:ui",
+      "title": "Step Modal",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/modals/Steps.html 步骤点、上一步、下一步和提交。焦点圈在对话框内，Esc 关闭。steps、open、onOpenChange 可配。示例文案和图片放在 demo。减弱动效时遮罩直接出现。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/step-modal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/step-modal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "portfolio-filter-grid",
+      "type": "registry:ui",
+      "title": "Portfolio Filter Grid",
+      "description": "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。 https://github.com/merakiuilabs/merakiui/blob/main/components/portfolio/Filter.html 分类按钮带 aria-pressed，列表用 motion layout 过滤。items 和 categories 可配。示例作品放在 demo。减弱动效时过滤立即完成。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/portfolio-filter-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/portfolio-filter-grid.tsx"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-cue-button",
+  "type": "registry:ui",
+  "title": "Scroll Cue Button",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 ArturCodeCraft。https://github.com/uiverse-io/galaxy/blob/main/Buttons/ArturCodeCraft_afraid-fish-22.html 箭头向下滑动。targetId 平滑滚动，href 作为链接，autoPlay 让循环不必等待悬停。文案放在 demo。减弱动效时不再滑动，滚动改为立刻到位。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/scroll-cue-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/scroll-cue-button.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse.io (MIT), author ArturCodeCraft — https://github.com/uiverse-io/galaxy/blob/main/Buttons/ArturCodeCraft_afraid-fish-22.html. Modified for effect-ui.\n\nimport { useRef, type AnchorHTMLAttributes, type CSSProperties, type MouseEvent } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollCueButtonProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, \"color\"> {\n  targetId?: string\n  label?: string\n  /** 为 true 时箭头循环播放；否则只在悬停时播放。 */\n  autoPlay?: boolean\n}\n\nexport function ScrollCueButton({\n  targetId,\n  autoPlay = false,\n  label = \"向下\",\n  href,\n  className,\n  style,\n  onClick,\n  children,\n  ...props\n}: ScrollCueButtonProps) {\n  const ref = useRef<HTMLAnchorElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced\n  const destination = href ?? (targetId ? `#${targetId}` : \"#\")\n  const painted = { ...style } as CSSProperties\n\n  function scroll(event: MouseEvent<HTMLAnchorElement>) {\n    onClick?.(event)\n    if (event.defaultPrevented || !targetId) return\n    const node = document.getElementById(targetId)\n    if (!node) return\n    event.preventDefault()\n    node.scrollIntoView({ behavior: reduced ? \"auto\" : \"smooth\" })\n  }\n\n  return (\n    <a\n      {...props}\n      ref={ref}\n      className={cn(\"inline-flex flex-col items-center gap-1 text-sm text-foreground no-underline\", className)}\n      data-autoplay={autoPlay ? \"true\" : \"false\"}\n      data-motion={moving ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"scroll-cue-button\"\n      href={destination}\n      onClick={scroll}\n      style={painted}\n    >\n      <style>\n        {`[data-slot=\"scroll-cue-button\"][data-motion=\"on\"][data-autoplay=\"true\"] .scroll-cue,[data-slot=\"scroll-cue-button\"][data-motion=\"on\"]:hover .scroll-cue{animation:scroll-cue-slide 3s infinite}\n@keyframes scroll-cue-slide{0%,100%{transform:translateY(0);opacity:1}35%{transform:translateY(1rem);opacity:0}70%{transform:translateY(-1rem);opacity:0}}`}\n      </style>\n      <span aria-hidden=\"true\" className=\"scroll-cue block size-6\">\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"M0 0h24v24H0z\" fill=\"none\" />\n          <path d=\"M11.9997 13.1716L7.04996 8.22186L5.63574 9.63607L11.9997 16L18.3637 9.63607L16.9495 8.22186L11.9997 13.1716Z\" fill=\"currentColor\" />\n        </svg>\n      </span>\n      <span>{children ?? label}</span>\n    </a>\n  )\n}\n"
+    }
+  ]
+}

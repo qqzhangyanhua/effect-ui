@@ -36,6 +36,7 @@ import { batch36Components } from "./catalog-batch36"
 import { batch37Components } from "./catalog-batch37"
 import { batch38Components } from "./catalog-batch38"
 import { batch39Components } from "./catalog-batch39"
+import { batch40Components } from "./catalog-batch40"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -110,6 +111,7 @@ export type SourceLibrary =
   | "Tremor Raw"
   | "Uiverse"
   | "HyperUI"
+  | "Meraki UI"
   | "Spectrum UI"
   | "original"
 
@@ -235,6 +237,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Tremor Raw": "https://raw.tremor.so",
   Uiverse: "https://uiverse.io",
   HyperUI: "https://github.com/markmead/hyperui",
+  "Meraki UI": "https://github.com/merakiuilabs/merakiui",
   "Spectrum UI": "https://github.com/arihantcodes/spectrum-ui",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
@@ -2311,6 +2314,7 @@ export const components: ComponentMeta[] = [
   ...batch37Components,
   ...batch38Components,
   ...batch39Components,
+  ...batch40Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2414,6 +2418,10 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "glitch-slice-button",
       "send-arrow-button",
       "trash-delete-button",
+      "circular-text-button",
+      "flower-burst-button",
+      "scroll-cue-button",
+      "flicker-reflect-button",
     ],
   },
 ]
@@ -2438,7 +2446,7 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "pin-display-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input"] },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input"] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [

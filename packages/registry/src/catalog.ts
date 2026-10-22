@@ -27,6 +27,7 @@ import { batch27Components } from "./catalog-batch27"
 import { batch28Components } from "./catalog-batch28"
 import { batch29Components } from "./catalog-batch29"
 import { batch30Components } from "./catalog-batch30"
+import { batch31Components } from "./catalog-batch31"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -66,6 +67,7 @@ export type SourceLibrary =
   | "Fancy Components"
   | "shadcn-ui-expansions"
   | "Kibo UI"
+  | "SyntaxUI"
   | "Origin UI"
   | "Paper Shaders"
   | "Kokonut UI"
@@ -214,6 +216,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Fancy Components": "https://www.fancycomponents.dev",
   "shadcn-ui-expansions": "https://github.com/hsuanyi-chou/shadcn-ui-expansions",
   "Kibo UI": "https://www.kibo-ui.com",
+  SyntaxUI: "https://syntaxui.com",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2279,6 +2282,7 @@ export const components: ComponentMeta[] = [
   ...batch28Components,
   ...batch29Components,
   ...batch30Components,
+  ...batch31Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2363,6 +2367,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "undo-button",
       "attract-button",
       "loading-button",
+      "star-wars-button",
     ],
   },
 ]

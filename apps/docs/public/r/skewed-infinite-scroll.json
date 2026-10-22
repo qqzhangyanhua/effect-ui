@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skewed-infinite-scroll",
+  "type": "registry:ui",
+  "title": "Skewed Infinite Scroll",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/animations/SkewedInfiniteScroll.tsx 卡片网格带 rotateX、rotateZ 和 skew，并垂直无限滚动，上下有渐隐遮罩。items、speed、columns 可配。减弱动效或离开视口时停住滚动，斜切保留。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/skewed-infinite-scroll.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/skewed-infinite-scroll.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI (MIT, (c) 2024 SyntaxUI) — https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/animations/SkewedInfiniteScroll.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { useRef } from \"react\"\n\nexport interface SkewScrollItem {\n  id: string\n  text: string\n}\n\nexport interface SkewedInfiniteScrollProps {\n  items: SkewScrollItem[]\n  speed?: number\n  columns?: number\n  className?: string\n}\n\nconst KEYFRAMES = `\n@keyframes effect-ui-skew-scroll {\n  from { transform: rotateX(20deg) rotateZ(-20deg) skewX(20deg) translateY(0); }\n  to { transform: rotateX(20deg) rotateZ(-20deg) skewX(20deg) translateY(-50%); }\n}\n`\n\nexport function SkewedInfiniteScroll({\n  items,\n  speed = 20,\n  columns = 2,\n  className,\n}: SkewedInfiniteScrollProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const animate = !prefersReducedMotion && motionOn\n  const loop = [...items, ...items]\n\n  return (\n    <div\n      className={cn(\"relative h-64 w-full overflow-hidden\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"skewed-infinite-scroll\"\n      ref={ref}\n      style={{\n        maskImage:\n          \"linear-gradient(to right, transparent, black 2rem), linear-gradient(to left, transparent, black 2rem), linear-gradient(to bottom, transparent, black 2rem), linear-gradient(to top, transparent, black 2rem)\",\n        maskComposite: \"intersect\",\n      }}\n    >\n      <style>{KEYFRAMES}</style>\n      <div\n        className=\"grid gap-4 p-6\"\n        style={{\n          gridTemplateColumns: `repeat(${Math.max(columns, 1)}, minmax(0, 1fr))`,\n          transform: \"rotateX(20deg) rotateZ(-20deg) skewX(20deg)\",\n          animationName: animate ? \"effect-ui-skew-scroll\" : \"none\",\n          animationDuration: `${speed}s`,\n          animationTimingFunction: \"linear\",\n          animationIterationCount: \"infinite\",\n        }}\n      >\n        {loop.map((item, index) => (\n          <div\n            className=\"flex items-center gap-2 rounded-md border bg-card px-4 py-3 text-sm shadow-sm\"\n            key={`${item.id}-${index}`}\n          >\n            <span className=\"bg-primary text-primary-foreground grid size-6 place-items-center rounded-full text-xs\">✓</span>\n            <p>{item.text}</p>\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

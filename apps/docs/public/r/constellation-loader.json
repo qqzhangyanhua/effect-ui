@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "constellation-loader",
+  "type": "registry:ui",
+  "title": "Constellation Loader",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/ConstellationLoader.tsx 星点按固定种子分布，并连向最近的邻居。星星和连线一起闪烁。count、size、color 可配。减弱动效或离开视口时停成静态星座。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/constellation-loader.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/constellation-loader.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI (MIT, (c) 2024 SyntaxUI) — https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/loaders/ConstellationLoader.tsx\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion } from \"motion/react\"\nimport { useMemo, useRef } from \"react\"\n\nexport interface ConstellationLoaderProps {\n  count?: number\n  size?: number\n  color?: string\n  className?: string\n}\n\nfunction unit(seed: number) {\n  const value = Math.sin(seed * 12.9898) * 43758.5453\n  const fraction = value - Math.floor(value)\n  return Math.round(fraction * 1e6) / 1e6\n}\n\nfunction layout(count: number, size: number) {\n  const stars = Array.from({ length: Math.max(count, 2) }, (_, index) => ({\n    x: Math.round((8 + unit(index + 1) * 84) * 1e4) / 1e4,\n    y: Math.round((10 + unit(index + 7) * 78) * 1e4) / 1e4,\n    radius: Math.round(Math.max(0.8, (size / 4) * (0.45 + unit(index + 3) * 0.7)) * 1e4) / 1e4,\n  }))\n  const seen = new Set<string>()\n  const lines: { x1: number; y1: number; x2: number; y2: number }[] = []\n  for (let index = 0; index < stars.length; index += 1) {\n    let nearest = index === 0 ? 1 : 0\n    let best = Number.POSITIVE_INFINITY\n    for (let other = 0; other < stars.length; other += 1) {\n      if (other === index) continue\n      const star = stars[index]\n      const next = stars[other]\n      if (!star || !next) continue\n      const distance = (star.x - next.x) ** 2 + (star.y - next.y) ** 2\n      if (distance < best) {\n        best = distance\n        nearest = other\n      }\n    }\n    const start = Math.min(index, nearest)\n    const end = Math.max(index, nearest)\n    const key = `${start}-${end}`\n    if (seen.has(key)) continue\n    seen.add(key)\n    const from = stars[start]\n    const to = stars[end]\n    if (!from || !to) continue\n    lines.push({ x1: from.x, y1: from.y, x2: to.x, y2: to.y })\n  }\n  return { stars, lines }\n}\n\nexport function ConstellationLoader({\n  count = 20,\n  size = 8,\n  color = \"#fb3a5d\",\n  className,\n}: ConstellationLoaderProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const animate = !prefersReducedMotion && motionOn\n  const sky = useMemo(() => layout(count, size), [count, size])\n\n  return (\n    <div\n      className={cn(\"relative h-40 w-40 overflow-hidden\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"constellation-loader\"\n      ref={ref}\n    >\n      <svg aria-hidden=\"true\" className=\"size-full\" viewBox=\"0 0 100 100\">\n        {sky.lines.map((line, index) => (\n          <motion.line\n            initial={false}\n            animate={animate ? { opacity: [0.15, 0.85, 0.15] } : { opacity: 0.7 }}\n            key={`${line.x1}-${line.y1}-${index}`}\n            stroke={color}\n            strokeWidth=\"0.4\"\n            transition={animate ? { duration: 2.4, repeat: Infinity, delay: index * 0.12 } : { duration: 0 }}\n            x1={line.x1}\n            x2={line.x2}\n            y1={line.y1}\n            y2={line.y2}\n          />\n        ))}\n        {sky.stars.map((star, index) => (\n          <motion.circle\n            initial={false}\n            animate={animate ? { opacity: [0.25, 1, 0.25], scale: [0.7, 1, 0.7] } : { opacity: 1, scale: 1 }}\n            cx={star.x}\n            cy={star.y}\n            fill={color}\n            key={`${star.x}-${star.y}`}\n            r={star.radius}\n            transition={animate ? { duration: 1.8 + (index % 5) * 0.25, repeat: Infinity, delay: (index % 6) * 0.15 } : { duration: 0 }}\n          />\n        ))}\n      </svg>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 主题切换、图表与账号菜单
+
+登记在 `catalog-batch45.ts`。上一批点阵光晕已占用 `catalog-batch44.ts`。`theme-switch-transitions`、`floating-button-group`、`morph-select`、`streamgraph`、`waffle-chart`、`treemap`、`slope-chart`、`ridgeline`、`split-button`、`shortcut-recorder`、`inline-edit`、`expandable-text`、`brush-chart`、`user-menu`、`password-field` 移植自 Arc Library（MIT，Copyright (c) 2026 Elia Kuratli）。CSS module 改成组件内样式，Arc 颜色变量映射到 effect-ui 主题变量，`motion` 换成 `motion/react`。图标用已有的 lucide-react，菜单和提示用已有的 Radix dropdown-menu、popover、tooltip、dialog。没有新增依赖。图表保留 `<title>` 和屏幕阅读摘要。减弱动效或离开视口时旋转、滑动、弹簧高度和描线停住，直接显示终态。
+
+| 组件 | 来源 |
+| --- | --- |
+| theme-switch-transitions | Arc Library，MIT |
+| floating-button-group | Arc Library，MIT |
+| morph-select | Arc Library，MIT |
+| streamgraph | Arc Library，MIT |
+| waffle-chart | Arc Library，MIT |
+| treemap | Arc Library，MIT |
+| slope-chart | Arc Library，MIT |
+| ridgeline | Arc Library，MIT |
+| split-button | Arc Library，MIT |
+| shortcut-recorder | Arc Library，MIT |
+| inline-edit | Arc Library，MIT |
+| expandable-text | Arc Library，MIT |
+| brush-chart | Arc Library，MIT |
+| user-menu | Arc Library，MIT |
+| password-field | Arc Library，MIT |
+
 ### 点阵光晕、星环与分步加载
 
 登记在 `catalog-batch44.ts`。上一批灯板已占用 `catalog-batch43.ts`。`dotted-glow-background`、`sticky-banner`、`multi-step-loader`、`stateful-button`、`tweet-card` 移植自 Velora UI（MIT，Copyright (c) 2026 Aigars Silkalns）。`star-ring-orbit`、`neo-star-shapes`、`caption-image-card` 移植自 Neobrutalism components（MIT，Copyright (c) 2023 Samuel Breznjak）。没有移植 Velora 里和 Aceternity 概念重合的组件。品牌渐变改成主题色，示例色放在 demo。关键帧写在组件内部。没有新增依赖。减弱动效时点阵停在当前帧，星环停转，公告直接收起，分步加载不再转圈，异步按钮不再缩成圆形。

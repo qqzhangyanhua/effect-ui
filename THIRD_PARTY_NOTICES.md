@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## Arc Library
+
+- 仓库：https://github.com/kuratlielia/arc-library
+- 许可：MIT
+- 版权：Copyright (c) 2026 Elia Kuratli
+- 衍生组件：`theme-switch-transitions`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/theme-switch/theme-switch.tsx）、`floating-button-group`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/floating-button-group/floating-button-group.tsx）、`morph-select`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/morph-select/morph-select.tsx）、`streamgraph`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/streamgraph/streamgraph.tsx）、`waffle-chart`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/waffle-chart/waffle-chart.tsx）、`treemap`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/treemap/treemap.tsx）、`slope-chart`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/slope-chart/slope-chart.tsx）、`ridgeline`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/ridgeline/ridgeline.tsx）、`split-button`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/split-button/split-button.tsx）、`shortcut-recorder`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/shortcut-recorder/shortcut-recorder.tsx）、`inline-edit`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/inline-edit/inline-edit.tsx）、`expandable-text`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/expandable-text/expandable-text.tsx）、`brush-chart`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/brush-chart/brush-chart.tsx）、`user-menu`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/user-menu/user-menu.tsx）、`password-field`（https://github.com/kuratlielia/arc-library/blob/main/registry/components/password-field/password-field.tsx）
+
 ## Fancy Components
 
 - 仓库：https://github.com/danielpetho/fancy

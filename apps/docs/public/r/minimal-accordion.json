@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "minimal-accordion",
+  "type": "registry:ui",
+  "title": "Minimal Accordion",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/accordion/MinimalAccordion.tsx 极简手风琴。type 为 single 或 multiple，支持受控。按钮带 aria-expanded 与 aria-controls。framer-motion 已改为 motion/react。减弱动效时面板直接展开或收起。",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-controllable-state",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/minimal-accordion.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/minimal-accordion.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI（MIT，(c) 2024 SyntaxUI）— https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/accordion/MinimalAccordion.tsx\n// framer-motion 已改为 motion/react。\n\nimport { useControllableState } from \"@/hooks/use-controllable-state\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { ChevronDown } from \"lucide-react\"\nimport { motion } from \"motion/react\"\nimport { useId, type HTMLAttributes, type ReactNode } from \"react\"\n\nexport interface MinimalAccordionItem {\n  value: string\n  title: string\n  content: ReactNode\n}\n\nexport interface MinimalAccordionProps extends HTMLAttributes<HTMLDivElement> {\n  items: readonly MinimalAccordionItem[]\n  type?: \"single\" | \"multiple\"\n  value?: string | readonly string[]\n  defaultValue?: string | readonly string[]\n  onValueChange?: (value: string | readonly string[]) => void\n}\n\nexport function MinimalAccordion({\n  items,\n  type = \"single\",\n  value,\n  defaultValue,\n  onValueChange,\n  className,\n  ...props\n}: MinimalAccordionProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const baseId = useId()\n  const [current, setCurrent] = useControllableState<string | readonly string[]>({\n    value,\n    defaultValue: defaultValue ?? (type === \"multiple\" ? [] : \"\"),\n    onChange: onValueChange,\n  })\n\n  function openIds() {\n    if (Array.isArray(current)) return [...current]\n    return current ? [current] : []\n  }\n\n  function isOpen(id: string) {\n    if (type === \"multiple\") return openIds().includes(id)\n    const selected = Array.isArray(current) ? (current[0] ?? \"\") : current\n    return selected === id\n  }\n\n  function toggle(id: string) {\n    if (type === \"multiple\") {\n      const list = openIds()\n      setCurrent(list.includes(id) ? list.filter((item) => item !== id) : [...list, id])\n      return\n    }\n    const selected = Array.isArray(current) ? (current[0] ?? \"\") : current\n    setCurrent(selected === id ? \"\" : id)\n  }\n\n  return (\n    <div {...props} className={cn(\"grid gap-3\", className)} data-reduced={prefersReducedMotion ? \"true\" : \"false\"} data-slot=\"minimal-accordion\">\n      {items.map((item) => {\n        const open = isOpen(item.value)\n        const buttonId = `${baseId}-trigger-${item.value}`\n        const panelId = `${baseId}-panel-${item.value}`\n        return (\n          <div key={item.value} className=\"overflow-hidden rounded-lg border border-border bg-card\">\n            <button\n              aria-controls={panelId}\n              aria-expanded={open}\n              className=\"flex w-full items-center justify-between px-4 py-4 text-left text-sm font-semibold text-primary\"\n              id={buttonId}\n              type=\"button\"\n              onClick={() => toggle(item.value)}\n            >\n              {item.title}\n              <ChevronDown\n                aria-hidden\n                className={cn(\"size-4 text-foreground\", open && \"rotate-180\", prefersReducedMotion ? \"transition-none\" : \"transition-transform\")}\n              />\n            </button>\n            {prefersReducedMotion ? (\n              <div aria-labelledby={buttonId} className=\"px-4 pb-4 text-sm text-foreground\" hidden={!open} id={panelId} role=\"region\">\n                {item.content}\n              </div>\n            ) : (\n              <motion.div\n                animate={{ height: open ? \"auto\" : 0, opacity: open ? 1 : 0 }}\n                aria-hidden={!open}\n                aria-labelledby={buttonId}\n                className=\"overflow-hidden\"\n                id={panelId}\n                initial={false}\n                role=\"region\"\n                transition={{ type: \"spring\", stiffness: 300, damping: 15 }}\n              >\n                <div className=\"px-4 pb-4 text-sm text-foreground\">{item.content}</div>\n              </motion.div>\n            )}\n          </div>\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

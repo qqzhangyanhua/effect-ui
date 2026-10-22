@@ -30,6 +30,7 @@ import { batch30Components } from "./catalog-batch30"
 import { batch31Components } from "./catalog-batch31"
 import { batch32Components } from "./catalog-batch32"
 import { batch33Components } from "./catalog-batch33"
+import { batch34Components } from "./catalog-batch34"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -2293,6 +2294,7 @@ export const components: ComponentMeta[] = [
   ...batch31Components,
   ...batch32Components,
   ...batch33Components,
+  ...batch34Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2387,6 +2389,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "3d-button",
       "heart-like-button",
       "download-size-button",
+      "lift-gradient-border-button",
     ],
   },
 ]
@@ -2400,7 +2403,16 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
   {
     key: "specialized",
     label: "专用",
-    names: ["tag-input", "phone-input", "currency-input", "coupon-input", "prompt-input"],
+    names: [
+      "tag-input",
+      "phone-input",
+      "currency-input",
+      "coupon-input",
+      "prompt-input",
+      "mic-search-input",
+      "newsletter-input",
+      "pin-display-input",
+    ],
   },
   { key: "motion", label: "动效", names: ["placeholder-vanish-input"] },
 ]

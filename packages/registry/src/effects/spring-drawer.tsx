@@ -29,7 +29,9 @@ interface Grip {
   originX: number
   originOffset: number
   offset: number
+  prevOffset: number
   time: number
+  prevTime: number
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -124,7 +126,7 @@ function SpringDrawer({
 
   const accent = color ?? "var(--primary)"
 
-  function seek(nextOpen: boolean, from = offsetRef.current) {
+  function seek(nextOpen: boolean, from = offsetRef.current, speed?: number) {
     goalRef.current = nextOpen
     const travel = sizeRef.current
     const target = nextOpen ? travel : 0
@@ -133,7 +135,7 @@ function SpringDrawer({
       commit(nextOpen, target)
       return
     }
-    const kick = nextOpen ? 18 : -18
+    const kick = speed === undefined || Math.abs(speed) < 0.2 ? (nextOpen ? 18 : -18) : clamp(speed * 16, -64, 64)
     track.current = { x: from, px: from - kick, target, travel, elapsed: 0, done: false }
     setTick((value) => value + 1)
   }
@@ -148,13 +150,22 @@ function SpringDrawer({
     if (event.pointerType === "mouse" && event.button !== 0) return
     event.currentTarget.setPointerCapture?.(event.pointerId)
     const current = offsetRef.current
-    grip.current = { originX: event.clientX, originOffset: current, offset: current, time: event.timeStamp }
+    grip.current = {
+      originX: event.clientX,
+      originOffset: current,
+      offset: current,
+      prevOffset: current,
+      time: event.timeStamp,
+      prevTime: event.timeStamp,
+    }
   }
 
   function onPointerMove(event: ReactPointerEvent<HTMLButtonElement>) {
     const current = grip.current
     if (!current || reduced) return
     const next = clamp(current.originOffset + event.clientX - current.originX, 0, size)
+    current.prevOffset = current.offset
+    current.prevTime = current.time
     current.offset = next
     current.time = event.timeStamp
     offsetRef.current = next
@@ -166,16 +177,19 @@ function SpringDrawer({
     grip.current = null
     if (!current) return
     const next = clamp(current.originOffset + event.clientX - current.originX, 0, size)
-    const dt = Math.max(16, event.timeStamp - current.time)
-    const speed = (next - current.offset) / dt
+    const delta = next - current.offset
+    const speed =
+      Math.abs(delta) > 0.5
+        ? delta / Math.max(16, event.timeStamp - current.time)
+        : (current.offset - current.prevOffset) / Math.max(16, current.time - current.prevTime)
     const nextOpen = decideOpen(next, speed)
     if (reduced) {
-      seek(nextOpen, next)
+      seek(nextOpen, next, speed)
       return
     }
     offsetRef.current = next
     setOffset(next)
-    seek(nextOpen, next)
+    seek(nextOpen, next, speed)
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {

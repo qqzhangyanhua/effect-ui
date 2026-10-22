@@ -1,0 +1,156 @@
+packages/registry/src/examples/effect-demos-37.tsx
+  s_59bfcdcda787b4::t_e4636e17cb509d 43-45,51-53,59-61,69-71,83-85,94-96,104-106,121-123,129-131,137-139,148-151,157-159,170-173,179-181,193-196
+  s_59bfcdcda787b4::t_4215bf4d2e6127 40-42
+  s_59bfcdcda787b4::t_de4ca1c88b02fb 46-50
+  s_59bfcdcda787b4::t_f2ac3cced114fd 54-58
+  s_59bfcdcda787b4::t_0c6e9ca827187b 62-64,66-68
+  s_59bfcdcda787b4::t_953d755544fe49 72-74,80-82
+  s_59bfcdcda787b4::t_4d90f42357e8a8 86-88,91-93
+  s_59bfcdcda787b4::t_75dec2fe0e569c 97-99,101-103
+  s_59bfcdcda787b4::t_f59b7f9372267c 107-109,118-120
+  s_59bfcdcda787b4::t_9e5d0752a7445c 124-128
+  s_59bfcdcda787b4::t_cf75f9247bbdca 132-136
+  s_59bfcdcda787b4::t_3663726ee44af7 140-142,145-147
+  s_59bfcdcda787b4::t_f09d4103683c27 152-156
+  s_59bfcdcda787b4::t_d293afd78a378a 160-162,167-169
+  s_59bfcdcda787b4::t_d5853f1c154da3 174-178
+  s_59bfcdcda787b4::t_e8150ad5ea04f3 182-184,190-192
+  s_59bfcdcda787b4::t_9fdff120937744 3-9,11-39,65,75-79,89-90,100,110-117,143-144,163-166,185-189
+apps/docs/public/r/registry.json
+  s_59bfcdcda787b4::t_342a6ec3de7f48 12437-12439,12452-12454,12467-12469,12488-12490,12509-12511,12535-12537,12555-12557,12574-12576,12592-12594,12612-12614,12633-12635,12653-12655,12674-12676,12695-12697,12715-12717,12738-12740,12759-12761,12779-12781
+  s_59bfcdcda787b4::t_cd353ea1ca75ef 12425-12436,12440-12451,12455-12466,12470-12487,12491-12508,12512-12534,12538-12554,12558-12573,12577-12591,12595-12611,12615-12632,12636-12652,12656-12673,12677-12694,12698-12714,12718-12737,12741-12758,12762-12778
+packages/registry/src/catalog-batch35.ts
+  s_59bfcdcda787b4::t_e4636e17cb509d 59-60,78-79,93,99-100,123-124,142-143,159-160,179-180,202-203,223-224,244-245,263-264,284-285,309-310,327-328,342-343
+  s_59bfcdcda787b4::t_5cd2be6da811fd 23,34,45,61,80,101,125,144,161,181,204,225,246,265,286,311,329,344
+  s_59bfcdcda787b4::t_a264d1e9fefe3f 20-22
+  s_59bfcdcda787b4::t_20d120890a3eee 24-26,31-33
+  s_59bfcdcda787b4::t_04ba18b40663ad 35-37,42-44
+  s_59bfcdcda787b4::t_5763ae5794b59e 46-48,56-58
+  s_59bfcdcda787b4::t_ba13b2bcfb1614 62-64,75-77
+  s_59bfcdcda787b4::t_f5e669ea86482c 81-83,90-92
+  s_59bfcdcda787b4::t_44eefa2e3a7458 94-98
+  s_59bfcdcda787b4::t_ec751640c2753d 102-104,120-122
+  s_59bfcdcda787b4::t_9cd99644f419a1 126-128,139-141
+  s_59bfcdcda787b4::t_9f2951563ed0ca 145-147,156-158
+  s_59bfcdcda787b4::t_e38390fcaa668a 162-164,176-178
+  s_59bfcdcda787b4::t_4d36b3fa20f95e 182-184,199-201
+  s_59bfcdcda787b4::t_4e15a2a33b6d60 205-207,220-222
+  s_59bfcdcda787b4::t_666ff17fe58ece 226-228,241-243
+  s_59bfcdcda787b4::t_2d2d944ca108de 247-249,260-262
+  s_59bfcdcda787b4::t_66b80376673d18 266-268,281-283
+  s_59bfcdcda787b4::t_3c3435d165c0ba 287-289,306-308
+  s_59bfcdcda787b4::t_973c740157c83a 312-314,324-326
+  s_59bfcdcda787b4::t_93a02a0f9f6c35 330-332,339-341
+  s_59bfcdcda787b4::t_6f18925e1e8ac4 3-10,13-19,27-30,38-41,49-55,65-74,84-89,105-119,129-138,148-155,165-175,185-198,208-219,229-240,250-259,269-280,290-305,315-323,333-338
+registry.json
+  s_59bfcdcda787b4::t_342a6ec3de7f48 12437-12439,12452-12454,12467-12469,12488-12490,12509-12511,12535-12537,12555-12557,12574-12576,12592-12594,12612-12614,12633-12635,12653-12655,12674-12676,12695-12697,12715-12717,12738-12740,12759-12761,12779-12781
+  s_59bfcdcda787b4::t_f084eacdca5242 12425-12436,12440-12451,12455-12466,12470-12487,12491-12508,12512-12534,12538-12554,12558-12573,12577-12591,12595-12611,12615-12632,12636-12652,12656-12673,12677-12694,12698-12714,12718-12737,12741-12758,12762-12778
+README.md
+  s_59bfcdcda787b4::t_b08a600e74d9bd 584
+  s_59bfcdcda787b4::t_b772bc9cbb92d2 581-583
+  s_59bfcdcda787b4::t_4e80a6926c4d60 560-580
+THIRD_PARTY_NOTICES.md
+  s_59bfcdcda787b4::t_c19c465b499962 395-405,415
+apps/docs/public/r/async-morph-button.json
+  s_59bfcdcda787b4::t_d2e913db59c145 1-23
+apps/docs/public/r/expandable-action-bar.json
+  s_59bfcdcda787b4::t_56c6511f86ce49 1-25
+apps/docs/public/r/face-rating.json
+  s_59bfcdcda787b4::t_3d8745206f0742 1-22
+apps/docs/public/r/faq-tabs-card.json
+  s_59bfcdcda787b4::t_227a32c9406482 1-23
+apps/docs/public/r/follow-button.json
+  s_59bfcdcda787b4::t_f98ad503947e24 1-23
+apps/docs/public/r/hologram-text.json
+  s_59bfcdcda787b4::t_87c06aa5e36fde 1-23
+apps/docs/public/r/ink-morph.json
+  s_59bfcdcda787b4::t_b04cafdd22b3da 1-23
+apps/docs/public/r/nav-list-card.json
+  s_59bfcdcda787b4::t_3b5394635e26dd 1-22
+apps/docs/public/r/notification-bell.json
+  s_59bfcdcda787b4::t_58c8ae8be7283b 1-22
+apps/docs/public/r/orbital-text.json
+  s_59bfcdcda787b4::t_044bc77c08fccb 1-29
+apps/docs/public/r/scratch-card.json
+  s_59bfcdcda787b4::t_832820f1982ae4 1-22
+apps/docs/public/r/share-button.json
+  s_59bfcdcda787b4::t_2a35efbef1c1f3 1-23
+apps/docs/public/r/skeleton-reveal.json
+  s_59bfcdcda787b4::t_fe62fc918a6e27 1-21
+apps/docs/public/r/task-checkbox.json
+  s_59bfcdcda787b4::t_48d2e5f1037d9f 1-22
+apps/docs/public/r/text-states.json
+  s_59bfcdcda787b4::t_f3a080a149f7a7 1-20
+apps/docs/public/r/use-dismiss.json
+  s_59bfcdcda787b4::t_bedc2a93d2aa5e 1-17
+apps/docs/public/r/use-hover-gesture.json
+  s_59bfcdcda787b4::t_f2166199324172 1-17
+apps/docs/public/r/use-tap-gesture.json
+  s_59bfcdcda787b4::t_d341c225945c30 1-17
+licenses/apache/spectrum-ui/LICENSE
+  s_59bfcdcda787b4::t_e9ee5b25a7ace7 1-201
+licenses/apache/spectrum-ui/NOTICE
+  s_59bfcdcda787b4::t_8b1e5fcc8b6b6b 1-11
+packages/registry/src/catalog.ts
+  s_59bfcdcda787b4::t_3ea6621ac6340f 107,231,2397-2399
+packages/registry/src/effects/async-morph-button.tsx
+  s_59bfcdcda787b4::t_0d069b367989a0 1-181
+packages/registry/src/effects/batch35-practical.test.tsx
+  s_59bfcdcda787b4::t_5294c40bb6793c 1-188
+packages/registry/src/effects/expandable-action-bar.tsx
+  s_59bfcdcda787b4::t_603c83eb3a6538 1-221
+packages/registry/src/effects/face-rating.tsx
+  s_59bfcdcda787b4::t_68881f37013d14 1-153
+packages/registry/src/effects/faq-tabs-card.tsx
+  s_59bfcdcda787b4::t_737cb8aedb4139 1-105
+packages/registry/src/effects/follow-button.tsx
+  s_59bfcdcda787b4::t_a7ad15cf9150ce 1-138
+packages/registry/src/effects/hologram-text.tsx
+  s_59bfcdcda787b4::t_bebf9f526a45d2 1-147
+packages/registry/src/effects/ink-morph.tsx
+  s_59bfcdcda787b4::t_dce50ce569d576 1-124
+packages/registry/src/effects/nav-list-card.tsx
+  s_59bfcdcda787b4::t_711fc995689fdb 1-62
+packages/registry/src/effects/notification-bell.tsx
+  s_59bfcdcda787b4::t_ee2276eb833a91 1-118
+packages/registry/src/effects/orbital-char.tsx
+  s_59bfcdcda787b4::t_a39f4d9f436959 1-112
+packages/registry/src/effects/orbital-text.tsx
+  s_59bfcdcda787b4::t_c41b8409fd9845 1-67
+packages/registry/src/effects/scratch-card.tsx
+  s_59bfcdcda787b4::t_942074635e34aa 1-291
+packages/registry/src/effects/share-button.tsx
+  s_59bfcdcda787b4::t_5ba06bac8e3dbe 1-229
+packages/registry/src/effects/skeleton-reveal.tsx
+  s_59bfcdcda787b4::t_de6251e3e98e3e 1-95
+packages/registry/src/effects/task-checkbox.tsx
+  s_59bfcdcda787b4::t_0f40bf8c7e252b 1-118
+packages/registry/src/effects/text-states.tsx
+  s_59bfcdcda787b4::t_aa8cdbc12f8563 1-78
+packages/registry/src/hooks/use-dismiss.ts
+  s_59bfcdcda787b4::t_c00136c03fe262 1-80
+packages/registry/src/hooks/use-hover-gesture.ts
+  s_59bfcdcda787b4::t_0a518d3e2edd6d 1-50
+packages/registry/src/hooks/use-tap-gesture.ts
+  s_59bfcdcda787b4::t_8e43f2928c05ab 1-45
+CREDITS.md
+  s_59bfcdcda787b4::t_7e44edaea17053 21
+packages/registry/src/examples/index.ts
+  s_59bfcdcda787b4::t_e3bfc4ffcfc11a 668-682
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "72386f3477805909bc0348ee0aaaef22fca7e570",
+  "prompts": {},
+  "sessions": {
+    "s_59bfcdcda787b4": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "0fa6f973-c9df-470e-b7e5-14583a8569f4",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

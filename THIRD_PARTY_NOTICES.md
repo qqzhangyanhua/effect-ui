@@ -53,6 +53,20 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## MosaicUI
+
+- 仓库：https://github.com/darshan-rajadhyaksha/mosaicui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Darshan Sunil Rajadhyaksha
+- 衍生组件：`wavy-threads-background`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/backgrounds/wavy-threads-background/wavy-threads-background.tsx）、`rolling-letters-animation`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/text-effects/rolling-letters-animation/rolling-letters-animation.tsx）、`arc-cards`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/arc-cards/arc-cards.tsx）、`tilt-image-carousel`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/tilt-image-carousel/tilt-image-carousel.tsx）、`section-navigator`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/section-navigator/section-navigator.tsx）。`waving-dots-background` 与已有的 `dot-field` 重合，没有移植。`section-navigator` 未使用传送门。没有使用 picsum.photos 上的远程图片。
+
+## MicroKit
+
+- 仓库：https://github.com/henriquegpb/microkit
+- 许可：MIT
+- 版权：Copyright (c) 2026 Henrique Barone
+- 衍生组件：`hover-glide-cards`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/hover-glide-cards.tsx）、`progress-ring-check`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/progress-ring-check.tsx）、`cursor-edge-glow-button`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/cursor-edge-glow-button.tsx）、`secure-purchase-button`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/secure-purchase-button.tsx）、`blur-glide-menu`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/blur-glide-menu.tsx）、`spotlight-indicator`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/spotlight-indicator.tsx）、`preview-hover-toolbar`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/preview-hover-toolbar.tsx）
+
 ## Watermelon UI
 
 - 仓库：https://github.com/WatermelonCorp/watermellon-registry

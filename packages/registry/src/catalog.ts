@@ -56,6 +56,7 @@ import { batch56Components } from "./catalog-batch56"
 import { batch57Components } from "./catalog-batch57"
 import { batch58Components } from "./catalog-batch58"
 import { batch59Components } from "./catalog-batch59"
+import { batch60Components } from "./catalog-batch60"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -148,6 +149,8 @@ export type SourceLibrary =
   | "Framekit UI"
   | "GodUI"
   | "Watermelon UI"
+  | "MosaicUI"
+  | "MicroKit"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -291,6 +294,8 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Framekit UI": "https://github.com/Sid9022/framekit-ui",
   GodUI: "https://github.com/LucasBassetti/godui",
   "Watermelon UI": "https://github.com/WatermelonCorp/watermellon-registry",
+  MosaicUI: "https://github.com/darshan-rajadhyaksha/mosaicui",
+  MicroKit: "https://github.com/henriquegpb/microkit",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2385,6 +2390,7 @@ export const components: ComponentMeta[] = [
   ...batch57Components,
   ...batch58Components,
   ...batch59Components,
+  ...batch60Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2511,6 +2517,8 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "dispatch-truck-button",
       "googly-gaze-button",
       "progress-fold-button",
+      "cursor-edge-glow-button",
+      "secure-purchase-button",
     ],
   },
 ]

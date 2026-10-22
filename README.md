@@ -573,6 +573,25 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 细线、卷轴与购买
+
+登记在 `catalog-batch60.ts`。奖状、日记与补全已占用 `catalog-batch59.ts`。`wavy-threads-background`、`rolling-letters-animation`、`arc-cards`、`tilt-image-carousel`、`section-navigator` 移植自 MosaicUI（MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha），提交 `2baca92`。`hover-glide-cards`、`progress-ring-check`、`cursor-edge-glow-button`、`secure-purchase-button`、`blur-glide-menu`、`spotlight-indicator`、`preview-hover-toolbar` 移植自 MicroKit（MIT，Copyright (c) 2026 Henrique Barone），提交 `fd993e8`。`waving-dots-background` 和已有的 `dot-field` 重合，没有移植。`section-navigator` 的列表跟在触发器旁边，没有使用传送门。远程图片改成主题色面板。颜色改成主题变量。悬停项同时响应按下和聚焦。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| wavy-threads-background | MosaicUI，MIT |
+| rolling-letters-animation | MosaicUI，MIT |
+| arc-cards | MosaicUI，MIT |
+| tilt-image-carousel | MosaicUI，MIT |
+| hover-glide-cards | MicroKit，MIT |
+| progress-ring-check | MicroKit，MIT |
+| cursor-edge-glow-button | MicroKit，MIT |
+| secure-purchase-button | MicroKit，MIT |
+| blur-glide-menu | MicroKit，MIT |
+| spotlight-indicator | MicroKit，MIT |
+| section-navigator | MosaicUI，MIT |
+| preview-hover-toolbar | MicroKit，MIT |
+
 ### 奖状、日记与补全
 
 登记在 `catalog-batch59.ts`。折页、液团与徽章已占用 `catalog-batch58.ts`。`inline-action`、`emoji-spree-choice-chips`、`award`、`journal-navigation`、`tooltip-navbar`、`carousel-navigator`、`labeled-progress-indicator`、`frequency-selector`、`status-picker`、`quick-paste`、`contextual-ai-bar`、`predictive-text`、`feature-tour`、`budget-card` 移植自 Watermelon UI（MIT，Copyright (c) 2025-present Watermelon Contributors），提交 `86052b8`。竖向提示条并进 `tooltip-navbar` 的 `direction`。`gauge` 的接口和配色与 Animate UI 的仪表盘重合，没有移植。液态按钮、涟漪按钮、图标按钮和径向开场同样没有移植。远程图片改成主题色占位，没有请求 `assets.watermelon.sh`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

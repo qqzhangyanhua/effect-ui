@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-hover-toolbar",
+  "type": "registry:ui",
+  "title": "Preview Hover Toolbar",
+  "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/preview-hover-toolbar.tsx 预览操作条。鼠标移入展开，移出且焦点不在里面时收起。旁边的按钮和触屏按下也能打开，不把操作按钮包进另一个按钮。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/preview-hover-toolbar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/preview-hover-toolbar.tsx",
+      "content": "\"use client\"\n\n// Ported from MicroKit (MIT, (c) 2026 Henrique Barone) — https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/preview-hover-toolbar.tsx\n\nimport { useRef, useState } from \"react\"\nimport { Expand, MoreHorizontal, Split } from \"lucide-react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PreviewHoverToolbarProps {\n  className?: string\n}\n\nconst actions = [\n  { id: \"view\", label: \"View All\", icon: Expand },\n  { id: \"branch\", label: \"Branch\", icon: Split },\n  { id: \"more\", label: \"More\", icon: MoreHorizontal },\n]\n\nexport function PreviewHoverToolbar({ className }: PreviewHoverToolbarProps) {\n  const rootRef = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(rootRef)\n  const [open, setOpen] = useState(false)\n\n  return (\n    <div\n      ref={rootRef}\n      data-slot=\"preview-hover-toolbar\"\n      data-motion={live && !reduced ? \"on\" : \"off\"}\n      className={cn(\"flex min-h-36 w-full flex-col items-center justify-center gap-3 text-[11px] text-foreground\", className)}\n    >\n      <button\n        type=\"button\"\n        aria-pressed={open}\n        className=\"rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n        onClick={() => setOpen((value) => !value)}\n      >\n        Show preview actions\n      </button>\n      <div\n        data-open={open ? \"true\" : \"false\"}\n        className=\"flex h-9 items-end\"\n        onPointerEnter={(event) => {\n          if (event.pointerType === \"mouse\") setOpen(true)\n        }}\n        onPointerLeave={(event) => {\n          if (event.pointerType !== \"mouse\") return\n          const root = rootRef.current\n          if (root && event.relatedTarget instanceof Node && root.contains(event.relatedTarget)) return\n          if (root?.contains(document.activeElement)) return\n          setOpen(false)\n        }}\n        onPointerDown={(event) => {\n          if (event.pointerType === \"mouse\") return\n          const target = event.target\n          if (target instanceof Element && target.closest(\"[data-preview-action]\")) return\n          setOpen((value) => !value)\n        }}\n      >\n        <div\n          className={cn(\n            \"relative flex items-center justify-center rounded-full border border-border bg-card/80 motion-reduce:transition-none\",\n            open ? \"h-9 w-28 border-border bg-card\" : \"h-4 w-11\",\n          )}\n          style={{ transition: reduced || !live ? \"none\" : \"width 170ms cubic-bezier(.34,.8,.5,1), height 170ms cubic-bezier(.34,.8,.5,1)\" }}\n        >\n          <div role=\"toolbar\" aria-label=\"Preview actions\" className=\"flex items-center gap-1\">\n            {actions.map((action) => (\n              <button\n                key={action.id}\n                type=\"button\"\n                data-preview-action=\"\"\n                aria-label={action.label}\n                className={cn(\n                  \"grid size-7 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline focus-visible:outline-ring motion-reduce:transition-none\",\n                  open ? \"pointer-events-auto scale-100 opacity-100\" : \"pointer-events-none scale-50 opacity-0\",\n                )}\n              >\n                <action.icon size={15} strokeWidth={1.8} aria-hidden=\"true\" />\n              </button>\n            ))}\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "send-arrow-button",
+  "type": "registry:ui",
+  "title": "Send Arrow Button",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 andrew-demchenk0。https://github.com/uiverse-io/galaxy/blob/main/Buttons/andrew-demchenk0_chatty-ape-15.html 渐变胶囊，光晕脉冲，箭头在悬停时转出。文案和示例色放在 demo。减弱动效或离开视口时光晕停住，箭头不再位移。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/send-arrow-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/send-arrow-button.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author andrew-demchenk0）— https://github.com/uiverse-io/galaxy/blob/main/Buttons/andrew-demchenk0_chatty-ape-15.html. Modified for effect-ui.\n\nimport { useRef, type ButtonHTMLAttributes, type CSSProperties } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface SendArrowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {\n  /** 前三项是按钮渐变，后三项是光晕。不传时使用主题色。 */\n  colors?: string[]\n}\n\nexport function SendArrowButton({ colors, className, style, type = \"button\", children, ...props }: SendArrowButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const from = colors?.[0] ?? \"var(--primary)\"\n  const via = colors?.[1] ?? \"var(--primary)\"\n  const to = colors?.[2] ?? \"var(--primary)\"\n  const haloA = colors?.[3] ?? \"var(--ring)\"\n  const haloB = colors?.[4] ?? \"var(--accent)\"\n  const haloC = colors?.[5] ?? \"var(--destructive)\"\n  const painted = {\n    backgroundImage: `linear-gradient(to right, ${from}, ${via}, ${to})`,\n    ...style,\n  } as CSSProperties\n  const moving = motionOn && !reduced\n\n  return (\n    <button\n      {...props}\n      ref={ref}\n      className={cn(\n        \"group relative z-1 inline-flex cursor-pointer items-center rounded-lg px-4 py-2 font-medium text-white\",\n        reduced ? \"transition-none\" : \"transition-all duration-200 active:scale-95 active:shadow-inner\",\n        className,\n      )}\n      data-motion={moving ? \"on\" : \"off\"}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"send-arrow-button\"\n      style={painted}\n      type={type}\n    >\n      <span\n        aria-hidden=\"true\"\n        className={cn(\"absolute -inset-0.5 -z-10 rounded-xl blur-xl\", moving && \"animate-pulse\")}\n        style={{ backgroundImage: `linear-gradient(to right, ${haloA}, ${haloB}, ${haloC})` }}\n      />\n      <span className={cn(\"inline-flex\", reduced ? \"transition-none\" : \"transition-all duration-300 group-hover:translate-x-5 group-hover:rotate-45\")}>\n        <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\">\n          <path fill=\"currentColor\" d=\"M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z\" />\n        </svg>\n      </span>\n      <span className={cn(\"ml-1\", reduced ? \"transition-none\" : \"transition-all duration-300 group-hover:text-transparent\")}>{children}</span>\n    </button>\n  )\n}\n"
+    }
+  ]
+}

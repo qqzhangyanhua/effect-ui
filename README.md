@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 故障切片、粗野套件与营销区块
+
+登记在 `catalog-batch39.ts`。上一批布局模糊已占用 `catalog-batch38.ts`。`glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`details-list`、`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards`、`collapsible-side-menu` 移植自 HyperUI（MIT，Copyright (c) Mark Mead）。亮色和暗色 HTML 合并成主题色加 `dark:` 变体。示例图片、文案和链接放在 demo。`neo-brutal-kit` 一个条目导出 NeoCard、Alert、Badge、Input、Select、Textarea、Checkbox、Progress、Tabs。没有新增依赖。减弱动效时切片不再错位、发送光晕停住、删除提示直接出现、霓虹卡片放平、图钉和星星不再缩放、模糊色块保持清晰、游走光点停住、详情列表和统计卡保持原样、博客阴影不再过渡、粗野控件没有过渡、联系按钮没有颜色过渡、成员链接不再改变透明度、侧栏箭头没有旋转过渡。
+
+| 组件 | 来源 |
+| --- | --- |
+| glitch-slice-button | Uiverse galaxy，MIT，作者 namecho |
+| send-arrow-button | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
+| trash-delete-button | Uiverse galaxy，MIT，作者 boryanakrasteva |
+| neon-hold-card | Uiverse galaxy，MIT，作者 htwarriors108 |
+| pin-toggle | Uiverse galaxy，MIT，作者 vinodjangid07 |
+| blur-unveil-card | Uiverse galaxy，MIT，作者 Javierrocadev |
+| glow-wander-card | Uiverse galaxy，MIT，作者 codebykay101 |
+| star-favorite-toggle | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
+| details-list | HyperUI，MIT，Copyright (c) Mark Mead |
+| blog-card | HyperUI，MIT，Copyright (c) Mark Mead |
+| neo-brutal-kit | HyperUI，MIT，Copyright (c) Mark Mead |
+| contact-form | HyperUI，MIT，Copyright (c) Mark Mead |
+| team-section | HyperUI，MIT，Copyright (c) Mark Mead |
+| stat-trend-cards | HyperUI，MIT，Copyright (c) Mark Mead |
+| collapsible-side-menu | HyperUI，MIT，Copyright (c) Mark Mead |
+
 ### 布局模糊、液态按钮与对话壳
 
 登记在 `catalog-batch38.ts`。上一批提示词套件已占用 `catalog-batch37.ts`。`blur-vignette`、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`spotlight-group`、`timeline-reveal`、`scroll-blur-text`、`hatch-divider`、`image-tabs`、`progressive-carousel`、`agent-intro-sequence`、`hover-image-reveal` 与钩子 `use-media-query` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT）。`expandable-chat`、`chat-message-list`、`message-loading` 移植自 shadcn-chat（MIT，Copyright (c) 2024 Jakob Hoeg Mørk）。`useAutoScroll` 内联在 `chat-message-list`。`next/image` 改为 `img`。示例链接、色板和图片放在 demo。`agent-intro-sequence` 的序列由 props 传入。原创组件已占用 `hover-image-list`，这次的图片行登记为 `hover-image-reveal`。没有新增依赖。减弱动效时暗角不再模糊、液态色块停住、方块没有颜色过渡、字符条直接显示最后一句、聚光不再跟随指针、时间线和滚动文字立即清晰、斜线分隔保持原样、对话壳没有展开过渡、消息列表不平滑滚动、标签没有颜色过渡、轮播停止自动播放、介绍序列一次显示并结束、窄屏或减弱动效时图片停在行内、输入点停住。

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat-trend-cards",
+  "type": "registry:ui",
+  "title": "Stat Trend Cards",
+  "description": "移植自 HyperUI，MIT，Copyright (c) Mark Mead。 https://github.com/markmead/hyperui/blob/main/public/examples/application/stats/1.html 涨跌统计卡。direction 为 up 或 down，徽章里有“上涨”或“下跌”的屏幕阅读文本。示例数字放在 demo。卡片本身不播放动画。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/stat-trend-cards.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/stat-trend-cards.tsx",
+      "content": "\"use client\"\n\n// Ported from HyperUI (MIT, (c) Mark Mead) — https://github.com/markmead/hyperui/blob/main/public/examples/application/stats/1.html. Modified for effect-ui.\n\nimport type { HTMLAttributes } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface StatTrendItem {\n  label: string\n  value: string\n  from: string\n  delta: string\n  direction: \"up\" | \"down\"\n}\n\nexport interface StatTrendCardsProps extends HTMLAttributes<HTMLDivElement> {\n  items: StatTrendItem[]\n}\n\nexport function StatTrendCards({ items, className, ...props }: StatTrendCardsProps) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <div {...props} className={cn(\"flex max-w-lg flex-col gap-4\", className)} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"stat-trend-cards\">\n      {items.map((item) => {\n        const up = item.direction === \"up\"\n        return (\n          <article key={`${item.label}-${item.direction}`} className=\"flex flex-col gap-4 rounded-lg border border-border bg-card p-6\">\n            <p className={cn(\"inline-flex items-center gap-2 self-end rounded-sm p-1 text-xs font-medium\", up ? \"bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-50\" : \"bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-50\")}>\n              <svg aria-hidden=\"true\" className=\"size-4\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" viewBox=\"0 0 24 24\">\n                {up ? <path d=\"M4 14l6-6 4 4 6-6\" /> : <path d=\"M4 10l6 6 4-4 6 6\" />}\n              </svg>\n              <span className=\"sr-only\">{up ? \"上涨：\" : \"下跌：\"}</span>\n              <span>{item.delta}</span>\n            </p>\n            <div>\n              <strong className=\"block text-sm font-medium text-muted-foreground\">{item.label}</strong>\n              <p className=\"mt-1\">\n                <span className=\"text-2xl font-medium text-foreground\">{item.value}</span>\n                <span className=\"ml-2 text-xs text-muted-foreground\">之前 {item.from}</span>\n              </p>\n            </div>\n          </article>\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

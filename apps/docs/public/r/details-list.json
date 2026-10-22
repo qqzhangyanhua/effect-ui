@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "details-list",
+  "type": "registry:ui",
+  "title": "Details List",
+  "description": "移植自 HyperUI，MIT，Copyright (c) Mark Mead。 https://github.com/markmead/hyperui/blob/main/public/examples/application/details-list/1.html 把 plain、striped、bordered、bordered-striped 四套列表收成一个组件，明暗用主题色。示例行放在 demo。没有持续动画，减弱动效时标记 data-reduced。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/details-list.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/details-list.tsx",
+      "content": "\"use client\"\n\n// Ported from HyperUI (MIT, (c) Mark Mead) — https://github.com/markmead/hyperui/blob/main/public/examples/application/details-list/1.html. Modified for effect-ui.\n\nimport type { HTMLAttributes } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface DetailsRow {\n  term: string\n  detail: string\n}\n\nexport interface DetailsListProps extends HTMLAttributes<HTMLDListElement> {\n  items: DetailsRow[]\n  /** plain 仅分隔；striped 隔行底色；bordered 描边；bordered-striped 两者都有。 */\n  variant?: \"plain\" | \"striped\" | \"bordered\" | \"bordered-striped\"\n}\n\nexport function DetailsList({ items, variant = \"plain\", className, ...props }: DetailsListProps) {\n  const reduced = usePrefersReducedMotion()\n  const striped = variant === \"striped\" || variant === \"bordered-striped\"\n  const bordered = variant === \"bordered\" || variant === \"bordered-striped\"\n\n  return (\n    <dl\n      {...props}\n      className={cn(\n        \"divide-y divide-border text-sm\",\n        bordered && \"rounded-md border border-border\",\n        className,\n      )}\n      data-reduced={reduced ? \"true\" : \"false\"}\n      data-slot=\"details-list\"\n      data-variant={variant}\n    >\n      {items.map((row) => (\n        <div\n          key={row.term}\n          className={cn(\n            \"grid grid-cols-1 gap-1 sm:grid-cols-3 sm:gap-4\",\n            variant === \"plain\" ? \"py-3\" : \"p-3\",\n            striped && \"even:bg-muted\",\n          )}\n        >\n          <dt className=\"font-medium text-foreground\">{row.term}</dt>\n          <dd className=\"text-muted-foreground sm:col-span-2\">{row.detail}</dd>\n        </div>\n      ))}\n    </dl>\n  )\n}\n"
+    }
+  ]
+}

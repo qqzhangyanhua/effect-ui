@@ -118,6 +118,12 @@ test("仓库审计没有问题", () => {
   expect(auditRegistry(repoInput())).toEqual([])
 })
 
+test("缺减弱动效已经清零，静态组件不写这条豁免", () => {
+  const held = auditExemptions.filter((entry) => entry.gaps.includes("缺减弱动效") || entry.reason === "无动画")
+  expect(held).toEqual([])
+  expect(auditRegistry(repoInput()).filter((issue) => issue.type === "missing-reduced-motion")).toEqual([])
+})
+
 test("control-not-in-demo 和 prop-not-in-catalog 可以按 catalog 条目查看", () => {
   const names = new Set(components.map((entry) => entry.name))
   for (const issue of auditRegistry(repoInput())) {

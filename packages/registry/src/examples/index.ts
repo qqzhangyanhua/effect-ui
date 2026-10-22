@@ -37,6 +37,7 @@ import * as effectDemos35 from "./effect-demos-35"
 import * as effectDemos36 from "./effect-demos-36"
 import * as effectDemos37 from "./effect-demos-37"
 import * as effectDemos38 from "./effect-demos-38"
+import * as effectDemos39 from "./effect-demos-39"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -697,6 +698,21 @@ const demoMap: Record<string, ComponentType> = {
   "transfer-funds-card": effectDemos38.TransferFundsCardDemo,
   "http-status-lookup": effectDemos38.HttpStatusLookupDemo,
   "github-profile-card": effectDemos38.GitHubProfileCardDemo,
+  "ai-loader": effectDemos39.AiLoaderDemo,
+  "response-stream": effectDemos39.ResponseStreamDemo,
+  "thinking-bar": effectDemos39.ThinkingBarDemo,
+  "book-page-loader": effectDemos39.BookPageLoaderDemo,
+  "map-pin-loader": effectDemos39.MapPinLoaderDemo,
+  "glow-corner-loader": effectDemos39.GlowCornerLoaderDemo,
+  "retro-press-button": effectDemos39.RetroPressButtonDemo,
+  "chain-of-thought": effectDemos39.ChainOfThoughtDemo,
+  reasoning: effectDemos39.ReasoningDemo,
+  source: effectDemos39.SourceDemo,
+  tool: effectDemos39.ToolDemo,
+  "system-message": effectDemos39.SystemMessageDemo,
+  "feedback-bar": effectDemos39.FeedbackBarDemo,
+  "prompt-suggestion": effectDemos39.PromptSuggestionDemo,
+  "generated-image": effectDemos39.GeneratedImageDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

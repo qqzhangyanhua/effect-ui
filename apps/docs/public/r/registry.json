@@ -13116,6 +13116,300 @@
           "target": "components/ui/github-profile-card.tsx"
         }
       ]
+    },
+    {
+      "name": "ai-loader",
+      "type": "registry:ui",
+      "title": "AI Loader",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/loader.tsx 关键帧来自 https://github.com/ibelick/prompt-kit/blob/main/app/globals.css 。12 种 variant：circular、classic、pulse、pulse-dot、dots、typing、wave、bars、terminal、text-blink、text-shimmer、loading-dots。size 与 text 可配。减弱动效或离开视口时停在静态帧，文字保持可读。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ai-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ai-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "response-stream",
+      "type": "registry:ui",
+      "title": "Response Stream",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/response-stream.tsx mode 为 typewriter 或 fade。textStream 可以是字符串或 AsyncIterable。同时导出 useTextStream。减弱动效时字符串立即显示全文，不再逐字或淡入。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/response-stream.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/response-stream.tsx"
+        }
+      ]
+    },
+    {
+      "name": "thinking-bar",
+      "type": "registry:ui",
+      "title": "Thinking Bar",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/thinking-bar.tsx 思考中的文字条，可停止或点开。减弱动效或离开视口时文字不再扫光。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/thinking-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/thinking-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "book-page-loader",
+      "type": "registry:ui",
+      "title": "Book Page Loader",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 vinodjangid07。https://github.com/uiverse-io/galaxy/blob/main/loaders/vinodjangid07_good-cow-5.html 书页翻动的加载指示。减弱动效或离开视口时书页保持合上。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/book-page-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/book-page-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "map-pin-loader",
+      "type": "registry:ui",
+      "title": "Map Pin Loader",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 vikramsinghnegi。https://github.com/uiverse-io/galaxy/blob/main/loaders/vikramsinghnegi_witty-skunk-89.html 地图钉上下浮动。减弱动效或离开视口时钉停在原位。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/map-pin-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/map-pin-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glow-corner-loader",
+      "type": "registry:ui",
+      "title": "Glow Corner Loader",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 NlghtM4re。https://github.com/uiverse-io/galaxy/blob/main/loaders/NlghtM4re_popular-crab-99.html 四枚发光方块沿四角转动。colors 决定每枚颜色。减弱动效或离开视口时方块停在四个角。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glow-corner-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glow-corner-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "retro-press-button",
+      "type": "registry:ui",
+      "title": "Retro Press Button",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 TanimMahbub。https://github.com/uiverse-io/galaxy/blob/main/Buttons/TanimMahbub_selfish-goat-90.html 按下时下沉的复古按钮。color 与 shadowColor 可配。减弱动效时按下仍然到位，但没有过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/retro-press-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/retro-press-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chain-of-thought",
+      "type": "registry:ui",
+      "title": "Chain Of Thought",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/chain-of-thought.tsx 可折叠的推理步骤。子组件有 ChainOfThoughtStep、ChainOfThoughtTrigger、ChainOfThoughtContent、ChainOfThoughtItem。折叠用现有 collapsible。减弱动效时不再播放折叠动画。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "collapsible",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chain-of-thought.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chain-of-thought.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reasoning",
+      "type": "registry:ui",
+      "title": "Reasoning",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/reasoning.tsx 推理折叠区。不渲染 Markdown，内容就是 children。isStreaming 为 true 时自动展开，结束后收回。减弱动效时展开没有高度过渡。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reasoning.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reasoning.tsx"
+        }
+      ]
+    },
+    {
+      "name": "source",
+      "type": "registry:ui",
+      "title": "Source",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/source.tsx 来源胶囊和悬停卡片。悬停用现有 hover-card。showFavicon 默认关闭。只在传入 faviconSrc 时显示图标，不请求 Google favicon。减弱动效时悬停不再延迟。",
+      "dependencies": [],
+      "registryDependencies": [
+        "hover-card",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/source.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/source.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tool",
+      "type": "registry:ui",
+      "title": "Tool",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/tool.tsx 工具调用折叠卡。toolPart.state 为 input-streaming、input-available、output-available 或 output-error。按钮和折叠用现有 button、collapsible。减弱动效时处理中的图标不再旋转，折叠没有动画。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "collapsible",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tool.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tool.tsx"
+        }
+      ]
+    },
+    {
+      "name": "system-message",
+      "type": "registry:ui",
+      "title": "System Message",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/system-message.tsx 系统消息。variant 为 action、warning、error。cta 用现有 button。没有持续动画；减弱动效时保持同一静态版式。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/system-message.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/system-message.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feedback-bar",
+      "type": "registry:ui",
+      "title": "Feedback Bar",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/feedback-bar.tsx 有帮助、没帮助和关闭。图标由调用方通过 icon 传入，默认按钮使用通用拇指图标。减弱动效时按钮没有颜色过渡。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/feedback-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/feedback-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "prompt-suggestion",
+      "type": "registry:ui",
+      "title": "Prompt Suggestion",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/prompt-suggestion.tsx 提示词按钮，使用现有 button。传入 highlight 后在文字里标出匹配片段。减弱动效时按钮没有过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/prompt-suggestion.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/prompt-suggestion.tsx"
+        }
+      ]
+    },
+    {
+      "name": "generated-image",
+      "type": "registry:ui",
+      "title": "Generated Image",
+      "description": "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。 https://github.com/ibelick/prompt-kit/blob/main/components/prompt-kit/image.tsx 由 image 改名。支持 base64 或 uint8Array 加 mediaType。alt 必填。uint8Array 生成的 object URL 在卸载或更换时 revoke。没有图片时显示占位，减弱动效时占位不脉冲。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/generated-image.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/generated-image.tsx"
+        }
+      ]
     }
   ]
 }

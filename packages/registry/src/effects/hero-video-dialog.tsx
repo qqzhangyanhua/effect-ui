@@ -9,6 +9,7 @@ import { Play } from "lucide-react"
 import { motion } from "motion/react"
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export type HeroVideoAnimation = "from-center" | "from-bottom" | "from-top" | "from-left" | "from-right"
@@ -36,6 +37,7 @@ function HeroVideoDialog({
   thumbnailAlt = "视频封面",
   className,
 }: HeroVideoDialogProps) {
+  const reduced = usePrefersReducedMotion()
   const [open, setOpen] = React.useState(false)
   const contentRef = React.useRef<HTMLDivElement>(null)
 
@@ -56,7 +58,7 @@ function HeroVideoDialog({
   }, [open])
 
   return (
-    <div data-slot="hero-video-dialog" className={cn("w-full", className)}>
+    <div data-reduced={reduced ? "true" : undefined} data-slot="hero-video-dialog" className={cn("w-full", className)}>
       <button
         type="button"
         className="group relative block w-full cursor-pointer border-0 bg-transparent p-0"
@@ -66,10 +68,18 @@ function HeroVideoDialog({
         <img
           src={thumbnailSrc}
           alt={thumbnailAlt}
-          className="aspect-video w-full rounded-xl border object-cover shadow-lg transition duration-200 group-hover:brightness-75"
+          className={cn(
+            "aspect-video w-full rounded-xl border object-cover shadow-lg motion-reduce:transition-none",
+            reduced ? "transition-none" : "transition duration-200 group-hover:brightness-75",
+          )}
         />
         <span className="absolute inset-0 grid place-items-center">
-          <span className="grid size-20 place-items-center rounded-full bg-primary/80 text-primary-foreground shadow-md transition duration-200 group-hover:scale-125">
+          <span
+            className={cn(
+              "grid size-20 place-items-center rounded-full bg-primary/80 text-primary-foreground shadow-md motion-reduce:transition-none",
+              reduced ? "transition-none" : "transition duration-200 group-hover:scale-125",
+            )}
+          >
             <Play className="size-8 fill-current" />
           </span>
         </span>
@@ -87,9 +97,9 @@ function HeroVideoDialog({
           <DialogTitle className="sr-only">视频</DialogTitle>
           <motion.div
             className="aspect-video w-full max-w-4xl overflow-hidden rounded-xl bg-black"
-            initial={ENTER[animationStyle]}
+            initial={reduced ? false : ENTER[animationStyle]}
             animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 280, damping: 28 }}
+            transition={reduced ? { duration: 0 } : { type: "spring", stiffness: 280, damping: 28 }}
           >
             {open ? (
               <iframe

@@ -16,7 +16,6 @@ import { DepthFogGallery } from "../sections/depth-fog-gallery"
 import { PlanCompareTable } from "../sections/plan-compare-table"
 import { PricingCalculator } from "../sections/pricing-calculator"
 import { TelescopeZoomScroll } from "../sections/telescope-zoom-scroll"
-import { InboxSplitView } from "../templates/inbox-split-view"
 
 export function ImageTubeScrollDemo({
   radius = 1.35,
@@ -115,10 +114,6 @@ export function PlanCompareTableDemo() {
 
 export function MentionTextareaDemo() {
   return <MentionTextarea className="w-full" />
-}
-
-export function InboxSplitViewDemo() {
-  return <InboxSplitView className="w-full" />
 }
 
 export function TimezoneClockDemo() {

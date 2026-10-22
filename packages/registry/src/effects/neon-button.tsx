@@ -27,7 +27,7 @@ function NeonButton({
       size={size}
       asChild={asChild}
       className={cn(
-        "relative border border-[color-mix(in_oklab,var(--neon)_70%,transparent)] transition-shadow",
+        "relative border border-[color-mix(in_oklab,var(--neon)_70%,transparent)] transition-shadow motion-reduce:transition-none",
         gain === undefined
           ? "shadow-[0_0_18px_-6px_var(--neon)] hover:shadow-[0_0_28px_-4px_var(--neon)]"
           : "shadow-[var(--glow-rest)] hover:shadow-[var(--glow-hover)]",

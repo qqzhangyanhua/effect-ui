@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Progressive Blur",
   "description": "内容边缘的渐进模糊遮罩。",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": [],
   "registryDependencies": [
     "utils"
   ],
@@ -15,7 +13,7 @@
       "path": "registry/effects/progressive-blur.tsx",
       "type": "registry:ui",
       "target": "components/ui/progressive-blur.tsx",
-      "content": "\"use client\"\n\nimport { motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst ANGLES = {\n  top: 0,\n  right: 90,\n  bottom: 180,\n  left: 270,\n} as const\n\nexport interface ProgressiveBlurProps {\n  direction?: keyof typeof ANGLES\n  blurLayers?: number\n  blurIntensity?: number\n  intensity?: number\n  className?: string\n}\n\nfunction ProgressiveBlur({\n  direction = \"bottom\",\n  blurLayers = 8,\n  blurIntensity = 0.25,\n  intensity,\n  className,\n}: ProgressiveBlurProps) {\n  const layers = Math.max(blurLayers, 2)\n  const segment = 1 / (layers + 1)\n  const angle = ANGLES[direction]\n  const gain = intensity === undefined || intensity === 1 ? 1 : intensity\n\n  return (\n    <div className={cn(\"pointer-events-none relative\", className)}>\n      {Array.from({ length: layers }, (_, index) => {\n        const stops = [index * segment, (index + 1) * segment, (index + 2) * segment, (index + 3) * segment]\n          .map((pos, posIndex) => `rgba(255,255,255,${posIndex === 1 || posIndex === 2 ? 1 : 0}) ${pos * 100}%`)\n          .join(\", \")\n        const gradient = `linear-gradient(${angle}deg, ${stops})`\n        const blur = gain === 1 ? index * blurIntensity : index * blurIntensity * gain\n        return (\n          <motion.div\n            key={index}\n            className=\"absolute inset-0 rounded-[inherit]\"\n            style={{\n              maskImage: gradient,\n              WebkitMaskImage: gradient,\n              backdropFilter: `blur(${blur}px)`,\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n\nexport { ProgressiveBlur }\n"
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst ANGLES = {\n  top: 0,\n  right: 90,\n  bottom: 180,\n  left: 270,\n} as const\n\nexport interface ProgressiveBlurProps {\n  direction?: keyof typeof ANGLES\n  blurLayers?: number\n  blurIntensity?: number\n  intensity?: number\n  className?: string\n}\n\nfunction ProgressiveBlur({\n  direction = \"bottom\",\n  blurLayers = 8,\n  blurIntensity = 0.25,\n  intensity,\n  className,\n}: ProgressiveBlurProps) {\n  const layers = Math.max(blurLayers, 2)\n  const segment = 1 / (layers + 1)\n  const angle = ANGLES[direction]\n  const gain = intensity === undefined || intensity === 1 ? 1 : intensity\n\n  return (\n    <div className={cn(\"pointer-events-none relative\", className)}>\n      {Array.from({ length: layers }, (_, index) => {\n        const stops = [index * segment, (index + 1) * segment, (index + 2) * segment, (index + 3) * segment]\n          .map((pos, posIndex) => `rgba(255,255,255,${posIndex === 1 || posIndex === 2 ? 1 : 0}) ${pos * 100}%`)\n          .join(\", \")\n        const gradient = `linear-gradient(${angle}deg, ${stops})`\n        const blur = gain === 1 ? index * blurIntensity : index * blurIntensity * gain\n        return (\n          <div\n            key={index}\n            className=\"absolute inset-0 rounded-[inherit]\"\n            style={{\n              maskImage: gradient,\n              WebkitMaskImage: gradient,\n              backdropFilter: `blur(${blur}px)`,\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n\nexport { ProgressiveBlur }\n"
     }
   ]
 }

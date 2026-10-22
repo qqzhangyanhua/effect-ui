@@ -1,3 +1,7 @@
+import fs from "node:fs"
+import os from "node:os"
+import path from "node:path"
+
 import { expect, test } from "vitest"
 
 import { readUsageExample } from "./usage"
@@ -92,4 +96,35 @@ test("多行解构、类型标注和默认空对象被改写成常量", () => {
   expect(usage).not.toContain("values")
   expect(usage).not.toContain("= {}")
   expect(usage).not.toContain("Partial<")
+})
+
+test("Demo 索引变化后无需重启就能读到新登记的示例", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "effect-ui-usage-"))
+  try {
+    const examples = path.join(root, "examples")
+    fs.mkdirSync(examples)
+    fs.writeFileSync(
+      path.join(examples, "fresh-demos.tsx"),
+      `export function FreshDemo() {
+  return (
+    <div>新登记示例</div>
+  )
+}
+`,
+    )
+    const indexPath = path.join(examples, "index.ts")
+    const header = 'import * as freshDemos from "./fresh-demos"\n\nconst demoMap = {\n'
+    fs.writeFileSync(indexPath, `${header}}\n`)
+    expect(() => readUsageExample("fresh-demo", indexPath)).toThrow(/找不到 fresh-demo/)
+
+    fs.writeFileSync(indexPath, `${header}  "fresh-demo": freshDemos.FreshDemo,\n}\n`)
+    const bumped = new Date(fs.statSync(indexPath).mtimeMs + 5000)
+    fs.utimesSync(indexPath, bumped, bumped)
+
+    const usage = readUsageExample("fresh-demo", indexPath)
+    expect(usage).toContain("export function FreshDemo()")
+    expect(usage).toContain("新登记示例")
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true })
+  }
 })

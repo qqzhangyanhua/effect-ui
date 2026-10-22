@@ -212,6 +212,10 @@ export interface SpineStackProps {
   initial: SpineStackLevel;
   /** fires after the top (active) level settles — on mount, on push, and once a pop's cascade commits */
   onNavigate?: (id: string) => void;
+  /** Width transition for a level, in milliseconds. @default 420 */
+  duration?: number;
+  /** Gap between spines, in pixels. @default 3 */
+  gap?: number;
   /** extra classes merged onto the rendered root element */
   className?: string;
 }
@@ -230,7 +234,7 @@ function clamp(n: number, min: number, max: number) {
 }
 
 export const SpineStack = forwardRef<SpineStackHandle, SpineStackProps>(function SpineStack(
-  { initial, onNavigate, className = "" },
+  { initial, onNavigate, duration = TRANSITION_MS, gap = 3, className = "" },
   ref
 ) {
   const nsRootRef = useRef<HTMLDivElement | null>(null);
@@ -330,7 +334,7 @@ export const SpineStack = forwardRef<SpineStackHandle, SpineStackProps>(function
       isAnimatingRef.current = true;
       setPoppingTarget(id);
       setCollapsingIds(above);
-      const total = (above.length - 1) * STAGGER_MS + TRANSITION_MS + 40;
+      const total = (above.length - 1) * STAGGER_MS + duration + 40;
       commitTimeoutRef.current = setTimeout(() => {
         setStack((prev) => prev.slice(0, idx + 1));
         setCollapsingIds([]);
@@ -338,7 +342,7 @@ export const SpineStack = forwardRef<SpineStackHandle, SpineStackProps>(function
         isAnimatingRef.current = false;
       }, total);
     },
-    [stack, reducedMotion]
+    [stack, reducedMotion, duration]
   );
 
   const pop = useCallback(() => {
@@ -365,10 +369,9 @@ export const SpineStack = forwardRef<SpineStackHandle, SpineStackProps>(function
     return wide || hoverLive === id || focusedId === id ? SPINE_WIDE : SPINE_NARROW;
   };
   const spinesTotal = stack.reduce((sum, l) => sum + (l.id === activeId ? 0 : spineWidthFor(l.id)), 0);
-  const GAP = 3;
   const gapCount = Math.max(0, stack.length - 1);
   const activeWidth = containerWidth
-    ? clamp(containerWidth - spinesTotal - gapCount * GAP, MIN_ACTIVE_WIDTH, containerWidth)
+    ? clamp(containerWidth - spinesTotal - gapCount * gap, MIN_ACTIVE_WIDTH, containerWidth)
     : undefined;
 
   const navLabel = `Navigation history, ${stack.length} level${stack.length === 1 ? "" : "s"}`;
@@ -385,9 +388,9 @@ export const SpineStack = forwardRef<SpineStackHandle, SpineStackProps>(function
     >
       <NsPause slot="drill-down-spines" />
       <style>{`
-.ns-drill-down-spines .ns-level{transition:width ${TRANSITION_MS}ms ${SPRING_EASE},opacity ${TRANSITION_MS}ms ease-out;}
+.ns-drill-down-spines .ns-level{transition:width ${duration}ms ${SPRING_EASE},opacity ${duration}ms ease-out;}
 .ns-drill-down-spines .ns-spine-face,
-.ns-drill-down-spines .ns-active-face{transition:opacity ${TRANSITION_MS}ms ease-out;}
+.ns-drill-down-spines .ns-active-face{transition:opacity ${duration}ms ease-out;}
 .ns-drill-down-spines .ns-spine-label{transition:opacity 200ms ease-out;}
 .ns-drill-down-spines .ns-spine-enter{animation:ns-spine-enter ${ENTER_MS}ms ${SPRING_EASE};}
 @keyframes ns-spine-enter{
@@ -403,7 +406,7 @@ export const SpineStack = forwardRef<SpineStackHandle, SpineStackProps>(function
 }
 `}</style>
 
-      <nav aria-label={navLabel} className="flex h-full w-full" style={{ gap: GAP }}>
+      <nav aria-label={navLabel} className="flex h-full w-full" style={{ gap }}>
         {stack.map((level) => {
           const isActive = level.id === activeId;
           const collapsing = !isActive && collapsingIds.includes(level.id);

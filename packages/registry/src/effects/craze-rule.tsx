@@ -170,6 +170,8 @@ function NsPause({ slot }: { slot: string }) {
 export interface CrazeRuleProps {
   /** seeds the random walk + branch layout; omit for a fresh crack every mount */
   seed?: number;
+  /** Crack stroke. Defaults to the foreground token. */
+  color?: string;
   className?: string;
 }
 
@@ -279,7 +281,7 @@ function generateCrack(seed: number): Crack {
   return { mainD, branches, longestIdx, secondIdx, tip };
 }
 
-export function CrazeRule({ seed, className = "" }: CrazeRuleProps) {
+export function CrazeRule({ seed, color = "var(--foreground)", className = "" }: CrazeRuleProps) {
   const nsRootRef = useRef<HTMLDivElement | null>(null);
   const nsMotion = useNsBind(nsRootRef as RefObject<HTMLElement | null>);
   const nsRequestFrame = nsMotion.requestFrame;
@@ -401,7 +403,7 @@ export function CrazeRule({ seed, className = "" }: CrazeRuleProps) {
               d={crack?.mainD ?? fallbackD}
               className="ns-craze-main"
               fill="none"
-              stroke="var(--foreground)"
+              stroke={color}
               strokeOpacity={HALO_OPACITY}
               strokeWidth={HALO_MAIN_W}
               strokeLinecap="round"
@@ -429,7 +431,7 @@ export function CrazeRule({ seed, className = "" }: CrazeRuleProps) {
                         : `${b.delay + BRANCH_MS}ms`,
                   }}
                   fill="none"
-                  stroke="var(--foreground)"
+                  stroke={color}
                   strokeOpacity={HALO_OPACITY}
                   strokeWidth={HALO_BRANCH_W}
                   strokeLinecap="round"
@@ -445,7 +447,7 @@ export function CrazeRule({ seed, className = "" }: CrazeRuleProps) {
             d={crack?.mainD ?? fallbackD}
             className="ns-craze-main"
             fill="none"
-            stroke="var(--foreground)"
+            stroke={color}
             strokeOpacity={CORE_MAIN_OPACITY}
             strokeWidth={CORE_MAIN_W}
             strokeLinecap="round"
@@ -473,7 +475,7 @@ export function CrazeRule({ seed, className = "" }: CrazeRuleProps) {
                       : `${b.delay + BRANCH_MS}ms`,
                 }}
                 fill="none"
-                stroke="var(--foreground)"
+                stroke={color}
                 strokeOpacity={CORE_BRANCH_OPACITY}
                 strokeWidth={CORE_BRANCH_W}
                 strokeLinecap="round"

@@ -4,7 +4,6 @@ import { useState } from "react"
 
 import { ChatMessage } from "../ui/chat-message"
 import { IPhone, Macbook, Safari } from "../ui/device-mockups"
-import { OnboardingTour } from "../ui/onboarding-tour"
 import { PromptInput } from "../ui/prompt-input"
 import { RichTextEditor } from "../ui/rich-text-editor"
 import { TreeView } from "../ui/tree-view"
@@ -80,32 +79,5 @@ export function TreeViewDemo() {
         },
       ]}
     />
-  )
-}
-
-export function OnboardingTourDemo() {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="space-y-3">
-      <button
-        type="button"
-        data-tour="batch4-start"
-        className="rounded-md border px-3 py-1.5 text-sm"
-        onClick={() => setOpen(true)}
-      >
-        开始引导
-      </button>
-      <p data-tour="batch4-hint" className="text-sm text-muted-foreground">
-        高亮遮罩会指向这两个节点。
-      </p>
-      <OnboardingTour
-        open={open}
-        onOpenChange={setOpen}
-        steps={[
-          { selector: "[data-tour='batch4-start']", title: "开始", description: "点击后进入下一步。" },
-          { selector: "[data-tour='batch4-hint']", title: "提示", description: "任意选择器都可以作为锚点。" },
-        ]}
-      />
-    </div>
   )
 }

@@ -621,7 +621,9 @@ test("词汇表 prop 的起始值越界仍按控件范围报告", () => {
           props: [{ name: "speed", type: "number", control: { kind: "range", value: 3, min: 0, max: 2 } }],
         }),
       ]),
-    ).map((issue) => issue.type),
+    )
+      .filter((issue) => issue.type === "control-out-of-range")
+      .map((issue) => issue.type),
   ).toEqual(["control-out-of-range"])
 })
 

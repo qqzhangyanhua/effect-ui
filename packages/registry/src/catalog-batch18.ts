@@ -305,17 +305,6 @@ export const batch18Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "inbox-split-view",
-    title: "Inbox Split View",
-    description: "收件箱分栏。左栏有未读、星标和多选，右栏是正文，j / k 移动。窄屏变成单栏滑动，宽屏可以拖动分栏。",
-    category: "templates",
-    source: "original",
-    type: "registry:ui",
-    file: "templates/inbox-split-view.tsx",
-    target: "components/ui/inbox-split-view.tsx",
-    props: [{ name: "messages", type: "InboxMessage[]", description: "信件。" }, ...ui],
-  },
-  {
     name: "timezone-clock",
     title: "Timezone Clock",
     description: "多城市时钟，可切换表盘和数字，标出昼夜和相对时差。秒针有弹性，减弱动效时改为跳动。",

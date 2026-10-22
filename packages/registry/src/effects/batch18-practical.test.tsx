@@ -11,7 +11,6 @@ import { ShortcutsDialog, useHotkey } from "./shortcuts-dialog"
 import { TimezoneClock } from "./timezone-clock"
 import { PlanCompareTable } from "../sections/plan-compare-table"
 import { PricingCalculator } from "../sections/pricing-calculator"
-import { InboxSplitView } from "../templates/inbox-split-view"
 
 vi.mock("@number-flow/react", () => ({
   default: ({ value }: { value: number }) => <span>{value}</span>,
@@ -92,16 +91,6 @@ test("输入 @ 可以插入提及", async () => {
   const last = onValueChange.mock.calls.at(-1)?.[0] as { text: string; mentions: { label: string }[] }
   expect(last.text).toContain("@林夏")
   expect(last.mentions.some((item) => item.label === "林夏")).toBe(true)
-})
-
-test("j 和 k 在收件箱里移动", async () => {
-  const user = userEvent.setup()
-  render(<InboxSplitView />)
-  expect(screen.getByRole("heading", { name: "北窗的光" })).toBeInTheDocument()
-  await user.keyboard("j")
-  expect(screen.getByRole("heading", { name: "样张" })).toBeInTheDocument()
-  await user.keyboard("k")
-  expect(screen.getByRole("heading", { name: "北窗的光" })).toBeInTheDocument()
 })
 
 test("时钟按传入时间显示上海", () => {

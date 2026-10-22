@@ -38,20 +38,22 @@ function registrySrc() {
 
 let demoLocations: Map<string, DemoLocation> | undefined
 let demoLocationsMtime = 0
+let demoLocationsIndex = ""
 
-function getDemoLocations() {
-  const indexPath = path.join(registrySrc(), "examples/index.ts")
+function getDemoLocations(indexPath = path.join(registrySrc(), "examples/index.ts")) {
   // dev server 常驻内存，新增 demo 后要按文件修改时间重新解析，不然要重启才能看到。
   const mtime = fs.statSync(indexPath).mtimeMs
-  if (demoLocations && mtime === demoLocationsMtime) return demoLocations
+  if (demoLocations && indexPath === demoLocationsIndex && mtime === demoLocationsMtime) return demoLocations
   demoLocationsMtime = mtime
+  demoLocationsIndex = indexPath
   const index = fs.readFileSync(indexPath, "utf8")
+  const examplesDir = path.dirname(indexPath)
   const files = new Map<string, string>()
   for (const match of index.matchAll(/import \* as (\w+) from "\.\/([^"]+)"/g)) {
     const alias = match[1]
     const fileName = match[2]
     if (!alias || !fileName) continue
-    files.set(alias, `examples/${fileName}.tsx`)
+    files.set(alias, path.join(examplesDir, `${fileName}.tsx`))
   }
   demoLocations = new Map()
   for (const match of index.matchAll(
@@ -68,10 +70,11 @@ function getDemoLocations() {
   return demoLocations
 }
 
-function readUsageExample(name: string) {
-  const location = getDemoLocations().get(name)
+// indexPath 只给测试指向临时索引；不传时仍读仓库里的 examples/index.ts。
+function readUsageExample(name: string, indexPath?: string) {
+  const location = getDemoLocations(indexPath).get(name)
   if (!location) throw new Error(`找不到 ${name} 的用法示例`)
-  const source = fs.readFileSync(path.join(registrySrc(), location.file), "utf8")
+  const source = fs.readFileSync(location.file, "utf8")
   const fn = unwrapPreview(rewriteControlledDemo(extractFunction(source, location.fn)))
   const locals = includedLocals(source, fn)
   const example = [fn, ...locals.map((item) => item.code)].join("\n")

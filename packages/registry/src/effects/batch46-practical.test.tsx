@@ -5,14 +5,21 @@ import { cleanup, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
+import { PawlTick } from "./autosave-ratchet"
 import { TearStub } from "./banner-tear-stub"
+import { TorsionRetry } from "./button-retry-backoff"
 import { ToppleRun } from "./checkbox-domino-run"
+import { RuleFrame } from "./container-box-drawing"
 import { ContraStrike } from "./contra-strike"
+import { CrazeRule } from "./craze-rule"
+import { CruetSettle } from "./cruet-settle"
+import { SpineStack } from "./drill-down-spines"
 import { DueSlip } from "./due-slip"
+import { EscapementTick } from "./feed-escapement"
+import { GalleyBracket } from "./galley-bracket"
 import { PlumbTrue } from "./success-plumb-bob"
 import { SiphonLift } from "./transfer-list-siphon"
 import { AfterImageList } from "./undo-ghost-row"
-import { CrazeRule } from "./craze-rule"
 
 let reduceMotion = false
 
@@ -76,6 +83,11 @@ class SizeObserver {
 
 vi.stubGlobal("IntersectionObserver", IntersectingObserver)
 vi.stubGlobal("ResizeObserver", SizeObserver)
+Object.defineProperty(document, "fonts", {
+  configurable: true,
+  value: { ready: Promise.resolve() },
+})
+
 vi.stubGlobal("matchMedia", (query: string) => ({
   matches: query.includes("prefers-reduced-motion") ? reduceMotion : false,
   media: query,
@@ -176,4 +188,26 @@ test("退款滑块、已读回执和删除残影会宣布状态", async () => {
   await user.click(screen.getByRole("button", { name: "Delete 启动笔记" }))
   expect(screen.getByText(/Deleted 启动笔记/)).toBeInTheDocument()
   expect(screen.getByRole("button", { name: "Dismiss: finish deleting 启动笔记" })).toBeInTheDocument()
+})
+
+test("棘轮、重试、制表框、合计、书脊、活动流和页边括号可以挂载", () => {
+  render(
+    <div>
+      <PawlTick status="saved" />
+      <TorsionRetry label="重试" />
+      <RuleFrame title="会话">正文</RuleFrame>
+      <CruetSettle currency="¥" label="合计" lines={[{ key: "net", label: "小计", amount: 12 }]} />
+      <SpineStack initial={{ id: "root", title: "目录", content: "第一层" }} />
+      <EscapementTick aria-label="动态" emptyLabel="还没有动态" />
+      <GalleyBracket text="校对这一段正文。" selections={[]} contextLabel="第三段" />
+    </div>,
+  )
+
+  expect(document.querySelector("[data-slot=autosave-ratchet]")).toBeTruthy()
+  expect(screen.getByRole("button", { name: "重试" })).toBeInTheDocument()
+  expect(document.querySelector("[data-slot=container-box-drawing]")).toBeTruthy()
+  expect(document.querySelector("[data-slot=cruet-settle]")).toBeTruthy()
+  expect(document.querySelector("[data-slot=drill-down-spines]")).toBeTruthy()
+  expect(screen.getByRole("log", { name: "动态" })).toBeInTheDocument()
+  expect(document.querySelector("[data-slot=galley-bracket]")).toBeTruthy()
 })

@@ -1,12 +1,13 @@
 "use client"
 
 import * as React from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
+import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 interface ImageComparisonContextValue {
-  position: ReturnType<typeof useSpring>
+  position: MotionValue<number>
   color?: string
   size?: number
 }
@@ -36,9 +37,11 @@ function ImageComparison({
   /** 滑块厚度，像素。不传或 2 仍是 2px。 */
   size?: number
 }) {
+  const reduced = usePrefersReducedMotion()
   const [dragging, setDragging] = React.useState(false)
   const raw = useMotionValue(50)
-  const position = useSpring(raw, { bounce: 0, duration: 0 })
+  const spring = useSpring(raw, { bounce: 0, duration: 0 })
+  const position = reduced ? raw : spring
 
   const move = (event: React.MouseEvent | React.TouchEvent) => {
     if (!dragging && !enableHover) return
@@ -51,7 +54,8 @@ function ImageComparison({
   return (
     <ImageComparisonContext.Provider value={{ position, color, size }}>
       <div
-        className={cn("relative select-none overflow-hidden", enableHover && "cursor-ew-resize", className)}
+        className={cn("relative select-none overflow-hidden motion-reduce:transition-none", enableHover && "cursor-ew-resize", className)}
+        data-reduced={reduced ? "true" : undefined}
         onMouseMove={move}
         onMouseDown={() => {
           if (!enableHover) setDragging(true)

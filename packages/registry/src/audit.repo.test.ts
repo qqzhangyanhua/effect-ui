@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url"
 import { expect, test } from "vitest"
 
 import { auditRegistry, type AuditInput, type AuditStaticJson } from "./audit"
+import { auditExemptions } from "./audit-exemptions"
 import { components } from "./catalog"
 import { demoNames } from "./examples/index"
 import { buildRegistryItem } from "./registry-item"
@@ -61,6 +62,7 @@ function repoInput(): AuditInput {
     readme: fs.readFileSync(path.join(repoRoot, "README.md"), "utf8"),
     staticJson: staticJson(),
     packageDependencies: Object.keys(packageJson.dependencies ?? {}),
+    exemptions: auditExemptions,
   }
 }
 
@@ -114,6 +116,12 @@ test("rich-text-editor 保留源码未引用的 peer 依赖 @tiptap/pm", () => {
 
 test("仓库审计没有问题", () => {
   expect(auditRegistry(repoInput())).toEqual([])
+})
+
+test("缺减弱动效已经清零，静态组件不写这条豁免", () => {
+  const held = auditExemptions.filter((entry) => entry.gaps.includes("缺减弱动效") || entry.reason === "无动画")
+  expect(held).toEqual([])
+  expect(auditRegistry(repoInput()).filter((issue) => issue.type === "missing-reduced-motion")).toEqual([])
 })
 
 test("control-not-in-demo 和 prop-not-in-catalog 可以按 catalog 条目查看", () => {

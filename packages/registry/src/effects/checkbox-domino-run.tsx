@@ -183,7 +183,6 @@ function NsPause({ slot }: { slot: string }) {
 
 const ROWS_PER_SEC = 14;
 const ROW_H = 56; // px — must match the row wrapper's fixed height
-const LEAN_MS = Math.round(1000 / ROWS_PER_SEC) + 40; // ~111ms, overlaps the next row's start
 const UNDO_MS = 5000;
 
 export interface ToppleRunItem {
@@ -202,6 +201,8 @@ export interface ToppleRunProps {
   label?: string;
   /** Ids checked on mount. @default [] */
   defaultChecked?: string[];
+  /** Rows the wave crosses per second. @default 14 */
+  speed?: number;
   /** Fires whenever the checked set changes, including mid-run commits. */
   onChange?: (checkedIds: string[]) => void;
   /** extra classes merged onto the rendered root element */
@@ -220,9 +221,12 @@ export function ToppleRun({
   items,
   label = "Select all",
   defaultChecked = [],
+  speed = ROWS_PER_SEC,
   onChange,
   className = "",
 }: ToppleRunProps) {
+  const rowsPerSec = Math.max(1, speed);
+  const leanMs = Math.round(1000 / rowsPerSec) + 40;
   const nsRootRef = useRef<HTMLDivElement | null>(null);
   const nsMotion = useNsBind(nsRootRef as RefObject<HTMLElement | null>);
   const nsRequestFrame = nsMotion.requestFrame;
@@ -301,10 +305,10 @@ export function ToppleRun({
         setTimeout(() => {
           el.style.transform = "";
           leanTimersRef.current.delete(index);
-        }, LEAN_MS)
+        }, leanMs)
       );
     }
-  }, []);
+  }, [leanMs]);
 
   const endRun = useCallback(
     (committedCount: number, rowTotal: number) => {
@@ -357,7 +361,7 @@ export function ToppleRun({
       const step = (now: number) => {
         if (runTokenRef.current !== token) return;
         const elapsedS = (now - startTimeRef.current) / 1000;
-        const front = elapsedS * ROWS_PER_SEC;
+        const front = elapsedS * rowsPerSec;
         if (tickRef.current) {
           tickRef.current.style.transform = `translateY(${
             Math.min(front, total) * ROW_H
@@ -376,7 +380,7 @@ export function ToppleRun({
       };
       rafRef.current = nsRequestFrame(step);
     },
-    [total, clearLeanTimers, commitRow, endRun]
+    [total, clearLeanTimers, commitRow, endRun, rowsPerSec]
   );
 
   // Escape halts a live run from anywhere.
@@ -493,7 +497,7 @@ export function ToppleRun({
               style={{
                 transition: reducedMotion
                   ? undefined
-                  : `transform ${LEAN_MS}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
+                  : `transform ${leanMs}ms cubic-bezier(0.34, 1.56, 0.64, 1)`,
               }}
               className={i < rows.length - 1 ? "h-14 border-b border-border" : "h-14"}
             >

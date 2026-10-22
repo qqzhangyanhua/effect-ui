@@ -573,6 +573,28 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 车道、铜版与胶片
+
+登记在 `catalog-batch56.ts`。键入爆炸已占用 `catalog-batch55.ts`。`queue-pulse-lanes`、`event-propagation-matrix`、`copperplate-hatch`、`core-strata`、`kinetic-emphasis`、`liquid-fill-headline`、`velocity-skew-feed`、`filmstrip-scrub`、`deployment-pipeline`、`live-log-stream`、`environment-switcher`、`data-refresh-state`、`api-request-inspector`、`product-variant-selector`、`cart-item-transition` 移植自 Motiq（MIT，Copyright (c) 2026 Mahammad Rustamov）。`@/lib/motiq` 没有带进来：减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。`@/lib/utils` 改成 `cn`。环境菜单用 `react-dom` 的 `createPortal`。事件矩阵是格子上的传播波，和字符点阵 `glyph-matrix` 不同。铜版是三向交叉线被光波点亮，和 `sketch-hatch-image`、`hatch-divider` 不同。速度剪切跟着滚动速度回弹，和恒定斜切的 `skewed-infinite-scroll` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| queue-pulse-lanes | Motiq，MIT |
+| event-propagation-matrix | Motiq，MIT |
+| copperplate-hatch | Motiq，MIT |
+| core-strata | Motiq，MIT |
+| kinetic-emphasis | Motiq，MIT |
+| liquid-fill-headline | Motiq，MIT |
+| velocity-skew-feed | Motiq，MIT |
+| filmstrip-scrub | Motiq，MIT |
+| deployment-pipeline | Motiq，MIT |
+| live-log-stream | Motiq，MIT |
+| environment-switcher | Motiq，MIT |
+| data-refresh-state | Motiq，MIT |
+| api-request-inspector | Motiq，MIT |
+| product-variant-selector | Motiq，MIT |
+| cart-item-transition | Motiq，MIT |
+
 ### 键入爆炸、色带与持键
 
 登记在 `catalog-batch55.ts`。摇杆已占用 `catalog-batch54.ts`。`exploding-input`、`flow-button`、`logos-carousel`、`bars-spinner`、`band-wave-text`、`fallback-avatar` 移植自 Spell UI（MIT，Copyright (c) 2025 Spell UI）。`glow-divider`、`noise-text`、`verify-badge`、`gift-card`、`network-graph` 移植自 Sera UI（MIT，Copyright (c) 2025 Sera UI）。`invalid-shake`、`safe-triangle`、`held-keys`、`delayed-loading` 移植自 HextaUI（MIT，Copyright (c) 2026 Preet Suthar）。`framer-motion` 改成 `motion/react` 的写法没有引入运行时，连线用 CSS。`@tabler/icons-react` 没有使用。`clsx` 与 `twMerge` 改成 `cn`。HextaUI 的动效判断改成共享的 `usePrefersReducedMotion`。`fallback-avatar` 不用 WebGL，按名字画 CSS 渐变。`gift-card` 去掉了来源里的品牌名称和标志。键入爆炸是输入框光标处的粒子，和消息气泡 `text-explode` 不同。标志轮换按组纵向交错，和 `section-logo-cloud` 不同。色带从文字底部扫过，和 `gradient-text`、`text-shimmer-wave` 不同。发光分隔线是一条线，和 `glowing-edge`、`glow-effect` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw、three 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

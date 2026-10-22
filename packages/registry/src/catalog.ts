@@ -52,6 +52,7 @@ import { batch52Components } from "./catalog-batch52"
 import { batch53Components } from "./catalog-batch53"
 import { batch54Components } from "./catalog-batch54"
 import { batch55Components } from "./catalog-batch55"
+import { batch56Components } from "./catalog-batch56"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -140,6 +141,7 @@ export type SourceLibrary =
   | "Spell UI"
   | "Sera UI"
   | "HextaUI"
+  | "Motiq"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -279,6 +281,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Spell UI": "https://github.com/xxtomm/spell-ui",
   "Sera UI": "https://github.com/seraui/seraui",
   HextaUI: "https://github.com/preetsuthar17/HextaUI",
+  Motiq: "https://github.com/RMahammad/motiq",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2369,6 +2372,7 @@ export const components: ComponentMeta[] = [
   ...batch53Components,
   ...batch54Components,
   ...batch55Components,
+  ...batch56Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

@@ -56,6 +56,7 @@ import * as effectDemos54 from "./effect-demos-54"
 import * as effectDemos55 from "./effect-demos-55"
 import * as effectDemos56 from "./effect-demos-56"
 import * as effectDemos57 from "./effect-demos-57"
+import * as effectDemos58 from "./effect-demos-58"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -911,6 +912,21 @@ const demoMap: Record<string, ComponentType> = {
   "held-keys": effectDemos57.HeldKeysDemo,
   "delayed-loading": effectDemos57.DelayedLoadingDemo,
   "network-graph": effectDemos57.NetworkGraphDemo,
+  "queue-pulse-lanes": effectDemos58.QueuePulseLanesDemo,
+  "event-propagation-matrix": effectDemos58.EventPropagationMatrixDemo,
+  "copperplate-hatch": effectDemos58.CopperplateHatchDemo,
+  "core-strata": effectDemos58.CoreStrataDemo,
+  "kinetic-emphasis": effectDemos58.KineticEmphasisDemo,
+  "liquid-fill-headline": effectDemos58.LiquidFillHeadlineDemo,
+  "velocity-skew-feed": effectDemos58.VelocitySkewFeedDemo,
+  "filmstrip-scrub": effectDemos58.FilmstripScrubDemo,
+  "deployment-pipeline": effectDemos58.DeploymentPipelineDemo,
+  "live-log-stream": effectDemos58.LiveLogStreamDemo,
+  "environment-switcher": effectDemos58.EnvironmentSwitcherDemo,
+  "data-refresh-state": effectDemos58.DataRefreshStateDemo,
+  "api-request-inspector": effectDemos58.ApiRequestInspectorDemo,
+  "product-variant-selector": effectDemos58.ProductVariantSelectorDemo,
+  "cart-item-transition": effectDemos58.CartItemTransitionDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

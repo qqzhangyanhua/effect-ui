@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## Motiq
+
+- 仓库：https://github.com/RMahammad/motiq
+- 许可：MIT
+- 版权：Copyright (c) 2026 Mahammad Rustamov
+- 衍生组件：`queue-pulse-lanes`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/queue-pulse-lanes.tsx）、`event-propagation-matrix`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/event-propagation-matrix.tsx）、`copperplate-hatch`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/copperplate-hatch.tsx）、`core-strata`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/core-strata.tsx）、`kinetic-emphasis`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/text/kinetic-emphasis.tsx）、`liquid-fill-headline`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/text/liquid-fill-headline.tsx）、`velocity-skew-feed`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/scroll/velocity-skew-feed.tsx）、`filmstrip-scrub`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/media/filmstrip-scrub.tsx）、`deployment-pipeline`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/deployment-pipeline.tsx）、`live-log-stream`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/live-log-stream.tsx）、`environment-switcher`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/environment-switcher.tsx）、`data-refresh-state`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/data/data-refresh-state.tsx）、`api-request-inspector`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/api-request-inspector.tsx）、`product-variant-selector`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/commerce/product-variant-selector.tsx）、`cart-item-transition`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/commerce/cart-item-transition.tsx）
+
 ## Spell UI
 
 - 仓库：https://github.com/xxtomm/spell-ui

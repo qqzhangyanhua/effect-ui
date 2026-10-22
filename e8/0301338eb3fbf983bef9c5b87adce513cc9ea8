@@ -1,0 +1,72 @@
+apps/docs/public/r/registry.json
+  s_bfc2b7b084b1b2::t_8e4910802781f5 11855,12425-12442
+packages/registry/src/catalog-batch33.ts
+  s_bfc2b7b084b1b2::t_ea3136e056e101 1-2,13-15,19,256,259,264-267
+packages/registry/src/effects/folder-float.tsx
+  s_bfc2b7b084b1b2::t_48e20c31a84199 243
+  s_bfc2b7b084b1b2::t_2047d71c8cbe0f 180,195,212,242,275,293,299,382-384,461
+  s_bfc2b7b084b1b2::t_40cc9b63042b4f 1-179,181-194,196-211,213-241,244-274,276-292,294-298,300-381,385-460,462-525
+registry.json
+  s_bfc2b7b084b1b2::t_8e4910802781f5 11855,12425-12442
+apps/docs/lib/usage.ts
+  s_bfc2b7b084b1b2::t_e600f226da34ea 40,43-48
+AGENTS.md
+  s_4a873cac5ca039::t_d19d019a29b9cb 3-4,6,13,24,32,47
+docs/dangerous-areas.md
+  s_dc70e12ded2d64::t_64cab5a88479f5 17
+apps/docs/public/r/folder-float.json
+  s_bfc2b7b084b1b2::t_416909fbec4f3c 18
+  s_bfc2b7b084b1b2::t_8e4910802781f5 1-17,19-21
+.gitignore
+  s_dc70e12ded2d64::t_a3d4394ca8b00b 4-13
+packages/registry/src/effects/folder-float.test.tsx
+  s_bfc2b7b084b1b2::t_096932ffd921e5 1-83
+packages/registry/src/catalog.ts
+  s_bfc2b7b084b1b2::t_532bc06fabeb5c 32
+  s_bfc2b7b084b1b2::t_0445e9cd60a5da 2297
+apps/docs/components/theme-provider.tsx
+  s_bfc2b7b084b1b2::t_877bb9bbba5675 6-18
+packages/registry/src/examples/effect-demos-35.tsx
+  s_bfc2b7b084b1b2::t_9e4da184c6e8e6 1-2,46-49
+README.md
+  s_bfc2b7b084b1b2::t_798ef353162556 560-561,563-567
+packages/registry/src/examples/index.ts
+  s_bfc2b7b084b1b2::t_4f7a263721cde4 36
+apps/docs/components/theme-provider.test.tsx
+  s_bfc2b7b084b1b2::t_d457779b27b237 1-54
+CONTEXT.md
+  s_4a873cac5ca039::t_d19d019a29b9cb 49-51
+  s_4a873cac5ca039::t_fd59c5a637c410 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "e80301338eb3fbf983bef9c5b87adce513cc9ea8",
+  "prompts": {},
+  "sessions": {
+    "s_4a873cac5ca039": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "f6da4383-778f-4582-a547-f4654e25aee8",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_bfc2b7b084b1b2": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "28929c59-ba4e-4ec3-9f3b-b69199018d52",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_dc70e12ded2d64": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a15df1-94b5-7891-9e61-9b5268244947",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

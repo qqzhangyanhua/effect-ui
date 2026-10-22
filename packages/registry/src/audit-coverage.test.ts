@@ -90,6 +90,12 @@ test("已经有测试仍写着缺测试时报告过期豁免", () => {
   ).toEqual(["widget"])
 })
 
+test("缺失项不是三种之一时报告结构不合法，并且不能压掉缺测试", () => {
+  const exemptions = [{ name: "widget", gaps: ["随便"], reason: "缺失项不在三种之内" }]
+  expect(ofType([widget()], { exemptions }, "invalid-exemption")).toEqual(["widget"])
+  expect(ofType([widget()], { exemptions }, "missing-test")).toEqual(["widget"])
+})
+
 test("未知名字、Batch 34 以后的组件、不合法条目分别报错，并且不能压掉缺测试", () => {
   const closed = widget({ name: "hue-wave-loader", file: "effects/hue-wave-loader.tsx" })
   const exemptions = [

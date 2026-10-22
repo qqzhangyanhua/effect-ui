@@ -573,6 +573,28 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 火漆、货车与案头
+
+登记在 `catalog-batch57.ts`。车道、铜版与胶片已占用 `catalog-batch56.ts`。`wax-seal-button`、`dispatch-truck-button`、`googly-gaze-button`、`weather-vane-toggle`、`ink-bleed-text`、`charm-text`、`book-spine-shelf`、`cook-loading`、`usage-quota-meter`、`inset-settings-list`、`compass-rail`、`availability-badge`、`smart-widget-stack`、`goal-progress-card`、`mini-desktop-os` 移植自 Framekit UI（MIT，Copyright (c) 2026 Framekit UI contributors）。`@/lib/cn` 改成 `cn`。`@/lib/use-reduced-motion` 改成共享的 `usePrefersReducedMotion`。`@/lib/use-resolved-theme` 改成主题变量。`@/lib/roving`、`toggle`、`widget-kit`、`portfolio-art` 需要的部分写在组件里。货车保留源码的阶段顺序：拉路、装货、等待下单、开走；失败不自动复位。厨师等待态没有嵌入约 322KB 的精灵图，改用主题色 SVG，暂停只冻住手臂和蒸汽，不改进度。书架是选书，和 `drill-down-spines` 不同。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| wax-seal-button | Framekit UI，MIT |
+| dispatch-truck-button | Framekit UI，MIT |
+| googly-gaze-button | Framekit UI，MIT |
+| weather-vane-toggle | Framekit UI，MIT |
+| ink-bleed-text | Framekit UI，MIT |
+| charm-text | Framekit UI，MIT |
+| book-spine-shelf | Framekit UI，MIT |
+| cook-loading | Framekit UI，MIT |
+| usage-quota-meter | Framekit UI，MIT |
+| inset-settings-list | Framekit UI，MIT |
+| compass-rail | Framekit UI，MIT |
+| availability-badge | Framekit UI，MIT |
+| smart-widget-stack | Framekit UI，MIT |
+| goal-progress-card | Framekit UI，MIT |
+| mini-desktop-os | Framekit UI，MIT |
+
 ### 车道、铜版与胶片
 
 登记在 `catalog-batch56.ts`。键入爆炸已占用 `catalog-batch55.ts`。`queue-pulse-lanes`、`event-propagation-matrix`、`copperplate-hatch`、`core-strata`、`kinetic-emphasis`、`liquid-fill-headline`、`velocity-skew-feed`、`filmstrip-scrub`、`deployment-pipeline`、`live-log-stream`、`environment-switcher`、`data-refresh-state`、`api-request-inspector`、`product-variant-selector`、`cart-item-transition` 移植自 Motiq（MIT，Copyright (c) 2026 Mahammad Rustamov）。`@/lib/motiq` 没有带进来：减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。`@/lib/utils` 改成 `cn`。环境菜单用 `react-dom` 的 `createPortal`。事件矩阵是格子上的传播波，和字符点阵 `glyph-matrix` 不同。铜版是三向交叉线被光波点亮，和 `sketch-hatch-image`、`hatch-divider` 不同。速度剪切跟着滚动速度回弹，和恒定斜切的 `skewed-infinite-scroll` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

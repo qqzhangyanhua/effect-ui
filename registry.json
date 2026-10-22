@@ -17136,6 +17136,319 @@
           "target": "components/ui/cart-item-transition.tsx"
         }
       ]
+    },
+    {
+      "name": "wax-seal-button",
+      "type": "registry:ui",
+      "title": "Wax Seal Button",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/wax-seal-button.tsx 火漆按钮：点击后倒蜡、盖印，成功后显示火漆印。失败停在可重试状态。duration 为 0 时盖印后保持封上。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wax-seal-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wax-seal-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dispatch-truck-button",
+      "type": "registry:ui",
+      "title": "Dispatch Truck Button",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/dispatch-truck-button.tsx 发货按钮：路面拉长、货车装上包裹再开走。失败不自动复位。duration 小于等于 0 时成功态保持。阶段顺序与源码一致。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dispatch-truck-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dispatch-truck-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "googly-gaze-button",
+      "type": "registry:ui",
+      "title": "Googly Gaze Button",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/googly-gaze-button.tsx 两只活动眼睛跟着指针或触点看，点一下会眯眼。触屏按下也会更新视线，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/googly-gaze-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/googly-gaze-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "weather-vane-toggle",
+      "type": "registry:ui",
+      "title": "Weather Vane Toggle",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/weather-vane-toggle.tsx 风向标开关。打开时箭头转到设定角度，底纹变密。点击切换，键盘走按钮的 Space 和 Enter。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/weather-vane-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/weather-vane-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ink-bleed-text",
+      "type": "registry:ui",
+      "title": "Ink Bleed Text",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/ink-bleed-text.tsx 墨水按词洇开，高亮词更重。进入视口或挂载时播放，重播从当前进度清零。离开视口时洇开停住，回来再继续。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ink-bleed-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ink-bleed-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "charm-text",
+      "type": "registry:ui",
+      "title": "Charm Text",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/charm-text.tsx 句子里的词可以点亮，并带上一个小图形。指针、焦点和按下都会点亮，点击可以钉住。ink 变体用 role=button 的 span，避免把按钮嵌进段落。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/charm-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/charm-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "book-spine-shelf",
+      "type": "registry:ui",
+      "title": "Book Spine Shelf",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/book-spine-shelf.tsx 一排书脊。点选或用方向键换书，封面卡片跟着打开。触屏不靠悬停倾斜。这是书架选书，不是 ns-ui 的 drill-down-spines。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/book-spine-shelf.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/book-spine-shelf.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cook-loading",
+      "type": "registry:ui",
+      "title": "Cook Loading",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/cook-loading.tsx 厨师等待态。进度由外部传入，暂停只冻住手臂和蒸汽，不改进度。源码里的精灵图没有带进来，这里用主题色 SVG 重画同一套状态。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cook-loading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cook-loading.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usage-quota-meter",
+      "type": "registry:ui",
+      "title": "Usage Quota Meter",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/usage-quota-meter.tsx 用量条。超过包含额度时出现警告。点击一行展开分段，不靠悬停。数字用 en-US，避免服务端和浏览器格式不一致。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/usage-quota-meter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/usage-quota-meter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inset-settings-list",
+      "type": "registry:ui",
+      "title": "Inset Settings List",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/inset-settings-list.tsx 分组设置列表。开关和选项都是按钮。进入选项页后，返回按钮会重新聚焦到刚才那一行。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inset-settings-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inset-settings-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "compass-rail",
+      "type": "registry:ui",
+      "title": "Compass Rail",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/compass-rail.tsx 侧栏罗盘。点击一项，指针沿较短的角度转到对应方位。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/compass-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/compass-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "availability-badge",
+      "type": "registry:ui",
+      "title": "Availability Badge",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/availability-badge.tsx 档期徽章。空闲时两圈雷达，档期紧张时呼吸，约满则静止。可选时区显示当地时间。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/availability-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/availability-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smart-widget-stack",
+      "type": "registry:ui",
+      "title": "Smart Widget Stack",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/smart-widget-stack.tsx 一叠小组件。方向键、圆点和滚轮都能换页。拖动只在动画进行时启用。autoMs 为 0 时不自动翻。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/smart-widget-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/smart-widget-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "goal-progress-card",
+      "type": "registry:ui",
+      "title": "Goal Progress Card",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/goal-progress-card.tsx 储蓄目标卡。每次点击按步长增加，到达目标后按钮停在完成。光泽只在未完成且动画进行时走动。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/goal-progress-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/goal-progress-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mini-desktop-os",
+      "type": "registry:ui",
+      "title": "Mini Desktop OS",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/mini-desktop-os.tsx 迷你桌面。窗口可以打开、关闭、最小化和最大化，标题栏可拖，方向键移动，Escape 关闭。壁纸是种子渐变，不请求图片。窄容器里窗口铺满。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mini-desktop-os.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mini-desktop-os.tsx"
+        }
+      ]
     }
   ]
 }

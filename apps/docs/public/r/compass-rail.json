@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "compass-rail",
+  "type": "registry:ui",
+  "title": "Compass Rail",
+  "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/compass-rail.tsx 侧栏罗盘。点击一项，指针沿较短的角度转到对应方位。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/compass-rail.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/compass-rail.tsx",
+      "content": "\"use client\"\n\n// Ported from Framekit UI (MIT, (c) 2026 Framekit UI contributors) — https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/compass-rail.tsx\n\nimport { useRef, useState } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CompassRailItem {\n  id: string\n  label: string\n}\n\nexport interface CompassRailProps {\n  items: CompassRailItem[]\n  className?: string\n  color?: string\n}\n\nexport function CompassRail({ items, className, color = \"var(--primary)\" }: CompassRailProps) {\n  const rootRef = useRef<HTMLElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(rootRef)\n  const [active, setActive] = useState(items[0]?.id)\n  const [heading, setHeading] = useState(0)\n  const index = Math.max(0, items.findIndex((item) => item.id === active))\n\n  const select = (id: string, nextIndex: number) => {\n    const target = nextIndex * 45\n    const delta = ((target - heading + 540) % 360) - 180\n    setHeading((current) => current + delta)\n    setActive(id)\n  }\n\n  return (\n    <nav ref={rootRef} className={cn(\"relative w-44\", className)} aria-label=\"Compass rail\" data-motion={live && !reduced ? \"on\" : \"off\"}>\n      <div className=\"absolute top-2 bottom-2 left-[15px] w-px bg-border\" />\n      <ul className=\"relative space-y-1\">\n        {items.map((item, itemIndex) => {\n          const selected = item.id === active\n          return (\n            <li key={item.id}>\n              <button\n                type=\"button\"\n                onClick={() => select(item.id, itemIndex)}\n                className={cn(\"flex min-h-11 w-full items-center gap-3 rounded-lg px-2 text-left text-sm\", selected ? \"text-foreground\" : \"text-muted-foreground\")}\n                aria-current={selected ? \"page\" : undefined}\n              >\n                <span className={cn(\"relative z-10 flex size-4 items-center justify-center rounded-full border\", selected ? \"border-primary bg-primary\" : \"border-border bg-card\")}>\n                  {selected ? (\n                    <span\n                      className=\"border-x-[3px] border-b-[6px] border-x-transparent motion-reduce:transition-none\"\n                      style={{\n                        borderBottomColor: \"var(--primary-foreground)\",\n                        background: color,\n                        transform: `rotate(${heading}deg)`,\n                        transition: live && !reduced ? \"transform 420ms cubic-bezier(.34,1.4,.64,1)\" : undefined,\n                      }}\n                    />\n                  ) : null}\n                </span>\n                {item.label}\n              </button>\n            </li>\n          )\n        })}\n      </ul>\n      <span className=\"sr-only\">Marker at step {index + 1}</span>\n    </nav>\n  )\n}\n"
+    }
+  ]
+}

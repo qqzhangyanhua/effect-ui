@@ -57,6 +57,7 @@ import * as effectDemos55 from "./effect-demos-55"
 import * as effectDemos56 from "./effect-demos-56"
 import * as effectDemos57 from "./effect-demos-57"
 import * as effectDemos58 from "./effect-demos-58"
+import * as effectDemos59 from "./effect-demos-59"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -927,6 +928,21 @@ const demoMap: Record<string, ComponentType> = {
   "api-request-inspector": effectDemos58.ApiRequestInspectorDemo,
   "product-variant-selector": effectDemos58.ProductVariantSelectorDemo,
   "cart-item-transition": effectDemos58.CartItemTransitionDemo,
+  "wax-seal-button": effectDemos59.WaxSealButtonDemo,
+  "dispatch-truck-button": effectDemos59.DispatchTruckButtonDemo,
+  "googly-gaze-button": effectDemos59.GooglyGazeButtonDemo,
+  "weather-vane-toggle": effectDemos59.WeatherVaneToggleDemo,
+  "ink-bleed-text": effectDemos59.InkBleedTextDemo,
+  "charm-text": effectDemos59.CharmTextDemo,
+  "book-spine-shelf": effectDemos59.BookSpineShelfDemo,
+  "cook-loading": effectDemos59.CookLoadingDemo,
+  "usage-quota-meter": effectDemos59.UsageQuotaMeterDemo,
+  "inset-settings-list": effectDemos59.InsetSettingsListDemo,
+  "compass-rail": effectDemos59.CompassRailDemo,
+  "availability-badge": effectDemos59.AvailabilityBadgeDemo,
+  "smart-widget-stack": effectDemos59.SmartWidgetStackDemo,
+  "goal-progress-card": effectDemos59.GoalProgressCardDemo,
+  "mini-desktop-os": effectDemos59.MiniDesktopOSDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

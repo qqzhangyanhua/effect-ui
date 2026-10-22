@@ -1,0 +1,118 @@
+registry.json
+  s_1f7fae292b4abd::t_445540cbd754e4 1054,1074,1134
+  s_1f7fae292b4abd::t_5270f6e36bc231 1053,1073,1133,2315,2331,2352,3788,3977,8255,11122,11853
+apps/docs/public/r/scroll-progress.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 11
+  s_1f7fae292b4abd::t_6d242dd8e55272 19
+packages/registry/src/effects/pixel-transition.tsx
+  s_1f7fae292b4abd::t_71f0bd60ae6aff 30
+  s_1f7fae292b4abd::t_c35d7c5e6aa472 37-40,43-44
+  s_1f7fae292b4abd::t_2acb433715e492 18
+  s_1f7fae292b4abd::t_7399950426afe3 5
+packages/registry/src/effects/hero-video-dialog.tsx
+  s_1f7fae292b4abd::t_9ad1ced2639284 71-74
+  s_1f7fae292b4abd::t_067a63af6c168a 100,102
+  s_1f7fae292b4abd::t_a20b749825c9a6 12
+  s_1f7fae292b4abd::t_6465ba81adc74c 77-82
+  s_1f7fae292b4abd::t_10c4c7644990b9 40
+  s_1f7fae292b4abd::t_0e1beaadd0fa3c 61
+packages/registry/src/effects/progressive-blur.tsx
+  s_1f7fae292b4abd::t_f13d379d17aa3a 41
+apps/docs/public/r/3d-carousel.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 9
+  s_1f7fae292b4abd::t_6d242dd8e55272 17
+packages/registry/src/effects/three-d-carousel.tsx
+  s_1f7fae292b4abd::t_64e3ad61763b6b 23
+  s_1f7fae292b4abd::t_16165ac7f4a11d 39
+  s_1f7fae292b4abd::t_c80788e255ab72 35-37,42
+  s_1f7fae292b4abd::t_790040052b5ded 5
+packages/registry/src/effects/image-comparison.tsx
+  s_1f7fae292b4abd::t_b86ab4b1509ba8 57-58
+  s_1f7fae292b4abd::t_aedcfaee2ed18e 4,6,10
+  s_1f7fae292b4abd::t_e4e8a11327d3ec 40,43-44
+packages/registry/src/effects/neon-button.tsx
+  s_1f7fae292b4abd::t_2f5a487b991210 30
+apps/docs/public/r/registry.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 1053,1073,1133,2315,2331,2352,3788,3977,8255,11122,11853
+  s_1f7fae292b4abd::t_445540cbd754e4 1054,1074,1134
+apps/docs/public/r/slide-in.json
+  s_1f7fae292b4abd::t_445540cbd754e4 12,19
+  s_1f7fae292b4abd::t_5270f6e36bc231 11
+packages/registry/src/effects/scroll-progress.tsx
+  s_1f7fae292b4abd::t_590491bdb856c5 28,30
+  s_1f7fae292b4abd::t_54f597f0f16d4d 18
+  s_1f7fae292b4abd::t_c37dc2724b015a 6
+packages/registry/src/effects/fade-in.tsx
+  s_1f7fae292b4abd::t_cbb40a56ad4e6a 5-6
+  s_1f7fae292b4abd::t_95a1fb54431213 23
+  s_1f7fae292b4abd::t_3e1def2093e80d 17
+  s_1f7fae292b4abd::t_84297eb115c979 20
+apps/docs/public/r/pixel-transition.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 9
+  s_1f7fae292b4abd::t_6d242dd8e55272 17
+packages/registry/src/effects/announcement.tsx
+  s_1f7fae292b4abd::t_71571a8a537a96 29
+  s_1f7fae292b4abd::t_9b5aba32735b57 6
+  s_1f7fae292b4abd::t_4061fe6952564b 19,23-24
+packages/registry/src/effects/reduced-motion-batch1.test.tsx
+  s_1f7fae292b4abd::t_75df85050919b5 1-64,66-96,98,101-114
+  s_1f7fae292b4abd::t_91c008ebb7bc4f 99-100
+  s_1f7fae292b4abd::t_72a1a1e88773a5 97
+  s_1f7fae292b4abd::t_2bb0660efcc207 65
+apps/docs/public/r/neon-button.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 17
+apps/docs/public/r/blur-fade.json
+  s_1f7fae292b4abd::t_445540cbd754e4 12,19
+  s_1f7fae292b4abd::t_5270f6e36bc231 11
+packages/registry/src/effects/blur-fade.tsx
+  s_1f7fae292b4abd::t_62888ffc5d5147 23
+  s_1f7fae292b4abd::t_30c314807f9367 20
+  s_1f7fae292b4abd::t_48173a80299883 17
+  s_1f7fae292b4abd::t_0e01a96d22f592 5-6
+packages/registry/src/effects/tab-navigation.tsx
+  s_1f7fae292b4abd::t_9423a02c5a4797 41
+  s_1f7fae292b4abd::t_dce05fb5fd23c1 14
+  s_1f7fae292b4abd::t_4b42c72515f8f2 55
+  s_1f7fae292b4abd::t_b73b6873f50d90 49-50
+  s_1f7fae292b4abd::t_4629679c75f19e 56
+apps/docs/public/r/image-comparison.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 11
+  s_1f7fae292b4abd::t_6d242dd8e55272 19
+apps/docs/public/r/progressive-blur.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 7,16
+packages/registry/src/effects/slide-in.tsx
+  s_1f7fae292b4abd::t_3ab62ec673d5dc 25
+  s_1f7fae292b4abd::t_0e01afed06d426 32
+  s_1f7fae292b4abd::t_68cf18923dff62 28
+  s_1f7fae292b4abd::t_50b6f28f7d9ea0 5-6
+apps/docs/public/r/tab-navigation.json
+  s_1f7fae292b4abd::t_6d242dd8e55272 19
+  s_1f7fae292b4abd::t_5270f6e36bc231 11
+apps/docs/public/r/fade-in.json
+  s_1f7fae292b4abd::t_445540cbd754e4 12,19
+  s_1f7fae292b4abd::t_5270f6e36bc231 11
+apps/docs/public/r/hero-video-dialog.json
+  s_1f7fae292b4abd::t_5270f6e36bc231 13
+  s_1f7fae292b4abd::t_6d242dd8e55272 21
+apps/docs/public/r/announcement.json
+  s_1f7fae292b4abd::t_6d242dd8e55272 18
+  s_1f7fae292b4abd::t_5270f6e36bc231 10
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_11982c582e60d9 6,23,177,237,354
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "2e147391c3ce0a6f3d046c17847e6afc2fb4f07f",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

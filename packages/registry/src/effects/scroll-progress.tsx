@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, useScroll } from "motion/react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface ScrollProgressProps {
@@ -14,6 +15,7 @@ export interface ScrollProgressProps {
 }
 
 function ScrollProgress({ className, containerRef, size, intensity, color }: ScrollProgressProps) {
+  const reduced = usePrefersReducedMotion()
   const { scrollYProgress } = useScroll(
     containerRef ? { container: containerRef } : undefined,
   )
@@ -23,7 +25,9 @@ function ScrollProgress({ className, containerRef, size, intensity, color }: Scr
 
   return (
     <motion.div
+      data-reduced={reduced ? "true" : undefined}
       className={cn(
+        "motion-reduce:transition-none",
         keepSize && "h-1",
         keepGradient && "bg-linear-to-r from-violet-500 via-fuchsia-400 to-amber-300",
         className,

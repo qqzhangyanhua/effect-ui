@@ -3,6 +3,7 @@
 // Ported from Kibo UI (MIT, (c) shadcnblocks) — https://github.com/shadcnblocks/kibo/blob/main/packages/announcement/index.tsx
 
 import { Badge } from "@/components/ui/badge"
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 import type { HTMLAttributes, ReactNode } from "react"
@@ -15,14 +16,17 @@ export interface AnnouncementProps {
 }
 
 export function Announcement({ variant = "outline", themed = false, className, children }: AnnouncementProps) {
+  const reduced = usePrefersReducedMotion()
   return (
     <Badge
       className={cn(
-        "group max-w-full gap-2 rounded-full bg-background px-3 py-0.5 font-medium shadow-sm transition-all",
+        "group max-w-full gap-2 rounded-full bg-background px-3 py-0.5 font-medium shadow-sm transition-all motion-reduce:transition-none",
+        reduced && "transition-none",
         "hover:shadow-md",
         themed && "announcement-themed border-foreground/5",
         className,
       )}
+      data-reduced={reduced ? "true" : undefined}
       data-slot="announcement"
       variant={variant}
     >

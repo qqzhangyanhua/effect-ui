@@ -8,6 +8,7 @@
     "motion"
   ],
   "registryDependencies": [
+    "use-prefers-reduced-motion",
     "utils"
   ],
   "files": [
@@ -15,7 +16,7 @@
       "path": "registry/effects/scroll-progress.tsx",
       "type": "registry:ui",
       "target": "components/ui/scroll-progress.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollProgressProps {\n  className?: string\n  containerRef?: React.RefObject<HTMLElement | null>\n  size?: number\n  intensity?: number\n  color?: string\n}\n\nfunction ScrollProgress({ className, containerRef, size, intensity, color }: ScrollProgressProps) {\n  const { scrollYProgress } = useScroll(\n    containerRef ? { container: containerRef } : undefined,\n  )\n  const keepSize = size === undefined || size === 4\n  const keepIntensity = intensity === undefined || intensity === 1\n  const keepGradient = color === undefined || color.toLowerCase() === \"#8b5cf6\"\n\n  return (\n    <motion.div\n      className={cn(\n        keepSize && \"h-1\",\n        keepGradient && \"bg-linear-to-r from-violet-500 via-fuchsia-400 to-amber-300\",\n        className,\n      )}\n      style={{\n        scaleX: scrollYProgress,\n        height: keepSize ? undefined : size,\n        opacity: keepIntensity ? undefined : intensity,\n        backgroundColor: keepGradient ? undefined : color,\n      }}\n    />\n  )\n}\n\nexport { ScrollProgress }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useScroll } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface ScrollProgressProps {\n  className?: string\n  containerRef?: React.RefObject<HTMLElement | null>\n  size?: number\n  intensity?: number\n  color?: string\n}\n\nfunction ScrollProgress({ className, containerRef, size, intensity, color }: ScrollProgressProps) {\n  const reduced = usePrefersReducedMotion()\n  const { scrollYProgress } = useScroll(\n    containerRef ? { container: containerRef } : undefined,\n  )\n  const keepSize = size === undefined || size === 4\n  const keepIntensity = intensity === undefined || intensity === 1\n  const keepGradient = color === undefined || color.toLowerCase() === \"#8b5cf6\"\n\n  return (\n    <motion.div\n      data-reduced={reduced ? \"true\" : undefined}\n      className={cn(\n        \"motion-reduce:transition-none\",\n        keepSize && \"h-1\",\n        keepGradient && \"bg-linear-to-r from-violet-500 via-fuchsia-400 to-amber-300\",\n        className,\n      )}\n      style={{\n        scaleX: scrollYProgress,\n        height: keepSize ? undefined : size,\n        opacity: keepIntensity ? undefined : intensity,\n        backgroundColor: keepGradient ? undefined : color,\n      }}\n    />\n  )\n}\n\nexport { ScrollProgress }\n"
     }
   ]
 }

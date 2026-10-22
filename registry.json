@@ -1050,7 +1050,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "reveal"
+        "reveal",
+        "use-prefers-reduced-motion"
       ],
       "files": [
         {
@@ -1069,7 +1070,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "reveal"
+        "reveal",
+        "use-prefers-reduced-motion"
       ],
       "files": [
         {
@@ -1128,7 +1130,8 @@
         "motion"
       ],
       "registryDependencies": [
-        "reveal"
+        "reveal",
+        "use-prefers-reduced-motion"
       ],
       "files": [
         {
@@ -2309,6 +2312,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -2324,9 +2328,7 @@
       "type": "registry:ui",
       "title": "Progressive Blur",
       "description": "内容边缘的渐进模糊遮罩。",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "utils"
       ],
@@ -2347,6 +2349,7 @@
         "motion"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3782,6 +3785,7 @@
       "description": "透视圆环 3D 轮播。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -3970,6 +3974,7 @@
       "description": "灵感来自 pixel transition，原创实现：像素格淡出切换画面。",
       "dependencies": [],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -8247,6 +8252,7 @@
       ],
       "registryDependencies": [
         "dialog",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -11113,6 +11119,7 @@
       "dependencies": [],
       "registryDependencies": [
         "badge",
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [
@@ -11843,6 +11850,7 @@
         "@radix-ui/react-navigation-menu"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [

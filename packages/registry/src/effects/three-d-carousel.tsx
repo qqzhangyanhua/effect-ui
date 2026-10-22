@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 export interface ThreeDCarouselItem {
@@ -19,6 +20,7 @@ export interface ThreeDCarouselProps {
 }
 
 function ThreeDCarousel({ items, className, duration, size }: ThreeDCarouselProps) {
+  const reduced = usePrefersReducedMotion()
   const timed = duration === undefined || duration === 500
   const depth = size === undefined || size === 180 ? 180 : size
   const [active, setActive] = React.useState(0)
@@ -30,12 +32,14 @@ function ThreeDCarousel({ items, className, duration, size }: ThreeDCarouselProp
       <div className="relative mx-auto h-56 w-full max-w-lg [perspective:1100px]">
         <div
           className={cn(
-            "absolute inset-0 [transform-style:preserve-3d] transition-transform",
-            timed && "duration-500",
+            "absolute inset-0 [transform-style:preserve-3d] motion-reduce:transition-none",
+            reduced ? "transition-none" : "transition-transform",
+            !reduced && timed && "duration-500",
           )}
+          data-reduced={reduced ? "true" : undefined}
           style={{
             transform: `translateZ(-${depth}px) rotateY(${-active * angle}deg)`,
-            transitionDuration: timed ? undefined : `${duration}ms`,
+            transitionDuration: reduced ? "0ms" : timed ? undefined : `${duration}ms`,
           }}
         >
           {items.map((item, index) => (

@@ -1,0 +1,59 @@
+packages/registry/src/examples/effect-demos-41.tsx
+  s_de0989819be394::t_a47c2fbd3a983d 1-53
+README.md
+  s_de0989819be394::t_b0f96019076739 603-612
+packages/registry/src/effects/folder-stack.test.tsx
+  s_de0989819be394::t_fb9b31e3d6df6f 1-176
+packages/registry/src/effects/physics-dropzone.test.tsx
+  s_de0989819be394::t_dad7fdde674787 1-147
+packages/registry/src/effects/folder-stack.tsx
+  s_de0989819be394::t_f7ad2fcaa01098 126
+  s_de0989819be394::t_db86a25bd47a6e 1-125,127-276
+packages/registry/src/effects/magnet-chips.test.tsx
+  s_de0989819be394::t_89aee37d1c6df6 1-132
+packages/registry/src/catalog.ts
+  s_de0989819be394::t_79821f262e8ff0 36
+  s_de0989819be394::t_6e36418f62ee03 2305
+packages/registry/src/audit-coverage.ts
+  s_de0989819be394::t_0d3ebe7b878eba 4
+  s_de0989819be394::t_02af42cb79201b 84-86
+packages/registry/src/examples/index.ts
+  s_de0989819be394::t_2e036247496db8 40
+  s_de0989819be394::t_af03f363b4e824 689-691
+packages/registry/src/catalog-batch39.ts
+  s_de0989819be394::t_ab91f211ca493e 1-100
+packages/registry/src/effects/magnet-chips.tsx
+  s_de0989819be394::t_b311a8c2fc2d84 1-109,111-236
+  s_de0989819be394::t_96e2b39ded6f9f 110
+packages/registry/src/effects/physics-dropzone.tsx
+  s_de0989819be394::t_949cce89152b94 1-122,125-337
+  s_de0989819be394::t_df5c83c0f6e814 123-124
+CREDITS.md
+  s_de0989819be394::t_68cd239af74a93 24
+apps/docs/public/r/folder-stack.json
+  s_de0989819be394::t_2d3b970e78b8a3 1-20
+apps/docs/public/r/magnet-chips.json
+  s_de0989819be394::t_71af09152ceb90 1-20
+apps/docs/public/r/physics-dropzone.json
+  s_de0989819be394::t_36f4cb4ba94f75 1-22
+apps/docs/public/r/registry.json
+  s_de0989819be394::t_7b5b91362e0368 12863-12918
+registry.json
+  s_de0989819be394::t_15c8eea6bb7af7 12863-12918
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "6ca48d805f2162ddd5c4c62522a5f9361d15e9bd",
+  "prompts": {},
+  "sessions": {
+    "s_de0989819be394": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "aa2385e2-c566-4920-ac03-135c7c84421b",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

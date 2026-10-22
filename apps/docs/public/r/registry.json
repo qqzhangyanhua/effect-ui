@@ -12920,6 +12920,170 @@
           "target": "components/ui/ball-pit.tsx"
         }
       ]
+    },
+    {
+      "name": "lanyard-badge",
+      "type": "registry:ui",
+      "title": "Lanyard Badge",
+      "description": "原创实现。工牌挂在 Verlet 绳上，拖动后会摆动并弹回竖直。方向键也能拨一下。减弱动效时保持竖直，不再积分。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lanyard-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lanyard-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "jelly-button",
+      "type": "registry:ui",
+      "title": "Jelly Button",
+      "description": "原创实现。按下时按钮被弹簧压扁，松手后弹回，点击仍然触发。回车和空格同样会按下。减弱动效时不压扁。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/jelly-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/jelly-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spring-drawer",
+      "type": "registry:ui",
+      "title": "Spring Drawer",
+      "description": "原创实现。拉手拖动抽屉，松手后按出手速度惯性滑开或关上。甩得够快会直接弹到另一侧。方向键和回车也能开关。减弱动效时直接开合。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spring-drawer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spring-drawer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnet-chips",
+      "type": "registry:ui",
+      "title": "Magnet Chips",
+      "description": "原创实现。筛选芯片拖进对齐区后，沿动画帧吸到同一行。方向键或回车也能放进去。减弱动效时立刻对齐，不申请动画帧。只用组件自己的指针和动画帧，不使用 matter-js，没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magnet-chips.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magnet-chips.tsx"
+        }
+      ]
+    },
+    {
+      "name": "folder-stack",
+      "type": "registry:ui",
+      "title": "Folder Stack",
+      "description": "原创实现。叠放的纸质文件夹。细指针悬停时扇形展开，离开后收回。触屏或粗指针悬停不展开，点击才切换。文件夹可以拖出去。减弱动效时不播放扇形动画，拖出后直接拿走，不申请动画帧。不使用 matter-js，没有新增依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/folder-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/folder-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "physics-dropzone",
+      "type": "registry:ui",
+      "title": "Physics Dropzone",
+      "description": "原创实现。文件图标拖进落点后，由已安装的 matter-js 落到一堆，并显示进度。方向键或回车也能放进去。减弱动效时不创建物理引擎、不申请动画帧，文件直接出现在堆里并且进度已满。没有新增依赖。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/physics-dropzone.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/physics-dropzone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "upload-orbit",
+      "type": "registry:ui",
+      "title": "Upload Orbit",
+      "description": "原创实现。上传时文件沿圆环公转，完成后收成一行。回车、空格或指针可以开始并完成。减弱动效时文件直接待在完成的一行，不再绕圈。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/upload-orbit.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/upload-orbit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "empty-state-scene",
+      "type": "registry:ui",
+      "title": "Empty State Scene",
+      "description": "原创实现。空状态插画里的零件自己上下漂，指针或方向键可以把它们拨开，松手后慢慢漂回去。减弱动效时插画静止，拨动只改位置。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/empty-state-scene.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/empty-state-scene.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reaction-tray",
+      "type": "registry:ui",
+      "title": "Reaction Tray",
+      "description": "原创实现。选一个表情后它先弹起，再落回自己的计数。回车、空格或指针都可以选。减弱动效时不弹出，计数立刻加一。没有新增依赖，也不使用 matter-js。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reaction-tray.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reaction-tray.tsx"
+        }
+      ]
     }
   ]
 }

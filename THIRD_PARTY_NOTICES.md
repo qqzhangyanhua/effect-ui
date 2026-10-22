@@ -187,7 +187,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/SyntaxUI/syntaxui
 - 许可：MIT
 - 版权：Copyright (c) 2024 SyntaxUI
-- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`，以及 `hover-attention-button`、`eco-mode-button`、`rotating-complete-button`、`morphing-shapes-loader`、`neon-glow-loader`、`ripple-wave-loader`、`hover-spring-features`、`stitches-button`。原 `framer-motion` 导入已改为 `motion/react`。`stitches-button` 的原作者是 Saud（https://twitter.com/via_saud），见 SyntaxUI `credits.md`。未移植 Hero Patterns 背景。
+- 衍生组件：`skewed-infinite-scroll`、`constellation-loader`、`particle-swarm-loader`、`spinning-cube-loader`、`whirlpool-loader`、`emoji-confetti`、`star-wars-button`、`text-drop`、`labeled-toggle`，以及 `hover-attention-button`、`eco-mode-button`、`rotating-complete-button`、`morphing-shapes-loader`、`neon-glow-loader`、`ripple-wave-loader`、`hover-spring-features`、`stitches-button`，以及 `heartbeat-button`、`neubrutalism-button`、`3d-button`、`image-fade`、`expanding-icon-tabs`、`slide-toggle`。原 `framer-motion` 导入已改为 `motion/react`。`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`stitches-button` 的原作者是 Saud（https://twitter.com/via_saud），见 SyntaxUI `credits.md`。未移植 Hero Patterns 背景。
 
 ## ReUI
 
@@ -201,8 +201,15 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/tremorlabs/tremor
 - 许可：Apache-2.0
 - 版权：Copyright 2025 Tremor
-- 修改说明：移植时把 `cx` 换成 `cn`，图表色类换成 CSS 颜色，Tremor Tooltip 换成本地 tooltip。`tab-navigation` 还包含 Tremor LICENSE 中注明的 shadcn、radix-ui/themes 与 Medusa MIT 片段。
-- 衍生组件：`category-bar`、`bar-list`、`tab-navigation`。
+- 修改说明：移植时把 `cx` 换成 `cn`，图表色类换成 CSS 颜色，Tremor Tooltip 换成本地 tooltip。`tab-navigation` 还包含 Tremor LICENSE 中注明的 shadcn、radix-ui/themes 与 Medusa MIT 片段。`progress-circle` 与 `callout` 不在该 MIT 清单中，按 Apache-2.0 保留版权并注明修改：`tailwind-variants` 的 `tv()` 换成 `cva`，`cx` 换成 `cn`。
+- 衍生组件：`category-bar`、`bar-list`、`tab-navigation`，以及 `progress-circle`、`callout`。
+
+## Uiverse galaxy
+
+- 仓库：https://github.com/uiverse-io/galaxy
+- 许可：MIT
+- 版权：Copyright (c) 2023 Uiverse.io
+- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。
 
 ## shadcn-ui-expansions
 

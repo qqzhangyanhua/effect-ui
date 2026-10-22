@@ -29,6 +29,7 @@ import { batch29Components } from "./catalog-batch29"
 import { batch30Components } from "./catalog-batch30"
 import { batch31Components } from "./catalog-batch31"
 import { batch32Components } from "./catalog-batch32"
+import { batch33Components } from "./catalog-batch33"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -100,6 +101,7 @@ export type SourceLibrary =
   | "three"
   | "ReUI"
   | "Tremor Raw"
+  | "Uiverse"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -222,6 +224,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   SyntaxUI: "https://syntaxui.com",
   ReUI: "https://reui.io",
   "Tremor Raw": "https://raw.tremor.so",
+  Uiverse: "https://uiverse.io",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2289,6 +2292,7 @@ export const components: ComponentMeta[] = [
   ...batch30Components,
   ...batch31Components,
   ...batch32Components,
+  ...batch33Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2378,6 +2382,11 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "eco-mode-button",
       "rotating-complete-button",
       "stitches-button",
+      "heartbeat-button",
+      "neubrutalism-button",
+      "3d-button",
+      "heart-like-button",
+      "download-size-button",
     ],
   },
 ]

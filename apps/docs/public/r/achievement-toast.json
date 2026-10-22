@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "achievement-toast",
+  "type": "registry:ui",
+  "title": "Achievement Toast",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 WittyHydra。https://github.com/uiverse-io/galaxy/blob/main/Notifications/WittyHydra_nervous-zebra-0.html 成就条从上滑入，标题翻转出现。减弱动效时直接展开。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/achievement-toast.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/achievement-toast.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author WittyHydra）— https://github.com/uiverse-io/galaxy/blob/main/Notifications/WittyHydra_nervous-zebra-0.html\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { type HTMLAttributes } from \"react\"\n\nexport interface AchievementToastProps extends Omit<HTMLAttributes<HTMLDivElement>, \"title\" | \"onAnimationEnd\"> {\n  title: string\n  subtitle?: string\n  actionLabel?: string\n  onAction?: () => void\n}\n\nexport function AchievementToast({\n  title,\n  subtitle,\n  actionLabel,\n  onAction,\n  className,\n  ...props\n}: AchievementToastProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n\n  return (\n    <div\n      {...props}\n      className={cn(\"relative h-24 w-72 overflow-hidden rounded-xl bg-card text-card-foreground shadow-lg\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"achievement-toast\"\n      role=\"status\"\n    >\n      <style>{`\n        @keyframes effect-ui-toast-down {\n          from { transform: translateY(-100%); }\n          to { transform: translateY(0); }\n        }\n        @keyframes effect-ui-toast-flip {\n          from { transform: rotateX(90deg); opacity: 0; }\n          to { transform: rotateX(0); opacity: 1; }\n        }\n      `}</style>\n      <div\n        className=\"absolute inset-x-0 top-0 flex h-1/2 items-center justify-center bg-primary text-primary-foreground\"\n        style={{ animation: prefersReducedMotion ? \"none\" : \"effect-ui-toast-down 0.7s ease-out both\" }}\n      >\n        <span\n          className=\"text-lg font-bold tracking-wide\"\n          style={{ animation: prefersReducedMotion ? \"none\" : \"effect-ui-toast-flip 0.7s ease-in-out both\" }}\n        >\n          {title}\n        </span>\n      </div>\n      <div className=\"absolute inset-x-0 bottom-0 flex h-1/2 items-center justify-between px-4\">\n        <span className=\"font-semibold\">{subtitle}</span>\n        {actionLabel ? (\n          <button className=\"rounded-md bg-foreground px-2 py-1 text-sm font-semibold text-background\" onClick={onAction} type=\"button\">\n            {actionLabel}\n          </button>\n        ) : null}\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

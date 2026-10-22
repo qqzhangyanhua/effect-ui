@@ -555,6 +555,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 倾斜卡片、图案背景与环形进度
+
+登记在 `catalog-batch33.ts`。上一批注意力按钮已占用 `catalog-batch32.ts`。`grid-tilt-card`、`layered-glass-card`、`eye-blink-loader`、`css-pattern-background`、`heart-like-button`、`download-size-button`、`achievement-toast` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4，并去掉 Uiverse 标志。`heartbeat-button`、`neubrutalism-button`、`3d-button`、`image-fade`、`expanding-icon-tabs`、`slide-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`framer-motion` 已换成 `motion/react`，`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`progress-circle`、`callout` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改，`tv` 改成 `cva`。没有新增依赖。减弱动效时倾斜和分层不再动、眼睛和图案停住、心跳不跳、粗野按钮不位移、立体圆不扩散、图片去掉遮罩、弧长直接到位、标签文字直接出现、开关旋钮直接到位、喜欢不心跳、下载切换不过渡、成就条直接展开。
+
+| 组件 | 来源 |
+| --- | --- |
+| grid-tilt-card | Uiverse galaxy，MIT，作者 kennyotsu |
+| layered-glass-card | Uiverse galaxy，MIT，作者 Smit-Prajapati |
+| eye-blink-loader | Uiverse galaxy，MIT，作者 mobinkakei |
+| css-pattern-background | Uiverse galaxy，MIT，作者 jeremyssocial、elijahgummer、mobinkakei |
+| heartbeat-button | SyntaxUI，MIT |
+| neubrutalism-button | SyntaxUI，MIT |
+| 3d-button | SyntaxUI，MIT |
+| image-fade | SyntaxUI，MIT |
+| progress-circle | Tremor Raw，Apache-2.0 |
+| callout | Tremor Raw，Apache-2.0 |
+| expanding-icon-tabs | SyntaxUI，MIT |
+| slide-toggle | SyntaxUI，MIT |
+| heart-like-button | Uiverse galaxy，MIT，作者 LilaRest |
+| download-size-button | Uiverse galaxy，MIT，作者 satyamchaudharydev |
+| achievement-toast | Uiverse galaxy，MIT，作者 WittyHydra |
+
 ### 注意力按钮、附件气泡与分段条
 
 登记在 `catalog-batch32.ts`。上一批斜切滚动已占用 `catalog-batch31.ts`。八个动效移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`stitches-button` 在 SyntaxUI 的 credits.md 里归于 Saud。`framer-motion` 已换成 `motion/react`，`hover-spring-features` 用 `<img>` 代替 `next/image`。四个实用组件移植自 ReUI（MIT，Copyright (c) 2025 Keenthemes Inc.）。`category-bar`、`bar-list`、`tab-navigation` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改。没有新增依赖。没有使用 Hero Patterns。减弱动效时注意力动画不播放、叶子不摇、完成按钮直接完成、色块和霓虹与涟漪停住、功能卡不上移、追踪标题不闪。

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-tilt-card",
+  "type": "registry:ui",
+  "title": "Grid Tilt Card",
+  "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 kennyotsu。https://github.com/uiverse-io/galaxy/blob/main/Cards/kennyotsu_witty-deer-12.html 5×5 追踪格用纯 CSS 把卡片倾斜。减弱动效时不旋转，标题直接显示。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/grid-tilt-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/grid-tilt-card.tsx",
+      "content": "\"use client\"\n\n// Ported from Uiverse galaxy（MIT，(c) 2023 Uiverse.io, author kennyotsu）— https://github.com/uiverse-io/galaxy/blob/main/Cards/kennyotsu_witty-deer-12.html\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { type HTMLAttributes } from \"react\"\n\nexport interface GridTiltCardProps extends HTMLAttributes<HTMLDivElement> {\n  heading?: string\n  subtitle?: string\n  prompt?: string\n  colors?: string[]\n}\n\nfunction tiltRules() {\n  const slot = '[data-slot=\"grid-tilt-card\"]'\n  const still = `${slot}[data-reduced=\"true\"] [data-heading]{opacity:1}${slot}[data-reduced=\"true\"] [data-prompt]{opacity:0}`\n  const reveal = `${slot}[data-reduced=\"false\"] [data-cell]:hover ~ [data-face] [data-heading]{opacity:1}${slot}[data-reduced=\"false\"] [data-cell]:hover ~ [data-face] [data-prompt]{opacity:0}${slot}[data-reduced=\"false\"] [data-cell]:hover ~ [data-face]{filter:brightness(1.08)}`\n  const tilts = Array.from({ length: 25 }, (_, index) => {\n    const row = Math.floor(index / 5)\n    const col = index % 5\n    const rx = 20 - row * 10\n    const ry = -10 + col * 5\n    return `${slot}[data-reduced=\"false\"] [data-cell=\"${index}\"]:hover ~ [data-face]{transform:rotateX(${rx}deg) rotateY(${ry}deg);transition:transform 125ms ease-in-out}`\n  }).join(\"\")\n  return `${still}${reveal}${tilts}`\n}\n\nexport function GridTiltCard({\n  heading = \"纯 CSS 倾斜\",\n  subtitle = \"5×5 追踪格\",\n  prompt = \"悬停看看\",\n  colors,\n  className,\n  ...props\n}: GridTiltCardProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const from = colors?.[0] ?? \"var(--primary)\"\n  const via = colors?.[1] ?? \"var(--accent)\"\n  const to = colors?.[2] ?? \"color-mix(in oklab, var(--primary) 40%, white)\"\n\n  return (\n    <div\n      {...props}\n      className={cn(\"relative h-64 w-48 select-none\", !prefersReducedMotion && \"active:scale-95\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"grid-tilt-card\"\n    >\n      <style>{tiltRules()}</style>\n      <div className=\"absolute inset-0 grid grid-cols-5 grid-rows-5 [perspective:800px]\">\n        {Array.from({ length: 25 }, (_, index) => (\n          <div key={index} aria-hidden className=\"z-10\" data-cell={index} />\n        ))}\n        <div\n          className=\"absolute inset-0 z-0 flex items-center justify-center rounded-[20px] shadow-lg transition-[filter] duration-300\"\n          data-face\n          style={{ background: `linear-gradient(43deg, ${from} 0%, ${via} 46%, ${to} 100%)` }}\n        >\n          <p className=\"absolute bottom-3 left-3 max-w-28 text-sm font-bold text-primary-foreground\" data-prompt>\n            {prompt}\n          </p>\n          <p className=\"absolute px-3 text-center text-xl font-bold text-primary-foreground opacity-0 transition-opacity duration-300\" data-heading>\n            {heading}\n          </p>\n          <p className=\"absolute bottom-8 w-full text-center text-xs text-primary-foreground/80\">{subtitle}</p>\n        </div>\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

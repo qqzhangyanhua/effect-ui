@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expanding-icon-tabs",
+  "type": "registry:ui",
+  "title": "Expanding Icon Tabs",
+  "description": "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/tabs/IconTabs.tsx role=tablist 的图标标签，选中项展开文字。可用 value 受控。framer-motion 已改为 motion/react。减弱动效时文字直接出现。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-controllable-state",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/expanding-icon-tabs.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/expanding-icon-tabs.tsx",
+      "content": "\"use client\"\n\n// Ported from SyntaxUI（MIT，(c) 2024 SyntaxUI）— https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/components/tabs/IconTabs.tsx\n// framer-motion 已改为 motion/react。\n\nimport { useControllableState } from \"@/hooks/use-controllable-state\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nimport { motion } from \"motion/react\"\nimport { useId, type HTMLAttributes, type ReactNode } from \"react\"\n\nexport interface ExpandingIconTab {\n  value: string\n  label: string\n  icon: ReactNode\n}\n\nexport interface ExpandingIconTabsProps extends Omit<HTMLAttributes<HTMLDivElement>, \"onChange\"> {\n  tabs: ExpandingIconTab[]\n  value?: string\n  defaultValue?: string\n  onValueChange?: (value: string) => void\n}\n\nexport function ExpandingIconTabs({\n  tabs,\n  value,\n  defaultValue,\n  onValueChange,\n  className,\n  ...props\n}: ExpandingIconTabsProps) {\n  const prefersReducedMotion = usePrefersReducedMotion()\n  const uid = useId()\n  const [current, setCurrent] = useControllableState({\n    value,\n    defaultValue: defaultValue ?? tabs[0]?.value ?? \"\",\n    onChange: onValueChange,\n  })\n\n  function move(delta: number) {\n    if (tabs.length === 0) return\n    const index = tabs.findIndex((tab) => tab.value === current)\n    const start = index < 0 ? 0 : index\n    const next = tabs[(start + delta + tabs.length) % tabs.length]\n    if (next) setCurrent(next.value)\n  }\n\n  return (\n    <div\n      {...props}\n      className={cn(\"flex flex-wrap items-center gap-2 border-b pb-2\", className)}\n      data-reduced={prefersReducedMotion ? \"true\" : \"false\"}\n      data-slot=\"expanding-icon-tabs\"\n      onKeyDown={(event) => {\n        if (event.key === \"ArrowRight\") {\n          event.preventDefault()\n          move(1)\n        } else if (event.key === \"ArrowLeft\") {\n          event.preventDefault()\n          move(-1)\n        }\n      }}\n      role=\"tablist\"\n    >\n      {tabs.map((tab) => {\n        const selected = tab.value === current\n        return (\n          <button\n            key={tab.value}\n            aria-label={tab.label}\n            aria-selected={selected}\n            className={cn(\n              \"relative flex items-center rounded-full px-2 py-2 text-sm font-medium text-muted-foreground\",\n              selected && \"bg-primary/15 text-primary\",\n            )}\n            id={`${uid}-${tab.value}`}\n            onClick={() => setCurrent(tab.value)}\n            role=\"tab\"\n            type=\"button\"\n          >\n            <span className=\"inline-flex size-4 items-center justify-center\">{tab.icon}</span>\n            {selected ? (\n              prefersReducedMotion ? (\n                <span className=\"ml-2 overflow-hidden\">{tab.label}</span>\n              ) : (\n                <motion.span\n                  animate={{ width: \"auto\", opacity: 1 }}\n                  className=\"ml-2 overflow-hidden\"\n                  initial={{ width: 0, opacity: 0 }}\n                  transition={{ type: \"spring\", bounce: 0, duration: 0.35 }}\n                >\n                  {tab.label}\n                </motion.span>\n              )\n            ) : null}\n          </button>\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

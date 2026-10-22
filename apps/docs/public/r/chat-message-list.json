@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chat-message-list",
+  "type": "registry:ui",
+  "title": "Chat Message List",
+  "description": "移植自 shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk。 https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/chat-message-list.tsx 消息列表，自动滚到底部。useAutoScroll 来自 https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/hooks/useAutoScroll.tsx，内联在组件里。离开底部后出现回到底部。减弱动效时滚动不使用平滑。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/chat-message-list.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/chat-message-list.tsx",
+      "content": "\"use client\"\n\n// Ported from shadcn-chat (MIT, (c) 2024 Jakob Hoeg Mørk) — https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/chat-message-list.tsx and https://github.com/jakobhoeg/shadcn-chat/blob/main/packages/ui/src/components/ui/chat/hooks/useAutoScroll.tsx. Modified for effect-ui.\n\nimport { ArrowDown } from \"lucide-react\"\nimport { useCallback, useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\ninterface AutoScrollOptions {\n  offset?: number\n  smooth?: boolean\n  content?: ReactNode\n}\n\nfunction useAutoScroll({ offset = 20, smooth = false, content }: AutoScrollOptions = {}) {\n  const scrollRef = useRef<HTMLDivElement>(null)\n  const lastHeight = useRef(0)\n  const [atBottom, setAtBottom] = useState(true)\n  const [enabled, setEnabled] = useState(true)\n\n  const isAtBottom = useCallback(\n    (element: HTMLElement) => Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) <= offset,\n    [offset],\n  )\n\n  const scrollToBottom = useCallback(\n    (instant?: boolean) => {\n      const node = scrollRef.current\n      if (!node) return\n      node.scrollTo({ top: node.scrollHeight, behavior: instant || !smooth ? \"auto\" : \"smooth\" })\n      setAtBottom(true)\n      setEnabled(true)\n    },\n    [smooth],\n  )\n\n  useEffect(() => {\n    const node = scrollRef.current\n    if (!node) return\n    const onScroll = () => {\n      const bottom = isAtBottom(node)\n      setAtBottom(bottom)\n      if (bottom) setEnabled(true)\n    }\n    node.addEventListener(\"scroll\", onScroll, { passive: true })\n    return () => node.removeEventListener(\"scroll\", onScroll)\n  }, [isAtBottom])\n\n  useEffect(() => {\n    const node = scrollRef.current\n    if (!node) return\n    const height = node.scrollHeight\n    if (height !== lastHeight.current && enabled) {\n      const instant = lastHeight.current === 0\n      lastHeight.current = height\n      const frame = requestAnimationFrame(() => scrollToBottom(instant))\n      return () => cancelAnimationFrame(frame)\n    }\n    lastHeight.current = height\n    return\n  }, [content, enabled, scrollToBottom])\n\n  const disableAutoScroll = useCallback(() => {\n    const node = scrollRef.current\n    if (node && !isAtBottom(node)) setEnabled(false)\n  }, [isAtBottom])\n\n  return { scrollRef, atBottom, scrollToBottom: () => scrollToBottom(false), disableAutoScroll }\n}\n\nexport interface ChatMessageListProps extends HTMLAttributes<HTMLDivElement> {\n  smooth?: boolean\n}\n\nexport function ChatMessageList({ smooth = false, className, children, ...props }: ChatMessageListProps) {\n  const reduced = usePrefersReducedMotion()\n  const { scrollRef, atBottom, scrollToBottom, disableAutoScroll } = useAutoScroll({\n    smooth: reduced ? false : smooth,\n    content: children,\n  })\n  return (\n    <div className=\"relative h-full w-full\" data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"chat-message-list\">\n      <div\n        {...props}\n        className={cn(\"flex h-full w-full flex-col overflow-y-auto p-4\", className)}\n        onTouchMove={disableAutoScroll}\n        onWheel={disableAutoScroll}\n        ref={scrollRef}\n      >\n        <div className=\"flex flex-col gap-4\">{children}</div>\n      </div>\n      {atBottom ? null : (\n        <Button\n          aria-label=\"回到底部\"\n          className=\"absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full shadow-md\"\n          onClick={scrollToBottom}\n          size=\"icon\"\n          type=\"button\"\n          variant=\"outline\"\n        >\n          <ArrowDown className=\"size-4\" />\n        </Button>\n      )}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

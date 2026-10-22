@@ -557,6 +557,29 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 布局模糊、液态按钮与对话壳
+
+登记在 `catalog-batch38.ts`。上一批提示词套件已占用 `catalog-batch37.ts`。`blur-vignette`、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`spotlight-group`、`timeline-reveal`、`scroll-blur-text`、`hatch-divider`、`image-tabs`、`progressive-carousel`、`agent-intro-sequence`、`hover-image-reveal` 与钩子 `use-media-query` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT）。`expandable-chat`、`chat-message-list`、`message-loading` 移植自 shadcn-chat（MIT，Copyright (c) 2024 Jakob Hoeg Mørk）。`useAutoScroll` 内联在 `chat-message-list`。`next/image` 改为 `img`。示例链接、色板和图片放在 demo。`agent-intro-sequence` 的序列由 props 传入。原创组件已占用 `hover-image-list`，这次的图片行登记为 `hover-image-reveal`。没有新增依赖。减弱动效时暗角不再模糊、液态色块停住、方块没有颜色过渡、字符条直接显示最后一句、聚光不再跟随指针、时间线和滚动文字立即清晰、斜线分隔保持原样、对话壳没有展开过渡、消息列表不平滑滚动、标签没有颜色过渡、轮播停止自动播放、介绍序列一次显示并结束、窄屏或减弱动效时图片停在行内、输入点停住。
+
+| 组件 | 来源 |
+| --- | --- |
+| use-media-query | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| blur-vignette | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| liquid-gradient-button | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| hover-blocks-grid | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| char-shimmer-loader | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| spotlight-group | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| timeline-reveal | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| scroll-blur-text | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| hatch-divider | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| expandable-chat | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
+| chat-message-list | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
+| image-tabs | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| progressive-carousel | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| agent-intro-sequence | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| hover-image-reveal | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
+| message-loading | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
+
 ### 提示词套件与加载指示
 
 登记在 `catalog-batch37.ts`。上一批可变字体已占用 `catalog-batch36.ts`。`ai-loader`、`response-stream`、`thinking-bar`、`chain-of-thought`、`reasoning`、`source`、`tool`、`system-message`、`feedback-bar`、`prompt-suggestion`、`generated-image` 移植自 prompt-kit（许可文件 `LICENCE.md`，MIT，Copyright (c) 2025 Julien Thibeaut）。`@/components/ui/*` 换成已有组件。`reasoning` 渲染 children。`source` 默认不显示图标，也不请求 Google favicon。`generated-image` 由 `image` 改名。`book-page-loader`（作者 vinodjangid07）、`map-pin-loader`（作者 vikramsinghnegi）、`glow-corner-loader`（作者 NlghtM4re）、`retro-press-button`（作者 TanimMahbub）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。没有新增依赖。减弱动效时加载指示停住、文字流立即显示全文、思考条不再扫光、书页合上、地图钉停住、发光方块停在四角、复古按钮按下没有过渡、思维链和工具卡不再播放折叠动画、推理区直接展开、来源悬停不再延迟、反馈和提示词按钮没有过渡、生成图占位不脉冲。

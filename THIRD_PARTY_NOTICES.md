@@ -174,7 +174,14 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/ui-layouts/uilayouts
 - 许可：MIT
 - 版权：Copyright (c) 2024 UI LAYOUT
-- 衍生组件：`splash-mask`。路径来自 `clip-path-water-splash.tsx`，内联进组件，不请求外部 SVG。
+- 衍生组件：`splash-mask`。路径来自 `clip-path-water-splash.tsx`，内联进组件，不请求外部 SVG。本批另加 `blur-vignette`、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`spotlight-group`、`timeline-reveal`、`scroll-blur-text`、`hatch-divider`、`image-tabs`、`progressive-carousel`、`agent-intro-sequence`、`hover-image-reveal`，以及 hook `use-media-query`。`next/image` 改为 `img`。示例链接和示例数据放在 demo。`agent-intro-sequence` 同时带上 `typing-writter` 与 `shimmer-loader` 的行为，序列由 props 传入。原创组件已占用 `hover-image-list`，图片行登记为 `hover-image-reveal`。
+
+## shadcn-chat
+
+- 仓库：https://github.com/jakobhoeg/shadcn-chat
+- 许可：MIT
+- 版权：Copyright (c) 2024 Jakob Hoeg Mørk
+- 衍生组件：`expandable-chat`、`chat-message-list`、`message-loading`。`useAutoScroll` 内联在 `chat-message-list`，不单独登记。
 
 ## Fancy Components
 

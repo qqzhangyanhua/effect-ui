@@ -46,6 +46,10 @@ _Avoid_: knob, playground prop, 属性面板项
 A named set of control values declared on a catalog entry. Choosing it on the docs page sets those controls together. It is not a component prop and is not part of the registry item.
 _Avoid_: theme, variant
 
+**Start value**:
+The value a control holds when the demo first renders. It is chosen to show the item at its best and may differ from the prop's default, which stays what an installed copy renders when the prop is omitted.
+_Avoid_: initial value, demo default
+
 ### Provenance
 
 **Port**:

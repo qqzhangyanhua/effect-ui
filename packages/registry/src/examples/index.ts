@@ -35,6 +35,7 @@ import * as effectDemos33 from "./effect-demos-33"
 import * as effectDemos34 from "./effect-demos-34"
 import * as effectDemos35 from "./effect-demos-35"
 import * as effectDemos36 from "./effect-demos-36"
+import * as effectDemos37 from "./effect-demos-37"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -664,6 +665,7 @@ const demoMap: Record<string, ComponentType> = {
   "copy-field": effectDemos36.CopyFieldDemo,
   "newsletter-input": effectDemos36.NewsletterInputDemo,
   "pin-display-input": effectDemos36.PinDisplayInputDemo,
+  "folder-float": effectDemos37.FolderFloatDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

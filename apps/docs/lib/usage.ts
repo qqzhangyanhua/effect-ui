@@ -37,10 +37,15 @@ function registrySrc() {
 }
 
 let demoLocations: Map<string, DemoLocation> | undefined
+let demoLocationsMtime = 0
 
 function getDemoLocations() {
-  if (demoLocations) return demoLocations
-  const index = fs.readFileSync(path.join(registrySrc(), "examples/index.ts"), "utf8")
+  const indexPath = path.join(registrySrc(), "examples/index.ts")
+  // dev server 常驻内存，新增 demo 后要按文件修改时间重新解析，不然要重启才能看到。
+  const mtime = fs.statSync(indexPath).mtimeMs
+  if (demoLocations && mtime === demoLocationsMtime) return demoLocations
+  demoLocationsMtime = mtime
+  const index = fs.readFileSync(indexPath, "utf8")
   const files = new Map<string, string>()
   for (const match of index.matchAll(/import \* as (\w+) from "\.\/([^"]+)"/g)) {
     const alias = match[1]

@@ -57,6 +57,7 @@ import { batch57Components } from "./catalog-batch57"
 import { batch58Components } from "./catalog-batch58"
 import { batch59Components } from "./catalog-batch59"
 import { batch60Components } from "./catalog-batch60"
+import { batch61Components } from "./catalog-batch61"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -151,6 +152,8 @@ export type SourceLibrary =
   | "Watermelon UI"
   | "MosaicUI"
   | "MicroKit"
+  | "Keyframery"
+  | "Amicro"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -296,6 +299,8 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Watermelon UI": "https://github.com/WatermelonCorp/watermellon-registry",
   MosaicUI: "https://github.com/darshan-rajadhyaksha/mosaicui",
   MicroKit: "https://github.com/henriquegpb/microkit",
+  Keyframery: "https://github.com/keyframery/keyframery",
+  Amicro: "https://github.com/Subhan-code/Amicro--Micro-transitions-",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2391,6 +2396,7 @@ export const components: ComponentMeta[] = [
   ...batch58Components,
   ...batch59Components,
   ...batch60Components,
+  ...batch61Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {

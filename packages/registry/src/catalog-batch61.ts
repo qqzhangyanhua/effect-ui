@@ -1,0 +1,110 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+const ui: PropDoc[] = [{ name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" }]
+const keyframery = "移植自 Keyframery，MIT，Copyright (c) 2026 Briyan Hingrajiya。"
+const amicro = "移植自 Amicro，MIT，Copyright (c) 2026 SYED SUBHAN UDDIN。"
+const kf = (file: string) => `https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/${file}`
+const pause = "减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。"
+
+export const batch61Components: ComponentMeta[] = [
+  {
+    name: "icon-moves",
+    title: "Icon Moves",
+    description: `${keyframery} ${kf("icon-moves.tsx")} 按下带 lucide 图标的按钮时，齿轮转动、铃铛摇、心形弹一下。监听只挂在组件自己的根上。hover 是额外选项，按下和 Enter、Space 始终能播放。图标动作表内联在组件里。${pause}`,
+    category: "micro",
+    source: "Keyframery",
+    type: "registry:ui",
+    file: "effects/icon-moves.tsx",
+    target: "components/ui/icon-moves.tsx",
+    props: [
+      { name: "on", type: '"press" | "hover"', defaultValue: '"press"', description: "press 在按下或键盘确认时播放。hover 额外在鼠标移入时播放。", control: { kind: "select", value: "press", options: ["press", "hover"] } },
+      { name: "color", type: "string", defaultValue: '"var(--foreground)"', description: "图标颜色，传给 currentColor。", control: { kind: "color", value: "var(--foreground)" } },
+      { name: "speed", type: "number", defaultValue: "1", description: "相对源时长的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1 } },
+      { name: "size", type: "number", defaultValue: "24", description: "图标边长。", control: { kind: "range", value: 24, min: 12, max: 48, step: 2 } },
+      { name: "duration", type: "number", defaultValue: "420", description: "基准时长，单位毫秒。源组件里各图标的时长按这个值缩放。", control: { kind: "range", value: 420, min: 200, max: 900, step: 20 } },
+      ...ui,
+    ],
+  },
+  {
+    name: "wave-physics-loader",
+    title: "Wave Physics Loader",
+    description: `${amicro} https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/registry/ui/loading/wave-physics-loader.tsx 小球在一排柱子上弹跳，柱高跟着波形起伏。颜色用主题变量，不再分 light 和 dark。${pause}`,
+    category: "loaders",
+    source: "Amicro",
+    type: "registry:ui",
+    file: "effects/wave-physics-loader.tsx",
+    target: "components/ui/wave-physics-loader.tsx",
+    props: [
+      { name: "color", type: "string", defaultValue: '"var(--foreground)"', description: "柱子和小球的颜色。", control: { kind: "color", value: "var(--foreground)" } },
+      { name: "count", type: "number", defaultValue: "15", description: "柱子数量。", control: { kind: "range", value: 15, min: 5, max: 24, step: 1 } },
+      { name: "duration", type: "number", defaultValue: "4000", description: "来回一次的时间，单位毫秒。", control: { kind: "range", value: 4000, min: 1000, max: 8000, step: 100 } },
+      { name: "speed", type: "number", defaultValue: "1", description: "速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1 } },
+      { name: "intensity", type: "number", defaultValue: "48", description: "波形抬高的峰值。", control: { kind: "range", value: 48, min: 16, max: 80, step: 4 } },
+      { name: "size", type: "number", defaultValue: "12", description: "柱子和小球的宽度。", control: { kind: "range", value: 12, min: 4, max: 24, step: 2 } },
+      { name: "gap", type: "number", defaultValue: "8", description: "柱子间距。", control: { kind: "range", value: 8, min: 0, max: 24, step: 2 } },
+      ...ui,
+    ],
+  },
+  {
+    name: "list-cut",
+    title: "List Cut",
+    description: `${keyframery} ${kf("list-cut.tsx")} 按 id 做 FLIP。新项从下方升起，离开的项淡出，留下的项滑到新位置。没有接入按压引擎，所以新项不从按钮飞入。diff 逻辑内联在组件里。和 skeleton-reveal 不是同一件事。`,
+    category: "utility",
+    source: "Keyframery",
+    type: "registry:ui",
+    file: "effects/list-cut.tsx",
+    target: "components/ui/list-cut.tsx",
+    props: [
+      { name: "as", type: '"div" | "ul" | "ol" | "tbody"', defaultValue: '"div"', description: "列表根元素。" },
+      { name: "pace", type: "number", defaultValue: "1", description: "时长倍数，对应源组件的 --kf-pace。" },
+      { name: "cut", type: '"none"', description: "none 时直接换列表，不做位移动画。" },
+      ...ui,
+    ],
+  },
+  {
+    name: "load-cut",
+    title: "Load Cut",
+    description: `${keyframery} ${kf("load-cut.tsx")} 加载先等 hold，再显示骨架，骨架至少停留 minShow，然后透明度和高度一起过渡到内容。这是等待、骨架、溶解三态，不是 skeleton-reveal 的脉冲模糊交叉淡化。相位机内联在组件里。`,
+    category: "utility",
+    source: "Keyframery",
+    type: "registry:ui",
+    file: "effects/load-cut.tsx",
+    target: "components/ui/load-cut.tsx",
+    props: [
+      { name: "loading", type: "boolean", description: "为真时进入等待或保持骨架。" },
+      { name: "skeleton", type: "ReactNode", description: "骨架占位。" },
+      { name: "hold", type: "number", defaultValue: "300", description: "显示骨架前的等待，单位毫秒。" },
+      { name: "minShow", type: "number", defaultValue: "400", description: "骨架一旦出现，至少停留这么久。" },
+      { name: "pace", type: "number", defaultValue: "1", description: "溶解时长倍数。" },
+      { name: "cut", type: '"dissolve" | "none"', description: "none 时不做溶解。" },
+      ...ui,
+    ],
+  },
+  {
+    name: "state-cut",
+    title: "State Cut",
+    description: `${keyframery} ${kf("state-cut.tsx")} state 变化时，旧内容做成幽灵淡出或上移，新内容淡入，高度跟着变。快照和幽灵播放内联在组件里。`,
+    category: "utility",
+    source: "Keyframery",
+    type: "registry:ui",
+    file: "effects/state-cut.tsx",
+    target: "components/ui/state-cut.tsx",
+    props: [
+      { name: "state", type: "string | number", description: "整段内容的键。变化时播放切换。" },
+      { name: "cut", type: '"fade" | "slide" | "none"', defaultValue: '"fade"', description: "fade 只改透明度。slide 加一点垂直交接。none 直接换。" },
+      { name: "pace", type: "number", defaultValue: "1", description: "切换时长倍数。" },
+      ...ui,
+    ],
+  },
+  {
+    name: "use-web-haptics",
+    title: "Use Web Haptics",
+    description: `${amicro} https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/src/hooks/useWebHaptics.ts 调用 navigator.vibrate。没有振动接口、调用抛错，或 enabled 为 false 时，trigger 返回 false。不读 localStorage，也不合成音效。`,
+    category: "utility",
+    source: "Amicro",
+    type: "registry:ui",
+    file: "hooks/use-web-haptics.ts",
+    target: "hooks/use-web-haptics.ts",
+    props: [{ name: "enabled", type: "boolean", defaultValue: "true", description: "为 false 时 trigger 直接返回 false。" }],
+  },
+]

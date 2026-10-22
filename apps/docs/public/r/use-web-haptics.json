@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-web-haptics",
+  "type": "registry:ui",
+  "title": "Use Web Haptics",
+  "description": "移植自 Amicro，MIT，Copyright (c) 2026 SYED SUBHAN UDDIN。 https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/src/hooks/useWebHaptics.ts 调用 navigator.vibrate。没有振动接口、调用抛错，或 enabled 为 false 时，trigger 返回 false。不读 localStorage，也不合成音效。",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/hooks/use-web-haptics.ts",
+      "type": "registry:ui",
+      "target": "hooks/use-web-haptics.ts",
+      "content": "\"use client\"\n\n// Ported from Amicro (MIT, (c) 2026 SYED SUBHAN UDDIN) — https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/src/hooks/useWebHaptics.ts\n\nimport { useCallback } from \"react\"\n\nexport interface UseWebHapticsProps {\n  enabled?: boolean\n}\n\nexport type HapticsType = \"light\" | \"medium\" | \"heavy\" | \"success\" | \"warning\" | \"error\"\n\nconst PATTERNS: Record<HapticsType, number[]> = {\n  light: [10],\n  medium: [25],\n  heavy: [50],\n  success: [15, 60, 15],\n  warning: [30, 60, 30],\n  error: [60, 60, 60, 60, 60],\n}\n\nexport function useWebHaptics({ enabled = true }: UseWebHapticsProps = {}) {\n  const trigger = useCallback((type: HapticsType = \"light\") => {\n    if (!enabled) return false\n    const vibrate = typeof navigator === \"undefined\" ? undefined : navigator.vibrate\n    if (typeof vibrate !== \"function\") return false\n    try {\n      return vibrate.call(navigator, PATTERNS[type] ?? PATTERNS.light)\n    } catch {\n      return false\n    }\n  }, [enabled])\n\n  return { trigger }\n}\n"
+    }
+  ]
+}

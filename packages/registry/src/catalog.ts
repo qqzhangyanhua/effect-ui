@@ -53,6 +53,7 @@ import { batch53Components } from "./catalog-batch53"
 import { batch54Components } from "./catalog-batch54"
 import { batch55Components } from "./catalog-batch55"
 import { batch56Components } from "./catalog-batch56"
+import { batch57Components } from "./catalog-batch57"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -142,6 +143,7 @@ export type SourceLibrary =
   | "Sera UI"
   | "HextaUI"
   | "Motiq"
+  | "Framekit UI"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -282,6 +284,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Sera UI": "https://github.com/seraui/seraui",
   HextaUI: "https://github.com/preetsuthar17/HextaUI",
   Motiq: "https://github.com/RMahammad/motiq",
+  "Framekit UI": "https://github.com/Sid9022/framekit-ui",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2373,6 +2376,7 @@ export const components: ComponentMeta[] = [
   ...batch54Components,
   ...batch55Components,
   ...batch56Components,
+  ...batch57Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2495,6 +2499,9 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "paper-shred-button",
       "get-in-touch",
       "flow-button",
+      "wax-seal-button",
+      "dispatch-truck-button",
+      "googly-gaze-button",
     ],
   },
 ]

@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## Framekit UI
+
+- 仓库：https://github.com/Sid9022/framekit-ui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Framekit UI contributors
+- 衍生组件：`wax-seal-button`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/wax-seal-button.tsx）、`dispatch-truck-button`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/dispatch-truck-button.tsx）、`googly-gaze-button`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/googly-gaze-button.tsx）、`weather-vane-toggle`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/weather-vane-toggle.tsx）、`ink-bleed-text`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/ink-bleed-text.tsx）、`charm-text`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/charm-text.tsx）、`book-spine-shelf`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/book-spine-shelf.tsx）、`cook-loading`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/cook-loading.tsx）、`usage-quota-meter`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/usage-quota-meter.tsx）、`inset-settings-list`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/inset-settings-list.tsx）、`compass-rail`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/compass-rail.tsx）、`availability-badge`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/availability-badge.tsx）、`smart-widget-stack`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/smart-widget-stack.tsx）、`goal-progress-card`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/goal-progress-card.tsx）、`mini-desktop-os`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/mini-desktop-os.tsx）
+
 ## Motiq
 
 - 仓库：https://github.com/RMahammad/motiq

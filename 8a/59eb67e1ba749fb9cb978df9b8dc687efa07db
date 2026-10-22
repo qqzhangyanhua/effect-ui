@@ -1,0 +1,26 @@
+packages/registry/src/effects/spring-drawer.tsx
+  s_1f7fae292b4abd::t_d5a865a68e397f 32,34
+  s_1f7fae292b4abd::t_db2bd96c1f329b 153-160,167-168,180-184
+  s_1f7fae292b4abd::t_cf00c1dfbda3da 129,138
+  s_1f7fae292b4abd::t_77e1767c7a9da5 187,192
+packages/registry/src/effects/spring-drawer.test.tsx
+  s_1f7fae292b4abd::t_3e701239ec1c21 86-117
+apps/docs/public/r/spring-drawer.json
+  s_1f7fae292b4abd::t_6fb879606348e5 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "8a59eb67e1ba749fb9cb978df9b8dc687efa07db",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

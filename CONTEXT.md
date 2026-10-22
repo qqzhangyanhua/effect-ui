@@ -25,7 +25,7 @@ A shadcn-style building block that is assembled from parts by the caller, such a
 _Avoid_: base component, raw component
 
 **Effect**:
-A component in one of nine categories — text, backgrounds, cursor, decor, cards, buttons, micro, loaders, and scroll. Besides its visual props, an Effect can take typography props, behavior switches, and pointer interaction.
+A component in one of twelve categories — text, backgrounds, cursor, decor, cards, buttons, micro, loaders, scroll, showcase, page, and navigation. Besides its visual props, an Effect can take typography props, behavior switches, and pointer interaction.
 _Avoid_: animation, special effect
 
 **Composite component**:

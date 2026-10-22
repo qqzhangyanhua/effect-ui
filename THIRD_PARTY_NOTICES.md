@@ -44,7 +44,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）、`box-carousel`（四面立方体旋转，按 Fancy 交互重写）
+- 衍生组件：`variable-font-proximity`、`stacking-cards`、`image-trail`、`text-along-path`、`marquee-along-svg-path`、`footer-curtain-reveal`（curtain footer 结构）、`box-carousel`（四面立方体旋转，按 Fancy 交互重写）、`variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float`
 
 ## Kibo UI
 
@@ -180,7 +180,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/danielpetho/fancy
 - 许可：MIT
 - 版权：Copyright (c) 2024 Daniel Petho
-- 衍生组件：`pixel-trail`、`screensaver`、`media-between-text`、`letter-3d-swap`、`vertical-cut-reveal`、`text-cursor-proximity`、`elastic-line`、`breathing-text`、`text-highlighter`，以及 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events`。本批另加 `css-box`、`drag-elements`、`scroll-and-swap-text`、`underline-to-background`、`parallax-floating`、`pixelate-svg-filter`、`gooey-svg-filter`、`animated-gradient-with-svg`，以及 hook `use-debounced-dimensions`。
+- 衍生组件：`pixel-trail`、`screensaver`、`media-between-text`、`letter-3d-swap`、`vertical-cut-reveal`、`text-cursor-proximity`、`elastic-line`、`breathing-text`、`text-highlighter`，以及 hook `use-dimensions`、`use-mouse-position`、`use-mouse-position-ref`、`use-elastic-line-events`。本批另加 `css-box`、`drag-elements`、`scroll-and-swap-text`、`underline-to-background`、`parallax-floating`、`pixelate-svg-filter`、`gooey-svg-filter`、`animated-gradient-with-svg`，以及 hook `use-debounced-dimensions`。再加 `variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float`。这六项的 `lodash` debounce 改为组件内手写，`clsx` 改为 `cn`。
 
 ## SyntaxUI
 
@@ -209,7 +209,7 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 仓库：https://github.com/uiverse-io/galaxy
 - 许可：MIT
 - 版权：Copyright (c) 2023 Uiverse.io
-- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。
+- 衍生组件：`grid-tilt-card`（作者 kennyotsu）、`layered-glass-card`（作者 Smit-Prajapati）、`eye-blink-loader`（作者 mobinkakei）、`css-pattern-background`（作者 jeremyssocial、elijahgummer、mobinkakei）、`heart-like-button`（作者 LilaRest）、`download-size-button`（作者 satyamchaudharydev）、`achievement-toast`（作者 WittyHydra），以及 `hue-wave-loader`（作者 SmookyDev）、`lift-gradient-border-button`（作者 SelfMadeSystem）、`lever-switch`（作者 Praashoo7）、`neon-3d-radio`（作者 Saiyed-Tanvir）、`star-ribbon-notification`（作者 andrew-demchenk0）、`moon-sun-switch`（作者 satyamchaudharydev）、`glow-light-switch`（作者 elijahgummer）、`hamburger-morph`（作者 elijahgummer）、`mic-search-input`（作者 vinodjangid07）、`social-follow-tooltip`（作者 vinodjangid07）、`copy-field`（作者 omriluz）、`newsletter-input`（作者 deepak16375）、`pin-display-input`（作者 barisdogansutcu），以及 `check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）。HTML/CSS 已改写为 React 与 Tailwind v4。未保留 Uiverse 标志。`plus-share-burst` 的图标由调用方传入。
 
 ## shadcn-ui-expansions
 
@@ -399,8 +399,8 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 署名：Made by Arihant。上游 LICENSE 附录是未填写的 Apache 模板，仓库没有自带 NOTICE。
 - LICENSE：`licenses/apache/spectrum-ui/LICENSE`
 - NOTICE：`licenses/apache/spectrum-ui/NOTICE`
-- 修改：`framer-motion` 改为 `motion/react`，去掉 `next-themes`，减弱动效用 `use-prefers-reduced-motion`，示例文案改为 props 或 demo，文件头标明 Modified。
-- 衍生组件：`hologram-text`、`ink-morph`、`orbital-text`、`orbital-char`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card`，以及钩子 `use-dismiss`、`use-hover-gesture`、`use-tap-gesture`。
+- 修改：`framer-motion` 改为 `motion/react`，去掉 `next-themes`，减弱动效用 `use-prefers-reduced-motion`，示例文案改为 props 或 demo，文件头标明 Modified。资料卡默认不发网络请求，头像用 `img`。
+- 衍生组件：`hologram-text`、`ink-morph`、`orbital-text`、`orbital-char`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card`，以及钩子 `use-dismiss`、`use-hover-gesture`、`use-tap-gesture`。另加 `star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card`，以及钩子 `use-typewriter`。
 - `skeleton-reveal` 与 `text-states` 嵌入的过渡样式来自 transitions.dev（Jakub Antalík），经 Spectrum UI 再分发。
 
 ## fuse.js（Apache-2.0）

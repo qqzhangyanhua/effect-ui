@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-typewriter",
+  "type": "registry:hook",
+  "title": "Use Typewriter",
+  "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/use-typewriter.ts 依次打出、停住、删掉一组句子。减弱动效时直接显示第一句。账号卡和对话卡共用这个钩子。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/hooks/use-typewriter.ts",
+      "type": "registry:hook",
+      "target": "hooks/use-typewriter.ts",
+      "content": "\"use client\"\n\n// Ported from Spectrum UI (Apache-2.0, (c) Spectrum UI / arihantcodes) — https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/use-typewriter.ts. Modified for effect-ui.\n\nimport { useEffect, useState } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\n\nexport type TypewriterPhase = \"idle\" | \"typing\" | \"holding\" | \"deleting\" | \"waiting\"\n\nexport interface UseTypewriterOptions {\n  typeMs?: number\n  deleteMs?: number\n  holdMs?: number\n  gapMs?: number\n  startDelayMs?: number\n  enabled?: boolean\n  jitter?: boolean\n}\n\nfunction sleep(ms: number) {\n  return new Promise<void>((resolve) => {\n    window.setTimeout(resolve, ms)\n  })\n}\n\nexport function useTypewriter(\n  phrases: readonly string[],\n  { typeMs = 70, deleteMs = 28, holdMs = 1800, gapMs = 450, startDelayMs = 400, enabled = true, jitter = true }: UseTypewriterOptions = {},\n) {\n  const reduced = usePrefersReducedMotion()\n  const first = phrases[0] ?? \"\"\n  const phrasesKey = JSON.stringify(phrases)\n  const [text, setText] = useState(first)\n  const [phase, setPhase] = useState<TypewriterPhase>(\"idle\")\n  if (reduced && text !== first) setText(first)\n\n  useEffect(() => {\n    if (reduced || !enabled) return\n    const list = JSON.parse(phrasesKey) as string[]\n    if (list.length === 0) return\n    let cancelled = false\n    const tick = (base: number) => (jitter ? base * (0.6 + Math.random() * 0.8) : base)\n\n    const timer = window.setTimeout(() => {\n      void (async () => {\n        await sleep(startDelayMs)\n        let index = 0\n        while (!cancelled) {\n          const phrase = list[index % list.length]\n          if (phrase === undefined) return\n          setPhase(\"typing\")\n          for (let i = 1; i <= phrase.length; i += 1) {\n            if (cancelled) return\n            setText(phrase.slice(0, i))\n            await sleep(tick(typeMs))\n          }\n          setPhase(\"holding\")\n          await sleep(holdMs)\n          if (cancelled) return\n          setPhase(\"deleting\")\n          for (let i = phrase.length - 1; i >= 0; i -= 1) {\n            if (cancelled) return\n            setText(phrase.slice(0, i))\n            await sleep(deleteMs)\n          }\n          setPhase(\"waiting\")\n          await sleep(gapMs)\n          index += 1\n        }\n      })()\n    }, 0)\n\n    return () => {\n      cancelled = true\n      window.clearTimeout(timer)\n    }\n  }, [deleteMs, enabled, gapMs, holdMs, jitter, phrasesKey, reduced, startDelayMs, typeMs])\n\n  return { text: reduced ? first : text, phase: reduced || !enabled ? \"idle\" : phase }\n}\n"
+    }
+  ]
+}

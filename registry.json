@@ -12778,6 +12778,325 @@
           "target": "components/ui/nav-list-card.tsx"
         }
       ]
+    },
+    {
+      "name": "variable-font-hover-by-letter",
+      "type": "registry:ui",
+      "title": "Variable Font Hover By Letter",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/variable-font-hover-by-letter.tsx 悬停时按字母交错改变可变字体。from、to、staggerFrom 可配。lodash debounce 改为组件内手写。减弱动效时保持 from，不再播放弹簧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/variable-font-hover-by-letter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/variable-font-hover-by-letter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "letter-swap-pingpong",
+      "type": "registry:ui",
+      "title": "Letter Swap Ping Pong",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/letter-swap-pingpong-anim.tsx 悬停时字母上下对换，移开后回到原位。lodash debounce 改为组件内手写。减弱动效时字母保持原位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/letter-swap-pingpong.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/letter-swap-pingpong.tsx"
+        }
+      ]
+    },
+    {
+      "name": "random-letter-swap",
+      "type": "registry:ui",
+      "title": "Random Letter Swap",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/random-letter-swap-forward-anim.tsx 悬停时按随机顺序把字母换过去再收回。顺序在指针事件里生成。lodash debounce 改为组件内手写。减弱动效时不换字。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/random-letter-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/random-letter-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "underline-hover-link",
+      "type": "registry:ui",
+      "title": "Underline Hover Link",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 合并 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/underline-center.tsx 与 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/text/underline-comes-in-goes-out.tsx。variant 为 center 或 in-out，in-out 支持 direction。clsx 改为 cn。减弱动效时下划线不再过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/underline-hover-link.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/underline-hover-link.tsx"
+        }
+      ]
+    },
+    {
+      "name": "element-along-svg-path",
+      "type": "registry:ui",
+      "title": "Element Along SVG Path",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/element-along-svg-path.tsx 子节点沿 SVG 路径移动。animationType 为 auto 或 scroll，showPath 决定是否画出路径。子项 ElementAlongPathItem 用 startOffset 错开。路径 id 用 useId。减弱动效或离开视口时停在起点。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/element-along-svg-path.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/element-along-svg-path.tsx"
+        }
+      ]
+    },
+    {
+      "name": "float",
+      "type": "registry:ui",
+      "title": "Float",
+      "description": "移植自 Fancy Components，MIT，Copyright (c) 2024 Daniel Petho。 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/blocks/float.tsx 子节点在三个轴上缓慢漂浮并轻微转动。amplitude、rotationRange、speed、timeOffset 可配。减弱动效或离开视口时回到原位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/float.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/float.tsx"
+        }
+      ]
+    },
+    {
+      "name": "check-cross-switch",
+      "type": "registry:ui",
+      "title": "Check Cross Switch",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 misaraadel。https://github.com/uiverse-io/galaxy/blob/main/Toggle-switches/misaraadel_tough-termite-75.html 圆钮从一侧滑到另一侧，轨道变色。受控，role 为 switch。减弱动效时直接到位。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-controllable-state",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/check-cross-switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/check-cross-switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "plus-share-burst",
+      "type": "registry:ui",
+      "title": "Plus Share Burst",
+      "description": "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。 作者 neerajbaniwal。https://github.com/uiverse-io/galaxy/blob/main/Tooltips/neerajbaniwal_sweet-sloth-99.html 加号旋开后弹出操作，并放一次形状爆发。图标由 items 传入。减弱动效时菜单直接出现，不旋转、不爆发。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/plus-share-burst.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/plus-share-burst.tsx"
+        }
+      ]
+    },
+    {
+      "name": "star-rating",
+      "type": "registry:ui",
+      "title": "Star Rating",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/star-rating/star-rating.tsx 星级评分，支持受控、只读小数和键盘。framer-motion 改为 motion/react。减弱动效时不缩放、不滚动数字。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/star-rating.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/star-rating.tsx"
+        }
+      ]
+    },
+    {
+      "name": "use-typewriter",
+      "type": "registry:hook",
+      "title": "Use Typewriter",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/use-typewriter.ts 依次打出、停住、删掉一组句子。减弱动效时直接显示第一句。账号卡和对话卡共用这个钩子。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/hooks/use-typewriter.ts",
+          "type": "registry:hook",
+          "target": "hooks/use-typewriter.ts"
+        }
+      ]
+    },
+    {
+      "name": "account-access-card",
+      "type": "registry:ui",
+      "title": "Account Access Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/account-access-card/account-access-card.tsx 凭据卡会逐字填入邮箱和密码点。示例凭据由 credentials 传入。减弱动效或离开视口时直接显示第一组。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/account-access-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/account-access-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat-card",
+      "type": "registry:ui",
+      "title": "AI Chat Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/ai-chat-card/ai-chat-card.tsx 空对话卡片。prompts 和 autoType 控制打字，onAttach、onSend、onReset 交给调用方。示例问候放在 demo。减弱动效或离开视口时直接显示第一句，图标不再浮动。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "use-typewriter",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ai-chat-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ai-chat-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "login-card",
+      "type": "registry:ui",
+      "title": "Login Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/login-card/logincard.tsx 登录卡片。调用方式是 LoginCard，onSubmit 收到字段值，fields 和 socialSlot 可选。社交品牌放在 demo 的 socialSlot。framer-motion 改为 motion/react。减弱动效时卡片直接出现。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/login-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/login-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "transfer-funds-card",
+      "type": "registry:ui",
+      "title": "Transfer Funds Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/transfer-funds-card/transfer-funds-card.tsx 转账确认卡。金额、账户和汇总都由 props 传入，示例数字放在 demo。减弱动效时按钮和关闭图标不再缩放。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/transfer-funds-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/transfer-funds-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "http-status-lookup",
+      "type": "registry:ui",
+      "title": "HTTP Status Lookup",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/app/registry/statuscode/demostatus.tsx 本地 HTTP 状态码检索，不发网络请求。codes 可替换内置表，defaultQuery 是初始搜索词。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/http-status-lookup.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/http-status-lookup.tsx"
+        }
+      ]
+    },
+    {
+      "name": "github-profile-card",
+      "type": "registry:ui",
+      "title": "GitHub Profile Card",
+      "description": "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。 https://github.com/arihantcodes/spectrum-ui/blob/main/components/spectrumui/github-profile-card.tsx GitHub 资料卡。默认不发请求。用户提交搜索，或同时传入 username 且 fetchProfile 为 true 时才请求。也可以直接传 user。头像用 img。贡献格按用户名确定，不使用随机数。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/github-profile-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/github-profile-card.tsx"
+        }
+      ]
     }
   ]
 }

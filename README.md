@@ -557,6 +557,29 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 可变字体、开关与资料卡
+
+登记在 `catalog-batch36.ts`。上一批全息文字已占用 `catalog-batch35.ts`。`variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float` 移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho）。`lodash` 的 debounce 改成组件内手写，`clsx` 改成 `cn`。`check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card` 移植自 Spectrum UI（Apache-2.0，(c) Spectrum UI / arihantcodes）。`use-typewriter` 移植到 `hooks/`。`framer-motion` 已换成 `motion/react`。示例凭据、提示词、社交入口、转账数字和 GitHub 用户放在 demo。资料卡默认不发请求。没有新增依赖。减弱动效时可变字体保持起始字重、字母不交换、下划线不再过渡、路径元素停在起点、漂浮回到原位、开关直接到位、分享菜单直接出现、星星不缩放、账号卡和对话卡直接显示第一组文案、登录卡直接出现、转账按钮不再缩放。
+
+| 组件 | 来源 |
+| --- | --- |
+| variable-font-hover-by-letter | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| letter-swap-pingpong | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| random-letter-swap | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| underline-hover-link | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| element-along-svg-path | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| float | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
+| check-cross-switch | Uiverse galaxy，MIT，作者 misaraadel |
+| plus-share-burst | Uiverse galaxy，MIT，作者 neerajbaniwal |
+| star-rating | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| account-access-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| ai-chat-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| login-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| transfer-funds-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| http-status-lookup | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| github-profile-card | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+| use-typewriter | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
+
 ### 全息文字、刮刮卡与评分
 
 登记在 `catalog-batch35.ts`。上一批色相波浪已占用 `catalog-batch34.ts`。`hologram-text`、`ink-morph`、`orbital-text`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card` 移植自 Spectrum UI（Apache-2.0，Made by Arihant）。`use-dismiss`、`use-hover-gesture`、`use-tap-gesture` 一并移植到 `hooks/`。`framer-motion` 已换成 `motion/react`，去掉了 `next-themes`。`faq-tabs-card` 的示例文案由 `tabs` 传入，`nav-list-card` 的示例数据在 demo。每个移植文件都标明 Modified。没有新增依赖。减弱动效时全息文字停止闪烁并保持可见、墨迹直接落到终点、轨道字符直接落位、刮刮卡不生成粉尘、骨架不脉冲、状态文字直接替换、铃铛不摆动、异步按钮的加载旋转停止、表情不弹跳、关注按钮不形变、分享菜单只淡入、任务勾选不爆开、动作条标签直接显隐、常见问题直接切换、导航行不再位移。

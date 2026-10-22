@@ -40,6 +40,7 @@ import * as effectDemos38 from "./effect-demos-38"
 import * as effectDemos39 from "./effect-demos-39"
 import * as effectDemos40 from "./effect-demos-40"
 import * as effectDemos41 from "./effect-demos-41"
+import * as effectDemos42 from "./effect-demos-42"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -745,6 +746,21 @@ const demoMap: Record<string, ComponentType> = {
   "team-section": effectDemos41.TeamSectionDemo,
   "stat-trend-cards": effectDemos41.StatTrendCardsDemo,
   "collapsible-side-menu": effectDemos41.CollapsibleSideMenuDemo,
+  "bookmark-burst-toggle": effectDemos42.BookmarkBurstToggleDemo,
+  "lock-toggle": effectDemos42.LockToggleDemo,
+  "circular-text-button": effectDemos42.CircularTextButtonDemo,
+  "flower-burst-button": effectDemos42.FlowerBurstButtonDemo,
+  "scroll-cue-button": effectDemos42.ScrollCueButtonDemo,
+  "flicker-reflect-button": effectDemos42.FlickerReflectButtonDemo,
+  "glow-search-input": effectDemos42.GlowSearchInputDemo,
+  "propeller-orb": effectDemos42.PropellerOrbDemo,
+  "not-found-page": effectDemos42.NotFoundPageDemo,
+  "multi-level-dropdown": effectDemos42.MultiLevelDropdownDemo,
+  "file-manager-table": effectDemos42.FileManagerTableDemo,
+  "email-template": effectDemos42.EmailTemplateDemo,
+  "signup-split-page": effectDemos42.SignupSplitPageDemo,
+  "step-modal": effectDemos42.StepModalDemo,
+  "portfolio-filter-grid": effectDemos42.PortfolioFilterGridDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

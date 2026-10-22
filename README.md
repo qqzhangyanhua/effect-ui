@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 书签爆发、注册分页与作品筛选
+
+登记在 `catalog-batch40.ts`。上一批故障切片已占用 `catalog-batch39.ts`。`bookmark-burst-toggle`（作者 Galahhad）、`lock-toggle`（作者 mobinkakei）、`circular-text-button`（作者 Creatlydev）、`flower-burst-button`（作者 yaroslavas2001）、`scroll-cue-button`（作者 ArturCodeCraft）、`flicker-reflect-button`（作者 John-CFO）、`glow-search-input`（作者 siraj-ha）、`propeller-orb`（作者 Lakshay-art）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`not-found-page`、`multi-level-dropdown`、`file-manager-table`、`email-template`、`signup-split-page`、`step-modal`、`portfolio-filter-grid` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。Alpine 改成 React 状态，过渡用已有的 `motion/react`。示例图片、文案和链接放在 demo。邮件模板用表格和内联样式。没有新增依赖。减弱动效时书签不再爆发、锁扣不再画线、环形文字停止旋转、花朵不再自转、滚动箭头停住、霓虹不再闪、搜索光晕不再对调、螺旋桨停住、404 按钮和注册按钮不再做颜色过渡、菜单直接出现、文件行按钮不再过渡、步骤遮罩直接出现、作品过滤立即完成。
+
+| 组件 | 来源 |
+| --- | --- |
+| bookmark-burst-toggle | Uiverse galaxy，MIT，作者 Galahhad |
+| lock-toggle | Uiverse galaxy，MIT，作者 mobinkakei |
+| circular-text-button | Uiverse galaxy，MIT，作者 Creatlydev |
+| flower-burst-button | Uiverse galaxy，MIT，作者 yaroslavas2001 |
+| scroll-cue-button | Uiverse galaxy，MIT，作者 ArturCodeCraft |
+| flicker-reflect-button | Uiverse galaxy，MIT，作者 John-CFO |
+| glow-search-input | Uiverse galaxy，MIT，作者 siraj-ha |
+| propeller-orb | Uiverse galaxy，MIT，作者 Lakshay-art |
+| not-found-page | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| multi-level-dropdown | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| file-manager-table | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| email-template | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| signup-split-page | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| step-modal | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+| portfolio-filter-grid | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
+
 ### 故障切片、粗野套件与营销区块
 
 登记在 `catalog-batch39.ts`。上一批布局模糊已占用 `catalog-batch38.ts`。`glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`details-list`、`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards`、`collapsible-side-menu` 移植自 HyperUI（MIT，Copyright (c) Mark Mead）。亮色和暗色 HTML 合并成主题色加 `dark:` 变体。示例图片、文案和链接放在 demo。`neo-brutal-kit` 一个条目导出 NeoCard、Alert、Badge、Input、Select、Textarea、Checkbox、Progress、Tabs。没有新增依赖。减弱动效时切片不再错位、发送光晕停住、删除提示直接出现、霓虹卡片放平、图钉和星星不再缩放、模糊色块保持清晰、游走光点停住、详情列表和统计卡保持原样、博客阴影不再过渡、粗野控件没有过渡、联系按钮没有颜色过渡、成员链接不再改变透明度、侧栏箭头没有旋转过渡。

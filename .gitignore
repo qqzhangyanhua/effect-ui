@@ -1,6 +1,16 @@
 node_modules
 .pnpm-store
 .agent/
+.claude/
+.claude-flow/
+.grok/
+.swarm/
+.playwright-cli/
+apps/docs/.playwright-cli/
+docs/grok/
+ruvector.db
+docs/adr/0006-effect-props-not-modeled-on-react-bits.md
+docs/plans/0003-effect-props-rollout.md
 .next
 out
 dist

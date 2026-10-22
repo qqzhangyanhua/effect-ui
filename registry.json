@@ -12780,6 +12780,25 @@
       ]
     },
     {
+      "name": "folder-float",
+      "type": "registry:ui",
+      "title": "Folder Float",
+      "description": "原创实现。文件夹盖子翻开，便签胶囊依次弹出并散开。展开后由 matter-js 接管，便签缓慢漂浮、互相碰撞，可以拖动。减弱动效时不启动物理，只淡入。",
+      "dependencies": [
+        "matter-js"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/folder-float.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/folder-float.tsx"
+        }
+      ]
+    },
+    {
       "name": "variable-font-hover-by-letter",
       "type": "registry:ui",
       "title": "Variable Font Hover By Letter",

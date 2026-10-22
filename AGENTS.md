@@ -1,12 +1,16 @@
 # Agent Instructions
 
+用中文回复
+
 ## Read First
+
 - `docs/project-map.md`: layout, flows, and how to add a component.
 - `docs/dangerous-areas.md`: generated files, the install endpoint, licensing.
 - `docs/testing.md` and `docs/debugging.md`: read when running checks or fixing a failure.
 - `apps/docs/AGENTS.md`: read before editing `apps/docs`. This Next.js version differs from older releases. Check `node_modules/next/dist/docs/` first.
 
 ## Default Workflow
+
 1. Understand the task.
 2. Check current workspace state.
 3. Search for relevant files before editing.
@@ -17,6 +21,7 @@
 8. Report changed files, validation results, and remaining risks.
 
 ## Do Not
+
 - Edit generated files directly: `registry.json`, `apps/docs/public/r/`.
 - Copy code from Aceternity UI or React Bits. Record the source and license for any ported code.
 - Modify secrets or local environment files.
@@ -24,6 +29,7 @@
 - Hide failing or skipped checks.
 
 ## Large or High-Risk Changes
+
 Use `docs/agent-plan-template.md` before editing. Stop after the plan for high-risk areas and ask for human review.
 
 ## Agent skills

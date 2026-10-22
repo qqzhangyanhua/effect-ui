@@ -681,6 +681,7 @@ const demoMap: Record<string, ComponentType> = {
   "expandable-action-bar": effectDemos37.ExpandableActionBarDemo,
   "faq-tabs-card": effectDemos37.FaqTabsCardDemo,
   "nav-list-card": effectDemos37.NavListCardDemo,
+  "folder-float": effectDemos37.FolderFloatDemo,
   "variable-font-hover-by-letter": effectDemos38.VariableFontHoverByLetterDemo,
   "letter-swap-pingpong": effectDemos38.LetterSwapPingPongDemo,
   "random-letter-swap": effectDemos38.RandomLetterSwapDemo,

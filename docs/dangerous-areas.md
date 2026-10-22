@@ -14,7 +14,7 @@ Files written by Next.js:
 - `apps/docs/next-env.d.ts`: tracked, and says not to edit it. Leave Next.js-made changes to it out of unrelated commits.
 - `apps/docs/AGENTS.md`: re-added by `next dev`. The file says to commit it instead of reverting it.
 
-Local agent cache: `.agent/` is written by agent tooling and gitignored. Do not commit it or depend on its contents.
+Local agent cache and notes are gitignored. Do not commit them or depend on their contents: `.agent/`, `.claude/`, `.claude-flow/`, `.grok/`, `.swarm/`, `.playwright-cli/`, `apps/docs/.playwright-cli/`, `docs/grok/`, `ruvector.db`.
 
 ## Public Install Surface
 - `GET /r/[name]` in `apps/docs/app/r/[name]/route.ts`, plus the static files in `apps/docs/public/r/`. Users install from these URLs.

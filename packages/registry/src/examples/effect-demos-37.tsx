@@ -7,6 +7,7 @@ import { ExpandableActionBar } from "../effects/expandable-action-bar"
 import { FaceRating } from "../effects/face-rating"
 import { FAQTabsCard } from "../effects/faq-tabs-card"
 import { FollowButton } from "../effects/follow-button"
+import { FolderFloat, type FolderFloatTrigger } from "../effects/folder-float"
 import { HologramText } from "../effects/hologram-text"
 import { InkMorphText } from "../effects/ink-morph"
 import { NavListCard } from "../effects/nav-list-card"
@@ -189,6 +190,53 @@ export function NavListCardDemo() {
           { icon: <Copy />, label: "预算", href: "#budget" },
           { icon: <Bell />, label: "报告", href: "#reports" },
         ]}
+      />
+    </div>
+  )
+}
+
+export function FolderFloatDemo({
+  trigger = "hover",
+  closeOnSelect = true,
+  physics = true,
+  drift = 0.5,
+  folderColor = "#3f3f46",
+  spread = 180,
+  lift = 26,
+  tilt = 8,
+  flapAngle = 34,
+  openDuration = 520,
+  stagger = 45,
+  bounce = 0.3,
+}: {
+  trigger?: FolderFloatTrigger
+  closeOnSelect?: boolean
+  physics?: boolean
+  drift?: number
+  folderColor?: string
+  spread?: number
+  lift?: number
+  tilt?: number
+  flapAngle?: number
+  openDuration?: number
+  stagger?: number
+  bounce?: number
+} = {}) {
+  return (
+    <div className="flex min-h-80 w-full items-end justify-center pt-28 pb-6">
+      <FolderFloat
+        trigger={trigger}
+        closeOnSelect={closeOnSelect}
+        physics={physics}
+        drift={drift}
+        folderColor={folderColor}
+        spread={spread}
+        lift={lift}
+        tilt={tilt}
+        flapAngle={flapAngle}
+        openDuration={openDuration}
+        stagger={stagger}
+        bounce={bounce}
       />
     </div>
   )

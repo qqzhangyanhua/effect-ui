@@ -605,6 +605,14 @@ text-style
 | use-hover-gesture | Spectrum UI，Apache-2.0，Made by Arihant |
 | use-tap-gesture | Spectrum UI，Apache-2.0，Made by Arihant |
 
+### 文件夹便签
+
+登记在 `catalog-batch35.ts`。上一批色相波浪已占用 `catalog-batch34.ts`。原创实现，不是移植。依赖已有的 `matter-js`（MIT），没有新增依赖。减弱动效时不启动物理，便签只淡入。
+
+| 组件 | 来源 |
+| --- | --- |
+| folder-float | 原创 |
+
 ### 色相波浪、杠杆开关与验证码
 
 登记在 `catalog-batch34.ts`。上一批倾斜卡片已占用 `catalog-batch33.ts`。`hue-wave-loader`、`lift-gradient-border-button`、`lever-switch`、`neon-3d-radio`、`star-ribbon-notification`、`moon-sun-switch`、`glow-light-switch`、`hamburger-morph`、`mic-search-input`、`social-follow-tooltip`、`copy-field`、`newsletter-input`、`pin-display-input` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4。`neubrutalism-toggle`、`minimal-accordion` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`neubrutalism-toggle` 额外署 Ethan Pollack。`minimal-accordion` 的 `framer-motion` 已换成 `motion/react`。没有新增依赖。减弱动效时色相波浪和绶带停住、渐变按钮不上抬、杠杆与日月与灯光与粗野开关直接到位、单选不旋转、汉堡立刻变成叉、手风琴直接展开、麦克风按钮不过渡、关注提示直接出现、复制状态直接切换、订阅按钮不过渡、验证码格子保持静止。

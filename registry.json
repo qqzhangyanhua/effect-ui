@@ -15601,6 +15601,276 @@
           "target": "components/ui/password-field.tsx"
         }
       ]
+    },
+    {
+      "name": "success-plumb-bob",
+      "type": "registry:ui",
+      "title": "Success Plumb Bob",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/loud/success-plumb-bob/component.tsx 确认成功时铅锤落下并摆回铅垂，水平线从锤尖向两侧画出。按下时立刻宣布成功并调用 onConfirm，动画不挡住结果。减弱动效直接停在铅垂终态。离开视口时摆动暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/success-plumb-bob.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/success-plumb-bob.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-domino-run",
+      "type": "registry:ui",
+      "title": "Checkbox Domino Run",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/checkbox-domino-run/component.tsx 总开关以每秒 14 行的波前依次勾选。点任意一行或按 Escape 会停在当前行，后面的行保持原样。礼貌 live region 只在开始和结束时说话。减弱动效一次改完全部，并给出 5 秒撤销。离开视口时波前暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/checkbox-domino-run.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox-domino-run.tsx"
+        }
+      ]
+    },
+    {
+      "name": "autosave-ratchet",
+      "type": "registry:ui",
+      "title": "Autosave Ratchet",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/autosave-ratchet/component.tsx 自动保存状态画成棘轮。saving 上紧，saved 落齿，error 退回半齿。礼貌 live region 节流播报，失败总是立刻宣布。悬停或聚焦可看完整说明。减弱动效去掉预紧。离开视口时齿轮动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/autosave-ratchet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/autosave-ratchet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-retry-backoff",
+      "type": "registry:ui",
+      "title": "Button Retry Backoff",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/button-retry-backoff/component.tsx 重试按钮。onRetry 返回 false 或抛错时进入退避，弧线走完才可再按。aria-describedby 指向剩余秒数。减弱动效用离散步进。离开视口或标签页隐藏时计时暂停，回来不丢已走进度。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/button-retry-backoff.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button-retry-backoff.tsx"
+        }
+      ]
+    },
+    {
+      "name": "craze-rule",
+      "type": "registry:ui",
+      "title": "Craze Rule",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/craze-rule/component.tsx 分隔线是一条进入视口后裂开的缝。role 为 separator。种子决定裂纹，服务端不画随机路径。减弱动效直接显示完整裂纹。离开视口时空闲蠕动暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/craze-rule.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/craze-rule.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-tear-stub",
+      "type": "registry:ui",
+      "title": "Banner Tear Stub",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/banner-tear-stub/component.tsx 通知沿穿孔撕下，留下可重新打开的存根。info 用 role=status，urgent 用 role=alert。减弱动效改为短的线性高度和透明度。离开视口时高度弹簧暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/banner-tear-stub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/banner-tear-stub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feed-escapement",
+      "type": "registry:ui",
+      "title": "Feed Escapement",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/feed-escapement/component.tsx 活动流一次只放行一条，弹簧落定后才放下一条。role=log，礼貌 live region。RELEASE ALL 和 Escape 立即放完队列。减弱动效直接落到终态。离开视口时弹簧暂停。ref 上有 arrive、releaseAll、clear。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/feed-escapement.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/feed-escapement.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cruet-settle",
+      "type": "registry:ui",
+      "title": "Cruet Settle",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/cruet-settle/component.tsx 结账合计先搅乱再分层落定。总额变化才写入 role=status，挂载时不播报。减弱动效直接显示分层结果。离开视口时落定等待暂停。金额哈希在服务端和客户端一致。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cruet-settle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cruet-settle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "undo-ghost-row",
+      "type": "registry:ui",
+      "title": "Undo Ghost Row",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/undo-ghost-row/component.tsx 删除后行还占着高度，倒计时结束才收起。悬停或聚焦暂停倒计时。礼貌 live region 说明可撤销的时间。减弱动效保持全高，并给出明确的完成删除按钮。离开视口时高度动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/undo-ghost-row.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/undo-ghost-row.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container-box-drawing",
+      "type": "registry:ui",
+      "title": "Container Box Drawing",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/container-box-drawing/component.tsx 用制表字符围一圈。悬停或焦点内从左上角顺时针把单线换成双线。ResizeObserver 按字符格测量。减弱动效直接换成终态字形。离开视口时扫描暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/container-box-drawing.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/container-box-drawing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "transfer-list-siphon",
+      "type": "registry:ui",
+      "title": "Transfer List Siphon",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/transfer-list-siphon/component.tsx 左右搬运列表。源列表是多选 listbox，方向键、Home、End、Space 和 Enter 都能用。Move selected 按钮和拖拽走同一条虹吸。Stop 会把在途的珠子倒回去。礼貌 live region 每秒最多一条，结束时一定播报。减弱动效仍按顺序完成，只是没有逐帧路程。离开视口时珠子暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/transfer-list-siphon.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/transfer-list-siphon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drill-down-spines",
+      "type": "registry:ui",
+      "title": "Drill Down Spines",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/drill-down-spines/component.tsx 下钻后上一层收成书脊，留在左侧可点。宽度是测出来的像素，不是 flex 自动。nav 地标报出层数。ref 上有 push、pop、popTo、reset。减弱动效同步提交，不做级联。离开视口时进入动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drill-down-spines.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drill-down-spines.tsx"
+        }
+      ]
+    },
+    {
+      "name": "due-slip",
+      "type": "registry:ui",
+      "title": "Due Slip",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/due-slip/component.tsx 已读回执按到达顺序盖章。点击只展开，Escape 才收起。新来的人写入礼貌 live region，初次挂载不播报。减弱动效去掉盖章缩放。离开视口时盖章动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/due-slip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/due-slip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "contra-strike",
+      "type": "registry:ui",
+      "title": "Contra Strike",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/contra-strike/component.tsx 真实表格里的部分退款。滑块 role=slider，方向键、Page、Home、End 改比例。确认后追加红字冲销行，原行不改。role=status 是表格的兄弟节点。减弱动效跳过行高过渡。离开视口时展开暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/contra-strike.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/contra-strike.tsx"
+        }
+      ]
+    },
+    {
+      "name": "galley-bracket",
+      "type": "registry:ui",
+      "title": "Galley Bracket",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/galley-bracket/component.tsx 正文选区画成页边括号。重叠的人选按到达顺序向外嵌套。SVG 装饰 aria-hidden。role=status 在变动停 2 秒后播报。跳转按钮移动原生 Selection。减弱动效不播放描线。离开视口时描线暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/galley-bracket.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/galley-bracket.tsx"
+        }
+      ]
     }
   ]
 }

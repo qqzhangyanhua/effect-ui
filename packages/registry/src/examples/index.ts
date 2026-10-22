@@ -46,6 +46,7 @@ import * as effectDemos44 from "./effect-demos-44"
 import * as effectDemos45 from "./effect-demos-45"
 import * as effectDemos46 from "./effect-demos-46"
 import * as effectDemos47 from "./effect-demos-47"
+import * as effectDemos48 from "./effect-demos-48"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -834,6 +835,21 @@ const demoMap: Record<string, ComponentType> = {
   "brush-chart": effectDemos47.BrushChartDemo,
   "user-menu": effectDemos47.UserMenuDemo,
   "password-field": effectDemos47.PasswordFieldDemo,
+  "success-plumb-bob": effectDemos48.SuccessPlumbBobDemo,
+  "checkbox-domino-run": effectDemos48.CheckboxDominoRunDemo,
+  "autosave-ratchet": effectDemos48.AutosaveRatchetDemo,
+  "button-retry-backoff": effectDemos48.ButtonRetryBackoffDemo,
+  "craze-rule": effectDemos48.CrazeRuleDemo,
+  "banner-tear-stub": effectDemos48.BannerTearStubDemo,
+  "feed-escapement": effectDemos48.FeedEscapementDemo,
+  "cruet-settle": effectDemos48.CruetSettleDemo,
+  "undo-ghost-row": effectDemos48.UndoGhostRowDemo,
+  "container-box-drawing": effectDemos48.ContainerBoxDrawingDemo,
+  "transfer-list-siphon": effectDemos48.TransferListSiphonDemo,
+  "drill-down-spines": effectDemos48.DrillDownSpinesDemo,
+  "due-slip": effectDemos48.DueSlipDemo,
+  "contra-strike": effectDemos48.ContraStrikeDemo,
+  "galley-bracket": effectDemos48.GalleyBracketDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

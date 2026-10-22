@@ -1,0 +1,117 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+const ui: PropDoc[] = [{ name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" }]
+
+export const batch37Components: ComponentMeta[] = [
+  {
+    name: "tag-jar",
+    title: "Tag Jar",
+    description:
+      "原创实现。标签从罐口落下，在玻璃罐里堆成一叠。拖动罐子或按方向键会把它们摇散。减弱动效时不启动 matter-js，标签直接叠在罐底。没有新增依赖。",
+    category: "decor",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/tag-jar.tsx",
+    target: "components/ui/tag-jar.tsx",
+    props: [
+      { name: "tags", type: "{ id: string; label: string }[]", description: "初始标签。省略时用内置四枚。" },
+      { name: "onShake", type: "() => void", description: "拖动或按键把罐子摇晃之后调用。" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "标签和罐口颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "260",
+        description: "罐子宽度，像素。",
+        control: { kind: "range", value: 260, min: 180, max: 400, step: 4 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "480",
+        description: "摇晃后恢复静止的毫秒数。越长，空气阻力越小，晃动停得越慢。",
+        control: { kind: "range", value: 480, min: 192, max: 960, step: 20 },
+      },
+      ...ui,
+    ],
+  },
+  {
+    name: "coin-jar",
+    title: "Coin Jar",
+    description:
+      "原创实现。点击或按向下键，把打赏硬币投入罐中，硬币落下后叠成一柱。减弱动效时不启动 matter-js，投入的硬币直接出现在罐底。没有新增依赖。",
+    category: "decor",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/coin-jar.tsx",
+    target: "components/ui/coin-jar.tsx",
+    props: [
+      { name: "coins", type: "{ id: string; label: string }[]", description: "可投入的硬币。省略时用内置四枚。" },
+      { name: "onDrop", type: "(id: string) => void", description: "一枚硬币投入后调用，参数是它的 id。" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "硬币颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "220",
+        description: "罐子宽度，像素。",
+        control: { kind: "range", value: 220, min: 160, max: 360, step: 4 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "560",
+        description: "落下的节奏，毫秒。越长，重力越轻，硬币落得越慢。",
+        control: { kind: "range", value: 560, min: 224, max: 1120, step: 20 },
+      },
+      ...ui,
+    ],
+  },
+  {
+    name: "ball-pit",
+    title: "Ball Pit",
+    description:
+      "原创实现。头像球待在球池里，指针靠近或按方向键会把它们拨开。减弱动效时不启动 matter-js，球保持静止，拨动只改变位置。没有新增依赖。",
+    category: "decor",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/ball-pit.tsx",
+    target: "components/ui/ball-pit.tsx",
+    props: [
+      { name: "people", type: "{ id: string; name: string }[]", description: "球池里的人。省略时用内置六人。" },
+      { name: "onNudge", type: "(id: string) => void", description: "一颗球被拨开后调用，参数是它的 id。" },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: "var(--primary)",
+        description: "球体颜色。不传则跟随主题。",
+        control: { kind: "color" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "320",
+        description: "球池边长，像素。",
+        control: { kind: "range", value: 320, min: 220, max: 480, step: 4 },
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "420",
+        description: "被拨开后继续滑行的毫秒数。越长，阻力越小，球停得越慢。",
+        control: { kind: "range", value: 420, min: 168, max: 840, step: 20 },
+      },
+      ...ui,
+    ],
+  },
+]

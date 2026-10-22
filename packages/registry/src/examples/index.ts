@@ -30,6 +30,7 @@ import * as effectDemos28 from "./effect-demos-28"
 import * as effectDemos29 from "./effect-demos-29"
 import * as effectDemos30 from "./effect-demos-30"
 import * as effectDemos31 from "./effect-demos-31"
+import * as effectDemos32 from "./effect-demos-32"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -584,6 +585,21 @@ const demoMap: Record<string, ComponentType> = {
   "heading-with-anchor": effectDemos31.HeadingWithAnchorDemo,
   "responsive-modal": effectDemos31.ResponsiveModalDemo,
   "text-highlighter": effectDemos31.TextHighlighterDemo,
+  "css-box": effectDemos32.CssBoxDemo,
+  "drag-elements": effectDemos32.DragElementsDemo,
+  "scroll-and-swap-text": effectDemos32.ScrollAndSwapTextDemo,
+  "underline-to-background": effectDemos32.UnderlineToBackgroundDemo,
+  "parallax-floating": effectDemos32.ParallaxFloatingDemo,
+  "pixelate-svg-filter": effectDemos32.PixelateSvgFilterDemo,
+  "gooey-svg-filter": effectDemos32.GooeySvgFilterDemo,
+  "animated-gradient-with-svg": effectDemos32.AnimatedGradientDemo,
+  announcement: effectDemos32.AnnouncementDemo,
+  banner: effectDemos32.BannerDemo,
+  pill: effectDemos32.PillDemo,
+  "relative-time": effectDemos32.RelativeTimeDemo,
+  ticker: effectDemos32.TickerDemo,
+  "dialog-stack": effectDemos32.DialogStackDemo,
+  choicebox: effectDemos32.ChoiceboxDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

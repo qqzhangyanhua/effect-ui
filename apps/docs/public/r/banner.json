@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner",
+  "type": "registry:ui",
+  "title": "Banner",
+  "description": "移植自 Kibo UI，MIT，Copyright (c) 2023 — Present shadcnblocks。 https://github.com/shadcnblocks/kibo/blob/main/packages/banner/index.tsx 页顶通知条，由 Banner、BannerIcon、BannerTitle、BannerAction、BannerClose 组成。visible 和 defaultVisible 支持受控与非受控。inset 使用圆角。关闭时调用 onClose。状态用仓库里已有的 use-controllable-state。",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "use-controllable-state",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/banner.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/banner.tsx",
+      "content": "\"use client\"\n\n// Ported from Kibo UI (MIT, (c) shadcnblocks) — https://github.com/shadcnblocks/kibo/blob/main/packages/banner/index.tsx\n\nimport { Button } from \"@/components/ui/button\"\nimport { useControllableState } from \"@/hooks/use-controllable-state\"\nimport { cn } from \"@/lib/utils\"\n\nimport { XIcon, type LucideIcon } from \"lucide-react\"\nimport {\n  createContext,\n  useContext,\n  type ComponentProps,\n  type HTMLAttributes,\n  type MouseEventHandler,\n  type ReactNode,\n} from \"react\"\n\ninterface BannerContextProps {\n  show: boolean\n  setShow: (show: boolean) => void\n}\n\nconst BannerContext = createContext<BannerContextProps>({\n  show: true,\n  setShow: () => {},\n})\n\nexport interface BannerProps {\n  children?: ReactNode\n  visible?: boolean\n  defaultVisible?: boolean\n  onClose?: () => void\n  inset?: boolean\n  className?: string\n}\n\nexport function Banner({\n  children,\n  visible,\n  defaultVisible = true,\n  onClose,\n  className,\n  inset = false,\n}: BannerProps) {\n  const [show, setShow] = useControllableState({\n    value: visible,\n    defaultValue: defaultVisible,\n    onChange: (next) => {\n      if (!next) onClose?.()\n    },\n  })\n\n  if (!show) return null\n\n  return (\n    <BannerContext.Provider value={{ show, setShow }}>\n      <div\n        className={cn(\n          \"flex w-full items-center justify-between gap-2 bg-primary px-4 py-2 text-primary-foreground\",\n          inset && \"rounded-lg\",\n          className,\n        )}\n        data-slot=\"banner\"\n      >\n        {children}\n      </div>\n    </BannerContext.Provider>\n  )\n}\n\nexport function BannerIcon({\n  icon: Icon,\n  className,\n  ...props\n}: HTMLAttributes<HTMLDivElement> & { icon: LucideIcon }) {\n  return (\n    <div className={cn(\"rounded-full border border-background/20 bg-background/10 p-1 shadow-sm\", className)} {...props}>\n      <Icon size={16} />\n    </div>\n  )\n}\n\nexport function BannerTitle({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {\n  return <p className={cn(\"flex-1 text-sm\", className)} {...props} />\n}\n\nexport function BannerAction({ variant = \"outline\", size = \"sm\", className, ...props }: ComponentProps<typeof Button>) {\n  return (\n    <Button\n      className={cn(\"shrink-0 bg-transparent hover:bg-background/10 hover:text-background\", className)}\n      size={size}\n      variant={variant}\n      {...props}\n    />\n  )\n}\n\nexport function BannerClose({\n  variant = \"ghost\",\n  size = \"icon\",\n  onClick,\n  className,\n  ...props\n}: ComponentProps<typeof Button>) {\n  const { setShow } = useContext(BannerContext)\n  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {\n    setShow(false)\n    onClick?.(event)\n  }\n\n  return (\n    <Button\n      className={cn(\"shrink-0 bg-transparent hover:bg-background/10 hover:text-background\", className)}\n      aria-label=\"关闭\"\n      onClick={handleClick}\n      size={size}\n      variant={variant}\n      {...props}\n    >\n      <XIcon size={18} />\n    </Button>\n  )\n}\n"
+    }
+  ]
+}

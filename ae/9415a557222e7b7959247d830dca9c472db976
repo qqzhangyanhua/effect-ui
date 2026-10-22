@@ -1,0 +1,41 @@
+packages/registry/src/effects/folder-float.test.tsx
+  s_4304beab3c10f4::t_6f90de49757507 23
+  s_4304beab3c10f4::t_d01554b2cd1e6b 81-99
+  s_4304beab3c10f4::t_c376ce28c09da5 116-117,122-130
+  s_4304beab3c10f4::t_eb33b360373087 132-147
+  s_4304beab3c10f4::t_3117104922611d 119
+  s_4304beab3c10f4::t_5fb197a45ed352 104-115,118,120-121,131
+packages/registry/src/catalog-batch35.ts
+  s_4304beab3c10f4::t_259b2bb01af289 398-400,402-406
+packages/registry/src/examples/effect-demos-37.tsx
+  s_4304beab3c10f4::t_105728b47f0a6d 203
+packages/registry/src/effects/folder-float.tsx
+  s_4304beab3c10f4::t_ab2530e3fb05fc 138-143
+  s_4304beab3c10f4::t_07f812d901fde4 409-416,419-420
+  s_4304beab3c10f4::t_dc54db9664f8d7 174-175
+  s_4304beab3c10f4::t_ebece8d28a323d 14
+  s_4304beab3c10f4::t_bbc5cc983027ca 188
+  s_4304beab3c10f4::t_74cf134f50fad9 324
+apps/docs/public/r/folder-float.json
+  s_4304beab3c10f4::t_8331407f57494c 11,19
+apps/docs/public/r/registry.json
+  s_4304beab3c10f4::t_e62ade8dec7303 12791
+registry.json
+  s_4304beab3c10f4::t_17196c9c84e7e2 12791
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ae9415a557222e7b7959247d830dca9c472db976",
+  "prompts": {},
+  "sessions": {
+    "s_4304beab3c10f4": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "bf8687f2-1830-4bbb-afad-cc75415f54a3",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+packages/registry/src/effects/jelly-button.tsx
+  s_b9f32fcf8fcd81::t_f8fc88ebe8e608 69-78,81
+  s_b9f32fcf8fcd81::t_714dc211571842 121-122
+  s_b9f32fcf8fcd81::t_3d2381188e5473 184-185
+  s_b9f32fcf8fcd81::t_0bbdf6f3f171e8 1-68,79-80,82-120,123-183,186-202,204-212
+  s_b9f32fcf8fcd81::t_94d1801777dc6b 203
+packages/registry/src/catalog.ts
+  s_b9f32fcf8fcd81::t_96c6c85dc203b2 36
+  s_b9f32fcf8fcd81::t_b72bdb18e766b1 2305
+README.md
+  s_b9f32fcf8fcd81::t_1b1ea7aa31fd7b 603-612
+packages/registry/src/effects/spring-drawer.tsx
+  s_b9f32fcf8fcd81::t_bf96dd15ed2213 1-140,147-170,176-252
+  s_b9f32fcf8fcd81::t_622dc09f926c35 141,144-146,171-175
+  s_b9f32fcf8fcd81::t_94bb83d0ef2d5d 142-143
+packages/registry/src/effects/jelly-button.test.tsx
+  s_b9f32fcf8fcd81::t_afdea170074234 1-114
+packages/registry/src/effects/lanyard-badge.tsx
+  s_b9f32fcf8fcd81::t_878a20448d4334 225
+  s_b9f32fcf8fcd81::t_e1018712e39d87 1-224,226-320
+packages/registry/src/catalog-batch38.ts
+  s_b9f32fcf8fcd81::t_fec3804de2c4c6 1-99
+packages/registry/src/effects/spring-drawer.test.tsx
+  s_b9f32fcf8fcd81::t_a156f849461b2c 1-132
+packages/registry/src/audit-coverage.ts
+  s_b9f32fcf8fcd81::t_547011abd7288a 4
+  s_b9f32fcf8fcd81::t_4e854edd7fe54f 84-86
+packages/registry/src/examples/index.ts
+  s_b9f32fcf8fcd81::t_3f12ecf9e5e1b1 40
+  s_b9f32fcf8fcd81::t_262cdb2067dc15 689-691
+CREDITS.md
+  s_b9f32fcf8fcd81::t_e6c11e346ef251 24
+packages/registry/src/effects/lanyard-badge.test.tsx
+  s_b9f32fcf8fcd81::t_c2240538909e36 1-114
+packages/registry/src/examples/effect-demos-40.tsx
+  s_b9f32fcf8fcd81::t_2b7a44dabf0897 1-53
+apps/docs/public/r/jelly-button.json
+  s_b9f32fcf8fcd81::t_77339b5a6ee4d1 1-20
+apps/docs/public/r/lanyard-badge.json
+  s_b9f32fcf8fcd81::t_17c7852a8af6b9 1-20
+apps/docs/public/r/registry.json
+  s_b9f32fcf8fcd81::t_f67fdb4149714a 12863-12916
+apps/docs/public/r/spring-drawer.json
+  s_b9f32fcf8fcd81::t_a5473fe0acb887 1-20
+registry.json
+  s_b9f32fcf8fcd81::t_562a145d2e61ad 12863-12916
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "330ca00d18c80f18883663c1ca25c909a4f81a8c",
+  "prompts": {},
+  "sessions": {
+    "s_b9f32fcf8fcd81": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b974f333-2d30-49f2-b840-53f648364dce",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

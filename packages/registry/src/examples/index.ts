@@ -35,6 +35,7 @@ import * as effectDemos33 from "./effect-demos-33"
 import * as effectDemos34 from "./effect-demos-34"
 import * as effectDemos35 from "./effect-demos-35"
 import * as effectDemos36 from "./effect-demos-36"
+import * as effectDemos37 from "./effect-demos-37"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -664,6 +665,21 @@ const demoMap: Record<string, ComponentType> = {
   "copy-field": effectDemos36.CopyFieldDemo,
   "newsletter-input": effectDemos36.NewsletterInputDemo,
   "pin-display-input": effectDemos36.PinDisplayInputDemo,
+  "hologram-text": effectDemos37.HologramTextDemo,
+  "ink-morph": effectDemos37.InkMorphDemo,
+  "orbital-text": effectDemos37.OrbitalTextDemo,
+  "scratch-card": effectDemos37.ScratchCardDemo,
+  "skeleton-reveal": effectDemos37.SkeletonRevealDemo,
+  "text-states": effectDemos37.TextStatesDemo,
+  "notification-bell": effectDemos37.NotificationBellDemo,
+  "async-morph-button": effectDemos37.AsyncMorphButtonDemo,
+  "face-rating": effectDemos37.FaceRatingDemo,
+  "follow-button": effectDemos37.FollowButtonDemo,
+  "share-button": effectDemos37.ShareButtonDemo,
+  "task-checkbox": effectDemos37.TaskCheckboxDemo,
+  "expandable-action-bar": effectDemos37.ExpandableActionBarDemo,
+  "faq-tabs-card": effectDemos37.FaqTabsCardDemo,
+  "nav-list-card": effectDemos37.NavListCardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

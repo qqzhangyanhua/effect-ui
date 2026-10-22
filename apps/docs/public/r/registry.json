@@ -12788,6 +12788,7 @@
         "matter-js"
       ],
       "registryDependencies": [
+        "use-prefers-reduced-motion",
         "utils"
       ],
       "files": [

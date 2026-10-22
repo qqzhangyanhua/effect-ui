@@ -11,6 +11,7 @@ import React, {
 } from "react"
 import Matter from "matter-js"
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
 
 const { Bodies, Body, Composite, Engine } = Matter
@@ -134,12 +135,12 @@ function FolderFloat({
   drift = 0.5,
   onSelect,
   onOpenChange,
-  folderColor = "#3f3f46",
-  frontColor = "#52525b",
-  paperColor = "#f5f5f5",
-  itemColor = "#f5f5f5",
-  itemTextColor = "#18181b",
-  labelColor = "#f5f5f5",
+  folderColor = "var(--primary)",
+  frontColor = "var(--foreground)",
+  paperColor = "var(--card)",
+  itemColor = "var(--muted)",
+  itemTextColor = "var(--card-foreground)",
+  labelColor = "var(--card)",
   width = 200,
   height = 148,
   radius = 14,
@@ -170,7 +171,8 @@ function FolderFloat({
     zone: null,
     live: false,
   })
-  const latest = useRef<Latest>({ drift, reduce: false })
+  const reduced = usePrefersReducedMotion()
+  const latest = useRef<Latest>({ drift, reduce: reduced })
   const popTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const liveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const list: Entry[] = items.map((item) => (typeof item === "string" ? { label: item, value: item } : item))
@@ -183,6 +185,7 @@ function FolderFloat({
     latest.current.onSelect = onSelect
     latest.current.onOpenChange = onOpenChange
     latest.current.drift = drift
+    latest.current.reduce = reduced
   })
 
   const labelsKey = list.map((item) => item.label).join("|")
@@ -318,17 +321,7 @@ function FolderFloat({
     }
     liveTimer.current = setTimeout(startPhysics, openDuration + (n - 1) * stagger + 80)
     return () => clearTimeout(liveTimer.current)
-  }, [open, physics, openDuration, stagger, n, startPhysics, stopPhysics])
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const sync = () => {
-      latest.current.reduce = mq.matches
-    }
-    sync()
-    mq.addEventListener("change", sync)
-    return () => mq.removeEventListener("change", sync)
-  }, [])
+  }, [open, physics, reduced, openDuration, stagger, n, startPhysics, stopPhysics])
 
   useEffect(
     () => () => {
@@ -413,10 +406,18 @@ function FolderFloat({
       data-live={live ? "" : undefined}
       data-physics={physics ? "" : undefined}
       data-trigger={trigger}
-      onPointerEnter={hover ? () => set(true) : undefined}
+      onPointerEnter={
+        hover
+          ? (event) => {
+              if (event.pointerType === "touch") return
+              set(true)
+            }
+          : undefined
+      }
       onPointerLeave={
         hover
-          ? () => {
+          ? (event) => {
+              if (event.pointerType === "touch") return
               if (!world.current.drag) set(false)
             }
           : undefined

@@ -200,7 +200,7 @@ export function FolderFloatDemo({
   closeOnSelect = true,
   physics = true,
   drift = 0.5,
-  folderColor = "#3f3f46",
+  folderColor,
   spread = 180,
   lift = 26,
   tilt = 8,

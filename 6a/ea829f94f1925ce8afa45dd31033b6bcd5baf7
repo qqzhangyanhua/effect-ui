@@ -1,0 +1,89 @@
+packages/registry/src/catalog-batch30.ts
+  s_1f7fae292b4abd::t_5afd55506bd3af 159-161
+packages/registry/src/catalog-batch44.ts
+  s_1f7fae292b4abd::t_66f6d609eea0a3 19
+  s_1f7fae292b4abd::t_b29b3e1c38b290 22
+  s_1f7fae292b4abd::t_909e9768b625b3 21
+packages/registry/src/catalog-batch29.ts
+  s_1f7fae292b4abd::t_2a31a2b86755e2 69-71
+packages/registry/src/examples/effect-demos-35.tsx
+  s_1f7fae292b4abd::t_5e456864434f10 61
+  s_1f7fae292b4abd::t_75e73c680e920e 59-60,62-67,70
+packages/registry/src/catalog-batch24.ts
+  s_1f7fae292b4abd::t_efbc7bc3efcd71 56-58
+  s_1f7fae292b4abd::t_ac031aff728f28 112,114
+  s_1f7fae292b4abd::t_40d99881302699 113
+packages/registry/src/catalog-batch26.ts
+  s_1f7fae292b4abd::t_f2a74f7c6e03e8 29
+  s_1f7fae292b4abd::t_84a81570f8c857 46
+  s_1f7fae292b4abd::t_fc8443a1c472ce 22
+  s_1f7fae292b4abd::t_f884c4d67ddb23 110
+  s_1f7fae292b4abd::t_88e11c9bd945f8 115
+  s_1f7fae292b4abd::t_ab1d67ce9b0aa7 114
+  s_1f7fae292b4abd::t_5e7bdabd709d69 26
+  s_1f7fae292b4abd::t_97e0f753051bde 43
+  s_1f7fae292b4abd::t_36f141c2a1ea97 51
+packages/registry/src/examples/effect-demos-26.tsx
+  s_1f7fae292b4abd::t_d7883af63dad7a 31-40
+  s_1f7fae292b4abd::t_b50f8a606b81eb 51-60
+packages/registry/src/examples/effect-demos-27.tsx
+  s_1f7fae292b4abd::t_b1fb6308914e59 63-71,73
+packages/registry/src/catalog-batch27.ts
+  s_1f7fae292b4abd::t_d41824cf00d72a 23-24
+  s_1f7fae292b4abd::t_e65807e8f05abc 25
+packages/registry/src/examples/effect-demos-32.tsx
+  s_1f7fae292b4abd::t_a1137878b5bc27 150-158,161
+packages/registry/src/catalog-batch33.ts
+  s_1f7fae292b4abd::t_e706268128d018 78
+  s_1f7fae292b4abd::t_7372eda9aea62f 76
+  s_1f7fae292b4abd::t_e0f937d540279d 75
+packages/registry/src/catalog-batch22.ts
+  s_1f7fae292b4abd::t_1d8e5e3a98e6fe 108-110
+packages/registry/src/examples/effect-demos-31.tsx
+  s_1f7fae292b4abd::t_1e0b4c714040c7 33-41,45
+packages/registry/src/examples/effect-demos-24.tsx
+  s_1f7fae292b4abd::t_cb5fbc9decdd94 54-62,65
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_67317bc2741758 73-90,92
+packages/registry/src/catalog-batch23.ts
+  s_1f7fae292b4abd::t_52c3a8c2a298cf 32-34
+  s_1f7fae292b4abd::t_bfad4ed80057bd 49-51
+packages/registry/src/examples/effect-demos-28.tsx
+  s_1f7fae292b4abd::t_815131e1b928dc 45-53,55
+  s_1f7fae292b4abd::t_14acc2e325a4d6 77-85,87
+  s_1f7fae292b4abd::t_be1ae944c87e84 29-37,39
+packages/registry/src/catalog-batch25.ts
+  s_1f7fae292b4abd::t_347b9fa15e8421 98-100
+packages/registry/src/examples/effect-demos-29.tsx
+  s_1f7fae292b4abd::t_09bf8bce7b4808 44-52,54
+packages/registry/src/examples/effect-demos-25.tsx
+  s_1f7fae292b4abd::t_d5eb74782d59a6 26-34,36,42-51
+packages/registry/src/examples/effect-demos-23.tsx
+  s_1f7fae292b4abd::t_f1aa25190d2efc 49-57,59
+  s_1f7fae292b4abd::t_93142cfc265317 33-42
+  s_1f7fae292b4abd::t_0f197ed1eab2e8 73-81,84
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_7f615b837c774a 103,189,239,301,353,384
+packages/registry/src/examples/effect-demos-46.tsx
+  s_1f7fae292b4abd::t_0ad3df87d579da 24-32,35
+packages/registry/src/catalog-batch21.ts
+  s_1f7fae292b4abd::t_16a8c92f4c6d5d 89-91
+  s_1f7fae292b4abd::t_3d7e54e44d3b26 24-26
+  s_1f7fae292b4abd::t_f6a00298230f4e 57-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "6aea829f94f1925ce8afa45dd31033b6bcd5baf7",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

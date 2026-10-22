@@ -53,6 +53,13 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## GodUI
+
+- 仓库：https://github.com/LucasBassetti/godui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Lucas Bassetti
+- 衍生组件：`progress-fold-button`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progress-fold-button/progress-fold-button.tsx）、`magic-tab`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-tab/magic-tab.tsx）、`magic-input`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-input/magic-input.tsx）、`blueprint-grid`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/blueprint-grid/blueprint-grid.tsx）、`liquid-metaballs`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/liquid-metaballs/liquid-metaballs.tsx）、`spin-viewer`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/spin-viewer/spin-viewer.tsx）、`progressive-card-reveal`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progressive-card-reveal/progressive-card-reveal.tsx）、`inertia-gallery`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/inertia-gallery/inertia-gallery.tsx）、`agent-timeline`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-timeline/agent-timeline.tsx）、`agent-flow`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-flow/agent-flow.tsx）、`comment-pin`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/comment-pin/comment-pin.tsx）、`presence-facepile`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/presence-facepile/presence-facepile.tsx）、`stack-badge`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/stack-badge/stack-badge.tsx）、`store-badge`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/store-badge/store-badge.tsx）。`store-badge` 未移植二维码，也未加入 `uqr`。`stack-badge` 内置标志路径来自 Simple Icons（CC0）。
+
 ## Framekit UI
 
 - 仓库：https://github.com/Sid9022/framekit-ui

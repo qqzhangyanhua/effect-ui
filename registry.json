@@ -17449,6 +17449,276 @@
           "target": "components/ui/mini-desktop-os.tsx"
         }
       ]
+    },
+    {
+      "name": "progress-fold-button",
+      "type": "registry:ui",
+      "title": "Progress Fold Button",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progress-fold-button/progress-fold-button.tsx 按钮正面沿上沿折起，露出后面的进度。加载中、按下、聚焦都会折起，不依赖悬停。确定进度按百分比填充，否则一段色条来回扫。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progress-fold-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress-fold-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magic-tab",
+      "type": "registry:ui",
+      "title": "Magic Tab",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-tab/magic-tab.tsx 选中的标签抬起，并沿图表色带来回流动。方向键移动焦点，Enter 或空格才选中。按下也会抬起，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magic-tab.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magic-tab.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magic-input",
+      "type": "registry:ui",
+      "title": "Magic Input",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-input/magic-input.tsx 输入框在聚焦或按下时抬起，边缘走图表色。提交后可进入加载、成功或失败，加载时色条扫过。按下即可看到厚度，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magic-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magic-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blueprint-grid",
+      "type": "registry:ui",
+      "title": "Blueprint Grid",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/blueprint-grid/blueprint-grid.tsx 蓝图网格，可选直线、圆点或透视地面。一道光带扫过，指针或按下的位置会点亮附近格子。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blueprint-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blueprint-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metaballs",
+      "type": "registry:ui",
+      "title": "Liquid Metaballs",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/liquid-metaballs/liquid-metaballs.tsx SVG 滤镜把色块融成液团。位置按序号播种，不在渲染时取随机数。指针移动或按下会多出一个跟随的液团。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-metaballs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-metaballs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spin-viewer",
+      "type": "registry:ui",
+      "title": "Spin Viewer",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/spin-viewer/spin-viewer.tsx 按帧旋转的查看器。拖动或按下后滑动换帧。示例帧是内联 SVG，没有图片文件。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spin-viewer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spin-viewer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-card-reveal",
+      "type": "registry:ui",
+      "title": "Progressive Card Reveal",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progressive-card-reveal/progressive-card-reveal.tsx 一列卡片里只有当前项展开，其余按距离收成胶囊。点击胶囊切换，按下有缩放反馈。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progressive-card-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progressive-card-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inertia-gallery",
+      "type": "registry:ui",
+      "title": "Inertia Gallery",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/inertia-gallery/inertia-gallery.tsx 横向拖动的画廊，松手后按弹簧靠拢最近的一张。左右按钮和方向键也能换张。距离中心越远越淡。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inertia-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inertia-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "agent-timeline",
+      "type": "registry:ui",
+      "title": "Agent Timeline",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-timeline/agent-timeline.tsx 代理步骤时间线。运行中的圆点旋转，成功和失败点亮连接线。有正文的步骤可以点开。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/agent-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/agent-timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "agent-flow",
+      "type": "registry:ui",
+      "title": "Agent Flow",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-flow/agent-flow.tsx 可拖动的代理流程图。节点描边点亮后，光束沿连线走到下一节点。拖背景可以平移。离开视口时序列不再前进。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/agent-flow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/agent-flow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comment-pin",
+      "type": "registry:ui",
+      "title": "Comment Pin",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/comment-pin/comment-pin.tsx 画布上的评论钉。点击打开线程，可以回复。头像颜色由本地的姓名哈希映射到主题色，不另建 presence 模块。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/comment-pin.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/comment-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "presence-facepile",
+      "type": "registry:ui",
+      "title": "Presence Facepile",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/presence-facepile/presence-facepile.tsx 叠放的在线头像。超出的人数收成 +N，点击展开名单。颜色由本地哈希映射到主题色。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/presence-facepile.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/presence-facepile.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stack-badge",
+      "type": "registry:ui",
+      "title": "Stack Badge",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/stack-badge/stack-badge.tsx 技术栈徽章。内置标志在悬停、按下或聚焦时染上品牌色。进入视口时依次出现。标志路径来自 Simple Icons（CC0）。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stack-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stack-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "store-badge",
+      "type": "registry:ui",
+      "title": "Store Badge",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/store-badge/store-badge.tsx App Store 与 Google Play 的下载锁。没有二维码，也没有加入 uqr。按下或聚焦时有一道高光扫过。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/store-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/store-badge.tsx"
+        }
+      ]
     }
   ]
 }

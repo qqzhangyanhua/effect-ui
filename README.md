@@ -573,6 +573,27 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 折页、液团与徽章
+
+登记在 `catalog-batch58.ts`。火漆、货车与案头已占用 `catalog-batch57.ts`。`progress-fold-button`、`magic-tab`、`magic-input`、`blueprint-grid`、`liquid-metaballs`、`spin-viewer`、`progressive-card-reveal`、`inertia-gallery`、`agent-timeline`、`agent-flow`、`comment-pin`、`presence-facepile`、`stack-badge`、`store-badge` 移植自 GodUI（MIT，Copyright (c) 2026 Lucas Bassetti），提交 `1f632a7`。`framer-motion` 改成 `motion/react`。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。主题色改成主题变量。弹簧参数写在组件里。图标用 `lucide-react`。评论钉和头像墙各自内联了姓名哈希，没有新建 presence 模块。旋转查看器的示例帧是内联 SVG，没有图片文件。商店徽章去掉了二维码，没有加入 `uqr`。液团位置按序号播种。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| progress-fold-button | GodUI，MIT |
+| magic-tab | GodUI，MIT |
+| magic-input | GodUI，MIT |
+| blueprint-grid | GodUI，MIT |
+| liquid-metaballs | GodUI，MIT |
+| spin-viewer | GodUI，MIT |
+| progressive-card-reveal | GodUI，MIT |
+| inertia-gallery | GodUI，MIT |
+| agent-timeline | GodUI，MIT |
+| agent-flow | GodUI，MIT |
+| comment-pin | GodUI，MIT |
+| presence-facepile | GodUI，MIT |
+| stack-badge | GodUI，MIT |
+| store-badge | GodUI，MIT |
+
 ### 火漆、货车与案头
 
 登记在 `catalog-batch57.ts`。车道、铜版与胶片已占用 `catalog-batch56.ts`。`wax-seal-button`、`dispatch-truck-button`、`googly-gaze-button`、`weather-vane-toggle`、`ink-bleed-text`、`charm-text`、`book-spine-shelf`、`cook-loading`、`usage-quota-meter`、`inset-settings-list`、`compass-rail`、`availability-badge`、`smart-widget-stack`、`goal-progress-card`、`mini-desktop-os` 移植自 Framekit UI（MIT，Copyright (c) 2026 Framekit UI contributors）。`@/lib/cn` 改成 `cn`。`@/lib/use-reduced-motion` 改成共享的 `usePrefersReducedMotion`。`@/lib/use-resolved-theme` 改成主题变量。`@/lib/roving`、`toggle`、`widget-kit`、`portfolio-art` 需要的部分写在组件里。货车保留源码的阶段顺序：拉路、装货、等待下单、开走；失败不自动复位。厨师等待态没有嵌入约 322KB 的精灵图，改用主题色 SVG，暂停只冻住手臂和蒸汽，不改进度。书架是选书，和 `drill-down-spines` 不同。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

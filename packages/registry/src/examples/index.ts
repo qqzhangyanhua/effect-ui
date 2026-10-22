@@ -58,6 +58,7 @@ import * as effectDemos56 from "./effect-demos-56"
 import * as effectDemos57 from "./effect-demos-57"
 import * as effectDemos58 from "./effect-demos-58"
 import * as effectDemos59 from "./effect-demos-59"
+import * as effectDemos60 from "./effect-demos-60"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -943,6 +944,20 @@ const demoMap: Record<string, ComponentType> = {
   "smart-widget-stack": effectDemos59.SmartWidgetStackDemo,
   "goal-progress-card": effectDemos59.GoalProgressCardDemo,
   "mini-desktop-os": effectDemos59.MiniDesktopOSDemo,
+  "progress-fold-button": effectDemos60.ProgressFoldButtonDemo,
+  "magic-tab": effectDemos60.MagicTabDemo,
+  "magic-input": effectDemos60.MagicInputDemo,
+  "blueprint-grid": effectDemos60.BlueprintGridDemo,
+  "liquid-metaballs": effectDemos60.LiquidMetaballsDemo,
+  "spin-viewer": effectDemos60.SpinViewerDemo,
+  "progressive-card-reveal": effectDemos60.ProgressiveCardRevealDemo,
+  "inertia-gallery": effectDemos60.InertiaGalleryDemo,
+  "agent-timeline": effectDemos60.AgentTimelineDemo,
+  "agent-flow": effectDemos60.AgentFlowDemo,
+  "comment-pin": effectDemos60.CommentPinDemo,
+  "presence-facepile": effectDemos60.PresenceFacepileDemo,
+  "stack-badge": effectDemos60.StackBadgeDemo,
+  "store-badge": effectDemos60.StoreBadgeDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

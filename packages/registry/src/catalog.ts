@@ -54,6 +54,7 @@ import { batch54Components } from "./catalog-batch54"
 import { batch55Components } from "./catalog-batch55"
 import { batch56Components } from "./catalog-batch56"
 import { batch57Components } from "./catalog-batch57"
+import { batch58Components } from "./catalog-batch58"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -144,6 +145,7 @@ export type SourceLibrary =
   | "HextaUI"
   | "Motiq"
   | "Framekit UI"
+  | "GodUI"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -285,6 +287,7 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   HextaUI: "https://github.com/preetsuthar17/HextaUI",
   Motiq: "https://github.com/RMahammad/motiq",
   "Framekit UI": "https://github.com/Sid9022/framekit-ui",
+  GodUI: "https://github.com/LucasBassetti/godui",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2377,6 +2380,7 @@ export const components: ComponentMeta[] = [
   ...batch55Components,
   ...batch56Components,
   ...batch57Components,
+  ...batch58Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2502,6 +2506,7 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "wax-seal-button",
       "dispatch-truck-button",
       "googly-gaze-button",
+      "progress-fold-button",
     ],
   },
 ]
@@ -2528,7 +2533,7 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "category-search-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input", "exploding-input"] },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input", "exploding-input", "magic-input"] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [

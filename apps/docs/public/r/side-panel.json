@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "side-panel",
+  "type": "registry:ui",
+  "title": "Side Panel",
+  "description": "移植自 Cult UI，MIT，Copyright (c) 2023 Jordan-Gilliam。 https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/side-panel.tsx 打开时宽度到 97%，高度用弹簧 bounce 0.02、duration 0.65 跟上内容。收起时宽度 160px，缓动是 [0.42, 0, 0.58, 1]。panelOpen、handlePanelOpen、renderButton 可配。高度用 ResizeObserver 测量，没有加入 react-use-measure。减弱动效时开关立即完成。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/side-panel.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/side-panel.tsx",
+      "content": "\"use client\"\n\n// Ported from Cult UI (MIT, (c) 2023 Jordan-Gilliam) — https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/side-panel.tsx. Modified for effect-ui.\n\nimport { useEffect, useRef, useState, type ReactNode } from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nconst ease = [0.42, 0, 0.58, 1] as const\n\nexport interface SidePanelProps {\n  panelOpen: boolean\n  handlePanelOpen: () => void\n  className?: string\n  renderButton?: (handleToggle: () => void) => ReactNode\n  children?: ReactNode\n}\n\nexport function SidePanel({ panelOpen, handlePanelOpen, className, renderButton, children }: SidePanelProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const contentRef = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const motionOn = useAnimationActive(ref)\n  const moving = motionOn && !reduced\n  const [height, setHeight] = useState(0)\n\n  useEffect(() => {\n    const node = contentRef.current\n    if (!node || typeof ResizeObserver === \"undefined\") return\n    const observer = new ResizeObserver(() => setHeight(node.scrollHeight))\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [panelOpen, children])\n\n  return (\n    <div ref={ref} className=\"flex w-full flex-col items-start\" data-motion={moving ? \"on\" : \"off\"} data-reduced={reduced ? \"true\" : \"false\"} data-slot=\"side-panel\" data-state={panelOpen ? \"open\" : \"closed\"}>\n      <motion.div\n        animate={{ width: panelOpen ? \"97%\" : \"160px\" }}\n        className={cn(\"overflow-hidden rounded-r-[44px] bg-neutral-900 text-white md:w-[260px]\", className)}\n        transition={moving ? { duration: panelOpen ? 0.3 : 0.2, ease } : { duration: 0 }}\n      >\n        <motion.div\n          animate={{ height: height > 0 ? height : \"auto\" }}\n          className=\"overflow-hidden\"\n          transition={moving ? { type: \"spring\", bounce: 0.02, duration: 0.65 } : { duration: 0 }}\n        >\n          <div ref={contentRef}>\n            <div className={cn(\"flex w-full items-center justify-start py-2 pl-4\", panelOpen && \"pr-3\")}>\n              {renderButton ? renderButton(handlePanelOpen) : null}\n            </div>\n            {panelOpen ? <div className=\"px-4 pb-4\">{children}</div> : null}\n          </div>\n        </motion.div>\n      </motion.div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

@@ -557,6 +557,28 @@ text-style
 | two-factor-setup | 灵感来自 Basecamp 与 Dropbox Dash（经由 Mobbin），原创实现 |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 灯板、光环与折页卡片
+
+登记在 `catalog-batch43.ts`。上一批 UNO 卡已占用 `catalog-batch42.ts`。`lightboard`、`cosmic-button`、`glow-track-button`、`halo-badge`、`halo-switch`、`shift-card`、`squiggle-arrow`、`security-checkpoint`、`speech-bubble`、`folded-card`、`side-panel`、`collab-avatar`、`elapsed-timer`、`neumorph-button`、`texture-card` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`next/link` 改成 `a`，`clsx` 改成 `cn`。侧栏高度用 ResizeObserver，没有加入 react-use-measure。关键帧写在组件内部。示例色、文案和链接放在 demo。没有新增依赖。减弱动效时灯板停在当前帧，星环和光斑停住，徽章光圈和开关弹簧停住，班次卡片直接展开，安检线和计时图标停住，气泡光标不再呼吸，拟态按钮不再缩放。
+
+| 组件 | 来源 |
+| --- | --- |
+| lightboard | Cult UI，MIT |
+| cosmic-button | Cult UI，MIT |
+| glow-track-button | Cult UI，MIT |
+| halo-badge | Cult UI，MIT |
+| halo-switch | Cult UI，MIT |
+| shift-card | Cult UI，MIT |
+| squiggle-arrow | Cult UI，MIT |
+| security-checkpoint | Cult UI，MIT |
+| speech-bubble | Cult UI，MIT |
+| folded-card | Cult UI，MIT |
+| side-panel | Cult UI，MIT |
+| collab-avatar | Cult UI，MIT |
+| elapsed-timer | Cult UI，MIT |
+| neumorph-button | Cult UI，MIT |
+| texture-card | Cult UI，MIT |
+
 ### UNO 卡、会议控制与分类搜索
 
 登记在 `catalog-batch42.ts`。上一批吃豆加载已占用 `catalog-batch41.ts`。`uno-card`（作者 nanda248）、`transaction-card`（作者 Admin12121）、`printer-icon-button`（作者 Admin12121）、`pendulum-social-card`（作者 SouravBandyopadhyay）、`tilt-sweep-button`（作者 EddyBel）、`focus-line-input`（作者 TechByElijah）、`word-wheel-card`（作者 NotReal22）、`fly-around-button`（作者 Bastiennnn）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`bottom-navigation`、`meeting-control-bar`、`list-group`、`time-range-picker`、`blockquote`、`featured-gallery`、`category-search-input` 移植自 Flowbite（MIT，Copyright (c) 2023 Bergside Inc.）。Tailwind HTML 改成 React 状态，图标用已有的 lucide-react。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时光带、进纸、摆锤、扫光、下划线放大、词盘、飞图标停住，交易卡和 POS 并排静止，图库直接换图，导航和会议条不再做颜色过渡。

@@ -39,6 +39,7 @@ import { batch39Components } from "./catalog-batch39"
 import { batch40Components } from "./catalog-batch40"
 import { batch41Components } from "./catalog-batch41"
 import { batch42Components } from "./catalog-batch42"
+import { batch43Components } from "./catalog-batch43"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -2323,6 +2324,7 @@ export const components: ComponentMeta[] = [
   ...batch40Components,
   ...batch41Components,
   ...batch42Components,
+  ...batch43Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2433,6 +2435,9 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "printer-icon-button",
       "tilt-sweep-button",
       "fly-around-button",
+      "cosmic-button",
+      "glow-track-button",
+      "neumorph-button",
     ],
   },
 ]
@@ -2471,7 +2476,7 @@ const checkboxFamilySections: readonly FamilySectionSpec[] = [
 const switchFamilySections: readonly FamilySectionSpec[] = [
   { key: "base", label: "基础", names: ["switch"] },
   { key: "plus", label: "增强", names: ["switch-plus"] },
-  { key: "motion", label: "动效", names: ["squish-switch", "labeled-toggle"] },
+  { key: "motion", label: "动效", names: ["squish-switch", "labeled-toggle", "halo-switch"] },
 ]
 
 const radioFamilySections: readonly FamilySectionSpec[] = [

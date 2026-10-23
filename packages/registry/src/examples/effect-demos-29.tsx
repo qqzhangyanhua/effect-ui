@@ -133,10 +133,17 @@ export function DitherChartDemo() {
   )
 }
 
-export function CardSwipeDeckDemo() {
+export function CardSwipeDeckDemo({
+  rotationFactor = 18,
+  stackOffset = 14,
+  threshold = 110,
+}: { rotationFactor?: number; stackOffset?: number; threshold?: number } = {}) {
   return (
     <CardSwipeDeck
       className="mx-auto h-72 w-56"
+      rotationFactor={rotationFactor}
+      stackOffset={stackOffset}
+      threshold={threshold}
       items={[
         { content: <div className="flex h-full items-center justify-center text-2xl">甲</div>, id: "a" },
         { content: <div className="flex h-full items-center justify-center text-2xl">乙</div>, id: "b" },

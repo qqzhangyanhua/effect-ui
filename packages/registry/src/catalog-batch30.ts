@@ -32,9 +32,24 @@ export const batch30Components: ComponentMeta[] = [
     file: "effects/css-box.tsx",
     target: "components/ui/css-box.tsx",
     props: [
-      { name: "width", type: "number", description: "正面宽度，像素。" },
-      { name: "height", type: "number", description: "正面高度，像素。" },
-      { name: "depth", type: "number", description: "盒子深度，像素。" },
+      {
+        name: "width",
+        type: "number",
+        description: "正面宽度，像素。预览是 120。",
+        control: { kind: "range", value: 120, min: 80, max: 240, step: 4 },
+      },
+      {
+        name: "height",
+        type: "number",
+        description: "正面高度，像素。预览是 120。",
+        control: { kind: "range", value: 120, min: 80, max: 240, step: 4 },
+      },
+      {
+        name: "depth",
+        type: "number",
+        description: "盒子深度，像素。预览是 72。",
+        control: { kind: "range", value: 72, min: 24, max: 160, step: 4 },
+      },
       { name: "perspective", type: "number", defaultValue: "600", description: "透视距离，像素。" },
       { name: "stiffness", type: "number", defaultValue: "100", description: "旋转弹簧刚度。" },
       { name: "damping", type: "number", defaultValue: "30", description: "旋转弹簧阻尼。" },

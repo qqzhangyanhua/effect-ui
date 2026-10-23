@@ -38,12 +38,18 @@ const face = (label: string, color: string) => (
   </div>
 )
 
-export function CssBoxDemo() {
+export function CssBoxDemo({
+  width = 120,
+  height = 120,
+  depth = 72,
+}: { width?: number; height?: number; depth?: number } = {}) {
   const boxRef = useRef<CSSBoxRef>(null)
   return (
     <div className="flex flex-col items-center gap-4">
       <CSSBox
-        depth={72}
+        depth={depth}
+        height={height}
+        width={width}
         faces={{
           front: face("前", "#312e81"),
           back: face("后", "#1e1b4b"),
@@ -52,9 +58,7 @@ export function CssBoxDemo() {
           top: face("上", "#818cf8"),
           bottom: face("下", "#3730a3"),
         }}
-        height={120}
         ref={boxRef}
-        width={120}
       />
       <button className="rounded-md border px-3 py-1 text-sm" onClick={() => boxRef.current?.showRight()} type="button">
         转到右侧

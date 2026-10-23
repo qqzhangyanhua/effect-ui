@@ -152,30 +152,45 @@ export function StarRatingDemo({
   )
 }
 
-export function AccountAccessCardDemo() {
+export function AccountAccessCardDemo({
+  title = "账号访问",
+  emailLabel = "邮箱",
+  buttonLabel = "更新安全设置",
+}: { title?: string; emailLabel?: string; buttonLabel?: string } = {}) {
   return (
     <div className="mx-auto max-w-md px-6 py-10">
-      <AccountAccessCard credentials={credentials} />
+      <AccountAccessCard buttonLabel={buttonLabel} credentials={credentials} emailLabel={emailLabel} title={title} />
     </div>
   )
 }
 
-export function AiChatCardDemo() {
+export function AiChatCardDemo({
+  title = "新对话",
+  greeting = "你好",
+  prompt = "下面的句子会自己打出来。",
+}: { title?: string; greeting?: string; prompt?: string } = {}) {
   const [sent, setSent] = useState("")
   return (
     <div className="mx-auto max-w-md px-6 py-10">
-      <AIChatCard greeting="你好" prompt="下面的句子会自己打出来。" prompts={prompts} onSend={setSent} />
+      <AIChatCard greeting={greeting} prompt={prompt} prompts={prompts} title={title} onSend={setSent} />
       {sent ? <p className="mt-3 text-sm text-muted-foreground">已发送：{sent}</p> : null}
     </div>
   )
 }
 
-export function LoginCardDemo() {
+export function LoginCardDemo({
+  title = "欢迎回来",
+  submitLabel = "继续",
+  dividerLabel = "或",
+}: { title?: string; submitLabel?: string; dividerLabel?: string } = {}) {
   const [email, setEmail] = useState("")
   return (
     <div className="flex justify-center px-6 py-10">
       <LoginCard
+        dividerLabel={dividerLabel}
         fields={[{ name: "email", label: "邮箱", type: "email", placeholder: "you@example.com" }]}
+        submitLabel={submitLabel}
+        title={title}
         footer={<span>示例页脚，不包含品牌标志。</span>}
         socialSlot={
           <button className="flex w-full items-center justify-between rounded-full border px-6 py-4 text-sm" type="button">
@@ -189,10 +204,14 @@ export function LoginCardDemo() {
   )
 }
 
-export function TransferFundsCardDemo() {
+export function TransferFundsCardDemo({
+  amount = "1,200.00",
+  fromAccount = "活期 ··8402",
+  toAccount = "储蓄 ··1192",
+}: { amount?: string; fromAccount?: string; toAccount?: string } = {}) {
   return (
     <div className="mx-auto max-w-md px-6 py-10">
-      <TransferFundsCard amount="1,200.00" description="在已连接的账户之间移动资金。" fromAccount="活期 ··8402" summary={summary} toAccount="储蓄 ··1192" />
+      <TransferFundsCard amount={amount} description="在已连接的账户之间移动资金。" fromAccount={fromAccount} summary={summary} toAccount={toAccount} />
     </div>
   )
 }
@@ -205,10 +224,17 @@ export function HttpStatusLookupDemo() {
   )
 }
 
-export function GitHubProfileCardDemo() {
+export function GitHubProfileCardDemo({
+  username = "",
+  fetchProfile = false,
+  emptyLabel = "输入 GitHub 用户名查看资料卡",
+}: { username?: string; fetchProfile?: boolean; emptyLabel?: string } = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
       <GitHubProfileCard
+        emptyLabel={emptyLabel}
+        fetchProfile={fetchProfile}
+        username={username}
         contributions={[
           { date: "2026-10-01", level: 0, count: 0 },
           { date: "2026-10-02", level: 2, count: 4 },

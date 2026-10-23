@@ -142,14 +142,25 @@ export function ScrubberDemo() {
   return <Scrubber defaultValue={1.5} label="光圈" max={8} min={1} step={0.1} ticks={8} />
 }
 
-export function SwitchboardCardDemo() {
-  return <SwitchboardCard className="max-w-sm" randomLights subtitle="机房指示灯会自己换班。" title="交换台" />
+export function SwitchboardCardDemo({
+  columns = 18,
+  randomLights = true,
+  subtitle = "机房指示灯会自己换班。",
+}: { columns?: number; randomLights?: boolean; subtitle?: string } = {}) {
+  return <SwitchboardCard className="max-w-sm" columns={columns} randomLights={randomLights} subtitle={subtitle} title="交换台" />
 }
 
-export function TimeMachineStackDemo() {
+export function TimeMachineStackDemo({
+  depth = 50,
+  offsetY = 36,
+  visibleCount = 4,
+}: { depth?: number; offsetY?: number; visibleCount?: number } = {}) {
   return (
     <TimeMachineStack
       className="h-72"
+      depth={depth}
+      offsetY={offsetY}
+      visibleCount={visibleCount}
       items={[
         { id: "dawn", content: <div className="flex h-full items-end bg-amber-200 p-5 text-lg">黎明</div> },
         { id: "noon", content: <div className="flex h-full items-end bg-sky-200 p-5 text-lg">正午</div> },

@@ -119,6 +119,9 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "project-update-card": "已发布组件没有可调 prop。",
   "lenticular-card": "已发布的可调项只有画面列表。",
   "card-beam-scanner": "已发布的可调项只有标题。",
+  "interactive-image-selector": "已发布的可调项只有一开始就多选，图片列表是结构，已选 id 一传入就受控。",
+  "hover-spring-features": "已发布的可调项只有卡片列表。",
+  "neon-hold-card": "已发布的可调项只有渐变三色，正文是节点。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

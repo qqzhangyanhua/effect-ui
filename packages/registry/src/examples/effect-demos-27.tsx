@@ -152,10 +152,14 @@ export function TimezonePlannerDemo() {
   )
 }
 
-export function CurrencyTransferDemo() {
+export function CurrencyTransferDemo({
+  rate = 0.92,
+  txnId = "TXN-DAB3UL494",
+  locale = "zh-CN",
+}: { rate?: number; txnId?: string; locale?: string } = {}) {
   return (
     <div className="flex w-full justify-center">
-      <CurrencyTransfer className="w-full" locale="zh-CN" />
+      <CurrencyTransfer className="w-full" locale={locale} rate={rate} txnId={txnId} />
     </div>
   )
 }

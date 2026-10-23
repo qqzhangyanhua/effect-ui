@@ -23,26 +23,34 @@ function scene() {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
 }
 
-export function GridTiltCardDemo() {
+export function GridTiltCardDemo({
+  heading = "纯 CSS 倾斜",
+  subtitle = "5×5 追踪格",
+  prompt = "悬停看看",
+}: { heading?: string; subtitle?: string; prompt?: string } = {}) {
   return (
     <div className="flex justify-center px-6 py-8">
-      <GridTiltCard />
+      <GridTiltCard heading={heading} prompt={prompt} subtitle={subtitle} />
     </div>
   )
 }
 
-export function LayeredGlassCardDemo() {
+export function LayeredGlassCardDemo({
+  title = "分层玻璃",
+  description = "五层圆在悬停时向前探出。",
+  actionLabel = "看细节",
+}: { title?: string; description?: string; actionLabel?: string } = {}) {
   return (
     <div className="flex justify-center px-6 py-8">
       <LayeredGlassCard
-        actionLabel="看细节"
-        description="五层圆在悬停时向前探出。"
+        actionLabel={actionLabel}
+        description={description}
+        title={title}
         icon={
           <svg aria-hidden className="size-5 fill-primary-foreground" viewBox="0 0 24 24">
             <path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.8 5.7 20.8 8 13.6 2 9.2h7.6z" />
           </svg>
         }
-        title="分层玻璃"
       />
     </div>
   )

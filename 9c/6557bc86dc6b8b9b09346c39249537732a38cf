@@ -1,0 +1,65 @@
+packages/registry/src/catalog-batch22.ts
+  s_1f7fae292b4abd::t_e20ff37104ec98 198-219
+packages/registry/src/effects/text-batch1.test.tsx
+  s_1f7fae292b4abd::t_65f1f42d6a43ba 62-63
+  s_1f7fae292b4abd::t_c45f8effd6bb91 181-185,192-196
+  s_1f7fae292b4abd::t_9908da96a98fc2 10-23
+  s_1f7fae292b4abd::t_2379c2a2479b3f 1-9,24-61,64-180,186-191,197-332
+packages/registry/src/examples/effect-demos-24.tsx
+  s_1f7fae292b4abd::t_1f5de2c271130a 100-104
+  s_1f7fae292b4abd::t_bb9cf639e682b0 95-99
+packages/registry/src/catalog-batch26.ts
+  s_1f7fae292b4abd::t_7825162e98dde3 89-95,97-103
+  s_1f7fae292b4abd::t_814ec9453f738b 108-113
+packages/registry/src/catalog-batch28.ts
+  s_1f7fae292b4abd::t_3f06e369bf7835 42-47
+  s_1f7fae292b4abd::t_b56e95b698e5e6 24-37
+  s_1f7fae292b4abd::t_2980eb0065f7ba 105-125
+packages/registry/src/examples/effect-demos-26.tsx
+  s_1f7fae292b4abd::t_97c22f6dbdc594 59-68
+  s_1f7fae292b4abd::t_22f30f07b5c95a 31-36
+  s_1f7fae292b4abd::t_22eaa127ece24b 51-56
+packages/registry/src/catalog-batch27.ts
+  s_1f7fae292b4abd::t_88cd324f58f9c5 109-115
+  s_1f7fae292b4abd::t_42069ffc19b2f2 117-122
+  s_1f7fae292b4abd::t_8600808a1c5109 101-107
+packages/registry/src/catalog-batch29.ts
+  s_1f7fae292b4abd::t_8076d597c69f00 103-114,116-121
+packages/registry/src/examples/effect-demos-29.tsx
+  s_1f7fae292b4abd::t_092abf1561aa96 95-111
+packages/registry/src/examples/effect-demos-31.tsx
+  s_1f7fae292b4abd::t_8ea8f48bcaa494 61-65,70,72,74
+packages/registry/src/catalog-batch24.ts
+  s_1f7fae292b4abd::t_3a6be39e59160b 57-77
+  s_1f7fae292b4abd::t_4c55f3ba37b7f0 108-128
+  s_1f7fae292b4abd::t_bf3f9632305bdc 142-148,153-161
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_0b2650a3341e65 182-186
+packages/registry/src/examples/effect-demos-30.tsx
+  s_1f7fae292b4abd::t_0a5f79beff5312 28-33
+  s_1f7fae292b4abd::t_ac8a1adba37c05 67-71,73
+packages/registry/src/examples/effect-demos-28.tsx
+  s_1f7fae292b4abd::t_5444aa8a9bec82 73-78
+packages/registry/src/catalog-batch21.ts
+  s_1f7fae292b4abd::t_966caeba0c3d57 106-111,113-126
+packages/registry/src/examples/effect-demos-23.tsx
+  s_1f7fae292b4abd::t_2db3c8d1b1867a 89-98
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_cf235538748b21 60,82,169,192,335
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "9c6557bc86dc6b8b9b09346c39249537732a38cf",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

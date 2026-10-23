@@ -127,16 +127,27 @@ export function AutosizeTextareaDemo() {
   return <AutosizeTextarea className="w-full" defaultValue="夜航记录可以继续往下写。" minHeight={52} placeholder="写下一段" />
 }
 
-export function LoadingButtonDemo() {
+export function LoadingButtonDemo({
+  asChild = false,
+  variant = "default",
+  size = "default",
+}: {
+  asChild?: boolean
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
+  size?: "default" | "sm" | "lg" | "icon"
+} = {}) {
   const [loading, setLoading] = useState(false)
   return (
     <LoadingButton
+      asChild={asChild}
       loading={loading}
       onClick={() => {
         setLoading(true)
         window.setTimeout(() => setLoading(false), 1200)
       }}
+      size={size}
       type="button"
+      variant={variant}
     >
       保存记录
     </LoadingButton>

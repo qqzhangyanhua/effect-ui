@@ -112,10 +112,14 @@ export function WheelPickerDemo() {
   )
 }
 
-export function UndoButtonDemo() {
+export function UndoButtonDemo({
+  label = "Archive",
+  doneLabel = "Archived",
+  duration = 5000,
+}: { label?: string; doneLabel?: string; duration?: number } = {}) {
   return (
     <div className="flex w-full justify-center">
-      <UndoButton />
+      <UndoButton doneLabel={doneLabel} duration={duration} label={label} />
     </div>
   )
 }

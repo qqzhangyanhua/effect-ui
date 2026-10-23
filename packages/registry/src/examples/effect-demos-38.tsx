@@ -100,11 +100,15 @@ export function ElementAlongSvgPathDemo() {
   )
 }
 
-export function FloatDemo() {
+export function FloatDemo({
+  children = "漂浮",
+  speed = 0.4,
+  timeOffset = 0,
+}: { children?: string; speed?: number; timeOffset?: number } = {}) {
   return (
     <div className="flex min-h-48 items-center justify-center px-6 py-10">
-      <Float amplitude={[8, 18, 12]} rotationRange={[8, 10, 4]} speed={0.4}>
-        <div className="rounded-2xl border bg-card px-6 py-4 text-card-foreground shadow-sm">漂浮</div>
+      <Float amplitude={[8, 18, 12]} rotationRange={[8, 10, 4]} speed={speed} timeOffset={timeOffset}>
+        <div className="rounded-2xl border bg-card px-6 py-4 text-card-foreground shadow-sm">{children}</div>
       </Float>
     </div>
   )

@@ -69,9 +69,13 @@ export function DrawingCursorDemo() {
   )
 }
 
-export function EmbossSurfaceDemo() {
+export function EmbossSurfaceDemo({
+  depth = 3,
+  lightAngle = 135,
+  variant = "emboss",
+}: { depth?: number; lightAngle?: number; variant?: "emboss" | "deboss" | "plaster" | "metal-stamp" } = {}) {
   return (
-    <EmbossSurface className="rounded-2xl p-8 text-center text-lg" depth={3} interactive variant="emboss">
+    <EmbossSurface className="rounded-2xl p-8 text-center text-lg" depth={depth} interactive lightAngle={lightAngle} variant={variant}>
       浮雕表面
     </EmbossSurface>
   )

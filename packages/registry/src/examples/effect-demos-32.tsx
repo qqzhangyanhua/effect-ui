@@ -67,9 +67,13 @@ export function CssBoxDemo({
   )
 }
 
-export function DragElementsDemo() {
+export function DragElementsDemo({
+  dragMomentum = true,
+  dragPropagation = true,
+  selectedOnTop = true,
+}: { dragMomentum?: boolean; dragPropagation?: boolean; selectedOnTop?: boolean } = {}) {
   return (
-    <DragElements className="h-48 w-full rounded-2xl border">
+    <DragElements className="h-48 w-full rounded-2xl border" dragMomentum={dragMomentum} dragPropagation={dragPropagation} selectedOnTop={selectedOnTop}>
       <span className="bg-indigo-500 mt-8 ml-8 inline-block rounded-md px-3 py-2 text-sm text-white">夜航</span>
       <span className="bg-amber-400 mt-16 ml-36 inline-block rounded-md px-3 py-2 text-sm">航线</span>
       <span className="bg-emerald-500 mt-6 ml-56 inline-block rounded-md px-3 py-2 text-sm text-white">北窗</span>

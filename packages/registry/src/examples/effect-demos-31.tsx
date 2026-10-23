@@ -133,10 +133,14 @@ export function TextCursorProximityDemo() {
   )
 }
 
-export function ElasticLineDemo() {
+export function ElasticLineDemo({
+  grabThreshold = 28,
+  releaseThreshold = 90,
+  strokeWidth = 2,
+}: { grabThreshold?: number; releaseThreshold?: number; strokeWidth?: number } = {}) {
   return (
     <div className="h-32 w-full text-indigo-500">
-      <ElasticLine grabThreshold={28} releaseThreshold={90} strokeWidth={2} />
+      <ElasticLine grabThreshold={grabThreshold} releaseThreshold={releaseThreshold} strokeWidth={strokeWidth} />
     </div>
   )
 }

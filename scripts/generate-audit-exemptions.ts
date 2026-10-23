@@ -196,6 +196,13 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "pixel-bird-loader": "已发布的可调项只有舞台边长和速度倍数，不够 3 个 Control。",
   "phone-ring-loader": "已发布的可调项只有机身高度和屏幕文字。屏幕底色预览写死成 #0d85aa，不传时仍跟主题。",
   "glass-clock-loader": "已发布的可调项只有表盘直径。玻璃底色预览写死成 rgba，不传时仍跟主题。",
+  backlight: "已发布的可调项只有模糊半径。被托住的是图片节点。",
+  "fibonacci-lines": "已发布的可调项只有线框中间的内容，是节点。",
+  squircle: "已发布的可调项只有圆角半径和平滑度。细边预览写死为 true，组件默认是 false。",
+  "splash-mask": "已发布的可调项只有水花或水滴。被裁的内容是节点。",
+  screensaver: "已发布的可调项只有每帧位移和出发角度。起点是坐标，边界是容器引用。",
+  "pixelate-svg-filter": "已发布的可调项只有滤镜 id 和横向备用层。颗粒大小跟着悬停弹簧走，一传入就冻住。",
+  "gooey-svg-filter": "已发布的可调项只有滤镜 id 和模糊强度，不够 3 个 Control。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

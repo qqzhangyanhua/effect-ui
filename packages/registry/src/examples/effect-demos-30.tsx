@@ -48,16 +48,25 @@ export function ScrollImageRevealDemo() {
   )
 }
 
-export function SvgClipMaskDemo() {
+export function SvgClipMaskDemo({
+  animate = "morph",
+  duration = 4,
+  shape = "blob",
+}: {
+  animate?: "none" | "morph" | "scroll" | "hover"
+  duration?: number
+  shape?: "blob" | "arch" | "diamond" | "wave" | "custom"
+} = {}) {
   return (
     <SvgClipMask
-      animate="morph"
+      animate={animate}
       className="h-48 w-full"
+      duration={duration}
       morphPaths={[
         "M0.5,0.05 C0.8,0.05 0.95,0.28 0.95,0.5 C0.95,0.78 0.75,0.95 0.5,0.95 C0.22,0.95 0.05,0.72 0.05,0.5 C0.05,0.22 0.25,0.05 0.5,0.05 Z",
         "M0.5,0.02 C0.9,0.12 0.98,0.4 0.9,0.62 C0.8,0.9 0.55,0.98 0.32,0.88 C0.08,0.76 0.02,0.42 0.16,0.22 C0.28,0.04 0.32,-0.02 0.5,0.02 Z",
       ]}
-      shape="blob"
+      shape={shape}
     >
       <div className="h-full w-full bg-gradient-to-br from-fuchsia-500 to-indigo-700" />
     </SvgClipMask>
@@ -91,8 +100,12 @@ export function PrismSweepTransitionDemo() {
   )
 }
 
-export function OrbDemo() {
-  return <Orb className="mx-auto" colors={["#7c3aed", "#fde68a"]} size={220} />
+export function OrbDemo({
+  colors = ["#7c3aed", "#fde68a"],
+  duration = 7,
+  size = 220,
+}: { colors?: string[]; duration?: number; size?: number } = {}) {
+  return <Orb className="mx-auto" colors={colors} duration={duration} size={size} />
 }
 
 export function SplashMaskDemo() {

@@ -75,18 +75,30 @@ export function GeoPatternsDemo({
   )
 }
 
-export function BorderTrailDemo() {
+export function BorderTrailDemo({
+  duration = 4,
+  radius = 16,
+  size = 14,
+}: { duration?: number; radius?: number; size?: number } = {}) {
   return (
-    <BorderTrail className="max-w-sm rounded-2xl" radius={16}>
+    <BorderTrail className="max-w-sm rounded-2xl" duration={duration} radius={radius} size={size}>
       <div className="rounded-2xl border bg-card px-6 py-8 text-sm">圆点沿着圆角走</div>
     </BorderTrail>
   )
 }
 
-export function GlowEffectDemo() {
+export function GlowEffectDemo({
+  duration = 5,
+  mode = "rotate",
+  scale = 1,
+}: {
+  duration?: number
+  mode?: "rotate" | "pulse" | "breathe" | "colorShift" | "flowHorizontal" | "static"
+  scale?: number
+} = {}) {
   return (
     <div className="relative h-48 w-full max-w-md">
-      <GlowEffect />
+      <GlowEffect duration={duration} mode={mode} scale={scale} />
       <div className="absolute inset-8 grid place-items-center rounded-xl bg-background text-sm">背后的辉光</div>
     </div>
   )

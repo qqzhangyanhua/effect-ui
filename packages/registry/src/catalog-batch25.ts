@@ -43,9 +43,9 @@ export const batch25Components: ComponentMeta[] = [
     file: "effects/liquid-gauge.tsx",
     target: "components/ui/liquid-gauge.tsx",
     props: [
-      { name: "total", type: "number", defaultValue: "128", description: "副标题里的容量，单位是 unit。" },
-      { name: "unit", type: "string", defaultValue: "GB", description: "容量单位。" },
-      { name: "warnAt", type: "number", defaultValue: "90", description: "从这个填充比例起，液体变红。" },
+      { name: "total", type: "number", defaultValue: "128", description: "副标题里的容量，单位是 unit。", control: { kind: "range", value: 128, min: 16, max: 512, step: 1 } },
+      { name: "unit", type: "string", defaultValue: "GB", description: "容量单位。", control: { kind: "text", value: "GB" } },
+      { name: "warnAt", type: "number", defaultValue: "90", description: "从这个填充比例起，液体变红。", control: { kind: "range", value: 90, min: 50, max: 100, step: 1 } },
       ...ui,
     ],
   },

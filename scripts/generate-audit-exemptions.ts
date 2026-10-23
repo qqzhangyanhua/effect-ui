@@ -78,6 +78,17 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "merging-bubbles": "已发布的可调项只有数量和颜色两组，不够 3 个 Control。",
   "svg-bands": "已发布的可调项只有颜色一组，不够 3 个 Control。",
   "hover-blocks-grid": "已发布的可调项是两色和一组坐标，坐标不适合做成单个控件。",
+  "rubber-band-drag": "只有 className，没有已发布的可调 prop。",
+  "cool-mode": "已发布的可调项只有粒子字符，不够 3 个 Control。",
+  "morphing-popover": "已发布的可调项只有打开和默认打开两个布尔值，不够 3 个 Control。",
+  "transition-panel": "已发布的可调项只有当前下标和方向，不够 3 个 Control。",
+  "animated-background": "value 一传入就变成受控，文档预览里的点击会失效，剩下的 defaultValue 和 enableHover 不够 3 个 Control。",
+  disclosure: "已发布的可调项只有展开和默认展开两个布尔值，不够 3 个 Control。",
+  "floating-panel": "已发布的可调项只有标题，按钮、正文和底部都是节点。",
+  "feature-voting": "已发布的可调项是条目数组和票数记录，不适合做成单个控件。",
+  "ai-tool-approval": "已发布的可调项只有工具调用列表，不适合做成单个控件。",
+  "wheel-picker": "已发布的可调项只有无障碍名称，列和选中值是复合数据。",
+  "synced-transcript": "已发布的可调项只有标题和时长，句子列表不适合做成单个控件。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

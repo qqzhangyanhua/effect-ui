@@ -72,10 +72,18 @@ export function PullCordDemo() {
   )
 }
 
-export function AIContextMeterDemo() {
+export function AIContextMeterDemo({
+  limit = 200000,
+  compactAt = 0.8,
+  model = "Claude Opus",
+}: {
+  limit?: number
+  compactAt?: number
+  model?: string
+} = {}) {
   return (
     <div className="flex w-full justify-center">
-      <AIContextMeter className="w-full" />
+      <AIContextMeter className="w-full" limit={limit} compactAt={compactAt} model={model} />
     </div>
   )
 }
@@ -108,8 +116,16 @@ export function UndoButtonDemo() {
   )
 }
 
-export function FocalPointPickerDemo() {
-  return <FocalPointPicker alt="渐变里的白点" className="w-full" src={photo} />
+export function FocalPointPickerDemo({
+  src = photo,
+  alt = "渐变里的白点",
+  imageRatio = 1.5,
+}: {
+  src?: string
+  alt?: string
+  imageRatio?: number
+} = {}) {
+  return <FocalPointPicker alt={alt} className="w-full" src={src} imageRatio={imageRatio} />
 }
 
 export function SyncedTranscriptDemo() {

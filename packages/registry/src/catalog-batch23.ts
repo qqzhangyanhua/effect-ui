@@ -198,9 +198,9 @@ export const batch23Components: ComponentMeta[] = [
     file: "effects/popover-form.tsx",
     target: "components/ui/popover-form.tsx",
     props: [
-      { name: "label", type: "string", defaultValue: "留言", description: "按钮和表单标题。" },
-      { name: "placeholder", type: "string", defaultValue: "写一句", description: "输入框占位文字。" },
-      { name: "submitLabel", type: "string", defaultValue: "发送", description: "提交按钮文字。" },
+      { name: "label", type: "string", defaultValue: "留言", description: "按钮和表单标题。", control: { kind: "text", value: "留言" } },
+      { name: "placeholder", type: "string", defaultValue: "写一句", description: "输入框占位文字。", control: { kind: "text", value: "写一句" } },
+      { name: "submitLabel", type: "string", defaultValue: "发送", description: "提交按钮文字。", control: { kind: "text", value: "发送" } },
       { name: "onSubmit", type: "(value: string) => void", description: "提交时收到输入内容。" },
       ...ui,
     ],

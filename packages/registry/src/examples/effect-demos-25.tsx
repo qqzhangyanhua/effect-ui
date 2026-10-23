@@ -147,10 +147,18 @@ export function SiblingFocusNavDemo() {
   )
 }
 
-export function PopoverFormDemo() {
+export function PopoverFormDemo({
+  label = "留言",
+  placeholder = "写一句",
+  submitLabel = "发送",
+}: {
+  label?: string
+  placeholder?: string
+  submitLabel?: string
+} = {}) {
   return (
     <div className="flex min-h-40 w-full items-center justify-center">
-      <PopoverForm />
+      <PopoverForm label={label} placeholder={placeholder} submitLabel={submitLabel} />
     </div>
   )
 }

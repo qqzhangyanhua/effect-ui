@@ -36,10 +36,18 @@ export function ReceiptPrinterDemo() {
   )
 }
 
-export function LiquidGaugeDemo() {
+export function LiquidGaugeDemo({
+  total = 128,
+  unit = "GB",
+  warnAt = 90,
+}: {
+  total?: number
+  unit?: string
+  warnAt?: number
+} = {}) {
   return (
     <div className="flex w-full justify-center">
-      <LiquidGauge className="w-full" label="存储" unit="GB" />
+      <LiquidGauge className="w-full" label="存储" total={total} unit={unit} warnAt={warnAt} />
     </div>
   )
 }

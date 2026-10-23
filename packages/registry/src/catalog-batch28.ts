@@ -181,13 +181,14 @@ export const batch28Components: ComponentMeta[] = [
     target: "components/ui/morph-icon.tsx",
     props: [
       { name: "active", type: "boolean", defaultValue: "false", description: "切到该变体的第二态，例如菜单变成关闭。" },
-      { name: "duration", type: "number", defaultValue: "0.3", description: "描边过渡的秒数。" },
-      { name: "size", type: "number", defaultValue: "24", description: "图标边长，像素。" },
+      { name: "duration", type: "number", defaultValue: "0.3", description: "描边过渡的秒数。", control: { kind: "range", value: 0.3, min: 0.1, max: 1, step: 0.1 } },
+      { name: "size", type: "number", defaultValue: "24", description: "图标边长，像素。", control: { kind: "range", value: 24, min: 16, max: 48, step: 1 } },
       { name: "strokeWidth", type: "number", defaultValue: "2", description: "描边宽度。" },
       {
         name: "variant",
         type: '"sidebar" | "list" | "grid" | "compact" | "menu" | "search" | "play" | "check"',
         description: "要显示的图标。",
+        control: { kind: "select", value: "menu", options: ["sidebar", "list", "grid", "compact", "menu", "search", "play", "check"] },
       },
       ...ui,
     ],
@@ -238,8 +239,8 @@ export const batch28Components: ComponentMeta[] = [
     file: "effects/count-badge.tsx",
     target: "components/ui/count-badge.tsx",
     props: [
-      { name: "count", type: "number", defaultValue: "0", description: "数字徽章的值。" },
-      { name: "ping", type: "boolean", defaultValue: "false", description: "外圈脉冲。" },
+      { name: "count", type: "number", defaultValue: "0", description: "数字徽章的值。", control: { kind: "range", value: 128, min: 0, max: 200, step: 1 } },
+      { name: "ping", type: "boolean", defaultValue: "false", description: "外圈脉冲。", control: { kind: "boolean", value: true } },
       {
         name: "position",
         type: '"top-right" | "top-left" | "bottom-right" | "bottom-left"',
@@ -248,7 +249,7 @@ export const batch28Components: ComponentMeta[] = [
       },
       { name: "showZero", type: "boolean", defaultValue: "false", description: "计数为 0 时仍然显示。" },
       { name: "status", type: '"online" | "offline" | "busy" | "away"', defaultValue: "online", description: "status 变体的颜色。" },
-      { name: "variant", type: '"dot" | "count" | "status"', defaultValue: "dot", description: "圆点、数字或状态。" },
+      { name: "variant", type: '"dot" | "count" | "status"', defaultValue: "dot", description: "圆点、数字或状态。", control: { kind: "select", value: "count", options: ["dot", "count", "status"] } },
       ...ui,
     ],
   },

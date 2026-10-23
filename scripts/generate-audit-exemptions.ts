@@ -89,6 +89,14 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "ai-tool-approval": "已发布的可调项只有工具调用列表，不适合做成单个控件。",
   "wheel-picker": "已发布的可调项只有无障碍名称，列和选中值是复合数据。",
   "synced-transcript": "已发布的可调项只有标题和时长，句子列表不适合做成单个控件。",
+  "liquid-slider": "已发布的可调项只有单位，formatValue 是函数。",
+  "avatar-picker": "已发布的可调项只有说明和提交文案，不够 3 个 Control。",
+  "timezone-planner": "已发布的可调项只有开始分钟和时长，人物列表不适合做成单个控件。",
+  "clip-trimmer": "已发布的可调项只有时长和最短选区，选区是对象。",
+  "duration-picker": "已发布的可调项只有 scrub，单位是数组。",
+  "exposure-slider": "已发布的可调项只有强调色和是否显示指示。",
+  scrubber: "已发布的可调项只有小数位和刻度数量。",
+  "social-selector": "已发布的可调项只有账号，平台列表不适合做成单个控件。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

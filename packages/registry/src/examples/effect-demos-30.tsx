@@ -97,7 +97,15 @@ export function SplashMaskDemo() {
   )
 }
 
-export function MorphIconDemo() {
+export function MorphIconDemo({
+  duration = 0.3,
+  size = 24,
+  variant = "menu",
+}: {
+  duration?: number
+  size?: number
+  variant?: "sidebar" | "list" | "grid" | "compact" | "menu" | "search" | "play" | "check"
+} = {}) {
   const [open, setOpen] = useState(false)
   return (
     <button
@@ -105,7 +113,7 @@ export function MorphIconDemo() {
       onClick={() => setOpen((value) => !value)}
       type="button"
     >
-      <MorphIcon active={open} label={open ? "关闭菜单" : "打开菜单"} variant="menu" />
+      <MorphIcon active={open} duration={duration} label={open ? "关闭菜单" : "打开菜单"} size={size} variant={variant} />
       {open ? "关闭" : "菜单"}
     </button>
   )
@@ -141,9 +149,17 @@ export function InlineTestimonialsDemo() {
   )
 }
 
-export function CountBadgeDemo() {
+export function CountBadgeDemo({
+  count = 128,
+  ping = true,
+  variant = "count",
+}: {
+  count?: number
+  ping?: boolean
+  variant?: "dot" | "count" | "status"
+} = {}) {
   return (
-    <CountBadge count={128} ping variant="count">
+    <CountBadge count={count} ping={ping} variant={variant}>
       <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted text-sm">信</span>
     </CountBadge>
   )

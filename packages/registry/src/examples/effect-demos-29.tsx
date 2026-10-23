@@ -145,13 +145,24 @@ export function CardSwipeDeckDemo() {
   )
 }
 
-export function PinnedListDemo() {
+export function PinnedListDemo({
+  emptyPinnedMessage = "Pin an item to keep it at the top.",
+  maxPinned = 5,
+  showDivider = true,
+}: {
+  emptyPinnedMessage?: string
+  maxPinned?: number
+  showDivider?: boolean
+} = {}) {
   return (
     <PinnedList
+      emptyPinnedMessage={emptyPinnedMessage}
       items={[
         { id: "north", meta: "靠窗", title: "北窗" },
         { id: "night", meta: "航线", title: "夜航" },
       ]}
+      maxPinned={maxPinned}
+      showDivider={showDivider}
     />
   )
 }
@@ -168,26 +179,53 @@ export function SquircleDemo() {
   )
 }
 
-export function VectorEditorToolbarDemo() {
+export function VectorEditorToolbarDemo({
+  floating = false,
+  orientation = "horizontal",
+  shortcutsEnabled = true,
+}: {
+  floating?: boolean
+  orientation?: "horizontal" | "vertical"
+  shortcutsEnabled?: boolean
+} = {}) {
   const [tool, setTool] = useState("select")
   return (
     <VectorEditorToolbar
       activeTool={tool}
+      floating={floating}
       onToolChange={setTool}
+      orientation={orientation}
       properties={<p className="text-sm">当前：{tool}</p>}
+      shortcutsEnabled={shortcutsEnabled}
       tools={tools}
     />
   )
 }
 
-export function UnlockFaceIdDemo() {
+export function UnlockFaceIdDemo({
+  errorMessage = "Face not recognized. Try again.",
+  scanDuration = 1200,
+  size = 128,
+}: {
+  errorMessage?: string
+  scanDuration?: number
+  size?: number
+} = {}) {
   return (
-    <UnlockFaceId className="max-w-sm" scanDuration={1200}>
+    <UnlockFaceId className="max-w-sm" errorMessage={errorMessage} scanDuration={scanDuration} size={size}>
       <p className="text-center text-sm">解锁后的航线备忘</p>
     </UnlockFaceId>
   )
 }
 
-export function MusicToggleDemo() {
-  return <MusicToggle artist="北窗" defaultPlaying progress={0.35} title="夜航" />
+export function MusicToggleDemo({
+  artist = "北窗",
+  defaultPlaying = true,
+  progress = 0.35,
+}: {
+  artist?: string
+  defaultPlaying?: boolean
+  progress?: number
+} = {}) {
+  return <MusicToggle artist={artist} defaultPlaying={defaultPlaying} progress={progress} title="夜航" />
 }

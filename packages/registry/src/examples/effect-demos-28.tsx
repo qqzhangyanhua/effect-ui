@@ -118,8 +118,16 @@ export function VideoAmbientDemo() {
   )
 }
 
-export function PixelBrushCanvasDemo() {
-  return <PixelBrushCanvas grid height={8} pixelSize={18} width={12} />
+export function PixelBrushCanvasDemo({
+  grid = true,
+  pixelSize = 18,
+  showTools = true,
+}: {
+  grid?: boolean
+  pixelSize?: number
+  showTools?: boolean
+} = {}) {
+  return <PixelBrushCanvas grid={grid} height={8} pixelSize={pixelSize} showTools={showTools} width={12} />
 }
 
 export function DurationPickerDemo() {

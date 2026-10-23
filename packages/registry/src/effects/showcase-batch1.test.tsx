@@ -250,9 +250,12 @@ test("流体转场在减弱动效下仍显示当前一幕", () => {
   expect(slot(view.container, "sdf-blob-transition")).toHaveAttribute("data-reduced", "true")
 })
 
-test("环境光视频标记为不自动播放", () => {
+test("环境光视频不会自动播放", () => {
   const view = render(<VideoAmbient alt="城市夜色" autoPlay={false} blur={34} controls poster={pixel} rounded={20} scale={1.3} src={pixel} />)
-  expect(view.container.querySelector("video")).toHaveAttribute("poster", pixel)
+  const video = view.container.querySelector("video")
+  expect(video).not.toBeNull()
+  expect(video?.autoplay).toBe(false)
+  expect(video).toHaveAttribute("poster", pixel)
   expect(slot(view.container, "video-ambient")).toHaveAttribute("data-reduced", "false")
 })
 

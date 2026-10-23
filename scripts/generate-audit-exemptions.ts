@@ -171,7 +171,6 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "shape-hero": "已发布的可调项只有标题标签和填充。眉题、标题、说明和形状都是节点或结构。",
   "spending-ring": "已发布的可调项只有货币。分类列表是结构。预览货币写成 CNY，不传时仍是 USD。",
   "sdf-blob-transition": "已发布的可调项只有时长。变体和切换键跟着预览里的下一幕走，一传入就冻住。",
-  "orbital-image-wheel": "已发布的可调项只有半径和朝向。自动旋转和吸附预览写死为 true，组件默认是 false。图片列表是结构。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

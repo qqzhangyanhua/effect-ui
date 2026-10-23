@@ -106,17 +106,23 @@ export function KineticTypeScrollDemo() {
   )
 }
 
-export function OrbitalImageWheelDemo() {
+export function OrbitalImageWheelDemo({
+  autoRotateSpeed = 12,
+  faceOutward = false,
+  radius = 92,
+}: { autoRotateSpeed?: number; faceOutward?: boolean; radius?: number } = {}) {
   return (
     <OrbitalImageWheel
       autoRotate
+      autoRotateSpeed={autoRotateSpeed}
+      faceOutward={faceOutward}
       items={[
         { alt: "靛蓝", id: "a", image: swatch("#312e81") },
         { alt: "琥珀", id: "b", image: swatch("#b45309") },
         { alt: "青绿", id: "c", image: swatch("#0f766e") },
         { alt: "玫红", id: "d", image: swatch("#9f1239") },
       ]}
-      radius={92}
+      radius={radius}
       snap
     />
   )

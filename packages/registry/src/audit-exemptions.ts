@@ -225,7 +225,6 @@ export const auditExemptions: readonly AuditExemption[] = [
   { name: "not-found-page", gaps: ["控件不足"], reason: "落地前已有缺口" },
   { name: "notification-center", gaps: ["缺测试"], reason: "落地前已有缺口" },
   { name: "orb", gaps: ["控件不足"], reason: "落地前已有缺口" },
-  { name: "orbital-image-wheel", gaps: ["控件不足"], reason: "已发布的可调项只有半径和朝向。自动旋转和吸附预览写死为 true，组件默认是 false。图片列表是结构。" },
   { name: "orbiting-items-3d", gaps: ["控件不足"], reason: "已发布的可调项只有转速和尺寸，轨道上的条目是列表。" },
   { name: "pacman-loader", gaps: ["控件不足"], reason: "落地前已有缺口" },
   { name: "page-transition", gaps: ["控件不足"], reason: "落地前已有缺口" },

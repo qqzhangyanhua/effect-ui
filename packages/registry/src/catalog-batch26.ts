@@ -171,7 +171,7 @@ export const batch26Components: ComponentMeta[] = [
         type: "number",
         defaultValue: "1.3",
         description: "内层光晕超出画面的倍数。1.3 与不传相同。",
-        control: { kind: "range", value: 1.3, min: 0.5, max: 2.6, step: 0.1 },
+        control: { kind: "range", value: 1.3, min: 0.5, max: 2, step: 0.1 },
       },
       ...ui,
     ],

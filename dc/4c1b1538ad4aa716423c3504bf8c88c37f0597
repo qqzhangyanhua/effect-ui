@@ -1,0 +1,24 @@
+packages/registry/src/effects/navigation-batch1.test.tsx
+  s_1f7fae292b4abd::t_12176cbdfe673d 342-343
+  s_1f7fae292b4abd::t_41d8cd3e36d2c4 1-341,344-352
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_bea75a560a46ae 207-221
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_8d66d4d60304d7 15,17-18,88,95,101,109,112-113,185,270,281,314,317-318
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "dc4c1b1538ad4aa716423c3504bf8c88c37f0597",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

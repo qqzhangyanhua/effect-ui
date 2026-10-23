@@ -75,34 +75,50 @@ export function SkewedInfiniteScrollDemo() {
   return <SkewedInfiniteScroll columns={2} items={cards} speed={18} />
 }
 
-export function ConstellationLoaderDemo() {
+export function ConstellationLoaderDemo({
+  count = 16,
+  size = 7,
+  color = "#c7d2fe",
+}: { count?: number; size?: number; color?: string } = {}) {
   return (
     <div className="grid place-items-center">
-      <ConstellationLoader color="#c7d2fe" count={16} size={7} />
+      <ConstellationLoader color={color} count={count} size={size} />
     </div>
   )
 }
 
-export function ParticleSwarmLoaderDemo() {
+export function ParticleSwarmLoaderDemo({
+  count = 36,
+  size = 2.4,
+  color = "#818cf8",
+}: { count?: number; size?: number; color?: string } = {}) {
   return (
     <div className="grid place-items-center">
-      <ParticleSwarmLoader color="#818cf8" count={36} size={2.4} />
+      <ParticleSwarmLoader color={color} count={count} size={size} />
     </div>
   )
 }
 
-export function SpinningCubeLoaderDemo() {
+export function SpinningCubeLoaderDemo({
+  size = 72,
+  color = "#6366f1",
+  duration = 2.4,
+}: { size?: number; color?: string; duration?: number } = {}) {
   return (
     <div className="grid h-40 place-items-center">
-      <SpinningCubeLoader color="#6366f1" duration={2.4} size={72} />
+      <SpinningCubeLoader color={color} duration={duration} size={size} />
     </div>
   )
 }
 
-export function WhirlpoolLoaderDemo() {
+export function WhirlpoolLoaderDemo({
+  segments = 42,
+  duration = 16,
+  color = "#a5b4fc",
+}: { segments?: number; duration?: number; color?: string } = {}) {
   return (
     <div className="grid place-items-center">
-      <WhirlpoolLoader color="#a5b4fc" duration={16} rotations={5} segments={42} />
+      <WhirlpoolLoader color={color} duration={duration} rotations={5} segments={segments} />
     </div>
   )
 }

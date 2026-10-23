@@ -184,6 +184,11 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "line-shadow-text": "已发布的可调项只有正文和斜条纹颜色。斜条纹不传时仍跟主题。",
   "comic-text": "已发布的可调项只有漫画文字和字号，不够 3 个 Control。",
   "text-explode": "已发布的可调项只有会炸开的文字。",
+  "ai-text-loading": "已发布的可调项只有换句间隔。短句列表是结构。显示秒数预览写死为 true，组件默认是 false。",
+  "eye-blink-loader": "已发布的可调项只有尺寸和眼白颜色。眼白不传时仍跟主题。",
+  "book-page-loader": "已发布的可调项只有翻页时长。书页和书脊预览写死成色值，不传时仍跟主题。",
+  "map-pin-loader": "已发布的可调项只有浮动时长。钉的颜色预览写死成 #ffffff，不传时仍跟主题。",
+  "glow-corner-loader": "已发布的可调项只有转圈时长。四枚颜色预览写死成色值，不传时仍跟主题。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

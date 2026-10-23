@@ -204,8 +204,16 @@ export function PinnedListDemo({
   )
 }
 
-export function GridLoaderDemo() {
-  return <GridLoader color="blue" pattern="heartbeat" rounded size="lg" />
+export function GridLoaderDemo({
+  mode = "pulse",
+  speed = "normal",
+  size = "lg",
+}: {
+  mode?: "pulse" | "sequence" | "stagger"
+  speed?: "slow" | "normal" | "fast"
+  size?: "sm" | "md" | "lg" | "xl"
+} = {}) {
+  return <GridLoader color="blue" mode={mode} pattern="heartbeat" rounded size={size} speed={speed} />
 }
 
 export function SquircleDemo() {

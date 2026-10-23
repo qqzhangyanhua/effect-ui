@@ -22,13 +22,26 @@ const variants = ["circular", "classic", "pulse", "pulse-dot", "dots", "typing",
 const pixel = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 const favicon = `data:image/svg+xml,${encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='6' fill='currentColor'/></svg>")}`
 
-export function AiLoaderDemo() {
+export function AiLoaderDemo({
+  variant = "circular",
+  size = "md",
+  text = "思考中",
+}: {
+  variant?: (typeof variants)[number]
+  size?: "sm" | "md" | "lg"
+  text?: string
+} = {}) {
+  const rest = variants.filter((item) => item !== variant)
   return (
     <div className="grid grid-cols-3 gap-4 px-6 py-10 sm:grid-cols-4">
-      {variants.map((variant) => (
-        <div key={variant} className="flex flex-col items-center gap-2 text-xs text-muted-foreground">
-          <AiLoader text="思考中" variant={variant} />
-          <span>{variant}</span>
+      <div className="flex flex-col items-center gap-2 text-xs text-muted-foreground">
+        <AiLoader size={size} text={text} variant={variant} />
+        <span>{variant}</span>
+      </div>
+      {rest.map((item) => (
+        <div key={item} className="flex flex-col items-center gap-2 text-xs text-muted-foreground">
+          <AiLoader text="思考中" variant={item} />
+          <span>{item}</span>
         </div>
       ))}
     </div>

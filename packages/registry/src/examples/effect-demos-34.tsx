@@ -72,26 +72,38 @@ export function RotatingCompleteButtonDemo({
   )
 }
 
-export function MorphingShapesLoaderDemo() {
+export function MorphingShapesLoaderDemo({
+  count = 4,
+  size = 28,
+  colors = ["#fb3a5d", "#6366f1", "#22c55e", "#f59e0b"],
+}: { count?: number; size?: number; colors?: string[] } = {}) {
   return (
     <div className="grid h-24 place-items-center">
-      <MorphingShapesLoader />
+      <MorphingShapesLoader colors={colors} count={count} size={size} />
     </div>
   )
 }
 
-export function NeonGlowLoaderDemo() {
+export function NeonGlowLoaderDemo({
+  colors = ["#fb3a5d", "#00ffff", "#ffff00"],
+  size = 18,
+  duration = 1,
+}: { colors?: string[]; size?: number; duration?: number } = {}) {
   return (
     <div className="grid h-24 place-items-center">
-      <NeonGlowLoader />
+      <NeonGlowLoader colors={colors} duration={duration} size={size} />
     </div>
   )
 }
 
-export function RippleWaveLoaderDemo() {
+export function RippleWaveLoaderDemo({
+  count = 7,
+  color = "#ef4444",
+  duration = 1,
+}: { count?: number; color?: string; duration?: number } = {}) {
   return (
     <div className="grid h-24 place-items-center">
-      <RippleWaveLoader />
+      <RippleWaveLoader color={color} count={count} duration={duration} />
     </div>
   )
 }

@@ -30,8 +30,12 @@ export function HyperspaceTextDemo() {
   return <HyperspaceText className="w-full" />
 }
 
-export function TiledSwirlLoaderDemo() {
-  return <TiledSwirlLoader />
+export function TiledSwirlLoaderDemo({
+  size = 168,
+  color = "#38bdf8",
+  speed = 1,
+}: { size?: number; color?: string; speed?: number } = {}) {
+  return <TiledSwirlLoader color={color} size={size} speed={speed} />
 }
 
 export function RainPuddleDemo() {

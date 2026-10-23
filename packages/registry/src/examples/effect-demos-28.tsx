@@ -144,10 +144,19 @@ export function ScrubberDemo() {
 
 export function SwitchboardCardDemo({
   columns = 18,
-  randomLights = true,
   subtitle = "机房指示灯会自己换班。",
-}: { columns?: number; randomLights?: boolean; subtitle?: string } = {}) {
-  return <SwitchboardCard className="max-w-sm" columns={columns} randomLights={randomLights} subtitle={subtitle} title="交换台" />
+  transitionDuration = 200,
+}: { columns?: number; subtitle?: string; transitionDuration?: number } = {}) {
+  return (
+    <SwitchboardCard
+      className="max-w-sm"
+      columns={columns}
+      randomLights
+      subtitle={subtitle}
+      title="交换台"
+      transitionDuration={transitionDuration}
+    />
+  )
 }
 
 export function TimeMachineStackDemo({

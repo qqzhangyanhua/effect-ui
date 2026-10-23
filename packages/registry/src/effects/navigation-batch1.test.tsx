@@ -279,10 +279,11 @@ test("expandable toolbar shows its panel when motion is reduced", () => {
   expect(slot(container, "toolbar-expandable")).toHaveAttribute("data-reduced", "true")
 })
 
-test("speed dial uses the up placement and lists its actions", () => {
+test("speed dial opens the up placement menu", () => {
   const { container } = render(<SpeedDial actions={dialActions} />)
-  expect(screen.getByRole("button", { name: "打开操作" })).toHaveAttribute("aria-expanded", "false")
-  expect(screen.getByText("编辑")).toBeInTheDocument()
+  fireEvent.click(screen.getByRole("button", { name: "打开操作" }))
+  expect(screen.getByRole("button", { name: "关闭操作" })).toHaveAttribute("aria-expanded", "true")
+  expect(screen.getByRole("menuitem", { name: "编辑" })).toBeInTheDocument()
   expect(slot(container, "speed-dial")).toHaveAttribute("data-placement", "up")
   expect(slot(container, "speed-dial")).not.toHaveAttribute("data-reduced")
 })
@@ -304,7 +305,8 @@ test("flower menu places six petals around the trigger", () => {
 test("flower menu marks reduced motion", () => {
   reduceMotion = true
   const { container } = render(<FlowerMenu count={6} items={petals} />)
-  expect(container.querySelector('[aria-label="北"]')).not.toBeNull()
+  expect(screen.getByRole("button", { name: "菜单" })).toBeInTheDocument()
+  expect(container.querySelectorAll("a")).toHaveLength(6)
   expect(slot(container, "flower-menu")).toHaveAttribute("data-reduced", "true")
 })
 

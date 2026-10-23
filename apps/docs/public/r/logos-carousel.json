@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logos-carousel",
+  "type": "registry:ui",
+  "title": "Logos Carousel",
+  "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/logos-carousel.tsx 标志按组纵向交错换场。这不是横向滚动的 section-logo-cloud。减弱动效时停在第一组。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/logos-carousel.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/logos-carousel.tsx",
+      "content": "\"use client\"\n\n// Ported from Spell UI (MIT, (c) 2025 Spell UI) — https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/logos-carousel.tsx\n\nimport { Children, useEffect, useId, useRef, useState, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface LogosCarouselProps {\n  children?: ReactNode\n  color?: string\n  duration?: number\n  interval?: number\n  count?: number\n  className?: string\n}\n\nfunction cssName(id: string, kind: \"enter\" | \"exit\") {\n  return `logos-${kind}-${id.replace(/[^a-zA-Z0-9_-]/g, \"\")}`\n}\n\nexport function LogosCarousel({\n  children,\n  color = \"var(--foreground)\",\n  duration = 600,\n  interval = 2500,\n  count = 3,\n  className,\n}: LogosCarouselProps) {\n  const rootRef = useRef<HTMLDivElement>(null)\n  const live = useAnimationActive(rootRef)\n  const reduced = usePrefersReducedMotion()\n  const reactId = useId()\n  const enter = cssName(reactId, \"enter\")\n  const exit = cssName(reactId, \"exit\")\n  const nodes = Children.toArray(children)\n  const perGroup = Math.max(1, Math.round(count))\n  const groups = Array.from({ length: Math.ceil(nodes.length / perGroup) }, (_, groupIndex) =>\n    nodes.slice(groupIndex * perGroup, groupIndex * perGroup + perGroup),\n  )\n  const [index, setIndex] = useState(0)\n  const safeIndex = groups.length === 0 ? 0 : (reduced ? 0 : index % groups.length)\n  const moving = live && !reduced && groups.length > 1\n\n  useEffect(() => {\n    if (!moving) return\n    const timer = window.setInterval(() => {\n      setIndex((current) => (current + 1) % groups.length)\n    }, Math.max(400, interval))\n    return () => window.clearInterval(timer)\n  }, [moving, interval, groups.length])\n\n  if (groups.length === 0) {\n    return <div className={cn(\"text-sm text-muted-foreground\", className)}>No logos</div>\n  }\n\n  const next = (safeIndex + 1) % groups.length\n\n  return (\n    <div ref={rootRef} className={cn(\"grid w-full max-w-xl place-items-center\", className)} aria-label=\"Logo carousel\">\n      <style>\n        {`@keyframes ${enter} { from { transform: translateY(28px); filter: blur(4px); opacity: 0; } to { transform: none; filter: none; opacity: 1; } }\n          @keyframes ${exit} { from { transform: none; filter: none; opacity: 1; } to { transform: translateY(-28px); filter: blur(4px); opacity: 0; } }`}\n      </style>\n      {groups.map((group, groupIndex) => {\n        const current = groupIndex === safeIndex\n        const incoming = moving && groupIndex === next\n        if (!current && !incoming) return null\n        return (\n          <div key={groupIndex} className=\"flex w-full items-center justify-center gap-8\" style={{ gridArea: \"1 / 1\" }}>\n            {group.map((logo, logoIndex) => (\n              <div\n                key={logoIndex}\n                className=\"text-lg font-semibold tracking-wide motion-reduce:animate-none\"\n                style={{\n                  color,\n                  animationName: moving ? (current ? exit : enter) : \"none\",\n                  animationDuration: `${duration}ms`,\n                  animationDelay: `${logoIndex * 0.12}s`,\n                  animationFillMode: \"both\",\n                  animationTimingFunction: \"ease\",\n                  animationPlayState: moving ? \"running\" : \"paused\",\n                }}\n              >\n                {logo}\n              </div>\n            ))}\n          </div>\n        )\n      })}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bars-spinner",
+  "type": "registry:ui",
+  "title": "Bars Spinner",
+  "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/bars-spinner.tsx 放射短条依次明暗。减弱动效时短条停在固定透明度，并保留文字。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/bars-spinner.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/bars-spinner.tsx",
+      "content": "\"use client\"\n\n// Ported from Spell UI (MIT, (c) 2025 Spell UI) — https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/bars-spinner.tsx\n\nimport { useId, useRef } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface BarsSpinnerProps {\n  color?: string\n  size?: number\n  duration?: number\n  count?: number\n  label?: string\n  className?: string\n}\n\nfunction cssName(id: string) {\n  return `bars-${id.replace(/[^a-zA-Z0-9_-]/g, \"\")}`\n}\n\nexport function BarsSpinner({\n  color = \"var(--foreground)\",\n  size = 28,\n  duration = 1200,\n  count = 12,\n  label = \"Loading\",\n  className,\n}: BarsSpinnerProps) {\n  const rootRef = useRef<HTMLDivElement>(null)\n  const live = useAnimationActive(rootRef)\n  const reduced = usePrefersReducedMotion()\n  const animation = cssName(useId())\n  const bars = Math.max(6, Math.min(16, Math.round(count)))\n  const moving = live && !reduced\n  const life = Math.max(300, duration)\n\n  return (\n    <div ref={rootRef} className={cn(\"inline-flex flex-col items-center gap-2\", className)}>\n      <style>{`@keyframes ${animation} { 0% { opacity: 1; } 100% { opacity: 0.15; } }`}</style>\n      <div role=\"status\" aria-label={label} className=\"relative\" style={{ width: `${size}px`, height: `${size}px` }}>\n        {Array.from({ length: bars }, (_, index) => (\n          <span\n            key={index}\n            className=\"absolute left-1/2 top-1/2 block rounded-full motion-reduce:animate-none\"\n            style={{\n              width: `${Math.max(2, size * 0.08)}px`,\n              height: `${size * 0.28}px`,\n              background: color,\n              opacity: moving ? undefined : index % 3 === 0 ? 1 : 0.28,\n              transform: `translate(-50%, -50%) rotate(${index * (360 / bars)}deg) translateY(${-size * 0.32}px)`,\n              animationName: moving ? animation : \"none\",\n              animationDuration: `${life}ms`,\n              animationDelay: `${-index * (life / bars)}ms`,\n              animationIterationCount: \"infinite\",\n              animationTimingFunction: \"linear\",\n              animationPlayState: moving ? \"running\" : \"paused\",\n            }}\n          />\n        ))}\n      </div>\n      <span className=\"text-xs text-muted-foreground\">{label}</span>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

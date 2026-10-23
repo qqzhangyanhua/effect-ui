@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contextual-ai-bar",
+  "type": "registry:ui",
+  "title": "Contextual AI Bar",
+  "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/contextual-ai-bar-base.tsx 一条工具栏可以在工具图标和 AI 输入之间切换。两个模式都是按钮，按下会缩放。",
+  "dependencies": [
+    "lucide-react",
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/contextual-ai-bar.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/contextual-ai-bar.tsx",
+      "content": "\"use client\"\n\n// Ported from Watermelon UI (MIT, (c) 2025-present Watermelon Contributors) — https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/contextual-ai-bar-base.tsx\n\nimport { useId, useState, type ReactNode } from \"react\"\nimport { AnimatePresence, motion } from \"motion/react\"\nimport { ArrowRight } from \"lucide-react\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\n\nexport interface ContextualAiBarProps {\n  defaultExpanded?: boolean\n  placeholder?: string\n  tools?: ReactNode[]\n  musicIcon: ReactNode\n  sparkleIcon: ReactNode\n  className?: string\n}\n\nexport function ContextualAiBar({\n  defaultExpanded = false,\n  placeholder = \"Refine with AI\",\n  tools = [],\n  musicIcon,\n  sparkleIcon,\n  className,\n}: ContextualAiBarProps) {\n  const reduced = usePrefersReducedMotion()\n  const pill = useId()\n  const [expanded, setExpanded] = useState(defaultExpanded)\n  const spring = reduced ? { duration: 0 } : { type: \"spring\" as const, stiffness: 220, damping: 22, mass: 1 }\n\n  return (\n    <motion.div\n      layout\n      data-slot=\"contextual-ai-bar\"\n      data-expanded={expanded ? \"true\" : \"false\"}\n      transition={spring}\n      className={`relative flex w-full max-w-md items-center justify-between overflow-hidden rounded-full border border-border bg-card p-1 shadow-sm motion-reduce:transition-none ${className ?? \"\"}`}\n    >\n      <div className=\"flex shrink-0 items-center gap-1 rounded-full bg-background p-1 shadow-sm\">\n        <button type=\"button\" aria-label=\"Show tools\" aria-pressed={!expanded} onClick={() => setExpanded(false)} className=\"relative rounded-full p-2.5 active:scale-95\">\n          {!expanded ? <motion.span layoutId={pill} className=\"absolute inset-0 rounded-full bg-muted\" /> : null}\n          <span className=\"relative z-10\">{musicIcon}</span>\n        </button>\n        <button type=\"button\" aria-label=\"Refine with AI\" aria-pressed={expanded} onClick={() => setExpanded(true)} className=\"relative rounded-full p-2.5 active:scale-95\">\n          {expanded ? <motion.span layoutId={pill} className=\"absolute inset-0 rounded-full bg-muted\" /> : null}\n          <span className=\"relative z-10\">{sparkleIcon}</span>\n        </button>\n      </div>\n      <AnimatePresence mode=\"popLayout\" initial={false}>\n        {!expanded ? (\n          <motion.div key=\"tools\" initial={reduced ? false : { opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className=\"flex flex-1 items-center justify-end gap-4 px-4 text-foreground\">\n            {tools.map((tool, index) => (\n              <span key={index} className=\"active:scale-95\">{tool}</span>\n            ))}\n          </motion.div>\n        ) : (\n          <motion.div key=\"input\" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className=\"flex flex-1 items-center gap-2 pr-1 pl-3\">\n            <input placeholder={placeholder} className=\"w-full flex-1 border-none bg-transparent text-lg text-foreground outline-none placeholder:text-muted-foreground\" />\n            <button type=\"button\" aria-label=\"Send\" className=\"rounded-full border border-border bg-background p-2.5 text-foreground active:scale-95\">\n              <ArrowRight size={20} aria-hidden=\"true\" />\n            </button>\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </motion.div>\n  )\n}\n"
+    }
+  ]
+}

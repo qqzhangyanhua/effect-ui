@@ -47,6 +47,16 @@ import { batch47Components } from "./catalog-batch47"
 import { batch48Components } from "./catalog-batch48"
 import { batch49Components } from "./catalog-batch49"
 import { batch50Components } from "./catalog-batch50"
+import { batch51Components } from "./catalog-batch51"
+import { batch52Components } from "./catalog-batch52"
+import { batch53Components } from "./catalog-batch53"
+import { batch54Components } from "./catalog-batch54"
+import { batch55Components } from "./catalog-batch55"
+import { batch56Components } from "./catalog-batch56"
+import { batch57Components } from "./catalog-batch57"
+import { batch58Components } from "./catalog-batch58"
+import { batch59Components } from "./catalog-batch59"
+import { batch60Components } from "./catalog-batch60"
 import type { VocabularyGroup } from "./prop-vocabulary"
 import { textControls, textPresets } from "./text-controls"
 
@@ -127,6 +137,20 @@ export type SourceLibrary =
   | "Velora UI"
   | "Neobrutalism"
   | "Arc Library"
+  | "ns-ui"
+  | "AI Canvas"
+  | "interior"
+  | "beUI"
+  | "uselayouts"
+  | "Spell UI"
+  | "Sera UI"
+  | "HextaUI"
+  | "Motiq"
+  | "Framekit UI"
+  | "GodUI"
+  | "Watermelon UI"
+  | "MosaicUI"
+  | "MicroKit"
   | "original"
 
 export type ControlGroup = VocabularyGroup
@@ -258,6 +282,20 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Velora UI": "https://github.com/ColorlibHQ/velora-ui",
   Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
   "Arc Library": "https://github.com/kuratlielia/arc-library",
+  "ns-ui": "https://github.com/nikolas-sapa/ns-ui",
+  "AI Canvas": "https://github.com/uiNerd16/aicanvas",
+  interior: "https://github.com/ddoemonn/interior",
+  beUI: "https://github.com/starc007/ui-components",
+  uselayouts: "https://github.com/iurvish/uselayouts",
+  "Spell UI": "https://github.com/xxtomm/spell-ui",
+  "Sera UI": "https://github.com/seraui/seraui",
+  HextaUI: "https://github.com/preetsuthar17/HextaUI",
+  Motiq: "https://github.com/RMahammad/motiq",
+  "Framekit UI": "https://github.com/Sid9022/framekit-ui",
+  GodUI: "https://github.com/LucasBassetti/godui",
+  "Watermelon UI": "https://github.com/WatermelonCorp/watermellon-registry",
+  MosaicUI: "https://github.com/darshan-rajadhyaksha/mosaicui",
+  MicroKit: "https://github.com/henriquegpb/microkit",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
   "Kokonut UI": "https://kokonutui.com",
@@ -2343,6 +2381,16 @@ export const components: ComponentMeta[] = [
   ...batch48Components,
   ...batch49Components,
   ...batch50Components,
+  ...batch51Components,
+  ...batch52Components,
+  ...batch53Components,
+  ...batch54Components,
+  ...batch55Components,
+  ...batch56Components,
+  ...batch57Components,
+  ...batch58Components,
+  ...batch59Components,
+  ...batch60Components,
 ]
 
 export function getComponent(name: string): ComponentMeta | undefined {
@@ -2459,6 +2507,18 @@ const buttonFamilySections: readonly FamilySectionSpec[] = [
       "neumorph-button",
       "stateful-button",
       "split-button",
+      "button-retry-backoff",
+      "press-depth",
+      "action-swap",
+      "paper-shred-button",
+      "get-in-touch",
+      "flow-button",
+      "wax-seal-button",
+      "dispatch-truck-button",
+      "googly-gaze-button",
+      "progress-fold-button",
+      "cursor-edge-glow-button",
+      "secure-purchase-button",
     ],
   },
 ]
@@ -2485,7 +2545,7 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
       "category-search-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input"] },
+  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input", "exploding-input", "magic-input"] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [
@@ -2552,8 +2612,17 @@ const controlClusterByName = new Map<string, ComponentCluster>(
 
 /** 文档导航按这个归组，不改 category。 */
 export function componentCluster(name: string): ComponentCluster | undefined {
-  // 拉绳开关名字不带 button，文档导航仍归到按钮组。
-  if (name === "button" || name.startsWith("button-") || name.endsWith("-button") || name === "pull-cord") return "button"
+  // 拉绳开关、下压和换字的名字不带 button，文档导航仍归到按钮组。
+  if (
+    name === "button" ||
+    name.startsWith("button-") ||
+    name.endsWith("-button") ||
+    name === "pull-cord" ||
+    name === "press-depth" ||
+    name === "action-swap" ||
+    name === "get-in-touch"
+  )
+    return "button"
   if (name === "input" || name.startsWith("input-") || name.endsWith("-input")) return "input"
   return controlClusterByName.get(name)
 }

@@ -15413,6 +15413,2839 @@
           "target": "components/ui/reaction-tray.tsx"
         }
       ]
+    },
+    {
+      "name": "success-plumb-bob",
+      "type": "registry:ui",
+      "title": "Success Plumb Bob",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/loud/success-plumb-bob/component.tsx 确认成功时铅锤落下并摆回铅垂，水平线从锤尖向两侧画出。按下时立刻宣布成功并调用 onConfirm，动画不挡住结果。减弱动效直接停在铅垂终态。离开视口时摆动暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/success-plumb-bob.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/success-plumb-bob.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-domino-run",
+      "type": "registry:ui",
+      "title": "Checkbox Domino Run",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/checkbox-domino-run/component.tsx 总开关以每秒 14 行的波前依次勾选。点任意一行或按 Escape 会停在当前行，后面的行保持原样。礼貌 live region 只在开始和结束时说话。减弱动效一次改完全部，并给出 5 秒撤销。离开视口时波前暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/checkbox-domino-run.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox-domino-run.tsx"
+        }
+      ]
+    },
+    {
+      "name": "autosave-ratchet",
+      "type": "registry:ui",
+      "title": "Autosave Ratchet",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/autosave-ratchet/component.tsx 自动保存状态画成棘轮。saving 上紧，saved 落齿，error 退回半齿。礼貌 live region 节流播报，失败总是立刻宣布。悬停或聚焦可看完整说明。减弱动效去掉预紧。离开视口时齿轮动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/autosave-ratchet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/autosave-ratchet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button-retry-backoff",
+      "type": "registry:ui",
+      "title": "Button Retry Backoff",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/button-retry-backoff/component.tsx 重试按钮。onRetry 返回 false 或抛错时进入退避，弧线走完才可再按。aria-describedby 指向剩余秒数。减弱动效用离散步进。离开视口或标签页隐藏时计时暂停，回来不丢已走进度。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/button-retry-backoff.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button-retry-backoff.tsx"
+        }
+      ]
+    },
+    {
+      "name": "craze-rule",
+      "type": "registry:ui",
+      "title": "Craze Rule",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/craze-rule/component.tsx 分隔线是一条进入视口后裂开的缝。role 为 separator。种子决定裂纹，服务端不画随机路径。减弱动效直接显示完整裂纹。离开视口时空闲蠕动暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/craze-rule.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/craze-rule.tsx"
+        }
+      ]
+    },
+    {
+      "name": "banner-tear-stub",
+      "type": "registry:ui",
+      "title": "Banner Tear Stub",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/banner-tear-stub/component.tsx 通知沿穿孔撕下，留下可重新打开的存根。info 用 role=status，urgent 用 role=alert。减弱动效改为短的线性高度和透明度。离开视口时高度弹簧暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/banner-tear-stub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/banner-tear-stub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feed-escapement",
+      "type": "registry:ui",
+      "title": "Feed Escapement",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/feed-escapement/component.tsx 活动流一次只放行一条，弹簧落定后才放下一条。role=log，礼貌 live region。RELEASE ALL 和 Escape 立即放完队列。减弱动效直接落到终态。离开视口时弹簧暂停。ref 上有 arrive、releaseAll、clear。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/feed-escapement.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/feed-escapement.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cruet-settle",
+      "type": "registry:ui",
+      "title": "Cruet Settle",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/cruet-settle/component.tsx 结账合计先搅乱再分层落定。总额变化才写入 role=status，挂载时不播报。减弱动效直接显示分层结果。离开视口时落定等待暂停。金额哈希在服务端和客户端一致。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cruet-settle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cruet-settle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "undo-ghost-row",
+      "type": "registry:ui",
+      "title": "Undo Ghost Row",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/undo-ghost-row/component.tsx 删除后行还占着高度，倒计时结束才收起。悬停或聚焦暂停倒计时。礼貌 live region 说明可撤销的时间。减弱动效保持全高，并给出明确的完成删除按钮。离开视口时高度动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/undo-ghost-row.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/undo-ghost-row.tsx"
+        }
+      ]
+    },
+    {
+      "name": "container-box-drawing",
+      "type": "registry:ui",
+      "title": "Container Box Drawing",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/container-box-drawing/component.tsx 用制表字符围一圈。悬停或焦点内从左上角顺时针把单线换成双线。ResizeObserver 按字符格测量。减弱动效直接换成终态字形。离开视口时扫描暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/container-box-drawing.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/container-box-drawing.tsx"
+        }
+      ]
+    },
+    {
+      "name": "transfer-list-siphon",
+      "type": "registry:ui",
+      "title": "Transfer List Siphon",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/transfer-list-siphon/component.tsx 左右搬运列表。源列表是多选 listbox，方向键、Home、End、Space 和 Enter 都能用。Move selected 按钮和拖拽走同一条虹吸。Stop 会把在途的珠子倒回去。礼貌 live region 每秒最多一条，结束时一定播报。减弱动效仍按顺序完成，只是没有逐帧路程。离开视口时珠子暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/transfer-list-siphon.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/transfer-list-siphon.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drill-down-spines",
+      "type": "registry:ui",
+      "title": "Drill Down Spines",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/drill-down-spines/component.tsx 下钻后上一层收成书脊，留在左侧可点。宽度是测出来的像素，不是 flex 自动。nav 地标报出层数。ref 上有 push、pop、popTo、reset。减弱动效同步提交，不做级联。离开视口时进入动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drill-down-spines.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drill-down-spines.tsx"
+        }
+      ]
+    },
+    {
+      "name": "due-slip",
+      "type": "registry:ui",
+      "title": "Due Slip",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/due-slip/component.tsx 已读回执按到达顺序盖章。点击只展开，Escape 才收起。新来的人写入礼貌 live region，初次挂载不播报。减弱动效去掉盖章缩放。离开视口时盖章动画暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/due-slip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/due-slip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "contra-strike",
+      "type": "registry:ui",
+      "title": "Contra Strike",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/contra-strike/component.tsx 真实表格里的部分退款。滑块 role=slider，方向键、Page、Home、End 改比例。确认后追加红字冲销行，原行不改。role=status 是表格的兄弟节点。减弱动效跳过行高过渡。离开视口时展开暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/contra-strike.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/contra-strike.tsx"
+        }
+      ]
+    },
+    {
+      "name": "galley-bracket",
+      "type": "registry:ui",
+      "title": "Galley Bracket",
+      "description": "移植自 ns-ui，MIT，Copyright (c) 2026 Nikolas Sapalidis。 https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/galley-bracket/component.tsx 正文选区画成页边括号。重叠的人选按到达顺序向外嵌套。SVG 装饰 aria-hidden。role=status 在变动停 2 秒后播报。跳转按钮移动原生 Selection。减弱动效不播放描线。离开视口时描线暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/galley-bracket.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/galley-bracket.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blind-pull-toggle",
+      "type": "registry:ui",
+      "title": "Blind Pull Toggle",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/blind-pull-toggle/index.tsx 百叶帘拉绳开关。拉下时帘片合拢，再拉一次打开。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blind-pull-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blind-pull-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "danger-stripes",
+      "type": "registry:ui",
+      "title": "Danger Stripes",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/danger-stripes/index.tsx 危险斜纹。指针进入、按下或进入视口时斜纹被推开，离开后回位。触控用按下和松开，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/danger-stripes.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/danger-stripes.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-calendar",
+      "type": "registry:ui",
+      "title": "Flip Calendar",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/flip-calendar/index.tsx 翻页日历。拖动或点前后一天，日期在 1 到 31 之间循环。value 受控时由外部决定当前日。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flip-calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flip-calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slice-type",
+      "type": "registry:ui",
+      "title": "Slice Type",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/slice-type/index.tsx 首字母从上下两个词之间切开。鼠标移入展开，触控按下切换。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/slice-type.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slice-type.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stack-tower",
+      "type": "registry:ui",
+      "title": "Stack Tower",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/stack-tower/index.tsx 圆柱上的词排成塔，缓慢转动。指针按下时该行用强调色。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stack-tower.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stack-tower.tsx"
+        }
+      ]
+    },
+    {
+      "name": "taga-toggle",
+      "type": "registry:ui",
+      "title": "Taga Toggle",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/taga-toggle/index.tsx 笑脸开关。拨动时表情在轨道上换边。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/taga-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/taga-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diamond-grid",
+      "type": "registry:ui",
+      "title": "Diamond Grid",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/diamond-grid/index.tsx 菱形格上的游走光点，画在 canvas 上。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/diamond-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/diamond-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wild-morph",
+      "type": "registry:ui",
+      "title": "Wild Morph",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/wild-morph/index.tsx 拖动文字四角做透视变形。触控同样可以拖。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wild-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wild-morph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mood-tracker",
+      "type": "registry:ui",
+      "title": "Mood Tracker",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/mood-tracker/index.tsx 六个心情脸和一条滑杆。保存后按钮短时间显示已记录。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mood-tracker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mood-tracker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voice-chat-pill",
+      "type": "registry:ui",
+      "title": "Voice Chat Pill",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/voice-chat-pill/index.tsx 语音会话胶囊。说话人轮换，点开后从按钮位置展开成名单。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/voice-chat-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/voice-chat-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "job-listing-cards",
+      "type": "registry:ui",
+      "title": "Job Listing Cards",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/ai-job-cards/index.tsx 职位卡片叠成三叠，拖动或点下一张把最前面的卡片换到后面。品牌标志由调用方传入，缺省是公司名首字母。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/job-listing-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/job-listing-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "new-project-modal",
+      "type": "registry:ui",
+      "title": "New Project Modal",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/new-project-modal/index.tsx 从按钮长出的新建项目对话框。Tab 在对话框内循环，Escape 关闭。标题为空时不能创建。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/new-project-modal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/new-project-modal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "music-player-card",
+      "type": "registry:ui",
+      "title": "Music Player Card",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/glass-music-player/index.tsx 玻璃音乐卡。进度是计时器，不加载音频文件。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/music-player-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/music-player-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label-cards",
+      "type": "registry:ui",
+      "title": "Label Cards",
+      "description": "移植自 AI Canvas，MIT，Copyright (c) 2026 AI Canvas。 https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/label-cards/index.tsx 散开的标签卡。点一张就把它摆正，再点一次散回去。键盘上 Enter 和空格同样可选。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/label-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "press-depth",
+      "type": "registry:ui",
+      "title": "Press Depth",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/press-depth.tsx 按下时按钮沉进底槽，并朝指针倾斜。键盘空格和回车同样按下。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/press-depth.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/press-depth.tsx"
+        }
+      ]
+    },
+    {
+      "name": "value-flash",
+      "type": "registry:ui",
+      "title": "Value Flash",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/value-flash.tsx 数字变化时滚动换位，并按涨跌着色。读屏在停顿后播报。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/value-flash.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/value-flash.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-up-image",
+      "type": "registry:ui",
+      "title": "Blur Up Image",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/blur-up-image.tsx 图片从模糊显到清晰。加载失败时留一块占位。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blur-up-image.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blur-up-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chromatic-text-reveal",
+      "type": "registry:ui",
+      "title": "Chromatic Text Reveal",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx 色带扫过前缀后面的词，再换下一个。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chromatic-text-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chromatic-text-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "action-swap",
+      "type": "registry:ui",
+      "title": "Action Swap",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/action-swap.tsx 一个按钮在几条文案之间切换。variant 选择模糊、滚动或逐字三种换法。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/action-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/action-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pull-to-refresh",
+      "type": "registry:ui",
+      "title": "Pull To Refresh",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/pull-to-refresh.tsx 在顶部下拉刷新。触控、指针和隐藏的刷新按钮都能触发。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pull-to-refresh.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pull-to-refresh.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-picker",
+      "type": "registry:ui",
+      "title": "Arc Picker",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/arc-picker.tsx 沿弧线拖动、滚动或用方向键选择一项。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/arc-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/arc-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "new-items-pill",
+      "type": "registry:ui",
+      "title": "New Items Pill",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/new-items-pill.tsx 列表离开顶部后，新条目堆成一颗可跳回的药丸。读屏延迟播报。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/new-items-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/new-items-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "typing-indicator",
+      "type": "registry:ui",
+      "title": "Typing Indicator",
+      "description": "移植自 interior，MIT，Copyright (c) 2026 ozzy。 https://github.com/ddoemonn/interior/blob/main/components/interior/typing-indicator.tsx 有人正在输入时冒出气泡和名字。读屏播报整句。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/typing-indicator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/typing-indicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "knockout-bracket",
+      "type": "registry:ui",
+      "title": "Knockout Bracket",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/knockout-bracket.tsx 单败淘汰赛对阵。左右按钮翻页，对阵图跟着平移。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/knockout-bracket.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/knockout-bracket.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ruler-slider",
+      "type": "registry:ui",
+      "title": "Ruler Slider",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/range-slider-ruler.tsx 刻度在指针下滑动。拖动带惯性，方向键按步进移动。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ruler-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ruler-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "overflow-actions",
+      "type": "registry:ui",
+      "title": "Overflow Actions",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/overflow-actions.tsx 主操作常驻，其余收在一个按钮里。悬停放大只在有悬停的设备上出现。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/overflow-actions.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/overflow-actions.tsx"
+        }
+      ]
+    },
+    {
+      "name": "preview-rail",
+      "type": "registry:ui",
+      "title": "Preview Rail",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/preview-rail.tsx 一排刻度。鼠标悬停、触控点按或键盘聚焦时展开预览。带链接的项第一次点按只打开预览。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-dismiss",
+        "use-hover-gesture",
+        "use-prefers-reduced-motion",
+        "use-tap-gesture",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/preview-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/preview-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wallet-card",
+      "type": "registry:ui",
+      "title": "Wallet Card",
+      "description": "移植自 beUI，MIT，Copyright (c) 2026 Saurabh Chauhan。 https://github.com/starc007/ui-components/blob/main/components/motion/wallet-card/index.tsx 账户切换、余额显隐、搜索和收发操作。余额换字复用 action-swap。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "action-swap",
+        "use-animation-active",
+        "use-dismiss",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wallet-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wallet-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "analog-stick",
+      "type": "registry:ui",
+      "title": "Analog Stick",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/analog-stick.tsx 方向压力盘。指针、触屏按住和方向键都会把摇杆拨向对应方向。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/analog-stick.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/analog-stick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paper-shred-button",
+      "type": "registry:ui",
+      "title": "Paper Shred Button",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/paper-shred-button.tsx 碎纸按钮。预览时抽出一张文件，点击后剪成纸条落下。和打印机图标按钮不是同一件事。焦点和精细指针都能预览。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/paper-shred-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/paper-shred-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scan-document",
+      "type": "registry:ui",
+      "title": "Scan Document",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/scan-document.tsx 扫描文件。点击后文件翻面，扫描条来回走过。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scan-document.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scan-document.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dynamic-grid-gallery",
+      "type": "registry:ui",
+      "title": "Dynamic Grid Gallery",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/dynamic-grid-gallery.tsx 三列两行的图片网格。悬停、点按或焦点会放大所在行列。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dynamic-grid-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dynamic-grid-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "photo-albums",
+      "type": "registry:ui",
+      "title": "Photo Albums",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/photo-albums.tsx 相册封面叠成扇形。点击封面展开全部照片，返回再叠回去。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/photo-albums.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/photo-albums.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gooey-navbar",
+      "type": "registry:ui",
+      "title": "Gooey Navbar",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/gooey-navbar.tsx 导航胶囊之间拉出液态桥。和单个黏液按钮不同，这里是一整条导航。焦点、方向键和点击都能选中。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gooey-navbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gooey-navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "overlapping-slider",
+      "type": "registry:ui",
+      "title": "Overlapping Slider",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/overlapping-slider.tsx 名片叠成一排。拖拽、点击卡片，或用两侧箭头切换。当前卡片左侧的卡片会后缩。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/overlapping-slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/overlapping-slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "get-in-touch",
+      "type": "registry:ui",
+      "title": "Get In Touch",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch.tsx 联系按钮。悬停或聚焦时头像滑到一起，再展开邀请文案。按钮外壳来自 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch-button.tsx。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/get-in-touch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/get-in-touch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "client-card",
+      "type": "registry:ui",
+      "title": "Client Card",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/client-card.tsx 客户卡片。左侧头像堆叠可以展开，右侧显示付款和截止日期。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/client-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/client-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "corner-video",
+      "type": "registry:ui",
+      "title": "Corner Video",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/corner-video.tsx 角落里的视频。可以静音、放大、拖动进度和收起。没有画面时显示占位。离开视口或减弱动效时暂停。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/corner-video.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/corner-video.tsx"
+        }
+      ]
+    },
+    {
+      "name": "create-menu",
+      "type": "registry:ui",
+      "title": "Create Menu",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/create-menu.tsx 创建菜单。按钮展开成一列操作，点外面或按 Esc 收起。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/create-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/create-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "day-picker",
+      "type": "registry:ui",
+      "title": "Day Picker",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/day-picker.tsx 频率选择。每日、每周、每月、每年。选每周时再点星期。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/day-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/day-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stacked-list",
+      "type": "registry:ui",
+      "title": "Stacked List",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/stacked-list.tsx 在线成员列表。底部目录条展开后可以搜索全部成员。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stacked-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stacked-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "discover-search-pill",
+      "type": "registry:ui",
+      "title": "Discover Search Pill",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/discover-button.tsx 发现搜索条。收起时是搜索按钮和热门、收藏两个页签，展开后变成输入框和关闭按钮。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/discover-search-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/discover-search-pill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tactile-rocker",
+      "type": "registry:ui",
+      "title": "Tactile Rocker",
+      "description": "移植自 uselayouts，MIT，Copyright (c) 2025 Urvish Mali。 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/tactile-button.tsx 摇杆开关。按下后保持倾斜，再按一次弹回。指示灯跟着开关亮起。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tactile-rocker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tactile-rocker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "exploding-input",
+      "type": "registry:ui",
+      "title": "Exploding Input",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/exploding-input.tsx 键入时在光标处炸开刚输入的字符。这是输入框本身的粒子，不是消息气泡的 text-explode。焦点里打字即可，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/exploding-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/exploding-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flow-button",
+      "type": "registry:ui",
+      "title": "Flow Button",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/flow-button.tsx 胶囊按钮外圈有一圈流动虚线。静止时虚线仍在。悬停、焦点和触屏按下都会让虚线流动。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flow-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flow-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logos-carousel",
+      "type": "registry:ui",
+      "title": "Logos Carousel",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/logos-carousel.tsx 标志按组纵向交错换场。这不是横向滚动的 section-logo-cloud。减弱动效时停在第一组。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/logos-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/logos-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bars-spinner",
+      "type": "registry:ui",
+      "title": "Bars Spinner",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/bars-spinner.tsx 放射短条依次明暗。减弱动效时短条停在固定透明度，并保留文字。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bars-spinner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bars-spinner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "band-wave-text",
+      "type": "registry:ui",
+      "title": "Band Wave Text",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/gradient-wave-text.tsx 色带从文字底部扫过。这不是整段渐变的 gradient-text，也不是逐字起伏的 text-shimmer-wave。减弱动效时色带停在中段。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/band-wave-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/band-wave-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glow-divider",
+      "type": "registry:ui",
+      "title": "Glow Divider",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/glowline/glowline.tsx 一条会呼吸的发光分隔线。这不是卡片边缘的 glowing-edge，也不是容器光晕 glow-effect。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glow-divider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glow-divider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "noise-text",
+      "type": "registry:ui",
+      "title": "Noise Text",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/noisetext/noisetext.tsx 玻璃标签上铺一层程序生成的噪点。噪点画在组件里，不请求外部动图。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/noise-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/noise-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "invalid-shake",
+      "type": "registry:ui",
+      "title": "Invalid Shake",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-invalid-shake.ts 提交无效邮箱时字段横向抖动，并写出错误。键盘回车同样会提交。减弱动效时只保留错误文字。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/invalid-shake.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/invalid-shake.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fallback-avatar",
+      "type": "registry:ui",
+      "title": "Fallback Avatar",
+      "description": "移植自 Spell UI，MIT，Copyright (c) 2025 Spell UI。 https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/fallback-avatar.tsx 按名字生成双色渐变和首字母。原实现用 WebGL，这里改成 CSS 渐变。悬停、焦点和触屏按下会让色块慢慢漂移。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fallback-avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fallback-avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "verify-badge",
+      "type": "registry:ui",
+      "title": "Verify Badge",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/verify-badge/verify-badge.tsx 基础、金色和高级三种验证徽章。高级徽章的虚线圈在减弱动效时不再旋转。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/verify-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/verify-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gift-card",
+      "type": "registry:ui",
+      "title": "Gift Card",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/amazongift/amazongift.tsx 礼品卡。来源里的品牌名称和标志已去掉，金额和文案都由 props 决定。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gift-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gift-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "safe-triangle",
+      "type": "registry:ui",
+      "title": "Safe Triangle",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/components/ui/safe-area.tsx 触发器到菜单之间的安全三角。点击、回车和 Escape 都能开关。触屏点开后菜单保持，不靠悬停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/safe-triangle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/safe-triangle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "held-keys",
+      "type": "registry:ui",
+      "title": "Held Keys",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-held-keys.ts 显示当前按住的物理键。松开、窗口失焦或页面隐藏时清空。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/held-keys.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/held-keys.tsx"
+        }
+      ]
+    },
+    {
+      "name": "delayed-loading",
+      "type": "registry:ui",
+      "title": "Delayed Loading",
+      "description": "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。 https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-delayed-loading.ts 加载指示晚一点出现，并至少停留一段时间，避免闪一下。按钮可以来回切换。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/delayed-loading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/delayed-loading.tsx"
+        }
+      ]
+    },
+    {
+      "name": "network-graph",
+      "type": "registry:ui",
+      "title": "Network Graph",
+      "description": "移植自 Sera UI，MIT，Copyright (c) 2025 Sera UI。 https://github.com/seraui/seraui/blob/main/src/app/docs/network/network.tsx 中心和周围节点之间轮流连线。头像是首字母，不请求外链图片。点击节点会连到它。减弱动效时停在第一条连线。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/network-graph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/network-graph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "queue-pulse-lanes",
+      "type": "registry:ui",
+      "title": "Queue Pulse Lanes",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/queue-pulse-lanes.tsx 队列车道：脉冲胶囊从左向右流动，拥堵更密更慢，阻塞车道停在色条和 × 上。这是吞吐看板，不是装饰光带。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/queue-pulse-lanes.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/queue-pulse-lanes.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-propagation-matrix",
+      "type": "registry:ui",
+      "title": "Event Propagation Matrix",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/event-propagation-matrix.tsx 事件从原点沿格子向前、向外或向下传播。失败停在 ×，确认留下 ✓。这是网格上的事件波，不是 glyph-matrix 那种闪烁字符。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/event-propagation-matrix.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/event-propagation-matrix.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copperplate-hatch",
+      "type": "registry:ui",
+      "title": "Copperplate Hatch",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/copperplate-hatch.tsx 三向铜版交叉线被一圈圈光波点亮。指针和触屏按下会移动光源。这不是 sketch-hatch-image 的照片素描，也不是 hatch-divider 的分隔线。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/copperplate-hatch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/copperplate-hatch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "core-strata",
+      "type": "registry:ui",
+      "title": "Core Strata",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/core-strata.tsx 岩芯沉积层以不同速度上移，勘测光束扫过时点亮标记缝，断层把岩柱错开。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/core-strata.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/core-strata.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kinetic-emphasis",
+      "type": "registry:ui",
+      "title": "Kinetic Emphasis",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/text/kinetic-emphasis.tsx 阅读焦点沿句子走过，<em> 和 <strong> 留下下划线。进入视口或挂载时播放，不靠悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/kinetic-emphasis.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kinetic-emphasis.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-fill-headline",
+      "type": "registry:ui",
+      "title": "Liquid Fill Headline",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/text/liquid-fill-headline.tsx 描边标题被液面灌满，再排空。按下标题会重新灌注。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-fill-headline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-fill-headline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "velocity-skew-feed",
+      "type": "registry:ui",
+      "title": "Velocity Skew Feed",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/scroll/velocity-skew-feed.tsx 卡片随容器滚动速度剪切，停下后弹簧回正。这不是 skewed-infinite-scroll 那种恒定斜切的无限跑马。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/velocity-skew-feed.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/velocity-skew-feed.tsx"
+        }
+      ]
+    },
+    {
+      "name": "filmstrip-scrub",
+      "type": "registry:ui",
+      "title": "Filmstrip Scrub",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/media/filmstrip-scrub.tsx 胶片条用弹簧播放头跟手。拖动、方向键和闲置自动播放都能换帧，触屏不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/filmstrip-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/filmstrip-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "deployment-pipeline",
+      "type": "registry:ui",
+      "title": "Deployment Pipeline",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/deployment-pipeline.tsx 部署阶段列表。运行中的节点会呼吸，失败阶段可以重试，日志可以展开。组件不连接真正的 CI。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/deployment-pipeline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/deployment-pipeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "live-log-stream",
+      "type": "registry:ui",
+      "title": "Live Log Stream",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/live-log-stream.tsx 日志流。跟在底部时新行滚入；往上翻就停下，并可以跳回最新。级别用文字前缀，不只靠颜色。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/live-log-stream.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/live-log-stream.tsx"
+        }
+      ]
+    },
+    {
+      "name": "environment-switcher",
+      "type": "registry:ui",
+      "title": "Environment Switcher",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/environment-switcher.tsx 环境切换。菜单用 react-dom portal 挂到 body。切到 production 前可以要求确认。离线或锁定的环境不可选。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/environment-switcher.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/environment-switcher.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-refresh-state",
+      "type": "registry:ui",
+      "title": "Data Refresh State",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/data/data-refresh-state.tsx 数据刷新状态。检查和刷新时显示进度，失败可重试，过期可手动刷新。进度未知时是不定进度条，不编造百分比。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/data-refresh-state.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-refresh-state.tsx"
+        }
+      ]
+    },
+    {
+      "name": "api-request-inspector",
+      "type": "registry:ui",
+      "title": "API Request Inspector",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/api-request-inspector.tsx 查看一次 HTTP 交换。请求头、查询、正文和响应分栏显示，Authorization 等敏感键默认打码。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/api-request-inspector.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/api-request-inspector.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-variant-selector",
+      "type": "registry:ui",
+      "title": "Product Variant Selector",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/commerce/product-variant-selector.tsx 商品规格。选择颜色或尺寸后价格跟着变，缺货项不可选，旁边仍有文字说明。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/product-variant-selector.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/product-variant-selector.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cart-item-transition",
+      "type": "registry:ui",
+      "title": "Cart Item Transition",
+      "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/commerce/cart-item-transition.tsx 购物车行。数量可加减，删除前先确认，删除后可以撤销。价格变化用文字写出来。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cart-item-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cart-item-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wax-seal-button",
+      "type": "registry:ui",
+      "title": "Wax Seal Button",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/wax-seal-button.tsx 火漆按钮：点击后倒蜡、盖印，成功后显示火漆印。失败停在可重试状态。duration 为 0 时盖印后保持封上。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wax-seal-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wax-seal-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dispatch-truck-button",
+      "type": "registry:ui",
+      "title": "Dispatch Truck Button",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/dispatch-truck-button.tsx 发货按钮：路面拉长、货车装上包裹再开走。失败不自动复位。duration 小于等于 0 时成功态保持。阶段顺序与源码一致。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dispatch-truck-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dispatch-truck-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "googly-gaze-button",
+      "type": "registry:ui",
+      "title": "Googly Gaze Button",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/googly-gaze-button.tsx 两只活动眼睛跟着指针或触点看，点一下会眯眼。触屏按下也会更新视线，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/googly-gaze-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/googly-gaze-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "weather-vane-toggle",
+      "type": "registry:ui",
+      "title": "Weather Vane Toggle",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/weather-vane-toggle.tsx 风向标开关。打开时箭头转到设定角度，底纹变密。点击切换，键盘走按钮的 Space 和 Enter。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/weather-vane-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/weather-vane-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ink-bleed-text",
+      "type": "registry:ui",
+      "title": "Ink Bleed Text",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/ink-bleed-text.tsx 墨水按词洇开，高亮词更重。进入视口或挂载时播放，重播从当前进度清零。离开视口时洇开停住，回来再继续。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ink-bleed-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ink-bleed-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "charm-text",
+      "type": "registry:ui",
+      "title": "Charm Text",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/charm-text.tsx 句子里的词可以点亮，并带上一个小图形。指针、焦点和按下都会点亮，点击可以钉住。ink 变体用 role=button 的 span，避免把按钮嵌进段落。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/charm-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/charm-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "book-spine-shelf",
+      "type": "registry:ui",
+      "title": "Book Spine Shelf",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/book-spine-shelf.tsx 一排书脊。点选或用方向键换书，封面卡片跟着打开。触屏不靠悬停倾斜。这是书架选书，不是 ns-ui 的 drill-down-spines。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/book-spine-shelf.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/book-spine-shelf.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cook-loading",
+      "type": "registry:ui",
+      "title": "Cook Loading",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/cook-loading.tsx 厨师等待态。进度由外部传入，暂停只冻住手臂和蒸汽，不改进度。源码里的精灵图没有带进来，这里用主题色 SVG 重画同一套状态。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cook-loading.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cook-loading.tsx"
+        }
+      ]
+    },
+    {
+      "name": "usage-quota-meter",
+      "type": "registry:ui",
+      "title": "Usage Quota Meter",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/usage-quota-meter.tsx 用量条。超过包含额度时出现警告。点击一行展开分段，不靠悬停。数字用 en-US，避免服务端和浏览器格式不一致。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/usage-quota-meter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/usage-quota-meter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inset-settings-list",
+      "type": "registry:ui",
+      "title": "Inset Settings List",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/inset-settings-list.tsx 分组设置列表。开关和选项都是按钮。进入选项页后，返回按钮会重新聚焦到刚才那一行。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inset-settings-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inset-settings-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "compass-rail",
+      "type": "registry:ui",
+      "title": "Compass Rail",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/compass-rail.tsx 侧栏罗盘。点击一项，指针沿较短的角度转到对应方位。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/compass-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/compass-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "availability-badge",
+      "type": "registry:ui",
+      "title": "Availability Badge",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/availability-badge.tsx 档期徽章。空闲时两圈雷达，档期紧张时呼吸，约满则静止。可选时区显示当地时间。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/availability-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/availability-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "smart-widget-stack",
+      "type": "registry:ui",
+      "title": "Smart Widget Stack",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/smart-widget-stack.tsx 一叠小组件。方向键、圆点和滚轮都能换页。拖动只在动画进行时启用。autoMs 为 0 时不自动翻。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/smart-widget-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/smart-widget-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "goal-progress-card",
+      "type": "registry:ui",
+      "title": "Goal Progress Card",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/goal-progress-card.tsx 储蓄目标卡。每次点击按步长增加，到达目标后按钮停在完成。光泽只在未完成且动画进行时走动。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/goal-progress-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/goal-progress-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mini-desktop-os",
+      "type": "registry:ui",
+      "title": "Mini Desktop OS",
+      "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/mini-desktop-os.tsx 迷你桌面。窗口可以打开、关闭、最小化和最大化，标题栏可拖，方向键移动，Escape 关闭。壁纸是种子渐变，不请求图片。窄容器里窗口铺满。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mini-desktop-os.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mini-desktop-os.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-fold-button",
+      "type": "registry:ui",
+      "title": "Progress Fold Button",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progress-fold-button/progress-fold-button.tsx 按钮正面沿上沿折起，露出后面的进度。加载中、按下、聚焦都会折起，不依赖悬停。确定进度按百分比填充，否则一段色条来回扫。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progress-fold-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress-fold-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magic-tab",
+      "type": "registry:ui",
+      "title": "Magic Tab",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-tab/magic-tab.tsx 选中的标签抬起，并沿图表色带来回流动。方向键移动焦点，Enter 或空格才选中。按下也会抬起，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magic-tab.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magic-tab.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magic-input",
+      "type": "registry:ui",
+      "title": "Magic Input",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-input/magic-input.tsx 输入框在聚焦或按下时抬起，边缘走图表色。提交后可进入加载、成功或失败，加载时色条扫过。按下即可看到厚度，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magic-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magic-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blueprint-grid",
+      "type": "registry:ui",
+      "title": "Blueprint Grid",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/blueprint-grid/blueprint-grid.tsx 蓝图网格，可选直线、圆点或透视地面。一道光带扫过，指针或按下的位置会点亮附近格子。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blueprint-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blueprint-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metaballs",
+      "type": "registry:ui",
+      "title": "Liquid Metaballs",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/liquid-metaballs/liquid-metaballs.tsx SVG 滤镜把色块融成液团。位置按序号播种，不在渲染时取随机数。指针移动或按下会多出一个跟随的液团。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-metaballs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-metaballs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spin-viewer",
+      "type": "registry:ui",
+      "title": "Spin Viewer",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/spin-viewer/spin-viewer.tsx 按帧旋转的查看器。拖动或按下后滑动换帧。示例帧是内联 SVG，没有图片文件。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spin-viewer.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spin-viewer.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progressive-card-reveal",
+      "type": "registry:ui",
+      "title": "Progressive Card Reveal",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progressive-card-reveal/progressive-card-reveal.tsx 一列卡片里只有当前项展开，其余按距离收成胶囊。点击胶囊切换，按下有缩放反馈。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progressive-card-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progressive-card-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inertia-gallery",
+      "type": "registry:ui",
+      "title": "Inertia Gallery",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/inertia-gallery/inertia-gallery.tsx 横向拖动的画廊，松手后按弹簧靠拢最近的一张。左右按钮和方向键也能换张。距离中心越远越淡。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inertia-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inertia-gallery.tsx"
+        }
+      ]
+    },
+    {
+      "name": "agent-timeline",
+      "type": "registry:ui",
+      "title": "Agent Timeline",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-timeline/agent-timeline.tsx 代理步骤时间线。运行中的圆点旋转，成功和失败点亮连接线。有正文的步骤可以点开。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/agent-timeline.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/agent-timeline.tsx"
+        }
+      ]
+    },
+    {
+      "name": "agent-flow",
+      "type": "registry:ui",
+      "title": "Agent Flow",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-flow/agent-flow.tsx 可拖动的代理流程图。节点描边点亮后，光束沿连线走到下一节点。拖背景可以平移。离开视口时序列不再前进。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/agent-flow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/agent-flow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comment-pin",
+      "type": "registry:ui",
+      "title": "Comment Pin",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/comment-pin/comment-pin.tsx 画布上的评论钉。点击打开线程，可以回复。头像颜色由本地的姓名哈希映射到主题色，不另建 presence 模块。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/comment-pin.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/comment-pin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "presence-facepile",
+      "type": "registry:ui",
+      "title": "Presence Facepile",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/presence-facepile/presence-facepile.tsx 叠放的在线头像。超出的人数收成 +N，点击展开名单。颜色由本地哈希映射到主题色。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/presence-facepile.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/presence-facepile.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stack-badge",
+      "type": "registry:ui",
+      "title": "Stack Badge",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/stack-badge/stack-badge.tsx 技术栈徽章。内置标志在悬停、按下或聚焦时染上品牌色。进入视口时依次出现。标志路径来自 Simple Icons（CC0）。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stack-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stack-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "store-badge",
+      "type": "registry:ui",
+      "title": "Store Badge",
+      "description": "移植自 GodUI，MIT，Copyright (c) 2026 Lucas Bassetti。 https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/store-badge/store-badge.tsx App Store 与 Google Play 的下载锁。没有二维码，也没有加入 uqr。按下或聚焦时有一道高光扫过。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/store-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/store-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inline-action",
+      "type": "registry:ui",
+      "title": "Inline Action",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/inline-action-base.tsx 一行说明配一个动作按钮。点击后扫过加载条，完成时收成对勾。按下有缩放，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inline-action.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inline-action.tsx"
+        }
+      ]
+    },
+    {
+      "name": "emoji-spree-choice-chips",
+      "type": "registry:ui",
+      "title": "Emoji Spree Choice Chips",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/emoji-spree-choice-chips-base.tsx 可横向拖动的兴趣芯片。选中时从底部溅出表情，并汇总已选数量。按下会缩小，不依赖悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/emoji-spree-choice-chips.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/emoji-spree-choice-chips.tsx"
+        }
+      ]
+    },
+    {
+      "name": "award",
+      "type": "registry:ui",
+      "title": "Award",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/award.tsx 奖状、印章、证书和徽章四种版式。桂冠和勋章沿用原 SVG。等级色改成图表色。进入时轻轻放大。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/award.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/award.tsx"
+        }
+      ]
+    },
+    {
+      "name": "journal-navigation",
+      "type": "registry:ui",
+      "title": "Journal Navigation",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/journal-navigation-base.tsx 左侧日期可以拖动或点击，右侧逐字换页。上一页和下一页是按钮。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/journal-navigation.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/journal-navigation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip-navbar",
+      "type": "registry:ui",
+      "title": "Tooltip Navbar",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/tooltip-navbar-base.tsx 图标条用裁切提示显示名称和快捷键。direction 为 left 或 right 时改成竖条，提示出现在侧面。指针按下或聚焦也会打开，不只有悬停。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tooltip-navbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tooltip-navbar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "carousel-navigator",
+      "type": "registry:ui",
+      "title": "Carousel Navigator",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/carousel-navigator-base.tsx 轮播的上一页、圆点和下一页。当前圆点按时间填满。圆点和按钮都可以点。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/carousel-navigator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/carousel-navigator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "labeled-progress-indicator",
+      "type": "registry:ui",
+      "title": "Labeled Progress Indicator",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/labeled-progress-indicator-base.tsx 进度条上方的标签会翻转切换，条内有一道高光。离开视口后标签停住。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/labeled-progress-indicator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/labeled-progress-indicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "frequency-selector",
+      "type": "registry:ui",
+      "title": "Frequency Selector",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/frequency-selector-base.tsx 频率从一枚摘要展开成日、周、月、年，再选星期、日期或月份。确认后收起。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/frequency-selector.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/frequency-selector.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-picker",
+      "type": "registry:ui",
+      "title": "Status Picker",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/status-picker-base.tsx 状态从一枚胶囊打开表情菜单。按下或聚焦会显示名称，不只有悬停。清除回到空状态。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/status-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/status-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quick-paste",
+      "type": "registry:ui",
+      "title": "Quick Paste",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/quick-paste-base.tsx 输入后粘贴成一张名片，可以清除或继续。远程图片地址换成主题色占位，不请求 assets.watermelon.sh。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/quick-paste.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/quick-paste.tsx"
+        }
+      ]
+    },
+    {
+      "name": "contextual-ai-bar",
+      "type": "registry:ui",
+      "title": "Contextual AI Bar",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/contextual-ai-bar-base.tsx 一条工具栏可以在工具图标和 AI 输入之间切换。两个模式都是按钮，按下会缩放。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/contextual-ai-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/contextual-ai-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "predictive-text",
+      "type": "registry:ui",
+      "title": "Predictive Text",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/predictive-text-base.tsx 输入时给出最多三个补全。Tab 轮换，右方向键或点击采纳，Enter 发送并把用过的词提前。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/predictive-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/predictive-text.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature-tour",
+      "type": "registry:ui",
+      "title": "Feature Tour",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/feature-tour-base.tsx 功能导览。圆点、左右方向键和关闭按钮切换步骤。点击遮罩可关。图标在步骤之间共享位置。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/feature-tour.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/feature-tour.tsx"
+        }
+      ]
+    },
+    {
+      "name": "budget-card",
+      "type": "registry:ui",
+      "title": "Budget Card",
+      "description": "移植自 Watermelon UI，MIT，Copyright (c) 2025-present Watermelon Contributors。 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/budget-card-base.tsx 月度预算卡。可以换月份，查看分类占比和示例流水。金额按 en-US 格式化。分类色由调用方传入主题色。",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/budget-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/budget-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wavy-threads-background",
+      "type": "registry:ui",
+      "title": "Wavy Threads Background",
+      "description": "移植自 MosaicUI，MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha。 https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/backgrounds/wavy-threads-background/wavy-threads-background.tsx 画布上的正弦细线。线的偏移按序号播种，不在渲染时取随机数。颜色从画布的计算样式读取。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wavy-threads-background.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wavy-threads-background.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rolling-letters-animation",
+      "type": "registry:ui",
+      "title": "Rolling Letters Animation",
+      "description": "移植自 MosaicUI，MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha。 https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/text-effects/rolling-letters-animation/rolling-letters-animation.tsx 每个字母在一条短卷轴里滚到目标字符。偶数位向上揭开，奇数位向下揭开。卷轴按序号播种。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rolling-letters-animation.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rolling-letters-animation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-cards",
+      "type": "registry:ui",
+      "title": "Arc Cards",
+      "description": "移植自 MosaicUI，MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha。 https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/arc-cards/arc-cards.tsx 卡片叠在一起，打开后按弧度散开。鼠标移入、按下或聚焦都会打开，触屏再按一次收起。示例是主题色面板，没有远程图片。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/arc-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/arc-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tilt-image-carousel",
+      "type": "registry:ui",
+      "title": "Tilt Image Carousel",
+      "description": "移植自 MosaicUI，MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha。 https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/tilt-image-carousel/tilt-image-carousel.tsx 封面流。当前面板正对，两侧绕 Y 轴倾斜。上一张、下一张和圆点都可以点。面板是主题色块，没有远程图片。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tilt-image-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tilt-image-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-glide-cards",
+      "type": "registry:ui",
+      "title": "Hover Glide Cards",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/hover-glide-cards.tsx 高光沿卡片形状滑到下一张。指针移入、聚焦或按下都会停在那张卡片上，触屏不会把高光藏起来。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-glide-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-glide-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-ring-check",
+      "type": "registry:ui",
+      "title": "Progress Ring Check",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/progress-ring-check.tsx 状态环。等待是虚线，进行中转弧，完成打勾，失败或取消打叉。无进度时的旋转离开视口会停住。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/progress-ring-check.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress-ring-check.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cursor-edge-glow-button",
+      "type": "registry:ui",
+      "title": "Cursor Edge Glow Button",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/cursor-edge-glow-button.tsx 边缘光跟着指针做弹簧滑动。聚焦时停在中间。触屏按下也会把光带到落点。空闲时不申请动画帧。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cursor-edge-glow-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cursor-edge-glow-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "secure-purchase-button",
+      "type": "registry:ui",
+      "title": "Secure Purchase Button",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/secure-purchase-button.tsx 购买从空闲到处理，再变成已保护。处理时像素点按距离闪动，成功后换成盾牌。离开视口时闪动停住，回来继续。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/secure-purchase-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/secure-purchase-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-glide-menu",
+      "type": "registry:ui",
+      "title": "Blur Glide Menu",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/blur-glide-menu.tsx 嵌套菜单。进入下一层时旧面板模糊滑出。方向键、Escape 和面板外点击都能用。默认收起。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blur-glide-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blur-glide-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-indicator",
+      "type": "registry:ui",
+      "title": "Spotlight Indicator",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/spotlight-indicator.tsx 竖向导航。当前项左边有一条主题色指示。点击切换，不依赖悬停。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spotlight-indicator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spotlight-indicator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section-navigator",
+      "type": "registry:ui",
+      "title": "Section Navigator",
+      "description": "移植自 MosaicUI，MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha。 https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/section-navigator/section-navigator.tsx 章节跳转。列表跟在触发器旁边，不用传送门，也不钉在视口上。按下、聚焦或鼠标移入都会打开。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/section-navigator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/section-navigator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "preview-hover-toolbar",
+      "type": "registry:ui",
+      "title": "Preview Hover Toolbar",
+      "description": "移植自 MicroKit，MIT，Copyright (c) 2026 Henrique Barone。 https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/preview-hover-toolbar.tsx 预览操作条。鼠标移入展开，移出且焦点不在里面时收起。旁边的按钮和触屏按下也能打开，不把操作按钮包进另一个按钮。",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/preview-hover-toolbar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/preview-hover-toolbar.tsx"
+        }
+      ]
     }
   ]
 }

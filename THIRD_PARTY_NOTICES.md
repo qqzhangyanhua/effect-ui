@@ -53,6 +53,104 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## MosaicUI
+
+- 仓库：https://github.com/darshan-rajadhyaksha/mosaicui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Darshan Sunil Rajadhyaksha
+- 衍生组件：`wavy-threads-background`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/backgrounds/wavy-threads-background/wavy-threads-background.tsx）、`rolling-letters-animation`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/text-effects/rolling-letters-animation/rolling-letters-animation.tsx）、`arc-cards`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/arc-cards/arc-cards.tsx）、`tilt-image-carousel`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/tilt-image-carousel/tilt-image-carousel.tsx）、`section-navigator`（https://github.com/darshan-rajadhyaksha/mosaicui/blob/2baca92/src/registry/components/section-navigator/section-navigator.tsx）。`waving-dots-background` 与已有的 `dot-field` 重合，没有移植。`section-navigator` 未使用传送门。没有使用 picsum.photos 上的远程图片。
+
+## MicroKit
+
+- 仓库：https://github.com/henriquegpb/microkit
+- 许可：MIT
+- 版权：Copyright (c) 2026 Henrique Barone
+- 衍生组件：`hover-glide-cards`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/hover-glide-cards.tsx）、`progress-ring-check`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/progress-ring-check.tsx）、`cursor-edge-glow-button`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/cursor-edge-glow-button.tsx）、`secure-purchase-button`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/secure-purchase-button.tsx）、`blur-glide-menu`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/blur-glide-menu.tsx）、`spotlight-indicator`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/spotlight-indicator.tsx）、`preview-hover-toolbar`（https://github.com/henriquegpb/microkit/blob/fd993e8/registry/microkit/preview-hover-toolbar.tsx）
+
+## Watermelon UI
+
+- 仓库：https://github.com/WatermelonCorp/watermellon-registry
+- 许可：MIT
+- 版权：Copyright (c) 2025-present Watermelon Contributors
+- 衍生组件：`inline-action`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/inline-action-base.tsx）、`emoji-spree-choice-chips`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/emoji-spree-choice-chips-base.tsx）、`award`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/award.tsx）、`journal-navigation`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/journal-navigation-base.tsx）、`tooltip-navbar`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/tooltip-navbar-base.tsx ，竖向变体 https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/vertical-tooltip-navbar-base.tsx ）、`carousel-navigator`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/carousel-navigator-base.tsx）、`labeled-progress-indicator`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/labeled-progress-indicator-base.tsx）、`frequency-selector`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/frequency-selector-base.tsx）、`status-picker`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/status-picker-base.tsx）、`quick-paste`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/quick-paste-base.tsx）、`contextual-ai-bar`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/contextual-ai-bar-base.tsx）、`predictive-text`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/predictive-text-base.tsx）、`feature-tour`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/feature-tour-base.tsx）、`budget-card`（https://github.com/WatermelonCorp/watermellon-registry/blob/86052b8/src/components/watermelon-ui/budget-card-base.tsx）。`gauge` 与 Animate UI 的仪表盘重合，没有移植。液态按钮、涟漪按钮、图标按钮和径向开场没有移植。没有使用 `assets.watermelon.sh` 上的远程图片。
+
+## GodUI
+
+- 仓库：https://github.com/LucasBassetti/godui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Lucas Bassetti
+- 衍生组件：`progress-fold-button`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progress-fold-button/progress-fold-button.tsx）、`magic-tab`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-tab/magic-tab.tsx）、`magic-input`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/magic-input/magic-input.tsx）、`blueprint-grid`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/blueprint-grid/blueprint-grid.tsx）、`liquid-metaballs`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/liquid-metaballs/liquid-metaballs.tsx）、`spin-viewer`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/spin-viewer/spin-viewer.tsx）、`progressive-card-reveal`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/progressive-card-reveal/progressive-card-reveal.tsx）、`inertia-gallery`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/inertia-gallery/inertia-gallery.tsx）、`agent-timeline`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-timeline/agent-timeline.tsx）、`agent-flow`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/agent-flow/agent-flow.tsx）、`comment-pin`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/comment-pin/comment-pin.tsx）、`presence-facepile`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/presence-facepile/presence-facepile.tsx）、`stack-badge`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/stack-badge/stack-badge.tsx）、`store-badge`（https://github.com/LucasBassetti/godui/blob/1f632a7/packages/lab/src/store-badge/store-badge.tsx）。`store-badge` 未移植二维码，也未加入 `uqr`。`stack-badge` 内置标志路径来自 Simple Icons（CC0）。
+
+## Framekit UI
+
+- 仓库：https://github.com/Sid9022/framekit-ui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Framekit UI contributors
+- 衍生组件：`wax-seal-button`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/wax-seal-button.tsx）、`dispatch-truck-button`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/dispatch-truck-button.tsx）、`googly-gaze-button`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/googly-gaze-button.tsx）、`weather-vane-toggle`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/weather-vane-toggle.tsx）、`ink-bleed-text`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/ink-bleed-text.tsx）、`charm-text`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/charm-text.tsx）、`book-spine-shelf`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/book-spine-shelf.tsx）、`cook-loading`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/cook-loading.tsx）、`usage-quota-meter`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/usage-quota-meter.tsx）、`inset-settings-list`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/inset-settings-list.tsx）、`compass-rail`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/compass-rail.tsx）、`availability-badge`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/availability-badge.tsx）、`smart-widget-stack`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/smart-widget-stack.tsx）、`goal-progress-card`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/goal-progress-card.tsx）、`mini-desktop-os`（https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/mini-desktop-os.tsx）
+
+## Motiq
+
+- 仓库：https://github.com/RMahammad/motiq
+- 许可：MIT
+- 版权：Copyright (c) 2026 Mahammad Rustamov
+- 衍生组件：`queue-pulse-lanes`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/queue-pulse-lanes.tsx）、`event-propagation-matrix`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/event-propagation-matrix.tsx）、`copperplate-hatch`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/copperplate-hatch.tsx）、`core-strata`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/core-strata.tsx）、`kinetic-emphasis`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/text/kinetic-emphasis.tsx）、`liquid-fill-headline`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/text/liquid-fill-headline.tsx）、`velocity-skew-feed`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/scroll/velocity-skew-feed.tsx）、`filmstrip-scrub`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/media/filmstrip-scrub.tsx）、`deployment-pipeline`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/deployment-pipeline.tsx）、`live-log-stream`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/live-log-stream.tsx）、`environment-switcher`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/environment-switcher.tsx）、`data-refresh-state`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/data/data-refresh-state.tsx）、`api-request-inspector`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/developer-tools/api-request-inspector.tsx）、`product-variant-selector`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/commerce/product-variant-selector.tsx）、`cart-item-transition`（https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/commerce/cart-item-transition.tsx）
+
+## Spell UI
+
+- 仓库：https://github.com/xxtomm/spell-ui
+- 许可：MIT
+- 版权：Copyright (c) 2025 Spell UI
+- 衍生组件：`exploding-input`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/exploding-input.tsx）、`flow-button`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/flow-button.tsx）、`logos-carousel`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/logos-carousel.tsx）、`bars-spinner`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/bars-spinner.tsx）、`band-wave-text`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/gradient-wave-text.tsx）、`fallback-avatar`（https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/fallback-avatar.tsx）
+
+## Sera UI
+
+- 仓库：https://github.com/seraui/seraui
+- 许可：MIT
+- 版权：Copyright (c) 2025 Sera UI
+- 衍生组件：`glow-divider`（https://github.com/seraui/seraui/blob/main/src/app/docs/glowline/glowline.tsx）、`noise-text`（https://github.com/seraui/seraui/blob/main/src/app/docs/noisetext/noisetext.tsx）、`verify-badge`（https://github.com/seraui/seraui/blob/main/src/app/docs/verify-badge/verify-badge.tsx）、`gift-card`（https://github.com/seraui/seraui/blob/main/src/app/docs/amazongift/amazongift.tsx）、`network-graph`（https://github.com/seraui/seraui/blob/main/src/app/docs/network/network.tsx）
+
+## HextaUI
+
+- 仓库：https://github.com/preetsuthar17/HextaUI
+- 许可：MIT
+- 版权：Copyright (c) 2026 Preet Suthar
+- 衍生组件：`invalid-shake`（https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-invalid-shake.ts）、`safe-triangle`（https://github.com/preetsuthar17/HextaUI/blob/main/components/ui/safe-area.tsx）、`held-keys`（https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-held-keys.ts）、`delayed-loading`（https://github.com/preetsuthar17/HextaUI/blob/main/hooks/use-delayed-loading.ts）
+
+## uselayouts
+
+- 仓库：https://github.com/iurvish/uselayouts
+- 许可：MIT
+- 版权：Copyright (c) 2025 Urvish Mali
+- 衍生组件：`analog-stick`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/analog-stick.tsx）、`paper-shred-button`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/paper-shred-button.tsx）、`scan-document`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/scan-document.tsx）、`dynamic-grid-gallery`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/dynamic-grid-gallery.tsx）、`photo-albums`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/photo-albums.tsx）、`gooey-navbar`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/gooey-navbar.tsx）、`overlapping-slider`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/overlapping-slider.tsx）、`get-in-touch`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch.tsx，按钮外壳 https://github.com/iurvish/uselayouts/blob/main/registry/default/example/get-in-touch-button.tsx）、`client-card`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/client-card.tsx）、`corner-video`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/corner-video.tsx）、`create-menu`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/create-menu.tsx）、`day-picker`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/day-picker.tsx）、`stacked-list`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/stacked-list.tsx）、`discover-search-pill`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/discover-button.tsx）、`tactile-rocker`（https://github.com/iurvish/uselayouts/blob/main/registry/default/example/tactile-button.tsx）
+
+## interior
+
+- 仓库：https://github.com/ddoemonn/interior
+- 许可：MIT
+- 版权：Copyright (c) 2026 ozzy
+- 衍生组件：`press-depth`（https://github.com/ddoemonn/interior/blob/main/components/interior/press-depth.tsx）、`value-flash`（https://github.com/ddoemonn/interior/blob/main/components/interior/value-flash.tsx）、`blur-up-image`（https://github.com/ddoemonn/interior/blob/main/components/interior/blur-up-image.tsx）、`typing-indicator`（https://github.com/ddoemonn/interior/blob/main/components/interior/typing-indicator.tsx）、`new-items-pill`（https://github.com/ddoemonn/interior/blob/main/components/interior/new-items-pill.tsx）
+
+## beUI
+
+- 仓库：https://github.com/starc007/ui-components
+- 许可：MIT
+- 版权：Copyright (c) 2026 Saurabh Chauhan
+- 衍生组件：`chromatic-text-reveal`（https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx）、`action-swap`（https://github.com/starc007/ui-components/blob/main/components/motion/action-swap.tsx）、`pull-to-refresh`（https://github.com/starc007/ui-components/blob/main/components/motion/pull-to-refresh.tsx）、`arc-picker`（https://github.com/starc007/ui-components/blob/main/components/motion/arc-picker.tsx）、`knockout-bracket`（https://github.com/starc007/ui-components/blob/main/components/motion/knockout-bracket.tsx）、`ruler-slider`（https://github.com/starc007/ui-components/blob/main/components/motion/range-slider-ruler.tsx）、`overflow-actions`（https://github.com/starc007/ui-components/blob/main/components/motion/overflow-actions.tsx）、`preview-rail`（https://github.com/starc007/ui-components/blob/main/components/motion/preview-rail.tsx）、`wallet-card`（https://github.com/starc007/ui-components/blob/main/components/motion/wallet-card/index.tsx）
+
+## AI Canvas
+
+- 仓库：https://github.com/uiNerd16/aicanvas
+- 许可：MIT
+- 版权：Copyright (c) 2026 AI Canvas
+- 衍生组件：`blind-pull-toggle`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/blind-pull-toggle/index.tsx）、`danger-stripes`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/danger-stripes/index.tsx）、`flip-calendar`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/flip-calendar/index.tsx）、`slice-type`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/slice-type/index.tsx）、`stack-tower`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/stack-tower/index.tsx）、`taga-toggle`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/taga-toggle/index.tsx）、`diamond-grid`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/diamond-grid/index.tsx）、`wild-morph`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/wild-morph/index.tsx）、`mood-tracker`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/mood-tracker/index.tsx）、`voice-chat-pill`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/voice-chat-pill/index.tsx）、`job-listing-cards`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/ai-job-cards/index.tsx）、`new-project-modal`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/new-project-modal/index.tsx）、`music-player-card`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/glass-music-player/index.tsx）、`label-cards`（https://github.com/uiNerd16/aicanvas/blob/main/components-workspace/label-cards/index.tsx）
+
+## ns-ui
+
+- 仓库：https://github.com/nikolas-sapa/ns-ui
+- 许可：MIT
+- 版权：Copyright (c) 2026 Nikolas Sapalidis
+- 衍生组件：`success-plumb-bob`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/loud/success-plumb-bob/component.tsx）、`checkbox-domino-run`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/checkbox-domino-run/component.tsx）、`autosave-ratchet`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/autosave-ratchet/component.tsx）、`button-retry-backoff`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/button-retry-backoff/component.tsx）、`craze-rule`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/craze-rule/component.tsx）、`banner-tear-stub`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/banner-tear-stub/component.tsx）、`feed-escapement`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/feed-escapement/component.tsx）、`cruet-settle`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/cruet-settle/component.tsx）、`undo-ghost-row`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/undo-ghost-row/component.tsx）、`container-box-drawing`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/container-box-drawing/component.tsx）、`transfer-list-siphon`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/transfer-list-siphon/component.tsx）、`drill-down-spines`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/drill-down-spines/component.tsx）、`due-slip`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/due-slip/component.tsx）、`contra-strike`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/contra-strike/component.tsx）、`galley-bracket`（https://github.com/nikolas-sapa/ns-ui/blob/main/registry/core/galley-bracket/component.tsx）
+
 ## Arc Library
 
 - 仓库：https://github.com/kuratlielia/arc-library

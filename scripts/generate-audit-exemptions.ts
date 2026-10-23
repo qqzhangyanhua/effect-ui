@@ -189,6 +189,13 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "book-page-loader": "已发布的可调项只有翻页时长。书页和书脊预览写死成色值，不传时仍跟主题。",
   "map-pin-loader": "已发布的可调项只有浮动时长。钉的颜色预览写死成 #ffffff，不传时仍跟主题。",
   "glow-corner-loader": "已发布的可调项只有转圈时长。四枚颜色预览写死成色值，不传时仍跟主题。",
+  "message-loading": "已发布的可调项只有点的颜色。不传时仍跟主题。",
+  "pacman-loader": "已发布的可调项只有嘴巴直径。嘴巴颜色预览写死成 #EFF107，不传时仍跟主题。",
+  "battery-loader": "已发布的可调项只有走格时长。边框颜色预览写死成 #00F45B，不传时仍跟主题。电量不传时循环走格。",
+  "ringed-planet-loader": "已发布的可调项只有舞台宽度和文字。五色预览写死成色值，不传时仍跟主题。",
+  "pixel-bird-loader": "已发布的可调项只有舞台边长和速度倍数，不够 3 个 Control。",
+  "phone-ring-loader": "已发布的可调项只有机身高度和屏幕文字。屏幕底色预览写死成 #0d85aa，不传时仍跟主题。",
+  "glass-clock-loader": "已发布的可调项只有表盘直径。玻璃底色预览写死成 rgba，不传时仍跟主题。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

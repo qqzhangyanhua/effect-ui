@@ -64,7 +64,11 @@ export function StickyBannerDemo() {
   )
 }
 
-export function MultiStepLoaderDemo() {
+export function MultiStepLoaderDemo({
+  duration = 1800,
+  loop = false,
+  title = "正在整理",
+}: { duration?: number; loop?: boolean; title?: string } = {}) {
   const [loading, setLoading] = useState(true)
   return (
     <div className="flex min-h-80 w-full items-center justify-center">
@@ -72,10 +76,11 @@ export function MultiStepLoaderDemo() {
         重新走一遍
       </button>
       <MultiStepLoader
-        duration={1800}
+        duration={duration}
         loading={loading}
+        loop={loop}
         steps={steps}
-        title="正在整理"
+        title={title}
         onClose={() => setLoading(false)}
         onComplete={() => setLoading(false)}
       />

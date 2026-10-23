@@ -80,17 +80,22 @@ export function HoverBlocksGridDemo() {
   )
 }
 
-export function CharShimmerLoaderDemo() {
+export function CharShimmerLoaderDemo({
+  duration = 2400,
+  fontSize = 14,
+  showPercent = true,
+}: { duration?: number; fontSize?: number; showPercent?: boolean } = {}) {
   const [round, setRound] = useState(0)
   return (
     <div className="bg-neutral-950 px-6 py-10 text-white">
       <CharShimmerLoader
-        duration={2400}
-        fontSize={14}
+        duration={duration}
+        fontSize={fontSize}
         icons={["✦", "◆", "✶"]}
         key={round}
         labels={["分析中", "还在分析", "分析完成"]}
         onComplete={() => setRound((value) => value + 1)}
+        showPercent={showPercent}
         textClassName="text-violet-100"
         tokenTarget={0.16}
       />

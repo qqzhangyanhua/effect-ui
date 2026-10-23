@@ -108,46 +108,64 @@ export function MorphSelectDemo({
   )
 }
 
-export function StreamgraphDemo() {
+export function StreamgraphDemo({
+  offset = "wiggle",
+  legend = true,
+  directLabels = true,
+}: { offset?: "wiggle" | "silhouette" | "zero"; legend?: boolean; directLabels?: boolean } = {}) {
   return (
     <Streamgraph
       className="w-full max-w-3xl"
-      label="工单来源"
-      unit="件"
-      height={180}
       data={days}
+      directLabels={directLabels}
+      height={180}
+      label="工单来源"
+      legend={legend}
+      offset={offset}
       series={[
         { key: "mail", label: "邮件" },
         { key: "chat", label: "会话" },
         { key: "phone", label: "电话" },
       ]}
+      unit="件"
     />
   )
 }
 
-export function WaffleChartDemo() {
+export function WaffleChartDemo({
+  columns = 10,
+  legend = true,
+  decimals = 0,
+}: { columns?: number; legend?: boolean; decimals?: number } = {}) {
   return (
     <WaffleChart
       className="w-full max-w-3xl"
-      label="发电构成"
-      unit="太瓦时"
-      rows={5}
-      columns={10}
+      columns={columns}
       data={[
         { key: "water", label: "水电", value: 42 },
         { key: "wind", label: "风电", value: 28 },
         { key: "sun", label: "光伏", value: 18 },
       ]}
+      decimals={decimals}
+      label="发电构成"
+      legend={legend}
+      rows={5}
+      unit="太瓦时"
     />
   )
 }
 
-export function TreemapDemo() {
+export function TreemapDemo({
+  label = "营收",
+  height = 240,
+  emptyLabel = "No data yet",
+}: { label?: string; height?: number; emptyLabel?: string } = {}) {
   return (
     <Treemap
       className="w-full max-w-3xl"
-      label="营收"
-      height={240}
+      emptyLabel={emptyLabel}
+      height={height}
+      label={label}
       data={{
         id: "all",
         label: "全部",
@@ -167,14 +185,19 @@ export function TreemapDemo() {
   )
 }
 
-export function SlopeChartDemo() {
+export function SlopeChartDemo({
+  startLabel = "一季度",
+  endLabel = "二季度",
+  ranks = true,
+}: { startLabel?: string; endLabel?: string; ranks?: boolean } = {}) {
   return (
     <SlopeChart
       className="w-full max-w-3xl"
-      label="转化率"
-      startLabel="一季度"
-      endLabel="二季度"
+      endLabel={endLabel}
       height={200}
+      label="转化率"
+      ranks={ranks}
+      startLabel={startLabel}
       data={[
         { key: "search", label: "搜索", start: 2.1, end: 3.4 },
         { key: "mail", label: "邮件", start: 4.2, end: 3.1 },
@@ -184,13 +207,20 @@ export function SlopeChartDemo() {
   )
 }
 
-export function RidgelineDemo() {
+export function RidgelineDemo({
+  overlap = 2.4,
+  tint = true,
+  emptyLabel = "No data yet",
+}: { overlap?: number; tint?: boolean; emptyLabel?: string } = {}) {
   return (
     <Ridgeline
       className="w-full max-w-3xl"
+      emptyLabel={emptyLabel}
       label="每日气温"
-      unit="°C"
+      overlap={overlap}
       rowHeight={36}
+      tint={tint}
+      unit="°C"
       series={[
         { id: "jan", label: "一月", values: [2, 3, 1, 4, 6, 5, 3, 2] },
         { id: "apr", label: "四月", values: [12, 14, 13, 16, 15, 18, 17, 14] },

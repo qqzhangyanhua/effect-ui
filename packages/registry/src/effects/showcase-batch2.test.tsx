@@ -373,6 +373,7 @@ test("检查点显示标题和正文", () => {
   const view = render(<SecurityCheckpoint message="为了让浏览更顺畅，我们正在确认这个浏览器。" subtitle="安全核对" title="检查点" />)
   expect(screen.getByText("检查点")).toBeInTheDocument()
   expect(screen.getByText("安全核对")).toBeInTheDocument()
+  expect(screen.getByText("为了让浏览更顺畅，我们正在确认这个浏览器。")).toBeInTheDocument()
   expect(slot(view.container, "security-checkpoint")).toHaveAttribute("data-reduced", "false")
 })
 

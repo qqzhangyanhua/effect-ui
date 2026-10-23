@@ -130,6 +130,9 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "pendulum-social-card": "已发布的可调项是头像、标题和链接列表。",
   "word-wheel-card": "已发布的可调项是标题和两组词。",
   "shift-card": "已发布的四段内容都是节点。",
+  "shimmer-button": "已发布的可调项只有光泽颜色和扫光时长。",
+  "pulse-button": "已发布的可调项只有脉冲时长和光环不透明度。",
+  "neon-button": "已发布的可调项只有霓虹颜色和辉光倍率。",
   "interactive-hover-button": "已发布的可调项只有滑出时长和距离倍率。",
   "gooey-button": "已发布的可调项只有模糊倍率和粘连强度。",
   "hold-button": "已发布的可调项只有按住毫秒，完成回调不是控件。",
@@ -140,7 +143,6 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "attract-button": "已发布的可调项只有铁屑密度和外扩距离。",
   "star-wars-button": "已发布的可调项只有星星数量和飞出倍率，按钮文字是节点。",
   "hover-attention-button": "已发布的可调项只有注意力动画，按钮文字是节点。",
-  "stitches-button": "已发布组件没有可调 prop。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

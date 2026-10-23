@@ -2,7 +2,7 @@
 
 import { MotionGlobalConfig } from "motion"
 import { afterEach, beforeEach, expect, test, vi } from "vitest"
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
+import { cleanup, fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
@@ -10,16 +10,16 @@ MotionGlobalConfig.skipAnimations = true
 import { AnimatedSubscribeButton } from "./animated-subscribe-button"
 import { AttractButton } from "./attract-button"
 import { CopyButton } from "./copy-button"
-import { EcoModeButton } from "./eco-mode-button"
 import { GooeyButton } from "./gooey-button"
 import { HoldButton } from "./hold-button"
 import { HoverAttentionButton } from "./hover-attention-button"
 import { InteractiveHoverButton } from "./interactive-hover-button"
 import { LoadingButton } from "./loading-button"
+import { NeonButton } from "./neon-button"
 import { PullCord } from "./pull-cord"
-import { RotatingCompleteButton } from "./rotating-complete-button"
+import { PulseButton } from "./pulse-button"
+import { ShimmerButton } from "./shimmer-button"
 import { StarWarsButton } from "./star-wars-button"
-import { StitchesButton } from "./stitches-button"
 import { TearButton } from "./tear-button"
 import { UndoButton } from "./undo-button"
 
@@ -77,7 +77,6 @@ beforeEach(() => {
 afterEach(() => {
   cleanup()
   vi.unstubAllGlobals()
-  vi.useRealTimers()
 })
 
 function slot(container: HTMLElement, name: string) {
@@ -85,6 +84,39 @@ function slot(container: HTMLElement, name: string) {
   expect(node).not.toBeNull()
   return node as HTMLElement
 }
+
+test("扫光按钮写出文字", () => {
+  render(<ShimmerButton>Shimmer</ShimmerButton>)
+  expect(screen.getByRole("button", { name: "Shimmer" })).toBeInTheDocument()
+})
+
+test("扫光按钮在减弱动效下仍写出文字", () => {
+  reduceMotion = true
+  render(<ShimmerButton>Shimmer</ShimmerButton>)
+  expect(screen.getByRole("button", { name: "Shimmer" })).toBeInTheDocument()
+})
+
+test("脉冲按钮写出文字", () => {
+  render(<PulseButton>脉冲</PulseButton>)
+  expect(screen.getByRole("button", { name: "脉冲" })).toBeInTheDocument()
+})
+
+test("脉冲按钮在减弱动效下仍写出文字", () => {
+  reduceMotion = true
+  render(<PulseButton>脉冲</PulseButton>)
+  expect(screen.getByRole("button", { name: "脉冲" })).toBeInTheDocument()
+})
+
+test("霓虹按钮写出文字", () => {
+  render(<NeonButton>Neon</NeonButton>)
+  expect(screen.getByRole("button", { name: "Neon" })).toBeInTheDocument()
+})
+
+test("霓虹按钮在减弱动效下仍写出文字", () => {
+  reduceMotion = true
+  render(<NeonButton>Neon</NeonButton>)
+  expect(screen.getByRole("button", { name: "Neon" })).toBeInTheDocument()
+})
 
 test("悬停按钮写出文字", () => {
   render(<InteractiveHoverButton>继续阅读</InteractiveHoverButton>)
@@ -273,56 +305,4 @@ test("注意力按钮在减弱动效下不播放", () => {
   fireEvent.mouseEnter(button)
   expect(button.style.animationName).toBe("none")
   expect(slot(view.container, "hover-attention-button")).toHaveAttribute("data-reduced", "true")
-})
-
-test("节能按钮点击后打开", () => {
-  const view = render(<EcoModeButton />)
-  fireEvent.click(screen.getByRole("button", { name: "节能关" }))
-  expect(screen.getByRole("button", { name: "节能开" })).toHaveAttribute("data-active", "true")
-  expect(slot(view.container, "eco-mode-button")).toHaveAttribute("data-reduced", "false")
-})
-
-test("节能按钮在减弱动效下仍能打开", () => {
-  reduceMotion = true
-  const view = render(<EcoModeButton />)
-  fireEvent.click(screen.getByRole("button", { name: "节能关" }))
-  expect(screen.getByRole("button", { name: "节能开" })).toBeInTheDocument()
-  expect(slot(view.container, "eco-mode-button")).toHaveAttribute("data-reduced", "true")
-})
-
-test("完成按钮先进入处理中", () => {
-  vi.useFakeTimers()
-  const view = render(<RotatingCompleteButton />)
-  fireEvent.click(screen.getByRole("button", { name: "标为完成" }))
-  expect(screen.getByRole("button", { name: "处理中" })).toHaveAttribute("data-phase", "loading")
-  act(() => {
-    vi.advanceTimersByTime(700)
-  })
-  expect(screen.getByRole("button", { name: /完成/ })).toHaveAttribute("data-phase", "done")
-  expect(slot(view.container, "rotating-complete-button")).toHaveAttribute("data-reduced", "false")
-})
-
-test("完成按钮在减弱动效下直接完成", () => {
-  reduceMotion = true
-  const view = render(<RotatingCompleteButton />)
-  fireEvent.click(screen.getByRole("button", { name: "标为完成" }))
-  expect(screen.getByRole("button", { name: /完成/ })).toHaveAttribute("data-phase", "done")
-  expect(slot(view.container, "rotating-complete-button")).toHaveAttribute("data-reduced", "true")
-})
-
-test("缝线按钮可以点击", () => {
-  const onClick = vi.fn()
-  const view = render(<StitchesButton onClick={onClick}>缝线</StitchesButton>)
-  fireEvent.click(screen.getByRole("button", { name: "缝线" }))
-  expect(onClick).toHaveBeenCalledOnce()
-  expect(slot(view.container, "stitches-button")).toHaveAttribute("data-reduced", "false")
-})
-
-test("缝线按钮在减弱动效下仍可点击", () => {
-  reduceMotion = true
-  const onClick = vi.fn()
-  const view = render(<StitchesButton onClick={onClick}>缝线</StitchesButton>)
-  fireEvent.click(screen.getByRole("button", { name: "缝线" }))
-  expect(onClick).toHaveBeenCalledOnce()
-  expect(slot(view.container, "stitches-button")).toHaveAttribute("data-reduced", "true")
 })

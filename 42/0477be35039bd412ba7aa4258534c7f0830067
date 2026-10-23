@@ -1,0 +1,58 @@
+packages/registry/src/catalog-batch31.ts
+  s_1f7fae292b4abd::t_a8050d84a865d5 107-127
+  s_1f7fae292b4abd::t_1d4ac29feed22e 141-147,149-162
+  s_1f7fae292b4abd::t_78b72d522c90a0 39-59
+  s_1f7fae292b4abd::t_2452d2429130f3 73-93
+packages/registry/src/examples/effect-demos-34.tsx
+  s_1f7fae292b4abd::t_03f2530dd349e2 91
+  s_1f7fae292b4abd::t_76b6f9980c5c98 75-78,82
+  s_1f7fae292b4abd::t_238676ea60c3ec 87-90,94
+  s_1f7fae292b4abd::t_24124689c55eb5 79
+  s_1f7fae292b4abd::t_19889124ca413b 99-102,106
+  s_1f7fae292b4abd::t_992942661dc6ff 103
+packages/registry/src/effects/loaders-batch1.test.tsx
+  s_1f7fae292b4abd::t_02b0c051c97b66 1-265
+packages/registry/src/examples/effect-demos-22.tsx
+  s_1f7fae292b4abd::t_930266b279c0c5 33-38
+packages/registry/src/catalog-batch20.ts
+  s_1f7fae292b4abd::t_e4e23b3ac06beb 70-90
+packages/registry/src/catalog-batch37.ts
+  s_1f7fae292b4abd::t_86610de8dba1cc 20-41
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_ec1681f0ca7898 9,32,105,131,192
+packages/registry/src/examples/effect-demos-33.tsx
+  s_1f7fae292b4abd::t_a112059c001ed5 90-94,97
+  s_1f7fae292b4abd::t_679cb553cde65e 78-82,85
+  s_1f7fae292b4abd::t_9da4f11e15073c 114-118,121
+  s_1f7fae292b4abd::t_c50593cda6a3a6 102-106,109
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_f66755da7dd30b 187-191
+packages/registry/src/catalog-batch27.ts
+  s_1f7fae292b4abd::t_19d6ab5add5034 298-304
+  s_1f7fae292b4abd::t_c9c3896aee0c02 319-320
+  s_1f7fae292b4abd::t_e840f79b3fb744 311-312
+packages/registry/src/catalog-batch32.ts
+  s_1f7fae292b4abd::t_4bd595c35d8f5a 117-136
+  s_1f7fae292b4abd::t_7b41c834a8cd85 184-204
+  s_1f7fae292b4abd::t_b6284b69d97714 151-170
+packages/registry/src/examples/effect-demos-39.tsx
+  s_1f7fae292b4abd::t_e83074481523af 25-34,37-44
+packages/registry/src/examples/effect-demos-29.tsx
+  s_1f7fae292b4abd::t_d4eb72eeaa4e0d 207-216
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "420477be35039bd412ba7aa4258534c7f0830067",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+packages/registry/src/examples/effect-demos-40.tsx
+  s_1f7fae292b4abd::t_d44c7fe98babf0 54-58,60
+packages/registry/src/catalog-batch44.ts
+  s_1f7fae292b4abd::t_e7f016056206ea 38-58
+  s_1f7fae292b4abd::t_fdd4040125a8a0 198-217
+packages/registry/src/effects/decor-batch2.test.tsx
+  s_1f7fae292b4abd::t_e3e020118ff6be 1-249
+packages/registry/src/examples/effect-demos-45.tsx
+  s_1f7fae292b4abd::t_6abfe945b52ecd 56-60,63-65
+  s_1f7fae292b4abd::t_2206096a14fa05 90-98,101
+packages/registry/src/catalog-batch41.ts
+  s_1f7fae292b4abd::t_e897f25363a8fe 149-159,161-173
+packages/registry/src/catalog-batch43.ts
+  s_1f7fae292b4abd::t_aaab28ec2f11f9 181-194
+  s_1f7fae292b4abd::t_6a5fdac1b728e7 108-114,116-122
+  s_1f7fae292b4abd::t_85c8b5733cf84c 127-132
+  s_1f7fae292b4abd::t_96e18e4c7c3df7 198-204
+packages/registry/src/examples/effect-demos-43.tsx
+  s_1f7fae292b4abd::t_e9cb6872f4bb06 101-109,111-112
+packages/registry/src/examples/effect-demos-46.tsx
+  s_1f7fae292b4abd::t_8672e6120b658d 41-45,49-51
+  s_1f7fae292b4abd::t_5fefc672a2eb8c 122-126,129
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_ed583ca3f091a0 206
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_84bba248795efa 130
+packages/registry/src/catalog-batch38.ts
+  s_1f7fae292b4abd::t_7d4eccc8d40f75 32-45,47-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "47849ab041c6705aea70c72aee816e8ef059af16",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

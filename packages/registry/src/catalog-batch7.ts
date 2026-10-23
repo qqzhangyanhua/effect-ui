@@ -222,8 +222,18 @@ export const batch7Components: ComponentMeta[] = [
     file: "effects/atropos-card.tsx",
     target: "components/ui/atropos-card.tsx",
     props: [
-      { name: "title", type: "string", description: "标题。" },
-      { name: "subtitle", type: "string", description: "副标题。" },
+      {
+        name: "title",
+        type: "string",
+        description: "标题。Atropos 与不传相同。",
+        control: { kind: "text", value: "Atropos" },
+      },
+      {
+        name: "subtitle",
+        type: "string",
+        description: "副标题。多层 3D 视差 与不传相同。",
+        control: { kind: "text", value: "多层 3D 视差" },
+      },
       {
         name: "intensity",
         type: "number",

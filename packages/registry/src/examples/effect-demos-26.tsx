@@ -20,8 +20,12 @@ const photo = `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0ea5e9"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs><rect width="1600" height="1067" fill="url(#g)"/><circle cx="1080" cy="390" r="140" fill="#fff"/></svg>`,
 )}`
 
-export function ActivityTerrainDemo() {
-  return <ActivityTerrain className="w-full" title="活动" />
+export function ActivityTerrainDemo({
+  endDate = "2026-10-11",
+  title = "活动",
+  defaultFlat = false,
+}: { endDate?: string; title?: string; defaultFlat?: boolean } = {}) {
+  return <ActivityTerrain className="w-full" endDate={endDate} title={title} defaultFlat={defaultFlat} />
 }
 
 export function CradleTextDemo() {

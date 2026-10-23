@@ -100,8 +100,12 @@ export function PixelCanvasCardDemo({ colors, gap, speed }: { colors?: string[];
   )
 }
 
-export function AtroposCardDemo({ intensity }: { intensity?: number } = {}) {
-  return <AtroposCard className="w-full" intensity={intensity} />
+export function AtroposCardDemo({
+  title = "Atropos",
+  subtitle = "多层 3D 视差",
+  intensity,
+}: { title?: string; subtitle?: string; intensity?: number } = {}) {
+  return <AtroposCard className="w-full" title={title} subtitle={subtitle} intensity={intensity} />
 }
 
 export function RoughAnnotationDemo({

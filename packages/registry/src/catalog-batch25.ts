@@ -19,8 +19,20 @@ export const batch25Components: ComponentMeta[] = [
     file: "effects/receipt-printer.tsx",
     target: "components/ui/receipt-printer.tsx",
     props: [
-      { name: "merchant", type: "string", defaultValue: "Kokonut Coffee", description: "店名。" },
-      { name: "order", type: "string", defaultValue: "#4182", description: "单号。" },
+      {
+        name: "merchant",
+        type: "string",
+        defaultValue: "Kokonut Coffee",
+        description: "店名。预览写成街角咖啡，组件不传时仍是 Kokonut Coffee。",
+        control: { kind: "text", value: "街角咖啡" },
+      },
+      {
+        name: "order",
+        type: "string",
+        defaultValue: "#4182",
+        description: "单号。#4182 与不传相同。",
+        control: { kind: "text", value: "#4182" },
+      },
       { name: "date", type: "string", defaultValue: "14 Oct 2026 · 08:42", description: "打印在收据上的时间。" },
       {
         name: "items",
@@ -28,7 +40,13 @@ export const batch25Components: ComponentMeta[] = [
         description: "商品行。",
       },
       { name: "tax", type: "number", defaultValue: "0.08", description: "税率，0.08 表示 8%。" },
-      { name: "currency", type: "string", defaultValue: "$", description: "金额前的符号。" },
+      {
+        name: "currency",
+        type: "string",
+        defaultValue: "$",
+        description: "金额前的符号。预览写成 ¥，组件不传时仍是 $。",
+        control: { kind: "text", value: "¥" },
+      },
       { name: "autoPrint", type: "boolean", defaultValue: "true", description: "进入视口后自动打印。" },
       ...ui,
     ],

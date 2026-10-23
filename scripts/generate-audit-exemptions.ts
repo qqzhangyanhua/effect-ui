@@ -108,6 +108,17 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "bookmark-burst-toggle": "已发布的可调项只有颜色，勾选一传入就变成受控。",
   "icon-swap": "已发布的可调项只有旋转或翻转，开、关和中间态是节点，按下状态一传入就变成受控。",
   "theme-switch-transitions": "主题一传入就受控，预览同时展示四种变体，剩下的图标模式不够 3 个 Control。",
+  "perspective-card": "已发布的可调项只有横向倾斜和浮起距离，内容是节点。",
+  "expandable-card": "已发布的可调项只有标题，收起摘要是节点。",
+  "morphing-dialog": "已发布的可调项只有弹簧时长和回弹。",
+  "liquid-glass": "已发布的可调项只有叠色倍率和模糊，正文是节点。",
+  "3d-carousel": "已发布的可调项只有切换时长和环半径，卡片列表是结构。",
+  "circular-gallery": "已发布的可调项只有自转倍率，图片列表是结构。",
+  "box-carousel": "已发布的可调项只有弹簧倍率和边长，四面内容是结构。",
+  "apple-activity-card": "已发布的可调项只有边长和填充时长，圆环列表是结构。",
+  "project-update-card": "已发布组件没有可调 prop。",
+  "lenticular-card": "已发布的可调项只有画面列表。",
+  "card-beam-scanner": "已发布的可调项只有标题。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

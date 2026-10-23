@@ -19,18 +19,22 @@ const film = `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="800"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#0f172a"/><stop offset="0.45" stop-color="#0369a1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs><rect width="2400" height="800" fill="url(#g)"/><path d="M0 620 C400 540 700 700 1200 580 C1700 460 2000 520 2400 480 L2400 800 L0 800 Z" fill="#020617" opacity="0.85"/></svg>`,
 )}`
 
-export function ReceiptPrinterDemo() {
+export function ReceiptPrinterDemo({
+  merchant = "街角咖啡",
+  order = "#4182",
+  currency = "¥",
+}: { merchant?: string; order?: string; currency?: string } = {}) {
   return (
     <div className="flex w-full justify-center">
       <ReceiptPrinter
         className="w-full"
-        currency="¥"
+        currency={currency}
         items={[
           { name: "澳白", quantity: 2, price: 28 },
           { name: "杏仁可颂", quantity: 1, price: 22 },
         ]}
-        merchant="街角咖啡"
-        order="#4182"
+        merchant={merchant}
+        order={order}
       />
     </div>
   )

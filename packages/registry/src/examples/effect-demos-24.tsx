@@ -29,9 +29,13 @@ export function ComicTextDemo() {
   return <ComicText className="py-8">北窗</ComicText>
 }
 
-export function NeonGradientCardDemo() {
+export function NeonGradientCardDemo({
+  colors = ["#ff00aa", "#00fff1"],
+  borderSize = 2,
+  borderRadius = 20,
+}: { colors?: readonly string[]; borderSize?: number; borderRadius?: number } = {}) {
   return (
-    <NeonGradientCard className="max-w-md">
+    <NeonGradientCard className="max-w-md" colors={colors} borderSize={borderSize} borderRadius={borderRadius}>
       <p className="text-sm">霓虹边框里的内容</p>
     </NeonGradientCard>
   )

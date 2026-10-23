@@ -51,9 +51,13 @@ const sequence: readonly AgentIntroPhase[] = [
   { type: "message", text: "可以开始了" },
 ]
 
-export function BlurVignetteDemo() {
+export function BlurVignetteDemo({
+  blur = "6px",
+  inset = "20px",
+  radius = "24px",
+}: { blur?: string; inset?: string; radius?: string } = {}) {
   return (
-    <BlurVignette className="mx-auto w-64">
+    <BlurVignette blur={blur} className="mx-auto w-64" inset={inset} radius={radius}>
       <div className="absolute inset-0 bg-[linear-gradient(140deg,#312e81,#0e7490)]" />
       <BlurVignetteArticle className="grid place-items-end p-4 text-sm text-white">四周发虚</BlurVignetteArticle>
     </BlurVignette>

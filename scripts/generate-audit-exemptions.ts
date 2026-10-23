@@ -203,6 +203,7 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   screensaver: "已发布的可调项只有每帧位移和出发角度。起点是坐标，边界是容器引用。",
   "pixelate-svg-filter": "已发布的可调项只有滤镜 id 和横向备用层。颗粒大小跟着悬停弹簧走，一传入就冻住。",
   "gooey-svg-filter": "已发布的可调项只有滤镜 id 和模糊强度，不够 3 个 Control。",
+  "hatch-divider": "已发布的可调项只有斜线颜色。不传时仍跟主题。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

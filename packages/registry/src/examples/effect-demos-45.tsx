@@ -53,10 +53,16 @@ export function GlowTrackButtonDemo({
   return <GlowTrackButton backgroundColor="#d1d1d1" glowColor={glowColor} href={href} text={text} textColor="#1c1917" />
 }
 
-export function HaloBadgeDemo() {
+export function HaloBadgeDemo({
+  children = "在线",
+  layout = true,
+  variant = "default",
+}: { children?: string; layout?: boolean; variant?: "default" | "secondary" | "destructive" | "outline" } = {}) {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <HaloBadge live>在线</HaloBadge>
+      <HaloBadge layout={layout} live variant={variant}>
+        {children}
+      </HaloBadge>
       <HaloBadge tabularNums variant="secondary">
         8
       </HaloBadge>
@@ -81,10 +87,18 @@ export function ShiftCardDemo() {
   )
 }
 
-export function SquiggleArrowDemo() {
+export function SquiggleArrowDemo({
+  direction = "right",
+  label = "波浪箭头",
+  variant = "wavy",
+}: {
+  direction?: "left" | "right" | "up" | "down"
+  label?: string
+  variant?: "wavy" | "bouncy" | "smooth"
+} = {}) {
   return (
     <div className="flex flex-wrap items-center gap-6 text-foreground">
-      <SquiggleArrow direction="right" variant="wavy" />
+      <SquiggleArrow direction={direction} label={label} variant={variant} />
       <SquiggleArrow direction="up" variant="bouncy" />
       <SquiggleArrow direction="left" variant="smooth" />
     </div>

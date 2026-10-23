@@ -38,13 +38,17 @@ export function DottedGlowBackgroundDemo({
   )
 }
 
-export function StarRingOrbitDemo() {
+export function StarRingOrbitDemo({
+  color = "#05e17a",
+  count = 12,
+  size = 42,
+}: { color?: string; count?: number; size?: number } = {}) {
   return (
     <StarRingOrbit
       className="min-h-80 w-full"
-      color="#05e17a"
-      count={12}
-      size={42}
+      color={color}
+      count={count}
+      size={size}
       style={{ "--rx": "160px", "--ry": "120px" } as CSSProperties}
     >
       <h2 className="px-6 text-center text-xl font-semibold text-foreground">围着标题转</h2>
@@ -115,10 +119,14 @@ export function TweetCardDemo({
   )
 }
 
-export function NeoStarShapesDemo() {
+export function NeoStarShapesDemo({
+  color = "#05e17a",
+  shape = 1,
+  size = 72,
+}: { color?: string; shape?: number; size?: number } = {}) {
   return (
     <div className="flex flex-wrap items-center gap-4 text-[#05e17a]">
-      <NeoStarShapes color="#05e17a" shape={1} size={72} stroke="#111111" strokeWidth={3} />
+      <NeoStarShapes color={color} shape={shape} size={size} stroke="#111111" strokeWidth={3} />
       <NeoStarShapes color="#05e17a" shape={19} size={72} stroke="#111111" strokeWidth={3} />
       <NeoStarShapes color="#05e17a" shape={32} size={72} stroke="#111111" strokeWidth={3} />
     </div>

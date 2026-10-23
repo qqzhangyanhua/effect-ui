@@ -98,10 +98,18 @@ export function IconSwapDemo() {
   )
 }
 
-export function ShapeMaskDemo() {
+export function ShapeMaskDemo({
+  as = "div",
+  children = "心",
+  shape = "heart",
+}: {
+  as?: "div" | "span" | "figure"
+  children?: string
+  shape?: "squircle" | "heart" | "hexagon" | "hexagon-2" | "decagon" | "pentagon" | "diamond" | "circle" | "star" | "star-2" | "triangle"
+} = {}) {
   return (
-    <ShapeMask className="size-36 bg-primary" shape="heart">
-      <span className="grid size-full place-items-center text-sm text-primary-foreground">心</span>
+    <ShapeMask as={as} className="size-36 bg-primary" shape={shape}>
+      <span className="grid size-full place-items-center text-sm text-primary-foreground">{children}</span>
     </ShapeMask>
   )
 }

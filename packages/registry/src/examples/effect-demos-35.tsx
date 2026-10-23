@@ -174,10 +174,14 @@ export function HeartLikeButtonDemo() {
   )
 }
 
-export function DownloadSizeButtonDemo() {
+export function DownloadSizeButtonDemo({
+  size = 20,
+  label = "甲板日志",
+  href = "#deck-log",
+}: { size?: number; label?: string; href?: string } = {}) {
   return (
     <div className="flex justify-center px-6 pt-16 pb-8">
-      <DownloadSizeButton href="#deck-log" label="甲板日志" size={20} />
+      <DownloadSizeButton href={href} label={label} size={size} />
     </div>
   )
 }

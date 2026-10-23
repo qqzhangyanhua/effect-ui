@@ -47,18 +47,27 @@ export function HoverAttentionButtonDemo() {
   )
 }
 
-export function EcoModeButtonDemo() {
+export function EcoModeButtonDemo({
+  defaultActive = false,
+  offLabel = "节能关",
+  onLabel = "节能开",
+}: { defaultActive?: boolean; offLabel?: string; onLabel?: string } = {}) {
   return (
     <div className="grid h-24 place-items-center">
-      <EcoModeButton />
+      <EcoModeButton defaultActive={defaultActive} offLabel={offLabel} onLabel={onLabel} />
     </div>
   )
 }
 
-export function RotatingCompleteButtonDemo() {
+export function RotatingCompleteButtonDemo({
+  idleLabel = "标为完成",
+  loadingLabel = "处理中",
+  doneLabel = "完成 ✓",
+  duration = 700,
+}: { idleLabel?: string; loadingLabel?: string; doneLabel?: string; duration?: number } = {}) {
   return (
     <div className="grid h-24 place-items-center">
-      <RotatingCompleteButton />
+      <RotatingCompleteButton doneLabel={doneLabel} duration={duration} idleLabel={idleLabel} loadingLabel={loadingLabel} />
     </div>
   )
 }

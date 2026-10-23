@@ -143,6 +143,17 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "attract-button": "已发布的可调项只有铁屑密度和外扩距离。",
   "star-wars-button": "已发布的可调项只有星星数量和飞出倍率，按钮文字是节点。",
   "hover-attention-button": "已发布的可调项只有注意力动画，按钮文字是节点。",
+  "stitches-button": "已发布组件没有可调 prop。",
+  "heartbeat-button": "已发布的可调项只有颜色，按钮文字是节点。",
+  "neubrutalism-button": "已发布的可调项只有上层色块，按钮文字是节点。",
+  "3d-button": "已发布的可调项只有底色，按钮文字是节点。",
+  "heart-like-button": "已发布的可调项只有计数。喜欢状态一传入就受控，预览里的计数还会跟着变。",
+  "retro-press-button": "底色和阴影预览写死成色值，不传时仍跟主题，按钮文字是节点。",
+  "liquid-gradient-button": "已发布的可调项只有旋转秒数和链接。色板预览写死，不传时仍跟主题，不能做成带色值的 Control。",
+  "glitch-slice-button": "已发布的可调项只有切片文字。三色预览写死，不传时仍跟主题，可见文字是节点。",
+  "send-arrow-button": "已发布的可调项只有渐变色。预览写死成色值，不传时仍跟主题，按钮文字是节点。",
+  "trash-delete-button": "已发布的可调项只有提示。悬停色预览写死成 rgb(168, 7, 7)，不传时仍跟主题。",
+  "flower-burst-button": "已发布的可调项只有按钮文字和花瓣色。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

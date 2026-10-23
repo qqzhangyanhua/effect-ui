@@ -51,9 +51,25 @@ export const batch40Components: ComponentMeta[] = [
     file: "effects/circular-text-button.tsx",
     target: "components/ui/circular-text-button.tsx",
     props: [
-      { name: "text", type: "string", description: "沿圆周拆开的文字。" },
-      { name: "href", type: "string", description: "有值时渲染链接。" },
-      { name: "color", type: "string", defaultValue: '"#7808d0"', description: "圆形底色。文字保持白色。" },
+      {
+        name: "text",
+        type: "string",
+        description: "沿圆周拆开的文字。预览写成 AWESOME CSS BUTTON。",
+        control: { kind: "text", value: "AWESOME CSS BUTTON" },
+      },
+      {
+        name: "href",
+        type: "string",
+        description: "有值时渲染链接。预览写成 #circle，不传时仍是按钮。",
+        control: { kind: "text", value: "#circle" },
+      },
+      {
+        name: "color",
+        type: "string",
+        defaultValue: '"#7808d0"',
+        description: "圆形底色。#7808d0 与不传相同。文字保持白色。",
+        control: { kind: "color", value: "#7808d0" },
+      },
       ...ui,
     ],
   },

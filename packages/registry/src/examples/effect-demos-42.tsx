@@ -61,8 +61,12 @@ export function LockToggleDemo({
   )
 }
 
-export function CircularTextButtonDemo() {
-  return <CircularTextButton color="#7808d0" href="#circle" text="AWESOME CSS BUTTON" />
+export function CircularTextButtonDemo({
+  text = "AWESOME CSS BUTTON",
+  href = "#circle",
+  color = "#7808d0",
+}: { text?: string; href?: string; color?: string } = {}) {
+  return <CircularTextButton color={color} href={href} text={text} />
 }
 
 export function FlowerBurstButtonDemo() {

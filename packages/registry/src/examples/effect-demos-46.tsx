@@ -83,11 +83,16 @@ export function MultiStepLoaderDemo() {
   )
 }
 
-export function StatefulButtonDemo() {
+export function StatefulButtonDemo({
+  resetAfter = 2000,
+  successText = "完成",
+  errorText = "失败",
+}: { resetAfter?: number; successText?: string; errorText?: string } = {}) {
   return (
     <StatefulButton
-      errorText="失败"
-      successText="完成"
+      errorText={errorText}
+      resetAfter={resetAfter}
+      successText={successText}
       onClick={() => new Promise((resolve) => window.setTimeout(resolve, 700))}
     >
       保存更改

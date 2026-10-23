@@ -154,6 +154,13 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "send-arrow-button": "已发布的可调项只有渐变色。预览写死成色值，不传时仍跟主题，按钮文字是节点。",
   "trash-delete-button": "已发布的可调项只有提示。悬停色预览写死成 rgb(168, 7, 7)，不传时仍跟主题。",
   "flower-burst-button": "已发布的可调项只有按钮文字和花瓣色。",
+  "scroll-cue-button": "已发布的可调项只有目标和文案。自动播放预览写死为 true，组件默认是 false。",
+  "flicker-reflect-button": "已发布的可调项只有光晕和是否闪烁，按钮文字是节点。",
+  "printer-icon-button": "已发布的可调项只有读屏名称。机身色预览写死成 #00104b，不传时仍跟主题。",
+  "tilt-sweep-button": "已发布的可调项只有扫光底色和径向色，按钮文字是节点。",
+  "fly-around-button": "已发布的可调项是图标、文字和点击回调。",
+  "cosmic-button": "已发布的可调项只有渲染成链接还是按钮，以及地址，正文是节点。",
+  "split-button": "已发布的可调项只有按钮文案和变体。动作列表是结构，点击回调会改预览里的说明。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

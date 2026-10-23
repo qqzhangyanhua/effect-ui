@@ -41,8 +41,12 @@ export function CosmicButtonDemo() {
   )
 }
 
-export function GlowTrackButtonDemo() {
-  return <GlowTrackButton backgroundColor="#d1d1d1" glowColor="#FFAA81" href="#glow" text="跟着光走" textColor="#1c1917" />
+export function GlowTrackButtonDemo({
+  text = "跟着光走",
+  href = "#glow",
+  glowColor = "#FFAA81",
+}: { text?: string; href?: string; glowColor?: string } = {}) {
+  return <GlowTrackButton backgroundColor="#d1d1d1" glowColor={glowColor} href={href} text={text} textColor="#1c1917" />
 }
 
 export function HaloBadgeDemo() {
@@ -142,10 +146,20 @@ export function ElapsedTimerDemo() {
   )
 }
 
-export function NeumorphButtonDemo() {
+export function NeumorphButtonDemo({
+  intent = "primary",
+  buttonSize = "medium",
+  fullWidth = false,
+}: {
+  intent?: "default" | "primary" | "secondary" | "danger"
+  buttonSize?: "small" | "medium" | "large"
+  fullWidth?: boolean
+} = {}) {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <NeumorphButton intent="primary">保存</NeumorphButton>
+      <NeumorphButton buttonSize={buttonSize} fullWidth={fullWidth} intent={intent}>
+        保存
+      </NeumorphButton>
       <NeumorphButton intent="danger" loading>
         提交中
       </NeumorphButton>

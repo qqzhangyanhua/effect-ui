@@ -1,0 +1,22 @@
+packages/registry/src/effects/loaders-batch1.test.tsx
+  s_1f7fae292b4abd::t_f46371e4e72972 157-159
+  s_1f7fae292b4abd::t_a28cb734613283 144-146
+  s_1f7fae292b4abd::t_a716177304698e 131-133
+  s_1f7fae292b4abd::t_187300a9e1829d 170-172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "d44578614d8c841cca1bce5ae4a45233890d34dd",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

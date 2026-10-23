@@ -1,0 +1,23 @@
+packages/registry/src/effects/micro-batch1.test.tsx
+  s_1f7fae292b4abd::t_d7776293e0582e 147,153-154
+  s_1f7fae292b4abd::t_703a67756f761e 107-109,122-135,137
+  s_1f7fae292b4abd::t_c19dc87cec5d6f 348-351
+  s_1f7fae292b4abd::t_2e12295e5b6833 110-121,136
+  s_1f7fae292b4abd::t_958a3b4583adb9 340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "d7d18483e7677543e4941935a1446e99f8eb0c6d",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

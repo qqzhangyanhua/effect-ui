@@ -34,10 +34,10 @@ export const batch40Components: ComponentMeta[] = [
     target: "components/ui/lock-toggle.tsx",
     props: [
       { name: "locked", type: "boolean", description: "受控锁定。" },
-      { name: "defaultLocked", type: "boolean", defaultValue: "false", description: "非受控初始锁定。" },
+      { name: "defaultLocked", type: "boolean", defaultValue: "false", description: "非受控初始锁定。", control: { kind: "boolean", value: false } },
       { name: "onLockedChange", type: "(locked: boolean) => void", description: "锁定变化。" },
-      { name: "unlockedColor", type: "string", defaultValue: '"var(--destructive)"', description: "未锁定底色。" },
-      { name: "lockedColor", type: "string", defaultValue: '"var(--chart-2)"', description: "锁定底色。" },
+      { name: "unlockedColor", type: "string", defaultValue: '"var(--destructive)"', description: "未锁定底色。", control: { kind: "color", value: "#ff5b5b" } },
+      { name: "lockedColor", type: "string", defaultValue: '"var(--chart-2)"', description: "锁定底色。", control: { kind: "color", value: "#20cca5" } },
       ...ui,
     ],
   },

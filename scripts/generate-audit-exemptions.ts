@@ -97,6 +97,15 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "exposure-slider": "已发布的可调项只有强调色和是否显示指示。",
   scrubber: "已发布的可调项只有小数位和刻度数量。",
   "social-selector": "已发布的可调项只有账号，平台列表不适合做成单个控件。",
+  "progress-with-value": "已发布的可调项只有标签位置，自定义标签是函数。",
+  announcement: "已发布的可调项只有主题色和 Badge 变体，不够 3 个 Control。",
+  pill: "已发布的可调项只有主题边框和 Badge 变体，不够 3 个 Control。",
+  "emoji-confetti": "已发布的可调项只有 emoji 列表，按钮文字是节点。",
+  status: "已发布的可调项只有服务状态。",
+  "plus-share-burst": "已发布的可调项只有无障碍名称，操作列表不适合做成单个控件。",
+  "pin-toggle": "已发布的可调项只有初始按下和颜色，按下状态一传入就变成受控。",
+  "star-favorite-toggle": "已发布的可调项只有初始收藏和颜色，收藏状态一传入就变成受控。",
+  "bookmark-burst-toggle": "已发布的可调项只有颜色，勾选一传入就变成受控。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

@@ -213,12 +213,20 @@ export function RelativeTimeDemo() {
   )
 }
 
-export function TickerDemo() {
+export function TickerDemo({
+  currency = "USD",
+  isPercent = true,
+  price = 128.4,
+}: {
+  currency?: string
+  isPercent?: boolean
+  price?: number
+} = {}) {
   return (
-    <Ticker currency="USD" locale="en-US">
+    <Ticker currency={currency} locale="en-US">
       <TickerSymbol symbol="nwin" />
-      <TickerPrice price={128.4} />
-      <TickerPriceChange change={2.35} isPercent />
+      <TickerPrice price={price} />
+      <TickerPriceChange change={2.35} isPercent={isPercent} />
     </Ticker>
   )
 }

@@ -140,11 +140,19 @@ export function ExpandingIconTabsDemo() {
   )
 }
 
-export function SlideToggleDemo() {
+export function SlideToggleDemo({
+  defaultChecked = false,
+  offLabel = "关",
+  onLabel = "开",
+}: {
+  defaultChecked?: boolean
+  offLabel?: string
+  onLabel?: string
+} = {}) {
   const [checked, setChecked] = useState(false)
   return (
     <div className="flex justify-center px-6 py-10">
-      <SlideToggle checked={checked} offLabel="关" onCheckedChange={setChecked} onLabel="开" />
+      <SlideToggle checked={checked} defaultChecked={defaultChecked} offLabel={offLabel} onCheckedChange={setChecked} onLabel={onLabel} />
     </div>
   )
 }

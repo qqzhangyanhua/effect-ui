@@ -94,11 +94,26 @@ export function FloatDemo() {
   )
 }
 
-export function CheckCrossSwitchDemo() {
+export function CheckCrossSwitchDemo({
+  defaultChecked = false,
+  offColor,
+  onColor,
+}: {
+  defaultChecked?: boolean
+  offColor?: string
+  onColor?: string
+} = {}) {
   const [on, setOn] = useState(false)
   return (
     <div className="flex min-h-40 items-center justify-center gap-3 px-6 py-10">
-      <CheckCrossSwitch aria-label="示例开关" checked={on} onCheckedChange={setOn} />
+      <CheckCrossSwitch
+        aria-label="示例开关"
+        checked={on}
+        defaultChecked={defaultChecked}
+        offColor={offColor}
+        onCheckedChange={setOn}
+        onColor={onColor}
+      />
       <span className="text-sm">{on ? "开" : "关"}</span>
     </div>
   )
@@ -120,11 +135,19 @@ export function PlusShareBurstDemo() {
   )
 }
 
-export function StarRatingDemo() {
+export function StarRatingDemo({
+  label = "评分",
+  max = 5,
+  showValue = true,
+}: {
+  label?: string
+  max?: number
+  showValue?: boolean
+} = {}) {
   const [value, setValue] = useState(3)
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10">
-      <StarRating showValue value={value} onValueChange={setValue} />
+      <StarRating label={label} max={max} showValue={showValue} value={value} onValueChange={setValue} />
     </div>
   )
 }

@@ -169,11 +169,20 @@ export function SocialSelectorDemo() {
   return <SocialSelector handle="northwindow" />
 }
 
-export function GitHubStarsAnimationDemo() {
+export function GitHubStarsAnimationDemo({
+  maxAvatars = 5,
+  repo = "effect-ui",
+  starCount = 1280,
+}: {
+  maxAvatars?: number
+  repo?: string
+  starCount?: number
+} = {}) {
   return (
     <GitHubStarsAnimation
-      repo="effect-ui"
-      starCount={1280}
+      maxAvatars={maxAvatars}
+      repo={repo}
+      starCount={starCount}
       stargazers={[
         { avatar_url: face, html_url: "https://github.com/north", login: "north" },
         { avatar_url: swatch("#9f1239", 80, 80), html_url: "https://github.com/harbor", login: "harbor" },

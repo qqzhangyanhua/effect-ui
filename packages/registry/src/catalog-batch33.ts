@@ -206,10 +206,10 @@ export const batch33Components: ComponentMeta[] = [
     target: "components/ui/slide-toggle.tsx",
     props: [
       { name: "checked", type: "boolean", description: "受控的开合状态。" },
-      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。" },
+      { name: "defaultChecked", type: "boolean", defaultValue: "false", description: "非受控时的初始状态。", control: { kind: "boolean", value: false } },
       { name: "onCheckedChange", type: "(checked: boolean) => void", description: "状态变化回调。" },
-      { name: "onLabel", type: "string", description: "打开时的文字。与 offLabel 同时传入才显示。" },
-      { name: "offLabel", type: "string", description: "关闭时的文字。" },
+      { name: "onLabel", type: "string", description: "打开时的文字。与 offLabel 同时传入才显示。", control: { kind: "text", value: "开" } },
+      { name: "offLabel", type: "string", description: "关闭时的文字。", control: { kind: "text", value: "关" } },
       ...ui,
     ],
   },

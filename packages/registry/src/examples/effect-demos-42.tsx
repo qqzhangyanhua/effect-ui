@@ -40,9 +40,25 @@ export function BookmarkBurstToggleDemo() {
   return <BookmarkBurstToggle aria-label="收藏" checked={checked} color="gold" onCheckedChange={setChecked} />
 }
 
-export function LockToggleDemo() {
+export function LockToggleDemo({
+  defaultLocked = false,
+  lockedColor = "#20cca5",
+  unlockedColor = "#ff5b5b",
+}: {
+  defaultLocked?: boolean
+  lockedColor?: string
+  unlockedColor?: string
+} = {}) {
   const [locked, setLocked] = useState(false)
-  return <LockToggle locked={locked} lockedColor="#20cca5" onLockedChange={setLocked} unlockedColor="#ff5b5b" />
+  return (
+    <LockToggle
+      defaultLocked={defaultLocked}
+      locked={locked}
+      lockedColor={lockedColor}
+      onLockedChange={setLocked}
+      unlockedColor={unlockedColor}
+    />
+  )
 }
 
 export function CircularTextButtonDemo() {

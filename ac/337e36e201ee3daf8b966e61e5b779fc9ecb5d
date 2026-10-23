@@ -1,0 +1,47 @@
+packages/registry/src/effects/cards-batch3.test.tsx
+  s_1f7fae292b4abd::t_c99d50d5d276b6 1-223,225,231-290
+  s_1f7fae292b4abd::t_01b736e562e688 224,226-230
+packages/registry/src/catalog-batch39.ts
+  s_1f7fae292b4abd::t_05ccc1119f8ae5 98-116
+  s_1f7fae292b4abd::t_fc721c0d46acb1 178-196
+packages/registry/src/catalog-batch44.ts
+  s_1f7fae292b4abd::t_abf1cae33e5aca 163-184
+  s_1f7fae292b4abd::t_86ea67202e0dc7 125-130
+  s_1f7fae292b4abd::t_4ffa5b04d43d6d 111-122
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_c60b79e068ccf2 125-131
+packages/registry/src/catalog-batch40.ts
+  s_1f7fae292b4abd::t_5b21b5b42474f6 137-159
+packages/registry/src/examples/effect-demos-41.tsx
+  s_1f7fae292b4abd::t_fccfd1519c2c1f 81-85,88
+  s_1f7fae292b4abd::t_101d389becaed1 120-128,134,138-139
+packages/registry/src/examples/effect-demos-46.tsx
+  s_1f7fae292b4abd::t_28cb7c1b2a612b 118-123
+  s_1f7fae292b4abd::t_4620cc98ad8708 98-102,104
+packages/registry/src/examples/effect-demos-42.tsx
+  s_1f7fae292b4abd::t_ee72236e4c2220 106-111,115
+  s_1f7fae292b4abd::t_84e4436e52b2f6 112
+packages/registry/src/examples/effect-demos-45.tsx
+  s_1f7fae292b4abd::t_d400524ffa5096 94-98,100
+packages/registry/src/catalog-batch43.ts
+  s_1f7fae292b4abd::t_36f585e9e544aa 182-193
+  s_1f7fae292b4abd::t_453b0cd3f997b9 196-202
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_e7406643653d23 143,243,316,342,382,391,414
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "ac337e36e201ee3daf8b966e61e5b779fc9ecb5d",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

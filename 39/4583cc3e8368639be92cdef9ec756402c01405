@@ -1,0 +1,25 @@
+packages/registry/src/effects/showcase-batch1.test.tsx
+  s_1f7fae292b4abd::t_bfc2c72325f1e2 253,255-258
+packages/registry/src/examples/effect-demos-29.tsx
+  s_1f7fae292b4abd::t_aecf993185e426 109-113,117-118,125
+packages/registry/src/catalog-batch26.ts
+  s_1f7fae292b4abd::t_4cbb8bef72c4f3 174
+packages/registry/src/catalog-batch27.ts
+  s_1f7fae292b4abd::t_622e9ca1666728 150-162,164-170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "394583cc3e8368639be92cdef9ec756402c01405",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

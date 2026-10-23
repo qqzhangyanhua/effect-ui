@@ -1,0 +1,20 @@
+packages/registry/src/effects/navigation-batch1.test.tsx
+  s_1f7fae292b4abd::t_df891e72c80e2d 308-309
+  s_1f7fae292b4abd::t_b315906e5af4a5 282,284-286
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "6fafae5a94934863f751152824390e810f2cc979",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

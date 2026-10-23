@@ -18,16 +18,20 @@ import { SpeechBubble } from "../effects/speech-bubble"
 import { SquiggleArrow } from "../effects/squiggle-arrow"
 import { TextureCard, TextureCardContent, TextureCardDescription, TextureCardFooter, TextureCardHeader, TextureCardTitle, TextureSeparator } from "../effects/texture-card"
 
-export function LightBoardDemo() {
+export function LightBoardDemo({
+  text = "HELLO",
+  rows = 7,
+  lightSize = 8,
+}: { text?: string; rows?: number; lightSize?: number } = {}) {
   return (
     <LightBoard
       disableDrawing={false}
       font="default"
       gap={2}
-      lightSize={8}
+      lightSize={lightSize}
       palette={{ textBright: "rgba(186, 230, 253, 0.95)", background: "rgba(15, 23, 42, 0.35)", drawLine: "rgba(251, 191, 36, 0.9)" }}
-      rows={7}
-      text="HELLO"
+      rows={rows}
+      text={text}
       updateInterval={90}
     />
   )
@@ -87,8 +91,12 @@ export function SquiggleArrowDemo() {
   )
 }
 
-export function SecurityCheckpointDemo() {
-  return <SecurityCheckpoint message="为了让浏览更顺畅，我们正在确认这个浏览器。" subtitle="安全核对" title="检查点" />
+export function SecurityCheckpointDemo({
+  title = "检查点",
+  subtitle = "安全核对",
+  message = "为了让浏览更顺畅，我们正在确认这个浏览器。",
+}: { title?: string; subtitle?: string; message?: string } = {}) {
+  return <SecurityCheckpoint message={message} subtitle={subtitle} title={title} />
 }
 
 export function SpeechBubbleDemo() {

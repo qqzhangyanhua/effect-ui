@@ -119,14 +119,28 @@ export function MorphIconDemo({
   )
 }
 
-export function HoverExpandDemo() {
+export function HoverExpandDemo({
+  collapsedFlex = 1,
+  expandedFlex = 4,
+  orientation = "horizontal",
+  showLabelsWhenCollapsed = true,
+}: {
+  collapsedFlex?: number
+  expandedFlex?: number
+  orientation?: "horizontal" | "vertical"
+  showLabelsWhenCollapsed?: boolean
+} = {}) {
   return (
     <HoverExpand
+      collapsedFlex={collapsedFlex}
+      expandedFlex={expandedFlex}
       items={[
         { alt: "靛蓝", id: "indigo", image: swatch("#312e81"), title: "靛蓝" },
         { alt: "琥珀", id: "amber", image: swatch("#b45309"), title: "琥珀" },
         { alt: "青绿", id: "teal", image: swatch("#0f766e"), title: "青绿" },
       ]}
+      orientation={orientation}
+      showLabelsWhenCollapsed={showLabelsWhenCollapsed}
     />
   )
 }
@@ -202,15 +216,22 @@ export function ExpandableNavbarDemo() {
   )
 }
 
-export function ReviewsCarouselDemo() {
+export function ReviewsCarouselDemo({
+  autoPlay = false,
+  autoPlayInterval = 5000,
+  showIndicators = true,
+}: { autoPlay?: boolean; autoPlayInterval?: number; showIndicators?: boolean } = {}) {
   return (
     <ReviewsCarousel
+      autoPlay={autoPlay}
+      autoPlayInterval={autoPlayInterval}
       className="h-72"
       reviews={[
         { author: "林", body: "港口的灯还在。", id: "a", title: "夜航" },
         { author: "周", body: "雾散得很干净。", id: "b", title: "清晨" },
         { author: "许", body: "句子里还能点开头像。", id: "c", title: "批注" },
       ]}
+      showIndicators={showIndicators}
     />
   )
 }

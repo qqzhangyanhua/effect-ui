@@ -186,10 +186,14 @@ export function ImageTabsDemo() {
   )
 }
 
-export function ProgressiveCarouselDemo() {
+export function ProgressiveCarouselDemo({
+  defaultActive = "bridge",
+  duration = 4000,
+  fastDuration = 400,
+}: { defaultActive?: string; duration?: number; fastDuration?: number } = {}) {
   return (
     <div className="px-6 py-8">
-      <ProgressiveCarousel defaultActive="bridge" duration={4000} slides={slides} />
+      <ProgressiveCarousel defaultActive={defaultActive} duration={duration} fastDuration={fastDuration} slides={slides} />
     </div>
   )
 }

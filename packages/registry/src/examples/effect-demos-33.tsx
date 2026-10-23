@@ -203,10 +203,14 @@ export function MiniCalendarDemo() {
   )
 }
 
-export function ReelDemo() {
+export function ReelDemo({
+  defaultIndex = 0,
+  defaultMuted = true,
+  autoPlay = true,
+}: { defaultIndex?: number; defaultMuted?: boolean; autoPlay?: boolean } = {}) {
   return (
     <div className="mx-auto h-[28rem] w-56">
-      <Reel autoPlay className="h-full" data={reels}>
+      <Reel autoPlay={autoPlay} className="h-full" data={reels} defaultIndex={defaultIndex} defaultMuted={defaultMuted}>
         <ReelProgress />
         <ReelContent>
           {(item) => (

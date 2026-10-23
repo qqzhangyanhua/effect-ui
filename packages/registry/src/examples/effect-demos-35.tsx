@@ -106,10 +106,14 @@ export function ThreeDButtonDemo() {
   )
 }
 
-export function ImageFadeDemo() {
+export function ImageFadeDemo({
+  alt = "渐隐的风景",
+  direction = "up",
+  fadeSize = 20,
+}: { alt?: string; direction?: "left" | "right" | "up" | "down"; fadeSize?: number } = {}) {
   return (
     <div className="mx-auto max-w-xl px-6 py-6">
-      <ImageFade alt="渐隐的风景" src={scene()} />
+      <ImageFade alt={alt} direction={direction} fadeSize={fadeSize} src={scene()} />
     </div>
   )
 }

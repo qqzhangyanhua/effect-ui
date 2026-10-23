@@ -95,25 +95,9 @@ export const batch39Components: ComponentMeta[] = [
     file: "effects/blur-unveil-card.tsx",
     target: "components/ui/blur-unveil-card.tsx",
     props: [
-      {
-        name: "value",
-        type: "string",
-        description: "大号数字。预览写成 34+。",
-        control: { kind: "text", value: "34+" },
-      },
-      {
-        name: "caption",
-        type: "string",
-        description: "数字下方的说明。预览写成进行中的项目。",
-        control: { kind: "text", value: "进行中的项目" },
-      },
-      {
-        name: "blobColor",
-        type: "string",
-        defaultValue: '"var(--destructive)"',
-        description: "色块颜色。预览写成 #fca5a5，不传时仍是 var(--destructive)。",
-        control: { kind: "color", value: "#fca5a5" },
-      },
+      { name: "value", type: "string", description: "大号数字。" },
+      { name: "caption", type: "string", description: "数字下方的说明。" },
+      { name: "blobColor", type: "string", defaultValue: '"var(--destructive)"', description: "色块颜色。预览写死成 #fca5a5，不传时仍是 var(--destructive)。" },
       { name: "children", type: "ReactNode", description: "传入后替换数字和说明。" },
       ...ui,
     ],

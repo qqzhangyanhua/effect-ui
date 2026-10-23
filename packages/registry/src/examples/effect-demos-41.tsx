@@ -78,14 +78,10 @@ export function PinToggleDemo() {
   )
 }
 
-export function BlurUnveilCardDemo({
-  value = "34+",
-  caption = "进行中的项目",
-  blobColor = "#fca5a5",
-}: { value?: string; caption?: string; blobColor?: string } = {}) {
+export function BlurUnveilCardDemo() {
   return (
     <div className="flex justify-center px-6 py-10">
-      <BlurUnveilCard blobColor={blobColor} caption={caption} value={value} />
+      <BlurUnveilCard blobColor="#fca5a5" caption="进行中的项目" value="34+" />
     </div>
   )
 }

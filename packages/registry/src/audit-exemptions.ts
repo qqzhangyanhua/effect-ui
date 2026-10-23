@@ -29,6 +29,7 @@ export const auditExemptions: readonly AuditExemption[] = [
   { name: "backlight", gaps: ["控件不足","缺测试"], reason: "落地前已有缺口" },
   { name: "badge", gaps: ["缺测试"], reason: "落地前已有缺口" },
   { name: "battery-loader", gaps: ["控件不足"], reason: "落地前已有缺口" },
+  { name: "blur-unveil-card", gaps: ["控件不足"], reason: "已发布的可调项只有数字和说明。色块预览写死成 #fca5a5，不传时仍跟主题，不能做成带色值的 Control。" },
   { name: "blur-vignette", gaps: ["控件不足"], reason: "落地前已有缺口" },
   { name: "book-page-loader", gaps: ["控件不足"], reason: "落地前已有缺口" },
   { name: "bookmark-burst-toggle", gaps: ["控件不足"], reason: "已发布的可调项只有颜色，勾选一传入就变成受控。" },

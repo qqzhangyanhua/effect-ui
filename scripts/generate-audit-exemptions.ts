@@ -122,6 +122,7 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "interactive-image-selector": "已发布的可调项只有一开始就多选，图片列表是结构，已选 id 一传入就受控。",
   "hover-spring-features": "已发布的可调项只有卡片列表。",
   "neon-hold-card": "已发布的可调项只有渐变三色，正文是节点。",
+  "blur-unveil-card": "已发布的可调项只有数字和说明。色块预览写死成 #fca5a5，不传时仍跟主题，不能做成带色值的 Control。",
   "glow-wander-card": "已发布的可调项只有发光色和绕圈秒数。",
   "stat-trend-cards": "已发布的可调项只有指标列表。",
   "uno-card": "已发布的可调项只有四色和牌面宽度，中央内容是节点。",

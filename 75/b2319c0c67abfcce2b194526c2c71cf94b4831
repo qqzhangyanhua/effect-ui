@@ -1,0 +1,25 @@
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_9336b1e0207214 125
+packages/registry/src/examples/effect-demos-41.tsx
+  s_1f7fae292b4abd::t_e35eb72c391c34 81,84
+packages/registry/src/catalog-batch39.ts
+  s_1f7fae292b4abd::t_ef261e3268054d 98-100
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_e5301011854e33 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "75b2319c0c67abfcce2b194526c2c71cf94b4831",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+packages/registry/src/examples/effect-demos-24.tsx
+  s_1f7fae292b4abd::t_24748934db50de 78-82,84,90-98,101
+packages/registry/src/catalog-batch28.ts
+  s_1f7fae292b4abd::t_5491e90287a5f5 183-189
+  s_1f7fae292b4abd::t_04ccafb2a0f1ac 191-197
+  s_1f7fae292b4abd::t_353f51cdeba317 214-215
+  s_1f7fae292b4abd::t_2b58e61c36265e 86-92,94-100,103-109
+packages/registry/src/catalog-batch29.ts
+  s_1f7fae292b4abd::t_ec436d292a356e 246-266
+packages/registry/src/effects/decor-batch1.test.tsx
+  s_1f7fae292b4abd::t_fc471c35389e67 147
+  s_1f7fae292b4abd::t_40f3953febb3a5 166
+  s_1f7fae292b4abd::t_0c7c27d274abe6 95,99
+  s_1f7fae292b4abd::t_aa8cdc493820d7 174
+  s_1f7fae292b4abd::t_583011c6cc7701 1-94,96-98,100-133,135-146,148-162,164-165,167-173,175-399
+  s_1f7fae292b4abd::t_e29034d762aaeb 134
+  s_1f7fae292b4abd::t_0abac98309aac9 163
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_e8394a45195917 199-205
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_8f07442d08736d 27,105,128,217,241,287,291
+packages/registry/src/catalog-batch27.ts
+  s_1f7fae292b4abd::t_8b8b5becfd4bf4 61-67,69-75,77-83
+packages/registry/src/examples/effect-demos-38.tsx
+  s_1f7fae292b4abd::t_70b457dd5dbb81 103-107,110-111
+packages/registry/src/examples/effect-demos-31.tsx
+  s_1f7fae292b4abd::t_bf87e498bce9d0 136-140,143
+packages/registry/src/catalog-batch36.ts
+  s_1f7fae292b4abd::t_f1a0ba4afdfffb 192-204,207-213
+packages/registry/src/examples/effect-demos-32.tsx
+  s_1f7fae292b4abd::t_b2766349a0bda2 70-74,76
+packages/registry/src/catalog-batch22.ts
+  s_1f7fae292b4abd::t_f795b731109f20 164-184
+  s_1f7fae292b4abd::t_f85f0e1fd58940 199-219
+packages/registry/src/examples/effect-demos-30.tsx
+  s_1f7fae292b4abd::t_1cccd6e1b6ae4b 51-59,62,64,69
+  s_1f7fae292b4abd::t_61b86cd9854cce 103-108
+packages/registry/src/examples/effect-demos-29.tsx
+  s_1f7fae292b4abd::t_65af0dca3ea1c1 72-76,78
+packages/registry/src/catalog-batch30.ts
+  s_1f7fae292b4abd::t_3d9adde47b59aa 74-80,82-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "e6a1050cd3d7ff70bfa2e5c8db6239dfc25dfbc5",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

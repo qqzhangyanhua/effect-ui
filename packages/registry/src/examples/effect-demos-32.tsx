@@ -90,9 +90,13 @@ export function ScrollAndSwapTextDemo() {
   )
 }
 
-export function UnderlineToBackgroundDemo() {
+export function UnderlineToBackgroundDemo({
+  as = "a",
+  href = "#north",
+  targetTextColor = "#1e1b4b",
+}: { as?: "span" | "a"; href?: string; targetTextColor?: string } = {}) {
   return (
-    <UnderlineToBackground as="a" className="text-3xl font-semibold" href="#north" targetTextColor="#1e1b4b">
+    <UnderlineToBackground as={as} className="text-3xl font-semibold" href={href} targetTextColor={targetTextColor}>
       北窗航线
     </UnderlineToBackground>
   )

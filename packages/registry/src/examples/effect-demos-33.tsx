@@ -125,10 +125,14 @@ export function StarWarsButtonDemo() {
   )
 }
 
-export function TextDropDemo() {
+export function TextDropDemo({
+  text = "夜航开始",
+  stagger = 0.035,
+  delay = 0,
+}: { text?: string; stagger?: number; delay?: number } = {}) {
   return (
     <div className="grid h-24 place-items-center">
-      <TextDrop text="夜航开始" />
+      <TextDrop delay={delay} stagger={stagger} text={text} />
     </div>
   )
 }

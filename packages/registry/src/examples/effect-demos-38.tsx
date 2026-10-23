@@ -32,34 +32,50 @@ const summary = [
   { label: "合计", value: "¥1,200.00", emphasized: true },
 ]
 
-export function VariableFontHoverByLetterDemo() {
+export function VariableFontHoverByLetterDemo({
+  label = "可变",
+  from = "'wght' 400",
+  staggerFrom = "center",
+}: { label?: string; from?: string; staggerFrom?: "first" | "last" | "center" } = {}) {
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10 text-4xl">
-      <VariableFontHoverByLetter from="'wght' 400" label="可变" staggerFrom="center" to="'wght' 800" />
+      <VariableFontHoverByLetter from={from} label={label} staggerFrom={staggerFrom} to="'wght' 800" />
     </div>
   )
 }
 
-export function LetterSwapPingPongDemo() {
+export function LetterSwapPingPongDemo({
+  label = "往返",
+  reverse = true,
+  staggerDuration = 0.03,
+}: { label?: string; reverse?: boolean; staggerDuration?: number } = {}) {
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10 text-4xl">
-      <LetterSwapPingPong label="往返" />
+      <LetterSwapPingPong label={label} reverse={reverse} staggerDuration={staggerDuration} />
     </div>
   )
 }
 
-export function RandomLetterSwapDemo() {
+export function RandomLetterSwapDemo({
+  label = "随机",
+  reverse = true,
+  staggerDuration = 0.02,
+}: { label?: string; reverse?: boolean; staggerDuration?: number } = {}) {
   return (
     <div className="flex min-h-40 items-center justify-center px-6 py-10 text-4xl">
-      <RandomLetterSwap label="随机" />
+      <RandomLetterSwap label={label} reverse={reverse} staggerDuration={staggerDuration} />
     </div>
   )
 }
 
-export function UnderlineHoverLinkDemo() {
+export function UnderlineHoverLinkDemo({
+  variant = "center",
+  direction = "left",
+  href = "#center",
+}: { variant?: "center" | "in-out"; direction?: "left" | "right"; href?: string } = {}) {
   return (
     <div className="flex min-h-40 flex-col items-center justify-center gap-6 px-6 py-10 text-2xl">
-      <UnderlineHoverLink href="#center" variant="center">
+      <UnderlineHoverLink direction={direction} href={href} variant={variant}>
         从中间
       </UnderlineHoverLink>
       <UnderlineHoverLink direction="right" href="#in-out" variant="in-out">

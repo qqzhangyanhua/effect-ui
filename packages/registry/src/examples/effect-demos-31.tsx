@@ -76,17 +76,39 @@ export function MediaBetweenTextDemo({
   )
 }
 
-export function Letter3DSwapDemo() {
+export function Letter3DSwapDemo({
+  staggerDuration = 0.03,
+  staggerFrom = "first",
+  rotateDirection = "top",
+}: {
+  staggerDuration?: number
+  staggerFrom?: "first" | "last" | "center" | "random"
+  rotateDirection?: "top" | "right" | "bottom" | "left"
+} = {}) {
   return (
-    <Letter3DSwap mainClassName="text-4xl font-semibold" rotateDirection="top" staggerDuration={0.03}>
+    <Letter3DSwap
+      mainClassName="text-4xl font-semibold"
+      rotateDirection={rotateDirection}
+      staggerDuration={staggerDuration}
+      staggerFrom={staggerFrom}
+    >
       翻面
     </Letter3DSwap>
   )
 }
 
-export function VerticalCutRevealDemo() {
+export function VerticalCutRevealDemo({
+  reverse = false,
+  splitBy = "characters",
+  staggerDuration = 0.2,
+}: { reverse?: boolean; splitBy?: "words" | "characters" | "lines"; staggerDuration?: number } = {}) {
   return (
-    <VerticalCutReveal containerClassName="text-3xl font-semibold" splitBy="characters">
+    <VerticalCutReveal
+      containerClassName="text-3xl font-semibold"
+      reverse={reverse}
+      splitBy={splitBy}
+      staggerDuration={staggerDuration}
+    >
       雾散以后
     </VerticalCutReveal>
   )
@@ -119,9 +141,22 @@ export function ElasticLineDemo() {
   )
 }
 
-export function BreathingTextDemo() {
+export function BreathingTextDemo({
+  fromFontVariationSettings = "'wght' 420",
+  toFontVariationSettings = "'wght' 820",
+  staggerFrom = "center",
+}: {
+  fromFontVariationSettings?: string
+  toFontVariationSettings?: string
+  staggerFrom?: "first" | "last" | "center"
+} = {}) {
   return (
-    <BreathingText className="text-4xl" fromFontVariationSettings="'wght' 420" staggerFrom="center" toFontVariationSettings="'wght' 820">
+    <BreathingText
+      className="text-4xl"
+      fromFontVariationSettings={fromFontVariationSettings}
+      staggerFrom={staggerFrom}
+      toFontVariationSettings={toFontVariationSettings}
+    >
       呼吸
     </BreathingText>
   )
@@ -199,9 +234,17 @@ export function ResponsiveModalDemo() {
   )
 }
 
-export function TextHighlighterDemo() {
+export function TextHighlighterDemo({
+  triggerType = "auto",
+  highlightColor = "hsl(48, 96%, 76%)",
+  direction = "ltr",
+}: {
+  triggerType?: "hover" | "ref" | "inView" | "auto"
+  highlightColor?: string
+  direction?: "ltr" | "rtl" | "ttb" | "btt"
+} = {}) {
   return (
-    <TextHighlighter className="text-2xl" direction="ltr" highlightColor="hsl(48, 96%, 76%)" triggerType="auto">
+    <TextHighlighter className="text-2xl" direction={direction} highlightColor={highlightColor} triggerType={triggerType}>
       这段话被荧光笔标出来
     </TextHighlighter>
   )

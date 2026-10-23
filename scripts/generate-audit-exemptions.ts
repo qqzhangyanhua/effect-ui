@@ -204,6 +204,21 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "pixelate-svg-filter": "已发布的可调项只有滤镜 id 和横向备用层。颗粒大小跟着悬停弹簧走，一传入就冻住。",
   "gooey-svg-filter": "已发布的可调项只有滤镜 id 和模糊强度，不够 3 个 Control。",
   "hatch-divider": "已发布的可调项只有斜线颜色。不传时仍跟主题。",
+  "animated-tabs": "已发布的可调项只有页签间距。选项卡数据是列表。",
+  "floating-navbar": "已发布的可调项只有收起时长和收起距离倍率，不够 3 个 Control。",
+  "animated-sidebar": "已发布的可调项只有侧栏宽度和滑入倍率。展开状态一传入就变成受控。",
+  "dynamic-island": "已发布的可调项只有内容淡入时长和模糊倍率。尺寸跟着预览里的按钮走，一传入就冻住。",
+  "animated-theme-toggler": "已发布的可调项只有扩散时长。",
+  "family-drawer": "已发布的可调项只有步骤位移倍率。步骤文案是列表。",
+  "flowing-menu": "已发布的可调项只有滑入时长和跑马灯倍率。菜单项是列表。",
+  "toc-scrollspy": "已发布的可调项只有指示器时长和目录间距。目录项是列表。",
+  "toolbar-dynamic": "已发布的可调项只有搜索占位。图标按钮是列表。",
+  "toolbar-expandable": "已发布的可调项只有图标和展开内容，是列表。",
+  "speed-dial": "已发布的可调项只有弹出位置和主按钮名称。操作列表是结构。预览同时放了向上、向左和弧线。",
+  "flower-menu": "已发布的可调项只有花瓣数量和打开时长，不够 3 个 Control。链接列表是结构。",
+  "sibling-focus-nav": "已发布的可调项只有导航链接，是列表。",
+  "marking-menu": "已发布的可调项只有目的地和盖住的表面，都是结构。",
+  "expandable-navbar": "已发布的可调项只有离开后的关闭延迟和悬停打开。导航项是列表。打开项不传时由内部管理。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

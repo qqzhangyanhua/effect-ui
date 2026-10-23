@@ -106,6 +106,8 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "pin-toggle": "已发布的可调项只有初始按下和颜色，按下状态一传入就变成受控。",
   "star-favorite-toggle": "已发布的可调项只有初始收藏和颜色，收藏状态一传入就变成受控。",
   "bookmark-burst-toggle": "已发布的可调项只有颜色，勾选一传入就变成受控。",
+  "icon-swap": "已发布的可调项只有旋转或翻转，开、关和中间态是节点，按下状态一传入就变成受控。",
+  "theme-switch-transitions": "主题一传入就受控，预览同时展示四种变体，剩下的图标模式不够 3 个 Control。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

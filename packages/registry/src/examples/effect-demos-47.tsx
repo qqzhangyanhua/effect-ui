@@ -51,11 +51,21 @@ export function ThemeSwitchTransitionsDemo() {
   )
 }
 
-export function FloatingButtonGroupDemo() {
+export function FloatingButtonGroupDemo({
+  label = "编辑",
+  orientation = "horizontal",
+  variant = "muted",
+}: {
+  label?: string
+  orientation?: "horizontal" | "vertical"
+  variant?: "muted" | "floating"
+} = {}) {
   const [copied, setCopied] = useState(false)
   return (
     <FloatingButtonGroup
-      label="编辑"
+      label={label}
+      orientation={orientation}
+      variant={variant}
       items={[
         { id: "bold", label: "加粗", icon: <Bold aria-hidden /> },
         { id: "italic", label: "斜体", icon: <Italic aria-hidden /> },
@@ -73,16 +83,26 @@ export function FloatingButtonGroupDemo() {
   )
 }
 
-export function MorphSelectDemo() {
+export function MorphSelectDemo({
+  label = "城市",
+  panelWidth = 272,
+  placeholder = "Select",
+}: {
+  label?: string
+  panelWidth?: number
+  placeholder?: string
+} = {}) {
   const [value, setValue] = useState<string | null>("song")
   return (
     <MorphSelect
-      label="城市"
-      value={value}
       items={[
         { label: "华东", options: [{ value: "song", label: "上海", meta: "沪" }, { value: "hang", label: "杭州", meta: "杭" }] },
         { value: "guang", label: "广州", meta: "穗" },
       ]}
+      label={label}
+      panelWidth={panelWidth}
+      placeholder={placeholder}
+      value={value}
       onValueChange={(next) => setValue(next)}
     />
   )

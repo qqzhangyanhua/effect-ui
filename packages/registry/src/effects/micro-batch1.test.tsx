@@ -104,9 +104,37 @@ const call: ToolCall = {
 
 const photo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
 
-test("橡皮筋节点可以拖", () => {
-  render(<RubberBandDrag />)
-  expect(screen.getByRole("button", { name: "拖拽节点" })).toBeInTheDocument()
+test("拖动橡皮筋节点会离开静止点", () => {
+  const originalCtm = SVGSVGElement.prototype.getScreenCTM
+  const originalCapture = Element.prototype.setPointerCapture
+  class FakePoint {
+    x: number
+    y: number
+    constructor(x = 0, y = 0) {
+      this.x = x
+      this.y = y
+    }
+    matrixTransform() {
+      return this
+    }
+  }
+  vi.stubGlobal("DOMPoint", FakePoint)
+  SVGSVGElement.prototype.getScreenCTM = function getScreenCTM() {
+    return { inverse() { return this } } as unknown as DOMMatrix
+  }
+  Element.prototype.setPointerCapture = () => {}
+  try {
+    render(<RubberBandDrag />)
+    const node = screen.getByRole("button", { name: "拖拽节点" })
+    expect(node).toHaveAttribute("cx", "280")
+    fireEvent.pointerDown(node, { clientX: 300, clientY: 160, pointerId: 1 })
+    fireEvent.pointerMove(node, { clientX: 360, clientY: 200, pointerId: 1 })
+    expect(node.getAttribute("cx")).not.toBe("280")
+  } finally {
+    SVGSVGElement.prototype.getScreenCTM = originalCtm
+    Element.prototype.setPointerCapture = originalCapture
+    vi.unstubAllGlobals()
+  }
 })
 
 test("减弱动效时松开橡皮筋不再排动画帧", () => {
@@ -116,13 +144,14 @@ test("减弱动效时松开橡皮筋不再排动画帧", () => {
   expect(frames).toHaveLength(0)
 })
 
-test("点击包裹的按钮", () => {
+test("按住按钮会喷出粒子", () => {
   render(
     <CoolMode particle="✨">
       <button type="button">喷</button>
     </CoolMode>,
   )
-  expect(screen.getByRole("button", { name: "喷" })).toBeInTheDocument()
+  fireEvent.pointerDown(screen.getByRole("button", { name: "喷" }), { clientX: 20, clientY: 20 })
+  expect(document.getElementById("effect-ui-cool-mode")?.childElementCount).toBeGreaterThan(0)
 })
 
 test("减弱动效时点击不产生粒子", () => {
@@ -308,7 +337,7 @@ test("上下文用量显示模型名", () => {
   expect(slot(view.container, "ai-context-meter")).toHaveAttribute("data-reduced", "false")
 })
 
-test("减弱动效时上下文用量停在当前数字", () => {
+test("减弱动效时上下文用量仍显示模型名", () => {
   reduceMotion = true
   const view = render(<AIContextMeter model="Claude Opus" />)
   expect(slot(view.container, "ai-context-meter")).toHaveAttribute("data-reduced", "true")
@@ -316,8 +345,10 @@ test("减弱动效时上下文用量停在当前数字", () => {
 })
 
 test("工具批准可以拒绝", () => {
-  render(<AIToolApproval calls={[call]} onRespond={() => {}} />)
-  expect(screen.getByRole("button", { name: "Deny" })).toBeInTheDocument()
+  const onRespond = vi.fn()
+  render(<AIToolApproval calls={[call]} onRespond={onRespond} />)
+  fireEvent.click(screen.getByRole("button", { name: "Deny" }))
+  expect(onRespond).toHaveBeenCalledWith("1", false, false)
 })
 
 test("减弱动效时批准卡直接显示", () => {

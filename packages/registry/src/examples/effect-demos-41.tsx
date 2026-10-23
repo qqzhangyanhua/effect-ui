@@ -78,10 +78,14 @@ export function PinToggleDemo() {
   )
 }
 
-export function BlurUnveilCardDemo() {
+export function BlurUnveilCardDemo({
+  value = "34+",
+  caption = "进行中的项目",
+  blobColor = "#fca5a5",
+}: { value?: string; caption?: string; blobColor?: string } = {}) {
   return (
     <div className="flex justify-center px-6 py-10">
-      <BlurUnveilCard blobColor="#fca5a5" caption="进行中的项目" value="34+" />
+      <BlurUnveilCard blobColor={blobColor} caption={caption} value={value} />
     </div>
   )
 }
@@ -113,18 +117,26 @@ export function DetailsListDemo() {
   )
 }
 
-export function BlogCardDemo() {
+export function BlogCardDemo({
+  variant = "image-top",
+  title = "把家具摆得亮一点",
+  excerpt = "把沙发挪到窗边之后，下午的光会先落到靠垫上。",
+}: {
+  variant?: "image-top" | "overlay" | "horizontal"
+  title?: string
+  excerpt?: string
+} = {}) {
   return (
     <div className="grid gap-8 px-6 py-8 lg:grid-cols-2">
       <BlogCard
         date="2022-10-10"
         dateTime="2022-10-10"
-        excerpt="把沙发挪到窗边之后，下午的光会先落到靠垫上。"
+        excerpt={excerpt}
         href="#furniture"
         imageAlt="靛蓝色块，写着靠窗"
         imageUrl={swatch("#312e81", "靠窗")}
-        title="把家具摆得亮一点"
-        variant="image-top"
+        title={title}
+        variant={variant}
       />
       <BlogCard
         cta="继续读"

@@ -95,9 +95,13 @@ export function StatefulButtonDemo() {
   )
 }
 
-export function TweetCardDemo() {
+export function TweetCardDemo({
+  name = "林夏",
+  handle = "linxia",
+  time = "2小时",
+}: { name?: string; handle?: string; time?: string } = {}) {
   return (
-    <TweetCard avatar={portrait} content="这条卡片只渲染传入的文字和头像，不会去请求时间线。" handle="linxia" name="林夏" time="2小时" verified />
+    <TweetCard avatar={portrait} content="这条卡片只渲染传入的文字和头像，不会去请求时间线。" handle={handle} name={name} time={time} verified />
   )
 }
 
@@ -111,6 +115,10 @@ export function NeoStarShapesDemo() {
   )
 }
 
-export function CaptionImageCardDemo() {
-  return <CaptionImageCard alt="一块绿色底板和黑色圆点" caption="现场记下的颜色" imageUrl={scene} />
+export function CaptionImageCardDemo({
+  imageUrl = scene,
+  caption = "现场记下的颜色",
+  alt = "一块绿色底板和黑色圆点",
+}: { imageUrl?: string; caption?: string; alt?: string } = {}) {
+  return <CaptionImageCard alt={alt} caption={caption} imageUrl={imageUrl} />
 }

@@ -108,11 +108,26 @@ export const batch44Components: ComponentMeta[] = [
     file: "effects/tweet-card.tsx",
     target: "components/ui/tweet-card.tsx",
     props: [
-      { name: "name", type: "string", description: "显示名称。" },
-      { name: "handle", type: "string", description: "不带 @ 的账号。" },
+      {
+        name: "name",
+        type: "string",
+        description: "显示名称。预览写成林夏。",
+        control: { kind: "text", value: "林夏" },
+      },
+      {
+        name: "handle",
+        type: "string",
+        description: "不带 @ 的账号。预览写成 linxia。",
+        control: { kind: "text", value: "linxia" },
+      },
       { name: "content", type: "ReactNode", description: "正文。" },
       { name: "avatar", type: "string", description: "头像地址。不传时用首字。" },
-      { name: "time", type: "string", description: "时间文案，例如 2小时。" },
+      {
+        name: "time",
+        type: "string",
+        description: "时间文案。预览写成 2小时。",
+        control: { kind: "text", value: "2小时" },
+      },
       { name: "verified", type: "boolean", defaultValue: "false", description: "是否显示认证标记。" },
       ...ui,
     ],
@@ -145,9 +160,28 @@ export const batch44Components: ComponentMeta[] = [
     file: "effects/caption-image-card.tsx",
     target: "components/ui/caption-image-card.tsx",
     props: [
-      { name: "imageUrl", type: "string", description: "图片地址。" },
-      { name: "caption", type: "string", description: "图片下方的说明。" },
-      { name: "alt", type: "string", description: "图片替代文字。不传时用 caption。" },
+      {
+        name: "imageUrl",
+        type: "string",
+        description: "图片地址。预览用内嵌矢量图。",
+        control: {
+          kind: "text",
+          value:
+            "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%2305e17a%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22130%22%20r%3D%2254%22%20fill%3D%22%23111111%22%2F%3E%3Crect%20x%3D%2270%22%20y%3D%22210%22%20width%3D%22260%22%20height%3D%2218%22%20rx%3D%224%22%20fill%3D%22%23111111%22%2F%3E%3C%2Fsvg%3E",
+        },
+      },
+      {
+        name: "caption",
+        type: "string",
+        description: "图片下方的说明。预览写成现场记下的颜色。",
+        control: { kind: "text", value: "现场记下的颜色" },
+      },
+      {
+        name: "alt",
+        type: "string",
+        description: "图片替代文字。预览写成一块绿色底板和黑色圆点，不传时用 caption。",
+        control: { kind: "text", value: "一块绿色底板和黑色圆点" },
+      },
       ...ui,
     ],
   },

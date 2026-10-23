@@ -122,6 +122,13 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "interactive-image-selector": "已发布的可调项只有一开始就多选，图片列表是结构，已选 id 一传入就受控。",
   "hover-spring-features": "已发布的可调项只有卡片列表。",
   "neon-hold-card": "已发布的可调项只有渐变三色，正文是节点。",
+  "glow-wander-card": "已发布的可调项只有发光色和绕圈秒数。",
+  "stat-trend-cards": "已发布的可调项只有指标列表。",
+  "uno-card": "已发布的可调项只有四色和牌面宽度，中央内容是节点。",
+  "transaction-card": "已发布的可调项只有说明和金额，点击回调不是控件。",
+  "pendulum-social-card": "已发布的可调项是头像、标题和链接列表。",
+  "word-wheel-card": "已发布的可调项是标题和两组词。",
+  "shift-card": "已发布的四段内容都是节点。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

@@ -91,9 +91,13 @@ export function SpeechBubbleDemo() {
   return <SpeechBubble>今晚的排班已经对齐。</SpeechBubble>
 }
 
-export function FoldedCardDemo() {
+export function FoldedCardDemo({
+  href = "#folded",
+  title = "现场笔记",
+  gridRows = 4,
+}: { href?: string; title?: string; gridRows?: number } = {}) {
   return (
-    <FoldedCard badge="草稿" description="折页固定在右上角，网格只是预览底纹。" href="#folded" title="现场笔记">
+    <FoldedCard badge="草稿" description="折页固定在右上角，网格只是预览底纹。" gridRows={gridRows} href={href} title={title}>
       <div className="absolute inset-6 rounded-md bg-primary/15" />
     </FoldedCard>
   )

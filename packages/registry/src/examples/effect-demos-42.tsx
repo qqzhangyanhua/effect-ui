@@ -103,14 +103,16 @@ export function GlowSearchInputDemo() {
   )
 }
 
-export function PropellerOrbDemo() {
+const propellerColors = ["black", "rgb(69, 11, 11)", "red", "rgb(255, 179, 0)", "rgb(244, 205, 205)", "rgb(5, 56, 99)", "#eee", "#777"]
+
+export function PropellerOrbDemo({
+  size = 180,
+  speed = 1.5,
+  colors = propellerColors,
+}: { size?: number; speed?: number; colors?: string[] } = {}) {
   return (
     <div className="flex min-h-72 items-center justify-center py-16">
-      <PropellerOrb
-        colors={["black", "rgb(69, 11, 11)", "red", "rgb(255, 179, 0)", "rgb(244, 205, 205)", "rgb(5, 56, 99)", "#eee", "#777"]}
-        size={180}
-        speed={1.5}
-      />
+      <PropellerOrb colors={colors} size={size} speed={speed} />
     </div>
   )
 }

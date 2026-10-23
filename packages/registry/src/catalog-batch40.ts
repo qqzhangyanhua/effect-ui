@@ -134,9 +134,29 @@ export const batch40Components: ComponentMeta[] = [
     file: "effects/propeller-orb.tsx",
     target: "components/ui/propeller-orb.tsx",
     props: [
-      { name: "size", type: "number", defaultValue: "200", description: "圆球直径，单位像素。" },
-      { name: "speed", type: "number", defaultValue: "1.5", description: "转一圈的秒数。悬停时按源站比例加快。" },
-      { name: "colors", type: "string[]", description: "径向、机翼和桨叶用色。不传时使用源站色板。" },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "200",
+        description: "圆球直径，单位像素。预览是 180，不传时仍是 200。",
+        control: { kind: "range", value: 180, min: 120, max: 280, step: 4 },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1.5",
+        description: "转一圈的秒数。1.5 与不传相同。按秒计，不是 0.25–2.5 倍率。悬停时按源站比例加快。",
+        control: { kind: "range", value: 1.5, min: 0.6, max: 3, step: 0.1 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "径向、机翼和桨叶用色。这 8 色与不传时的源站色板相同。",
+        control: {
+          kind: "colors",
+          value: ["black", "rgb(69, 11, 11)", "red", "rgb(255, 179, 0)", "rgb(244, 205, 205)", "rgb(5, 56, 99)", "#eee", "#777"],
+        },
+      },
       ...ui,
     ],
   },

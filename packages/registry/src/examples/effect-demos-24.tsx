@@ -92,8 +92,16 @@ export function GlowEffectDemo() {
   )
 }
 
-export function TextShimmerWaveDemo() {
-  return <TextShimmerWave>波动闪光</TextShimmerWave>
+export function TextShimmerWaveDemo({
+  children = "波动闪光",
+  duration = 1.4,
+  yDistance = -6,
+}: { children?: string; duration?: number; yDistance?: number } = {}) {
+  return (
+    <TextShimmerWave duration={duration} yDistance={yDistance}>
+      {children}
+    </TextShimmerWave>
+  )
 }
 
 export function MorphingPopoverDemo() {

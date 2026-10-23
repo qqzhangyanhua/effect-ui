@@ -100,10 +100,25 @@ export const batch29Components: ComponentMeta[] = [
     file: "effects/media-between-text.tsx",
     target: "components/ui/media-between-text.tsx",
     props: [
-      { name: "firstText", type: "string", description: "媒体左侧文字。" },
-      { name: "secondText", type: "string", description: "媒体右侧文字。" },
+      {
+        name: "firstText",
+        type: "string",
+        description: "媒体左侧文字。预览写成北。",
+        control: { kind: "text", value: "北" },
+      },
+      {
+        name: "secondText",
+        type: "string",
+        description: "媒体右侧文字。预览写成窗。",
+        control: { kind: "text", value: "窗" },
+      },
       { name: "mediaUrl", type: "string", description: "图片或视频地址。" },
-      { name: "mediaType", type: '"image" | "video"', description: "媒体类型。" },
+      {
+        name: "mediaType",
+        type: '"image" | "video"',
+        description: "媒体类型。预览写成 image。",
+        control: { kind: "select", value: "image", options: ["image", "video"] },
+      },
       { name: "mediaContainerClassName", type: "string", description: "媒体盒子的类名，用来给展开后的宽度。" },
       { name: "fallbackUrl", type: "string", description: "视频 poster。" },
       { name: "as", type: "ElementType", defaultValue: "p", description: "两侧文字的标签。" },

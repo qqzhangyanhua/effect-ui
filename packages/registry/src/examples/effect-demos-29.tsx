@@ -92,8 +92,23 @@ export function ChromaBlurTransitionDemo() {
   )
 }
 
-export function ArcadePixelDemo() {
-  return <ArcadePixel animate="type" className="rounded-xl bg-slate-950 p-4" crt glow scanlines text="NORTH" />
+export function ArcadePixelDemo({
+  text = "NORTH",
+  pixelSize = 8,
+  speed = 1,
+}: { text?: string; pixelSize?: number; speed?: number } = {}) {
+  return (
+    <ArcadePixel
+      animate="type"
+      className="rounded-xl bg-slate-950 p-4"
+      crt
+      glow
+      pixelSize={pixelSize}
+      scanlines
+      speed={speed}
+      text={text}
+    />
+  )
 }
 
 export function KineticTypeScrollDemo() {

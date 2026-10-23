@@ -58,16 +58,20 @@ export function ScreensaverDemo() {
   )
 }
 
-export function MediaBetweenTextDemo() {
+export function MediaBetweenTextDemo({
+  firstText = "北",
+  secondText = "窗",
+  mediaType = "image",
+}: { firstText?: string; secondText?: string; mediaType?: "image" | "video" } = {}) {
   return (
     <MediaBetweenText
       alt="靛蓝色块"
       className="items-center text-3xl font-semibold"
-      firstText="北"
+      firstText={firstText}
       mediaContainerClassName="mx-2 h-12 overflow-hidden rounded-md"
-      mediaType="image"
+      mediaType={mediaType}
       mediaUrl={swatch("#312e81")}
-      secondText="窗"
+      secondText={secondText}
     />
   )
 }

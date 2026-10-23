@@ -179,6 +179,11 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "portfolio-filter-grid": "已发布的可调项是分类和作品，都是结构。",
   "hover-gallery": "已发布的可调项只有替代文本。进度预览写死为 true，组件默认是 false。图片列表是结构。",
   "featured-gallery": "已发布的可调项是图片和标签，都是结构。",
+  "hyperspace-text": "已发布的可调项只有依次重组的句子，是列表。",
+  "dia-text-reveal": "已发布的可调项只有文字和时长，不够 3 个 Control。",
+  "line-shadow-text": "已发布的可调项只有正文和斜条纹颜色。斜条纹不传时仍跟主题。",
+  "comic-text": "已发布的可调项只有漫画文字和字号，不够 3 个 Control。",
+  "text-explode": "已发布的可调项只有会炸开的文字。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

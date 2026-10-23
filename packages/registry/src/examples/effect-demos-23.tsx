@@ -86,8 +86,16 @@ export function Floating3DParticlesDemo({
   )
 }
 
-export function VideoTextDemo() {
-  return <VideoText src={videoSrc} poster={poster}>北窗</VideoText>
+export function VideoTextDemo({
+  src = videoSrc,
+  fontSize = 18,
+  fontWeight = 700,
+}: { src?: string; fontSize?: number; fontWeight?: number } = {}) {
+  return (
+    <VideoText fontSize={fontSize} fontWeight={fontWeight} poster={poster} src={src}>
+      北窗
+    </VideoText>
+  )
 }
 
 export function SmoothCursorDemo() {

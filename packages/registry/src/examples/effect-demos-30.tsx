@@ -25,10 +25,12 @@ const swatch = (color: string, width = 640, height = 400) =>
 
 const face = swatch("#312e81", 80, 80)
 
-export function PerspectiveText3DDemo() {
-  return (
-    <PerspectiveText3D className="text-4xl font-semibold" depth={48} driver="pointer" text="北窗夜航" />
-  )
+export function PerspectiveText3DDemo({
+  depth = 48,
+  driver = "pointer",
+  text = "北窗夜航",
+}: { depth?: number; driver?: "scroll" | "pointer" | "static"; text?: string } = {}) {
+  return <PerspectiveText3D className="text-4xl font-semibold" depth={depth} driver={driver} text={text} />
 }
 
 export function ScrollImageRevealDemo() {
@@ -62,9 +64,13 @@ export function SvgClipMaskDemo() {
   )
 }
 
-export function DepthParallaxWordsDemo() {
+export function DepthParallaxWordsDemo({
+  delay = 0,
+  stagger = 80,
+  triggerOnView = false,
+}: { delay?: number; stagger?: number; triggerOnView?: boolean } = {}) {
   return (
-    <DepthParallaxWords className="text-3xl font-semibold" stagger={80}>
+    <DepthParallaxWords className="text-3xl font-semibold" delay={delay} stagger={stagger} triggerOnView={triggerOnView}>
       雾散以后还能看见港口
     </DepthParallaxWords>
   )

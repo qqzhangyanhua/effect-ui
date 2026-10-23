@@ -28,8 +28,12 @@ export function ActivityTerrainDemo({
   return <ActivityTerrain className="w-full" endDate={endDate} title={title} defaultFlat={defaultFlat} />
 }
 
-export function CradleTextDemo() {
-  return <CradleText className="w-full" text="摇篮" />
+export function CradleTextDemo({
+  text = "摇篮",
+  intro = true,
+  bounce = 0.97,
+}: { text?: string; intro?: boolean; bounce?: number } = {}) {
+  return <CradleText bounce={bounce} className="w-full" intro={intro} text={text} />
 }
 
 export function DrapeBackgroundDemo({
@@ -44,12 +48,24 @@ export function DrapeBackgroundDemo({
   return <DrapeBackground className="min-h-96 w-full" wind={wind} pleat={pleat} interactive={interactive} />
 }
 
-export function PluckedTextDemo() {
-  return <PluckedText className="w-full" text="拨弦" />
+export function PluckedTextDemo({
+  text = "拨弦",
+  tension = 1,
+  strum = true,
+}: { text?: string; tension?: number; strum?: boolean } = {}) {
+  return <PluckedText className="w-full" strum={strum} tension={tension} text={text} />
 }
 
-export function SwooshTextDemo() {
-  return <SwooshText className="w-full text-center" text="挤出" />
+export function SwooshTextDemo({
+  text = "挤出",
+  as = "div",
+  depth = 12,
+}: {
+  text?: string
+  as?: "div" | "span" | "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+  depth?: number
+} = {}) {
+  return <SwooshText as={as} className="w-full text-center" depth={depth} text={text} />
 }
 
 export function TopoBackgroundDemo({

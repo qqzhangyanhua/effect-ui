@@ -70,8 +70,12 @@ export function MagneticFieldDemo() {
   )
 }
 
-export function RansomNoteDemo() {
-  return <RansomNote animate="assemble" className="text-3xl" text="北窗夜航" />
+export function RansomNoteDemo({
+  animate = "assemble",
+  text = "北窗夜航",
+  intensity = 0.6,
+}: { animate?: "none" | "assemble" | "jitter"; text?: string; intensity?: number } = {}) {
+  return <RansomNote animate={animate} className="text-3xl" intensity={intensity} text={text} />
 }
 
 export function LiquidMetalDemo({

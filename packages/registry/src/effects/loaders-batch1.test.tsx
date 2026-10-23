@@ -128,7 +128,9 @@ test("点阵加载在减弱动效下仍标出状态", () => {
 
 test("星座加载挂上星图", () => {
   const view = render(<ConstellationLoader color="#c7d2fe" count={16} size={7} />)
-  expect(slot(view.container, "constellation-loader")).toHaveAttribute("data-reduced", "false")
+  const root = slot(view.container, "constellation-loader")
+  expect(root.querySelectorAll("circle")).toHaveLength(16)
+  expect(root).toHaveAttribute("data-reduced", "false")
 })
 
 test("星座加载在减弱动效下仍挂上星图", () => {
@@ -139,7 +141,9 @@ test("星座加载在减弱动效下仍挂上星图", () => {
 
 test("粒子群挂上粒子层", () => {
   const view = render(<ParticleSwarmLoader color="#818cf8" count={36} size={2.4} />)
-  expect(slot(view.container, "particle-swarm-loader")).toHaveAttribute("data-reduced", "false")
+  const root = slot(view.container, "particle-swarm-loader")
+  expect(root.querySelectorAll("circle")).toHaveLength(36)
+  expect(root).toHaveAttribute("data-reduced", "false")
 })
 
 test("粒子群在减弱动效下仍挂上粒子层", () => {
@@ -150,7 +154,9 @@ test("粒子群在减弱动效下仍挂上粒子层", () => {
 
 test("旋转方块挂上方块", () => {
   const view = render(<SpinningCubeLoader color="#6366f1" duration={2.4} size={72} />)
-  expect(slot(view.container, "spinning-cube-loader")).toHaveAttribute("data-reduced", "false")
+  const root = slot(view.container, "spinning-cube-loader")
+  expect(root.firstElementChild).toHaveStyle({ width: "72px", height: "72px" })
+  expect(root).toHaveAttribute("data-reduced", "false")
 })
 
 test("旋转方块在减弱动效下仍挂上方块", () => {
@@ -161,7 +167,9 @@ test("旋转方块在减弱动效下仍挂上方块", () => {
 
 test("漩涡挂上螺旋", () => {
   const view = render(<WhirlpoolLoader color="#a5b4fc" duration={16} rotations={5} segments={42} />)
-  expect(slot(view.container, "whirlpool-loader")).toHaveAttribute("data-reduced", "false")
+  const root = slot(view.container, "whirlpool-loader")
+  expect(root.querySelectorAll("circle")).toHaveLength(42)
+  expect(root).toHaveAttribute("data-reduced", "false")
 })
 
 test("漩涡在减弱动效下仍挂上螺旋", () => {

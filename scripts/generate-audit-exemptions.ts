@@ -219,6 +219,11 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "sibling-focus-nav": "已发布的可调项只有导航链接，是列表。",
   "marking-menu": "已发布的可调项只有目的地和盖住的表面，都是结构。",
   "expandable-navbar": "已发布的可调项只有离开后的关闭延迟和悬停打开。导航项是列表。打开项不传时由内部管理。",
+  "tab-navigation": "已发布的可调项是链接地址、当前页和不可点击。当前页和不可点击在预览里写在不同的链接上，组件默认都是 false。",
+  "expanding-icon-tabs": "已发布的可调项只有标签列表。选中值跟着预览里的状态走，一传入就冻住。",
+  "collapsible-side-menu": "已发布的可调项只有菜单项，是列表。",
+  "multi-level-dropdown": "已发布的可调项只有触发按钮文字。预览写成账户，不传时仍是菜单。菜单项是列表。",
+  "bottom-navigation": "已发布的可调项只有栏的样式。预览写成 default，与不传相同。导航项跟着预览里的当前页走。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

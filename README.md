@@ -573,6 +573,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 图标动作、波载与剪切
+
+登记在 `catalog-batch61.ts`。细线、卷轴与购买已占用 `catalog-batch60.ts`。`icon-moves`、`list-cut`、`load-cut`、`state-cut` 移植自 Keyframery（MIT，Copyright (c) 2026 Briyan Hingrajiya），提交 `9ab2430`。`wave-physics-loader`、`use-web-haptics` 移植自 Amicro（MIT，Copyright (c) 2026 SYED SUBHAN UDDIN），提交 `dc2a183`。`load-cut` 保留：它是等待、骨架、溶解三态，和已有的 `skeleton-reveal` 脉冲模糊交叉淡化不是同一个组件。Keyframery 的辅助函数只把用到的部分内联进各自组件，没有新的共享库，也没有 `data-kf` 总开关。`icon-moves` 的监听挂在组件根上。列表新项从下方升起，没有接入按压引擎。`use-web-haptics` 在没有 `navigator.vibrate` 时返回 false，不读 localStorage，也不合成音效。`framer-motion` 改为 `motion/react`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+
+| 组件 | 来源 |
+| --- | --- |
+| icon-moves | Keyframery，MIT |
+| wave-physics-loader | Amicro，MIT |
+| list-cut | Keyframery，MIT |
+| load-cut | Keyframery，MIT |
+| state-cut | Keyframery，MIT |
+| use-web-haptics | Amicro，MIT |
+
 ### 细线、卷轴与购买
 
 登记在 `catalog-batch60.ts`。奖状、日记与补全已占用 `catalog-batch59.ts`。`wavy-threads-background`、`rolling-letters-animation`、`arc-cards`、`tilt-image-carousel`、`section-navigator` 移植自 MosaicUI（MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha），提交 `2baca92`。`hover-glide-cards`、`progress-ring-check`、`cursor-edge-glow-button`、`secure-purchase-button`、`blur-glide-menu`、`spotlight-indicator`、`preview-hover-toolbar` 移植自 MicroKit（MIT，Copyright (c) 2026 Henrique Barone），提交 `fd993e8`。`waving-dots-background` 和已有的 `dot-field` 重合，没有移植。`section-navigator` 的列表跟在触发器旁边，没有使用传送门。远程图片改成主题色面板。颜色改成主题变量。悬停项同时响应按下和聚焦。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

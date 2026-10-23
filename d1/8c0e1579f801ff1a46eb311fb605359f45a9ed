@@ -1,0 +1,41 @@
+packages/registry/src/catalog-batch24.ts
+  s_1f7fae292b4abd::t_2980e0fb77d921 248-261,263-269
+packages/registry/src/effects/buttons-batch1.test.tsx
+  s_1f7fae292b4abd::t_a220ca9e675d2a 114-117,119
+  s_1f7fae292b4abd::t_c555709caa6c84 201-202
+  s_1f7fae292b4abd::t_35b6e40343a00a 212-213
+  s_1f7fae292b4abd::t_c764d18cbe58f4 111-113,121-126,133
+  s_1f7fae292b4abd::t_4d35435fe9d75a 44-45
+  s_1f7fae292b4abd::t_5200f76a0216e8 1-43,46-110,118,120,127-132,134-200,203-211,214-328
+packages/registry/src/examples/effect-demos-31.tsx
+  s_1f7fae292b4abd::t_5f814c8464f010 130-138,142,148,150
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_3e12ae8e235e6b 133-143
+packages/registry/src/catalog-batch29.ts
+  s_1f7fae292b4abd::t_a9b00fc15c6370 275-288,293,295
+packages/registry/src/examples/effect-demos-26.tsx
+  s_1f7fae292b4abd::t_398d20651547fa 115-119,122
+packages/registry/src/examples/effect-demos-34.tsx
+  s_1f7fae292b4abd::t_4d66d6e5c5da69 50-54,57,62-66,69
+packages/registry/src/catalog-batch32.ts
+  s_1f7fae292b4abd::t_ceee2b1a7ebd44 76-82,84-97
+  s_1f7fae292b4abd::t_8a41788c17efa2 41-47,49-62
+packages/registry/src/audit-exemptions.ts
+  s_1f7fae292b4abd::t_81780c6970477a 17,26,69,144,168-169,189,265,339,345,357
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "d18c0e1579f801ff1a46eb311fb605359f45a9ed",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

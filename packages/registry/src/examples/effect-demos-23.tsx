@@ -103,8 +103,16 @@ export function LineShadowTextDemo() {
   return <LineShadowText>斜纹阴影</LineShadowText>
 }
 
-export function HeroVideoDialogDemo() {
-  return <HeroVideoDialog videoSrc={videoSrc} thumbnailSrc={poster} thumbnailAlt="花" className="w-full max-w-xl" />
+export function HeroVideoDialogDemo({
+  animationStyle = "from-center",
+  videoSrc: source = videoSrc,
+  thumbnailAlt = "花",
+}: {
+  animationStyle?: "from-center" | "from-bottom" | "from-top" | "from-left" | "from-right"
+  videoSrc?: string
+  thumbnailAlt?: string
+} = {}) {
+  return <HeroVideoDialog animationStyle={animationStyle} className="w-full max-w-xl" thumbnailAlt={thumbnailAlt} thumbnailSrc={poster} videoSrc={source} />
 }
 
 export function AnimatedSubscribeButtonDemo() {

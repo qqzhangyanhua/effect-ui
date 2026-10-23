@@ -122,13 +122,22 @@ export function OrbitalImageWheelDemo() {
   )
 }
 
-export function DitherChartDemo() {
+export function DitherChartDemo({
+  caption = "夜间流量",
+  pixelSize = 3,
+  variant = "bar",
+}: {
+  caption?: string
+  pixelSize?: number
+  variant?: "donut" | "line" | "bar" | "stacked" | "gauge" | "funnel" | "heatmap" | "bubbles"
+} = {}) {
   return (
     <DitherChart
-      caption="夜间流量"
+      caption={caption}
       data={[{ name: "夜航", points: [{ label: "一", value: 2 }, { label: "二", value: 5 }, { label: "三", value: 3 }] }]}
       label="点阵图"
-      variant="bar"
+      pixelSize={pixelSize}
+      variant={variant}
     />
   )
 }

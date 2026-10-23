@@ -160,7 +160,18 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "tilt-sweep-button": "已发布的可调项只有扫光底色和径向色，按钮文字是节点。",
   "fly-around-button": "已发布的可调项是图标、文字和点击回调。",
   "cosmic-button": "已发布的可调项只有渲染成链接还是按钮，以及地址，正文是节点。",
-  "split-button": "已发布的可调项只有按钮文案和变体。动作列表是结构，点击回调会改预览里的说明。",
+  "split-button": "已发布的可调项只有按钮文案和变体。动作列表是结构，点击回调会改预览里的说明。禁用没有默认 false。",
+  "orbiting-items-3d": "已发布的可调项只有转速和尺寸，轨道上的条目是列表。",
+  "infinite-canvas-gallery": "已发布的可调项只有间距和尺寸，画布条目是结构。",
+  "hover-image-list": "已发布的可调项只有字号和尺寸，行内容是结构。",
+  "sortable-list": "已发布的可调项只有间距，列表和重排回调不是控件。",
+  "dual-wave-text-list": "已发布的可调项只有缩放，行内容是结构。",
+  "loom-threads-marquee": "已发布的可调项只有速度。",
+  "xray-fluid-reveal": "已发布的可调项只有速度。",
+  "shape-hero": "已发布的可调项只有标题标签和填充。眉题、标题、说明和形状都是节点或结构。",
+  "spending-ring": "已发布的可调项只有货币。分类列表是结构。预览货币写成 CNY，不传时仍是 USD。",
+  "sdf-blob-transition": "已发布的可调项只有时长。变体和切换键跟着预览里的下一幕走，一传入就冻住。",
+  "orbital-image-wheel": "已发布的可调项只有半径和朝向。自动旋转和吸附预览写死为 true，组件默认是 false。图片列表是结构。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

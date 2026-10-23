@@ -105,14 +105,21 @@ export function SdfBlobTransitionDemo() {
   )
 }
 
-export function VideoAmbientDemo() {
+export function VideoAmbientDemo({
+  blur = 34,
+  rounded = 20,
+  scale = 1.3,
+}: { blur?: number; rounded?: number; scale?: number } = {}) {
   return (
     <VideoAmbient
       alt="城市夜色"
       autoPlay={false}
+      blur={blur}
       className="mx-auto w-full max-w-xl"
       controls
       poster={poster}
+      rounded={rounded}
+      scale={scale}
       src={poster}
     />
   )

@@ -51,8 +51,12 @@ export function CoolModeDemo() {
   )
 }
 
-export function PixelImageDemo() {
-  return <PixelImage src={pixelSrc} className="h-64 max-w-xl" />
+export function PixelImageDemo({
+  rows = 4,
+  cols = 6,
+  duration = 0.8,
+}: { rows?: number; cols?: number; duration?: number } = {}) {
+  return <PixelImage className="h-64 max-w-xl" cols={cols} duration={duration} rows={rows} src={pixelSrc} />
 }
 
 export function GeoPatternsDemo({

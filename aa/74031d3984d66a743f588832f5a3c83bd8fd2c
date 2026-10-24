@@ -1,0 +1,26 @@
+packages/registry/src/catalog-batch10.ts
+  s_1f7fae292b4abd::t_982b0b45f0aed5 69
+  s_1f7fae292b4abd::t_defa31c6c65afe 39
+  s_1f7fae292b4abd::t_c76dc925df3f3f 54-55
+  s_1f7fae292b4abd::t_4b1b3de0fdf78f 24
+  s_1f7fae292b4abd::t_e50d6096d05adb 84
+  s_1f7fae292b4abd::t_0e9bc59bc59031 153
+packages/registry/src/sections/sections-batch1.test.tsx
+  s_1f7fae292b4abd::t_72470de3df9d74 1-167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "aa74031d3984d66a743f588832f5a3c83bd8fd2c",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

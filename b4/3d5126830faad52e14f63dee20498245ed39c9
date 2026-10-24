@@ -1,0 +1,40 @@
+packages/registry/src/catalog-batch29.ts
+  s_1f7fae292b4abd::t_60518fd78792cc 61-66
+  s_1f7fae292b4abd::t_5d627abc1c2e05 35-37
+  s_1f7fae292b4abd::t_54388192524c37 48-50
+  s_1f7fae292b4abd::t_7e9adaf91eff91 24
+packages/registry/src/catalog-batch18.ts
+  s_1f7fae292b4abd::t_f1bbef67946ad7 132-133
+packages/registry/src/catalog-batch30.ts
+  s_1f7fae292b4abd::t_11b754fbee660b 23-26
+packages/registry/src/catalog-batch22.ts
+  s_1f7fae292b4abd::t_be46dd5ef60289 20-23
+packages/registry/src/catalog-batch32.ts
+  s_1f7fae292b4abd::t_966cb5d31e2b32 306-307
+packages/registry/src/catalog-batch23.ts
+  s_1f7fae292b4abd::t_b6d66387ef0f1c 20-24
+packages/registry/src/ui/base-batch8.test.tsx
+  s_1f7fae292b4abd::t_ff073b1290010f 1-3,5-6,8-26,28-41,44-151,156-253,257-259,261-262,267-292
+  s_1f7fae292b4abd::t_a9b0ce915aac84 152-155
+  s_1f7fae292b4abd::t_e3ce0293d17125 7
+  s_1f7fae292b4abd::t_71fa150b800a60 254-256,260,263-266
+  s_1f7fae292b4abd::t_feafe1e8fa8bab 42-43
+  s_1f7fae292b4abd::t_80b62d35799795 4
+  s_1f7fae292b4abd::t_6666d4d27fd575 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "b43d5126830faad52e14f63dee20498245ed39c9",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

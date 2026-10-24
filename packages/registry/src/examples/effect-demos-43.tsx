@@ -14,7 +14,6 @@ import { PacmanLoader } from "../effects/pacman-loader"
 import { PhoneRingLoader } from "../effects/phone-ring-loader"
 import { PixelBirdLoader } from "../effects/pixel-bird-loader"
 import { RingedPlanetLoader } from "../effects/ringed-planet-loader"
-import { ShapeMask } from "../effects/shape-mask"
 import { SiteFooter } from "../effects/site-footer"
 import { TickRange } from "../effects/tick-range"
 
@@ -95,22 +94,6 @@ export function IconSwapDemo() {
       pressed={pressed}
       onPressedChange={setPressed}
     />
-  )
-}
-
-export function ShapeMaskDemo({
-  as = "div",
-  children = "心",
-  shape = "heart",
-}: {
-  as?: "div" | "span" | "figure"
-  children?: string
-  shape?: "squircle" | "heart" | "hexagon" | "hexagon-2" | "decagon" | "pentagon" | "diamond" | "circle" | "star" | "star-2" | "triangle"
-} = {}) {
-  return (
-    <ShapeMask as={as} className="size-36 bg-primary" shape={shape}>
-      <span className="grid size-full place-items-center text-sm text-primary-foreground">{children}</span>
-    </ShapeMask>
   )
 }
 

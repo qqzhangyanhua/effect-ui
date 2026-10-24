@@ -21,7 +21,6 @@ import { NeubrutalismToggle } from "./neubrutalism-toggle"
 import { NewsletterInput } from "./newsletter-input"
 import { PinDisplayInput } from "./pin-display-input"
 import { SocialFollowTooltip } from "./social-follow-tooltip"
-import { StarRibbonNotification } from "./star-ribbon-notification"
 
 let reduceMotion = false
 
@@ -77,12 +76,11 @@ const accordionItems = [
   { value: "b", title: "第二项", content: "内容二" },
 ]
 
-test("减弱动效时波浪、绶带和上抬按钮停住", () => {
+test("减弱动效时波浪和上抬按钮停住", () => {
   reduceMotion = true
   render(
     <div>
       <HueWaveLoader />
-      <StarRibbonNotification />
       <LiftGradientBorderButton />
       <SocialFollowTooltip />
     </div>,
@@ -90,9 +88,6 @@ test("减弱动效时波浪、绶带和上抬按钮停住", () => {
   const loader = screen.getByRole("status", { name: "加载中" })
   expect(loader).toHaveAttribute("data-reduced", "true")
   expect(loader.querySelector("span")).toHaveStyle({ animation: "none" })
-  const ribbon = document.querySelector("[data-slot=star-ribbon-notification]")
-  expect(ribbon).toHaveAttribute("data-reduced", "true")
-  expect(ribbon?.querySelector("span")).toHaveStyle({ animation: "none" })
   const button = screen.getByRole("button", { name: "发送消息" })
   expect(button).toHaveAttribute("data-reduced", "true")
   expect(button.className).not.toContain("hover:-translate-y")

@@ -4,7 +4,6 @@ import { ApiKeyManager } from "../effects/api-key-manager"
 import { CardBeamScanner } from "../effects/card-beam-scanner"
 import { HyperspaceText } from "../effects/hyperspace-text"
 import { LenticularCard } from "../effects/lenticular-card"
-import { RainPuddle } from "../effects/rain-puddle"
 import { RepetitionImageHover } from "../effects/repetition-image-hover"
 import { RubberBandDrag } from "../effects/rubber-band-drag"
 import { TiledSwirlLoader } from "../effects/tiled-swirl-loader"
@@ -36,10 +35,6 @@ export function TiledSwirlLoaderDemo({
   speed = 1,
 }: { size?: number; color?: string; speed?: number } = {}) {
   return <TiledSwirlLoader color={color} size={size} speed={speed} />
-}
-
-export function RainPuddleDemo() {
-  return <RainPuddle className="w-full" />
 }
 
 export function KeyholeScrollRevealDemo() {

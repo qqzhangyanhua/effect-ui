@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { afterEach, beforeAll, expect, test, vi } from "vitest"
-import { cleanup, fireEvent, render, screen } from "@testing-library/react"
+import { cleanup, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
@@ -9,10 +9,8 @@ import { ArcCards } from "./arc-cards"
 import { BlurGlideMenu } from "./blur-glide-menu"
 import { CursorEdgeGlowButton } from "./cursor-edge-glow-button"
 import { HoverGlideCards } from "./hover-glide-cards"
-import { PreviewHoverToolbar } from "./preview-hover-toolbar"
 import { ProgressRingCheck } from "./progress-ring-check"
 import { RollingLettersAnimation } from "./rolling-letters-animation"
-import { SectionNavigator } from "./section-navigator"
 import { SecurePurchaseButton } from "./secure-purchase-button"
 import { SpotlightIndicator } from "./spotlight-indicator"
 import { TiltImageCarousel } from "./tilt-image-carousel"
@@ -126,19 +124,3 @@ test("spotlight indicator selects favorites", async () => {
   expect(screen.getByRole("button", { name: "Favorites" })).toHaveAttribute("aria-pressed", "true")
 })
 
-test("section navigator chooses a section without a portal", async () => {
-  const onSectionClick = vi.fn()
-  render(<SectionNavigator sections={[{ id: "open", name: "开场" }, { id: "work", name: "过程" }]} onSectionClick={onSectionClick} />)
-  await user.click(screen.getByRole("button", { name: "Sections" }))
-  expect(document.querySelector("[data-slot=section-navigator]")).toHaveAttribute("data-open", "true")
-  expect(document.body.querySelector(":scope > ul")).not.toBeInTheDocument()
-  fireEvent.click(screen.getByRole("button", { name: "过程" }))
-  expect(onSectionClick).toHaveBeenCalledWith({ id: "work", name: "过程" })
-})
-
-test("preview toolbar opens from the toggle", async () => {
-  render(<PreviewHoverToolbar />)
-  await user.click(screen.getByRole("button", { name: "Show preview actions" }))
-  expect(document.querySelector("[data-open=true]")).toBeInTheDocument()
-  expect(screen.getByRole("button", { name: "View All" })).toBeEnabled()
-})

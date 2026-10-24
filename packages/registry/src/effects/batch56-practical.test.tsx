@@ -6,18 +6,14 @@ import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
 import { ApiRequestInspector } from "./api-request-inspector"
-import { CartItemTransition } from "./cart-item-transition"
 import { CopperplateHatch } from "./copperplate-hatch"
 import { CoreStrata } from "./core-strata"
-import { DataRefreshState } from "./data-refresh-state"
-import { DeploymentPipeline } from "./deployment-pipeline"
 import { EnvironmentSwitcher } from "./environment-switcher"
 import { EventPropagationMatrix } from "./event-propagation-matrix"
 import { FilmstripScrub } from "./filmstrip-scrub"
 import { KineticEmphasis } from "./kinetic-emphasis"
 import { LiquidFillHeadline } from "./liquid-fill-headline"
 import { LiveLogStream } from "./live-log-stream"
-import { ProductVariantSelector } from "./product-variant-selector"
 import { QueuePulseLanes } from "./queue-pulse-lanes"
 import { VelocitySkewFeed } from "./velocity-skew-feed"
 
@@ -134,21 +130,6 @@ test("速度剪切信息流可以滚动，胶片条可以用键盘换帧", async
   expect(slider).toHaveAttribute("aria-valuenow", "1")
 })
 
-test("部署流水线可以展开日志并重试", async () => {
-  const user = userEvent.setup({ pointerEventsCheck: 0 })
-  const retry = vi.fn()
-  render(
-    <DeploymentPipeline
-      stages={[{ id: "build", name: "Build", status: "failed", logs: ["boom"] }]}
-      onRetry={retry}
-    />,
-  )
-  await user.click(screen.getByRole("button", { name: "Logs" }))
-  expect(screen.getByText(/boom/)).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "Retry Build" }))
-  expect(retry).toHaveBeenCalledWith("build")
-})
-
 test("日志可以按关键字过滤", async () => {
   const user = userEvent.setup({ pointerEventsCheck: 0 })
   render(
@@ -182,14 +163,8 @@ test("环境切换在确认生产环境后更新", async () => {
   expect(screen.getByRole("button", { name: /Production/ })).toBeInTheDocument()
 })
 
-test("刷新、请求检查、规格和购物车行可以操作", async () => {
+test("请求检查可以查看交换", async () => {
   const user = userEvent.setup({ pointerEventsCheck: 0 })
-  const refresh = vi.fn()
-  render(<DataRefreshState state="stale" staleness="12m behind" onRefresh={refresh} />)
-  await user.click(screen.getByRole("button", { name: "Refresh" }))
-  expect(refresh).toHaveBeenCalled()
-  cleanup()
-
   render(
     <ApiRequestInspector
       state="success"
@@ -201,23 +176,4 @@ test("刷新、请求检查、规格和购物车行可以操作", async () => {
   expect(screen.queryByText("secret")).not.toBeInTheDocument()
   await user.click(screen.getByRole("button", { name: "Response body" }))
   expect(screen.getByText(/ok/)).toBeInTheDocument()
-  cleanup()
-
-  render(
-    <ProductVariantSelector
-      basePrice={40}
-      groups={[{ id: "size", label: "Size", values: [{ value: "s", label: "S" }, { value: "l", label: "L", priceAdjustment: 10 }] }]}
-    />,
-  )
-  expect(screen.getByText("$40.00")).toBeInTheDocument()
-  await user.click(screen.getByRole("radio", { name: "L" }))
-  expect(screen.getByText("$50.00")).toBeInTheDocument()
-  cleanup()
-
-  render(<CartItemTransition item={{ id: "1", productName: "Tote", unitPrice: 20, quantity: 1, total: 20 }} />)
-  await user.click(screen.getByRole("button", { name: "Increase Tote" }))
-  expect(screen.getByText("2")).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "Remove" }))
-  await user.click(screen.getByRole("button", { name: "Confirm remove" }))
-  expect(screen.getByRole("button", { name: "Undo" })).toBeInTheDocument()
 })

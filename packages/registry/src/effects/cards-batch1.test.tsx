@@ -15,13 +15,11 @@ import { CardBeamScanner } from "./card-beam-scanner"
 import { CircularGallery } from "./circular-gallery"
 import { ExpandableCard } from "./expandable-card"
 import { LenticularCard } from "./lenticular-card"
-import { LiquidGlass } from "./liquid-glass"
 import { MorphingDialog, MorphingDialogTrigger } from "./morphing-dialog"
 import { NeonGradientCard } from "./neon-gradient-card"
 import { PerspectiveCard } from "./perspective-card"
 import { ProjectUpdateCard } from "./project-update-card"
 import { ReceiptPrinter } from "./receipt-printer"
-import { ThreeDCarousel } from "./three-d-carousel"
 
 const shots = [
   { title: "A", src: "data:image/gif;base64,R0lGODlhAQABAAAAACw=" },
@@ -159,28 +157,9 @@ test("变形弹窗在减弱动效时仍能展开", () => {
   expect(trigger).toHaveAttribute("aria-expanded", "true")
 })
 
-test("液态玻璃回退时仍显示正文", () => {
-  render(<LiquidGlass>液态玻璃</LiquidGlass>)
-  expect(screen.getByText("液态玻璃")).toBeInTheDocument()
-})
 
-test("液态玻璃在减弱动效时仍显示正文", () => {
-  reduceMotion = true
-  render(<LiquidGlass>液态玻璃</LiquidGlass>)
-  expect(screen.getByText("液态玻璃")).toBeInTheDocument()
-})
 
-test("3D 轮播可以点到另一张卡片", () => {
-  render(<ThreeDCarousel items={shots} />)
-  fireEvent.click(screen.getByRole("button", { name: "B" }))
-  expect(screen.getByRole("button", { name: "B" })).toBeInTheDocument()
-})
 
-test("3D 轮播在减弱动效时标记 data-reduced", () => {
-  reduceMotion = true
-  const { container } = render(<ThreeDCarousel items={shots} />)
-  expect(container.querySelector("[data-reduced='true']")).not.toBeNull()
-})
 
 test("环形相册先挂上画布", () => {
   const { container } = render(<CircularGallery items={shots} />)

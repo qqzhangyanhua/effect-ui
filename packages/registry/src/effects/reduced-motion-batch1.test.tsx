@@ -14,8 +14,6 @@ import { PixelTransition } from "./pixel-transition"
 import { ProgressiveBlur } from "./progressive-blur"
 import { ScrollProgress } from "./scroll-progress"
 import { SlideIn } from "./slide-in"
-import { TabNavigation, TabNavigationLink } from "./tab-navigation"
-import { ThreeDCarousel } from "./three-d-carousel"
 
 let reduceMotion = false
 
@@ -49,7 +47,7 @@ test("减弱动效时淡入、滑入和模糊直接落在终点", () => {
   expect(blur.container.querySelector("[data-slot='blur-fade']")?.getAttribute("style") ?? "").not.toContain("blur(8px)")
 })
 
-test("减弱动效时霓虹按钮、公告和标签页不再过渡", () => {
+test("减弱动效时霓虹按钮和公告不再过渡", () => {
   reduceMotion = true
   render(<NeonButton>霓虹</NeonButton>)
   render(
@@ -57,28 +55,13 @@ test("减弱动效时霓虹按钮、公告和标签页不再过渡", () => {
       <span>新</span>
     </Announcement>,
   )
-  render(
-    <TabNavigation>
-      <TabNavigationLink href="#a">概览</TabNavigationLink>
-    </TabNavigation>,
-  )
   expect(document.querySelector("[data-slot='neon-button']")).toHaveClass("motion-reduce:transition-none")
   expect(document.querySelector("[data-slot='announcement']")).toHaveClass("transition-none")
-  expect(document.querySelector("[data-slot='tab-navigation-link']")).toHaveClass("transition-none")
 })
 
-test("减弱动效时 3D 轮播和像素过渡立刻换位", () => {
+test("减弱动效时像素过渡立刻换位", () => {
   reduceMotion = true
-  const ring = [
-    { title: "甲", src: "a" },
-    { title: "乙", src: "b" },
-  ]
-  const carousel = render(<ThreeDCarousel items={ring} />)
   const pixel = render(<PixelTransition from="/a.png" to="/b.png" />)
-  const stage = carousel.container.querySelector("[data-reduced='true']")
-  expect(stage).toHaveClass("transition-none")
-  expect(stage).not.toHaveClass("duration-500")
-  expect(stage?.getAttribute("style") ?? "").toContain("0ms")
   expect(pixel.container.querySelector("button")).toHaveAttribute("data-reduced", "true")
   const cell = pixel.container.querySelector(".bg-zinc-950")
   expect(cell).toHaveClass("transition-none")

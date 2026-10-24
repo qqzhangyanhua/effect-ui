@@ -8,15 +8,12 @@ import "@testing-library/jest-dom/vitest"
 import { AgentFlow } from "./agent-flow"
 import { AgentStep, AgentTimeline } from "./agent-timeline"
 import { BlueprintGrid } from "./blueprint-grid"
-import { CommentPin } from "./comment-pin"
 import { InertiaGallery } from "./inertia-gallery"
 import { LiquidMetaballs } from "./liquid-metaballs"
 import { MagicInput } from "./magic-input"
-import { MagicTab } from "./magic-tab"
-import { PresenceFacepile } from "./presence-facepile"
 import { ProgressFoldButton } from "./progress-fold-button"
 import { ProgressiveCardReveal } from "./progressive-card-reveal"
-import { SpinViewer } from "./spin-viewer"
+
 import { StackBadge } from "./stack-badge"
 import { StoreBadge } from "./store-badge"
 
@@ -75,18 +72,9 @@ vi.stubGlobal("matchMedia", (query: string) => ({
   onchange: null,
 }))
 
-const svgFrame = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect width="20" height="20" fill="currentColor"/></svg>`
-
-test("折叠按钮在加载时报告进度，标签可以点选", async () => {
-  const user = userEvent.setup({ pointerEventsCheck: 0 })
+test("折叠按钮在加载时报告进度", () => {
   render(<ProgressFoldButton status="loading" progress={40}>折叠</ProgressFoldButton>)
   expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "40")
-  cleanup()
-
-  const onValueChange = vi.fn()
-  render(<MagicTab items={[{ value: "a", label: "甲" }, { value: "b", label: "乙" }]} defaultValue="a" onValueChange={onValueChange} />)
-  await user.click(screen.getByRole("tab", { name: "乙" }))
-  expect(onValueChange).toHaveBeenCalledWith("b")
 })
 
 test("魔法输入可以提交，蓝图和液团会挂上", async () => {
@@ -107,12 +95,8 @@ test("魔法输入可以提交，蓝图和液团会挂上", async () => {
   expect(container.querySelector("[data-slot=liquid-metaballs] svg")).toBeTruthy()
 })
 
-test("旋转查看器接受内联 SVG，画廊可以用下一张", async () => {
+test("画廊可以用下一张", async () => {
   const user = userEvent.setup({ pointerEventsCheck: 0 })
-  render(<SpinViewer frames={[svgFrame, svgFrame]} label="旋转" loop={false} />)
-  expect(screen.getByRole("img", { name: "旋转" })).toBeInTheDocument()
-  cleanup()
-
   render(
     <InertiaGallery>
       <div>其一</div>
@@ -151,8 +135,7 @@ test("渐进卡片点击后切换，时间线可以展开", async () => {
   expect(screen.getByText("正文")).toBeInTheDocument()
 })
 
-test("流程图、评论钉、头像、徽章和商店锁可以操作", async () => {
-  const user = userEvent.setup({ pointerEventsCheck: 0 })
+test("流程图、徽章和商店锁可以操作", () => {
   render(
     <AgentFlow
       className="h-64"
@@ -162,24 +145,6 @@ test("流程图、评论钉、头像、徽章和商店锁可以操作", async ()
     />,
   )
   expect(screen.getByText("起点")).toBeInTheDocument()
-  cleanup()
-
-  render(<CommentPin x={20} y={20} comments={[{ id: "1", author: "林夏", body: "收一点" }]} />)
-  await user.click(screen.getByRole("button", { name: "Open comment thread" }))
-  expect(screen.getByText("收一点")).toBeInTheDocument()
-  cleanup()
-
-  render(
-    <PresenceFacepile
-      max={1}
-      users={[
-        { id: "a", name: "林夏" },
-        { id: "b", name: "周宁" },
-      ]}
-    />,
-  )
-  await user.click(screen.getByRole("button", { name: "1 more" }))
-  expect(screen.getAllByText("周宁").length).toBeGreaterThan(0)
   cleanup()
 
   render(<StackBadge items={["react"]} />)

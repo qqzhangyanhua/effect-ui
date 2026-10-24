@@ -11,7 +11,6 @@ vi.mock("next-themes", () => ({
   useTheme: () => ({ resolvedTheme: "light", setTheme: () => undefined }),
 }))
 
-import { AnimatedSidebar } from "./animated-sidebar"
 import { AnimatedTabs } from "./animated-tabs"
 import { AnimatedThemeToggler } from "./animated-theme-toggler"
 import { DynamicIsland } from "./dynamic-island"
@@ -22,8 +21,6 @@ import { FlowerMenu } from "./flower-menu"
 import { FlowingMenu } from "./flowing-menu"
 import { MarkingMenu } from "./marking-menu"
 import { SiblingFocusNav } from "./sibling-focus-nav"
-import { SpeedDial } from "./speed-dial"
-import { TocScrollspy } from "./toc-scrollspy"
 import { ToolbarDynamic } from "./toolbar-dynamic"
 import { ToolbarExpandable } from "./toolbar-expandable"
 
@@ -162,27 +159,7 @@ test("floating navbar keeps its links when motion is reduced", () => {
   expect(screen.getByText("Home")).toBeInTheDocument()
 })
 
-test("animated sidebar starts closed", () => {
-  render(
-    <AnimatedSidebar>
-      <p>侧栏内容</p>
-    </AnimatedSidebar>,
-  )
-  expect(screen.getByRole("button", { name: "展开侧栏" })).toBeInTheDocument()
-  expect(screen.queryByText("侧栏内容")).not.toBeInTheDocument()
-})
 
-test("animated sidebar opens without motion when reduced", () => {
-  reduceMotion = true
-  render(
-    <AnimatedSidebar>
-      <p>侧栏内容</p>
-    </AnimatedSidebar>,
-  )
-  fireEvent.click(screen.getByRole("button", { name: "展开侧栏" }))
-  expect(screen.getByText("侧栏内容")).toBeInTheDocument()
-  expect(screen.getByRole("button", { name: "收起侧栏" })).toBeInTheDocument()
-})
 
 test("dynamic island shows the idle clock", () => {
   render(
@@ -238,17 +215,7 @@ test("flowing menu keeps its rows when motion is reduced", () => {
   expect(screen.getByText("Archive")).toBeInTheDocument()
 })
 
-test("toc scrollspy lists the overview link", () => {
-  render(<TocScrollspy />)
-  expect(screen.getByRole("link", { name: "概览" })).toBeInTheDocument()
-  expect(screen.getByRole("navigation", { name: "页内目录" })).toBeInTheDocument()
-})
 
-test("toc scrollspy keeps the overview link when motion is reduced", () => {
-  reduceMotion = true
-  render(<TocScrollspy />)
-  expect(screen.getByRole("link", { name: "概览" })).toBeInTheDocument()
-})
 
 test("dynamic toolbar shows its icon buttons and the search trigger", () => {
   const { container } = render(<ToolbarDynamic items={toolbarItems} />)
@@ -279,21 +246,7 @@ test("expandable toolbar shows its panel when motion is reduced", () => {
   expect(slot(container, "toolbar-expandable")).toHaveAttribute("data-reduced", "true")
 })
 
-test("speed dial opens the up placement menu", () => {
-  const { container } = render(<SpeedDial actions={dialActions} />)
-  fireEvent.click(screen.getByRole("button", { name: "打开操作" }))
-  expect(screen.getByRole("button", { name: "关闭操作" })).toHaveAttribute("aria-expanded", "true")
-  expect(screen.getByRole("menuitem", { name: "编辑" })).toBeInTheDocument()
-  expect(slot(container, "speed-dial")).toHaveAttribute("data-placement", "up")
-  expect(slot(container, "speed-dial")).not.toHaveAttribute("data-reduced")
-})
 
-test("speed dial marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(<SpeedDial actions={dialActions} />)
-  expect(screen.getByRole("button", { name: "打开操作" })).toBeInTheDocument()
-  expect(slot(container, "speed-dial")).toHaveAttribute("data-reduced", "true")
-})
 
 test("flower menu places six petals around the trigger", () => {
   const { container } = render(<FlowerMenu count={6} items={petals} />)

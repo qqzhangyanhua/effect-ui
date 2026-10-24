@@ -1,6 +1,5 @@
 "use client"
 
-import { FlowField } from "../effects/flow-field"
 import { Halftone } from "../effects/halftone"
 import { HoldButton } from "../effects/hold-button"
 import { HolographicFoil } from "../effects/holographic-foil"
@@ -61,20 +60,6 @@ export function ParticleButtonDemo({ duration, count, scale }: { duration?: numb
 
 export function TearButtonDemo({ duration, delay }: { duration?: number; delay?: number } = {}) {
   return <TearButton duration={duration} delay={delay}>撕开</TearButton>
-}
-
-export function FlowFieldDemo({
-  density = 70,
-  speed = 1,
-  color,
-  size = 1,
-}: {
-  density?: number
-  speed?: number
-  color?: string
-  size?: number
-} = {}) {
-  return <FlowField className="h-48 w-full" density={density} speed={speed} color={color} size={size} />
 }
 
 export function HalftoneDemo({

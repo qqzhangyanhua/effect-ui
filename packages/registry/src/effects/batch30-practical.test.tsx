@@ -3,7 +3,7 @@
 import { MotionGlobalConfig } from "motion"
 import { createRef } from "react"
 import { expect, test, vi } from "vitest"
-import { act, fireEvent, render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
@@ -12,17 +12,9 @@ import { Announcement, AnnouncementTag } from "./announcement"
 import { Banner, BannerClose, BannerTitle } from "./banner"
 import { Choicebox, ChoiceboxIndicator, ChoiceboxItem, ChoiceboxItemTitle } from "./choicebox"
 import { CSSBox } from "./css-box"
-import {
-  DialogStack,
-  DialogStackBody,
-  DialogStackContent,
-  DialogStackNext,
-  DialogStackTitle,
-  DialogStackTrigger,
-} from "./dialog-stack"
 import { DragElements } from "./drag-elements"
-import { GooeySvgFilter } from "./gooey-svg-filter"
-import { Floating, FloatingElement } from "./parallax-floating"
+
+
 import { Pill, PillIndicator } from "./pill"
 import { PixelateSvgFilter } from "./pixelate-svg-filter"
 import { RelativeTime, RelativeTimeZone, RelativeTimeZoneLabel } from "./relative-time"
@@ -88,11 +80,7 @@ test("减弱动效时盒子、拖拽、滚动字和滤镜保持静止标记", ()
         <ScrollAndSwapText containerRef={containerRef}>港口亮了</ScrollAndSwapText>
       </div>
       <UnderlineToBackground>航线</UnderlineToBackground>
-      <Floating>
-        <FloatingElement>浮</FloatingElement>
-      </Floating>
       <PixelateSvgFilter id="pixel-test" size={8} />
-      <GooeySvgFilter id="goo-test" strength={6} />
       <AnimatedGradient colors={["#111", "#222"]} />
       <Pill>
         <PillIndicator pulse />
@@ -105,9 +93,7 @@ test("减弱动效时盒子、拖拽、滚动字和滤镜保持静止标记", ()
   expect(view.container.querySelector("[data-slot='css-box']")).toHaveAttribute("data-reduced", "true")
   expect(view.container.querySelector("[data-slot='drag-elements']")).toHaveAttribute("data-momentum", "false")
   expect(view.container.querySelector("[data-slot='underline-to-background']")).toHaveAttribute("data-reduced", "true")
-  expect(view.container.querySelector("[data-slot='parallax-floating']")).toHaveAttribute("data-reduced", "true")
   expect(view.container.querySelector("#pixel-test")).toBeTruthy()
-  expect(view.container.querySelector("#goo-test")).toBeTruthy()
   expect(view.container.querySelector("[data-slot='animated-gradient-with-svg'] svg")).toHaveStyle({ animationName: "none" })
   expect(view.container.querySelector(".animate-ping")).toBeNull()
   view.unmount()
@@ -147,42 +133,20 @@ test("公告、横幅、胶囊、时钟和行情能渲染", () => {
   expect(screen.getByText("$12.00")).toBeInTheDocument()
 })
 
-test("对话框下一步和卡片单选可以切换", async () => {
+test("卡片单选可以切换", () => {
   render(
-    <div>
-      <DialogStack>
-        <DialogStackTrigger>打开</DialogStackTrigger>
-        <DialogStackBody>
-          <DialogStackContent>
-            <DialogStackTitle>第一步</DialogStackTitle>
-            <DialogStackNext>下一步</DialogStackNext>
-          </DialogStackContent>
-          <DialogStackContent>
-            <DialogStackTitle>第二步</DialogStackTitle>
-          </DialogStackContent>
-        </DialogStackBody>
-      </DialogStack>
-      <Choicebox defaultValue="night">
-        <ChoiceboxItem id="night" value="night">
-          <ChoiceboxItemTitle>夜航</ChoiceboxItemTitle>
-          <ChoiceboxIndicator />
-        </ChoiceboxItem>
-        <ChoiceboxItem id="day" value="day">
-          <ChoiceboxItemTitle>日航</ChoiceboxItemTitle>
-          <ChoiceboxIndicator />
-        </ChoiceboxItem>
-      </Choicebox>
-    </div>,
+    <Choicebox defaultValue="night">
+      <ChoiceboxItem id="night" value="night">
+        <ChoiceboxItemTitle>夜航</ChoiceboxItemTitle>
+        <ChoiceboxIndicator />
+      </ChoiceboxItem>
+      <ChoiceboxItem id="day" value="day">
+        <ChoiceboxItemTitle>日航</ChoiceboxItemTitle>
+        <ChoiceboxIndicator />
+      </ChoiceboxItem>
+    </Choicebox>,
   )
 
-  await act(async () => {
-    fireEvent.click(screen.getByRole("button", { name: "打开" }))
-  })
-  expect(screen.getByText("第一步")).toBeInTheDocument()
-  await act(async () => {
-    fireEvent.click(screen.getByRole("button", { name: "下一步" }))
-  })
-  expect(screen.getByText("第二步")).toBeVisible()
   const day = screen.getByRole("radio", { name: "日航" })
   fireEvent.click(day)
   expect(day).toBeChecked()

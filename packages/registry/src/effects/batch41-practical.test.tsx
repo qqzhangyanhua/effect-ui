@@ -16,7 +16,6 @@ import { PacmanLoader } from "./pacman-loader"
 import { PhoneRingLoader } from "./phone-ring-loader"
 import { PixelBirdLoader } from "./pixel-bird-loader"
 import { RingedPlanetLoader } from "./ringed-planet-loader"
-import { ShapeMask } from "./shape-mask"
 import { SiteFooter } from "./site-footer"
 import { TickRange } from "./tick-range"
 
@@ -101,7 +100,6 @@ test("画廊随指针切换，交换按钮和筛选芯片保持状态", () => {
       <HoverGallery images={[{ src: pixel, alt: "潮汐" }, { src: pixel, alt: "峡谷" }]} progress />
       <IconSwap aria-label="开关" indeterminate={<span>中</span>} off={<span>关</span>} on={<span>开</span>} pressed="mixed" />
       <FilterChips options={[{ value: "ui", label: "界面" }, { value: "motion", label: "动效" }]} />
-      <ShapeMask as="figure" half="1" shape="star">星</ShapeMask>
       <CornerIndicator items={[{ label: "3", vertical: "bottom", horizontal: "start" }]}>
         <span>收件</span>
       </CornerIndicator>
@@ -119,7 +117,6 @@ test("画廊随指针切换，交换按钮和筛选芯片保持状态", () => {
   fireEvent.click(screen.getByRole("radio", { name: "界面" }))
   expect(container.querySelector("[data-slot=filter-chips]")).toHaveAttribute("data-selected", "true")
   expect(screen.getByRole("button", { name: "×" })).toBeVisible()
-  expect(container.querySelector("[data-shape=star]")).toHaveAttribute("data-half", "1")
   expect(container.querySelector("[data-vertical=bottom][data-horizontal=start]")).toHaveTextContent("3")
 })
 

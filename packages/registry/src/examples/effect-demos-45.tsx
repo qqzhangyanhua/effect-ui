@@ -7,11 +7,10 @@ import { CosmicButton } from "../effects/cosmic-button"
 import { ElapsedTimer } from "../effects/elapsed-timer"
 import { FoldedCard } from "../effects/folded-card"
 import { GlowTrackButton } from "../effects/glow-track-button"
-import { HaloBadge } from "../effects/halo-badge"
 import { HaloSwitch } from "../effects/halo-switch"
 import { LightBoard } from "../effects/lightboard"
 import { NeumorphButton } from "../effects/neumorph-button"
-import { SecurityCheckpoint } from "../effects/security-checkpoint"
+
 import { ShiftCard } from "../effects/shift-card"
 import { SidePanel } from "../effects/side-panel"
 import { SpeechBubble } from "../effects/speech-bubble"
@@ -53,24 +52,6 @@ export function GlowTrackButtonDemo({
   return <GlowTrackButton backgroundColor="#d1d1d1" glowColor={glowColor} href={href} text={text} textColor="#1c1917" />
 }
 
-export function HaloBadgeDemo({
-  children = "在线",
-  layout = true,
-  variant = "default",
-}: { children?: string; layout?: boolean; variant?: "default" | "secondary" | "destructive" | "outline" } = {}) {
-  return (
-    <div className="flex flex-wrap items-center gap-3">
-      <HaloBadge layout={layout} live variant={variant}>
-        {children}
-      </HaloBadge>
-      <HaloBadge tabularNums variant="secondary">
-        8
-      </HaloBadge>
-      <HaloBadge variant="destructive">注意</HaloBadge>
-    </div>
-  )
-}
-
 export function HaloSwitchDemo() {
   const [on, setOn] = useState(true)
   return <HaloSwitch aria-label="夜航模式" checked={on} onCheckedChange={setOn} />
@@ -104,15 +85,6 @@ export function SquiggleArrowDemo({
     </div>
   )
 }
-
-export function SecurityCheckpointDemo({
-  title = "检查点",
-  subtitle = "安全核对",
-  message = "为了让浏览更顺畅，我们正在确认这个浏览器。",
-}: { title?: string; subtitle?: string; message?: string } = {}) {
-  return <SecurityCheckpoint message={message} subtitle={subtitle} title={title} />
-}
-
 export function SpeechBubbleDemo() {
   return <SpeechBubble>今晚的排班已经对齐。</SpeechBubble>
 }

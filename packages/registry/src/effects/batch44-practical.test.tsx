@@ -8,7 +8,6 @@ import { CaptionImageCard } from "./caption-image-card"
 import { DottedGlowBackground } from "./dotted-glow-background"
 import { MultiStepLoader } from "./multi-step-loader"
 import { NeoStarShapes } from "./neo-star-shapes"
-import { StarRingOrbit } from "./star-ring-orbit"
 import { StatefulButton } from "./stateful-button"
 import { StickyBanner } from "./sticky-banner"
 import { TweetCard } from "./tweet-card"
@@ -56,14 +55,11 @@ vi.stubGlobal("matchMedia", (query: string) => ({
 
 const scene = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
 
-test("减弱动效时点阵、星环和按钮保持可见", () => {
+test("减弱动效时点阵和按钮保持可见", () => {
   reduceMotion = true
   const { container } = render(
     <div>
       <DottedGlowBackground />
-      <StarRingOrbit color="#05e17a" count={4} size={24}>
-        环心
-      </StarRingOrbit>
       <StickyBanner>公告还在</StickyBanner>
       <StatefulButton successText="完成">保存</StatefulButton>
       <TweetCard content="正文" handle="linxia" name="林夏" verified />
@@ -74,15 +70,13 @@ test("减弱动效时点阵、星环和按钮保持可见", () => {
   expect(container.querySelector("[data-slot=dotted-glow-background]")).toHaveAttribute("data-reduced", "true")
   expect(container.querySelector("[data-slot=dotted-glow-background] canvas")).toBeInTheDocument()
   expect(container.querySelector("[data-slot=dotted-glow-background]")).toHaveAttribute("data-fallback", "dots")
-  expect(container.querySelector("[data-slot=star-ring-orbit]")).toHaveAttribute("data-motion", "off")
-  expect(container.querySelectorAll("[data-slot=neo-star-shapes]")).toHaveLength(5)
+  expect(container.querySelectorAll("[data-slot=neo-star-shapes]")).toHaveLength(1)
   expect(screen.getByRole("region", { name: "公告" })).toHaveAttribute("data-reduced", "true")
   expect(screen.getByRole("button", { name: "保存" })).toHaveAttribute("data-reduced", "true")
   expect(screen.getByText("@linxia")).toBeInTheDocument()
   expect(screen.getByRole("img", { name: "已认证" })).toBeInTheDocument()
   expect(container.querySelector("[data-slot=neo-star-shapes][data-shape='19']")).toBeInTheDocument()
   expect(screen.getByRole("img", { name: "说明" })).toBeInTheDocument()
-  expect(screen.getByText("环心")).toBeInTheDocument()
 })
 
 test("公告可以滑出，异步按钮会报成功或失败", async () => {

@@ -6,22 +6,16 @@ import { AchievementToast } from "../effects/achievement-toast"
 import { Callout } from "../effects/callout"
 import { CssPatternBackground } from "../effects/css-pattern-background"
 import { DownloadSizeButton } from "../effects/download-size-button"
-import { ExpandingIconTabs } from "../effects/expanding-icon-tabs"
 import { EyeBlinkLoader } from "../effects/eye-blink-loader"
 import { GridTiltCard } from "../effects/grid-tilt-card"
 import { HeartLikeButton } from "../effects/heart-like-button"
 import { HeartbeatButton } from "../effects/heartbeat-button"
-import { ImageFade } from "../effects/image-fade"
+
 import { LayeredGlassCard } from "../effects/layered-glass-card"
 import { NeubrutalismButton } from "../effects/neubrutalism-button"
 import { ProgressCircle } from "../effects/progress-circle"
 import { SlideToggle } from "../effects/slide-toggle"
 import { ThreeDButton } from "../effects/3d-button"
-
-function scene() {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="#312e81"/><rect y="210" width="100%" height="150" fill="#166534"/><circle cx="480" cy="80" r="36" fill="#fde68a"/></svg>`
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
-}
 
 export function GridTiltCardDemo({
   heading = "纯 CSS 倾斜",
@@ -105,19 +99,6 @@ export function ThreeDButtonDemo() {
     </div>
   )
 }
-
-export function ImageFadeDemo({
-  alt = "渐隐的风景",
-  direction = "up",
-  fadeSize = 20,
-}: { alt?: string; direction?: "left" | "right" | "up" | "down"; fadeSize?: number } = {}) {
-  return (
-    <div className="mx-auto max-w-xl px-6 py-6">
-      <ImageFade alt={alt} direction={direction} fadeSize={fadeSize} src={scene()} />
-    </div>
-  )
-}
-
 export function ProgressCircleDemo() {
   return (
     <div className="flex justify-center px-6 py-8">
@@ -132,22 +113,6 @@ export function CalloutDemo() {
       <Callout icon={<span aria-hidden>!</span>} title="航线已核对" variant="success">
         北窗到灯塔这一段可以走。
       </Callout>
-    </div>
-  )
-}
-
-export function ExpandingIconTabsDemo() {
-  const tabs = [
-    { value: "general", label: "总览", icon: <span>✧</span> },
-    { value: "about", label: "关于", icon: <span>i</span> },
-    { value: "privacy", label: "隐私", icon: <span>◉</span> },
-  ]
-  const [value, setValue] = useState("general")
-  const current = tabs.find((tab) => tab.value === value)
-  return (
-    <div className="px-6 py-6">
-      <ExpandingIconTabs onValueChange={setValue} tabs={tabs} value={value} />
-      <p className="mt-3 text-sm text-muted-foreground">当前：{current?.label}</p>
     </div>
   )
 }

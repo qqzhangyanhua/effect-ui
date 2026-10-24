@@ -17,7 +17,6 @@ import { MorphingShapesLoader } from "./morphing-shapes-loader"
 import { NeonGlowLoader } from "./neon-glow-loader"
 import { RotatingCompleteButton } from "./rotating-complete-button"
 import { StitchesButton } from "./stitches-button"
-import { TabNavigation, TabNavigationLink } from "./tab-navigation"
 import { Trace, TraceCollapsible, TraceCollapsibleContent, TraceCollapsibleTrigger, TraceLine, TraceTitle } from "./trace"
 
 let reduceMotion = false
@@ -106,14 +105,6 @@ test("完成按钮、排行和折叠步骤可以操作", () => {
           <TraceCollapsibleContent>先看北窗</TraceCollapsibleContent>
         </TraceCollapsible>
       </Trace>
-      <TabNavigation>
-        <TabNavigationLink active href="#a">
-          夜航
-        </TabNavigationLink>
-        <TabNavigationLink disabled href="#b">
-          甲板
-        </TabNavigationLink>
-      </TabNavigation>
     </div>,
   )
   fireEvent.click(screen.getByRole("button", { name: "标为完成" }))
@@ -121,8 +112,6 @@ test("完成按钮、排行和折叠步骤可以操作", () => {
   expect(screen.getByRole("button", { name: "灯塔" })).toBeInTheDocument()
   fireEvent.click(screen.getByRole("button", { name: /核对航线/ }))
   expect(screen.getByText("先看北窗")).toBeInTheDocument()
-  expect(screen.getByRole("link", { name: "夜航" })).toHaveAttribute("aria-current", "page")
-  expect(screen.getByRole("link", { name: "甲板" })).toHaveAttribute("aria-disabled", "true")
 })
 
 test("附件、气泡、分隔和缝线按钮都在", () => {

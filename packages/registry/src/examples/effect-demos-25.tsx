@@ -7,15 +7,13 @@ import { BoidsEcosystem } from "../effects/boids-ecosystem"
 import { CopyButton } from "../effects/copy-button"
 import { DistortedGlass } from "../effects/distorted-glass"
 import { FeatureVoting } from "../effects/feature-voting"
-import { FibonacciLines } from "../effects/fibonacci-lines"
+
 import { FloatingPanel } from "../effects/floating-panel"
 import { FlowerMenu } from "../effects/flower-menu"
-import { MergingBubbles } from "../effects/merging-bubbles"
 import { PopoverForm } from "../effects/popover-form"
 import { ShootingStars } from "../effects/shooting-stars"
 import { SiblingFocusNav } from "../effects/sibling-focus-nav"
-import { SpeedDial } from "../effects/speed-dial"
-import { SvgBands } from "../effects/svg-bands"
+
 import { TextExplode } from "../effects/text-explode"
 
 const actions = [
@@ -50,15 +48,6 @@ export function ShootingStarsDemo({
 } = {}) {
   return <ShootingStars className="w-full" frequency={frequency} angle={angle} color={color} />
 }
-
-export function FibonacciLinesDemo() {
-  return (
-    <FibonacciLines className="w-full">
-      <p className="text-sm">斐波那契线框</p>
-    </FibonacciLines>
-  )
-}
-
 export function ApertureRevealDemo() {
   return (
     <ApertureReveal viewportHeight={420} length={2.2} className="w-full rounded-xl">
@@ -88,28 +77,6 @@ export function DistortedGlassDemo() {
       <DistortedGlass>
         <p className="relative p-6 text-lg font-medium text-slate-950">波纹玻璃</p>
       </DistortedGlass>
-    </div>
-  )
-}
-
-export function MergingBubblesDemo() {
-  return <MergingBubbles className="w-full" count={7} />
-}
-
-export function SvgBandsDemo() {
-  return (
-    <SvgBands className="w-full">
-      <p className="p-8 text-2xl text-white">流动色带</p>
-    </SvgBands>
-  )
-}
-
-export function SpeedDialDemo() {
-  return (
-    <div className="flex h-64 w-full items-end justify-center gap-24 pb-4">
-      <SpeedDial placement="up" actions={actions} />
-      <SpeedDial placement="left" actions={actions} />
-      <SpeedDial placement="arc" actions={actions} />
     </div>
   )
 }

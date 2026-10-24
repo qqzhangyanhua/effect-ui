@@ -143,23 +143,6 @@ export const batch35Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "text-states",
-    title: "Text States",
-    description: `${spectrum} ${file("components/spectrumui/text-states.tsx")} 状态文字向上退出、从下方进入。text、duration、translateY、blur 可配。嵌入的交换来自 transitions.dev（Jakub Antalík）。减弱动效时直接换成新文字。`,
-    category: "text",
-    source: "Spectrum UI",
-    type: "registry:ui",
-    file: "effects/text-states.tsx",
-    target: "components/ui/text-states.tsx",
-    props: [
-      { name: "text", type: "string", description: "当前文字。变化时播放交换。" },
-      { name: "duration", type: "number", defaultValue: "150", description: "每一相的毫秒数。", control: { kind: "range", value: 150, min: 60, max: 300, step: 10 } },
-      { name: "translateY", type: "number", defaultValue: "4", description: "进出位移，像素。", control: { kind: "range", value: 4, min: 0, max: 24, step: 1 } },
-      { name: "blur", type: "number", defaultValue: "2", description: "进出模糊，像素。", control: { kind: "range", value: 2, min: 0, max: 12, step: 1 } },
-      ...ui,
-    ],
-  },
-  {
     name: "notification-bell",
     title: "Notification Bell",
     description: `${spectrum} ${file("app/registry/notification-bell/notification-bell.tsx")} 未读数增加时铃铛摆动。count、max、dot、ringOnMount 可配。减弱动效时不摆动、不闪点。`,

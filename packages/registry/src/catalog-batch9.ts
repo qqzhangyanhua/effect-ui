@@ -183,40 +183,6 @@ export const batch9Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "text-morph",
-    title: "Text Morph",
-    description: "两段文字按共同字母平滑形变。移植 Motion Primitives（MIT）交互。",
-    category: "text",
-    source: "Motion Primitives",
-    type: "registry:ui",
-    file: "effects/text-morph.tsx",
-    target: "components/ui/text-morph.tsx",
-    props: [
-      { name: "texts", type: "string[]", description: "轮换的文本。" },
-      {
-        name: "interval",
-        type: "number",
-        defaultValue: "1800",
-        description: "间隔毫秒。不传则 1800。",
-        control: { kind: "range", value: 1800, min: 600, max: 3600, step: 100 },
-      },
-      ...textControls({ fontSize: 48, fontWeight: 600, align: "center" }),
-      ...ui,
-    ],
-    presets: [
-      {
-        name: "text-morph-1",
-        label: "标题",
-        values: { interval: 1800, fontSize: 48, fontWeight: 700, align: "center" },
-      },
-      {
-        name: "text-morph-2",
-        label: "慢变",
-        values: { interval: 2800, fontSize: 32, fontWeight: 500, align: "left" },
-      },
-    ],
-  },
-  {
     name: "orbiting-items-3d",
     title: "Orbiting Items 3D",
     description: "图标在倾斜 3D 轨道上环绕，前后有遮挡。移植 Animata（MIT）交互。",

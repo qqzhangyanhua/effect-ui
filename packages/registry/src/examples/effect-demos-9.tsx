@@ -8,7 +8,6 @@ import { CoverflowCarousel } from "../effects/coverflow-carousel"
 import { FamilyDrawer } from "../effects/family-drawer"
 import { FolderReveal } from "../effects/folder-reveal"
 import { OrbitingItems3D } from "../effects/orbiting-items-3d"
-import { TextMorph } from "../effects/text-morph"
 import { AgencyTemplate } from "../templates/agency/page"
 
 export function CoverflowCarouselDemo({ angle, scale, speed }: { angle?: number; scale?: number; speed?: number } = {}) {
@@ -29,32 +28,6 @@ export function BoxCarouselDemo({ speed, size }: { speed?: number; size?: number
 
 export function FamilyDrawerDemo({ intensity }: { intensity?: number } = {}) {
   return <FamilyDrawer className="max-w-sm" intensity={intensity} />
-}
-
-export function TextMorphDemo({
-  interval = 1800,
-  fontSize,
-  fontWeight,
-  letterSpacing,
-  align,
-}: {
-  interval?: number
-  fontSize?: number
-  fontWeight?: number
-  letterSpacing?: number
-  align?: "left" | "center" | "right"
-} = {}) {
-  return (
-    <TextMorph
-      texts={["Design", "Delight"]}
-      className="font-display text-5xl"
-      interval={interval}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      letterSpacing={letterSpacing}
-      align={align}
-    />
-  )
 }
 
 export function OrbitingItems3DDemo({ speed, size }: { speed?: number; size?: number } = {}) {

@@ -4,9 +4,8 @@ import { useState } from "react"
 
 import { BlogCard } from "../effects/blog-card"
 import { BlurUnveilCard } from "../effects/blur-unveil-card"
-import { CollapsibleSideMenu } from "../effects/collapsible-side-menu"
 import { ContactForm } from "../effects/contact-form"
-import { DetailsList } from "../effects/details-list"
+
 import { GlitchSliceButton } from "../effects/glitch-slice-button"
 import { GlowWanderCard } from "../effects/glow-wander-card"
 import { NeonHoldCard } from "../effects/neon-hold-card"
@@ -22,13 +21,6 @@ function swatch(color: string, label: string) {
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='640' height='400'><rect width='100%' height='100%' fill='${color}'/><text x='50%' y='54%' fill='white' font-size='42' font-family='sans-serif' text-anchor='middle'>${label}</text></svg>`
   return `data:image/svg+xml,${encodeURIComponent(svg)}`
 }
-
-const rows = [
-  { term: "称呼", detail: "先生" },
-  { term: "姓名", detail: "林昭" },
-  { term: "角色", detail: "吉他手" },
-  { term: "简介", detail: "下午在排练室把和弦又改了一遍。" },
-]
 
 const fields = [
   { name: "name", label: "姓名", kind: "text" as const, placeholder: "怎么称呼", required: true },
@@ -101,18 +93,6 @@ export function StarFavoriteToggleDemo() {
     </div>
   )
 }
-
-export function DetailsListDemo() {
-  return (
-    <div className="grid gap-8 px-6 py-8">
-      <DetailsList items={rows} />
-      <DetailsList items={rows} variant="striped" />
-      <DetailsList items={rows} variant="bordered" />
-      <DetailsList items={rows} variant="bordered-striped" />
-    </div>
-  )
-}
-
 export function BlogCardDemo({
   variant = "image-top",
   title = "把家具摆得亮一点",
@@ -237,38 +217,6 @@ export function StatTrendCardsDemo() {
         items={[
           { label: "利润", value: "¥404.32", from: "¥240.94", delta: "67.81%", direction: "up" },
           { label: "利润", value: "¥240.94", from: "¥404.32", delta: "67.81%", direction: "down" },
-        ]}
-      />
-    </div>
-  )
-}
-
-export function CollapsibleSideMenuDemo() {
-  return (
-    <div className="px-6 py-8">
-      <CollapsibleSideMenu
-        items={[
-          { id: "general", label: "总览", href: "#general", current: true },
-          {
-            id: "teams",
-            label: "团队",
-            defaultOpen: true,
-            items: [
-              { id: "banned", label: "封禁用户", href: "#banned", badge: 3 },
-              { id: "calendar", label: "日历", href: "#calendar" },
-            ],
-          },
-          { id: "billing", label: "账单", href: "#billing" },
-          { id: "invoices", label: "发票", href: "#invoices", badge: 12 },
-          {
-            id: "account",
-            label: "账户",
-            items: [
-              { id: "details", label: "资料", href: "#details" },
-              { id: "security", label: "安全", href: "#security" },
-              { id: "logout", label: "退出", href: "#logout" },
-            ],
-          },
         ]}
       />
     </div>

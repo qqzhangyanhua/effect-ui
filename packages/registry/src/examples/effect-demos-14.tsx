@@ -12,7 +12,6 @@ import { LinkPreview } from "../effects/link-preview"
 import { PlaceholderVanishInput } from "../effects/placeholder-vanish-input"
 import { ShuffleGridHero } from "../effects/shuffle-grid-hero"
 import { SortableList } from "../effects/sortable-list"
-import { TocScrollspy } from "../effects/toc-scrollspy"
 import { VortexBackground } from "../effects/vortex-background"
 import { WorldMapArcs } from "../effects/world-map-arcs"
 
@@ -98,10 +97,6 @@ export function AvatarGroupTooltipDemo({ max, scale, intensity, size, speed }: {
 
 export function ShuffleGridHeroDemo({ interval = 1800 }: { interval?: number } = {}) {
   return <ShuffleGridHero className="w-full" interval={interval} />
-}
-
-export function TocScrollspyDemo({ duration, gap }: { duration?: number; gap?: number } = {}) {
-  return <TocScrollspy className="w-full" duration={duration} gap={gap} />
 }
 
 export function SortableListDemo({ gap }: { gap?: number } = {}) {

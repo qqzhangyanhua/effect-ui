@@ -12,13 +12,12 @@ import { BoidsEcosystem } from "./boids-ecosystem"
 import { CopyButton } from "./copy-button"
 import { DistortedGlass } from "./distorted-glass"
 import { FeatureVoting } from "./feature-voting"
-import { FibonacciLines } from "./fibonacci-lines"
+
 import { FloatingPanel } from "./floating-panel"
 import { FlowerMenu } from "./flower-menu"
 import { PopoverForm } from "./popover-form"
 import { ShootingStars } from "./shooting-stars"
 import { SiblingFocusNav } from "./sibling-focus-nav"
-import { SpeedDial } from "./speed-dial"
 import { TextExplode } from "./text-explode"
 
 let reduceMotion = false
@@ -76,18 +75,6 @@ test("减弱动效时鸟群和流星停在画布上", () => {
   cleanup()
   reduceMotion = false
 })
-
-test("减弱动效时斐波那契线同时出现", () => {
-  reduceMotion = true
-  const { container } = render(<FibonacciLines>框</FibonacciLines>)
-  const lines = container.querySelectorAll("line")
-  expect(lines.length).toBeGreaterThan(5)
-  expect(lines[0]).toHaveAttribute("stroke-dashoffset", "0")
-  expect(container.querySelector("[data-slot=fibonacci-lines]")).toHaveAttribute("data-reduced", "true")
-  cleanup()
-  reduceMotion = false
-})
-
 test("减弱动效时光圈释放裁切", () => {
   reduceMotion = true
   render(
@@ -131,15 +118,6 @@ test("玻璃滤镜标识不含冒号", () => {
   cleanup()
 })
 
-test("速度旋钮按 Esc 关闭", async () => {
-  render(<SpeedDial actions={[{ label: "编辑" }, { label: "分享" }]} />)
-  fireEvent.click(screen.getByRole("button", { name: "打开操作" }))
-  expect(screen.getByRole("button", { name: "关闭操作" })).toHaveAttribute("aria-expanded", "true")
-  expect(screen.getByText("编辑")).toBeInTheDocument()
-  fireEvent.keyDown(document, { key: "Escape" })
-  await waitFor(() => expect(screen.getByRole("button", { name: "打开操作" })).toHaveAttribute("aria-expanded", "false"))
-  cleanup()
-})
 
 test("花朵菜单使用普通锚点", () => {
   const { container } = render(<FlowerMenu items={[{ href: "/north", label: "北窗" }]} count={3} />)

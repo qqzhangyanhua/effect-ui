@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react"
 import { BellIcon } from "lucide-react"
-import { motion, useMotionValueEvent, useSpring } from "motion/react"
+import { useMotionValueEvent, useSpring } from "motion/react"
 
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion"
 import { AnimatedGradient } from "../effects/animated-gradient-with-svg"
@@ -10,21 +10,9 @@ import { Announcement, AnnouncementTag, AnnouncementTitle } from "../effects/ann
 import { Banner, BannerAction, BannerClose, BannerIcon, BannerTitle } from "../effects/banner"
 import { Choicebox, ChoiceboxIndicator, ChoiceboxItem, ChoiceboxItemDescription, ChoiceboxItemHeader, ChoiceboxItemSubtitle, ChoiceboxItemTitle } from "../effects/choicebox"
 import { CSSBox, type CSSBoxRef } from "../effects/css-box"
-import {
-  DialogStack,
-  DialogStackBody,
-  DialogStackContent,
-  DialogStackFooter,
-  DialogStackHeader,
-  DialogStackNext,
-  DialogStackOverlay,
-  DialogStackPrevious,
-  DialogStackTitle,
-  DialogStackTrigger,
-} from "../effects/dialog-stack"
 import { DragElements } from "../effects/drag-elements"
-import { GooeySvgFilter } from "../effects/gooey-svg-filter"
-import { Floating, FloatingElement } from "../effects/parallax-floating"
+
+
 import { Pill, PillDelta, PillIndicator, PillStatus } from "../effects/pill"
 import { PixelateSvgFilter } from "../effects/pixelate-svg-filter"
 import { RelativeTime, RelativeTimeZone, RelativeTimeZoneDate, RelativeTimeZoneDisplay, RelativeTimeZoneLabel } from "../effects/relative-time"
@@ -105,26 +93,6 @@ export function UnderlineToBackgroundDemo({
     </UnderlineToBackground>
   )
 }
-
-export function ParallaxFloatingDemo({
-  sensitivity = 1,
-  easingFactor = 0.05,
-  depth = 0.4,
-}: { sensitivity?: number; easingFactor?: number; depth?: number } = {}) {
-  return (
-    <div className="relative h-48 w-full overflow-hidden rounded-2xl border">
-      <Floating easingFactor={easingFactor} sensitivity={sensitivity}>
-        <FloatingElement className="top-10 left-10" depth={depth}>
-          <span className="rounded-md bg-indigo-500 px-3 py-1 text-sm text-white">近处</span>
-        </FloatingElement>
-        <FloatingElement className="top-20 left-48" depth={1.6}>
-          <span className="rounded-md bg-amber-300 px-3 py-1 text-sm">远处</span>
-        </FloatingElement>
-      </Floating>
-    </div>
-  )
-}
-
 export function PixelateSvgFilterDemo() {
   const reduced = usePrefersReducedMotion()
   const size = useSpring(6, { stiffness: 180, damping: 22 })
@@ -145,24 +113,6 @@ export function PixelateSvgFilterDemo() {
     </div>
   )
 }
-
-export function GooeySvgFilterDemo() {
-  const reduced = usePrefersReducedMotion()
-  return (
-    <div className="relative h-40 w-full overflow-hidden rounded-2xl border">
-      <GooeySvgFilter id="gooey-demo" strength={14} />
-      <div className="absolute inset-0 flex items-center justify-center" style={{ filter: "url(#gooey-demo)" }}>
-        <motion.span
-          animate={reduced ? undefined : { x: [-36, 36, -36] }}
-          className="size-16 rounded-full bg-indigo-500"
-          transition={reduced ? undefined : { duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <span className="absolute size-16 rounded-full bg-indigo-300" />
-      </div>
-    </div>
-  )
-}
-
 export function AnimatedGradientDemo({
   colors = ["#312e81", "#6366f1", "#f59e0b"],
   speed = 8,
@@ -244,33 +194,6 @@ export function TickerDemo({
       <TickerPrice price={price} />
       <TickerPriceChange change={2.35} isPercent={isPercent} />
     </Ticker>
-  )
-}
-
-export function DialogStackDemo() {
-  return (
-    <DialogStack clickable>
-      <DialogStackTrigger>打开航线</DialogStackTrigger>
-      <DialogStackOverlay />
-      <DialogStackBody>
-        <DialogStackContent>
-          <DialogStackHeader>
-            <DialogStackTitle>选择港口</DialogStackTitle>
-          </DialogStackHeader>
-          <DialogStackFooter>
-            <DialogStackNext className="bg-primary text-primary-foreground h-9 px-3">下一步</DialogStackNext>
-          </DialogStackFooter>
-        </DialogStackContent>
-        <DialogStackContent>
-          <DialogStackHeader>
-            <DialogStackTitle>确认出发</DialogStackTitle>
-          </DialogStackHeader>
-          <DialogStackFooter>
-            <DialogStackPrevious className="h-9 px-3">返回</DialogStackPrevious>
-          </DialogStackFooter>
-        </DialogStackContent>
-      </DialogStackBody>
-    </DialogStack>
   )
 }
 

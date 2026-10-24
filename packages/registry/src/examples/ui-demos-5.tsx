@@ -14,12 +14,8 @@ import {
   ComboboxList,
 } from "../ui/combobox"
 import { CurrencyInput } from "../ui/currency-input"
-import { DashboardBlocks } from "../ui/dashboard-blocks"
 import { DatePicker } from "../ui/date-picker"
-import { DirectionProvider } from "../ui/direction"
-import { EcommerceBlocks } from "../ui/ecommerce-blocks"
 import { EmojiPicker } from "../ui/emoji-picker"
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "../ui/empty"
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "../ui/field"
 import { FloatingLabelInput } from "../ui/floating-label-input"
 import { InfiniteScroll } from "../ui/infinite-scroll"
@@ -34,7 +30,6 @@ import { NotificationCenter } from "../ui/notification-center"
 import { PasswordStrength } from "../ui/password-strength"
 import { PhoneInput } from "../ui/phone-input"
 import { QuantityStepper } from "../ui/quantity-stepper"
-import { TypographyH2, TypographyLead, TypographyP } from "../ui/typography"
 import { VideoPlayer } from "../ui/video-player"
 import { VirtualList } from "../ui/virtual-list"
 
@@ -77,20 +72,6 @@ export function KbdDemo() {
       <Kbd>⌘</Kbd>
       <Kbd>K</Kbd>
     </KbdGroup>
-  )
-}
-
-export function EmptyDemo() {
-  return (
-    <Empty className="w-72 border">
-      <EmptyHeader>
-        <EmptyTitle>还没有组件</EmptyTitle>
-        <EmptyDescription>从 registry 安装一个试试看。</EmptyDescription>
-      </EmptyHeader>
-      <EmptyContent>
-        <Button size="sm">浏览目录</Button>
-      </EmptyContent>
-    </Empty>
   )
 }
 
@@ -137,24 +118,6 @@ export function ComboboxDemo() {
 export function DatePickerDemo() {
   const [date, setDate] = useState<Date>()
   return <DatePicker value={date} onValueChange={setDate} />
-}
-
-export function TypographyDemo() {
-  return (
-    <div className="max-w-md text-left">
-      <TypographyH2>字体排印</TypographyH2>
-      <TypographyLead>标题、导语和正文。</TypographyLead>
-      <TypographyP>Typography 按 shadcn 文档模式组合，没有独立官方 registry JSON。</TypographyP>
-    </div>
-  )
-}
-
-export function DirectionDemo() {
-  return (
-    <DirectionProvider dir="rtl">
-      <p className="w-64 text-sm">这段文字从右到左排列，用来演示 DirectionProvider。</p>
-    </DirectionProvider>
-  )
 }
 
 export function VirtualListDemo() {
@@ -247,12 +210,4 @@ export function VideoPlayerDemo() {
 
 export function NotificationCenterDemo() {
   return <NotificationCenter />
-}
-
-export function DashboardBlocksDemo({ variant }: { variant?: "analytics" | "sales" | "ops" } = {}) {
-  return <DashboardBlocks className="w-full" variant={variant} />
-}
-
-export function EcommerceBlocksDemo({ view }: { view?: "store" | "gallery" | "checkout" } = {}) {
-  return <EcommerceBlocks className="w-full" view={view} />
 }

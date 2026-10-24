@@ -12,16 +12,15 @@ import { DepthParallaxWords } from "./depth-parallax-words"
 import { ExpandableNavbar } from "./expandable-navbar"
 import { GitHubStarsAnimation } from "./github-stars-animation"
 import { HoverExpand } from "./hover-expand"
-import { InlineTestimonials } from "./inline-testimonials"
+
 import { MorphIcon } from "./morph-icon"
-import { Orb } from "./orb"
-import { PerspectiveText3D } from "./perspective-text-3d"
+
 import { PrismSweepTransition } from "./prism-sweep-transition"
-import { ReviewsCarousel } from "./reviews-carousel"
+
 import { ScrollImageReveal } from "./scroll-image-reveal"
 import { SocialSelector } from "./social-selector"
 import { SplashMask } from "./splash-mask"
-import { SvgClipMask } from "./svg-clip-mask"
+
 
 let reduceMotion = false
 
@@ -77,13 +76,8 @@ function slot(container: HTMLElement, name: string) {
   return container.querySelector(`[data-slot="${name}"]`)
 }
 
-test("减弱动效时透视字、棱镜和球体停在标记上", async () => {
+test("减弱动效时棱镜停在标记上", () => {
   reduceMotion = true
-  const plane = render(<PerspectiveText3D text="北窗" />)
-  expect(slot(plane.container, "perspective-text-3d")).toHaveAttribute("data-reduced", "true")
-  expect(plane.container).toHaveTextContent("北窗")
-  cleanup()
-
   const sweep = render(
     <PrismSweepTransition transitionKey="a">
       <span>甲</span>
@@ -92,13 +86,6 @@ test("减弱动效时透视字、棱镜和球体停在标记上", async () => {
   expect(slot(sweep.container, "prism-sweep-transition")).toHaveAttribute("data-reduced", "true")
   expect(slot(sweep.container, "prism-sweep-transition")).toHaveAttribute("data-sweeping", "false")
   expect(sweep.container).toHaveTextContent("甲")
-  cleanup()
-
-  const orb = render(<Orb />)
-  expect(slot(orb.container, "orb")).toHaveAttribute("data-reduced", "true")
-  await waitFor(() => {
-    expect(orb.container.querySelector("canvas")).toBeNull()
-  })
   cleanup()
   reduceMotion = false
 })
@@ -130,7 +117,7 @@ test("星标组件只在传入接口时请求网络", async () => {
   reduceMotion = false
 })
 
-test("社交、导航、评价和数字徽章能改状态", async () => {
+test("社交、导航和数字徽章能改状态", async () => {
   reduceMotion = true
   render(<SocialSelector handle="northwindow" />)
   expect(screen.getByText("@northwindow")).toBeInTheDocument()
@@ -146,20 +133,6 @@ test("社交、导航、评价和数字徽章能改状态", async () => {
   expect(screen.getByRole("button", { name: "作品" })).toHaveAttribute("aria-expanded", "true")
   cleanup()
 
-  render(
-    <ReviewsCarousel
-      reviews={[
-        { author: "林", body: "港口的灯还在。", id: "a", title: "夜航" },
-        { author: "周", body: "雾散得很干净。", id: "b", title: "清晨" },
-      ]}
-    />,
-  )
-  const next = screen.getByRole("button", { name: "Next review" })
-  expect(next).not.toBeDisabled()
-  fireEvent.click(next)
-  expect(next).toBeDisabled()
-  cleanup()
-
   render(<CountBadge count={128} variant="count" />)
   expect(await screen.findByText("99+")).toBeInTheDocument()
   cleanup()
@@ -171,14 +144,6 @@ test("其余裁切、字和图标都挂上槽位", () => {
   const reveal = render(<ScrollImageReveal alt="夜空" src={swatch} />)
   expect(slot(reveal.container, "scroll-image-reveal")).toBeTruthy()
   expect(screen.getByRole("img", { name: "夜空" })).toBeInTheDocument()
-  cleanup()
-
-  const clip = render(
-    <SvgClipMask>
-      <span>形</span>
-    </SvgClipMask>,
-  )
-  expect(slot(clip.container, "svg-clip-mask")).toHaveTextContent("形")
   cleanup()
 
   const words = render(<DepthParallaxWords>雾散</DepthParallaxWords>)
@@ -204,14 +169,5 @@ test("其余裁切、字和图标都挂上槽位", () => {
   )
   expect(slot(strips.container, "hover-expand")).toBeTruthy()
   expect(screen.getByRole("button", { name: "靛蓝" })).toHaveAttribute("aria-pressed", "true")
-  cleanup()
-
-  const quotes = render(
-    <InlineTestimonials
-      testimonials={[{ avatar: swatch, id: "lin", name: "林", quote: "清楚", role: "编辑" }]}
-      text="这是 {{lin}} 的批注"
-    />,
-  )
-  expect(slot(quotes.container, "inline-testimonials")).toHaveTextContent("林")
   cleanup()
 })

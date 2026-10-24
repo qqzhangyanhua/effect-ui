@@ -17,10 +17,8 @@ import { DrapeBackground } from "./drape-background"
 import { Floating3DParticles } from "./floating-3d-particles"
 import { GalaxySpiral } from "./galaxy-spiral"
 import { HoverBlocksGrid } from "./hover-blocks-grid"
-import { MergingBubbles } from "./merging-bubbles"
-import { RainPuddle } from "./rain-puddle"
 import { Singularity } from "./singularity"
-import { SvgBands } from "./svg-bands"
+
 import { TopoBackground } from "./topo-background"
 import { WarpBackground } from "./warp-background"
 import { WavefieldNeon } from "./wavefield-neon"
@@ -157,17 +155,6 @@ test("黑洞在减弱动效时改成静帧标签", () => {
   expect(screen.getByLabelText("黑洞静帧")).toBeInTheDocument()
 })
 
-test("雨后水面允许动效时挂上可点击的画布", () => {
-  render(<RainPuddle />)
-  expect(screen.getByLabelText("雨滴在水面荡开涟漪，点击制造大涟漪")).toBeInTheDocument()
-})
-
-test("雨后水面在减弱动效时改成静帧标签", () => {
-  reduceMotion = true
-  render(<RainPuddle />)
-  expect(screen.getByLabelText("雨后水面静帧")).toBeInTheDocument()
-})
-
 test("扭曲网格按每边光束数铺光带", () => {
   render(<WarpBackground beamsPerSide={2} />)
   expect(slot("warp-background").querySelectorAll(".top-0")).toHaveLength(8)
@@ -224,34 +211,6 @@ test("立体粒子在减弱动效时画完一帧就停", () => {
   frames[0]?.(0)
   expect(frames.length).toBe(queued)
 })
-
-test("融合气泡数量跟 count", () => {
-  render(<MergingBubbles count={4} />)
-  expect(slot("merging-bubbles").querySelectorAll("[data-bubble]")).toHaveLength(4)
-})
-
-test("融合气泡在减弱动效时标记静止", () => {
-  reduceMotion = true
-  render(<MergingBubbles count={4} />)
-  expect(slot("merging-bubbles")).toHaveAttribute("data-reduced", "true")
-  expect(frames).toEqual([])
-})
-
-test("色带画出三条路径", () => {
-  render(<SvgBands />)
-  const paths = slot("svg-bands").querySelectorAll("path")
-  expect(paths).toHaveLength(3)
-  expect(paths[0]?.getAttribute("class") ?? "").toContain("svg-bands-")
-})
-
-test("色带在减弱动效时去掉流动类", () => {
-  reduceMotion = true
-  render(<SvgBands />)
-  const path = slot("svg-bands").querySelector("path")
-  expect(slot("svg-bands")).toHaveAttribute("data-reduced", "true")
-  expect(path?.getAttribute("class")).toBeNull()
-})
-
 test("帷幕默认放上标题", () => {
   render(<DrapeBackground />)
   expect(screen.getByRole("heading", { name: "Behind the curtain" })).toBeInTheDocument()

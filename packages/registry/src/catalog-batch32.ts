@@ -328,20 +328,4 @@ export const batch32Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "tab-navigation",
-    title: "Tab Navigation",
-    description: `${tremor} ${tremorFile("TabNavigation/TabNavigation.tsx")} 页面级标签导航，每一项都是链接。Tremor 的 LICENSE 注明它用了 shadcn、radix-ui/themes 和 Medusa 的 MIT 片段。`,
-    category: "navigation",
-    source: "Tremor Raw",
-    type: "registry:ui",
-    file: "effects/tab-navigation.tsx",
-    target: "components/ui/tab-navigation.tsx",
-    props: [
-      { name: "href", type: "string", description: "链接地址。" },
-      { name: "active", type: "boolean", defaultValue: "false", description: "当前页。" },
-      { name: "disabled", type: "boolean", defaultValue: "false", description: "不可点击。" },
-      ...ui,
-    ],
-  },
 ]

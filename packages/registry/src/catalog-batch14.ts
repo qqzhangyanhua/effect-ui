@@ -94,7 +94,7 @@ export const batch14Components: ComponentMeta[] = [
     name: "vortex-background",
     title: "Vortex Background",
     description:
-      "灵感来自 Aceternity，原创实现。粒子绕中心旋转并带辉光，角速度由 simplex-noise 扰动。这不是 flow-field 的预设：flow-field 是开放的正弦轨迹拖尾，本组件是向心漩涡。",
+      "灵感来自 Aceternity，原创实现。粒子绕中心旋转并带辉光，角速度由 simplex-noise 扰动。本组件是向心漩涡。",
     category: "backgrounds",
     source: "original",
     type: "registry:ui",
@@ -294,27 +294,6 @@ export const batch14Components: ComponentMeta[] = [
       { name: "interval", type: "number", defaultValue: "1800", description: "打乱间隔，毫秒。", control: { kind: "range", value: 1800, min: 720, max: 3600, step: 40 } },
       { name: "tiles", type: "ShuffleTile[]", description: "格子的 id、编号和背景类名。" },
       ...ui,
-    ],
-  },
-  {
-    name: "toc-scrollspy",
-    title: "TOC Scrollspy",
-    description: "灵感来自 Stripe，原创实现。当前标题高亮并带滑动指示器，左侧细线表示阅读进度。",
-    category: "navigation",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/toc-scrollspy.tsx",
-    target: "components/ui/toc-scrollspy.tsx",
-    props: [
-      { name: "headings", type: "TocHeading[]", description: "目录项、锚点 id 和正文。" },
-      { name: "duration", type: "number", description: "指示器滑动毫秒。250 与不传相同，仍是 0.25 秒。", control: { kind: "range", value: 250, min: 100, max: 500, step: 10 } },
-      { name: "gap", type: "number", description: "目录间距（像素）。4 与不传相同，仍是 space-y-1。", control: { kind: "range", value: 4, min: 0, max: 16, step: 1 } },
-      ...ui,
-    ],
-    presets: [
-      { name: "toc-scrollspy-slow", label: "慢", values: { duration: 400, gap: 8 } },
-      { name: "toc-scrollspy-default", label: "默认", values: { duration: 250, gap: 4 } },
-      { name: "toc-scrollspy-tight", label: "紧", values: { duration: 140, gap: 2 } },
     ],
   },
   {

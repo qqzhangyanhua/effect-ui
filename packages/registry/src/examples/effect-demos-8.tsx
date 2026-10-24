@@ -15,7 +15,6 @@ import { HeroShader, type HeroShaderBackground } from "../sections/hero-shader"
 import { NavMorphing } from "../sections/nav-morphing"
 import { SectionAnimatedBento } from "../sections/section-animated-bento"
 import { SectionLogoCloud } from "../sections/section-logo-cloud"
-import { SectionPricingFlow } from "../sections/section-pricing-flow"
 import { SectionStickyFeatureScroll } from "../sections/section-sticky-feature-scroll"
 
 const shaderVariants: HeroShaderBackground[] = ["silk", "iridescence", "lightning", "mesh", "aurora"]
@@ -120,6 +119,3 @@ export function SectionAnimatedBentoDemo() {
   return <SectionAnimatedBento className="w-full" />
 }
 
-export function SectionPricingFlowDemo() {
-  return <SectionPricingFlow className="w-full" />
-}

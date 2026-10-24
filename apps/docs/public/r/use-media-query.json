@@ -3,7 +3,7 @@
   "name": "use-media-query",
   "type": "registry:hook",
   "title": "Use Media Query",
-  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/hooks/use-media-query.tsx 订阅一条媒体查询。服务端固定返回 false。image-tabs、progressive-carousel、hover-image-reveal 用它区分宽屏。",
+  "description": "移植自 UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT。 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/hooks/use-media-query.tsx 订阅一条媒体查询。服务端固定返回 false。progressive-carousel 用它区分宽屏。",
   "dependencies": [],
   "registryDependencies": [],
   "files": [

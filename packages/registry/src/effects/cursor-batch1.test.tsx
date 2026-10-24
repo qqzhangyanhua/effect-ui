@@ -7,13 +7,11 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { Cursor, CursorBody, CursorMessage, CursorName, CursorPointer } from "./cursor"
-import { DrawingCursor } from "./drawing-cursor"
 import { MagneticField } from "./magnetic-field"
-import { Floating, FloatingElement } from "./parallax-floating"
+
 import { RepetitionImageHover } from "./repetition-image-hover"
 import { SmoothCursor } from "./smooth-cursor"
-import { SpotlightGroup } from "./spotlight-group"
+
 import { TextCursorProximity } from "./text-cursor-proximity"
 
 let reduceMotion = false
@@ -140,28 +138,6 @@ test("magnetic field marks reduced motion", () => {
   expect(screen.getByText("北")).toBeInTheDocument()
   expect(slot(container, "magnetic-field")).toHaveAttribute("data-reduced", "true")
 })
-
-test("drawing cursor shows the writing surface", () => {
-  const { container } = render(
-    <DrawingCursor decay={800} lineWidth={3} taper>
-      <p>在这块区域里移动指针</p>
-    </DrawingCursor>,
-  )
-  expect(screen.getByText("在这块区域里移动指针")).toBeInTheDocument()
-  expect(slot(container, "drawing-cursor")).toHaveAttribute("data-reduced", "false")
-})
-
-test("drawing cursor marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(
-    <DrawingCursor>
-      <p>在这块区域里移动指针</p>
-    </DrawingCursor>,
-  )
-  expect(screen.getByText("在这块区域里移动指针")).toBeInTheDocument()
-  expect(slot(container, "drawing-cursor")).toHaveAttribute("data-reduced", "true")
-})
-
 const letterStyles = {
   scale: { from: 1, to: 1.6 },
   color: { from: "rgb(100, 116, 139)", to: "rgb(79, 70, 229)" },
@@ -193,87 +169,4 @@ test("text cursor proximity marks reduced motion", () => {
   expect(painted.replaceAll("\u00a0", "")).toBe("指针靠近时字母变大")
   expect(host.querySelector(".sr-only")).toHaveTextContent("指针靠近时字母变大")
   expect(host).toHaveAttribute("data-reduced", "true")
-})
-
-test("parallax floating shows the near and far labels", () => {
-  const { container } = render(
-    <Floating easingFactor={0.05} sensitivity={1}>
-      <FloatingElement depth={0.4}>
-        <span>近处</span>
-      </FloatingElement>
-      <FloatingElement depth={1.6}>
-        <span>远处</span>
-      </FloatingElement>
-    </Floating>,
-  )
-  expect(screen.getByText("近处")).toBeInTheDocument()
-  expect(screen.getByText("远处")).toBeInTheDocument()
-  expect(slot(container, "parallax-floating")).toHaveAttribute("data-reduced", "false")
-})
-
-test("parallax floating marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(
-    <Floating>
-      <FloatingElement>
-        <span>近处</span>
-      </FloatingElement>
-    </Floating>,
-  )
-  expect(screen.getByText("近处")).toBeInTheDocument()
-  expect(slot(container, "parallax-floating")).toHaveAttribute("data-reduced", "true")
-})
-
-test("cursor marks show both names and the message", () => {
-  render(
-    <div>
-      <Cursor>
-        <CursorPointer />
-        <CursorBody>
-          <CursorName>北窗</CursorName>
-          <CursorMessage>看到灯塔了</CursorMessage>
-        </CursorBody>
-      </Cursor>
-      <Cursor>
-        <CursorPointer />
-        <CursorBody>
-          <CursorName>甲板</CursorName>
-        </CursorBody>
-      </Cursor>
-    </div>,
-  )
-  expect(screen.getByText("北窗")).toBeInTheDocument()
-  expect(screen.getByText("看到灯塔了")).toBeInTheDocument()
-  expect(screen.getByText("甲板")).toBeInTheDocument()
-})
-
-test("cursor marks keep the names when motion is reduced", () => {
-  reduceMotion = true
-  render(
-    <Cursor>
-      <CursorName>北窗</CursorName>
-    </Cursor>,
-  )
-  expect(screen.getByText("北窗")).toBeInTheDocument()
-})
-
-test("spotlight group shows the first card", () => {
-  const { container } = render(
-    <SpotlightGroup mode="proximity">
-      <p>第一张</p>
-    </SpotlightGroup>,
-  )
-  expect(screen.getByText("第一张")).toBeInTheDocument()
-  expect(slot(container, "spotlight-group")).toHaveAttribute("data-reduced", "false")
-})
-
-test("spotlight group marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(
-    <SpotlightGroup>
-      <p>第一张</p>
-    </SpotlightGroup>,
-  )
-  expect(screen.getByText("第一张")).toBeInTheDocument()
-  expect(slot(container, "spotlight-group")).toHaveAttribute("data-reduced", "true")
 })

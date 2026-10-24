@@ -3,7 +3,7 @@
   "name": "vortex-background",
   "type": "registry:ui",
   "title": "Vortex Background",
-  "description": "灵感来自 Aceternity，原创实现。粒子绕中心旋转并带辉光，角速度由 simplex-noise 扰动。这不是 flow-field 的预设：flow-field 是开放的正弦轨迹拖尾，本组件是向心漩涡。",
+  "description": "灵感来自 Aceternity，原创实现。粒子绕中心旋转并带辉光，角速度由 simplex-noise 扰动。本组件是向心漩涡。",
   "dependencies": [
     "simplex-noise"
   ],

@@ -7,21 +7,19 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { DitherChart } from "./dither-chart"
-import { DualWaveTextList } from "./dual-wave-text-list"
 import { HeroVideoDialog } from "./hero-video-dialog"
 import { InfiniteCanvasGallery } from "./infinite-canvas-gallery"
 import { LoomThreadsMarquee } from "./loom-threads-marquee"
 import { OrbitingItems3D } from "./orbiting-items-3d"
-import { OrbitalImageWheel } from "./orbital-image-wheel"
+
 import { PixelImage } from "./pixel-image"
-import { SdfBlobTransition } from "./sdf-blob-transition"
+
 import { ShapeHero } from "./shape-hero"
 import { SortableList } from "./sortable-list"
-import { SpendingRing } from "./spending-ring"
-import { VideoAmbient } from "./video-ambient"
-import { XrayFluidReveal } from "./xray-fluid-reveal"
-import { HoverImageList } from "../ui/hover-image-list"
+
+
+
+
 
 const flower = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
 const pixel =
@@ -111,18 +109,6 @@ test("无限画布在减弱动效下仍显示第一块", () => {
   render(<InfiniteCanvasGallery />)
   expect(screen.getAllByText("01").length).toBeGreaterThan(0)
 })
-
-test("悬停图列显示第一行", () => {
-  render(<HoverImageList />)
-  expect(screen.getByText("北岸灯塔")).toBeInTheDocument()
-})
-
-test("悬停图列在减弱动效下仍显示第一行", () => {
-  reduceMotion = true
-  render(<HoverImageList />)
-  expect(screen.getByText("北岸灯塔")).toBeInTheDocument()
-})
-
 test("可排序列表显示第一项", () => {
   render(<SortableList />)
   expect(screen.getByText("起草说明")).toBeInTheDocument()
@@ -133,22 +119,6 @@ test("可排序列表在减弱动效下仍显示第一项", () => {
   render(<SortableList />)
   expect(screen.getByText("起草说明")).toBeInTheDocument()
 })
-
-test("双波列表可以选中一行", () => {
-  render(<DualWaveTextList />)
-  const orbit = screen.getAllByRole("button", { name: /轨道/ })[0]!
-  fireEvent.click(orbit)
-  expect(orbit).toHaveAttribute("aria-current", "true")
-})
-
-test("双波列表在减弱动效下仍能选中", () => {
-  reduceMotion = true
-  render(<DualWaveTextList />)
-  const orbit = screen.getAllByRole("button", { name: /轨道/ })[0]!
-  fireEvent.click(orbit)
-  expect(orbit).toHaveAttribute("aria-current", "true")
-})
-
 test("织机按钮可以拆成丝线", () => {
   render(<LoomThreadsMarquee />)
   fireEvent.click(screen.getByRole("button", { name: "拆成丝线" }))
@@ -162,18 +132,6 @@ test("织机在减弱动效下不挂画布", () => {
   expect(screen.getByRole("button", { name: "织回画面" })).toBeInTheDocument()
   expect(view.container.querySelector("canvas")).toBeNull()
 })
-
-test("透视揭示在普通动效下提示拖动", () => {
-  render(<XrayFluidReveal />)
-  expect(screen.getByText("按住并移动指针，轨迹会留下柔边的透视。")).toBeInTheDocument()
-})
-
-test("透视揭示在减弱动效下改成点击", () => {
-  reduceMotion = true
-  render(<XrayFluidReveal />)
-  expect(screen.getByText("点击切换外表和内部。")).toBeInTheDocument()
-})
-
 test("封面视频可以打开播放器", async () => {
   const view = render(<HeroVideoDialog thumbnailAlt="花" thumbnailSrc={pixel} videoSrc={flower} />)
   expect(screen.getByRole("img", { name: "花" })).toBeInTheDocument()
@@ -214,108 +172,4 @@ test("形状标题在减弱动效下仍显示标题", () => {
   const view = render(<ShapeHero description="抓住形状，扔出去。" title="有一点重力" />)
   expect(screen.getByRole("heading", { name: "有一点重力" })).toBeInTheDocument()
   expect(slot(view.container, "shape-hero")).toHaveAttribute("data-reduced", "true")
-})
-
-test("支出环显示预览标题", () => {
-  const view = render(<SpendingRing currency="CNY" title="十月支出" />)
-  expect(screen.getByText("十月支出")).toBeInTheDocument()
-  expect(slot(view.container, "spending-ring")).toHaveAttribute("data-reduced", "false")
-})
-
-test("支出环在减弱动效下仍显示标题", () => {
-  reduceMotion = true
-  const view = render(<SpendingRing currency="CNY" title="十月支出" />)
-  expect(screen.getByText("十月支出")).toBeInTheDocument()
-  expect(slot(view.container, "spending-ring")).toHaveAttribute("data-reduced", "true")
-})
-
-test("流体转场显示当前一幕", () => {
-  const view = render(
-    <SdfBlobTransition transitionKey={0} variant="circle">
-      圆
-    </SdfBlobTransition>,
-  )
-  expect(screen.getByText("圆")).toBeInTheDocument()
-  expect(slot(view.container, "sdf-blob-transition")).toHaveAttribute("data-reduced", "false")
-})
-
-test("流体转场在减弱动效下仍显示当前一幕", () => {
-  reduceMotion = true
-  const view = render(
-    <SdfBlobTransition transitionKey={0} variant="circle">
-      圆
-    </SdfBlobTransition>,
-  )
-  expect(screen.getByText("圆")).toBeInTheDocument()
-  expect(slot(view.container, "sdf-blob-transition")).toHaveAttribute("data-reduced", "true")
-})
-
-test("环境光视频不会自动播放", () => {
-  const view = render(<VideoAmbient alt="城市夜色" autoPlay={false} blur={34} controls poster={pixel} rounded={20} scale={1.3} src={pixel} />)
-  const video = view.container.querySelector("video")
-  expect(video).not.toBeNull()
-  expect(video?.autoplay).toBe(false)
-  expect(video).toHaveAttribute("poster", pixel)
-  expect(slot(view.container, "video-ambient")).toHaveAttribute("data-reduced", "false")
-})
-
-test("环境光视频在减弱动效下仍保留封面", () => {
-  reduceMotion = true
-  const view = render(<VideoAmbient alt="城市夜色" autoPlay={false} blur={34} controls poster={pixel} rounded={20} scale={1.3} src={pixel} />)
-  expect(view.container.querySelector("video")).toHaveAttribute("poster", pixel)
-  expect(slot(view.container, "video-ambient")).toHaveAttribute("data-reduced", "true")
-})
-
-test("轨道轮播显示第一张图", () => {
-  const view = render(
-    <OrbitalImageWheel
-      autoRotate
-      items={[{ alt: "靛蓝", id: "a", image: pixel }]}
-      radius={92}
-      snap
-    />,
-  )
-  expect(screen.getByRole("img", { name: "靛蓝" })).toBeInTheDocument()
-  expect(slot(view.container, "orbital-image-wheel")).toHaveAttribute("data-reduced", "false")
-})
-
-test("轨道轮播在减弱动效下仍显示图片", () => {
-  reduceMotion = true
-  const view = render(
-    <OrbitalImageWheel
-      autoRotate
-      items={[{ alt: "靛蓝", id: "a", image: pixel }]}
-      radius={92}
-      snap
-    />,
-  )
-  expect(screen.getByRole("img", { name: "靛蓝" })).toBeInTheDocument()
-  expect(slot(view.container, "orbital-image-wheel")).toHaveAttribute("data-reduced", "true")
-})
-
-test("抖动图显示说明", () => {
-  const view = render(
-    <DitherChart
-      caption="夜间流量"
-      data={[{ name: "夜航", points: [{ label: "一", value: 2 }] }]}
-      pixelSize={3}
-      variant="bar"
-    />,
-  )
-  expect(screen.getByText("夜间流量")).toBeInTheDocument()
-  expect(slot(view.container, "dither-chart")).toHaveAttribute("data-reduced", "false")
-})
-
-test("抖动图在减弱动效下仍显示说明", () => {
-  reduceMotion = true
-  const view = render(
-    <DitherChart
-      caption="夜间流量"
-      data={[{ name: "夜航", points: [{ label: "一", value: 2 }] }]}
-      pixelSize={3}
-      variant="bar"
-    />,
-  )
-  expect(screen.getByText("夜间流量")).toBeInTheDocument()
-  expect(slot(view.container, "dither-chart")).toHaveAttribute("data-reduced", "true")
 })

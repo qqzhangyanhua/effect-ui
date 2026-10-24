@@ -16,7 +16,6 @@ import { NeubrutalismToggle } from "../effects/neubrutalism-toggle"
 import { NewsletterInput } from "../effects/newsletter-input"
 import { PinDisplayInput } from "../effects/pin-display-input"
 import { SocialFollowTooltip } from "../effects/social-follow-tooltip"
-import { StarRibbonNotification } from "../effects/star-ribbon-notification"
 
 const radioOptions = [
   { value: "yes", label: "是" },
@@ -92,22 +91,6 @@ export function Neon3dRadioDemo({
   return (
     <div className="flex justify-center px-6 py-10">
       <Neon3dRadio className={className} color={color} defaultValue={defaultValue} options={radioOptions} />
-    </div>
-  )
-}
-
-export function StarRibbonNotificationDemo({
-  title = "升级了",
-  message = "按开始",
-  stars = 3,
-}: {
-  title?: string
-  message?: string
-  stars?: number
-} = {}) {
-  return (
-    <div className="flex justify-center px-10 py-8">
-      <StarRibbonNotification message={message} stars={stars} title={title} />
     </div>
   )
 }

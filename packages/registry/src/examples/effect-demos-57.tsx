@@ -2,18 +2,13 @@
 
 import { BandWaveText } from "../effects/band-wave-text"
 import { BarsSpinner } from "../effects/bars-spinner"
-import { DelayedLoading } from "../effects/delayed-loading"
 import { ExplodingInput } from "../effects/exploding-input"
 import { FallbackAvatar } from "../effects/fallback-avatar"
 import { FlowButton } from "../effects/flow-button"
-import { GiftCard } from "../effects/gift-card"
 import { GlowDivider } from "../effects/glow-divider"
 import { HeldKeys } from "../effects/held-keys"
 import { InvalidShake } from "../effects/invalid-shake"
 import { LogosCarousel } from "../effects/logos-carousel"
-import { NetworkGraph } from "../effects/network-graph"
-import { NoiseText } from "../effects/noise-text"
-import { SafeTriangle } from "../effects/safe-triangle"
 import { VerifyBadge } from "../effects/verify-badge"
 
 const frame = "flex min-h-80 w-full items-center justify-center px-6 py-10"
@@ -138,26 +133,6 @@ export function GlowDividerDemo({
   )
 }
 
-export function NoiseTextDemo({
-  color = "var(--foreground)",
-  intensity = 0.35,
-  fontSize = 16,
-  duration = 1400,
-}: {
-  color?: string
-  intensity?: number
-  fontSize?: number
-  duration?: number
-} = {}) {
-  return (
-    <div className={frame}>
-      <NoiseText color={color} intensity={intensity} fontSize={fontSize} duration={duration}>
-        细沙文字
-      </NoiseText>
-    </div>
-  )
-}
-
 export function InvalidShakeDemo({
   color = "var(--destructive)",
   duration = 420,
@@ -201,61 +176,10 @@ export function VerifyBadgeDemo() {
   )
 }
 
-export function GiftCardDemo() {
-  return (
-    <div className={frame}>
-      <GiftCard
-        title="礼品卡"
-        amount="¥100"
-        detail="填入兑换码，再领取。"
-        note="请在 30 天内使用。"
-        placeholder="礼品-2048"
-        actionLabel="领取"
-        emptyLabel="请先填写兑换码。"
-        claimedLabel="兑换码已领取。"
-      />
-    </div>
-  )
-}
-
-export function SafeTriangleDemo() {
-  return (
-    <div className={frame}>
-      <SafeTriangle label="打开菜单" items={["资料", "设置", "退出"]} />
-    </div>
-  )
-}
-
 export function HeldKeysDemo() {
   return (
     <div className={frame}>
       <HeldKeys label="按住任意键" emptyLabel="未按键" />
-    </div>
-  )
-}
-
-export function DelayedLoadingDemo() {
-  return (
-    <div className={frame}>
-      <DelayedLoading label="加载报告" loadingLabel="正在加载" idleLabel="空闲" />
-    </div>
-  )
-}
-
-export function NetworkGraphDemo() {
-  return (
-    <div className={frame}>
-      <NetworkGraph
-        nodes={[
-          { id: "hub", name: "中心" },
-          { id: "n1", name: "阿宁" },
-          { id: "n2", name: "北岛" },
-          { id: "n3", name: "陈木" },
-          { id: "n4", name: "冬青" },
-          { id: "n5", name: "尔雅" },
-          { id: "n6", name: "方舟" },
-        ]}
-      />
     </div>
   )
 }

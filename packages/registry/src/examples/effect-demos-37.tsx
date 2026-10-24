@@ -17,7 +17,6 @@ import { ScratchCard } from "../effects/scratch-card"
 import { ShareButton } from "../effects/share-button"
 import { SkeletonReveal } from "../effects/skeleton-reveal"
 import { TaskCheckbox } from "../effects/task-checkbox"
-import { TextStates } from "../effects/text-states"
 import { MorphButton } from "../effects/async-morph-button"
 
 const faqTabs = [
@@ -117,25 +116,6 @@ export function SkeletonRevealDemo() {
       </SkeletonReveal>
       <button type="button" className="mt-4 text-sm underline" onClick={() => setLoading((value) => !value)}>
         {loading ? "完成加载" : "重新加载"}
-      </button>
-    </div>
-  )
-}
-
-export function TextStatesDemo({
-  duration = 150,
-  translateY = 4,
-  blur = 2,
-}: {
-  duration?: number
-  translateY?: number
-  blur?: number
-} = {}) {
-  const [saved, setSaved] = useState(false)
-  return (
-    <div className="flex justify-center px-6 py-10">
-      <button type="button" className="rounded-full bg-foreground px-4 py-2 text-sm text-background" onClick={() => setSaved((value) => !value)}>
-        <TextStates blur={blur} duration={duration} text={saved ? "已保存" : "保存"} translateY={translateY} />
       </button>
     </div>
   )

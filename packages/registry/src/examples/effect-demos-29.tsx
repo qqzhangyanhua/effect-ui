@@ -1,27 +1,21 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useState } from "react"
 
 import { ArcadePixel } from "../effects/arcade-pixel"
 import { CardSwipeDeck } from "../effects/card-swipe-deck"
-import { ChromaBlurTransition } from "../effects/chroma-blur-transition"
-import { DitherChart } from "../effects/dither-chart"
-import { DrawingCursor, type DrawingCursorHandle } from "../effects/drawing-cursor"
+
+
 import { EmbossSurface } from "../effects/emboss-surface"
 import { GridLoader } from "../effects/grid-loader"
 import { KineticTypeScroll } from "../effects/kinetic-type-scroll"
 import { MusicToggle } from "../effects/music-toggle"
 import { NovatrixBackground } from "../effects/novatrix-background"
-import { OrbitalImageWheel } from "../effects/orbital-image-wheel"
+
 import { PinnedList } from "../effects/pinned-list"
-import { Squircle } from "../effects/squircle"
+
 import { UnlockFaceId } from "../effects/unlock-face-id"
 import { VectorEditorToolbar, type VectorTool } from "../effects/vector-editor-toolbar"
-
-const swatch = (color: string) =>
-  `data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><rect width="160" height="160" fill="${color}"/></svg>`,
-  )}`
 
 function ToolIcon({ className }: { className?: string }) {
   return (
@@ -54,25 +48,6 @@ export function NovatrixBackgroundDemo({
     <NovatrixBackground className="h-64 w-full rounded-2xl" color={[0.55, 0.75, 1]} amplitude={amplitude} mouseReact={mouseReact} speed={speed} />
   )
 }
-
-export function DrawingCursorDemo({
-  decay = 800,
-  lineWidth = 3,
-  taper = true,
-}: { decay?: number; lineWidth?: number; taper?: boolean } = {}) {
-  const cursor = useRef<DrawingCursorHandle>(null)
-  return (
-    <div className="space-y-3">
-      <button className="rounded-md border px-3 py-1 text-sm" onClick={() => cursor.current?.clear()} type="button">
-        清空笔迹
-      </button>
-      <DrawingCursor className="h-48 w-full rounded-2xl border bg-muted" color="#6366f1" decay={decay} lineWidth={lineWidth} ref={cursor} taper={taper}>
-        <p className="p-4 text-sm text-muted-foreground">在这块区域里移动指针</p>
-      </DrawingCursor>
-    </div>
-  )
-}
-
 export function EmbossSurfaceDemo({
   depth = 3,
   lightAngle = 135,
@@ -82,21 +57,6 @@ export function EmbossSurfaceDemo({
     <EmbossSurface className="rounded-2xl p-8 text-center text-lg" depth={depth} interactive lightAngle={lightAngle} variant={variant}>
       浮雕表面
     </EmbossSurface>
-  )
-}
-
-export function ChromaBlurTransitionDemo() {
-  const [page, setPage] = useState(0)
-  const scenes = ["洋红", "香槟", "海沫"]
-  return (
-    <div className="w-full space-y-3">
-      <button className="rounded-md border px-3 py-1 text-sm" onClick={() => setPage((value) => (value + 1) % scenes.length)} type="button">
-        下一幕
-      </button>
-      <ChromaBlurTransition className="h-40" transitionKey={page}>
-        <div className="flex h-40 items-center justify-center text-3xl font-semibold">{scenes[page] ?? "洋红"}</div>
-      </ChromaBlurTransition>
-    </div>
   )
 }
 
@@ -128,49 +88,6 @@ export function KineticTypeScrollDemo() {
     </div>
   )
 }
-
-export function OrbitalImageWheelDemo({
-  autoRotateSpeed = 12,
-  faceOutward = false,
-  radius = 92,
-}: { autoRotateSpeed?: number; faceOutward?: boolean; radius?: number } = {}) {
-  return (
-    <OrbitalImageWheel
-      autoRotate
-      autoRotateSpeed={autoRotateSpeed}
-      faceOutward={faceOutward}
-      items={[
-        { alt: "靛蓝", id: "a", image: swatch("#312e81") },
-        { alt: "琥珀", id: "b", image: swatch("#b45309") },
-        { alt: "青绿", id: "c", image: swatch("#0f766e") },
-        { alt: "玫红", id: "d", image: swatch("#9f1239") },
-      ]}
-      radius={radius}
-      snap
-    />
-  )
-}
-
-export function DitherChartDemo({
-  caption = "夜间流量",
-  pixelSize = 3,
-  variant = "bar",
-}: {
-  caption?: string
-  pixelSize?: number
-  variant?: "donut" | "line" | "bar" | "stacked" | "gauge" | "funnel" | "heatmap" | "bubbles"
-} = {}) {
-  return (
-    <DitherChart
-      caption={caption}
-      data={[{ name: "夜航", points: [{ label: "一", value: 2 }, { label: "二", value: 5 }, { label: "三", value: 3 }] }]}
-      label="点阵图"
-      pixelSize={pixelSize}
-      variant={variant}
-    />
-  )
-}
-
 export function CardSwipeDeckDemo({
   rotationFactor = 18,
   stackOffset = 14,
@@ -223,15 +140,6 @@ export function GridLoaderDemo({
 } = {}) {
   return <GridLoader color="blue" mode={mode} pattern="heartbeat" rounded size={size} speed={speed} />
 }
-
-export function SquircleDemo() {
-  return (
-    <Squircle border className="h-32 w-full bg-muted p-4" radius={36} smoothing={0.8}>
-      平滑圆角
-    </Squircle>
-  )
-}
-
 export function VectorEditorToolbarDemo({
   floating = false,
   orientation = "horizontal",

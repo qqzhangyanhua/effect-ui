@@ -5,28 +5,12 @@ import { CouponInput } from "../effects/coupon-input"
 import { CreditCardForm } from "../effects/credit-card-form"
 import { GradientCarousel3d } from "../effects/gradient-carousel-3d"
 import { LiquidMorphSlideshow } from "../effects/liquid-morph-slideshow"
-import { RollingTextHover } from "../effects/rolling-text-hover"
 import { Singularity } from "../effects/singularity"
 import { Text3dScroll } from "../effects/text-3d-scroll"
-import { TubesCursor } from "../effects/tubes-cursor"
+
 import { WavefieldNeon } from "../effects/wavefield-neon"
 import { GanttTimeline } from "../sections/gantt-timeline"
 import { OrgChart } from "../sections/org-chart"
-
-export function TubesCursorDemo({
-  tubes = 4,
-  speed,
-  intensity,
-  scale,
-}: {
-  tubes?: number
-  speed?: number
-  intensity?: number
-  scale?: number
-} = {}) {
-  return <TubesCursor className="w-full" tubes={tubes} speed={speed} intensity={intensity} scale={scale} />
-}
-
 export function LiquidMorphSlideshowDemo({ interval, intensity, speed }: { interval?: number; intensity?: number; speed?: number } = {}) {
   return <LiquidMorphSlideshow className="w-full" interval={interval} intensity={intensity} speed={speed} />
 }
@@ -67,33 +51,6 @@ export function Text3dScrollDemo({
       className="w-full"
       text={text}
       angle={angle}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      letterSpacing={letterSpacing}
-      align={align}
-    />
-  )
-}
-
-export function RollingTextHoverDemo({
-  label = "开始使用",
-  delay,
-  fontSize,
-  fontWeight,
-  letterSpacing,
-  align,
-}: {
-  label?: string
-  delay?: number
-  fontSize?: number
-  fontWeight?: number
-  letterSpacing?: number
-  align?: "left" | "center" | "right"
-} = {}) {
-  return (
-    <RollingTextHover
-      label={label}
-      delay={delay}
       fontSize={fontSize}
       fontWeight={fontWeight}
       letterSpacing={letterSpacing}

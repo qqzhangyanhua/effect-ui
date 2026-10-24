@@ -9,7 +9,7 @@ import "@testing-library/jest-dom/vitest"
 MotionGlobalConfig.skipAnimations = true
 
 import { ConstellationLoader } from "./constellation-loader"
-import { Cursor, CursorName } from "./cursor"
+
 import { EmojiConfetti, type EmojiConfettiHandle } from "./emoji-confetti"
 import { LabeledToggle } from "./labeled-toggle"
 import { MiniCalendar, MiniCalendarDay, MiniCalendarDays, MiniCalendarNavigation } from "./mini-calendar"
@@ -156,9 +156,6 @@ test("短视频可以切到下一段，emoji 可以从指定坐标发射", async
         <ReelNextButton />
       </Reel>
       <EmojiConfetti ref={handle}>放一串</EmojiConfetti>
-      <Cursor>
-        <CursorName>北窗</CursorName>
-      </Cursor>
     </div>,
   )
 
@@ -172,5 +169,4 @@ test("短视频可以切到下一段，emoji 可以从指定坐标发射", async
     handle.current?.fire(12, 18)
   })
   expect(screen.getByText("🎉")).toBeInTheDocument()
-  expect(screen.getByText("北窗")).toBeInTheDocument()
 })

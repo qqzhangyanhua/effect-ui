@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { PawlTick, type PawlTickStatus } from "../effects/autosave-ratchet"
 import { TearStub } from "../effects/banner-tear-stub"
@@ -9,10 +9,9 @@ import { ToppleRun } from "../effects/checkbox-domino-run"
 import { RuleFrame } from "../effects/container-box-drawing"
 import { ContraStrike } from "../effects/contra-strike"
 import { CrazeRule } from "../effects/craze-rule"
-import { CruetSettle, type CruetSettleLine } from "../effects/cruet-settle"
-import { SpineStack, type SpineStackHandle, type SpineStackLevel } from "../effects/drill-down-spines"
+
 import { DueSlip, type DueSlipReader } from "../effects/due-slip"
-import { EscapementTick, type EscapementTickHandle } from "../effects/feed-escapement"
+
 import { GalleyBracket, type GalleyBracketSelection } from "../effects/galley-bracket"
 import { PlumbTrue } from "../effects/success-plumb-bob"
 import { SiphonLift } from "../effects/transfer-list-siphon"
@@ -26,19 +25,6 @@ const saveScript: { status: PawlTickStatus; ms: number }[] = [
   { status: "error", ms: 1600 },
   { status: "saving", ms: 600 },
   { status: "saved", ms: 1800 },
-]
-
-const baseLines: CruetSettleLine[] = [
-  { key: "net", label: "净额", amount: 605 },
-  { key: "tax", label: "增值税 20%", amount: 121 },
-  { key: "fees", label: "刷卡费", amount: 12.5 },
-  { key: "discount", label: "优惠 SAVE45", amount: 45, kind: "subtract" },
-]
-
-const rushLines: CruetSettleLine[] = [
-  ...baseLines.slice(0, 3),
-  { key: "rush", label: "加急运费", amount: 38 },
-  baseLines[3]!,
 ]
 
 const galleyText =
@@ -188,65 +174,6 @@ export function BannerTearStubDemo({
     />
   )
 }
-
-export function FeedEscapementDemo({
-  "aria-label": ariaLabel = "部署活动",
-  emptyLabel = "等待活动…",
-  className = "",
-}: {
-  "aria-label"?: string
-  emptyLabel?: string
-  className?: string
-} = {}) {
-  const tickRef = useRef<EscapementTickHandle>(null)
-  const timers = useRef<number[]>([])
-  const burst = useCallback(() => {
-    for (const id of timers.current) window.clearTimeout(id)
-    tickRef.current?.clear()
-    const items = [
-      { title: "开始部署", detail: "8a41f0c → 生产" },
-      { title: "构建完成", detail: "38 秒，缓存命中 94%" },
-      { title: "打开拉取请求 482", detail: "修复 webhook 重试" },
-      { title: "预览就绪", detail: "pr-482" },
-    ]
-    timers.current = items.map((item, index) => window.setTimeout(() => tickRef.current?.arrive(item), index * 140))
-  }, [])
-  useEffect(() => {
-    burst()
-    return () => {
-      for (const id of timers.current) window.clearTimeout(id)
-    }
-  }, [burst])
-  return (
-    <div className="w-full max-w-sm">
-      <EscapementTick ref={tickRef} aria-label={ariaLabel} emptyLabel={emptyLabel} className={className} />
-      <button type="button" className="mt-3 rounded-sm border border-border px-2.5 py-1 text-xs" onClick={burst}>
-        再来一轮
-      </button>
-    </div>
-  )
-}
-
-export function CruetSettleDemo({
-  currency = "¥",
-  label = "订单合计",
-  className = "",
-}: {
-  currency?: string
-  label?: string
-  className?: string
-} = {}) {
-  const [rush, setRush] = useState(false)
-  return (
-    <div className="w-full max-w-xl">
-      <CruetSettle lines={rush ? rushLines : baseLines} currency={currency} label={label} className={className} />
-      <button type="button" className="mt-4 rounded-sm border border-border px-3 py-1.5 text-xs" onClick={() => setRush((value) => !value)}>
-        {rush ? "去掉加急运费" : "加上加急运费"}
-      </button>
-    </div>
-  )
-}
-
 export function UndoGhostRowDemo() {
   return (
     <AfterImageList
@@ -287,54 +214,6 @@ export function TransferListSiphonDemo() {
         { id: "novak", label: "吴青", hint: "前端" },
       ]}
     />
-  )
-}
-
-export function DrillDownSpinesDemo({
-  duration = 420,
-  gap = 3,
-  className = "h-full",
-}: {
-  duration?: number
-  gap?: number
-  className?: string
-} = {}) {
-  const handleRef = useRef<SpineStackHandle>(null)
-  const root: SpineStackLevel = {
-    id: "root",
-    title: "项目",
-    content: (
-      <div className="p-4">
-        <h2 className="text-base font-semibold" tabIndex={-1}>
-          项目
-        </h2>
-        <button
-          type="button"
-          className="mt-3 rounded-sm border border-border px-3 py-1.5 text-sm"
-          onClick={() =>
-            handleRef.current?.push({
-              id: "eng",
-              title: "工程",
-              content: (
-                <div className="p-4">
-                  <h2 className="text-base font-semibold" tabIndex={-1}>
-                    工程
-                  </h2>
-                  <p className="mt-2 text-sm text-muted-foreground">网关和网页都还在这一层。</p>
-                </div>
-              ),
-            })
-          }
-        >
-          进入工程
-        </button>
-      </div>
-    ),
-  }
-  return (
-    <div className="h-80 w-full max-w-3xl">
-      <SpineStack ref={handleRef} initial={root} duration={duration} gap={gap} className={className} />
-    </div>
   )
 }
 

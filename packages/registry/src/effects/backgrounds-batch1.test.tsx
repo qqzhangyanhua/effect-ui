@@ -16,7 +16,6 @@ import { AnimatedGrid } from "./animated-grid"
 import { AuroraBackground } from "./aurora-background"
 import { BackgroundPaths } from "./background-paths"
 import { DotPattern } from "./dot-pattern"
-import { FlickeringGrid } from "./flickering-grid"
 import { GridPattern } from "./grid-pattern"
 import { LightBeams } from "./light-beams"
 import { Meteors } from "./meteors"
@@ -25,7 +24,6 @@ import { Particles } from "./particles"
 import { RetroGrid } from "./retro-grid"
 import { Ripples } from "./ripples"
 import { ShaderBackground } from "./shader-backgrounds"
-import { Starfield } from "./starfield"
 import { WaveBackground } from "./wave-background"
 
 let reduceMotion = false
@@ -309,30 +307,3 @@ test("粒子在减弱动效时只画一帧，不再循环", () => {
   expect(slot("particles")).toBeInTheDocument()
 })
 
-test("星空在视口内会申请动画帧，不传颜色时仍渲染画布", () => {
-  installCanvasStage()
-  render(<Starfield />)
-  expect(slot("starfield").tagName).toBe("CANVAS")
-  expect(frames.length).toBeGreaterThan(0)
-})
-
-test("星空在减弱动效时不再循环", () => {
-  reduceMotion = true
-  installCanvasStage()
-  render(<Starfield />)
-  expect(frames).toEqual([])
-})
-
-test("闪烁网格在视口内会申请动画帧", () => {
-  installCanvasStage()
-  render(<FlickeringGrid />)
-  expect(slot("flickering-grid").tagName).toBe("CANVAS")
-  expect(frames.length).toBeGreaterThan(0)
-})
-
-test("闪烁网格在减弱动效时只画静帧", () => {
-  reduceMotion = true
-  installCanvasStage()
-  render(<FlickeringGrid />)
-  expect(frames).toEqual([])
-})

@@ -244,18 +244,4 @@ export const batch8Components: ComponentMeta[] = [
     target: "components/ui/section-animated-bento.tsx",
     props: ui,
   },
-  {
-    name: "section-pricing-flow",
-    title: "Section Pricing Flow",
-    description: "月付 / 年付切换时价格数字翻滚，推荐套餐用发光边。",
-    category: "sections",
-    source: "Number Flow",
-    type: "registry:ui",
-    file: "sections/section-pricing-flow.tsx",
-    target: "components/ui/section-pricing-flow.tsx",
-    props: [
-      { name: "plans", type: "PricingPlan[]", description: "套餐与月/年价格。" },
-      ...ui,
-    ],
-  },
 ]

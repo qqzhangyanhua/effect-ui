@@ -257,21 +257,7 @@ export const batch31Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "stories",
-    title: "Stories",
-    description: `${kibo} ${kiboFile("stories")} 横排故事缩略图，建在现有 carousel 上。包含 Story、StoryImage、StoryVideo、StoryAuthor、StoryTitle 和 StoryOverlay。减弱动效时去掉悬停缩放。`,
-    category: "showcase",
-    source: "Kibo UI",
-    type: "registry:ui",
-    file: "effects/stories.tsx",
-    target: "components/ui/stories.tsx",
-    props: [
-      { name: "side", type: '"top" | "bottom"', defaultValue: "bottom", description: "StoryOverlay 渐变所在的边。" },
-      { name: "fallback", type: "string", description: "StoryAuthorImage 没有头像时的文字。" },
-      ...ui,
-    ],
-  },
+
   {
     name: "mini-calendar",
     title: "Mini Calendar",
@@ -338,17 +324,7 @@ export const batch31Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "cursor",
-    title: "Cursor",
-    description: `${kibo} ${kiboFile("cursor")} 协作光标标记，由 CursorPointer、CursorBody、CursorName 和 CursorMessage 组成。用来在白板或文档演示里标出别人的光标。本身不动画。`,
-    category: "cursor",
-    source: "Kibo UI",
-    type: "registry:ui",
-    file: "effects/cursor.tsx",
-    target: "components/ui/cursor.tsx",
-    props: [...ui],
-  },
+
   {
     name: "labeled-toggle",
     title: "Labeled Toggle",

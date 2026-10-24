@@ -7,7 +7,6 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { BreathingText } from "./breathing-text"
 import { Letter3DSwap } from "./letter-3d-swap"
 import { LetterSwapPingPong } from "./letter-swap-pingpong"
 import { RandomLetterSwap } from "./random-letter-swap"
@@ -15,7 +14,6 @@ import { TextDrop } from "./text-drop"
 import { TextHighlighter } from "./text-highlighter"
 import { UnderlineHoverLink } from "./underline-hover-link"
 import { UnderlineToBackground } from "./underline-to-background"
-import { VariableFontHoverByLetter } from "./variable-font-hover-by-letter"
 import { VerticalCutReveal } from "./vertical-cut-reveal"
 
 let reduceMotion = false
@@ -122,27 +120,6 @@ test("裁切揭示在减弱动效下仍读出整句", () => {
   expect(slot(view.container, "vertical-cut-reveal")).toHaveAttribute("data-reduced", "true")
 })
 
-test("呼吸文字显示字母", () => {
-  const view = render(
-    <BreathingText fromFontVariationSettings="'wght' 420" staggerFrom="center" toFontVariationSettings="'wght' 820">
-      呼吸
-    </BreathingText>,
-  )
-  expect(slot(view.container, "breathing-text").textContent).toContain("呼吸")
-  expect(slot(view.container, "breathing-text")).toHaveAttribute("data-reduced", "false")
-})
-
-test("呼吸文字在减弱动效下仍显示字母", () => {
-  reduceMotion = true
-  const view = render(
-    <BreathingText fromFontVariationSettings="'wght' 420" staggerFrom="center" toFontVariationSettings="'wght' 820">
-      呼吸
-    </BreathingText>,
-  )
-  expect(slot(view.container, "breathing-text").textContent).toContain("呼吸")
-  expect(slot(view.container, "breathing-text")).toHaveAttribute("data-reduced", "true")
-})
-
 test("荧光笔标出正文", () => {
   const view = render(
     <TextHighlighter direction="ltr" highlightColor="hsl(48, 96%, 76%)" triggerType="auto">
@@ -196,19 +173,6 @@ test("落下文字在减弱动效下直接显示整句", () => {
   const view = render(<TextDrop delay={0} stagger={0.035} text="夜航开始" />)
   expect(screen.getByText("夜航开始")).toBeInTheDocument()
   expect(slot(view.container, "text-drop")).toHaveAttribute("data-reduced", "true")
-})
-
-test("可变字体显示标签", () => {
-  const view = render(<VariableFontHoverByLetter from="'wght' 400" label="可变" staggerFrom="center" to="'wght' 800" />)
-  expect(slot(view.container, "variable-font-hover-by-letter").textContent).toContain("可变")
-  expect(slot(view.container, "variable-font-hover-by-letter")).toHaveAttribute("data-reduced", "false")
-})
-
-test("可变字体在减弱动效下仍显示标签", () => {
-  reduceMotion = true
-  const view = render(<VariableFontHoverByLetter from="'wght' 400" label="可变" staggerFrom="center" to="'wght' 800" />)
-  expect(slot(view.container, "variable-font-hover-by-letter").textContent).toContain("可变")
-  expect(slot(view.container, "variable-font-hover-by-letter")).toHaveAttribute("data-reduced", "true")
 })
 
 test("往返换字显示标签", () => {

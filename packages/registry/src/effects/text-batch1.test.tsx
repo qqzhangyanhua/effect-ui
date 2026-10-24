@@ -29,7 +29,6 @@ import { DiaTextReveal } from "./dia-text-reveal"
 import { HyperspaceText } from "./hyperspace-text"
 import { LineShadowText } from "./line-shadow-text"
 import { MediaBetweenText } from "./media-between-text"
-import { PerspectiveText3D } from "./perspective-text-3d"
 import { PluckedText } from "./plucked-text"
 import { RansomNote } from "./ransom-note"
 import { SwooshText } from "./swoosh-text"
@@ -274,20 +273,6 @@ test("点阵文字在减弱动效下仍读出文案", () => {
   const view = render(<ArcadePixel animate="type" crt glow pixelSize={8} scanlines speed={1} text="NORTH" />)
   expect(screen.getByText("NORTH")).toBeInTheDocument()
   expect(slot(view.container, "arcade-pixel")).toHaveAttribute("data-reduced", "true")
-})
-
-test("透视文字显示文案", () => {
-  const view = render(<PerspectiveText3D depth={48} driver="pointer" text="北窗夜航" />)
-  expect(screen.getAllByText("北窗夜航").length).toBeGreaterThan(0)
-  expect(slot(view.container, "perspective-text-3d")).toHaveAttribute("data-reduced", "false")
-})
-
-test("透视文字在减弱动效下改成普通段落", () => {
-  reduceMotion = true
-  const view = render(<PerspectiveText3D depth={48} driver="pointer" text="北窗夜航" />)
-  expect(screen.getByText("北窗夜航")).toBeInTheDocument()
-  expect(slot(view.container, "perspective-text-3d").tagName).toBe("P")
-  expect(slot(view.container, "perspective-text-3d")).toHaveAttribute("data-reduced", "true")
 })
 
 test("景深词组显示句子", () => {

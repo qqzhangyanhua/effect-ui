@@ -2,18 +2,15 @@
 
 import * as React from "react"
 
-import { ClipRevealMenu } from "../effects/clip-reveal-menu"
-import { ColumnConfigPanel } from "../effects/column-config-panel"
-import { DualWaveTextList } from "../effects/dual-wave-text-list"
+
 import { FacetedFilterBar } from "../effects/faceted-filter-bar"
 import { GhostTrailText } from "../effects/ghost-trail-text"
 import { GravityImageTrail } from "../effects/gravity-image-trail"
-import { GroupedChecklist } from "../effects/grouped-checklist"
 import { HeatmapCalendar } from "../effects/heatmap-calendar"
 import { JsonViewer } from "../effects/json-viewer"
 import { MacbookScroll } from "../effects/macbook-scroll"
 import { ResourceSearchHero } from "../effects/resource-search-hero"
-import { SquareLensDistortion } from "../effects/square-lens-distortion"
+
 import { StickyGridScroll } from "../effects/sticky-grid-scroll"
 import { SvgMaskScrollTransition } from "../effects/svg-mask-scroll-transition"
 import { TextGenerate } from "../effects/text-generate"
@@ -65,28 +62,6 @@ export function GravityImageTrailDemo({
   return <GravityImageTrail className="w-full" size={size} gap={gap} intensity={intensity} speed={speed} />
 }
 
-export function SquareLensDistortionDemo({
-  speed,
-  intensity,
-  scale,
-  color,
-}: {
-  speed?: number
-  intensity?: number
-  scale?: number
-  color?: string
-} = {}) {
-  return <SquareLensDistortion className="w-full" speed={speed} intensity={intensity} scale={scale} color={color} />
-}
-
-export function DualWaveTextListDemo({ scale }: { scale?: number } = {}) {
-  return <DualWaveTextList className="w-full" scale={scale} />
-}
-
-export function ClipRevealMenuDemo({ duration, delay, intensity }: { duration?: number; delay?: number; intensity?: number } = {}) {
-  return <ClipRevealMenu className="w-full" duration={duration} delay={delay} intensity={intensity} />
-}
-
 export function StickyGridScrollDemo({
   intensity,
   speed,
@@ -133,10 +108,6 @@ export function HeatmapCalendarDemo() {
   return <HeatmapCalendar className="w-full" />
 }
 
-export function GroupedChecklistDemo() {
-  return <GroupedChecklist className="w-full" />
-}
-
 export function TextGenerateDemo({
   duration,
   delay,
@@ -172,10 +143,6 @@ export function TextGenerateDemo({
       align={align}
     />
   )
-}
-
-export function ColumnConfigPanelDemo() {
-  return <ColumnConfigPanel className="w-full" />
 }
 
 export function ResourceSearchHeroDemo() {

@@ -118,35 +118,7 @@ export const batch18Components: ComponentMeta[] = [
       { name: "wobble-many", label: "密", values: { lines: 9, speed: 1.5, intensity: 1 } },
     ],
   },
-  {
-    name: "lego-pixelate",
-    title: "Lego Pixelate",
-    description: "灵感来自 Codrops Lego pixellation，原创实现。图片先变成带凸点的色块，悬停或进入视口后块变小并还原。",
-    category: "showcase",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/lego-pixelate.tsx",
-    target: "components/ui/lego-pixelate.tsx",
-    props: [
-      { name: "image", type: "string", description: "要像素化的图片。省略时用内置画面。" },
-      { name: "blockSize", type: "number", defaultValue: "12", description: "起始时横向的块数，越小越粗。", control: { kind: "range", value: 12, min: 4, max: 28, step: 1 } },
-      {
-        name: "trigger",
-        type: '"hover" | "view"',
-        defaultValue: "hover",
-        description: "悬停或进入视口时还原。",
-        vocabularyExemption: "历史取值是 hover/view，不是 mount/hover/inView。",
-        control: { kind: "select", value: "hover", options: ["hover", "view"] },
-      },
-      { name: "speed", type: "number", description: "块数变化的倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
-      ...ui,
-    ],
-    presets: [
-      { name: "lego-pixelate-coarse", label: "粗", values: { blockSize: 6, speed: 0.6, trigger: "hover" } },
-      { name: "lego-pixelate-default", label: "默认", values: { blockSize: 12, speed: 1, trigger: "hover" } },
-      { name: "lego-pixelate-fine", label: "细", values: { blockSize: 20, speed: 1.6, trigger: "view" } },
-    ],
-  },
+
   {
     name: "telescope-zoom-scroll",
     title: "Telescope Zoom Scroll",

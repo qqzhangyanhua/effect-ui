@@ -3,7 +3,7 @@
 import { CssAccordionAuto } from "../ui/css-accordion-auto"
 import { AnchorPopover } from "../ui/anchor-popover"
 import { DitherGradient } from "../effects/dither-gradient"
-import { HoverImageList } from "../ui/hover-image-list"
+
 import { InfiniteCanvasGallery } from "../effects/infinite-canvas-gallery"
 import { IntroPreloader } from "../effects/intro-preloader"
 import { Keycap3D } from "../ui/keycap-3d"
@@ -13,7 +13,6 @@ import { Hero3DModel } from "../sections/hero-3d-model"
 import { HeroScrollZoom } from "../sections/hero-scroll-zoom"
 import { SectionHorizontalScroll } from "../sections/section-horizontal-scroll"
 import { SmoothScrollProvider } from "../ui/smooth-scroll-provider"
-import { TextVariableScroll } from "../effects/text-variable-scroll"
 import { ViewTransitionGallery } from "../ui/view-transition-gallery"
 
 export function ViewTransitionGalleryDemo({ gap, size }: { gap?: number; size?: number } = {}) {
@@ -71,36 +70,6 @@ export function Keycap3DDemo({ duration, angle, intensity, gap }: { duration?: n
 export function InfiniteCanvasGalleryDemo({ gap, size }: { gap?: number; size?: number } = {}) {
   return <InfiniteCanvasGallery className="w-full" gap={gap} size={size} />
 }
-
-export function HoverImageListDemo({ fontSize, size }: { fontSize?: number; size?: number } = {}) {
-  return <HoverImageList className="w-full" fontSize={fontSize} size={size} />
-}
-
-export function TextVariableScrollDemo({
-  text = "Weight moves through the letters",
-  intensity,
-  fontSize,
-  letterSpacing,
-  align,
-}: {
-  text?: string
-  intensity?: number
-  fontSize?: number
-  letterSpacing?: number
-  align?: "left" | "center" | "right"
-} = {}) {
-  return (
-    <TextVariableScroll
-      className="w-full"
-      text={text}
-      intensity={intensity}
-      fontSize={fontSize}
-      letterSpacing={letterSpacing}
-      align={align}
-    />
-  )
-}
-
 export function LiquidGlassTabbarDemo({ speed, intensity, scale }: { speed?: number; intensity?: number; scale?: number } = {}) {
   return <LiquidGlassTabbar className="w-full" speed={speed} intensity={intensity} scale={scale} />
 }

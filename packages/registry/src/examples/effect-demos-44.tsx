@@ -3,18 +3,15 @@
 import { useState } from "react"
 import { CreditCard, Home, Settings, UserRound } from "lucide-react"
 
-import { Blockquote } from "../effects/blockquote"
 import { BottomNavigation } from "../effects/bottom-navigation"
 import { CategorySearchInput } from "../effects/category-search-input"
-import { FeaturedGallery } from "../effects/featured-gallery"
+
 import { FlyAroundButton } from "../effects/fly-around-button"
 import { FocusLineInput } from "../effects/focus-line-input"
-import { ListGroup } from "../effects/list-group"
 import { MeetingControlBar } from "../effects/meeting-control-bar"
 import { PendulumSocialCard } from "../effects/pendulum-social-card"
 import { PrinterIconButton } from "../effects/printer-icon-button"
 import { TiltSweepButton } from "../effects/tilt-sweep-button"
-import { TimeRangePicker } from "../effects/time-range-picker"
 import { TransactionCard } from "../effects/transaction-card"
 import { UnoCard } from "../effects/uno-card"
 import { WordWheelCard } from "../effects/word-wheel-card"
@@ -23,8 +20,6 @@ function swatch(color: string, label: string) {
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='640' height='400'><rect width='100%' height='100%' fill='${color}'/><text x='50%' y='54%' fill='white' font-size='42' font-family='sans-serif' text-anchor='middle'>${label}</text></svg>`
   return `data:image/svg+xml,${encodeURIComponent(svg)}`
 }
-
-const portrait = swatch("#334155", "林")
 
 function SendIcon() {
   return (
@@ -126,60 +121,6 @@ export function MeetingControlBarDemo() {
     </div>
   )
 }
-
-export function ListGroupDemo() {
-  return (
-    <ListGroup
-      heading="最新用户"
-      items={[
-        { label: "林夏", meta: "lin@example.com", image: portrait, imageAlt: "林夏", action: "关注" },
-        { label: "周宁", meta: "zhou@example.com", image: swatch("#0f766e", "周"), imageAlt: "周宁", action: "关注" },
-      ]}
-      variant="avatars"
-    />
-  )
-}
-
-export function TimeRangePickerDemo() {
-  const [value, setValue] = useState({ start: "09:00", end: "17:00", allDay: false })
-  return (
-    <TimeRangePicker
-      max="18:00"
-      min="09:00"
-      onValueChange={setValue}
-      presets={[
-        { label: "上午", start: "09:00", end: "12:00" },
-        { label: "下午", start: "13:00", end: "18:00" },
-      ]}
-      step={60}
-      value={value}
-    />
-  )
-}
-
-export function BlockquoteDemo() {
-  return (
-    <Blockquote author="林夏" cite="产品负责人" portrait={portrait} portraitAlt="林夏" rating={4} size="lg" variant="review">
-      组件可以直接放进现有页面，颜色跟着主题走。
-    </Blockquote>
-  )
-}
-
-export function FeaturedGalleryDemo() {
-  return (
-    <FeaturedGallery
-      images={[
-        { src: swatch("#0f766e", "鞋"), alt: "绿色球鞋", tags: ["鞋"] },
-        { src: swatch("#9a3412", "包"), alt: "棕色手袋", tags: ["包"] },
-        { src: swatch("#1e3a8a", "耳机"), alt: "蓝色耳机", tags: ["电子"] },
-        { src: swatch("#7c2d12", "靴"), alt: "短靴", tags: ["鞋"] },
-        { src: swatch("#3f6212", "相机"), alt: "相机", tags: ["电子"] },
-      ]}
-      tags={["鞋", "包", "电子"]}
-    />
-  )
-}
-
 export function CategorySearchInputDemo() {
   const [value, setValue] = useState({ category: "all", query: "" })
   const [sent, setSent] = useState("")

@@ -4,26 +4,17 @@ import { useState } from "react"
 import { AgentFlow } from "../effects/agent-flow"
 import { AgentStep, AgentTimeline } from "../effects/agent-timeline"
 import { BlueprintGrid } from "../effects/blueprint-grid"
-import { CommentPin } from "../effects/comment-pin"
 import { InertiaGallery } from "../effects/inertia-gallery"
 import { LiquidMetaballs } from "../effects/liquid-metaballs"
 import { MagicInput } from "../effects/magic-input"
-import { MagicTab } from "../effects/magic-tab"
-import { PresenceFacepile } from "../effects/presence-facepile"
 import { ProgressFoldButton } from "../effects/progress-fold-button"
 import { ProgressiveCardReveal } from "../effects/progressive-card-reveal"
-import { SpinViewer } from "../effects/spin-viewer"
+
 import { StackBadge } from "../effects/stack-badge"
 import { StoreBadge, StoreBadgeGroup } from "../effects/store-badge"
 
 const frame = "flex min-h-80 w-full items-center justify-center px-6 py-10"
 const stage = "relative h-80 w-full overflow-hidden rounded-2xl border border-border bg-card"
-
-function spinFrame(angle: number) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="none"/><g transform="rotate(${angle} 100 100)"><rect x="78" y="36" width="44" height="128" rx="10" fill="currentColor"/></g><circle cx="100" cy="36" r="8" fill="currentColor" opacity="0.45"/></svg>`
-}
-
-const spinFrames = [0, 45, 90, 135, 180, 225, 270, 315].map(spinFrame)
 
 const flowNodes = [
   { id: "brief", label: "读简报", sublabel: "准备", x: 40, y: 120 },
@@ -40,13 +31,6 @@ const tabs = [
   { value: "draw", label: "绘图" },
   { value: "notes", label: "笔记" },
   { value: "share", label: "分享" },
-]
-
-const people = [
-  { id: "lin", name: "林夏", status: "active" as const },
-  { id: "zhou", name: "周宁", status: "typing" as const },
-  { id: "chen", name: "陈舟", status: "idle" as const },
-  { id: "wu", name: "吴青", status: "offline" as const },
 ]
 
 export function ProgressFoldButtonDemo({
@@ -76,25 +60,6 @@ export function ProgressFoldButtonDemo({
       >
         {status === "loading" ? "折叠中" : "开始折叠"}
       </ProgressFoldButton>
-    </div>
-  )
-}
-
-export function MagicTabDemo({
-  color = "var(--primary)",
-  duration = 600,
-  intensity = 4,
-  speed = 1,
-}: {
-  color?: string
-  duration?: number
-  intensity?: number
-  speed?: number
-} = {}) {
-  const [value, setValue] = useState("draw")
-  return (
-    <div className={frame}>
-      <MagicTab items={tabs} value={value} onValueChange={setValue} color={color} duration={duration} intensity={intensity} speed={speed} />
     </div>
   )
 }
@@ -175,25 +140,6 @@ export function LiquidMetaballsDemo({
     </div>
   )
 }
-
-export function SpinViewerDemo({
-  color = "var(--primary)",
-  speed = 12,
-  intensity = 6,
-  loop = true,
-}: {
-  color?: string
-  speed?: number
-  intensity?: number
-  loop?: boolean
-} = {}) {
-  return (
-    <div className={frame}>
-      <SpinViewer frames={spinFrames} color={color} speed={speed} intensity={intensity} loop={loop} className="h-72 w-56" label="拖动这个标记旋转" />
-    </div>
-  )
-}
-
 export function ProgressiveCardRevealDemo({
   color = "var(--border)",
   duration = 480,
@@ -279,27 +225,7 @@ export function AgentFlowDemo() {
   )
 }
 
-export function CommentPinDemo() {
-  return (
-    <div className="relative mx-auto h-80 w-full max-w-lg">
-      <div className="absolute inset-6 rounded-2xl border border-border bg-muted" />
-      <CommentPin
-        x={28}
-        y={36}
-        comments={[{ id: "1", author: "林夏", body: "这里的折角再收一点。", time: "09:24" }]}
-        onReply={() => undefined}
-      />
-    </div>
-  )
-}
 
-export function PresenceFacepileDemo() {
-  return (
-    <div className={frame}>
-      <PresenceFacepile users={people} max={3} />
-    </div>
-  )
-}
 
 export function StackBadgeDemo() {
   return (

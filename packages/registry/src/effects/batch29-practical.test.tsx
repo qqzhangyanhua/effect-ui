@@ -9,7 +9,6 @@ import "@testing-library/jest-dom/vitest"
 MotionGlobalConfig.skipAnimations = true
 
 import { AutosizeTextarea, type AutosizeTextAreaRef } from "./autosize-textarea"
-import { BreathingText } from "./breathing-text"
 import { DualRangeSlider } from "./dual-range-slider"
 import { ElasticLine } from "./elastic-line"
 import { HeadingWithAnchor } from "./heading-with-anchor"
@@ -195,7 +194,7 @@ test("文本框、双滑块、标题锚点和抽屉可以操作", async () => {
   expect(document.querySelector("[data-slot='responsive-modal']")).toBeTruthy()
 })
 
-test("靠近指针的字和呼吸字在普通动效下仍标出偏好", () => {
+test("靠近指针的字在普通动效下仍标出偏好", () => {
   reduceMotion = false
   const containerRef = createRef<HTMLDivElement>()
   const proximity = render(
@@ -206,14 +205,6 @@ test("靠近指针的字和呼吸字在普通动效下仍标出偏好", () => {
     </div>,
   )
   expect(slot(proximity.container, "text-cursor-proximity")).toHaveAttribute("data-reduced", "false")
-
-  const breath = render(
-    <BreathingText fromFontVariationSettings="'wght' 400" toFontVariationSettings="'wght' 700">
-      呼吸
-    </BreathingText>,
-  )
-  expect(slot(breath.container, "breathing-text")).toHaveAttribute("data-reduced", "false")
-  expect(screen.getByText("呼吸")).toBeInTheDocument()
 
   const media = render(
     <MediaBetweenText alt="色块" firstText="北" mediaType="image" mediaUrl={swatch} secondText="窗" />,

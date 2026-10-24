@@ -8,10 +8,7 @@ import "@testing-library/jest-dom/vitest"
 MotionGlobalConfig.skipAnimations = true
 
 import { BottomNavigation } from "./bottom-navigation"
-import { CollapsibleSideMenu } from "./collapsible-side-menu"
-import { ExpandingIconTabs } from "./expanding-icon-tabs"
 import { MultiLevelDropdown } from "./multi-level-dropdown"
-import { TabNavigation, TabNavigationLink } from "./tab-navigation"
 
 let reduceMotion = false
 
@@ -75,25 +72,6 @@ function slot(container: HTMLElement, name: string) {
   return node as HTMLElement
 }
 
-const iconTabs = [
-  { value: "general", label: "总览", icon: <span>✧</span> },
-  { value: "about", label: "关于", icon: <span>i</span> },
-  { value: "privacy", label: "隐私", icon: <span>◉</span> },
-]
-
-const sideItems = [
-  { id: "general", label: "总览", href: "#general", current: true },
-  {
-    id: "teams",
-    label: "团队",
-    defaultOpen: true,
-    items: [
-      { id: "banned", label: "封禁用户", href: "#banned", badge: 3 },
-      { id: "calendar", label: "日历", href: "#calendar" },
-    ],
-  },
-]
-
 const menuItems = [
   { id: "profile", label: "查看资料", href: "#profile" },
   {
@@ -114,62 +92,9 @@ const bottomItems = [
   { label: "我的" },
 ]
 
-function tabs() {
-  return (
-    <TabNavigation>
-      <TabNavigationLink active href="#night">
-        夜航
-      </TabNavigationLink>
-      <TabNavigationLink href="#light">灯塔</TabNavigationLink>
-      <TabNavigationLink disabled href="#deck">
-        甲板
-      </TabNavigationLink>
-    </TabNavigation>
-  )
-}
 
-test("tab navigation marks the current page and disables the last link", () => {
-  render(tabs())
-  expect(screen.getByRole("link", { name: "夜航" })).toHaveAttribute("aria-current", "page")
-  expect(screen.getByRole("link", { name: "灯塔" })).toBeInTheDocument()
-  expect(screen.getByRole("link", { name: "甲板" })).toHaveAttribute("aria-disabled", "true")
-})
 
-test("tab navigation marks reduced motion on each link", () => {
-  reduceMotion = true
-  const { container } = render(tabs())
-  expect(screen.getByRole("link", { name: "夜航" })).toHaveAttribute("aria-current", "page")
-  expect(container.querySelectorAll('[data-slot="tab-navigation-link"][data-reduced="true"]')).toHaveLength(3)
-})
 
-test("expanding icon tabs select another tab", () => {
-  const { container } = render(<ExpandingIconTabs tabs={iconTabs} />)
-  expect(screen.getByRole("tab", { name: "总览" })).toHaveAttribute("aria-selected", "true")
-  fireEvent.click(screen.getByRole("tab", { name: "关于" }))
-  expect(screen.getByRole("tab", { name: "关于" })).toHaveAttribute("aria-selected", "true")
-  expect(slot(container, "expanding-icon-tabs")).toHaveAttribute("data-reduced", "false")
-})
-
-test("expanding icon tabs show the selected label when motion is reduced", () => {
-  reduceMotion = true
-  const { container } = render(<ExpandingIconTabs tabs={iconTabs} />)
-  expect(screen.getByRole("tab", { name: "总览" })).toHaveTextContent("总览")
-  expect(slot(container, "expanding-icon-tabs")).toHaveAttribute("data-reduced", "true")
-})
-
-test("collapsible side menu shows the current page and an open group", () => {
-  const { container } = render(<CollapsibleSideMenu items={sideItems} />)
-  expect(screen.getByRole("link", { name: "总览" })).toHaveAttribute("aria-current", "page")
-  expect(screen.getByRole("link", { name: /封禁用户/ })).toBeInTheDocument()
-  expect(slot(container, "collapsible-side-menu")).toHaveAttribute("data-reduced", "false")
-})
-
-test("collapsible side menu marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(<CollapsibleSideMenu items={sideItems} />)
-  expect(screen.getByText("团队")).toBeInTheDocument()
-  expect(slot(container, "collapsible-side-menu")).toHaveAttribute("data-reduced", "true")
-})
 
 test("multi-level dropdown opens its menu", () => {
   const { container } = render(<MultiLevelDropdown items={menuItems} label="账户" />)

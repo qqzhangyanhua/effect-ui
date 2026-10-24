@@ -7,7 +7,6 @@ import { AccountAccessCard } from "../effects/account-access-card"
 import { AIChatCard } from "../effects/ai-chat-card"
 import { CheckCrossSwitch } from "../effects/check-cross-switch"
 import { ElementAlongPathItem, ElementAlongSvgPath } from "../effects/element-along-svg-path"
-import { Float } from "../effects/float"
 import { GitHubProfileCard } from "../effects/github-profile-card"
 import { HttpStatusLookup } from "../effects/http-status-lookup"
 import { LetterSwapPingPong } from "../effects/letter-swap-pingpong"
@@ -17,7 +16,6 @@ import { RandomLetterSwap } from "../effects/random-letter-swap"
 import { StarRating } from "../effects/star-rating"
 import { TransferFundsCard } from "../effects/transfer-funds-card"
 import { UnderlineHoverLink } from "../effects/underline-hover-link"
-import { VariableFontHoverByLetter } from "../effects/variable-font-hover-by-letter"
 
 const credentials = [
   { email: "ada@example.com", passwordLength: 12 },
@@ -31,18 +29,6 @@ const summary = [
   { label: "手续费", value: "¥0.00" },
   { label: "合计", value: "¥1,200.00", emphasized: true },
 ]
-
-export function VariableFontHoverByLetterDemo({
-  label = "可变",
-  from = "'wght' 400",
-  staggerFrom = "center",
-}: { label?: string; from?: string; staggerFrom?: "first" | "last" | "center" } = {}) {
-  return (
-    <div className="flex min-h-40 items-center justify-center px-6 py-10 text-4xl">
-      <VariableFontHoverByLetter from={from} label={label} staggerFrom={staggerFrom} to="'wght' 800" />
-    </div>
-  )
-}
 
 export function LetterSwapPingPongDemo({
   label = "往返",
@@ -111,20 +97,6 @@ export function ElementAlongSvgPathDemo({
           <span className="size-2 rounded-full bg-foreground" />
         </ElementAlongPathItem>
       </ElementAlongSvgPath>
-    </div>
-  )
-}
-
-export function FloatDemo({
-  children = "漂浮",
-  speed = 0.4,
-  timeOffset = 0,
-}: { children?: string; speed?: number; timeOffset?: number } = {}) {
-  return (
-    <div className="flex min-h-48 items-center justify-center px-6 py-10">
-      <Float amplitude={[8, 18, 12]} rotationRange={[8, 10, 4]} speed={speed} timeOffset={timeOffset}>
-        <div className="rounded-2xl border bg-card px-6 py-4 text-card-foreground shadow-sm">{children}</div>
-      </Float>
     </div>
   )
 }

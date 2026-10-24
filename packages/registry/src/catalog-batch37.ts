@@ -146,7 +146,7 @@ export const batch37Components: ComponentMeta[] = [
   {
     name: "chain-of-thought",
     title: "Chain Of Thought",
-    description: `${prompt} ${promptFile("chain-of-thought.tsx")} 可折叠的推理步骤。子组件有 ChainOfThoughtStep、ChainOfThoughtTrigger、ChainOfThoughtContent、ChainOfThoughtItem。折叠用现有 collapsible。减弱动效时不再播放折叠动画。`,
+    description: `${prompt} ${promptFile("chain-of-thought.tsx")} 可折叠的推理步骤。子组件有 ChainOfThoughtStep、ChainOfThoughtTrigger、ChainOfThoughtContent、ChainOfThoughtItem。折叠直接使用 @radix-ui/react-collapsible。减弱动效时不再播放折叠动画。`,
     category: "ai",
     source: "prompt-kit",
     type: "registry:ui",
@@ -181,7 +181,7 @@ export const batch37Components: ComponentMeta[] = [
   {
     name: "source",
     title: "Source",
-    description: `${prompt} ${promptFile("source.tsx")} 来源胶囊和悬停卡片。悬停用现有 hover-card。showFavicon 默认关闭。只在传入 faviconSrc 时显示图标，不请求 Google favicon。减弱动效时悬停不再延迟。`,
+    description: `${prompt} ${promptFile("source.tsx")} 来源胶囊和悬停卡片。悬停写在组件内部。showFavicon 默认关闭。只在传入 faviconSrc 时显示图标，不请求 Google favicon。减弱动效时悬停不再延迟。`,
     category: "ai",
     source: "prompt-kit",
     type: "registry:ui",
@@ -201,7 +201,7 @@ export const batch37Components: ComponentMeta[] = [
   {
     name: "tool",
     title: "Tool",
-    description: `${prompt} ${promptFile("tool.tsx")} 工具调用折叠卡。toolPart.state 为 input-streaming、input-available、output-available 或 output-error。按钮和折叠用现有 button、collapsible。减弱动效时处理中的图标不再旋转，折叠没有动画。`,
+    description: `${prompt} ${promptFile("tool.tsx")} 工具调用折叠卡。toolPart.state 为 input-streaming、input-available、output-available 或 output-error。按钮用现有 button，折叠直接使用 @radix-ui/react-collapsible。减弱动效时处理中的图标不再旋转，折叠没有动画。`,
     category: "ai",
     source: "prompt-kit",
     type: "registry:ui",

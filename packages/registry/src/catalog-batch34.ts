@@ -77,22 +77,6 @@ export const batch34Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "star-ribbon-notification",
-    title: "Star Ribbon Notification",
-    description: `${galaxy} 作者 andrew-demchenk0。${galaxyFile("Notifications/andrew-demchenk0_quiet-liger-31.html")} 绶带通知，上方星星浮动。title、message、stars 可配。减弱动效或离开视口时星星和文字停住。`,
-    category: "decor",
-    source: "Uiverse",
-    type: "registry:ui",
-    file: "effects/star-ribbon-notification.tsx",
-    target: "components/ui/star-ribbon-notification.tsx",
-    props: [
-      { name: "title", type: "string", defaultValue: "升级了", description: "绶带主标题。", control: { kind: "text", value: "升级了" } },
-      { name: "message", type: "string", defaultValue: "按开始", description: "标题下的一行小字。", control: { kind: "text", value: "按开始" } },
-      { name: "stars", type: "number", defaultValue: "3", description: "浮动星星的数量。", control: { kind: "range", value: 3, min: 1, max: 8, step: 1 } },
-      ...ui,
-    ],
-  },
-  {
     name: "moon-sun-switch",
     title: "Moon Sun Switch",
     description: `${galaxy} 作者 satyamchaudharydev。${galaxyFile("Toggle-switches/satyamchaudharydev_shy-earwig-18.html")} 太阳滑成月牙的主题开关，role 为 switch，支持受控。减弱动效时直接切换。`,

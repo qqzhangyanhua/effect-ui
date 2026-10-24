@@ -4,8 +4,7 @@ import { useState, type ReactNode } from "react"
 import { Home, Sparkle, Star } from "lucide-react"
 
 import { AnimatedGrid } from "../effects/animated-grid"
-import { AnimatedList } from "../effects/animated-list"
-import { AnimatedSidebar } from "../effects/animated-sidebar"
+
 import { AnimatedTabs } from "../effects/animated-tabs"
 import { BentoCard, BentoGrid } from "../effects/bento-grid"
 import { BorderBeam } from "../effects/border-beam"
@@ -21,16 +20,12 @@ import { Marquee } from "../effects/marquee"
 import { MorphingText } from "../effects/morphing-text"
 import { NoiseGradient } from "../effects/noise-gradient"
 import { OrbitingCircles } from "../effects/orbiting-circles"
-import { PageTransition } from "../effects/page-transition"
 import { PerspectiveCard } from "../effects/perspective-card"
 import { RainbowButton } from "../effects/rainbow-button"
 import { RetroGrid } from "../effects/retro-grid"
-import { RevealSection } from "../effects/reveal-section"
 import { RollingNumber } from "../effects/rolling-number"
 import { ScrambleText } from "../effects/scramble-text"
 import { Sparkles } from "../effects/sparkles"
-import { Starfield } from "../effects/starfield"
-import { TextReveal } from "../effects/text-reveal"
 import { TextRotate } from "../effects/text-rotate"
 import { WaveBackground } from "../effects/wave-background"
 import { WordRotate } from "../effects/word-rotate"
@@ -177,34 +172,6 @@ export function RollingNumberDemo({
   )
 }
 
-export function TextRevealDemo({
-  text = "滚动这段文字，单词会依次从淡到实。",
-  fontSize,
-  fontWeight,
-  letterSpacing,
-  align,
-}: {
-  text?: string
-  fontSize?: number
-  fontWeight?: number
-  letterSpacing?: number
-  align?: "left" | "center" | "right"
-} = {}) {
-  return (
-    <div className="h-40 w-full overflow-auto rounded-xl border p-4">
-      <div className="h-16" />
-      <TextReveal
-        text={text}
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        letterSpacing={letterSpacing}
-        align={align}
-      />
-      <div className="h-24" />
-    </div>
-  )
-}
-
 export function LightBeamsDemo({
   beams = 6,
   speed = 1,
@@ -220,26 +187,6 @@ export function LightBeamsDemo({
     <Frame>
       <LightBeams beams={beams} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">光束</p>
-    </Frame>
-  )
-}
-
-export function StarfieldDemo({
-  count = 90,
-  speed = 1,
-  color,
-  size = 1,
-}: {
-  count?: number
-  speed?: number
-  color?: string
-  size?: number
-} = {}) {
-  return (
-    <Frame>
-      <div className="absolute inset-0 bg-zinc-950" />
-      <Starfield className="text-white" count={count} speed={speed} color={color} size={size} />
-      <p className="relative z-10 text-sm text-zinc-100">星空</p>
     </Frame>
   )
 }
@@ -362,21 +309,6 @@ export function OrbitingCirclesDemo({ radius, duration, size }: { radius?: numbe
     </OrbitingCircles>
   )
 }
-
-export function AnimatedListDemo({ delay, duration, gap }: { delay?: number; duration?: number; gap?: number } = {}) {
-  return (
-    <AnimatedList
-      className="w-64"
-      delay={delay}
-      duration={duration}
-      gap={gap}
-      items={["新组件已发布", "Registry 构建完成", "文档站已更新"].map((text) => (
-        <div key={text} className="rounded-lg border bg-card px-3 py-2 text-sm">{text}</div>
-      ))}
-    />
-  )
-}
-
 export function GlobeSphereDemo({ dots, duration, size, color }: { dots?: number; duration?: number; size?: number; color?: string } = {}) {
   return <GlobeSphere className="[transform-style:preserve-3d]" dots={dots} duration={duration} size={size} color={color} />
 }
@@ -464,39 +396,5 @@ export function FloatingNavbarDemo({ duration, intensity }: { duration?: number;
       </FloatingNavbar>
       <div className="h-64 p-4 text-sm text-muted-foreground">向下滚动，导航会收起。</div>
     </div>
-  )
-}
-
-export function AnimatedSidebarDemo({ size, intensity }: { size?: number; intensity?: number } = {}) {
-  return (
-    <AnimatedSidebar size={size} intensity={intensity}>
-      <p className="text-sm">侧栏内容</p>
-    </AnimatedSidebar>
-  )
-}
-
-export function PageTransitionDemo({ duration, intensity }: { duration?: number; intensity?: number } = {}) {
-  const [key, setKey] = useState("a")
-  return (
-    <div className="space-y-3">
-      <button
-        type="button"
-        className="rounded-md border px-3 py-1.5 text-sm"
-        onClick={() => setKey((current) => (current === "a" ? "b" : "a"))}
-      >
-        切换页面
-      </button>
-      <PageTransition transitionKey={key} className="rounded-xl border bg-card p-6" duration={duration} intensity={intensity}>
-        当前视图：{key === "a" ? "概览" : "详情"}
-      </PageTransition>
-    </div>
-  )
-}
-
-export function RevealSectionDemo({ delay, speed, intensity }: { delay?: number; speed?: number; intensity?: number } = {}) {
-  return (
-    <RevealSection className="rounded-xl border bg-card p-6" delay={delay} speed={speed} intensity={intensity}>
-      滚动到这里时区块揭开
-    </RevealSection>
   )
 }

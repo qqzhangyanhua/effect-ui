@@ -131,26 +131,7 @@ export const batch54Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "overlapping-slider",
-    title: "Overlapping Slider",
-    description: `${credit} ${file("overlapping-slider")} 名片叠成一排。拖拽、点击卡片，或用两侧箭头切换。当前卡片左侧的卡片会后缩。${pause}`,
-    category: "showcase",
-    source: "uselayouts",
-    type: "registry:ui",
-    file: "effects/overlapping-slider.tsx",
-    target: "components/ui/overlapping-slider.tsx",
-    props: [
-      { name: "items", type: "CardProfile[]", description: "名片。每张含 id、name、handle、role、image、hue。" },
-      { name: "color", type: "string", defaultValue: '"var(--foreground)"', description: "箭头底色。缺省跟随前景色。", control: { kind: "color", value: "var(--foreground)" } },
-      { name: "duration", type: "number", defaultValue: "380", description: "吸附时长，单位毫秒。", control: { kind: "range", value: 380, min: 0, max: 1000, step: 20 } },
-      { name: "size", type: "number", defaultValue: "240", description: "卡片宽度，单位像素。", control: { kind: "range", value: 240, min: 160, max: 360, step: 10 } },
-      { name: "intensity", type: "number", defaultValue: "0.04", description: "相邻卡片重叠的比例。", control: { kind: "range", value: 0.04, min: 0, max: 0.4, step: 0.01 } },
-      { name: "cardGap", type: "number", defaultValue: "18", description: "卡片间距，单位像素。" },
-      { name: "onActiveChange", type: "(index: number) => void", description: "当前卡片变化时调用。" },
-      ...ui,
-    ],
-  },
+
   {
     name: "get-in-touch",
     title: "Get In Touch",
@@ -222,20 +203,6 @@ export const batch54Components: ComponentMeta[] = [
     props: [
       { name: "label", type: "string", defaultValue: '"Start Creating"', description: "收起时的按钮文字。" },
       { name: "onSelect", type: "(label: string) => void", description: "选中一项时调用。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "day-picker",
-    title: "Day Picker",
-    description: `${credit} ${file("day-picker")} 频率选择。每日、每周、每月、每年。选每周时再点星期。`,
-    category: "utility",
-    source: "uselayouts",
-    type: "registry:ui",
-    file: "effects/day-picker.tsx",
-    target: "components/ui/day-picker.tsx",
-    props: [
-      { name: "onChange", type: "(value: { frequency: string; day: number }) => void", description: "频率或星期变化时调用。" },
       ...ui,
     ],
   },

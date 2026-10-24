@@ -7,16 +7,10 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { ChromaBlurTransition } from "./chroma-blur-transition"
-import { DatamoshTransition } from "./datamosh-transition"
-import { MarketingHero } from "./marketing-blocks"
 import { NotFoundPage } from "./not-found-page"
-import { PageTransition } from "./page-transition"
 import { PrismSweepTransition } from "./prism-sweep-transition"
 import { Terminal } from "./terminal"
-import { DashboardBlocks } from "../ui/dashboard-blocks"
 import { IPhone, Macbook, Safari } from "../ui/device-mockups"
-import { EcommerceBlocks } from "../ui/ecommerce-blocks"
 import { ViewTransitionGallery } from "../ui/view-transition-gallery"
 
 let reduceMotion = false
@@ -83,37 +77,9 @@ function slot(container: HTMLElement, name: string) {
 
 const helpLinks = [{ title: "文档", description: "查组件和主题变量。", href: "#docs" }]
 
-test("page transition shows the current view", () => {
-  render(
-    <PageTransition transitionKey="a">
-      <p>当前视图：概览</p>
-    </PageTransition>,
-  )
-  expect(screen.getByText("当前视图：概览")).toBeInTheDocument()
-})
 
-test("page transition keeps the current view when motion is reduced", () => {
-  reduceMotion = true
-  const { container } = render(
-    <PageTransition transitionKey="a">
-      <p>当前视图：概览</p>
-    </PageTransition>,
-  )
-  expect(screen.getByText("当前视图：概览")).toBeInTheDocument()
-  expect(slot(container, "page-transition")).toBeInTheDocument()
-})
 
-test("marketing hero shows its default title", () => {
-  render(<MarketingHero variant="aurora" />)
-  expect(screen.getByRole("heading", { name: "把特效和基础组件放进同一套工具箱" })).toBeInTheDocument()
-  expect(screen.getByText("复制进项目，而不是再装一个黑盒依赖。")).toBeInTheDocument()
-})
 
-test("marketing hero keeps the title when motion is reduced", () => {
-  reduceMotion = true
-  render(<MarketingHero variant="aurora" />)
-  expect(screen.getByRole("heading", { name: "把特效和基础组件放进同一套工具箱" })).toBeInTheDocument()
-})
 
 test("device mockups show the safari address and the phone", () => {
   render(
@@ -162,31 +128,9 @@ test("terminal shows every command when motion is reduced", () => {
   expect(screen.getByText("pnpm registry:build")).toBeInTheDocument()
 })
 
-test("dashboard blocks show the analytics visits", () => {
-  render(<DashboardBlocks variant="analytics" />)
-  expect(screen.getByText("访问")).toBeInTheDocument()
-  expect(screen.getByText("18.2k")).toBeInTheDocument()
-})
 
-test("dashboard blocks keep the visits when motion is reduced", () => {
-  reduceMotion = true
-  render(<DashboardBlocks />)
-  expect(screen.getByText("访问")).toBeInTheDocument()
-  expect(screen.getByText("总览")).toBeInTheDocument()
-})
 
-test("ecommerce blocks list the store products", () => {
-  render(<EcommerceBlocks view="store" />)
-  expect(screen.getByText("Holo Tee")).toBeInTheDocument()
-  expect(screen.getByText("$48")).toBeInTheDocument()
-})
 
-test("ecommerce blocks keep the products when motion is reduced", () => {
-  reduceMotion = true
-  render(<EcommerceBlocks />)
-  expect(screen.getByText("Foil Cap")).toBeInTheDocument()
-  expect(screen.getByText("Aura Bag")).toBeInTheDocument()
-})
 
 test("view transition gallery lists its shots", () => {
   render(<ViewTransitionGallery />)
@@ -201,39 +145,9 @@ test("view transition gallery keeps the shots when motion is reduced", () => {
   expect(screen.getByRole("button", { name: "潮色" })).toBeInTheDocument()
 })
 
-test("datamosh transition starts on the cool scene", () => {
-  render(<DatamoshTransition />)
-  expect(screen.getByRole("radio", { name: "冷色画面" })).toHaveAttribute("aria-checked", "true")
-  expect(screen.getByText("切换时色块会被拖影拉开，再收回新画面。")).toBeInTheDocument()
-})
 
-test("datamosh transition says it cuts directly when motion is reduced", () => {
-  reduceMotion = true
-  render(<DatamoshTransition />)
-  expect(screen.getByRole("radio", { name: "暖色画面" })).toBeInTheDocument()
-  expect(screen.getByText("已直接切到下一幅。")).toBeInTheDocument()
-})
 
-test("chroma blur transition shows the scene", () => {
-  const { container } = render(
-    <ChromaBlurTransition transitionKey={0}>
-      <p>洋红</p>
-    </ChromaBlurTransition>,
-  )
-  expect(screen.getByText("洋红")).toBeInTheDocument()
-  expect(slot(container, "chroma-blur-transition")).toHaveAttribute("data-reduced", "false")
-})
 
-test("chroma blur transition marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(
-    <ChromaBlurTransition transitionKey={0}>
-      <p>洋红</p>
-    </ChromaBlurTransition>,
-  )
-  expect(screen.getByText("洋红")).toBeInTheDocument()
-  expect(slot(container, "chroma-blur-transition")).toHaveAttribute("data-reduced", "true")
-})
 
 test("prism sweep shows the scene with the default sweep", () => {
   const { container } = render(

@@ -13,7 +13,7 @@
   - 现在跟着主题 token 的，继续跟 token。控件的 Start value 省略，也就是「跟随主题」，demo 不收到这个 prop。
   - 现在写死了调色板的，默认值写成那组色值，不改成主题 token。不传和传这组默认值的结果相同。控件 Start value 用这组色值。
 - 已发布控件的 Start value 保持不动。
-- 布尔开关和新建的 `delay`：Start value 等于组件默认值。`delay` 默认 0，`interactive` 默认 false。`loop` 默认 false，除非这个组件原来就在循环（`glitch-text`、`gradient-text` 默认 true）。
+- 布尔开关和新建的 `delay`：Start value 等于组件默认值。`delay` 默认 0，`interactive` 默认 false。`loop` 默认 false，除非这个组件原来就在循环（`gradient-text` 默认 true）。
 - 排版滑杆（`fontSize`、`fontWeight`、`letterSpacing`）的组件默认是不传、样式继承。滑杆必须有数字，所以 Start value 是文档演示用的具体数字，打开文档页会带上这些 prop，复制配置也会带上。这和「不传则继承」不冲突：安装后不写这些 prop，渲染仍和升级前一样。
 - 只有一个组件用到的概念，名字写在那个组件的清单上，不进本表。第二个组件要用同一个概念时再补一行。
 - 已发布的 prop 如果名字在本表里、但类型或取值改了就会破坏调用，在该 prop 上写 `vocabularyExemption`（非空说明）。audit 会跳过这个 prop 的一致性检查，不改它的名字和类型。

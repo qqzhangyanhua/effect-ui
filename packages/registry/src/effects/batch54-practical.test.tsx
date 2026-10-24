@@ -9,12 +9,11 @@ import { AnalogStick } from "./analog-stick"
 import { ClientCard } from "./client-card"
 import { CornerVideo } from "./corner-video"
 import { CreateMenu } from "./create-menu"
-import { DayPicker } from "./day-picker"
 import { DiscoverSearchPill } from "./discover-search-pill"
 import { DynamicGridGallery } from "./dynamic-grid-gallery"
 import { GetInTouch } from "./get-in-touch"
 import { GooeyNavbar } from "./gooey-navbar"
-import { OverlappingSlider } from "./overlapping-slider"
+
 import { PaperShredButton } from "./paper-shred-button"
 import { PhotoAlbums } from "./photo-albums"
 import { ScanDocument } from "./scan-document"
@@ -110,11 +109,6 @@ test("uselayouts 组件在减弱动效下仍可操作", async () => {
   expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute("aria-current", "page")
   cleanup()
 
-  render(<OverlappingSlider />)
-  await user.click(screen.getByRole("button", { name: "Next" }))
-  expect(screen.getByRole("button", { name: "Previous" })).toBeEnabled()
-  cleanup()
-
   const { unmount: unmountTouch } = render(<GetInTouch />)
   const link = screen.getByRole("link", { name: "GET IN TOUCH" })
   await user.click(link)
@@ -133,12 +127,6 @@ test("uselayouts 组件在减弱动效下仍可操作", async () => {
   render(<CreateMenu />)
   await user.click(screen.getByRole("button", { name: "Start Creating" }))
   expect(screen.getByRole("menuitem", { name: "New Post" })).toBeInTheDocument()
-  cleanup()
-
-  render(<DayPicker />)
-  await user.click(screen.getByRole("button", { name: "Daily" }))
-  await user.click(screen.getByRole("button", { name: "Weekly" }))
-  expect(screen.getByRole("button", { name: "Mon" })).toBeInTheDocument()
   cleanup()
 
   render(<StackedList />)

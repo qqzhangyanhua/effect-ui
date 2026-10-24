@@ -9,11 +9,10 @@ import { CosmicButton } from "./cosmic-button"
 import { ElapsedTimer } from "./elapsed-timer"
 import { FoldedCard } from "./folded-card"
 import { GlowTrackButton } from "./glow-track-button"
-import { HaloBadge } from "./halo-badge"
 import { HaloSwitch } from "./halo-switch"
 import { LightBoard } from "./lightboard"
 import { NeumorphButton } from "./neumorph-button"
-import { SecurityCheckpoint } from "./security-checkpoint"
+
 import { ShiftCard } from "./shift-card"
 import { SidePanel } from "./side-panel"
 import { SpeechBubble } from "./speech-bubble"
@@ -65,7 +64,6 @@ test("减弱动效时灯板、光环和计时保持可读", () => {
       <LightBoard disableDrawing={false} text="HI" />
       <CosmicButton href="#local">星图</CosmicButton>
       <GlowTrackButton text="光" />
-      <HaloBadge live>在线</HaloBadge>
       <HaloSwitch aria-label="夜航" defaultChecked />
       <SquiggleArrow direction="up" variant="bouncy" />
       <ElapsedTimer loading />
@@ -76,7 +74,6 @@ test("减弱动效时灯板、光环和计时保持可读", () => {
   expect(container.querySelector("[data-slot=lightboard] canvas")).toBeInTheDocument()
   expect(screen.getByRole("link", { name: "星图" })).toHaveAttribute("data-motion", "off")
   expect(screen.getByRole("button", { name: "光" })).toHaveAttribute("data-reduced", "true")
-  expect(container.querySelector("[data-slot=halo-badge]")).toHaveAttribute("data-motion", "off")
   expect(screen.getByRole("switch", { name: "夜航" })).toBeInTheDocument()
   expect(container.querySelector("[data-slot=squiggle-arrow]")).toHaveAttribute("data-direction", "up")
   expect(container.querySelector("[data-slot=squiggle-arrow]")).toHaveAttribute("data-variant", "bouncy")
@@ -102,7 +99,6 @@ test("开关、侧栏和班次卡片能切换状态", () => {
       <ShiftCard bottomContent="底部" middleContent="中部" topContent="顶部" />
       <SpeechBubble showCursor={false}>对齐</SpeechBubble>
       <FoldedCard badge="草稿" description="说明" title="现场笔记" />
-      <SecurityCheckpoint />
       <CollabAvatar color="#7C3AED" name="林夏" size={44} />
       <TextureCard>纹理</TextureCard>
     </div>,
@@ -119,7 +115,6 @@ test("开关、侧栏和班次卡片能切换状态", () => {
   expect(card).toHaveAttribute("data-state", "open")
   expect(screen.getByText("对齐")).toBeInTheDocument()
   expect(screen.getByText("现场笔记")).toBeInTheDocument()
-  expect(screen.getByText("安全核对")).toBeInTheDocument()
   expect(screen.getByRole("img", { name: "林夏" })).toHaveTextContent("林夏")
   expect(container.querySelector("[data-slot=texture-card]")).toHaveTextContent("纹理")
 })

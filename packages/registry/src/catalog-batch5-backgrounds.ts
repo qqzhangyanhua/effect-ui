@@ -10,46 +10,6 @@ const ui: PropDoc[] = [
 
 export const batch5Backgrounds: ComponentMeta[] = [
   {
-    name: "flow-field",
-    title: "Flow Field",
-    description: "流场线粒子背景。",
-    category: "backgrounds",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/flow-field.tsx",
-    target: "components/ui/flow-field.tsx",
-    props: [
-      {
-        name: "density",
-        type: "number",
-        defaultValue: "70",
-        description: "粒子数。",
-        control: { kind: "range", value: 70, min: 20, max: 140, step: 5 },
-      },
-      {
-        name: "speed",
-        type: "number",
-        defaultValue: "1",
-        description: "推进速度倍率。",
-        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
-      },
-      {
-        name: "color",
-        type: "string",
-        description: "线条颜色，不传则跟随主色。",
-        control: { kind: "color" },
-      },
-      {
-        name: "size",
-        type: "number",
-        defaultValue: "1",
-        description: "线宽，单位像素。",
-        control: { kind: "range", value: 1, min: 0.5, max: 3, step: 0.5 },
-      },
-      ...ui,
-    ],
-  },
-  {
     name: "halftone",
     title: "Halftone",
     description: "半调网点，随鼠标放大。",

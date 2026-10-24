@@ -19,7 +19,7 @@ import { DotField } from "./dot-field"
 import { LiquidGauge } from "./liquid-gauge"
 import { LiquidSlider } from "./liquid-slider"
 import { ReceiptPrinter } from "./receipt-printer"
-import { SpendingRing } from "./spending-ring"
+
 import { TimezonePlanner } from "./timezone-planner"
 
 let reduceMotion = false
@@ -100,7 +100,7 @@ test("减弱动效时收据、液面、点阵和裁切停在标记上", () => {
   cleanup()
 })
 
-test("水位滑块、支出环和时区表盘能用方向键改变读数", () => {
+test("水位滑块和时区表盘能用方向键改变读数", () => {
   reduceMotion = true
   const slider = render(<LiquidSlider label="今日饮水" />)
   const water = screen.getByRole("slider", { name: "今日饮水" })
@@ -108,13 +108,6 @@ test("水位滑块、支出环和时区表盘能用方向键改变读数", () =>
   fireEvent.keyDown(water, { key: "ArrowUp" })
   expect(water).toHaveAttribute("aria-valuenow", "1300")
   slider.unmount()
-
-  const ring = render(<SpendingRing title="十月支出" />)
-  const dial = screen.getByRole("slider", { name: /Spending by category/ })
-  expect(dial).toHaveAttribute("aria-valuenow", "1")
-  fireEvent.keyDown(dial, { key: "ArrowRight" })
-  expect(dial).toHaveAttribute("aria-valuenow", "2")
-  ring.unmount()
 
   const planner = render(<TimezonePlanner />)
   const meeting = screen.getByRole("slider", { name: "Meeting time" })

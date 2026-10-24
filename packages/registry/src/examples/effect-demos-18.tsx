@@ -6,7 +6,7 @@ import { CurvedScrollbar } from "../effects/curved-scrollbar"
 import { FireworksShow } from "../effects/fireworks-show"
 import { ImageTubeScroll } from "../effects/image-tube-scroll"
 import { InvoicePreview } from "../effects/invoice-preview"
-import { LegoPixelate } from "../effects/lego-pixelate"
+
 import { MentionTextarea } from "../effects/mention-textarea"
 import { ParticleHourglass } from "../effects/particle-hourglass"
 import { ShortcutsDialog } from "../effects/shortcuts-dialog"
@@ -50,11 +50,6 @@ export function WobbleLineCursorDemo({
 } = {}) {
   return <WobbleLineCursor className="w-full" lines={lines} speed={speed} intensity={intensity} color={color} />
 }
-
-export function LegoPixelateDemo({ blockSize, trigger, speed }: { blockSize?: number; trigger?: "hover" | "view"; speed?: number } = {}) {
-  return <LegoPixelate className="w-full" blockSize={blockSize} trigger={trigger} speed={speed} />
-}
-
 export function TelescopeZoomScrollDemo() {
   return <TelescopeZoomScroll className="w-full" />
 }

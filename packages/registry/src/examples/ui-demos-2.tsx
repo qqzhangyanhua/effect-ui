@@ -38,11 +38,6 @@ import {
 } from "../ui/carousel"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart"
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible"
-import {
   Command,
   CommandEmpty,
   CommandGroup,
@@ -73,7 +68,6 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card"
 import { Input } from "../ui/input"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "../ui/input-otp"
 import { Label } from "../ui/label"
@@ -237,17 +231,6 @@ export function ChartDemo() {
   )
 }
 
-export function CollapsibleDemo() {
-  return (
-    <Collapsible className="w-64 rounded-lg border p-3">
-      <CollapsibleTrigger className="text-sm font-medium">展开说明</CollapsibleTrigger>
-      <CollapsibleContent className="pt-2 text-sm text-muted-foreground">
-        Collapsible 适合放次要内容。
-      </CollapsibleContent>
-    </Collapsible>
-  )
-}
-
 export function CommandDemo() {
   return (
     <Command className="w-72 rounded-lg border">
@@ -321,17 +304,6 @@ export function FormDemo() {
         </Button>
       </form>
     </Form>
-  )
-}
-
-export function HoverCardDemo() {
-  return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <Button variant="link">悬停查看</Button>
-      </HoverCardTrigger>
-      <HoverCardContent>把更多上下文放在轻量卡片里。</HoverCardContent>
-    </HoverCard>
   )
 }
 

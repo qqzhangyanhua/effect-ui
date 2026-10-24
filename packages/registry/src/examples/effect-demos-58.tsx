@@ -3,18 +3,14 @@
 import { useState } from "react"
 
 import { ApiRequestInspector } from "../effects/api-request-inspector"
-import { CartItemTransition } from "../effects/cart-item-transition"
 import { CopperplateHatch } from "../effects/copperplate-hatch"
 import { CoreStrata } from "../effects/core-strata"
-import { DataRefreshState } from "../effects/data-refresh-state"
-import { DeploymentPipeline } from "../effects/deployment-pipeline"
 import { EnvironmentSwitcher } from "../effects/environment-switcher"
 import { EventPropagationMatrix } from "../effects/event-propagation-matrix"
 import { FilmstripScrub } from "../effects/filmstrip-scrub"
 import { KineticEmphasis } from "../effects/kinetic-emphasis"
 import { LiquidFillHeadline } from "../effects/liquid-fill-headline"
 import { LiveLogStream } from "../effects/live-log-stream"
-import { ProductVariantSelector } from "../effects/product-variant-selector"
 import { QueuePulseLanes } from "../effects/queue-pulse-lanes"
 import { VelocitySkewFeed } from "../effects/velocity-skew-feed"
 
@@ -199,23 +195,6 @@ export function FilmstripScrubDemo({
   )
 }
 
-export function DeploymentPipelineDemo() {
-  const [stages, setStages] = useState([
-    { id: "lint", name: "Lint", status: "passed" as const, durationMs: 42000, logs: ["checked 128 files"] },
-    { id: "build", name: "Build", status: "running" as const, durationMs: 18000, logs: ["bundling registry"] },
-    { id: "ship", name: "Ship", status: "failed" as const, durationMs: 9000, logs: ["edge timeout"] },
-  ])
-  return (
-    <div className="w-full px-6 py-10">
-      <DeploymentPipeline
-        stages={stages}
-        label="部署流水线"
-        onRetry={(id) => setStages((current) => current.map((stage) => (stage.id === id ? { ...stage, status: "running" } : stage)))}
-      />
-    </div>
-  )
-}
-
 export function LiveLogStreamDemo() {
   return (
     <div className="w-full px-6 py-10">
@@ -254,26 +233,6 @@ export function EnvironmentSwitcherDemo() {
   )
 }
 
-export function DataRefreshStateDemo() {
-  const [state, setState] = useState<"stale" | "refreshing" | "success" | "error">("stale")
-  return (
-    <div className="w-full px-6 py-10">
-      <DataRefreshState
-        label="营收"
-        state={state}
-        staleness={state === "stale" ? "落后 12 分钟" : undefined}
-        progress={state === "refreshing" ? 0.4 : null}
-        updatedCount={state === "refreshing" ? 18 : undefined}
-        totalCount={state === "refreshing" ? 40 : undefined}
-        errorSummary={state === "error" ? "仓库暂时不可用" : undefined}
-        onRefresh={() => setState("refreshing")}
-        onCancel={() => setState("stale")}
-        onRetry={() => setState("refreshing")}
-      />
-    </div>
-  )
-}
-
 export function ApiRequestInspectorDemo() {
   return (
     <div className="w-full px-6 py-10">
@@ -293,52 +252,3 @@ export function ApiRequestInspectorDemo() {
   )
 }
 
-export function ProductVariantSelectorDemo() {
-  return (
-    <div className="w-full max-w-md px-6 py-10">
-      <ProductVariantSelector
-        productName="帆布袋"
-        basePrice={48}
-        groups={[
-          {
-            id: "color",
-            label: "颜色",
-            values: [
-              { value: "ink", label: "墨色", swatch: "var(--foreground)" },
-              { value: "sand", label: "沙色", swatch: "var(--chart-4)", priceAdjustment: 6 },
-            ],
-          },
-          {
-            id: "size",
-            label: "尺寸",
-            values: [
-              { value: "s", label: "小号" },
-              { value: "l", label: "大号", priceAdjustment: 10 },
-              { value: "xl", label: "加大", inventoryState: "out_of_stock", disabledReason: "没有加大号" },
-            ],
-          },
-        ]}
-      />
-    </div>
-  )
-}
-
-export function CartItemTransitionDemo() {
-  return (
-    <div className="w-full max-w-lg px-6 py-10">
-      <CartItemTransition
-        item={{
-          id: "tote",
-          productName: "帆布袋",
-          variantSummary: "墨色 · 小号",
-          unitPrice: 48,
-          previousPrice: 42,
-          quantity: 1,
-          total: 48,
-          availability: "limited",
-          inventoryMessage: "仅剩 4 件",
-        }}
-      />
-    </div>
-  )
-}

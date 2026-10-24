@@ -5,16 +5,8 @@ import { Github, Sparkles, SwatchBook, Zap } from "lucide-react"
 
 import { AnimatedThemeToggler } from "../effects/animated-theme-toggler"
 import { BackgroundPaths } from "../effects/background-paths"
-import { GlitchText } from "../effects/glitch-text"
 import { IconCloud } from "../effects/icon-cloud"
 import { ImageTrail } from "../effects/image-trail"
-import { LiquidGlass } from "../effects/liquid-glass"
-import {
-  MarketingFooter,
-  MarketingHero,
-  MarketingPricing,
-  MarketingTestimonials,
-} from "../effects/marketing-blocks"
 import { NumberFlow } from "../effects/number-flow"
 import { ShaderBackground } from "../effects/shader-backgrounds"
 import { Terminal } from "../effects/terminal"
@@ -45,17 +37,6 @@ export function ShaderBackgroundsDemo({
     <ShaderBackground variant={variant} colors={colors} speed={speed} scale={scale} className="h-56 w-full rounded-xl">
       <div className="flex h-56 items-end p-4 text-sm text-white/80">{variant}</div>
     </ShaderBackground>
-  )
-}
-
-export function LiquidGlassDemo({ intensity, size }: { intensity?: number; size?: number } = {}) {
-  return (
-    <div className="relative w-full overflow-hidden rounded-xl">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#7c3aed,transparent_40%),radial-gradient(circle_at_80%_70%,#22d3ee,transparent_35%)]" />
-      <div className="relative flex min-h-48 items-center justify-center p-8">
-        <LiquidGlass intensity={intensity} size={size}>液态玻璃 · 不支持时回退毛玻璃</LiquidGlass>
-      </div>
-    </div>
   )
 }
 
@@ -118,42 +99,6 @@ export function NumberFlowDemo({
   )
 }
 
-export function GlitchTextDemo({
-  text = "GLITCH",
-  delay = 0,
-  loop = true,
-  interactive = false,
-  fontSize = 64,
-  fontWeight = 700,
-  letterSpacing = 0.08,
-  align = "left",
-}: {
-  text?: string
-  delay?: number
-  loop?: boolean
-  interactive?: boolean
-  fontSize?: number
-  fontWeight?: number
-  letterSpacing?: number
-  align?: "left" | "center" | "right"
-} = {}) {
-  return (
-    <Frame>
-      <GlitchText
-        className="text-4xl font-semibold"
-        text={text}
-        delay={delay}
-        loop={loop}
-        interactive={interactive}
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        letterSpacing={letterSpacing}
-        align={align}
-      />
-    </Frame>
-  )
-}
-
 export function ImageTrailDemo({
   gap,
   count,
@@ -204,17 +149,6 @@ export function AnimatedThemeTogglerDemo({ duration }: { duration?: number } = {
     <Frame>
       <AnimatedThemeToggler duration={duration} />
     </Frame>
-  )
-}
-
-export function MarketingBlocksDemo() {
-  return (
-    <div className="w-full space-y-4">
-      <MarketingHero variant="aurora" />
-      <MarketingPricing variant="featured" />
-      <MarketingTestimonials variant="grid" />
-      <MarketingFooter variant="columns" />
-    </div>
   )
 }
 

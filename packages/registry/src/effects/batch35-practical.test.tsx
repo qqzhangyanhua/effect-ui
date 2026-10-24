@@ -21,7 +21,6 @@ import { ScratchCard } from "./scratch-card"
 import { ShareButton } from "./share-button"
 import { SkeletonReveal } from "./skeleton-reveal"
 import { TaskCheckbox } from "./task-checkbox"
-import { TextStates } from "./text-states"
 
 let reduceMotion = false
 
@@ -114,22 +113,11 @@ test("骨架在加载时标记忙碌，减弱动效时文字直接替换", () =>
   )
   expect(view.container.querySelector("[data-slot='skeleton-reveal']")).toHaveAttribute("aria-busy", "true")
   view.rerender(
-    <>
-      <SkeletonReveal loading={false} skeleton={<span>占位</span>}>
-        正文
-      </SkeletonReveal>
-      <TextStates text="已保存" />
-    </>,
+    <SkeletonReveal loading={false} skeleton={<span>占位</span>}>
+      正文
+    </SkeletonReveal>,
   )
   expect(screen.getByText("正文")).toBeInTheDocument()
-  expect(screen.getByText("已保存")).toBeInTheDocument()
-})
-
-test("未减弱时状态文字先保留旧文案", () => {
-  const view = render(<TextStates text="保存" />)
-  view.rerender(<TextStates text="已保存" />)
-  expect(screen.getByText("保存")).toBeInTheDocument()
-  expect(screen.queryByText("已保存")).not.toBeInTheDocument()
 })
 
 test("铃铛播报未读数，任务勾选和关注可以切换", () => {

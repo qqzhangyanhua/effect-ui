@@ -17,10 +17,10 @@ import { MagneticField } from "./magnetic-field"
 import { PixelBrushCanvas } from "./pixel-brush-canvas"
 import { RansomNote } from "./ransom-note"
 import { Scrubber } from "./scrubber"
-import { SdfBlobTransition } from "./sdf-blob-transition"
+
 import { SwitchboardCard } from "./switchboard-card"
 import { TimeMachineStack } from "./time-machine-stack"
-import { VideoAmbient } from "./video-ambient"
+
 
 let reduceMotion = false
 
@@ -76,7 +76,7 @@ function slot(container: HTMLElement, name: string) {
   return container.querySelector(`[data-slot=${name}]`)
 }
 
-test("减弱动效时极光、星星、金属和过渡停在标记上", () => {
+test("减弱动效时极光、星星和金属停在标记上", () => {
   reduceMotion = true
   const aurora = render(
     <AuroraCurtain>
@@ -100,15 +100,6 @@ test("减弱动效时极光、星星、金属和过渡停在标记上", () => {
     </LiquidMetal>,
   )
   expect(slot(metal.container, "liquid-metal")).toHaveAttribute("data-reduced", "true")
-  cleanup()
-
-  const blob = render(
-    <SdfBlobTransition transitionKey="a">
-      <span>甲</span>
-    </SdfBlobTransition>,
-  )
-  expect(slot(blob.container, "sdf-blob-transition")).toHaveAttribute("data-reduced", "true")
-  expect(blob.container).toHaveTextContent("甲")
   cleanup()
   reduceMotion = false
 })
@@ -157,11 +148,6 @@ test("其余 SmoothUI 组件都挂上槽位", () => {
 
   const note = render(<RansomNote text="北窗" />)
   expect(slot(note.container, "ransom-note")).toHaveTextContent("北窗")
-  cleanup()
-
-  const video = render(<VideoAmbient alt="夜色" poster={swatch} src={swatch} />)
-  expect(slot(video.container, "video-ambient")).toBeTruthy()
-  expect(screen.getByLabelText("夜色")).toBeInTheDocument()
   cleanup()
 
   const exposure = render(<ExposureSlider defaultValue={0} />)

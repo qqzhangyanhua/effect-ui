@@ -3,7 +3,7 @@
   "name": "book-spine-shelf",
   "type": "registry:ui",
   "title": "Book Spine Shelf",
-  "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/book-spine-shelf.tsx 一排书脊。点选或用方向键换书，封面卡片跟着打开。触屏不靠悬停倾斜。这是书架选书，不是 ns-ui 的 drill-down-spines。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+  "description": "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。 https://github.com/Sid9022/framekit-ui/blob/master/src/components/ui/book-spine-shelf.tsx 一排书脊。点选或用方向键换书，封面卡片跟着打开。触屏不靠悬停倾斜。这是书架选书。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
   "dependencies": [
     "motion"
   ],

@@ -170,25 +170,7 @@ export const batch17Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "xray-fluid-reveal",
-    title: "Xray Fluid Reveal",
-    description: "灵感来自 Codrops Skeleton Fluid Reveal，原创实现。双缓冲遮罩留下柔边轨迹并衰减，噪声边缘混合两张图。减弱动效时点击切换。",
-    category: "showcase",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/xray-fluid-reveal.tsx",
-    target: "components/ui/xray-fluid-reveal.tsx",
-    props: [
-      { name: "speed", type: "number", description: "噪声流速倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
-      ...ui,
-    ],
-    presets: [
-      { name: "xray-fluid-reveal-slow", label: "慢", values: { speed: 0.6 } },
-      { name: "xray-fluid-reveal-default", label: "默认", values: { speed: 1 } },
-      { name: "xray-fluid-reveal-fast", label: "快", values: { speed: 1.8 } },
-    ],
-  },
+
   {
     name: "petal-dissolve-text",
     title: "Petal Dissolve Text",

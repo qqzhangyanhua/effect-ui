@@ -6,7 +6,6 @@ import { CaptionImageCard } from "../effects/caption-image-card"
 import { DottedGlowBackground } from "../effects/dotted-glow-background"
 import { MultiStepLoader } from "../effects/multi-step-loader"
 import { NeoStarShapes } from "../effects/neo-star-shapes"
-import { StarRingOrbit } from "../effects/star-ring-orbit"
 import { StatefulButton } from "../effects/stateful-button"
 import { StickyBanner } from "../effects/sticky-banner"
 import { TweetCard } from "../effects/tweet-card"
@@ -35,24 +34,6 @@ export function DottedGlowBackgroundDemo({
       <DottedGlowBackground gap={gap} opacity={opacity} speed={speed} />
       <p className="relative px-6 py-8 text-sm text-foreground">光晕从点阵上慢慢走过</p>
     </div>
-  )
-}
-
-export function StarRingOrbitDemo({
-  color = "#05e17a",
-  count = 12,
-  size = 42,
-}: { color?: string; count?: number; size?: number } = {}) {
-  return (
-    <StarRingOrbit
-      className="min-h-80 w-full"
-      color={color}
-      count={count}
-      size={size}
-      style={{ "--rx": "160px", "--ry": "120px" } as CSSProperties}
-    >
-      <h2 className="px-6 text-center text-xl font-semibold text-foreground">围着标题转</h2>
-    </StarRingOrbit>
   )
 }
 

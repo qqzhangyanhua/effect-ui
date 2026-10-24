@@ -48,18 +48,18 @@ pnpm dev
 ```bash
 pnpm lint
 pnpm typecheck
-pnpm test           # 单元测试 + registry 审计
-pnpm build          # 先生成 registry，再构建文档站
+pnpm test # 单元测试 + registry 审计
+pnpm build # 先生成 registry，再构建文档站
 pnpm registry:build
 ```
 
 ## 仓库结构
 
 ```
-apps/docs              Next.js 文档 / 演示站
-packages/registry      组件源码（ui、effects、sections、hooks、lib、examples）
+apps/docs Next.js 文档 / 演示站
+packages/registry 组件源码（ui、effects、sections、hooks、lib、examples）
 scripts/build-registry.ts
-registry.json          shadcn 兼容总表
+registry.json shadcn 兼容总表
 ```
 
 ## 组件列表
@@ -68,7 +68,7 @@ registry.json          shadcn 兼容总表
 
 复选、开关、单选、选择、多行文本、滑块各自收成一个文档入口，已有的增强和动效跟基础组件在同一页里向下滚动查看。路径是 `/docs/checkboxes`、`/docs/switches`、`/docs/radios`、`/docs/selects`、`/docs/textareas`、`/docs/sliders`。
 
-button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · collapsible · command · context-menu · drawer · form · hover-card · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table · field · input-group · button-group · kbd · empty · item · native-select · combobox · date-picker · typography · direction
+button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · switch · checkbox · select · accordion · popover · avatar · slider · alert · alert-dialog · aspect-ratio · breadcrumb · calendar · carousel · chart · command · context-menu · drawer · form · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle · toggle-group · data-table · field · input-group · button-group · kbd · item · native-select · combobox · date-picker
 
 ### Hooks
 
@@ -94,17 +94,14 @@ text-style
 | word-rotate | Magic UI |
 | morphing-text | Magic UI |
 | rolling-number | Magic UI |
-| text-reveal | Magic UI |
 | variable-font-proximity | Fancy Components |
 | number-flow | Number Flow（MIT） |
-| glitch-text | Kokonut UI（免费 MIT） |
 | spoiler-text | Kokonut UI（免费 MIT） |
 | text-along-path | Fancy Components |
 | scroll-typography | Codrops MIT（Motion 重写） |
 | lamp-heading | 灵感来自 lamp heading，原创实现 |
 | vfx-element | vfx-js MIT |
 | rough-annotation | rough-notation MIT |
-| text-morph | Motion Primitives |
 
 ### 背景
 
@@ -116,16 +113,13 @@ text-style
 | meteors | Magic UI |
 | aurora-background | 原创 |
 | ripples | Magic UI |
-| flickering-grid | Magic UI |
 | light-beams | Magic UI |
-| starfield | 原创 |
 | wave-background | 原创 |
 | noise-gradient | 原创 |
 | animated-grid | Magic UI |
 | retro-grid | Magic UI |
 | shader-backgrounds | Paper Shaders（Apache-2.0，>=0.0.77） |
 | background-paths | Kokonut UI（免费 MIT） |
-| flow-field | Kokonut UI（免费 MIT） |
 | halftone | Kokonut UI（免费 MIT） |
 | shader-pack-2 | Paper Shaders（Apache-2.0） |
 | gpgpu-particles | OGL GPGPU 示例（Unlicense） |
@@ -146,7 +140,6 @@ text-style
 | cursor-trail | 原创 |
 | image-trail | Fancy Components |
 | splash-cursor | PavelDoGreat WebGL-Fluid-Simulation MIT |
-| mouse-flowmap | OGL flowmap 示例（Unlicense） |
 | polyline-ribbon-cursor | OGL polylines 示例（Unlicense） |
 | target-cursor | 灵感来自 target cursor，原创实现 |
 
@@ -155,7 +148,6 @@ text-style
 | 组件 | 来源 |
 | --- | --- |
 | marquee | Magic UI |
-| animated-list | Magic UI |
 | orbiting-circles | Magic UI |
 | globe-sphere | 原创 |
 | icon-cloud | Magic UI |
@@ -185,9 +177,7 @@ text-style
 | expandable-card | Cult UI |
 | morphing-dialog | Motion Primitives |
 | image-comparison | Motion Primitives |
-| liquid-glass | liquid-glass-react |
 | holographic-foil | Smooth UI |
-| 3d-carousel | Cult UI |
 | circular-gallery | 灵感来自 circular gallery，原创实现 |
 | glowing-edge | 灵感来自 Linear，原创实现 |
 | pixel-canvas-card | hexagoncircle/pixel-canvas MIT |
@@ -313,7 +303,6 @@ text-style
 | --- | --- |
 | animated-tabs | Motion Primitives |
 | floating-navbar | 原创 |
-| animated-sidebar | 原创 |
 | animated-theme-toggler | Magic UI |
 | dock | Magic UI |
 | dynamic-island | Cult UI |
@@ -323,15 +312,9 @@ text-style
 
 | 组件 | 来源 |
 | --- | --- |
-| page-transition | 原创 |
-| reveal-section | Motion Primitives |
-| marketing-blocks | Tailark（免费 MIT） |
 | device-mockups | Magic UI |
 | terminal | Eldora UI |
-| dashboard-blocks | 原创 |
-| ecommerce-blocks | 原创 |
 | pixel-transition | 灵感来自 pixel transition，原创实现 |
-| canvas-reveal | 灵感来自 dot-matrix reveal，原创实现 |
 
 ### 落地页区块
 
@@ -351,7 +334,6 @@ text-style
 | section-logo-cloud | 原创（组合 marquee / progressive-blur / timeline） |
 | section-sticky-feature-scroll | Cult UI（MIT） |
 | section-animated-bento | 原创（组合 bento-grid 与迷你动画） |
-| section-pricing-flow | Number Flow |
 | hero-annotated-showcase | Inspired by ToDesktop (via Mobbin), original implementation |
 | hero-wave-mask-gallery | Inspired by Kajabi (via Mobbin), original implementation |
 | hero-inline-mascot | Inspired by Phantom (via Mobbin), original implementation |
@@ -359,9 +341,6 @@ text-style
 | hero-swirl-avatars | Inspired by Wizz (via Mobbin), original implementation |
 | footer-dot-matrix-wordmark | Inspired by Fuser (via Mobbin), original implementation |
 | footer-social-marquee | Inspired by BAGGU (via Mobbin), original implementation |
-| section-pricing-perspective-grid | Inspired by Dovetail (via Mobbin), original implementation |
-| section-pricing-product-tabs | Inspired by Better Stack (via Mobbin), original implementation |
-| section-pattern-cards | Inspired by Loom (via Mobbin), original implementation |
 | section-stats-cornered | Inspired by Spade (via Mobbin), original implementation |
 | section-stats-blob | Inspired by Oyster (via Mobbin), original implementation |
 | section-dotted-feature-tabs | Inspired by Maze (via Mobbin), original implementation |
@@ -381,8 +360,6 @@ text-style
 | hero-3d-model | three / React Three Fiber / drei（MIT），灵感来自 Apple，原创实现 |
 | keycap-3d | 灵感来自 Raycast，原创实现 |
 | infinite-canvas-gallery | 灵感来自无限画布，原创实现 |
-| hover-image-list | 灵感来自作品列表，原创实现 |
-| text-variable-scroll | 灵感来自 Linear，原创实现 |
 | liquid-glass-tabbar | 灵感来自 iOS 26，原创实现 |
 | dither-gradient | 原创 Bayer 抖动着色器 |
 | anchor-popover | 原创（CSS anchor + Popover API） |
@@ -412,7 +389,7 @@ text-style
 
 ### 原创动效与实用组件
 
-登记在 `catalog-batch14.ts`（`catalog-batch13.ts` 已用于 React Bits 灵感动效）。未打开 Aceternity、Hover.dev、Stripe、Linear、Vercel、Apple、GitHub 的源码。`vortex-background` 是向心辉光漩涡，和 `flow-field` 的开放拖尾不是同一个效果。`simplex-noise` 与 `diff` 按需动态加载。
+登记在 `catalog-batch14.ts`（`catalog-batch13.ts` 已用于 React Bits 灵感动效）。未打开 Aceternity、Hover.dev、Stripe、Linear、Vercel、Apple、GitHub 的源码。`vortex-background` 是向心辉光漩涡。`simplex-noise` 与 `diff` 按需动态加载。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -423,7 +400,6 @@ text-style
 | link-preview | 灵感来自 Hover.dev，原创实现 |
 | avatar-group-tooltip | 灵感来自 Hover.dev，原创实现 |
 | shuffle-grid-hero | 灵感来自 Aceternity，原创实现 |
-| toc-scrollspy | 灵感来自 Stripe，原创实现 |
 | sortable-list | 灵感来自 Linear，原创实现 |
 | kpi-sparkline-card | 灵感来自 Vercel，原创实现 |
 | cookie-consent | 灵感来自 Stripe，原创实现 |
@@ -433,47 +409,36 @@ text-style
 
 ### 滚动透镜与检索组件
 
-登记在 `catalog-batch15.ts`（`catalog-batch14.ts` 已用于上一批原创动效）。未打开 Codrops、Aceternity、Coda、Maze、Linear、Webflow、Retool、Vercel 的源码，未移植其组件。未使用 GSAP。`square-lens-distortion` 懒加载已有的 OGL。`resource-search-hero` 按需加载 `fuse.js`（Apache-2.0）。`macbook-scroll` 是通用笔记本，没有品牌标志。
+登记在 `catalog-batch15.ts`（`catalog-batch14.ts` 已用于上一批原创动效）。未打开 Codrops、Aceternity、Maze、Linear、Webflow、Retool、Vercel 的源码，未移植其组件。未使用 GSAP。`resource-search-hero` 按需加载 `fuse.js`（Apache-2.0）。`macbook-scroll` 是通用笔记本，没有品牌标志。
 
 | 组件 | 来源 |
 | --- | --- |
 | ghost-trail-text | 灵感来自 Codrops，原创实现 |
 | gravity-image-trail | 灵感来自 Codrops，原创实现 |
-| square-lens-distortion | 灵感来自 Codrops，原创实现 |
-| dual-wave-text-list | 灵感来自 Codrops，原创实现 |
-| clip-reveal-menu | 灵感来自 Codrops，原创实现 |
 | sticky-grid-scroll | 灵感来自 Codrops，原创实现 |
 | svg-mask-scroll-transition | 灵感来自 Codrops，原创实现 |
 | macbook-scroll | 灵感来自 Aceternity，原创实现 |
 | faceted-filter-bar | 灵感来自 Linear，原创实现 |
 | json-viewer | 灵感来自 Retool，原创实现 |
 | heatmap-calendar | 灵感来自 GitHub，原创实现 |
-| grouped-checklist | 灵感来自 Coda，原创实现 |
 | text-generate | 灵感来自 Vercel，原创实现 |
-| column-config-panel | 灵感来自 Retool，原创实现 |
 | resource-search-hero | 灵感来自 Maze，原创实现 |
 
 ### 织物、海面与协作清单
 
-登记在 `catalog-batch16.ts`（`catalog-batch15.ts` 已用于滚动透镜与检索）。未打开 Codrops、Dropbox、Linear、Framer、Figma、Maze、Vanta、Stripe、Claude、BL/S 的源码，未移植其组件。未使用 GSAP，没有新增依赖。WebGL 一律懒加载已有的 OGL，失败或减弱动效时用 CSS 画面。`setup-guide` 的纸屑沿用 `confetti-burst` 的配色，不嵌套其按钮。
+登记在 `catalog-batch16.ts`（`catalog-batch15.ts` 已用于滚动透镜与检索）。未打开 Codrops、Linear、Framer、Figma、Vanta、Claude、BL/S 的源码，未移植其组件。未使用 GSAP，没有新增依赖。WebGL 一律懒加载已有的 OGL，失败或减弱动效时用 CSS 画面。
 
 | 组件 | 来源 |
 | --- | --- |
-| datamosh-transition | 灵感来自 Codrops，原创实现 |
 | loom-threads-marquee | 灵感来自 Codrops，原创实现 |
 | hologram-card | 灵感来自 BL/S，原创实现 |
-| sketch-hatch-image | 灵感来自 Codrops，原创实现 |
 | scroll-3d-image-rotate | 灵感来自 Codrops，原创实现 |
 | thumbnail-flow-path | 灵感来自 Codrops，原创实现 |
 | shader-grid-wide | 灵感来自 Codrops，原创实现 |
 | sea-waves-background | 灵感来自 Vanta，原创实现 |
 | cinema-seat-picker | 灵感来自 Framer，原创实现 |
-| publication-filter-list | 灵感来自 Maze，原创实现 |
-| activity-feed | 灵感来自 Dropbox，原创实现 |
 | project-update-card | 灵感来自 Linear，原创实现 |
 | share-invite-panel | 灵感来自 Figma，原创实现 |
-| changelog-feed | 灵感来自 Stripe，原创实现 |
-| setup-guide | 灵感来自 Claude，原创实现 |
 
 ### 星系、布料与协作表单
 
@@ -486,7 +451,6 @@ text-style
 | polaroid-scroll-stack | 灵感来自 Codrops Scroll-Driven Polaroid，原创实现 |
 | scroll-svg-graph | 灵感来自 Codrops Scroll-Driven SVG Graph，原创实现 |
 | cloth-wind-banner | 灵感来自 Codrops Old Cloth with Wind，原创实现 |
-| xray-fluid-reveal | 灵感来自 Codrops Skeleton Fluid Reveal，原创实现 |
 | petal-dissolve-text | 灵感来自 Codrops Clair Obscur Gommage，原创实现 |
 | data-tunnel | 灵感来自 Codrops Data Tunnel，原创实现 |
 | file-upload-queue | 灵感来自 Dropbox 与 Google Drive，原创实现 |
@@ -498,7 +462,7 @@ text-style
 
 ### 管道、沙漏与收件箱
 
-登记在 `catalog-batch18.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。减弱动效时烟花不渲染，沙漏改成进度条，图片管道和乐高像素改成静态画面。
+登记在 `catalog-batch18.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。减弱动效时烟花不渲染，沙漏改成进度条，图片管道改成静态画面。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -506,7 +470,6 @@ text-style
 | depth-fog-gallery | 灵感来自 Codrops Atmospheric Depth Gallery，原创实现 |
 | fireworks-show | 灵感来自 Codrops Fireworks 2026，原创实现 |
 | wobble-line-cursor | 灵感来自 Codrops Cursor Line Wobble，原创实现 |
-| lego-pixelate | 灵感来自 Codrops Lego pixellation，原创实现 |
 | telescope-zoom-scroll | 灵感来自 Codrops Telescope Zoom，原创实现 |
 | curved-scrollbar | 灵感来自 Codrops Custom curved corner scrollbars，原创实现 |
 | particle-hourglass | 灵感来自 Codrops Sands of Time，原创实现 |
@@ -517,18 +480,16 @@ text-style
 | mention-textarea | 原创 |
 | timezone-clock | 原创 |
 
-### 光管、频谱与组织图
+### 频谱与组织图
 
-登记在 `catalog-batch19.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时光管不渲染，液体幻灯改为交叉淡入，波场和黑洞停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，卡面不翻转。
+登记在 `catalog-batch19.ts`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时液体幻灯改为交叉淡入，波场和黑洞停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，卡面不翻转。
 
 | 组件 | 来源 |
 | --- | --- |
-| tubes-cursor | 灵感来自 Codrops Tubes Cursor，原创实现 |
 | liquid-morph-slideshow | 灵感来自 Codrops Liquid Morphology Slideshow，原创实现 |
 | wavefield-neon | 灵感来自 Codrops Wavefield Shader，原创实现 |
 | gradient-carousel-3d | 灵感来自 Codrops Infinite 3D Gradient Carousel，原创实现 |
 | text-3d-scroll | 灵感来自 Codrops 3D Text Scroll Animations，原创实现 |
-| rolling-text-hover | 灵感来自 Codrops Rolling text，原创实现 |
 | audio-spectrum | 灵感来自 Spotify visualiser，原创实现。实时频谱 |
 | singularity | 灵感来自 Codrops Singularity，原创实现 |
 | credit-card-form | 原创 |
@@ -546,7 +507,6 @@ text-style
 | repetition-image-hover | 灵感来自 Codrops Repetition Image Animation，原创实现 |
 | hyperspace-text | 灵感来自 Codrops Hyperspace Text，原创实现 |
 | tiled-swirl-loader | 灵感来自 Codrops Tiled Swirl，原创实现 |
-| rain-puddle | 灵感来自 Codrops Puddle in rain，原创实现 |
 | keyhole-scroll-reveal | 灵感来自 Codrops Scroll-Synced Slideshow with Keyhole Effect，原创实现 |
 | rubber-band-drag | 灵感来自 Liam Egan Rubber banding，原创实现 |
 | uptime-bars | 灵感来自 Linear 状态页与 Better Stack，原创实现 |
@@ -573,22 +533,18 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
-### 图标动作、波载与剪切
+### 图标动作与波载
 
-登记在 `catalog-batch61.ts`。细线、卷轴与购买已占用 `catalog-batch60.ts`。`icon-moves`、`list-cut`、`load-cut`、`state-cut` 移植自 Keyframery（MIT，Copyright (c) 2026 Briyan Hingrajiya），提交 `9ab2430`。`wave-physics-loader`、`use-web-haptics` 移植自 Amicro（MIT，Copyright (c) 2026 SYED SUBHAN UDDIN），提交 `dc2a183`。`load-cut` 保留：它是等待、骨架、溶解三态，和已有的 `skeleton-reveal` 脉冲模糊交叉淡化不是同一个组件。Keyframery 的辅助函数只把用到的部分内联进各自组件，没有新的共享库，也没有 `data-kf` 总开关。`icon-moves` 的监听挂在组件根上。列表新项从下方升起，没有接入按压引擎。`use-web-haptics` 在没有 `navigator.vibrate` 时返回 false，不读 localStorage，也不合成音效。`framer-motion` 改为 `motion/react`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch61.ts`。细线、卷轴与购买已占用 `catalog-batch60.ts`。`icon-moves` 移植自 Keyframery（MIT，Copyright (c) 2026 Briyan Hingrajiya），提交 `9ab2430`。`wave-physics-loader` 移植自 Amicro（MIT，Copyright (c) 2026 SYED SUBHAN UDDIN），提交 `dc2a183`。Keyframery 的辅助函数只把用到的部分内联进各自组件，没有新的共享库，也没有 `data-kf` 总开关。`icon-moves` 的监听挂在组件根上。`framer-motion` 改为 `motion/react`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
 | icon-moves | Keyframery，MIT |
 | wave-physics-loader | Amicro，MIT |
-| list-cut | Keyframery，MIT |
-| load-cut | Keyframery，MIT |
-| state-cut | Keyframery，MIT |
-| use-web-haptics | Amicro，MIT |
 
 ### 细线、卷轴与购买
 
-登记在 `catalog-batch60.ts`。奖状、日记与补全已占用 `catalog-batch59.ts`。`wavy-threads-background`、`rolling-letters-animation`、`arc-cards`、`tilt-image-carousel`、`section-navigator` 移植自 MosaicUI（MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha），提交 `2baca92`。`hover-glide-cards`、`progress-ring-check`、`cursor-edge-glow-button`、`secure-purchase-button`、`blur-glide-menu`、`spotlight-indicator`、`preview-hover-toolbar` 移植自 MicroKit（MIT，Copyright (c) 2026 Henrique Barone），提交 `fd993e8`。`waving-dots-background` 和已有的 `dot-field` 重合，没有移植。`section-navigator` 的列表跟在触发器旁边，没有使用传送门。远程图片改成主题色面板。颜色改成主题变量。悬停项同时响应按下和聚焦。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch60.ts`。奖状、日记与补全已占用 `catalog-batch59.ts`。`wavy-threads-background`、`rolling-letters-animation`、`arc-cards`、`tilt-image-carousel` 移植自 MosaicUI（MIT，Copyright (c) 2026 Darshan Sunil Rajadhyaksha），提交 `2baca92`。`hover-glide-cards`、`progress-ring-check`、`cursor-edge-glow-button`、`secure-purchase-button`、`blur-glide-menu`、`spotlight-indicator` 移植自 MicroKit（MIT，Copyright (c) 2026 Henrique Barone），提交 `fd993e8`。`waving-dots-background` 和已有的 `dot-field` 重合，没有移植。远程图片改成主题色面板。颜色改成主题变量。悬停项同时响应按下和聚焦。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -602,54 +558,39 @@ text-style
 | secure-purchase-button | MicroKit，MIT |
 | blur-glide-menu | MicroKit，MIT |
 | spotlight-indicator | MicroKit，MIT |
-| section-navigator | MosaicUI，MIT |
-| preview-hover-toolbar | MicroKit，MIT |
 
-### 奖状、日记与补全
+### 奖状与补全
 
-登记在 `catalog-batch59.ts`。折页、液团与徽章已占用 `catalog-batch58.ts`。`inline-action`、`emoji-spree-choice-chips`、`award`、`journal-navigation`、`tooltip-navbar`、`carousel-navigator`、`labeled-progress-indicator`、`frequency-selector`、`status-picker`、`quick-paste`、`contextual-ai-bar`、`predictive-text`、`feature-tour`、`budget-card` 移植自 Watermelon UI（MIT，Copyright (c) 2025-present Watermelon Contributors），提交 `86052b8`。竖向提示条并进 `tooltip-navbar` 的 `direction`。`gauge` 的接口和配色与 Animate UI 的仪表盘重合，没有移植。液态按钮、涟漪按钮、图标按钮和径向开场同样没有移植。远程图片改成主题色占位，没有请求 `assets.watermelon.sh`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch59.ts`。折页、液团与徽章已占用 `catalog-batch58.ts`。`inline-action`、`emoji-spree-choice-chips`、`award`、`tooltip-navbar`、`labeled-progress-indicator` 移植自 Watermelon UI（MIT，Copyright (c) 2025-present Watermelon Contributors），提交 `86052b8`。竖向提示条并进 `tooltip-navbar` 的 `direction`。`gauge` 的接口和配色与 Animate UI 的仪表盘重合，没有移植。液态按钮、涟漪按钮、图标按钮和径向开场同样没有移植。远程图片改成主题色占位，没有请求 `assets.watermelon.sh`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
 | inline-action | Watermelon UI，MIT |
 | emoji-spree-choice-chips | Watermelon UI，MIT |
 | award | Watermelon UI，MIT |
-| journal-navigation | Watermelon UI，MIT |
 | tooltip-navbar | Watermelon UI，MIT |
-| carousel-navigator | Watermelon UI，MIT |
 | labeled-progress-indicator | Watermelon UI，MIT |
-| frequency-selector | Watermelon UI，MIT |
-| status-picker | Watermelon UI，MIT |
-| quick-paste | Watermelon UI，MIT |
-| contextual-ai-bar | Watermelon UI，MIT |
-| predictive-text | Watermelon UI，MIT |
-| feature-tour | Watermelon UI，MIT |
-| budget-card | Watermelon UI，MIT |
 
 ### 折页、液团与徽章
 
-登记在 `catalog-batch58.ts`。火漆、货车与案头已占用 `catalog-batch57.ts`。`progress-fold-button`、`magic-tab`、`magic-input`、`blueprint-grid`、`liquid-metaballs`、`spin-viewer`、`progressive-card-reveal`、`inertia-gallery`、`agent-timeline`、`agent-flow`、`comment-pin`、`presence-facepile`、`stack-badge`、`store-badge` 移植自 GodUI（MIT，Copyright (c) 2026 Lucas Bassetti），提交 `1f632a7`。`framer-motion` 改成 `motion/react`。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。主题色改成主题变量。弹簧参数写在组件里。图标用 `lucide-react`。评论钉和头像墙各自内联了姓名哈希，没有新建 presence 模块。旋转查看器的示例帧是内联 SVG，没有图片文件。商店徽章去掉了二维码，没有加入 `uqr`。液团位置按序号播种。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch58.ts`。火漆、货车与案头已占用 `catalog-batch57.ts`。`progress-fold-button`、`magic-input`、`blueprint-grid`、`liquid-metaballs`、`progressive-card-reveal`、`inertia-gallery`、`agent-timeline`、`agent-flow`、`stack-badge`、`store-badge` 移植自 GodUI（MIT，Copyright (c) 2026 Lucas Bassetti），提交 `1f632a7`。`framer-motion` 改成 `motion/react`。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。主题色改成主题变量。弹簧参数写在组件里。图标用 `lucide-react`。商店徽章去掉了二维码，没有加入 `uqr`。液团位置按序号播种。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
 | progress-fold-button | GodUI，MIT |
-| magic-tab | GodUI，MIT |
 | magic-input | GodUI，MIT |
 | blueprint-grid | GodUI，MIT |
 | liquid-metaballs | GodUI，MIT |
-| spin-viewer | GodUI，MIT |
 | progressive-card-reveal | GodUI，MIT |
 | inertia-gallery | GodUI，MIT |
 | agent-timeline | GodUI，MIT |
 | agent-flow | GodUI，MIT |
-| comment-pin | GodUI，MIT |
-| presence-facepile | GodUI，MIT |
 | stack-badge | GodUI，MIT |
 | store-badge | GodUI，MIT |
 
-### 火漆、货车与案头
+### 火漆与货车
 
-登记在 `catalog-batch57.ts`。车道、铜版与胶片已占用 `catalog-batch56.ts`。`wax-seal-button`、`dispatch-truck-button`、`googly-gaze-button`、`weather-vane-toggle`、`ink-bleed-text`、`charm-text`、`book-spine-shelf`、`cook-loading`、`usage-quota-meter`、`inset-settings-list`、`compass-rail`、`availability-badge`、`smart-widget-stack`、`goal-progress-card`、`mini-desktop-os` 移植自 Framekit UI（MIT，Copyright (c) 2026 Framekit UI contributors）。`@/lib/cn` 改成 `cn`。`@/lib/use-reduced-motion` 改成共享的 `usePrefersReducedMotion`。`@/lib/use-resolved-theme` 改成主题变量。`@/lib/roving`、`toggle`、`widget-kit`、`portfolio-art` 需要的部分写在组件里。货车保留源码的阶段顺序：拉路、装货、等待下单、开走；失败不自动复位。厨师等待态没有嵌入约 322KB 的精灵图，改用主题色 SVG，暂停只冻住手臂和蒸汽，不改进度。书架是选书，和 `drill-down-spines` 不同。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch57.ts`。车道、铜版与胶片已占用 `catalog-batch56.ts`。`wax-seal-button`、`dispatch-truck-button`、`googly-gaze-button`、`weather-vane-toggle`、`book-spine-shelf`、`cook-loading`、`usage-quota-meter`、`smart-widget-stack` 移植自 Framekit UI（MIT，Copyright (c) 2026 Framekit UI contributors）。`@/lib/cn` 改成 `cn`。`@/lib/use-reduced-motion` 改成共享的 `usePrefersReducedMotion`。`@/lib/use-resolved-theme` 改成主题变量。`@/lib/roving`、`toggle`、`widget-kit`、`portfolio-art` 需要的部分写在组件里。货车保留源码的阶段顺序：拉路、装货、等待下单、开走；失败不自动复位。厨师等待态没有嵌入约 322KB 的精灵图，改用主题色 SVG，暂停只冻住手臂和蒸汽，不改进度。书架是选书。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -657,21 +598,14 @@ text-style
 | dispatch-truck-button | Framekit UI，MIT |
 | googly-gaze-button | Framekit UI，MIT |
 | weather-vane-toggle | Framekit UI，MIT |
-| ink-bleed-text | Framekit UI，MIT |
-| charm-text | Framekit UI，MIT |
 | book-spine-shelf | Framekit UI，MIT |
 | cook-loading | Framekit UI，MIT |
 | usage-quota-meter | Framekit UI，MIT |
-| inset-settings-list | Framekit UI，MIT |
-| compass-rail | Framekit UI，MIT |
-| availability-badge | Framekit UI，MIT |
 | smart-widget-stack | Framekit UI，MIT |
-| goal-progress-card | Framekit UI，MIT |
-| mini-desktop-os | Framekit UI，MIT |
 
 ### 车道、铜版与胶片
 
-登记在 `catalog-batch56.ts`。键入爆炸已占用 `catalog-batch55.ts`。`queue-pulse-lanes`、`event-propagation-matrix`、`copperplate-hatch`、`core-strata`、`kinetic-emphasis`、`liquid-fill-headline`、`velocity-skew-feed`、`filmstrip-scrub`、`deployment-pipeline`、`live-log-stream`、`environment-switcher`、`data-refresh-state`、`api-request-inspector`、`product-variant-selector`、`cart-item-transition` 移植自 Motiq（MIT，Copyright (c) 2026 Mahammad Rustamov）。`@/lib/motiq` 没有带进来：减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。`@/lib/utils` 改成 `cn`。环境菜单用 `react-dom` 的 `createPortal`。事件矩阵是格子上的传播波，和字符点阵 `glyph-matrix` 不同。铜版是三向交叉线被光波点亮，和 `sketch-hatch-image`、`hatch-divider` 不同。速度剪切跟着滚动速度回弹，和恒定斜切的 `skewed-infinite-scroll` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch56.ts`。键入爆炸已占用 `catalog-batch55.ts`。`queue-pulse-lanes`、`event-propagation-matrix`、`copperplate-hatch`、`core-strata`、`kinetic-emphasis`、`liquid-fill-headline`、`velocity-skew-feed`、`filmstrip-scrub`、`live-log-stream`、`environment-switcher`、`api-request-inspector` 移植自 Motiq（MIT，Copyright (c) 2026 Mahammad Rustamov）。`@/lib/motiq` 没有带进来：减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。`@/lib/utils` 改成 `cn`。环境菜单用 `react-dom` 的 `createPortal`。事件矩阵是格子上的传播波，和字符点阵 `glyph-matrix` 不同。铜版是三向交叉线被光波点亮。速度剪切跟着滚动速度回弹，和恒定斜切的 `skewed-infinite-scroll` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -683,17 +617,13 @@ text-style
 | liquid-fill-headline | Motiq，MIT |
 | velocity-skew-feed | Motiq，MIT |
 | filmstrip-scrub | Motiq，MIT |
-| deployment-pipeline | Motiq，MIT |
 | live-log-stream | Motiq，MIT |
 | environment-switcher | Motiq，MIT |
-| data-refresh-state | Motiq，MIT |
 | api-request-inspector | Motiq，MIT |
-| product-variant-selector | Motiq，MIT |
-| cart-item-transition | Motiq，MIT |
 
 ### 键入爆炸、色带与持键
 
-登记在 `catalog-batch55.ts`。摇杆已占用 `catalog-batch54.ts`。`exploding-input`、`flow-button`、`logos-carousel`、`bars-spinner`、`band-wave-text`、`fallback-avatar` 移植自 Spell UI（MIT，Copyright (c) 2025 Spell UI）。`glow-divider`、`noise-text`、`verify-badge`、`gift-card`、`network-graph` 移植自 Sera UI（MIT，Copyright (c) 2025 Sera UI）。`invalid-shake`、`safe-triangle`、`held-keys`、`delayed-loading` 移植自 HextaUI（MIT，Copyright (c) 2026 Preet Suthar）。`framer-motion` 改成 `motion/react` 的写法没有引入运行时，连线用 CSS。`@tabler/icons-react` 没有使用。`clsx` 与 `twMerge` 改成 `cn`。HextaUI 的动效判断改成共享的 `usePrefersReducedMotion`。`fallback-avatar` 不用 WebGL，按名字画 CSS 渐变。`gift-card` 去掉了来源里的品牌名称和标志。键入爆炸是输入框光标处的粒子，和消息气泡 `text-explode` 不同。标志轮换按组纵向交错，和 `section-logo-cloud` 不同。色带从文字底部扫过，和 `gradient-text`、`text-shimmer-wave` 不同。发光分隔线是一条线，和 `glowing-edge`、`glow-effect` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw、three 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch55.ts`。摇杆已占用 `catalog-batch54.ts`。`exploding-input`、`flow-button`、`logos-carousel`、`bars-spinner`、`band-wave-text`、`fallback-avatar` 移植自 Spell UI（MIT，Copyright (c) 2025 Spell UI）。`glow-divider`、`verify-badge` 移植自 Sera UI（MIT，Copyright (c) 2025 Sera UI）。`invalid-shake`、`held-keys` 移植自 HextaUI（MIT，Copyright (c) 2026 Preet Suthar）。`framer-motion` 改成 `motion/react` 的写法没有引入运行时。`@tabler/icons-react` 没有使用。`clsx` 与 `twMerge` 改成 `cn`。HextaUI 的动效判断改成共享的 `usePrefersReducedMotion`。`fallback-avatar` 不用 WebGL，按名字画 CSS 渐变。键入爆炸是输入框光标处的粒子，和消息气泡 `text-explode` 不同。标志轮换按组纵向交错，和 `section-logo-cloud` 不同。色带从文字底部扫过，和 `gradient-text`、`text-shimmer-wave` 不同。发光分隔线是一条线，和 `glowing-edge`、`glow-effect` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw、three 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -703,19 +633,14 @@ text-style
 | bars-spinner | Spell UI，MIT |
 | band-wave-text | Spell UI，MIT |
 | glow-divider | Sera UI，MIT |
-| noise-text | Sera UI，MIT |
 | invalid-shake | HextaUI，MIT |
 | fallback-avatar | Spell UI，MIT |
 | verify-badge | Sera UI，MIT |
-| gift-card | Sera UI，MIT |
-| safe-triangle | HextaUI，MIT |
 | held-keys | HextaUI，MIT |
-| delayed-loading | HextaUI，MIT |
-| network-graph | Sera UI，MIT |
 
 ### 摇杆、碎纸与液桥
 
-登记在 `catalog-batch54.ts`。下压已占用 `catalog-batch53.ts`。`analog-stick`、`paper-shred-button`、`scan-document`、`dynamic-grid-gallery`、`photo-albums`、`gooey-navbar`、`overlapping-slider`、`get-in-touch`、`client-card`、`corner-video`、`create-menu`、`day-picker`、`stacked-list`、`discover-search-pill`、`tactile-rocker` 移植自 uselayouts（MIT，Copyright (c) 2025 Urvish Mali）。`discover-search-pill` 来自 `discover-button`，`tactile-rocker` 来自 `tactile-button`，并做成保持倾斜的开关。`get-in-touch` 内联了同目录的按钮外壳。`@hugeicons` 改成 `lucide-react`，`framer-motion` 改成 `motion/react`，`next/image` 和 `next/link` 改成 `img` 与 `a`。碎纸按钮抽出文件再剪成纸条，和打印机图标按钮不同。液桥导航是一整条导航，和单个黏液按钮不同。颜色控件使用主题变量。示例图片用内联图形。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
+登记在 `catalog-batch54.ts`。下压已占用 `catalog-batch53.ts`。`analog-stick`、`paper-shred-button`、`scan-document`、`dynamic-grid-gallery`、`photo-albums`、`gooey-navbar`、`get-in-touch`、`client-card`、`corner-video`、`create-menu`、`stacked-list`、`discover-search-pill`、`tactile-rocker` 移植自 uselayouts（MIT，Copyright (c) 2025 Urvish Mali）。`discover-search-pill` 来自 `discover-button`，`tactile-rocker` 来自 `tactile-button`，并做成保持倾斜的开关。`get-in-touch` 内联了同目录的按钮外壳。`@hugeicons` 改成 `lucide-react`，`framer-motion` 改成 `motion/react`，`next/image` 和 `next/link` 改成 `img` 与 `a`。碎纸按钮抽出文件再剪成纸条，和打印机图标按钮不同。液桥导航是一整条导航，和单个黏液按钮不同。颜色控件使用主题变量。示例图片用内联图形。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -725,12 +650,10 @@ text-style
 | dynamic-grid-gallery | uselayouts，MIT |
 | photo-albums | uselayouts，MIT |
 | gooey-navbar | uselayouts，MIT |
-| overlapping-slider | uselayouts，MIT |
 | get-in-touch | uselayouts，MIT |
 | client-card | uselayouts，MIT |
 | corner-video | uselayouts，MIT |
 | create-menu | uselayouts，MIT |
-| day-picker | uselayouts，MIT |
 | stacked-list | uselayouts，MIT |
 | discover-search-pill | uselayouts，MIT |
 | tactile-rocker | uselayouts，MIT |
@@ -777,9 +700,9 @@ text-style
 | music-player-card | AI Canvas，MIT |
 | label-cards | AI Canvas，MIT |
 
-### 铅锤、棘轮与书脊
+### 铅锤与棘轮
 
-登记在 `catalog-batch51.ts`。抛掷已占用 `catalog-batch46.ts`。`success-plumb-bob`、`checkbox-domino-run`、`autosave-ratchet`、`button-retry-backoff`、`craze-rule`、`banner-tear-stub`、`feed-escapement`、`cruet-settle`、`undo-ghost-row`、`container-box-drawing`、`transfer-list-siphon`、`drill-down-spines`、`due-slip`、`contra-strike`、`galley-bracket` 移植自 ns-ui（MIT，Copyright (c) 2026 Nikolas Sapalidis）。ns-ui 的颜色变量映射到 effect-ui 主题变量，能写成 Tailwind 的静态样式不再内联。没有新增依赖。状态变化仍走 aria-live。减弱动效保持原来的终态或离散步进。离开视口时动画帧和 CSS 动画暂停，回到视口再继续。
+登记在 `catalog-batch51.ts`。抛掷已占用 `catalog-batch46.ts`。`success-plumb-bob`、`checkbox-domino-run`、`autosave-ratchet`、`button-retry-backoff`、`craze-rule`、`banner-tear-stub`、`undo-ghost-row`、`container-box-drawing`、`transfer-list-siphon`、`due-slip`、`contra-strike`、`galley-bracket` 移植自 ns-ui（MIT，Copyright (c) 2026 Nikolas Sapalidis）。ns-ui 的颜色变量映射到 effect-ui 主题变量，能写成 Tailwind 的静态样式不再内联。没有新增依赖。状态变化仍走 aria-live。减弱动效保持原来的终态或离散步进。离开视口时动画帧和 CSS 动画暂停，回到视口再继续。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -789,12 +712,9 @@ text-style
 | button-retry-backoff | ns-ui，MIT |
 | craze-rule | ns-ui，MIT |
 | banner-tear-stub | ns-ui，MIT |
-| feed-escapement | ns-ui，MIT |
-| cruet-settle | ns-ui，MIT |
 | undo-ghost-row | ns-ui，MIT |
 | container-box-drawing | ns-ui，MIT |
 | transfer-list-siphon | ns-ui，MIT |
-| drill-down-spines | ns-ui，MIT |
 | due-slip | ns-ui，MIT |
 | contra-strike | ns-ui，MIT |
 | galley-bracket | ns-ui，MIT |
@@ -821,14 +741,13 @@ text-style
 | user-menu | Arc Library，MIT |
 | password-field | Arc Library，MIT |
 
-### 点阵光晕、星环与分步加载
+### 点阵光晕与分步加载
 
-登记在 `catalog-batch44.ts`。上一批灯板已占用 `catalog-batch43.ts`。`dotted-glow-background`、`sticky-banner`、`multi-step-loader`、`stateful-button`、`tweet-card` 移植自 Velora UI（MIT，Copyright (c) 2026 Aigars Silkalns）。`star-ring-orbit`、`neo-star-shapes`、`caption-image-card` 移植自 Neobrutalism components（MIT，Copyright (c) 2023 Samuel Breznjak）。没有移植 Velora 里和 Aceternity 概念重合的组件。品牌渐变改成主题色，示例色放在 demo。关键帧写在组件内部。没有新增依赖。减弱动效时点阵停在当前帧，星环停转，公告直接收起，分步加载不再转圈，异步按钮不再缩成圆形。
+登记在 `catalog-batch44.ts`。上一批灯板已占用 `catalog-batch43.ts`。`dotted-glow-background`、`sticky-banner`、`multi-step-loader`、`stateful-button`、`tweet-card` 移植自 Velora UI（MIT，Copyright (c) 2026 Aigars Silkalns）。、`neo-star-shapes`、`caption-image-card` 移植自 Neobrutalism components（MIT，Copyright (c) 2023 Samuel Breznjak）。没有移植 Velora 里和 Aceternity 概念重合的组件。品牌渐变改成主题色，示例色放在 demo。关键帧写在组件内部。没有新增依赖。减弱动效时点阵停在当前帧，公告直接收起，分步加载不再转圈，异步按钮不再缩成圆形。
 
 | 组件 | 来源 |
 | --- | --- |
 | dotted-glow-background | Velora UI，MIT |
-| star-ring-orbit | Neobrutalism components，MIT |
 | sticky-banner | Velora UI，MIT |
 | multi-step-loader | Velora UI，MIT |
 | stateful-button | Velora UI，MIT |
@@ -838,18 +757,16 @@ text-style
 
 ### 灯板、光环与折页卡片
 
-登记在 `catalog-batch43.ts`。上一批 UNO 卡已占用 `catalog-batch42.ts`。`lightboard`、`cosmic-button`、`glow-track-button`、`halo-badge`、`halo-switch`、`shift-card`、`squiggle-arrow`、`security-checkpoint`、`speech-bubble`、`folded-card`、`side-panel`、`collab-avatar`、`elapsed-timer`、`neumorph-button`、`texture-card` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`next/link` 改成 `a`，`clsx` 改成 `cn`。侧栏高度用 ResizeObserver，没有加入 react-use-measure。关键帧写在组件内部。示例色、文案和链接放在 demo。没有新增依赖。减弱动效时灯板停在当前帧，星环和光斑停住，徽章光圈和开关弹簧停住，班次卡片直接展开，安检线和计时图标停住，气泡光标不再呼吸，拟态按钮不再缩放。
+登记在 `catalog-batch43.ts`。上一批 UNO 卡已占用 `catalog-batch42.ts`。`lightboard`、`cosmic-button`、`glow-track-button`、`halo-switch`、`shift-card`、`squiggle-arrow`、`speech-bubble`、`folded-card`、`side-panel`、`collab-avatar`、`elapsed-timer`、`neumorph-button`、`texture-card` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`next/link` 改成 `a`，`clsx` 改成 `cn`。侧栏高度用 ResizeObserver，没有加入 react-use-measure。关键帧写在组件内部。示例色、文案和链接放在 demo。没有新增依赖。减弱动效时灯板停在当前帧，星环和光斑停住，开关弹簧停住，班次卡片直接展开，计时图标停住，气泡光标不再呼吸，拟态按钮不再缩放。
 
 | 组件 | 来源 |
 | --- | --- |
 | lightboard | Cult UI，MIT |
 | cosmic-button | Cult UI，MIT |
 | glow-track-button | Cult UI，MIT |
-| halo-badge | Cult UI，MIT |
 | halo-switch | Cult UI，MIT |
 | shift-card | Cult UI，MIT |
 | squiggle-arrow | Cult UI，MIT |
-| security-checkpoint | Cult UI，MIT |
 | speech-bubble | Cult UI，MIT |
 | folded-card | Cult UI，MIT |
 | side-panel | Cult UI，MIT |
@@ -860,7 +777,7 @@ text-style
 
 ### UNO 卡、会议控制与分类搜索
 
-登记在 `catalog-batch42.ts`。上一批吃豆加载已占用 `catalog-batch41.ts`。`uno-card`（作者 nanda248）、`transaction-card`（作者 Admin12121）、`printer-icon-button`（作者 Admin12121）、`pendulum-social-card`（作者 SouravBandyopadhyay）、`tilt-sweep-button`（作者 EddyBel）、`focus-line-input`（作者 TechByElijah）、`word-wheel-card`（作者 NotReal22）、`fly-around-button`（作者 Bastiennnn）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`bottom-navigation`、`meeting-control-bar`、`list-group`、`time-range-picker`、`blockquote`、`featured-gallery`、`category-search-input` 移植自 Flowbite（MIT，Copyright (c) 2023 Bergside Inc.）。Tailwind HTML 改成 React 状态，图标用已有的 lucide-react。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时光带、进纸、摆锤、扫光、下划线放大、词盘、飞图标停住，交易卡和 POS 并排静止，图库直接换图，导航和会议条不再做颜色过渡。
+登记在 `catalog-batch42.ts`。上一批吃豆加载已占用 `catalog-batch41.ts`。`uno-card`（作者 nanda248）、`transaction-card`（作者 Admin12121）、`printer-icon-button`（作者 Admin12121）、`pendulum-social-card`（作者 SouravBandyopadhyay）、`tilt-sweep-button`（作者 EddyBel）、`focus-line-input`（作者 TechByElijah）、`word-wheel-card`（作者 NotReal22）、`fly-around-button`（作者 Bastiennnn）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`bottom-navigation`、`meeting-control-bar`、`category-search-input` 移植自 Flowbite（MIT，Copyright (c) 2023 Bergside Inc.）。Tailwind HTML 改成 React 状态，图标用已有的 lucide-react。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时光带、进纸、摆锤、扫光、下划线放大、词盘、飞图标停住，交易卡和 POS 并排静止，图库直接换图，导航和会议条不再做颜色过渡。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -874,15 +791,11 @@ text-style
 | fly-around-button | Uiverse galaxy，MIT，作者 Bastiennnn |
 | bottom-navigation | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
 | meeting-control-bar | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
-| list-group | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
-| time-range-picker | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
-| blockquote | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
-| featured-gallery | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
 | category-search-input | Flowbite，MIT，Copyright (c) 2023 Bergside Inc. |
 
-### 吃豆加载、形状遮罩与页脚
+### 吃豆加载与页脚
 
-登记在 `catalog-batch41.ts`。上一批书签爆发已占用 `catalog-batch40.ts`。`pacman-loader`（作者 andrew-demchenk0）、`battery-loader`（作者 JaydipPrajapati1910）、`ringed-planet-loader`（作者 Admin12121）、`pixel-bird-loader`（作者 Subaashbala）、`phone-ring-loader`（作者 bociKond）、`glass-clock-loader`（作者 Subaashbala）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`hover-gallery`、`icon-swap`、`shape-mask`、`form-validator`、`corner-indicator`、`filter-chips`、`file-input`、`tick-range` 移植自 daisyUI（MIT，Copyright (c) 2020 Pouya Saadeghi）。`site-footer` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。CSS 改成 React 与 Tailwind v4，主题色用现有 token。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时吃豆嘴保持张开、电池停在半格或给定电量、星球环停在倾斜角度、像素鸟停在扇翅中段、电话不再摇晃、时钟指针停住、画廊切换不再过渡、图标交换不再旋转过渡、筛选不再缩放、页脚链接不再做颜色过渡。`mask-image` 不可用时形状遮罩退回圆角，`:user-invalid` 不可用时表单在失焦时用 `checkValidity`。
+登记在 `catalog-batch41.ts`。上一批书签爆发已占用 `catalog-batch40.ts`。`pacman-loader`（作者 andrew-demchenk0）、`battery-loader`（作者 JaydipPrajapati1910）、`ringed-planet-loader`（作者 Admin12121）、`pixel-bird-loader`（作者 Subaashbala）、`phone-ring-loader`（作者 bociKond）、`glass-clock-loader`（作者 Subaashbala）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`hover-gallery`、`icon-swap`、`form-validator`、`corner-indicator`、`filter-chips`、`file-input`、`tick-range` 移植自 daisyUI（MIT，Copyright (c) 2020 Pouya Saadeghi）。`site-footer` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。CSS 改成 React 与 Tailwind v4，主题色用现有 token。示例色、图片、文案和链接放在 demo。没有新增依赖。减弱动效时吃豆嘴保持张开、电池停在半格或给定电量、星球环停在倾斜角度、像素鸟停在扇翅中段、电话不再摇晃、时钟指针停住、画廊切换不再过渡、图标交换不再旋转过渡、筛选不再缩放、页脚链接不再做颜色过渡。`:user-invalid` 不可用时表单在失焦时用 `checkValidity`。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -894,7 +807,6 @@ text-style
 | glass-clock-loader | Uiverse galaxy，MIT，作者 Subaashbala |
 | hover-gallery | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
 | icon-swap | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
-| shape-mask | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
 | form-validator | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
 | corner-indicator | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
 | filter-chips | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
@@ -902,9 +814,9 @@ text-style
 | tick-range | daisyUI，MIT，Copyright (c) 2020 Pouya Saadeghi |
 | site-footer | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
 
-### 书签爆发、注册分页与作品筛选
+### 书签爆发与注册分页
 
-登记在 `catalog-batch40.ts`。上一批故障切片已占用 `catalog-batch39.ts`。`bookmark-burst-toggle`（作者 Galahhad）、`lock-toggle`（作者 mobinkakei）、`circular-text-button`（作者 Creatlydev）、`flower-burst-button`（作者 yaroslavas2001）、`scroll-cue-button`（作者 ArturCodeCraft）、`flicker-reflect-button`（作者 John-CFO）、`glow-search-input`（作者 siraj-ha）、`propeller-orb`（作者 Lakshay-art）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`not-found-page`、`multi-level-dropdown`、`file-manager-table`、`email-template`、`signup-split-page`、`step-modal`、`portfolio-filter-grid` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。Alpine 改成 React 状态，过渡用已有的 `motion/react`。示例图片、文案和链接放在 demo。邮件模板用表格和内联样式。没有新增依赖。减弱动效时书签不再爆发、锁扣不再画线、环形文字停止旋转、花朵不再自转、滚动箭头停住、霓虹不再闪、搜索光晕不再对调、螺旋桨停住、404 按钮和注册按钮不再做颜色过渡、菜单直接出现、文件行按钮不再过渡、步骤遮罩直接出现、作品过滤立即完成。
+登记在 `catalog-batch40.ts`。上一批故障切片已占用 `catalog-batch39.ts`。`bookmark-burst-toggle`（作者 Galahhad）、`lock-toggle`（作者 mobinkakei）、`circular-text-button`（作者 Creatlydev）、`flower-burst-button`（作者 yaroslavas2001）、`scroll-cue-button`（作者 ArturCodeCraft）、`flicker-reflect-button`（作者 John-CFO）、`glow-search-input`（作者 siraj-ha）、`propeller-orb`（作者 Lakshay-art）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`not-found-page`、`multi-level-dropdown`、`email-template`、`signup-split-page` 移植自 Meraki UI（MIT，Copyright (c) 2021 Khatab Wedaa）。Alpine 改成 React 状态，过渡用已有的 `motion/react`。示例图片、文案和链接放在 demo。邮件模板用表格和内联样式。没有新增依赖。减弱动效时书签不再爆发、锁扣不再画线、环形文字停止旋转、花朵不再自转、滚动箭头停住、霓虹不再闪、搜索光晕不再对调、螺旋桨停住、404 按钮和注册按钮不再做颜色过渡、菜单直接出现。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -918,15 +830,12 @@ text-style
 | propeller-orb | Uiverse galaxy，MIT，作者 Lakshay-art |
 | not-found-page | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
 | multi-level-dropdown | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
-| file-manager-table | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
 | email-template | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
 | signup-split-page | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
-| step-modal | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
-| portfolio-filter-grid | Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa |
 
 ### 故障切片、粗野套件与营销区块
 
-登记在 `catalog-batch39.ts`。上一批布局模糊已占用 `catalog-batch38.ts`。`glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`details-list`、`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards`、`collapsible-side-menu` 移植自 HyperUI（MIT，Copyright (c) Mark Mead）。亮色和暗色 HTML 合并成主题色加 `dark:` 变体。示例图片、文案和链接放在 demo。`neo-brutal-kit` 一个条目导出 NeoCard、Alert、Badge、Input、Select、Textarea、Checkbox、Progress、Tabs。没有新增依赖。减弱动效时切片不再错位、发送光晕停住、删除提示直接出现、霓虹卡片放平、图钉和星星不再缩放、模糊色块保持清晰、游走光点停住、详情列表和统计卡保持原样、博客阴影不再过渡、粗野控件没有过渡、联系按钮没有颜色过渡、成员链接不再改变透明度、侧栏箭头没有旋转过渡。
+登记在 `catalog-batch39.ts`。上一批布局模糊已占用 `catalog-batch38.ts`。`glitch-slice-button`（作者 namecho）、`send-arrow-button`（作者 andrew-demchenk0）、`trash-delete-button`（作者 boryanakrasteva）、`neon-hold-card`（作者 htwarriors108）、`pin-toggle`（作者 vinodjangid07）、`blur-unveil-card`（作者 Javierrocadev）、`glow-wander-card`（作者 codebykay101）、`star-favorite-toggle`（作者 andrew-demchenk0）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`blog-card`、`neo-brutal-kit`、`contact-form`、`team-section`、`stat-trend-cards` 移植自 HyperUI（MIT，Copyright (c) Mark Mead）。亮色和暗色 HTML 合并成主题色加 `dark:` 变体。示例图片、文案和链接放在 demo。`neo-brutal-kit` 一个条目导出 NeoCard、Alert、Badge、Input、Select、Textarea、Checkbox、Progress、Tabs。没有新增依赖。减弱动效时切片不再错位、发送光晕停住、删除提示直接出现、霓虹卡片放平、图钉和星星不再缩放、模糊色块保持清晰、游走光点停住、统计卡保持原样、博客阴影不再过渡、粗野控件没有过渡、联系按钮没有颜色过渡、成员链接不再改变透明度。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -938,35 +847,28 @@ text-style
 | blur-unveil-card | Uiverse galaxy，MIT，作者 Javierrocadev |
 | glow-wander-card | Uiverse galaxy，MIT，作者 codebykay101 |
 | star-favorite-toggle | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
-| details-list | HyperUI，MIT，Copyright (c) Mark Mead |
 | blog-card | HyperUI，MIT，Copyright (c) Mark Mead |
 | neo-brutal-kit | HyperUI，MIT，Copyright (c) Mark Mead |
 | contact-form | HyperUI，MIT，Copyright (c) Mark Mead |
 | team-section | HyperUI，MIT，Copyright (c) Mark Mead |
 | stat-trend-cards | HyperUI，MIT，Copyright (c) Mark Mead |
-| collapsible-side-menu | HyperUI，MIT，Copyright (c) Mark Mead |
 
 ### 布局模糊、液态按钮与对话壳
 
-登记在 `catalog-batch38.ts`。上一批提示词套件已占用 `catalog-batch37.ts`。`blur-vignette`、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`spotlight-group`、`timeline-reveal`、`scroll-blur-text`、`hatch-divider`、`image-tabs`、`progressive-carousel`、`agent-intro-sequence`、`hover-image-reveal` 与钩子 `use-media-query` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT）。`expandable-chat`、`chat-message-list`、`message-loading` 移植自 shadcn-chat（MIT，Copyright (c) 2024 Jakob Hoeg Mørk）。`useAutoScroll` 内联在 `chat-message-list`。`next/image` 改为 `img`。示例链接、色板和图片放在 demo。`agent-intro-sequence` 的序列由 props 传入。原创组件已占用 `hover-image-list`，这次的图片行登记为 `hover-image-reveal`。没有新增依赖。减弱动效时暗角不再模糊、液态色块停住、方块没有颜色过渡、字符条直接显示最后一句、聚光不再跟随指针、时间线和滚动文字立即清晰、斜线分隔保持原样、对话壳没有展开过渡、消息列表不平滑滚动、标签没有颜色过渡、轮播停止自动播放、介绍序列一次显示并结束、窄屏或减弱动效时图片停在行内、输入点停住。
+登记在 `catalog-batch38.ts`。上一批提示词套件已占用 `catalog-batch37.ts`。、`liquid-gradient-button`、`hover-blocks-grid`、`char-shimmer-loader`、`timeline-reveal`、`scroll-blur-text`、`progressive-carousel`、`agent-intro-sequence` 与钩子 `use-media-query` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT）。`expandable-chat`、`chat-message-list`、`message-loading` 移植自 shadcn-chat（MIT，Copyright (c) 2024 Jakob Hoeg Mørk）。`useAutoScroll` 内联在 `chat-message-list`。`next/image` 改为 `img`。示例链接、色板和图片放在 demo。`agent-intro-sequence` 的序列由 props 传入。没有新增依赖。减弱动效时液态色块停住、方块没有颜色过渡、字符条直接显示最后一句、时间线和滚动文字立即清晰、对话壳没有展开过渡、消息列表不平滑滚动、轮播停止自动播放、介绍序列一次显示并结束、输入点停住。
 
 | 组件 | 来源 |
 | --- | --- |
 | use-media-query | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
-| blur-vignette | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | liquid-gradient-button | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | hover-blocks-grid | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | char-shimmer-loader | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
-| spotlight-group | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | timeline-reveal | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | scroll-blur-text | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
-| hatch-divider | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | expandable-chat | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
 | chat-message-list | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
-| image-tabs | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | progressive-carousel | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | agent-intro-sequence | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
-| hover-image-reveal | UI Layouts，MIT，Copyright (c) 2024 UI LAYOUT |
 | message-loading | shadcn-chat，MIT，Copyright (c) 2024 Jakob Hoeg Mørk |
 
 ### 提示词套件与加载指示
@@ -993,16 +895,14 @@ text-style
 
 ### 可变字体、开关与资料卡
 
-登记在 `catalog-batch36.ts`。上一批全息文字已占用 `catalog-batch35.ts`。`variable-font-hover-by-letter`、`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path`、`float` 移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho）。`lodash` 的 debounce 改成组件内手写，`clsx` 改成 `cn`。`check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card` 移植自 Spectrum UI（Apache-2.0，(c) Spectrum UI / arihantcodes）。`use-typewriter` 移植到 `hooks/`。`framer-motion` 已换成 `motion/react`。示例凭据、提示词、社交入口、转账数字和 GitHub 用户放在 demo。资料卡默认不发请求。没有新增依赖。减弱动效时可变字体保持起始字重、字母不交换、下划线不再过渡、路径元素停在起点、漂浮回到原位、开关直接到位、分享菜单直接出现、星星不缩放、账号卡和对话卡直接显示第一组文案、登录卡直接出现、转账按钮不再缩放。
+登记在 `catalog-batch36.ts`。上一批全息文字已占用 `catalog-batch35.ts`。`letter-swap-pingpong`、`random-letter-swap`、`underline-hover-link`、`element-along-svg-path` 移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho）。`lodash` 的 debounce 改成组件内手写，`clsx` 改成 `cn`。`check-cross-switch`（作者 misaraadel）、`plus-share-burst`（作者 neerajbaniwal）移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io）。`star-rating`、`account-access-card`、`ai-chat-card`、`login-card`、`transfer-funds-card`、`http-status-lookup`、`github-profile-card` 移植自 Spectrum UI（Apache-2.0，(c) Spectrum UI / arihantcodes）。`use-typewriter` 移植到 `hooks/`。`framer-motion` 已换成 `motion/react`。示例凭据、提示词、社交入口、转账数字和 GitHub 用户放在 demo。资料卡默认不发请求。没有新增依赖。减弱动效时字母不交换、下划线不再过渡、路径元素停在起点、开关直接到位、分享菜单直接出现、星星不缩放、账号卡和对话卡直接显示第一组文案、登录卡直接出现、转账按钮不再缩放。
 
 | 组件 | 来源 |
 | --- | --- |
-| variable-font-hover-by-letter | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
 | letter-swap-pingpong | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
 | random-letter-swap | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
 | underline-hover-link | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
 | element-along-svg-path | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
-| float | Fancy Components，MIT，Copyright (c) 2024 Daniel Petho |
 | check-cross-switch | Uiverse galaxy，MIT，作者 misaraadel |
 | plus-share-burst | Uiverse galaxy，MIT，作者 neerajbaniwal |
 | star-rating | Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes |
@@ -1016,7 +916,7 @@ text-style
 
 ### 全息文字、刮刮卡与评分
 
-登记在 `catalog-batch35.ts`。上一批色相波浪已占用 `catalog-batch34.ts`。`hologram-text`、`ink-morph`、`orbital-text`、`scratch-card`、`skeleton-reveal`、`text-states`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card` 移植自 Spectrum UI（Apache-2.0，Made by Arihant）。`use-dismiss`、`use-hover-gesture`、`use-tap-gesture` 一并移植到 `hooks/`。`framer-motion` 已换成 `motion/react`，去掉了 `next-themes`。`faq-tabs-card` 的示例文案由 `tabs` 传入，`nav-list-card` 的示例数据在 demo。每个移植文件都标明 Modified。没有新增依赖。减弱动效时全息文字停止闪烁并保持可见、墨迹直接落到终点、轨道字符直接落位、刮刮卡不生成粉尘、骨架不脉冲、状态文字直接替换、铃铛不摆动、异步按钮的加载旋转停止、表情不弹跳、关注按钮不形变、分享菜单只淡入、任务勾选不爆开、动作条标签直接显隐、常见问题直接切换、导航行不再位移。
+登记在 `catalog-batch35.ts`。上一批色相波浪已占用 `catalog-batch34.ts`。`hologram-text`、`ink-morph`、`orbital-text`、`scratch-card`、`skeleton-reveal`、`notification-bell`、`async-morph-button`、`face-rating`、`follow-button`、`share-button`、`task-checkbox`、`expandable-action-bar`、`faq-tabs-card`、`nav-list-card` 移植自 Spectrum UI（Apache-2.0，Made by Arihant）。`use-dismiss`、`use-hover-gesture`、`use-tap-gesture` 一并移植到 `hooks/`。`framer-motion` 已换成 `motion/react`，去掉了 `next-themes`。`faq-tabs-card` 的示例文案由 `tabs` 传入，`nav-list-card` 的示例数据在 demo。每个移植文件都标明 Modified。没有新增依赖。减弱动效时全息文字停止闪烁并保持可见、墨迹直接落到终点、轨道字符直接落位、刮刮卡不生成粉尘、骨架不脉冲、铃铛不摆动、异步按钮的加载旋转停止、表情不弹跳、关注按钮不形变、分享菜单只淡入、任务勾选不爆开、动作条标签直接显隐、常见问题直接切换、导航行不再位移。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1025,7 +925,6 @@ text-style
 | orbital-text | Spectrum UI，Apache-2.0，Made by Arihant |
 | scratch-card | Spectrum UI，Apache-2.0，Made by Arihant |
 | skeleton-reveal | Spectrum UI，Apache-2.0，Made by Arihant |
-| text-states | Spectrum UI，Apache-2.0，Made by Arihant |
 | notification-bell | Spectrum UI，Apache-2.0，Made by Arihant |
 | async-morph-button | Spectrum UI，Apache-2.0，Made by Arihant |
 | face-rating | Spectrum UI，Apache-2.0，Made by Arihant |
@@ -1099,7 +998,7 @@ text-style
 
 ### 色相波浪、杠杆开关与验证码
 
-登记在 `catalog-batch34.ts`。上一批倾斜卡片已占用 `catalog-batch33.ts`。`hue-wave-loader`、`lift-gradient-border-button`、`lever-switch`、`neon-3d-radio`、`star-ribbon-notification`、`moon-sun-switch`、`glow-light-switch`、`hamburger-morph`、`mic-search-input`、`social-follow-tooltip`、`copy-field`、`newsletter-input`、`pin-display-input` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4。`neubrutalism-toggle`、`minimal-accordion` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`neubrutalism-toggle` 额外署 Ethan Pollack。`minimal-accordion` 的 `framer-motion` 已换成 `motion/react`。没有新增依赖。减弱动效时色相波浪和绶带停住、渐变按钮不上抬、杠杆与日月与灯光与粗野开关直接到位、单选不旋转、汉堡立刻变成叉、手风琴直接展开、麦克风按钮不过渡、关注提示直接出现、复制状态直接切换、订阅按钮不过渡、验证码格子保持静止。
+登记在 `catalog-batch34.ts`。上一批倾斜卡片已占用 `catalog-batch33.ts`。`hue-wave-loader`、`lift-gradient-border-button`、`lever-switch`、`neon-3d-radio`、`moon-sun-switch`、`glow-light-switch`、`hamburger-morph`、`mic-search-input`、`social-follow-tooltip`、`copy-field`、`newsletter-input`、`pin-display-input` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4。`neubrutalism-toggle`、`minimal-accordion` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`neubrutalism-toggle` 额外署 Ethan Pollack。`minimal-accordion` 的 `framer-motion` 已换成 `motion/react`。没有新增依赖。减弱动效时色相波浪停住、渐变按钮不上抬、杠杆与日月与灯光与粗野开关直接到位、单选不旋转、汉堡立刻变成叉、手风琴直接展开、麦克风按钮不过渡、关注提示直接出现、复制状态直接切换、订阅按钮不过渡、验证码格子保持静止。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1107,7 +1006,6 @@ text-style
 | lift-gradient-border-button | Uiverse galaxy，MIT，作者 SelfMadeSystem |
 | lever-switch | Uiverse galaxy，MIT，作者 Praashoo7 |
 | neon-3d-radio | Uiverse galaxy，MIT，作者 Saiyed-Tanvir |
-| star-ribbon-notification | Uiverse galaxy，MIT，作者 andrew-demchenk0 |
 | moon-sun-switch | Uiverse galaxy，MIT，作者 satyamchaudharydev |
 | glow-light-switch | Uiverse galaxy，MIT，作者 elijahgummer |
 | hamburger-morph | Uiverse galaxy，MIT，作者 elijahgummer |
@@ -1121,7 +1019,7 @@ text-style
 
 ### 倾斜卡片、图案背景与环形进度
 
-登记在 `catalog-batch33.ts`。上一批注意力按钮已占用 `catalog-batch32.ts`。`grid-tilt-card`、`layered-glass-card`、`eye-blink-loader`、`css-pattern-background`、`heart-like-button`、`download-size-button`、`achievement-toast` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4，并去掉 Uiverse 标志。`heartbeat-button`、`neubrutalism-button`、`3d-button`、`image-fade`、`expanding-icon-tabs`、`slide-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`framer-motion` 已换成 `motion/react`，`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`progress-circle`、`callout` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改，`tv` 改成 `cva`。没有新增依赖。减弱动效时倾斜和分层不再动、眼睛和图案停住、心跳不跳、粗野按钮不位移、立体圆不扩散、图片去掉遮罩、弧长直接到位、标签文字直接出现、开关旋钮直接到位、喜欢不心跳、下载切换不过渡、成就条直接展开。
+登记在 `catalog-batch33.ts`。上一批注意力按钮已占用 `catalog-batch32.ts`。`grid-tilt-card`、`layered-glass-card`、`eye-blink-loader`、`css-pattern-background`、`heart-like-button`、`download-size-button`、`achievement-toast` 移植自 Uiverse galaxy（MIT，Copyright (c) 2023 Uiverse.io），同时署文件作者。HTML/CSS 已改成 React 和 Tailwind v4，并去掉 Uiverse 标志。`heartbeat-button`、`neubrutalism-button`、`3d-button`、`slide-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`framer-motion` 已换成 `motion/react`，`buttonheartbeat` 关键帧从 `tailwind.config.ts` 迁出。`progress-circle`、`callout` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改，`tv` 改成 `cva`。没有新增依赖。减弱动效时倾斜和分层不再动、眼睛和图案停住、心跳不跳、粗野按钮不位移、立体圆不扩散、弧长直接到位、开关旋钮直接到位、喜欢不心跳、下载切换不过渡、成就条直接展开。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1132,10 +1030,8 @@ text-style
 | heartbeat-button | SyntaxUI，MIT |
 | neubrutalism-button | SyntaxUI，MIT |
 | 3d-button | SyntaxUI，MIT |
-| image-fade | SyntaxUI，MIT |
 | progress-circle | Tremor Raw，Apache-2.0 |
 | callout | Tremor Raw，Apache-2.0 |
-| expanding-icon-tabs | SyntaxUI，MIT |
 | slide-toggle | SyntaxUI，MIT |
 | heart-like-button | Uiverse galaxy，MIT，作者 LilaRest |
 | download-size-button | Uiverse galaxy，MIT，作者 satyamchaudharydev |
@@ -1143,7 +1039,7 @@ text-style
 
 ### 注意力按钮、附件气泡与分段条
 
-登记在 `catalog-batch32.ts`。上一批斜切滚动已占用 `catalog-batch31.ts`。八个动效移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`stitches-button` 在 SyntaxUI 的 credits.md 里归于 Saud。`framer-motion` 已换成 `motion/react`，`hover-spring-features` 用 `<img>` 代替 `next/image`。四个实用组件移植自 ReUI（MIT，Copyright (c) 2025 Keenthemes Inc.）。`category-bar`、`bar-list`、`tab-navigation` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改。没有新增依赖。没有使用 Hero Patterns。减弱动效时注意力动画不播放、叶子不摇、完成按钮直接完成、色块和霓虹与涟漪停住、功能卡不上移、追踪标题不闪。
+登记在 `catalog-batch32.ts`。上一批斜切滚动已占用 `catalog-batch31.ts`。八个动效移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`stitches-button` 在 SyntaxUI 的 credits.md 里归于 Saud。`framer-motion` 已换成 `motion/react`，`hover-spring-features` 用 `<img>` 代替 `next/image`。四个实用组件移植自 ReUI（MIT，Copyright (c) 2025 Keenthemes Inc.）。`category-bar`、`bar-list` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改。没有新增依赖。没有使用 Hero Patterns。减弱动效时注意力动画不播放、叶子不摇、完成按钮直接完成、色块和霓虹与涟漪停住、功能卡不上移、追踪标题不闪。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1161,11 +1057,10 @@ text-style
 | trace | ReUI，MIT |
 | category-bar | Tremor Raw，Apache-2.0 |
 | bar-list | Tremor Raw，Apache-2.0 |
-| tab-navigation | Tremor Raw，Apache-2.0 |
 
 ### 斜切滚动、星座加载与短视频
 
-登记在 `catalog-batch31.ts`。上一批立方体已占用 `catalog-batch30.ts`。八个动效和 `labeled-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI），源文件在 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/ 。原文件的 `framer-motion` 已换成 `motion/react`。六个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks）。没有新增依赖。`mini-calendar` 用已安装的 `@radix-ui/react-slot` 代替 `radix-ui` 伞包。减弱动效时斜切滚动停住、星座和漩涡静止、粒子收成圆点、方块停转、emoji 只弹出一个、跃迁按钮只变色、落字直接显示、状态点不闪、故事卡片不缩放、短视频不自动播放、开关旋钮直接到位。
+登记在 `catalog-batch31.ts`。上一批立方体已占用 `catalog-batch30.ts`。八个动效和 `labeled-toggle` 移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI），源文件在 https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/ 。原文件的 `framer-motion` 已换成 `motion/react`。四个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks）。没有新增依赖。`mini-calendar` 用已安装的 `@radix-ui/react-slot` 代替 `radix-ui` 伞包。减弱动效时斜切滚动停住、星座和漩涡静止、粒子收成圆点、方块停转、emoji 只弹出一个、跃迁按钮只变色、落字直接显示、状态点不闪、短视频不自动播放、开关旋钮直接到位。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1180,14 +1075,12 @@ text-style
 | labeled-toggle | SyntaxUI，MIT |
 | snippet | Kibo UI，MIT |
 | status | Kibo UI，MIT |
-| stories | Kibo UI，MIT |
 | mini-calendar | Kibo UI，MIT |
 | reel | Kibo UI，MIT |
-| cursor | Kibo UI，MIT |
 
-### 立方体、粘连滤镜与堆叠对话框
+### 立方体与像素滤镜
 
-登记在 `catalog-batch30.ts`。上一批像素拖尾已占用 `catalog-batch29.ts`。八个动效移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho），源文件在 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/ 。`use-debounced-dimensions` 来自同一仓库的 `src/hooks`。`parallax-floating` 复用已有的 `use-mouse-position-ref`。七个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks），不是 shadcnblocks 的付费区块。没有新增依赖。`dialog-stack` 用 `createPortal` 代替 `radix-ui` 伞包。减弱动效时盒子直接转向、拖拽没有惯性、滚动字保持静态、下划线立刻铺开、指针漂浮停住、像素化和粘连演示不再动画、渐变色块静止、状态点不闪、堆叠对话框不做过渡。
+登记在 `catalog-batch30.ts`。上一批像素拖尾已占用 `catalog-batch29.ts`。六个动效移植自 Fancy Components（MIT，Copyright (c) 2024 Daniel Petho），源文件在 https://github.com/danielpetho/fancy/blob/main/src/fancy/components/ 。`use-debounced-dimensions` 来自同一仓库的 `src/hooks`。六个实用组件移植自 Kibo UI 的 MIT 仓库 https://github.com/shadcnblocks/kibo （Copyright (c) 2023 — Present shadcnblocks），不是 shadcnblocks 的付费区块。没有新增依赖。减弱动效时盒子直接转向、拖拽没有惯性、滚动字保持静态、下划线立刻铺开、像素化演示不再动画、渐变色块静止、状态点不闪。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1195,16 +1088,13 @@ text-style
 | drag-elements | Fancy Components，MIT |
 | scroll-and-swap-text | Fancy Components，MIT |
 | underline-to-background | Fancy Components，MIT |
-| parallax-floating | Fancy Components，MIT |
 | pixelate-svg-filter | Fancy Components，MIT |
-| gooey-svg-filter | Fancy Components，MIT |
 | animated-gradient-with-svg | Fancy Components，MIT |
 | announcement | Kibo UI，MIT |
 | banner | Kibo UI，MIT |
 | pill | Kibo UI，MIT |
 | relative-time | Kibo UI，MIT |
 | ticker | Kibo UI，MIT |
-| dialog-stack | Kibo UI，MIT |
 | choicebox | Kibo UI，MIT |
 | use-debounced-dimensions | Fancy Components，MIT |
 
@@ -1221,7 +1111,6 @@ text-style
 | vertical-cut-reveal | Fancy Components，MIT |
 | text-cursor-proximity | Fancy Components，MIT |
 | elastic-line | Fancy Components，MIT |
-| breathing-text | Fancy Components，MIT |
 | text-highlighter | Fancy Components，MIT |
 | autosize-textarea | shadcn-ui-expansions，MIT |
 | loading-button | shadcn-ui-expansions，MIT |
@@ -1236,51 +1125,41 @@ text-style
 
 ### 透视字、棱镜与水花
 
-登记在 `catalog-batch28.ts`。上一批色波、点阵与置顶已占用 `catalog-batch27.ts`。十四项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。`splash-mask` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT），源文件 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 。没有新增依赖。`prism-sweep-transition` 与 `orb` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止绘制、变形、数字滚动和自动播放。减弱动效时透视字改成普通段落，棱镜直接换内容，球体停在相位 0，星标数字直接跳到终值。没有传入 `apiEndpoint` 时，星标组件不请求网络。
+登记在 `catalog-batch28.ts`。上一批色波、点阵与置顶已占用 `catalog-batch27.ts`。十项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。`splash-mask` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT），源文件 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 。没有新增依赖。`prism-sweep-transition` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止绘制、变形、数字滚动和自动播放。减弱动效时透视字改成普通段落，棱镜直接换内容，星标数字直接跳到终值。没有传入 `apiEndpoint` 时，星标组件不请求网络。
 
 | 组件 | 来源 |
 | --- | --- |
-| perspective-text-3d | SmoothUI，MIT |
 | scroll-image-reveal | SmoothUI，MIT |
-| svg-clip-mask | SmoothUI，MIT |
 | depth-parallax-words | SmoothUI，MIT |
 | prism-sweep-transition | SmoothUI，MIT |
-| orb | SmoothUI，MIT |
 | splash-mask | UI Layouts，MIT |
 | morph-icon | SmoothUI，MIT |
 | hover-expand | SmoothUI，MIT |
-| inline-testimonials | SmoothUI，MIT |
 | count-badge | SmoothUI，MIT |
 | social-selector | SmoothUI，MIT |
 | github-stars-animation | SmoothUI，MIT |
 | expandable-navbar | SmoothUI，MIT |
-| reviews-carousel | SmoothUI，MIT |
 
 ### 色波、点阵与置顶
 
-登记在 `catalog-batch27.ts`。上一批极光、液态金属与时长已占用 `catalog-batch26.ts`。`novatrix-background` 移植自 Eldora UI（MIT，Copyright Mudunuri Bhaskara Karthikeya Varma），源文件 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 。其余十四项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`novatrix-background` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止动画帧、衰减、自动旋转和扫描倒计时。减弱动效时色波停住，手绘不挂画布，色差过渡直接换内容，点阵直接显示，滚动字停在峰值字重。
+登记在 `catalog-batch27.ts`。上一批极光、液态金属与时长已占用 `catalog-batch26.ts`。`novatrix-background` 移植自 Eldora UI（MIT，Copyright Mudunuri Bhaskara Karthikeya Varma），源文件 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 。其余十项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`novatrix-background` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止动画帧、衰减、自动旋转和扫描倒计时。减弱动效时色波停住，色差过渡直接换内容，滚动字停在峰值字重。
 
 | 组件 | 来源 |
 | --- | --- |
 | novatrix-background | Eldora UI，MIT |
-| drawing-cursor | SmoothUI，MIT |
 | emboss-surface | SmoothUI，MIT |
-| chroma-blur-transition | SmoothUI，MIT |
 | arcade-pixel | SmoothUI，MIT |
 | kinetic-type-scroll | SmoothUI，MIT |
-| orbital-image-wheel | SmoothUI，MIT |
-| dither-chart | SmoothUI，MIT |
 | card-swipe-deck | SmoothUI，MIT |
 | pinned-list | SmoothUI，MIT |
 | grid-loader | SmoothUI，MIT |
-| squircle | SmoothUI，MIT |
 | vector-editor-toolbar | SmoothUI，MIT |
 | unlock-face-id | SmoothUI，MIT |
 | music-toggle | SmoothUI，MIT |
 
 ### 极光、液态金属与时长
 
-登记在 `catalog-batch26.ts`。上一批收据、液面与裁切已占用 `catalog-batch25.ts`。十四项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal`、`sdf-blob-transition` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，SDF 过渡直接换内容，环境光只取一帧，勒索信不再晃动，时长数字不再滚动。
+登记在 `catalog-batch26.ts`。上一批收据、液面与裁切已占用 `catalog-batch25.ts`。十二项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，勒索信不再晃动，时长数字不再滚动。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1289,8 +1168,6 @@ text-style
 | magnetic-field | SmoothUI，MIT |
 | ransom-note | SmoothUI，MIT |
 | liquid-metal | SmoothUI，MIT |
-| sdf-blob-transition | SmoothUI，MIT |
-| video-ambient | SmoothUI，MIT |
 | pixel-brush-canvas | SmoothUI，MIT |
 | duration-picker | SmoothUI，MIT |
 | exposure-slider | SmoothUI，MIT |
@@ -1301,7 +1178,7 @@ text-style
 
 ### 收据、液面与裁切
 
-登记在 `catalog-batch25.ts`。上一批地形、摇篮字与转录已占用 `catalog-batch24.ts`。十四项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面和支出环直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。
+登记在 `catalog-batch25.ts`。上一批地形、摇篮字与转录已占用 `catalog-batch24.ts`。十三项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1313,7 +1190,6 @@ text-style
 | ai-text-loading | kokonutUI，MIT |
 | ai-voice | kokonutUI，MIT |
 | avatar-picker | kokonutUI，MIT |
-| spending-ring | kokonutUI，MIT |
 | ai-citations | kokonutUI，MIT |
 | ai-token-alternatives | kokonutUI，MIT |
 | timezone-planner | kokonutUI，MIT |
@@ -1344,20 +1220,16 @@ text-style
 
 ### 鸟群、流星与投票
 
-登记在 `catalog-batch23.ts`。上一批漫画字已占用 `catalog-batch22.ts`。`boids-ecosystem`、`shooting-stars`、`fibonacci-lines`、`aperture-reveal`、`text-explode`、`speed-dial`、`flower-menu`、`sibling-focus-nav` 移植自 Animata（MIT，Copyright (c) Animata）。`distorted-glass`、`merging-bubbles`、`svg-bands`、`popover-form`、`floating-panel`、`copy-button`、`feature-voting` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`use-controllable-state` 是原创钩子，给投票列表做受控状态，没有加入 `@radix-ui/react-use-controllable-state`。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧和循环。减弱动效时鸟群和流星静止，斐波那契线同时出现，光圈按阅读顺序排开，文字不炸开，气泡和色带不动，速度旋钮和花朵菜单直接打开，导航只变暗，表单和面板改为淡入，复制图标直接切换，投票列表不播放重排。
+登记在 `catalog-batch23.ts`。上一批漫画字已占用 `catalog-batch22.ts`。`boids-ecosystem`、`shooting-stars`、`aperture-reveal`、`text-explode`、`flower-menu`、`sibling-focus-nav` 移植自 Animata（MIT，Copyright (c) Animata）。`distorted-glass`、`popover-form`、`floating-panel`、`copy-button`、`feature-voting` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`use-controllable-state` 是原创钩子，给投票列表做受控状态，没有加入 `@radix-ui/react-use-controllable-state`。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧和循环。减弱动效时鸟群和流星静止，光圈按阅读顺序排开，文字不炸开，气泡不动，花朵菜单直接打开，导航只变暗，表单和面板改为淡入，复制图标直接切换，投票列表不播放重排。
 
 | 组件 | 来源 |
 | --- | --- |
 | use-controllable-state | 原创 |
 | boids-ecosystem | Animata，MIT |
 | shooting-stars | Animata，MIT |
-| fibonacci-lines | Animata，MIT |
 | aperture-reveal | Animata，MIT |
 | text-explode | Animata，MIT |
 | distorted-glass | Cult UI，MIT |
-| merging-bubbles | Cult UI，MIT |
-| svg-bands | Cult UI，MIT |
-| speed-dial | Animata，MIT |
 | flower-menu | Animata，MIT |
 | sibling-focus-nav | Animata，MIT |
 | popover-form | Cult UI，MIT |
@@ -1438,16 +1310,16 @@ text-style
 
 ## 新增组件
 
-`date-picker` 和 `typography` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住：
+`date-picker` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住：
 
 1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`templates/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。模板的文案和主题用同目录 `./content`、`./theme`，不要写成会被当成 registry 依赖的 `./theme.css`。
 2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`file`、`target`、`props`。多文件条目再写 `files`（页面、文案、主题）。
-   - `type` 为 `registry:ui`、`registry:lib`、`registry:hook` 或 `registry:block`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。模板用 `registry:block`。
-   - 不用写 `dependencies` 和 `registryDependencies`：构建时从源码 import 推导（包括 type-only import 和动态 `import()`），按字母排序，忽略 `react`、`react-dom`。上面的别名和同目录相对引用算 registry 依赖。
-   - 源码没有 import、但安装时必须一起装的 npm 包（例如 `@tiptap/pm` 作为 peer）写进 `extraDependencies`。
-   - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`；按惯例同时加到 `apps/docs/package.json`（审计不检查这一项）。
+ - `type` 为 `registry:ui`、`registry:lib`、`registry:hook` 或 `registry:block`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。模板用 `registry:block`。
+ - 不用写 `dependencies` 和 `registryDependencies`：构建时从源码 import 推导（包括 type-only import 和动态 `import()`），按字母排序，忽略 `react`、`react-dom`。上面的别名和同目录相对引用算 registry 依赖。
+ - 源码没有 import、但安装时必须一起装的 npm 包（例如 `@tiptap/pm` 作为 peer）写进 `extraDependencies`。
+ - 用到的 npm 包还要写进 `packages/registry/package.json` 的 `dependencies`；按惯例同时加到 `apps/docs/package.json`（审计不检查这一项）。
 3. **demo**：`registry:ui` 和 `registry:block` 在 `packages/registry/src/examples/` 增加 Demo，并登记到 `examples/index.ts` 的 `demoMap`。`registry:lib` 和 `registry:hook` 不需要 demo 和 Props。模板的文档预览走 `/preview/{name}`。
-   - 要在文档页上让读者改 props，把 `control` 写在 catalog 该 prop 上（`range` / `select` / `color` / `boolean` / `text`）。`control.value` 是 demo 起始值，`defaultValue` 仍是组件自己的默认值。Demo 写成带解构默认值的函数，默认值等于 `control.value`，例如 `export function XDemo({ speed = 1.2 }: { speed?: number } = {})`。没有 `control` 的 demo 保持无参函数。全屏页不放控件，直接渲染这个函数的默认值。
+ - 要在文档页上让读者改 props，把 `control` 写在 catalog 该 prop 上（`range` / `select` / `color` / `boolean` / `text`）。`control.value` 是 demo 起始值，`defaultValue` 仍是组件自己的默认值。Demo 写成带解构默认值的函数，默认值等于 `control.value`，例如 `export function XDemo({ speed = 1.2 }: { speed?: number } = {})`。没有 `control` 的 demo 保持无参函数。全屏页不放控件，直接渲染这个函数的默认值。
 4. **README** 组件列表写上独立组件名。名字是 `button`、`button-*`、`*-button`、`input`、`input-*` 或 `*-input` 的，写进 README 的「按钮」或「输入」表，并加到 `packages/registry/src/catalog.ts` 里对应分组。漏了分组，测试会失败。
 5. 运行 `pnpm registry:build`，更新根目录 `registry.json` 和 `apps/docs/public/r/`。
 

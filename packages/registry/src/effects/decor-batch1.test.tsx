@@ -13,22 +13,15 @@ import { BorderTrail } from "./border-trail"
 import { DragElements } from "./drag-elements"
 import { ElasticLine } from "./elastic-line"
 import { EmbossSurface } from "./emboss-surface"
-import { FibonacciLines } from "./fibonacci-lines"
-import { Float } from "./float"
+
 import { GlowEffect } from "./glow-effect"
-import { GooeySvgFilter } from "./gooey-svg-filter"
-import { Orb } from "./orb"
+
+
 import { PixelateSvgFilter } from "./pixelate-svg-filter"
 import { Screensaver } from "./screensaver"
 import { SplashMask } from "./splash-mask"
-import { Squircle } from "./squircle"
-import { SvgClipMask } from "./svg-clip-mask"
 
-const orbColors = ["#7c3aed", "#fde68a"]
-const morphPaths = [
-  "M0.5,0.05 C0.8,0.05 0.95,0.28 0.95,0.5 C0.95,0.78 0.75,0.95 0.5,0.95 C0.22,0.95 0.05,0.72 0.05,0.5 C0.05,0.22 0.25,0.05 0.5,0.05 Z",
-  "M0.5,0.02 C0.9,0.12 0.98,0.4 0.9,0.62 C0.8,0.9 0.55,0.98 0.32,0.88 C0.08,0.76 0.02,0.42 0.16,0.22 C0.28,0.04 0.32,-0.02 0.5,0.02 Z",
-]
+
 
 let reduceMotion = false
 
@@ -162,31 +155,6 @@ test("辉光在减弱动效下停成静态缩放", () => {
   expect(root).toHaveAttribute("data-reduced", "true")
   expect(root.getAttribute("style") ?? "").toContain("blur(16px)")
 })
-
-test("斐波那契线框画出线段", () => {
-  const view = render(
-    <FibonacciLines>
-      <p>斐波那契线框</p>
-    </FibonacciLines>,
-  )
-  const root = slot(view.container, "fibonacci-lines")
-  expect(screen.getByText("斐波那契线框")).toBeInTheDocument()
-  expect(root.querySelectorAll("line")).toHaveLength(11)
-  expect(root).not.toHaveAttribute("data-reduced")
-})
-
-test("斐波那契线框在减弱动效下一次画完", () => {
-  reduceMotion = true
-  const view = render(
-    <FibonacciLines>
-      <p>斐波那契线框</p>
-    </FibonacciLines>,
-  )
-  const root = slot(view.container, "fibonacci-lines")
-  expect(root).toHaveAttribute("data-reduced", "true")
-  expect(root.querySelector("line")).toHaveAttribute("stroke-dashoffset", "0")
-})
-
 test("浮雕表面读出文字", () => {
   const view = render(
     <EmbossSurface depth={3} interactive lightAngle={135} variant="emboss">
@@ -208,67 +176,6 @@ test("浮雕表面在减弱动效下仍可读", () => {
   expect(root).toHaveAttribute("data-reduced", "true")
   expect(screen.getByText("浮雕表面")).toBeInTheDocument()
 })
-
-test("平滑圆角包住内容", () => {
-  const view = render(
-    <Squircle border radius={36} smoothing={0.8}>
-      平滑圆角
-    </Squircle>,
-  )
-  expect(screen.getByText("平滑圆角")).toBeInTheDocument()
-  expect(slot(view.container, "squircle")).toHaveStyle({ borderRadius: "36px" })
-})
-
-test("平滑圆角在减弱动效下仍包住内容", () => {
-  reduceMotion = true
-  const view = render(
-    <Squircle border radius={36} smoothing={0.8}>
-      平滑圆角
-    </Squircle>,
-  )
-  expect(slot(view.container, "squircle")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByText("平滑圆角")).toBeInTheDocument()
-})
-
-test("裁切遮罩挂上形状", () => {
-  const view = render(
-    <SvgClipMask animate="morph" duration={4} morphPaths={morphPaths} shape="blob">
-      <div>色块</div>
-    </SvgClipMask>,
-  )
-  const root = slot(view.container, "svg-clip-mask")
-  expect(screen.getByText("色块")).toBeInTheDocument()
-  expect(root.querySelector("clipPath")).not.toBeNull()
-  expect(root).toHaveAttribute("data-reduced", "false")
-})
-
-test("裁切遮罩在减弱动效下仍显示内容", () => {
-  reduceMotion = true
-  const view = render(
-    <SvgClipMask animate="morph" duration={4} morphPaths={morphPaths} shape="blob">
-      <div>色块</div>
-    </SvgClipMask>,
-  )
-  expect(slot(view.container, "svg-clip-mask")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByText("色块")).toBeInTheDocument()
-})
-
-test("球体按预览边长占位", () => {
-  const view = render(<Orb colors={orbColors} duration={7} size={220} />)
-  const root = slot(view.container, "orb")
-  expect(root).toHaveStyle({ width: "220px", height: "220px" })
-  expect(root.querySelector("canvas, .rounded-full")).not.toBeNull()
-  expect(root).toHaveAttribute("data-reduced", "false")
-})
-
-test("球体在减弱动效下保持边长", () => {
-  reduceMotion = true
-  const view = render(<Orb colors={orbColors} duration={7} size={220} />)
-  const root = slot(view.container, "orb")
-  expect(root).toHaveAttribute("data-reduced", "true")
-  expect(root).toHaveStyle({ width: "220px", height: "220px" })
-})
-
 test("水花遮罩裁住内容", () => {
   const view = render(
     <SplashMask>
@@ -363,37 +270,3 @@ test("像素滤镜在减弱动效下保持颗粒", () => {
   expect(slot(view.container, "pixelate-svg-filter").querySelector("feComposite")).toHaveAttribute("width", "6")
 })
 
-test("粘连滤镜使用预览强度", () => {
-  const view = render(<GooeySvgFilter id="gooey-demo" strength={14} />)
-  const root = slot(view.container, "gooey-svg-filter")
-  expect(root.querySelector("filter")).toHaveAttribute("id", "gooey-demo")
-  expect(root.querySelector("feGaussianBlur")).toHaveAttribute("stdDeviation", "14")
-})
-
-test("粘连滤镜在减弱动效下保持强度", () => {
-  reduceMotion = true
-  const view = render(<GooeySvgFilter id="gooey-demo" strength={14} />)
-  expect(slot(view.container, "gooey-svg-filter").querySelector("feGaussianBlur")).toHaveAttribute("stdDeviation", "14")
-})
-
-test("漂浮读出卡片文字", () => {
-  const view = render(
-    <Float amplitude={[8, 18, 12]} rotationRange={[8, 10, 4]} speed={0.4} timeOffset={0}>
-      漂浮
-    </Float>,
-  )
-  expect(screen.getByText("漂浮")).toBeInTheDocument()
-  expect(slot(view.container, "float")).toHaveAttribute("data-reduced", "false")
-})
-
-test("漂浮在减弱动效下停在原位", () => {
-  reduceMotion = true
-  const view = render(
-    <Float amplitude={[8, 18, 12]} rotationRange={[8, 10, 4]} speed={0.4} timeOffset={0}>
-      漂浮
-    </Float>,
-  )
-  const root = slot(view.container, "float")
-  expect(root).toHaveAttribute("data-reduced", "true")
-  expect(root).toHaveAttribute("data-motion", "off")
-})

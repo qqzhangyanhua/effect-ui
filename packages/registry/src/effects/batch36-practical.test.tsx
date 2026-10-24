@@ -11,7 +11,6 @@ import { AccountAccessCard } from "./account-access-card"
 import { AIChatCard } from "./ai-chat-card"
 import { CheckCrossSwitch } from "./check-cross-switch"
 import { ElementAlongPathItem, ElementAlongSvgPath } from "./element-along-svg-path"
-import { Float } from "./float"
 import { GitHubProfileCard } from "./github-profile-card"
 import { HttpStatusLookup } from "./http-status-lookup"
 import { LetterSwapPingPong } from "./letter-swap-pingpong"
@@ -21,7 +20,6 @@ import { RandomLetterSwap } from "./random-letter-swap"
 import { StarRating } from "./star-rating"
 import { TransferFundsCard } from "./transfer-funds-card"
 import { UnderlineHoverLink } from "./underline-hover-link"
-import { VariableFontHoverByLetter } from "./variable-font-hover-by-letter"
 
 let reduceMotion = false
 
@@ -73,15 +71,11 @@ test("减弱动效时文字组件仍可读", () => {
   reduceMotion = true
   render(
     <div>
-      <VariableFontHoverByLetter label="可变" />
       <LetterSwapPingPong label="往返" />
       <RandomLetterSwap label="随机" />
       <UnderlineHoverLink direction="right" variant="in-out">
         下划线
       </UnderlineHoverLink>
-      <Float>
-        <span>漂浮</span>
-      </Float>
       <ElementAlongSvgPath path="M0 0 H100" showPath>
         <ElementAlongPathItem>
           <span>沿路径</span>
@@ -89,11 +83,9 @@ test("减弱动效时文字组件仍可读", () => {
       </ElementAlongSvgPath>
     </div>,
   )
-  expect(screen.getByText("可变")).toBeInTheDocument()
   expect(screen.getByText("往返")).toBeInTheDocument()
   expect(screen.getByText("随机")).toBeInTheDocument()
   expect(screen.getByText("下划线").closest("[data-slot='underline-hover-link']")).toHaveAttribute("data-direction", "right")
-  expect(screen.getByText("漂浮")).toBeInTheDocument()
   expect(screen.getByText("沿路径")).toBeInTheDocument()
 })
 

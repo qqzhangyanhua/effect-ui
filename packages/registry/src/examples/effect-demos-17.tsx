@@ -15,7 +15,7 @@ import { ProximityScaleGrid } from "../effects/proximity-scale-grid"
 import { ScrollSvgGraph } from "../effects/scroll-svg-graph"
 import { SignaturePad } from "../effects/signature-pad"
 import { SocialPostFeed } from "../effects/social-post-feed"
-import { XrayFluidReveal } from "../effects/xray-fluid-reveal"
+
 
 export function GalaxySpiralDemo({
   arms = 3,
@@ -76,11 +76,6 @@ export function ClothWindBannerDemo({
 } = {}) {
   return <ClothWindBanner className="w-full" intensity={intensity} speed={speed} colors={colors} />
 }
-
-export function XrayFluidRevealDemo({ speed }: { speed?: number } = {}) {
-  return <XrayFluidReveal className="w-full" speed={speed} />
-}
-
 export function PetalDissolveTextDemo({
   text = "花瓣散开",
   direction = "forward",

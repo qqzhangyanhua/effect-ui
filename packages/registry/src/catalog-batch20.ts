@@ -92,17 +92,6 @@ export const batch20Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "rain-puddle",
-    title: "Rain Puddle",
-    description: "灵感来自 Codrops Puddle in rain，原创实现。雨滴在水面荡开涟漪并折射背景，点击制造大涟漪。",
-    category: "backgrounds",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/rain-puddle.tsx",
-    target: "components/ui/rain-puddle.tsx",
-    props: ui,
-  },
-  {
     name: "keyhole-scroll-reveal",
     title: "Keyhole Scroll Reveal",
     description: "灵感来自 Codrops Scroll-Synced Slideshow with Keyhole Effect，原创实现。圆角视窗随滚动放大，并按时间点换图。",

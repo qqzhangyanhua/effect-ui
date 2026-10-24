@@ -9,17 +9,16 @@ MotionGlobalConfig.skipAnimations = true
 
 import { ArcadePixel } from "./arcade-pixel"
 import { CardSwipeDeck } from "./card-swipe-deck"
-import { ChromaBlurTransition } from "./chroma-blur-transition"
-import { DitherChart } from "./dither-chart"
-import { DrawingCursor } from "./drawing-cursor"
+
+
 import { EmbossSurface } from "./emboss-surface"
 import { GridLoader } from "./grid-loader"
 import { KineticTypeScroll } from "./kinetic-type-scroll"
 import { MusicToggle } from "./music-toggle"
 import { NovatrixBackground } from "./novatrix-background"
-import { OrbitalImageWheel } from "./orbital-image-wheel"
+
 import { PinnedList } from "./pinned-list"
-import { squirclePath, Squircle } from "./squircle"
+
 import { UnlockFaceId } from "./unlock-face-id"
 import { VectorEditorToolbar } from "./vector-editor-toolbar"
 
@@ -71,8 +70,6 @@ vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) =>
 )
 vi.stubGlobal("cancelAnimationFrame", (id: number) => window.clearTimeout(id))
 
-const swatch = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-
 function Icon({ className }: { className?: string }) {
   return <svg className={className} />
 }
@@ -81,28 +78,10 @@ function slot(container: HTMLElement, name: string) {
   return container.querySelector(`[data-slot=${name}]`)
 }
 
-test("减弱动效时色波、手绘和过渡停在标记上", () => {
+test("减弱动效时色波停在标记上", () => {
   reduceMotion = true
   const wave = render(<NovatrixBackground />)
   expect(slot(wave.container, "novatrix-background")).toHaveAttribute("data-reduced", "true")
-  cleanup()
-
-  const ink = render(
-    <DrawingCursor>
-      <span>笔</span>
-    </DrawingCursor>,
-  )
-  expect(slot(ink.container, "drawing-cursor")).toHaveAttribute("data-reduced", "true")
-  expect(ink.container.querySelector("canvas")).toBeNull()
-  cleanup()
-
-  const curtain = render(
-    <ChromaBlurTransition transitionKey="a">
-      <span>甲</span>
-    </ChromaBlurTransition>,
-  )
-  expect(slot(curtain.container, "chroma-blur-transition")).toHaveAttribute("data-reduced", "true")
-  expect(curtain.container).toHaveTextContent("甲")
   cleanup()
   reduceMotion = false
 })
@@ -169,30 +148,8 @@ test("其余 Eldora 与 SmoothUI 组件都挂上槽位", () => {
   expect(slot(type.container, "kinetic-type-scroll")).toHaveTextContent("北 窗")
   cleanup()
 
-  const wheel = render(
-    <OrbitalImageWheel items={[{ alt: "靛蓝", id: "a", image: swatch }]} />,
-  )
-  expect(slot(wheel.container, "orbital-image-wheel")).toBeTruthy()
-  expect(screen.getByRole("img", { name: "靛蓝" })).toBeInTheDocument()
-  cleanup()
-
-  const chart = render(
-    <DitherChart data={[{ points: [{ value: 1 }, { value: 2 }] }]} label="点阵图" />,
-  )
-  expect(slot(chart.container, "dither-chart")).toHaveTextContent("点阵图")
-  cleanup()
-
   const loader = render(<GridLoader pattern="heartbeat" />)
   expect(slot(loader.container, "grid-loader")).toHaveAttribute("aria-label", "Loading")
-  cleanup()
-
-  const clip = render(
-    <Squircle>
-      <span>角</span>
-    </Squircle>,
-  )
-  expect(slot(clip.container, "squircle")).toHaveTextContent("角")
-  expect(squirclePath(40, 40, 8, 0.6).startsWith("M")).toBe(true)
   cleanup()
 
   const player = render(<MusicToggle artist="北窗" title="夜航" />)

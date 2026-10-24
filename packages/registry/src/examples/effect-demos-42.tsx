@@ -5,18 +5,16 @@ import { useState } from "react"
 import { BookmarkBurstToggle } from "../effects/bookmark-burst-toggle"
 import { CircularTextButton } from "../effects/circular-text-button"
 import { EmailTemplate } from "../effects/email-template"
-import { FileManagerTable } from "../effects/file-manager-table"
 import { FlickerReflectButton } from "../effects/flicker-reflect-button"
 import { FlowerBurstButton } from "../effects/flower-burst-button"
 import { GlowSearchInput } from "../effects/glow-search-input"
 import { LockToggle } from "../effects/lock-toggle"
 import { MultiLevelDropdown } from "../effects/multi-level-dropdown"
 import { NotFoundPage } from "../effects/not-found-page"
-import { PortfolioFilterGrid } from "../effects/portfolio-filter-grid"
+
 import { PropellerOrb } from "../effects/propeller-orb"
 import { ScrollCueButton } from "../effects/scroll-cue-button"
 import { SignupSplitPage } from "../effects/signup-split-page"
-import { StepModal } from "../effects/step-modal"
 
 function swatch(color: string, label: string) {
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='520'><rect width='100%' height='100%' fill='${color}'/><text x='50%' y='54%' fill='white' font-size='42' font-family='sans-serif' text-anchor='middle'>${label}</text></svg>`
@@ -27,12 +25,6 @@ const links = [
   { title: "文档", description: "查组件和主题变量。", href: "#docs" },
   { title: "博客", description: "看看最近的界面笔记。", href: "#blog" },
   { title: "联系", description: "把问题发给我们。", href: "#chat" },
-]
-
-const files = [
-  { id: "req", name: "需求说明.pdf", size: "200 KB", status: "已核对", modified: "1月4日", uploadedAt: "1月4日", author: "林昭" },
-  { id: "shot", name: "看板截图.jpg", size: "720 KB", status: "待审", modified: "1月6日", uploadedAt: "1月6日", author: "周宁" },
-  { id: "clip", name: "原型走查.mp4", size: "16 MB", status: "已上传", modified: "1月8日", author: "周宁" },
 ]
 
 export function BookmarkBurstToggleDemo() {
@@ -178,11 +170,6 @@ export function MultiLevelDropdownDemo() {
   )
 }
 
-export function FileManagerTableDemo() {
-  const [selected, setSelected] = useState<string[]>([])
-  return <FileManagerTable files={files} onRowAction={() => undefined} onSelectedChange={setSelected} selected={selected} />
-}
-
 export function EmailTemplateDemo() {
   return (
     <div className="grid gap-8">
@@ -214,44 +201,6 @@ export function SignupSplitPageDemo() {
       status={status}
       statusMessage={status === "success" ? "已收到，不会发出请求。" : undefined}
       title="创建免费账号"
-    />
-  )
-}
-
-export function StepModalDemo() {
-  const [open, setOpen] = useState(true)
-  return (
-    <div className="min-h-80">
-      <button className="rounded-lg border border-border px-4 py-2 text-sm" onClick={() => setOpen(true)} type="button">
-        打开步骤
-      </button>
-      <StepModal
-        onOpenChange={setOpen}
-        open={open}
-        steps={[
-          { title: "欢迎来到工作台", body: "先看一眼今天要处理的事。", imageUrl: swatch("#312e81", "一步"), imageAlt: "色块" },
-          { title: "邀请同事", body: "把链接发给需要一起看的人。" },
-          { title: "完成设置", body: "之后可以随时回来改。" },
-        ]}
-      />
-    </div>
-  )
-}
-
-export function PortfolioFilterGridDemo() {
-  return (
-    <PortfolioFilterGrid
-      categories={[
-        { id: "motion", label: "动画" },
-        { id: "web", label: "网页" },
-        { id: "app", label: "应用" },
-        { id: "brand", label: "品牌" },
-      ]}
-      items={[
-        { id: "kit", category: "motion", eyebrow: "界面套件", title: "一组界面收藏", imageUrl: swatch("#155e75", "套件"), imageAlt: "套件色块" },
-        { id: "wire", category: "web", eyebrow: "线框", title: "一份免费的页面骨架", imageUrl: swatch("#9a3412", "骨架"), imageAlt: "骨架色块" },
-        { id: "mark", category: "brand", eyebrow: "标志", title: "两色标记", imageUrl: swatch("#3f6212", "标记"), imageAlt: "标记色块" },
-      ]}
     />
   )
 }

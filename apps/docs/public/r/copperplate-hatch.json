@@ -3,7 +3,7 @@
   "name": "copperplate-hatch",
   "type": "registry:ui",
   "title": "Copperplate Hatch",
-  "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/copperplate-hatch.tsx 三向铜版交叉线被一圈圈光波点亮。指针和触屏按下会移动光源。这不是 sketch-hatch-image 的照片素描，也不是 hatch-divider 的分隔线。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+  "description": "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。 https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/backgrounds/copperplate-hatch.tsx 三向铜版交叉线被一圈圈光波点亮。指针和触屏按下会移动光源。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
   "dependencies": [],
   "registryDependencies": [
     "use-animation-active",

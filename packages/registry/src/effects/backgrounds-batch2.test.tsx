@@ -24,7 +24,6 @@ vi.mock("ogl", () => ({
 
 import { BeamsCollision } from "./beams-collision"
 import { DitherGradient } from "./dither-gradient"
-import { FlowField } from "./flow-field"
 import { GpgpuParticles } from "./gpgpu-particles"
 import { Halftone } from "./halftone"
 import { Hyperspeed } from "./hyperspeed"
@@ -94,66 +93,6 @@ function slot(name: string) {
   if (!node) throw new Error(`找不到 ${name}`)
   return node
 }
-
-function installFlowStage() {
-  class FakeResizeObserver implements ResizeObserver {
-    constructor(private readonly callback: ResizeObserverCallback) {}
-    observe(target: Element) {
-      this.callback(
-        [
-          {
-            target,
-            contentRect: {
-              width: 240,
-              height: 120,
-              x: 0,
-              y: 0,
-              top: 0,
-              left: 0,
-              bottom: 120,
-              right: 240,
-              toJSON() {
-                return {}
-              },
-            },
-          } as ResizeObserverEntry,
-        ],
-        this,
-      )
-    }
-    unobserve() {}
-    disconnect() {}
-  }
-  vi.stubGlobal("ResizeObserver", FakeResizeObserver)
-  const context = {
-    fillStyle: "",
-    strokeStyle: "",
-    lineWidth: 1,
-    clearRect() {},
-    beginPath() {},
-    moveTo() {},
-    lineTo() {},
-    stroke() {},
-    fillRect() {},
-    setTransform() {},
-  }
-  HTMLCanvasElement.prototype.getContext = (() => context) as typeof HTMLCanvasElement.prototype.getContext
-}
-
-test("流场在视口内会申请动画帧", () => {
-  installFlowStage()
-  const { container } = render(<FlowField density={8} />)
-  expect(container.querySelector("canvas")).toBeInTheDocument()
-  expect(frames.length).toBeGreaterThan(0)
-})
-
-test("流场在减弱动效时只画一帧，不再循环", () => {
-  reduceMotion = true
-  installFlowStage()
-  const { container } = render(<FlowField density={8} />)
-  expect(container.querySelector("canvas")).toBeInTheDocument()
-  expect(frames).toEqual([])
-})
 
 test("半调按间距在画布上点网点", () => {
   let fills = 0

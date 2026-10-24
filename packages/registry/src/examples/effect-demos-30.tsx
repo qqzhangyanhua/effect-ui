@@ -7,16 +7,15 @@ import { DepthParallaxWords } from "../effects/depth-parallax-words"
 import { ExpandableNavbar } from "../effects/expandable-navbar"
 import { GitHubStarsAnimation } from "../effects/github-stars-animation"
 import { HoverExpand } from "../effects/hover-expand"
-import { InlineTestimonials } from "../effects/inline-testimonials"
+
 import { MorphIcon } from "../effects/morph-icon"
-import { Orb } from "../effects/orb"
-import { PerspectiveText3D } from "../effects/perspective-text-3d"
+
 import { PrismSweepTransition } from "../effects/prism-sweep-transition"
-import { ReviewsCarousel } from "../effects/reviews-carousel"
+
 import { ScrollImageReveal } from "../effects/scroll-image-reveal"
 import { SocialSelector } from "../effects/social-selector"
 import { SplashMask } from "../effects/splash-mask"
-import { SvgClipMask } from "../effects/svg-clip-mask"
+
 
 const swatch = (color: string, width = 640, height = 400) =>
   `data:image/svg+xml,${encodeURIComponent(
@@ -24,14 +23,6 @@ const swatch = (color: string, width = 640, height = 400) =>
   )}`
 
 const face = swatch("#312e81", 80, 80)
-
-export function PerspectiveText3DDemo({
-  depth = 48,
-  driver = "pointer",
-  text = "北窗夜航",
-}: { depth?: number; driver?: "scroll" | "pointer" | "static"; text?: string } = {}) {
-  return <PerspectiveText3D className="text-4xl font-semibold" depth={depth} driver={driver} text={text} />
-}
 
 export function ScrollImageRevealDemo({
   direction = "left",
@@ -58,32 +49,6 @@ export function ScrollImageRevealDemo({
     </div>
   )
 }
-
-export function SvgClipMaskDemo({
-  animate = "morph",
-  duration = 4,
-  shape = "blob",
-}: {
-  animate?: "none" | "morph" | "scroll" | "hover"
-  duration?: number
-  shape?: "blob" | "arch" | "diamond" | "wave" | "custom"
-} = {}) {
-  return (
-    <SvgClipMask
-      animate={animate}
-      className="h-48 w-full"
-      duration={duration}
-      morphPaths={[
-        "M0.5,0.05 C0.8,0.05 0.95,0.28 0.95,0.5 C0.95,0.78 0.75,0.95 0.5,0.95 C0.22,0.95 0.05,0.72 0.05,0.5 C0.05,0.22 0.25,0.05 0.5,0.05 Z",
-        "M0.5,0.02 C0.9,0.12 0.98,0.4 0.9,0.62 C0.8,0.9 0.55,0.98 0.32,0.88 C0.08,0.76 0.02,0.42 0.16,0.22 C0.28,0.04 0.32,-0.02 0.5,0.02 Z",
-      ]}
-      shape={shape}
-    >
-      <div className="h-full w-full bg-gradient-to-br from-fuchsia-500 to-indigo-700" />
-    </SvgClipMask>
-  )
-}
-
 export function DepthParallaxWordsDemo({
   delay = 0,
   stagger = 80,
@@ -118,15 +83,6 @@ export function PrismSweepTransitionDemo({
     </div>
   )
 }
-
-export function OrbDemo({
-  colors = ["#7c3aed", "#fde68a"],
-  duration = 7,
-  size = 220,
-}: { colors?: string[]; duration?: number; size?: number } = {}) {
-  return <Orb className="mx-auto" colors={colors} duration={duration} size={size} />
-}
-
 export function SplashMaskDemo() {
   return (
     <SplashMask className="mx-auto h-56 w-full max-w-sm">
@@ -182,25 +138,6 @@ export function HoverExpandDemo({
     />
   )
 }
-
-export function InlineTestimonialsDemo() {
-  return (
-    <InlineTestimonials
-      testimonials={[
-        {
-          avatar: face,
-          id: "lin",
-          name: "林",
-          quote: "夜航那一段把港口写清楚了。",
-          rating: 5,
-          role: "编辑",
-        },
-      ]}
-      text="这一段是 {{lin}} 留下的批注，读完还能看见灯。"
-    />
-  )
-}
-
 export function CountBadgeDemo({
   count = 128,
   ping = true,
@@ -250,26 +187,6 @@ export function ExpandableNavbarDemo() {
         { id: "work", label: "作品", panel: <p>夜航、港口、雾。</p> },
         { id: "notes", label: "笔记", panel: <p>把批注留在句子里面。</p> },
       ]}
-    />
-  )
-}
-
-export function ReviewsCarouselDemo({
-  autoPlay = false,
-  autoPlayInterval = 5000,
-  showIndicators = true,
-}: { autoPlay?: boolean; autoPlayInterval?: number; showIndicators?: boolean } = {}) {
-  return (
-    <ReviewsCarousel
-      autoPlay={autoPlay}
-      autoPlayInterval={autoPlayInterval}
-      className="h-72"
-      reviews={[
-        { author: "林", body: "港口的灯还在。", id: "a", title: "夜航" },
-        { author: "周", body: "雾散得很干净。", id: "b", title: "清晨" },
-        { author: "许", body: "句子里还能点开头像。", id: "c", title: "批注" },
-      ]}
-      showIndicators={showIndicators}
     />
   )
 }

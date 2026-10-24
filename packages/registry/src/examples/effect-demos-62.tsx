@@ -6,10 +6,8 @@ import { ArcCards } from "../effects/arc-cards"
 import { BlurGlideMenu } from "../effects/blur-glide-menu"
 import { CursorEdgeGlowButton } from "../effects/cursor-edge-glow-button"
 import { HoverGlideCards } from "../effects/hover-glide-cards"
-import { PreviewHoverToolbar } from "../effects/preview-hover-toolbar"
 import { ProgressRingCheck, type ProgressRingCheckStatus } from "../effects/progress-ring-check"
 import { RollingLettersAnimation } from "../effects/rolling-letters-animation"
-import { SectionNavigator } from "../effects/section-navigator"
 import { SecurePurchaseButton } from "../effects/secure-purchase-button"
 import { SpotlightIndicator } from "../effects/spotlight-indicator"
 import { TiltImageCarousel } from "../effects/tilt-image-carousel"
@@ -24,12 +22,6 @@ const arcItems = [
 ]
 
 const tiltItems = [{ title: "港湾" }, { title: "街角" }, { title: "室内" }, { title: "夜色" }]
-
-const sections = [
-  { id: "open", name: "开场" },
-  { id: "work", name: "过程" },
-  { id: "close", name: "收束" },
-]
 
 const ringOrder: ProgressRingCheckStatus[] = ["pending", "running", "done", "failed", "cancelled"]
 
@@ -206,24 +198,4 @@ export function SpotlightIndicatorDemo() {
   )
 }
 
-export function SectionNavigatorDemo() {
-  const [active, setActive] = useState("work")
-  return (
-    <div className={frame}>
-      <SectionNavigator
-        sections={sections}
-        position="right"
-        activeSectionId={active}
-        onSectionClick={(section) => setActive(section.id)}
-      />
-    </div>
-  )
-}
 
-export function PreviewHoverToolbarDemo() {
-  return (
-    <div className={frame}>
-      <PreviewHoverToolbar />
-    </div>
-  )
-}

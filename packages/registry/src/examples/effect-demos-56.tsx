@@ -6,12 +6,11 @@ import { AnalogStick } from "../effects/analog-stick"
 import { ClientCard } from "../effects/client-card"
 import { CornerVideo } from "../effects/corner-video"
 import { CreateMenu } from "../effects/create-menu"
-import { DayPicker } from "../effects/day-picker"
 import { DiscoverSearchPill } from "../effects/discover-search-pill"
 import { DynamicGridGallery } from "../effects/dynamic-grid-gallery"
 import { GetInTouch } from "../effects/get-in-touch"
 import { GooeyNavbar } from "../effects/gooey-navbar"
-import { OverlappingSlider } from "../effects/overlapping-slider"
+
 import { PaperShredButton } from "../effects/paper-shred-button"
 import { PhotoAlbums, type AlbumCollection } from "../effects/photo-albums"
 import { ScanDocument } from "../effects/scan-document"
@@ -173,25 +172,6 @@ export function GooeyNavbarDemo({
     </div>
   )
 }
-
-export function OverlappingSliderDemo({
-  color = "var(--foreground)",
-  duration = 380,
-  size = 240,
-  intensity = 0.04,
-}: {
-  color?: string
-  duration?: number
-  size?: number
-  intensity?: number
-} = {}) {
-  return (
-    <div className="flex min-h-80 w-full items-center px-4 py-8">
-      <OverlappingSlider color={color} duration={duration} size={size} intensity={intensity} />
-    </div>
-  )
-}
-
 export function GetInTouchDemo({
   color = "var(--foreground)",
   duration = 460,
@@ -232,14 +212,6 @@ export function CreateMenuDemo() {
     <div className={`${frame} flex-col gap-6`}>
       <CreateMenu label="开始创建" onSelect={setPicked} />
       <p className="text-sm text-[var(--muted-foreground)]">{picked}</p>
-    </div>
-  )
-}
-
-export function DayPickerDemo() {
-  return (
-    <div className={frame}>
-      <DayPicker />
     </div>
   )
 }

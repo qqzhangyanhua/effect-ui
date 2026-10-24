@@ -12,7 +12,7 @@ import { DotField } from "../effects/dot-field"
 import { LiquidGauge } from "../effects/liquid-gauge"
 import { LiquidSlider } from "../effects/liquid-slider"
 import { ReceiptPrinter } from "../effects/receipt-printer"
-import { SpendingRing } from "../effects/spending-ring"
+
 import { TimezonePlanner } from "../effects/timezone-planner"
 
 const film = `data:image/svg+xml,${encodeURIComponent(
@@ -119,15 +119,6 @@ export function AvatarPickerDemo() {
     </div>
   )
 }
-
-export function SpendingRingDemo() {
-  return (
-    <div className="flex w-full justify-center">
-      <SpendingRing className="w-full" currency="CNY" title="十月支出" />
-    </div>
-  )
-}
-
 export function AICitationsDemo() {
   return (
     <div className="flex w-full justify-center">

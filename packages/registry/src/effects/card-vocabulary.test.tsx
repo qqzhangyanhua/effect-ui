@@ -27,7 +27,6 @@ import { HolographicFoil } from "./holographic-foil"
 import { HoverLift } from "./hover-lift"
 import { ImageComparison, ImageComparisonImage, ImageComparisonSlider } from "./image-comparison"
 import { KpiSparklineCard } from "./kpi-sparkline-card"
-import { FallbackGlass } from "./liquid-glass"
 import { LinkPreview } from "./link-preview"
 import { MorphingDialog, MorphingDialogTrigger } from "./morphing-dialog"
 import { PerspectiveCard } from "./perspective-card"
@@ -35,7 +34,6 @@ import { PixelCanvasCard } from "./pixel-canvas-card"
 import { ProjectUpdateCard } from "./project-update-card"
 import { ShineBorder } from "./shine-border"
 import { StickerPeel } from "./sticker-peel"
-import { ThreeDCarousel } from "./three-d-carousel"
 import { Keycap3D } from "../ui/keycap-3d"
 
 function installMatchMedia(reduce = false) {
@@ -203,15 +201,7 @@ test("变形对话框关闭时，450 毫秒与回弹 0.15 不改变触发器", (
   expect(mark(same.container.querySelector("button"))).toBe(omittedMark)
 })
 
-test("液态玻璃回退、箔膜、三维环和发光边沿用原 class", () => {
-  const glass = render(<FallbackGlass>玻璃</FallbackGlass>)
-  const glassSame = render(<FallbackGlass intensity={1} size={24}>玻璃</FallbackGlass>)
-  const glassSoft = render(<FallbackGlass size={4}>玻璃</FallbackGlass>)
-  expect(mark(glassSame.container.firstElementChild)).toBe(mark(glass.container.firstElementChild))
-  expect(glass.container.firstElementChild).toHaveClass("border-white/20", "backdrop-blur-xl")
-  expect(glassSoft.container.firstElementChild).not.toHaveClass("backdrop-blur-xl")
-  expect(styleOf(glassSoft.container.firstElementChild)).toContain("blur(4px)")
-
+test("箔膜和发光边沿用原 class", () => {
   const foil = render(<HolographicFoil>箔</HolographicFoil>)
   const foilSame = render(
     <HolographicFoil angle={14} intensity={0.8} colors={["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#ff4d6d"]}>
@@ -224,18 +214,6 @@ test("液态玻璃回退、箔膜、三维环和发光边沿用原 class", () =>
   expect(foilLayer(foil)).toHaveClass("opacity-80")
   expect(foilLayer(foilHot)).not.toHaveClass("opacity-80")
   expect(styleOf(foilLayer(foilHot))).toContain("#ff0000")
-
-  const ring = [{ title: "甲", src: "a" }, { title: "乙", src: "b" }]
-  const carousel = render(<ThreeDCarousel items={ring} />)
-  const carouselSame = render(<ThreeDCarousel items={ring} duration={500} size={180} />)
-  const carouselNear = render(<ThreeDCarousel items={ring} duration={200} size={90} />)
-  const ringNode = (view: ReturnType<typeof render>) => view.container.querySelector(".transition-transform")
-  expect(mark(ringNode(carouselSame))).toBe(mark(ringNode(carousel)))
-  expect(ringNode(carousel)).toHaveClass("duration-500")
-  expect(styleOf(ringNode(carousel))).toContain("translateZ(-180px)")
-  expect(ringNode(carouselNear)).not.toHaveClass("duration-500")
-  expect(styleOf(ringNode(carouselNear))).toContain("translateZ(-90px)")
-  expect(styleOf(ringNode(carouselNear))).toContain("200ms")
 
   const edge = render(<GlowingEdge>边</GlowingEdge>)
   const edgeSame = render(<GlowingEdge duration={6000} color="#7c3aed" intensity={1} size={1}>边</GlowingEdge>)

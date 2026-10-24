@@ -134,21 +134,7 @@ export const batch39Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "details-list",
-    title: "Details List",
-    description: `${hyper} ${hyperFile("application/details-list/1.html")} 把 plain、striped、bordered、bordered-striped 四套列表收成一个组件，明暗用主题色。示例行放在 demo。没有持续动画，减弱动效时标记 data-reduced。`,
-    category: "showcase",
-    source: "HyperUI",
-    type: "registry:ui",
-    file: "effects/details-list.tsx",
-    target: "components/ui/details-list.tsx",
-    props: [
-      { name: "items", type: "{ term: string; detail: string }[]", description: "术语和说明。" },
-      { name: "variant", type: '"plain" | "striped" | "bordered" | "bordered-striped"', defaultValue: '"plain"', description: "分隔、隔行、描边或两者兼有。" },
-      ...ui,
-    ],
-  },
+
   {
     name: "blog-card",
     title: "Blog Card",
@@ -254,20 +240,6 @@ export const batch39Components: ComponentMeta[] = [
     target: "components/ui/stat-trend-cards.tsx",
     props: [
       { name: "items", type: "{ label: string; value: string; from: string; delta: string; direction: \"up\" | \"down\" }[]", description: "指标。direction 只接受 up 或 down。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "collapsible-side-menu",
-    title: "Collapsible Side Menu",
-    description: `${hyper} ${hyperFile("application/vertical-menu/7.html")} 用 details 和 summary 折叠的侧栏。支持 aria-current、徽章计数和嵌套 items。示例菜单放在 demo。减弱动效时箭头没有旋转过渡。`,
-    category: "navigation",
-    source: "HyperUI",
-    type: "registry:ui",
-    file: "effects/collapsible-side-menu.tsx",
-    target: "components/ui/collapsible-side-menu.tsx",
-    props: [
-      { name: "items", type: "{ id: string; label: string; href?: string; current?: boolean; badge?: number; defaultOpen?: boolean; items?: SideMenuItem[] }[]", description: "菜单项。current 写入 aria-current，badge 带计数的无障碍名称，items 嵌套在 details 里。" },
       ...ui,
     ],
   },

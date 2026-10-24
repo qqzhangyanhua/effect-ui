@@ -165,25 +165,7 @@ export const batch25Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "spending-ring",
-    title: "Spending Ring",
-    description: `${kokonut} ${file("spending-ring")} 分类支出圆环。拨动能转，松手后选中的一段会吸到顶部指针下。方向键也可转动。减弱动效时立刻转到目标段。离开视口后停止惯性。`,
-    category: "showcase",
-    source: "Kokonut UI",
-    type: "registry:ui",
-    file: "effects/spending-ring.tsx",
-    target: "components/ui/spending-ring.tsx",
-    props: [
-      {
-        name: "categories",
-        type: "{ name: string; amount: number; change?: number; stroke: string; dot: string }[]",
-        description: "分类、金额、环比和描边类名。",
-      },
-      { name: "currency", type: "string", defaultValue: "USD", description: "金额货币。" },
-      ...ui,
-    ],
-  },
+
   {
     name: "ai-citations",
     title: "AI Citations",

@@ -12,16 +12,16 @@ import { GravityImageTrail } from "./gravity-image-trail"
 import { ImageTrail } from "./image-trail"
 import { LensZoom } from "./lens-zoom"
 import { Magnetic } from "./magnetic"
-import { MouseFlowmap } from "./mouse-flowmap"
+
 import { PolylineRibbonCursor } from "./polyline-ribbon-cursor"
 import { ShaderGridWide } from "./shader-grid-wide"
-import { SketchHatchImage } from "./sketch-hatch-image"
+
 import { SplashCursor } from "./splash-cursor"
 import { SpotlightCard } from "./spotlight-card"
-import { SquareLensDistortion } from "./square-lens-distortion"
+
 import { TargetCursor } from "./target-cursor"
 import { Tilt } from "./tilt"
-import { TubesCursor } from "./tubes-cursor"
+
 import { WobbleLineCursor } from "./wobble-line-cursor"
 
 function installMatchMedia(reduce = false, coarse = false) {
@@ -302,18 +302,10 @@ test("画布光标在不传和传入新 prop 时都能挂上标记", () => {
   for (const node of [
     <SplashCursor key="splash" />,
     <SplashCursor key="splash-set" intensity={0.4} speed={1.2} />,
-    <MouseFlowmap key="flow" />,
-    <MouseFlowmap key="flow-set" intensity={0.5} speed={1.4} scale={1.2} />,
     <PolylineRibbonCursor key="ribbon" />,
     <PolylineRibbonCursor key="ribbon-set" intensity={0.5} speed={1.2} />,
-    <SquareLensDistortion key="square" />,
-    <SquareLensDistortion key="square-set" intensity={0.4} scale={1.4} speed={1.2} />,
-    <SketchHatchImage key="sketch" />,
-    <SketchHatchImage key="sketch-set" count={40} angle={90} intensity={0.5} color="#292621" />,
     <ShaderGridWide key="grid" />,
     <ShaderGridWide key="grid-set" count={8} intensity={0.5} speed={1.5} scale={1.2} />,
-    <TubesCursor key="tubes" />,
-    <TubesCursor key="tubes-set" tubes={3} speed={1.4} intensity={0.6} scale={1.2} />,
   ]) {
     const view = render(node)
     expect(view.container.firstElementChild).toBeTruthy()

@@ -115,37 +115,8 @@ export const batch51Components: ComponentMeta[] = [
       ...ui,
     ],
   },
-  {
-    name: "feed-escapement",
-    title: "Feed Escapement",
-    description: `${ns} ${file("core", "feed-escapement")} 活动流一次只放行一条，弹簧落定后才放下一条。role=log，礼貌 live region。RELEASE ALL 和 Escape 立即放完队列。减弱动效直接落到终态。离开视口时弹簧暂停。ref 上有 arrive、releaseAll、clear。`,
-    category: "showcase",
-    source: "ns-ui",
-    type: "registry:ui",
-    file: "effects/feed-escapement.tsx",
-    target: "components/ui/feed-escapement.tsx",
-    props: [
-      { name: "aria-label", type: "string", defaultValue: '"Live activity feed"', description: "feed 的无障碍名称。", control: { kind: "text", value: "部署活动" } },
-      { name: "emptyLabel", type: "string", defaultValue: '"Waiting for activity…"', description: "还没有条目时的说明。", control: { kind: "text", value: "等待活动…" } },
-      classControl,
-    ],
-  },
-  {
-    name: "cruet-settle",
-    title: "Cruet Settle",
-    description: `${ns} ${file("core", "cruet-settle")} 结账合计先搅乱再分层落定。总额变化才写入 role=status，挂载时不播报。减弱动效直接显示分层结果。离开视口时落定等待暂停。金额哈希在服务端和客户端一致。`,
-    category: "showcase",
-    source: "ns-ui",
-    type: "registry:ui",
-    file: "effects/cruet-settle.tsx",
-    target: "components/ui/cruet-settle.tsx",
-    props: [
-      { name: "lines", type: "CruetSettleLine[]", description: "金额行。kind 为 subtract 时从合计里减去。" },
-      { name: "currency", type: "string", defaultValue: '"$"', description: "金额前的货币符号。", control: { kind: "text", value: "¥" } },
-      { name: "label", type: "string", defaultValue: '"Total"', description: "合计的可见名称，也写进 live region。", control: { kind: "text", value: "订单合计" } },
-      classControl,
-    ],
-  },
+
+
   {
     name: "undo-ghost-row",
     title: "Undo Ghost Row",
@@ -192,22 +163,6 @@ export const batch51Components: ComponentMeta[] = [
       { name: "sourceLabel", type: "string", defaultValue: '"Available"', description: "左侧列表名称。" },
       { name: "destinationLabel", type: "string", defaultValue: '"Assigned"', description: "右侧列表名称，也写进按钮和 live region。" },
       ...ui,
-    ],
-  },
-  {
-    name: "drill-down-spines",
-    title: "Drill Down Spines",
-    description: `${ns} ${file("core", "drill-down-spines")} 下钻后上一层收成书脊，留在左侧可点。宽度是测出来的像素，不是 flex 自动。nav 地标报出层数。ref 上有 push、pop、popTo、reset。减弱动效同步提交，不做级联。离开视口时进入动画暂停。`,
-    category: "navigation",
-    source: "ns-ui",
-    type: "registry:ui",
-    file: "effects/drill-down-spines.tsx",
-    target: "components/ui/drill-down-spines.tsx",
-    props: [
-      { name: "initial", type: "SpineStackLevel", description: "第一层。只在挂载时读取，之后用 ref 推进。" },
-      { name: "duration", type: "number", defaultValue: "420", description: "层宽过渡时长，单位毫秒。", control: { kind: "range", value: 420, min: 80, max: 1200, step: 20 } },
-      { name: "gap", type: "number", defaultValue: "3", description: "书脊之间的间距，单位像素。", control: { kind: "range", value: 3, min: 0, max: 24, step: 1 } },
-      { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。", control: { kind: "text", value: "h-full" } },
     ],
   },
   {

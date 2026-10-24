@@ -2,12 +2,23 @@
 
 // Ported from ReUI (MIT, (c) 2025 Keenthemes Inc.) — https://github.com/keenthemes/reui/blob/main/registry/bases/radix/ui/trace.tsx
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
-
+import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
 import { ChevronRight } from "lucide-react"
 import { type ComponentProps, type HTMLAttributes, type ReactNode } from "react"
+
+function Collapsible({ ...props }: ComponentProps<typeof CollapsiblePrimitive.Root>) {
+  return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+}
+
+function CollapsibleTrigger({ ...props }: ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>) {
+  return <CollapsiblePrimitive.CollapsibleTrigger data-slot="collapsible-trigger" {...props} />
+}
+
+function CollapsibleContent({ ...props }: ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {
+  return <CollapsiblePrimitive.CollapsibleContent data-slot="collapsible-content" {...props} />
+}
 
 export type TraceStatus = "running" | "error" | "pending"
 

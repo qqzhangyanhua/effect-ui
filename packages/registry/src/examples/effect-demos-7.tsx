@@ -2,14 +2,13 @@
 
 import { AtroposCard } from "../effects/atropos-card"
 import { BurstIcons } from "../effects/burst-icons"
-import { CanvasReveal } from "../effects/canvas-reveal"
 import { EvervaultCard } from "../effects/evervault-card"
 import { GpgpuParticles } from "../effects/gpgpu-particles"
 import { Iridescence } from "../effects/iridescence"
 import { LetterGlitchWall } from "../effects/letter-glitch-wall"
 import { Lightning } from "../effects/lightning"
 import { MarqueeAlongSvgPath } from "../effects/marquee-along-svg-path"
-import { MouseFlowmap } from "../effects/mouse-flowmap"
+
 import { PixelCanvasCard } from "../effects/pixel-canvas-card"
 import { PolylineRibbonCursor } from "../effects/polyline-ribbon-cursor"
 import { RoughAnnotation } from "../effects/rough-annotation"
@@ -46,21 +45,6 @@ export function VfxElementDemo({
     </VfxElement>
   )
 }
-
-export function MouseFlowmapDemo({
-  image = "https://picsum.photos/id/1015/960/540",
-  intensity,
-  speed,
-  scale,
-}: {
-  image?: string
-  intensity?: number
-  speed?: number
-  scale?: number
-} = {}) {
-  return <MouseFlowmap className="h-56 w-full" image={image} intensity={intensity} speed={speed} scale={scale} />
-}
-
 export function GpgpuParticlesDemo({
   count = 1400,
   text = "effect-ui",
@@ -162,27 +146,6 @@ export function MarqueeAlongSvgPathDemo({ baseVelocity, repeat, showPath }: { ba
 
 export function EvervaultCardDemo({ interval, color, size, count, intensity }: { interval?: number; color?: string; size?: number; count?: number; intensity?: number } = {}) {
   return <EvervaultCard className="w-full max-w-sm" text="SECURE" interval={interval} color={color} size={size} count={count} intensity={intensity} />
-}
-
-export function CanvasRevealDemo({
-  gap,
-  speed,
-  size,
-  intensity,
-  color,
-}: {
-  gap?: number
-  speed?: number
-  size?: number
-  intensity?: number
-  color?: string
-} = {}) {
-  return (
-    <CanvasReveal className="w-full" gap={gap} speed={speed} size={size} intensity={intensity} color={color}>
-      <p className="font-medium">点阵揭开</p>
-      <p className="mt-1 text-sm text-muted-foreground">移动指针扩散涟漪。</p>
-    </CanvasReveal>
-  )
 }
 
 export function LetterGlitchWallDemo({

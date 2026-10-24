@@ -7,18 +7,13 @@ import "@testing-library/jest-dom/vitest"
 
 import { BandWaveText } from "./band-wave-text"
 import { BarsSpinner } from "./bars-spinner"
-import { DelayedLoading } from "./delayed-loading"
 import { ExplodingInput } from "./exploding-input"
 import { FallbackAvatar } from "./fallback-avatar"
 import { FlowButton } from "./flow-button"
-import { GiftCard } from "./gift-card"
 import { GlowDivider } from "./glow-divider"
 import { HeldKeys } from "./held-keys"
 import { InvalidShake } from "./invalid-shake"
 import { LogosCarousel } from "./logos-carousel"
-import { NetworkGraph } from "./network-graph"
-import { NoiseText } from "./noise-text"
-import { SafeTriangle } from "./safe-triangle"
 import { VerifyBadge } from "./verify-badge"
 
 afterEach(() => {
@@ -110,10 +105,6 @@ test("Spell、Sera 与 Hexta 组件在减弱动效下仍可操作", async () => 
   expect(screen.getByRole("separator")).toBeInTheDocument()
   cleanup()
 
-  render(<NoiseText />)
-  expect(screen.getByText("Noise")).toBeInTheDocument()
-  cleanup()
-
   render(<InvalidShake />)
   await user.click(screen.getByRole("button", { name: "Submit" }))
   expect(screen.getByRole("status")).toHaveTextContent("Enter a valid email.")
@@ -130,19 +121,6 @@ test("Spell、Sera 与 Hexta 组件在减弱动效下仍可操作", async () => 
   expect(screen.getByText("Verified")).toBeInTheDocument()
   cleanup()
 
-  const gift = render(<GiftCard />)
-  expect(gift.container.textContent?.toLowerCase()).not.toContain("amazon")
-  await user.type(screen.getByLabelText("Gift card"), "GIFT-1")
-  await user.click(screen.getByRole("button", { name: "Claim" }))
-  expect(screen.getByRole("status")).toHaveTextContent("Code claimed.")
-  gift.unmount()
-
-  render(<SafeTriangle />)
-  await user.click(screen.getByRole("button", { name: "Open menu" }))
-  await user.click(screen.getByRole("menuitem", { name: "Profile" }))
-  expect(screen.getByRole("status")).toHaveTextContent("Profile")
-  cleanup()
-
   render(<HeldKeys />)
   act(() => {
     window.dispatchEvent(new KeyboardEvent("keydown", { key: "a", code: "KeyA" }))
@@ -153,14 +131,4 @@ test("Spell、Sera 与 Hexta 组件在减弱动效下仍可操作", async () => 
   })
   expect(screen.queryByText("a")).not.toBeInTheDocument()
   cleanup()
-
-  render(<DelayedLoading delay={0} minDuration={0} />)
-  await user.click(screen.getByRole("button", { name: "Load report" }))
-  expect(await screen.findByText("Loading")).toBeInTheDocument()
-  cleanup()
-
-  render(<NetworkGraph />)
-  expect(screen.getByRole("button", { name: "Hub" })).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "Avery" }))
-  expect(screen.getByRole("button", { name: "Avery" })).toBeInTheDocument()
 })

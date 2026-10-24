@@ -4,16 +4,13 @@ import { afterEach, beforeEach, expect, test, vi } from "vitest"
 import { cleanup, render } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
-import { AnimatedSidebar } from "./animated-sidebar"
 import { AnimatedTabs } from "./animated-tabs"
 import { AnimatedThemeToggler } from "./animated-theme-toggler"
-import { ClipRevealMenu } from "./clip-reveal-menu"
 import { Dock } from "./dock"
 import { DynamicIsland } from "./dynamic-island"
 import { FamilyDrawer } from "./family-drawer"
 import { FloatingNavbar } from "./floating-navbar"
 import { FlowingMenu } from "./flowing-menu"
-import { TocScrollspy } from "./toc-scrollspy"
 import { LiquidGlassTabbar } from "../ui/liquid-glass-tabbar"
 
 const TABS = [
@@ -98,15 +95,6 @@ test("起始值与不传的标记相同", () => {
   expect(markup(navSame.container)).toBe(markup(nav.container))
   expect(nav.container.innerHTML).toContain("gap-3")
 
-  const side = render(<AnimatedSidebar open>正文</AnimatedSidebar>)
-  const sideSame = render(
-    <AnimatedSidebar open size={224} intensity={1}>
-      正文
-    </AnimatedSidebar>,
-  )
-  expect(markup(sideSame.container)).toBe(markup(side.container))
-  expect(side.container.innerHTML).toContain("w-56")
-
   const island = render(<DynamicIsland>9:41</DynamicIsland>)
   const islandSame = render(
     <DynamicIsland duration={180} intensity={1}>
@@ -131,16 +119,6 @@ test("起始值与不传的标记相同", () => {
   const menu = render(<FlowingMenu />)
   const menuSame = render(<FlowingMenu duration={380} speed={1} />)
   expect(markup(menuSame.container)).toBe(markup(menu.container))
-
-  const toc = render(<TocScrollspy />)
-  const tocSame = render(<TocScrollspy duration={250} gap={4} />)
-  expect(markup(tocSame.container)).toBe(markup(toc.container))
-  expect(toc.container.innerHTML).toContain("space-y-1")
-
-  const clip = render(<ClipRevealMenu />)
-  const clipSame = render(<ClipRevealMenu duration={550} delay={120} intensity={1} />)
-  expect(markup(clipSame.container)).toBe(markup(clip.container))
-  expect(clip.container.textContent).toContain("打开菜单")
 })
 
 test("改值会改变能看见的标记", () => {
@@ -165,17 +143,9 @@ test("改值会改变能看见的标记", () => {
   expect(tabs.container.innerHTML).not.toContain("gap-1")
   expect(tabs.container.innerHTML).toContain("12px")
 
-  const side = render(<AnimatedSidebar open size={280}>正文</AnimatedSidebar>)
-  expect(side.container.innerHTML).not.toContain("w-56")
-  expect(side.container.innerHTML).toContain("280px")
-
   const glass = render(<LiquidGlassTabbar scale={2} />)
   expect(glass.container.innerHTML).toContain('stdDeviation="16"')
   expect(glass.container.innerHTML).toContain("1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10")
-
-  const toc = render(<TocScrollspy gap={12} />)
-  expect(toc.container.innerHTML).not.toContain("space-y-1")
-  expect(toc.container.innerHTML).toContain("12px")
 })
 
 test("减弱动效时渲染不抛错", () => {
@@ -191,12 +161,9 @@ test("减弱动效时渲染不抛错", () => {
       <span>Home</span>
     </FloatingNavbar>,
   )
-  render(<AnimatedSidebar open>正文</AnimatedSidebar>)
   render(<DynamicIsland duration={180} intensity={1}>9:41</DynamicIsland>)
   render(<AnimatedThemeToggler />)
   render(<FamilyDrawer />)
   render(<LiquidGlassTabbar />)
   render(<FlowingMenu />)
-  render(<TocScrollspy />)
-  render(<ClipRevealMenu />)
 })

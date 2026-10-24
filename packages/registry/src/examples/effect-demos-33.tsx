@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 import { ConstellationLoader } from "../effects/constellation-loader"
-import { Cursor, CursorBody, CursorMessage, CursorName, CursorPointer } from "../effects/cursor"
+
 import { EmojiConfetti } from "../effects/emoji-confetti"
 import { LabeledToggle } from "../effects/labeled-toggle"
 import {
@@ -37,17 +37,7 @@ import {
 import { SpinningCubeLoader } from "../effects/spinning-cube-loader"
 import { StarWarsButton } from "../effects/star-wars-button"
 import { Status, StatusIndicator, StatusLabel } from "../effects/status"
-import {
-  Stories,
-  StoriesContent,
-  Story,
-  StoryAuthor,
-  StoryAuthorImage,
-  StoryAuthorName,
-  StoryImage,
-  StoryOverlay,
-  StoryTitle,
-} from "../effects/stories"
+
 import { SkewedInfiniteScroll } from "../effects/skewed-infinite-scroll"
 import { TextDrop } from "../effects/text-drop"
 import { WhirlpoolLoader } from "../effects/whirlpool-loader"
@@ -187,32 +177,6 @@ export function StatusDemo() {
     </Status>
   )
 }
-
-export function StoriesDemo() {
-  const people = [
-    { name: "北窗", color: "#312e81", title: "夜航" },
-    { name: "灯塔", color: "#b45309", title: "靠港" },
-    { name: "甲板", color: "#0f766e", title: "日出" },
-  ]
-  return (
-    <Stories>
-      <StoriesContent>
-        {people.map((person) => (
-          <Story key={person.name}>
-            <StoryImage alt={person.title} src={swatch(person.color, "", 160, 240)} />
-            <StoryOverlay />
-            <StoryTitle>{person.title}</StoryTitle>
-            <StoryAuthor>
-              <StoryAuthorImage fallback={person.name.slice(0, 1)} name={person.name} />
-              <StoryAuthorName>{person.name}</StoryAuthorName>
-            </StoryAuthor>
-          </Story>
-        ))}
-      </StoriesContent>
-    </Stories>
-  )
-}
-
 export function MiniCalendarDemo() {
   return (
     <MiniCalendar days={5} defaultStartDate={new Date(2026, 9, 22)} defaultValue={new Date(2026, 9, 22)}>
@@ -250,27 +214,6 @@ export function ReelDemo({
     </div>
   )
 }
-
-export function CursorDemo() {
-  return (
-    <div className="relative h-40 w-full">
-      <Cursor className="absolute top-6 left-8 text-indigo-300">
-        <CursorPointer />
-        <CursorBody>
-          <CursorName>北窗</CursorName>
-          <CursorMessage>看到灯塔了</CursorMessage>
-        </CursorBody>
-      </Cursor>
-      <Cursor className="absolute top-16 left-40 text-amber-300">
-        <CursorPointer />
-        <CursorBody>
-          <CursorName>甲板</CursorName>
-        </CursorBody>
-      </Cursor>
-    </div>
-  )
-}
-
 export function LabeledToggleDemo() {
   return (
     <div className="grid h-20 place-items-center">

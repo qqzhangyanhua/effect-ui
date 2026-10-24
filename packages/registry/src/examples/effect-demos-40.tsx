@@ -4,19 +4,17 @@ import { useState } from "react"
 import { Github } from "lucide-react"
 
 import { AgentIntroSequence, type AgentIntroPhase } from "../effects/agent-intro-sequence"
-import { BlurVignette, BlurVignetteArticle } from "../effects/blur-vignette"
 import { CharShimmerLoader } from "../effects/char-shimmer-loader"
 import { ChatMessageList } from "../effects/chat-message-list"
 import { ExpandableChat, ExpandableChatBody, ExpandableChatFooter, ExpandableChatHeader } from "../effects/expandable-chat"
-import { HatchDivider } from "../effects/hatch-divider"
 import { HoverBlocksGrid } from "../effects/hover-blocks-grid"
-import { HoverImageReveal } from "../effects/hover-image-reveal"
-import { ImageTabs } from "../effects/image-tabs"
+
+
 import { LiquidGradientButton } from "../effects/liquid-gradient-button"
 import { MessageLoading } from "../effects/message-loading"
 import { ProgressiveCarousel } from "../effects/progressive-carousel"
 import { ScrollBlurText } from "../effects/scroll-blur-text"
-import { SpotlightGroup } from "../effects/spotlight-group"
+
 import { TimelineReveal } from "../effects/timeline-reveal"
 
 const liquidColors = ["#FFFFFF", "#1E10C5", "#9089E2", "#FCFCFE", "#F9F9FD", "#B2B8E7", "#0E2DCB", "#0017E9", "#4743EF", "#7D7BF4", "#0B06FC", "#C5C1EA", "#1403DE", "#B6BAF6", "#C1BEEB", "#290ECB", "#3F4CC0"]
@@ -26,22 +24,10 @@ function swatch(color: string, label: string) {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`
 }
 
-const tabs = [
-  { id: "north", title: "北岸", description: "灯塔在雾里只剩一圈光。", imageUrl: swatch("#312e81", "北岸"), imageAlt: "靛蓝色块，写着北岸" },
-  { id: "tide", title: "潮汐", description: "退潮后石头还是湿的。", imageUrl: swatch("#0e7490", "潮汐"), imageAlt: "青色色块，写着潮汐" },
-  { id: "bloom", title: "花影", description: "台阶上的影子比花先到。", imageUrl: swatch("#9d174d", "花影"), imageAlt: "洋红色块，写着花影" },
-]
-
 const slides = [
   { value: "bridge", title: "桥", description: "夜里的桥只剩下灯。", imageUrl: swatch("#1e3a8a", "桥"), imageAlt: "深蓝色块，写着桥" },
   { value: "ridge", title: "山脊", description: "云贴着山脊走。", imageUrl: swatch("#3f6212", "山脊"), imageAlt: "绿色色块，写着山脊" },
   { value: "fog", title: "雾", description: "雾把远处收成一层。", imageUrl: swatch("#57534e", "雾"), imageAlt: "灰色色块，写着雾" },
-]
-
-const revealItems = [
-  { label: "保持从容", img: swatch("#312e81", "从容"), alt: "靛蓝色块，写着从容" },
-  { label: "留出空间", img: swatch("#0e7490", "空间"), alt: "青色色块，写着空间" },
-  { label: "照自己的样子", img: swatch("#9d174d", "样子"), alt: "洋红色块，写着样子" },
 ]
 
 const sequence: readonly AgentIntroPhase[] = [
@@ -50,19 +36,6 @@ const sequence: readonly AgentIntroPhase[] = [
   { type: "lines", lines: ["读到许可", "开始移植"] },
   { type: "message", text: "可以开始了" },
 ]
-
-export function BlurVignetteDemo({
-  blur = "6px",
-  inset = "20px",
-  radius = "24px",
-}: { blur?: string; inset?: string; radius?: string } = {}) {
-  return (
-    <BlurVignette blur={blur} className="mx-auto w-64" inset={inset} radius={radius}>
-      <div className="absolute inset-0 bg-[linear-gradient(140deg,#312e81,#0e7490)]" />
-      <BlurVignetteArticle className="grid place-items-end p-4 text-sm text-white">四周发虚</BlurVignetteArticle>
-    </BlurVignette>
-  )
-}
 
 export function LiquidGradientButtonDemo() {
   return (
@@ -106,26 +79,6 @@ export function CharShimmerLoaderDemo({
     </div>
   )
 }
-
-export function SpotlightGroupDemo() {
-  return (
-    <div className="space-y-6 px-6 py-8">
-      {(["proximity", "hover-focus", "cursor-flow"] as const).map((mode) => (
-        <SpotlightGroup key={mode} mode={mode}>
-          <div>
-            <p className="text-xs text-muted-foreground">{mode}</p>
-            <p className="mt-1 font-medium">第一张</p>
-          </div>
-          <div>
-            <p className="text-xs text-muted-foreground">{mode}</p>
-            <p className="mt-1 font-medium">第二张</p>
-          </div>
-        </SpotlightGroup>
-      ))}
-    </div>
-  )
-}
-
 export function TimelineRevealDemo({
   animationNum = 0,
   as = "div",
@@ -162,16 +115,6 @@ export function ScrollBlurTextDemo({
   )
 }
 
-export function HatchDividerDemo() {
-  return (
-    <div className="space-y-4 px-6 py-10">
-      <p>上一段</p>
-      <HatchDivider />
-      <p>下一段</p>
-    </div>
-  )
-}
-
 export function ExpandableChatDemo() {
   return (
     <div className="relative h-[28rem] w-full">
@@ -201,16 +144,6 @@ export function ChatMessageListDemo() {
     </div>
   )
 }
-
-export function ImageTabsDemo() {
-  const [value, setValue] = useState(tabs[0]?.id ?? "north")
-  return (
-    <div className="px-6 py-8">
-      <ImageTabs onValueChange={setValue} tabs={tabs} value={value} />
-    </div>
-  )
-}
-
 export function ProgressiveCarouselDemo({
   defaultActive = "bridge",
   duration = 4000,
@@ -232,15 +165,6 @@ export function AgentIntroSequenceDemo() {
     </div>
   )
 }
-
-export function HoverImageRevealDemo() {
-  return (
-    <div className="px-6 py-8">
-      <HoverImageReveal items={revealItems} />
-    </div>
-  )
-}
-
 export function MessageLoadingDemo() {
   return (
     <div className="flex items-center gap-3 px-6 py-10">

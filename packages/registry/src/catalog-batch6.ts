@@ -162,37 +162,6 @@ export const batch6Components: ComponentMeta[] = [
     ]),
   },
   {
-    name: "3d-carousel",
-    title: "3D Carousel",
-    description: "透视圆环 3D 轮播。",
-    category: "cards",
-    source: "Cult UI",
-    type: "registry:ui",
-    file: "effects/three-d-carousel.tsx",
-    target: "components/ui/three-d-carousel.tsx",
-    props: [
-      { name: "items", type: "{ title: string; src: string }[]", description: "卡片。" },
-      {
-        name: "duration",
-        type: "number",
-        description: "切换时长（毫秒）。500 与不传相同。",
-        control: { kind: "range", value: 500, min: 200, max: 1000, step: 50 },
-      },
-      {
-        name: "size",
-        type: "number",
-        description: "环半径（像素）。180 与不传相同。",
-        control: { kind: "range", value: 180, min: 80, max: 280, step: 10 },
-      },
-      ...ui,
-    ],
-    presets: [
-      { name: "3d-carousel-near", label: "近", values: { duration: 500, size: 120 } },
-      { name: "3d-carousel-default", label: "默认", values: { duration: 500, size: 180 } },
-      { name: "3d-carousel-slow", label: "慢", values: { duration: 900, size: 220 } },
-    ],
-  },
-  {
     name: "siri-orb",
     title: "Siri Orb",
     description: "多层锥形渐变的 AI 光球。",

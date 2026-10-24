@@ -3,7 +3,6 @@
 import { useState, useRef } from "react"
 
 import { AutosizeTextarea } from "../effects/autosize-textarea"
-import { BreathingText } from "../effects/breathing-text"
 import { DualRangeSlider } from "../effects/dual-range-slider"
 import { ElasticLine } from "../effects/elastic-line"
 import { HeadingWithAnchor } from "../effects/heading-with-anchor"
@@ -151,27 +150,6 @@ export function ElasticLineDemo({
     <div className="h-32 w-full text-indigo-500">
       <ElasticLine grabThreshold={grabThreshold} releaseThreshold={releaseThreshold} strokeWidth={strokeWidth} />
     </div>
-  )
-}
-
-export function BreathingTextDemo({
-  fromFontVariationSettings = "'wght' 420",
-  toFontVariationSettings = "'wght' 820",
-  staggerFrom = "center",
-}: {
-  fromFontVariationSettings?: string
-  toFontVariationSettings?: string
-  staggerFrom?: "first" | "last" | "center"
-} = {}) {
-  return (
-    <BreathingText
-      className="text-4xl"
-      fromFontVariationSettings={fromFontVariationSettings}
-      staggerFrom={staggerFrom}
-      toFontVariationSettings={toFontVariationSettings}
-    >
-      呼吸
-    </BreathingText>
   )
 }
 

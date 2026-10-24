@@ -4,18 +4,15 @@ import { afterEach, expect, test, vi } from "vitest"
 import { cleanup, fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
-import { Blockquote } from "./blockquote"
 import { BottomNavigation } from "./bottom-navigation"
 import { CategorySearchInput } from "./category-search-input"
-import { FeaturedGallery } from "./featured-gallery"
+
 import { FlyAroundButton } from "./fly-around-button"
 import { FocusLineInput } from "./focus-line-input"
-import { ListGroup } from "./list-group"
 import { MeetingControlBar } from "./meeting-control-bar"
 import { PendulumSocialCard } from "./pendulum-social-card"
 import { PrinterIconButton } from "./printer-icon-button"
 import { TiltSweepButton } from "./tilt-sweep-button"
-import { TimeRangePicker } from "./time-range-picker"
 import { TransactionCard } from "./transaction-card"
 import { UnoCard } from "./uno-card"
 import { WordWheelCard } from "./word-wheel-card"
@@ -140,49 +137,11 @@ test("会议控制条切换按下状态并结束", () => {
   expect(screen.getByText("12:43")).toBeInTheDocument()
 })
 
-test("列表组、引用和时间范围按变体工作", () => {
-  const onValueChange = vi.fn()
-  render(
-    <div>
-      <ListGroup
-        items={[
-          { label: "资料", current: true },
-          { label: "下载", disabled: true },
-        ]}
-        variant="buttons"
-      />
-      <Blockquote author="林夏" cite="产品负责人" variant="testimonial">
-        一句引用
-      </Blockquote>
-      <TimeRangePicker
-        onValueChange={onValueChange}
-        presets={[{ label: "上午", start: "09:00", end: "12:00" }]}
-        value={{ start: "10:00", end: "09:00", allDay: false }}
-      />
-    </div>,
-  )
-  expect(screen.getByRole("button", { name: "资料" })).toHaveAttribute("aria-current", "true")
-  expect(screen.getByRole("button", { name: "下载" })).toBeDisabled()
-  expect(screen.getByText("林夏")).toBeInTheDocument()
-  expect(screen.getByText("产品负责人")).toBeInTheDocument()
-  expect(screen.getByLabelText("结束时间")).toHaveAttribute("aria-invalid", "true")
-  expect(screen.getByRole("alert")).toHaveTextContent("结束时间需要晚于开始时间")
-  fireEvent.click(screen.getByRole("button", { name: "上午" }))
-  expect(onValueChange).toHaveBeenCalledWith({ start: "09:00", end: "12:00", allDay: false })
-  fireEvent.click(screen.getByRole("checkbox", { name: "全天" }))
-  expect(onValueChange).toHaveBeenCalledWith({ start: "10:00", end: "09:00", allDay: true })
-})
-
-test("图库筛选和方向键，搜索框 Esc 清空", () => {
+test("搜索框 Esc 清空", () => {
   const onValueChange = vi.fn()
   const onSearch = vi.fn()
-  const images = [
-    { src: pixel, alt: "球鞋", tags: ["鞋"] },
-    { src: `${pixel}#bag`, alt: "手袋", tags: ["包"] },
-  ]
   render(
     <div>
-      <FeaturedGallery images={images} tags={["鞋", "包"]} />
       <CategorySearchInput
         categories={[{ value: "all", label: "全部分类" }]}
         onSearch={onSearch}
@@ -191,10 +150,6 @@ test("图库筛选和方向键，搜索框 Esc 清空", () => {
       />
     </div>,
   )
-  fireEvent.click(screen.getByRole("button", { name: "鞋" }))
-  expect(screen.getByRole("button", { name: "鞋" })).toHaveAttribute("aria-pressed", "true")
-  expect(screen.getByRole("img", { name: "球鞋" })).toBeInTheDocument()
-  fireEvent.keyDown(screen.getByRole("region", { name: "精选图库" }), { key: "ArrowRight" })
   fireEvent.keyDown(screen.getByRole("searchbox"), { key: "Escape" })
   expect(onValueChange).toHaveBeenCalledWith({ category: "all", query: "" })
   fireEvent.submit(screen.getByRole("search"))

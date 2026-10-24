@@ -10,49 +10,7 @@ const ui: PropDoc[] = [
 ]
 
 export const batch19Components: ComponentMeta[] = [
-  {
-    name: "tubes-cursor",
-    title: "Tubes Cursor",
-    description: "灵感来自 Codrops Tubes Cursor，原创实现。光标拖出几根发光的立体管道，点击切换配色。",
-    category: "cursor",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/tubes-cursor.tsx",
-    target: "components/ui/tubes-cursor.tsx",
-    props: [
-      {
-        name: "tubes",
-        type: "number",
-        defaultValue: "4",
-        description: "管道数量，限制在 3 到 5。",
-        control: { kind: "range", value: 4, min: 3, max: 5, step: 1 },
-      },
-      {
-        name: "speed",
-        type: "number",
-        description: "跟随速度倍率。1 与不传相同。",
-        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
-      },
-      {
-        name: "intensity",
-        type: "number",
-        description: "管道粗细倍率。1 与不传相同。",
-        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
-      },
-      {
-        name: "scale",
-        type: "number",
-        description: "前后摆动幅度倍率。1 与不传相同。",
-        control: { kind: "range", value: 1, min: 0.5, max: 2, step: 0.1 },
-      },
-      ...ui,
-    ],
-    presets: [
-      { name: "tubes-few", label: "少", values: { tubes: 3, speed: 0.6, intensity: 0.6, scale: 0.7 } },
-      { name: "tubes-default", label: "默认", values: { tubes: 4, speed: 1, intensity: 1, scale: 1 } },
-      { name: "tubes-many", label: "多", values: { tubes: 5, speed: 1.6, intensity: 1, scale: 1.4 } },
-    ],
-  },
+
   {
     name: "liquid-morph-slideshow",
     title: "Liquid Morph Slideshow",
@@ -163,39 +121,6 @@ export const batch19Components: ComponentMeta[] = [
       { label: "翻起", content: "把句子从平面里翻出来", fontSize: 48, fontWeight: 600, align: "left", extra: { angle: 90 } },
       { label: "浅角", content: "轻轻抬起", fontSize: 36, fontWeight: 500, align: "center", extra: { angle: 40 } },
       { label: "大标题", content: "立体", fontSize: 72, fontWeight: 700, align: "center", extra: { angle: 90 } },
-    ]),
-  },
-  {
-    name: "rolling-text-hover",
-    title: "Rolling Text Hover",
-    description: "灵感来自 Codrops Rolling text，原创实现。悬停时字母向上滚出，下一份从下方滚入。",
-    category: "text",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/rolling-text-hover.tsx",
-    target: "components/ui/rolling-text-hover.tsx",
-    props: [
-      { name: "items", type: "string[]", description: "导航文字。" },
-      {
-        name: "label",
-        type: "string",
-        defaultValue: "开始使用",
-        description: "按钮文字。",
-        control: { kind: "text", value: "开始使用" },
-      },
-      {
-        name: "delay",
-        type: "number",
-        description: "相邻字母的错开，毫秒。不传则 35。",
-        control: { kind: "range", value: 35, min: 0, max: 120, step: 5 },
-      },
-      ...textControls({ fontSize: 16, fontWeight: 500, align: "left" }),
-      ...ui,
-    ],
-    presets: textPresets("rolling-hover", "label", [
-      { label: "按钮", content: "开始使用", fontSize: 16, fontWeight: 500, align: "left", extra: { delay: 35 } },
-      { label: "慢滚", content: "了解更多", fontSize: 18, fontWeight: 600, align: "center", extra: { delay: 80 } },
-      { label: "齐滚", content: "进入", fontSize: 14, fontWeight: 700, align: "left", extra: { delay: 0 } },
     ]),
   },
   {

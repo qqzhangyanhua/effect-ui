@@ -1,7 +1,5 @@
 "use client"
 
-import { useState } from "react"
-
 import { AuroraCurtain } from "../effects/aurora-curtain"
 import { DurationPicker } from "../effects/duration-picker"
 import { ExposureSlider } from "../effects/exposure-slider"
@@ -12,19 +10,15 @@ import { MagneticField } from "../effects/magnetic-field"
 import { PixelBrushCanvas } from "../effects/pixel-brush-canvas"
 import { RansomNote } from "../effects/ransom-note"
 import { Scrubber } from "../effects/scrubber"
-import { SdfBlobTransition } from "../effects/sdf-blob-transition"
+
 import { SwitchboardCard } from "../effects/switchboard-card"
 import { TimeMachineStack } from "../effects/time-machine-stack"
-import { VideoAmbient } from "../effects/video-ambient"
+
 
 const swatch = (color: string) =>
   `data:image/svg+xml,${encodeURIComponent(
     `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240"><rect width="320" height="240" fill="${color}"/></svg>`,
   )}`
-
-const poster = `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="640" height="360" fill="#0f172a"/><circle cx="180" cy="140" r="70" fill="#38bdf8"/><circle cx="430" cy="210" r="96" fill="#f59e0b"/></svg>`,
-)}`
 
 export function AuroraCurtainDemo({
   bands = 4,
@@ -97,42 +91,6 @@ export function LiquidMetalDemo({
     </LiquidMetal>
   )
 }
-
-export function SdfBlobTransitionDemo() {
-  const [page, setPage] = useState(0)
-  const scenes = ["圆", "扭曲", "融合"]
-  return (
-    <div className="w-full space-y-3">
-      <button className="rounded-md border px-3 py-1 text-sm" onClick={() => setPage((value) => (value + 1) % scenes.length)} type="button">
-        下一幕
-      </button>
-      <SdfBlobTransition className="h-48" transitionKey={page} variant={page === 1 ? "warped" : page === 2 ? "merge" : "circle"}>
-        <div className="flex h-48 items-center justify-center text-4xl font-semibold">{scenes[page] ?? "圆"}</div>
-      </SdfBlobTransition>
-    </div>
-  )
-}
-
-export function VideoAmbientDemo({
-  blur = 34,
-  rounded = 20,
-  scale = 1.3,
-}: { blur?: number; rounded?: number; scale?: number } = {}) {
-  return (
-    <VideoAmbient
-      alt="城市夜色"
-      autoPlay={false}
-      blur={blur}
-      className="mx-auto w-full max-w-xl"
-      controls
-      poster={poster}
-      rounded={rounded}
-      scale={scale}
-      src={poster}
-    />
-  )
-}
-
 export function PixelBrushCanvasDemo({
   grid = true,
   pixelSize = 18,

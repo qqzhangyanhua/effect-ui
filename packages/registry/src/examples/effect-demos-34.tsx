@@ -22,7 +22,6 @@ import { NeonGlowLoader } from "../effects/neon-glow-loader"
 import { RippleWaveLoader } from "../effects/ripple-wave-loader"
 import { RotatingCompleteButton } from "../effects/rotating-complete-button"
 import { StitchesButton } from "../effects/stitches-button"
-import { TabNavigation, TabNavigationLink } from "../effects/tab-navigation"
 import {
   Trace,
   TraceCollapsible,
@@ -207,19 +206,5 @@ export function BarListDemo() {
       />
       <p className="text-sm text-muted-foreground">选中 {picked}</p>
     </div>
-  )
-}
-
-export function TabNavigationDemo() {
-  return (
-    <TabNavigation className="w-full">
-      <TabNavigationLink active href="#night">
-        夜航
-      </TabNavigationLink>
-      <TabNavigationLink href="#light">灯塔</TabNavigationLink>
-      <TabNavigationLink disabled href="#deck">
-        甲板
-      </TabNavigationLink>
-    </TabNavigation>
   )
 }

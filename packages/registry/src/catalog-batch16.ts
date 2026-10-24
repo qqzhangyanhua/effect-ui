@@ -10,26 +10,6 @@ const ui: PropDoc[] = [
 
 export const batch16Components: ComponentMeta[] = [
   {
-    name: "datamosh-transition",
-    title: "Datamosh Transition",
-    description: "灵感来自 Codrops，原创实现。切换画面时色块被拖影拉开，再收回新画面。WebGL 按需加载。",
-    category: "page",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/datamosh-transition.tsx",
-    target: "components/ui/datamosh-transition.tsx",
-    props: [
-      { name: "speed", type: "number", description: "切换和扫描倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 } },
-      { name: "intensity", type: "number", description: "拖影强度倍率。1 与不传相同。", control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 } },
-      ...ui,
-    ],
-    presets: [
-      { name: "datamosh-transition-slow", label: "慢", values: { speed: 0.6, intensity: 0.45 } },
-      { name: "datamosh-transition-default", label: "默认", values: { speed: 1, intensity: 1 } },
-      { name: "datamosh-transition-hard", label: "强", values: { speed: 1.8, intensity: 1 } },
-    ],
-  },
-  {
     name: "loom-threads-marquee",
     title: "Loom Threads Marquee",
     description: "灵感来自 Codrops，原创实现。滚动的色块可以拆成彩色丝线，再织回画面。WebGL 按需加载。",
@@ -86,48 +66,7 @@ export const batch16Components: ComponentMeta[] = [
       { name: "hologram-card-alert", label: "警", values: { duration: 700, intensity: 1, color: "#f43f5e" } },
     ],
   },
-  {
-    name: "sketch-hatch-image",
-    title: "Sketch Hatch Image",
-    description: "灵感来自 Codrops，原创实现。画面以铅笔排线呈现，指针附近露出原来的颜色。WebGL 按需加载。",
-    category: "cursor",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/sketch-hatch-image.tsx",
-    target: "components/ui/sketch-hatch-image.tsx",
-    props: [
-      {
-        name: "count",
-        type: "number",
-        description: "排线密度。28 与不传相同。",
-        control: { kind: "range", value: 28, min: 8, max: 80, step: 2 },
-      },
-      {
-        name: "intensity",
-        type: "number",
-        description: "揭开范围倍率。1 与不传相同。",
-        control: { kind: "range", value: 1, min: 0, max: 1, step: 0.05 },
-      },
-      {
-        name: "angle",
-        type: "number",
-        description: "排线角度（度）。46 与不传相同，都是 0.8 弧度。",
-        control: { kind: "range", value: 46, min: 0, max: 360, step: 1 },
-      },
-      {
-        name: "color",
-        type: "string",
-        description: "铅笔颜色。#292621 与不传相同。",
-        control: { kind: "color", value: "#292621" },
-      },
-      ...ui,
-    ],
-    presets: [
-      { name: "sketch-loose", label: "疏", values: { count: 16, intensity: 0.6, angle: 20, color: "#292621" } },
-      { name: "sketch-default", label: "默认", values: { count: 28, intensity: 1, angle: 46, color: "#292621" } },
-      { name: "sketch-dense", label: "密", values: { count: 52, intensity: 1, angle: 80, color: "#292621" } },
-    ],
-  },
+
   {
     name: "scroll-3d-image-rotate",
     title: "Scroll 3D Image Rotate",
@@ -282,33 +221,6 @@ export const batch16Components: ComponentMeta[] = [
     props: [...ui],
   },
   {
-    name: "publication-filter-list",
-    title: "Publication Filter List",
-    description: "灵感来自 Maze，原创实现。分类页签加搜索，三列条目会按筛选重新排列。",
-    category: "ui",
-    subgroup: "data",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/publication-filter-list.tsx",
-    target: "components/ui/publication-filter-list.tsx",
-    props: [
-      { name: "items", type: "Publication[]", description: "出版物标题、分类和摘要。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "activity-feed",
-    title: "Activity Feed",
-    description: "灵感来自 Dropbox，原创实现。按今天和近 7 天分组，显示相对时间、同步条，新动态滑入。",
-    category: "ui",
-    subgroup: "data",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/activity-feed.tsx",
-    target: "components/ui/activity-feed.tsx",
-    props: [...ui],
-  },
-  {
     name: "project-update-card",
     title: "Project Update Card",
     description: "灵感来自 Linear，原创实现。更新带正常、有风险或偏离标记，可写新更新，并只看未读。",
@@ -330,35 +242,4 @@ export const batch16Components: ComponentMeta[] = [
     file: "effects/share-invite-panel.tsx",
     target: "components/ui/share-invite-panel.tsx",
     props: [...ui],
-  },
-  {
-    name: "changelog-feed",
-    title: "Changelog Feed",
-    description: "灵感来自 Stripe，原创实现。更新卡片、吸顶的类型筛选和搜索，时间线可以关掉。",
-    category: "ui",
-    subgroup: "data",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/changelog-feed.tsx",
-    target: "components/ui/changelog-feed.tsx",
-    props: [
-      { name: "entries", type: "ChangelogEntry[]", description: "类型、标题、正文和日期。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "setup-guide",
-    title: "Setup Guide",
-    description: "灵感来自 Claude，原创实现。分阶段进度、可折叠任务组，全部完成时沿用 confetti-burst 的纸屑配色。",
-    category: "ui",
-    subgroup: "feedback",
-    source: "original",
-    type: "registry:ui",
-    file: "effects/setup-guide.tsx",
-    target: "components/ui/setup-guide.tsx",
-    props: [
-      { name: "tasks", type: "SetupTask[]", description: "阶段名和任务标题。" },
-      ...ui,
-    ],
-  },
-]
+  },]

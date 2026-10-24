@@ -13,7 +13,6 @@ import { ShaderPack2 } from "../effects/shader-pack-2"
 import { SiriOrb } from "../effects/siri-orb"
 import { SplashCursor } from "../effects/splash-cursor"
 import { TextAlongPath } from "../effects/text-along-path"
-import { ThreeDCarousel } from "../effects/three-d-carousel"
 import { SvgScrollPath, TracingBeam } from "../effects/tracing-beam"
 
 const frames = [
@@ -134,10 +133,6 @@ export function ScrollTypographyDemo({
       <div className="h-24" />
     </div>
   )
-}
-
-export function ThreeDCarouselDemo({ duration, size }: { duration?: number; size?: number } = {}) {
-  return <ThreeDCarousel className="w-full" items={gallery} duration={duration} size={size} />
 }
 
 export function SiriOrbDemo({ size = 160 }: { size?: number } = {}) {

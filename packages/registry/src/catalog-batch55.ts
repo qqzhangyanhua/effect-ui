@@ -7,7 +7,6 @@ const hexta = "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。"
 const spellFile = (name: string) => `https://github.com/xxtomm/spell-ui/blob/main/registry/spell-ui/${name}.tsx`
 const seraFile = (dir: string, name: string) => `https://github.com/seraui/seraui/blob/main/src/app/docs/${dir}/${name}.tsx`
 const hextaHook = (name: string) => `https://github.com/preetsuthar17/HextaUI/blob/main/hooks/${name}.ts`
-const hextaUi = "https://github.com/preetsuthar17/HextaUI/blob/main/components/ui/safe-area.tsx"
 const pause = "减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。"
 
 export const batch55Components: ComponentMeta[] = [
@@ -124,24 +123,6 @@ export const batch55Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "noise-text",
-    title: "Noise Text",
-    description: `${sera} ${seraFile("noisetext", "noisetext")} 玻璃标签上铺一层程序生成的噪点。噪点画在组件里，不请求外部动图。${pause}`,
-    category: "text",
-    source: "Sera UI",
-    type: "registry:ui",
-    file: "effects/noise-text.tsx",
-    target: "components/ui/noise-text.tsx",
-    props: [
-      { name: "children", type: "ReactNode", defaultValue: '"Noise"', description: "标签文字。" },
-      { name: "color", type: "string", defaultValue: '"var(--foreground)"', description: "文字颜色。缺省跟随前景色。", control: { kind: "color", value: "var(--foreground)" } },
-      { name: "intensity", type: "number", defaultValue: "0.35", description: "噪点透明度。", control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 } },
-      { name: "fontSize", type: "number", defaultValue: "16", description: "字号，单位像素。", control: { kind: "range", value: 16, min: 12, max: 48, step: 1 } },
-      { name: "duration", type: "number", defaultValue: "1400", description: "噪点明暗循环的时长，单位毫秒。", control: { kind: "range", value: 1400, min: 400, max: 4000, step: 50 } },
-      ...ui,
-    ],
-  },
-  {
     name: "invalid-shake",
     title: "Invalid Shake",
     description: `${hexta} ${hextaHook("use-invalid-shake")} 提交无效邮箱时字段横向抖动，并写出错误。键盘回车同样会提交。减弱动效时只保留错误文字。${pause}`,
@@ -194,43 +175,6 @@ export const batch55Components: ComponentMeta[] = [
     ],
   },
   {
-    name: "gift-card",
-    title: "Gift Card",
-    description: `${sera} ${seraFile("amazongift", "amazongift")} 礼品卡。来源里的品牌名称和标志已去掉，金额和文案都由 props 决定。`,
-    category: "utility",
-    source: "Sera UI",
-    type: "registry:ui",
-    file: "effects/gift-card.tsx",
-    target: "components/ui/gift-card.tsx",
-    props: [
-      { name: "title", type: "string", defaultValue: '"Gift card"', description: "卡片标题。" },
-      { name: "amount", type: "string", defaultValue: '"$100"', description: "面额。" },
-      { name: "detail", type: "string", defaultValue: '"Enter the code, then claim it."', description: "标题下的说明。" },
-      { name: "note", type: "string", defaultValue: '"Use the code within 30 days."', description: "底部提示。" },
-      { name: "placeholder", type: "string", defaultValue: '"GIFT-2048-ALPHA"', description: "兑换码占位文案。" },
-      { name: "actionLabel", type: "string", defaultValue: '"Claim"', description: "按钮文字。" },
-      { name: "emptyLabel", type: "string", defaultValue: '"Enter a code first."', description: "空码时的状态。" },
-      { name: "claimedLabel", type: "string", defaultValue: '"Code claimed."', description: "领取后的状态。" },
-      { name: "onClaim", type: "(code: string) => void", description: "领取时调用，参数是兑换码。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "safe-triangle",
-    title: "Safe Triangle",
-    description: `${hexta} ${hextaUi} 触发器到菜单之间的安全三角。点击、回车和 Escape 都能开关。触屏点开后菜单保持，不靠悬停。`,
-    category: "utility",
-    source: "HextaUI",
-    type: "registry:ui",
-    file: "effects/safe-triangle.tsx",
-    target: "components/ui/safe-triangle.tsx",
-    props: [
-      { name: "label", type: "string", defaultValue: '"Open menu"', description: "触发按钮文字。" },
-      { name: "items", type: "string[]", defaultValue: '["Profile", "Settings", "Sign out"]', description: "菜单项。" },
-      ...ui,
-    ],
-  },
-  {
     name: "held-keys",
     title: "Held Keys",
     description: `${hexta} ${hextaHook("use-held-keys")} 显示当前按住的物理键。松开、窗口失焦或页面隐藏时清空。`,
@@ -242,39 +186,6 @@ export const batch55Components: ComponentMeta[] = [
     props: [
       { name: "label", type: "string", defaultValue: '"Hold any key"', description: "说明文字。" },
       { name: "emptyLabel", type: "string", defaultValue: '"None"', description: "没有按键时的占位。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "delayed-loading",
-    title: "Delayed Loading",
-    description: `${hexta} ${hextaHook("use-delayed-loading")} 加载指示晚一点出现，并至少停留一段时间，避免闪一下。按钮可以来回切换。`,
-    category: "utility",
-    source: "HextaUI",
-    type: "registry:ui",
-    file: "effects/delayed-loading.tsx",
-    target: "components/ui/delayed-loading.tsx",
-    props: [
-      { name: "delay", type: "number", defaultValue: "150", description: "出现前的等待，单位毫秒。" },
-      { name: "minDuration", type: "number", defaultValue: "400", description: "至少展示的时长，单位毫秒。" },
-      { name: "label", type: "string", defaultValue: '"Load report"', description: "按钮文字。" },
-      { name: "loadingLabel", type: "string", defaultValue: '"Loading"', description: "加载中的状态。" },
-      { name: "idleLabel", type: "string", defaultValue: '"Idle"', description: "空闲状态。" },
-      ...ui,
-    ],
-  },
-  {
-    name: "network-graph",
-    title: "Network Graph",
-    description: `${sera} ${seraFile("network", "network")} 中心和周围节点之间轮流连线。头像是首字母，不请求外链图片。点击节点会连到它。减弱动效时停在第一条连线。`,
-    category: "utility",
-    source: "Sera UI",
-    type: "registry:ui",
-    file: "effects/network-graph.tsx",
-    target: "components/ui/network-graph.tsx",
-    props: [
-      { name: "nodes", type: "{ id: string; name: string }[]", description: "第一个是中心，其余排在环上。" },
-      { name: "color", type: "string", defaultValue: '"var(--primary)"', description: "连线和当前节点的颜色。缺省跟随主色。" },
       ...ui,
     ],
   },

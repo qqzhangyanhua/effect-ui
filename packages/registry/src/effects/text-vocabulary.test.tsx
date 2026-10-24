@@ -22,7 +22,6 @@ import { MorphingText } from "./morphing-text"
 import { NumberFlow } from "./number-flow"
 import { PetalDissolveText } from "./petal-dissolve-text"
 import { RollingNumber } from "./rolling-number"
-import { RollingTextHover } from "./rolling-text-hover"
 import { RoughAnnotation } from "./rough-annotation"
 import { ScrollTypography } from "./scroll-typography"
 import { SplitFlapText } from "./split-flap-text"
@@ -30,11 +29,8 @@ import { SpoilerText } from "./spoiler-text"
 import { Text3dScroll } from "./text-3d-scroll"
 import { TextAlongPath } from "./text-along-path"
 import { TextGenerate } from "./text-generate"
-import { TextMorph } from "./text-morph"
 import { TextPressure } from "./text-pressure"
-import { TextReveal } from "./text-reveal"
 import { TextRotate } from "./text-rotate"
-import { TextVariableScroll } from "./text-variable-scroll"
 import { TrueFocus } from "./true-focus"
 import { VariableFontProximity } from "./variable-font-proximity"
 import { VfxElement } from "./vfx-element"
@@ -107,13 +103,7 @@ const pairs: { name: string; plain: ReactElement; typed: ReactElement; weight?: 
     plain: <MorphingText texts={["甲", "乙"]} />,
     typed: <MorphingText texts={["甲", "乙"]} {...type} />,
   },
-  {
-    name: "text-morph",
-    plain: <TextMorph texts={["甲", "乙"]} />,
-    typed: <TextMorph texts={["甲", "乙"]} {...type} />,
-  },
   { name: "rolling-number", plain: <RollingNumber value={8} />, typed: <RollingNumber value={8} {...type} /> },
-  { name: "text-reveal", plain: <TextReveal text="显现" />, typed: <TextReveal text="显现" {...type} /> },
   {
     name: "variable-font-proximity",
     plain: (
@@ -174,18 +164,7 @@ const pairs: { name: string; plain: ReactElement; typed: ReactElement; weight?: 
   { name: "curved-loop", plain: <CurvedLoop text="环" />, typed: <CurvedLoop text="环" {...type} /> },
   { name: "ghost-trail-text", plain: <GhostTrailText text="影" />, typed: <GhostTrailText text="影" {...type} /> },
   { name: "text-generate", plain: <TextGenerate text="生成" />, typed: <TextGenerate text="生成" {...type} /> },
-  {
-    name: "text-variable-scroll",
-    plain: <TextVariableScroll text="波" />,
-    typed: <TextVariableScroll text="波" {...typeWithoutWeight} />,
-    weight: false,
-  },
   { name: "text-3d-scroll", plain: <Text3dScroll text="翻" />, typed: <Text3dScroll text="翻" {...type} /> },
-  {
-    name: "rolling-text-hover",
-    plain: <RollingTextHover label="滚" />,
-    typed: <RollingTextHover label="滚" {...type} />,
-  },
 ]
 
 for (const item of pairs) {

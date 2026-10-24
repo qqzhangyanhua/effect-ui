@@ -7,7 +7,6 @@ import { AuroraText } from "../effects/aurora-text"
 import { CountUp } from "../effects/count-up"
 import { DotPattern } from "../effects/dot-pattern"
 import { DotsLoader } from "../effects/dots-loader"
-import { FlickeringGrid } from "../effects/flickering-grid"
 import { FlipCard } from "../effects/flip-card"
 import { GlassCard } from "../effects/glass-card"
 import { GradientText } from "../effects/gradient-text"
@@ -402,33 +401,6 @@ export function RipplesDemo({
     <PreviewFrame>
       <Ripples rings={rings} speed={speed} color={color} intensity={intensity} />
       <p className="relative z-10 text-sm">涟漪扩散</p>
-    </PreviewFrame>
-  )
-}
-
-export function FlickeringGridDemo({
-  squareSize = 4,
-  gridGap = 6,
-  flickerChance = 0.18,
-  color = undefined,
-  maxOpacity = 0.28,
-}: {
-  squareSize?: number
-  gridGap?: number
-  flickerChance?: number
-  color?: string
-  maxOpacity?: number
-} = {}) {
-  return (
-    <PreviewFrame>
-      <FlickeringGrid
-        squareSize={squareSize}
-        gridGap={gridGap}
-        flickerChance={flickerChance}
-        color={color}
-        maxOpacity={maxOpacity}
-      />
-      <p className="relative z-10 text-sm">闪烁网格</p>
     </PreviewFrame>
   )
 }

@@ -21,7 +21,7 @@ export const batch10Components: ComponentMeta[] = [
     file: "sections/hero-annotated-showcase.tsx",
     target: "components/ui/hero-annotated-showcase.tsx",
     props: [
-      { name: "title", type: "string", description: "主标题。" },
+      { name: "title", type: "string", defaultValue: '"把产品窗口摊开，再用手绘箭头标出来"', description: "主标题。" },
       { name: "screens", type: "ShowcaseScreen[]", description: "可切换的画面。" },
       ...ui,
     ],
@@ -36,7 +36,7 @@ export const batch10Components: ComponentMeta[] = [
     file: "sections/hero-wave-mask-gallery.tsx",
     target: "components/ui/hero-wave-mask-gallery.tsx",
     props: [
-      { name: "title", type: "string", description: "超粗标题。" },
+      { name: "title", type: "string", defaultValue: '"粗体标题压在波浪裁切的画面上"', description: "超粗标题。" },
       { name: "tiles", type: "WaveTile[]", description: "波浪里的色块。" },
       ...ui,
     ],
@@ -51,8 +51,8 @@ export const batch10Components: ComponentMeta[] = [
     file: "sections/hero-inline-mascot.tsx",
     target: "components/ui/hero-inline-mascot.tsx",
     props: [
-      { name: "before", type: "string", description: "吉祥物前的词。" },
-      { name: "after", type: "string", description: "吉祥物后的词。" },
+      { name: "before", type: "string", defaultValue: '"让标题"', description: "吉祥物前的词。" },
+      { name: "after", type: "string", defaultValue: '"自己眨眼"', description: "吉祥物后的词。" },
       ...ui,
     ],
   },
@@ -66,7 +66,7 @@ export const batch10Components: ComponentMeta[] = [
     file: "sections/hero-orbit-nodes.tsx",
     target: "components/ui/hero-orbit-nodes.tsx",
     props: [
-      { name: "title", type: "string", description: "主标题。" },
+      { name: "title", type: "string", defaultValue: '"虚线椭圆轨道，每颗光球都连回中心"', description: "主标题。" },
       { name: "nodes", type: "OrbitNode[]", description: "轨道上的节点。" },
       ...ui,
     ],
@@ -81,7 +81,7 @@ export const batch10Components: ComponentMeta[] = [
     file: "sections/hero-swirl-avatars.tsx",
     target: "components/ui/hero-swirl-avatars.tsx",
     props: [
-      { name: "title", type: "string", description: "主标题。" },
+      { name: "title", type: "string", defaultValue: '"漩涡底上漂着还在线的人"', description: "主标题。" },
       { name: "people", type: "SwirlAvatar[]", description: "漂浮头像。" },
       ...ui,
     ],
@@ -150,7 +150,7 @@ export const batch10Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "sections/cta-ribbon-swoosh.tsx",
     target: "components/ui/cta-ribbon-swoosh.tsx",
-    props: [{ name: "title", type: "string", description: "行动面板标题。" }, ...ui],
+    props: [{ name: "title", type: "string", defaultValue: '"一条色带扫进行动面板"', description: "行动面板标题。" }, ...ui],
   },
   {
     name: "section-testimonial-split",

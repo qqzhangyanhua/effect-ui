@@ -89,7 +89,7 @@ export const batch11Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "sections/hero-scroll-zoom.tsx",
     target: "components/ui/hero-scroll-zoom.tsx",
-    props: [{ name: "title", type: "string", description: "画面上的标题。" }, ...ui],
+    props: [{ name: "title", type: "string", defaultValue: '"全屏画面收成圆角窗口"', description: "画面上的标题。" }, ...ui],
   },
   {
     name: "section-horizontal-scroll",
@@ -164,7 +164,7 @@ export const batch11Components: ComponentMeta[] = [
       { file: "sections/hero-3d-model.tsx", type: "registry:ui", target: "components/ui/hero-3d-model.tsx" },
       { file: "sections/hero-3d-canvas.tsx", type: "registry:ui", target: "components/ui/hero-3d-canvas.tsx" },
     ],
-    props: [{ name: "title", type: "string", description: "标题。" }, ...ui],
+    props: [{ name: "title", type: "string", defaultValue: '"滚动带动一枚玻璃体"', description: "标题。" }, ...ui],
   },
   {
     name: "keycap-3d",
@@ -305,8 +305,8 @@ export const batch11Components: ComponentMeta[] = [
     file: "ui/anchor-popover.tsx",
     target: "components/ui/anchor-popover.tsx",
     props: [
-      { name: "label", type: "string", description: "触发按钮文案。" },
-      { name: "content", type: "string", description: "浮层内容。" },
+      { name: "label", type: "string", defaultValue: '"打开说明"', description: "触发按钮文案。" },
+      { name: "content", type: "string", defaultValue: '"优先用 CSS anchor 定位，不够放就翻到另一侧。"', description: "浮层内容。" },
       ...ui,
     ],
   },

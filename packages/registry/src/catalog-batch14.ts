@@ -178,7 +178,7 @@ export const batch14Components: ComponentMeta[] = [
     file: "effects/placeholder-vanish-input.tsx",
     target: "components/ui/placeholder-vanish-input.tsx",
     props: [
-      { name: "placeholders", type: "string[]", description: "轮换的占位文案。" },
+      { name: "placeholders", type: "string[]", defaultValue: '["搜索组件…", "试着输入 lens", "回车后文字散开"]', description: "轮换的占位文案。" },
       { name: "onSubmit", type: "(value: string) => void", description: "提交时回调，参数是去掉空白后的文本。" },
       ...ui,
     ],

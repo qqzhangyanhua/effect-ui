@@ -1,0 +1,21 @@
+packages/registry/src/catalog-batch3.ts
+  s_1f7fae292b4abd::t_2cfb80604d15a0 545
+  s_1f7fae292b4abd::t_6140f8d6f35796 574
+  s_1f7fae292b4abd::t_350c4f19c02a3f 590
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0cb88732249e674262d4726af66399f2c01070ab",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

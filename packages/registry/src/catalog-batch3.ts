@@ -357,6 +357,7 @@ export const batch3Components: ComponentMeta[] = [
       { name: "files", type: "File[]", description: "当前文件。" },
       { name: "maxFiles", type: "number", defaultValue: "4", description: "数量上限。" },
       { name: "maxSize", type: "number", description: "单文件字节上限。" },
+      { name: "accept", type: "DropzoneOptions[\"accept\"]", description: "接受的文件类型。不传则显示任意类型。" },
     ],
   },
   {
@@ -524,7 +525,11 @@ export const batch3Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/tag-input.tsx",
     target: "components/ui/tag-input.tsx",
-    props: [{ name: "value", type: "string[]", description: "标签列表。" }],
+    props: [
+      { name: "value", type: "string[]", description: "标签列表。" },
+      { name: "placeholder", type: "string", defaultValue: "输入后回车添加标签", description: "输入框占位。输入后回车添加标签 与不传相同。" },
+      { name: "onValueChange", type: "(value: string[]) => void", description: "标签变化时回调。" },
+    ],
   },
   {
     name: "date-range-picker",
@@ -537,7 +542,8 @@ export const batch3Components: ComponentMeta[] = [
     target: "components/ui/date-range-picker.tsx",
     props: [
       { name: "value", type: "DateRange", description: "当前范围。" },
-      { name: "presets", type: "DateRangePreset[]", description: "快捷预设。" },
+      { name: "presets", type: "DateRangePreset[]", description: "快捷预设。不传则用今天、近 7 天、近 30 天和近 90 天。" },
+      { name: "onValueChange", type: "(value: DateRange | undefined) => void", description: "范围变化时回调。" },
     ],
   },
   {
@@ -552,6 +558,7 @@ export const batch3Components: ComponentMeta[] = [
     props: [
       { name: "value", type: "number", defaultValue: "1", description: "当前完成到第几步。" },
       { name: "orientation", type: '"vertical" | "horizontal"', defaultValue: '"vertical"', description: "方向。" },
+      { name: "asChild", type: "boolean", defaultValue: "false", description: "日期是否用 Slot。false 与不传相同。" },
     ],
   },
   {
@@ -564,7 +571,9 @@ export const batch3Components: ComponentMeta[] = [
     file: "ui/stepper.tsx",
     target: "components/ui/stepper.tsx",
     props: [
-      { name: "value", type: "number", description: "当前步骤。" },
+      { name: "value", type: "number", description: "当前步骤。不传时由内部状态决定。" },
+      { name: "defaultValue", type: "number", defaultValue: "1", description: "初始步骤。1 与不传相同。" },
+      { name: "onValueChange", type: "(value: number) => void", description: "步骤变化时回调。" },
       { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "方向。" },
     ],
   },
@@ -578,7 +587,8 @@ export const batch3Components: ComponentMeta[] = [
     file: "ui/color-picker.tsx",
     target: "components/ui/color-picker.tsx",
     props: [
-      { name: "value", type: "string", description: "Hex 颜色。" },
+      { name: "value", type: "string", description: "受控 Hex 颜色。不传时由内部状态决定。" },
+      { name: "defaultValue", type: "string", defaultValue: "#6366f1", description: "初始颜色。#6366f1 与不传相同。" },
       { name: "onValueChange", type: "(hex: string) => void", description: "颜色变化。" },
     ],
   },
@@ -605,6 +615,7 @@ export const batch3Components: ComponentMeta[] = [
     props: [
       { name: "columns", type: "KanbanColumn[]", description: "列。" },
       { name: "data", type: "KanbanItem[]", description: "卡片。" },
+      { name: "onDataChange", type: "(data: KanbanItem[]) => void", description: "拖拽后交回新的卡片列表。" },
     ],
   },
 ]

@@ -346,7 +346,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/toggle.tsx",
     target: "components/ui/toggle.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "variant", type: '"default" | "outline"', defaultValue: '"default"', description: "视觉变体。default 与不传相同。" },
+      { name: "size", type: '"default" | "sm" | "lg"', defaultValue: '"default"', description: "尺寸。default 与不传相同。" },
+    ],
   },
   {
     name: "toggle-group",
@@ -358,7 +362,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/toggle-group.tsx",
     target: "components/ui/toggle-group.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "variant", type: '"default" | "outline"', defaultValue: '"default"', description: "视觉变体。default 与不传相同。" },
+      { name: "size", type: '"default" | "sm" | "lg"', defaultValue: '"default"', description: "尺寸。default 与不传相同。" },
+    ],
   },
   {
     name: "data-table",

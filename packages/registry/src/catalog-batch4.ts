@@ -298,8 +298,8 @@ export const batch4Components: ComponentMeta[] = [
     file: "ui/rich-text-editor.tsx",
     target: "components/ui/rich-text-editor.tsx",
     props: [
-      { name: "content", type: "string", description: "初始 HTML。" },
-      { name: "placeholder", type: "string", description: "占位符。" },
+      { name: "content", type: "string", defaultValue: "<p></p>", description: "初始 HTML。<p></p> 与不传相同。" },
+      { name: "placeholder", type: "string", defaultValue: "输入 / 开始，或直接写…", description: "占位符。输入 / 开始，或直接写… 与不传相同。" },
       { name: "onChange", type: "(html: string) => void", description: "内容变化。" },
       ...ui,
     ],

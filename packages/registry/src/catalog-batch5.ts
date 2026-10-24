@@ -22,7 +22,12 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/field.tsx",
     target: "components/ui/field.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "orientation", type: '"vertical" | "horizontal" | "responsive"', defaultValue: '"vertical"', description: "字段排列。vertical 与不传相同。" },
+      { name: "variant", type: '"legend" | "label"', defaultValue: '"legend"', description: "图例样式。legend 与不传相同。" },
+      { name: "errors", type: "Array<{ message?: string } | undefined>", description: "错误列表。不传且没有子节点时不显示。" },
+    ],
   },
   {
     name: "input-group",
@@ -34,7 +39,13 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/input-group.tsx",
     target: "components/ui/input-group.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "align", type: '"inline-start" | "inline-end" | "block-start" | "block-end"', defaultValue: '"inline-start"', description: "前后缀对齐。inline-start 与不传相同。" },
+      { name: "type", type: "string", defaultValue: '"button"', description: "组内按钮的 type。button 与不传相同。" },
+      { name: "variant", type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"', defaultValue: '"ghost"', description: "组内按钮变体。ghost 与不传相同。" },
+      { name: "size", type: '"xs" | "sm" | "icon-xs" | "icon-sm"', defaultValue: '"xs"', description: "组内按钮尺寸。xs 与不传相同。" },
+    ],
   },
   {
     name: "button-group",

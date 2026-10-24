@@ -228,7 +228,7 @@ export const batch36Components: ComponentMeta[] = [
       { name: "holdMs", type: "number", defaultValue: "1800", description: "打完后停住的毫秒数。" },
       { name: "gapMs", type: "number", defaultValue: "450", description: "删完后换下一句前的毫秒数。" },
       { name: "startDelayMs", type: "number", defaultValue: "400", description: "开始打字前的毫秒数。" },
-      { name: "enabled", type: "boolean", defaultValue: "true", description: "是否播放。关掉时停在第一句。" },
+      { name: "enabled", type: "boolean", defaultValue: "true", description: "是否播放。关掉时停在当前文字。" },
       { name: "jitter", type: "boolean", defaultValue: "true", description: "打字间隔是否抖动。" },
     ],
   },

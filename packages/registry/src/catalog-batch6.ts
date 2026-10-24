@@ -190,7 +190,7 @@ export const batch6Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/gravity.tsx",
     target: "components/ui/gravity.tsx",
-    props: [{ name: "labels", type: "string[]", description: "下落标签。" }, ...ui],
+    props: [{ name: "labels", type: "string[]", defaultValue: '["UI", "FX", "MIT", "React"]', description: "下落标签。" }, ...ui],
   },
   {
     name: "ascii-render",
@@ -203,7 +203,7 @@ export const batch6Components: ComponentMeta[] = [
     target: "components/ui/ascii-render.tsx",
     props: [
       { name: "src", type: "string", description: "图片地址。" },
-      { name: "charset", type: "string", description: "亮度字符集。" },
+      { name: "charset", type: "string", defaultValue: '" .:-=+*#%@"', description: "亮度字符集。" },
       ...ui,
     ],
   },

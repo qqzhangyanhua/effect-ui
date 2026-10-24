@@ -357,7 +357,13 @@ export const components: ComponentMeta[] = [
     type: "registry:lib",
     file: "lib/text-style.ts",
     target: "lib/text-style.ts",
-    props: [],
+    props: [
+      { name: "style", type: "CSSProperties | undefined", description: "已有的内联样式。不传则从空对象开始。" },
+      { name: "fontSize", type: "number", description: "字号，像素。不传则不写。" },
+      { name: "fontWeight", type: "number", description: "字重。不传则不写。" },
+      { name: "letterSpacing", type: "number", description: "字距，em。不传则不写。" },
+      { name: "align", type: '"left" | "center" | "right"', description: "对齐。不传则不写。" },
+    ],
   },
   {
     name: "use-mobile",
@@ -466,7 +472,10 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/badge.tsx",
     target: "components/ui/badge.tsx",
-    props: [{ name: "variant", type: '"default" | "secondary" | "destructive" | "outline"', defaultValue: '"default"', description: "视觉变体。" }],
+    props: [
+      { name: "variant", type: '"default" | "secondary" | "destructive" | "outline"', defaultValue: '"default"', description: "视觉变体。" },
+      { name: "asChild", type: "boolean", defaultValue: "false", description: "使用 Slot 把样式合并到子元素。false 与不传相同。" },
+    ],
   },
   {
     name: "separator",
@@ -478,7 +487,10 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/separator.tsx",
     target: "components/ui/separator.tsx",
-    props: [{ name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "方向。" }],
+    props: [
+      { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "方向。" },
+      { name: "decorative", type: "boolean", defaultValue: "true", description: "是否只做装饰。true 与不传相同。" },
+    ],
   },
   {
     name: "dialog",
@@ -490,7 +502,10 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/dialog.tsx",
     target: "components/ui/dialog.tsx",
-    props: uiProps,
+    props: [
+      ...uiProps,
+      { name: "showCloseButton", type: "boolean", defaultValue: "true", description: "是否显示关闭按钮。true 与不传相同。" },
+    ],
   },
   {
     name: "sheet",
@@ -514,7 +529,12 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/dropdown-menu.tsx",
     target: "components/ui/dropdown-menu.tsx",
-    props: uiProps,
+    props: [
+      ...uiProps,
+      { name: "inset", type: "boolean", description: "菜单项是否内缩。不传时不内缩。" },
+      { name: "variant", type: '"default" | "destructive"', defaultValue: '"default"', description: "菜单项变体。default 与不传相同。" },
+      { name: "sideOffset", type: "number", defaultValue: "4", description: "菜单与触发器的间距，像素。4 与不传相同。" },
+    ],
   },
   {
     name: "tabs",

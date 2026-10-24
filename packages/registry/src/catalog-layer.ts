@@ -120,8 +120,7 @@ export function layerGroupError(entry: LayerSource): string | undefined {
 }
 
 export function unclassifiedLayerIssue(entry: LayerSource & { name: string }): { type: "missing-layer" | "stale-unclassified"; description: string } | undefined {
-  if (layerGroupError(entry)) return undefined
-  if (declaredLayer(entry)) {
+  if (typeof entry.layer === "string") {
     if (!unclassifiedCatalogNames.has(entry.name)) return undefined
     return {
       type: "stale-unclassified",

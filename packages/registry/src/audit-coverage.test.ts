@@ -260,6 +260,39 @@ test("显式 Layer 决定检查义务，没写 Layer 的旧条目保持原来的
   expect(ofType([widget({ name: "button", category: "ai" })], {}, "missing-test")).toEqual([])
   expect(ofType([widget({ name: "button", category: "utility" })], {}, "missing-test")).toEqual(["button"])
   expect(ofType([widget({ name: "button", category: "ui", props: [] })], {}, "insufficient-controls")).toEqual([])
+
+  const vocabEffect = widget({
+    name: "fresh-effect",
+    category: "ui",
+    layer: "effect",
+    effectCategory: "text",
+    props: [{ name: "speed", type: "string" }],
+  })
+  expect(ofType([vocabEffect], {}, "vocabulary-mismatch")).toEqual(["fresh-effect"])
+  expect(ofType([widget({ name: "button", category: "ui", props: [{ name: "speed", type: "string" }] })], {}, "vocabulary-mismatch")).toEqual([])
+
+  const explicitWidget = widget({
+    name: "fresh-widget",
+    category: "text",
+    layer: "widget",
+    purposeGroup: "data",
+    file: "effects/fresh-widget.tsx",
+    props: booleanControls(2),
+  })
+  const animatedWidget = { sources: { "effects/fresh-widget.tsx": animatedSource } }
+  expect(ofType([explicitWidget], animatedWidget, "missing-test")).toEqual(["fresh-widget"])
+  expect(ofType([explicitWidget], animatedWidget, "insufficient-controls")).toEqual([])
+  expect(ofType([explicitWidget], animatedWidget, "missing-reduced-motion")).toEqual([])
+
+  const componentLayers = [
+    widget({ name: "fresh-primitive", category: "templates", layer: "primitive", purposeGroup: "form" }),
+    widget({ name: "fresh-composite", category: "templates", layer: "composite", purposeGroup: "overlay" }),
+    widget({ name: "fresh-section", category: "templates", layer: "section" }),
+  ]
+  for (const entry of componentLayers) {
+    expect(ofType([entry], {}, "missing-test")).toEqual([entry.name])
+    expect(ofType([entry], {}, "insufficient-controls")).toEqual([])
+  }
 })
 
 test("尚未分类名单：新名字必须声明 Layer，旧名字声明之后名单过期", () => {
@@ -282,7 +315,7 @@ test("尚未分类名单：新名字必须声明 Layer，旧名字声明之后�
   expect(ofType([declared], {}, "layer-mismatch")).toEqual([])
 })
 
-test("第二层分组和 Layer 不匹配时报错，并且不再报尚未分类", () => {
+test("第二层分组和 Layer 不匹配时报错，名单问题仍然单独报", () => {
   const cases: AuditCatalogEntry[] = [
     widget({ name: "fresh-effect", layer: "effect" }),
     widget({ name: "fresh-effect", layer: "effect", effectCategory: "sparkle" }),
@@ -291,7 +324,6 @@ test("第二层分组和 Layer 不匹配时报错，并且不再报尚未分类"
     widget({ name: "fresh-primitive", layer: "primitive", effectCategory: "text", purposeGroup: "form" }),
     widget({ name: "fresh-primitive", layer: "primitive", purposeGroup: "sparkle" }),
     widget({ name: "fresh-section", layer: "section", purposeGroup: "layout" }),
-    widget({ name: "fresh-half", purposeGroup: "form" }),
     widget({ name: "fresh-unknown", layer: "sparkle" }),
   ]
   for (const entry of cases) {
@@ -300,7 +332,11 @@ test("第二层分组和 Layer 不匹配时报错，并且不再报尚未分类"
     expect(ofType([entry], {}, "stale-unclassified")).toEqual([])
   }
 
+  const halfDeclared = widget({ name: "fresh-half", purposeGroup: "form" })
+  expect(ofType([halfDeclared], {}, "layer-mismatch")).toEqual(["fresh-half"])
+  expect(ofType([halfDeclared], {}, "missing-layer")).toEqual(["fresh-half"])
+
   const listedMismatch = widget({ name: "button", layer: "effect" })
   expect(ofType([listedMismatch], {}, "layer-mismatch")).toEqual(["button"])
-  expect(ofType([listedMismatch], {}, "stale-unclassified")).toEqual([])
+  expect(ofType([listedMismatch], {}, "stale-unclassified")).toEqual(["button"])
 })

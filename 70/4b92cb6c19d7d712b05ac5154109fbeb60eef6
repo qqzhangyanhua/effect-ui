@@ -1,0 +1,34 @@
+packages/registry/src/ui/ui-batch3.test.tsx
+  s_1f7fae292b4abd::t_ad32da30d2c906 67,70,73-75
+  s_1f7fae292b4abd::t_053a242089c484 36
+  s_1f7fae292b4abd::t_873b72d82f0ea5 180-185
+  s_1f7fae292b4abd::t_2ce8663c445a21 1-7,9-35,37-66,68-69,71-72,76-179,186-258
+  s_1f7fae292b4abd::t_1cf307aee17d31 8
+packages/registry/src/catalog-batch2.ts
+  s_1f7fae292b4abd::t_7ff5e2214995c4 126-130
+  s_1f7fae292b4abd::t_e185c3110cd3b7 217-220
+  s_1f7fae292b4abd::t_12134b8ed9b255 272-275
+  s_1f7fae292b4abd::t_134d1120dd7e49 198-205
+  s_1f7fae292b4abd::t_090aa418126d05 287-290
+  s_1f7fae292b4abd::t_7f4cee9420e121 302-313
+  s_1f7fae292b4abd::t_cd9dae360660f0 142-146
+  s_1f7fae292b4abd::t_be599dd44af10a 232-236
+  s_1f7fae292b4abd::t_d7e4552ffa02f3 110-114
+  s_1f7fae292b4abd::t_11c6edb4f6ebcf 182-186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "704b92cb6c19d7d712b05ac5154109fbeb60eef6",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

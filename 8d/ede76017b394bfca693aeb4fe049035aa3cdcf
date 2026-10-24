@@ -1,0 +1,55 @@
+packages/registry/src/catalog-layer.ts
+  s_1f7fae292b4abd::t_6d670e47820f58 1-143
+packages/registry/src/audit.ts
+  s_1f7fae292b4abd::t_39fedfabfa10e4 68-70
+  s_1f7fae292b4abd::t_fec1f25b9e7515 674
+  s_1f7fae292b4abd::t_cd88e24f871b16 13
+  s_1f7fae292b4abd::t_c9c9ecdb455cfb 246
+  s_1f7fae292b4abd::t_7f3970840a174c 697
+  s_1f7fae292b4abd::t_c8cb3e739c8e5a 22
+  s_1f7fae292b4abd::t_555fe7f0801804 54-56
+  s_1f7fae292b4abd::t_d2c6ae48a41dff 684,687
+  s_1f7fae292b4abd::t_a36ea606412957 706,708
+  s_1f7fae292b4abd::t_a4b4dc6295a344 680
+  s_1f7fae292b4abd::t_e9ad4ac4dcd721 568-583
+  s_1f7fae292b4abd::t_ae5813d0fe061e 716
+packages/registry/src/audit-coverage.test.ts
+  s_1f7fae292b4abd::t_b351d4795a2988 6-7
+  s_1f7fae292b4abd::t_2b8b9a96177815 220-301
+docs/project-map.md
+  s_1f7fae292b4abd::t_b1c48dd31cb80a 53
+packages/registry/src/unclassified-catalog.ts
+  s_1f7fae292b4abd::t_b8369d434133e9 1-811
+README.md
+  s_1f7fae292b4abd::t_5bb95011ea4809 1313,1315-1325
+packages/registry/src/catalog.ts
+  s_1f7fae292b4abd::t_61d6b457039b62 1
+  s_1f7fae292b4abd::t_819aa5c4b90cf4 192,210
+  s_1f7fae292b4abd::t_ee52e9ec883499 211
+packages/registry/src/audit-coverage.ts
+  s_1f7fae292b4abd::t_b195bfaeae821f 19
+  s_1f7fae292b4abd::t_2e833dc34b47a7 77-78,81-82
+  s_1f7fae292b4abd::t_3f294638649ee3 36-37
+scripts/generate-audit-exemptions.ts
+  s_1f7fae292b4abd::t_467ff7e23993d4 43,45-46
+CONTEXT.md
+  s_1f7fae292b4abd::t_2d025d5b01fa26 18,21-24,32,35-42,44,47-50,53-60
+docs/adr/0007-classify-by-layer-then-group.md
+  s_1f7fae292b4abd::t_ff5fa2acdd475f 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "8dede76017b394bfca693aeb4fe049035aa3cdcf",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

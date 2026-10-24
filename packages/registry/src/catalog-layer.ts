@@ -73,22 +73,15 @@ export function owesEffectChecks(entry: LayerSource): boolean {
 }
 
 /**
- * 显式 Layer 按新规则。没写 Layer 的条目保持原来的检查义务：
- * Effect 分类、ui、utility、sections 要测试；ai 和 templates 不要。
- * hook、lib 目前挂在 ui 下，所以推导之后仍然要测试。
+ * 显式 Layer 按新规则。Effect、Primitive、Composite component、Widget、Section 要测试。
+ * Template 维持现状，不要求测试。Hook、Lib 维持现状，仍然要求测试。
+ * 没写 Layer 的条目保持原来的检查义务：Effect 分类、ui、utility、sections 要测试；ai 和 templates 不要。
+ * 推导出的 hook、lib 只在 category 仍是 ui 时要测试，和现在一致。
  */
 export function owesComponentTest(entry: LayerSource): boolean {
   const declared = declaredLayer(entry)
-  if (declared === "template" || declared === "hook" || declared === "lib") return false
-  if (
-    declared === "effect" ||
-    declared === "primitive" ||
-    declared === "composite" ||
-    declared === "widget" ||
-    declared === "section"
-  ) {
-    return true
-  }
+  if (declared === "template") return false
+  if (declared) return true
   if (entry.category === "ai") return false
   const layer = derivedLayer(entry)
   if (layer === "hook" || layer === "lib") return entry.category === "ui"

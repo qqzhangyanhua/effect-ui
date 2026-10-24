@@ -248,7 +248,12 @@ test("显式 Layer 决定检查义务，没写 Layer 的旧条目保持原来的
   expect(ofType([explicitTemplate], animated, "missing-reduced-motion")).toEqual([])
 
   const explicitHook = widget({ name: "fresh-hook", category: "text", type: "registry:hook", layer: "hook" })
-  expect(ofType([explicitHook], {}, "missing-test")).toEqual([])
+  expect(ofType([explicitHook], {}, "missing-test")).toEqual(["fresh-hook"])
+  expect(ofType([explicitHook], {}, "insufficient-controls")).toEqual([])
+
+  const explicitLib = widget({ name: "fresh-lib", category: "text", type: "registry:lib", layer: "lib" })
+  expect(ofType([explicitLib], {}, "missing-test")).toEqual(["fresh-lib"])
+  expect(ofType([explicitLib], {}, "insufficient-controls")).toEqual([])
 
   const derivedHook = widget({ name: "use-mobile", category: "ui", type: "registry:hook", file: "hooks/use-mobile.ts" })
   expect(ofType([derivedHook], {}, "missing-test")).toEqual(["use-mobile"])

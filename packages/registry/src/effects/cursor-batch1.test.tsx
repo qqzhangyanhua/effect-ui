@@ -79,8 +79,11 @@ function slot(container: HTMLElement, name: string) {
 }
 
 test("repetition hover stacks five echoes", () => {
-  render(<RepetitionImageHover />)
-  expect(screen.getAllByText("回声")).toHaveLength(5)
+  const { container } = render(<RepetitionImageHover />)
+  const front = container.querySelector("[data-slot='repetition-image-hover'] > div:not([aria-hidden])")
+  expect(front).toHaveTextContent("回声")
+  expect(front).toHaveStyle({ opacity: "1" })
+  expect(container.querySelectorAll("[aria-hidden='true']")).toHaveLength(4)
 })
 
 test("repetition hover keeps one echo when motion is reduced", () => {
@@ -170,9 +173,12 @@ test("text cursor proximity keeps the readable sentence", () => {
       指针靠近时字母变大
     </TextCursorProximity>,
   )
-  expect(screen.getByText("指针靠近时字母变大")).toBeInTheDocument()
-  expect(slot(container, "text-cursor-proximity").tagName).toBe("SPAN")
-  expect(slot(container, "text-cursor-proximity")).toHaveAttribute("data-reduced", "false")
+  const host = slot(container, "text-cursor-proximity")
+  const painted = Array.from(host.querySelectorAll("[aria-hidden] span")).map((node) => node.textContent ?? "").join("")
+  expect(painted.replaceAll("\u00a0", "")).toBe("指针靠近时字母变大")
+  expect(host.querySelector(".sr-only")).toHaveTextContent("指针靠近时字母变大")
+  expect(host.tagName).toBe("SPAN")
+  expect(host).toHaveAttribute("data-reduced", "false")
 })
 
 test("text cursor proximity marks reduced motion", () => {
@@ -182,8 +188,11 @@ test("text cursor proximity marks reduced motion", () => {
       指针靠近时字母变大
     </TextCursorProximity>,
   )
-  expect(screen.getByText("指针靠近时字母变大")).toBeInTheDocument()
-  expect(slot(container, "text-cursor-proximity")).toHaveAttribute("data-reduced", "true")
+  const host = slot(container, "text-cursor-proximity")
+  const painted = Array.from(host.querySelectorAll("[aria-hidden] span")).map((node) => node.textContent ?? "").join("")
+  expect(painted.replaceAll("\u00a0", "")).toBe("指针靠近时字母变大")
+  expect(host.querySelector(".sr-only")).toHaveTextContent("指针靠近时字母变大")
+  expect(host).toHaveAttribute("data-reduced", "true")
 })
 
 test("parallax floating shows the near and far labels", () => {
@@ -248,7 +257,7 @@ test("cursor marks keep the names when motion is reduced", () => {
   expect(screen.getByText("北窗")).toBeInTheDocument()
 })
 
-test("spotlight group shows the first card in each mode", () => {
+test("spotlight group shows the first card", () => {
   const { container } = render(
     <SpotlightGroup mode="proximity">
       <p>第一张</p>

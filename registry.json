@@ -18246,6 +18246,118 @@
           "target": "components/ui/preview-hover-toolbar.tsx"
         }
       ]
+    },
+    {
+      "name": "icon-moves",
+      "type": "registry:ui",
+      "title": "Icon Moves",
+      "description": "移植自 Keyframery，MIT，Copyright (c) 2026 Briyan Hingrajiya。 https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/icon-moves.tsx 按下带 lucide 图标的按钮时，齿轮转动、铃铛摇、心形弹一下。监听只挂在组件自己的根上。hover 是额外选项，按下和 Enter、Space 始终能播放。图标动作表内联在组件里。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/icon-moves.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/icon-moves.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wave-physics-loader",
+      "type": "registry:ui",
+      "title": "Wave Physics Loader",
+      "description": "移植自 Amicro，MIT，Copyright (c) 2026 SYED SUBHAN UDDIN。 https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/registry/ui/loading/wave-physics-loader.tsx 小球在一排柱子上弹跳，柱高跟着波形起伏。颜色用主题变量，不再分 light 和 dark。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wave-physics-loader.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wave-physics-loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "list-cut",
+      "type": "registry:ui",
+      "title": "List Cut",
+      "description": "移植自 Keyframery，MIT，Copyright (c) 2026 Briyan Hingrajiya。 https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/list-cut.tsx 按 id 做 FLIP。新项从下方升起，离开的项淡出，留下的项滑到新位置。没有接入按压引擎，所以新项不从按钮飞入。diff 逻辑内联在组件里。和 skeleton-reveal 不是同一件事。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/list-cut.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/list-cut.tsx"
+        }
+      ]
+    },
+    {
+      "name": "load-cut",
+      "type": "registry:ui",
+      "title": "Load Cut",
+      "description": "移植自 Keyframery，MIT，Copyright (c) 2026 Briyan Hingrajiya。 https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/load-cut.tsx 加载先等 hold，再显示骨架，骨架至少停留 minShow，然后透明度和高度一起过渡到内容。这是等待、骨架、溶解三态，不是 skeleton-reveal 的脉冲模糊交叉淡化。相位机内联在组件里。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/load-cut.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/load-cut.tsx"
+        }
+      ]
+    },
+    {
+      "name": "state-cut",
+      "type": "registry:ui",
+      "title": "State Cut",
+      "description": "移植自 Keyframery，MIT，Copyright (c) 2026 Briyan Hingrajiya。 https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/state-cut.tsx state 变化时，旧内容做成幽灵淡出或上移，新内容淡入，高度跟着变。快照和幽灵播放内联在组件里。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/state-cut.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/state-cut.tsx"
+        }
+      ]
+    },
+    {
+      "name": "use-web-haptics",
+      "type": "registry:ui",
+      "title": "Use Web Haptics",
+      "description": "移植自 Amicro，MIT，Copyright (c) 2026 SYED SUBHAN UDDIN。 https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/src/hooks/useWebHaptics.ts 调用 navigator.vibrate。没有振动接口、调用抛错，或 enabled 为 false 时，trigger 返回 false。不读 localStorage，也不合成音效。",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/hooks/use-web-haptics.ts",
+          "type": "registry:ui",
+          "target": "hooks/use-web-haptics.ts"
+        }
+      ]
     }
   ]
 }

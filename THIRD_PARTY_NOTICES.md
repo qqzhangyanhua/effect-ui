@@ -53,6 +53,20 @@ effect-ui 在 MIT 许可下发布。下列组件从开源项目移植或二次�
 - 版权：Copyright (c) 2023 Samuel Breznjak
 - 衍生组件：`star-ring-orbit`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/app/landing/star-field.tsx）、`neo-star-shapes`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx）、`caption-image-card`（https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx）
 
+## Keyframery
+
+- 仓库：https://github.com/keyframery/keyframery
+- 许可：MIT
+- 版权：Copyright (c) 2026 Briyan Hingrajiya
+- 衍生组件：`icon-moves`（https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/icon-moves.tsx ，动作表 https://github.com/keyframery/keyframery/blob/9ab2430/registry/lib/keyframery/moves.ts ，描边 https://github.com/keyframery/keyframery/blob/9ab2430/registry/lib/keyframery/icon.ts ）、`list-cut`（https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/list-cut.tsx ，diff https://github.com/keyframery/keyframery/blob/9ab2430/registry/lib/keyframery/list.ts ）、`load-cut`（https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/load-cut.tsx ，相位 https://github.com/keyframery/keyframery/blob/9ab2430/registry/lib/keyframery/load.ts ）、`state-cut`（https://github.com/keyframery/keyframery/blob/9ab2430/registry/components/keyframery/state-cut.tsx ，幽灵 https://github.com/keyframery/keyframery/blob/9ab2430/registry/lib/keyframery/ghost.ts ）。`load-cut` 与已有的 `skeleton-reveal` 不是同一机制，所以保留。辅助函数内联在各自组件中。没有要求 `data-kf`，也没有接入按压引擎。Web Animations API 保留。
+
+## Amicro
+
+- 仓库：https://github.com/Subhan-code/Amicro--Micro-transitions-
+- 许可：MIT
+- 版权：Copyright (c) 2026 SYED SUBHAN UDDIN
+- 衍生组件：`wave-physics-loader`（https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/registry/ui/loading/wave-physics-loader.tsx）、`use-web-haptics`（https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/src/hooks/useWebHaptics.ts）。`framer-motion` 改为 `motion/react`。主题参数改为颜色 token。`use-web-haptics` 在 `navigator.vibrate` 缺失或抛错时返回 false，不读 localStorage，也不合成音效。
+
 ## MosaicUI
 
 - 仓库：https://github.com/darshan-rajadhyaksha/mosaicui

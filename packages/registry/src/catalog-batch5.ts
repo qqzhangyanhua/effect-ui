@@ -59,6 +59,7 @@ export const batch5Components: ComponentMeta[] = [
     target: "components/ui/button-group.tsx",
     props: [
       { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "排列方向。" },
+      { name: "asChild", type: "boolean", defaultValue: "false", description: "组内文字是否用 Slot。false 与不传相同。" },
       ...ui,
     ],
   },
@@ -84,7 +85,12 @@ export const batch5Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/item.tsx",
     target: "components/ui/item.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "variant", type: '"default" | "outline" | "muted"', defaultValue: '"default"', description: "列表项样式。default 与不传相同。媒体另有 default、icon 或 image，不传时是 default。" },
+      { name: "size", type: '"default" | "sm"', defaultValue: '"default"', description: "列表项尺寸。default 与不传相同。" },
+      { name: "asChild", type: "boolean", defaultValue: "false", description: "是否用 Slot。false 与不传相同。" },
+    ],
   },
   {
     name: "native-select",
@@ -189,6 +195,7 @@ export const batch5Components: ComponentMeta[] = [
       { name: "index", type: "number", defaultValue: "0", description: "当前张。" },
       { name: "slides", type: "LightboxSlide[]", description: "幻灯片。" },
       { name: "onClose", type: "() => void", description: "关闭。" },
+      { name: "onIndexChange", type: "(index: number) => void", description: "当前张变化时回调。" },
     ],
   },
   {
@@ -203,6 +210,7 @@ export const batch5Components: ComponentMeta[] = [
     props: [
       { name: "value", type: "Value", description: "E.164 号码。" },
       { name: "onValueChange", type: "(value?: Value) => void", description: "号码变化。" },
+      { name: "placeholder", type: "string", defaultValue: "手机号", description: "号码占位。手机号 与不传相同。" },
       { name: "defaultCountry", type: '"US" | "CN" | "GB" | "JP"', defaultValue: '"US"', description: "默认国家。" },
       { name: "disabled", type: "boolean", description: "禁用号码输入和国家选择。" },
       {
@@ -239,6 +247,7 @@ export const batch5Components: ComponentMeta[] = [
     target: "components/ui/currency-input.tsx",
     props: [
       { name: "value", type: "number", defaultValue: "0", description: "金额。" },
+      { name: "onValueChange", type: "(value: number) => void", description: "金额变化时回调。" },
       { name: "currency", type: "string", defaultValue: '"USD"', description: "币种。" },
       { name: "locales", type: "string", defaultValue: '"en-US"', description: "区域。" },
       ...ui,
@@ -258,6 +267,7 @@ export const batch5Components: ComponentMeta[] = [
       { name: "min", type: "number", defaultValue: "0", description: "最小值。" },
       { name: "max", type: "number", defaultValue: "99", description: "最大值。" },
       { name: "step", type: "number", defaultValue: "1", description: "步长。" },
+      { name: "onValueChange", type: "(value: number) => void", description: "数量变化时回调。" },
       ...ui,
     ],
   },

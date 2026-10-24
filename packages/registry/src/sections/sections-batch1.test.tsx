@@ -77,10 +77,10 @@ test("sticky feature scroll shows the first story", () => {
   expect(screen.getByRole("heading", { name: "可替换背景槽" })).toBeInTheDocument()
 })
 
-test("animated bento shows the install count", () => {
+test("animated bento shows the install label", () => {
   render(<SectionAnimatedBento />)
   expect(screen.getByRole("heading", { name: "每个格子自己动" })).toBeInTheDocument()
-  expect(screen.getByText("12,840")).toBeInTheDocument()
+  expect(screen.getByText("安装次数")).toBeInTheDocument()
   expect(screen.getByText("Launch")).toBeInTheDocument()
 })
 
@@ -131,10 +131,11 @@ test("social marquee records an email", async () => {
   expect(screen.getByRole("button", { name: "已记下" })).toBeInTheDocument()
 })
 
-test("cornered stats show the shipped count", () => {
+test("cornered stats show the three labels", () => {
   render(<SectionStatsCornered />)
   expect(screen.getByText("SHIPPED")).toBeInTheDocument()
-  expect(screen.getByText("128")).toBeInTheDocument()
+  expect(screen.getByText("UPTIME")).toBeInTheDocument()
+  expect(screen.getByText("TEAMS")).toBeInTheDocument()
 })
 
 test("blob stats show the weekly number", () => {

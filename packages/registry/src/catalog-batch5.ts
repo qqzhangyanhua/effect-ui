@@ -210,7 +210,7 @@ export const batch5Components: ComponentMeta[] = [
     props: [
       { name: "value", type: "Value", description: "E.164 号码。" },
       { name: "onValueChange", type: "(value?: Value) => void", description: "号码变化。" },
-      { name: "placeholder", type: "string", defaultValue: "手机号", description: "号码占位。手机号 与不传相同。" },
+      { name: "placeholder", type: "string", defaultValue: '"手机号"', description: "号码占位。手机号 与不传相同。" },
       { name: "defaultCountry", type: '"US" | "CN" | "GB" | "JP"', defaultValue: '"US"', description: "默认国家。" },
       { name: "disabled", type: "boolean", description: "禁用号码输入和国家选择。" },
       {

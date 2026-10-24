@@ -1,0 +1,25 @@
+packages/registry/src/ui/ui-batch1.test.tsx
+  s_1f7fae292b4abd::t_eb2fd175e26993 1-206
+packages/registry/src/catalog.ts
+  s_1f7fae292b4abd::t_9bf6d23affd037 505-508
+  s_1f7fae292b4abd::t_9cbf4997dc8cc5 475-478
+  s_1f7fae292b4abd::t_eee0276bfec69d 490-493
+  s_1f7fae292b4abd::t_95b507d8230802 360-366
+  s_1f7fae292b4abd::t_ae4d8a3f32fe12 532-537
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "c25003266975e2ea449e04afae269e1758b4554a",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

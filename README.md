@@ -573,6 +573,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 扭转入场与指针眩光
+
+登记在 `catalog-batch62.ts`。图标动作、波载与剪切已占用 `catalog-batch61.ts`。六项全部原创，运动参考 Mobbin 上的产品卡片，没有复制代码或素材，也没有移植头。`twist-in-card` 是单卡的缩放、绕 Z 轴旋转和下移一起到位。`stagger-card-grid` 是二维卡片网格，按行和列错开，不是 `stagger-list` 的纵向列表。`hover-lift-glow` 在可调抬起之外有主题色光环，粗指针改为按下缩放，和 `hover-lift`、`glow-hover` 不是同一个组件。`flip-reveal-card` 用点击和键盘翻转，不是 `flip-card` 的悬停翻转。`hover-overlay-reveal` 在媒体上压暗并浮出行动按钮，触屏第一次点开遮罩，第二次跟随链接或收起。`pointer-tilt-glare` 在倾斜上加跟随指针的眩光，粗指针和减弱动效关掉倾斜和眩光，和 `tilt`、`glare-hover` 不是同一个组件。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。入场只在进入视口后播放，离开视口时暂停。
+
+| 组件 | 来源 |
+| --- | --- |
+| twist-in-card | 原创，灵感来自 Mobbin |
+| stagger-card-grid | 原创，灵感来自 Mobbin |
+| hover-lift-glow | 原创，灵感来自 Mobbin |
+| flip-reveal-card | 原创，灵感来自 Mobbin |
+| hover-overlay-reveal | 原创，灵感来自 Mobbin |
+| pointer-tilt-glare | 原创，灵感来自 Mobbin |
+
 ### 图标动作、波载与剪切
 
 登记在 `catalog-batch61.ts`。细线、卷轴与购买已占用 `catalog-batch60.ts`。`icon-moves`、`list-cut`、`load-cut`、`state-cut` 移植自 Keyframery（MIT，Copyright (c) 2026 Briyan Hingrajiya），提交 `9ab2430`。`wave-physics-loader`、`use-web-haptics` 移植自 Amicro（MIT，Copyright (c) 2026 SYED SUBHAN UDDIN），提交 `dc2a183`。`load-cut` 保留：它是等待、骨架、溶解三态，和已有的 `skeleton-reveal` 脉冲模糊交叉淡化不是同一个组件。Keyframery 的辅助函数只把用到的部分内联进各自组件，没有新的共享库，也没有 `data-kf` 总开关。`icon-moves` 的监听挂在组件根上。列表新项从下方升起，没有接入按压引擎。`use-web-haptics` 在没有 `navigator.vibrate` 时返回 false，不读 localStorage，也不合成音效。`framer-motion` 改为 `motion/react`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

@@ -1,0 +1,37 @@
+packages/registry/src/catalog-batch8.ts
+  s_1f7fae292b4abd::t_40cae50a5add79 23-26
+  s_1f7fae292b4abd::t_dac1aaf7646c32 47-49
+  s_1f7fae292b4abd::t_ffd2173b73d5b5 65-67
+  s_1f7fae292b4abd::t_f58ce0c998fa1e 118-119
+  s_1f7fae292b4abd::t_9d546469049bc7 152
+  s_1f7fae292b4abd::t_7e36d83edeb13f 203
+  s_1f7fae292b4abd::t_dc9ff3c72d973d 82-85
+  s_1f7fae292b4abd::t_33304afb47ff0b 134-135
+  s_1f7fae292b4abd::t_3d02b97056f418 167
+  s_1f7fae292b4abd::t_38031c1c9186c5 188
+  s_1f7fae292b4abd::t_4f9a6bfc982d37 99-102
+packages/registry/src/catalog-batch6.ts
+  s_1f7fae292b4abd::t_fc0c7f40fe64b2 206
+  s_1f7fae292b4abd::t_9ccf14e002d5be 193
+packages/registry/src/ui/ui-batch6.test.tsx
+  s_1f7fae292b4abd::t_164d5c605e4a4a 98
+  s_1f7fae292b4abd::t_b3e2932082f929 117
+  s_1f7fae292b4abd::t_c3b703309732a9 153-154
+  s_1f7fae292b4abd::t_1d7b00152613c7 1-97,99-116,118-152,155-171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "5616912864d3c73aa0f89d4ee38cd9184e605fb4",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

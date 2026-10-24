@@ -33,14 +33,25 @@ export function PerspectiveText3DDemo({
   return <PerspectiveText3D className="text-4xl font-semibold" depth={depth} driver={driver} text={text} />
 }
 
-export function ScrollImageRevealDemo() {
+export function ScrollImageRevealDemo({
+  direction = "left",
+  mask = "wipe",
+  parallax = 60,
+}: {
+  direction?: "left" | "right" | "up" | "down"
+  mask?: "wipe" | "curtain" | "circle" | "blinds" | "scale"
+  parallax?: number
+} = {}) {
   return (
     <div className="h-64 w-full overflow-auto rounded-2xl border">
       <div className="h-[150%] px-4 pt-24">
         <ScrollImageReveal
           alt="靛蓝夜空"
           className="h-40"
+          direction={direction}
+          mask={mask}
           offset={["start 0.95", "start 0.4"]}
+          parallax={parallax}
           src={swatch("#1e1b4b")}
         />
       </div>

@@ -126,22 +126,38 @@ export function SpotlightGroupDemo() {
   )
 }
 
-export function TimelineRevealDemo() {
+export function TimelineRevealDemo({
+  animationNum = 0,
+  as = "div",
+  once = true,
+}: {
+  animationNum?: number
+  as?: "div" | "p" | "h2" | "h3" | "li" | "span"
+  once?: boolean
+} = {}) {
   return (
     <div className="space-y-3 px-6 py-10">
-      {["先读许可", "再写组件", "最后登记"].map((line, index) => (
-        <TimelineReveal animationNum={index} key={line}>
-          {line}
-        </TimelineReveal>
-      ))}
+      <TimelineReveal animationNum={animationNum} as={as} once={once}>
+        先读许可
+      </TimelineReveal>
+      <TimelineReveal animationNum={1}>再写组件</TimelineReveal>
+      <TimelineReveal animationNum={2}>最后登记</TimelineReveal>
     </div>
   )
 }
 
-export function ScrollBlurTextDemo() {
+export function ScrollBlurTextDemo({
+  text = "按词出现的一行句子",
+  direction = "down",
+  as = "h2",
+}: {
+  text?: string
+  direction?: "up" | "down" | "left" | "right"
+  as?: "h1" | "h2" | "p" | "span" | "div"
+} = {}) {
   return (
     <div className="px-6 py-10">
-      <ScrollBlurText text="按词出现的一行句子" />
+      <ScrollBlurText as={as} direction={direction} text={text} />
     </div>
   )
 }

@@ -85,10 +85,25 @@ export function UnderlineHoverLinkDemo({
   )
 }
 
-export function ElementAlongSvgPathDemo() {
+export function ElementAlongSvgPathDemo({
+  animationType = "auto",
+  duration = 4,
+  direction = "normal",
+}: {
+  animationType?: "auto" | "scroll"
+  duration?: number
+  direction?: "normal" | "reverse"
+} = {}) {
   return (
     <div className="px-6 py-10">
-      <ElementAlongSvgPath className="h-48 text-primary" path="M10 80 C 30 10, 70 10, 90 80" showPath>
+      <ElementAlongSvgPath
+        animationType={animationType}
+        className="h-48 text-primary"
+        direction={direction}
+        duration={duration}
+        path="M10 80 C 30 10, 70 10, 90 80"
+        showPath
+      >
         <ElementAlongPathItem>
           <span className="size-3 rounded-full bg-primary" />
         </ElementAlongPathItem>

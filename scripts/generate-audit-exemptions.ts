@@ -224,6 +224,13 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "collapsible-side-menu": "已发布的可调项只有菜单项，是列表。",
   "multi-level-dropdown": "已发布的可调项只有触发按钮文字。预览写成账户，不传时仍是菜单。菜单项是列表。",
   "bottom-navigation": "已发布的可调项只有栏的样式。预览写成 default，与不传相同。导航项跟着预览里的当前页走。",
+  "scroll-image-sequence": "已发布的可调项只有帧进度倍率和画面不透明度，不够 3 个 Control。帧图片是列表。",
+  "sticky-grid-scroll": "已发布的可调项只有位移强度和滚动曲线倍率，不够 3 个 Control。",
+  "keyhole-scroll-reveal": "已发布的可调项只有滚动时间点，是列表。",
+  "aperture-reveal": "已发布的可调项只有滚动距离和舞台高度。预览写成 2.2 和 420。被裁的内容是节点。",
+  "kinetic-type-scroll": "已发布的可调项只有行对齐和相邻词间隔，不够 3 个 Control。词是列表，字重和缩放是成对区间。",
+  "scroll-and-swap-text": "已发布的可调项只有外层标签。滚动容器是引用，偏移和弹簧是结构。",
+  "skewed-infinite-scroll": "已发布的可调项只有滚完一轮的秒数和列数。预览秒数写成 18，不传时仍是 20。条目是列表。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

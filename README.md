@@ -533,6 +533,32 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 柔光首页与共享展开
+
+登记在 `catalog-batch63.ts`。扭转入场与指针眩光已占用 `catalog-batch62.ts`。这是第 57 批调研里的六个首页效果，全部原创。运动参考 Mobbin 营销首页的光晕、标题错落、滚动分层、共享元素展开、标志循环和入场预设，没有复制代码或素材，也没有移植头。`mesh-glow-bg` 是区块底下多层柔光色块的缓慢漂移，不是粒子，也不是单色渐变。`hero-text-stagger` 按标题的行和词错落入场，再带上副文和行动按钮，不是 `stagger-list` 或 `stagger-card-grid` 的卡片网格。`scroll-parallax-layers` 让背景、中景和前景按不同速率跟着滚动位移，粗指针会把幅度减半，不是单元素的 `parallax`。`shared-layout-expand` 用共享布局把小卡展开成对话框，回车、空格和 Esc 都能用，不是 `flip-reveal-card` 的三维翻转，也不是 `hover-overlay-reveal` 的悬停遮罩。`logo-marquee` 是横向无缝循环，悬停或聚焦可以暂停，标志文字不靠悬停才出现，和 `logos-carousel` 的分组轮换不同。`entrance-presets` 是包住任意子元素的命名入场，不是 `twist-in-card` 那种固定卡片壳。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。柔光用 CSS 和 SVG。减弱动效停在终态：光晕静止，标题直接显示，视差不再位移，展开瞬时切换，标志排成静止的一行，入场直接出现。离开视口时连续动画暂停。
+
+| 组件 | 来源 |
+| --- | --- |
+| mesh-glow-bg | 原创，灵感来自 Mobbin |
+| hero-text-stagger | 原创，灵感来自 Mobbin |
+| scroll-parallax-layers | 原创，灵感来自 Mobbin |
+| shared-layout-expand | 原创，灵感来自 Mobbin |
+| logo-marquee | 原创，灵感来自 Mobbin |
+| entrance-presets | 原创，灵感来自 Mobbin |
+
+### 扭转入场与指针眩光
+
+登记在 `catalog-batch62.ts`。图标动作与波载已占用 `catalog-batch61.ts`。六项全部原创，运动参考 Mobbin 上的产品卡片，没有复制代码或素材，也没有移植头。`twist-in-card` 是单卡的缩放、绕 Z 轴旋转和下移一起到位。`stagger-card-grid` 是二维卡片网格，按行和列错开，不是 `stagger-list` 的纵向列表。`hover-lift-glow` 在可调抬起之外有主题色光环，粗指针改为按下缩放，和 `hover-lift`、`glow-hover` 不是同一个组件。`flip-reveal-card` 用点击和键盘翻转，不是 `flip-card` 的悬停翻转。`hover-overlay-reveal` 在媒体上压暗并浮出行动按钮，触屏第一次点开遮罩，第二次跟随链接或收起。`pointer-tilt-glare` 在倾斜上加跟随指针的眩光，粗指针和减弱动效关掉倾斜和眩光，和 `tilt`、`glare-hover` 不是同一个组件。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。入场只在进入视口后播放，离开视口时暂停。
+
+| 组件 | 来源 |
+| --- | --- |
+| twist-in-card | 原创，灵感来自 Mobbin |
+| stagger-card-grid | 原创，灵感来自 Mobbin |
+| hover-lift-glow | 原创，灵感来自 Mobbin |
+| flip-reveal-card | 原创，灵感来自 Mobbin |
+| hover-overlay-reveal | 原创，灵感来自 Mobbin |
+| pointer-tilt-glare | 原创，灵感来自 Mobbin |
+
 ### 图标动作与波载
 
 登记在 `catalog-batch61.ts`。细线、卷轴与购买已占用 `catalog-batch60.ts`。`icon-moves` 移植自 Keyframery（MIT，Copyright (c) 2026 Briyan Hingrajiya），提交 `9ab2430`。`wave-physics-loader` 移植自 Amicro（MIT，Copyright (c) 2026 SYED SUBHAN UDDIN），提交 `dc2a183`。Keyframery 的辅助函数只把用到的部分内联进各自组件，没有新的共享库，也没有 `data-kf` 总开关。`icon-moves` 的监听挂在组件根上。`framer-motion` 改为 `motion/react`。颜色改成主题变量。减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。

@@ -62,6 +62,8 @@ import * as effectDemos60 from "./effect-demos-60"
 import * as effectDemos61 from "./effect-demos-61"
 import * as effectDemos62 from "./effect-demos-62"
 import * as effectDemos63 from "./effect-demos-63"
+import * as effectDemos64 from "./effect-demos-64"
+import * as effectDemos65 from "./effect-demos-65"
 import * as uiDemos from "./ui-demos"
 import * as uiDemos2 from "./ui-demos-2"
 import * as uiDemos3 from "./ui-demos-3"
@@ -860,6 +862,18 @@ const demoMap: Record<string, ComponentType> = {
   "spotlight-indicator": effectDemos62.SpotlightIndicatorDemo,
   "icon-moves": effectDemos63.IconMovesDemo,
   "wave-physics-loader": effectDemos63.WavePhysicsLoaderDemo,
+  "twist-in-card": effectDemos64.TwistInCardDemo,
+  "stagger-card-grid": effectDemos64.StaggerCardGridDemo,
+  "hover-lift-glow": effectDemos64.HoverLiftGlowDemo,
+  "flip-reveal-card": effectDemos64.FlipRevealCardDemo,
+  "hover-overlay-reveal": effectDemos64.HoverOverlayRevealDemo,
+  "pointer-tilt-glare": effectDemos64.PointerTiltGlareDemo,
+  "mesh-glow-bg": effectDemos65.MeshGlowBgDemo,
+  "hero-text-stagger": effectDemos65.HeroTextStaggerDemo,
+  "scroll-parallax-layers": effectDemos65.ScrollParallaxLayersDemo,
+  "shared-layout-expand": effectDemos65.SharedLayoutExpandDemo,
+  "logo-marquee": effectDemos65.LogoMarqueeDemo,
+  "entrance-presets": effectDemos65.EntrancePresetsDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

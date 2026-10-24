@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-lift-glow",
+  "type": "registry:ui",
+  "title": "Hover Lift Glow",
+  "description": "原创。细指针悬停或在卡片内聚焦时，卡片按 lift 抬起，并亮起主题色光环。抬起量和光强分开调节。粗指针不靠悬停，按下时轻微缩放，焦点用描边。和 hover-lift、glow-hover 不是同一个组件。减弱动效不再抬起。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/hover-lift-glow.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/hover-lift-glow.tsx",
+      "content": "\"use client\"\n\nimport { useState, type CSSProperties, type PointerEvent, type ReactNode } from \"react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface HoverLiftGlowProps {\n  lift?: number\n  glow?: number\n  duration?: number\n  className?: string\n  children?: ReactNode\n}\n\nfunction ring(glow: number) {\n  const edge = Math.round(Math.min(glow, 2) * 46)\n  const bloom = Math.round(Math.min(glow, 2) * 32)\n  const blur = Math.round(28 * glow)\n  return `0 0 0 1px color-mix(in oklab, var(--primary) ${edge}%, transparent), 0 18px ${blur}px -14px color-mix(in oklab, var(--primary) ${bloom}%, transparent)`\n}\n\nfunction coarsePointer() {\n  return window.matchMedia(\"(pointer: coarse)\").matches\n}\n\nexport function HoverLiftGlow({ lift = 8, glow = 1, duration = 280, className, children }: HoverLiftGlowProps) {\n  const reduced = usePrefersReducedMotion()\n  const [hot, setHot] = useState(false)\n  const [pressed, setPressed] = useState(false)\n  const rise = reduced ? 0 : lift\n  const halo = ring(reduced ? 0 : glow)\n\n  function onPointerEnter(event: PointerEvent<HTMLDivElement>) {\n    if (reduced || event.pointerType === \"touch\" || coarsePointer()) return\n    setHot(true)\n  }\n\n  function onPointerDown(event: PointerEvent<HTMLDivElement>) {\n    if (reduced) return\n    if (event.pointerType === \"touch\" || coarsePointer()) setPressed(true)\n  }\n\n  const raised = !reduced && hot\n  const squashed = !reduced && pressed && !hot\n\n  return (\n    <div\n      data-slot=\"hover-lift-glow\"\n      data-motion={reduced ? \"off\" : \"on\"}\n      data-raised={raised ? \"true\" : \"false\"}\n      className={cn(\n        \"rounded-2xl border border-border bg-card text-card-foreground shadow-sm transition-[transform,box-shadow] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:hover:translate-y-0\",\n        !reduced &&\n          \"pointer-fine:hover:-translate-y-[var(--lift)] pointer-fine:hover:[box-shadow:var(--glow-ring)] focus-within:-translate-y-[var(--lift)] focus-within:[box-shadow:var(--glow-ring)] pointer-coarse:active:scale-[0.985] pointer-coarse:focus-visible:outline pointer-coarse:focus-visible:outline-2 pointer-coarse:focus-visible:outline-offset-2 pointer-coarse:focus-visible:outline-ring\",\n        className,\n      )}\n      style={\n        {\n          \"--lift\": `${rise}px`,\n          \"--glow-ring\": halo,\n          transitionDuration: `${reduced ? 0 : duration}ms`,\n          transform: raised ? `translateY(-${lift}px)` : squashed ? \"scale(0.985)\" : undefined,\n          boxShadow: raised ? halo : undefined,\n        } as CSSProperties\n      }\n      onPointerEnter={onPointerEnter}\n      onPointerLeave={() => {\n        setHot(false)\n        setPressed(false)\n      }}\n      onPointerDown={onPointerDown}\n      onPointerUp={() => setPressed(false)}\n      onFocus={() => {\n        if (!reduced && !coarsePointer()) setHot(true)\n      }}\n      onBlur={() => setHot(false)}\n    >\n      {children}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

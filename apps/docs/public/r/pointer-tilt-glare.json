@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pointer-tilt-glare",
+  "type": "registry:ui",
+  "title": "Pointer Tilt Glare",
+  "description": "原创。指针位置带动 rotateX 和 rotateY，一层径向眩光跟着指针走。卖点是眩光，不是纯倾斜，也不是 glare-hover 的对角扫光。粗指针和减弱动效都关闭倾斜和眩光。离开视口时回到平放。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/pointer-tilt-glare.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/pointer-tilt-glare.tsx",
+      "content": "\"use client\"\n\nimport { useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface PointerTiltGlareProps {\n  maxTilt?: number\n  glare?: number\n  speed?: number\n  className?: string\n  children?: ReactNode\n}\n\ninterface Pose {\n  rx: number\n  ry: number\n  gx: number\n  gy: number\n  on: boolean\n}\n\nconst FLAT: Pose = { rx: 0, ry: 0, gx: 50, gy: 50, on: false }\n\nfunction rateOf(speed: number) {\n  return Number.isFinite(speed) && speed > 0 ? speed : 1\n}\n\nfunction blockedPointer() {\n  return window.matchMedia(\"(pointer: coarse)\").matches\n}\n\nexport function PointerTiltGlare({ maxTilt = 12, glare = 0.55, speed = 1, className, children }: PointerTiltGlareProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(ref)\n  const [pose, setPose] = useState<Pose>(FLAT)\n  const rate = rateOf(speed)\n  const active = live && !reduced\n  const shown = active ? pose : FLAT\n  const ms = Math.round(220 / rate)\n\n  function onPointerMove(event: PointerEvent<HTMLDivElement>) {\n    if (!active || event.pointerType === \"touch\" || blockedPointer()) return\n    const rect = event.currentTarget.getBoundingClientRect()\n    if (rect.width <= 0 || rect.height <= 0) return\n    const px = (event.clientX - rect.left) / rect.width\n    const py = (event.clientY - rect.top) / rect.height\n    setPose({\n      rx: (py - 0.5) * -maxTilt,\n      ry: (px - 0.5) * maxTilt,\n      gx: px * 100,\n      gy: py * 100,\n      on: true,\n    })\n  }\n\n  return (\n    <div\n      ref={ref}\n      data-slot=\"pointer-tilt-glare\"\n      data-motion={active ? \"on\" : \"off\"}\n      className={cn(\n        \"relative overflow-hidden rounded-2xl border border-border bg-card text-card-foreground shadow-sm [transform-style:preserve-3d] motion-reduce:transform-none motion-reduce:transition-none\",\n        className,\n      )}\n      style={\n        {\n          transform: active ? `perspective(900px) rotateX(${shown.rx}deg) rotateY(${shown.ry}deg)` : \"none\",\n          transition: reduced ? \"none\" : `transform ${ms}ms ease-out`,\n        } as CSSProperties\n      }\n      onPointerMove={onPointerMove}\n      onPointerLeave={() => setPose(FLAT)}\n    >\n      {children}\n      <span\n        aria-hidden\n        data-slot=\"pointer-tilt-glare-sheen\"\n        className=\"pointer-events-none absolute inset-0 motion-reduce:opacity-0\"\n        style={{\n          opacity: shown.on ? glare : 0,\n          background: `radial-gradient(420px circle at ${shown.gx}% ${shown.gy}%, color-mix(in oklab, white 78%, var(--primary)), transparent 46%)`,\n          transition: reduced ? \"none\" : `opacity ${ms}ms linear`,\n        }}\n      />\n    </div>\n  )\n}\n"
+    }
+  ]
+}

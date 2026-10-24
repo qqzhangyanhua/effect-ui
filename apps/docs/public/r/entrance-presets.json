@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "entrance-presets",
+  "type": "registry:ui",
+  "title": "Entrance Presets",
+  "description": "原创。包住任意子元素，进入视口后按 grow、slide、fade、spin 或 soft 播放一次。slide 的方向用 from。这是命名预设的外壳，不是 twist-in-card 那种固定卡片。减弱动效直接显示。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/entrance-presets.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/entrance-presets.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState, type ReactNode } from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport type EntrancePresetName = \"grow\" | \"slide\" | \"fade\" | \"spin\" | \"soft\"\nexport type EntranceFrom = \"left\" | \"right\" | \"up\" | \"down\"\n\nexport interface EntrancePresetsProps {\n  preset?: EntrancePresetName\n  pace?: number\n  intensity?: number\n  from?: EntranceFrom\n  className?: string\n  children?: ReactNode\n}\n\nfunction rateOf(pace: number) {\n  return Number.isFinite(pace) && pace > 0 ? pace : 1\n}\n\nfunction clamp01(value: number) {\n  if (!Number.isFinite(value)) return 0\n  return Math.min(1, Math.max(0, value))\n}\n\nfunction hiddenOf(preset: EntrancePresetName, from: EntranceFrom, intensity: number) {\n  const distance = Math.round(28 * intensity)\n  const slide = {\n    left: { x: -distance, y: 0 },\n    right: { x: distance, y: 0 },\n    up: { x: 0, y: distance },\n    down: { x: 0, y: -distance },\n  }[from]\n  if (preset === \"fade\") return { opacity: 0, x: 0, y: 0, scale: 1, rotate: 0 }\n  if (preset === \"grow\") return { opacity: 0, x: 0, y: 0, scale: 1 - 0.22 * intensity, rotate: 0 }\n  if (preset === \"spin\") return { opacity: 0, x: 0, y: 0, scale: 1, rotate: -18 * intensity }\n  if (preset === \"soft\") return { opacity: 0, x: 0, y: Math.round(12 * intensity), scale: 0.98, rotate: 0 }\n  return { opacity: 0, scale: 1, rotate: 0, ...slide }\n}\n\nconst rest = { opacity: 1, x: 0, y: 0, scale: 1, rotate: 0 }\n\nexport function EntrancePresets({\n  preset = \"grow\",\n  pace = 1,\n  intensity = 0.7,\n  from = \"up\",\n  className,\n  children,\n}: EntrancePresetsProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const [played, setPlayed] = useState(false)\n  const amp = clamp01(intensity)\n  const shown = reduced || played\n\n  useEffect(() => {\n    if (reduced) return\n    const node = ref.current\n    if (!node || typeof IntersectionObserver === \"undefined\") {\n      setPlayed(true)\n      return\n    }\n    const observer = new IntersectionObserver((entries) => {\n      if (!entries.some((entry) => entry.isIntersecting)) return\n      setPlayed(true)\n      observer.disconnect()\n    }, { threshold: 0.35 })\n    observer.observe(node)\n    return () => observer.disconnect()\n  }, [reduced])\n\n  return (\n    <motion.div\n      ref={ref}\n      data-slot=\"entrance-presets\"\n      data-preset={preset}\n      data-pace={pace}\n      data-intensity={intensity}\n      data-from={from}\n      data-motion={reduced ? \"off\" : \"on\"}\n      data-state={shown ? \"shown\" : \"waiting\"}\n      className={cn(\"motion-reduce:transform-none motion-reduce:opacity-100\", className)}\n      initial={false}\n      animate={shown ? rest : hiddenOf(preset, from, amp)}\n      transition={reduced ? { duration: 0 } : { duration: 0.62 / rateOf(pace), ease: \"easeOut\" }}\n    >\n      {children}\n    </motion.div>\n  )\n}\n"
+    }
+  ]
+}

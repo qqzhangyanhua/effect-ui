@@ -244,6 +244,9 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "smooth-cursor": "已发布的可调项只有类名。",
   cursor: "已发布的可调项只有类名。标记由指针、名字和消息拼成。",
   "spotlight-group": "已发布的可调项只有聚光模式和光斑颜色。预览同时放了 proximity、hover-focus 和 cursor-flow。光斑不传时仍跟主题。卡片内容是节点。",
+  "flip-card": "已发布的可调项只有翻转时长。正面和背面是节点。",
+  "glass-card": "已发布的可调项只有叠色倍率和模糊像素。卡片内容是节点。",
+  "hover-lift": "已发布的可调项只有过渡时长和上浮倍率。卡片内容是节点。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

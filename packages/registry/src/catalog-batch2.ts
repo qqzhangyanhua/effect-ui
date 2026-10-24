@@ -107,7 +107,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/chart.tsx",
     target: "components/ui/chart.tsx",
-    props: [{ name: "config", type: "ChartConfig", description: "系列颜色与标签。" }],
+    props: [
+      { name: "id", type: "string", description: "图表 id。不传则自动生成。" },
+      { name: "config", type: "ChartConfig", description: "系列颜色与标签。" },
+      { name: "label", type: "string", description: "提示标题。不传则不显示。" },
+    ],
   },
   {
     name: "command",
@@ -119,7 +123,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/command.tsx",
     target: "components/ui/command.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "title", type: "string", defaultValue: "Command Palette", description: "对话框标题。Command Palette 与不传相同。" },
+      { name: "description", type: "string", defaultValue: "Search for a command to run...", description: "对话框说明。Search for a command to run... 与不传相同。" },
+    ],
   },
   {
     name: "context-menu",
@@ -131,7 +139,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/context-menu.tsx",
     target: "components/ui/context-menu.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "inset", type: "boolean", description: "菜单项是否内缩。不传时不内缩。" },
+      { name: "variant", type: '"default" | "destructive"', defaultValue: '"default"', description: "菜单项变体。default 与不传相同。" },
+    ],
   },
   {
     name: "drawer",
@@ -167,7 +179,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/input-otp.tsx",
     target: "components/ui/input-otp.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "containerClassName", type: "string", description: "格子外层的类名。" },
+      { name: "index", type: "number", description: "格子序号，从 0 开始。" },
+    ],
   },
   {
     name: "menubar",
@@ -179,7 +195,14 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/menubar.tsx",
     target: "components/ui/menubar.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "align", type: '"start" | "center" | "end"', defaultValue: '"start"', description: "菜单对齐。start 与不传相同。" },
+      { name: "alignOffset", type: "number", defaultValue: "-4", description: "对齐偏移，像素。-4 与不传相同。" },
+      { name: "sideOffset", type: "number", defaultValue: "8", description: "菜单与触发器的间距，像素。8 与不传相同。" },
+      { name: "inset", type: "boolean", description: "菜单项是否内缩。不传时不内缩。" },
+      { name: "variant", type: '"default" | "destructive"', defaultValue: '"default"', description: "菜单项变体。default 与不传相同。" },
+    ],
   },
   {
     name: "navigation-menu",
@@ -191,7 +214,10 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/navigation-menu.tsx",
     target: "components/ui/navigation-menu.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "viewport", type: "boolean", defaultValue: "true", description: "是否用共享视口承载下拉层。true 与不传相同。" },
+    ],
   },
   {
     name: "pagination",
@@ -203,7 +229,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/pagination.tsx",
     target: "components/ui/pagination.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "isActive", type: "boolean", description: "是否为当前页。不传时不是当前页。" },
+      { name: "size", type: '"default" | "sm" | "lg" | "icon"', defaultValue: '"icon"', description: "页码尺寸。icon 与不传相同。" },
+    ],
   },
   {
     name: "progress",
@@ -239,7 +269,10 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/resizable.tsx",
     target: "components/ui/resizable.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "withHandle", type: "boolean", description: "分割线是否显示把手。不传时不显示。" },
+    ],
   },
   {
     name: "scroll-area",
@@ -251,7 +284,10 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/scroll-area.tsx",
     target: "components/ui/scroll-area.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "orientation", type: '"vertical" | "horizontal"', defaultValue: '"vertical"', description: "滚动条方向。vertical 与不传相同。" },
+    ],
   },
   {
     name: "sidebar",
@@ -263,7 +299,18 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/sidebar.tsx",
     target: "components/ui/sidebar.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "defaultOpen", type: "boolean", defaultValue: "true", description: "初始是否展开。true 与不传相同。" },
+      { name: "open", type: "boolean", description: "受控展开。不传时由内部状态决定。" },
+      { name: "onOpenChange", type: "(open: boolean) => void", description: "展开状态变化时回调。" },
+      { name: "side", type: '"left" | "right"', defaultValue: '"left"', description: "侧栏位置。left 与不传相同。" },
+      { name: "variant", type: '"sidebar" | "floating" | "inset"', defaultValue: '"sidebar"', description: "侧栏外形。sidebar 与不传相同。菜单按钮另有 default 或 outline，不传时是 default。" },
+      { name: "collapsible", type: '"offcanvas" | "icon" | "none"', defaultValue: '"offcanvas"', description: "收起方式。offcanvas 与不传相同。" },
+      { name: "asChild", type: "boolean", defaultValue: "false", description: "分组标签或菜单按钮是否用 Slot。false 与不传相同。" },
+      { name: "isActive", type: "boolean", defaultValue: "false", description: "菜单按钮是否为当前项。false 与不传相同。" },
+      { name: "size", type: '"default" | "sm" | "lg"', defaultValue: '"default"', description: "菜单按钮尺寸。default 与不传相同。" },
+    ],
   },
   {
     name: "skeleton",

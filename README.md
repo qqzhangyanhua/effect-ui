@@ -1310,10 +1310,19 @@ text-style
 
 ## 新增组件
 
-`date-picker` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住：
+`date-picker` 已有独立 registry JSON，和其它组件一样由 `pnpm registry:build` 生成。新增组件时改这些地方，漏了会被 `pnpm test` 的 registry 审计拦住。
 
-1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`templates/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。模板的文案和主题用同目录 `./content`、`./theme`，不要写成会被当成 registry 依赖的 `./theme.css`。
-2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`file`、`target`、`props`。多文件条目再写 `files`（页面、文案、主题）。
+先选 Layer，再选第二层分组。术语和取舍见 `CONTEXT.md`、`docs/adr/0007-classify-by-layer-then-group.md`。
+
+- Layer 是 `primitive`、`composite`、`widget`、`effect`、`section`、`template`、`hook`、`lib` 之一。
+- Effect 再写 `effectCategory`：`text`、`backgrounds`、`cursor`、`decor`、`cards`、`buttons`、`micro`、`loaders`、`scroll`、`showcase`、`page`、`navigation`。
+- Primitive、Composite component、Widget 再写 `purposeGroup`：`form`、`overlay`、`navigation`、`data`、`layout`、`feedback`。
+- Section、Template、Hook、Lib 不写第二层。
+- 去掉动画之后，只剩已有 Primitive，或者什么都不剩，它是 Effect。去掉动画之后还能独立完成一件事，它是 Widget 或 Composite component。Composite component 增强一个 Primitive 家族；Widget 围绕一项任务。
+- 旧条目还没声明 Layer，名字冻结在 `packages/registry/src/unclassified-catalog.ts`，审计仍按旧分类推导。新组件不在这份名单里，必须显式声明 Layer。声明之后把名字从名单里删掉。
+
+1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`templates/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。模板的文案和主题用同目录 `./content`、`./theme`，不要写成会被当成 registry 依赖的 `./theme.css`。源码目录先不按 Layer 搬。
+2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`file`、`target`、`props`，以及上面的 Layer 和第二层分组。多文件条目再写 `files`（页面、文案、主题）。Layer 不进安装 JSON。
  - `type` 为 `registry:ui`、`registry:lib`、`registry:hook` 或 `registry:block`。hook 的 `target` 在 `hooks/`，例如 `use-mobile` 安装到 `hooks/use-mobile.ts`。模板用 `registry:block`。
  - 不用写 `dependencies` 和 `registryDependencies`：构建时从源码 import 推导（包括 type-only import 和动态 `import()`），按字母排序，忽略 `react`、`react-dom`。上面的别名和同目录相对引用算 registry 依赖。
  - 源码没有 import、但安装时必须一起装的 npm 包（例如 `@tiptap/pm` 作为 peer）写进 `extraDependencies`。

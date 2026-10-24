@@ -40,10 +40,10 @@ function readEntrySource(entry: ComponentMeta): string | undefined {
 
 function gapsFor(entry: ComponentMeta, tested: ReadonlySet<string>): AuditGap[] {
   const gaps: AuditGap[] = []
-  if (insufficientControls(entry.category, entry.props)) gaps.push("控件不足")
+  if (insufficientControls(entry, entry.props)) gaps.push("控件不足")
   const source = readEntrySource(entry)
-  if (source !== undefined && missingReducedMotion(entry.category, source)) gaps.push("缺减弱动效")
-  if (requiresComponentTest(entry.category) && !componentIsTested(entry, tested)) gaps.push("缺测试")
+  if (source !== undefined && missingReducedMotion(entry, source)) gaps.push("缺减弱动效")
+  if (requiresComponentTest(entry) && !componentIsTested(entry, tested)) gaps.push("缺测试")
   return gaps
 }
 

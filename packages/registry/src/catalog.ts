@@ -1,3 +1,4 @@
+import type { LayerFields } from "./catalog-layer"
 import { batch2Components } from "./catalog-batch2"
 import { batch3Components } from "./catalog-batch3"
 import { batch4Components } from "./catalog-batch4"
@@ -188,7 +189,7 @@ export interface PropDoc {
   vocabularyExemption?: string
 }
 
-export interface ComponentMeta {
+interface ComponentMetaBase {
   name: string
   title: string
   description: string
@@ -205,6 +206,8 @@ export interface ComponentMeta {
   target: string
   props: PropDoc[]
 }
+
+export type ComponentMeta = ComponentMetaBase & LayerFields
 
 export const categoryLabels: Record<ComponentCategory, string> = {
   ui: "基础组件",

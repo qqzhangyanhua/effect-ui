@@ -15,8 +15,12 @@ The hand-written record for one item: its name, description, category, and sourc
 _Avoid_: component meta, registry entry
 
 **Batch**:
-A group of catalog entries planned, implemented, and credited together, with one shared provenance record.
+A group of catalog entries planned, implemented, and credited together, with one shared provenance record. A batch says where entries came from, not how they are organised.
 _Avoid_: wave, release, drop
+
+**Layer**:
+What kind of thing a catalog entry is: Primitive, Composite component, Widget, Effect, Section, Template, Hook, or Lib. Every catalog entry has exactly one layer, and the layer decides which checks the entry must pass.
+_Avoid_: category (that is the second level inside the Effect layer), type, tier
 
 ### Components
 
@@ -25,14 +29,34 @@ A shadcn-style building block that is assembled from parts by the caller, such a
 _Avoid_: base component, raw component
 
 **Effect**:
-A component in one of twelve categories — text, backgrounds, cursor, decor, cards, buttons, micro, loaders, scroll, showcase, page, and navigation. Besides its visual props, an Effect can take typography props, behavior switches, and pointer interaction.
+A component in the Effect layer, whose main value is its motion or visual treatment. The test: with every animation removed, an Effect either becomes an existing primitive or has nothing left; a component that still does a complete job is a Widget or a Composite component instead. Besides its visual props, an Effect can take typography props, behavior switches, and pointer interaction.
 _Avoid_: animation, special effect
 
+**Effect category**:
+The second-level grouping inside the Effect layer, naming what kind of effect it is: text, backgrounds, cursor, decor, cards, buttons, micro, loaders, scroll, showcase, page, or navigation. Only Effects have one.
+_Avoid_: layer, form
+
+**Purpose group**:
+The second-level grouping shared by Primitives, Composite components and Widgets, naming what the component is for: form, overlay, navigation, data, layout, or feedback. Sections, Templates, Hooks and Libs have no second level.
+_Avoid_: subgroup, use case
+
 **Composite component**:
-A props-driven component built on one or more primitives that covers a common scenario in a single call, such as a select with search, multiple values and a clear button. It is a separate catalog entry that depends on its primitives, so the user can pick either layer. A catalog entry that was already a composite component is upgraded in place instead of getting a second entry.
+A props-driven component built on one or more primitives that covers a common scenario in a single call, such as a select with search, multiple values and a clear button. It extends one primitive family, so the user can pick either the primitive or the composite. It is a separate catalog entry that depends on its primitives. A catalog entry that was already a composite component is upgraded in place instead of getting a second entry.
 _Avoid_: aggregate component, wrapper, enhanced component
 
+**Widget**:
+A props-driven component that does one concrete task end to end, such as viewing a diff, capturing a signature, or managing API keys. It is built around the task, not around a primitive family, even when it uses primitives inside. Its value is the function, not the motion.
+_Avoid_: utility, block (that is a page or section), business component, 功能件
+
 ### Docs site
+
+**Family**:
+The members of one control across layers, such as every switch: the primitive, its composite, and switch Effects. A family has one docs page that renders every member, and each member's own page sends the reader there.
+_Avoid_: group, collection
+
+**Topic**:
+A docs index of catalog entries that serve one domain across layers, such as AI. Unlike a family, its members keep their own docs pages; the topic only lists them.
+_Avoid_: category, tag, family
 
 **Demo**:
 The example rendered on a catalog entry's docs page to show the item in use. Each catalog entry that is a component or block has exactly one.

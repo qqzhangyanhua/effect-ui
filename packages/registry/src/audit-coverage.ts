@@ -16,7 +16,7 @@ import { batch58Components } from "./catalog-batch58"
 import { batch59Components } from "./catalog-batch59"
 import { batch60Components } from "./catalog-batch60"
 import { batch61Components } from "./catalog-batch61"
-import { effectCategories } from "./prop-vocabulary"
+import { owesComponentTest, owesEffectChecks, type LayerSource } from "./catalog-layer"
 import { registryFiles, type RegistryCatalogEntry } from "./registry-item"
 
 export const auditGaps = ["控件不足", "缺减弱动效", "缺测试"] as const
@@ -30,17 +30,11 @@ export interface AuditExemption {
 }
 
 const auditGapSet = new Set<string>(auditGaps)
-const baseCategories = new Set(["ui", "utility", "sections"])
 
 const importSpecifier = /(?:from|import)\s+["'](\.[^"']+)["']/g
 
-export function requiresComponentTest(category: string | undefined): boolean {
-  if (!category) return false
-  return effectCategories.has(category) || baseCategories.has(category)
-}
-
-export function isEffectCategory(category: string | undefined): boolean {
-  return typeof category === "string" && effectCategories.has(category)
+export function requiresComponentTest(entry: LayerSource): boolean {
+  return owesComponentTest(entry)
 }
 
 /** 动画特征。审计和豁免生成都用这一份，不做语义分析。 */
@@ -80,12 +74,12 @@ export function sourceFilesFor(entry: { file: string; files?: readonly { file: s
   return files.length > 0 ? files : [entry.file]
 }
 
-export function insufficientControls(category: string | undefined, props: readonly unknown[]): boolean {
-  return isEffectCategory(category) && controlCount(props) < 3
+export function insufficientControls(entry: LayerSource, props: readonly unknown[]): boolean {
+  return owesEffectChecks(entry) && controlCount(props) < 3
 }
 
-export function missingReducedMotion(category: string | undefined, source: string): boolean {
-  return isEffectCategory(category) && sourceHasAnimation(source) && !sourceHandlesReducedMotion(source)
+export function missingReducedMotion(entry: LayerSource, source: string): boolean {
+  return owesEffectChecks(entry) && sourceHasAnimation(source) && !sourceHandlesReducedMotion(source)
 }
 
 function hasControl(prop: unknown): boolean {

@@ -4,13 +4,13 @@ import {
   exemptionClosedNames,
   exemptionProblems,
   insufficientControls,
-  isEffectCategory,
   missingReducedMotion,
   requiresComponentTest,
   sourceFilesFor,
   testedSourceFiles,
   type AuditExemption,
 } from "./audit-coverage"
+import { layerGroupError, owesEffectChecks, unclassifiedLayerIssue } from "./catalog-layer"
 import { deriveDependencies } from "./dependencies"
 import {
   catalogDemoNames,
@@ -19,7 +19,7 @@ import {
   readDemoBindings,
   type DemoBinding,
 } from "./prop-type-text"
-import { effectCategories, vocabularyWord, type VocabularyWord } from "./prop-vocabulary"
+import { vocabularyWord, type VocabularyWord } from "./prop-vocabulary"
 import {
   buildRegistry,
   buildRegistryItem,
@@ -51,6 +51,9 @@ export type AuditIssueType =
   | "unknown-exemption"
   | "closed-batch-exemption"
   | "invalid-exemption"
+  | "missing-layer"
+  | "stale-unclassified"
+  | "layer-mismatch"
 
 export interface AuditIssue {
   name: string
@@ -62,6 +65,9 @@ export interface AuditCatalogEntry extends RegistryCatalogEntry {
   props: readonly unknown[]
   category?: string
   presets?: readonly unknown[]
+  layer?: string
+  effectCategory?: string
+  purposeGroup?: string
 }
 
 export interface AuditStaticJson {
@@ -237,7 +243,7 @@ function expectedType(word: VocabularyWord): string {
 }
 
 function pushVocabularyIssues(issues: AuditIssue[], entry: AuditCatalogEntry): void {
-  if (typeof entry.category !== "string" || !effectCategories.has(entry.category)) return
+  if (!owesEffectChecks(entry)) return
   for (const prop of entry.props) {
     if (!isRecord(prop) || typeof prop.name !== "string") continue
     const word = vocabularyWord(prop.name)
@@ -559,6 +565,22 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
         description: `README 中未出现组件名 ${entry.name}。`,
       })
     }
+    const groupError = layerGroupError(entry)
+    if (groupError) {
+      issues.push({
+        name: entry.name,
+        type: "layer-mismatch",
+        description: groupError,
+      })
+    }
+    const unclassified = unclassifiedLayerIssue(entry)
+    if (unclassified) {
+      issues.push({
+        name: entry.name,
+        type: unclassified.type,
+        description: unclassified.description,
+      })
+    }
     if (hasDocsPage(entry) && entry.props.length === 0) {
       issues.push({
         name: entry.name,
@@ -649,20 +671,20 @@ function pushCoverageIssues(
   const entryByName = (name: string) => input.catalog.find((item) => item.name === name)
   const testedGap = (name: string) => {
     const entry = entryByName(name)
-    if (!entry || !requiresComponentTest(entry.category)) return true
+    if (!entry || !requiresComponentTest(entry)) return true
     return componentIsTested(entry, tested)
   }
   const controlsSufficient = (name: string) => {
     const entry = entryByName(name)
     if (!entry) return true
-    return !insufficientControls(entry.category, entry.props)
+    return !insufficientControls(entry, entry.props)
   }
   const motionSatisfied = (name: string) => {
     const entry = entryByName(name)
-    if (!entry || !isEffectCategory(entry.category)) return true
+    if (!entry || !owesEffectChecks(entry)) return true
     const text = readCatalogSource(entry, input.readSource)
     if (text === undefined) return false
-    return !missingReducedMotion(entry.category, text)
+    return !missingReducedMotion(entry, text)
   }
   issues.push(
     ...exemptionProblems(exemptions, catalogNames, closedNames, testedGap, {
@@ -672,7 +694,7 @@ function pushCoverageIssues(
   )
   const suppressed = activeExemptionGaps(exemptions, catalogNames, closedNames)
   for (const entry of input.catalog) {
-    if (!requiresComponentTest(entry.category) || componentIsTested(entry, tested)) continue
+    if (!requiresComponentTest(entry) || componentIsTested(entry, tested)) continue
     if (suppressed.get(entry.name)?.has("缺测试")) continue
     issues.push({
       name: entry.name,
@@ -681,9 +703,9 @@ function pushCoverageIssues(
     })
   }
   for (const entry of input.catalog) {
-    if (!isEffectCategory(entry.category)) continue
+    if (!owesEffectChecks(entry)) continue
     const gaps = suppressed.get(entry.name)
-    if (insufficientControls(entry.category, entry.props) && !gaps?.has("控件不足")) {
+    if (insufficientControls(entry, entry.props) && !gaps?.has("控件不足")) {
       issues.push({
         name: entry.name,
         type: "insufficient-controls",
@@ -691,7 +713,7 @@ function pushCoverageIssues(
       })
     }
     const text = readCatalogSource(entry, input.readSource)
-    if (text !== undefined && missingReducedMotion(entry.category, text) && !gaps?.has("缺减弱动效")) {
+    if (text !== undefined && missingReducedMotion(entry, text) && !gaps?.has("缺减弱动效")) {
       issues.push({
         name: entry.name,
         type: "missing-reduced-motion",

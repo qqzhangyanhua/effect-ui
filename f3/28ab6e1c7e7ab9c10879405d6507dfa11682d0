@@ -1,0 +1,25 @@
+packages/registry/src/catalog-layer.ts
+  s_1f7fae292b4abd::t_e266868c1084be 123
+packages/registry/src/audit-coverage.test.ts
+  s_1f7fae292b4abd::t_7c88b8e31c0792 263-295
+  s_1f7fae292b4abd::t_d9379a8b143507 335-338,341
+  s_1f7fae292b4abd::t_2251a10bed8e14 318
+docs/testing.md
+  s_1f7fae292b4abd::t_0e360a46a456d0 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f328ab6e1c7e7ab9c10879405d6507dfa11682d0",
+  "prompts": {},
+  "sessions": {
+    "s_1f7fae292b4abd": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "47ef1f99-d238-4fa6-8769-e12a74183df6",
+        "model": "grok-4.7"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

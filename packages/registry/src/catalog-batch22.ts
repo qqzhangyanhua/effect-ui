@@ -17,7 +17,10 @@ export const batch22Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-click-outside.ts",
     target: "hooks/use-click-outside.ts",
-    props: [],
+    props: [
+      { name: "ref", type: "RefObject<HTMLElement | null>", description: "监听的元素。" },
+      { name: "onOutside", type: "() => void", description: "点在元素外时调用。" },
+    ],
   },
   {
     name: "use-measure",

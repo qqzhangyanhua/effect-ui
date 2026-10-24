@@ -129,8 +129,8 @@ export const batch18Components: ComponentMeta[] = [
     file: "sections/telescope-zoom-scroll.tsx",
     target: "components/ui/telescope-zoom-scroll.tsx",
     props: [
-      { name: "before", type: "string", description: "圆窗后面的画面文案。" },
-      { name: "after", type: "string", description: "圆窗里揭开的画面文案。" },
+      { name: "before", type: "string", defaultValue: '"先看见圆窗里的海岸。"', description: "圆窗后面的画面文案。" },
+      { name: "after", type: "string", defaultValue: '"再把整片夜空揭开。"', description: "圆窗里揭开的画面文案。" },
       ...ui,
     ],
   },

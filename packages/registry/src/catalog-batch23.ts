@@ -17,7 +17,11 @@ export const batch23Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-controllable-state.ts",
     target: "hooks/use-controllable-state.ts",
-    props: [],
+    props: [
+      { name: "value", type: "T", description: "受控值。传入后不再使用内部状态。" },
+      { name: "defaultValue", type: "T", description: "非受控时的初始值。" },
+      { name: "onChange", type: "(next: T) => void", description: "值变化时调用。" },
+    ],
   },
   {
     name: "boids-ecosystem",

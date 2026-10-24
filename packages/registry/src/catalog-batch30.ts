@@ -20,7 +20,10 @@ export const batch30Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-debounced-dimensions.ts",
     target: "hooks/use-debounced-dimensions.ts",
-    props: [],
+    props: [
+      { name: "ref", type: "RefObject<HTMLElement | SVGElement | null>", description: "要测量的元素。" },
+      { name: "delay", type: "number", defaultValue: "250", description: "停多久再量，毫秒。" },
+    ],
   },
   {
     name: "css-box",

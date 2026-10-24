@@ -21,7 +21,7 @@ export const batch29Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-dimensions.ts",
     target: "hooks/use-dimensions.ts",
-    props: [],
+    props: [{ name: "ref", type: "RefObject<HTMLElement | SVGElement | null>", description: "要测量的元素。" }],
   },
   {
     name: "use-mouse-position",
@@ -32,7 +32,9 @@ export const batch29Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-mouse-position.ts",
     target: "hooks/use-mouse-position.ts",
-    props: [],
+    props: [
+      { name: "containerRef", type: "RefObject<HTMLElement | SVGElement | null>", description: "坐标相对的容器。不传则用视口坐标。" },
+    ],
   },
   {
     name: "use-mouse-position-ref",
@@ -43,7 +45,9 @@ export const batch29Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-mouse-position-ref.ts",
     target: "hooks/use-mouse-position-ref.ts",
-    props: [],
+    props: [
+      { name: "containerRef", type: "RefObject<HTMLElement | SVGElement | null>", description: "坐标写进 ref 的容器。不传则用视口坐标。" },
+    ],
   },
   {
     name: "use-elastic-line-events",
@@ -54,7 +58,12 @@ export const batch29Components: ComponentMeta[] = [
     type: "registry:hook",
     file: "hooks/use-elastic-line-events.ts",
     target: "hooks/use-elastic-line-events.ts",
-    props: [],
+    props: [
+      { name: "containerRef", type: "RefObject<SVGSVGElement | null>", description: "线所在的 SVG。" },
+      { name: "isVertical", type: "boolean", description: "线是否竖直。" },
+      { name: "grabThreshold", type: "number", description: "抓住的距离。" },
+      { name: "releaseThreshold", type: "number", description: "松开的距离。" },
+    ],
   },
   {
     name: "pixel-trail",

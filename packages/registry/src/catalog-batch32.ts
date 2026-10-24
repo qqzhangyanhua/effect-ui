@@ -303,8 +303,8 @@ export const batch32Components: ComponentMeta[] = [
     file: "effects/category-bar.tsx",
     target: "components/ui/category-bar.tsx",
     props: [
-      { name: "values", type: "number[]", description: "各段数值，按总和换算宽度。" },
-      { name: "colors", type: "string[]", description: "各段颜色。" },
+      { name: "values", type: "number[]", defaultValue: "[]", description: "各段数值，按总和换算宽度。" },
+      { name: "colors", type: "string[]", defaultValue: '["#6366f1", "#22c55e", "#f59e0b", "#ef4444", "#06b6d4"]', description: "各段颜色。" },
       { name: "marker", type: "{ value: number; tooltip?: string; showAnimation?: boolean }", description: "刻度标记。" },
       { name: "showLabels", type: "boolean", defaultValue: "true", description: "是否显示 0 和总和。" },
       ...ui,

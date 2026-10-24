@@ -1,0 +1,112 @@
+packages/registry/src/effects/entrance-presets.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-116
+packages/registry/src/effects/flip-reveal-card.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-74
+packages/registry/src/effects/hero-text-stagger.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-111
+packages/registry/src/effects/hover-lift-glow.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-75
+apps/docs/public/r/entrance-presets.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-22
+packages/registry/src/effects/pointer-tilt-glare.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-91
+packages/registry/src/effects/logo-marquee.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-136
+packages/registry/src/effects/scroll-parallax-layers.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-161
+apps/docs/public/r/shared-layout-expand.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-22
+packages/registry/src/effects/hero-text-stagger.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-181
+apps/docs/public/r/mesh-glow-bg.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-21
+packages/registry/src/effects/hover-lift-glow.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-82
+apps/docs/public/r/registry.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 15783-16010
+packages/registry/src/effects/logo-marquee.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-129
+packages/registry/src/catalog-batch63.ts
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-11,14-36,39-58,61-77,80-97,100-118,121-139
+  s_41e4e6c0eb7a33::t_f310ac12b61960 12-13,37-38,59-60,78-79,98-99,119-120
+packages/registry/src/effects/mesh-glow-bg.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-102
+packages/registry/src/effects/pointer-tilt-glare.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-119
+packages/registry/src/effects/scroll-parallax-layers.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-137
+packages/registry/src/effects/shared-layout-expand.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-200
+packages/registry/src/examples/effect-demos-64.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-164
+packages/registry/src/effects/stagger-card-grid.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-96
+packages/registry/src/examples/index.ts
+  s_41e4e6c0eb7a33::t_c05e3498613836 65-66,865-876
+registry.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 15783-16010
+packages/registry/src/catalog-batch62.ts
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-11,14-29,32-48,51-66,69-86,89-107,110-121
+  s_41e4e6c0eb7a33::t_8405c8fa034e3a 12-13,30-31,49-50,67-68,87-88,108-109
+packages/registry/src/effects/stagger-card-grid.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-88
+apps/docs/public/r/scroll-parallax-layers.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-21
+apps/docs/public/r/stagger-card-grid.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-21
+packages/registry/src/effects/flip-reveal-card.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-67
+apps/docs/public/r/hover-lift-glow.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-20
+apps/docs/public/r/twist-in-card.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-21
+packages/registry/src/effects/hover-overlay-reveal.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-154
+packages/registry/src/audit-coverage.ts
+  s_41e4e6c0eb7a33::t_c05e3498613836 19-20,95
+packages/registry/src/effects/twist-in-card.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-74
+packages/registry/src/effects/shared-layout-expand.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-104
+apps/docs/public/r/logo-marquee.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-21
+packages/registry/src/catalog.ts
+  s_41e4e6c0eb7a33::t_c05e3498613836 62-63,2394-2395
+README.md
+  s_41e4e6c0eb7a33::t_c05e3498613836 536-550,552-561
+  s_41e4e6c0eb7a33::t_7f9bad5751de9c 551
+apps/docs/public/r/pointer-tilt-glare.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-21
+packages/registry/src/effects/hover-overlay-reveal.test.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-85
+packages/registry/src/effects/twist-in-card.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-69
+packages/registry/src/effects/entrance-presets.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-95
+apps/docs/public/r/hero-text-stagger.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-22
+apps/docs/public/r/hover-overlay-reveal.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-20
+packages/registry/src/effects/mesh-glow-bg.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-124
+packages/registry/src/examples/effect-demos-65.tsx
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-142
+apps/docs/public/r/flip-reveal-card.json
+  s_41e4e6c0eb7a33::t_c05e3498613836 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "5b5d4db1497d5446ad49991221e5cde5234a2f0c",
+  "prompts": {},
+  "sessions": {
+    "s_41e4e6c0eb7a33": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a16edd-cb81-7623-b8f1-993876b21dc5",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

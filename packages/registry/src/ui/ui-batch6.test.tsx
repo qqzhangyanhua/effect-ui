@@ -64,10 +64,12 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-test("video player shows the play control", () => {
+test("video player mutes from the control bar", async () => {
+  const user = userEvent.setup()
   render(<VideoPlayer src="https://example.com/night.mp4" />)
-  expect(screen.getByRole("button", { name: "播放" })).toBeInTheDocument()
   expect(screen.getByText("0:00 / 0:00")).toBeInTheDocument()
+  await user.click(screen.getByRole("button", { name: "静音" }))
+  expect(screen.getByRole("button", { name: "取消静音" })).toBeInTheDocument()
 })
 
 test("notification center marks the sample as read", async () => {
@@ -138,6 +140,7 @@ test("hero parallax wall shows the first card", () => {
 test("footer curtain reveal shows the brand and a column", () => {
   render(<FooterCurtainReveal />)
   expect(screen.getByText("内容层盖住页脚，滚到底才掀开。")).toBeInTheDocument()
+  expect(screen.getByText("effect-ui")).toBeInTheDocument()
   expect(screen.getByText("产品")).toBeInTheDocument()
   expect(screen.getByText("组件")).toBeInTheDocument()
 })

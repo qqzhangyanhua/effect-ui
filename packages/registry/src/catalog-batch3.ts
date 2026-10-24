@@ -542,7 +542,7 @@ export const batch3Components: ComponentMeta[] = [
     target: "components/ui/date-range-picker.tsx",
     props: [
       { name: "value", type: "DateRange", description: "当前范围。" },
-      { name: "presets", type: "DateRangePreset[]", description: "快捷预设。不传则用今天、近 7 天、近 30 天和近 90 天。" },
+      { name: "presets", type: "DateRangePreset[]", description: "快捷预设。" },
       { name: "onValueChange", type: "(value: DateRange | undefined) => void", description: "范围变化时回调。" },
     ],
   },
@@ -571,7 +571,7 @@ export const batch3Components: ComponentMeta[] = [
     file: "ui/stepper.tsx",
     target: "components/ui/stepper.tsx",
     props: [
-      { name: "value", type: "number", description: "当前步骤。不传时由内部状态决定。" },
+      { name: "value", type: "number", description: "当前步骤。" },
       { name: "defaultValue", type: "number", defaultValue: "1", description: "初始步骤。1 与不传相同。" },
       { name: "onValueChange", type: "(value: number) => void", description: "步骤变化时回调。" },
       { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "方向。" },
@@ -587,7 +587,7 @@ export const batch3Components: ComponentMeta[] = [
     file: "ui/color-picker.tsx",
     target: "components/ui/color-picker.tsx",
     props: [
-      { name: "value", type: "string", description: "受控 Hex 颜色。不传时由内部状态决定。" },
+      { name: "value", type: "string", description: "Hex 颜色。" },
       { name: "defaultValue", type: "string", defaultValue: "#6366f1", description: "初始颜色。#6366f1 与不传相同。" },
       { name: "onValueChange", type: "(hex: string) => void", description: "颜色变化。" },
     ],

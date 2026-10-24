@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "twist-in-card",
+  "type": "registry:ui",
+  "title": "Twist In Card",
+  "description": "原创。单张卡片进入视口时，缩放、绕 Z 轴的旋转和下移一起回到正体，只播放一次。不是列表错落。运动参考产品卡片的入场，没有移植第三方源码。减弱动效停在终态。入场只在进入视口后播放，离开视口时暂停。",
+  "dependencies": [],
+  "registryDependencies": [
+    "use-animation-active",
+    "use-prefers-reduced-motion",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/twist-in-card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/twist-in-card.tsx",
+      "content": "\"use client\"\n\nimport { useRef, type CSSProperties, type ReactNode } from \"react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface TwistInCardProps {\n  pace?: number\n  intensity?: number\n  delay?: number\n  className?: string\n  children?: ReactNode\n}\n\nconst KEYFRAMES = `\n@keyframes twist-in-card {\n  from {\n    opacity: 0;\n    transform: translateY(var(--twist-y)) rotate(var(--twist-r)) scale(0.92);\n  }\n  to {\n    opacity: 1;\n    transform: none;\n  }\n}\n`\n\nfunction rateOf(pace: number) {\n  return Number.isFinite(pace) && pace > 0 ? pace : 1\n}\n\nexport function TwistInCard({ pace = 1, intensity = 1, delay = 0, className, children }: TwistInCardProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(ref)\n  const rate = rateOf(pace)\n  const play = live && !reduced\n\n  return (\n    <>\n      <style>{KEYFRAMES}</style>\n      <div\n        ref={ref}\n        data-slot=\"twist-in-card\"\n        data-motion={play ? \"on\" : \"off\"}\n        className={cn(\n          \"rounded-2xl border border-border bg-card text-card-foreground shadow-sm motion-reduce:animate-none motion-reduce:transform-none motion-reduce:opacity-100\",\n          className,\n        )}\n        style={\n          {\n            \"--twist-y\": `${28 * intensity}px`,\n            \"--twist-r\": `${-8 * intensity}deg`,\n            animationName: reduced ? \"none\" : \"twist-in-card\",\n            animationDuration: `${Math.round(720 / rate)}ms`,\n            animationDelay: `${Math.round(delay * 1000)}ms`,\n            animationTimingFunction: \"cubic-bezier(0.22, 1, 0.36, 1)\",\n            animationFillMode: \"both\",\n            animationPlayState: play ? \"running\" : \"paused\",\n          } as CSSProperties\n        }\n      >\n        {children}\n      </div>\n    </>\n  )\n}\n"
+    }
+  ]
+}

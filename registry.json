@@ -18358,6 +18358,117 @@
           "target": "hooks/use-web-haptics.ts"
         }
       ]
+    },
+    {
+      "name": "twist-in-card",
+      "type": "registry:ui",
+      "title": "Twist In Card",
+      "description": "原创。单张卡片进入视口时，缩放、绕 Z 轴的旋转和下移一起回到正体，只播放一次。不是列表错落。运动参考产品卡片的入场，没有移植第三方源码。减弱动效停在终态。入场只在进入视口后播放，离开视口时暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/twist-in-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/twist-in-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stagger-card-grid",
+      "type": "registry:ui",
+      "title": "Stagger Card Grid",
+      "description": "原创。二维卡片网格按行和列错落入场，子项是卡片壳，不是 ul/li。列数会改变每一列的延迟。和 stagger-list 的纵向列表不是同一个组件。减弱动效停在终态。入场只在进入视口后播放，离开视口时暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stagger-card-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stagger-card-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-lift-glow",
+      "type": "registry:ui",
+      "title": "Hover Lift Glow",
+      "description": "原创。细指针悬停或在卡片内聚焦时，卡片按 lift 抬起，并亮起主题色光环。抬起量和光强分开调节。粗指针不靠悬停，按下时轻微缩放，焦点用描边。和 hover-lift、glow-hover 不是同一个组件。减弱动效不再抬起。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-lift-glow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-lift-glow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-reveal-card",
+      "type": "registry:ui",
+      "title": "Flip Reveal Card",
+      "description": "原创。点击卡片，或按 Enter、Space，在正面和背面之间翻转。按钮带 aria-pressed。这是显式切换，不是 flip-card 的悬停翻转。减弱动效瞬时切换，不做三维旋转。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/flip-reveal-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/flip-reveal-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hover-overlay-reveal",
+      "type": "registry:ui",
+      "title": "Hover Overlay Reveal",
+      "description": "原创。媒体默认保持清晰。细指针悬停或聚焦时压上一层半透明遮罩，标题和行动按钮浮出来。粗指针第一次点开遮罩，第二次才跟随链接；没有链接时第二次收起。减弱动效不做过渡。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hover-overlay-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hover-overlay-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pointer-tilt-glare",
+      "type": "registry:ui",
+      "title": "Pointer Tilt Glare",
+      "description": "原创。指针位置带动 rotateX 和 rotateY，一层径向眩光跟着指针走。卖点是眩光，不是纯倾斜，也不是 glare-hover 的对角扫光。粗指针和减弱动效都关闭倾斜和眩光。离开视口时回到平放。",
+      "dependencies": [],
+      "registryDependencies": [
+        "use-animation-active",
+        "use-prefers-reduced-motion",
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pointer-tilt-glare.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pointer-tilt-glare.tsx"
+        }
+      ]
     }
   ]
 }

@@ -58,9 +58,13 @@ export function GravityStarsDemo({
   )
 }
 
-export function MagneticFieldDemo() {
+export function MagneticFieldDemo({
+  mode = "attract",
+  radius = 180,
+  strength = 0.35,
+}: { mode?: "attract" | "repel" | "orbit"; radius?: number; strength?: number } = {}) {
   return (
-    <MagneticField className="flex h-48 w-full items-center justify-center gap-6 rounded-2xl border" mode="attract" radius={180}>
+    <MagneticField className="flex h-48 w-full items-center justify-center gap-6 rounded-2xl border" mode={mode} radius={radius} strength={strength}>
       {["北", "窗", "夜"].map((label) => (
         <span className="rounded-full border bg-card px-4 py-2" data-magnetic="" key={label}>
           {label}

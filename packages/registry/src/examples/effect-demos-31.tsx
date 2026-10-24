@@ -114,14 +114,23 @@ export function VerticalCutRevealDemo({
   )
 }
 
-export function TextCursorProximityDemo() {
+export function TextCursorProximityDemo({
+  as = "span",
+  radius = 120,
+  falloff = "gaussian",
+}: {
+  as?: "span" | "div" | "p"
+  radius?: number
+  falloff?: "linear" | "exponential" | "gaussian"
+} = {}) {
   const containerRef = useRef<HTMLDivElement>(null)
   return (
     <div className="w-full rounded-2xl border p-8 text-3xl" ref={containerRef}>
       <TextCursorProximity
+        as={as}
         containerRef={containerRef}
-        falloff="gaussian"
-        radius={120}
+        falloff={falloff}
+        radius={radius}
         styles={{
           scale: { from: 1, to: 1.6 },
           color: { from: "rgb(100, 116, 139)", to: "rgb(79, 70, 229)" },

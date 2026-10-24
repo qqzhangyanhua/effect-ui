@@ -55,14 +55,18 @@ export function NovatrixBackgroundDemo({
   )
 }
 
-export function DrawingCursorDemo() {
+export function DrawingCursorDemo({
+  decay = 800,
+  lineWidth = 3,
+  taper = true,
+}: { decay?: number; lineWidth?: number; taper?: boolean } = {}) {
   const cursor = useRef<DrawingCursorHandle>(null)
   return (
     <div className="space-y-3">
       <button className="rounded-md border px-3 py-1 text-sm" onClick={() => cursor.current?.clear()} type="button">
         清空笔迹
       </button>
-      <DrawingCursor className="h-48 w-full rounded-2xl border bg-muted" color="#6366f1" ref={cursor}>
+      <DrawingCursor className="h-48 w-full rounded-2xl border bg-muted" color="#6366f1" decay={decay} lineWidth={lineWidth} ref={cursor} taper={taper}>
         <p className="p-4 text-sm text-muted-foreground">在这块区域里移动指针</p>
       </DrawingCursor>
     </div>

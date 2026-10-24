@@ -240,6 +240,10 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "view-transition-gallery": "已发布的可调项只有缩略图间距和高度，不够 3 个 Control。画廊条目是列表。",
   "datamosh-transition": "已发布的可调项只有切换倍率和拖影强度，不够 3 个 Control。",
   "chroma-blur-transition": "已发布的可调项只有过渡时长。换幕的键跟着预览里的按钮走，一传入就冻住。",
+  "repetition-image-hover": "已发布的可调项只有画面文字和回声层数，不够 3 个 Control。",
+  "smooth-cursor": "已发布的可调项只有类名。",
+  cursor: "已发布的可调项只有类名。标记由指针、名字和消息拼成。",
+  "spotlight-group": "已发布的可调项只有聚光模式和光斑颜色。预览同时放了 proximity、hover-focus 和 cursor-flow。光斑不传时仍跟主题。卡片内容是节点。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

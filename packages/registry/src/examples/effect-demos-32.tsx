@@ -106,11 +106,15 @@ export function UnderlineToBackgroundDemo({
   )
 }
 
-export function ParallaxFloatingDemo() {
+export function ParallaxFloatingDemo({
+  sensitivity = 1,
+  easingFactor = 0.05,
+  depth = 0.4,
+}: { sensitivity?: number; easingFactor?: number; depth?: number } = {}) {
   return (
     <div className="relative h-48 w-full overflow-hidden rounded-2xl border">
-      <Floating>
-        <FloatingElement className="top-10 left-10" depth={0.4}>
+      <Floating easingFactor={easingFactor} sensitivity={sensitivity}>
+        <FloatingElement className="top-10 left-10" depth={depth}>
           <span className="rounded-md bg-indigo-500 px-3 py-1 text-sm text-white">近处</span>
         </FloatingElement>
         <FloatingElement className="top-20 left-48" depth={1.6}>

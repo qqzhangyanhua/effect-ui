@@ -231,6 +231,15 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "kinetic-type-scroll": "已发布的可调项只有行对齐和相邻词间隔，不够 3 个 Control。词是列表，字重和缩放是成对区间。",
   "scroll-and-swap-text": "已发布的可调项只有外层标签。滚动容器是引用，偏移和弹簧是结构。",
   "skewed-infinite-scroll": "已发布的可调项只有滚完一轮的秒数和列数。预览秒数写成 18，不传时仍是 20。条目是列表。",
+  "page-transition": "已发布的可调项只有淡入时长和位移模糊倍率，不够 3 个 Control。切换键跟着预览里的按钮走，一传入就冻住。",
+  "marketing-blocks": "已发布的可调项是各区块的变体和 Hero 副标题。预览同时放了极光、推荐、网格和分栏。",
+  "device-mockups": "已发布的可调项只有 Safari 地址栏。预览同时放了 Safari、iPhone 和 MacBook。",
+  terminal: "已发布的可调项只有行间隔和提示符颜色，不够 3 个 Control。提示符不传时仍跟主题。命令行是列表。",
+  "dashboard-blocks": "已发布的可调项只有看板变体。",
+  "ecommerce-blocks": "已发布的可调项只有展示哪一组。商品、图片和购物车是结构。",
+  "view-transition-gallery": "已发布的可调项只有缩略图间距和高度，不够 3 个 Control。画廊条目是列表。",
+  "datamosh-transition": "已发布的可调项只有切换倍率和拖影强度，不够 3 个 Control。",
+  "chroma-blur-transition": "已发布的可调项只有过渡时长。换幕的键跟着预览里的按钮走，一传入就冻住。",
 }
 
 function exemptionReason(name: string, gaps: readonly string[]): string {

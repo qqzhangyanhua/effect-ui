@@ -121,17 +121,26 @@ export function PropellerOrbDemo({
   )
 }
 
-export function NotFoundPageDemo() {
+export function NotFoundPageDemo({
+  variant = "centered",
+  title = "这一页不在了",
+  backLabel = "返回",
+}: {
+  variant?: "centered" | "image"
+  title?: string
+  backLabel?: string
+} = {}) {
   return (
     <div className="grid gap-8">
       <NotFoundPage
+        backLabel={backLabel}
         description="链接可能改过，或者这一页还没写。"
         eyebrow="404"
         homeHref="#home"
         links={links}
         onBack={() => undefined}
-        title="这一页不在了"
-        variant="centered"
+        title={title}
+        variant={variant}
       />
       <NotFoundPage
         description="可以从下面的入口继续。"

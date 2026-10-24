@@ -96,7 +96,15 @@ export function DepthParallaxWordsDemo({
   )
 }
 
-export function PrismSweepTransitionDemo() {
+export function PrismSweepTransitionDemo({
+  direction = "left",
+  duration = 1240,
+  tone = "prism",
+}: {
+  direction?: "left" | "right" | "up" | "down"
+  duration?: number
+  tone?: "prism" | "chroma" | "aperture" | "beam"
+} = {}) {
   const scenes = ["洋红", "香槟", "海沫"]
   const [page, setPage] = useState(0)
   return (
@@ -104,7 +112,7 @@ export function PrismSweepTransitionDemo() {
       <button className="rounded-md border px-3 py-1 text-sm" onClick={() => setPage((value) => (value + 1) % scenes.length)} type="button">
         下一幕
       </button>
-      <PrismSweepTransition className="h-40" transitionKey={page}>
+      <PrismSweepTransition className="h-40" direction={direction} duration={duration} tone={tone} transitionKey={page}>
         <div className="flex h-40 items-center justify-center text-3xl font-semibold">{scenes[page] ?? "洋红"}</div>
       </PrismSweepTransition>
     </div>

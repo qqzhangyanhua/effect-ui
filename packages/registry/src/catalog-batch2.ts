@@ -56,7 +56,10 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/breadcrumb.tsx",
     target: "components/ui/breadcrumb.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "asChild", type: "boolean", description: "链接是否用 Slot 合并到子元素。不传时渲染 a。" },
+    ],
   },
   {
     name: "calendar",
@@ -68,7 +71,11 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/calendar.tsx",
     target: "components/ui/calendar.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "showOutsideDays", type: "boolean", defaultValue: "true", description: "是否显示相邻月份的日期。true 与不传相同。" },
+      { name: "classNames", type: "Partial<DayPickerClassNames>", description: "覆盖日历各部分的类名。不传则只用内置类名。" },
+    ],
   },
   {
     name: "carousel",
@@ -80,7 +87,15 @@ export const batch2Components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/carousel.tsx",
     target: "components/ui/carousel.tsx",
-    props: ui,
+    props: [
+      ...ui,
+      { name: "orientation", type: '"horizontal" | "vertical"', defaultValue: '"horizontal"', description: "滚动方向。horizontal 与不传相同。" },
+      { name: "opts", type: "CarouselOptions", description: "传给 Embla 的选项。" },
+      { name: "plugins", type: "CarouselPlugin", description: "Embla 插件。" },
+      { name: "setApi", type: "(api: CarouselApi) => void", description: "轮播就绪后交回 Embla API。" },
+      { name: "variant", type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"', defaultValue: '"outline"', description: "前后按钮的变体。outline 与不传相同。" },
+      { name: "size", type: '"default" | "sm" | "lg" | "icon"', defaultValue: '"icon"', description: "前后按钮的尺寸。icon 与不传相同。" },
+    ],
   },
   {
     name: "chart",

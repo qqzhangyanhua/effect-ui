@@ -558,7 +558,11 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/tooltip.tsx",
     target: "components/ui/tooltip.tsx",
-    props: uiProps,
+    props: [
+      ...uiProps,
+      { name: "delayDuration", type: "number", defaultValue: "0", description: "提示出现前的等待，毫秒。0 与不传相同。" },
+      { name: "sideOffset", type: "number", defaultValue: "0", description: "提示与触发器的间距，像素。0 与不传相同。" },
+    ],
   },
   {
     name: "sonner",
@@ -606,7 +610,11 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/select.tsx",
     target: "components/ui/select.tsx",
-    props: uiProps,
+    props: [
+      ...uiProps,
+      { name: "size", type: '"sm" | "default"', defaultValue: '"default"', description: "触发器高度。default 与不传相同。" },
+      { name: "position", type: '"item-aligned" | "popper"', defaultValue: '"popper"', description: "下拉层的定位。popper 与不传相同。" },
+    ],
   },
   {
     name: "accordion",
@@ -630,7 +638,11 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/popover.tsx",
     target: "components/ui/popover.tsx",
-    props: uiProps,
+    props: [
+      ...uiProps,
+      { name: "align", type: '"start" | "center" | "end"', defaultValue: '"center"', description: "弹出层对齐。center 与不传相同。" },
+      { name: "sideOffset", type: "number", defaultValue: "4", description: "弹出层与触发器的间距，像素。4 与不传相同。" },
+    ],
   },
   {
     name: "avatar",
@@ -654,7 +666,11 @@ export const components: ComponentMeta[] = [
     type: "registry:ui",
     file: "ui/slider.tsx",
     target: "components/ui/slider.tsx",
-    props: uiProps,
+    props: [
+      ...uiProps,
+      { name: "min", type: "number", defaultValue: "0", description: "最小值。0 与不传相同。" },
+      { name: "max", type: "number", defaultValue: "100", description: "最大值。100 与不传相同。" },
+    ],
   },
   {
     name: "typing-text",

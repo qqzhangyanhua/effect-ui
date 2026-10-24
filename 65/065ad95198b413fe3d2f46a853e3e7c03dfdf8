@@ -1,0 +1,270 @@
+packages/registry/src/effects/batch58-practical.test.tsx
+  s_b5666c6be3f9c2::t_9802900dbd1a37 75
+  s_b5666c6be3f9c2::t_6141a59bfc7454 16,98
+  s_b5666c6be3f9c2::t_c69e3320f724a3 138
+packages/registry/src/catalog-batch54.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 134
+packages/registry/src/effects/batch30-practical.test.tsx
+  s_b5666c6be3f9c2::t_c321a621ab0a92 6,136,138-147
+  s_b5666c6be3f9c2::t_6141a59bfc7454 16-17
+packages/registry/src/catalog-batch2.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 788
+packages/registry/src/examples/effect-demos-15.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 5,13
+packages/registry/src/examples/effect-demos-44.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 8
+apps/docs/public/r/vortex-background.json
+  s_b5666c6be3f9c2::t_cb58bc234fac8e 6
+packages/registry/src/effects/showcase-vocabulary.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 9,12,17,27-28
+packages/registry/src/examples/effect-demos-11.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 6
+packages/registry/src/effects/reduced-motion-batch1.test.tsx
+  s_b5666c6be3f9c2::t_7415ca398f0b7b 50,62
+packages/registry/src/examples/effect-demos-60.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 12
+packages/registry/src/catalog-batch16.ts
+  s_b5666c6be3f9c2::t_fb4fc3b1ee2000 245
+  s_b5666c6be3f9c2::t_b985931dd2b583 69
+packages/registry/src/effects/batch40-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 16,125
+packages/registry/src/catalog-batch14.ts
+  s_b5666c6be3f9c2::t_0e6f2564eeebc7 97
+packages/registry/src/examples/effect-demos-25.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 10,16
+packages/registry/src/catalog-batch27.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 29,138-139,237
+CREDITS.md
+  s_b5666c6be3f9c2::t_5ff9d9c89553d3 12-15,19-20,31,33-34,36,38-39,41,49-51,56,67,75-76
+  s_b5666c6be3f9c2::t_dd8f3ef9eed920 35,52-53,55,61-62,65-66,77,81
+  s_b5666c6be3f9c2::t_3cb0318443bc3c 16,73
+  s_b5666c6be3f9c2::t_b2f75f6fe8a742 28
+  s_b5666c6be3f9c2::t_e70e53914814cd 21-25,69
+  s_b5666c6be3f9c2::t_1968c8b81cab19 9,42,54,63,68,71,82
+  s_b5666c6be3f9c2::t_e318ca25f6e421 26-27
+  s_b5666c6be3f9c2::t_f4ae6d22082a87 37,64
+  s_b5666c6be3f9c2::t_1f9cfd6b27f172 10,60
+  s_b5666c6be3f9c2::t_a1cfc0052158b0 57-58
+packages/registry/src/catalog-batch37.ts
+  s_b5666c6be3f9c2::t_6a48088d4c0d61 149,204
+  s_b5666c6be3f9c2::t_ad44e5993027c2 184
+packages/registry/src/effects/batch46-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 15,17
+  s_b5666c6be3f9c2::t_56aa631c66466b 192
+packages/registry/src/catalog-batch28.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 51,121,202,282
+packages/registry/src/effects/batch33-practical.test.tsx
+  s_b5666c6be3f9c2::t_3c3c7504c87bc3 82
+  s_b5666c6be3f9c2::t_6141a59bfc7454 17,68
+packages/registry/src/catalog-batch26.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 154-155
+packages/registry/src/catalog-batch51.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 118-119
+apps/docs/public/r/tool.json
+  s_b5666c6be3f9c2::t_cb58bc234fac8e 6,8,21
+packages/registry/src/catalog-batch43.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 170
+packages/registry/src/effects/trace.tsx
+  s_b5666c6be3f9c2::t_9cc80b796126e8 7,11-21
+  s_b5666c6be3f9c2::t_87b436bed048c9 22
+packages/registry/src/examples/effect-demos-29.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 7-8,14,16
+  s_b5666c6be3f9c2::t_9b7e82f1f3503b 3
+packages/registry/src/catalog-batch25.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 168
+packages/registry/src/examples/effect-demos-56.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 13
+packages/registry/src/catalog-batch33.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 161
+packages/registry/src/catalog-batch56.ts
+  s_b5666c6be3f9c2::t_5ff9d9c89553d3 49
+packages/registry/src/effects/batch26-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 20,23,79
+packages/registry/src/effects/card-vocabulary.test.tsx
+  s_b5666c6be3f9c2::t_0e337162c89fef 204
+registry.json
+  s_b5666c6be3f9c2::t_cb58bc234fac8e 5353,5923,5925-5927,5934,5936,5941,8493,8495-8496,8505,8507,8512,8514-8518,8526,9997,11334,11336,11395,11397
+  s_b5666c6be3f9c2::t_39f082922cb17e 11375-11378,12623,12625
+  s_b5666c6be3f9c2::t_f23866a3a0266d 14917,15064,15167
+  s_b5666c6be3f9c2::t_2f128671d12876 11495
+  s_b5666c6be3f9c2::t_666331db01535e 12619,12621-12622,12624,12632,12634,12639
+packages/registry/src/effects/batch29-practical.test.tsx
+  s_b5666c6be3f9c2::t_2cf9e25f100788 197
+packages/registry/src/effects/batch25-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 22,103
+apps/docs/public/r/book-spine-shelf.json
+  s_b5666c6be3f9c2::t_f23866a3a0266d 6
+packages/registry/src/catalog-batch19.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 13
+packages/registry/src/effects/backgrounds-batch3.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 21
+packages/registry/src/effects/batch39-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 10,120
+  s_b5666c6be3f9c2::t_11b02bb6ab717d 137
+packages/registry/src/examples/effect-demos-41.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 8
+apps/docs/public/r/source.json
+  s_b5666c6be3f9c2::t_39f082922cb17e 6-9,19
+packages/registry/src/catalog-batch23.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 56,101
+packages/registry/src/examples/effect-demos-40.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 11-12,17
+packages/registry/src/catalog-batch42.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 177
+packages/registry/src/effects/batch34-practical.test.tsx
+  s_b5666c6be3f9c2::t_c054633903502e 79
+packages/registry/src/catalog-batch57.ts
+  s_b5666c6be3f9c2::t_5ff9d9c89553d3 100
+packages/registry/src/examples/effect-demos-2.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 7
+apps/docs/public/r/use-media-query.json
+  s_b5666c6be3f9c2::t_2f128671d12876 6
+THIRD_PARTY_NOTICES.md
+  s_b5666c6be3f9c2::t_dd8f3ef9eed920 19,187,218-219,347,368,421,510,519-520
+  s_b5666c6be3f9c2::t_5ff9d9c89553d3 26,33,40,54,166,180,290,297,311,318,332-333,340,354,361,503,505,513-514,521
+  s_b5666c6be3f9c2::t_e70e53914814cd 61,68,75,82,89,96,103,226,507,509
+  s_b5666c6be3f9c2::t_1968c8b81cab19 12,325,517,550-551
+  s_b5666c6be3f9c2::t_4fbc862ded1904 110,124,131,138
+  s_b5666c6be3f9c2::t_4b17c184c9de4c 518
+packages/registry/src/effects/batch38-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 11-12,16
+packages/registry/src/effects/decor-batch1.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 16,18-19,24
+apps/docs/public/r/trace.json
+  s_b5666c6be3f9c2::t_cb58bc234fac8e 8,20
+packages/registry/src/examples/effect-demos-45.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 13
+packages/registry/src/catalog-batch38.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 95,199,250
+  s_b5666c6be3f9c2::t_7953a019ff8d47 13
+packages/registry/src/effects/batch23-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 15
+packages/registry/src/examples/effect-demos-32.tsx
+  s_b5666c6be3f9c2::t_b0d374724ea879 5
+  s_b5666c6be3f9c2::t_6141a59bfc7454 14-15
+packages/registry/src/effects/batch42-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 9,140
+README.md
+  s_b5666c6be3f9c2::t_1968c8b81cab19 51-52,59-60,62,71,392,429,919,1317-1320,1322
+  s_b5666c6be3f9c2::t_e70e53914814cd 536,538,547,564,576,591,593
+  s_b5666c6be3f9c2::t_3eea8cdf003011 608,626,643
+  s_b5666c6be3f9c2::t_167aaefec82a10 465,483,485,817
+  s_b5666c6be3f9c2::t_5ff9d9c89553d3 562,703,705,744,746,760,796,798,838,858,898,1001,1022,1042,1223
+  s_b5666c6be3f9c2::t_4c47dc690d07d2 1313
+  s_b5666c6be3f9c2::t_dd8f3ef9eed920 412,780,819,1063,1081,1083,1128,1145,1162,1181
+packages/registry/src/examples/effect-demos-42.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 14
+packages/registry/src/effects/batch54-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 16
+packages/registry/src/effects/cursor-vocabulary.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 15,18,21,24
+packages/registry/src/catalog-batch11.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 233
+packages/registry/src/effects/tool.tsx
+  s_b5666c6be3f9c2::t_f9cec6ed5075aa 6-7,13-23
+  s_b5666c6be3f9c2::t_9985da4dbe48f1 24
+packages/registry/src/effects/batch31-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 12
+apps/docs/public/r/registry.json
+  s_b5666c6be3f9c2::t_39f082922cb17e 11375-11378,12623,12625
+  s_b5666c6be3f9c2::t_f23866a3a0266d 14917,15064,15167
+  s_b5666c6be3f9c2::t_cb58bc234fac8e 5353,5923,5925-5927,5934,5936,5941,8493,8495-8496,8505,8507,8512,8514-8518,8526,9997,11334,11336,11395,11397
+  s_b5666c6be3f9c2::t_2f128671d12876 11495
+  s_b5666c6be3f9c2::t_a36eb3c429a03c 12619,12621-12622,12624,12632,12634,12639
+packages/registry/src/examples/effect-demos-27.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 15
+packages/registry/src/effects/batch28-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 15,17,19,23,79,120
+packages/registry/src/catalog-batch7.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 50
+packages/registry/src/effects/batch43-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 15
+packages/registry/src/effects/source.tsx
+  s_b5666c6be3f9c2::t_59001f3ea64944 6,11-27,60,62,79,87,100,112
+packages/registry/src/catalog-batch58.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 94
+packages/registry/src/effects/chain-of-thought.tsx
+  s_b5666c6be3f9c2::t_315c687dce9076 7,12-22
+  s_b5666c6be3f9c2::t_e62005471fbf9c 23
+packages/registry/src/examples/effect-demos-35.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 13
+packages/registry/src/catalog-batch15.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 93-94
+packages/registry/src/effects/batch35-practical.test.tsx
+  s_b5666c6be3f9c2::t_53ddbdce78ac0c 116-118
+packages/registry/src/effects/batch27-practical.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 12-13,19,21
+  s_b5666c6be3f9c2::t_4c93ceac254c6a 81
+apps/docs/public/r/copperplate-hatch.json
+  s_b5666c6be3f9c2::t_f23866a3a0266d 6
+packages/registry/src/effects/batch60-practical.test.tsx
+  s_b5666c6be3f9c2::t_e70e53914814cd 4
+packages/registry/src/effects/showcase-batch1.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 14,16,19-22
+packages/registry/src/catalog-batch17.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 173
+docs/effect-prop-vocabulary.md
+  s_b5666c6be3f9c2::t_c246722ecbb935 16
+packages/registry/src/catalog-batch18.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 121
+packages/registry/src/catalog-batch31.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 260,327
+packages/registry/src/effects/batch56-practical.test.tsx
+  s_b5666c6be3f9c2::t_93ed6368d768a5 166
+packages/registry/src/catalog-batch39.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 137
+packages/registry/src/examples/effect-demos-19.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 10
+packages/registry/src/examples/effect-demos-7.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 11
+packages/registry/src/effects/batch61-practical.test.tsx
+  s_b5666c6be3f9c2::t_e70e53914814cd 4
+packages/registry/src/catalog-batch30.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 152,169
+packages/registry/src/examples/effect-demos-18.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 9
+packages/registry/src/effects/cursor-batch1.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 11,14
+packages/registry/src/effects/batch44-practical.test.tsx
+  s_b5666c6be3f9c2::t_9c21319d78d566 73
+  s_b5666c6be3f9c2::t_f8000be520eff2 58
+packages/registry/src/effects/showcase-batch2.test.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 12-15,17,20-22
+packages/registry/src/examples/effect-demos-28.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 13,16
+packages/registry/src/examples/effect-demos-53.tsx
+  s_b5666c6be3f9c2::t_a3a9a5a54683d0 3
+  s_b5666c6be3f9c2::t_6141a59bfc7454 12,14
+packages/registry/src/effects/batch57-practical.test.tsx
+  s_b5666c6be3f9c2::t_e70e53914814cd 137,146
+  s_b5666c6be3f9c2::t_9eee226deb1a41 115
+apps/docs/public/r/chain-of-thought.json
+  s_b5666c6be3f9c2::t_cb58bc234fac8e 6,8,20
+packages/registry/src/examples/effect-demos-30.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 10,12,14
+  s_b5666c6be3f9c2::t_114e953f36013e 18
+packages/registry/src/catalog-batch40.ts
+  s_b5666c6be3f9c2::t_b985931dd2b583 276
+packages/registry/src/examples/effect-demos-33.tsx
+  s_b5666c6be3f9c2::t_6141a59bfc7454 6,40
+packages/registry/src/examples/effect-demos-16.tsx
+  s_b5666c6be3f9c2::t_c0d6f11b88fe1e 12
+packages/registry/src/examples/effect-demos-17.tsx
+  s_b5666c6be3f9c2::t_d5adcae50e3d1b 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "65065ad95198b413fe3d2f46a853e3e7c03dfdf8",
+  "prompts": {},
+  "sessions": {
+    "s_b5666c6be3f9c2": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a16c11-984b-7ab2-ae4a-76f934168528",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

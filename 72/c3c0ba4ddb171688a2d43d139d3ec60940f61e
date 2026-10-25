@@ -1,0 +1,99 @@
+packages/registry/src/catalog-batch18.ts
+  s_0a33311619faf9::t_77eae316502a1a 150-151
+README.md
+  s_0a33311619faf9::t_f44236c21e72c3 1348
+packages/registry/src/audit.ts
+  s_0a33311619faf9::t_0b6027dec50905 13
+packages/registry/src/catalog-batch50.ts
+  s_0a33311619faf9::t_77eae316502a1a 12-13,78-79
+apps/docs/app/preview/[slug]/page.tsx
+  s_0a33311619faf9::t_4e2971fcef8ce5 5,48
+packages/registry/src/catalog-batch60.ts
+  s_0a33311619faf9::t_77eae316502a1a 181-182,194-195
+packages/registry/src/catalog-batch44.ts
+  s_0a33311619faf9::t_77eae316502a1a 53-54
+packages/registry/src/catalog-layer.ts
+  s_0a33311619faf9::t_b8a2705de77771 39-41,49,56,58-60
+packages/registry/src/catalog-batch42.ts
+  s_0a33311619faf9::t_77eae316502a1a 105-106
+docs/component-standard.md
+  s_0a33311619faf9::t_503c6d37c87d42 15
+packages/registry/src/catalog-groups.test.ts
+  s_0a33311619faf9::t_9973b5f244a82a 7,9-10,71,86,90,182,191-196
+docs/project-map.md
+  s_0a33311619faf9::t_7ac4747628c387 11
+packages/registry/src/catalog-batch38.ts
+  s_0a33311619faf9::t_77eae316502a1a 257-258
+docs/testing.md
+  s_0a33311619faf9::t_09ece48cd936ef 34
+packages/registry/src/catalog-batch52.ts
+  s_0a33311619faf9::t_77eae316502a1a 217-218,234-235,250-251
+packages/registry/src/catalog-batch24.ts
+  s_0a33311619faf9::t_77eae316502a1a 280-281
+packages/registry/src/catalog-batch27.ts
+  s_0a33311619faf9::t_77eae316502a1a 278-279,297-298
+packages/registry/src/catalog-batch28.ts
+  s_0a33311619faf9::t_77eae316502a1a 288-289
+packages/registry/src/catalog-batch19.ts
+  s_0a33311619faf9::t_77eae316502a1a 202,219
+packages/registry/src/catalog-batch23.ts
+  s_0a33311619faf9::t_77eae316502a1a 122-123,156-157,175-176,194-195
+packages/registry/src/catalog-batch39.ts
+  s_0a33311619faf9::t_77eae316502a1a 199-200
+packages/registry/src/catalog-batch55.ts
+  s_0a33311619faf9::t_77eae316502a1a 142-143,165-166,182-183
+packages/registry/src/catalog-batch53.ts
+  s_0a33311619faf9::t_77eae316502a1a 152-153,233-234
+packages/registry/src/catalog-batch9.ts
+  s_0a33311619faf9::t_77eae316502a1a 178-179
+packages/registry/src/audit-coverage.test.ts
+  s_0a33311619faf9::t_77b61b9c94d451 20-21,66,74,139-140,160
+  s_0a33311619faf9::t_9aed41d61604ec 230,245,254,258,262-265,274-280,284,296-298,306,308,311,313-315,321
+packages/registry/src/catalog-batch22.ts
+  s_0a33311619faf9::t_77eae316502a1a 304-305,321-322
+apps/docs/app/docs/[slug]/page.tsx
+  s_0a33311619faf9::t_230cc791636912 10,103
+packages/registry/src/catalog-batch43.ts
+  s_0a33311619faf9::t_77eae316502a1a 109-110,188-189,341-342
+packages/registry/src/catalog-batch36.ts
+  s_0a33311619faf9::t_77eae316502a1a 192-193
+packages/registry/src/catalog.ts
+  s_0a33311619faf9::t_797b7210da8637 2685
+  s_0a33311619faf9::t_ab1257dd5146c5 197,212
+  s_0a33311619faf9::t_2b1de51676db16 237,251,2783,2790
+packages/registry/src/catalog-batch49.ts
+  s_0a33311619faf9::t_77eae316502a1a 45-46
+packages/registry/src/catalog-batch41.ts
+  s_0a33311619faf9::t_77eae316502a1a 160-161,194-195,213-214,234-235
+packages/registry/src/catalog-batch45.ts
+  s_0a33311619faf9::t_77eae316502a1a 14-15
+packages/registry/src/catalog-batch51.ts
+  s_0a33311619faf9::t_77eae316502a1a 40-41,59-60,154-155
+packages/registry/src/catalog-batch54.ts
+  s_0a33311619faf9::t_77eae316502a1a 14-15,56-57,120-121,264-265
+packages/registry/src/catalog-batch12.ts
+  s_0a33311619faf9::t_77eae316502a1a 226-227
+packages/registry/src/catalog-batch46.ts
+  s_0a33311619faf9::t_77eae316502a1a 12-13,46-47
+packages/registry/src/audit.test.ts
+  s_0a33311619faf9::t_91112f3649fe42 5-11,553-554,574-575,605-606,636-637,651,662,682-683,707-708,736-737,749-750,780-781
+  s_0a33311619faf9::t_42fd80b9b89404 652,663
+packages/registry/src/catalog-batch35.ts
+  s_0a33311619faf9::t_77eae316502a1a 116-117,233-234,277-278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "72c3c0ba4ddb171688a2d43d139d3ec60940f61e",
+  "prompts": {},
+  "sessions": {
+    "s_0a33311619faf9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1711d-769d-7100-91d7-c9715088bba1",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

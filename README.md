@@ -457,7 +457,6 @@ text-style
 | embed-code-generator | 灵感来自 Readymag，原创实现 |
 | social-post-feed | 灵感来自 Campsite，原创实现 |
 | signature-pad | 灵感来自 DocuSign，原创实现 |
-| poll-vote | 灵感来自 X 与 Slack，原创实现 |
 | reaction-bar | 原创 |
 
 ### 管道、沙漏与收件箱
@@ -628,24 +627,6 @@ text-style
 | cook-loading | Framekit UI，MIT |
 | usage-quota-meter | Framekit UI，MIT |
 | smart-widget-stack | Framekit UI，MIT |
-
-### 车道、铜版与胶片
-
-登记在 `Batch 56`。键入爆炸已占用 `Batch 55`。`queue-pulse-lanes`、`event-propagation-matrix`、`copperplate-hatch`、`core-strata`、`kinetic-emphasis`、`liquid-fill-headline`、`velocity-skew-feed`、`filmstrip-scrub`、`live-log-stream`、`environment-switcher`、`api-request-inspector` 移植自 Motiq（MIT，Copyright (c) 2026 Mahammad Rustamov）。`@/lib/motiq` 没有带进来：减弱动效用共享的 `usePrefersReducedMotion`，离开视口用 `useAnimationActive`。`@/lib/utils` 改成 `cn`。环境菜单用 `react-dom` 的 `createPortal`。事件矩阵是格子上的传播波，和字符点阵 `glyph-matrix` 不同。铜版是三向交叉线被光波点亮。速度剪切跟着滚动速度回弹，和恒定斜切的 `skewed-infinite-scroll` 不同。颜色控件使用主题变量。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。
-
-| 组件 | 来源 |
-| --- | --- |
-| queue-pulse-lanes | Motiq，MIT |
-| event-propagation-matrix | Motiq，MIT |
-| copperplate-hatch | Motiq，MIT |
-| core-strata | Motiq，MIT |
-| kinetic-emphasis | Motiq，MIT |
-| liquid-fill-headline | Motiq，MIT |
-| velocity-skew-feed | Motiq，MIT |
-| filmstrip-scrub | Motiq，MIT |
-| live-log-stream | Motiq，MIT |
-| environment-switcher | Motiq，MIT |
-| api-request-inspector | Motiq，MIT |
 
 ### 键入爆炸、色带与持键
 
@@ -1063,9 +1044,9 @@ text-style
 | download-size-button | Uiverse galaxy，MIT，作者 satyamchaudharydev |
 | achievement-toast | Uiverse galaxy，MIT，作者 WittyHydra |
 
-### 注意力按钮、附件气泡与分段条
+### 注意力按钮与分段条
 
-登记在 `Batch 32`。上一批斜切滚动已占用 `Batch 31`。八个动效移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`stitches-button` 在 SyntaxUI 的 credits.md 里归于 Saud。`framer-motion` 已换成 `motion/react`，`hover-spring-features` 用 `<img>` 代替 `next/image`。四个实用组件移植自 ReUI（MIT，Copyright (c) 2025 Keenthemes Inc.）。`category-bar`、`bar-list` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改。没有新增依赖。没有使用 Hero Patterns。减弱动效时注意力动画不播放、叶子不摇、完成按钮直接完成、色块和霓虹与涟漪停住、功能卡不上移、追踪标题不闪。
+登记在 `Batch 32`。上一批斜切滚动已占用 `Batch 31`。八个动效移植自 SyntaxUI（MIT，Copyright (c) 2024 SyntaxUI）。`stitches-button` 在 SyntaxUI 的 credits.md 里归于 Saud。`framer-motion` 已换成 `motion/react`，`hover-spring-features` 用 `<img>` 代替 `next/image`。`category-bar`、`bar-list` 移植自 Tremor Raw（Apache-2.0，Copyright 2025 Tremor），源文件保留版权声明并注明已修改。没有新增依赖。没有使用 Hero Patterns。减弱动效时注意力动画不播放、叶子不摇、完成按钮直接完成、色块和霓虹与涟漪停住、功能卡不上移。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1077,10 +1058,6 @@ text-style
 | ripple-wave-loader | SyntaxUI，MIT |
 | hover-spring-features | SyntaxUI，MIT |
 | stitches-button | SyntaxUI，MIT，原作者 Saud |
-| attachment | ReUI，MIT |
-| bubble | ReUI，MIT |
-| marker | ReUI，MIT |
-| trace | ReUI，MIT |
 | category-bar | Tremor Raw，Apache-2.0 |
 | bar-list | Tremor Raw，Apache-2.0 |
 
@@ -1151,7 +1128,7 @@ text-style
 
 ### 透视字、棱镜与水花
 
-登记在 `Batch 28`。上一批色波、点阵与置顶已占用 `Batch 27`。十项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。`splash-mask` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT），源文件 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 。没有新增依赖。`prism-sweep-transition` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止绘制、变形、数字滚动和自动播放。减弱动效时透视字改成普通段落，棱镜直接换内容，星标数字直接跳到终值。没有传入 `apiEndpoint` 时，星标组件不请求网络。
+登记在 `Batch 28`。上一批色波、点阵与置顶已占用 `Batch 27`。八项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。`splash-mask` 移植自 UI Layouts（MIT，Copyright (c) 2024 UI LAYOUT），源文件 https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 。没有新增依赖。`prism-sweep-transition` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止绘制、变形、数字滚动和自动播放。减弱动效时透视字改成普通段落，棱镜直接换内容，星标数字直接跳到终值。没有传入 `apiEndpoint` 时，星标组件不请求网络。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1162,13 +1139,12 @@ text-style
 | morph-icon | SmoothUI，MIT |
 | hover-expand | SmoothUI，MIT |
 | count-badge | SmoothUI，MIT |
-| social-selector | SmoothUI，MIT |
 | github-stars-animation | SmoothUI，MIT |
 | expandable-navbar | SmoothUI，MIT |
 
 ### 色波、点阵与置顶
 
-登记在 `Batch 27`。上一批极光、液态金属与时长已占用 `Batch 26`。`novatrix-background` 移植自 Eldora UI（MIT，Copyright Mudunuri Bhaskara Karthikeya Varma），源文件 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 。其余十项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`novatrix-background` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止动画帧、衰减、自动旋转和扫描倒计时。减弱动效时色波停住，色差过渡直接换内容，滚动字停在峰值字重。
+登记在 `Batch 27`。上一批极光、液态金属与时长已占用 `Batch 26`。`novatrix-background` 移植自 Eldora UI（MIT，Copyright Mudunuri Bhaskara Karthikeya Varma），源文件 https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 。其余八项移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`novatrix-background` 保留原来的着色器，绘制用已经在仓库里的 `ogl`。离开视口后停止动画帧、衰减、自动旋转和扫描倒计时。减弱动效时色波停住，色差过渡直接换内容，滚动字停在峰值字重。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1179,13 +1155,12 @@ text-style
 | card-swipe-deck | SmoothUI，MIT |
 | pinned-list | SmoothUI，MIT |
 | grid-loader | SmoothUI，MIT |
-| vector-editor-toolbar | SmoothUI，MIT |
 | unlock-face-id | SmoothUI，MIT |
 | music-toggle | SmoothUI，MIT |
 
 ### 极光、液态金属与时长
 
-登记在 `Batch 26`。上一批收据、液面与裁切已占用 `Batch 25`。十二项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，勒索信不再晃动，时长数字不再滚动。
+登记在 `Batch 26`。上一批收据、液面与裁切已占用 `Batch 25`。十一项都移植自 SmoothUI（MIT，Copyright (c) 2024 Eduardo Calvo），源文件在 https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ 。没有新增依赖。`aurora-curtain`、`liquid-metal` 保留原来的着色器，绘制改用已经在仓库里的 `ogl`。离开视口后停止动画帧和指示灯。减弱动效时极光、星场和液态金属停住，勒索信不再晃动，时长数字不再滚动。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1194,7 +1169,6 @@ text-style
 | magnetic-field | SmoothUI，MIT |
 | ransom-note | SmoothUI，MIT |
 | liquid-metal | SmoothUI，MIT |
-| pixel-brush-canvas | SmoothUI，MIT |
 | duration-picker | SmoothUI，MIT |
 | exposure-slider | SmoothUI，MIT |
 | scrubber | SmoothUI，MIT |
@@ -1204,7 +1178,7 @@ text-style
 
 ### 收据、液面与裁切
 
-登记在 `Batch 25`。上一批地形、摇篮字与转录已占用 `Batch 24`。十三项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`clip-trimmer` 用 `<img>` 替换 `next/image`。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，头像不再眨眼，时区表盘不再滑动，裁切播放头直接跳到选区起点。
+登记在 `Batch 25`。上一批地形、摇篮字与转录已占用 `Batch 24`。十一项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。离开视口后停止动画帧、逐词计时和汇款步骤。减弱动效时液面直接落到目标，点阵静止，加载短句不再波动，录音音柱停住，时区表盘不再滑动。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1215,16 +1189,14 @@ text-style
 | dot-field | kokonutUI，MIT |
 | ai-text-loading | kokonutUI，MIT |
 | ai-voice | kokonutUI，MIT |
-| avatar-picker | kokonutUI，MIT |
 | ai-citations | kokonutUI，MIT |
 | ai-token-alternatives | kokonutUI，MIT |
 | timezone-planner | kokonutUI，MIT |
 | currency-transfer | kokonutUI，MIT |
-| clip-trimmer | kokonutUI，MIT |
 
 ### 地形、摇篮字与转录
 
-登记在 `Batch 24`。上一批鸟群、流星与投票已占用 `Batch 23`。十五项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。`focal-point-picker` 用 `<img>` 替换 `next/image`。离开视口或切到后台时停止动画帧。减弱动效时地形、布帘、等高线、挤出字和形状堆停住，摇篮字和拨弦不再被带动，拉绳松手后直接回位，滚轮立刻停在一格，撤销倒计时的过渡被拿掉，转录滚动不再平滑。拉绳可以用键盘聚焦开关。
+登记在 `Batch 24`。上一批鸟群、流星与投票已占用 `Batch 23`。十三项都移植自 kokonutUI（MIT，Copyright (c) 2025 kokonutUI），源文件在 https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ 。没有新增依赖。离开视口或切到后台时停止动画帧。减弱动效时地形、布帘、等高线、挤出字和形状堆停住，摇篮字和拨弦不再被带动，拉绳松手后直接回位，撤销倒计时的过渡被拿掉，转录滚动不再平滑。拉绳可以用键盘聚焦开关。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1239,14 +1211,12 @@ text-style
 | ai-context-meter | kokonutUI，MIT |
 | ai-tool-approval | kokonutUI，MIT |
 | marking-menu | kokonutUI，MIT |
-| wheel-picker | kokonutUI，MIT |
 | undo-button | kokonutUI，MIT |
-| focal-point-picker | kokonutUI，MIT |
 | synced-transcript | kokonutUI，MIT |
 
 ### 鸟群、流星与投票
 
-登记在 `Batch 23`。上一批漫画字已占用 `Batch 22`。`boids-ecosystem`、`shooting-stars`、`aperture-reveal`、`text-explode`、`flower-menu`、`sibling-focus-nav` 移植自 Animata（MIT，Copyright (c) Animata）。`distorted-glass`、`popover-form`、`floating-panel`、`copy-button`、`feature-voting` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`use-controllable-state` 是原创钩子，给投票列表做受控状态，没有加入 `@radix-ui/react-use-controllable-state`。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧和循环。减弱动效时鸟群和流星静止，光圈按阅读顺序排开，文字不炸开，气泡不动，花朵菜单直接打开，导航只变暗，表单和面板改为淡入，复制图标直接切换，投票列表不播放重排。
+登记在 `Batch 23`。上一批漫画字已占用 `Batch 22`。`boids-ecosystem`、`shooting-stars`、`aperture-reveal`、`text-explode`、`flower-menu`、`sibling-focus-nav` 移植自 Animata（MIT，Copyright (c) Animata）。`distorted-glass`、`popover-form`、`floating-panel`、`copy-button` 移植自 Cult UI（MIT，Copyright (c) 2023 Jordan-Gilliam）。`use-controllable-state` 是原创钩子，做受控或非受控状态，没有加入 `@radix-ui/react-use-controllable-state`。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧和循环。减弱动效时鸟群和流星静止，光圈按阅读顺序排开，文字不炸开，气泡不动，花朵菜单直接打开，导航只变暗，表单和面板改为淡入，复制图标直接切换。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1261,11 +1231,10 @@ text-style
 | popover-form | Cult UI，MIT |
 | floating-panel | Cult UI，MIT |
 | copy-button | Cult UI，MIT |
-| feature-voting | Cult UI，MIT |
 
 ### 漫画字、霓虹边框与反馈
 
-登记在 `Batch 22`。上一批字符点阵已占用 `Batch 21`。`comic-text`、`neon-gradient-card`、`cool-mode`、`pixel-image`、`geo-patterns` 移植自 Magic UI（MIT，Copyright (c) Magic UI）。`border-trail`、`glow-effect`、`text-shimmer-wave`、`morphing-popover`、`toolbar-dynamic`、`toolbar-expandable`、`transition-panel`、`animated-background`、`disclosure` 移植自 Motion Primitives（MIT，Copyright (c) 2024 ibelick，Julien Thibeaut）。`use-click-outside` 与 `use-measure` 是原创钩子，后者用 ResizeObserver 测量尺寸。`feedback-widget` 灵感来自常见 SaaS 反馈组件，原创实现。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧。减弱动效时漫画字不弹跳，霓虹和辉光静止，粒子不出现，像素图直接上色，边框圆点停住，文字只变色，弹层改为淡入，工具栏宽度和高度立即切换，高亮直接跳转，折叠立即展开。
+登记在 `Batch 22`。上一批字符点阵已占用 `Batch 21`。`comic-text`、`neon-gradient-card`、`cool-mode`、`pixel-image`、`geo-patterns` 移植自 Magic UI（MIT，Copyright (c) Magic UI）。`border-trail`、`glow-effect`、`text-shimmer-wave`、`toolbar-dynamic`、`toolbar-expandable`、`animated-background`、`disclosure` 移植自 Motion Primitives（MIT，Copyright (c) 2024 ibelick，Julien Thibeaut）。`use-click-outside` 与 `use-measure` 是原创钩子，后者用 ResizeObserver 测量尺寸。`feedback-widget` 灵感来自常见 SaaS 反馈组件，原创实现。未使用 GSAP 或 tldraw，没有新增依赖。离开视口时停止动画帧。减弱动效时漫画字不弹跳，霓虹和辉光静止，粒子不出现，像素图直接上色，边框圆点停住，文字只变色，工具栏宽度和高度立即切换，高亮直接跳转，折叠立即展开。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -1279,10 +1248,8 @@ text-style
 | border-trail | Motion Primitives，MIT |
 | glow-effect | Motion Primitives，MIT |
 | text-shimmer-wave | Motion Primitives，MIT |
-| morphing-popover | Motion Primitives，MIT |
 | toolbar-dynamic | Motion Primitives，MIT |
 | toolbar-expandable | Motion Primitives，MIT |
-| transition-panel | Motion Primitives，MIT |
 | animated-background | Motion Primitives，MIT |
 | disclosure | Motion Primitives，MIT |
 | feedback-widget | 灵感来自常见 SaaS 反馈组件，原创实现 |

@@ -7,7 +7,6 @@ import { GravityStars } from "../effects/gravity-stars"
 import { InteractiveImageSelector } from "../effects/interactive-image-selector"
 import { LiquidMetal } from "../effects/liquid-metal"
 import { MagneticField } from "../effects/magnetic-field"
-import { PixelBrushCanvas } from "../effects/pixel-brush-canvas"
 import { RansomNote } from "../effects/ransom-note"
 import { Scrubber } from "../effects/scrubber"
 
@@ -91,18 +90,6 @@ export function LiquidMetalDemo({
     </LiquidMetal>
   )
 }
-export function PixelBrushCanvasDemo({
-  grid = true,
-  pixelSize = 18,
-  showTools = true,
-}: {
-  grid?: boolean
-  pixelSize?: number
-  showTools?: boolean
-} = {}) {
-  return <PixelBrushCanvas grid={grid} height={8} pixelSize={pixelSize} showTools={showTools} width={12} />
-}
-
 export function DurationPickerDemo() {
   return <DurationPicker defaultValue={3661} label="航程" scrub />
 }

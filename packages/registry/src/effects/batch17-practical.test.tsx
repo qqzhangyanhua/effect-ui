@@ -11,7 +11,6 @@ import "@testing-library/jest-dom/vitest"
 
 import { EmbedCodeGenerator } from "./embed-code-generator"
 import { FileUploadQueue } from "./file-upload-queue"
-import { PollVote } from "./poll-vote"
 import { SignaturePad } from "./signature-pad"
 import { SocialPostFeed } from "./social-post-feed"
 
@@ -77,11 +76,3 @@ test("输入姓名可以生成签名再清除", async () => {
   expect(screen.getByText("未签名")).toBeInTheDocument()
 })
 
-test("投票后显示比例和总票数", async () => {
-  const user = userEvent.setup()
-  render(<PollVote />)
-  await user.click(screen.getByRole("radio", { name: "本周发布" }))
-  expect(screen.getByText("共 37 票")).toBeInTheDocument()
-  expect(screen.getByRole("radio", { name: /本周发布/ })).toHaveAttribute("aria-checked", "true")
-  expect(screen.getByText(/截止/)).toBeInTheDocument()
-})

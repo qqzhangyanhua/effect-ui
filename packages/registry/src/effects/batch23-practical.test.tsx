@@ -11,7 +11,6 @@ import { ApertureReveal } from "./aperture-reveal"
 import { BoidsEcosystem } from "./boids-ecosystem"
 import { CopyButton } from "./copy-button"
 import { DistortedGlass } from "./distorted-glass"
-import { FeatureVoting } from "./feature-voting"
 
 import { FloatingPanel } from "./floating-panel"
 import { FlowerMenu } from "./flower-menu"
@@ -141,22 +140,6 @@ test("复制成功与失败会切换状态", async () => {
   const failed = render(<CopyButton getValue={() => "secret"} />)
   fireEvent.click(screen.getByRole("button", { name: "复制" }))
   await waitFor(() => expect(failed.container.querySelector("[data-slot=copy-button]")).toHaveAttribute("data-state", "error"))
-  cleanup()
-})
-
-test("投票后票数增加并按票数重排", () => {
-  render(
-    <FeatureVoting
-      items={[
-        { id: "a", title: "甲", description: "先", votes: 3 },
-        { id: "b", title: "乙", description: "后", votes: 3 },
-      ]}
-    />,
-  )
-  expect(screen.getAllByRole("listitem")[0]).toHaveTextContent("甲")
-  fireEvent.click(screen.getByRole("button", { name: "为乙投票" }))
-  expect(screen.getAllByRole("listitem")[0]).toHaveTextContent("乙")
-  expect(screen.getAllByRole("listitem")[0]).toHaveTextContent("4")
   cleanup()
 })
 

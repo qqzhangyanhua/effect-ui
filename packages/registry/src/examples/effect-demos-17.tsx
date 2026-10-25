@@ -9,7 +9,6 @@ import { FileUploadQueue } from "../effects/file-upload-queue"
 import { GalaxySpiral } from "../effects/galaxy-spiral"
 import { PetalDissolveText } from "../effects/petal-dissolve-text"
 import { PolaroidScrollStack } from "../sections/polaroid-scroll-stack"
-import { PollVote } from "../effects/poll-vote"
 import { ReactionBar, type ReactionItem } from "../effects/reaction-bar"
 import { ProximityScaleGrid } from "../effects/proximity-scale-grid"
 import { ScrollSvgGraph } from "../effects/scroll-svg-graph"
@@ -141,10 +140,6 @@ export function SocialPostFeedDemo() {
 
 export function SignaturePadDemo() {
   return <SignaturePad className="w-full" />
-}
-
-export function PollVoteDemo() {
-  return <PollVote className="w-full" />
 }
 
 export function ReactionBarDemo({

@@ -7,17 +7,13 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { Attachment, AttachmentContent, AttachmentDescription, AttachmentTitle } from "./attachment"
 import { BarList } from "./bar-list"
-import { Bubble, BubbleContent } from "./bubble"
 import { EcoModeButton } from "./eco-mode-button"
 import { HoverAttentionButton } from "./hover-attention-button"
-import { Marker, MarkerContent } from "./marker"
 import { MorphingShapesLoader } from "./morphing-shapes-loader"
 import { NeonGlowLoader } from "./neon-glow-loader"
 import { RotatingCompleteButton } from "./rotating-complete-button"
 import { StitchesButton } from "./stitches-button"
-import { Trace, TraceCollapsible, TraceCollapsibleContent, TraceCollapsibleTrigger, TraceLine, TraceTitle } from "./trace"
 
 let reduceMotion = false
 
@@ -84,7 +80,7 @@ test("减弱动效时色块停住，节能按钮直接切换", () => {
   expect(screen.getByText("节能开")).toBeInTheDocument()
 })
 
-test("完成按钮、排行和折叠步骤可以操作", () => {
+test("完成按钮和排行可以操作", () => {
   render(
     <div>
       <RotatingCompleteButton duration={0} />
@@ -95,47 +91,20 @@ test("完成按钮、排行和折叠步骤可以操作", () => {
         ]}
         onValueChange={() => {}}
       />
-      <Trace>
-        <TraceCollapsible>
-          <TraceCollapsibleTrigger>
-            <TraceLine>
-              <TraceTitle>核对航线</TraceTitle>
-            </TraceLine>
-          </TraceCollapsibleTrigger>
-          <TraceCollapsibleContent>先看北窗</TraceCollapsibleContent>
-        </TraceCollapsible>
-      </Trace>
     </div>,
   )
   fireEvent.click(screen.getByRole("button", { name: "标为完成" }))
   expect(screen.getByText("完成 ✓")).toBeInTheDocument()
   expect(screen.getByRole("button", { name: "灯塔" })).toBeInTheDocument()
-  fireEvent.click(screen.getByRole("button", { name: /核对航线/ }))
-  expect(screen.getByText("先看北窗")).toBeInTheDocument()
 })
 
-test("附件、气泡、分隔和缝线按钮都在", () => {
+test("缝线按钮和注意力按钮都在", () => {
   render(
     <div>
-      <Attachment>
-        <AttachmentContent>
-          <AttachmentTitle>航图.png</AttachmentTitle>
-          <AttachmentDescription>128 KB</AttachmentDescription>
-        </AttachmentContent>
-      </Attachment>
-      <Bubble>
-        <BubbleContent>看到了</BubbleContent>
-      </Bubble>
-      <Marker variant="separator">
-        <MarkerContent>今天</MarkerContent>
-      </Marker>
       <StitchesButton>缝线</StitchesButton>
       <HoverAttentionButton effect="shake">摇一下</HoverAttentionButton>
     </div>,
   )
-  expect(screen.getByText("航图.png")).toBeInTheDocument()
-  expect(screen.getByText("看到了")).toBeInTheDocument()
-  expect(screen.getByText("今天")).toBeInTheDocument()
   expect(screen.getByRole("button", { name: "缝线" })).toHaveAttribute("data-slot", "stitches-button")
   expect(screen.getByRole("button", { name: "摇一下" })).toHaveAttribute("data-effect", "shake")
 })

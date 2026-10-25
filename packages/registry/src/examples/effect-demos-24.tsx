@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { Bell, User } from "lucide-react"
 
 import { AnimatedBackground } from "../effects/animated-background"
@@ -11,13 +10,11 @@ import { Disclosure, DisclosureContent, DisclosureTrigger } from "../effects/dis
 import { FeedbackWidget } from "../effects/feedback-widget"
 import { GeoPatterns } from "../effects/geo-patterns"
 import { GlowEffect } from "../effects/glow-effect"
-import { MorphingPopover, MorphingPopoverContent, MorphingPopoverTrigger } from "../effects/morphing-popover"
 import { NeonGradientCard } from "../effects/neon-gradient-card"
 import { PixelImage } from "../effects/pixel-image"
 import { TextShimmerWave } from "../effects/text-shimmer-wave"
 import { ToolbarDynamic } from "../effects/toolbar-dynamic"
 import { ToolbarExpandable } from "../effects/toolbar-expandable"
-import { TransitionPanel } from "../effects/transition-panel"
 
 const pixelSrc =
   "data:image/svg+xml," +
@@ -116,19 +113,6 @@ export function TextShimmerWaveDemo({
   )
 }
 
-export function MorphingPopoverDemo() {
-  return (
-    <div className="flex h-48 items-end">
-      <MorphingPopover>
-        <MorphingPopoverTrigger>打开</MorphingPopoverTrigger>
-        <MorphingPopoverContent>
-          <p className="text-sm">变形后的面板</p>
-        </MorphingPopoverContent>
-      </MorphingPopover>
-    </div>
-  )
-}
-
 export function ToolbarDynamicDemo() {
   return (
     <ToolbarDynamic
@@ -148,21 +132,6 @@ export function ToolbarExpandableDemo() {
         { id: "bell", label: "通知", icon: <Bell className="size-5" />, content: <p>3 条新消息</p> },
       ]}
     />
-  )
-}
-
-export function TransitionPanelDemo() {
-  const [index, setIndex] = useState(0)
-  return (
-    <div className="w-full max-w-md space-y-3">
-      <TransitionPanel activeIndex={index} className="h-24 rounded-xl border bg-card">
-        <p className="p-4 text-sm">第一页</p>
-        <p className="p-4 text-sm">第二页</p>
-      </TransitionPanel>
-      <button type="button" className="h-9 rounded-md border px-3 text-sm" onClick={() => setIndex((value) => (value + 1) % 2)}>
-        切换
-      </button>
-    </div>
   )
 }
 

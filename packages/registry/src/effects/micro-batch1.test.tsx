@@ -12,16 +12,11 @@ import { AIToolApproval, type ToolCall } from "./ai-tool-approval"
 import { AnimatedBackground } from "./animated-background"
 import { CoolMode } from "./cool-mode"
 import { Disclosure, DisclosureContent, DisclosureTrigger } from "./disclosure"
-import { FeatureVoting } from "./feature-voting"
 import { FloatingPanel } from "./floating-panel"
-import { FocalPointPicker } from "./focal-point-picker"
 import { LiquidGauge } from "./liquid-gauge"
-import { MorphingPopover, MorphingPopoverContent, MorphingPopoverTrigger } from "./morphing-popover"
 import { PopoverForm } from "./popover-form"
 import { RubberBandDrag } from "./rubber-band-drag"
 import { SyncedTranscript } from "./synced-transcript"
-import { TransitionPanel } from "./transition-panel"
-import { WheelPicker } from "./wheel-picker"
 
 let reduceMotion = false
 const frames: FrameRequestCallback[] = []
@@ -102,8 +97,6 @@ const call: ToolCall = {
   state: "approval-requested",
 }
 
-const photo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-
 test("拖动橡皮筋节点会离开静止点", () => {
   const originalCtm = SVGSVGElement.prototype.getScreenCTM
   const originalCapture = Element.prototype.setPointerCapture
@@ -164,59 +157,6 @@ test("减弱动效时点击不产生粒子", () => {
   fireEvent.pointerDown(screen.getByRole("button", { name: "喷" }), { clientX: 20, clientY: 20 })
   expect(slot(view.container, "cool-mode")).toHaveAttribute("data-reduced", "true")
   expect(document.getElementById("effect-ui-cool-mode")).toBeNull()
-})
-
-test("变形弹层可以打开", () => {
-  render(
-    <MorphingPopover>
-      <MorphingPopoverTrigger>打开</MorphingPopoverTrigger>
-      <MorphingPopoverContent>
-        <p>面板正文</p>
-      </MorphingPopoverContent>
-    </MorphingPopover>,
-  )
-  fireEvent.click(screen.getByRole("button", { name: "打开" }))
-  expect(screen.getByRole("dialog")).toBeInTheDocument()
-  expect(screen.getByText("面板正文")).toBeInTheDocument()
-})
-
-test("减弱动效时变形弹层仍然能打开", () => {
-  reduceMotion = true
-  render(
-    <MorphingPopover>
-      <MorphingPopoverTrigger>打开</MorphingPopoverTrigger>
-      <MorphingPopoverContent>
-        <p>面板正文</p>
-      </MorphingPopoverContent>
-    </MorphingPopover>,
-  )
-  fireEvent.click(screen.getByRole("button", { name: "打开" }))
-  expect(screen.getByRole("dialog")).toHaveTextContent("面板正文")
-})
-
-test("切换面板只显示当前页", () => {
-  const view = render(
-    <TransitionPanel activeIndex={0}>
-      <p>第一页</p>
-      <p>第二页</p>
-    </TransitionPanel>,
-  )
-  expect(screen.getByText("第一页")).toBeInTheDocument()
-  expect(screen.queryByText("第二页")).not.toBeInTheDocument()
-  expect(slot(view.container, "transition-panel")).toHaveAttribute("data-reduced", "false")
-})
-
-test("减弱动效时切换面板只淡入", () => {
-  reduceMotion = true
-  const view = render(
-    <TransitionPanel activeIndex={1} direction="left">
-      <p>第一页</p>
-      <p>第二页</p>
-    </TransitionPanel>,
-  )
-  expect(slot(view.container, "transition-panel")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByText("第二页")).toBeInTheDocument()
-  expect(screen.queryByText("第一页")).not.toBeInTheDocument()
 })
 
 test("共享高亮跟着点击移动", () => {
@@ -304,33 +244,6 @@ test("减弱动效时浮动面板标记为静止", () => {
   expect(screen.getByRole("button", { name: "打开面板" })).toBeInTheDocument()
 })
 
-test("投票后票数增加", () => {
-  render(
-    <FeatureVoting
-      items={[
-        { id: "a", title: "甲", description: "先", votes: 3 },
-        { id: "b", title: "乙", description: "后", votes: 1 },
-      ]}
-    />,
-  )
-  fireEvent.click(screen.getByRole("button", { name: "为乙投票" }))
-  expect(screen.getByRole("button", { name: "为乙投票" })).toHaveTextContent("2")
-})
-
-test("减弱动效时投票列表不播放重排", () => {
-  reduceMotion = true
-  const view = render(
-    <FeatureVoting
-      items={[
-        { id: "a", title: "甲", description: "先", votes: 3 },
-        { id: "b", title: "乙", description: "后", votes: 1 },
-      ]}
-    />,
-  )
-  expect(slot(view.container, "feature-voting")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getAllByRole("listitem")[0]).toHaveTextContent("甲")
-})
-
 test("上下文用量显示模型名", () => {
   const view = render(<AIContextMeter />)
   expect(screen.getByText("Claude Opus")).toBeInTheDocument()
@@ -356,31 +269,6 @@ test("减弱动效时批准卡直接显示", () => {
   const view = render(<AIToolApproval calls={[call]} onRespond={() => {}} />)
   expect(slot(view.container, "ai-tool-approval")).toHaveAttribute("data-reduced", "true")
   expect(screen.getByText("Run a command")).toBeInTheDocument()
-})
-
-test("滚轮暴露旋钮", () => {
-  const view = render(<WheelPicker label="时间" />)
-  expect(screen.getAllByRole("spinbutton").length).toBeGreaterThan(0)
-  expect(slot(view.container, "wheel-picker")).toHaveAttribute("data-reduced", "false")
-})
-
-test("减弱动效时滚轮直接停在目标", () => {
-  reduceMotion = true
-  const view = render(<WheelPicker label="时间" />)
-  expect(slot(view.container, "wheel-picker")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getAllByRole("spinbutton").length).toBeGreaterThan(0)
-})
-
-test("焦点选择器用传入的图片", () => {
-  render(<FocalPointPicker alt="山" src={photo} />)
-  expect(screen.getByRole("img", { name: "山" })).toHaveAttribute("src", photo)
-})
-
-test("减弱动效时焦点不再滑过去", () => {
-  reduceMotion = true
-  const view = render(<FocalPointPicker alt="山" src={photo} />)
-  expect(slot(view.container, "focal-point-picker")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByRole("img", { name: "山" })).toBeInTheDocument()
 })
 
 test("点击转录句子会跳到那一句", () => {

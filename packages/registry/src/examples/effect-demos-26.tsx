@@ -5,7 +5,6 @@ import { AIContextMeter } from "../effects/ai-context-meter"
 import { AIToolApproval } from "../effects/ai-tool-approval"
 import { CradleText } from "../effects/cradle-text"
 import { DrapeBackground } from "../effects/drape-background"
-import { FocalPointPicker } from "../effects/focal-point-picker"
 import { MarkingMenu } from "../effects/marking-menu"
 import { PluckedText } from "../effects/plucked-text"
 import { PullCord } from "../effects/pull-cord"
@@ -14,11 +13,6 @@ import { SwooshText } from "../effects/swoosh-text"
 import { SyncedTranscript } from "../effects/synced-transcript"
 import { TopoBackground } from "../effects/topo-background"
 import { UndoButton } from "../effects/undo-button"
-import { WheelPicker } from "../effects/wheel-picker"
-
-const photo = `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0ea5e9"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs><rect width="1600" height="1067" fill="url(#g)"/><circle cx="1080" cy="390" r="140" fill="#fff"/></svg>`,
-)}`
 
 export function ActivityTerrainDemo({
   endDate = "2026-10-11",
@@ -120,14 +114,6 @@ export function MarkingMenuDemo() {
   return <MarkingMenu className="w-full" />
 }
 
-export function WheelPickerDemo() {
-  return (
-    <div className="flex w-full justify-center">
-      <WheelPicker className="w-full max-w-sm" />
-    </div>
-  )
-}
-
 export function UndoButtonDemo({
   label = "Archive",
   doneLabel = "Archived",
@@ -138,18 +124,6 @@ export function UndoButtonDemo({
       <UndoButton doneLabel={doneLabel} duration={duration} label={label} />
     </div>
   )
-}
-
-export function FocalPointPickerDemo({
-  src = photo,
-  alt = "渐变里的白点",
-  imageRatio = 1.5,
-}: {
-  src?: string
-  alt?: string
-  imageRatio?: number
-} = {}) {
-  return <FocalPointPicker alt={alt} className="w-full" src={src} imageRatio={imageRatio} />
 }
 
 export function SyncedTranscriptDemo() {

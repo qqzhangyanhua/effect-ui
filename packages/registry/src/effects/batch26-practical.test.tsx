@@ -14,7 +14,6 @@ import { GravityStars } from "./gravity-stars"
 import { InteractiveImageSelector } from "./interactive-image-selector"
 import { LiquidMetal } from "./liquid-metal"
 import { MagneticField } from "./magnetic-field"
-import { PixelBrushCanvas } from "./pixel-brush-canvas"
 import { RansomNote } from "./ransom-note"
 import { Scrubber } from "./scrubber"
 
@@ -104,7 +103,7 @@ test("减弱动效时极光、星星和金属停在标记上", () => {
   reduceMotion = false
 })
 
-test("时长、擦洗、像素和图片选择能改状态", () => {
+test("时长、擦洗和图片选择能改状态", () => {
   reduceMotion = false
   render(<DurationPicker defaultValue={60} />)
   const minutes = screen.getByRole("spinbutton", { name: "minute" })
@@ -114,12 +113,6 @@ test("时长、擦洗、像素和图片选择能改状态", () => {
 
   const scrubber = render(<Scrubber defaultValue={2} label="光圈" max={8} min={1} />)
   expect(slot(scrubber.container, "scrubber")).toHaveTextContent("光圈")
-  cleanup()
-
-  const pixels = render(<PixelBrushCanvas height={4} showTools width={4} />)
-  expect(slot(pixels.container, "pixel-brush-canvas")).toBeTruthy()
-  fireEvent.click(screen.getByRole("button", { name: /Eraser/ }))
-  expect(screen.getByRole("button", { name: /Eraser/ })).toHaveAttribute("aria-pressed", "true")
   cleanup()
 
   render(

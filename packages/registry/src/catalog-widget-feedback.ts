@@ -109,7 +109,7 @@ export const widgetFeedbackComponents: ComponentMeta[] = [
     name: "feedback-widget",
     batch: 22,
     title: "Feedback Widget",
-    description: "右下角 Feedback 按钮通过 morphing-popover 变成面板。四个表情选中时弹一下，可填写文字并切换是否附上截图。提交后显示 Thanks ✓ 并自动关闭，调用 onSubmit({ rating, message })。灵感来自常见 SaaS 反馈组件，原创实现。减弱动效时不弹跳、不变形。",
+    description: "右下角 Feedback 按钮打开面板。四个表情选中时弹一下，可填写文字并切换是否附上截图。提交后显示 Thanks ✓ 并自动关闭，调用 onSubmit({ rating, message })。点外面或按 Esc 关闭。灵感来自常见 SaaS 反馈组件，原创实现。减弱动效时不弹跳。",
     layer: "widget",
     purposeGroup: "feedback",
     source: "original",

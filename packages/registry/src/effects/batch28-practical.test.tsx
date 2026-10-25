@@ -18,7 +18,6 @@ import { MorphIcon } from "./morph-icon"
 import { PrismSweepTransition } from "./prism-sweep-transition"
 
 import { ScrollImageReveal } from "./scroll-image-reveal"
-import { SocialSelector } from "./social-selector"
 import { SplashMask } from "./splash-mask"
 
 
@@ -117,14 +116,8 @@ test("星标组件只在传入接口时请求网络", async () => {
   reduceMotion = false
 })
 
-test("社交、导航和数字徽章能改状态", async () => {
+test("导航和数字徽章能改状态", async () => {
   reduceMotion = true
-  render(<SocialSelector handle="northwindow" />)
-  expect(screen.getByText("@northwindow")).toBeInTheDocument()
-  fireEvent.click(screen.getByRole("button", { name: "Select Bluesky platform" }))
-  expect(screen.getByText("bsky.app")).toBeInTheDocument()
-  cleanup()
-
   render(
     <ExpandableNavbar items={[{ id: "work", label: "作品", panel: <p>夜航</p> }]} />,
   )

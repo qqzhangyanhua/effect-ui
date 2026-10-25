@@ -54,10 +54,6 @@ export const kiboFile = (name: string) => `https://github.com/shadcnblocks/kibo/
 export const syntax = "移植自 SyntaxUI，MIT，Copyright (c) 2024 SyntaxUI。"
 export const syntaxFile = (path: string) => `https://github.com/SyntaxUI/syntaxui/blob/main/src/showcase/${path}`
 
-/** ReUI */
-export const reui = "移植自 ReUI，MIT，Copyright (c) 2025 Keenthemes Inc。"
-export const reuiFile = (name: string) => `https://github.com/keenthemes/reui/blob/main/registry/bases/radix/ui/${name}.tsx`
-
 /** Tremor Raw */
 export const tremor = "移植自 Tremor Raw，Apache-2.0，Copyright 2025 Tremor。本文件已修改。"
 export const tremorFile = (path: string) => `https://github.com/tremorlabs/tremor/blob/main/src/components/${path}`
@@ -141,10 +137,6 @@ export const seraFile = (dir: string, name: string) => `https://github.com/serau
 /** HextaUI */
 export const hexta = "移植自 HextaUI，MIT，Copyright (c) 2026 Preet Suthar。"
 export const hextaHook = (name: string) => `https://github.com/preetsuthar17/HextaUI/blob/main/hooks/${name}.ts`
-
-/** Motiq */
-export const motiq = "移植自 Motiq，MIT，Copyright (c) 2026 Mahammad Rustamov。"
-export const motiqFile = (dir: string, name: string) => `https://github.com/RMahammad/motiq/blob/main/packages/registry/registry/${dir}/${name}.tsx`
 
 /** Framekit UI */
 export const framekit = "移植自 Framekit UI，MIT，Copyright (c) 2026 Framekit UI contributors。"

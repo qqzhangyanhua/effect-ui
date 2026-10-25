@@ -20,7 +20,6 @@ import { NovatrixBackground } from "./novatrix-background"
 import { PinnedList } from "./pinned-list"
 
 import { UnlockFaceId } from "./unlock-face-id"
-import { VectorEditorToolbar } from "./vector-editor-toolbar"
 
 let reduceMotion = false
 
@@ -70,10 +69,6 @@ vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) =>
 )
 vi.stubGlobal("cancelAnimationFrame", (id: number) => window.clearTimeout(id))
 
-function Icon({ className }: { className?: string }) {
-  return <svg className={className} />
-}
-
 function slot(container: HTMLElement, name: string) {
   return container.querySelector(`[data-slot=${name}]`)
 }
@@ -86,7 +81,7 @@ test("减弱动效时色波停在标记上", () => {
   reduceMotion = false
 })
 
-test("置顶、滑卡、扫描和工具条能改状态", () => {
+test("置顶、滑卡和扫描能改状态", () => {
   reduceMotion = true
   render(
     <PinnedList
@@ -116,16 +111,6 @@ test("置顶、滑卡、扫描和工具条能改状态", () => {
   render(<UnlockFaceId scanDuration={50} />)
   fireEvent.click(screen.getByRole("button", { name: "Scan to unlock" }))
   expect(screen.getByRole("status")).toHaveTextContent("Scanning face…")
-  cleanup()
-
-  render(
-    <VectorEditorToolbar
-      tools={[{ icon: Icon, id: "select", label: "选择", shortcut: "v" }]}
-    />,
-  )
-  expect(slot(document.body, "vector-editor-toolbar")).toBeTruthy()
-  fireEvent.keyDown(window, { key: "v" })
-  expect(screen.getByRole("button", { name: /选择/ })).toBeInTheDocument()
   cleanup()
   reduceMotion = false
 })

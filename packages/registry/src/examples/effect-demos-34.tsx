@@ -2,35 +2,16 @@
 
 import { useState } from "react"
 
-import {
-  Attachment,
-  AttachmentContent,
-  AttachmentDescription,
-  AttachmentImage,
-  AttachmentMedia,
-  AttachmentTitle,
-} from "../effects/attachment"
 import { BarList } from "../effects/bar-list"
-import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from "../effects/bubble"
 import { CategoryBar } from "../effects/category-bar"
 import { EcoModeButton } from "../effects/eco-mode-button"
 import { HoverAttentionButton } from "../effects/hover-attention-button"
 import { HoverSpringFeatures } from "../effects/hover-spring-features"
-import { Marker, MarkerContent } from "../effects/marker"
 import { MorphingShapesLoader } from "../effects/morphing-shapes-loader"
 import { NeonGlowLoader } from "../effects/neon-glow-loader"
 import { RippleWaveLoader } from "../effects/ripple-wave-loader"
 import { RotatingCompleteButton } from "../effects/rotating-complete-button"
 import { StitchesButton } from "../effects/stitches-button"
-import {
-  Trace,
-  TraceCollapsible,
-  TraceCollapsibleContent,
-  TraceCollapsibleTrigger,
-  TraceDescription,
-  TraceLine,
-  TraceTitle,
-} from "../effects/trace"
 
 function swatch(color: string) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect width="100%" height="100%" fill="${color}"/></svg>`
@@ -125,58 +106,6 @@ export function StitchesButtonDemo() {
     <div className="grid h-24 place-items-center">
       <StitchesButton>缝线</StitchesButton>
     </div>
-  )
-}
-
-export function AttachmentDemo() {
-  return (
-    <Attachment orientation="horizontal" state="done">
-      <AttachmentMedia variant="image">
-        <AttachmentImage alt="航图" src={swatch("#312e81")} />
-      </AttachmentMedia>
-      <AttachmentContent>
-        <AttachmentTitle>航图.png</AttachmentTitle>
-        <AttachmentDescription>128 KB</AttachmentDescription>
-      </AttachmentContent>
-    </Attachment>
-  )
-}
-
-export function BubbleDemo() {
-  return (
-    <BubbleGroup className="w-full max-w-sm">
-      <Bubble align="start" variant="muted">
-        <BubbleContent>灯塔还亮着吗？</BubbleContent>
-      </Bubble>
-      <Bubble align="end">
-        <BubbleContent>看到了，靠港。</BubbleContent>
-        <BubbleReactions>🎉</BubbleReactions>
-      </Bubble>
-    </BubbleGroup>
-  )
-}
-
-export function MarkerDemo() {
-  return (
-    <Marker variant="separator">
-      <MarkerContent>今天</MarkerContent>
-    </Marker>
-  )
-}
-
-export function TraceDemo() {
-  return (
-    <Trace className="max-w-sm">
-      <TraceCollapsible>
-        <TraceCollapsibleTrigger>
-          <TraceLine status="running">
-            <TraceTitle>核对航线</TraceTitle>
-            <TraceDescription>2 步</TraceDescription>
-          </TraceLine>
-        </TraceCollapsibleTrigger>
-        <TraceCollapsibleContent>先看北窗，再对灯塔。</TraceCollapsibleContent>
-      </TraceCollapsible>
-    </Trace>
   )
 }
 

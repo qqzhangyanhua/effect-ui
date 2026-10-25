@@ -11,13 +11,11 @@ MotionGlobalConfig.skipAnimations = true
 import { ActivityTerrain } from "./activity-terrain"
 import { AIToolApproval, type ToolCall } from "./ai-tool-approval"
 import { CradleText } from "./cradle-text"
-import { FocalPointPicker } from "./focal-point-picker"
 import { MarkingMenu } from "./marking-menu"
 import { PullCord } from "./pull-cord"
 import { SwooshText } from "./swoosh-text"
 import { SyncedTranscript } from "./synced-transcript"
 import { UndoButton } from "./undo-button"
-import { WheelPicker } from "./wheel-picker"
 
 let reduceMotion = false
 
@@ -69,8 +67,6 @@ vi.stubGlobal("cancelAnimationFrame", (id: number) => window.clearTimeout(id))
 SVGElement.prototype.getTotalLength = () => 120
 Element.prototype.scrollTo = () => {}
 
-const photo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-
 test("减弱动效时地形、摇篮字和挤出字停在标记上", () => {
   reduceMotion = true
   const terrain = render(<ActivityTerrain data={[1, 2, 3]} />)
@@ -106,14 +102,6 @@ test("撤销按钮进入倒计时", () => {
   cleanup()
 })
 
-test("焦点选择器用图片而不是 next/image", () => {
-  render(<FocalPointPicker alt="山" src={photo} />)
-  const image = screen.getByRole("img", { name: "山" })
-  expect(image.tagName).toBe("IMG")
-  expect(image).toHaveAttribute("src", photo)
-  cleanup()
-})
-
 test("转录点击句子会把时间跳过去", () => {
   render(
     <SyncedTranscript
@@ -128,11 +116,7 @@ test("转录点击句子会把时间跳过去", () => {
   cleanup()
 })
 
-test("滚轮和标记菜单都能用键盘打开", () => {
-  render(<WheelPicker label="时间" />)
-  expect(screen.getAllByRole("spinbutton").length).toBeGreaterThan(0)
-  cleanup()
-
+test("标记菜单能打开", () => {
   render(<MarkingMenu />)
   fireEvent.click(screen.getByRole("button", { name: "Menu" }))
   expect(screen.getByRole("menu", { name: "Go to" })).toBeInTheDocument()

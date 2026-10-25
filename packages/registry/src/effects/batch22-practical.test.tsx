@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { MotionGlobalConfig } from "motion"
 import { expect, test, vi } from "vitest"
-import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react"
+import { cleanup, fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
@@ -14,7 +14,6 @@ import { CoolMode } from "./cool-mode"
 import { Disclosure, DisclosureContent, DisclosureTrigger } from "./disclosure"
 import { FeedbackWidget } from "./feedback-widget"
 import { GeoPatterns } from "./geo-patterns"
-import { MorphingPopover, MorphingPopoverContent, MorphingPopoverTrigger } from "./morphing-popover"
 
 let reduceMotion = false
 
@@ -82,26 +81,6 @@ test("几何图案可以画斜纹", () => {
   const { container } = render(<GeoPatterns variant="striped" direction="right" />)
   expect(container.querySelector("line")).toBeTruthy()
   cleanup()
-})
-
-test("变形弹层按 Esc 关闭", async () => {
-  reduceMotion = true
-  render(
-    <MorphingPopover>
-      <MorphingPopoverTrigger>打开</MorphingPopoverTrigger>
-      <MorphingPopoverContent>
-        <p>面板正文</p>
-      </MorphingPopoverContent>
-    </MorphingPopover>,
-  )
-  fireEvent.click(screen.getByRole("button", { name: "打开" }))
-  fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" })
-  expect(screen.getByRole("button", { name: "打开" })).toHaveAttribute("aria-expanded", "false")
-  await waitFor(() => {
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
-  })
-  cleanup()
-  reduceMotion = false
 })
 
 test("折叠区可以展开", () => {

@@ -7,8 +7,6 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { AvatarPicker } from "./avatar-picker"
-import { ClipTrimmer } from "./clip-trimmer"
 import { CountBadge } from "./count-badge"
 import { DurationPicker } from "./duration-picker"
 import { ExposureSlider } from "./exposure-slider"
@@ -16,12 +14,9 @@ import { LiquidSlider } from "./liquid-slider"
 import { MorphIcon } from "./morph-icon"
 import { MusicToggle } from "./music-toggle"
 import { PinnedList } from "./pinned-list"
-import { PixelBrushCanvas } from "./pixel-brush-canvas"
 import { Scrubber } from "./scrubber"
-import { SocialSelector } from "./social-selector"
 import { TimezonePlanner } from "./timezone-planner"
 import { UnlockFaceId } from "./unlock-face-id"
-import { VectorEditorToolbar } from "./vector-editor-toolbar"
 
 let reduceMotion = false
 
@@ -87,20 +82,9 @@ function slot(container: HTMLElement, name: string) {
   return node as HTMLElement
 }
 
-function Mark() {
-  return <svg />
-}
-
-const film = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-
 const pins = [
   { id: "north", title: "北窗" },
   { id: "night", title: "夜航" },
-]
-
-const tools = [
-  { icon: Mark, id: "select", label: "选择", shortcut: "v" },
-  { icon: Mark, id: "pen", label: "钢笔", shortcut: "p" },
 ]
 
 test("水位滑块用方向键增加读数", () => {
@@ -120,21 +104,6 @@ test("水位滑块在减弱动效时仍能改读数", () => {
   expect(water).toHaveAttribute("aria-valuenow", "1300")
 })
 
-test("头像选择能改显示名", () => {
-  render(<AvatarPicker submitLabel="继续" title="选择头像" />)
-  fireEvent.change(screen.getByDisplayValue("Robin Vale"), { target: { value: "北窗" } })
-  expect(screen.getByDisplayValue("北窗")).toBeInTheDocument()
-  expect(screen.getByRole("button", { name: "继续" })).toBeEnabled()
-})
-
-test("头像选择在减弱动效时仍能改显示名", () => {
-  reduceMotion = true
-  const view = render(<AvatarPicker submitLabel="继续" title="选择头像" />)
-  expect(slot(view.container, "avatar-picker")).toHaveAttribute("data-reduced", "true")
-  fireEvent.change(screen.getByDisplayValue("Robin Vale"), { target: { value: "北窗" } })
-  expect(screen.getByDisplayValue("北窗")).toBeInTheDocument()
-})
-
 test("时区表盘用方向键推后会议时间", () => {
   render(<TimezonePlanner />)
   const meeting = screen.getByRole("slider", { name: "Meeting time" })
@@ -150,34 +119,6 @@ test("时区表盘在减弱动效时仍能推后会议时间", () => {
   const meeting = screen.getByRole("slider", { name: "Meeting time" })
   fireEvent.keyDown(meeting, { key: "ArrowRight" })
   expect(Number(meeting.getAttribute("aria-valuenow"))).toBeGreaterThan(960)
-})
-
-test("剪辑条能开始播放", () => {
-  render(<ClipTrimmer alt="山谷" src={film} />)
-  fireEvent.click(screen.getByRole("button", { name: "Play" }))
-  expect(screen.getByRole("button", { name: "Pause" })).toBeInTheDocument()
-})
-
-test("剪辑条在减弱动效时仍能开始播放", () => {
-  reduceMotion = true
-  const view = render(<ClipTrimmer alt="山谷" src={film} />)
-  expect(slot(view.container, "clip-trimmer")).toHaveAttribute("data-reduced", "true")
-  fireEvent.click(screen.getByRole("button", { name: "Play" }))
-  expect(screen.getByRole("button", { name: "Pause" })).toBeInTheDocument()
-})
-
-test("像素画布能切到橡皮", () => {
-  render(<PixelBrushCanvas height={4} showTools width={4} />)
-  fireEvent.click(screen.getByRole("button", { name: /Eraser/ }))
-  expect(screen.getByRole("button", { name: /Eraser/ })).toHaveAttribute("aria-pressed", "true")
-})
-
-test("像素画布在减弱动效时仍能切到橡皮", () => {
-  reduceMotion = true
-  const view = render(<PixelBrushCanvas height={4} showTools width={4} />)
-  expect(slot(view.container, "pixel-brush-canvas")).toHaveAttribute("data-reduced", "true")
-  fireEvent.click(screen.getByRole("button", { name: /Eraser/ }))
-  expect(screen.getByRole("button", { name: /Eraser/ })).toHaveAttribute("aria-pressed", "true")
 })
 
 test("时长选择用方向键增加分钟", () => {
@@ -242,21 +183,6 @@ test("置顶列表在减弱动效时仍能钉住一条", () => {
   expect(screen.getByRole("button", { name: "Unpin 北窗" })).toHaveAttribute("aria-pressed", "true")
 })
 
-test("矢量工具条用快捷键切换工具", () => {
-  render(<VectorEditorToolbar tools={tools} />)
-  expect(screen.getByRole("button", { name: /选择/ })).toHaveAttribute("aria-pressed", "true")
-  fireEvent.keyDown(document, { key: "p" })
-  expect(screen.getByRole("button", { name: /钢笔/ })).toHaveAttribute("aria-pressed", "true")
-})
-
-test("矢量工具条在减弱动效时仍能切换工具", () => {
-  reduceMotion = true
-  const view = render(<VectorEditorToolbar tools={tools} />)
-  expect(slot(view.container, "vector-editor-toolbar")).toHaveAttribute("data-reduced", "true")
-  fireEvent.keyDown(document, { key: "p" })
-  expect(screen.getByRole("button", { name: /钢笔/ })).toHaveAttribute("aria-pressed", "true")
-})
-
 test("面容解锁点击后进入扫描", () => {
   render(<UnlockFaceId scanDuration={50} />)
   fireEvent.click(screen.getByRole("button", { name: "Scan to unlock" }))
@@ -315,16 +241,3 @@ test("数字徽章在减弱动效时显示 99+ 且不再脉冲", async () => {
   expect(document.querySelector(".animate-ping")).toBeNull()
 })
 
-test("社交选择能切到 Bluesky", () => {
-  render(<SocialSelector handle="northwindow" />)
-  fireEvent.click(screen.getByRole("button", { name: "Select Bluesky platform" }))
-  expect(screen.getByText("bsky.app")).toBeInTheDocument()
-})
-
-test("社交选择在减弱动效时仍能切到 Bluesky", () => {
-  reduceMotion = true
-  const view = render(<SocialSelector handle="northwindow" />)
-  expect(slot(view.container, "social-selector")).toHaveAttribute("data-reduced", "true")
-  fireEvent.click(screen.getByRole("button", { name: "Select Bluesky platform" }))
-  expect(screen.getByText("bsky.app")).toBeInTheDocument()
-})

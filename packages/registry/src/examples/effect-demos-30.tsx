@@ -13,7 +13,6 @@ import { MorphIcon } from "../effects/morph-icon"
 import { PrismSweepTransition } from "../effects/prism-sweep-transition"
 
 import { ScrollImageReveal } from "../effects/scroll-image-reveal"
-import { SocialSelector } from "../effects/social-selector"
 import { SplashMask } from "../effects/splash-mask"
 
 
@@ -152,10 +151,6 @@ export function CountBadgeDemo({
       <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted text-sm">信</span>
     </CountBadge>
   )
-}
-
-export function SocialSelectorDemo() {
-  return <SocialSelector handle="northwindow" />
 }
 
 export function GitHubStarsAnimationDemo({

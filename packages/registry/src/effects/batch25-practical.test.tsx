@@ -12,8 +12,6 @@ import { AITextLoading } from "./ai-text-loading"
 import { AITokenAlternatives } from "./ai-token-alternatives"
 import { AIVoice } from "./ai-voice"
 import { AttractButton } from "./attract-button"
-import { AvatarPicker } from "./avatar-picker"
-import { ClipTrimmer } from "./clip-trimmer"
 import { CurrencyTransfer } from "./currency-transfer"
 import { DotField } from "./dot-field"
 import { LiquidGauge } from "./liquid-gauge"
@@ -70,13 +68,11 @@ vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) =>
 )
 vi.stubGlobal("cancelAnimationFrame", (id: number) => window.clearTimeout(id))
 
-const film = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-
 function slot(container: HTMLElement, name: string) {
   return container.querySelector(`[data-slot=${name}]`)
 }
 
-test("减弱动效时收据、液面、点阵和裁切停在标记上", () => {
+test("减弱动效时收据、液面和点阵停在标记上", () => {
   reduceMotion = true
   const receipt = render(<ReceiptPrinter autoPrint={false} merchant="街角咖啡" />)
   expect(slot(receipt.container, "receipt-printer")).toHaveAttribute("data-reduced", "true")
@@ -92,11 +88,6 @@ test("减弱动效时收据、液面、点阵和裁切停在标记上", () => {
   expect(slot(field.container, "dot-field")).toHaveAttribute("data-reduced", "true")
   expect(field.container.querySelector("canvas")).toBeTruthy()
   field.unmount()
-
-  const clip = render(<ClipTrimmer alt="山谷" src={film} />)
-  expect(slot(clip.container, "clip-trimmer")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByRole("button", { name: "Play" })).toBeInTheDocument()
-  clip.unmount()
   cleanup()
 })
 
@@ -118,7 +109,7 @@ test("水位滑块和时区表盘能用方向键改变读数", () => {
   cleanup()
 })
 
-test("铁屑按钮、加载短句、录音和头像能读出控件", () => {
+test("铁屑按钮、加载短句和录音能读出控件", () => {
   reduceMotion = true
   const button = render(<AttractButton>靠近</AttractButton>)
   expect(slot(button.container, "attract-button")).toHaveAttribute("data-reduced", "true")
@@ -136,13 +127,6 @@ test("铁屑按钮、加载短句、录音和头像能读出控件", () => {
   fireEvent.click(screen.getByRole("button", { name: "Start recording" }))
   expect(screen.getByRole("button", { name: "Stop recording" })).toBeInTheDocument()
   voice.unmount()
-
-  const avatar = render(<AvatarPicker submitLabel="继续" title="选择头像" />)
-  expect(slot(avatar.container, "avatar-picker")).toHaveAttribute("data-reduced", "true")
-  expect(screen.getByRole("button", { name: "继续" })).toBeEnabled()
-  fireEvent.click(screen.getByRole("button", { name: "Shuffle avatar" }))
-  expect(screen.getByDisplayValue("Robin Vale")).toBeInTheDocument()
-  avatar.unmount()
   cleanup()
 })
 

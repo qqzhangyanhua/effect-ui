@@ -84,7 +84,6 @@ export type SourceLibrary =
   | "cobe"
   | "Lenis"
   | "three"
-  | "ReUI"
   | "Tremor Raw"
   | "daisyUI"
   | "Uiverse"
@@ -103,7 +102,6 @@ export type SourceLibrary =
   | "Spell UI"
   | "Sera UI"
   | "HextaUI"
-  | "Motiq"
   | "Framekit UI"
   | "GodUI"
   | "Watermelon UI"
@@ -232,7 +230,6 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "shadcn-ui-expansions": "https://github.com/hsuanyi-chou/shadcn-ui-expansions",
   "Kibo UI": "https://www.kibo-ui.com",
   SyntaxUI: "https://syntaxui.com",
-  ReUI: "https://reui.io",
   "Tremor Raw": "https://raw.tremor.so",
   daisyUI: "https://github.com/saadeghi/daisyui",
   Uiverse: "https://uiverse.io",
@@ -251,7 +248,6 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   "Spell UI": "https://github.com/xxtomm/spell-ui",
   "Sera UI": "https://github.com/seraui/seraui",
   HextaUI: "https://github.com/preetsuthar17/HextaUI",
-  Motiq: "https://github.com/RMahammad/motiq",
   "Framekit UI": "https://github.com/Sid9022/framekit-ui",
   GodUI: "https://github.com/LucasBassetti/godui",
   "Watermelon UI": "https://github.com/WatermelonCorp/watermellon-registry",

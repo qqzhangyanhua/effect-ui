@@ -11,7 +11,6 @@ const registrySrc = path.resolve(path.dirname(fileURLToPath(import.meta.url)))
 const names = new Set([
   "variable-font-proximity",
   "chat-message",
-  "poll-vote",
   "social-post-feed",
   "invoice-preview",
   "embed-code-generator",
@@ -42,7 +41,7 @@ function repoInput(): AuditInput {
   }
 }
 
-test("六个单组件没有 prop-not-in-catalog", () => {
+test("五个单组件没有 prop-not-in-catalog", () => {
   expect(
     auditRegistry(repoInput()).filter((issue) => issue.type === "prop-not-in-catalog" && names.has(issue.name)),
   ).toEqual([])

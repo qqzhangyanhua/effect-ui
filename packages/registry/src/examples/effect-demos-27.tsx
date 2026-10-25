@@ -5,8 +5,6 @@ import { AITextLoading } from "../effects/ai-text-loading"
 import { AITokenAlternatives } from "../effects/ai-token-alternatives"
 import { AIVoice } from "../effects/ai-voice"
 import { AttractButton } from "../effects/attract-button"
-import { AvatarPicker } from "../effects/avatar-picker"
-import { ClipTrimmer } from "../effects/clip-trimmer"
 import { CurrencyTransfer } from "../effects/currency-transfer"
 import { DotField } from "../effects/dot-field"
 import { LiquidGauge } from "../effects/liquid-gauge"
@@ -14,10 +12,6 @@ import { LiquidSlider } from "../effects/liquid-slider"
 import { ReceiptPrinter } from "../effects/receipt-printer"
 
 import { TimezonePlanner } from "../effects/timezone-planner"
-
-const film = `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="800"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#0f172a"/><stop offset="0.45" stop-color="#0369a1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs><rect width="2400" height="800" fill="url(#g)"/><path d="M0 620 C400 540 700 700 1200 580 C1700 460 2000 520 2400 480 L2400 800 L0 800 Z" fill="#020617" opacity="0.85"/></svg>`,
-)}`
 
 export function ReceiptPrinterDemo({
   merchant = "街角咖啡",
@@ -107,18 +101,6 @@ export function AIVoiceDemo() {
   )
 }
 
-export function AvatarPickerDemo() {
-  return (
-    <div className="flex w-full justify-center">
-      <AvatarPicker
-        className="w-full"
-        description="名字决定这张脸。可以转动，也可以点选。"
-        submitLabel="继续"
-        title="选择头像"
-      />
-    </div>
-  )
-}
 export function AICitationsDemo() {
   return (
     <div className="flex w-full justify-center">
@@ -151,14 +133,6 @@ export function CurrencyTransferDemo({
   return (
     <div className="flex w-full justify-center">
       <CurrencyTransfer className="w-full" locale={locale} rate={rate} txnId={txnId} />
-    </div>
-  )
-}
-
-export function ClipTrimmerDemo() {
-  return (
-    <div className="flex w-full justify-center">
-      <ClipTrimmer alt="山谷公路" className="w-full" src={film} />
     </div>
   )
 }

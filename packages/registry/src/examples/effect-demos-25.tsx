@@ -6,7 +6,6 @@ import { ApertureReveal } from "../effects/aperture-reveal"
 import { BoidsEcosystem } from "../effects/boids-ecosystem"
 import { CopyButton } from "../effects/copy-button"
 import { DistortedGlass } from "../effects/distorted-glass"
-import { FeatureVoting } from "../effects/feature-voting"
 
 import { FloatingPanel } from "../effects/floating-panel"
 import { FlowerMenu } from "../effects/flower-menu"
@@ -146,18 +145,5 @@ export function CopyButtonDemo() {
       <span className="text-sm">effect-ui</span>
       <CopyButton value="effect-ui" />
     </div>
-  )
-}
-
-export function FeatureVotingDemo() {
-  return (
-    <FeatureVoting
-      className="w-full"
-      items={[
-        { id: "glass", title: "磨砂玻璃", description: "英雄区的波纹玻璃", votes: 12 },
-        { id: "flock", title: "鸟群背景", description: "指针可以驱散", votes: 9 },
-        { id: "vote", title: "票数滚动", description: "排序随票数变化", votes: 7 },
-      ]}
-    />
   )
 }

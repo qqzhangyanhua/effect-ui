@@ -1,5 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
-import { animata, beFile, beui, fancy, fancyFile, layouts, layoutsFile, motiq, motiqFile, smooth, smoothuiFile, syntax, syntaxFile } from "./catalog-sources"
+import { animata, beFile, beui, fancy, fancyFile, layouts, layoutsFile, smooth, smoothuiFile, syntax, syntaxFile } from "./catalog-sources"
 
 /** Effect，滚动显现。 */
 const ui6: PropDoc[] = [
@@ -1169,28 +1169,6 @@ export const effectScrollComponents: ComponentMeta[] = [
       { name: "intensity", type: "number", defaultValue: "1", description: "角色的缩放。", control: { kind: "range", value: 1, min: 0.6, max: 1.6, step: 0.1 } },
       { name: "contentClassName", type: "string", description: "内容层的类名。" },
       { name: "indicatorClassName", type: "string", description: "指示器的类名。" },
-      ...ui36,
-    ],
-  },
-  {
-    name: "velocity-skew-feed",
-    batch: 56,
-    title: "Velocity Skew Feed",
-    description: `${motiq} ${motiqFile("scroll", "velocity-skew-feed")} 卡片随容器滚动速度剪切，停下后弹簧回正。这不是 skewed-infinite-scroll 那种恒定斜切的无限跑马。${pause}`,
-    layer: "effect",
-    effectCategory: "scroll",
-    source: "Motiq",
-    type: "registry:ui",
-    file: "effects/velocity-skew-feed.tsx",
-    target: "components/ui/velocity-skew-feed.tsx",
-    props: [
-      { name: "items", type: "ReactNode[]", description: "信息流卡片。" },
-      { name: "color", type: "string", defaultValue: '"var(--primary)"', description: "卡片侧边色。缺省跟随主色。", control: { kind: "color", value: "var(--primary)" } },
-      { name: "duration", type: "number", defaultValue: "1000", description: "弹簧回正的响应时长，单位毫秒。数值越小越硬。", control: { kind: "range", value: 1000, min: 400, max: 2400, step: 50 } },
-      { name: "intensity", type: "number", defaultValue: "6.5", description: "最快时的最大剪切角，单位度。", control: { kind: "range", value: 6.5, min: 0, max: 16, step: 0.5 } },
-      { name: "speed", type: "number", defaultValue: "1", description: "滚动速度换算成剪切的灵敏度。", control: { kind: "range", value: 1, min: 0.2, max: 3, step: 0.1 } },
-      { name: "size", type: "number", defaultValue: "420", description: "滚动视口高度，单位像素。", control: { kind: "range", value: 420, min: 240, max: 640, step: 20 } },
-      { name: "label", type: "string", defaultValue: '"Activity feed. Scroll quickly to see the cards react to speed."', description: "滚动区域的无障碍名称。" },
       ...ui36,
     ],
   },

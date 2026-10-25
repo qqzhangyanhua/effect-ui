@@ -1,5 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
-import { daisy, daisyFile, reui, reuiFile } from "./catalog-sources"
+import { daisy, daisyFile } from "./catalog-sources"
 
 /** Primitive，数据展示。 */
 const uiProps: PropDoc[] = [
@@ -15,9 +15,6 @@ const ui2: PropDoc[] = [
     type: "string",
     description: "额外 Tailwind 类名，与主题变量兼容。",
   },
-]
-const ui32: PropDoc[] = [
-  { name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" },
 ]
 const ui41: PropDoc[] = [{ name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" }]
 
@@ -131,40 +128,6 @@ export const primitiveDataComponents: ComponentMeta[] = [
       { name: "variant", type: '"default" | "outline" | "muted"', defaultValue: '"default"', description: "列表项样式。default 与不传相同。媒体另有 default、icon 或 image，不传时是 default。" },
       { name: "size", type: '"default" | "sm"', defaultValue: '"default"', description: "列表项尺寸。default 与不传相同。" },
       { name: "asChild", type: "boolean", defaultValue: "false", description: "是否用 Slot。false 与不传相同。" },
-    ],
-  },
-  {
-    name: "bubble",
-    batch: 32,
-    title: "Bubble",
-    description: `${reui} ${reuiFile("bubble")} 聊天气泡原语，有多种变体，并可以挂 emoji 反应。它比现有的 chat-message 更底层。`,
-    layer: "primitive",
-    purposeGroup: "data",
-    source: "ReUI",
-    type: "registry:ui",
-    file: "effects/bubble.tsx",
-    target: "components/ui/bubble.tsx",
-    props: [
-      { name: "variant", type: '"default" | "secondary" | "muted" | "tinted" | "outline" | "ghost" | "destructive"', defaultValue: "default", description: "气泡颜色。" },
-      { name: "align", type: '"start" | "end"', defaultValue: "start", description: "靠左或靠右。" },
-      ...ui32,
-    ],
-  },
-  {
-    name: "marker",
-    batch: 32,
-    title: "Marker",
-    description: `${reui} ${reuiFile("marker")} 消息流里的分隔，例如“今天”或系统提示。变体有 default、separator、border。`,
-    layer: "primitive",
-    purposeGroup: "data",
-    source: "ReUI",
-    type: "registry:ui",
-    file: "effects/marker.tsx",
-    target: "components/ui/marker.tsx",
-    props: [
-      { name: "variant", type: '"default" | "separator" | "border"', defaultValue: "default", description: "分隔样式。" },
-      { name: "asChild", type: "boolean", defaultValue: "false", description: "把样式合并到子元素上。" },
-      ...ui32,
     ],
   },
   {

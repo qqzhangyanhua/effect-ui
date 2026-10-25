@@ -70,7 +70,7 @@ export const hookComponents: ComponentMeta[] = [
     name: "use-controllable-state",
     batch: 23,
     title: "Use Controllable State",
-    description: "受控或非受控状态。传入 value 时由外部控制，否则使用 defaultValue。供 feature-voting 使用，不依赖 @radix-ui/react-use-controllable-state。",
+    description: "受控或非受控状态。传入 value 时由外部控制，否则使用 defaultValue。不依赖 @radix-ui/react-use-controllable-state。",
     layer: "hook",
     source: "original",
     type: "registry:hook",

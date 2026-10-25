@@ -1,5 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
-import { aicanvasFile, animata, beFile, beui, canvas, fancy, fancyFile, kokonut, kokonutuiFile, magic, mosaic, mosaicFile, motionLib, motiq, motiqFile, reactBitsCredit as credit, smooth, smoothuiFile, spectrumUiFile, spectrumUiSpectrum as spectrum, spell, spellFile, syntax, syntaxFile } from "./catalog-sources"
+import { aicanvasFile, animata, beFile, beui, canvas, fancy, fancyFile, kokonut, kokonutuiFile, magic, mosaic, mosaicFile, motionLib, reactBitsCredit as credit, smooth, smoothuiFile, spectrumUiFile, spectrumUiSpectrum as spectrum, spell, spellFile, syntax, syntaxFile } from "./catalog-sources"
 import { textControls, textPresets } from "./text-controls"
 
 /** Effect，文字动画。 */
@@ -2286,48 +2286,6 @@ export const effectTextComponents: ComponentMeta[] = [
       { name: "fontSize", type: "number", defaultValue: "56", description: "字号，单位像素。", control: { kind: "range", value: 56, min: 24, max: 96, step: 2 } },
       { name: "align", type: '"left" | "center" | "right"', defaultValue: '"center"', description: "文字对齐。" },
       { name: "loop", type: "boolean", defaultValue: "true", description: "色带到头后是否循环。" },
-      ...ui36,
-    ],
-  },
-  {
-    name: "kinetic-emphasis",
-    batch: 56,
-    title: "Kinetic Emphasis",
-    description: `${motiq} ${motiqFile("text", "kinetic-emphasis")} 阅读焦点沿句子走过，<em> 和 <strong> 留下下划线。进入视口或挂载时播放，不靠悬停。${pause}`,
-    layer: "effect",
-    effectCategory: "text",
-    source: "Motiq",
-    type: "registry:ui",
-    file: "effects/kinetic-emphasis.tsx",
-    target: "components/ui/kinetic-emphasis.tsx",
-    props: [
-      { name: "children", type: "ReactNode", description: "句子。用 em 或 strong 标出要强调的词。" },
-      { name: "color", type: "string", defaultValue: '"var(--primary)"', description: "强调色。缺省跟随主色。", control: { kind: "color", value: "var(--primary)" } },
-      { name: "duration", type: "number", defaultValue: "500", description: "每个词抬起的时长，单位毫秒。", control: { kind: "range", value: 500, min: 200, max: 1200, step: 50 } },
-      { name: "intensity", type: "number", defaultValue: "0.6", description: "普通词底下残影的强度。", control: { kind: "range", value: 0.6, min: 0, max: 1, step: 0.1 } },
-      { name: "fontSize", type: "number", defaultValue: "32", description: "字号，单位像素。", control: { kind: "range", value: 32, min: 18, max: 72, step: 2 } },
-      { name: "trigger", type: '"mount" | "inView"', defaultValue: '"inView"', description: "开始扫读的时机。", control: { kind: "select", value: "inView", options: ["mount", "inView"] } },
-      ...ui36,
-    ],
-  },
-  {
-    name: "liquid-fill-headline",
-    batch: 56,
-    title: "Liquid Fill Headline",
-    description: `${motiq} ${motiqFile("text", "liquid-fill-headline")} 描边标题被液面灌满，再排空。按下标题会重新灌注。${pause}`,
-    layer: "effect",
-    effectCategory: "text",
-    source: "Motiq",
-    type: "registry:ui",
-    file: "effects/liquid-fill-headline.tsx",
-    target: "components/ui/liquid-fill-headline.tsx",
-    props: [
-      { name: "text", type: "string", defaultValue: '"Liquid"', description: "标题文字。" },
-      { name: "color", type: "string", defaultValue: '"var(--primary)"', description: "液体颜色。缺省跟随主色。", control: { kind: "color", value: "var(--primary)" } },
-      { name: "duration", type: "number", defaultValue: "3000", description: "灌满所用的时长，单位毫秒。", control: { kind: "range", value: 3000, min: 800, max: 6000, step: 100 } },
-      { name: "intensity", type: "number", defaultValue: "4.5", description: "液面起伏的幅度。", control: { kind: "range", value: 4.5, min: 0, max: 12, step: 0.5 } },
-      { name: "fontSize", type: "number", defaultValue: "56", description: "字号，单位像素。", control: { kind: "range", value: 56, min: 24, max: 96, step: 2 } },
-      { name: "loop", type: "boolean", defaultValue: "true", description: "灌满后是否排空再循环。", control: { kind: "boolean", value: true } },
       ...ui36,
     ],
   },

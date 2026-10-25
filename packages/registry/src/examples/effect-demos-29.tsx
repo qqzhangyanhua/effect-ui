@@ -1,7 +1,5 @@
 "use client"
 
-import { useState } from "react"
-
 import { ArcadePixel } from "../effects/arcade-pixel"
 import { CardSwipeDeck } from "../effects/card-swipe-deck"
 
@@ -15,25 +13,6 @@ import { NovatrixBackground } from "../effects/novatrix-background"
 import { PinnedList } from "../effects/pinned-list"
 
 import { UnlockFaceId } from "../effects/unlock-face-id"
-import { VectorEditorToolbar, type VectorTool } from "../effects/vector-editor-toolbar"
-
-function ToolIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} viewBox="0 0 24 24">
-      <path d="M5 19l4-1 9-9-3-3-9 9z" fill="currentColor" />
-    </svg>
-  )
-}
-
-const tools: VectorTool[] = [
-  { icon: ToolIcon, id: "select", label: "选择", shortcut: "v" },
-  {
-    icon: ToolIcon,
-    id: "shape",
-    items: [{ icon: ToolIcon, id: "rect", label: "矩形", shortcut: "r" }],
-    label: "形状",
-  },
-]
 
 export function NovatrixBackgroundDemo({
   amplitude = 0.1,
@@ -139,28 +118,6 @@ export function GridLoaderDemo({
   size?: "sm" | "md" | "lg" | "xl"
 } = {}) {
   return <GridLoader color="blue" mode={mode} pattern="heartbeat" rounded size={size} speed={speed} />
-}
-export function VectorEditorToolbarDemo({
-  floating = false,
-  orientation = "horizontal",
-  shortcutsEnabled = true,
-}: {
-  floating?: boolean
-  orientation?: "horizontal" | "vertical"
-  shortcutsEnabled?: boolean
-} = {}) {
-  const [tool, setTool] = useState("select")
-  return (
-    <VectorEditorToolbar
-      activeTool={tool}
-      floating={floating}
-      onToolChange={setTool}
-      orientation={orientation}
-      properties={<p className="text-sm">当前：{tool}</p>}
-      shortcutsEnabled={shortcutsEnabled}
-      tools={tools}
-    />
-  )
 }
 
 export function UnlockFaceIdDemo({

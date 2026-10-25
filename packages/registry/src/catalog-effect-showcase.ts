@@ -1,5 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
-import { cult, cultFile, daisy, daisyFile, framekit, framekitUiFile, godui, goduiFile, kokonut, kokonutuiFile, layouts, layoutsFile, magic, motiq, motiqFile, reactBitsCredit, smooth, smoothuiFile, spell, spellFile, uselayoutsCredit, uselayoutsFile } from "./catalog-sources"
+import { cult, cultFile, daisy, daisyFile, framekit, framekitUiFile, godui, goduiFile, kokonut, kokonutuiFile, layouts, layoutsFile, magic, reactBitsCredit, smooth, smoothuiFile, spell, spellFile, uselayoutsCredit, uselayoutsFile } from "./catalog-sources"
 
 /** Effect，展示 / 列表。 */
 const ui4: PropDoc[] = [
@@ -619,26 +619,6 @@ export const effectShowcaseComponents: ComponentMeta[] = [
       { name: "duration", type: "number", defaultValue: "600", description: "单枚标志进出的时长，单位毫秒。", control: { kind: "range", value: 600, min: 200, max: 1600, step: 20 } },
       { name: "interval", type: "number", defaultValue: "2500", description: "换组间隔，单位毫秒。", control: { kind: "range", value: 2500, min: 800, max: 6000, step: 100 } },
       { name: "count", type: "number", defaultValue: "3", description: "每一组的标志数量。", control: { kind: "range", value: 3, min: 1, max: 6, step: 1 } },
-      ...ui38,
-    ],
-  },
-  {
-    name: "filmstrip-scrub",
-    batch: 56,
-    title: "Filmstrip Scrub",
-    description: `${motiq} ${motiqFile("media", "filmstrip-scrub")} 胶片条用弹簧播放头跟手。拖动、方向键和闲置自动播放都能换帧，触屏不依赖悬停。${pause}`,
-    layer: "effect",
-    effectCategory: "showcase",
-    source: "Motiq",
-    type: "registry:ui",
-    file: "effects/filmstrip-scrub.tsx",
-    target: "components/ui/filmstrip-scrub.tsx",
-    props: [
-      { name: "frames", type: "FilmstripFrame[]", description: "帧。每帧有 id、可选标签和节点。" },
-      { name: "color", type: "string", defaultValue: '"var(--primary)"', description: "播放头颜色。缺省跟随主色。", control: { kind: "color", value: "var(--primary)" } },
-      { name: "duration", type: "number", defaultValue: "1000", description: "播放头追上目标的弹簧时长，单位毫秒。", control: { kind: "range", value: 1000, min: 400, max: 2400, step: 50 } },
-      { name: "speed", type: "number", defaultValue: "0.9", description: "闲置后自动播放的速度，单位帧每秒。", control: { kind: "range", value: 0.9, min: 0, max: 3, step: 0.1 } },
-      { name: "loop", type: "boolean", defaultValue: "true", description: "自动播放到头后是否折返。", control: { kind: "boolean", value: true } },
       ...ui38,
     ],
   },

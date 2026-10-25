@@ -14,5 +14,5 @@ Audit obligations follow the layer. An entry that moves into the Effect layer ta
 
 ## Consequences
 
-- Classification lives in the catalog. Source directories do not follow the layer until the reclassification is finished; moving files is a separate change because it alters the `path` value in every moved item's install JSON.
+- Classification lives in the catalog. Source directories stay as they are. Moving them would change the install JSON `path` and would not change `target`.
 - Component names, `target`, and `/r/[name]` do not change. Category is not part of the install JSON.

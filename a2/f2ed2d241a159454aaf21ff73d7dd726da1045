@@ -1,0 +1,82 @@
+packages/registry/src/audit.issue-75.test.ts
+  s_e0dbd35a25dc0d::t_ace21477304b6e 44
+packages/registry/src/catalog-effect-showcase.ts
+  s_e0dbd35a25dc0d::t_9b525f5a8a0125 2
+packages/registry/src/catalog-effect-scroll.ts
+  s_e0dbd35a25dc0d::t_7ea6e0c4a87252 2
+apps/docs/public/r/feedback-widget.json
+  s_e0dbd35a25dc0d::t_c57eb6e60de681 6,11,20
+THIRD_PARTY_NOTICES.md
+  s_e0dbd35a25dc0d::t_2251bf184e37d9 283
+  s_e0dbd35a25dc0d::t_9dd07eea343237 33,40,211-212,506
+packages/registry/src/effects/batch28-practical.test.tsx
+  s_e0dbd35a25dc0d::t_af0ffeeeb5dfa6 119
+packages/registry/src/effects/feedback-widget.tsx
+  s_e0dbd35a25dc0d::t_89ea1add08e848 71-116
+  s_e0dbd35a25dc0d::t_6ce01ea36b1080 3,6,25,32-45,60-70,117-119
+README.md
+  s_e0dbd35a25dc0d::t_253cc2f2a74727 1047,1049
+  s_e0dbd35a25dc0d::t_389a747f44350c 1163,1181,1199,1219,1237
+  s_e0dbd35a25dc0d::t_1a279e1294713d 1131,1147
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_e0dbd35a25dc0d::t_42153412cb6b94 2
+packages/registry/src/catalog-order.ts
+  s_e0dbd35a25dc0d::t_b7ada4dd30eaf3 98
+  s_e0dbd35a25dc0d::t_95b77126a41b34 55-56
+  s_e0dbd35a25dc0d::t_0b55e0922be173 42,50,52-54
+  s_e0dbd35a25dc0d::t_9547f7aae005e2 58-59
+  s_e0dbd35a25dc0d::t_3917bd011c4200 66
+apps/docs/public/r/use-controllable-state.json
+  s_e0dbd35a25dc0d::t_b146b441d29e80 6
+packages/registry/src/effects/batch27-practical.test.tsx
+  s_e0dbd35a25dc0d::t_4ff23fc74a4930 84
+packages/registry/src/catalog-primitive-data.ts
+  s_e0dbd35a25dc0d::t_61b03f0ae4b240 2
+CREDITS.md
+  s_e0dbd35a25dc0d::t_7af079f5670b8c 56
+  s_e0dbd35a25dc0d::t_06d3ea2a972a44 50
+  s_e0dbd35a25dc0d::t_158787c4317b3a 57-60,65
+  s_e0dbd35a25dc0d::t_93173b82607ca4 54-55
+apps/docs/public/r/registry.json
+  s_e0dbd35a25dc0d::t_c57eb6e60de681 7349,7354
+  s_e0dbd35a25dc0d::t_b146b441d29e80 7370
+packages/registry/src/effects/batch24-practical.test.tsx
+  s_e0dbd35a25dc0d::t_03f8e678ff3f85 119
+packages/registry/src/catalog-effect-text.ts
+  s_e0dbd35a25dc0d::t_16fae28ce4edb0 2
+packages/registry/src/catalog-widget-feedback.ts
+  s_e0dbd35a25dc0d::t_072eea60b53257 112
+packages/registry/src/catalog-hook.ts
+  s_e0dbd35a25dc0d::t_bad2ee10d91b9e 73
+packages/registry/src/effects/batch22-practical.test.tsx
+  s_e0dbd35a25dc0d::t_9880bf2dc18dac 6
+packages/registry/src/catalog-widget-data.ts
+  s_e0dbd35a25dc0d::t_87158ff7d16e90 2
+packages/registry/src/catalog-widget-form.ts
+  s_e0dbd35a25dc0d::t_30fc41920e288d 2
+packages/registry/src/effects/batch26-practical.test.tsx
+  s_e0dbd35a25dc0d::t_b45bf8584e6bb1 106
+packages/registry/src/effects/batch32-practical.test.tsx
+  s_e0dbd35a25dc0d::t_39eb5117c660d2 83,101
+registry.json
+  s_e0dbd35a25dc0d::t_c57eb6e60de681 7349,7354
+  s_e0dbd35a25dc0d::t_b146b441d29e80 7370
+packages/registry/src/effects/batch25-practical.test.tsx
+  s_e0dbd35a25dc0d::t_ed906e16661657 75,112
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "a2f2ed2d241a159454aaf21ff73d7dd726da1045",
+  "prompts": {},
+  "sessions": {
+    "s_e0dbd35a25dc0d": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a171fd-87e1-7482-a357-d03a724e1fab",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -9,6 +9,8 @@ export const batch49Components: ComponentMeta[] = [
     description:
       "原创实现。筛选芯片拖进对齐区后，沿动画帧吸到同一行。方向键或回车也能放进去。减弱动效时立刻对齐，不申请动画帧。只用组件自己的指针和动画帧，不使用 matter-js，没有新增依赖。",
     category: "micro",
+    layer: "widget",
+    purposeGroup: "form",
     source: "original",
     type: "registry:ui",
     file: "effects/magnet-chips.tsx",
@@ -72,6 +74,8 @@ export const batch49Components: ComponentMeta[] = [
     description:
       "原创实现。文件图标拖进落点后，由已安装的 matter-js 落到一堆，并显示进度。方向键或回车也能放进去。减弱动效时不创建物理引擎、不申请动画帧，文件直接出现在堆里并且进度已满。没有新增依赖。",
     category: "cards",
+    layer: "widget",
+    purposeGroup: "form",
     source: "original",
     type: "registry:ui",
     file: "effects/physics-dropzone.tsx",

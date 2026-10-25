@@ -50,6 +50,18 @@ function DocsIndexPage() {
               >
                 {group.label} · {group.items.length} 个，同一页滚动查看
               </Link>
+            ) : group.key === "topics" ? (
+              <div className="flex flex-wrap gap-2">
+                {group.sections.map((section) => (
+                  <Link
+                    key={section.key}
+                    href={`/docs/topics/${section.key}`}
+                    className="inline-flex rounded-full border px-3 py-1 text-sm hover:bg-accent"
+                  >
+                    {section.label} · {section.items.length} 个
+                  </Link>
+                ))}
+              </div>
             ) : group.sections.length > 0 ? (
               group.sections.map((section) => (
                 <div key={section.key}>

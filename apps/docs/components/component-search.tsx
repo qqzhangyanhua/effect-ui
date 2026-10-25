@@ -19,6 +19,7 @@ import { familyPath } from "@/lib/family-path"
 import { cn } from "@/lib/utils"
 
 const searchSections = getCatalogGroups().flatMap((group) => {
+  if (group.key === "topics") return []
   if (group.sections.length === 0) {
     return [{ key: group.key, heading: group.label, items: group.items }]
   }

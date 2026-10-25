@@ -9,6 +9,7 @@ import { VideoPlayer } from "./video-player"
 import { NotificationCenter } from "./notification-center"
 import { Gravity } from "../effects/gravity"
 import { AsciiRender } from "../effects/ascii-render"
+import { SiriOrb } from "../effects/siri-orb"
 import { HeroShader } from "../sections/hero-shader"
 import { HeroGlobe } from "../sections/hero-globe"
 import { HeroProductMockup } from "../sections/hero-product-mockup"
@@ -88,6 +89,11 @@ test("gravity shows the resting labels", () => {
   expect(screen.getByText("FX")).toBeInTheDocument()
   expect(screen.getByText("MIT")).toBeInTheDocument()
   expect(screen.getByText("React")).toBeInTheDocument()
+})
+
+test("siri orb renders at the given size", () => {
+  const { container } = render(<SiriOrb size={120} />)
+  expect(container.firstElementChild).toHaveStyle({ width: "120px", height: "120px" })
 })
 
 test("ascii render shows the loading line", () => {

@@ -2,6 +2,23 @@ import { expect, test } from "vitest"
 
 import { auditRegistry, type AuditCatalogEntry } from "./audit"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
+import { unclassifiedCatalogNames } from "./unclassified-catalog"
+
+const listed = [...unclassifiedCatalogNames]
+const fixture = listed[0]
+const fixtureInput = listed[1]
+const fixtureCard = listed[2]
+const fixtureHook = listed[3]
+const fixtureGrid = listed[4]
+if (
+  fixture === undefined ||
+  fixtureInput === undefined ||
+  fixtureCard === undefined ||
+  fixtureHook === undefined ||
+  fixtureGrid === undefined
+) {
+  throw new Error("尚未分类名单不够审计夹具使用。")
+}
 
 const source = `interface ButtonProps {
   className?: string
@@ -18,7 +35,7 @@ export function Button() {
 
 function entry(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
   return {
-    name: "button",
+    name: fixture,
     type: "registry:ui",
     title: "Button",
     description: "按钮。",
@@ -27,6 +44,11 @@ function entry(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
     props: [{ name: "className" }],
     ...overrides,
   }
+}
+
+/** 源码里的 Demo 仍叫 ButtonDemo，所以这条夹具名字保持 button。template 只用来避开已声明的 Layer。 */
+function buttonEntry(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
+  return entry({ name: "button", layer: "template", ...overrides })
 }
 
 interface FixtureInput {
@@ -86,6 +108,7 @@ function withSource(
 function utilsEntry(): AuditCatalogEntry {
   return entry({
     name: "utils",
+    layer: "template",
     type: "registry:lib",
     title: "Utils",
     description: "cn 辅助函数。",
@@ -97,7 +120,7 @@ function utilsEntry(): AuditCatalogEntry {
 
 const buttonJson = {
   $schema: "https://ui.shadcn.com/schema/registry-item.json",
-  name: "button",
+  name: fixture,
   type: "registry:ui",
   title: "Button",
   description: "按钮。",
@@ -119,7 +142,7 @@ const buttonIndexJson = {
   homepage: "https://github.com/qqzhangyanhua/effect-ui",
   items: [
     {
-      name: "button",
+      name: fixture,
       type: "registry:ui",
       title: "Button",
       description: "按钮。",
@@ -140,21 +163,21 @@ test("catalog 出现重名时报告该名称和次数", () => {
   const button = entry()
   expect(auditRegistry(consistent([button, button]))).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "duplicate-name",
-      description: "catalog 中名称 “button” 出现了 2 次。",
+      description: `catalog 中名称 “${fixture}” 出现了 2 次。`,
     },
   ])
 })
 
 test("catalog 名称唯一时不报告重名", () => {
-  expect(auditRegistry(consistent([entry(), entry({ name: "input", file: "ui/input.tsx", title: "Input" })]))).toEqual([])
+  expect(auditRegistry(consistent([entry(), entry({ name: fixtureInput, file: "ui/input.tsx", title: "Input" })]))).toEqual([])
 })
 
 test("catalog 登记的源码文件不在文件清单中时报告缺失", () => {
   expect(auditRegistry(consistent([entry()], []))).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "missing-source",
       description: "源码文件 ui/button.tsx 不存在。",
     },
@@ -199,7 +222,7 @@ test("文档组件缺少 demo 时报告缺失", () => {
   input.demoNames = []
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "missing-demo",
       description: "缺少 demo。",
     },
@@ -215,7 +238,6 @@ test("registry:lib 没有 demo、Props 为空时不报告", () => {
     auditRegistry(
       consistent([
         entry({
-          name: "utils",
           type: "registry:lib",
           title: "Utils",
           description: "cn 辅助函数。",
@@ -231,7 +253,7 @@ test("registry:lib 没有 demo、Props 为空时不报告", () => {
 test("registry:hook 没有 demo、Props 为空时不报告", () => {
   const input = consistent([
     entry({
-      name: "use-mobile",
+      name: fixtureHook,
       type: "registry:hook",
       title: "Use Mobile",
       description: "视口宽度小于 768px 时返回 true。",
@@ -246,12 +268,12 @@ test("registry:hook 没有 demo、Props 为空时不报告", () => {
 
 test("组件静态 JSON 缺失时报告缺失", () => {
   const input = consistent([entry()])
-  delete input.staticJson.items.button
+  delete input.staticJson.items[fixture]
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "missing-static-json",
-      description: "静态 JSON button.json 缺失。",
+      description: `静态 JSON ${fixture}.json 缺失。`,
     },
   ])
 })
@@ -270,12 +292,12 @@ test("registry 总表缺失时报告缺失", () => {
 
 test("静态 JSON 与构建器输出不一致时指出差异字段", () => {
   const input = consistent([entry()])
-  input.staticJson.items.button = { ...buttonJson, title: "Wrong" }
+  input.staticJson.items[fixture] = { ...buttonJson, title: "Wrong" }
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "stale-static-json",
-      description: "静态 JSON button.json 与构建器输出不一致：title。",
+      description: `静态 JSON ${fixture}.json 与构建器输出不一致：title。`,
     },
   ])
 })
@@ -296,7 +318,7 @@ test("registry 总表与构建器输出不一致时指出差异字段", () => {
 
 test("手写的静态 JSON 与构建器字段一致时不报告缺失或过期", () => {
   const input = consistent([entry()])
-  input.staticJson.items.button = buttonJson
+  input.staticJson.items[fixture] = buttonJson
   input.staticJson.indexes = [{ label: "registry.json", json: buttonIndexJson }]
   expect(auditRegistry(input)).toEqual([])
 })
@@ -306,37 +328,37 @@ test("README 没有组件名时报告缺失", () => {
   input.readme = "没有组件清单"
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "missing-readme",
-      description: "README 中未出现组件名 button。",
+      description: `README 中未出现组件名 ${fixture}。`,
     },
   ])
 })
 
 test("组件名只出现在其他连字符名称中时仍报告 README 缺失", () => {
-  const card = entry({ name: "card", title: "Card", file: "ui/card.tsx" })
+  const card = entry({ name: fixtureCard, title: "Card", file: "ui/card.tsx" })
   const input = consistent([card])
-  input.readme = "spotlight-card"
+  input.readme = `spotlight-${fixtureCard}`
   expect(auditRegistry(input)).toEqual([
     {
-      name: "card",
+      name: fixtureCard,
       type: "missing-readme",
-      description: "README 中未出现组件名 card。",
+      description: `README 中未出现组件名 ${fixtureCard}。`,
     },
   ])
 })
 
 test("README 以独立名称提到组件时不报告缺失", () => {
-  const card = entry({ name: "card", title: "Card", file: "ui/card.tsx" })
+  const card = entry({ name: fixtureCard, title: "Card", file: "ui/card.tsx" })
   const input = consistent([card])
-  input.readme = "button · card · spotlight-card"
+  input.readme = `button · ${fixtureCard} · spotlight-${fixtureCard}`
   expect(auditRegistry(input)).toEqual([])
 })
 
 test("文档组件 Props 为空时报告", () => {
   expect(auditRegistry(consistent([entry({ props: [] })]))).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "empty-props",
       description: "Props 文档为空。",
     },
@@ -354,7 +376,7 @@ test("源码引用的 npm 包不在 registry 包依赖清单中时报告", () =>
   )
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "missing-package-dependency",
       description: "npm 包 “zod” 未出现在 registry 包的依赖清单中。",
     },
@@ -372,7 +394,7 @@ test("extraDependencies 不在 registry 包依赖清单中时报告", () => {
   )
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "missing-package-dependency",
       description: "npm 包 “@tiptap/pm” 未出现在 registry 包的依赖清单中。",
     },
@@ -386,7 +408,7 @@ test("源码引用了 catalog 中不存在的 registry 组件时报告", () => {
   })
   expect(auditRegistry(input)).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "unknown-registry-dependency",
       description: "源码引用了 registry 组件 “missing-widget”，但 catalog 中没有这个组件。",
     },
@@ -394,12 +416,12 @@ test("源码引用了 catalog 中不存在的 registry 组件时报告", () => {
 })
 
 test("源码缺失时只报告缺失，不比较总表", () => {
-  const input = consistent([entry(), entry({ name: "input", title: "Input", file: "ui/input.tsx" })], [
+  const input = consistent([entry(), entry({ name: fixtureInput, title: "Input", file: "ui/input.tsx" })], [
     "ui/button.tsx",
   ])
   expect(auditRegistry(input)).toEqual([
     {
-      name: "input",
+      name: fixtureInput,
       type: "missing-source",
       description: "源码文件 ui/input.tsx 不存在。",
     },
@@ -410,7 +432,7 @@ test("使用 useId 但没有 use client 时不报告", () => {
   const input = withSource(
     [
       entry({
-        name: "grid-pattern",
+        name: fixtureGrid,
         title: "Grid Pattern",
         file: "effects/grid-pattern.tsx",
         target: "components/ui/grid-pattern.tsx",
@@ -449,7 +471,7 @@ test("range 控件起始值超出 min 或 max 时报告", () => {
           props: [{ name: "speed", control: { kind: "range", value: 3, min: 0, max: 2 } }],
         }),
         entry({
-          name: "input",
+          name: fixtureInput,
           file: "ui/input.tsx",
           title: "Input",
           props: [{ name: "delay", control: { kind: "range", value: -1, min: 0, max: 2 } }],
@@ -458,12 +480,12 @@ test("range 控件起始值超出 min 或 max 时报告", () => {
     ),
   ).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "control-out-of-range",
       description: "控件 “speed” 的起始值 3 不在 0 到 2 之间。",
     },
     {
-      name: "input",
+      name: fixtureInput,
       type: "control-out-of-range",
       description: "控件 “delay” 的起始值 -1 不在 0 到 2 之间。",
     },
@@ -478,7 +500,7 @@ test("range 或 select 控件字段类型不对时报告", () => {
           props: [{ name: "speed", control: { kind: "range", value: "3", min: 0, max: 2 } }],
         }),
         entry({
-          name: "input",
+          name: fixtureInput,
           file: "ui/input.tsx",
           title: "Input",
           props: [{ name: "variant", control: { kind: "select", value: "mesh", options: ["mesh", 1] } }],
@@ -487,12 +509,12 @@ test("range 或 select 控件字段类型不对时报告", () => {
     ),
   ).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "control-out-of-range",
       description: "控件 “speed” 的 range 起始值、最小值或最大值不是数字。",
     },
     {
-      name: "input",
+      name: fixtureInput,
       type: "control-out-of-range",
       description: "控件 “variant” 的 select 起始值或可选项不是字符串。",
     },
@@ -514,7 +536,7 @@ test("PropDoc 名字不在导出的 Props 类型里时报告", () => {
   )
   expect(auditRegistry(input).filter((issue) => issue.type === "prop-not-in-type")).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "prop-not-in-type",
       description: "Prop “glow” 没有出现在导出的 Props 类型中。",
     },
@@ -566,17 +588,17 @@ test("词汇表里的词类型、控件种类或分组不一致时报告", () =>
     ).filter((issue) => issue.type === "vocabulary-mismatch"),
   ).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "Prop “speed” 的类型是 string，词汇表要求 number。",
     },
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "控件 “speed” 的种类是 boolean，词汇表要求 range。",
     },
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "控件 “speed” 的分组是 外观，词汇表要求 动画。",
     },
@@ -600,12 +622,12 @@ test("词汇表取值的可选项超出允许值时报告，子集不报告", ()
   ).filter((issue) => issue.type === "vocabulary-mismatch")
   expect(issues).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "Prop “direction” 的类型是 \"left\" | \"top\"，词汇表要求 \"left\" | \"right\" | \"up\" | \"down\" 的子集。",
     },
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "控件 “direction” 的可选项 top 不在词汇表取值内。",
     },
@@ -648,7 +670,7 @@ test("非空豁免跳过词汇表检查，空豁免仍报告", () => {
   ).filter((issue) => issue.type === "vocabulary-mismatch")
   expect(blank).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "Prop “colors” 的词汇表豁免说明为空。",
     },
@@ -691,12 +713,12 @@ test("文字排版词使用像素、字重、字距和对齐", () => {
     ).filter((issue) => issue.type === "vocabulary-mismatch"),
   ).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "Prop “fontSize” 的类型是 string，词汇表要求 number。",
     },
     {
-      name: "button",
+      name: fixture,
       type: "vocabulary-mismatch",
       description: "控件 “fontSize” 的种类是 text，词汇表要求 range。",
     },
@@ -732,17 +754,17 @@ test("预设的值必须落在控件范围内", () => {
     ).filter((issue) => issue.type === "preset-invalid"),
   ).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "preset-invalid",
       description: "预设 “坏的” 的 fontSize 值 200 不在控件允许的范围内。",
     },
     {
-      name: "button",
+      name: fixture,
       type: "preset-invalid",
       description: "预设 “坏的” 的 align 值 “justify” 不在控件允许的范围内。",
     },
     {
-      name: "button",
+      name: fixture,
       type: "preset-invalid",
       description: "预设 “坏的” 引用了没有控件的 prop “className”。",
     },
@@ -766,7 +788,7 @@ const ranged = { kind: "range", value: 1, min: 0, max: 2 }
 
 test("带 Control 的 prop 被 Demo 接住并传给组件时不报告", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }, { name: "text", control: { kind: "text", value: "标题" } }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }, { name: "text", control: { kind: "text", value: "标题" } }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n  text?: string\n}\nexport function ButtonDemo({ speed, text }: { speed?: number; text?: string } = {}) {\n  return <Button speed={speed}>{text}</Button>\n}\n",
@@ -777,7 +799,7 @@ test("带 Control 的 prop 被 Demo 接住并传给组件时不报告", () => {
 
 test("Control 不在 Demo 参数里时报告", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo() {\n  return <Button />\n}\n",
@@ -794,7 +816,7 @@ test("Control 不在 Demo 参数里时报告", () => {
 
 test("Control 在 Demo 参数里但没有传给组件时报告", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo({ speed }: { speed?: number } = {}) {\n  return <Button />\n}\n",
@@ -811,7 +833,7 @@ test("Control 在 Demo 参数里但没有传给组件时报告", () => {
 
 test("没有 Control 的 prop 不报 control-not-in-demo", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed" }] })],
+    [buttonEntry({ props: [{ name: "speed" }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo() {\n  return <Button />\n}\n",
@@ -822,7 +844,7 @@ test("没有 Control 的 prop 不报 control-not-in-demo", () => {
 
 test("导出 Props 的自有字段已经写进 catalog 时不报告", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed" }] })],
+    [buttonEntry({ props: [{ name: "speed" }] })],
     {
       "ui/button.tsx":
         "interface SharedProps {\n  glow?: boolean\n}\nexport interface ButtonState {\n  extra?: boolean\n}\nexport interface ButtonProps {\n  speed?: number\n}\n",
@@ -833,7 +855,7 @@ test("导出 Props 的自有字段已经写进 catalog 时不报告", () => {
 
 test("导出 Props 的自有字段没有写进 catalog 时报告", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed" }] })],
+    [buttonEntry({ props: [{ name: "speed" }] })],
     {
       "ui/button.tsx":
         "export type ButtonProps = React.HTMLAttributes<HTMLDivElement> & {\n  speed?: number\n  autoSize?: boolean | { minRows?: number; maxRows?: number }\n  glow?: boolean\n}\n",
@@ -855,7 +877,7 @@ test("导出 Props 的自有字段没有写进 catalog 时报告", () => {
 
 test("HTML 属性和事件回调没有写进 catalog 时不报告", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed" }] })],
+    [buttonEntry({ props: [{ name: "speed" }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  className?: string\n  \"aria-label\"?: string\n  onValueChange?: (value: string) => void\n  once?: boolean\n  glow?: boolean\n}\n",
@@ -880,7 +902,7 @@ test("测试文件和字符串里的 Demo 不会盖过 examples 里的 Demo", ()
   const real = "export function ButtonDemo() {\n  return <Button />\n}\n"
   const component = "export interface ButtonProps {\n  speed?: number\n}\n"
   const input = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }] })],
     {
       "audit.test.ts": passing,
       "ui/button.tsx": `${component}${passing}`,
@@ -908,7 +930,7 @@ test("测试文件和字符串里的 Demo 不会盖过 examples 里的 Demo", ()
 
 test("同名 Demo 没有 examples 来源时不采用先扫到的那份", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }] })],
     {
       "ui/other.tsx": "export function ButtonDemo() {\n  return <Button />\n}\n",
       "ui/button.tsx":
@@ -921,7 +943,7 @@ test("同名 Demo 没有 examples 来源时不采用先扫到的那份", () => {
 
 test("表达式里的 JSX 属性和布尔简写算传给组件，对象简写不算", () => {
   const passed = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }, { name: "reverse", control: { kind: "boolean", value: true } }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }, { name: "reverse", control: { kind: "boolean", value: true } }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n  reverse?: boolean\n}\nexport function ButtonDemo({ speed, reverse }: { speed?: number; reverse?: boolean } = {}) {\n  return (\n    <div>\n      {condition ? <Button speed={speed} /> : null}\n      {items.map(() => <Button reverse />)}\n      <span>x</span>\n      {speed}\n    </div>\n  )\n}\n",
@@ -930,7 +952,7 @@ test("表达式里的 JSX 属性和布尔简写算传给组件，对象简写不
   expect(auditRegistry(passed).filter((issue) => issue.type === "control-not-in-demo")).toEqual([])
 
   const shorthand = withSource(
-    [entry({ props: [{ name: "speed", control: ranged }] })],
+    [buttonEntry({ props: [{ name: "speed", control: ranged }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n}\nexport function ButtonDemo({ speed }: { speed?: number } = {}) {\n  const props = { speed }\n  return <Button>{{ speed }}</Button>\n}\n",
@@ -947,7 +969,7 @@ test("表达式里的 JSX 属性和布尔简写算传给组件，对象简写不
 
 test("同一 registry 项导出的子组件 Props 算在这条 catalog 上", () => {
   const input = withSource(
-    [entry({ props: [{ name: "speed" }] })],
+    [buttonEntry({ props: [{ name: "speed" }] })],
     {
       "ui/button.tsx":
         "export interface ButtonProps {\n  speed?: number\n}\nexport interface IconProps {\n  glyph?: string\n}\n",
@@ -975,7 +997,7 @@ test("select 控件起始值不在选项中时报告", () => {
     ),
   ).toEqual([
     {
-      name: "button",
+      name: fixture,
       type: "control-out-of-range",
       description: "控件 “variant” 的起始值 “nope” 不在可选项中。",
     },

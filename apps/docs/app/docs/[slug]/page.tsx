@@ -3,10 +3,10 @@ import { notFound, redirect } from "next/navigation"
 
 import { getDemo } from "@effect-ui/registry/examples/index"
 import {
-  categoryLabels,
   componentCluster,
   getCatalogGroups,
   getComponent,
+  layerBadges,
   sourceLibraryUrls,
   visibleComponents,
 } from "@effect-ui/registry/catalog"
@@ -93,7 +93,9 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   const usage = readUsageExample(item.name)
   const install = `npx shadcn@latest add ${getRegistryBaseUrl()}/r/${item.name}.json`
   const sourceUrl = sourceLibraryUrls[item.source]
-  const ordered = getCatalogGroups().flatMap((group) => group.items)
+  const ordered = getCatalogGroups()
+    .filter((group) => group.key !== "topics" && group.key !== "hooks-libs")
+    .flatMap((group) => group.items)
   const index = ordered.findIndex((entry) => entry.name === item.name)
   const previous = index > 0 ? ordered[index - 1] : undefined
   const next = index >= 0 ? ordered[index + 1] : undefined
@@ -123,7 +125,11 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
           ) : (
             <Badge variant="secondary">{item.source}</Badge>
           )}
-          <Badge variant="outline">{categoryLabels[item.category]}</Badge>
+          {layerBadges(item).map((label) => (
+            <Badge key={label} variant="outline">
+              {label}
+            </Badge>
+          ))}
         </div>
         <h1 className="font-display text-4xl tracking-tight">{item.title}</h1>
         <p className="text-muted-foreground">{item.description}</p>

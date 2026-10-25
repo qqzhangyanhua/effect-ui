@@ -29,17 +29,17 @@ export function HomeHeroActions() {
 }
 
 type HomeHeroMetricsProps = {
-  uiCount: number
+  componentCount: number
   effectCount: number
 }
 
-export function HomeHeroMetrics({ uiCount, effectCount }: HomeHeroMetricsProps) {
+export function HomeHeroMetrics({ componentCount, effectCount }: HomeHeroMetricsProps) {
   return (
     <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
       <span className="inline-flex items-center gap-1.5">
         <LayoutGrid className="size-4 text-muted-foreground" />
         <strong className="font-semibold tabular-nums text-foreground">
-          <CountUp value={uiCount} className="inline" />
+          <CountUp value={componentCount} className="inline" />
         </strong>{" "}
         个基础组件
       </span>

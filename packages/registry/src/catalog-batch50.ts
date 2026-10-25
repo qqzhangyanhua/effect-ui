@@ -40,6 +40,8 @@ export const batch50Components: ComponentMeta[] = [
     description:
       "原创实现。空状态插画里的零件自己上下漂，指针或方向键可以把它们拨开，松手后慢慢漂回去。减弱动效时插画静止，拨动只改位置。没有新增依赖，也不使用 matter-js。",
     category: "decor",
+    layer: "effect",
+    effectCategory: "decor",
     source: "original",
     type: "registry:ui",
     file: "effects/empty-state-scene.tsx",

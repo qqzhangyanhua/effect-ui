@@ -17,6 +17,8 @@ import { Stepper, StepperItem, StepperTrigger } from "./stepper"
 import { ColorPicker } from "./color-picker"
 import { CodeBlock } from "./code-block"
 import { KanbanBoard, KanbanCard, KanbanCards, KanbanHeader, KanbanProvider } from "./kanban"
+import { ChatMessage } from "./chat-message"
+import { PromptInput } from "./prompt-input"
 import { RichTextEditor } from "./rich-text-editor"
 import { TreeView } from "./tree-view"
 import { Field, FieldError, FieldLegend } from "./field"
@@ -181,6 +183,20 @@ test("kanban shows a column and its card", () => {
   )
   expect(screen.getByText("待办")).toBeInTheDocument()
   expect(screen.getByText("修灯")).toBeInTheDocument()
+})
+
+test("chat message shows the user text", () => {
+  render(<ChatMessage role="user" content="你好" />)
+  expect(screen.getByText("你好")).toBeInTheDocument()
+})
+
+test("prompt input submits the typed text", async () => {
+  const user = userEvent.setup()
+  const onSubmit = vi.fn()
+  render(<PromptInput onSubmit={onSubmit} />)
+  await user.type(screen.getByPlaceholderText("问点什么…"), "你好")
+  await user.click(screen.getByRole("button", { name: "发送" }))
+  expect(onSubmit).toHaveBeenCalledWith("你好")
 })
 
 test("rich text editor shows the initial paragraph", async () => {

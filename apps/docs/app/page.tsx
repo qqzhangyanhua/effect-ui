@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { ArrowRight, ChevronDown, ExternalLink, Github } from "lucide-react"
 
-import { visibleComponents } from "@effect-ui/registry/catalog"
+import { components, resolveLayer } from "@effect-ui/registry/catalog"
 import { DotPattern } from "@effect-ui/registry/effects/dot-pattern"
 import { HighlightText } from "@effect-ui/registry/effects/highlight-text"
 import { HeroShowcase } from "@/components/hero-showcase"
@@ -16,8 +16,13 @@ import { HomeSectionBackdrop } from "@/components/home-section-backdrop"
 import { HomeTerminal } from "@/components/home-terminal"
 
 export default function HomePage() {
-  const effectCount = visibleComponents.filter((item) => item.category !== "ui").length
-  const uiCount = visibleComponents.filter((item) => item.category === "ui").length
+  let componentCount = 0
+  let effectCount = 0
+  for (const item of components) {
+    const layer = resolveLayer(item)
+    if (layer === "primitive" || layer === "composite" || layer === "widget") componentCount += 1
+    else if (layer === "effect") effectCount += 1
+  }
 
   return (
     <main className="min-h-svh bg-background text-foreground">
@@ -52,7 +57,7 @@ export default function HomePage() {
               </p>
 
               <HomeHeroActions />
-              <HomeHeroMetrics uiCount={uiCount} effectCount={effectCount} />
+              <HomeHeroMetrics componentCount={componentCount} effectCount={effectCount} />
             </div>
 
             <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center">

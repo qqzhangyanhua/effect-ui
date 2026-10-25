@@ -9,6 +9,8 @@ export const batch48Components: ComponentMeta[] = [
     description:
       "原创实现。工牌挂在 Verlet 绳上，拖动后会摆动并弹回竖直。方向键也能拨一下。减弱动效时保持竖直，不再积分。没有新增依赖，也不使用 matter-js。",
     category: "cards",
+    layer: "effect",
+    effectCategory: "cards",
     source: "original",
     type: "registry:ui",
     file: "effects/lanyard-badge.tsx",
@@ -40,6 +42,8 @@ export const batch48Components: ComponentMeta[] = [
     description:
       "原创实现。按下时按钮被弹簧压扁，松手后弹回，点击仍然触发。回车和空格同样会按下。减弱动效时不压扁。没有新增依赖，也不使用 matter-js。",
     category: "buttons",
+    layer: "effect",
+    effectCategory: "buttons",
     source: "original",
     type: "registry:ui",
     file: "effects/jelly-button.tsx",
@@ -71,6 +75,8 @@ export const batch48Components: ComponentMeta[] = [
     description:
       "原创实现。拉手拖动抽屉，松手后按出手速度惯性滑开或关上。甩得够快会直接弹到另一侧。方向键和回车也能开关。减弱动效时直接开合。没有新增依赖，也不使用 matter-js。",
     category: "navigation",
+    layer: "effect",
+    effectCategory: "navigation",
     source: "original",
     type: "registry:ui",
     file: "effects/spring-drawer.tsx",

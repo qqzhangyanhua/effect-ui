@@ -79,6 +79,8 @@ export const batch46Components: ComponentMeta[] = [
     description:
       "原创实现。便利贴可以拖动，松手后按出手速度继续滑一段，并随横向速度倾斜。方向键每次挪 24 像素。减弱动效时停在落点，不再滑、不再倾斜。没有新增依赖。",
     category: "cards",
+    layer: "widget",
+    purposeGroup: "layout",
     source: "original",
     type: "registry:ui",
     file: "effects/sticky-note-board.tsx",

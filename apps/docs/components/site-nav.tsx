@@ -82,6 +82,39 @@ function SiteNav({ onSelectCurrent }: { onSelectCurrent?: () => void }) {
             </div>
           )
         }
+        if (group.key === "topics") {
+          return (
+            <div key={group.key} className="mb-6">
+              <p className="px-2 pb-2 text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">
+                {group.label}
+              </p>
+              <ul className="space-y-0.5">
+                {group.sections.map((section) => {
+                  const href = `/docs/topics/${section.key}`
+                  const isActive = pathname === href
+                  return (
+                    <li key={section.key}>
+                      <Link
+                        href={href}
+                        aria-current={isActive ? "page" : undefined}
+                        onClick={() => {
+                          if (isActive) onSelectCurrent?.()
+                        }}
+                        className={
+                          isActive
+                            ? "block rounded-md bg-sidebar-accent px-2 py-1.5 text-sm text-sidebar-accent-foreground"
+                            : "block rounded-md px-2 py-1.5 text-sm text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                        }
+                      >
+                        {section.label}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        }
         return (
         <div key={group.key} className="mb-6">
           <p className="px-2 pb-2 text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">

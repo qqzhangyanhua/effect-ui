@@ -1,6 +1,6 @@
 import type { ComponentType } from "react"
 
-import { categoryLabels, getCatalogGroups, type ComponentMeta } from "@effect-ui/registry/catalog"
+import { getCatalogGroups, layerBadges, type ComponentMeta } from "@effect-ui/registry/catalog"
 import { getDemo } from "@effect-ui/registry/examples/index"
 import { Badge } from "@effect-ui/registry/ui/badge"
 
@@ -112,7 +112,11 @@ async function FamilyGallery({
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-2xl font-medium tracking-tight">{item.title}</h2>
-              <Badge variant="outline">{categoryLabels[item.category]}</Badge>
+              {layerBadges(item).map((label) => (
+                <Badge key={label} variant="outline">
+                  {label}
+                </Badge>
+              ))}
             </div>
             <p className="text-sm text-muted-foreground">{item.description}</p>
           </div>

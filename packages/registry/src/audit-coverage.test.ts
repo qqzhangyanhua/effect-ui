@@ -6,6 +6,10 @@ import { auditRegistry, type AuditCatalogEntry, type AuditInput } from "./audit"
 import { effectCategoryNames } from "./catalog-layer"
 import { effectCategories } from "./prop-vocabulary"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
+import { unclassifiedCatalogNames } from "./unclassified-catalog"
+
+const listedName = unclassifiedCatalogNames.values().next().value
+if (!listedName) throw new Error("尚未分类名单已经空了，过期名单测试要改成只覆盖新名字。")
 
 const source = "export function Widget() { return null }\n"
 
@@ -300,17 +304,17 @@ test("尚未分类名单：新名字必须声明 Layer，旧名字声明之后�
   expect(ofType([fresh], {}, "missing-layer")).toEqual(["fresh-widget"])
   expect(ofType([fresh], {}, "stale-unclassified")).toEqual([])
 
-  const listed = widget({ name: "button", category: "ui" })
+  const listed = widget({ name: listedName, category: "ui" })
   expect(ofType([listed], {}, "missing-layer")).toEqual([])
   expect(ofType([listed], {}, "stale-unclassified")).toEqual([])
 
   const declared = widget({
-    name: "button",
+    name: listedName,
     category: "ui",
     layer: "primitive",
     purposeGroup: "form",
   })
-  expect(ofType([declared], {}, "stale-unclassified")).toEqual(["button"])
+  expect(ofType([declared], {}, "stale-unclassified")).toEqual([listedName])
   expect(ofType([declared], {}, "missing-layer")).toEqual([])
   expect(ofType([declared], {}, "layer-mismatch")).toEqual([])
 })
@@ -336,7 +340,7 @@ test("第二层分组和 Layer 不匹配时报错，名单问题仍然单独报"
   expect(ofType([halfDeclared], {}, "layer-mismatch")).toEqual(["fresh-half"])
   expect(ofType([halfDeclared], {}, "missing-layer")).toEqual(["fresh-half"])
 
-  const listedMismatch = widget({ name: "button", layer: "effect" })
-  expect(ofType([listedMismatch], {}, "layer-mismatch")).toEqual(["button"])
-  expect(ofType([listedMismatch], {}, "stale-unclassified")).toEqual(["button"])
+  const listedMismatch = widget({ name: listedName, layer: "effect" })
+  expect(ofType([listedMismatch], {}, "layer-mismatch")).toEqual([listedName])
+  expect(ofType([listedMismatch], {}, "stale-unclassified")).toEqual([listedName])
 })

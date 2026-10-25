@@ -1,20 +1,51 @@
 import { expect, test } from "vitest"
 
+import { effectCategoryNames, purposeGroups } from "./catalog-layer"
 import {
+  categoryLabels,
   componentCluster,
+  components,
   getCatalogGroups,
   getComponentsByCategory,
   relatedComponents,
+  subgroupLabels,
   visibleComponents,
 } from "./catalog"
 
-test("按钮、输入和六个控件族各自只出现在对应分组，并且紧跟在基础组件后面", () => {
+const aiTopicNames = [
+  "prompt-input",
+  "chat-message",
+  "siri-orb",
+  "ai-voice",
+  "ai-citations",
+  "ai-token-alternatives",
+  "response-stream",
+  "thinking-bar",
+  "chain-of-thought",
+  "reasoning",
+  "source",
+  "tool",
+  "system-message",
+  "feedback-bar",
+  "prompt-suggestion",
+  "generated-image",
+  "expandable-chat",
+  "chat-message-list",
+  "agent-intro-sequence",
+]
+
+function expectSectionOrder(keys: readonly string[], order: readonly string[]) {
+  const ranks = keys.map((key) => order.indexOf(key))
+  expect(ranks.every((rank) => rank >= 0)).toBe(true)
+  expect([...ranks]).toEqual([...ranks].sort((a, b) => a - b))
+}
+
+test("按钮、输入和六个控件族各自只出现在对应分组，并且紧跟在组件分组后面", () => {
   const groups = getCatalogGroups()
   const keys = groups.map((group) => group.key)
-  const uiIndex = keys.indexOf("ui")
 
-  expect(keys.slice(uiIndex, uiIndex + 9)).toEqual([
-    "ui",
+  expect(keys).toEqual([
+    "components",
     "button",
     "input",
     "checkbox",
@@ -23,18 +54,71 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
     "select",
     "textarea",
     "slider",
+    "effects",
+    "sections",
+    "templates",
+    "topics",
+    "hooks-libs",
   ])
   expect(keys).not.toContain("buttons")
   expect(keys).not.toContain("form")
+  expect(keys).not.toContain("ui")
 
-  const ui = groups.find((group) => group.key === "ui")
-  const formNames = ui?.sections.find((section) => section.key === "form")?.items.map((item) => item.name) ?? []
-  expect(formNames).toEqual(
-    expect.arrayContaining(["label", "field", "form", "calendar", "date-picker", "toggle", "toggle-group", "image-cropper", "share-invite-panel"]),
-  )
-  expect(formNames).not.toContain("checkbox")
-  expect(formNames).not.toContain("switch")
-  expect(formNames).not.toContain("labeled-toggle")
+  const componentGroup = groups.find((group) => group.key === "components")
+  const componentSectionKeys = componentGroup?.sections.map((section) => section.key) ?? []
+  expectSectionOrder(componentSectionKeys, [...purposeGroups, "ungrouped"])
+  for (const section of componentGroup?.sections ?? []) {
+    const label = section.key === "ungrouped" ? "未分组" : subgroupLabels[section.key as keyof typeof subgroupLabels]
+    expect(section.label).toBe(label)
+    for (const item of section.items) {
+      const purpose = item.purposeGroup
+      const expected = purpose && (purposeGroups as readonly string[]).includes(purpose) ? purpose : "ungrouped"
+      expect(section.key).toBe(expected)
+    }
+  }
+  expect(componentGroup?.items.some((item) => componentCluster(item.name))).toBe(false)
+
+  const effects = groups.find((group) => group.key === "effects")
+  const effectSectionKeys = effects?.sections.map((section) => section.key) ?? []
+  expectSectionOrder(effectSectionKeys, [...effectCategoryNames, "ungrouped"])
+  expect(effectSectionKeys).toContain("text")
+  for (const section of effects?.sections ?? []) {
+    const label = section.key === "ungrouped" ? "未分组" : categoryLabels[section.key as keyof typeof categoryLabels]
+    expect(section.label).toBe(label)
+    for (const item of section.items) {
+      const declared = item.effectCategory
+      const expected =
+        declared && (effectCategoryNames as readonly string[]).includes(declared)
+          ? declared
+          : (effectCategoryNames as readonly string[]).includes(item.category)
+            ? item.category
+            : "ungrouped"
+      expect(section.key).toBe(expected)
+    }
+  }
+  expect(effects?.items.some((item) => componentCluster(item.name))).toBe(false)
+
+  expect(groups.find((group) => group.key === "sections")?.sections).toEqual([])
+  expect(groups.find((group) => group.key === "sections")?.label).toBe("区块")
+  expect(groups.find((group) => group.key === "templates")?.sections).toEqual([])
+  expect(groups.find((group) => group.key === "templates")?.label).toBe("模板")
+  expect(groups.find((group) => group.key === "hooks-libs")?.sections.map((section) => section.key)).toEqual(["hook", "lib"])
+  expect(groups.find((group) => group.key === "hooks-libs")?.sections.map((section) => section.label)).toEqual(["Hook", "Lib"])
+
+  const topics = groups.find((group) => group.key === "topics")
+  expect(topics?.label).toBe("专题")
+  expect(topics?.sections.map((section) => section.key)).toEqual(["ai"])
+  expect(topics?.sections.map((section) => section.label)).toEqual(["AI"])
+  expect(topics?.sections[0]?.items.map((item) => item.name)).toEqual(aiTopicNames)
+  expect(aiTopicNames.filter((name) => componentCluster(name))).toEqual(["prompt-input"])
+  expect(componentCluster("prompt-input")).toBe("input")
+  for (const name of aiTopicNames) {
+    if (name === "prompt-input") continue
+    expect(componentCluster(name)).toBeUndefined()
+  }
+
+  const listed = new Set(groups.flatMap((group) => group.items.map((item) => item.name)))
+  for (const item of components) expect(listed.has(item.name)).toBe(true)
 
   const button = groups.find((group) => group.key === "button")
   const input = groups.find((group) => group.key === "input")
@@ -78,7 +162,10 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
     "dual-range-slider",
   ])
 
-  const clustered = new Map(groups.filter((group) => group.key !== "ui").map((group) => [group.key, new Set(group.items.map((item) => item.name))]))
+  const familyKeys = new Set(["button", "input", "checkbox", "switch", "radio", "select", "textarea", "slider"])
+  const clustered = new Map(
+    groups.filter((group) => familyKeys.has(group.key)).map((group) => [group.key, new Set(group.items.map((item) => item.name))]),
+  )
   for (const item of visibleComponents) {
     const cluster = componentCluster(item.name)
     if (!cluster) continue
@@ -88,9 +175,8 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
     }
   }
 
-  const familyKeys = new Set(["button", "input", "checkbox", "switch", "radio", "select", "textarea", "slider"])
   const elsewhere = groups
-    .filter((group) => !familyKeys.has(group.key))
+    .filter((group) => !familyKeys.has(group.key) && group.key !== "topics")
     .flatMap((group) => group.items.map((item) => item.name))
   expect(elsewhere.some((name) => componentCluster(name))).toBe(false)
   for (const key of familyKeys) {

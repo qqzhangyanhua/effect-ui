@@ -94,7 +94,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   const install = `npx shadcn@latest add ${getRegistryBaseUrl()}/r/${item.name}.json`
   const sourceUrl = sourceLibraryUrls[item.source]
   const ordered = getCatalogGroups()
-    .filter((group) => group.key !== "topics" && group.key !== "hooks-libs")
+    .filter((group) => group.key !== "topics")
     .flatMap((group) => group.items)
   const index = ordered.findIndex((entry) => entry.name === item.name)
   const previous = index > 0 ? ordered[index - 1] : undefined

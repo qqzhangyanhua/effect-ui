@@ -10,6 +10,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch53Components: ComponentMeta[] = [
   {
     name: "press-depth",
+    batch: 53,
     title: "Press Depth",
     description: `${interior} ${interiorFile("press-depth")} 按下时按钮沉进底槽，并朝指针倾斜。键盘空格和回车同样按下。${pause}`,
     category: "buttons",
@@ -35,6 +36,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "value-flash",
+    batch: 53,
     title: "Value Flash",
     description: `${interior} ${interiorFile("value-flash")} 数字变化时滚动换位，并按涨跌着色。读屏在停顿后播报。${pause}`,
     category: "micro",
@@ -60,6 +62,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "blur-up-image",
+    batch: 53,
     title: "Blur Up Image",
     description: `${interior} ${interiorFile("blur-up-image")} 图片从模糊显到清晰。加载失败时留一块占位。${pause}`,
     category: "cards",
@@ -92,6 +95,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "chromatic-text-reveal",
+    batch: 53,
     title: "Chromatic Text Reveal",
     description: `${beui} ${beFile("chromatic-text-reveal")} 色带扫过前缀后面的词，再换下一个。${pause}`,
     category: "text",
@@ -118,6 +122,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "action-swap",
+    batch: 53,
     title: "Action Swap",
     description: `${beui} ${beFile("action-swap")} 一个按钮在几条文案之间切换。variant 选择模糊、滚动或逐字三种换法。${pause}`,
     category: "buttons",
@@ -146,6 +151,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "pull-to-refresh",
+    batch: 53,
     title: "Pull To Refresh",
     description: `${beui} ${beFile("pull-to-refresh")} 在顶部下拉刷新。触控、指针和隐藏的刷新按钮都能触发。${pause}`,
     category: "scroll",
@@ -176,6 +182,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "arc-picker",
+    batch: 53,
     title: "Arc Picker",
     description: `${beui} ${beFile("arc-picker")} 沿弧线拖动、滚动或用方向键选择一项。${pause}`,
     category: "micro",
@@ -205,6 +212,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "new-items-pill",
+    batch: 53,
     title: "New Items Pill",
     description: `${interior} ${interiorFile("new-items-pill")} 列表离开顶部后，新条目堆成一颗可跳回的药丸。读屏延迟播报。${pause}`,
     category: "utility",
@@ -225,6 +233,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "typing-indicator",
+    batch: 53,
     title: "Typing Indicator",
     description: `${interior} ${interiorFile("typing-indicator")} 有人正在输入时冒出气泡和名字。读屏播报整句。${pause}`,
     category: "utility",
@@ -244,6 +253,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "knockout-bracket",
+    batch: 53,
     title: "Knockout Bracket",
     description: `${beui} ${beFile("knockout-bracket")} 单败淘汰赛对阵。左右按钮翻页，对阵图跟着平移。${pause}`,
     category: "utility",
@@ -263,6 +273,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "ruler-slider",
+    batch: 53,
     title: "Ruler Slider",
     description: `${beui} https://github.com/starc007/ui-components/blob/main/components/motion/range-slider-ruler.tsx 刻度在指针下滑动。拖动带惯性，方向键按步进移动。${pause}`,
     category: "utility",
@@ -290,6 +301,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "overflow-actions",
+    batch: 53,
     title: "Overflow Actions",
     description: `${beui} ${beFile("overflow-actions")} 主操作常驻，其余收在一个按钮里。悬停放大只在有悬停的设备上出现。${pause}`,
     category: "utility",
@@ -316,6 +328,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "preview-rail",
+    batch: 53,
     title: "Preview Rail",
     description: `${beui} ${beFile("preview-rail")} 一排刻度。鼠标悬停、触控点按或键盘聚焦时展开预览。带链接的项第一次点按只打开预览。${pause}`,
     category: "utility",
@@ -347,6 +360,7 @@ export const batch53Components: ComponentMeta[] = [
   },
   {
     name: "wallet-card",
+    batch: 53,
     title: "Wallet Card",
     description: `${beui} https://github.com/starc007/ui-components/blob/main/components/motion/wallet-card/index.tsx 账户切换、余额显隐、搜索和收发操作。余额换字复用 action-swap。${pause}`,
     category: "utility",

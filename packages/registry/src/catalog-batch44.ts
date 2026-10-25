@@ -8,6 +8,7 @@ const neo = "移植自 Neobrutalism components，MIT，Copyright (c) 2023 Samuel
 export const batch44Components: ComponentMeta[] = [
   {
     name: "dotted-glow-background",
+    batch: 44,
     title: "Dotted Glow Background",
     description: `${velora} ${veloraFile("dotted-glow-background.tsx")} 画布点阵被若干团漂移光晕点亮。未点亮的点用继承的文字色，点亮的点按 16 档亮度向 --brand 混色，半径最多放到 1.6 倍。gap、radius、opacity、speed、glows、pauseOnHover 可配。光晕位置用正弦和余弦，悬停父级、父级内焦点、隐藏标签页、减弱动效或离开视口时停在当前一帧，点阵仍然画出来。`,
     category: "backgrounds",
@@ -29,6 +30,7 @@ export const batch44Components: ComponentMeta[] = [
   },
   {
     name: "sticky-banner",
+    batch: 44,
     title: "Sticky Banner",
     description: `${velora} ${veloraFile("sticky-banner.tsx")} 贴在页面顶部的公告条，role 是 region。dismissible 为 true 时可以关掉。关闭前把焦点交给横幅后面的下一个可聚焦元素，然后用 220 毫秒向上滑出。减弱动效或离开视口时直接卸掉，不再滑。底色用主题色，示例渐变放在 demo。`,
     category: "utility",
@@ -48,6 +50,7 @@ export const batch44Components: ComponentMeta[] = [
   },
   {
     name: "multi-step-loader",
+    batch: 44,
     title: "Multi Step Loader",
     description: `${velora} ${veloraFile("multi-step-loader.tsx")} 模态 dialog 里的分步进度。loading 打开遮罩。不传 current 时每 duration 毫秒前进一步，默认 1600。loop 为 true 时在悬停或内部焦点期间暂停，然后从第一步再来；否则最后一步后再等一个 duration 调用 onComplete。状态文案放在 aria-live 的 status 里。当前步的转圈只在允许动效且位于视口内时旋转。减弱动效时步骤照常前进，转圈停住。离开视口时计时暂停。`,
     category: "loaders",
@@ -86,6 +89,7 @@ export const batch44Components: ComponentMeta[] = [
   },
   {
     name: "stateful-button",
+    batch: 44,
     title: "Stateful Button",
     description: `${velora} ${veloraFile("stateful-button.tsx")} onClick 返回 Promise 时进入 loading，按钮缩成圆形并设置 aria-busy。兑现后显示 successText，拒绝后显示 errorText，再过 resetAfter 毫秒回到空闲。几层文字叠在同一个格子里，布局宽度不变。减弱动效或离开视口时不缩圆、不转圈，结果文字仍然切换。`,
     category: "buttons",
@@ -123,6 +127,7 @@ export const batch44Components: ComponentMeta[] = [
   },
   {
     name: "tweet-card",
+    batch: 44,
     title: "Tweet Card",
     description: `${velora} ${veloraFile("tweet-card.tsx")} 静态的帖子卡片，只渲染传入的 name、handle、content、avatar、time、verified，不发网络请求。没有头像时用名字的首字。verified 为 true 时显示认证标记。卡片本身不循环动画。`,
     category: "cards",
@@ -159,6 +164,7 @@ export const batch44Components: ComponentMeta[] = [
   },
   {
     name: "neo-star-shapes",
+    batch: 44,
     title: "Neo Star Shapes",
     description: `${neo} https://github.com/ekmas/neobrutalism-components/blob/main/src/components/stars/s1.tsx 到 s40.tsx 合成一个组件。shape 取 1 到 40，画出对应的单路径星星。color、size、stroke、strokeWidth 可配。19、20、21、24、28、32、34、40 使用 evenodd。没有循环动画。`,
     category: "decor",
@@ -196,6 +202,7 @@ export const batch44Components: ComponentMeta[] = [
   },
   {
     name: "caption-image-card",
+    batch: 44,
     title: "Caption Image Card",
     description: `${neo} https://github.com/ekmas/neobrutalism-components/blob/main/src/components/ui/image-card.tsx 250 像素宽的图文卡片，2 像素边框，4 像素无模糊偏移阴影，圆角 5 像素。figure 包住图片，figcaption 放 caption。alt 不传时用 caption。图片由调用方传入，示例使用内嵌矢量图。没有循环动画。`,
     category: "cards",

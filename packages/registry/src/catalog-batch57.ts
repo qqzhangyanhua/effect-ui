@@ -8,6 +8,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch57Components: ComponentMeta[] = [
   {
     name: "wax-seal-button",
+    batch: 57,
     title: "Wax Seal Button",
     description: `${framekit} ${file("wax-seal-button")} 火漆按钮：点击后倒蜡、盖印，成功后显示火漆印。失败停在可重试状态。duration 为 0 时盖印后保持封上。${pause}`,
     category: "buttons",
@@ -34,6 +35,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "dispatch-truck-button",
+    batch: 57,
     title: "Dispatch Truck Button",
     description: `${framekit} ${file("dispatch-truck-button")} 发货按钮：路面拉长、货车装上包裹再开走。失败不自动复位。duration 小于等于 0 时成功态保持。阶段顺序与源码一致。${pause}`,
     category: "buttons",
@@ -58,6 +60,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "googly-gaze-button",
+    batch: 57,
     title: "Googly Gaze Button",
     description: `${framekit} ${file("googly-gaze-button")} 两只活动眼睛跟着指针或触点看，点一下会眯眼。触屏按下也会更新视线，不依赖悬停。${pause}`,
     category: "buttons",
@@ -79,6 +82,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "weather-vane-toggle",
+    batch: 57,
     title: "Weather Vane Toggle",
     description: `${framekit} ${file("weather-vane-toggle")} 风向标开关。打开时箭头转到设定角度，底纹变密。点击切换，键盘走按钮的 Space 和 Enter。${pause}`,
     category: "micro",
@@ -104,6 +108,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "book-spine-shelf",
+    batch: 57,
     title: "Book Spine Shelf",
     description: `${framekit} ${file("book-spine-shelf")} 一排书脊。点选或用方向键换书，封面卡片跟着打开。触屏不靠悬停倾斜。这是书架选书。${pause}`,
     category: "showcase",
@@ -129,6 +134,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "cook-loading",
+    batch: 57,
     title: "Cook Loading",
     description: `${framekit} ${file("cook-loading")} 厨师等待态。进度由外部传入，暂停只冻住手臂和蒸汽，不改进度。源码里的精灵图没有带进来，这里用主题色 SVG 重画同一套状态。${pause}`,
     category: "loaders",
@@ -160,6 +166,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "usage-quota-meter",
+    batch: 57,
     title: "Usage Quota Meter",
     description: `${framekit} ${file("usage-quota-meter")} 用量条。超过包含额度时出现警告。点击一行展开分段，不靠悬停。数字用 en-US，避免服务端和浏览器格式不一致。`,
     category: "utility",
@@ -181,6 +188,7 @@ export const batch57Components: ComponentMeta[] = [
   },
   {
     name: "smart-widget-stack",
+    batch: 57,
     title: "Smart Widget Stack",
     description: `${framekit} ${file("smart-widget-stack")} 一叠小组件。方向键、圆点和滚轮都能换页。拖动只在动画进行时启用。autoMs 为 0 时不自动翻。`,
     category: "utility",

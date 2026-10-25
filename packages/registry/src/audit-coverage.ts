@@ -1,23 +1,4 @@
-import { batch34Components } from "./catalog-batch34"
-import { batch35Components } from "./catalog-batch35"
-import { batch46Components } from "./catalog-batch46"
-import { batch47Components } from "./catalog-batch47"
-import { batch48Components } from "./catalog-batch48"
-import { batch49Components } from "./catalog-batch49"
-import { batch50Components } from "./catalog-batch50"
-import { batch51Components } from "./catalog-batch51"
-import { batch52Components } from "./catalog-batch52"
-import { batch53Components } from "./catalog-batch53"
-import { batch54Components } from "./catalog-batch54"
-import { batch55Components } from "./catalog-batch55"
-import { batch56Components } from "./catalog-batch56"
-import { batch57Components } from "./catalog-batch57"
-import { batch58Components } from "./catalog-batch58"
-import { batch59Components } from "./catalog-batch59"
-import { batch60Components } from "./catalog-batch60"
-import { batch61Components } from "./catalog-batch61"
-import { batch62Components } from "./catalog-batch62"
-import { batch63Components } from "./catalog-batch63"
+import { components } from "./catalog"
 import { owesComponentTest, owesEffectChecks, type LayerSource } from "./catalog-layer"
 import { registryFiles, type RegistryCatalogEntry } from "./registry-item"
 
@@ -90,10 +71,18 @@ function hasControl(prop: unknown): boolean {
   return typeof control === "object" && control !== null
 }
 
+/** Batch 34 起不能进豁免名单。36–45 在这道分界之前已经落地，仍然可以豁免。 */
+export const exemptionClosedFromBatch = 34
+export const openExemptionBatches = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45] as const
+
+const openExemptionBatchSet = new Set<number>(openExemptionBatches)
+
+export function isExemptionClosedBatch(batch: number): boolean {
+  return batch >= exemptionClosedFromBatch && !openExemptionBatchSet.has(batch)
+}
+
 export function exemptionClosedNames(): ReadonlySet<string> {
-  return new Set(
-    [...batch34Components, ...batch35Components, ...batch46Components, ...batch47Components, ...batch48Components, ...batch49Components, ...batch50Components, ...batch51Components, ...batch52Components, ...batch53Components, ...batch54Components, ...batch55Components, ...batch56Components, ...batch57Components, ...batch58Components, ...batch59Components, ...batch60Components, ...batch61Components, ...batch62Components, ...batch63Components].map((entry) => entry.name),
-  )
+  return new Set(components.flatMap((entry) => (isExemptionClosedBatch(entry.batch) ? [entry.name] : [])))
 }
 
 export function testedSourceFiles(tests: readonly { file: string; text: string }[]): ReadonlySet<string> {

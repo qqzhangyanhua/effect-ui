@@ -7,6 +7,7 @@ const cultFile = (file: string) => `https://github.com/nolly-studio/cult-ui/blob
 export const batch43Components: ComponentMeta[] = [
   {
     name: "lightboard",
+    batch: 43,
     title: "Lightboard",
     description: `${cult} ${cultFile("lightboard.tsx")} 画布点阵把文字滚过灯板，指针悬停时停住。disableDrawing 为 false 时可以在灯上描线，描线亮度是 2。text、rows、lightSize、gap、updateInterval、font、palette 可配。字模按行数放大，点亮用 textBright，关掉的灯用 background。减弱动效或离开视口时停在当前一帧，文字仍可读。`,
     category: "showcase",
@@ -49,6 +50,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "cosmic-button",
+    batch: 43,
     title: "Cosmic Button",
     description: `${cult} ${cultFile("cosmic-button.tsx")} 两层锥形渐变边框，一层 3 秒转到 360 度，一层 5 秒反转到 -360 度。悬停时边框向外扩 3px。as 可以是 a 或 button。链接地址由调用方传入。减弱动效或离开视口时边框停转，悬停仍会扩一圈。`,
     category: "buttons",
@@ -67,6 +69,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "glow-track-button",
+    batch: 43,
     title: "Glow Track Button",
     description: `${cult} ${cultFile("glow-button.tsx")} 对应源文件 EnhancedGlowingButton。悬停时 204px 宽的径向光跟随指针的横向百分比移动。glowColor、textColor、backgroundColor、text 可配。传入 href 时渲染链接，否则是按钮。减弱动效或离开视口时光斑保持透明。`,
     category: "buttons",
@@ -103,6 +106,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "halo-switch",
+    batch: 43,
     title: "Halo Switch",
     description: `${cult} ${cultFile("halo-switch.tsx")} 滑块用弹簧 stiffness 420、damping 34、bounce 0.12 平移。轨道外侧的透明热区把可点高度补到至少 44px。size 为 sm 或 default，translucent 控制磨砂底光。减弱动效或离开视口时滑块直接到位，不再缩放。`,
     category: "ui",
@@ -121,6 +125,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "shift-card",
+    batch: 43,
     title: "Shift Card",
     description: `${cult} ${cultFile("shift-card.tsx")} 悬停时卡片放大到 1.02，底部内容高度从 38 收到 194，用 0.3 秒、延迟 0.1 秒、circIn。topContent、middleContent、topAnimateContent、bottomContent 四段内容分开传。减弱动效或离开视口时底部内容直接展开，卡片不再缩放。`,
     category: "cards",
@@ -140,6 +145,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "squiggle-arrow",
+    batch: 43,
     title: "Squiggle Arrow",
     description: `${cult} ${cultFile("squiggle-arrow.tsx")} 一条静态手绘箭头。variant 为 wavy、bouncy 或 smooth，direction 为 right、left、up、down，旋转中心是 (100, 50)。strokeWidth 可配。没有循环动画。`,
     category: "decor",
@@ -180,6 +186,7 @@ export const batch43Components: ComponentMeta[] = [
 
   {
     name: "speech-bubble",
+    batch: 43,
     title: "Speech Bubble",
     description: `${cult} ${cultFile("speech-bubble.tsx")} 圆角气泡配右侧尾巴。showCursor 为 true 时在 md 以上显示一枚会呼吸的光标，周期 1.4 秒。减弱动效或离开视口时光标停住，文字仍在。`,
     category: "ui",
@@ -195,6 +202,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "folded-card",
+    batch: 43,
     title: "Folded Card",
     description: `${cult} ${cultFile("folded-card.tsx")} 右上角折页用 clip-path 切出，折角是 40px 的渐变三角。预览区可以铺虚线网格，gridRows 和 gridColumns 控制行列。href、title、badge、description 可配。这张卡没有循环动画。`,
     category: "cards",
@@ -233,6 +241,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "side-panel",
+    batch: 43,
     title: "Side Panel",
     description: `${cult} ${cultFile("side-panel.tsx")} 打开时宽度到 97%，高度用弹簧 bounce 0.02、duration 0.65 跟上内容。收起时宽度 160px，缓动是 [0.42, 0, 0.58, 1]。panelOpen、handlePanelOpen、renderButton 可配。高度用 ResizeObserver 测量，没有加入 react-use-measure。减弱动效时开关立即完成。`,
     category: "ui",
@@ -252,6 +261,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "collab-avatar",
+    batch: 43,
     title: "Collab Avatar",
     description: `${cult} ${cultFile("collab-avatar.tsx")} 从名字取一到两个首字母。color 传十六进制时，底色用该色的 18 和 3a 透明度叠两层渐变。入场 0.22 秒从 0.92 放到 1，缓动 [0.2, 0, 0, 1]。size 单位是像素。减弱动效时直接显示最终大小。颜色不是十六进制时退回纯色底，字母仍可读。`,
     category: "ui",
@@ -270,6 +280,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "elapsed-timer",
+    batch: 43,
     title: "Elapsed Timer",
     description: `${cult} ${cultFile("timer.tsx")} 对应源文件 TimerRoot、TimerIcon、TimerDisplay。loading 为 true 时用 requestAnimationFrame 累计时间。format 支持 SS.MS、MM:SS、HH:MM:SS。resetOnLoadingChange 为 true 时每次开始都从 0 计。variant 和 size 可配。减弱动效或离开视口时停表，图标不再旋转。`,
     category: "ui",
@@ -293,6 +304,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "neumorph-button",
+    batch: 43,
     title: "Neumorph Button",
     description: `${cult} ${cultFile("neumorph-button.tsx")} 四种 intent 沿用源文件的内凹阴影和底色。悬停放大到 1.02，按下缩到 0.98。loading 时显示旋转的 Loader2 并把文字降到 0.7 透明度。buttonSize 为 small、medium、large。减弱动效或离开视口时不再缩放，加载图标停止旋转。`,
     category: "buttons",
@@ -331,6 +343,7 @@ export const batch43Components: ComponentMeta[] = [
   },
   {
     name: "texture-card",
+    batch: 43,
     title: "Texture Card",
     description: `${cult} ${cultFile("texture-card.tsx")} 五层嵌套描边。styled 为 false 时圆角跟着 --radius，底色从 card 过渡到 secondary。styled 为 true 时固定 24px 圆角和中性灰渐变。配合 TextureCardHeader、Title、Description、Content、Footer、TextureSeparator 使用。没有循环动画。`,
     category: "ui",

@@ -8,6 +8,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch56Components: ComponentMeta[] = [
   {
     name: "queue-pulse-lanes",
+    batch: 56,
     title: "Queue Pulse Lanes",
     description: `${motiq} ${file("backgrounds", "queue-pulse-lanes")} 队列车道：脉冲胶囊从左向右流动，拥堵更密更慢，阻塞车道停在色条和 × 上。这是吞吐看板，不是装饰光带。${pause}`,
     category: "backgrounds",
@@ -29,6 +30,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "event-propagation-matrix",
+    batch: 56,
     title: "Event Propagation Matrix",
     description: `${motiq} ${file("backgrounds", "event-propagation-matrix")} 事件从原点沿格子向前、向外或向下传播。失败停在 ×，确认留下 ✓。这是网格上的事件波，不是 glyph-matrix 那种闪烁字符。${pause}`,
     category: "backgrounds",
@@ -49,6 +51,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "copperplate-hatch",
+    batch: 56,
     title: "Copperplate Hatch",
     description: `${motiq} ${file("backgrounds", "copperplate-hatch")} 三向铜版交叉线被一圈圈光波点亮。指针和触屏按下会移动光源。${pause}`,
     category: "backgrounds",
@@ -68,6 +71,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "core-strata",
+    batch: 56,
     title: "Core Strata",
     description: `${motiq} ${file("backgrounds", "core-strata")} 岩芯沉积层以不同速度上移，勘测光束扫过时点亮标记缝，断层把岩柱错开。${pause}`,
     category: "backgrounds",
@@ -87,6 +91,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "kinetic-emphasis",
+    batch: 56,
     title: "Kinetic Emphasis",
     description: `${motiq} ${file("text", "kinetic-emphasis")} 阅读焦点沿句子走过，<em> 和 <strong> 留下下划线。进入视口或挂载时播放，不靠悬停。${pause}`,
     category: "text",
@@ -108,6 +113,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "liquid-fill-headline",
+    batch: 56,
     title: "Liquid Fill Headline",
     description: `${motiq} ${file("text", "liquid-fill-headline")} 描边标题被液面灌满，再排空。按下标题会重新灌注。${pause}`,
     category: "text",
@@ -129,6 +135,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "velocity-skew-feed",
+    batch: 56,
     title: "Velocity Skew Feed",
     description: `${motiq} ${file("scroll", "velocity-skew-feed")} 卡片随容器滚动速度剪切，停下后弹簧回正。这不是 skewed-infinite-scroll 那种恒定斜切的无限跑马。${pause}`,
     category: "scroll",
@@ -151,6 +158,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "filmstrip-scrub",
+    batch: 56,
     title: "Filmstrip Scrub",
     description: `${motiq} ${file("media", "filmstrip-scrub")} 胶片条用弹簧播放头跟手。拖动、方向键和闲置自动播放都能换帧，触屏不依赖悬停。${pause}`,
     category: "showcase",
@@ -171,6 +179,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "live-log-stream",
+    batch: 56,
     title: "Live Log Stream",
     description: `${motiq} ${file("developer-tools", "live-log-stream")} 日志流。跟在底部时新行滚入；往上翻就停下，并可以跳回最新。级别用文字前缀，不只靠颜色。`,
     category: "utility",
@@ -190,6 +199,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "environment-switcher",
+    batch: 56,
     title: "Environment Switcher",
     description: `${motiq} ${file("developer-tools", "environment-switcher")} 环境切换。菜单用 react-dom portal 挂到 body。切到 production 前可以要求确认。离线或锁定的环境不可选。`,
     category: "utility",
@@ -213,6 +223,7 @@ export const batch56Components: ComponentMeta[] = [
   },
   {
     name: "api-request-inspector",
+    batch: 56,
     title: "API Request Inspector",
     description: `${motiq} ${file("developer-tools", "api-request-inspector")} 查看一次 HTTP 交换。请求头、查询、正文和响应分栏显示，Authorization 等敏感键默认打码。`,
     category: "utility",

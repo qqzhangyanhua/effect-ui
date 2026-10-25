@@ -3,6 +3,8 @@ import fs from "node:fs"
 import { expect, test } from "vitest"
 
 import { auditRegistry, type AuditCatalogEntry, type AuditInput } from "./audit"
+import { exemptionClosedNames } from "./audit-coverage"
+import { components } from "./catalog"
 import { effectCategoryNames } from "./catalog-layer"
 import { effectCategories } from "./prop-vocabulary"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
@@ -204,21 +206,23 @@ test("缺减弱动效豁免只压这一条，静态组件仍写着它时报告�
   ).toEqual(["widget"])
 })
 
-test("Batch 34 及以后的 catalog 批次都算进豁免分界", () => {
-  const catalog = fs.readFileSync(new URL("./catalog.ts", import.meta.url), "utf8")
-  const boundary = fs.readFileSync(new URL("./audit-coverage.ts", import.meta.url), "utf8")
-  // 36–45 是 origin 先落地的批次，当时还没有这道分界，合并后仍允许豁免。
+test("没有正整数 Batch 编号时报告缺编号", () => {
+  expect(ofType([widget()], {}, "missing-batch")).toEqual(["widget"])
+  expect(ofType([widget({ batch: 0 })], {}, "missing-batch")).toEqual(["widget"])
+  expect(ofType([widget({ batch: 1.5 })], {}, "missing-batch")).toEqual(["widget"])
+  expect(ofType([widget({ batch: 1 })], {}, "missing-batch")).toEqual([])
+})
+
+test("豁免分界读条目上的 Batch，36 到 45 仍然开放", () => {
   const openOriginBatches = new Set([36, 37, 38, 39, 40, 41, 42, 43, 44, 45])
-  const closed = [...catalog.matchAll(/import \{ (batch(\d+)Components) \}/g)]
-    .filter((match) => Number(match[2]) >= 34 && !openOriginBatches.has(Number(match[2])))
-    .map((match) => match[1])
-  expect(closed.length).toBeGreaterThan(0)
-  for (const name of closed) {
-    expect(name).toBeTruthy()
-    expect(boundary).toContain(name ?? "")
-  }
-  for (const batch of openOriginBatches) {
-    expect(boundary).not.toContain(`batch${batch}Components`)
+  const boundary = fs.readFileSync(new URL("./audit-coverage.ts", import.meta.url), "utf8")
+  const closed = exemptionClosedNames()
+  expect(boundary).not.toContain('from "./catalog-batch')
+  expect(closed.size).toBeGreaterThan(0)
+  for (const entry of components) {
+    expect(Number.isInteger(entry.batch) && entry.batch >= 1).toBe(true)
+    const shouldClose = entry.batch >= 34 && !openOriginBatches.has(entry.batch)
+    expect(closed.has(entry.name)).toBe(shouldClose)
   }
 })
 

@@ -6,6 +6,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch63Components: ComponentMeta[] = [
   {
     name: "mesh-glow-bg",
+    batch: 63,
     title: "Mesh Glow Bg",
     description: `原创。区块底下叠三团主题色柔光，慢慢漂移。这是背景光晕，不是粒子，也不是一条单色渐变。调色板只换主题变量，不写死品牌色。${pause}`,
     category: "backgrounds",
@@ -31,6 +32,7 @@ export const batch63Components: ComponentMeta[] = [
   },
   {
     name: "hero-text-stagger",
+    batch: 63,
     title: "Hero Text Stagger",
     description: "原创。标题按行再按词错落出现，副文和行动按钮随后跟上，只播放一次。面向首屏文案，不是 stagger-list 的纵向列表，也不是 stagger-card-grid 的卡片网格。可以用 title 行数组，也可以用 Title、Subtitle、Cta 分槽。减弱动效直接显示终态。",
     category: "text",
@@ -53,6 +55,7 @@ export const batch63Components: ComponentMeta[] = [
   },
   {
     name: "scroll-parallax-layers",
+    batch: 63,
     title: "Scroll Parallax Layers",
     description: "原创。背景、中景和前景按不同速率跟着滚动位移。两层时不渲染中景。粗指针把幅度减半。这是多层视差，不是 parallax 的单元素位移。减弱动效时各层静止叠放。离开视口不监听滚动。",
     category: "scroll",
@@ -72,6 +75,7 @@ export const batch63Components: ComponentMeta[] = [
   },
   {
     name: "shared-layout-expand",
+    batch: 63,
     title: "Shared Layout Expand",
     description: "原创。网格里的小卡点击或按 Enter、Space 后，用共享布局扩成对话框。Esc、关闭按钮和遮罩都能收回，焦点留在对话框里。这不是 flip-reveal-card 的三维翻转，也不是 hover-overlay-reveal 的悬停遮罩。减弱动效瞬时切换，不再变形。",
     category: "cards",
@@ -92,6 +96,7 @@ export const batch63Components: ComponentMeta[] = [
   },
   {
     name: "logo-marquee",
+    batch: 63,
     title: "Logo Marquee",
     description: "原创。一组标志横向无缝循环。悬停可以暂停，聚焦也暂停，所以不靠悬停才读得到名字。这不是 logos-carousel 的分组轮换。减弱动效只排成静止的一行，不再复制轨道。离开视口时暂停。",
     category: "showcase",
@@ -113,6 +118,7 @@ export const batch63Components: ComponentMeta[] = [
   },
   {
     name: "entrance-presets",
+    batch: 63,
     title: "Entrance Presets",
     description: "原创。包住任意子元素，进入视口后按 grow、slide、fade、spin 或 soft 播放一次。slide 的方向用 from。这是命名预设的外壳，不是 twist-in-card 那种固定卡片。减弱动效直接显示。",
     category: "scroll",

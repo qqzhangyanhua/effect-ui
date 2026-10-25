@@ -9,6 +9,7 @@ const merakiFile = (file: string) => `https://github.com/merakiuilabs/merakiui/b
 export const batch40Components: ComponentMeta[] = [
   {
     name: "bookmark-burst-toggle",
+    batch: 40,
     title: "Bookmark Burst Toggle",
     description: `${galaxy} 作者 Galahhad。${galaxyFile("Checkboxes/Galahhad_mighty-warthog-42.html")} 勾选后书签填上金色，圆环和八点阴影爆发。checked、onCheckedChange、color 可配，示例色放在 demo。减弱动效或离开视口时不再缩放和爆发，填充仍然切换。`,
     category: "micro",
@@ -27,6 +28,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "lock-toggle",
+    batch: 40,
     title: "Lock Toggle",
     description: `${galaxy} 作者 mobinkakei。${galaxyFile("Checkboxes/mobinkakei_strange-frog-14.html")} 锁扣抬起，三条高光线划过。用 locked、onLockedChange 和 aria-pressed。示例红绿色放在 demo。减弱动效或离开视口时不再画线，开合状态仍然切换。`,
     category: "micro",
@@ -47,6 +49,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "circular-text-button",
+    batch: 40,
     title: "Circular Text Button",
     description: `${galaxy} 作者 Creatlydev。${galaxyFile("Buttons/Creatlydev_fresh-goose-83.html")} 文字按字拆开绕圈旋转，悬停时圆钮变黑并放大到 1.05，箭头互换。text 自动拆分，可传 href 或 onClick。示例句子放在 demo。减弱动效或离开视口时停止旋转，悬停不再缩放。`,
     category: "buttons",
@@ -81,6 +84,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "flower-burst-button",
+    batch: 40,
     title: "Flower Burst Button",
     description: `${galaxy} 作者 yaroslavas2001。${galaxyFile("Buttons/yaroslavas2001_lovely-fox-50.html")} 六朵四瓣花在悬停时长大并换成蓝色渐变，分别以 15、13、16、17、20、15 秒旋转。label 和 petalColors 可配。减弱动效或离开视口时不再旋转，花瓣仍会变大。`,
     category: "buttons",
@@ -99,6 +103,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "scroll-cue-button",
+    batch: 40,
     title: "Scroll Cue Button",
     description: `${galaxy} 作者 ArturCodeCraft。${galaxyFile("Buttons/ArturCodeCraft_afraid-fish-22.html")} 箭头向下滑动。targetId 平滑滚动，href 作为链接，autoPlay 让循环不必等待悬停。文案放在 demo。减弱动效时不再滑动，滚动改为立刻到位。`,
     category: "buttons",
@@ -118,6 +123,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "flicker-reflect-button",
+    batch: 40,
     title: "Flicker Reflect Button",
     description: `${galaxy} 作者 John-CFO。${galaxyFile("Buttons/John-CFO_green-rabbit-93.html")} 霓虹闪烁两秒，带 -webkit-box-reflect。悬停时按钮本身变成黑底直角。glowColor 是彩色光晕，flicker 可关掉闪烁。文案放在 demo。减弱动效或离开视口时不再闪，倒影仍在。`,
     category: "buttons",
@@ -136,6 +142,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "glow-search-input",
+    batch: 40,
     title: "Glow Search Input",
     description: `${galaxy} 作者 siraj-ha。${galaxyFile("Inputs/siraj-ha_serious-moose-70.html")} 静止时是左右两团光晕，只有悬停才对调旋转。value、onChange、onFilterClick、colors 可配。示例色和占位符放在 demo。减弱动效或离开视口时不再旋转，静止光晕保留。`,
     category: "utility",
@@ -156,6 +163,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "propeller-orb",
+    batch: 40,
     title: "Propeller Orb",
     description: `${galaxy} 作者 Lakshay-art。${galaxyFile("Cards/Lakshay-art_shy-puma-30.html")} 径向圆球加旋转螺旋桨，悬停时桨叶加快、机翼倾斜。size、speed、colors 可配，根节点 aria-hidden。示例色放在 demo。减弱动效或离开视口时桨叶停住，机翼不再倾斜。`,
     category: "cards",
@@ -194,6 +202,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "not-found-page",
+    batch: 40,
     title: "Not Found Page",
     description: `${meraki} ${merakiFile("404-pages/CenteredWithLinks.html")} 与 ${merakiFile("404-pages/Image.html")}。variant 为 centered 或 image。links、onBack、homeHref 可配。示例文案和图片放在 demo。减弱动效时按钮不再做颜色过渡。`,
     category: "page",
@@ -236,6 +245,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "multi-level-dropdown",
+    batch: 40,
     title: "Multi Level Dropdown",
     description: `${meraki} ${merakiFile("dropdowns/MultiLevelWithIcons.html")} 嵌套菜单。方向键、Esc 和外部点击可关闭，role 为 menu。示例条目放在 demo。减弱动效时菜单直接出现，不再缩放。`,
     category: "navigation",
@@ -253,6 +263,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "email-template",
+    batch: 40,
     title: "Email Template",
     description: `${meraki} ${merakiFile("email-templates/Verification.html")}、${merakiFile("email-templates/Welcome.html")} 与 ${merakiFile("email-templates/Invite.html")}。表格加内联样式。variant 为 verification、welcome 或 invite。brand、title、body、cta 可配。示例文案放在 demo。`,
     category: "utility",
@@ -276,6 +287,7 @@ export const batch40Components: ComponentMeta[] = [
   },
   {
     name: "signup-split-page",
+    batch: 40,
     title: "Signup Split Page",
     description: `${meraki} ${merakiFile("sign-in-and-registration/SignUpPageWithSideImage.html")} 侧图加表单，客户和合作者切换，原生校验。image、onSubmit、status 可配。示例文案和图片放在 demo。减弱动效时按钮不再做颜色过渡。`,
     category: "templates",

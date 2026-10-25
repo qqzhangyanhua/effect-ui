@@ -10,6 +10,7 @@ const cult = "移植自 Cult UI，MIT，Copyright (c) 2023 Jordan-Gilliam。"
 export const batch23Components: ComponentMeta[] = [
   {
     name: "use-controllable-state",
+    batch: 23,
     title: "Use Controllable State",
     description: "受控或非受控状态。传入 value 时由外部控制，否则使用 defaultValue。供 feature-voting 使用，不依赖 @radix-ui/react-use-controllable-state。",
     category: "ui",
@@ -26,6 +27,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "boids-ecosystem",
+    batch: 23,
     title: "Boids Ecosystem",
     description: `${animata} https://github.com/codse/animata/blob/main/animata/background/boids-ecosystem.tsx 画布上的鸟群，分离、对齐、靠拢，指针靠近时散开。减弱动效时停在一帧。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -45,6 +47,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "shooting-stars",
+    batch: 23,
     title: "Shooting Stars",
     description: `${animata} https://github.com/codse/animata/blob/main/animata/background/shooting-stars.tsx 画布流星，拖着会淡出的尾迹，背景星星闪烁。可调频率、角度和颜色。减弱动效时只留静止星空。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -65,6 +68,7 @@ export const batch23Components: ComponentMeta[] = [
 
   {
     name: "aperture-reveal",
+    batch: 23,
     title: "Aperture Reveal",
     description: `${animata} https://github.com/codse/animata/blob/main/animata/scroll/aperture-reveal.tsx 标题中间的开口随滚动张开，露出照片。减弱动效时取消裁切和位移，内容按阅读顺序排开。`,
     category: "scroll",
@@ -83,6 +87,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "text-explode",
+    batch: 23,
     title: "Text Explode",
     description: `${animata} https://github.com/codse/animata/blob/main/animata/text/text-explode-imessage.tsx 文字像消息气泡一样炸开，再收回来。减弱动效时不炸开。离开视口后停止循环。`,
     category: "text",
@@ -99,6 +104,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "distorted-glass",
+    batch: 23,
     title: "Distorted Glass",
     description: `${cult} https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/distorted-glass.tsx 铺满容器的磨砂玻璃，用 SVG 湍流和位移做出波纹。静止，不循环。`,
     category: "backgrounds",
@@ -116,6 +122,7 @@ export const batch23Components: ComponentMeta[] = [
 
   {
     name: "flower-menu",
+    batch: 23,
     title: "Flower Menu",
     description: `${animata} https://github.com/codse/animata/blob/main/animata/fabs/flower-menu.tsx 圆形菜单，条目像花瓣一样打开。数量可配置，链接使用普通锚点。减弱动效时立即打开。`,
     category: "navigation",
@@ -132,6 +139,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "sibling-focus-nav",
+    batch: 23,
     title: "Sibling Focus Nav",
     description: `${animata} https://github.com/codse/animata/blob/main/animata/container/sibling-focus-nav.tsx 悬停或聚焦某一项时，其余导航变暗并模糊。减弱动效时只变暗。`,
     category: "navigation",
@@ -148,6 +156,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "popover-form",
+    batch: 23,
     title: "Popover Form",
     description: `${cult} https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/popover-form.tsx 按钮在原地变成一张小表单，提交后显示勾。打开时聚焦输入框，关闭时把焦点还回去，Esc 关闭。减弱动效时改为淡入淡出。`,
     category: "micro",
@@ -165,6 +174,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "floating-panel",
+    batch: 23,
     title: "Floating Panel",
     description: `${cult} https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/floating-panel.tsx 浮动面板从触发器长出，包含标题、内容和底部操作。点外面或按 Esc 关闭，并管理焦点。减弱动效时改为淡入淡出。`,
     category: "micro",
@@ -182,6 +192,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "copy-button",
+    batch: 23,
     title: "Copy Button",
     description: `${cult} https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/copy-button.tsx 复制图标变成勾，两秒后恢复。可传入 value 或 getValue。复制失败时显示错误状态。减弱动效时图标直接切换。`,
     category: "buttons",
@@ -197,6 +208,7 @@ export const batch23Components: ComponentMeta[] = [
   },
   {
     name: "feature-voting",
+    batch: 23,
     title: "Feature Voting",
     description: `${cult} https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/feature-voting.tsx 功能投票列表，每项有标题、说明和票数。票数变化时滚动，条目按票数重排。可受控或非受控。减弱动效时不播放重排动画。`,
     category: "micro",

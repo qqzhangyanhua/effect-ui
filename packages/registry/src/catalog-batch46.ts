@@ -5,6 +5,7 @@ const ui: PropDoc[] = [{ name: "className", type: "string", description: "额外
 export const batch46Components: ComponentMeta[] = [
   {
     name: "card-toss-stack",
+    batch: 46,
     title: "Card Toss Stack",
     description:
       "原创实现。叠在上面的卡片可以拖拽，松手后按出手速度惯性飞出并移走。方向键也能甩出。拖得不够远会回到原位。减弱动效时直接拿走，不再飞。没有新增依赖。",
@@ -37,6 +38,7 @@ export const batch46Components: ComponentMeta[] = [
   },
   {
     name: "toss-to-trash",
+    batch: 46,
     title: "Toss To Trash",
     description:
       "原创实现。把条目向下拖过一段距离，或拖到垃圾桶上，松手后沿抛物线落入并删除。Delete、Backspace 或向下方向键同样可以扔。减弱动效时直接删除。没有新增依赖。",
@@ -75,6 +77,7 @@ export const batch46Components: ComponentMeta[] = [
   },
   {
     name: "sticky-note-board",
+    batch: 46,
     title: "Sticky Note Board",
     description:
       "原创实现。便利贴可以拖动，松手后按出手速度继续滑一段，并随横向速度倾斜。方向键每次挪 24 像素。减弱动效时停在落点，不再滑、不再倾斜。没有新增依赖。",

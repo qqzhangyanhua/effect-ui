@@ -12,6 +12,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch55Components: ComponentMeta[] = [
   {
     name: "exploding-input",
+    batch: 55,
     title: "Exploding Input",
     description: `${spell} ${spellFile("exploding-input")} 键入时在光标处炸开刚输入的字符。这是输入框本身的粒子，不是消息气泡的 text-explode。焦点里打字即可，不依赖悬停。${pause}`,
     category: "micro",
@@ -33,6 +34,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "flow-button",
+    batch: 55,
     title: "Flow Button",
     description: `${spell} ${spellFile("flow-button")} 胶囊按钮外圈有一圈流动虚线。静止时虚线仍在。悬停、焦点和触屏按下都会让虚线流动。${pause}`,
     category: "buttons",
@@ -54,6 +56,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "logos-carousel",
+    batch: 55,
     title: "Logos Carousel",
     description: `${spell} ${spellFile("logos-carousel")} 标志按组纵向交错换场。这不是横向滚动的 section-logo-cloud。减弱动效时停在第一组。${pause}`,
     category: "showcase",
@@ -74,6 +77,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "bars-spinner",
+    batch: 55,
     title: "Bars Spinner",
     description: `${spell} ${spellFile("bars-spinner")} 放射短条依次明暗。减弱动效时短条停在固定透明度，并保留文字。${pause}`,
     category: "loaders",
@@ -94,6 +98,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "band-wave-text",
+    batch: 55,
     title: "Band Wave Text",
     description: `${spell} ${spellFile("gradient-wave-text")} 色带从文字底部扫过。这不是整段渐变的 gradient-text，也不是逐字起伏的 text-shimmer-wave。减弱动效时色带停在中段。${pause}`,
     category: "text",
@@ -116,6 +121,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "glow-divider",
+    batch: 55,
     title: "Glow Divider",
     description: `${sera} ${seraFile("glowline", "glowline")} 一条会呼吸的发光分隔线。这不是卡片边缘的 glowing-edge，也不是容器光晕 glow-effect。${pause}`,
     category: "decor",
@@ -136,6 +142,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "invalid-shake",
+    batch: 55,
     title: "Invalid Shake",
     description: `${hexta} ${hextaHook("use-invalid-shake")} 提交无效邮箱时字段横向抖动，并写出错误。键盘回车同样会提交。减弱动效时只保留错误文字。${pause}`,
     category: "micro",
@@ -157,6 +164,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "fallback-avatar",
+    batch: 55,
     title: "Fallback Avatar",
     description: `${spell} ${spellFile("fallback-avatar")} 按名字生成双色渐变和首字母。原实现用 WebGL，这里改成 CSS 渐变。悬停、焦点和触屏按下会让色块慢慢漂移。`,
     category: "utility",
@@ -172,6 +180,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "verify-badge",
+    batch: 55,
     title: "Verify Badge",
     description: `${sera} ${seraFile("verify-badge", "verify-badge")} 基础、金色和高级三种验证徽章。高级徽章的虚线圈在减弱动效时不再旋转。`,
     category: "utility",
@@ -188,6 +197,7 @@ export const batch55Components: ComponentMeta[] = [
   },
   {
     name: "held-keys",
+    batch: 55,
     title: "Held Keys",
     description: `${hexta} ${hextaHook("use-held-keys")} 显示当前按住的物理键。松开、窗口失焦或页面隐藏时清空。`,
     category: "utility",

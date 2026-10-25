@@ -12,6 +12,7 @@ const file = (name: string) =>
 export const batch28Components: ComponentMeta[] = [
   {
     name: "scroll-image-reveal",
+    batch: 28,
     title: "Scroll Image Reveal",
     description: `${smooth} ${file("scroll-image-reveal")} 滚动驱动擦除、百叶、幕布、圆形或缩放显现。减弱动效时直接完全打开。离开视口后停在当前进度。`,
     category: "scroll",
@@ -53,6 +54,7 @@ export const batch28Components: ComponentMeta[] = [
 
   {
     name: "depth-parallax-words",
+    batch: 28,
     title: "Depth Parallax Words",
     description: `${smooth} ${file("depth-parallax-words")} 每个词从放大、上移和模糊落到可读位置。减弱动效时直接显示落定状态。triggerOnView 时离开视口前停在起始状态。`,
     category: "text",
@@ -89,6 +91,7 @@ export const batch28Components: ComponentMeta[] = [
   },
   {
     name: "prism-sweep-transition",
+    batch: 28,
     title: "Prism Sweep Transition",
     description: `${smooth} ${file("prism-sweep-transition")} 棱镜色散扫过两种状态。着色器保持原样，绘制用 ogl。减弱动效时立刻换内容。离开视口后停止绘制，进度仍会走完。`,
     category: "page",
@@ -127,6 +130,7 @@ export const batch28Components: ComponentMeta[] = [
 
   {
     name: "splash-mask",
+    batch: 28,
     title: "Splash Mask",
     description: `${layouts} https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/clip-path/clip-path-water-splash.tsx 把子内容裁进水花或水滴路径。路径内联，不请求外部 SVG。减弱动效或离开视口后暂停内部 video。`,
     category: "decor",
@@ -143,6 +147,7 @@ export const batch28Components: ComponentMeta[] = [
   },
   {
     name: "morph-icon",
+    batch: 28,
     title: "Morph Icon",
     description: `${smooth} ${file("morph-icon")} 描边在菜单、播放、搜索等图标状态之间变形。减弱动效或离开视口后过渡时间为 0。`,
     category: "micro",
@@ -168,6 +173,7 @@ export const batch28Components: ComponentMeta[] = [
   },
   {
     name: "hover-expand",
+    batch: 28,
     title: "Hover Expand",
     description: `${smooth} ${file("hover-expand")} 一排图片条，悬停或选中的一条变宽。没有精细指针时改成点击。减弱动效或离开视口后弹簧时间为 0。`,
     category: "showcase",
@@ -214,6 +220,7 @@ export const batch28Components: ComponentMeta[] = [
 
   {
     name: "count-badge",
+    batch: 28,
     title: "Count Badge",
     description: `${smooth} ${file("count-badge")} 圆点、数字或在线状态。数字超过 max 时显示 99+。减弱动效或离开视口后数字不再滚动。`,
     category: "micro",
@@ -240,6 +247,7 @@ export const batch28Components: ComponentMeta[] = [
   },
   {
     name: "social-selector",
+    batch: 28,
     title: "Social Selector",
     description: `${smooth} ${file("social-selector")} 选择一个平台并预览账号。减弱动效或离开视口后指示条不再做弹簧。`,
     category: "micro",
@@ -258,6 +266,7 @@ export const batch28Components: ComponentMeta[] = [
   },
   {
     name: "github-stars-animation",
+    batch: 28,
     title: "GitHub Stars Animation",
     description: `${smooth} ${file("github-stars-animation")} 星标数字滚动，旁边叠头像。只有传入 apiEndpoint 才会请求网络；同时给了 stargazers 和 starCount 时直接使用。减弱动效或离开视口后数字直接跳到终值。`,
     category: "micro",
@@ -282,6 +291,7 @@ export const batch28Components: ComponentMeta[] = [
   },
   {
     name: "expandable-navbar",
+    batch: 28,
     title: "Expandable Navbar",
     description: `${smooth} ${file("expandable-navbar")} 导航项展开下拉面板，宽高平滑变化。减弱动效或离开视口后弹簧时间为 0。`,
     category: "navigation",

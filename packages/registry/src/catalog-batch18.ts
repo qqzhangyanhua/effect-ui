@@ -11,6 +11,7 @@ const ui: PropDoc[] = [
 export const batch18Components: ComponentMeta[] = [
   {
     name: "image-tube-scroll",
+    batch: 18,
     title: "Image Tube Scroll",
     description: "灵感来自 Codrops Scroll-Driven 3D Image Tube，原创实现。图片贴在圆柱内壁，滚动时镜头前进并旋转，拖拽改变速度。",
     category: "scroll",
@@ -52,6 +53,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "depth-fog-gallery",
+    batch: 18,
     title: "Depth Fog Gallery",
     description: "灵感来自 Codrops Atmospheric Depth Gallery，原创实现。画面分布在不同深度，滚动穿过时远处变模糊、变暗。",
     category: "sections",
@@ -64,6 +66,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "fireworks-show",
+    batch: 18,
     title: "Fireworks Show",
     description: "灵感来自 Codrops Fireworks 2026，原创实现。点击或自动发射，带拖尾、爆炸、重力和闪烁。离开视口会暂停。",
     category: "showcase",
@@ -87,6 +90,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "wobble-line-cursor",
+    batch: 18,
     title: "Wobble Line Cursor",
     description: "灵感来自 Codrops Cursor Line Wobble，原创实现。横跨区域的线被光标拨动后像琴弦一样弹回。",
     category: "cursor",
@@ -128,6 +132,7 @@ export const batch18Components: ComponentMeta[] = [
 
   {
     name: "telescope-zoom-scroll",
+    batch: 18,
     title: "Telescope Zoom Scroll",
     description: "灵感来自 Codrops Telescope Zoom，原创实现。圆形视窗随滚动放大，外圈刻度一起旋转，揭开下一张画面。",
     category: "sections",
@@ -144,6 +149,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "curved-scrollbar",
+    batch: 18,
     title: "Curved Scrollbar",
     description: "灵感来自 Codrops Custom curved corner scrollbars，原创实现。轨道沿圆角弯曲，滑块跟着滚动走。原生滚动保留，只隐藏原生条。",
     category: "utility",
@@ -164,6 +170,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "particle-hourglass",
+    batch: 18,
     title: "Particle Hourglass",
     description: "灵感来自 Codrops Sands of Time，原创实现。沙粒从上室流到下室并堆积，可用作加载或倒计时。",
     category: "loaders",
@@ -215,6 +222,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "invoice-preview",
+    batch: 18,
     title: "Invoice Preview",
     description: "发票预览：抬头、明细、税费、合计和二维码占位。金额用 Intl.NumberFormat，并带打印样式。",
     category: "utility",
@@ -237,6 +245,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "shortcuts-dialog",
+    batch: 18,
     title: "Shortcuts Dialog",
     description: "按 ? 打开快捷键面板，可以搜索，按键用 Kbd 显示。附带 useHotkey，会区分 macOS 与 Windows 的修饰键。",
     category: "utility",
@@ -250,6 +259,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "pricing-calculator",
+    batch: 18,
     title: "Pricing Calculator",
     description: "席位和调用量滑块按阶梯实时计价，数字滚动显示，可切换月付和年付，并提示推荐方案。",
     category: "sections",
@@ -262,6 +272,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "plan-compare-table",
+    batch: 18,
     title: "Plan Compare Table",
     description: "方案对比表。表头粘住，功能分组可折叠，能只看差异。窄屏改成按方案切换的标签页。",
     category: "sections",
@@ -278,6 +289,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "mention-textarea",
+    batch: 18,
     title: "Mention Textarea",
     description: "输入 @ 或 # 时在光标处弹出候选，插入提及，并输出正文和提及列表。",
     category: "utility",
@@ -296,6 +308,7 @@ export const batch18Components: ComponentMeta[] = [
   },
   {
     name: "timezone-clock",
+    batch: 18,
     title: "Timezone Clock",
     description: "多城市时钟，可切换表盘和数字，标出昼夜和相对时差。秒针有弹性，减弱动效时改为跳动。",
     category: "utility",

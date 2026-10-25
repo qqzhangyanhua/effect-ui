@@ -12,6 +12,7 @@ const kiboFile = (name: string) => `https://github.com/shadcnblocks/kibo/blob/ma
 export const batch31Components: ComponentMeta[] = [
   {
     name: "skewed-infinite-scroll",
+    batch: 31,
     title: "Skewed Infinite Scroll",
     description: `${syntax} ${syntaxFile("animations/SkewedInfiniteScroll.tsx")} 卡片网格带 rotateX、rotateZ 和 skew，并垂直无限滚动，上下有渐隐遮罩。items、speed、columns 可配。减弱动效或离开视口时停住滚动，斜切保留。`,
     category: "scroll",
@@ -30,6 +31,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "constellation-loader",
+    batch: 31,
     title: "Constellation Loader",
     description: `${syntax} ${syntaxFile("components/loaders/ConstellationLoader.tsx")} 星点按固定种子分布，并连向最近的邻居。星星和连线一起闪烁。count、size、color 可配。减弱动效或离开视口时停成静态星座。`,
     category: "loaders",
@@ -66,6 +68,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "particle-swarm-loader",
+    batch: 31,
     title: "Particle Swarm Loader",
     description: `${syntax} ${syntaxFile("components/loaders/ParticleSwarmLoader.tsx")} 粒子绕中心聚散。count、size、color 可配。减弱动效或离开视口时收成一圈静止的点。`,
     category: "loaders",
@@ -102,6 +105,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "spinning-cube-loader",
+    batch: 31,
     title: "Spinning Cube Loader",
     description: `${syntax} ${syntaxFile("components/loaders/SpinningCubeLoader.tsx")} 带透视的方块同时绕 X 和 Y 转一圈。size、color、duration 可配。减弱动效或离开视口时停在一个斜角。`,
     category: "loaders",
@@ -138,6 +142,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "whirlpool-loader",
+    batch: 31,
     title: "Whirlpool Loader",
     description: `${syntax} ${syntaxFile("components/loaders/WhirlpoolLoader.tsx")} 点沿着 5 圈螺旋从半径 5 排到 95，整体缓慢旋转。segments、rotations、duration、color 可配。减弱动效或离开视口时螺旋停住。`,
     category: "loaders",
@@ -175,6 +180,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "emoji-confetti",
+    batch: 31,
     title: "Emoji Confetti",
     description: `${syntax} ${syntaxFile("effects/EmojiConfetti.tsx")} 点击后从按钮中心爆出 emoji，用 requestAnimationFrame 做速度、重力和旋转。emojis 可换。ref 的 fire(x, y) 可以从任意坐标发射。和现有 confetti-burst 不同，这里是带物理的 emoji。减弱动效时只弹出一个 emoji 并淡出。`,
     category: "micro",
@@ -192,6 +198,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "star-wars-button",
+    batch: 31,
     title: "Star Wars Button",
     description: `${syntax} ${syntaxFile("components/button/StarWarsButton.tsx")} 悬停时按钮里的星星向外飞，文字略微拉开字距。children、starCount、speed 可配。减弱动效或离开视口时只变色，星星不动。`,
     category: "buttons",
@@ -210,6 +217,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "text-drop",
+    batch: 31,
     title: "Text Drop",
     description: `${syntax} ${syntaxFile("components/text/text-drop/TextDrop.tsx")} 字母从上方落下再落到原位。DropCharacters 已并进同一组件。text、stagger、delay 可配。减弱动效时直接显示整句。`,
     category: "text",
@@ -245,6 +253,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "snippet",
+    batch: 31,
     title: "Snippet",
     description: `${kibo} ${kiboFile("snippet")} 多标签代码片段，例如 npm、pnpm、yarn。由 SnippetHeader、SnippetTabsList、SnippetTabsTrigger、SnippetTabsContent 和 SnippetCopyButton 组成。复制后图标变成对勾。onCopy 和 timeout 可配。`,
     category: "utility",
@@ -263,6 +272,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "status",
+    batch: 31,
     title: "Status",
     description: `${kibo} ${kiboFile("status")} 服务状态徽章。StatusIndicator 是会 ping 的圆点，状态有 online、offline、maintenance、degraded，配 StatusLabel。减弱动效或离开视口时不 ping。`,
     category: "micro",
@@ -280,6 +290,7 @@ export const batch31Components: ComponentMeta[] = [
 
   {
     name: "mini-calendar",
+    batch: 31,
     title: "Mini Calendar",
     description: `${kibo} ${kiboFile("mini-calendar")} 横向迷你周历，默认 5 天，可翻页，选中的日期高亮。value 和 startDate 都支持受控。日期用 date-fns 计算。Slot 来自已安装的 @radix-ui/react-slot。`,
     category: "utility",
@@ -305,6 +316,7 @@ export const batch31Components: ComponentMeta[] = [
   },
   {
     name: "reel",
+    batch: 31,
     title: "Reel",
     description: `${kibo} ${kiboFile("reel")} 竖向短视频和图片轮播，顶部是分段进度条，可以播放、暂停、静音和上一段下一段。index、playing、muted 都可受控，autoPlay 和每条 duration 可配。减弱动效或离开视口时不自动播放。`,
     category: "showcase",
@@ -351,6 +363,7 @@ export const batch31Components: ComponentMeta[] = [
 
   {
     name: "labeled-toggle",
+    batch: 31,
     title: "Labeled Toggle",
     description: `${syntax} ${syntaxFile("components/toggle/LabeledToggle.tsx")} 带 ON 和 OFF 文字的开关，旋钮用刚度 500、阻尼 30 的弹簧移动。支持 initialToggleOn、onToggle、disableText，也支持受控 checked 和 onCheckedChange。带 role="switch" 和 aria-checked。减弱动效时旋钮直接到位。`,
     category: "ui",

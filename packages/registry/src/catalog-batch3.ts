@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch3Components: ComponentMeta[] = [
   {
     name: "animated-beam",
+    batch: 3,
     title: "Animated Beam",
     description: "节点之间流动的光束连线。",
     category: "showcase",
@@ -47,6 +48,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "morphing-dialog",
+    batch: 3,
     title: "Morphing Dialog",
     description: "卡片共享布局变形展开成弹窗。",
     category: "cards",
@@ -79,6 +81,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "image-comparison",
+    batch: 3,
     title: "Image Comparison",
     description: "前后对比拖动滑块。",
     category: "cards",
@@ -117,6 +120,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "progressive-blur",
+    batch: 3,
     title: "Progressive Blur",
     description: "内容边缘的渐进模糊遮罩。",
     category: "scroll",
@@ -164,6 +168,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "scroll-progress",
+    batch: 3,
     title: "Scroll Progress",
     description: "随滚动伸长的阅读进度条。",
     category: "scroll",
@@ -202,6 +207,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "scroll-velocity",
+    batch: 3,
     title: "Scroll Velocity",
     description: "滚动速度驱动的跑马灯。",
     category: "scroll",
@@ -248,6 +254,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "stacking-cards",
+    batch: 3,
     title: "Stacking Cards",
     description: "滚动时卡片依次叠放。",
     category: "scroll",
@@ -293,6 +300,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "dynamic-island",
+    batch: 3,
     title: "Dynamic Island",
     description: "仿 iPhone 灵动岛的弹性状态切换。",
     category: "navigation",
@@ -321,6 +329,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "variable-font-proximity",
+    batch: 3,
     title: "Variable Font Proximity",
     description: "可变字体字重随鼠标距离变化。",
     category: "text",
@@ -364,6 +373,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "dropzone",
+    batch: 3,
     title: "Dropzone",
     description: "拖拽上传，含预览与类型/大小校验。",
     category: "utility",
@@ -382,6 +392,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "select-plus",
+    batch: 3,
     title: "Select Plus",
     description: "基于 combobox 的复合选择器，支持单选、多选和标签。",
     category: "utility",
@@ -415,6 +426,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "button-plus",
+    batch: 3,
     title: "Button Plus",
     description: "带加载、图标、危险色和整行宽度的按钮。",
     category: "utility",
@@ -437,6 +449,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "input-plus",
+    batch: 3,
     title: "Input Plus",
     description: "带清除、前后缀、字数、密码、搜索和自适应多行的输入。",
     category: "utility",
@@ -467,6 +480,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "switch-plus",
+    batch: 3,
     title: "Switch Plus",
     description: "带加载、轨道文案和尺寸的开关。",
     category: "utility",
@@ -488,6 +502,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "checkbox-plus",
+    batch: 3,
     title: "Checkbox Plus",
     description: "带文字的复选框，以及用 options 渲染的复选组。",
     category: "utility",
@@ -514,6 +529,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "radio-plus",
+    batch: 3,
     title: "Radio Plus",
     description: "用 options 渲染的单选组，可排成按钮。",
     category: "utility",
@@ -536,6 +552,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "multi-select",
+    batch: 3,
     title: "Multi Select",
     description: "SelectPlus 的多选包装。安装名和 props 不变。",
     category: "utility",
@@ -552,6 +569,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "tag-input",
+    batch: 3,
     title: "Tag Input",
     description: "回车添加、退格删除的标签输入。",
     category: "utility",
@@ -569,6 +587,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "date-range-picker",
+    batch: 3,
     title: "Date Range Picker",
     description: "日期范围选择，含近 7/30/90 天预设。",
     category: "utility",
@@ -586,6 +605,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "timeline",
+    batch: 3,
     title: "Timeline",
     description: "竖向/横向时间线。",
     category: "utility",
@@ -603,6 +623,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "stepper",
+    batch: 3,
     title: "Stepper",
     description: "可点击的步骤条。",
     category: "utility",
@@ -621,6 +642,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "color-picker",
+    batch: 3,
     title: "Color Picker",
     description: "HSL 取色、Hex 输入与吸管。",
     category: "utility",
@@ -638,6 +660,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "code-block",
+    batch: 3,
     title: "Code Block",
     description: "Shiki 高亮、行号、复制与多文件 Tab。",
     category: "utility",
@@ -651,6 +674,7 @@ export const batch3Components: ComponentMeta[] = [
   },
   {
     name: "kanban",
+    batch: 3,
     title: "Kanban",
     description: "基于 dnd-kit 的可拖拽看板。",
     category: "utility",

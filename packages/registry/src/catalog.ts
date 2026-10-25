@@ -203,6 +203,8 @@ export interface PropDoc {
 
 interface ComponentMetaBase {
   name: string
+  /** 条目所在批次。主 catalog 里的早期条目是 1。不进 registry JSON。 */
+  batch: number
   title: string
   description: string
   category: ComponentCategory
@@ -394,6 +396,7 @@ const uiProps: PropDoc[] = [
 export const components: ComponentMeta[] = [
   {
     name: "utils",
+    batch: 1,
     title: "Utils",
     description: "clsx + tailwind-merge 的 cn 辅助函数。",
     category: "ui",
@@ -406,6 +409,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "text-style",
+    batch: 1,
     title: "Text Style",
     description: "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
     category: "ui",
@@ -424,6 +428,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "use-mobile",
+    batch: 1,
     title: "Use Mobile",
     description: "视口宽度小于 768px 时返回 true。",
     category: "ui",
@@ -436,6 +441,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "use-prefers-reduced-motion",
+    batch: 1,
     title: "Use Prefers Reduced Motion",
     description: "系统开启减弱动态效果时返回 true，并在偏好变化时更新。",
     category: "ui",
@@ -448,6 +454,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "use-animation-active",
+    batch: 1,
     title: "Use Animation Active",
     description: "目标处于视口内，并且标签页可见时返回 true。",
     category: "ui",
@@ -460,6 +467,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "button",
+    batch: 1,
     title: "Button",
     description: "支持多种变体与尺寸的按钮。",
     category: "ui",
@@ -478,6 +486,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "input",
+    batch: 1,
     title: "Input",
     description: "文本输入框。",
     category: "ui",
@@ -492,6 +501,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "textarea",
+    batch: 1,
     title: "Textarea",
     description: "多行文本输入。",
     category: "ui",
@@ -506,6 +516,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "label",
+    batch: 1,
     title: "Label",
     description: "表单标签。",
     category: "ui",
@@ -520,6 +531,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "card",
+    batch: 1,
     title: "Card",
     description: "通用卡片容器。",
     category: "ui",
@@ -534,6 +546,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "badge",
+    batch: 1,
     title: "Badge",
     description: "状态与分类徽标。",
     category: "ui",
@@ -551,6 +564,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "separator",
+    batch: 1,
     title: "Separator",
     description: "水平或垂直分隔线。",
     category: "ui",
@@ -568,6 +582,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "dialog",
+    batch: 1,
     title: "Dialog",
     description: "模态对话框。",
     category: "ui",
@@ -585,6 +600,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "sheet",
+    batch: 1,
     title: "Sheet",
     description: "从边缘滑出的面板。",
     category: "ui",
@@ -599,6 +615,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "dropdown-menu",
+    batch: 1,
     title: "Dropdown Menu",
     description: "下拉菜单。",
     category: "ui",
@@ -618,6 +635,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "tabs",
+    batch: 1,
     title: "Tabs",
     description: "选项卡切换。",
     category: "ui",
@@ -632,6 +650,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "tooltip",
+    batch: 1,
     title: "Tooltip",
     description: "悬停提示。",
     category: "ui",
@@ -650,6 +669,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "sonner",
+    batch: 1,
     title: "Toast",
     description: "基于 Sonner 的轻提示。",
     category: "ui",
@@ -664,6 +684,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "switch",
+    batch: 1,
     title: "Switch",
     description: "开关控件。",
     category: "ui",
@@ -678,6 +699,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "checkbox",
+    batch: 1,
     title: "Checkbox",
     description: "复选框。",
     category: "ui",
@@ -692,6 +714,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "select",
+    batch: 1,
     title: "Select",
     description: "选择器。",
     category: "ui",
@@ -710,6 +733,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "accordion",
+    batch: 1,
     title: "Accordion",
     description: "手风琴折叠面板。",
     category: "ui",
@@ -724,6 +748,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "popover",
+    batch: 1,
     title: "Popover",
     description: "弹出层。",
     category: "ui",
@@ -742,6 +767,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "avatar",
+    batch: 1,
     title: "Avatar",
     description: "头像。",
     category: "ui",
@@ -756,6 +782,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "slider",
+    batch: 1,
     title: "Slider",
     description: "滑块。",
     category: "ui",
@@ -774,6 +801,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "typing-text",
+    batch: 1,
     title: "Typing Text",
     description: "打字机文字动画。",
     category: "text",
@@ -870,6 +898,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "gradient-text",
+    batch: 1,
     title: "Gradient Text",
     description: "流动渐变文字。",
     category: "text",
@@ -979,6 +1008,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "shimmer-text",
+    batch: 1,
     title: "Shimmer Text",
     description: "金属光泽扫过文字。",
     category: "text",
@@ -1041,6 +1071,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "aurora-text",
+    batch: 1,
     title: "Aurora Text",
     description: "极光色流动文字。",
     category: "text",
@@ -1074,6 +1105,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "split-text",
+    batch: 1,
     title: "Split Text",
     description: "按字符或单词错落入场。",
     category: "text",
@@ -1163,6 +1195,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "highlight-text",
+    batch: 1,
     title: "Highlight Text",
     description: "进入视口时绘制高亮底纹。",
     category: "text",
@@ -1202,6 +1235,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "count-up",
+    batch: 1,
     title: "Count Up",
     description: "数字滚动计数。",
     category: "text",
@@ -1261,6 +1295,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "particles",
+    batch: 1,
     title: "Particles",
     description: "跟随指针的粒子背景。",
     category: "backgrounds",
@@ -1303,6 +1338,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "grid-pattern",
+    batch: 1,
     title: "Grid Pattern",
     description: "网格背景图案。",
     category: "backgrounds",
@@ -1352,6 +1388,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "dot-pattern",
+    batch: 1,
     title: "Dot Pattern",
     description: "圆点背景图案。",
     category: "backgrounds",
@@ -1401,6 +1438,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "meteors",
+    batch: 1,
     title: "Meteors",
     description: "流星雨背景。",
     category: "backgrounds",
@@ -1442,6 +1480,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "aurora-background",
+    batch: 1,
     title: "Aurora Background",
     description: "极光模糊渐变背景。",
     category: "backgrounds",
@@ -1490,6 +1529,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "ripples",
+    batch: 1,
     title: "Ripples",
     description: "同心圆扩散背景。",
     category: "backgrounds",
@@ -1531,6 +1571,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "spotlight-card",
+    batch: 1,
     title: "Spotlight Card",
     description: "跟随指针的聚光卡片。",
     category: "cursor",
@@ -1570,6 +1611,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "magnetic",
+    batch: 1,
     title: "Magnetic",
     description: "磁性吸附跟随指针。",
     category: "cursor",
@@ -1614,6 +1656,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "cursor-follow",
+    batch: 1,
     title: "Cursor Follow",
     description: "区域内的柔光指针跟随。",
     category: "cursor",
@@ -1653,6 +1696,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "tilt",
+    batch: 1,
     title: "Tilt",
     description: "指针驱动的 3D 倾斜。",
     category: "cursor",
@@ -1697,6 +1741,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "glow-hover",
+    batch: 1,
     title: "Glow Hover",
     description: "悬停时外发光上浮。",
     category: "cursor",
@@ -1735,6 +1780,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "flip-card",
+    batch: 1,
     title: "Flip Card",
     description: "悬停翻转卡片。",
     category: "cards",
@@ -1762,6 +1808,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "glass-card",
+    batch: 1,
     title: "Glass Card",
     description: "毛玻璃卡片。",
     category: "cards",
@@ -1794,6 +1841,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "shine-border",
+    batch: 1,
     title: "Shine Border",
     description: "旋转高光描边卡片。",
     category: "cards",
@@ -1839,6 +1887,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "hover-lift",
+    batch: 1,
     title: "Hover Lift",
     description: "悬停上浮阴影卡片。",
     category: "cards",
@@ -1871,6 +1920,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "ripple-button",
+    batch: 1,
     title: "Ripple Button",
     description: "点击波纹按钮。",
     category: "buttons",
@@ -1908,6 +1958,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "shimmer-button",
+    batch: 1,
     title: "Shimmer Button",
     description: "斜向光泽扫过按钮。",
     category: "buttons",
@@ -1939,6 +1990,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "pulse-button",
+    batch: 1,
     title: "Pulse Button",
     description: "向外脉冲的按钮。",
     category: "buttons",
@@ -1971,6 +2023,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "neon-button",
+    batch: 1,
     title: "Neon Button",
     description: "霓虹描边发光按钮。",
     category: "buttons",
@@ -2003,6 +2056,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "spinner",
+    batch: 1,
     title: "Spinner",
     description: "旋转加载指示。",
     category: "loaders",
@@ -2041,6 +2095,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "orbit-loader",
+    batch: 1,
     title: "Orbit Loader",
     description: "轨道旋转加载。",
     category: "loaders",
@@ -2092,6 +2147,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "dots-loader",
+    batch: 1,
     title: "Dots Loader",
     description: "三点弹跳加载。",
     category: "loaders",
@@ -2148,6 +2204,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "progress-ring",
+    batch: 1,
     title: "Progress Ring",
     description: "环形进度。",
     category: "loaders",
@@ -2199,6 +2256,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "reveal",
+    batch: 1,
     title: "Reveal",
     description: "滚动进入视口时按变体显现。",
     category: "scroll",
@@ -2272,6 +2330,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "fade-in",
+    batch: 1,
     title: "Fade In",
     description: "进入视口时淡入上移。",
     category: "scroll",
@@ -2317,6 +2376,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "slide-in",
+    batch: 1,
     title: "Slide In",
     description: "从指定方向滑入。",
     category: "scroll",
@@ -2362,6 +2422,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "stagger-list",
+    batch: 1,
     title: "Stagger List",
     description: "列表子项错落入场。",
     category: "scroll",
@@ -2406,6 +2467,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "parallax",
+    batch: 1,
     title: "Parallax",
     description: "滚动视差位移。",
     category: "scroll",
@@ -2450,6 +2512,7 @@ export const components: ComponentMeta[] = [
   },
   {
     name: "blur-fade",
+    batch: 1,
     title: "Blur Fade",
     description: "模糊消散后显现。",
     category: "scroll",

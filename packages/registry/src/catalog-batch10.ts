@@ -13,6 +13,7 @@ const motionNote = "减弱动效时停掉循环，保留静态布局。"
 export const batch10Components: ComponentMeta[] = [
   {
     name: "hero-annotated-showcase",
+    batch: 10,
     title: "Hero Annotated Showcase",
     description: "灵感来自 ToDesktop（via Mobbin），原创实现。产品窗口、手绘注释和描边箭头，底部图标切换画面。",
     category: "sections",
@@ -29,6 +30,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "hero-wave-mask-gallery",
+    batch: 10,
     title: "Hero Wave Mask Gallery",
     description: "灵感来自 Kajabi（via Mobbin），原创实现。超粗标题，画面条被波浪遮罩裁切，随滚动视差。",
     category: "sections",
@@ -45,6 +47,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "hero-inline-mascot",
+    batch: 10,
     title: "Hero Inline Mascot",
     description: "灵感来自 Phantom（via Mobbin），原创实现。巨大标题中间嵌着会眨眼的吉祥物。同文件导出 InlineMascot。",
     category: "sections",
@@ -61,6 +64,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "hero-orbit-nodes",
+    batch: 10,
     title: "Hero Orbit Nodes",
     description: "灵感来自 Air（via Mobbin），原创实现。透视虚线椭圆轨道，光球用虚线连回中心。",
     category: "sections",
@@ -77,6 +81,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "hero-swirl-avatars",
+    batch: 10,
     title: "Hero Swirl Avatars",
     description: "灵感来自 Wizz（via Mobbin），原创实现。漩涡背景复用 shader-pack-2，头像卡漂浮并带在线点。重着色器懒加载。",
     category: "sections",
@@ -93,6 +98,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "footer-dot-matrix-wordmark",
+    batch: 10,
     title: "Footer Dot Matrix Wordmark",
     description: "灵感来自 Fuser（via Mobbin），原创实现。圆点组成字标，靠近时融合，指针旁散开。",
     category: "sections",
@@ -105,6 +111,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "footer-social-marquee",
+    batch: 10,
     title: "Footer Social Marquee",
     description: "灵感来自 BAGGU（via Mobbin），原创实现。图片和 FOLLOW 交替滚动，通讯输入，底部巨型字标。",
     category: "sections",
@@ -117,6 +124,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "section-stats-cornered",
+    batch: 10,
     title: "Section Stats Cornered",
     description: "灵感来自 Spade（via Mobbin），原创实现。取景框四角、等宽标签和递增数字。",
     category: "sections",
@@ -129,6 +137,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "section-stats-blob",
+    batch: 10,
     title: "Section Stats Blob",
     description: "灵感来自 Oyster（via Mobbin），原创实现。数字落在手绘色块上，色块弹出后缓慢变形。",
     category: "sections",
@@ -141,6 +150,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "section-dotted-feature-tabs",
+    batch: 10,
     title: "Section Dotted Feature Tabs",
     description: "灵感来自 Maze（via Mobbin），原创实现。半调点背景，页签切换漂浮的迷你界面。",
     category: "sections",
@@ -153,6 +163,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "cta-ribbon-swoosh",
+    batch: 10,
     title: "CTA Ribbon Swoosh",
     description: "灵感来自 The Leap（via Mobbin），原创实现。渐变色带沿路径扫进行动面板，叠一层颗粒。",
     category: "sections",
@@ -165,6 +176,7 @@ export const batch10Components: ComponentMeta[] = [
   },
   {
     name: "section-testimonial-split",
+    batch: 10,
     title: "Section Testimonial Split",
     description: "灵感来自 Paraform（via Mobbin），原创实现。左侧衬线引言，右侧深色品牌卡，两边同步轮换。",
     category: "sections",

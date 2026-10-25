@@ -50,7 +50,7 @@ How each one resolves:
 Follow "新增组件" in `README.md`. In short:
 
 1. Put the source in `packages/registry/src/{ui,effects,sections,templates,lib,hooks}`.
-2. Register it in `catalog.ts` or a `catalog-batch*.ts` file. Choose a Layer first, then its second-level group (`CONTEXT.md`, `docs/adr/0007-classify-by-layer-then-group.md`). Do not list dependencies: the build derives them from the source imports (`docs/adr/0001-derive-dependency-lists-from-source.md`). Use `extraDependencies` only for an npm package the source never imports, such as a peer.
+2. Register it in `catalog.ts` or a `catalog-batch*.ts` file. Set `batch` to that file's number. An entry that stays in `catalog.ts` uses `1`. Choose a Layer first, then its second-level group (`CONTEXT.md`, `docs/adr/0007-classify-by-layer-then-group.md`). Do not list dependencies: the build derives them from the source imports (`docs/adr/0001-derive-dependency-lists-from-source.md`). Use `extraDependencies` only for an npm package the source never imports, such as a peer.
 3. Add each new npm package to `packages/registry/package.json`. By convention it also goes into `apps/docs/package.json`.
 4. For `registry:ui` and `registry:block`, add a demo and register it in `examples/index.ts`.
 5. List the component name in the README component list.

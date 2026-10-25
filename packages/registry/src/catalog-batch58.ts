@@ -8,6 +8,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch58Components: ComponentMeta[] = [
   {
     name: "progress-fold-button",
+    batch: 58,
     title: "Progress Fold Button",
     description: `${godui} ${file("progress-fold-button")} 按钮正面沿上沿折起，露出后面的进度。加载中、按下、聚焦都会折起，不依赖悬停。确定进度按百分比填充，否则一段色条来回扫。${pause}`,
     category: "buttons",
@@ -31,6 +32,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "magic-input",
+    batch: 58,
     title: "Magic Input",
     description: `${godui} ${file("magic-input")} 输入框在聚焦或按下时抬起，边缘走图表色。提交后可进入加载、成功或失败，加载时色条扫过。按下即可看到厚度，不依赖悬停。${pause}`,
     category: "micro",
@@ -57,6 +59,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "blueprint-grid",
+    batch: 58,
     title: "Blueprint Grid",
     description: `${godui} ${file("blueprint-grid")} 蓝图网格，可选直线、圆点或透视地面。一道光带扫过，指针或按下的位置会点亮附近格子。${pause}`,
     category: "backgrounds",
@@ -81,6 +84,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "liquid-metaballs",
+    batch: 58,
     title: "Liquid Metaballs",
     description: `${godui} ${file("liquid-metaballs")} SVG 滤镜把色块融成液团。位置按序号播种，不在渲染时取随机数。指针移动或按下会多出一个跟随的液团。${pause}`,
     category: "backgrounds",
@@ -102,6 +106,7 @@ export const batch58Components: ComponentMeta[] = [
 
   {
     name: "progressive-card-reveal",
+    batch: 58,
     title: "Progressive Card Reveal",
     description: `${godui} ${file("progressive-card-reveal")} 一列卡片里只有当前项展开，其余按距离收成胶囊。点击胶囊切换，按下有缩放反馈。${pause}`,
     category: "cards",
@@ -123,6 +128,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "inertia-gallery",
+    batch: 58,
     title: "Inertia Gallery",
     description: `${godui} ${file("inertia-gallery")} 横向拖动的画廊，松手后按弹簧靠拢最近的一张。左右按钮和方向键也能换张。距离中心越远越淡。${pause}`,
     category: "showcase",
@@ -146,6 +152,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "agent-timeline",
+    batch: 58,
     title: "Agent Timeline",
     description: `${godui} ${file("agent-timeline")} 代理步骤时间线。运行中的圆点旋转，成功和失败点亮连接线。有正文的步骤可以点开。${pause}`,
     category: "utility",
@@ -159,6 +166,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "agent-flow",
+    batch: 58,
     title: "Agent Flow",
     description: `${godui} ${file("agent-flow")} 可拖动的代理流程图。节点描边点亮后，光束沿连线走到下一节点。拖背景可以平移。离开视口时序列不再前进。${pause}`,
     category: "utility",
@@ -183,6 +191,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "stack-badge",
+    batch: 58,
     title: "Stack Badge",
     description: `${godui} ${file("stack-badge")} 技术栈徽章。内置标志在悬停、按下或聚焦时染上品牌色。进入视口时依次出现。标志路径来自 Simple Icons（CC0）。${pause}`,
     category: "utility",
@@ -204,6 +213,7 @@ export const batch58Components: ComponentMeta[] = [
   },
   {
     name: "store-badge",
+    batch: 58,
     title: "Store Badge",
     description: `${godui} ${file("store-badge")} App Store 与 Google Play 的下载锁。没有二维码，也没有加入 uqr。按下或聚焦时有一道高光扫过。`,
     category: "utility",

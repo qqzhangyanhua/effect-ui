@@ -14,6 +14,7 @@ const credit = "灵感来自 React Bits，原创实现。"
 export const batch13Components: ComponentMeta[] = [
   {
     name: "text-pressure",
+    batch: 13,
     title: "Text Pressure",
     description: `${credit}通栏可变字体，靠近指针的字母增加字重、宽度和高度。`,
     category: "text",
@@ -37,6 +38,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "true-focus",
+    batch: 13,
     title: "True Focus",
     description: `${credit}句子里的词轮流对焦，其余模糊，发光角框滑到当前词。`,
     category: "text",
@@ -77,6 +79,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "split-flap-text",
+    batch: 13,
     title: "Split Flap Text",
     description: `${credit}机场翻板字，字符逐格翻到目标文本。`,
     category: "text",
@@ -111,6 +114,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "curved-loop",
+    batch: 13,
     title: "Curved Loop",
     description: `${credit}大字沿弧线循环，拖动改变方向。复用 marquee-along-svg-path。`,
     category: "text",
@@ -145,6 +149,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "fuzzy-text",
+    batch: 13,
     title: "Fuzzy Text",
     description: `${credit}画布按行水平抖动，像信号不良，悬停更强。`,
     category: "text",
@@ -185,6 +190,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "electric-border",
+    batch: 13,
     title: "Electric Border",
     description: `${credit}用 SVG feTurbulence 和 feDisplacementMap 做爆裂发光边。`,
     category: "decor",
@@ -210,6 +216,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "sticker-peel",
+    batch: 13,
     title: "Sticker Peel",
     description: `${credit}拖右上角揭开贴纸，露出白色背面，松手弹簧回弹。`,
     category: "cards",
@@ -249,6 +256,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "click-spark",
+    batch: 13,
     title: "Click Spark",
     description: `${credit}点击任意处迸出一圈短火花线。`,
     category: "decor",
@@ -275,6 +283,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "glare-hover",
+    batch: 13,
     title: "Glare Hover",
     description: `${credit}悬停时一道对角高光扫过，纯 CSS。`,
     category: "cursor",
@@ -320,6 +329,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "card-swap",
+    batch: 13,
     title: "Card Swap",
     description: `${credit}倾斜堆叠的 3D 卡片，最前面一张落下后排到末尾。`,
     category: "cards",
@@ -366,6 +376,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "flowing-menu",
+    batch: 13,
     title: "Flowing Menu",
     description: `${credit}通栏大字菜单，跑马灯从指针进入的那一侧滑入。`,
     category: "navigation",
@@ -389,6 +400,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "dome-gallery",
+    batch: 13,
     title: "Dome Gallery",
     description: `${credit}色块贴在球面内侧，拖动旋转 360°，点击放大。`,
     category: "showcase",
@@ -412,6 +424,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "elastic-slider",
+    batch: 13,
     title: "Elastic Slider",
     description: `${credit}滑块拖过两端会像橡皮一样拉长，松手弹回。`,
     category: "micro",
@@ -438,6 +451,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "light-rays",
+    batch: 13,
     title: "Light Rays",
     description: `${credit}从单点射出的体积光锥，光线摆动，可选跟随指针。与 light-beams 的平行细光束不同。OGL 懒加载，失败或减弱动效时用锥形渐变。`,
     category: "backgrounds",
@@ -481,6 +495,7 @@ export const batch13Components: ComponentMeta[] = [
   },
   {
     name: "hyperspeed",
+    batch: 13,
     title: "Hyperspeed",
     description: `${credit}夜路灯轨向消失点汇聚，按住加速。与 light-rays 的扇形体积光不同。OGL 懒加载，失败或减弱动效时用 CSS 灯轨。`,
     category: "backgrounds",

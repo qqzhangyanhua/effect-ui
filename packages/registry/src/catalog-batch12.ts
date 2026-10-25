@@ -15,6 +15,7 @@ const disabled: PropDoc = {
 export const batch12Components: ComponentMeta[] = [
   {
     name: "squish-switch",
+    batch: 12,
     title: "Squish Switch",
     description: "按下或拖动时滑块被压扁，松手后弹回。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -66,6 +67,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "jelly-radio",
+    batch: 12,
     title: "Jelly Radio",
     description: "选项间移动的指示器带弹簧回弹。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -111,6 +113,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "spring-check",
+    batch: 12,
     title: "Spring Check",
     description: "勾选用弹簧画出，并支持半选。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -162,6 +165,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "peek-rating",
+    batch: 12,
     title: "Peek Rating",
     description: "悬停时预览分数，可半星，也可只读。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -220,6 +224,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "slide-to-confirm",
+    batch: 12,
     title: "Slide To Confirm",
     description: "把滑块拖过阈值才确认，提前松开会弹回。键盘用 Enter 或 Space。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -267,6 +272,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "swipe-row",
+    batch: 12,
     title: "Swipe Row",
     description: "横向滑动露出操作，点击操作后关闭。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -317,6 +323,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "fuse-button",
+    batch: 12,
     title: "Fuse Button",
     description: "按住直到引信环烧完才触发。与 hold-button 分开：圆环和 holdMs / onComplete，不改原来的进度条按钮。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -359,6 +366,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "pulse-heart",
+    batch: 12,
     title: "Pulse Heart",
     description: "点赞时心跳并散出一圈粒子，可用 active 受控。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -416,6 +424,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "lattice-loader",
+    batch: 12,
     title: "Lattice Loader",
     description: "点阵按行列做波浪。减弱动效时停在静止点阵。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",
@@ -476,6 +485,7 @@ export const batch12Components: ComponentMeta[] = [
   },
   {
     name: "warm-tooltip",
+    batch: 12,
     title: "Warm Tooltip",
     description: "包住 tooltip，从触发器淡入，并可带一圈柔光。灵感来自 React Bits，原创实现，未打开源码。",
     category: "micro",

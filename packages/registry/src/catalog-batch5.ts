@@ -14,6 +14,7 @@ const ui: PropDoc[] = [
 export const batch5Components: ComponentMeta[] = [
   {
     name: "field",
+    batch: 5,
     title: "Field",
     description: "表单字段布局：标签、描述、错误与分隔。",
     category: "ui",
@@ -33,6 +34,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "input-group",
+    batch: 5,
     title: "Input Group",
     description: "输入框与前后缀、按钮组合成一组。",
     category: "ui",
@@ -53,6 +55,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "button-group",
+    batch: 5,
     title: "Button Group",
     description: "把多个按钮拼成一组，支持横/竖方向。",
     category: "ui",
@@ -71,6 +74,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "kbd",
+    batch: 5,
     title: "Kbd",
     description: "键盘按键样式。",
     category: "ui",
@@ -85,6 +89,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "item",
+    batch: 5,
     title: "Item",
     description: "列表项：媒体、标题、描述与操作。",
     category: "ui",
@@ -104,6 +109,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "native-select",
+    batch: 5,
     title: "Native Select",
     description: "原生 select 的主题化封装。",
     category: "ui",
@@ -118,6 +124,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "combobox",
+    batch: 5,
     title: "Combobox",
     description: "可搜索选择器，基于 Base UI。",
     category: "ui",
@@ -132,6 +139,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "date-picker",
+    batch: 5,
     title: "Date Picker",
     description: "Popover + Calendar 的单日期选择（官方无独立 registry JSON，按文档组合）。",
     category: "ui",
@@ -151,6 +159,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "virtual-list",
+    batch: 5,
     title: "Virtual List",
     description: "基于 TanStack Virtual 的大列表虚拟滚动。",
     category: "utility",
@@ -170,6 +179,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "infinite-scroll",
+    batch: 5,
     title: "Infinite Scroll",
     description: "触底哨兵触发加载更多。",
     category: "utility",
@@ -188,6 +198,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "masonry-gallery",
+    batch: 5,
     title: "Masonry Gallery",
     description: "瀑布流相册。",
     category: "utility",
@@ -205,6 +216,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "lightbox",
+    batch: 5,
     title: "Lightbox",
     description: "全屏灯箱，支持缩放与滑动。",
     category: "utility",
@@ -224,6 +236,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "phone-input",
+    batch: 5,
     title: "Phone Input",
     description: "国家区号与国际手机号格式化。",
     category: "utility",
@@ -249,6 +262,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "password-strength",
+    batch: 5,
     title: "Password Strength",
     description: "密码强度条（长度、大小写、数字、符号）。",
     category: "utility",
@@ -266,6 +280,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "currency-input",
+    batch: 5,
     title: "Currency Input",
     description: "数字输入并预览货币格式。",
     category: "utility",
@@ -285,6 +300,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "quantity-stepper",
+    batch: 5,
     title: "Quantity Stepper",
     description: "加减数量步进器。",
     category: "utility",
@@ -305,6 +321,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "floating-label-input",
+    batch: 5,
     title: "Floating Label Input",
     description: "标签上浮的输入框。",
     category: "utility",
@@ -318,6 +335,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "emoji-picker",
+    batch: 5,
     title: "Emoji Picker",
     description: "轻量表情选择器（frimousse）。",
     category: "utility",
@@ -331,6 +349,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "video-player",
+    batch: 5,
     title: "Video Player",
     description: "原生 video 自定义控制条：进度、音量、全屏、画中画、快捷键。",
     category: "utility",
@@ -348,6 +367,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "notification-center",
+    batch: 5,
     title: "Notification Center",
     description: "铃铛弹出的通知中心。",
     category: "utility",
@@ -361,6 +381,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "holographic-foil",
+    batch: 5,
     title: "Holographic Foil",
     description: "随鼠标倾斜的镭射全息卡片。",
     category: "cards",
@@ -414,6 +435,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "spoiler-text",
+    batch: 5,
     title: "Spoiler Text",
     description: "粒子遮挡，点击揭示。",
     category: "text",
@@ -459,6 +481,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "hold-button",
+    batch: 5,
     title: "Hold Button",
     description: "长按进度确认。",
     category: "buttons",
@@ -487,6 +510,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "particle-button",
+    batch: 5,
     title: "Particle Button",
     description: "点击粒子爆散。",
     category: "buttons",
@@ -525,6 +549,7 @@ export const batch5Components: ComponentMeta[] = [
   },
   {
     name: "tear-button",
+    batch: 5,
     title: "Tear Button",
     description: "按钮从中间撕开。",
     category: "buttons",

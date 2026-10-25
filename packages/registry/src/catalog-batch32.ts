@@ -14,6 +14,7 @@ const tremorFile = (path: string) => `https://github.com/tremorlabs/tremor/blob/
 export const batch32Components: ComponentMeta[] = [
   {
     name: "hover-attention-button",
+    batch: 32,
     title: "Hover Attention Button",
     description: `${syntax} ${syntaxFile("animations/hover/HoverJiggleButton.tsx")} 把摇晃、弹出、脉冲、欢呼和上下震动收成一个按钮，用 effect 切换。减弱动效或离开视口时不播放。`,
     category: "buttons",
@@ -31,6 +32,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "eco-mode-button",
+    batch: 32,
     title: "Eco Mode Button",
     description: `${syntax} ${syntaxFile("components/button/EcoModeButton.tsx")} 点击后叶子摇摆，绿色从左侧铺满。可受控。减弱动效时直接切换，叶子不摇。`,
     category: "buttons",
@@ -69,6 +71,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "rotating-complete-button",
+    batch: 32,
     title: "Rotating Complete Button",
     description: `${syntax} ${syntaxFile("components/button/RotatingCompleteButton.tsx")} 点击后先进入处理中，箭头旋转 180°，再变成完成。减弱动效时直接完成。`,
     category: "buttons",
@@ -112,6 +115,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "morphing-shapes-loader",
+    batch: 32,
     title: "Morphing Shapes Loader",
     description: `${syntax} ${syntaxFile("components/loaders/MorphingShapesLoader.tsx")} 色块在圆形和圆角方形之间来回变形。count、size、colors、duration 可配。减弱动效或离开视口时停在圆角方形。`,
     category: "loaders",
@@ -148,6 +152,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "neon-glow-loader",
+    batch: 32,
     title: "Neon Glow Loader",
     description: `${syntax} ${syntaxFile("components/loaders/NeonGlowLoader.tsx")} 三个霓虹点依次发光缩放。colors、size、duration 可配。减弱动效或离开视口时保持静止光点。`,
     category: "loaders",
@@ -183,6 +188,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "ripple-wave-loader",
+    batch: 32,
     title: "Ripple Wave Loader",
     description: `${syntax} ${syntaxFile("components/loaders/RippleWaveLoader.tsx")} 一排竖条错相位起伏。count、color、duration 可配。减弱动效或离开视口时竖条站直。`,
     category: "loaders",
@@ -219,6 +225,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "hover-spring-features",
+    batch: 32,
     title: "Hover Spring Features",
     description: `${syntax} ${syntaxFile("blocks/features/HoverSpringFeatures.tsx")} 功能卡片在悬停时用弹簧上移。图片用 img，不依赖 next/image。减弱动效或离开视口时不上移。`,
     category: "cards",
@@ -235,6 +242,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "stitches-button",
+    batch: 32,
     title: "Stitches Button",
     description: `${syntax} ${syntaxFile("components/button/StitchesButton.tsx")} 虚线内边像缝线，按下时内阴影收进去。SyntaxUI 的 credits.md 把这个按钮归于 Saud（https://twitter.com/via_saud）。`,
     category: "buttons",
@@ -251,6 +259,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "attachment",
+    batch: 32,
     title: "Attachment",
     description: `${reui} ${reuiFile("attachment")} 文件或图片附件卡，有横向和纵向，以及 default、sm、xs 三种尺寸。状态有 idle、uploading、processing、error、done。Slot 来自 @radix-ui/react-slot。`,
     category: "utility",
@@ -269,6 +278,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "bubble",
+    batch: 32,
     title: "Bubble",
     description: `${reui} ${reuiFile("bubble")} 聊天气泡原语，有多种变体，并可以挂 emoji 反应。它比现有的 chat-message 更底层。`,
     category: "utility",
@@ -286,6 +296,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "marker",
+    batch: 32,
     title: "Marker",
     description: `${reui} ${reuiFile("marker")} 消息流里的分隔，例如“今天”或系统提示。变体有 default、separator、border。`,
     category: "utility",
@@ -303,6 +314,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "trace",
+    batch: 32,
     title: "Trace",
     description: `${reui} ${reuiFile("trace")} AI 推理或执行步骤。每一步可以折叠。状态有 running、error、pending。减弱动效时标题不闪，折叠没有动画。`,
     category: "utility",
@@ -319,6 +331,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "category-bar",
+    batch: 32,
     title: "Category Bar",
     description: `${tremor} ${tremorFile("CategoryBar/CategoryBar.tsx")} 分段比例条，可放标记和两端刻度。颜色用 CSS 颜色，提示用现有 tooltip。`,
     category: "utility",
@@ -338,6 +351,7 @@ export const batch32Components: ComponentMeta[] = [
   },
   {
     name: "bar-list",
+    batch: 32,
     title: "Bar List",
     description: `${tremor} ${tremorFile("BarList/BarList.tsx")} 横向条形排行。可按数值排序，行可以点击，也可以是链接。减弱动效时不做宽度过渡。`,
     category: "utility",

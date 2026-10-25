@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch6Components: ComponentMeta[] = [
   {
     name: "splash-cursor",
+    batch: 6,
     title: "Splash Cursor",
     description: "WebGL 流体喷溅光标。移植自 PavelDoGreat/WebGL-Fluid-Simulation（MIT），无 WebGL 时回退渐变。",
     category: "cursor",
@@ -59,6 +60,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "shader-pack-2",
+    batch: 6,
     title: "Shader Pack 2",
     description: "Paper Shaders 第二组预设：liquid-metal、god-rays、water、smoke-ring、pulsing-border、voronoi、swirl、fluted-glass。",
     category: "backgrounds",
@@ -109,6 +111,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "text-along-path",
+    batch: 6,
     title: "Text Along Path",
     description: "文字沿 SVG 路径排列。",
     category: "text",
@@ -137,6 +140,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "scroll-typography",
+    batch: 6,
     title: "Scroll Typography",
     description: "滚动揭示字母（clip / blur / scale / slide）。Codrops MIT 灵感，用 Motion 重写，未使用 GSAP。",
     category: "text",
@@ -171,6 +175,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "siri-orb",
+    batch: 6,
     title: "Siri Orb",
     description: "多层锥形渐变的 AI 光球。",
     category: "ai",
@@ -193,6 +198,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "gravity",
+    batch: 6,
     title: "Gravity",
     description: "matter-js 刚体下落与拖拽。",
     category: "utility",
@@ -206,6 +212,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "ascii-render",
+    batch: 6,
     title: "ASCII Render",
     description: "把图片采样成 ASCII 字符画。",
     category: "utility",
@@ -223,6 +230,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "lamp-heading",
+    batch: 6,
     title: "Lamp Heading",
     description: "灵感来自 lamp heading，原创实现：顶部灯罩高光落在大标题上。",
     category: "text",
@@ -255,6 +263,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "tracing-beam",
+    batch: 6,
     title: "Tracing Beam",
     description: "灵感来自 tracing-beam / svg-scroll-paths，原创实现：滚动点亮竖线，并描出 SVG 路径。",
     category: "scroll",
@@ -293,6 +302,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "container-scroll-3d",
+    batch: 6,
     title: "Container Scroll 3D",
     description: "灵感来自 container-scroll，原创实现：滚动时容器从透视翻正。",
     category: "scroll",
@@ -344,6 +354,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "circular-gallery",
+    batch: 6,
     title: "Circular Gallery",
     description: "灵感来自 circular gallery，原创实现：OGL 环形相册，无 WebGL 时 CSS 3D 回退。",
     category: "cards",
@@ -371,6 +382,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "glowing-edge",
+    batch: 6,
     title: "Glowing Edge",
     description: "灵感来自 Linear 发光描边，原创实现：旋转锥形渐变边。",
     category: "cards",
@@ -415,6 +427,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "scroll-image-sequence",
+    batch: 6,
     title: "Scroll Image Sequence",
     description: "灵感来自 Apple 产品页，原创实现：滚动切换序列帧。",
     category: "scroll",
@@ -447,6 +460,7 @@ export const batch6Components: ComponentMeta[] = [
   },
   {
     name: "pixel-transition",
+    batch: 6,
     title: "Pixel Transition",
     description: "灵感来自 pixel transition，原创实现：像素格淡出切换画面。",
     category: "page",

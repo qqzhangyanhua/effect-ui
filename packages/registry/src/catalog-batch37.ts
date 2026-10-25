@@ -9,6 +9,7 @@ const galaxyFile = (file: string) => `https://github.com/uiverse-io/galaxy/blob/
 export const batch37Components: ComponentMeta[] = [
   {
     name: "ai-loader",
+    batch: 37,
     title: "AI Loader",
     description: `${prompt} ${promptFile("loader.tsx")} 关键帧来自 https://github.com/ibelick/prompt-kit/blob/main/app/globals.css 。12 种 variant：circular、classic、pulse、pulse-dot、dots、typing、wave、bars、terminal、text-blink、text-shimmer、loading-dots。size 与 text 可配。减弱动效或离开视口时停在静态帧，文字保持可读。`,
     category: "loaders",
@@ -46,6 +47,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "response-stream",
+    batch: 37,
     title: "Response Stream",
     description: `${prompt} ${promptFile("response-stream.tsx")} mode 为 typewriter 或 fade。textStream 可以是字符串或 AsyncIterable。同时导出 useTextStream。减弱动效时字符串立即显示全文，不再逐字或淡入。`,
     category: "ai",
@@ -70,6 +72,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "thinking-bar",
+    batch: 37,
     title: "Thinking Bar",
     description: `${prompt} ${promptFile("thinking-bar.tsx")} 思考中的文字条，可停止或点开。减弱动效或离开视口时文字不再扫光。`,
     category: "ai",
@@ -89,6 +92,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "book-page-loader",
+    batch: 37,
     title: "Book Page Loader",
     description: `${galaxy} 作者 vinodjangid07。${galaxyFile("loaders/vinodjangid07_good-cow-5.html")} 书页翻动的加载指示。减弱动效或离开视口时书页保持合上。`,
     category: "loaders",
@@ -107,6 +111,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "map-pin-loader",
+    batch: 37,
     title: "Map Pin Loader",
     description: `${galaxy} 作者 vikramsinghnegi。${galaxyFile("loaders/vikramsinghnegi_witty-skunk-89.html")} 地图钉上下浮动。减弱动效或离开视口时钉停在原位。`,
     category: "loaders",
@@ -124,6 +129,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "glow-corner-loader",
+    batch: 37,
     title: "Glow Corner Loader",
     description: `${galaxy} 作者 NlghtM4re。${galaxyFile("loaders/NlghtM4re_popular-crab-99.html")} 四枚发光方块沿四角转动。colors 决定每枚颜色。减弱动效或离开视口时方块停在四个角。`,
     category: "loaders",
@@ -141,6 +147,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "retro-press-button",
+    batch: 37,
     title: "Retro Press Button",
     description: `${galaxy} 作者 TanimMahbub。${galaxyFile("Buttons/TanimMahbub_selfish-goat-90.html")} 按下时下沉的复古按钮。color 与 shadowColor 可配。减弱动效时按下仍然到位，但没有过渡。`,
     category: "buttons",
@@ -159,6 +166,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "chain-of-thought",
+    batch: 37,
     title: "Chain Of Thought",
     description: `${prompt} ${promptFile("chain-of-thought.tsx")} 可折叠的推理步骤。子组件有 ChainOfThoughtStep、ChainOfThoughtTrigger、ChainOfThoughtContent、ChainOfThoughtItem。折叠直接使用 @radix-ui/react-collapsible。减弱动效时不再播放折叠动画。`,
     category: "ai",
@@ -178,6 +186,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "reasoning",
+    batch: 37,
     title: "Reasoning",
     description: `${prompt} ${promptFile("reasoning.tsx")} 推理折叠区。不渲染 Markdown，内容就是 children。isStreaming 为 true 时自动展开，结束后收回。减弱动效时展开没有高度过渡。`,
     category: "ai",
@@ -198,6 +207,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "source",
+    batch: 37,
     title: "Source",
     description: `${prompt} ${promptFile("source.tsx")} 来源胶囊和悬停卡片。悬停写在组件内部。showFavicon 默认关闭。只在传入 faviconSrc 时显示图标，不请求 Google favicon。减弱动效时悬停不再延迟。`,
     category: "ai",
@@ -220,6 +230,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "tool",
+    batch: 37,
     title: "Tool",
     description: `${prompt} ${promptFile("tool.tsx")} 工具调用折叠卡。toolPart.state 为 input-streaming、input-available、output-available 或 output-error。按钮用现有 button，折叠直接使用 @radix-ui/react-collapsible。减弱动效时处理中的图标不再旋转，折叠没有动画。`,
     category: "ai",
@@ -237,6 +248,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "system-message",
+    batch: 37,
     title: "System Message",
     description: `${prompt} ${promptFile("system-message.tsx")} 系统消息。variant 为 action、warning、error。cta 用现有 button。没有持续动画；减弱动效时保持同一静态版式。`,
     category: "ai",
@@ -258,6 +270,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "feedback-bar",
+    batch: 37,
     title: "Feedback Bar",
     description: `${prompt} ${promptFile("feedback-bar.tsx")} 有帮助、没帮助和关闭。图标由调用方通过 icon 传入，默认按钮使用通用拇指图标。减弱动效时按钮没有颜色过渡。`,
     category: "ai",
@@ -278,6 +291,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "prompt-suggestion",
+    batch: 37,
     title: "Prompt Suggestion",
     description: `${prompt} ${promptFile("prompt-suggestion.tsx")} 提示词按钮，使用现有 button。传入 highlight 后在文字里标出匹配片段。减弱动效时按钮没有过渡。`,
     category: "ai",
@@ -297,6 +311,7 @@ export const batch37Components: ComponentMeta[] = [
   },
   {
     name: "generated-image",
+    batch: 37,
     title: "Generated Image",
     description: `${prompt} ${promptFile("image.tsx")} 由 image 改名。支持 base64 或 uint8Array 加 mediaType。alt 必填。uint8Array 生成的 object URL 在卸载或更换时 revoke。没有图片时显示占位，减弱动效时占位不脉冲。`,
     category: "ai",

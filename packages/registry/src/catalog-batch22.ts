@@ -10,6 +10,7 @@ const motionLib = "移植自 Motion Primitives，MIT，Copyright (c) 2024 ibelic
 export const batch22Components: ComponentMeta[] = [
   {
     name: "use-click-outside",
+    batch: 22,
     title: "Use Click Outside",
     description: "指针点在元素外时调用回调。供变形弹层和工具栏收起使用。",
     category: "ui",
@@ -25,6 +26,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "use-measure",
+    batch: 22,
     title: "Use Measure",
     description: "用 ResizeObserver 测量元素宽高。不依赖 react-use-measure。",
     category: "ui",
@@ -37,6 +39,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "comic-text",
+    batch: 22,
     title: "Comic Text",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/comic-text.tsx 漫画描边、错位阴影，并带一次弹跳入场。减弱动效时不弹跳。`,
     category: "text",
@@ -54,6 +57,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "neon-gradient-card",
+    batch: 22,
     title: "Neon Gradient Card",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/neon-gradient-card.tsx 双色霓虹渐变沿边框流动，外圈带模糊辉光。减弱动效或离开视口时渐变静止。`,
     category: "cards",
@@ -91,6 +95,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "cool-mode",
+    batch: 22,
     title: "Cool Mode",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx 包裹任意按钮，点击或按住时喷出带重力的表情或图片粒子。减弱动效时不产生粒子。离开视口后停止动画帧。`,
     category: "micro",
@@ -108,6 +113,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "pixel-image",
+    batch: 22,
     title: "Pixel Image",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/pixel-image.tsx 图片切成网格，方块按固定乱序显现，再从灰度过渡到彩色。减弱动效时直接显示彩色图片。`,
     category: "showcase",
@@ -146,6 +152,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "geo-patterns",
+    batch: 22,
     title: "Geo Patterns",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/hexagon-pattern.tsx 与 https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/striped-pattern.tsx 合并的静态 SVG 背景。可切换六边形或斜纹，并支持高亮格、方向、间距和边缘淡出。`,
     category: "backgrounds",
@@ -167,6 +174,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "border-trail",
+    batch: 22,
     title: "Border Trail",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/border-trail.tsx 一个圆点沿圆角边框用 offset-path 巡游。减弱动效或离开视口时改成静止的高亮边框。`,
     category: "decor",
@@ -204,6 +212,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "glow-effect",
+    batch: 22,
     title: "Glow Effect",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/glow-effect.tsx 元素背后的彩色模糊辉光，模式有 rotate、pulse、breathe、colorShift、flowHorizontal 和 static。减弱动效或离开视口时使用 static。`,
     category: "decor",
@@ -242,6 +251,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "text-shimmer-wave",
+    batch: 22,
     title: "Text Shimmer Wave",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/text-shimmer-wave.tsx 逐字在纵深、垂直位移、缩放和颜色上波动。减弱动效时只改变颜色。离开视口后停住。`,
     category: "text",
@@ -279,6 +289,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "morphing-popover",
+    batch: 22,
     title: "Morphing Popover",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/morphing-popover.tsx 触发器通过 layoutId 变形为面板，点外面或按 Esc 关闭，并限制焦点。减弱动效时改为淡入淡出。`,
     category: "micro",
@@ -298,6 +309,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "toolbar-dynamic",
+    batch: 22,
     title: "Toolbar Dynamic",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/toolbar-dynamic.tsx 紧凑工具栏，搜索图标在 MotionConfig 弹簧下展开成输入框。条目可配置。减弱动效时宽度立即切换。`,
     category: "navigation",
@@ -313,6 +325,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "toolbar-expandable",
+    batch: 22,
     title: "Toolbar Expandable",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/toolbar-expandable.tsx 点击图标后在上方展开对应内容，高度由 useMeasure 测量。减弱动效时不做高度动画。`,
     category: "navigation",
@@ -327,6 +340,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "transition-panel",
+    batch: 22,
     title: "Transition Panel",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/transition-panel.tsx 由 activeIndex 控制的容器，按方向滑动并带模糊。减弱动效时只淡入淡出。`,
     category: "micro",
@@ -345,6 +359,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "animated-background",
+    batch: 22,
     title: "Animated Background",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx 共享高亮背景，用 layoutId 滑到悬停或选中的子项。和 animated-tabs 不同，这是通用原语。减弱动效时高亮直接跳到目标。`,
     category: "micro",
@@ -365,6 +380,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "disclosure",
+    batch: 22,
     title: "Disclosure",
     description: `${motionLib} https://github.com/ibelick/motion-primitives/blob/main/components/core/disclosure.tsx 单段展开，可受控或非受控，高度和透明度过渡，可传入自定义 variants。减弱动效时立即展开。`,
     category: "micro",
@@ -385,6 +401,7 @@ export const batch22Components: ComponentMeta[] = [
   },
   {
     name: "feedback-widget",
+    batch: 22,
     title: "Feedback Widget",
     description: "右下角 Feedback 按钮通过 morphing-popover 变成面板。四个表情选中时弹一下，可填写文字并切换是否附上截图。提交后显示 Thanks ✓ 并自动关闭，调用 onSubmit({ rating, message })。灵感来自常见 SaaS 反馈组件，原创实现。减弱动效时不弹跳、不变形。",
     category: "utility",

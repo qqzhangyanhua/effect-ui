@@ -9,6 +9,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch52Components: ComponentMeta[] = [
   {
     name: "blind-pull-toggle",
+    batch: 52,
     title: "Blind Pull Toggle",
     description: `${canvas} ${file("blind-pull-toggle")} 百叶帘拉绳开关。拉下时帘片合拢，再拉一次打开。${pause}`,
     category: "micro",
@@ -27,6 +28,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "danger-stripes",
+    batch: 52,
     title: "Danger Stripes",
     description: `${canvas} ${file("danger-stripes")} 危险斜纹。指针进入、按下或进入视口时斜纹被推开，离开后回位。触控用按下和松开，不依赖悬停。${pause}`,
     category: "backgrounds",
@@ -46,6 +48,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "flip-calendar",
+    batch: 52,
     title: "Flip Calendar",
     description: `${canvas} ${file("flip-calendar")} 翻页日历。拖动或点前后一天，日期在 1 到 31 之间循环。value 受控时由外部决定当前日。${pause}`,
     category: "micro",
@@ -66,6 +69,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "slice-type",
+    batch: 52,
     title: "Slice Type",
     description: `${canvas} ${file("slice-type")} 首字母从上下两个词之间切开。鼠标移入展开，触控按下切换。${pause}`,
     category: "text",
@@ -86,6 +90,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "stack-tower",
+    batch: 52,
     title: "Stack Tower",
     description: `${canvas} ${file("stack-tower")} 圆柱上的词排成塔，缓慢转动。指针按下时该行用强调色。${pause}`,
     category: "text",
@@ -105,6 +110,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "taga-toggle",
+    batch: 52,
     title: "Taga Toggle",
     description: `${canvas} ${file("taga-toggle")} 笑脸开关。拨动时表情在轨道上换边。${pause}`,
     category: "micro",
@@ -123,6 +129,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "diamond-grid",
+    batch: 52,
     title: "Diamond Grid",
     description: `${canvas} ${file("diamond-grid")} 菱形格上的游走光点，画在 canvas 上。${pause}`,
     category: "backgrounds",
@@ -143,6 +150,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "wild-morph",
+    batch: 52,
     title: "Wild Morph",
     description: `${canvas} ${file("wild-morph")} 拖动文字四角做透视变形。触控同样可以拖。${pause}`,
     category: "text",
@@ -162,6 +170,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "mood-tracker",
+    batch: 52,
     title: "Mood Tracker",
     description: `${canvas} ${file("mood-tracker")} 六个心情脸和一条滑杆。保存后按钮短时间显示已记录。${pause}`,
     category: "utility",
@@ -179,6 +188,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "voice-chat-pill",
+    batch: 52,
     title: "Voice Chat Pill",
     description: `${canvas} ${file("voice-chat-pill")} 语音会话胶囊。说话人轮换，点开后从按钮位置展开成名单。${pause}`,
     category: "utility",
@@ -195,6 +205,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "job-listing-cards",
+    batch: 52,
     title: "Job Listing Cards",
     description: `${canvas} ${file("ai-job-cards")} 职位卡片叠成三叠，拖动或点下一张把最前面的卡片换到后面。品牌标志由调用方传入，缺省是公司名首字母。${pause}`,
     category: "utility",
@@ -211,6 +222,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "new-project-modal",
+    batch: 52,
     title: "New Project Modal",
     description: `${canvas} ${file("new-project-modal")} 从按钮长出的新建项目对话框。Tab 在对话框内循环，Escape 关闭。标题为空时不能创建。${pause}`,
     category: "utility",
@@ -226,6 +238,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "music-player-card",
+    batch: 52,
     title: "Music Player Card",
     description: `${canvas} ${file("glass-music-player")} 玻璃音乐卡。进度是计时器，不加载音频文件。${pause}`,
     category: "utility",
@@ -240,6 +253,7 @@ export const batch52Components: ComponentMeta[] = [
   },
   {
     name: "label-cards",
+    batch: 52,
     title: "Label Cards",
     description: `${canvas} ${file("label-cards")} 散开的标签卡。点一张就把它摆正，再点一次散回去。键盘上 Enter 和空格同样可选。${pause}`,
     category: "utility",

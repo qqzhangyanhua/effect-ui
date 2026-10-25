@@ -39,6 +39,7 @@ function entry(overrides: Partial<AuditCatalogEntry> = {}): AuditCatalogEntry {
     type: "registry:ui",
     title: "Button",
     description: "按钮。",
+    batch: 1,
     file: "ui/button.tsx",
     target: "components/ui/button.tsx",
     props: [{ name: "className" }],

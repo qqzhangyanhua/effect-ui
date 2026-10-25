@@ -8,6 +8,7 @@ const file = (folder: string, name = `${folder}.tsx`) =>
 export const batch45Components: ComponentMeta[] = [
   {
     name: "theme-switch-transitions",
+    batch: 45,
     title: "Theme Switch Transitions",
     description: `${arc} ${file("theme-switch")} 亮暗切换按钮，variant 为 reveal、eclipse、split、rise。两枚图标沿同一方向旋转交换。theme 受控，onThemeChange 带回下一个主题、变体和触发元素。减弱动效或离开视口时图标直接换到终态，不再旋转。`,
     category: "micro",
@@ -26,6 +27,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "floating-button-group",
+    batch: 45,
     title: "Floating Button Group",
     description: `${arc} ${file("floating-button-group")} 工具栏。一块高亮在按钮之间弹簧移动，按下时略微缩小。方向键、Home 和 End 移动焦点。仅图标或带 shortcut 的项用 Radix tooltip。离开视口时高亮不再滑动。`,
     category: "micro",
@@ -50,6 +52,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "morph-select",
+    batch: 45,
     title: "Morph Select",
     description: `${arc} ${file("morph-select")} 触发器长成列表。高亮在选项间滑动，选中的文字飞回触发器。可搜索，键盘列表和 600 毫秒内的逐字查找。减弱动效或离开视口时表面直接到位。`,
     category: "micro",
@@ -85,6 +88,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "streamgraph",
+    batch: 45,
     title: "Streamgraph",
     description: `${arc} ${file("streamgraph")} 多层时间堆叠。第一条穿过中部，其余上下交替，offset 为 zero 时从基线堆起。图例可隐藏图层。进入视口后从中线胀开，离开时停住，减弱动效直接画满。SVG 带 title，并有屏幕阅读摘要。`,
     category: "showcase",
@@ -134,6 +138,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "waffle-chart",
+    batch: 45,
     title: "Waffle Chart",
     description: `${arc} ${file("waffle-chart")} 单位格图。最大余数分配格子，数据变化时格子尽量少移动。中性类别用方、圆和框三种形状。进入视口后格子落入，离开视口保持已经落下的格子，减弱动效直接显示终态。带 title 和屏幕阅读摘要。`,
     category: "showcase",
@@ -181,6 +186,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "treemap",
+    batch: 45,
     title: "Treemap",
     description: `${arc} ${file("treemap")} 矩形树图，squarify 布局。点击有子节点的块下钻，面包屑可以回到上层。进入视口后色块从中心长出，离开时停在当前一帧，减弱动效直接到位。带 title 和屏幕阅读摘要。`,
     category: "showcase",
@@ -225,6 +231,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "slope-chart",
+    batch: 45,
     title: "Slope Chart",
     description: `${arc} ${file("slope-chart")} 两个时点的斜率图。标签用 spread 避开重叠。进入视口后线条画出，离开视口后保持终态，减弱动效直接显示。带 title 和屏幕阅读摘要。`,
     category: "showcase",
@@ -269,6 +276,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "ridgeline",
+    batch: 45,
     title: "Ridgeline",
     description: `${arc} ${file("ridgeline")} 山脊图。高斯核密度，带宽默认 Silverman。进入视口后山脊自下而上长出，离开时停住，减弱动效直接画完。带 title 和屏幕阅读摘要。`,
     category: "showcase",
@@ -316,6 +324,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "split-button",
+    batch: 45,
     title: "Split Button",
     description: `${arc} ${file("split-button")} 主按钮和菜单合成一颗胶囊。主标签按字符变形，宽度只在标签变化后的一小段时间里弹簧跟随。菜单用 Radix dropdown。减弱动效或离开视口时文字直接替换。`,
     category: "buttons",
@@ -337,6 +346,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "shortcut-recorder",
+    batch: 45,
     title: "Shortcut Recorder",
     description: `${arc} ${file("shortcut-recorder")} 录键盘快捷键。mod 在 Mac 上是 ⌘，在其他平台是 Ctrl。已占用或系统保留的组合会先询问。同文件还导出 ShortcutKbd、ShortcutKeys 和 ShortcutList。减弱动效或离开视口时键帽不再缩放。`,
     category: "utility",
@@ -375,6 +385,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "inline-edit",
+    batch: 45,
     title: "Inline Edit",
     description: `${arc} ${file("inline-edit")} 点一下就地编辑。Enter 保存，Shift+Enter 在多行时换行，Escape 还原。onSave 返回的 Promise 显示保存中，拒绝则回滚。勾号沿路径画出。减弱动效或离开视口时高度和文字直接切换。`,
     category: "utility",
@@ -399,6 +410,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "expandable-text",
+    batch: 45,
     title: "Expandable Text",
     description: `${arc} ${file("expandable-text")} 按行数夹住文字，末行渐隐。展开时高度、遮罩和箭头一起动。文字放得下时不显示开关。焦点进到被夹住的链接里会展开。减弱动效或离开视口时高度直接到位。`,
     category: "utility",
@@ -422,6 +434,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "brush-chart",
+    batch: 45,
     title: "Brush Chart",
     description: `${arc} ${file("brush-chart")} 时间序列总览加主图。可以拖窗口、拉两端或在总览上新选一段，最小跨度默认 7 天。进入视口后折线从左画出，离开时停住，减弱动效直接画完。带 title 和屏幕阅读摘要。`,
     category: "utility",
@@ -453,6 +466,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "user-menu",
+    batch: 45,
     title: "User Menu",
     description: `${arc} ${file("user-menu")} 头像账号菜单。状态点在 available、busy、away 之间变形。主题是 light、dark、system，应用主题由调用方决定。窄于 640px 时变成底部抽屉。onSignOut 返回 Promise 时显示进行中。减弱动效或离开视口时面板不再缩放。`,
     category: "utility",
@@ -487,6 +501,7 @@ export const batch45Components: ComponentMeta[] = [
   },
   {
     name: "password-field",
+    batch: 45,
     title: "Password Field",
     description: `${arc} ${file("password-field")} 密码框。一只眼睛被斜线划开，说明文字按词交叉淡入，消息行高度跟着内容弹簧变化。显示和隐藏切换后输入框短暂解析。减弱动效或离开视口时不再模糊、不再改高度。`,
     category: "utility",

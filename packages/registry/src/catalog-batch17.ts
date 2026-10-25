@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch17Components: ComponentMeta[] = [
   {
     name: "galaxy-spiral",
+    batch: 17,
     title: "Galaxy Spiral",
     description: "灵感来自 Codrops Galaxy Configurator，原创实现。可调旋臂、半径、内外色、粒子数、随机度和速度，内圈转得更快，加法混合，拖动倾斜。",
     category: "backgrounds",
@@ -69,6 +70,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "proximity-scale-grid",
+    batch: 17,
     title: "Proximity Scale Grid",
     description: "灵感来自 Codrops Proximity Scale Grid，原创实现。圆点、方块或加号网格，距离用 smoothstep 放大变色，带惯性，停稳后不再请求动画帧。",
     category: "showcase",
@@ -94,6 +96,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "polaroid-scroll-stack",
+    batch: 17,
     title: "Polaroid Scroll Stack",
     description: "灵感来自 Codrops Scroll-Driven Polaroid，原创实现。粘性滚动里相片从画面外甩入叠放，角度由种子固定，带回弹和手写说明。",
     category: "sections",
@@ -106,6 +109,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "scroll-svg-graph",
+    batch: 17,
     title: "Scroll SVG Graph",
     description: "灵感来自 Codrops Scroll-Driven SVG Graph，原创实现。全宽折线和面积随滚动描线，数据点依次弹出，当前值用数字滚动。",
     category: "scroll",
@@ -144,6 +148,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "cloth-wind-banner",
+    batch: 17,
     title: "Cloth Wind Banner",
     description: "灵感来自 Codrops Old Cloth with Wind，原创实现。细分布面用多层正弦和噪声鼓起，左边钉住，指针处有高斯鼓包，法线决定明暗，可传入纹理。",
     category: "backgrounds",
@@ -182,6 +187,7 @@ export const batch17Components: ComponentMeta[] = [
 
   {
     name: "petal-dissolve-text",
+    batch: 17,
     title: "Petal Dissolve Text",
     description: "灵感来自 Codrops Clair Obscur Gommage，原创实现。离屏采样文字，带噪声的阈值线推进后粒子变成花瓣飘散，也可以反向重组。",
     category: "text",
@@ -261,6 +267,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "data-tunnel",
+    batch: 17,
     title: "Data Tunnel",
     description: "灵感来自 Codrops Data Tunnel，原创实现。实例化的发光环段带着字符图集沿深度循环，滚动或按住加速，视野随速度张开。",
     category: "backgrounds",
@@ -304,6 +311,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "file-upload-queue",
+    batch: 17,
     title: "File Upload Queue",
     description: "灵感来自 Dropbox 与 Google Drive，原创实现。多文件队列显示进度、速度、剩余时间和状态，可暂停、重试、移除和全部重试，默认同时上传 3 个，可与拖拽区组合。",
     category: "utility",
@@ -321,6 +329,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "embed-code-generator",
+    batch: 17,
     title: "Embed Code Generator",
     description: "灵感来自 Readymag，原创实现。像素或百分比、圆角和主题实时预览，并生成 iframe 与 script 代码。",
     category: "utility",
@@ -341,6 +350,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "social-post-feed",
+    batch: 17,
     title: "Social Post Feed",
     description: "灵感来自 Campsite，原创实现。撰写帖子，一到四张图按网格排开并可放大，表情计数会跳，长文可以展开。",
     category: "utility",
@@ -354,6 +364,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "signature-pad",
+    batch: 17,
     title: "Signature Pad",
     description: "灵感来自 DocuSign，原创实现。指针速度决定线宽，二次曲线平滑，可撤销、清除、改颜色和粗细，导出 PNG 或 SVG，也可以输入姓名生成签名。",
     category: "utility",
@@ -367,6 +378,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "poll-vote",
+    batch: 17,
     title: "Poll Vote",
     description: "灵感来自 X 与 Slack，原创实现。单选或多选，投票后选项变成百分比条并高亮最高票，读出总票数和相对截止时间。",
     category: "utility",
@@ -387,6 +399,7 @@ export const batch17Components: ComponentMeta[] = [
   },
   {
     name: "reaction-bar",
+    batch: 17,
     title: "Reaction Bar",
     description: "表情反应条。计数用数字滚动，选中时轻轻弹一下。",
     category: "micro",

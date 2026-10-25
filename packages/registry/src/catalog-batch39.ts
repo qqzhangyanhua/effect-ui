@@ -9,6 +9,7 @@ const hyperFile = (file: string) => `https://github.com/markmead/hyperui/blob/ma
 export const batch39Components: ComponentMeta[] = [
   {
     name: "glitch-slice-button",
+    batch: 39,
     title: "Glitch Slice Button",
     description: `${galaxy} 作者 namecho。${galaxyFile("Buttons/namecho_slippery-moth-23.html")} 悬停时用切片错位。colors 依次是切片色、错位色、强调色，示例色放在 demo。减弱动效或离开视口时切片不再播放。`,
     category: "buttons",
@@ -27,6 +28,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "send-arrow-button",
+    batch: 39,
     title: "Send Arrow Button",
     description: `${galaxy} 作者 andrew-demchenk0。${galaxyFile("Buttons/andrew-demchenk0_chatty-ape-15.html")} 渐变胶囊，光晕脉冲，箭头在悬停时转出。文案和示例色放在 demo。减弱动效或离开视口时光晕停住，箭头不再位移。`,
     category: "buttons",
@@ -44,6 +46,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "trash-delete-button",
+    batch: 39,
     title: "Trash Delete Button",
     description: `${galaxy} 作者 boryanakrasteva。${galaxyFile("Buttons/boryanakrasteva_tidy-falcon-17.html")} 垃圾桶图标，悬停放大并露出提示。提示文案放在 demo。减弱动效时提示直接出现，图标不再缩放。`,
     category: "buttons",
@@ -61,6 +64,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "neon-hold-card",
+    batch: 39,
     title: "Neon Hold Card",
     description: `${galaxy} 作者 htwarriors108。${galaxyFile("Cards/htwarriors108_brave-grasshopper-38.html")} 倾斜的霓虹卡片，悬停放平，光晕持续呼吸。示例文案和色板放在 demo。减弱动效或离开视口时卡片放平，光晕停住。`,
     category: "cards",
@@ -78,6 +82,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "pin-toggle",
+    batch: 39,
     title: "Pin Toggle",
     description: `${galaxy} 作者 vinodjangid07。${galaxyFile("Checkboxes/vinodjangid07_sour-rabbit-84.html")} 大头针按下切换。用 pressed、onPressedChange 和 aria-pressed，而不是隐藏复选框。示例色放在 demo。减弱动效时不再缩放。`,
     category: "micro",
@@ -97,6 +102,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "blur-unveil-card",
+    batch: 39,
     title: "Blur Unveil Card",
     description: `${galaxy} 作者 Javierrocadev。${galaxyFile("Cards/Javierrocadev_angry-puma-14.html")} 色块默认模糊，悬停后变清晰并上浮。数字和说明放在 demo。减弱动效时色块保持清晰，卡片不再上浮。`,
     category: "cards",
@@ -116,6 +122,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "glow-wander-card",
+    batch: 39,
     title: "Glow Wander Card",
     description: `${galaxy} 作者 codebykay101。${galaxyFile("Cards/codebykay101_red-fox-31.html")} 三块方片上的径向光点循环游走。colors 和时长可改，示例色放在 demo。减弱动效或离开视口时光点停住。`,
     category: "cards",
@@ -133,6 +140,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "star-favorite-toggle",
+    batch: 39,
     title: "Star Favorite Toggle",
     description: `${galaxy} 作者 andrew-demchenk0。${galaxyFile("Checkboxes/andrew-demchenk0_light-lionfish-40.html")} 星星收藏切换，带 aria-pressed。示例黄色放在 demo。减弱动效时不再缩放。`,
     category: "micro",
@@ -153,6 +161,7 @@ export const batch39Components: ComponentMeta[] = [
 
   {
     name: "blog-card",
+    batch: 39,
     title: "Blog Card",
     description: `${hyper} ${hyperFile("marketing/blog-cards/1.html")} 封面在上、叠字和横向三种版式。图片、标题和链接放在 demo。减弱动效时阴影不再过渡。`,
     category: "cards",
@@ -193,6 +202,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "neo-brutal-kit",
+    batch: 39,
     title: "Neo Brutal Kit",
     description: `${hyper} ${hyperFile("neobrutalism/cards/1.html")} 粗边框和硬投影。同一条目导出 NeoCard、Alert、Badge、Input、Select、Textarea、Checkbox、Progress、Tabs。明暗用前景色描边，色调保留 blue、green、red 与 yellow 的 dark 变体。示例文案放在 demo。减弱动效时没有过渡。`,
     category: "ui",
@@ -216,6 +226,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "contact-form",
+    batch: 39,
     title: "Contact Form",
     description: `${hyper} ${hyperFile("marketing/contact-forms/1.html")} 联系表单。fields 描述输入项，onSubmit 收到字段值，status 表示提交状态。示例标签放在 demo，组件不发请求。减弱动效时按钮没有颜色过渡。`,
     category: "ui",
@@ -237,6 +248,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "team-section",
+    batch: 39,
     title: "Team Section",
     description: `${hyper} ${hyperFile("marketing/team-sections/1.html")} 成员网格。照片、姓名、角色和外链放在 demo。外链带屏幕阅读文本。减弱动效时链接不再改变透明度。`,
     category: "sections",
@@ -252,6 +264,7 @@ export const batch39Components: ComponentMeta[] = [
   },
   {
     name: "stat-trend-cards",
+    batch: 39,
     title: "Stat Trend Cards",
     description: `${hyper} ${hyperFile("application/stats/1.html")} 涨跌统计卡。direction 为 up 或 down，徽章里有“上涨”或“下跌”的屏幕阅读文本。示例数字放在 demo。卡片本身不播放动画。`,
     category: "cards",

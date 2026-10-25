@@ -13,6 +13,7 @@ export const batch19Components: ComponentMeta[] = [
 
   {
     name: "liquid-morph-slideshow",
+    batch: 19,
     title: "Liquid Morph Slideshow",
     description: "灵感来自 Codrops Liquid Morphology Slideshow，原创实现。切换时旧图像液体一样流进新图。",
     category: "showcase",
@@ -37,6 +38,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "wavefield-neon",
+    batch: 19,
     title: "Wavefield Neon",
     description: "灵感来自 Codrops Wavefield Shader，原创实现。霓虹线条在透视平面上起伏，指针处荡开涟漪。",
     category: "backgrounds",
@@ -55,6 +57,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "gradient-carousel-3d",
+    batch: 19,
     title: "Gradient Carousel 3D",
     description: "灵感来自 Codrops Infinite 3D Gradient Carousel，原创实现。渐变卡片沿弧线无限排列，拖拽带惯性。",
     category: "cards",
@@ -100,6 +103,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "text-3d-scroll",
+    batch: 19,
     title: "Text 3D Scroll",
     description: "灵感来自 Codrops 3D Text Scroll Animations，原创实现。标题逐字绕 X 轴从 90° 翻到平面。",
     category: "text",
@@ -133,6 +137,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "audio-spectrum",
+    batch: 19,
     title: "Audio Spectrum",
     description: "实时频谱。可用示例音、麦克风或 audio 地址，在条形、环形和波形之间切换。",
     category: "showcase",
@@ -157,6 +162,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "singularity",
+    batch: 19,
     title: "Singularity",
     description: "灵感来自 Codrops Singularity，原创实现。中心暗盘、旋转吸积环，外圈星空被引力透镜拧弯。",
     category: "backgrounds",
@@ -170,6 +176,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "credit-card-form",
+    batch: 19,
     title: "Credit Card Form",
     description: "卡号、有效期和安全码自动分段，按 BIN 识别卡组织，并用 Luhn 校验。聚焦安全码时卡面翻到背面。",
     category: "utility",
@@ -183,6 +190,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "coupon-input",
+    batch: 19,
     title: "Coupon Input",
     description: "应用优惠码。加载、成功芯片和失败抖动由外部 validate 决定。",
     category: "utility",
@@ -196,6 +204,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "gantt-timeline",
+    batch: 19,
     title: "Gantt Timeline",
     description: "任务条、依赖箭头和今日线。可按日、周、月缩放，拖动改日期，拉伸改时长。",
     category: "sections",
@@ -212,6 +221,7 @@ export const batch19Components: ComponentMeta[] = [
   },
   {
     name: "org-chart",
+    batch: 19,
     title: "Org Chart",
     description: "组织架构。节点可展开折叠，画布可平移缩放，搜索后定位到对应的人。",
     category: "sections",

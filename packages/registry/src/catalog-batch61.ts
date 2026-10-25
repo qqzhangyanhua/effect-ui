@@ -9,6 +9,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch61Components: ComponentMeta[] = [
   {
     name: "icon-moves",
+    batch: 61,
     title: "Icon Moves",
     description: `${keyframery} ${kf("icon-moves.tsx")} 按下带 lucide 图标的按钮时，齿轮转动、铃铛摇、心形弹一下。监听只挂在组件自己的根上。hover 是额外选项，按下和 Enter、Space 始终能播放。图标动作表内联在组件里。${pause}`,
     category: "micro",
@@ -29,6 +30,7 @@ export const batch61Components: ComponentMeta[] = [
   },
   {
     name: "wave-physics-loader",
+    batch: 61,
     title: "Wave Physics Loader",
     description: `${amicro} https://github.com/Subhan-code/Amicro--Micro-transitions-/blob/dc2a183/registry/ui/loading/wave-physics-loader.tsx 小球在一排柱子上弹跳，柱高跟着波形起伏。颜色用主题变量，不再分 light 和 dark。${pause}`,
     category: "loaders",

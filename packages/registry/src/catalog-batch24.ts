@@ -11,6 +11,7 @@ const file = (name: string) =>
 export const batch24Components: ComponentMeta[] = [
   {
     name: "activity-terrain",
+    batch: 24,
     title: "Activity Terrain",
     description: `${kokonut} ${file("activity-terrain")} 把每日次数画成可拖动的立体地形，也能切回平面热力。方向键可读每一天。减弱动效时直接落到目标角度。离开视口后停止动画帧。`,
     category: "cards",
@@ -48,6 +49,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "cradle-text",
+    batch: 24,
     title: "Cradle Text",
     description: `${kokonut} ${file("cradle-text")} 字母像牛顿摇篮一样悬挂、碰撞。第一次进入视口会抬起首字母再放开。减弱动效时不播放开场，也不接受拖拽。离开视口后停止动画帧。`,
     category: "text",
@@ -84,6 +86,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "drape-background",
+    batch: 24,
     title: "Drape Background",
     description: `${kokonut} ${file("drape-background")} 画布上的褶皱布帘，指针可以推开或抓住拖动。减弱动效时没有风，也不能拖。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -103,6 +106,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "plucked-text",
+    batch: 24,
     title: "Plucked Text",
     description: `${kokonut} ${file("plucked-text")} 字挂在一根弦上，拖拽或扫过会拨响。减弱动效时松手直接回到直线。离开视口后停止动画帧。`,
     category: "text",
@@ -139,6 +143,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "swoosh-text",
+    batch: 24,
     title: "Swoosh Text",
     description: `${kokonut} ${file("swoosh-text")} 分层挤出的字，指针带动光向，按下会把字母按进厚度里。减弱动效时保持 45° 固定挤出。离开视口后停止动画帧。`,
     category: "text",
@@ -177,6 +182,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "topo-background",
+    batch: 24,
     title: "Topo Background",
     description: `${kokonut} ${file("topo-background")} 用噪声画出流动等高线。指针会隆起一座小山，点击发出一圈波纹。减弱动效时地图静止。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -198,6 +204,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "shape-hero",
+    batch: 24,
     title: "Shape Hero",
     description: `${kokonut} ${file("shape-hero")} 标题周围掉下一堆可拖拽的几何形状，静止后物理休眠。减弱动效时先把堆叠算稳再显示。离开视口后停止动画帧。`,
     category: "showcase",
@@ -220,6 +227,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "pull-cord",
+    batch: 24,
     title: "Pull Cord",
     description: `${kokonut} ${file("pull-cord")} 台灯拉绳。拉过阈值就切换开关，松手后绳子荡回。屏幕阅读器和键盘使用隐藏的 switch，空格或回车会轻拉一下。减弱动效时松手直接回到静止。离开视口后停止动画帧。`,
     category: "buttons",
@@ -238,6 +246,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "ai-context-meter",
+    batch: 24,
     title: "AI Context Meter",
     description: `${kokonut} ${file("ai-context-meter")} 分段的上下文用量。接近上限时颜色变暖，演示对话会自己增长并压缩。减弱动效时数字直接跳到目标。离开视口后停止补间和演示计时。`,
     category: "micro",
@@ -258,6 +267,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "ai-tool-approval",
+    batch: 24,
     title: "AI Tool Approval",
     description: `${kokonut} ${file("ai-tool-approval")} 工具调用前的批准卡：允许一次、始终允许、拒绝。破坏性调用要按住确认。减弱动效时卡片直接切换。`,
     category: "micro",
@@ -274,6 +284,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "marking-menu",
+    batch: 24,
     title: "Marking Menu",
     description: `${kokonut} ${file("marking-menu")} 在按下的位置张开径向菜单，拖到一项松手即选中。也可以点右上角按钮再用方向键选择。笔迹在离开视口后停止绘制。`,
     category: "navigation",
@@ -289,6 +300,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "wheel-picker",
+    batch: 24,
     title: "Wheel Picker",
     description: `${kokonut} ${file("wheel-picker")} iOS 风格的三维滚轮，松手后吸附并带一点惯性。每一列是 spinbutton，可用方向键调整。减弱动效时直接跳到目标。离开视口后停止弹簧。`,
     category: "micro",
@@ -308,6 +320,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "undo-button",
+    batch: 24,
     title: "Undo Button",
     description: `${kokonut} ${file("undo-button")} 点击后打开倒计时，时间走完才真正提交，期间可以撤销。悬停会暂停计时。⌘Z / Ctrl+Z 也能撤销。减弱动效时标签直接切换。离开视口后停止倒计时帧。`,
     category: "buttons",
@@ -346,6 +359,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "focal-point-picker",
+    batch: 24,
     title: "Focal Point Picker",
     description: `${kokonut} ${file("focal-point-picker")} 拖动图片上的焦点，旁边的裁切预览跟着变。方向键以 0.01 步进，按住 Shift 为 0.1。图片用 <img> 渲染。减弱动效时焦点不再滑过去。`,
     category: "micro",
@@ -366,6 +380,7 @@ export const batch24Components: ComponentMeta[] = [
   },
   {
     name: "synced-transcript",
+    batch: 24,
     title: "Synced Transcript",
     description: `${kokonut} ${file("synced-transcript")} 播放时高亮当前词并跟着滚动，点击一句会跳到那里。减弱动效时滚动不再平滑。离开视口后停止播放帧。`,
     category: "micro",

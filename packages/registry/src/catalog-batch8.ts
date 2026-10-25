@@ -11,6 +11,7 @@ const ui: PropDoc[] = [
 export const batch8Components: ComponentMeta[] = [
   {
     name: "hero-shader",
+    batch: 8,
     title: "Hero Shader",
     description:
       "着色器背景 + 标题 + CTA。背景槽可切换 Silk / Iridescence / Lightning / Mesh / Aurora，也可传入自定义节点。减弱动效时回退静态渐变。",
@@ -37,6 +38,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "hero-globe",
+    batch: 8,
     title: "Hero Globe",
     description: "cobe（MIT）WebGL 地球仪 Hero，带城市标记与航线。无 WebGL 或减弱动效时回退静态渐变与 CSS 球。",
     category: "sections",
@@ -56,6 +58,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "hero-product-mockup",
+    batch: 8,
     title: "Hero Product Mockup",
     description: "设备框 + 辉光，滚动时 3D 抬头。组合 device-mockups、glow-hover 与 container-scroll-3d。",
     category: "sections",
@@ -74,6 +77,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "hero-kinetic-text",
+    batch: 8,
     title: "Hero Kinetic Text",
     description: "词组逐词显现 + 旋转关键词 + rough-annotation 手绘注释。",
     category: "sections",
@@ -92,6 +96,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "hero-ai-prompt",
+    batch: 8,
     title: "Hero AI Prompt",
     description: "灵感来自 v0 / Lovable，原创实现。居中大提示框，建议芯片，减弱动效时保留静态渐变底。",
     category: "sections",
@@ -112,6 +117,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "hero-parallax-wall",
+    batch: 8,
     title: "Hero Parallax Wall",
     description: "灵感来自 Aceternity，原创实现。倾斜卡片墙反向视差。未打开也不拷贝 Aceternity 源码。",
     category: "sections",
@@ -129,6 +135,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "footer-curtain-reveal",
+    batch: 8,
     title: "Footer Curtain Reveal",
     description: "内容层滑过时揭开粘底页脚。移植 Fancy Components（MIT）curtain footer 结构。",
     category: "sections",
@@ -147,6 +154,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "footer-giant-wordmark",
+    batch: 8,
     title: "Footer Giant Wordmark",
     description: "灵感来自巨型字标光标描边，原创实现。指针靠近时点亮描边，减弱动效时关闭光晕。",
     category: "sections",
@@ -163,6 +171,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "footer-interactive-wordmark",
+    batch: 8,
     title: "Footer Interactive Wordmark",
     description: "字重跟随光标（variable-font-proximity），点击字母经 matter-js 坠落。",
     category: "sections",
@@ -179,6 +188,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "footer-shader-wordmark",
+    batch: 8,
     title: "Footer Shader Wordmark",
     description: "液态金属 / 抖动着色器填充字标。减弱动效时回退渐变字。",
     category: "sections",
@@ -201,6 +211,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "nav-morphing",
+    batch: 8,
     title: "Nav Morphing",
     description: "滚动后收缩成胶囊，菜单按钮形变成面板。仅参考 Kokonut UI 免费 MIT 导航，未使用 Pro。",
     category: "sections",
@@ -217,6 +228,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "section-logo-cloud",
+    batch: 8,
     title: "Section Logo Cloud",
     description: "Logo 跑马灯，两侧渐变模糊，悬停从灰度到彩色，底下跟一条时间线。",
     category: "sections",
@@ -233,6 +245,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "section-sticky-feature-scroll",
+    batch: 8,
     title: "Section Sticky Feature Scroll",
     description: "粘性特性滚动：左侧画面粘住，右侧条目进入视口时切换。移植 Cult UI（MIT）结构。",
     category: "sections",
@@ -248,6 +261,7 @@ export const batch8Components: ComponentMeta[] = [
   },
   {
     name: "section-animated-bento",
+    batch: 8,
     title: "Section Animated Bento",
     description: "Bento 网格，每个格子组合不同的现有迷你动画。",
     category: "sections",

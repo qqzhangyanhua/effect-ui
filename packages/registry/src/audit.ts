@@ -54,6 +54,7 @@ export type AuditIssueType =
   | "missing-layer"
   | "stale-unclassified"
   | "layer-mismatch"
+  | "missing-batch"
 
 export interface AuditIssue {
   name: string
@@ -68,6 +69,7 @@ export interface AuditCatalogEntry extends RegistryCatalogEntry {
   layer?: string
   effectCategory?: string
   purposeGroup?: string
+  batch?: number
 }
 
 export interface AuditStaticJson {
@@ -563,6 +565,13 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
         name: entry.name,
         type: "missing-readme",
         description: `README 中未出现组件名 ${entry.name}。`,
+      })
+    }
+    if (!Number.isInteger(entry.batch) || (entry.batch ?? 0) < 1) {
+      issues.push({
+        name: entry.name,
+        type: "missing-batch",
+        description: "catalog 条目没有 Batch 编号。",
       })
     }
     const groupError = layerGroupError(entry)

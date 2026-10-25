@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch4Components: ComponentMeta[] = [
   {
     name: "shader-backgrounds",
+    batch: 4,
     title: "Shader Backgrounds",
     description: "封装 Paper Shaders 的 GPU 背景：mesh、grain、dithering、metaballs、warp。",
     category: "backgrounds",
@@ -62,6 +63,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "background-paths",
+    batch: 4,
     title: "Background Paths",
     description: "SVG 路径逐条绘制并循环流动。",
     category: "backgrounds",
@@ -111,6 +113,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "number-flow",
+    batch: 4,
     title: "Number Flow",
     description: "带 Intl 格式化的数字过渡（货币、百分比、单位）。",
     category: "text",
@@ -144,6 +147,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "image-trail",
+    batch: 4,
     title: "Image Trail",
     description: "指针移动时留下一串图片残影。",
     category: "cursor",
@@ -189,6 +193,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "icon-cloud",
+    batch: 4,
     title: "Icon Cloud",
     description: "3D 球面旋转的图标云。",
     category: "showcase",
@@ -213,6 +218,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "animated-theme-toggler",
+    batch: 4,
     title: "Animated Theme Toggler",
     description: "圆形扩散的明暗切换（View Transitions）。",
     category: "navigation",
@@ -234,6 +240,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "prompt-input",
+    batch: 4,
     title: "Prompt Input",
     description: "自适应高度的 AI 输入框，带附件与发送/停止。",
     category: "ai",
@@ -253,6 +260,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "chat-message",
+    batch: 4,
     title: "Chat Message",
     description: "用户/助手气泡，助手侧支持流式 Markdown。",
     category: "ai",
@@ -273,6 +281,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "device-mockups",
+    batch: 4,
     title: "Device Mockups",
     description: "Safari、iPhone、MacBook 设备外框。",
     category: "page",
@@ -286,6 +295,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "terminal",
+    batch: 4,
     title: "Terminal",
     description: "逐行打字的终端窗口。",
     category: "page",
@@ -309,6 +319,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "rich-text-editor",
+    batch: 4,
     title: "Rich Text Editor",
     description: "基于 Tiptap 的富文本编辑器，含基础工具栏。",
     category: "utility",
@@ -328,6 +339,7 @@ export const batch4Components: ComponentMeta[] = [
   },
   {
     name: "tree-view",
+    batch: 4,
     title: "Tree View",
     description: "可展开的文件夹 / 文件树。",
     category: "utility",

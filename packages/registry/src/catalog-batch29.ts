@@ -14,6 +14,7 @@ const expansionFile = (name: string) =>
 export const batch29Components: ComponentMeta[] = [
   {
     name: "use-dimensions",
+    batch: 29,
     title: "Use Dimensions",
     description: `${fancy} ${fancyHook("use-dimensions")} 读取元素宽高。首次测量放到微任务里，避免在 effect 里同步 setState。`,
     category: "ui",
@@ -26,6 +27,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "use-mouse-position",
+    batch: 29,
     title: "Use Mouse Position",
     description: `${fancy} ${fancyHook("use-mouse-position")} 用 state 记录指针相对容器的坐标。触摸点缺失时不更新。`,
     category: "ui",
@@ -40,6 +42,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "use-mouse-position-ref",
+    batch: 29,
     title: "Use Mouse Position Ref",
     description: `${fancy} ${fancyHook("use-mouse-position-ref")} 把指针坐标写进 ref，给逐帧效果读取，不触发渲染。`,
     category: "ui",
@@ -54,6 +57,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "use-elastic-line-events",
+    batch: 29,
     title: "Use Elastic Line Events",
     description: `${fancy} ${fancyHook("use-elastic-line-events")} 判断指针是否抓到线，并算出弯曲控制点。状态更新放在微任务里。`,
     category: "ui",
@@ -71,6 +75,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "pixel-trail",
+    batch: 29,
     title: "Pixel Trail",
     description: `${fancy} ${fancyFile("background/pixel-trail.tsx")} 把容器分成像素格，指针经过时点亮，再按 fadeDuration 淡出。减弱动效或离开视口时不留下拖尾。用 useId 代替 uuid。`,
     category: "backgrounds",
@@ -90,6 +95,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "screensaver",
+    batch: 29,
     title: "Screensaver",
     description: `${fancy} ${fancyFile("blocks/screensaver.tsx")} 子元素在 containerRef 里以恒定速度反弹，像 DVD 屏保。减弱动效时停在 startPosition。离开视口或标签页隐藏时暂停逐帧位移。`,
     category: "decor",
@@ -109,6 +115,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "media-between-text",
+    batch: 29,
     title: "Media Between Text",
     description: `${fancy} ${fancyFile("blocks/media-between-text.tsx")} 图片或视频夹在两段文字中间，从零宽度展开。triggerType 可以是 hover、inView 或 ref。减弱动效时直接完全展开，视频暂停。`,
     category: "text",
@@ -156,6 +163,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "letter-3d-swap",
+    batch: 29,
     title: "Letter 3D Swap",
     description: `${fancy} ${fancyFile("text/letter-3d-swap.tsx")} 悬停时每个字母像方块一样翻到第二面。staggerFrom 可以是 first、last、center、random 或数字。减弱动效时不翻转，只显示正面。`,
     category: "text",
@@ -197,6 +205,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "vertical-cut-reveal",
+    batch: 29,
     title: "Vertical Cut Reveal",
     description: `${fancy} ${fancyFile("text/vertical-cut-reveal.tsx")} 文字从裁切蒙版下方升起，可按字符、词或行拆开。ref 暴露 startAnimation 和 reset。减弱动效时直接显示完整文字。`,
     category: "text",
@@ -239,6 +248,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "text-cursor-proximity",
+    batch: 29,
     title: "Text Cursor Proximity",
     description: `${fancy} ${fancyFile("text/text-cursor-proximity.tsx")} 靠近指针的字母按距离在 styles 的 from 和 to 之间插值。falloff 可以是 linear、exponential 或 gaussian。减弱动效或离开视口时保持 from。逐帧逻辑在字母组件外，避免在循环里调用 hook。`,
     category: "cursor",
@@ -277,6 +287,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "elastic-line",
+    batch: 29,
     title: "Elastic Line",
     description: `${fancy} ${fancyFile("physics/elastic-line.tsx")} 指针靠近时拉弯 SVG 直线，松开后弹回。可水平或垂直。减弱动效时是一条不交互的直线。离开视口后不再跟手。`,
     category: "decor",
@@ -316,6 +327,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "text-highlighter",
+    batch: 29,
     title: "Text Highlighter",
     description: `${fancy} ${fancyFile("text/text-highlighter.tsx")} 荧光笔从 ltr、rtl、ttb 或 btt 涂开。triggerType 可以是 hover、ref、inView 或 auto。ref 暴露 animate 和 reset。减弱动效时直接铺满高亮。`,
     category: "text",
@@ -356,6 +368,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "autosize-textarea",
+    batch: 29,
     title: "Autosize Textarea",
     description: `${expansions} ${expansionFile("autosize-textarea")} 文本框随内容在 minHeight 和 maxHeight 之间增高。ref 暴露 textArea 和 focus，并导出 useAutosizeTextArea。没有动画。`,
     category: "utility",
@@ -374,6 +387,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "loading-button",
+    batch: 29,
     title: "Loading Button",
     description: `${expansions} ${expansionFile("loading-button")} 加载时显示 Loader2 并禁用按钮，支持 cva 的 variant、size 和 asChild。减弱动效时图标不旋转，并设置 aria-busy。`,
     category: "buttons",
@@ -412,6 +426,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "progress-with-value",
+    batch: 29,
     title: "Progress With Value",
     description: `${expansions} ${expansionFile("progress-with-value")} 带数值标签的进度条。position 可以贴在起点、终点、跟随条的末端，或放到条的外面。减弱动效时指示条没有宽度过渡。`,
     category: "micro",
@@ -430,6 +445,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "dual-range-slider",
+    batch: 29,
     title: "Dual Range Slider",
     description: `${expansions} ${expansionFile("dual-range-slider")} 两个滑块组成范围，每个滑块可以显示数值。labelPosition 为 top 或 bottom。`,
     category: "utility",
@@ -448,6 +464,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "heading-with-anchor",
+    batch: 29,
     title: "Heading With Anchor",
     description: `${expansions} ${expansionFile("heading-with-anchor")} h1 到 h6 以及段落变体。悬停时显示 # 锚点，点击把带 hash 的地址复制到剪贴板。用 <a> 代替 next/link。也导出 H1 到 H6 和 P。`,
     category: "utility",
@@ -469,6 +486,7 @@ export const batch29Components: ComponentMeta[] = [
   },
   {
     name: "responsive-modal",
+    batch: 29,
     title: "Responsive Modal",
     description: `${expansions} ${expansionFile("responsive-modal")} 宽屏居中对话框，窄屏从 top、bottom、left 或 right 滑入。动画类来自已安装的 tw-animate-css。减弱动效时只淡入淡出。`,
     category: "ui",

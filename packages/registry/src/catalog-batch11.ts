@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch11Components: ComponentMeta[] = [
   {
     name: "view-transition-gallery",
+    batch: 11,
     title: "View Transition Gallery",
     description: "灵感来自 Apple，原创实现。缩略图到详情用 View Transitions API 共享元素，不支持时回退 Motion layoutId。",
     category: "page",
@@ -35,6 +36,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "scroll-timeline-reveal",
+    batch: 11,
     title: "Scroll Timeline Reveal",
     description: "原创。animation-timeline: view() 做显现和视差，不支持时回退 Motion whileInView。",
     category: "scroll",
@@ -75,6 +77,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "smooth-scroll-provider",
+    batch: 11,
     title: "Smooth Scroll Provider",
     description: "Lenis（MIT）平滑滚动容器和 useLenis。减弱动效时关闭 Lenis，改回原生滚动。",
     category: "utility",
@@ -88,6 +91,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "hero-scroll-zoom",
+    batch: 11,
     title: "Hero Scroll Zoom",
     description: "灵感来自 Apple，原创实现。全屏画面随滚动收成圆角产品窗口。",
     category: "sections",
@@ -100,6 +104,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "section-horizontal-scroll",
+    batch: 11,
     title: "Section Horizontal Scroll",
     description: "灵感来自 Apple，原创实现。竖向滚动驱动横向章节，sticky 加 Motion。",
     category: "sections",
@@ -112,6 +117,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "intro-preloader",
+    batch: 11,
     title: "Intro Preloader",
     description: "灵感来自 Linear，原创实现。0 到 100 计数后幕布错开揭开，每个会话只自动播放一次。",
     category: "loaders",
@@ -163,6 +169,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "hero-3d-model",
+    batch: 11,
     title: "Hero 3D Model",
     description: "灵感来自 Apple，原创实现。three / React Three Fiber / drei 的玻璃体随滚动旋转。懒加载，无 WebGL 或减弱动效时用静态宝石。",
     category: "sections",
@@ -179,6 +186,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "keycap-3d",
+    batch: 11,
     title: "Keycap 3D",
     description: "灵感来自 Raycast，原创实现。可按下的立体键帽，真实键盘按下时高亮。",
     category: "cards",
@@ -224,6 +232,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "infinite-canvas-gallery",
+    batch: 11,
     title: "Infinite Canvas Gallery",
     description: "灵感来自无限画布，原创实现。四个方向可拖动的无限平铺网格，带惯性。",
     category: "showcase",
@@ -248,6 +257,7 @@ export const batch11Components: ComponentMeta[] = [
 
   {
     name: "liquid-glass-tabbar",
+    batch: 11,
     title: "Liquid Glass Tabbar",
     description: "灵感来自 iOS 26，原创实现。玻璃底栏和会融合的液态指示。",
     category: "navigation",
@@ -272,6 +282,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "dither-gradient",
+    batch: 11,
     title: "Dither Gradient",
     description: "原创 Bayer 抖动渐变着色器。无 WebGL 时回退点阵渐变，减弱动效时停在一帧。",
     category: "backgrounds",
@@ -315,6 +326,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "anchor-popover",
+    batch: 11,
     title: "Anchor Popover",
     description: "原创。CSS anchor 定位加 Popover API，position-try 翻转；不支持时用坐标回退。",
     category: "ui",
@@ -333,6 +345,7 @@ export const batch11Components: ComponentMeta[] = [
   },
   {
     name: "css-accordion-auto",
+    batch: 11,
     title: "CSS Accordion Auto",
     description: "原创。原生 details 用 interpolate-size 过渡到 height auto，不支持时测量高度。",
     category: "ui",

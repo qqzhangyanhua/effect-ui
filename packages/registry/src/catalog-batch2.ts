@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch2Components: ComponentMeta[] = [
   {
     name: "alert",
+    batch: 2,
     title: "Alert",
     description: "内联提示条。",
     category: "ui",
@@ -26,6 +27,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "alert-dialog",
+    batch: 2,
     title: "Alert Dialog",
     description: "需要确认的警告对话框。",
     category: "ui",
@@ -40,6 +42,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "aspect-ratio",
+    batch: 2,
     title: "Aspect Ratio",
     description: "固定宽高比容器。",
     category: "ui",
@@ -54,6 +57,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "breadcrumb",
+    batch: 2,
     title: "Breadcrumb",
     description: "面包屑导航。",
     category: "ui",
@@ -71,6 +75,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "calendar",
+    batch: 2,
     title: "Calendar",
     description: "日期选择日历。",
     category: "ui",
@@ -89,6 +94,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "carousel",
+    batch: 2,
     title: "Carousel",
     description: "基于 Embla 的轮播。",
     category: "ui",
@@ -111,6 +117,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "chart",
+    batch: 2,
     title: "Chart",
     description: "Recharts 图表容器。",
     category: "ui",
@@ -129,6 +136,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "command",
+    batch: 2,
     title: "Command",
     description: "命令面板 / 搜索列表。",
     category: "ui",
@@ -147,6 +155,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "context-menu",
+    batch: 2,
     title: "Context Menu",
     description: "右键菜单。",
     category: "ui",
@@ -165,6 +174,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "drawer",
+    batch: 2,
     title: "Drawer",
     description: "底部抽屉。",
     category: "ui",
@@ -179,6 +189,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "form",
+    batch: 2,
     title: "Form",
     description: "react-hook-form 封装。",
     category: "ui",
@@ -193,6 +204,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "input-otp",
+    batch: 2,
     title: "Input OTP",
     description: "验证码输入。",
     category: "ui",
@@ -211,6 +223,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "menubar",
+    batch: 2,
     title: "Menubar",
     description: "桌面式菜单栏。",
     category: "ui",
@@ -232,6 +245,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "navigation-menu",
+    batch: 2,
     title: "Navigation Menu",
     description: "站点导航菜单。",
     category: "ui",
@@ -249,6 +263,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "pagination",
+    batch: 2,
     title: "Pagination",
     description: "分页控件。",
     category: "ui",
@@ -267,6 +282,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "progress",
+    batch: 2,
     title: "Progress",
     description: "线性进度条。",
     category: "ui",
@@ -281,6 +297,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "radio-group",
+    batch: 2,
     title: "Radio Group",
     description: "单选组。",
     category: "ui",
@@ -295,6 +312,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "resizable",
+    batch: 2,
     title: "Resizable",
     description: "可拖拽分割面板。",
     category: "ui",
@@ -312,6 +330,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "scroll-area",
+    batch: 2,
     title: "Scroll Area",
     description: "自定义滚动区域。",
     category: "ui",
@@ -329,6 +348,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "sidebar",
+    batch: 2,
     title: "Sidebar",
     description: "应用侧栏。",
     category: "ui",
@@ -354,6 +374,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "skeleton",
+    batch: 2,
     title: "Skeleton",
     description: "加载占位骨架。",
     category: "ui",
@@ -368,6 +389,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "table",
+    batch: 2,
     title: "Table",
     description: "数据表格结构。",
     category: "ui",
@@ -382,6 +404,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "toggle",
+    batch: 2,
     title: "Toggle",
     description: "切换按钮。",
     category: "ui",
@@ -400,6 +423,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "toggle-group",
+    batch: 2,
     title: "Toggle Group",
     description: "切换按钮组。",
     category: "ui",
@@ -418,6 +442,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "data-table",
+    batch: 2,
     title: "Data Table",
     description: "可排序分页的数据表示例。",
     category: "ui",
@@ -435,6 +460,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "scramble-text",
+    batch: 2,
     title: "Scramble Text",
     description: "解密/乱码还原文字。",
     category: "text",
@@ -483,6 +509,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "text-rotate",
+    batch: 2,
     title: "Text Rotate",
     description: "按间隔轮换一组文字，可选滑动、模糊或字形动画。",
     category: "text",
@@ -531,6 +558,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "word-rotate",
+    batch: 2,
     title: "Word Rotate",
     description: "词语轮换。",
     category: "text",
@@ -566,6 +594,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "morphing-text",
+    batch: 2,
     title: "Morphing Text",
     description: "模糊变形切换文字。",
     category: "text",
@@ -601,6 +630,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "rolling-number",
+    batch: 2,
     title: "Rolling Number",
     description: "数字滚轮变体。",
     category: "text",
@@ -634,6 +664,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "light-beams",
+    batch: 2,
     title: "Light Beams",
     description: "倾斜光束背景。",
     category: "backgrounds",
@@ -675,6 +706,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "wave-background",
+    batch: 2,
     title: "Wave Background",
     description: "底部波浪背景。",
     category: "backgrounds",
@@ -717,6 +749,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "noise-gradient",
+    batch: 2,
     title: "Noise Gradient",
     description: "噪点渐变背景。",
     category: "backgrounds",
@@ -760,6 +793,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "animated-grid",
+    batch: 2,
     title: "Animated Grid",
     description: "缓慢漂移的网格线。",
     category: "backgrounds",
@@ -801,6 +835,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "retro-grid",
+    batch: 2,
     title: "Retro Grid",
     description: "透视复古网格。",
     category: "backgrounds",
@@ -850,6 +885,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "dock",
+    batch: 2,
     title: "Dock",
     description: "macOS 式放大 Dock。",
     category: "navigation",
@@ -872,6 +908,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "marquee",
+    batch: 2,
     title: "Marquee",
     description: "无限滚动跑马灯。",
     category: "showcase",
@@ -896,6 +933,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "orbiting-circles",
+    batch: 2,
     title: "Orbiting Circles",
     description: "环绕轨道图标。",
     category: "showcase",
@@ -919,6 +957,7 @@ export const batch2Components: ComponentMeta[] = [
 
   {
     name: "globe-sphere",
+    batch: 2,
     title: "Globe Sphere",
     description: "CSS 3D 点阵球体。",
     category: "showcase",
@@ -942,6 +981,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "confetti-burst",
+    batch: 2,
     title: "Confetti Burst",
     description: "点击撒彩纸。",
     category: "decor",
@@ -965,6 +1005,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "cursor-trail",
+    batch: 2,
     title: "Cursor Trail",
     description: "指针拖尾。",
     category: "cursor",
@@ -1004,6 +1045,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "sparkles",
+    batch: 2,
     title: "Sparkles",
     description: "文字周围闪烁星点。",
     category: "decor",
@@ -1028,6 +1070,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "border-beam",
+    batch: 2,
     title: "Border Beam",
     description: "描边光束卡片。",
     category: "cards",
@@ -1080,6 +1123,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "bento-grid",
+    batch: 2,
     title: "Bento Grid",
     description: "不规则卡片宫格。",
     category: "cards",
@@ -1118,6 +1162,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "perspective-card",
+    batch: 2,
     title: "Perspective Card",
     description: "透视 3D 卡片。",
     category: "cards",
@@ -1150,6 +1195,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "expandable-card",
+    batch: 2,
     title: "Expandable Card",
     description: "点击展开卡片。",
     category: "cards",
@@ -1176,6 +1222,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "rainbow-button",
+    batch: 2,
     title: "Rainbow Button",
     description: "彩虹描边按钮。",
     category: "buttons",
@@ -1241,6 +1288,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "interactive-hover-button",
+    batch: 2,
     title: "Interactive Hover Button",
     description: "悬停滑出箭头按钮。",
     category: "buttons",
@@ -1273,6 +1321,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "gooey-button",
+    batch: 2,
     title: "Gooey Button",
     description: "液态粘连按钮。",
     category: "buttons",
@@ -1305,6 +1354,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "animated-tabs",
+    batch: 2,
     title: "Animated Tabs",
     description: "滑块指示的动画选项卡。",
     category: "navigation",
@@ -1326,6 +1376,7 @@ export const batch2Components: ComponentMeta[] = [
   },
   {
     name: "floating-navbar",
+    batch: 2,
     title: "Floating Navbar",
     description: "滚动时收起的浮动导航。",
     category: "navigation",

@@ -9,6 +9,7 @@ const flowbiteFile = (file: string) => `https://github.com/themesberg/flowbite/b
 export const batch42Components: ComponentMeta[] = [
   {
     name: "uno-card",
+    batch: 42,
     title: "Uno Card",
     description: `${galaxy} 作者 nanda248。${galaxyFile("Cards/nanda248_average-goat-70.html")} 四色菱形牌面，两条 aliceblue 光带以 rotate(45deg) 从左扫到右，悬停时牌面抬起 5px 并藏起光带。colors、size、children 可配。示例四色放在 demo。减弱动效或离开视口时光带停住，牌面仍可读，悬停仍可抬起。`,
     category: "cards",
@@ -27,6 +28,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "transaction-card",
+    batch: 42,
     title: "Transaction Card",
     description: `${galaxy} 作者 Admin12121。${galaxyFile("Cards/Admin12121_plastic-goose-38.html")} 悬停时外壳缩到 220px 并放大到 1.03，银行卡按 slide-top 升到 -70px 再落到 -8px 且 rotate(90deg)，POS 按 slide-post 上移 70px，金额在 1 秒后淡入。label、amount、onClick 可配。减弱动效或离开视口时银行卡和 POS 并排静止，不再滑动。`,
     category: "cards",
@@ -45,6 +47,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "printer-icon-button",
+    batch: 42,
     title: "Printer Icon Button",
     description: `${galaxy} 作者 Admin12121。${galaxyFile("Buttons/Admin12121_cold-dodo-65.html")} 进纸和出纸各 1.2 秒，只有悬停时 --state 为 running，平时 paused。label 只给读屏，color 画机身边框。减弱动效或离开视口时纸张停住，打印机轮廓仍在。`,
     category: "buttons",
@@ -63,6 +66,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "pendulum-social-card",
+    batch: 42,
     title: "Pendulum Social Card",
     description: `${galaxy} 作者 SouravBandyopadhyay。${galaxyFile("Cards/SouravBandyopadhyay_tricky-puma-59.html")} 悬停头像时在 -10deg 与 10deg 之间摆动 1 秒，卡片本身不转。image、heading、links 可配。社交地址放在 demo。减弱动效或离开视口时头像静止。`,
     category: "cards",
@@ -81,6 +85,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "tilt-sweep-button",
+    batch: 42,
     title: "Tilt Sweep Button",
     description: `${galaxy} 作者 EddyBel。${galaxyFile("Buttons/EddyBel_brave-horse-21.html")} 静止时就是 scale(1.1) perspective(500px) rotateX(15deg) rotateY(-10deg)。悬停后 5.5 秒在这个姿态和反向倾斜之间循环。背景层 200% 大，10 秒走完 translate 半幅。from、to 给底色和第一团径向色，其余色标保留源文件。减弱动效或离开视口时停在静止倾斜，扫光不再移动。`,
     category: "buttons",
@@ -99,6 +104,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "focus-line-input",
+    batch: 42,
     title: "Focus Line Input",
     description: `${galaxy} 作者 TechByElijah。${galaxyFile("Inputs/TechByElijah_fluffy-dolphin-33.html")} 聚焦时下划线宽度从 0 到 100%，输入框用 0.3 秒放大到 1.02，不来回弹。lineColor 可配，其余输入属性透传。减弱动效或离开视口时下划线立即展开，不再放大。`,
     category: "utility",
@@ -116,6 +122,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "word-wheel-card",
+    batch: 42,
     title: "Word Wheel Card",
     description: `${galaxy} 作者 NotReal22。${galaxyFile("Cards/NotReal22_popular-gecko-14.html")} 悬停时圆盘 1 秒转到 180deg 且 right 收到 -170px，词组 B 淡入、词组 A 淡出。离开悬停时从 160deg 回到 0。词组 B 的每一项预先 rotate(180deg)，转完后正读。title、wordsA、wordsB 可配。减弱动效或离开视口时停在词组 A，圆盘不转。`,
     category: "cards",
@@ -134,6 +141,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "fly-around-button",
+    batch: 42,
     title: "Fly Around Button",
     description: `${galaxy} 作者 Bastiennnn。${galaxyFile("Buttons/Bastiennnn_strong-lionfish-94.html")} 悬停时按钮上移 10px，图标 6 秒走到 translate(20px, -100px) rotate(-300deg) 再回来。按下缩到 0.95。icon、children 可配。减弱动效或离开视口时图标不动，按钮不再上移。`,
     category: "buttons",
@@ -152,6 +160,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "bottom-navigation",
+    batch: 42,
     title: "Bottom Navigation",
     description: `${flowbite} ${flowbiteFile("components/bottom-navigation.md")} 底部固定栏，变体有 default、bordered、app-bar、pagination、button-group。当前项带 aria-current，底部留出 safe-area。items 可带图标和链接。减弱动效时颜色不再过渡。`,
     category: "navigation",
@@ -173,6 +182,7 @@ export const batch42Components: ComponentMeta[] = [
   },
   {
     name: "meeting-control-bar",
+    batch: 42,
     title: "Meeting Control Bar",
     description: `${flowbite} ${flowbiteFile("components/bottom-navigation.md")} 在线会议控制条。时间在左侧，麦克风、摄像头、反馈和设置是带提示的切换按钮，带 aria-pressed。结束按钮调用 onEnd。减弱动效时不再做颜色过渡。`,
     category: "ui",
@@ -195,6 +205,7 @@ export const batch42Components: ComponentMeta[] = [
 
   {
     name: "category-search-input",
+    batch: 42,
     title: "Category Search Input",
     description: `${flowbite} ${flowbiteFile("forms/search-input.md")} 分类下拉、搜索框和提交按钮。Esc 清空查询。提交时调用 onSearch，不发起请求。categories、value、onValueChange 可配。减弱动效时不再做颜色过渡。`,
     category: "utility",

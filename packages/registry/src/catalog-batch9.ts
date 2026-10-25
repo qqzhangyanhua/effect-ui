@@ -20,6 +20,7 @@ function templateFiles(dir: string, route: string) {
 export const batch9Components: ComponentMeta[] = [
   {
     name: "coverflow-carousel",
+    batch: 9,
     title: "Coverflow Carousel",
     description: "iTunes 式封面流：中间放大，两侧倾斜。移植 Smooth UI（MIT）交互。",
     category: "cards",
@@ -59,6 +60,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "book-flip",
+    batch: 9,
     title: "Book Flip",
     description: "3D 书本：悬停打开封面，点击翻页。移植 Smooth UI（MIT）交互。",
     category: "cards",
@@ -99,6 +101,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "folder-reveal",
+    batch: 9,
     title: "Folder Reveal",
     description: "悬停时文件夹打开，卡片从中扇出。移植 Smooth UI（MIT）交互。",
     category: "cards",
@@ -139,6 +142,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "box-carousel",
+    batch: 9,
     title: "Box Carousel",
     description: "3D 立方体旋转切换四面内容。移植 Fancy Components（MIT）交互。",
     category: "cards",
@@ -172,6 +176,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "family-drawer",
+    batch: 9,
     title: "Family Drawer",
     description: "按钮展开成多步骤面板，高度平滑变化。移植 Cult UI（MIT）结构。",
     category: "navigation",
@@ -192,6 +197,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "orbiting-items-3d",
+    batch: 9,
     title: "Orbiting Items 3D",
     description: "图标在倾斜 3D 轨道上环绕，前后有遮挡。移植 Animata（MIT）交互。",
     category: "showcase",
@@ -215,6 +221,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "apple-activity-card",
+    batch: 9,
     title: "Apple Activity Card",
     description: "三色活动圆环逐段填充。仅参考 Kokonut UI 免费 MIT，未使用 Pro。",
     category: "cards",
@@ -248,6 +255,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "apple-cards-carousel",
+    batch: 9,
     title: "Apple Cards Carousel",
     description: "灵感来自 Aceternity，原创实现。横向大卡片，点击展开详情。未打开其源码。",
     category: "cards",
@@ -287,6 +295,7 @@ export const batch9Components: ComponentMeta[] = [
   },
   {
     name: "agency-template",
+    batch: 9,
     title: "Agency Template",
     description: "灵感来自 Awwwards，原创组合。视差墙、滚动字、圆形画廊、图片轨迹和可点击字标。重 WebGL 懒加载。",
     category: "templates",

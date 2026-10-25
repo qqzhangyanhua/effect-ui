@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch7Components: ComponentMeta[] = [
   {
     name: "vfx-element",
+    batch: 7,
     title: "VFX Element",
     description: "vfx-js（MIT）WebGL 特效封装：glitch / glow / CRT / RGB shift / pixelate，可叠加。无 WebGL 或减弱动效时回退 CSS。",
     category: "text",
@@ -52,6 +53,7 @@ export const batch7Components: ComponentMeta[] = [
 
   {
     name: "gpgpu-particles",
+    batch: 7,
     title: "GPGPU Particles",
     description: "移植 OGL GPGPU 粒子示例（Unlicense）：鼠标涡流，粒子可聚成文字。",
     category: "backgrounds",
@@ -95,6 +97,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "polyline-ribbon-cursor",
+    batch: 7,
     title: "Polyline Ribbon Cursor",
     description: "移植 OGL polylines 示例（Unlicense）：跟随指针的丝带网格。",
     category: "cursor",
@@ -141,6 +144,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "pixel-canvas-card",
+    batch: 7,
     title: "Pixel Canvas Card",
     description: "移植 hexagoncircle/pixel-canvas（MIT）：悬停时像素从中心闪现。",
     category: "cards",
@@ -181,6 +185,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "atropos-card",
+    batch: 7,
     title: "Atropos Card",
     description: "Atropos（MIT）多层 3D 视差卡片。",
     category: "cards",
@@ -219,6 +224,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "rough-annotation",
+    batch: 7,
     title: "Rough Annotation",
     description: "rough-notation（MIT）手绘下划线 / 高亮 / 框选注释。",
     category: "text",
@@ -270,6 +276,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "burst-icons",
+    batch: 7,
     title: "Burst Icons",
     description: "灵感来自 mo.js（MIT），用 Motion 重写的点击图标爆发。",
     category: "decor",
@@ -295,6 +302,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "marquee-along-svg-path",
+    batch: 7,
     title: "Marquee Along SVG Path",
     description: "Fancy Components（MIT）：子元素沿 SVG 路径循环移动。",
     category: "showcase",
@@ -320,6 +328,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "evervault-card",
+    batch: 7,
     title: "Evervault Card",
     description: "灵感来自 encrypted card，原创实现：乱码字符在悬停处揭开明文。",
     category: "cards",
@@ -371,6 +380,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "letter-glitch-wall",
+    batch: 7,
     title: "Letter Glitch Wall",
     description: "灵感来自 letter glitch wall，原创实现：字符墙随机翻跳。",
     category: "backgrounds",
@@ -413,6 +423,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "target-cursor",
+    batch: 7,
     title: "Target Cursor",
     description: "灵感来自 target cursor，原创实现：四角括号吸附到 data-target。",
     category: "cursor",
@@ -457,6 +468,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "lightning",
+    batch: 7,
     title: "Lightning",
     description: "原创 GLSL 闪电：噪声折线与辉光，无 WebGL 时回退渐变。",
     category: "backgrounds",
@@ -500,6 +512,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "iridescence",
+    batch: 7,
     title: "Iridescence",
     description: "原创虹彩噪声背景着色器，无 WebGL 时回退锥形渐变。",
     category: "backgrounds",
@@ -548,6 +561,7 @@ export const batch7Components: ComponentMeta[] = [
   },
   {
     name: "silk",
+    batch: 7,
     title: "Silk",
     description: "原创丝绸褶皱噪声背景着色器，无 WebGL 时回退线性渐变。",
     category: "backgrounds",

@@ -11,6 +11,7 @@ const file = (name: string) =>
 export const batch26Components: ComponentMeta[] = [
   {
     name: "aurora-curtain",
+    batch: 26,
     title: "Aurora Curtain",
     description: `${smooth} ${file("aurora-curtain")} 内容背后的极光丝带。着色器保持原样，绘制改用 ogl。WebGL2 不可用时退回径向渐变。减弱动效或离开视口后停在当前帧。`,
     category: "backgrounds",
@@ -34,6 +35,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "gravity-stars",
+    batch: 26,
     title: "Gravity Stars",
     description: `${smooth} ${file("gravity-stars")} 星点会朝指针聚拢，近处可以连线。减弱动效时星场静止。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -61,6 +63,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "magnetic-field",
+    batch: 26,
     title: "Magnetic Field",
     description: `${smooth} ${file("magnetic-field")} 子元素或 items 会吸附、排斥或绕着指针转。没有精细指针、减弱动效或离开视口时回到原位。`,
     category: "cursor",
@@ -102,6 +105,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "ransom-note",
+    batch: 26,
     title: "Ransom Note",
     description: `${smooth} ${file("ransom-note")} 每个字用随机字体、底色和旋转拼成勒索信。assemble 飞入，jitter 持续晃动。减弱动效或离开视口时 jitter 停住。`,
     category: "text",
@@ -142,6 +146,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "liquid-metal",
+    batch: 26,
     title: "Liquid Metal",
     description: `${smooth} ${file("liquid-metal")} 液态金属表面，指针可以推动流场，也可以把材质裁成文字。着色器保持原样，绘制改用 ogl。减弱动效或没有 WebGL2 时用静态渐变。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -165,6 +170,7 @@ export const batch26Components: ComponentMeta[] = [
 
   {
     name: "pixel-brush-canvas",
+    batch: 26,
     title: "Pixel Brush Canvas",
     description: `${smooth} ${file("pixel-brush-canvas")} 像素画布，带画笔、橡皮、填充、直线、矩形、网格和导出。调色板下标仍叫 color。`,
     category: "micro",
@@ -187,6 +193,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "duration-picker",
+    batch: 26,
     title: "Duration Picker",
     description: `${smooth} ${file("duration-picker")} 分段的时、分、秒输入。滚轮、拖动和方向键都能改。减弱动效时数字不再滚动。`,
     category: "micro",
@@ -204,6 +211,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "exposure-slider",
+    batch: 26,
     title: "Exposure Slider",
     description: `${smooth} ${file("exposure-slider")} 相机曝光刻度条，旁边有圆形指示。减弱动效时拖动不再用弹簧。`,
     category: "micro",
@@ -221,6 +229,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "scrubber",
+    batch: 26,
     title: "Scrubber",
     description: `${smooth} ${file("scrubber")} 按住左右拖改变数值。减弱动效时没有弹簧过渡。`,
     category: "micro",
@@ -238,6 +247,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "switchboard-card",
+    batch: 26,
     title: "Switchboard Card",
     description: `${smooth} ${file("switchboard-card")} 卡片顶部是一排指示灯。randomLights 时灯会随机亮灭。减弱动效或离开视口后灯停住。`,
     category: "cards",
@@ -277,6 +287,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "time-machine-stack",
+    batch: 26,
     title: "Time Machine Stack",
     description: `${smooth} ${file("time-machine-stack")} 卡片沿纵深叠放，滚轮或点击会翻到下一张。减弱动效时没有弹簧，只保留最前面一张。`,
     category: "cards",
@@ -317,6 +328,7 @@ export const batch26Components: ComponentMeta[] = [
   },
   {
     name: "interactive-image-selector",
+    batch: 26,
     title: "Interactive Image Selector",
     description: `${smooth} ${file("interactive-image-selector")} 图片网格可以多选，然后分享或删除。减弱动效时去掉缩放和旋转。`,
     category: "cards",

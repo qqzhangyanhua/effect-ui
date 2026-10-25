@@ -12,6 +12,7 @@ const sizeExemption = "取值是 sm、md、lg，不是像素。"
 export const batch35Components: ComponentMeta[] = [
   {
     name: "use-dismiss",
+    batch: 35,
     title: "Use Dismiss",
     description: `${spectrum} ${file("lib/hooks/use-dismiss.ts")} 在 Escape 或外部按下时关闭浮层。behavior 为 consume 时吞掉随后的点击。`,
     category: "ui",
@@ -24,6 +25,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "use-hover-gesture",
+    batch: 35,
     title: "Use Hover Gesture",
     description: `${spectrum} ${file("lib/hooks/use-hover-gesture.ts")} 把指针进入和离开配成一对。触控按下不算悬停。isHoveringPointer 已内联，不另加依赖。`,
     category: "ui",
@@ -36,6 +38,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "use-tap-gesture",
+    batch: 35,
     title: "Use Tap Gesture",
     description: `${spectrum} ${file("lib/hooks/use-tap-gesture.ts")} 在 pointerdown 记下指针类型和当时的状态，供随后的 click 读取。键盘激活会丢掉这条记录。`,
     category: "ui",
@@ -48,6 +51,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "hologram-text",
+    batch: 35,
     title: "Hologram Text",
     description: `${spectrum} ${file("app/registry/animatedtext/components/hologram-text.tsx")} 全息扫描文字。text、scanDuration、chromaJitter 可配。已去掉 next-themes 和 styled-jsx。减弱动效或离开视口时文字保持可见并停止闪烁。`,
     category: "text",
@@ -66,6 +70,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "ink-morph",
+    batch: 35,
     title: "Ink Morph",
     description: `${spectrum} ${file("app/registry/animatedtext/components/ink-morph.tsx")} SVG 湍流把文字从墨迹收到清晰。intensityFrom、intensityTo、settleMs、colorStart、colorEnd 可配。减弱动效或离开视口时直接显示终点颜色，位移为 0。`,
     category: "text",
@@ -87,6 +92,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "orbital-text",
+    batch: 35,
     title: "Orbital Text",
     description: `${spectrum} ${file("app/registry/animatedtext/components/orbital-text.tsx")} 字符沿轨道收拢。radius、duration、decay 可配。根节点保留 aria-label。初值按序号确定。减弱动效或离开视口时直接落位。`,
     category: "text",
@@ -110,6 +116,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "scratch-card",
+    batch: 35,
     title: "Scratch Card",
     description: `${spectrum} ${file("app/registry/scratch-card/scratch-card.tsx")} 2D canvas 刮刮卡。brushSize、revealThreshold、onReveal、onProgress、revealAnnouncement 可配。Enter 或空格直接揭开。减弱动效时不生成粉尘，箔层立刻消失。`,
     category: "micro",
@@ -134,6 +141,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "skeleton-reveal",
+    batch: 35,
     title: "Skeleton Reveal",
     description: `${spectrum} ${file("components/spectrumui/skeleton-reveal.tsx")} 骨架脉冲后交叉淡入内容。loading、skeleton、pulseCount、pulseDuration、revealDuration 可配。嵌入的过渡来自 transitions.dev（Jakub Antalík）。减弱动效或离开视口时不脉冲。`,
     category: "utility",
@@ -155,6 +163,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "notification-bell",
+    batch: 35,
     title: "Notification Bell",
     description: `${spectrum} ${file("app/registry/notification-bell/notification-bell.tsx")} 未读数增加时铃铛摆动。count、max、dot、ringOnMount 可配。减弱动效时不摆动、不闪点。`,
     category: "utility",
@@ -177,6 +186,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "async-morph-button",
+    batch: 35,
     title: "Async Morph Button",
     description: `${spectrum} ${file("app/registry/morph-button/morph-button.tsx")} 异步按钮在加载、成功、失败之间变形。onAction、状态 label、resetDelay、受控 state 可配。加载旋转在减弱动效或离开视口时停止。`,
     category: "buttons",
@@ -202,6 +212,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "face-rating",
+    batch: 35,
     title: "Face Rating",
     description: `${spectrum} ${file("app/registry/face-rating/face-rating.tsx")} 五档表情评分，支持受控和非受控，方向键在单选组里移动。colors 可配。减弱动效时不弹跳，过渡时长为 0。`,
     category: "utility",
@@ -225,6 +236,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "follow-button",
+    batch: 35,
     title: "Follow Button",
     description: `${spectrum} ${file("app/registry/follow-button/follow-button.tsx")} 关注按钮，aria-pressed 反映状态，悬停已关注时预览取消。支持受控。减弱动效时不形变、不下沉。`,
     category: "buttons",
@@ -246,6 +258,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "share-button",
+    batch: 35,
     title: "Share Button",
     description: `${spectrum} ${file("app/registry/share-button/share-button.tsx")} 分享按钮展开动作。actions、copyValue、direction、closeOnSelect 可配。方向键和 Tab 在动作间移动，Escape 关闭。减弱动效时只淡入淡出。`,
     category: "buttons",
@@ -267,6 +280,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "task-checkbox",
+    batch: 35,
     title: "Task Checkbox",
     description: `${spectrum} ${file("app/registry/task-checkbox/task-checkbox.tsx")} 任务勾选，role 为 checkbox，支持受控。勾选时划掉标签并放出少量纸屑。colors 可配。减弱动效时立刻勾选，不爆开。`,
     category: "utility",
@@ -288,6 +302,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "expandable-action-bar",
+    batch: 35,
     title: "Expandable Action Bar",
     description: `${spectrum} ${file("components/motion/expandable-action-bar.tsx")} 悬停或聚焦时展开动作标签。触控第一次点按只展开。依赖 use-dismiss、use-hover-gesture、use-tap-gesture。减弱动效时标签直接显隐。`,
     category: "utility",
@@ -315,6 +330,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "faq-tabs-card",
+    batch: 35,
     title: "FAQ Tabs Card",
     description: `${spectrum} ${file("components/spectrumui/faq-tabs-card.tsx")} 页签切换常见问题。示例文案由 tabs 传入。减弱动效时页签和答案直接切换。`,
     category: "utility",
@@ -335,6 +351,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "nav-list-card",
+    batch: 35,
     title: "Nav List Card",
     description: `${spectrum} ${file("components/spectrumui/nav-list-card.tsx")} 卡片式导航列表。items 由调用方传入，示例数据在 demo。有 href 时渲染链接。减弱动效时行不再位移。`,
     category: "utility",
@@ -352,6 +369,7 @@ export const batch35Components: ComponentMeta[] = [
   },
   {
     name: "folder-float",
+    batch: 35,
     title: "Folder Float",
     description:
       "原创实现。文件夹盖子翻开，便签胶囊依次弹出并散开。展开后由 matter-js 接管，便签缓慢漂浮、互相碰撞，可以拖动。减弱动效时不启动物理，只淡入。",

@@ -8,6 +8,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch59Components: ComponentMeta[] = [
   {
     name: "inline-action",
+    batch: 59,
     title: "Inline Action",
     description: `${credit} ${file("inline-action-base.tsx")} 一行说明配一个动作按钮。点击后扫过加载条，完成时收成对勾。按下有缩放，不依赖悬停。${pause}`,
     category: "micro",
@@ -32,6 +33,7 @@ export const batch59Components: ComponentMeta[] = [
   },
   {
     name: "emoji-spree-choice-chips",
+    batch: 59,
     title: "Emoji Spree Choice Chips",
     description: `${credit} ${file("emoji-spree-choice-chips-base.tsx")} 可横向拖动的兴趣芯片。选中时从底部溅出表情，并汇总已选数量。按下会缩小，不依赖悬停。${pause}`,
     category: "micro",
@@ -54,6 +56,7 @@ export const batch59Components: ComponentMeta[] = [
   },
   {
     name: "award",
+    batch: 59,
     title: "Award",
     description: `${credit} ${file("award.tsx")} 奖状、印章、证书和徽章四种版式。桂冠和勋章沿用原 SVG。等级色改成图表色。进入时轻轻放大。${pause}`,
     category: "decor",
@@ -81,6 +84,7 @@ export const batch59Components: ComponentMeta[] = [
   },
   {
     name: "tooltip-navbar",
+    batch: 59,
     title: "Tooltip Navbar",
     description: `${credit} ${file("tooltip-navbar-base.tsx")} 图标条用裁切提示显示名称和快捷键。direction 为 left 或 right 时改成竖条，提示出现在侧面。指针按下或聚焦也会打开，不只有悬停。${pause}`,
     category: "navigation",
@@ -102,6 +106,7 @@ export const batch59Components: ComponentMeta[] = [
   },
   {
     name: "labeled-progress-indicator",
+    batch: 59,
     title: "Labeled Progress Indicator",
     description: `${credit} ${file("labeled-progress-indicator-base.tsx")} 进度条上方的标签会翻转切换，条内有一道高光。离开视口后标签停住。${pause}`,
     category: "loaders",

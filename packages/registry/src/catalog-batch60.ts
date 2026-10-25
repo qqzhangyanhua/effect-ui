@@ -10,6 +10,7 @@ const pause = "减弱动效停在终态。离开视口时连续动画暂停，�
 export const batch60Components: ComponentMeta[] = [
   {
     name: "wavy-threads-background",
+    batch: 60,
     title: "Wavy Threads Background",
     description: `${mosaic} ${mosaicFile("src/registry/backgrounds/wavy-threads-background/wavy-threads-background.tsx")} 画布上的正弦细线。线的偏移按序号播种，不在渲染时取随机数。颜色从画布的计算样式读取。${pause}`,
     category: "backgrounds",
@@ -29,6 +30,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "rolling-letters-animation",
+    batch: 60,
     title: "Rolling Letters Animation",
     description: `${mosaic} ${mosaicFile("src/registry/text-effects/rolling-letters-animation/rolling-letters-animation.tsx")} 每个字母在一条短卷轴里滚到目标字符。偶数位向上揭开，奇数位向下揭开。卷轴按序号播种。${pause}`,
     category: "text",
@@ -51,6 +53,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "arc-cards",
+    batch: 60,
     title: "Arc Cards",
     description: `${mosaic} ${mosaicFile("src/registry/components/arc-cards/arc-cards.tsx")} 卡片叠在一起，打开后按弧度散开。鼠标移入、按下或聚焦都会打开，触屏再按一次收起。示例是主题色面板，没有远程图片。${pause}`,
     category: "cards",
@@ -72,6 +75,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "tilt-image-carousel",
+    batch: 60,
     title: "Tilt Image Carousel",
     description: `${mosaic} ${mosaicFile("src/registry/components/tilt-image-carousel/tilt-image-carousel.tsx")} 封面流。当前面板正对，两侧绕 Y 轴倾斜。上一张、下一张和圆点都可以点。面板是主题色块，没有远程图片。${pause}`,
     category: "cards",
@@ -93,6 +97,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "hover-glide-cards",
+    batch: 60,
     title: "Hover Glide Cards",
     description: `${micro} ${microFile("hover-glide-cards.tsx")} 高光沿卡片形状滑到下一张。指针移入、聚焦或按下都会停在那张卡片上，触屏不会把高光藏起来。${pause}`,
     category: "cards",
@@ -112,6 +117,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "progress-ring-check",
+    batch: 60,
     title: "Progress Ring Check",
     description: `${micro} ${microFile("progress-ring-check.tsx")} 状态环。等待是虚线，进行中转弧，完成打勾，失败或取消打叉。无进度时的旋转离开视口会停住。${pause}`,
     category: "loaders",
@@ -136,6 +142,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "cursor-edge-glow-button",
+    batch: 60,
     title: "Cursor Edge Glow Button",
     description: `${micro} ${microFile("cursor-edge-glow-button.tsx")} 边缘光跟着指针做弹簧滑动。聚焦时停在中间。触屏按下也会把光带到落点。空闲时不申请动画帧。${pause}`,
     category: "buttons",
@@ -156,6 +163,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "secure-purchase-button",
+    batch: 60,
     title: "Secure Purchase Button",
     description: `${micro} ${microFile("secure-purchase-button.tsx")} 购买从空闲到处理，再变成已保护。处理时像素点按距离闪动，成功后换成盾牌。离开视口时闪动停住，回来继续。${pause}`,
     category: "buttons",
@@ -175,6 +183,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "blur-glide-menu",
+    batch: 60,
     title: "Blur Glide Menu",
     description: `${micro} ${microFile("blur-glide-menu.tsx")} 嵌套菜单。进入下一层时旧面板模糊滑出。方向键、Escape 和面板外点击都能用。默认收起。`,
     category: "utility",
@@ -186,6 +195,7 @@ export const batch60Components: ComponentMeta[] = [
   },
   {
     name: "spotlight-indicator",
+    batch: 60,
     title: "Spotlight Indicator",
     description: `${micro} ${microFile("spotlight-indicator.tsx")} 竖向导航。当前项左边有一条主题色指示。点击切换，不依赖悬停。`,
     category: "utility",

@@ -11,6 +11,7 @@ const ui: PropDoc[] = [
 export const batch16Components: ComponentMeta[] = [
   {
     name: "loom-threads-marquee",
+    batch: 16,
     title: "Loom Threads Marquee",
     description: "灵感来自 Codrops，原创实现。滚动的色块可以拆成彩色丝线，再织回画面。WebGL 按需加载。",
     category: "showcase",
@@ -32,6 +33,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "hologram-card",
+    batch: 16,
     title: "Hologram Card",
     description: "灵感来自 BL/S，原创实现。扫描线、边缘辉光和闪烁，只用 CSS。",
     category: "cards",
@@ -73,6 +75,7 @@ export const batch16Components: ComponentMeta[] = [
 
   {
     name: "scroll-3d-image-rotate",
+    batch: 16,
     title: "Scroll 3D Image Rotate",
     description: "灵感来自 Codrops，原创实现。滚动时色块绕竖直轴翻入，再翻出。",
     category: "scroll",
@@ -111,6 +114,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "thumbnail-flow-path",
+    batch: 16,
     title: "Thumbnail Flow Path",
     description: "灵感来自 Codrops，原创实现。缩略图沿 S 形 offset-path 飞过，然后落进网格。",
     category: "showcase",
@@ -135,6 +139,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "shader-grid-wide",
+    batch: 16,
     title: "Shader Grid Wide",
     description: "灵感来自 Codrops，原创实现。作品网格在指针附近鼓起，并随滚动速度拉伸。WebGL 按需加载。",
     category: "cursor",
@@ -179,6 +184,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "sea-waves-background",
+    batch: 16,
     title: "Sea Waves Background",
     description: "灵感来自 Vanta，原创实现。程式化海面，浪尖发亮，滑杆从平静调到风暴。WebGL 按需加载。",
     category: "backgrounds",
@@ -222,6 +228,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "cinema-seat-picker",
+    batch: 16,
     title: "Cinema Seat Picker",
     description: "灵感来自 Framer，原创实现。座位有可选、已选和已售，方向键移动，旁边是价格和场次预览。",
     category: "ui",
@@ -236,6 +243,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "project-update-card",
+    batch: 16,
     title: "Project Update Card",
     description: "灵感来自 Linear，原创实现。更新带正常、有风险或偏离标记，可写新更新，并只看未读。",
     category: "cards",
@@ -249,6 +257,7 @@ export const batch16Components: ComponentMeta[] = [
   },
   {
     name: "share-invite-panel",
+    batch: 16,
     title: "Share Invite Panel",
     description: "灵感来自 Figma，原创实现。多个邮箱、权限下拉和成员列表，旁边是滞后的访客光标。",
     category: "ui",

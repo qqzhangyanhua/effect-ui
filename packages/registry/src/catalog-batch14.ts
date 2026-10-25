@@ -11,6 +11,7 @@ const ui: PropDoc[] = [
 export const batch14Components: ComponentMeta[] = [
   {
     name: "lens-zoom",
+    batch: 14,
     title: "Lens Zoom",
     description: "灵感来自 Hover.dev，原创实现。圆形镜片跟随指针放大图片，方向键可移动镜片。",
     category: "cursor",
@@ -58,6 +59,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "world-map-arcs",
+    batch: 14,
     title: "World Map Arcs",
     description: "灵感来自 Aceternity，原创实现。点状世界地图上，城市之间画出带脉冲点的发光弧线。",
     category: "backgrounds",
@@ -96,6 +98,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "vortex-background",
+    batch: 14,
     title: "Vortex Background",
     description:
       "灵感来自 Aceternity，原创实现。粒子绕中心旋转并带辉光，角速度由 simplex-noise 扰动。本组件是向心漩涡。",
@@ -140,6 +143,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "beams-collision",
+    batch: 14,
     title: "Beams Collision",
     description: "灵感来自 Aceternity，原创实现。光束从顶部落下，碰到底部时迸出火花。",
     category: "backgrounds",
@@ -177,6 +181,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "placeholder-vanish-input",
+    batch: 14,
     title: "Placeholder Vanish Input",
     description: "灵感来自 Aceternity，原创实现。占位文案轮换；提交时已输入的文字散成粒子。",
     category: "ui",
@@ -195,6 +200,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "link-preview",
+    batch: 14,
     title: "Link Preview",
     description: "灵感来自 Hover.dev，原创实现。悬停或聚焦链接时，弹簧卡片展示标题和页面图。图片用 image 属性，不调用截图服务。",
     category: "cards",
@@ -244,6 +250,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "avatar-group-tooltip",
+    batch: 14,
     title: "Avatar Group Tooltip",
     description: "灵感来自 Hover.dev，原创实现。重叠头像在悬停时抬起，名字提示跟随指针，超出数量显示 +N。",
     category: "cards",
@@ -296,6 +303,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "shuffle-grid-hero",
+    batch: 14,
     title: "Shuffle Grid Hero",
     description: "灵感来自 Aceternity，原创实现。首屏图片格按间隔打乱，并用布局动画换位。",
     category: "sections",
@@ -313,6 +321,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "sortable-list",
+    batch: 14,
     title: "Sortable List",
     description: "灵感来自 Linear，原创实现。用 Motion Reorder 拖动手柄排序，聚焦后可用上下方向键移动。",
     category: "showcase",
@@ -336,6 +345,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "kpi-sparkline-card",
+    batch: 14,
     title: "KPI Sparkline Card",
     description: "灵感来自 Vercel，原创实现。数字用 CountUp 递增，角标显示涨跌，迷你折线可悬停或用方向键查看点值。",
     category: "cards",
@@ -390,6 +400,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "cookie-consent",
+    batch: 14,
     title: "Cookie Consent",
     description: "灵感来自 Stripe，原创实现。浮动卡片可展开类别开关，选择写入 localStorage。",
     category: "ui",
@@ -408,6 +419,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "countdown-timer",
+    batch: 14,
     title: "Countdown Timer",
     description: "灵感来自 Apple，原创实现。天、时、分、秒用滚动数字显示，到点调用 onComplete。confetti 开启时播放与 confetti-burst 同色的纸屑，不嵌套那个按钮。",
     category: "loaders",
@@ -467,6 +479,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "image-cropper",
+    batch: 14,
     title: "Image Cropper",
     description: "灵感来自 Apple，原创实现。拖动和平移缩放图片，圆形或方形遮罩，旁边实时预览，并可导出 PNG Blob。",
     category: "ui",
@@ -481,6 +494,7 @@ export const batch14Components: ComponentMeta[] = [
   },
   {
     name: "diff-viewer",
+    batch: 14,
     title: "Diff Viewer",
     description: "灵感来自 GitHub，原创实现。并排或合并查看差异，改动词内联高亮，未改动的长段可以折叠。diff 包按需加载。",
     category: "utility",

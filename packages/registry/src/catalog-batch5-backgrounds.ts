@@ -11,6 +11,7 @@ const ui: PropDoc[] = [
 export const batch5Backgrounds: ComponentMeta[] = [
   {
     name: "halftone",
+    batch: 5,
     title: "Halftone",
     description: "半调网点，随鼠标放大。",
     category: "backgrounds",

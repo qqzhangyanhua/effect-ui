@@ -13,6 +13,7 @@ const magic = "移植自 Magic UI，MIT，Copyright (c) Magic UI。"
 export const batch21Components: ComponentMeta[] = [
   {
     name: "glyph-matrix",
+    batch: 21,
     title: "Glyph Matrix",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/glyph-matrix.tsx 字符点阵可显示文字或图案，随机闪烁并向上滚动。减弱动效时停在静态网格。`,
     category: "backgrounds",
@@ -32,6 +33,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "dia-text-reveal",
+    batch: 21,
     title: "Dia Text Reveal",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dia-text-reveal.tsx 文字按字母被斜向渐变遮罩扫出。减弱动效时立刻显示全文。`,
     category: "text",
@@ -49,6 +51,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "warp-background",
+    batch: 21,
     title: "Warp Background",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/warp-background.tsx 透视网格四面汇向中心，光束沿网格流动，并包裹子内容。减弱动效时只留静态网格。`,
     category: "backgrounds",
@@ -69,6 +72,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "backlight",
+    batch: 21,
     title: "Backlight",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/backlight.tsx 用 SVG 滤镜在子图片或视频后面铺一层同色模糊辉光。`,
     category: "decor",
@@ -86,6 +90,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "floating-3d-particles",
+    batch: 21,
     title: "Floating 3D Particles",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/floating-3d-particles.tsx 伪 3D 粒子场按深度缩放，并跟随光标产生视差。减弱动效时停在一帧。`,
     category: "backgrounds",
@@ -105,6 +110,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "video-text",
+    batch: 21,
     title: "Video Text",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/video-text.tsx 视频在大字遮罩里播放。减弱动效时暂停视频并显示 poster。`,
     category: "text",
@@ -141,6 +147,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "smooth-cursor",
+    batch: 21,
     title: "Smooth Cursor",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx 自定义箭头光标用弹簧跟随，并随速度旋转、压扁。减弱动效时恢复系统光标。`,
     category: "cursor",
@@ -154,6 +161,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "line-shadow-text",
+    batch: 21,
     title: "Line Shadow Text",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/line-shadow-text.tsx 文字带一层错位的斜条纹阴影，并缓慢漂移。减弱动效时条纹静止。`,
     category: "text",
@@ -171,6 +179,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "hero-video-dialog",
+    batch: 21,
     title: "Hero Video Dialog",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/hero-video-dialog.tsx 封面居中播放按钮在悬停时放大，打开全屏视频对话框。支持五种入场方向，Esc 关闭并困住焦点，iframe 只在打开后挂载。`,
     category: "showcase",
@@ -207,6 +216,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "animated-subscribe-button",
+    batch: 21,
     title: "Animated Subscribe Button",
     description: `${magic} https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx Subscribe 切换为 Subscribed ✓，并带颜色过渡。由 subscribed 与 onChange 控制，带 aria-pressed。`,
     category: "buttons",
@@ -224,6 +234,7 @@ export const batch21Components: ComponentMeta[] = [
   },
   {
     name: "active-sessions-list",
+    batch: 21,
     title: "Active Sessions List",
     description:
       "灵感来自 Railway 会话列表与 Replit 登出确认（经由 Mobbin），原创实现。设备用内联 SVG，显示浏览器、系统、城市和相对时间，当前设备有标记。可登出一台或其余全部，都要确认。被移除的行会收起。",

@@ -11,6 +11,7 @@ const ui: PropDoc[] = [
 export const batch20Components: ComponentMeta[] = [
   {
     name: "lenticular-card",
+    batch: 20,
     title: "Lenticular Card",
     description: "灵感来自 Codrops R3F Lenticular Material，原创实现。倾斜时在两三张图之间切换，竖条纹光栅交错显示。",
     category: "cards",
@@ -24,6 +25,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "card-beam-scanner",
+    batch: 20,
     title: "Card Beam Scanner",
     description: "灵感来自 Codrops Card Beam Animation，原创实现。卡片穿过竖直光束，线框变成成品，光束处迸出粒子。",
     category: "cards",
@@ -37,6 +39,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "repetition-image-hover",
+    batch: 20,
     title: "Repetition Image Hover",
     description: "灵感来自 Codrops Repetition Image Animation，原创实现。悬停时向光标方向叠出逐渐缩小的回声副本。",
     category: "cursor",
@@ -54,6 +57,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "hyperspace-text",
+    batch: 20,
     title: "Hyperspace Text",
     description: "灵感来自 Codrops Hyperspace Text，原创实现。文字粒子沿径向拉成光线，再重组成下一段。",
     category: "text",
@@ -67,6 +71,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "tiled-swirl-loader",
+    batch: 20,
     title: "Tiled Swirl Loader",
     description: "灵感来自 Codrops Tiled Swirl，原创实现。方块沿螺旋起伏，循环播放。",
     category: "loaders",
@@ -103,6 +108,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "keyhole-scroll-reveal",
+    batch: 20,
     title: "Keyhole Scroll Reveal",
     description: "灵感来自 Codrops Scroll-Synced Slideshow with Keyhole Effect，原创实现。圆角视窗随滚动放大，并按时间点换图。",
     category: "scroll",
@@ -116,6 +122,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "rubber-band-drag",
+    batch: 20,
     title: "Rubber Band Drag",
     description: "灵感来自 Liam Egan Rubber banding，原创实现。节点被橡皮筋连到锚点，松开后弹簧阻尼回弹。",
     category: "micro",
@@ -129,6 +136,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "uptime-bars",
+    batch: 20,
     title: "Uptime Bars",
     description: "灵感来自 Linear 状态页与 Better Stack，原创实现。90 天每天一根细条，悬停看当天，可按服务折叠。",
     category: "utility",
@@ -142,6 +150,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "status-page",
+    batch: 20,
     title: "Status Page",
     description: "灵感来自 Eventbrite 与 Linear 状态页，原创实现。总体横幅、可用率条、响应时间折线和事件时间线。",
     category: "templates",
@@ -159,6 +168,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "integrations-directory",
+    batch: 20,
     title: "Integrations Directory",
     description: "灵感来自 Vercel 与 ClickUp，原创实现。左侧分类和搜索，右侧卡片网格，图标由调用方传入。",
     category: "sections",
@@ -171,6 +181,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "api-key-manager",
+    batch: 20,
     title: "API Key Manager",
     description: "灵感来自 Mintlify、fal 与 v0，原创实现。掩码密钥可复制，新密钥只显示一次，吊销需要确认。",
     category: "utility",
@@ -190,6 +201,7 @@ export const batch20Components: ComponentMeta[] = [
   },
   {
     name: "help-center-index",
+    batch: 20,
     title: "Help Center Index",
     description: "灵感来自 Notion 帮助中心，原创实现。编号章节卡片、可折叠树形导航，搜索词高亮。",
     category: "sections",

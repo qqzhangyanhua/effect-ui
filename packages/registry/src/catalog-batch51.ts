@@ -14,6 +14,7 @@ const file = (folder: "core" | "loud", name: string) =>
 export const batch51Components: ComponentMeta[] = [
   {
     name: "success-plumb-bob",
+    batch: 51,
     title: "Success Plumb Bob",
     description: `${ns} ${file("loud", "success-plumb-bob")} 确认成功时铅锤落下并摆回铅垂，水平线从锤尖向两侧画出。按下时立刻宣布成功并调用 onConfirm，动画不挡住结果。减弱动效直接停在铅垂终态。离开视口时摆动暂停，回到视口再继续。`,
     category: "micro",
@@ -34,6 +35,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "checkbox-domino-run",
+    batch: 51,
     title: "Checkbox Domino Run",
     description: `${ns} ${file("core", "checkbox-domino-run")} 总开关以每秒 14 行的波前依次勾选。点任意一行或按 Escape 会停在当前行，后面的行保持原样。礼貌 live region 只在开始和结束时说话。减弱动效一次改完全部，并给出 5 秒撤销。离开视口时波前暂停。`,
     category: "micro",
@@ -51,6 +53,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "autosave-ratchet",
+    batch: 51,
     title: "Autosave Ratchet",
     description: `${ns} ${file("core", "autosave-ratchet")} 自动保存状态画成棘轮。saving 上紧，saved 落齿，error 退回半齿。礼貌 live region 节流播报，失败总是立刻宣布。悬停或聚焦可看完整说明。减弱动效去掉预紧。离开视口时齿轮动画暂停。`,
     category: "micro",
@@ -66,6 +69,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "button-retry-backoff",
+    batch: 51,
     title: "Button Retry Backoff",
     description: `${ns} ${file("core", "button-retry-backoff")} 重试按钮。onRetry 返回 false 或抛错时进入退避，弧线走完才可再按。aria-describedby 指向剩余秒数。减弱动效用离散步进。离开视口或标签页隐藏时计时暂停，回来不丢已走进度。`,
     category: "buttons",
@@ -86,6 +90,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "craze-rule",
+    batch: 51,
     title: "Craze Rule",
     description: `${ns} ${file("core", "craze-rule")} 分隔线是一条进入视口后裂开的缝。role 为 separator。种子决定裂纹，服务端不画随机路径。减弱动效直接显示完整裂纹。离开视口时空闲蠕动暂停。`,
     category: "decor",
@@ -103,6 +108,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "banner-tear-stub",
+    batch: 51,
     title: "Banner Tear Stub",
     description: `${ns} ${file("core", "banner-tear-stub")} 通知沿穿孔撕下，留下可重新打开的存根。info 用 role=status，urgent 用 role=alert。减弱动效改为短的线性高度和透明度。离开视口时高度弹簧暂停。`,
     category: "micro",
@@ -127,6 +133,7 @@ export const batch51Components: ComponentMeta[] = [
 
   {
     name: "undo-ghost-row",
+    batch: 51,
     title: "Undo Ghost Row",
     description: `${ns} ${file("core", "undo-ghost-row")} 删除后行还占着高度，倒计时结束才收起。悬停或聚焦暂停倒计时。礼貌 live region 说明可撤销的时间。减弱动效保持全高，并给出明确的完成删除按钮。离开视口时高度动画暂停。`,
     category: "utility",
@@ -144,6 +151,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "container-box-drawing",
+    batch: 51,
     title: "Container Box Drawing",
     description: `${ns} ${file("core", "container-box-drawing")} 用制表字符围一圈。悬停或焦点内从左上角顺时针把单线换成双线。ResizeObserver 按字符格测量。减弱动效直接换成终态字形。离开视口时扫描暂停。`,
     category: "utility",
@@ -159,6 +167,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "transfer-list-siphon",
+    batch: 51,
     title: "Transfer List Siphon",
     description: `${ns} ${file("core", "transfer-list-siphon")} 左右搬运列表。源列表是多选 listbox，方向键、Home、End、Space 和 Enter 都能用。Move selected 按钮和拖拽走同一条虹吸。Stop 会把在途的珠子倒回去。礼貌 live region 每秒最多一条，结束时一定播报。减弱动效仍按顺序完成，只是没有逐帧路程。离开视口时珠子暂停。`,
     category: "utility",
@@ -179,6 +188,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "due-slip",
+    batch: 51,
     title: "Due Slip",
     description: `${ns} ${file("core", "due-slip")} 已读回执按到达顺序盖章。点击只展开，Escape 才收起。新来的人写入礼貌 live region，初次挂载不播报。减弱动效去掉盖章缩放。离开视口时盖章动画暂停。`,
     category: "utility",
@@ -198,6 +208,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "contra-strike",
+    batch: 51,
     title: "Contra Strike",
     description: `${ns} ${file("core", "contra-strike")} 真实表格里的部分退款。滑块 role=slider，方向键、Page、Home、End 改比例。确认后追加红字冲销行，原行不改。role=status 是表格的兄弟节点。减弱动效跳过行高过渡。离开视口时展开暂停。`,
     category: "utility",
@@ -217,6 +228,7 @@ export const batch51Components: ComponentMeta[] = [
   },
   {
     name: "galley-bracket",
+    batch: 51,
     title: "Galley Bracket",
     description: `${ns} ${file("core", "galley-bracket")} 正文选区画成页边括号。重叠的人选按到达顺序向外嵌套。SVG 装饰 aria-hidden。role=status 在变动停 2 秒后播报。跳转按钮移动原生 Selection。减弱动效不播放描线。离开视口时描线暂停。`,
     category: "utility",

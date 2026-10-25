@@ -14,6 +14,7 @@ const tremorFile = (path: string) => `https://github.com/tremorlabs/tremor/blob/
 export const batch33Components: ComponentMeta[] = [
   {
     name: "grid-tilt-card",
+    batch: 33,
     title: "Grid Tilt Card",
     description: `${galaxy} 作者 kennyotsu。${galaxyFile("Cards/kennyotsu_witty-deer-12.html")} 5×5 追踪格用纯 CSS 把卡片倾斜。减弱动效时不旋转，标题直接显示。`,
     category: "cards",
@@ -51,6 +52,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "layered-glass-card",
+    batch: 33,
     title: "Layered Glass Card",
     description: `${galaxy} 作者 Smit-Prajapati。${galaxyFile("Cards/Smit-Prajapati_smart-liger-5.html")} 透视下叠五层同心圆。中心图形由 icon 传入，不带 Uiverse 标志。减弱动效时不旋转、不探出。`,
     category: "cards",
@@ -87,6 +89,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "eye-blink-loader",
+    batch: 33,
     title: "Eye Blink Loader",
     description: `${galaxy} 作者 mobinkakei。${galaxyFile("loaders/mobinkakei_tricky-duck-12.html")} 两只眼睛移动并眨眼。size、color 可配。减弱动效或离开视口时停住。`,
     category: "loaders",
@@ -104,6 +107,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "css-pattern-background",
+    batch: 33,
     title: "CSS Pattern Background",
     description: `${galaxy} 条纹作者 jeremyssocial，圆点作者 elijahgummer，蜂巢作者 mobinkakei。${galaxyFile("Patterns/jeremyssocial_afraid-sheep-52.html")} variant 可选 stripes、dots、honeycomb。颜色、size、speed 可配。减弱动效或离开视口时停止滚动。`,
     category: "backgrounds",
@@ -123,6 +127,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "heartbeat-button",
+    batch: 33,
     title: "Heartbeat Button",
     description: `${syntax} ${syntaxFile("components/button/HeartbeatButton.tsx")} 按钮按 buttonheartbeat 缩放并放出光环。关键帧从 tailwind.config.ts 迁出。减弱动效或离开视口时不跳。`,
     category: "buttons",
@@ -140,6 +145,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "neubrutalism-button",
+    batch: 33,
     title: "Neubrutalism Button",
     description: `${syntax} ${syntaxFile("components/button/NeubrutalismButton.tsx")} 色块错开在实心底上，悬停再抬起，按下贴回。减弱动效时不再位移。`,
     category: "buttons",
@@ -157,6 +163,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "3d-button",
+    batch: 33,
     title: "3D Button",
     description: `${syntax} ${syntaxFile("components/button/3DButton.tsx")} 悬停时白色圆从中心扩散，按下略微下沉。减弱动效时圆不扩散、按钮不下沉。`,
     category: "buttons",
@@ -175,6 +182,7 @@ export const batch33Components: ComponentMeta[] = [
 
   {
     name: "progress-circle",
+    batch: 33,
     title: "Progress Circle",
     description: `${tremor} ${tremorFile("ProgressCircle/ProgressCircle.tsx")} 环形进度。tailwind-variants 已改成 cva。减弱动效时弧长直接到位。`,
     category: "utility",
@@ -197,6 +205,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "callout",
+    batch: 33,
     title: "Callout",
     description: `${tremor} ${tremorFile("Callout/Callout.tsx")} 带标题和图标的提示条。tailwind-variants 已改成 cva。没有动画，减弱动效下外观不变。`,
     category: "utility",
@@ -216,6 +225,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "slide-toggle",
+    batch: 33,
     title: "Slide Toggle",
     description: `${syntax} ${syntaxFile("components/toggle/SlideToggle.tsx")} role=switch 的滑动开关，可用 checked 受控。framer-motion 已改为 motion/react。减弱动效时旋钮直接到位。`,
     category: "micro",
@@ -236,6 +246,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "heart-like-button",
+    batch: 33,
     title: "Heart Like Button",
     description: `${galaxy} 作者 LilaRest。${galaxyFile("Buttons/LilaRest_loud-walrus-26.html")} 心形喜欢按钮，aria-pressed 跟随 liked。悬停时心会跳。减弱动效或离开视口时不跳。`,
     category: "buttons",
@@ -255,6 +266,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "download-size-button",
+    batch: 33,
     title: "Download Size Button",
     description: `${galaxy} 作者 satyamchaudharydev。${galaxyFile("Buttons/satyamchaudharydev_afraid-yak-30.html")} 悬停时文字换成下载图标，并显示文件大小。传入 href 时渲染链接。减弱动效时切换不过渡。`,
     category: "buttons",
@@ -291,6 +303,7 @@ export const batch33Components: ComponentMeta[] = [
   },
   {
     name: "achievement-toast",
+    batch: 33,
     title: "Achievement Toast",
     description: `${galaxy} 作者 WittyHydra。${galaxyFile("Notifications/WittyHydra_nervous-zebra-0.html")} 成就条从上滑入，标题翻转出现。减弱动效时直接展开。`,
     category: "utility",

@@ -13,6 +13,7 @@ const kiboFile = (name: string) => `https://github.com/shadcnblocks/kibo/blob/ma
 export const batch30Components: ComponentMeta[] = [
   {
     name: "use-debounced-dimensions",
+    batch: 30,
     title: "Use Debounced Dimensions",
     description: `${fancy} ${fancyHook("use-debounced-dimensions")} 读取元素宽高，resize 停 250ms 后再量。首次测量放在微任务里。`,
     category: "ui",
@@ -28,6 +29,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "css-box",
+    batch: 30,
     title: "CSS Box",
     description: `${fancy} ${fancyFile("blocks/css-box.tsx")} 纯 CSS 六面盒子。draggable 时拖动旋转，刚度阻尼走弹簧。ref 可以转到指定面。减弱动效或离开视口时直接转到目标角度，不走弹簧。`,
     category: "cards",
@@ -67,6 +69,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "drag-elements",
+    batch: 30,
     title: "Drag Elements",
     description: `${fancy} ${fancyFile("blocks/drag-elements.tsx")} 一组可拖动的元素，带惯性和回弹。selectedOnTop 把正在拖的元素放到最前。减弱动效时关掉惯性。`,
     category: "decor",
@@ -106,6 +109,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "scroll-and-swap-text",
+    batch: 30,
     title: "Scroll And Swap Text",
     description: `${fancy} ${fancyFile("text/scroll-and-swap-text.tsx")} 滚动时文字向上滚出，同一段文字从下方滚入。进度跟 containerRef 的滚动，并用 springConfig 平滑。减弱动效时只显示静态文字。`,
     category: "scroll",
@@ -125,6 +129,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "underline-to-background",
+    batch: 30,
     title: "Underline To Background",
     description: `${fancy} ${fancyFile("text/underline-to-background.tsx")} 悬停时下划线向上铺成背景，文字变成 targetTextColor。高度和间距按字号比例计算。减弱动效时立刻切换。`,
     category: "text",
@@ -164,6 +169,7 @@ export const batch30Components: ComponentMeta[] = [
 
   {
     name: "pixelate-svg-filter",
+    batch: 30,
     title: "Pixelate SVG Filter",
     description: `${fancy} ${fancyFile("filter/pixelate-svg-filter.tsx")} SVG 滤镜，用 filter: url(#id) 把元素打成像素块。size 控制颗粒，crossLayers 补上横向和纵向的备用层。滤镜本身不动画，演示里悬停时用 Motion 改变 size。减弱动效时 size 保持静止。`,
     category: "decor",
@@ -183,6 +189,7 @@ export const batch30Components: ComponentMeta[] = [
 
   {
     name: "animated-gradient-with-svg",
+    batch: 30,
     title: "Animated Gradient With SVG",
     description: `${fancy} ${fancyFile("background/animated-gradient-with-svg.tsx")} 几团模糊色块在容器里按 CSS 动画漂移，叠成流动渐变。colors、speed、blur 可配。尺寸用 use-debounced-dimensions。减弱动效或离开视口时色块静止。`,
     category: "backgrounds",
@@ -201,6 +208,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "announcement",
+    batch: 30,
     title: "Announcement",
     description: `${kibo} ${kiboFile("announcement")} 胶囊公告，由 Announcement、AnnouncementTag、AnnouncementTitle 组成。themed 打开主题色，悬停时阴影略加重。`,
     category: "micro",
@@ -218,6 +226,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "banner",
+    batch: 30,
     title: "Banner",
     description: `${kibo} ${kiboFile("banner")} 页顶通知条，由 Banner、BannerIcon、BannerTitle、BannerAction、BannerClose 组成。visible 和 defaultVisible 支持受控与非受控。inset 使用圆角。关闭时调用 onClose。状态用仓库里已有的 use-controllable-state。`,
     category: "utility",
@@ -238,6 +247,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "pill",
+    batch: 30,
     title: "Pill",
     description: `${kibo} ${kiboFile("pill")} 状态胶囊，可以放头像、头像组、状态点、涨跌、按钮和图标。PillIndicator 的 variant 是 success、error、warning、info，pulse 控制闪烁。减弱动效时不闪。`,
     category: "micro",
@@ -255,6 +265,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "relative-time",
+    batch: 30,
     title: "Relative Time",
     description: `${kibo} ${kiboFile("relative-time")} 多时区时钟。每个 RelativeTimeZone 用 zone 显示该时区的日期和时间。time 可受控，并有 onTimeChange。dateFormatOptions 和 timeFormatOptions 传给 Intl。未受控时每秒更新，离开视口后暂停。`,
     category: "utility",
@@ -276,6 +287,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "ticker",
+    batch: 30,
     title: "Ticker",
     description: `${kibo} ${kiboFile("ticker")} 行情条目：图标、代码、价格和涨跌。涨为绿色，跌为红色，isPercent 时按百分比显示。价格用 Intl.NumberFormat，currency 和 locale 可配。`,
     category: "micro",
@@ -297,6 +309,7 @@ export const batch30Components: ComponentMeta[] = [
   },
   {
     name: "choicebox",
+    batch: 30,
     title: "Choicebox",
     description: `${kibo} ${kiboFile("choicebox")} 卡片式单选，基于仓库里的 radio-group。每一项有标题、副标题、说明和指示器。原来的 field 组件换成普通 label。`,
     category: "utility",

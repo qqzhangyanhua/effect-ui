@@ -12,6 +12,7 @@ const spectrumFile = (path: string) => `https://github.com/arihantcodes/spectrum
 export const batch36Components: ComponentMeta[] = [
   {
     name: "letter-swap-pingpong",
+    batch: 36,
     title: "Letter Swap Ping Pong",
     description: `${fancy} ${fancyFile("text/letter-swap-pingpong-anim.tsx")} 悬停时字母上下对换，移开后回到原位。lodash debounce 改为组件内手写。减弱动效时字母保持原位。`,
     category: "text",
@@ -49,6 +50,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "random-letter-swap",
+    batch: 36,
     title: "Random Letter Swap",
     description: `${fancy} ${fancyFile("text/random-letter-swap-forward-anim.tsx")} 悬停时按随机顺序把字母换过去再收回。顺序在指针事件里生成。lodash debounce 改为组件内手写。减弱动效时不换字。`,
     category: "text",
@@ -85,6 +87,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "underline-hover-link",
+    batch: 36,
     title: "Underline Hover Link",
     description: `${fancy} 合并 ${fancyFile("text/underline-center.tsx")} 与 ${fancyFile("text/underline-comes-in-goes-out.tsx")}。variant 为 center 或 in-out，in-out 支持 direction。clsx 改为 cn。减弱动效时下划线不再过渡。`,
     category: "text",
@@ -123,6 +126,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "element-along-svg-path",
+    batch: 36,
     title: "Element Along SVG Path",
     description: `${fancy} ${fancyFile("blocks/element-along-svg-path.tsx")} 子节点沿 SVG 路径移动。animationType 为 auto 或 scroll，showPath 决定是否画出路径。子项 ElementAlongPathItem 用 startOffset 错开。路径 id 用 useId。减弱动效或离开视口时停在起点。`,
     category: "scroll",
@@ -166,6 +170,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "check-cross-switch",
+    batch: 36,
     title: "Check Cross Switch",
     description: `${galaxy} 作者 misaraadel。${galaxyFile("Toggle-switches/misaraadel_tough-termite-75.html")} 圆钮从一侧滑到另一侧，轨道变色。受控，role 为 switch。减弱动效时直接到位。`,
     category: "micro",
@@ -186,6 +191,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "plus-share-burst",
+    batch: 36,
     title: "Plus Share Burst",
     description: `${galaxy} 作者 neerajbaniwal。${galaxyFile("Tooltips/neerajbaniwal_sweet-sloth-99.html")} 加号旋开后弹出操作，并放一次形状爆发。图标由 items 传入。减弱动效时菜单直接出现，不旋转、不爆发。`,
     category: "micro",
@@ -201,6 +207,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "star-rating",
+    batch: 36,
     title: "Star Rating",
     description: `${spectrum} ${spectrumFile("app/registry/star-rating/star-rating.tsx")} 星级评分，支持受控、只读小数和键盘。framer-motion 改为 motion/react。减弱动效时不缩放、不滚动数字。`,
     category: "micro",
@@ -226,6 +233,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "use-typewriter",
+    batch: 36,
     title: "Use Typewriter",
     description: `${spectrum} ${spectrumFile("components/spectrumui/use-typewriter.ts")} 依次打出、停住、删掉一组句子。减弱动效时直接显示第一句。账号卡和对话卡共用这个钩子。`,
     category: "ui",
@@ -247,6 +255,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "account-access-card",
+    batch: 36,
     title: "Account Access Card",
     description: `${spectrum} ${spectrumFile("app/registry/account-access-card/account-access-card.tsx")} 凭据卡会逐字填入邮箱和密码点。示例凭据由 credentials 传入。减弱动效或离开视口时直接显示第一组。`,
     category: "cards",
@@ -296,6 +305,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "ai-chat-card",
+    batch: 36,
     title: "AI Chat Card",
     description: `${spectrum} ${spectrumFile("app/registry/ai-chat-card/ai-chat-card.tsx")} 空对话卡片。prompts 和 autoType 控制打字，onAttach、onSend、onReset 交给调用方。示例问候放在 demo。减弱动效或离开视口时直接显示第一句，图标不再浮动。`,
     category: "cards",
@@ -338,6 +348,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "login-card",
+    batch: 36,
     title: "Login Card",
     description: `${spectrum} ${spectrumFile("app/registry/login-card/logincard.tsx")} 登录卡片。调用方式是 LoginCard，onSubmit 收到字段值，fields 和 socialSlot 可选。社交品牌放在 demo 的 socialSlot。framer-motion 改为 motion/react。减弱动效时卡片直接出现。`,
     category: "cards",
@@ -379,6 +390,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "transfer-funds-card",
+    batch: 36,
     title: "Transfer Funds Card",
     description: `${spectrum} ${spectrumFile("app/registry/transfer-funds-card/transfer-funds-card.tsx")} 转账确认卡。金额、账户和汇总都由 props 传入，示例数字放在 demo。减弱动效时按钮和关闭图标不再缩放。`,
     category: "cards",
@@ -422,6 +434,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "http-status-lookup",
+    batch: 36,
     title: "HTTP Status Lookup",
     description: `${spectrum} ${spectrumFile("app/registry/statuscode/demostatus.tsx")} 本地 HTTP 状态码检索，不发网络请求。codes 可替换内置表，defaultQuery 是初始搜索词。`,
     category: "utility",
@@ -440,6 +453,7 @@ export const batch36Components: ComponentMeta[] = [
   },
   {
     name: "github-profile-card",
+    batch: 36,
     title: "GitHub Profile Card",
     description: `${spectrum} ${spectrumFile("components/spectrumui/github-profile-card.tsx")} GitHub 资料卡。默认不发请求。用户提交搜索，或同时传入 username 且 fetchProfile 为 true 时才请求。也可以直接传 user。头像用 img。贡献格按用户名确定，不使用随机数。`,
     category: "cards",

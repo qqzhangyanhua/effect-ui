@@ -12,6 +12,7 @@ const syntaxFile = (path: string) => `https://github.com/SyntaxUI/syntaxui/blob/
 export const batch34Components: ComponentMeta[] = [
   {
     name: "hue-wave-loader",
+    batch: 34,
     title: "Hue Wave Loader",
     description: `${galaxy} 作者 SmookyDev。${galaxyFile("loaders/SmookyDev_shaggy-donkey-90.html")} 竖条按色相波浪起伏。源样式里重复的 25% 关键帧已整理成 0/25/50/75/100。bars、color、duration 可配。减弱动效或离开视口时停成静态色条。`,
     category: "loaders",
@@ -30,6 +31,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "lift-gradient-border-button",
+    batch: 34,
     title: "Lift Gradient Border Button",
     description: `${galaxy} 作者 SelfMadeSystem。${galaxyFile("Buttons/SelfMadeSystem_lucky-cougar-76.html")} 渐变边框按钮悬停上抬，按下回到原位。保留焦点环。减弱动效时不再位移。`,
     category: "buttons",
@@ -47,6 +49,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "lever-switch",
+    batch: 34,
     title: "Lever Switch",
     description: `${galaxy} 作者 Praashoo7。${galaxyFile("Toggle-switches/Praashoo7_witty-dodo-51.html")} 竖向杠杆开关，role 为 switch，支持受控。减弱动效时旋钮直接到位。`,
     category: "micro",
@@ -66,6 +69,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "neon-3d-radio",
+    batch: 34,
     title: "Neon 3D Radio",
     description: `${galaxy} 作者 Saiyed-Tanvir。${galaxyFile("Radio-buttons/Saiyed-Tanvir_stale-parrot-18.html")} 原生单选，选中条横向滑动，两端悬停时绕 Y 轴转动。options、value、onValueChange 可配。减弱动效时不旋转、选中条直接到位。`,
     category: "micro",
@@ -86,6 +90,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "moon-sun-switch",
+    batch: 34,
     title: "Moon Sun Switch",
     description: `${galaxy} 作者 satyamchaudharydev。${galaxyFile("Toggle-switches/satyamchaudharydev_shy-earwig-18.html")} 太阳滑成月牙的主题开关，role 为 switch，支持受控。减弱动效时直接切换。`,
     category: "micro",
@@ -105,6 +110,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "glow-light-switch",
+    batch: 34,
     title: "Glow Light Switch",
     description: `${galaxy} 作者 elijahgummer。${galaxyFile("Toggle-switches/elijahgummer_light-jellyfish-4.html")} 半幅滑块带着发光圆点移动，role 为 switch，支持受控。减弱动效时滑块直接到位。`,
     category: "micro",
@@ -124,6 +130,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "hamburger-morph",
+    batch: 34,
     title: "Hamburger Morph",
     description: `${galaxy} 作者 elijahgummer。${galaxyFile("Checkboxes/elijahgummer_afraid-walrus-18.html")} 三条线变成叉。使用 button，带 aria-expanded，以及 open / onOpenChange。减弱动效时立刻变形，没有延迟。`,
     category: "micro",
@@ -143,6 +150,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "neubrutalism-toggle",
+    batch: 34,
     title: "Neubrutalism Toggle",
     description: `${syntax} 作者 Ethan Pollack（https://epoll31.github.io）。${syntaxFile("components/toggle/NeubrutalismToggle.tsx")} 错位色块开关，role 为 switch，支持受控。减弱动效时不再过渡。`,
     category: "micro",
@@ -162,6 +170,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "minimal-accordion",
+    batch: 34,
     title: "Minimal Accordion",
     description: `${syntax} ${syntaxFile("components/accordion/MinimalAccordion.tsx")} 极简手风琴。type 为 single 或 multiple，支持受控。按钮带 aria-expanded 与 aria-controls。framer-motion 已改为 motion/react。减弱动效时面板直接展开或收起。`,
     category: "utility",
@@ -182,6 +191,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "mic-search-input",
+    batch: 34,
     title: "Mic Search Input",
     description: `${galaxy} 作者 vinodjangid07。${galaxyFile("Inputs/vinodjangid07_good-grasshopper-52.html")} 搜索框加麦克风按钮。onMicClick 只发出回调，不请求麦克风。减弱动效时按钮不再变色过渡。`,
     category: "utility",
@@ -202,6 +212,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "social-follow-tooltip",
+    batch: 34,
     title: "Social Follow Tooltip",
     description: `${galaxy} 作者 vinodjangid07。${galaxyFile("Tooltips/vinodjangid07_mighty-elephant-52.html")} 关注按钮悬停时浮出账号和数字。icon、name、handle、stats、href 可配。减弱动效时提示直接出现。`,
     category: "utility",
@@ -222,6 +233,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "copy-field",
+    batch: 34,
     title: "Copy Field",
     description: `${galaxy} 作者 omriluz。${galaxyFile("Inputs/omriluz_good-parrot-26.html")} 只读文本加复制按钮。value、onCopy、timeout 可配。剪贴板不可用时仍调用 onCopy。减弱动效时状态直接切换。`,
     category: "utility",
@@ -240,6 +252,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "newsletter-input",
+    batch: 34,
     title: "Newsletter Input",
     description: `${galaxy} 作者 deepak16375。${galaxyFile("Inputs/deepak16375_neat-impala-82.html")} 邮箱订阅表单。onSubmit、status、placeholder、buttonLabel 可配。status 由父组件控制。减弱动效时按钮不再过渡。`,
     category: "utility",
@@ -259,6 +272,7 @@ export const batch34Components: ComponentMeta[] = [
   },
   {
     name: "pin-display-input",
+    batch: 34,
     title: "Pin Display Input",
     description: `${galaxy} 作者 barisdogansutcu。${galaxyFile("Inputs/barisdogansutcu_gentle-pig-32.html")} 分格验证码。自动跳到下一格，退格回到上一格，可粘贴数字。mask 用文字安全样式遮住数字，不引入新依赖。减弱动效时焦点环保持静止。`,
     category: "utility",

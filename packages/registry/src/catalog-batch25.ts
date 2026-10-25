@@ -11,6 +11,7 @@ const file = (name: string) =>
 export const batch25Components: ComponentMeta[] = [
   {
     name: "receipt-printer",
+    batch: 25,
     title: "Receipt Printer",
     description: `${kokonut} ${file("receipt-printer")} 一行一行打印收据。拉过阈值或向下猛拽会撕下来，然后在重力下落下。减弱动效时撕下后直接落定。离开视口后停止动画帧。`,
     category: "cards",
@@ -55,6 +56,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "liquid-gauge",
+    batch: 25,
     title: "Liquid Gauge",
     description: `${kokonut} ${file("liquid-gauge")} 液面会过冲再停稳，横向拖动能晃动水面。减弱动效时液面直接停在目标高度。离开视口后停止动画帧。`,
     category: "micro",
@@ -73,6 +75,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "liquid-slider",
+    batch: 25,
     title: "Liquid Slider",
     description: `${kokonut} ${file("liquid-slider")} 玻璃管里的水位就是当前值，拖动时会晃。方向键按 step 增减。减弱动效时水面直接落到新水位。离开视口后停止动画帧。`,
     category: "micro",
@@ -94,6 +97,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "attract-button",
+    batch: 25,
     title: "Attract Button",
     description: `${kokonut} ${file("attract-button")} 按钮周围的铁屑会朝指针或焦点对齐。减弱动效时铁屑保持静止。离开视口后停止动画帧。`,
     category: "buttons",
@@ -112,6 +116,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "dot-field",
+    batch: 25,
     title: "Dot Field",
     description: `${kokonut} ${file("dot-field")} 缓慢漂移的半色调点阵。滑动会推开点，点击发出冲击波。减弱动效时点阵静止，也不接受滑动。离开视口后停止动画帧。`,
     category: "backgrounds",
@@ -131,6 +136,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "ai-text-loading",
+    batch: 25,
     title: "AI Text Loading",
     description: `${kokonut} ${file("ai-text-loading")} 轮换短句，字母按 CSS 波浪起伏，可选显示已等待的秒数。减弱动效时只淡入淡出，不再波动。离开视口后暂停轮换。`,
     category: "loaders",
@@ -149,6 +155,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "ai-voice",
+    batch: 25,
     title: "AI Voice",
     description: `${kokonut} ${file("ai-voice")} 录音时音柱从右侧滚入，可以停止、发送或丢弃。demo 会自己走一遍录制流程，第一次点击后停下。减弱动效时音柱保持静止。离开视口后停止动画帧。`,
     category: "ai",
@@ -166,6 +173,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "avatar-picker",
+    batch: 25,
     title: "Avatar Picker",
     description: `${kokonut} ${file("avatar-picker")} 按名字生成的硬币头像，可以拖动翻转，眼睛会跟随并眨眼。减弱动效时翻转不再惯性滑动，也不眨眼。离开视口后停止眨眼计时。`,
     category: "micro",
@@ -184,6 +192,7 @@ export const batch25Components: ComponentMeta[] = [
 
   {
     name: "ai-citations",
+    batch: 25,
     title: "AI Citations",
     description: `${kokonut} ${file("ai-citations")} 答案里的编号引用，悬停或点击会打开来源预览。减弱动效时预览不再缩放。没有持续循环。`,
     category: "ai",
@@ -209,6 +218,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "ai-token-alternatives",
+    batch: 25,
     title: "AI Token Alternatives",
     description: `${kokonut} ${file("ai-token-alternatives")} 回答逐词出现。点一个词可以换成模型考虑过的其他写法，也能切到置信度热力。减弱动效时整段立刻出现。离开视口后暂停逐词计时。`,
     category: "ai",
@@ -235,6 +245,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "timezone-planner",
+    batch: 25,
     title: "Timezone Planner",
     description: `${kokonut} ${file("timezone-planner")} 拖动表盘，在多个时区里找一段都醒着的会议时间，并标出睡眠带和夏令时。方向键可移动。减弱动效或离开视口时表盘不再滑动。`,
     category: "micro",
@@ -258,6 +269,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "currency-transfer",
+    batch: 25,
     title: "Currency Transfer",
     description: `${kokonut} ${file("currency-transfer")} 跨境汇款状态卡：扣款、换汇、到账。不传 status 时会自己走到完成。减弱动效时步骤不再绘制过渡。离开视口后暂停步骤计时。`,
     category: "cards",
@@ -310,6 +322,7 @@ export const batch25Components: ComponentMeta[] = [
   },
   {
     name: "clip-trimmer",
+    batch: 25,
     title: "Clip Trimmer",
     description: `${kokonut} ${file("clip-trimmer")} 裁切把手会吸到整秒，选中的区间循环播放。方向键可微调起止。减弱动效时播放头直接跳到区间起点。离开视口后停止播放帧。预览用 img，不依赖 next/image。`,
     category: "micro",

@@ -9,6 +9,7 @@ const chatFile = (file: string) => `https://github.com/jakobhoeg/shadcn-chat/blo
 export const batch38Components: ComponentMeta[] = [
   {
     name: "use-media-query",
+    batch: 38,
     title: "Use Media Query",
     description: `${layouts} ${layoutsFile("apps/ui-layout/hooks/use-media-query.tsx")} 订阅一条媒体查询。服务端固定返回 false。progressive-carousel 用它区分宽屏。`,
     category: "ui",
@@ -21,6 +22,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "liquid-gradient-button",
+    batch: 38,
     title: "Liquid Gradient Button",
     description: `${layouts} ${layoutsFile("apps/ui-layout/components/ui/liquid-gradient.tsx")} 多层色块旋转形成的液态按钮。colors 覆盖色板。示例链接放在 demo。减弱动效或离开视口时色块停住。`,
     category: "buttons",
@@ -40,6 +42,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "hover-blocks-grid",
+    batch: 38,
     title: "Hover Blocks Grid",
     description: `${layouts} ${layoutsFile("apps/ui-layout/components/ui/blocks.tsx")} 按容器尺寸铺开的方块网格。active 标出常亮格子，悬停再点亮一格。减弱动效时颜色没有过渡。`,
     category: "backgrounds",
@@ -58,6 +61,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "char-shimmer-loader",
+    batch: 38,
     title: "Char Shimmer Loader",
     description: `${layouts} ${layoutsFile("apps/ui-layout/components/ui/shimmer-loader.tsx")} 字符格扫光，并轮换 labels 与 icons。示例文案放在 demo。减弱动效时直接显示最后一条和 100%。`,
     category: "loaders",
@@ -102,6 +106,7 @@ export const batch38Components: ComponentMeta[] = [
 
   {
     name: "timeline-reveal",
+    batch: 38,
     title: "Timeline Reveal",
     description: `${layouts} ${layoutsFile("apps/ui-layout/components/ui/timeline-animation.tsx")} 进入视口后按 animationNum 依次去掉模糊。减弱动效时立即清晰。`,
     category: "scroll",
@@ -139,6 +144,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "scroll-blur-text",
+    batch: 38,
     title: "Scroll Blur Text",
     description: `${layouts} ${layoutsFile("apps/ui-layout/components/ui/scroll-text.tsx")} 按词拆开，进入视口后从 direction 方向消掉模糊。减弱动效时立即显示全文。`,
     category: "scroll",
@@ -174,6 +180,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "expandable-chat",
+    batch: 38,
     title: "Expandable Chat",
     description: `${chat} ${chatFile("packages/ui/src/components/ui/chat/expandable-chat.tsx")} 可展开的对话壳，含 Header、Body、Footer。position 与 size 可配。减弱动效时展开没有过渡。`,
     category: "ai",
@@ -196,6 +203,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "chat-message-list",
+    batch: 38,
     title: "Chat Message List",
     description: `${chat} ${chatFile("packages/ui/src/components/ui/chat/chat-message-list.tsx")} 消息列表，自动滚到底部。useAutoScroll 来自 ${chatFile("packages/ui/src/components/ui/chat/hooks/useAutoScroll.tsx")}，内联在组件里。离开底部后出现回到底部。减弱动效时滚动不使用平滑。`,
     category: "ai",
@@ -214,6 +222,7 @@ export const batch38Components: ComponentMeta[] = [
 
   {
     name: "progressive-carousel",
+    batch: 38,
     title: "Progressive Carousel",
     description: `${layouts} ${layoutsFile("apps/ui-layout/components/ui/progressive-carousel.tsx")} 进度条走完后切到下一张。未传 vertical 时，宽屏用纵向进度。图片用 img，示例图放在 demo。减弱动效或离开视口时停止自动播放。`,
     category: "showcase",
@@ -251,6 +260,7 @@ export const batch38Components: ComponentMeta[] = [
   },
   {
     name: "agent-intro-sequence",
+    batch: 38,
     title: "Agent Intro Sequence",
     description: `${layouts} ${layoutsFile("apps/ui-layout/registry/components/terminal-ui.tsx")} 按 sequence 播放分隔线、字符扫光、逐行打字和消息。打字来自 ${layoutsFile("apps/ui-layout/components/ui/typing-writter.tsx")}。完成后调用 onComplete。示例 SEQUENCE 放在 demo。减弱动效时一次显示全部并调用 onComplete。`,
     category: "ai",
@@ -267,6 +277,7 @@ export const batch38Components: ComponentMeta[] = [
 
   {
     name: "message-loading",
+    batch: 38,
     title: "Message Loading",
     description: `${chat} ${chatFile("packages/ui/src/components/ui/chat/message-loading.tsx")} 三个点上下跳动，表示正在输入。减弱动效或离开视口时点停在原位。`,
     category: "loaders",

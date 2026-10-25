@@ -12,6 +12,7 @@ const ui: PropDoc[] = [
 export const batch15Components: ComponentMeta[] = [
   {
     name: "ghost-trail-text",
+    batch: 15,
     title: "Ghost Trail Text",
     description: "灵感来自 Codrops，原创实现。滚动速度驱动大标题身后的模糊残影。",
     category: "text",
@@ -52,6 +53,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "gravity-image-trail",
+    batch: 15,
     title: "Gravity Image Trail",
     description: "灵感来自 Codrops，原创实现。沿指针路径生成色块，它们下落、弹起后淡出。",
     category: "cursor",
@@ -98,6 +100,7 @@ export const batch15Components: ComponentMeta[] = [
 
   {
     name: "sticky-grid-scroll",
+    batch: 15,
     title: "Sticky Grid Scroll",
     description: "灵感来自 Codrops，原创实现。钉住的图片网格在滚动时左右错位，中间图片放大铺满。",
     category: "scroll",
@@ -129,6 +132,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "svg-mask-scroll-transition",
+    batch: 15,
     title: "SVG Mask Scroll Transition",
     description: "灵感来自 Codrops，原创实现。下一幕从圆形、色块、条纹或文字 SVG 遮罩里显出。",
     category: "scroll",
@@ -167,6 +171,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "macbook-scroll",
+    batch: 15,
     title: "Macbook Scroll",
     description: "灵感来自 Aceternity，原创实现。通用笔记本盖随滚动打开，屏幕画面再稍微放大。没有品牌标志。",
     category: "scroll",
@@ -205,6 +210,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "faceted-filter-bar",
+    batch: 15,
     title: "Faceted Filter Bar",
     description: "灵感来自 Linear，原创实现。从字段、条件到值添加可编辑筛选标签，结果交给现有数据表。",
     category: "ui",
@@ -222,6 +228,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "json-viewer",
+    batch: 15,
     title: "JSON Viewer",
     description: "灵感来自 Retool，原创实现。可折叠的类型着色树，支持复制路径和值、搜索高亮，长列表虚拟滚动。",
     category: "utility",
@@ -238,6 +245,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "heatmap-calendar",
+    batch: 15,
     title: "Heatmap Calendar",
     description: "灵感来自 GitHub，原创实现。一年的密度格，悬停或聚焦显示提示，按列错开进入。",
     category: "ui",
@@ -255,6 +263,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "text-generate",
+    batch: 15,
     title: "Text Generate",
     description: "灵感来自 Vercel，原创实现。文字按词从模糊里显出，追加文本时只动画新词。",
     category: "text",
@@ -301,6 +310,7 @@ export const batch15Components: ComponentMeta[] = [
   },
   {
     name: "resource-search-hero",
+    batch: 15,
     title: "Resource Search Hero",
     description: "灵感来自 Maze，原创实现。发光搜索框实时过滤并重排主题卡片。匹配使用按需加载的 fuse.js。",
     category: "sections",

@@ -12,6 +12,7 @@ const file = (name: string) =>
 export const batch27Components: ComponentMeta[] = [
   {
     name: "novatrix-background",
+    batch: 27,
     title: "Novatrix Background",
     description: `${eldora} https://github.com/karthikmudunuri/eldoraui/blob/main/apps/www/registry/eldoraui/novatrix-background.tsx 全屏流动色波，指针可以搅动它。着色器保持原样，绘制用 ogl。WebGL 不可用时退回径向渐变。减弱动效或离开视口后停在当前帧。`,
     category: "backgrounds",
@@ -31,6 +32,7 @@ export const batch27Components: ComponentMeta[] = [
 
   {
     name: "emboss-surface",
+    batch: 27,
     title: "Emboss Surface",
     description: `${smooth} ${file("emboss-surface")} 浮雕或凹雕材质，光源可以跟着指针。减弱动效、离开视口或没有精细指针时光源固定。`,
     category: "decor",
@@ -70,6 +72,7 @@ export const batch27Components: ComponentMeta[] = [
   },
   {
     name: "arcade-pixel",
+    batch: 27,
     title: "Arcade Pixel",
     description: `${smooth} ${file("arcade-pixel")} 点阵文字或像素画，可以加 CRT 扫描线和辉光。减弱动效或 animate 为 none 时直接显示。离开视口后暂停剩余进度。`,
     category: "text",
@@ -114,6 +117,7 @@ export const batch27Components: ComponentMeta[] = [
   },
   {
     name: "kinetic-type-scroll",
+    batch: 27,
     title: "Kinetic Type Scroll",
     description: `${smooth} ${file("kinetic-type-scroll")} 滚动时每个词放大、变粗、升起，过了峰再落回去。减弱动效时停在峰值字重。离开视口时停在静息样式。`,
     category: "scroll",
@@ -147,6 +151,7 @@ export const batch27Components: ComponentMeta[] = [
 
   {
     name: "card-swipe-deck",
+    batch: 27,
     title: "Card Swipe Deck",
     description: `${smooth} ${file("card-swipe-deck")} 可以左右滑掉的卡片叠，带 Nope 和 Like 印戳。减弱动效或离开视口时立刻收下，不再飞出。`,
     category: "cards",
@@ -185,6 +190,7 @@ export const batch27Components: ComponentMeta[] = [
   },
   {
     name: "pinned-list",
+    batch: 27,
     title: "Pinned List",
     description: `${smooth} ${file("pinned-list")} 钉住的条目会弹进置顶组。减弱动效或离开视口时不做弹簧，置顶状态仍然切换。`,
     category: "micro",
@@ -206,6 +212,7 @@ export const batch27Components: ComponentMeta[] = [
   },
   {
     name: "grid-loader",
+    batch: 27,
     title: "Grid Loader",
     description: `${smooth} ${file("grid-loader")} 3×3 点阵加载，有多种图案，以及 pulse、sequence、stagger。减弱动效、static 或离开视口时停在当前图案。`,
     category: "loaders",
@@ -251,6 +258,7 @@ export const batch27Components: ComponentMeta[] = [
 
   {
     name: "vector-editor-toolbar",
+    batch: 27,
     title: "Vector Editor Toolbar",
     description: `${smooth} ${file("vector-editor-toolbar")} 设计工具条，带子菜单、单键快捷键和属性面板。减弱动效时切换没有过渡。离开视口后不再响应快捷键。`,
     category: "micro",
@@ -272,6 +280,7 @@ export const batch27Components: ComponentMeta[] = [
   },
   {
     name: "unlock-face-id",
+    batch: 27,
     title: "Unlock Face ID",
     description: `${smooth} ${file("unlock-face-id")} Face ID 扫描。成功后模糊内容变清晰。离开视口时暂停倒计时，回来后续完剩余时间。减弱动效时不做抖动和描边。`,
     category: "micro",
@@ -289,6 +298,7 @@ export const batch27Components: ComponentMeta[] = [
   },
   {
     name: "music-toggle",
+    batch: 27,
     title: "Music Toggle",
     description: `${smooth} ${file("music-toggle")} 迷你播放开关：封面旋转、波形柱和可拖的进度环。减弱动效或离开视口时封面和波形停住。不传 src 时只做视觉。`,
     category: "micro",

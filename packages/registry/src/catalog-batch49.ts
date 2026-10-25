@@ -5,6 +5,7 @@ const ui: PropDoc[] = [{ name: "className", type: "string", description: "额外
 export const batch49Components: ComponentMeta[] = [
   {
     name: "magnet-chips",
+    batch: 49,
     title: "Magnet Chips",
     description:
       "原创实现。筛选芯片拖进对齐区后，沿动画帧吸到同一行。方向键或回车也能放进去。减弱动效时立刻对齐，不申请动画帧。只用组件自己的指针和动画帧，不使用 matter-js，没有新增依赖。",
@@ -38,6 +39,7 @@ export const batch49Components: ComponentMeta[] = [
   },
   {
     name: "folder-stack",
+    batch: 49,
     title: "Folder Stack",
     description:
       "原创实现。叠放的纸质文件夹。细指针悬停时扇形展开，离开后收回。触屏或粗指针悬停不展开，点击才切换。文件夹可以拖出去。减弱动效时不播放扇形动画，拖出后直接拿走，不申请动画帧。不使用 matter-js，没有新增依赖。",
@@ -70,6 +72,7 @@ export const batch49Components: ComponentMeta[] = [
   },
   {
     name: "physics-dropzone",
+    batch: 49,
     title: "Physics Dropzone",
     description:
       "原创实现。文件图标拖进落点后，由已安装的 matter-js 落到一堆，并显示进度。方向键或回车也能放进去。减弱动效时不创建物理引擎、不申请动画帧，文件直接出现在堆里并且进度已满。没有新增依赖。",

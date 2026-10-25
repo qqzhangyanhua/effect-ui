@@ -10,6 +10,7 @@ const meraki = "移植自 Meraki UI，MIT，Copyright (c) 2021 Khatab Wedaa。"
 export const batch41Components: ComponentMeta[] = [
   {
     name: "pacman-loader",
+    batch: 41,
     title: "Pacman Loader",
     description: `${galaxy} 作者 andrew-demchenk0。${galaxyFile("loaders/andrew-demchenk0_kind-ladybug-7.html")} 上下两瓣各转 30 度，四颗豆子向左走，最后一颗被吃掉。size、color 可配，示例黄放在 demo。role 为 status。减弱动效或离开视口时嘴保持张开，豆子停住。`,
     category: "loaders",
@@ -27,6 +28,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "battery-loader",
+    batch: 41,
     title: "Battery Loader",
     description: `${galaxy} 作者 JaydipPrajapati1910。${galaxyFile("loaders/JaydipPrajapati1910_strong-zebra-9.html")} 电量用 repeating-linear-gradient，以 steps(6) 把 background-size 放到 120%。color、duration、value 可配。value 为 0 到 100 时停在该百分比。示例绿放在 demo。减弱动效或离开视口时停在半格，正极仍在。`,
     category: "loaders",
@@ -45,6 +47,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "ringed-planet-loader",
+    batch: 41,
     title: "Ringed Planet Loader",
     description: `${galaxy} 作者 Admin12121。${galaxyFile("loaders/Admin12121_white-husky-41.html")} 星球在 10 度与 -10 度之间摇，环以 rotateX(110deg) 再 rotateZ 一圈，六点阴影交替，文字左右移动并拉开字距。size、colors、label 可配。colors 依次是星球、环、内环、斑点和文字。示例色放在 demo。减弱动效或离开视口时星球保持倾斜，环停在可见角度，文字不再游动。`,
     category: "loaders",
@@ -63,6 +66,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "pixel-bird-loader",
+    batch: 41,
     title: "Pixel Bird Loader",
     description: `${galaxy} 作者 Subaashbala。${galaxyFile("loaders/Subaashbala_tender-baboon-47.html")} 像素鸟按 500ms 扇翅，上下两排管道各用两段场景在 5 秒内平移半宽，下排 rotateX(180deg)。size、speed 可配。像素和管道保留源配色。减弱动效或离开视口时鸟停在扇翅中段，管道停住。`,
     category: "loaders",
@@ -80,6 +84,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "phone-ring-loader",
+    batch: 41,
     title: "Phone Ring Loader",
     description: `${galaxy} 作者 bociKond。${galaxyFile("loaders/bociKond_breezy-sloth-97.html")} 机身以 0.5 度来回轻晃，虚线圆在 2 秒内 rotate 一整圈，顶部有听筒。size、color、label 可配。color 是屏幕底色，虚线圆保持白色。示例青放在 demo。减弱动效或离开视口时机身放正，虚线圆停住。`,
     category: "loaders",
@@ -98,6 +103,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "glass-clock-loader",
+    batch: 41,
     title: "Glass Clock Loader",
     description: `${galaxy} 作者 Subaashbala。${galaxyFile("loaders/Subaashbala_ugly-lizard-47.html")} 分针 1500ms 转一圈，时针 12 倍，装饰轨道 50 倍，表盘 15 秒上下浮动。源文件装饰球写成了无效的 16ss，这里按 16 秒浮动。size、tint 可配。橙球和粉球保留源色。减弱动效或离开视口时指针停在可读角度，不再浮动或旋转。`,
     category: "loaders",
@@ -115,6 +121,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "hover-gallery",
+    batch: 41,
     title: "Hover Gallery",
     description: `${daisy} ${daisyFile("hovergallery.css")} 一次只显示一张图。指针在画面上横向移动时切换索引，触摸按住拖动同样切图，progress 打开底部进度条。images 可以是地址或带 alt 的对象。示例图放在 demo。减弱动效时切换不再过渡。`,
     category: "showcase",
@@ -133,6 +140,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "icon-swap",
+    batch: 41,
     title: "Icon Swap",
     description: `${daisy} ${daisyFile("swap.css")} on 与 off 叠在同一格。effect 为 rotate 时按下转到 0 度、松开转到 -45 度；flip 时绕 Y 轴翻转并保留 3D。pressed 可以是 mixed，这时显示 indeterminate。按钮带 aria-pressed。减弱动效时不再过渡，状态仍然切换。`,
     category: "micro",
@@ -154,6 +162,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "form-validator",
+    batch: 41,
     title: "Form Validator",
     description: `${daisy} ${daisyFile("validator.css")} 原生输入在 :user-valid 时用图表色描边，:user-invalid 或 aria-invalid 时用危险色，并显示 hint。hint 通过 aria-describedby 关联。不支持 :user-invalid 时，失焦走 checkValidity 并写入 aria-invalid。`,
     category: "ui",
@@ -170,6 +179,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "corner-indicator",
+    batch: 41,
     title: "Corner Indicator",
     description: `${daisy} ${daisyFile("indicator.css")} 在内容的角上放一个或多个标记。垂直位置是 top、middle、bottom，水平位置是 start、center、end，默认右上。从右到左书写时 start 和 end 对调。items 与 children 可配。`,
     category: "ui",
@@ -187,6 +197,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "filter-chips",
+    batch: 41,
     title: "Filter Chips",
     description: `${daisy} ${daisyFile("filter.css")} 单选筛选。选中一项后其余项收成 0 宽，并出现重置的 ×。options、value、onValueChange、name 可配，容器是 radiogroup。减弱动效时不再缩放，选中仍然生效。`,
     category: "ui",
@@ -205,6 +216,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "file-input",
+    batch: 41,
     title: "File Input",
     description: `${daisy} ${daisyFile("fileinput.css")} 原生 file 输入。fieldSize 从 xs 到 xl，color 画在选择按钮上，ghost 去掉外框。accept、multiple、onFilesChange 可配。焦点有描边。减弱动效时背景不再过渡。`,
     category: "utility",
@@ -224,6 +236,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "tick-range",
+    batch: 41,
     title: "Tick Range",
     description: `${daisy} ${daisyFile("range.css")} 原生 range。已选部分由拇指的 box-shadow 按容器的 cqw 绘制，避免铺满视口。ticks 在轨道下画刻度。min、max、step、value、onValueChange 可配。从右到左书写时填充反向。减弱动效时不再过渡。`,
     category: "ui",
@@ -244,6 +257,7 @@ export const batch41Components: ComponentMeta[] = [
   },
   {
     name: "site-footer",
+    batch: 41,
     title: "Site Footer",
     description: `${meraki} https://github.com/merakiuilabs/merakiui/blob/main/components/footers/SubscribeFromAndLinks.html 、https://github.com/merakiuilabs/merakiui/blob/main/components/footers/CTAWithLinks.html 与 https://github.com/merakiuilabs/merakiui/blob/main/components/footers/Simple.html 。variant 为 subscribe、cta 或 simple。groups、onSubscribe、social、brand、heading、copyright 可配。订阅只回调邮箱，不发请求。示例文案和链接放在 demo。减弱动效时链接不再做颜色过渡。`,
     category: "sections",

@@ -1,0 +1,142 @@
+packages/registry/src/effects/entrance-presets.test.tsx
+  s_0a33311619faf9::t_562c5c799ecf43 7,50
+packages/registry/src/catalog-primitive-navigation.ts
+  s_0a33311619faf9::t_e734e04f706815 10,17
+  s_0a33311619faf9::t_562c5c799ecf43 1-9,11-16,18-127
+packages/registry/src/catalog-effect-decor.ts
+  s_0a33311619faf9::t_e734e04f706815 11,14-16
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,17-730
+packages/registry/src/catalog-effect-showcase.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,17-715
+  s_0a33311619faf9::t_e734e04f706815 11,14-16
+packages/registry/src/catalog-effect-micro.ts
+  s_0a33311619faf9::t_e734e04f706815 21,24-25,32
+  s_0a33311619faf9::t_562c5c799ecf43 1-20,22-23,26-31,33-1455
+packages/registry/src/catalog-widget-form.ts
+  s_0a33311619faf9::t_e734e04f706815 11,24-27
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-23,28-1407
+packages/registry/src/catalog-composite-layout.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,16-127
+  s_0a33311619faf9::t_e734e04f706815 11,14-15
+packages/registry/src/catalog-effect-cards.ts
+  s_0a33311619faf9::t_e734e04f706815 11,18,21-24
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,19-20,25-2078
+packages/registry/src/catalog-primitive-data.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,19-20,23-188
+  s_0a33311619faf9::t_e734e04f706815 11,18,21-22
+packages/registry/src/catalog-sources.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-6,8-9,11-12,14-15,17-18,21-22,24,26-27,29,31-32,34-35,38-39,43-44,46,48-49,52-53,56-57,60-61,64-65,69-70,74-75,78-79,82-83,86-87,90-91,94-95,98-99,102-103,105-106,108,110-111,113,115-116,118,120-121,124-125,128-129,132-133,136-137,140-141,144-145,148-149,152-153,156-157,160-161,164-165,168-169,172-173,175
+  s_0a33311619faf9::t_e734e04f706815 7,10,13,16,19-20,23,25,28,30,33,36-37,40-42,45,47,50-51,54-55,58-59,62-63,66-68,71-73,76-77,80-81,84-85,88-89,92-93,96-97,100-101,104,107,109,112,114,117,119,122-123,126-127,130-131,134-135,138-139,142-143,146-147,150-151,154-155,158-159,162-163,166-167,170-171,174
+packages/registry/src/catalog-effect-page.ts
+  s_0a33311619faf9::t_e734e04f706815 11,14
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,15-103
+packages/registry/src/catalog-composite-data.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,16-122
+  s_0a33311619faf9::t_e734e04f706815 11,14-15
+packages/registry/src/catalog-effect-buttons.ts
+  s_0a33311619faf9::t_e734e04f706815 11,18,21-25
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,19-20,26-1408
+packages/registry/src/catalog-widget-data.ts
+  s_0a33311619faf9::t_e734e04f706815 11,24-26
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-23,27-2041
+packages/registry/src/catalog-composite-form.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,17-566
+  s_0a33311619faf9::t_e734e04f706815 11,14-16
+packages/registry/src/catalog-effect-cursor.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,15-772
+  s_0a33311619faf9::t_e734e04f706815 11,14
+packages/registry/src/catalog-effect-text.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-11,13-18,20-21,25-2379
+  s_0a33311619faf9::t_e734e04f706815 12,19,22-24
+packages/registry/src/catalog-hook.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-227
+packages/registry/src/catalog-order.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-107
+packages/registry/src/catalog-composite-feedback.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-6,8-29
+  s_0a33311619faf9::t_e734e04f706815 7
+packages/registry/src/catalog-primitive-feedback.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,20-92
+  s_0a33311619faf9::t_e734e04f706815 11,18-19
+packages/registry/src/catalog-section.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,13-702
+  s_0a33311619faf9::t_e734e04f706815 11-12
+packages/registry/src/catalog-effect-navigation.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,17-391
+  s_0a33311619faf9::t_e734e04f706815 11,14-16
+packages/registry/src/effects/logo-marquee.test.tsx
+  s_0a33311619faf9::t_562c5c799ecf43 7,50
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,19-20,24-1970
+  s_0a33311619faf9::t_e734e04f706815 11,18,21-23
+packages/registry/src/catalog-primitive-form.ts
+  s_0a33311619faf9::t_e734e04f706815 11,18-19
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,20-414
+packages/registry/src/catalog-primitive-layout.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,20-127
+  s_0a33311619faf9::t_e734e04f706815 11,18-19
+packages/registry/src/catalog-primitive-overlay.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-9,11-16,18-162
+  s_0a33311619faf9::t_e734e04f706815 10,17
+packages/registry/src/effects/shared-layout-expand.test.tsx
+  s_0a33311619faf9::t_562c5c799ecf43 11,30
+README.md
+  s_0a33311619faf9::t_89d93aa10381ac 1351
+  s_0a33311619faf9::t_562c5c799ecf43 392,412,429,445,465,485,501,520,538,551,564,573,590,602,619,634,652,669,689,710,731,750,772,786,806,824,845,864,884,902,924,945,969,977,987,997,1007,1017,1027,1048,1068,1089,1109,1129,1154,1171,1188,1207,1227,1249,1268
+packages/registry/src/effects/mesh-glow-bg.test.tsx
+  s_0a33311619faf9::t_562c5c799ecf43 7,50
+THIRD_PARTY_NOTICES.md
+  s_0a33311619faf9::t_562c5c799ecf43 511-521
+packages/registry/src/effects/hero-text-stagger.test.tsx
+  s_0a33311619faf9::t_562c5c799ecf43 7,50
+CREDITS.md
+  s_0a33311619faf9::t_562c5c799ecf43 18-67
+packages/registry/src/catalog-composite-overlay.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,15-51
+  s_0a33311619faf9::t_e734e04f706815 11,14
+packages/registry/src/catalog-widget-navigation.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-6,10-171
+  s_0a33311619faf9::t_e734e04f706815 7-9
+packages/registry/src/catalog.ts
+  s_0a33311619faf9::t_562c5c799ecf43 10-43,294-338,340-344
+packages/registry/src/effects/scroll-parallax-layers.test.tsx
+  s_0a33311619faf9::t_562c5c799ecf43 7,50
+packages/registry/src/catalog-widget-overlay.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,18-288
+  s_0a33311619faf9::t_e734e04f706815 11,14-17
+docs/project-map.md
+  s_0a33311619faf9::t_710d2f3f224eb0 11,53
+packages/registry/src/catalog-effect-scroll.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,17-1242
+  s_0a33311619faf9::t_e734e04f706815 11,14-16
+packages/registry/src/catalog-lib.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-36
+packages/registry/src/catalog-widget-layout.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,17-229
+  s_0a33311619faf9::t_e734e04f706815 11,14-16
+packages/registry/src/catalog-effect-loaders.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-17,19-20,24-1154
+  s_0a33311619faf9::t_e734e04f706815 11,18,21-23
+packages/registry/src/catalog-template.ts
+  s_0a33311619faf9::t_e734e04f706815 18-19
+  s_0a33311619faf9::t_562c5c799ecf43 1-17,20-74
+packages/registry/src/catalog-widget-feedback.ts
+  s_0a33311619faf9::t_562c5c799ecf43 1-10,12-13,18-455
+  s_0a33311619faf9::t_e734e04f706815 11,14-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "4eecf3bbb89cf9802fb20752aec34dc896a44774",
+  "prompts": {},
+  "sessions": {
+    "s_0a33311619faf9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1711d-769d-7100-91d7-c9715088bba1",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

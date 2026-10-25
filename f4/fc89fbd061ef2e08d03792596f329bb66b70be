@@ -1,0 +1,161 @@
+packages/registry/src/audit.ts
+  s_0a33311619faf9::t_76b48504f0284d 57,72,570-574
+  s_0a33311619faf9::t_4d29e89ab350c0 575-576
+packages/registry/src/catalog-batch6.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,63,114,143,178,201,215,233,266,305,357,385,430,463
+packages/registry/src/catalog-batch57.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,38,63,85,111,137,169,191
+packages/registry/src/catalog-batch46.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 8,41,80
+packages/registry/src/catalog-batch17.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,73,99,112,151,190,270,314,332,353,367,381,402
+packages/registry/src/catalog-batch48.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 8,42,76
+packages/registry/src/catalog-batch58.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,35,62,87,109,131,155,169,194,216
+packages/registry/src/catalog-batch2.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,30,45,60,78,97,120,139,158,177,192,207,226,248,266,285,300,315,333,351,377,392,407,426,445,463,512,561,597,633,667,709,752,796,838,888,911,936,960,984,1008,1048,1073,1126,1165,1198,1225,1291,1324,1357,1379
+packages/registry/src/catalog-batch26.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,38,66,108,149,173,196,214,232,250,290,331
+packages/registry/src/audit-coverage.test.ts
+  s_0a33311619faf9::t_5f55fa196b8908 6-7,209-216,218-225
+packages/registry/src/catalog-batch35.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,28,41,54,73,95,119,144,166,189,215,239,261,283,305,333,354,372
+packages/registry/src/catalog-batch32.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 17,35,74,118,155,191,228,245,262,281,299,317,334,354
+packages/registry/src/catalog-batch12.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 18,70,116,168,227,275,326,369,427,488
+packages/registry/src/catalog-batch54.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,30,53,75,97,118,149,173,198,217,235,249,267
+packages/registry/src/catalog-batch37.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,50,75,95,114,132,150,169,189,210,233,251,273,294,314
+packages/registry/src/catalog-batch61.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,33
+packages/registry/src/catalog-batch34.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,34,52,72,93,113,133,153,173,194,215,236,255,275
+packages/registry/src/catalog-batch15.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,56,103,135,174,213,231,248,266,313
+packages/registry/src/catalog-batch36.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,53,90,129,173,194,210,236,258,308,351,393,437,456
+packages/registry/src/catalog-batch41.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 13,31,50,69,87,106,124,143,165,182,200,219,239,260
+packages/registry/src/catalog-batch39.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,31,49,67,85,105,125,143,164,205,229,251,267
+packages/registry/src/catalog-batch51.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 17,38,56,72,93,111,136,154,170,191,211,231
+packages/registry/src/catalog-batch10.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 16,33,50,67,84,101,114,127,140,153,166,179
+packages/registry/src/catalog-batch14.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,62,101,146,184,203,253,306,324,348,403,422,482,497
+packages/registry/src/catalog-batch25.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,59,78,100,119,139,158,176,195,221,248,272,325
+packages/registry/src/catalog-batch44.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,33,53,92,130,167,205
+packages/registry/src/catalog-batch13.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 17,41,82,117,152,193,219,259,286,332,379,403,427,454,498
+packages/registry/src/catalog-batch4.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,66,116,150,196,221,243,263,284,298,322,342
+docs/component-standard.md
+  s_0a33311619faf9::t_87a6eef533a8ca 36,39
+packages/registry/src/catalog-batch49.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 8,42,75
+packages/registry/src/catalog-batch28.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,57,94,133,150,176,223,250,269,294
+packages/registry/src/catalog-batch23.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 13,30,50,71,90,107,125,142,159,177,195,211
+packages/registry/src/catalog-batch56.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,33,54,74,94,116,138,161,182,202,226
+packages/registry/src/catalog-batch43.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 10,53,72,109,128,148,189,205,244,264,283,307,346
+packages/registry/src/catalog-batch59.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,36,59,87,109
+packages/registry/src/catalog-batch22.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 13,29,42,60,98,116,155,177,215,254,292,312,328,343,362,383,404
+packages/registry/src/catalog-batch8.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,41,61,80,99,120,138,157,174,191,214,231,248,264
+packages/registry/src/catalog-batch63.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 9,35,58,78,99,121
+packages/registry/src/catalog-batch16.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,36,78,117,142,187,231,246,260
+packages/registry/src/catalog-batch38.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,25,45,64,109,147,183,206,225,263,280
+packages/registry/src/catalog-batch53.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 13,39,65,98,125,154,185,215,236,256,276,304,331,363
+packages/registry/src/catalog-batch40.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,31,52,87,106,126,145,166,205,248,266,290
+packages/registry/src/catalog-batch24.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,52,89,109,146,185,207,230,249,270,287,303,323,362,383
+packages/registry/src/catalog-batch45.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 11,30,55,91,141,189,234,279,327,349,388,413,437,469,504
+packages/registry/src/catalog-batch55.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,37,59,80,101,124,145,167,183,200
+packages/registry/src/catalog-batch29.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 17,30,45,60,78,98,118,166,208,251,290,330,371,390,429,448,467,489
+packages/registry/src/catalog-batch5.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 17,37,58,77,92,112,127,142,162,182,201,219,239,265,283,303,324,338,352,370,384,438,484,513,552
+packages/registry/src/catalog-batch52.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,31,51,72,93,113,132,153,173,191,208,225,241,256
+packages/registry/src/catalog-batch9.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 23,63,104,145,179,200,224,258,298
+packages/registry/src/audit-coverage.ts
+  s_0a33311619faf9::t_5a9a4362c01a07 1,74-83,85
+packages/registry/src/catalog-batch42.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 12,31,50,69,88,107,125,144,163,185,208
+packages/registry/src/catalog-batch60.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 13,33,56,78,100,120,145,166,186,198
+packages/registry/src/catalog.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 399,412,431,444,457,470,489,504,519,534,549,567,585,603,618,638,653,672,687,702,717,736,751,770,785,804,901,1011,1074,1108,1198,1238,1298,1341,1391,1441,1483,1532,1574,1614,1659,1699,1744,1783,1811,1844,1890,1923,1961,1993,2026,2059,2098,2150,2207,2259,2333,2379,2425,2470,2515
+  s_0a33311619faf9::t_7142d8339fc6ae 206-207
+packages/registry/src/audit.test.ts
+  s_0a33311619faf9::t_49553b511b2f17 42
+packages/registry/src/catalog-batch50.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 8,40,74
+packages/registry/src/catalog-batch62.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 9,28,48,67,88,110
+docs/testing.md
+  s_0a33311619faf9::t_cf1ed63f549a32 34
+packages/registry/src/catalog-batch19.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 16,41,60,106,140,165,179,193,207,224
+packages/registry/src/catalog-batch30.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 16,32,72,112,132,172,192,211,229,250,268,290,312
+packages/registry/src/catalog-batch21.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 16,36,54,75,93,113,150,164,182,219,237
+packages/registry/src/catalog-batch7.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,56,100,147,188,227,279,305,331,383,426,471,515,564
+docs/project-map.md
+  s_0a33311619faf9::t_71af84b1a40e82 53
+packages/registry/src/catalog-batch33.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 17,55,92,110,130,148,166,185,208,228,249,269,306
+packages/registry/src/catalog-batch11.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,39,80,94,107,120,172,189,235,260,285,329,348
+packages/registry/src/catalog-batch20.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,28,42,60,74,111,125,139,153,171,184,204
+packages/registry/src/catalog-batch47.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 8,48,88
+packages/registry/src/catalog-batch3.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,51,84,123,171,210,257,303,332,376,395,429,452,483,505,532,555,572,590,608,626,645,663,677
+packages/registry/src/catalog-batch31.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,34,71,108,145,183,201,220,256,275,293,319,366
+packages/registry/src/catalog-batch18.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14,56,69,93,135,152,173,225,248,262,275,292,311
+packages/registry/src/catalog-batch5-backgrounds.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 14
+packages/registry/src/catalog-batch27.ts
+  s_0a33311619faf9::t_a698dbf0cee08a 15,35,75,120,154,193,215,261,283,301
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f4fc89fbd061ef2e08d03792596f329bb66b70be",
+  "prompts": {},
+  "sessions": {
+    "s_0a33311619faf9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1711d-769d-7100-91d7-c9715088bba1",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

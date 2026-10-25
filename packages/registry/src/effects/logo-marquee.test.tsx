@@ -4,7 +4,7 @@ import { afterEach, beforeAll, expect, test, vi } from "vitest"
 import { cleanup, fireEvent, render, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
-import { batch63Components } from "../catalog-batch63"
+import { getComponent } from "../catalog"
 import { LogoMarquee } from "./logo-marquee"
 
 class IntersectingObserver {
@@ -47,7 +47,7 @@ function installMedia(reduced: boolean) {
 }
 
 function start(prop: string) {
-  const entry = batch63Components.find((item) => item.name === "logo-marquee")
+  const entry = getComponent("logo-marquee")
   const found = entry?.props.find((item) => item.name === prop)
   if (!found?.control || !("value" in found.control)) throw new Error(prop)
   return found.control.value

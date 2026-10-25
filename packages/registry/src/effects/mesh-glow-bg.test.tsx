@@ -4,7 +4,7 @@ import { afterEach, beforeAll, expect, test, vi } from "vitest"
 import { cleanup, render, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
-import { batch63Components } from "../catalog-batch63"
+import { getComponent } from "../catalog"
 import { MeshGlowBg } from "./mesh-glow-bg"
 
 class IntersectingObserver {
@@ -47,7 +47,7 @@ function installMedia(reduced: boolean) {
 }
 
 function start(prop: string) {
-  const entry = batch63Components.find((item) => item.name === "mesh-glow-bg")
+  const entry = getComponent("mesh-glow-bg")
   const found = entry?.props.find((item) => item.name === prop)
   if (!found?.control || !("value" in found.control)) throw new Error(prop)
   return found.control.value

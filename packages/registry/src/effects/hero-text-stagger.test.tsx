@@ -4,7 +4,7 @@ import { afterEach, beforeAll, expect, test, vi } from "vitest"
 import { cleanup, render, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
-import { batch63Components } from "../catalog-batch63"
+import { getComponent } from "../catalog"
 import { HeroTextStagger, HeroTextStaggerCta, HeroTextStaggerSubtitle, HeroTextStaggerTitle } from "./hero-text-stagger"
 
 class IntersectingObserver {
@@ -47,7 +47,7 @@ function installMedia(reduced: boolean) {
 }
 
 function start(prop: string) {
-  const entry = batch63Components.find((item) => item.name === "hero-text-stagger")
+  const entry = getComponent("hero-text-stagger")
   const found = entry?.props.find((item) => item.name === prop)
   if (!found?.control || !("value" in found.control)) throw new Error(prop)
   return found.control.value

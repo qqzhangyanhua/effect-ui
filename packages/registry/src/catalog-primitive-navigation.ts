@@ -1,0 +1,127 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** Primitive，导航。 */
+const uiProps: PropDoc[] = [
+  {
+    name: "className",
+    type: "string",
+    description: "额外 Tailwind 类名，与主题变量兼容。",
+  },
+]
+const ui: PropDoc[] = [
+  {
+    name: "className",
+    type: "string",
+    description: "额外 Tailwind 类名，与主题变量兼容。",
+  },
+]
+
+export const primitiveNavigationComponents: ComponentMeta[] = [
+  {
+    name: "tabs",
+    batch: 1,
+    title: "Tabs",
+    description: "选项卡切换。",
+    layer: "primitive",
+    purposeGroup: "navigation",
+    source: "shadcn/ui",
+    type: "registry:ui",
+    file: "ui/tabs.tsx",
+    target: "components/ui/tabs.tsx",
+    props: uiProps,
+  },
+  {
+    name: "breadcrumb",
+    batch: 2,
+    title: "Breadcrumb",
+    description: "面包屑导航。",
+    layer: "primitive",
+    purposeGroup: "navigation",
+    source: "shadcn/ui",
+    type: "registry:ui",
+    file: "ui/breadcrumb.tsx",
+    target: "components/ui/breadcrumb.tsx",
+    props: [
+      ...ui,
+      { name: "asChild", type: "boolean", description: "链接是否用 Slot 合并到子元素。不传时渲染 a。" },
+    ],
+  },
+  {
+    name: "menubar",
+    batch: 2,
+    title: "Menubar",
+    description: "桌面式菜单栏。",
+    layer: "primitive",
+    purposeGroup: "navigation",
+    source: "shadcn/ui",
+    type: "registry:ui",
+    file: "ui/menubar.tsx",
+    target: "components/ui/menubar.tsx",
+    props: [
+      ...ui,
+      { name: "align", type: '"start" | "center" | "end"', defaultValue: '"start"', description: "菜单对齐。start 与不传相同。" },
+      { name: "alignOffset", type: "number", defaultValue: "-4", description: "对齐偏移，像素。-4 与不传相同。" },
+      { name: "sideOffset", type: "number", defaultValue: "8", description: "菜单与触发器的间距，像素。8 与不传相同。" },
+      { name: "inset", type: "boolean", description: "菜单项是否内缩。不传时不内缩。" },
+      { name: "variant", type: '"default" | "destructive"', defaultValue: '"default"', description: "菜单项变体。default 与不传相同。" },
+    ],
+  },
+  {
+    name: "navigation-menu",
+    batch: 2,
+    title: "Navigation Menu",
+    description: "站点导航菜单。",
+    layer: "primitive",
+    purposeGroup: "navigation",
+    source: "shadcn/ui",
+    type: "registry:ui",
+    file: "ui/navigation-menu.tsx",
+    target: "components/ui/navigation-menu.tsx",
+    props: [
+      ...ui,
+      { name: "viewport", type: "boolean", defaultValue: "true", description: "是否用共享视口承载下拉层。true 与不传相同。" },
+    ],
+  },
+  {
+    name: "pagination",
+    batch: 2,
+    title: "Pagination",
+    description: "分页控件。",
+    layer: "primitive",
+    purposeGroup: "navigation",
+    source: "shadcn/ui",
+    type: "registry:ui",
+    file: "ui/pagination.tsx",
+    target: "components/ui/pagination.tsx",
+    props: [
+      ...ui,
+      { name: "isActive", type: "boolean", description: "是否为当前页。不传时不是当前页。" },
+      { name: "size", type: '"default" | "sm" | "lg" | "icon"', defaultValue: '"icon"', description: "页码尺寸。icon 与不传相同。" },
+    ],
+  },
+  {
+    name: "sidebar",
+    batch: 2,
+    title: "Sidebar",
+    description: "应用侧栏。",
+    layer: "primitive",
+    purposeGroup: "navigation",
+    source: "shadcn/ui",
+    type: "registry:ui",
+    file: "ui/sidebar.tsx",
+    target: "components/ui/sidebar.tsx",
+    props: [
+      ...ui,
+      { name: "defaultOpen", type: "boolean", defaultValue: "true", description: "初始是否展开。true 与不传相同。" },
+      { name: "open", type: "boolean", description: "受控展开。不传时由内部状态决定。" },
+      { name: "onOpenChange", type: "(open: boolean) => void", description: "展开状态变化时回调。" },
+      { name: "side", type: '"left" | "right"', defaultValue: '"left"', description: "侧栏位置。left 与不传相同。" },
+      { name: "variant", type: '"sidebar" | "floating" | "inset"', defaultValue: '"sidebar"', description: "侧栏外形。sidebar 与不传相同。菜单按钮另有 default 或 outline，不传时是 default。" },
+      { name: "collapsible", type: '"offcanvas" | "icon" | "none"', defaultValue: '"offcanvas"', description: "收起方式。offcanvas 与不传相同。" },
+      { name: "asChild", type: "boolean", defaultValue: "false", description: "分组标签或菜单按钮是否用 Slot。false 与不传相同。" },
+      { name: "isActive", type: "boolean", defaultValue: "false", description: "菜单按钮是否为当前项。false 与不传相同。" },
+      { name: "size", type: '"default" | "sm" | "lg"', defaultValue: '"default"', description: "菜单按钮尺寸。default 与不传相同。" },
+    ],
+  },
+]
+

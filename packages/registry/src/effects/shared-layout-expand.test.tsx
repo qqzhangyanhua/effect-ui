@@ -8,7 +8,7 @@ import "@testing-library/jest-dom/vitest"
 
 MotionGlobalConfig.skipAnimations = true
 
-import { batch63Components } from "../catalog-batch63"
+import { getComponent } from "../catalog"
 import { SharedLayoutExpand } from "./shared-layout-expand"
 
 function installMedia(reduced: boolean) {
@@ -27,7 +27,7 @@ function installMedia(reduced: boolean) {
 }
 
 function start(prop: string) {
-  const entry = batch63Components.find((item) => item.name === "shared-layout-expand")
+  const entry = getComponent("shared-layout-expand")
   const found = entry?.props.find((item) => item.name === prop)
   if (!found?.control || !("value" in found.control)) throw new Error(prop)
   return found.control.value

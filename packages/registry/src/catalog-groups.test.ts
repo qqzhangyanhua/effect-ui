@@ -2,13 +2,13 @@ import { expect, test } from "vitest"
 
 import { effectCategoryNames, purposeGroups } from "./catalog-layer"
 import {
-  categoryLabels,
   componentCluster,
   components,
+  effectCategoryLabels,
   getCatalogGroups,
-  getComponentsByCategory,
+  getComponent,
+  purposeGroupLabels,
   relatedComponents,
-  subgroupLabels,
   visibleComponents,
 } from "./catalog"
 
@@ -68,7 +68,7 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
   const componentSectionKeys = componentGroup?.sections.map((section) => section.key) ?? []
   expectSectionOrder(componentSectionKeys, [...purposeGroups, "ungrouped"])
   for (const section of componentGroup?.sections ?? []) {
-    const label = section.key === "ungrouped" ? "未分组" : subgroupLabels[section.key as keyof typeof subgroupLabels]
+    const label = section.key === "ungrouped" ? "未分组" : purposeGroupLabels[section.key as keyof typeof purposeGroupLabels]
     expect(section.label).toBe(label)
     for (const item of section.items) {
       const purpose = item.purposeGroup
@@ -83,16 +83,11 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
   expectSectionOrder(effectSectionKeys, [...effectCategoryNames, "ungrouped"])
   expect(effectSectionKeys).toContain("text")
   for (const section of effects?.sections ?? []) {
-    const label = section.key === "ungrouped" ? "未分组" : categoryLabels[section.key as keyof typeof categoryLabels]
+    const label = section.key === "ungrouped" ? "未分组" : effectCategoryLabels[section.key as keyof typeof effectCategoryLabels]
     expect(section.label).toBe(label)
     for (const item of section.items) {
       const declared = item.effectCategory
-      const expected =
-        declared && (effectCategoryNames as readonly string[]).includes(declared)
-          ? declared
-          : (effectCategoryNames as readonly string[]).includes(item.category)
-            ? item.category
-            : "ungrouped"
+      const expected = declared && (effectCategoryNames as readonly string[]).includes(declared) ? declared : "ungrouped"
       expect(section.key).toBe(expected)
     }
   }
@@ -184,7 +179,7 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
   }
 })
 
-test("同类链接列出同组其他组件，类别分组仍保留原 category", () => {
+test("同类链接列出同组其他组件，家族分组不改写 Layer", () => {
   const related = relatedComponents("shimmer-button").map((item) => item.name)
   expect(related).toContain("button")
   expect(related).toContain("fuse-button")
@@ -193,11 +188,10 @@ test("同类链接列出同组其他组件，类别分组仍保留原 category",
   expect(relatedComponents("checkbox").map((item) => item.name)).toEqual(["checkbox-plus", "spring-check"])
   expect(relatedComponents("switch").map((item) => item.name)).not.toContain("checkbox")
 
-  const byCategory = getComponentsByCategory().flatMap((group) => group.items)
-  expect(byCategory.find((item) => item.name === "button")?.category).toBe("ui")
-  expect(byCategory.find((item) => item.name === "shimmer-button")?.category).toBe("buttons")
-  expect(byCategory.find((item) => item.name === "prompt-input")?.category).toBe("ai")
-  expect(byCategory.find((item) => item.name === "checkbox")?.category).toBe("ui")
-  expect(byCategory.find((item) => item.name === "checkbox-plus")?.category).toBe("utility")
-  expect(byCategory.find((item) => item.name === "spring-check")?.category).toBe("micro")
+  expect(getComponent("button")).toMatchObject({ layer: "primitive", purposeGroup: "form" })
+  expect(getComponent("shimmer-button")).toMatchObject({ layer: "effect", effectCategory: "buttons" })
+  expect(getComponent("prompt-input")).toMatchObject({ layer: "widget", purposeGroup: "form" })
+  expect(getComponent("checkbox")).toMatchObject({ layer: "primitive", purposeGroup: "form" })
+  expect(getComponent("checkbox-plus")).toMatchObject({ layer: "composite", purposeGroup: "form" })
+  expect(getComponent("spring-check")).toMatchObject({ layer: "effect", effectCategory: "micro" })
 })

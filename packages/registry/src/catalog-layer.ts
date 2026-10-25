@@ -1,6 +1,3 @@
-import { effectCategories } from "./prop-vocabulary"
-import { unclassifiedCatalogNames } from "./unclassified-catalog"
-
 export const layers = ["primitive", "composite", "widget", "effect", "section", "template", "hook", "lib"] as const
 
 export type Layer = (typeof layers)[number]
@@ -32,7 +29,6 @@ const componentLayers = new Set<Layer>(["primitive", "composite", "widget"])
 const bareLayers = new Set<Layer>(["section", "template", "hook", "lib"])
 
 export interface LayerSource {
-  category?: string
   type?: string
   layer?: string
   effectCategory?: string
@@ -40,52 +36,28 @@ export interface LayerSource {
 }
 
 export type LayerFields =
-  | { layer?: undefined; effectCategory?: undefined; purposeGroup?: undefined }
-  | { layer: "effect"; effectCategory: EffectCategoryName; purposeGroup?: undefined }
-  | { layer: "primitive" | "composite" | "widget"; purposeGroup: PurposeGroup; effectCategory?: undefined }
-  | { layer: "section" | "template" | "hook" | "lib"; effectCategory?: undefined; purposeGroup?: undefined }
+  | { layer: "effect"; effectCategory: EffectCategoryName; purposeGroup?: never }
+  | { layer: "primitive" | "composite" | "widget"; purposeGroup: PurposeGroup; effectCategory?: never }
+  | { layer: "section" | "template" | "hook" | "lib"; effectCategory?: never; purposeGroup?: never }
 
 export function declaredLayer(entry: LayerSource): Layer | undefined {
   if (typeof entry.layer !== "string") return undefined
   return layers.includes(entry.layer as Layer) ? (entry.layer as Layer) : undefined
 }
 
-/** 没写 Layer 时，按旧分类和 registry 类型推导。hook、lib 优先于 category。 */
-export function derivedLayer(entry: LayerSource): Layer | undefined {
-  if (entry.type === "registry:hook") return "hook"
-  if (entry.type === "registry:lib") return "lib"
-  const category = entry.category
-  if (typeof category !== "string") return undefined
-  if (effectCategories.has(category)) return "effect"
-  if (category === "ui") return "primitive"
-  if (category === "utility" || category === "ai") return "widget"
-  if (category === "sections") return "section"
-  if (category === "templates") return "template"
-  return undefined
-}
-
 export function resolveLayer(entry: LayerSource): Layer | undefined {
-  return declaredLayer(entry) ?? derivedLayer(entry)
+  return declaredLayer(entry)
 }
 
 export function owesEffectChecks(entry: LayerSource): boolean {
   return resolveLayer(entry) === "effect"
 }
 
-/**
- * 显式 Layer 按新规则。Effect、Primitive、Composite component、Widget、Section 要测试。
- * Template 维持现状，不要求测试。Hook、Lib 维持现状，仍然要求测试。
- * 没写 Layer 的条目保持原来的检查义务：Effect 分类、ui、utility、sections 要测试；ai 和 templates 不要。
- * 推导出的 hook、lib 只在 category 仍是 ui 时要测试，和现在一致。
- */
+/** Effect、Primitive、Composite component、Widget、Section、Hook、Lib 要测试。Template 不要。 */
 export function owesComponentTest(entry: LayerSource): boolean {
-  const declared = declaredLayer(entry)
-  if (declared === "template") return false
-  if (declared) return true
-  if (entry.category === "ai") return false
-  const layer = derivedLayer(entry)
-  if (layer === "hook" || layer === "lib") return entry.category === "ui"
-  return layer === "effect" || layer === "primitive" || layer === "widget" || layer === "section"
+  const layer = declaredLayer(entry)
+  if (!layer) return false
+  return layer !== "template"
 }
 
 export function layerGroupError(entry: LayerSource): string | undefined {
@@ -117,19 +89,4 @@ export function layerGroupError(entry: LayerSource): string | undefined {
     return "Section、Template、Hook、Lib 不带第二层分组。"
   }
   return undefined
-}
-
-export function unclassifiedLayerIssue(entry: LayerSource & { name: string }): { type: "missing-layer" | "stale-unclassified"; description: string } | undefined {
-  if (typeof entry.layer === "string") {
-    if (!unclassifiedCatalogNames.has(entry.name)) return undefined
-    return {
-      type: "stale-unclassified",
-      description: "已经声明 Layer，应从尚未分类名单里删掉。",
-    }
-  }
-  if (unclassifiedCatalogNames.has(entry.name)) return undefined
-  return {
-    type: "missing-layer",
-    description: "新组件必须显式声明 Layer。尚未分类名单里的旧条目仍按旧分类推导。",
-  }
 }

@@ -1345,7 +1345,7 @@ text-style
 - Primitive、Composite component、Widget 再写 `purposeGroup`：`form`、`overlay`、`navigation`、`data`、`layout`、`feedback`。
 - Section、Template、Hook、Lib 不写第二层。
 - 去掉动画之后，只剩已有 Primitive，或者什么都不剩，它是 Effect。去掉动画之后还能独立完成一件事，它是 Widget 或 Composite component。Composite component 增强一个 Primitive 家族；Widget 围绕一项任务。
-- 旧条目还没声明 Layer，名字冻结在 `packages/registry/src/unclassified-catalog.ts`，审计仍按旧分类推导。新组件不在这份名单里，必须显式声明 Layer。声明之后把名字从名单里删掉。
+- 每个条目都要显式声明 Layer。填错第二层时类型检查会报错。
 
 1. **源码**放在 `packages/registry/src/ui/`、`effects/`、`sections/`、`templates/`、`lib/` 或 `hooks/`。registry 依赖只用 `@/components/ui/*`、`@/lib/*`、`@/hooks/*`；同目录组件用 `./组件名`。模板的文案和主题用同目录 `./content`、`./theme`，不要写成会被当成 registry 依赖的 `./theme.css`。源码目录先不按 Layer 搬。
 2. **catalog** 在 `packages/registry/src/catalog.ts` 或对应的 `catalog-batch*.ts` 登记 `name`、`type`、`file`、`target`、`props`，以及上面的 Layer 和第二层分组。多文件条目再写 `files`（页面、文案、主题）。Layer 不进安装 JSON。

@@ -2,23 +2,13 @@ import { expect, test } from "vitest"
 
 import { auditRegistry, type AuditCatalogEntry } from "./audit"
 import { buildRegistry, buildRegistryItem } from "./registry-item"
-import { unclassifiedCatalogNames } from "./unclassified-catalog"
 
-const listed = [...unclassifiedCatalogNames]
-const fixture = listed[0]
-const fixtureInput = listed[1]
-const fixtureCard = listed[2]
-const fixtureHook = listed[3]
-const fixtureGrid = listed[4]
-if (
-  fixture === undefined ||
-  fixtureInput === undefined ||
-  fixtureCard === undefined ||
-  fixtureHook === undefined ||
-  fixtureGrid === undefined
-) {
-  throw new Error("尚未分类名单不够审计夹具使用。")
-}
+/** 夹具名字。审计只看传入的 catalog，不读真实条目。 */
+const fixture = "agent-intro-sequence"
+const fixtureInput = "analog-stick"
+const fixtureCard = "autosave-ratchet"
+const fixtureHook = "blur-glide-menu"
+const fixtureGrid = "card-toss-stack"
 
 const source = `interface ButtonProps {
   className?: string
@@ -560,7 +550,8 @@ test("Effect 用了词汇表里的词且类型、控件、分组一致时不报�
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props: [
             { name: "speed", type: "number", control: { kind: "range", value: 1, min: 0, max: 2 } },
             {
@@ -580,7 +571,8 @@ test("词汇表里的词类型、控件种类或分组不一致时报告", () =>
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props: [
             { name: "speed", type: "string", control: { kind: "boolean", value: true, group: "外观" } },
           ],
@@ -610,7 +602,8 @@ test("词汇表取值的可选项超出允许值时报告，子集不报告", ()
   const issues = auditRegistry(
     consistent([
       entry({
-        category: "scroll",
+        layer: "effect",
+        effectCategory: "scroll",
         props: [
           {
             name: "direction",
@@ -640,7 +633,8 @@ test("词汇表 prop 的起始值越界仍按控件范围报告", () => {
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props: [{ name: "speed", type: "number", control: { kind: "range", value: 3, min: 0, max: 2 } }],
         }),
       ]),
@@ -654,7 +648,8 @@ test("非空豁免跳过词汇表检查，空豁免仍报告", () => {
   const exempt = auditRegistry(
     consistent([
       entry({
-        category: "text",
+        layer: "effect",
+        effectCategory: "text",
         props: [{ name: "colors", type: "string", vocabularyExemption: "历史 prop 是 Tailwind 类字符串。" }],
       }),
     ]),
@@ -664,7 +659,8 @@ test("非空豁免跳过词汇表检查，空豁免仍报告", () => {
   const blank = auditRegistry(
     consistent([
       entry({
-        category: "text",
+        layer: "effect",
+        effectCategory: "text",
         props: [{ name: "colors", type: "string", vocabularyExemption: "  " }],
       }),
     ]),
@@ -683,7 +679,8 @@ test("文字排版词使用像素、字重、字距和对齐", () => {
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props: [
             { name: "fontSize", type: "number", control: { kind: "range", value: 48, min: 16, max: 96, step: 1 } },
             { name: "fontWeight", type: "number", control: { kind: "range", value: 600, min: 100, max: 900, step: 100 } },
@@ -707,7 +704,8 @@ test("文字排版词使用像素、字重、字距和对齐", () => {
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props: [{ name: "fontSize", type: "string", control: { kind: "text", value: "大" } }],
         }),
       ]),
@@ -735,7 +733,8 @@ test("预设的值必须落在控件范围内", () => {
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props,
           presets: [{ name: "display", label: "大标题", values: { fontSize: 64, align: "center" } }],
         }),
@@ -747,7 +746,8 @@ test("预设的值必须落在控件范围内", () => {
     auditRegistry(
       consistent([
         entry({
-          category: "text",
+          layer: "effect",
+          effectCategory: "text",
           props,
           presets: [{ name: "broken", label: "坏的", values: { fontSize: 200, align: "justify", className: "x" } }],
         }),
@@ -777,7 +777,8 @@ test("基础组件用了同名词也不做词汇表检查", () => {
     auditRegistry(
       consistent([
         entry({
-          category: "ui",
+          layer: "primitive",
+          purposeGroup: "form",
           props: [{ name: "size", type: '"sm" | "md"', control: { kind: "select", value: "sm", options: ["sm", "md"] } }],
         }),
       ]),

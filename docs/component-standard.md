@@ -12,7 +12,7 @@ Effect（`effectCategories` 里的十二个分类）：
 4. 有 jsdom 行为测试。测试要导入组件源码。
 5. 触屏不依赖 hover。
 
-基础组件（`ui`、`utility`、`sections`）只要求有测试，并且 props 写全。不要求 Control，也不要求减弱动效。
+Primitive、Composite component、Widget、Section、Hook、Lib 要有测试，并且 props 写全。不要求 Control，也不要求减弱动效。Template 不要求测试。
 
 ## 加分项
 

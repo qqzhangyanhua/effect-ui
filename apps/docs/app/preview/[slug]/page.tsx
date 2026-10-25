@@ -2,7 +2,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { ComponentType } from "react"
 
-import { getComponent, visibleComponents } from "@effect-ui/registry/catalog"
+import { getComponent, resolveLayer, visibleComponents } from "@effect-ui/registry/catalog"
 import { getDemo } from "@effect-ui/registry/examples/index"
 import { AgencyTemplate } from "@effect-ui/registry/templates/agency/page"
 
@@ -45,7 +45,7 @@ async function PreviewPage({ params }: PreviewPageProps) {
   const Demo = item ? getDemo(item.name) : undefined
   if (!item || !Demo) notFound()
 
-  const Template = item.category === "templates" ? templateComponents[slug] : undefined
+  const Template = resolveLayer(item) === "template" ? templateComponents[slug] : undefined
 
   return (
     <div className="relative min-h-svh">

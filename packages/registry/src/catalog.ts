@@ -74,33 +74,6 @@ import { textControls, textPresets } from "./text-controls"
 
 export { resolveLayer }
 
-export type ComponentCategory =
-  | "ui"
-  | "text"
-  | "backgrounds"
-  | "cursor"
-  | "showcase"
-  | "decor"
-  | "cards"
-  | "buttons"
-  | "micro"
-  | "loaders"
-  | "scroll"
-  | "navigation"
-  | "page"
-  | "sections"
-  | "templates"
-  | "ai"
-  | "utility"
-
-export type UiSubgroup =
-  | "form"
-  | "overlay"
-  | "navigation"
-  | "data"
-  | "layout"
-  | "feedback"
-
 export type SourceLibrary =
   | "shadcn/ui"
   | "Magic UI"
@@ -207,8 +180,6 @@ interface ComponentMetaBase {
   batch: number
   title: string
   description: string
-  category: ComponentCategory
-  subgroup?: UiSubgroup
   source: SourceLibrary
   type: "registry:ui" | "registry:lib" | "registry:hook" | "registry:block"
   files?: readonly { file: string; type: string; target: string }[]
@@ -223,8 +194,7 @@ interface ComponentMetaBase {
 
 export type ComponentMeta = ComponentMetaBase & LayerFields
 
-export const categoryLabels: Record<ComponentCategory, string> = {
-  ui: "基础组件",
+export const effectCategoryLabels: Record<EffectCategoryName, string> = {
   text: "文字动画",
   backgrounds: "背景",
   cursor: "光标 / 悬停",
@@ -237,33 +207,9 @@ export const categoryLabels: Record<ComponentCategory, string> = {
   scroll: "滚动显现",
   navigation: "导航",
   page: "页面 / 转场",
-  sections: "落地页区块",
-  templates: "整页模板",
-  ai: "AI 对话",
-  utility: "实用组件",
 }
 
-export const categoryOrder: ComponentCategory[] = [
-  "ui",
-  "text",
-  "backgrounds",
-  "cursor",
-  "showcase",
-  "decor",
-  "cards",
-  "buttons",
-  "micro",
-  "loaders",
-  "scroll",
-  "navigation",
-  "page",
-  "sections",
-  "templates",
-  "ai",
-  "utility",
-]
-
-export const subgroupLabels: Record<UiSubgroup, string> = {
+export const purposeGroupLabels: Record<PurposeGroup, string> = {
   form: "表单",
   overlay: "浮层",
   navigation: "导航",
@@ -271,15 +217,6 @@ export const subgroupLabels: Record<UiSubgroup, string> = {
   layout: "布局",
   feedback: "反馈",
 }
-
-export const subgroupOrder: UiSubgroup[] = [
-  "form",
-  "overlay",
-  "navigation",
-  "data",
-  "layout",
-  "feedback",
-]
 
 const layerLabels: Record<Layer, string> = {
   primitive: "Primitive",
@@ -297,9 +234,7 @@ function isNamed<T extends string>(value: string | undefined, names: readonly T[
 }
 
 function effectCategoryOf(item: ComponentMeta): EffectCategoryName | undefined {
-  if (isNamed(item.effectCategory, effectCategoryNames)) return item.effectCategory
-  if (isNamed(item.category, effectCategoryNames)) return item.category
-  return undefined
+  return isNamed(item.effectCategory, effectCategoryNames) ? item.effectCategory : undefined
 }
 
 function purposeGroupOf(item: ComponentMeta): PurposeGroup | undefined {
@@ -313,7 +248,7 @@ export function layerBadges(item: ComponentMeta): readonly string[] {
   const badges = [layerLabels[layer]]
   if (layer !== "effect") return badges
   const category = effectCategoryOf(item)
-  return category ? [...badges, categoryLabels[category]] : badges
+  return category ? [...badges, effectCategoryLabels[category]] : badges
 }
 
 export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
@@ -399,7 +334,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Utils",
     description: "clsx + tailwind-merge 的 cn 辅助函数。",
-    category: "ui",
     layer: "lib",
     source: "shadcn/ui",
     type: "registry:lib",
@@ -412,7 +346,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Text Style",
     description: "把字号、字重、字距和对齐写成内联样式。不传则不写样式。",
-    category: "ui",
     layer: "lib",
     source: "original",
     type: "registry:lib",
@@ -431,7 +364,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Use Mobile",
     description: "视口宽度小于 768px 时返回 true。",
-    category: "ui",
     layer: "hook",
     source: "shadcn/ui",
     type: "registry:hook",
@@ -444,7 +376,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Use Prefers Reduced Motion",
     description: "系统开启减弱动态效果时返回 true，并在偏好变化时更新。",
-    category: "ui",
     layer: "hook",
     source: "original",
     type: "registry:hook",
@@ -457,7 +388,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Use Animation Active",
     description: "目标处于视口内，并且标签页可见时返回 true。",
-    category: "ui",
     layer: "hook",
     source: "original",
     type: "registry:hook",
@@ -470,8 +400,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Button",
     description: "支持多种变体与尺寸的按钮。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -489,8 +417,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Input",
     description: "文本输入框。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -504,8 +430,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Textarea",
     description: "多行文本输入。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -519,8 +443,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Label",
     description: "表单标签。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -534,8 +456,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Card",
     description: "通用卡片容器。",
-    category: "ui",
-    subgroup: "layout",
     layer: "primitive",
     purposeGroup: "layout",
     source: "shadcn/ui",
@@ -549,8 +469,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Badge",
     description: "状态与分类徽标。",
-    category: "ui",
-    subgroup: "data",
     layer: "primitive",
     purposeGroup: "data",
     source: "shadcn/ui",
@@ -567,8 +485,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Separator",
     description: "水平或垂直分隔线。",
-    category: "ui",
-    subgroup: "layout",
     layer: "primitive",
     purposeGroup: "layout",
     source: "shadcn/ui",
@@ -585,8 +501,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Dialog",
     description: "模态对话框。",
-    category: "ui",
-    subgroup: "overlay",
     layer: "primitive",
     purposeGroup: "overlay",
     source: "shadcn/ui",
@@ -603,8 +517,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Sheet",
     description: "从边缘滑出的面板。",
-    category: "ui",
-    subgroup: "overlay",
     layer: "primitive",
     purposeGroup: "overlay",
     source: "shadcn/ui",
@@ -618,8 +530,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Dropdown Menu",
     description: "下拉菜单。",
-    category: "ui",
-    subgroup: "overlay",
     layer: "primitive",
     purposeGroup: "overlay",
     source: "shadcn/ui",
@@ -638,8 +548,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Tabs",
     description: "选项卡切换。",
-    category: "ui",
-    subgroup: "navigation",
     layer: "primitive",
     purposeGroup: "navigation",
     source: "shadcn/ui",
@@ -653,8 +561,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Tooltip",
     description: "悬停提示。",
-    category: "ui",
-    subgroup: "overlay",
     layer: "primitive",
     purposeGroup: "overlay",
     source: "shadcn/ui",
@@ -672,8 +578,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Toast",
     description: "基于 Sonner 的轻提示。",
-    category: "ui",
-    subgroup: "feedback",
     layer: "primitive",
     purposeGroup: "feedback",
     source: "shadcn/ui",
@@ -687,8 +591,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Switch",
     description: "开关控件。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -702,8 +604,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Checkbox",
     description: "复选框。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -717,8 +617,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Select",
     description: "选择器。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -736,8 +634,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Accordion",
     description: "手风琴折叠面板。",
-    category: "ui",
-    subgroup: "layout",
     layer: "primitive",
     purposeGroup: "layout",
     source: "shadcn/ui",
@@ -751,8 +647,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Popover",
     description: "弹出层。",
-    category: "ui",
-    subgroup: "overlay",
     layer: "primitive",
     purposeGroup: "overlay",
     source: "shadcn/ui",
@@ -770,8 +664,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Avatar",
     description: "头像。",
-    category: "ui",
-    subgroup: "data",
     layer: "primitive",
     purposeGroup: "data",
     source: "shadcn/ui",
@@ -785,8 +677,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Slider",
     description: "滑块。",
-    category: "ui",
-    subgroup: "form",
     layer: "primitive",
     purposeGroup: "form",
     source: "shadcn/ui",
@@ -804,7 +694,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Typing Text",
     description: "打字机文字动画。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Magic UI",
@@ -901,7 +790,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Gradient Text",
     description: "流动渐变文字。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Magic UI",
@@ -1011,7 +899,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Shimmer Text",
     description: "金属光泽扫过文字。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Magic UI",
@@ -1074,7 +961,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Aurora Text",
     description: "极光色流动文字。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Magic UI",
@@ -1108,7 +994,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Split Text",
     description: "按字符或单词错落入场。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Motion Primitives",
@@ -1198,7 +1083,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Highlight Text",
     description: "进入视口时绘制高亮底纹。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Animata",
@@ -1238,7 +1122,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Count Up",
     description: "数字滚动计数。",
-    category: "text",
     layer: "effect",
     effectCategory: "text",
     source: "Magic UI",
@@ -1298,7 +1181,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Particles",
     description: "跟随指针的粒子背景。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "Magic UI",
@@ -1341,7 +1223,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Grid Pattern",
     description: "网格背景图案。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "Magic UI",
@@ -1391,7 +1272,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Dot Pattern",
     description: "圆点背景图案。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "Magic UI",
@@ -1441,7 +1321,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Meteors",
     description: "流星雨背景。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "Magic UI",
@@ -1483,7 +1362,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Aurora Background",
     description: "极光模糊渐变背景。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "original",
@@ -1532,7 +1410,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Ripples",
     description: "同心圆扩散背景。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "Magic UI",
@@ -1574,7 +1451,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Spotlight Card",
     description: "跟随指针的聚光卡片。",
-    category: "cursor",
     layer: "effect",
     effectCategory: "cursor",
     source: "Magic UI",
@@ -1614,7 +1490,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Magnetic",
     description: "磁性吸附跟随指针。",
-    category: "cursor",
     layer: "effect",
     effectCategory: "cursor",
     source: "Motion Primitives",
@@ -1659,7 +1534,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Cursor Follow",
     description: "区域内的柔光指针跟随。",
-    category: "cursor",
     layer: "effect",
     effectCategory: "cursor",
     source: "original",
@@ -1699,7 +1573,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Tilt",
     description: "指针驱动的 3D 倾斜。",
-    category: "cursor",
     layer: "effect",
     effectCategory: "cursor",
     source: "Motion Primitives",
@@ -1744,7 +1617,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Glow Hover",
     description: "悬停时外发光上浮。",
-    category: "cursor",
     layer: "effect",
     effectCategory: "cursor",
     source: "Cult UI",
@@ -1783,7 +1655,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Flip Card",
     description: "悬停翻转卡片。",
-    category: "cards",
     layer: "effect",
     effectCategory: "cards",
     source: "Animata",
@@ -1811,7 +1682,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Glass Card",
     description: "毛玻璃卡片。",
-    category: "cards",
     layer: "effect",
     effectCategory: "cards",
     source: "original",
@@ -1844,7 +1714,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Shine Border",
     description: "旋转高光描边卡片。",
-    category: "cards",
     layer: "effect",
     effectCategory: "cards",
     source: "Magic UI",
@@ -1890,7 +1759,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Hover Lift",
     description: "悬停上浮阴影卡片。",
-    category: "cards",
     layer: "effect",
     effectCategory: "cards",
     source: "Cult UI",
@@ -1923,7 +1791,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Ripple Button",
     description: "点击波纹按钮。",
-    category: "buttons",
     layer: "effect",
     effectCategory: "buttons",
     source: "Animata",
@@ -1961,7 +1828,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Shimmer Button",
     description: "斜向光泽扫过按钮。",
-    category: "buttons",
     layer: "effect",
     effectCategory: "buttons",
     source: "Magic UI",
@@ -1993,7 +1859,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Pulse Button",
     description: "向外脉冲的按钮。",
-    category: "buttons",
     layer: "effect",
     effectCategory: "buttons",
     source: "Magic UI",
@@ -2026,7 +1891,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Neon Button",
     description: "霓虹描边发光按钮。",
-    category: "buttons",
     layer: "effect",
     effectCategory: "buttons",
     source: "original",
@@ -2059,7 +1923,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Spinner",
     description: "旋转加载指示。",
-    category: "loaders",
     layer: "effect",
     effectCategory: "loaders",
     source: "original",
@@ -2098,7 +1961,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Orbit Loader",
     description: "轨道旋转加载。",
-    category: "loaders",
     layer: "effect",
     effectCategory: "loaders",
     source: "Animata",
@@ -2150,7 +2012,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Dots Loader",
     description: "三点弹跳加载。",
-    category: "loaders",
     layer: "effect",
     effectCategory: "loaders",
     source: "Animata",
@@ -2207,7 +2068,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Progress Ring",
     description: "环形进度。",
-    category: "loaders",
     layer: "effect",
     effectCategory: "loaders",
     source: "Magic UI",
@@ -2259,7 +2119,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Reveal",
     description: "滚动进入视口时按变体显现。",
-    category: "scroll",
     layer: "effect",
     effectCategory: "scroll",
     source: "original",
@@ -2333,7 +2192,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Fade In",
     description: "进入视口时淡入上移。",
-    category: "scroll",
     layer: "effect",
     effectCategory: "scroll",
     source: "Motion Primitives",
@@ -2379,7 +2237,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Slide In",
     description: "从指定方向滑入。",
-    category: "scroll",
     layer: "effect",
     effectCategory: "scroll",
     source: "Motion Primitives",
@@ -2425,7 +2282,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Stagger List",
     description: "列表子项错落入场。",
-    category: "scroll",
     layer: "effect",
     effectCategory: "scroll",
     source: "Motion Primitives",
@@ -2470,7 +2326,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Parallax",
     description: "滚动视差位移。",
-    category: "scroll",
     layer: "effect",
     effectCategory: "scroll",
     source: "original",
@@ -2515,7 +2370,6 @@ export const components: ComponentMeta[] = [
     batch: 1,
     title: "Blur Fade",
     description: "模糊消散后显现。",
-    category: "scroll",
     layer: "effect",
     effectCategory: "scroll",
     source: "Magic UI",
@@ -2622,38 +2476,6 @@ export const components: ComponentMeta[] = [
 
 export function getComponent(name: string): ComponentMeta | undefined {
   return components.find((item) => item.name === name)
-}
-
-export function uiSubgroupsOf(items: readonly ComponentMeta[]) {
-  return subgroupOrder
-    .map((subgroup) => ({
-      subgroup,
-      label: subgroupLabels[subgroup],
-      items: items.filter((item) => item.subgroup === subgroup),
-    }))
-    .filter((section) => section.items.length > 0)
-}
-
-function uiItemsInSubgroupOrder(items: readonly ComponentMeta[]) {
-  return [...items].sort((a, b) => {
-    const aRank = a.subgroup ? subgroupOrder.indexOf(a.subgroup) : subgroupOrder.length
-    const bRank = b.subgroup ? subgroupOrder.indexOf(b.subgroup) : subgroupOrder.length
-    return aRank - bRank
-  })
-}
-
-export function getComponentsByCategory() {
-  return categoryOrder.map((category) => {
-    const items = components.filter(
-      (item) =>
-        item.category === category && (item.type === "registry:ui" || item.type === "registry:block"),
-    )
-    return {
-      category,
-      label: categoryLabels[category],
-      items: category === "ui" ? uiItemsInSubgroupOrder(items) : items,
-    }
-  })
 }
 
 export const visibleComponents = components.filter(
@@ -2860,7 +2682,7 @@ const controlClusterByName = new Map<string, ComponentCluster>(
   ),
 )
 
-/** 文档导航按这个归组，不改 category。 */
+/** 文档导航按名字归组，不改 Layer。 */
 export function componentCluster(name: string): ComponentCluster | undefined {
   // 拉绳开关、下压和换字的名字不带 button，文档导航仍归到按钮组。
   if (
@@ -2958,14 +2780,14 @@ export function getCatalogGroups(): CatalogGroup[] {
     componentItems,
     purposeGroups,
     (item) => purposeGroupOf(item),
-    (key) => subgroupLabels[key as UiSubgroup],
+    (key) => purposeGroupLabels[key as PurposeGroup],
     true,
   )
   const effectSections = bucketSections(
     effectItems,
     effectCategoryNames,
     (item) => effectCategoryOf(item),
-    (key) => categoryLabels[key as ComponentCategory],
+    (key) => effectCategoryLabels[key as EffectCategoryName],
     true,
   )
   const topicSections: CatalogSection[] = [

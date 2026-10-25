@@ -7,6 +7,7 @@ import {
   getCatalogGroups,
   getComponent,
   layerBadges,
+  resolveLayer,
   sourceLibraryUrls,
   visibleComponents,
 } from "@effect-ui/registry/catalog"
@@ -99,7 +100,7 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
   const index = ordered.findIndex((entry) => entry.name === item.name)
   const previous = index > 0 ? ordered[index - 1] : undefined
   const next = index >= 0 ? ordered[index + 1] : undefined
-  const template = item.category === "templates"
+  const template = resolveLayer(item) === "template"
   const [sourceHtml, installHtml, usageHtml] = await Promise.all([
     Promise.all(sources.map((file) => highlightCode(file.code, languageForFile(file.file)))),
     highlightCode(install, "bash"),

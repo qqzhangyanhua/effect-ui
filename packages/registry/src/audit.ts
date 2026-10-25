@@ -10,7 +10,7 @@ import {
   testedSourceFiles,
   type AuditExemption,
 } from "./audit-coverage"
-import { layerGroupError, owesEffectChecks, unclassifiedLayerIssue } from "./catalog-layer"
+import { layerGroupError, owesEffectChecks } from "./catalog-layer"
 import { deriveDependencies } from "./dependencies"
 import {
   catalogDemoNames,
@@ -51,8 +51,6 @@ export type AuditIssueType =
   | "unknown-exemption"
   | "closed-batch-exemption"
   | "invalid-exemption"
-  | "missing-layer"
-  | "stale-unclassified"
   | "layer-mismatch"
   | "missing-batch"
 
@@ -64,7 +62,6 @@ export interface AuditIssue {
 
 export interface AuditCatalogEntry extends RegistryCatalogEntry {
   props: readonly unknown[]
-  category?: string
   presets?: readonly unknown[]
   layer?: string
   effectCategory?: string
@@ -580,14 +577,6 @@ export function auditRegistry(input: AuditInput): AuditIssue[] {
         name: entry.name,
         type: "layer-mismatch",
         description: groupError,
-      })
-    }
-    const unclassified = unclassifiedLayerIssue(entry)
-    if (unclassified) {
-      issues.push({
-        name: entry.name,
-        type: unclassified.type,
-        description: unclassified.description,
       })
     }
     if (hasDocsPage(entry) && entry.props.length === 0) {

@@ -14,7 +14,6 @@ export const batch5Backgrounds: ComponentMeta[] = [
     batch: 5,
     title: "Halftone",
     description: "半调网点，随鼠标放大。",
-    category: "backgrounds",
     layer: "effect",
     effectCategory: "backgrounds",
     source: "Kokonut UI",

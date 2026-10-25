@@ -9,7 +9,6 @@ export const batch47Components: ComponentMeta[] = [
     title: "Tag Jar",
     description:
       "原创实现。标签从罐口落下，在玻璃罐里堆成一叠。拖动罐子或按方向键会把它们摇散。减弱动效时不启动 matter-js，标签直接叠在罐底。没有新增依赖。",
-    category: "decor",
     layer: "effect",
     effectCategory: "decor",
     source: "original",
@@ -49,7 +48,6 @@ export const batch47Components: ComponentMeta[] = [
     title: "Coin Jar",
     description:
       "原创实现。点击或按向下键，把打赏硬币投入罐中，硬币落下后叠成一柱。减弱动效时不启动 matter-js，投入的硬币直接出现在罐底。没有新增依赖。",
-    category: "decor",
     layer: "effect",
     effectCategory: "decor",
     source: "original",
@@ -89,7 +87,6 @@ export const batch47Components: ComponentMeta[] = [
     title: "Ball Pit",
     description:
       "原创实现。头像球待在球池里，指针靠近或按方向键会把它们拨开。减弱动效时不启动 matter-js，球保持静止，拨动只改变位置。没有新增依赖。",
-    category: "decor",
     layer: "effect",
     effectCategory: "decor",
     source: "original",

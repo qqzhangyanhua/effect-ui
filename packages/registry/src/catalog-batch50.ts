@@ -9,7 +9,8 @@ export const batch50Components: ComponentMeta[] = [
     title: "Upload Orbit",
     description:
       "原创实现。上传时文件沿圆环公转，完成后收成一行。回车、空格或指针可以开始并完成。减弱动效时文件直接待在完成的一行，不再绕圈。没有新增依赖，也不使用 matter-js。",
-    category: "loaders",
+    layer: "effect",
+    effectCategory: "loaders",
     source: "original",
     type: "registry:ui",
     file: "effects/upload-orbit.tsx",
@@ -41,7 +42,6 @@ export const batch50Components: ComponentMeta[] = [
     title: "Empty State Scene",
     description:
       "原创实现。空状态插画里的零件自己上下漂，指针或方向键可以把它们拨开，松手后慢慢漂回去。减弱动效时插画静止，拨动只改位置。没有新增依赖，也不使用 matter-js。",
-    category: "decor",
     layer: "effect",
     effectCategory: "decor",
     source: "original",
@@ -75,7 +75,8 @@ export const batch50Components: ComponentMeta[] = [
     title: "Reaction Tray",
     description:
       "原创实现。选一个表情后它先弹起，再落回自己的计数。回车、空格或指针都可以选。减弱动效时不弹出，计数立刻加一。没有新增依赖，也不使用 matter-js。",
-    category: "micro",
+    layer: "effect",
+    effectCategory: "micro",
     source: "original",
     type: "registry:ui",
     file: "effects/reaction-tray.tsx",

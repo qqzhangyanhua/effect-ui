@@ -1,0 +1,1070 @@
+apps/docs/public/r/dome-gallery.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/effects/neon-button.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+  s_7a040398d54d62::t_5a7fb17dd21a47 5,20-21,24,42
+packages/registry/src/effects/cursor-follow.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/entrance-presets.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/wavefield-neon.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/shared-layout-expand.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/gravity-image-trail.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/empty-state-scene.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/ui/anchor-popover.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/cookie-consent.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+CONTEXT.md
+  s_e0dbd35a25dc0d::t_121798a04b71ac 54
+apps/docs/public/r/coupon-input.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/particle-hourglass.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/intro-preloader.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/liquid-morph-slideshow.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/folder-float.tsx
+  s_7a040398d54d62::t_a7267178555fd0 15
+packages/registry/src/effects/click-spark.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/apple-cards-carousel.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/catalog-effect-buttons.ts
+  s_7a040398d54d62::t_a7267178555fd0 13-29,31-35,37-60,62-66,68-108
+packages/registry/src/effects/coin-jar.tsx
+  s_7a040398d54d62::t_a7267178555fd0 9
+packages/registry/src/effects/wave-background.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+apps/docs/public/r/text-generate.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/effects/perspective-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/showcase-vocabulary.test.tsx
+  s_7a040398d54d62::t_2dfec969685f68 108,113,118
+packages/registry/src/sections/help-center-index.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/scroll-timeline-reveal.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/reaction-tray.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/infinite-canvas-gallery.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/json-viewer.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/true-focus.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/lib/cn.ts
+  s_7a040398d54d62::t_a7267178555fd0 1-6
+packages/registry/src/ui/select-plus.tsx
+  s_3be2966c110520::t_503c7fdaf08321 4,61,63-68,73,87-88,93-116,128,130,139,142-152,157,166-173,175-177,180-181,186-187,191-198,201-205,207-211,213-214,219,221-246,252-289,291-314,317-318,323-333,336-337,339-340,342-346,348,350-351,354-367,369-384,386-393,398-401,403-404,406-408,410-412,414-417,419-438,440-451,453-467,469-479,481-489,492-493,495
+  s_3be2966c110520::t_66790d488d8df0 349
+  s_3be2966c110520::t_884f331f524975 368,385,394,402,413,468
+  s_7a040398d54d62::t_a7267178555fd0 6
+  s_3be2966c110520::t_8d924feb18fbe9 319-322
+  s_3be2966c110520::t_2e9e248f84e930 215-218,220,290
+packages/registry/src/effects/card-toss-stack.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/container-scroll-3d.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/hover-overlay-reveal.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/aurora-background.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/catalog-effect-loaders.ts
+  s_7a040398d54d62::t_a7267178555fd0 13-220
+packages/registry/src/effects/silk.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/text-generate.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/audit-exemptions.ts
+  s_7a040398d54d62::t_445a1a74122da1 7,25-31
+  s_e0dbd35a25dc0d::t_79010fdf1c6381 19
+packages/registry/src/ui/radio-plus.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+  s_7a040398d54d62::t_56e562b85eb8d4 51-72,75-78,94-96,100-102,104,107,110-111,116
+apps/docs/public/r/logo-marquee.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/physics-dropzone.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/wave-background.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/neon-button.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/fuse-button.json
+  s_e0dbd35a25dc0d::t_79010fdf1c6381 6
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/section-dotted-feature-tabs.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/particle-hourglass.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/cta-ribbon-swoosh.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/thumbnail-flow-path.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/catalog-composite-feedback.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+packages/registry/src/effects/spring-drawer.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/effects/shortcuts-dialog.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+  s_d39b9aef155ff8::t_53f7a6c104d6c9 88,103,105-147,149-150
+apps/docs/public/r/perspective-card.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/spring-check.json
+  s_7a040398d54d62::t_70959ee6a55548 12-13,20
+apps/docs/public/r/fuzzy-text.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/components/family-gallery.tsx
+  s_7da099b7e730e5::t_7ce8ee1aa5db0e 115-118,120
+apps/docs/public/r/select-plus.json
+  s_7a040398d54d62::t_70959ee6a55548 6,11,18
+packages/registry/src/effects/svg-mask-scroll-transition.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/cursor-trail.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+packages/registry/src/effects/light-rays.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/pixel-transition.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/lightning.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/app/docs/page.tsx
+  s_7da099b7e730e5::t_a2f0697d9b4fa6 15-17
+apps/docs/public/r/diff-viewer.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/sea-waves-background.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/rubber-band-drag.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+docs/adr/0002-composite-components-layer-on-primitives.md
+  s_e0dbd35a25dc0d::t_0f9f6364e31b14 7
+README.md
+  s_458deb6113869a::t_c17131d6544266 882
+  s_e0dbd35a25dc0d::t_71eeae2e2103ac 989
+  s_7a040398d54d62::t_fdd663b1896e0e 859,861
+  s_91e68c9c424e21::t_15a0b2b8bbd70e 69,71,634,1084
+  s_e0dbd35a25dc0d::t_0ec3a11238b255 505,518,539,566,715,729,747,784,802,821
+  s_7a040398d54d62::t_8daaa4cbb7113c 75
+packages/registry/src/sections/integrations-directory.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/text-pressure.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/lightning.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/catalog-primitive-overlay.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+apps/docs/public/r/image-tube-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 12,14,21
+apps/docs/public/r/ball-pit.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/components/control-panel.tsx
+  s_e0dbd35a25dc0d::t_d0676938d49725 23
+  s_7da099b7e730e5::t_d723f3734f47d7 3,27-32,129,132,137,141,143-144,146,217-219,260-265,284,287-290,293-309,327-342,368,373
+  s_e0dbd35a25dc0d::t_b4e42543e65c21 4-5,406-421
+  s_e0dbd35a25dc0d::t_79f62714fbc304 422-423
+packages/registry/src/effects/rubber-band-drag.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/letter-glitch-wall.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/beams-collision.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/logo-marquee.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/card-swap.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/ui/swipe-row.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/light-rays.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/audit.issue-75.test.ts
+  s_458deb6113869a::t_bebebbcbc85d8b 42
+packages/registry/src/catalog-effect-decor.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,16-215
+apps/docs/public/r/sticky-note-board.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/sea-waves-background.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/catalog-composite-overlay.ts
+  s_7a040398d54d62::t_a7267178555fd0 14-29
+apps/docs/public/r/uptime-bars.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/ui/keycap-3d.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/sections/section-stats-cornered.tsx
+  s_d39b9aef155ff8::t_e5d34bb8917ecc 46
+  s_7a040398d54d62::t_a7267178555fd0 4
+packages/registry/src/ui/password-strength.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+  s_7a040398d54d62::t_1891ddc82aa687 31-32
+packages/registry/src/ui/spring-check.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+apps/docs/public/r/timezone-clock.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/scroll-parallax-layers.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/entrance-presets.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/curved-loop.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+  s_d39b9aef155ff8::t_00ad7a94777eb0 32,37-39,66-71,74-87
+apps/docs/components/home-showcase.tsx
+  s_7da099b7e730e5::t_cb9917cf5f8ba4 91,102,113
+  s_7da099b7e730e5::t_1be6ad0e53d6bf 126,145,147,166,172,188,190,213-218
+packages/registry/src/effects/card-beam-scanner.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/hero-product-mockup.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/wobble-line-cursor.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/catalog-composite-data.ts
+  s_7a040398d54d62::t_a7267178555fd0 14-64
+apps/docs/app/docs/[slug]/page.tsx
+  s_7da099b7e730e5::t_5800f829791d7f 120-127,129-131,134-137,139
+packages/registry/src/effects/globe-sphere.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+packages/registry/src/effects/galaxy-spiral.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/loom-threads-marquee.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/sections/hero-parallax-wall.tsx
+  s_d39b9aef155ff8::t_f815d619d4ff05 66-72,74
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/link-preview.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/liquid-glass-tabbar.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/gooey-button.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+  s_7a040398d54d62::t_5ee80ab591dd7d 7,23,53-54,56,60-61
+packages/registry/src/effects/upload-orbit.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/feedback-widget.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/catalog-effect-cards.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,27-42,44-48,50-782
+apps/docs/public/r/feedback-widget.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/sections/telescope-zoom-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/keyhole-scroll-reveal.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/gantt-timeline.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/magnet-chips.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/shuffle-grid-hero.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/hyperspeed.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+apps/docs/public/r/section-stats-cornered.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/dome-gallery.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+apps/docs/public/r/active-sessions-list.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/status-page.json
+  s_7a040398d54d62::t_70959ee6a55548 9,12,19
+packages/registry/src/effects/card-swap.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/click-spark.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/mesh-glow-bg.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+packages/registry/src/effects/shared-layout-expand.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/beams-collision.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/evervault-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/text-rotate.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/effects/batch22-practical.test.tsx
+  s_7a040398d54d62::t_b0d642e6141ad5 13
+packages/registry/src/catalog-order.ts
+  s_7a040398d54d62::t_a7267178555fd0 3-196
+packages/registry/src/effects/thumbnail-flow-path.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/footer-giant-wordmark.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/depth-fog-gallery.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/singularity.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/data-tunnel.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/curved-scrollbar.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+apps/docs/public/r/curved-loop.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/lattice-loader.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/svg-mask-scroll-transition.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/tsconfig.json
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/section-logo-cloud.tsx
+  s_7a040398d54d62::t_a7267178555fd0 1
+packages/registry/src/audit.repo.test.ts
+  s_7a040398d54d62::t_a7267178555fd0 80
+apps/docs/lib/usage.test.ts
+  s_7a040398d54d62::t_94de3a52b28e3e 9,11-12,17,21-25,31-48
+apps/docs/app/layout.tsx
+  s_7da099b7e730e5::t_a5ceb8f887d907 42
+packages/registry/src/sections/hero-inline-mascot.tsx
+  s_7a040398d54d62::t_a7267178555fd0 4
+packages/registry/src/effects/batch17-practical.test.tsx
+  s_e0dbd35a25dc0d::t_ad094696a3e43f 8
+vitest.config.mts
+  s_7a040398d54d62::t_a7267178555fd0 43-44
+apps/docs/components/component-tabs.tsx
+  s_d39b9aef155ff8::t_f065b2452e5b56 5,20-127,141,144,146-160,162-164
+packages/registry/src/catalog-widget-navigation.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+packages/registry/src/ui/tree-view.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/scroll-svg-graph.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+  s_d39b9aef155ff8::t_d5881dcf0b5a65 96
+apps/docs/public/r/invoice-preview.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/catalog-hook.ts
+  s_7a040398d54d62::t_a7267178555fd0 6-71
+packages/registry/src/effects/hyperspeed.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/split-flap-text.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+apps/docs/public/r/tracing-beam.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/radio-plus.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/tag-jar.tsx
+  s_7a040398d54d62::t_a7267178555fd0 9
+apps/docs/components/family-gallery.test.tsx
+  s_7a040398d54d62::t_ea3a7f0f4b428f 50,58,60
+apps/docs/public/r/currency-input.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/aurora-background.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+packages/registry/src/ui/fuse-button.tsx
+  s_7a040398d54d62::t_556ac0a2ed8c22 8,67,72,127
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/sections/hero-shader.tsx
+  s_7a040398d54d62::t_a7267178555fd0 10
+  s_d39b9aef155ff8::t_e5303ecc77fbb7 43-45,73,77-85,88
+packages/registry/src/effects/kpi-sparkline-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+  s_d39b9aef155ff8::t_743d81e9e2a2b4 68
+docs/adr/0004-composites-do-not-bind-to-a-form-library.md
+  s_e0dbd35a25dc0d::t_fbf386c61fba3d 7,15
+packages/registry/src/effects/reveal.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/hologram-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/petal-dissolve-text.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/hero-orbit-nodes.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/singularity.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/folder-float.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/proximity-scale-grid.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/registry.json
+  s_7a040398d54d62::t_70959ee6a55548 7,9-10,18,20,70,72-74,76,80,82,87,89-93,95-96,100,102,107,109-110,113,117,119,124,126-128,130,134,136,141,143-144,147,151,153,158,160-161,163,166-167,171,173,178,180-181,183,186-187,191,193,198,200-201,203,206-208,212,214,219,221-223,225,229,231,236,238-240,242,246,248,253,255-259,261-274,276,280,282,287,289-290,292,295-296,300,302,307,309-313,317,319,324,326-327,329,332-333,337,339,344,346-347,352,356,358,363,365-366,371,375,377,382,384-385,390,394,396,401,403-404,406,409,413,415,420,422-424,426,430,432,437,439-440,442,445,449,451,456,458-459,462,466,468,473,475-476,479,483,485,490,492-493,496,500,502,507,509-510,513-514,518,520,525,527-528,533-534,538,540,545,547-548,553-554,558,560,565,567-568,570,573-575,579,581,586,588-589,592-593,597,599,604,606-610,612-613,617,619,624,626-627,630-631,635,637,642,644-645,648-650,654,656,661,663-664,667-668,672,674,679,681-682,685-686,690,692,697,699-700,703-704,708,710,715,717-718,721-722,726,728,733,735-736,739-740,744,746,751,753-754,757-762,766,768,773,775-776,779-780,784,786,791,793-794,797,801,803,808,810-811,813,816,821,823,828,830-831,836,841,843,848,850-852,854-855,859,861,866,868-869,872,876,878,883,885-886,889,893,895,900,902-906,908-909,913,915,920-923,926-928,932-944,949,951-952,955-956,960,962,967,969-973,975-976,980,982,987,989-990,993,998,1000,1005,1007-1008,1011-1012,1016,1018,1023,1025-1027,1029,1034,1036,1041,1043-1045,1047,1052,1054,1059,1061-1063,1065,1070,1072,1077,1079-1081,1083,1088,1090,1095,1097-1098,1103,1108,1110,1115,1117-1119,1121,1126,1128,1133,1135-1137,1139,1144,1146,1151,1153-1155,1157,1162,1164,1169,1171-1172,1177,1182,1184,1189,1191-1192,1197,1202,1204,1209,1211-1212,1217,1222,1224,1229,1231-1232,1237,1242,1244,1249,1251-1253,1255,1260,1262,1267,1269-1271,1273,1278,1280,1285,1287-1289,1291,1296,1298,1303,1305-1309,1311-1312,1316,1318,1323,1325-1326,1329-1331,1335,1337,1342,1344-1345,1348-1349,1353,1355,1360,1362-1363,1365-1366,1369-1370,1374,1376,1381,1383-1384,1386-1387,1390-1391,1395,1397,1402,1404-1406,1408-1409,1413,1415,1420,1422-1423,1426-1427,1431,1433,1438,1440-1441,1444-1445,1449,1451,1456,1458-1459,1462-1463,1467,1469,1474,1476-1480,1482-1483,1487,1489,1494,1496-1497,1500-1501,1505,1507,1512,1514-1516,1518-1519,1523,1525,1530,1532-1533,1536-1538,1542,1544,1549,1551-1555,1557-1559,1563,1565,1570,1572-1576,1578-1580,1584,1586,1591,1593-1594,1597-1598,1603,1605,1610,1612-1613,1616,1622,1624,1629,1631-1632,1635,1641,1643,1648,1650-1654,1656,1661,1663,1668,1670-1674,1676,1681,1683,1688,1690-1691,1694,1699,1701,1706,1708-1712,1714,1719,1721,1726,1728-1732,1734,1739,1741,1746,1748-1752,1754,1760,1762,1767,1769-1773,1775,1781,1783,1788,1790-1794,1796,1802,1804,1809,1811-1815,1817,1823,1825,1830,1832-1833,1838,1843,1845,1850,1852-1853,1858,1863,1865,1870,1872-1873,1878,1883,1885,1890,1892-1893,1898,1903,1905,1910,1912-1913,1918,1923,1925,1930,1932-1933,1938,1943,1945,1950,1952-1953,1956,1961,1963,1968,1970-1971,1976,1981,1983,1988,1990-1991,1996,2001,2003,2008,2010-2011,2013,2016,2021,2023,2028,2030-2032,2034-2035,2040,2042,2047,2049-2051,2053,2059,2061,2066,2068-2069,2074,2079,2081,2086,2088-2090,2092,2097,2099,2104,2106-2107,2112,2117,2119,2124,2126-2127,2129,2132,2137,2139,2144,2146-2147,2152,2157,2159,2164,2166-2167,2172-2174,2178,2180,2185,2187-2188,2190,2194-2195,2199,2201,2206,2208-2209,2211,2214-2215,2219,2221,2226,2228-2230,2232-2233,2237,2239,2244,2246-2247,2252,2257,2259,2264,2266-2268,2270,2275,2277,2282,2284-2285,2287,2290,2292,2296,2298,2303,2305-2306,2308,2311,2313,2317,2319,2324,2326-2328,2330-2331,2335,2337,2342,2344-2345,2350-2351,2355,2357,2362,2364-2365,2370-2371,2375,2377,2382,2384-2385,2388-2389,2393,2395,2400,2402-2403,2405,2408,2410,2414,2416,2421,2423-2424,2427,2431,2433,2438,2440-2441,2446-2447,2451,2453,2458,2460-2461,2463-2464,2467,2469,2473,2475,2480,2482-2483,2488-2489,2493,2495,2500,2502-2504,2506-2507,2511,2513,2518,2520-2521,2526-2527,2531,2533,2538,2540-2541,2546-2547,2551,2553,2558,2560-2562,2564,2568,2570,2575,2577-2579,2581-2583,2587,2589,2594,2596-2597,2600,2604,2606,2611,2613-2615,2617,2621,2623,2628,2630-2631,2634,2638,2640,2645,2647-2648,2651,2655,2657,2662,2664-2665,2668,2672,2674,2679,2681-2685,2687-2688,2692,2694,2699,2701-2705,2707-2708,2712,2714,2719,2721-2725,2727-2728,2732,2734,2739,2741-2745,2747-2749,2753,2755,2760,2762-2763,2766-2767,2771,2773,2778,2780-2781,2783,2786-2787,2791,2793,2798,2800-2801,2806-2807,2811,2813,2818,2820-2824,2826-2827,2831,2833,2838,2840-2844,2846-2847,2851,2853,2858,2860-2861,2866-2867,2871,2873,2878,2880-2885,2887-2900,2902-2903,2907,2909,2914,2916-2917,2922-2923,2927,2929,2934,2936-2938,2940-2941,2945,2947,2952,2954-2955,2958,2963,2965,2970,2972-2973,2975,2978,2983,2985,2990,2992-2993,2996,3001,3003,3008,3010-3011,3014,3019,3021,3026,3028-3030,3032-3034,3039,3041,3046,3048-3049,3054,3059,3061,3066,3068-3070,3072,3077,3079,3084,3086-3088,3090,3095,3097,3102,3104-3105,3110,3115,3117,3122-3125,3127,3130-3132,3137-3142,3145-3147,3152,3154-3155,3160-3161,3166,3168,3173-3178,3181-3183,3188,3190-3191,3193,3196,3201,3203,3208,3210-3212,3214,3219,3221,3226,3228-3229,3232-3233,3237,3239,3244,3246-3250,3252-3253,3257,3259,3264,3266-3267,3269,3272-3273,3277,3279,3284,3286-3287,3289,3292-3293,3297,3299,3304,3306-3308,3310-3311,3315,3317,3322,3324-3325,3328-3329,3333,3335,3340,3342-3343,3346-3347,3351,3353,3358,3360-3361,3364-3365,3369,3371,3376,3378-3380,3382-3383,3387,3389,3394,3396-3397,3399,3402-3403,3407,3409,3414,3416-3417,3420-3421,3425,3427,3432,3434-3436,3438-3439,3443,3445,3450,3452-3453,3456-3457,3461,3463,3468,3470-3471,3474,3476,3480,3482,3493-3494,3511-3512,3529-3530,3547,3549,3566,3568,3587-3588,3605,3607,3626-3627,3644,3646,3665-3666
+  s_e0dbd35a25dc0d::t_9918a7e8cc8e48 3582
+packages/registry/src/effects/shuffle-grid-hero.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/polaroid-scroll-stack.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/pulse-heart.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/dither-gradient.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/heatmap-calendar.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/placeholder-vanish-input.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/tsconfig.json
+  s_7a040398d54d62::t_a7267178555fd0 11
+packages/registry/src/effects/iridescence.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/noise-gradient.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+packages/registry/src/sections/section-stats-blob.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/ui/infinite-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+apps/docs/public/r/footer-dot-matrix-wordmark.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/keycap-3d.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/catalog-widget-feedback.ts
+  s_7a040398d54d62::t_a7267178555fd0 17-107
+apps/docs/public/r/true-focus.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/ui/slide-to-confirm.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/catalog-composite-form.ts
+  s_7a040398d54d62::t_a7267178555fd0 14-16,18-182
+  s_7a040398d54d62::t_83134207826fa0 17
+packages/registry/src/catalog-effect-page.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,15-38,40-61
+packages/registry/src/catalog-groups.test.ts
+  s_7a040398d54d62::t_2f2ee9ea5fc592 78,87-88,98-99
+  s_91e68c9c424e21::t_42e745709df17f 21,101
+  s_7a040398d54d62::t_cfb57911bfb8f4 124,126-127,129,131-132
+apps/docs/public/r/globe-sphere.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/signature-pad.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+packages/registry/src/effects/fireworks-show.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/macbook-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/glass-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+apps/docs/public/r/sticky-grid-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/components/code-block.tsx
+  s_7da099b7e730e5::t_e4b4b94dac9264 24,27,34
+packages/registry/src/ui/select-plus.test.tsx
+  s_3be2966c110520::t_424680f459889c 4,224,274,278-279
+packages/registry/src/catalog-effect-scroll.ts
+  s_7a040398d54d62::t_a7267178555fd0 15-572
+packages/registry/src/catalog-lib.ts
+  s_7a040398d54d62::t_a7267178555fd0 6,8-9,11,13-14,18-34
+apps/docs/public/r/text-3d-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/effects/avatar-group-tooltip.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/curved-scrollbar.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/scroll-3d-image-rotate.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/signature-pad.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/catalog-primitive-data.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+packages/registry/src/effects/image-tube-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+apps/docs/public/r/hologram-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/magnet-chips.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/wavefield-neon.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/countdown-timer.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/ui/checkbox-plus.tsx
+  s_7a040398d54d62::t_8e3584d8c5e2d9 16,19,55,57-58,61,64-72
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/pointer-tilt-glare.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/proximity-scale-grid.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/active-sessions-list.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+  s_d39b9aef155ff8::t_99e836b197009c 131-143,145-156
+packages/registry/src/sections/hero-ai-prompt.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+  s_d39b9aef155ff8::t_ccc80e09ba983f 57,69,73,82,84,87-92,94-95
+apps/docs/public/r/credit-card-form.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/hover-overlay-reveal.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/checkbox-plus.json
+  s_7a040398d54d62::t_70959ee6a55548 11,18
+apps/docs/public/r/hero-kinetic-text.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/cursor-trail.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/evervault-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/text-rotate.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/effects/vortex-background.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/view-transition-gallery.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/ghost-trail-text.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/hero-ai-prompt.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+CREDITS.md
+  s_458deb6113869a::t_3fe9f987ee4308 62
+  s_458deb6113869a::t_e2c42e41af02a3 63,77
+  s_e0dbd35a25dc0d::t_0ec3a11238b255 22,24,32-34,36-37,60
+  s_e0dbd35a25dc0d::t_eda6baeb89e21f 17,50
+  s_91e68c9c424e21::t_e54679f3edc25b 18
+  s_458deb6113869a::t_dcd478dcb1665f 69
+  s_e0dbd35a25dc0d::t_442ccf905620f8 70
+  s_458deb6113869a::t_f982d66a71c7a6 19
+  s_e0dbd35a25dc0d::t_8cac4a9c01ce49 13,16,66-67,78
+  s_e0dbd35a25dc0d::t_458ddf646d02e8 9
+  s_91e68c9c424e21::t_daf738ceae4910 28,52,55,76
+  s_7a040398d54d62::t_6afbfc5465b519 40
+  s_458deb6113869a::t_8b5ee358b7e1df 42
+  s_458deb6113869a::t_0d8e0a3dbb496a 20
+packages/registry/src/catalog-effect-text.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,15-32,34-146,148-407,409-410,412-418,420-497
+packages/registry/src/effects/tracing-beam.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/api-key-manager.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/hover-lift-glow.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/wobble-line-cursor.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/coin-jar.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/sections/hero-orbit-nodes.tsx
+  s_7a040398d54d62::t_a7267178555fd0 4
+apps/docs/public/r/fireworks-show.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/link-preview.tsx
+  s_7a040398d54d62::t_a7267178555fd0 9
+apps/docs/public/r/lanyard-badge.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/audio-spectrum.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/lanyard-badge.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+apps/docs/public/r/target-cursor.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/text-3d-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/catalog-primitive-navigation.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+apps/docs/public/r/container-scroll-3d.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/sections/depth-fog-gallery.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/pixel-transition.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/hero-text-stagger.json
+  s_e0dbd35a25dc0d::t_9918a7e8cc8e48 6
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/spring-drawer.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/reaction-bar.tsx
+  s_d39b9aef155ff8::t_e1274f817e9def 66
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/ui/currency-input.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+  s_7a040398d54d62::t_fefa22cfa42140 34-35
+apps/docs/public/r/folder-stack.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/catalog-template.ts
+  s_7a040398d54d62::t_a7267178555fd0 21-32,34-49
+packages/registry/src/effects/jelly-button.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+apps/docs/public/r/hero-wave-mask-gallery.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/hero-text-stagger.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/target-cursor.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/templates/status-page.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/swipe-row.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/noise-gradient.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/flowing-menu.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/lamp-heading.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/card-vocabulary.test.tsx
+  s_7a040398d54d62::t_6056cc248e0b3b 94
+  s_7a040398d54d62::t_2dfec969685f68 80,116
+  s_458deb6113869a::t_8cd31de5c28f6b 68,79,83-84,115,118
+packages/registry/src/ui/input-plus.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+  s_7a040398d54d62::t_68628aba40da35 8-14,116,118-121,123,126-127,129-130,132-133,203-204,239,241
+  s_7a040398d54d62::t_db9c010246899e 206,378,389-392
+  s_7a040398d54d62::t_0491bb16c01bf0 286,294,376
+  s_7a040398d54d62::t_91405fe5130e19 7
+packages/registry/src/effects/ball-pit.tsx
+  s_7a040398d54d62::t_a7267178555fd0 9
+apps/docs/public/r/hero-shader.json
+  s_7a040398d54d62::t_70959ee6a55548 10,14,21
+packages/registry/src/effects/floating-navbar.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/parallax.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/spinner.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+packages/registry/src/effects/text-pressure.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/pricing-calculator.tsx
+  s_d39b9aef155ff8::t_9c8badd352d64c 75
+  s_7a040398d54d62::t_a7267178555fd0 5
+packages/registry/src/effects/lamp-heading.tsx
+  s_7a040398d54d62::t_a7267178555fd0 2
+apps/docs/public/r/flip-reveal-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+docs/project-map.md
+  s_e0dbd35a25dc0d::t_4b4555d9e6552a 11
+apps/docs/public/r/jelly-button.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/peek-rating.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/upload-orbit.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/ui/view-transition-gallery.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/effects/glowing-edge.tsx
+  s_7a040398d54d62::t_a7267178555fd0 4
+apps/docs/public/r/help-center-index.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/cursor-vocabulary.test.tsx
+  s_7a040398d54d62::t_2dfec969685f68 52
+packages/registry/src/effects/heatmap-calendar.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/catalog-widget-form.ts
+  s_7a040398d54d62::t_a7267178555fd0 25-186
+packages/registry/src/effects/pointer-tilt-glare.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/invoice-preview.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+apps/docs/public/r/hero-annotated-showcase.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/hyperspace-text.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/scroll-timeline-reveal.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/audit-coverage.test.ts
+  s_7a040398d54d62::t_bd0a3089f20011 105,108,118,122
+packages/registry/src/sections/section-testimonial-split.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/button-plus.json
+  s_7a040398d54d62::t_70959ee6a55548 11,18
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,24-746
+apps/docs/public/r/countdown-timer.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/ui/peek-rating.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/components/component-search.tsx
+  s_d39b9aef155ff8::t_f065b2452e5b56 4,29-32,36,45,53-62,69-78,89-92,98,100-153
+apps/docs/public/r/floating-navbar.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/gooey-button.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/shortcuts-dialog.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/slide-to-confirm.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/gravity-image-trail.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/hero-wave-mask-gallery.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/electric-border.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/data-tunnel.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+apps/docs/public/r/agency-template.json
+  s_7a040398d54d62::t_70959ee6a55548 18
+apps/docs/public/r/liquid-morph-slideshow.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/tiled-swirl-loader.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/uptime-bars.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/catalog-effect-navigation.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,16-116
+packages/registry/src/sections/org-chart.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/components/mobile-nav.tsx
+  s_d39b9aef155ff8::t_f065b2452e5b56 4-5,16-25,27-33,35-64
+registry.json
+  s_7a040398d54d62::t_70959ee6a55548 7,9-10,18,20,70,72-74,76,80,82,87,89-93,95-96,100,102,107,109-110,113,117,119,124,126-128,130,134,136,141,143-144,147,151,153,158,160-161,163,166-167,171,173,178,180-181,183,186-187,191,193,198,200-201,203,206-208,212,214,219,221-223,225,229,231,236,238-240,242,246,248,253,255-259,261-274,276,280,282,287,289-290,292,295-296,300,302,307,309-313,317,319,324,326-327,329,332-333,337,339,344,346-347,352,356,358,363,365-366,371,375,377,382,384-385,390,394,396,401,403-404,406,409,413,415,420,422-424,426,430,432,437,439-440,442,445,449,451,456,458-459,462,466,468,473,475-476,479,483,485,490,492-493,496,500,502,507,509-510,513-514,518,520,525,527-528,533-534,538,540,545,547-548,553-554,558,560,565,567-568,570,573-575,579,581,586,588-589,592-593,597,599,604,606-610,612-613,617,619,624,626-627,630-631,635,637,642,644-645,648-650,654,656,661,663-664,667-668,672,674,679,681-682,685-686,690,692,697,699-700,703-704,708,710,715,717-718,721-722,726,728,733,735-736,739-740,744,746,751,753-754,757-762,766,768,773,775-776,779-780,784,786,791,793-794,797,801,803,808,810-811,813,816,821,823,828,830-831,836,841,843,848,850-852,854-855,859,861,866,868-869,872,876,878,883,885-886,889,893,895,900,902-906,908-909,913,915,920-923,926-928,932-944,949,951-952,955-956,960,962,967,969-973,975-976,980,982,987,989-990,993,998,1000,1005,1007-1008,1011-1012,1016,1018,1023,1025-1027,1029,1034,1036,1041,1043-1045,1047,1052,1054,1059,1061-1063,1065,1070,1072,1077,1079-1081,1083,1088,1090,1095,1097-1098,1103,1108,1110,1115,1117-1119,1121,1126,1128,1133,1135-1137,1139,1144,1146,1151,1153-1155,1157,1162,1164,1169,1171-1172,1177,1182,1184,1189,1191-1192,1197,1202,1204,1209,1211-1212,1217,1222,1224,1229,1231-1232,1237,1242,1244,1249,1251-1253,1255,1260,1262,1267,1269-1271,1273,1278,1280,1285,1287-1289,1291,1296,1298,1303,1305-1309,1311-1312,1316,1318,1323,1325-1326,1329-1331,1335,1337,1342,1344-1345,1348-1349,1353,1355,1360,1362-1363,1365-1366,1369-1370,1374,1376,1381,1383-1384,1386-1387,1390-1391,1395,1397,1402,1404-1406,1408-1409,1413,1415,1420,1422-1423,1426-1427,1431,1433,1438,1440-1441,1444-1445,1449,1451,1456,1458-1459,1462-1463,1467,1469,1474,1476-1480,1482-1483,1487,1489,1494,1496-1497,1500-1501,1505,1507,1512,1514-1516,1518-1519,1523,1525,1530,1532-1533,1536-1538,1542,1544,1549,1551-1555,1557-1559,1563,1565,1570,1572-1576,1578-1580,1584,1586,1591,1593-1594,1597-1598,1603,1605,1610,1612-1613,1616,1622,1624,1629,1631-1632,1635,1641,1643,1648,1650-1654,1656,1661,1663,1668,1670-1674,1676,1681,1683,1688,1690-1691,1694,1699,1701,1706,1708-1712,1714,1719,1721,1726,1728-1732,1734,1739,1741,1746,1748-1752,1754,1760,1762,1767,1769-1773,1775,1781,1783,1788,1790-1794,1796,1802,1804,1809,1811-1815,1817,1823,1825,1830,1832-1833,1838,1843,1845,1850,1852-1853,1858,1863,1865,1870,1872-1873,1878,1883,1885,1890,1892-1893,1898,1903,1905,1910,1912-1913,1918,1923,1925,1930,1932-1933,1938,1943,1945,1950,1952-1953,1956,1961,1963,1968,1970-1971,1976,1981,1983,1988,1990-1991,1996,2001,2003,2008,2010-2011,2013,2016,2021,2023,2028,2030-2032,2034-2035,2040,2042,2047,2049-2051,2053,2059,2061,2066,2068-2069,2074,2079,2081,2086,2088-2090,2092,2097,2099,2104,2106-2107,2112,2117,2119,2124,2126-2127,2129,2132,2137,2139,2144,2146-2147,2152,2157,2159,2164,2166-2167,2172-2174,2178,2180,2185,2187-2188,2190,2194-2195,2199,2201,2206,2208-2209,2211,2214-2215,2219,2221,2226,2228-2230,2232-2233,2237,2239,2244,2246-2247,2252,2257,2259,2264,2266-2268,2270,2275,2277,2282,2284-2285,2287,2290,2292,2296,2298,2303,2305-2306,2308,2311,2313,2317,2319,2324,2326-2328,2330-2331,2335,2337,2342,2344-2345,2350-2351,2355,2357,2362,2364-2365,2370-2371,2375,2377,2382,2384-2385,2388-2389,2393,2395,2400,2402-2403,2405,2408,2410,2414,2416,2421,2423-2424,2427,2431,2433,2438,2440-2441,2446-2447,2451,2453,2458,2460-2461,2463-2464,2467,2469,2473,2475,2480,2482-2483,2488-2489,2493,2495,2500,2502-2504,2506-2507,2511,2513,2518,2520-2521,2526-2527,2531,2533,2538,2540-2541,2546-2547,2551,2553,2558,2560-2562,2564,2568,2570,2575,2577-2579,2581-2583,2587,2589,2594,2596-2597,2600,2604,2606,2611,2613-2615,2617,2621,2623,2628,2630-2631,2634,2638,2640,2645,2647-2648,2651,2655,2657,2662,2664-2665,2668,2672,2674,2679,2681-2685,2687-2688,2692,2694,2699,2701-2705,2707-2708,2712,2714,2719,2721-2725,2727-2728,2732,2734,2739,2741-2745,2747-2749,2753,2755,2760,2762-2763,2766-2767,2771,2773,2778,2780-2781,2783,2786-2787,2791,2793,2798,2800-2801,2806-2807,2811,2813,2818,2820-2824,2826-2827,2831,2833,2838,2840-2844,2846-2847,2851,2853,2858,2860-2861,2866-2867,2871,2873,2878,2880-2885,2887-2900,2902-2903,2907,2909,2914,2916-2917,2922-2923,2927,2929,2934,2936-2938,2940-2941,2945,2947,2952,2954-2955,2958,2963,2965,2970,2972-2973,2975,2978,2983,2985,2990,2992-2993,2996,3001,3003,3008,3010-3011,3014,3019,3021,3026,3028-3030,3032-3034,3039,3041,3046,3048-3049,3054,3059,3061,3066,3068-3070,3072,3077,3079,3084,3086-3088,3090,3095,3097,3102,3104-3105,3110,3115,3117,3122-3125,3127,3130-3132,3137-3142,3145-3147,3152,3154-3155,3160-3161,3166,3168,3173-3178,3181-3183,3188,3190-3191,3193,3196,3201,3203,3208,3210-3212,3214,3219,3221,3226,3228-3229,3232-3233,3237,3239,3244,3246-3250,3252-3253,3257,3259,3264,3266-3267,3269,3272-3273,3277,3279,3284,3286-3287,3289,3292-3293,3297,3299,3304,3306-3308,3310-3311,3315,3317,3322,3324-3325,3328-3329,3333,3335,3340,3342-3343,3346-3347,3351,3353,3358,3360-3361,3364-3365,3369,3371,3376,3378-3380,3382-3383,3387,3389,3394,3396-3397,3399,3402-3403,3407,3409,3414,3416-3417,3420-3421,3425,3427,3432,3434-3436,3438-3439,3443,3445,3450,3452-3453,3456-3457,3461,3463,3468,3470-3471,3474,3476,3480,3482,3493-3494,3511-3512,3529-3530,3547,3549,3566,3568,3587-3588,3605,3607,3626-3627,3644,3646,3665-3666
+  s_e0dbd35a25dc0d::t_9918a7e8cc8e48 3582
+apps/docs/public/r/glowing-edge.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/integrations-directory.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/ui/liquid-glass-tabbar.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/scroll-image-sequence.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/catalog-effect-micro.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,26-440
+apps/docs/public/r/vortex-background.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/catalog-primitive-form.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+packages/registry/src/effects/apple-cards-carousel.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/scroll-image-sequence.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/lenticular-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/sortable-list.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/mention-textarea.tsx
+  s_d39b9aef155ff8::t_f984ab1ac5d425 137-150,152,155-162
+  s_7a040398d54d62::t_a7267178555fd0 5
+  s_d39b9aef155ff8::t_e04353f89e1779 153-154
+  s_d39b9aef155ff8::t_f32523ad0f584e 151
+apps/docs/public/r/tag-jar.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/catalog-primitive-feedback.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+apps/docs/public/r/hero-swirl-avatars.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/reveal.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/section-logo-cloud.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/twist-in-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+packages/registry/src/catalog-widget-data.ts
+  s_7a040398d54d62::t_a7267178555fd0 24-378
+apps/docs/public/r/hero-parallax-wall.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/catalog-effect-showcase.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,16-245
+apps/docs/public/r/input-plus.json
+  s_7a040398d54d62::t_70959ee6a55548 11,18
+apps/docs/public/r/reaction-tray.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/intro-preloader.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/ghost-trail-text.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/hero-scroll-zoom.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/repetition-image-hover.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/flip-reveal-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/sections/hero-product-mockup.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+  s_d39b9aef155ff8::t_4b9f43d9f1cd97 43-51,60-62
+apps/docs/public/r/polaroid-scroll-stack.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/physics-dropzone.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/credit-card-form.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/flowing-menu.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/sections/hero-kinetic-text.tsx
+  s_7a040398d54d62::t_a7267178555fd0 3
+  s_d39b9aef155ff8::t_d062310448fcfb 30-31,34,37-45
+apps/docs/public/r/split-flap-text.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/effects/empty-state-scene.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/glare-hover.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/sticker-peel.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/cn.json
+  s_7a040398d54d62::t_70959ee6a55548 3-6,8-9,11,14-17
+packages/registry/src/sections/section-dotted-feature-tabs.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/folder-stack.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/sticker-peel.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/cursor-follow.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/sections/cta-ribbon-swoosh.tsx
+  s_d39b9aef155ff8::t_d1bf2e87a3b7c0 55-60
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/org-chart.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/plan-compare-table.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/section-testimonial-split.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/silk.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/backgrounds-batch3.test.tsx
+  s_458deb6113869a::t_46a6514471975b 5
+packages/registry/src/sections/plan-compare-table.tsx
+  s_7a040398d54d62::t_a7267178555fd0 5
+apps/docs/components/preview-frame.tsx
+  s_7da099b7e730e5::t_af2cf26fa8947b 22-26,28
+apps/docs/public/r/scroll-parallax-layers.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+packages/registry/src/catalog-widget-overlay.ts
+  s_7a040398d54d62::t_a7267178555fd0 14-61,63-74
+packages/registry/src/ui/pulse-heart.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+  s_7a040398d54d62::t_e36a11f51e91ed 53,104
+packages/registry/src/ui/button-plus.tsx
+  s_7a040398d54d62::t_a7267178555fd0 4
+  s_7a040398d54d62::t_2869c395679d89 6-7,9-28,69-79,81,90,118
+apps/docs/public/r/hero-inline-mascot.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/kpi-sparkline-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/api-key-manager.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+  s_d39b9aef155ff8::t_cc36e66c132979 87-100,102-168
+packages/registry/src/effects/coupon-input.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/dither-gradient.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/sections/hero-swirl-avatars.tsx
+  s_7a040398d54d62::t_a7267178555fd0 4
+  s_d39b9aef155ff8::t_ac90ff4f4c7f3f 37
+apps/docs/public/r/pricing-calculator.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/catalog.ts
+  s_7a040398d54d62::t_a7267178555fd0 364-366,383-385,395-397,401-407,411-417,421-424,428-431,435
+  s_e0dbd35a25dc0d::t_8cac4a9c01ce49 464
+packages/registry/src/catalog-primitive-layout.ts
+  s_7a040398d54d62::t_a7267178555fd0 1,3
+packages/registry/src/sections/section-animated-bento.tsx
+  s_7a040398d54d62::t_a7267178555fd0 1
+apps/docs/public/r/gantt-timeline.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/keyhole-scroll-reveal.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/card-toss-stack.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/mesh-glow-bg.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/ui/warm-tooltip.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+docs/testing.md
+  s_e0dbd35a25dc0d::t_1fd6fa1d987071 37
+packages/registry/src/sections/section-horizontal-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/infinite-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/sections/hero-scroll-zoom.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/avatar-group-tooltip.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/scroll-svg-graph.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/section-stats-blob.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/cookie-consent.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/sections/footer-social-marquee.tsx
+  s_d39b9aef155ff8::t_9d1a54245699c4 26,28,35,43-52
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/loom-threads-marquee.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/catalog-section.ts
+  s_7a040398d54d62::t_a7267178555fd0 14-496
+apps/docs/public/r/sortable-list.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/ui/jelly-radio.tsx
+  s_7a040398d54d62::t_a7267178555fd0 8
+packages/registry/src/effects/repetition-image-hover.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+packages/registry/src/effects/sticky-grid-scroll.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/iridescence.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/effects/placeholder-vanish-input.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/audio-spectrum.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/ui/lattice-loader.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/footer-social-marquee.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/petal-dissolve-text.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/scroll-3d-image-rotate.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/fuzzy-text.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/hover-lift-glow.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+packages/registry/src/examples/index.ts
+  s_7a040398d54d62::t_a7267178555fd0 5,24,26,32,35,228
+apps/docs/public/r/anchor-popover.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/section-horizontal-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/password-strength.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/components/home-terminal.tsx
+  s_7da099b7e730e5::t_26447ea3a261f9 40,102
+apps/docs/public/r/galaxy-spiral.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+apps/docs/public/r/letter-glitch-wall.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/resource-search-hero.json
+  s_7a040398d54d62::t_70959ee6a55548 12-13,20
+packages/registry/src/sections/footer-dot-matrix-wordmark.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/circular-gallery.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/reaction-bar.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+packages/registry/src/effects/hyperspace-text.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/warm-tooltip.json
+  s_7a040398d54d62::t_70959ee6a55548 7,9-10,17
+packages/registry/src/sections/hero-annotated-showcase.tsx
+  s_d39b9aef155ff8::t_7d449659d33b91 84
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/spinner.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/diff-viewer.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/sections/footer-giant-wordmark.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/effects/timezone-clock.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/parallax.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/app/page.tsx
+  s_7da099b7e730e5::t_a180065f46d7f1 83,111,132
+apps/docs/public/r/mention-textarea.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+apps/docs/public/r/tree-view.json
+  s_7a040398d54d62::t_70959ee6a55548 11,18
+packages/registry/src/effects/json-viewer.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/glare-hover.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/glass-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/catalog-widget-layout.ts
+  s_7a040398d54d62::t_a7267178555fd0 15-35,37-75
+packages/registry/src/effects/tiled-swirl-loader.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+packages/registry/src/catalog-effect-cursor.ts
+  s_7a040398d54d62::t_a7267178555fd0 2,15-52,54-91,93-135,137-180,182-224,226-264,266-281
+apps/docs/public/r/section-animated-bento.json
+  s_7a040398d54d62::t_70959ee6a55548 9,16
+packages/registry/src/effects/twist-in-card.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/electric-border.json
+  s_7a040398d54d62::t_70959ee6a55548 9,11,18
+apps/docs/public/r/telescope-zoom-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/lenticular-card.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/macbook-scroll.json
+  s_7a040398d54d62::t_70959ee6a55548 11-12,19
+apps/docs/public/r/circular-gallery.json
+  s_7a040398d54d62::t_70959ee6a55548 11,13,20
+packages/registry/src/effects/resource-search-hero.tsx
+  s_7a040398d54d62::t_a7267178555fd0 7
+apps/docs/public/r/card-beam-scanner.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+THIRD_PARTY_NOTICES.md
+  s_458deb6113869a::t_e440a79ca4322d 492
+  s_458deb6113869a::t_8e7b495d7fbb0c 500
+  s_7a040398d54d62::t_7af4f6c9a8142b 528
+  s_e0dbd35a25dc0d::t_e2ec95e4712b27 304,490
+  s_458deb6113869a::t_c02184da942bf1 499
+  s_458deb6113869a::t_6b15903585418d 489
+  s_e0dbd35a25dc0d::t_8cac4a9c01ce49 482
+  s_e0dbd35a25dc0d::t_0ec3a11238b255 40,75,82,96,138,173,319,497
+  s_91e68c9c424e21::t_9ce6cdd72e13a6 12,145,276,354,491
+  s_458deb6113869a::t_822cc06b0b0a12 493
+packages/registry/src/effects/sticky-note-board.tsx
+  s_7a040398d54d62::t_a7267178555fd0 6
+apps/docs/public/r/infinite-canvas-gallery.json
+  s_7a040398d54d62::t_70959ee6a55548 9-10,17
+apps/docs/public/r/jelly-radio.json
+  s_7a040398d54d62::t_70959ee6a55548 12-13,20
+packages/registry/src/effects/button-vocabulary.test.tsx
+  s_7a040398d54d62::t_e5497963651b0d 4,46-47,65-67,73-74,79-80,87-89
+packages/registry/src/effects/buttons-batch1.test.tsx
+  s_7a040398d54d62::t_b9a6b97caa0cb9 5
+packages/registry/src/effects/cards-batch4.test.tsx
+  s_7a040398d54d62::t_3714d448d7b16b 4
+packages/registry/src/effects/decor-vocabulary.test.tsx
+  s_7a040398d54d62::t_5342df09e7e3d7 55-57,69-71,93,101
+packages/registry/src/effects/loader-vocabulary.test.tsx
+  s_7a040398d54d62::t_8e2b7420726d83 61-63,88-90
+packages/registry/src/effects/navigation-batch1.test.tsx
+  s_7a040398d54d62::t_87dfdd81cd4dc2 5
+packages/registry/src/effects/navigation-vocabulary.test.tsx
+  s_7a040398d54d62::t_fe58f4f66d872b 58-59,73-75,87,89,91,99,104
+packages/registry/src/effects/page-vocabulary.test.tsx
+  s_7a040398d54d62::t_4dfffa58728e26 56,71,85
+packages/registry/src/effects/reduced-motion-batch1.test.tsx
+  s_7a040398d54d62::t_644a7c1a1ae9d2 33-34
+packages/registry/src/ui/base-batch8.test.tsx
+  s_458deb6113869a::t_0c5b5b04316e68 4
+packages/registry/src/ui/ui-batch1.test.tsx
+  s_7a040398d54d62::t_30b898abab1607 9
+packages/registry/src/ui/ui-batch4.test.tsx
+  s_7a040398d54d62::t_d89f351b49138c 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "7d58a52bf698c0df13312d42fa3ce981eb5d915b",
+  "prompts": {},
+  "sessions": {
+    "s_3be2966c110520": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1770a-b7d8-7990-bbfe-0f770070b43b",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_458deb6113869a": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1783f-79e2-7192-9720-f9347de3e20d",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_7a040398d54d62": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a17636-16b3-7860-a9ee-83fff2dc5233",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_7da099b7e730e5": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1770a-b7d8-7990-bbfe-0f88c95fcb71",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_91e68c9c424e21": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a17dc0-b51d-7cc1-9aec-4a05baa45bea",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_d39b9aef155ff8": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1770a-b7d6-71d0-95b1-fab9498e5dba",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_e0dbd35a25dc0d": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a171fd-87e1-7482-a357-d03a724e1fab",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

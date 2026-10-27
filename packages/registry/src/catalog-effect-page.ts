@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch64PageComponents } from "./catalog-batch64"
 import { smoothuiFile as file } from "./catalog-sources"
 
 /** Effect，页面 / 转场。 */
@@ -58,6 +59,7 @@ export const effectPageComponents: ComponentMeta[] = [
         { name: "view-transition-gallery-default", label: "默认", values: { gap: 12, size: 112 } },
         { name: "view-transition-gallery-loose", label: "疏", values: { gap: 20, size: 160 } },
       ],
-    }
+    },
+  ...batch64PageComponents,
 ]
 

@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch64ShowcaseComponents } from "./catalog-batch64"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，展示 / 列表。 */
@@ -242,6 +243,7 @@ export const effectShowcaseComponents: ComponentMeta[] = [
         { name: "paused", type: "boolean", defaultValue: "false", description: "为真时停住，不管指针在不在上面。" },
         ...ui38,
       ],
-    }
+    },
+  ...batch64ShowcaseComponents,
 ]
 

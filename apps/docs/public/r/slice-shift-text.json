@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slice-shift-text",
+  "type": "registry:ui",
+  "title": "Slice Shift Text",
+  "description": "原创。标题被切成竖条，相邻两条先上下错开，进入视口后再对齐。这不是 hero-text-stagger 的按词出现，也不是整块卡片的扭转。减弱动效时直接显示对齐的标题，不渲染错开的切片。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "cn",
+    "use-animation-active",
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/slice-shift-text.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/slice-shift-text.tsx",
+      "content": "\"use client\"\n\nimport { useRef } from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/cn\"\n\nexport interface SliceShiftTextProps {\n  text?: string\n  slices?: number\n  intensity?: number\n  pace?: number\n  className?: string\n}\n\nfunction rateOf(pace: number) {\n  return Number.isFinite(pace) && pace > 0 ? pace : 1\n}\n\nfunction clamp(value: number, min: number, max: number) {\n  if (!Number.isFinite(value)) return min\n  return Math.min(max, Math.max(min, value))\n}\n\nexport function SliceShiftText({\n  text = \"竖着切开，再对齐\",\n  slices = 8,\n  intensity = 0.7,\n  pace = 1,\n  className,\n}: SliceShiftTextProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(ref)\n  const count = Math.round(clamp(slices, 4, 14))\n  const amp = clamp(intensity, 0, 1)\n  const shift = Math.round(amp * 56)\n  const rate = rateOf(pace)\n  const aligned = reduced || live\n\n  return (\n    <div\n      ref={ref}\n      data-slot=\"slice-shift-text\"\n      data-slices={count}\n      data-intensity={amp}\n      data-pace={pace}\n      data-shift={reduced ? 0 : shift}\n      data-motion={reduced ? \"off\" : \"on\"}\n      data-state={aligned ? \"aligned\" : \"waiting\"}\n      className={cn(\"relative mx-auto w-full max-w-3xl px-4 py-8 motion-reduce:transform-none\", className)}\n    >\n      <h2 className={cn(\"font-display text-center text-5xl tracking-tight text-foreground sm:text-6xl\", reduced ? \"\" : \"sr-only\")}>\n        {text}\n      </h2>\n      {reduced ? null : (\n        <div aria-hidden className=\"relative h-24 sm:h-28\">\n          <p className=\"font-display invisible text-center text-5xl tracking-tight sm:text-6xl\">{text}</p>\n          {Array.from({ length: count }, (_, index) => {\n            const left = (index / count) * 100\n            const right = 100 - ((index + 1) / count) * 100\n            const direction = index % 2 === 0 ? -1 : 1\n            return (\n              <motion.span\n                key={index}\n                data-slice={index}\n                initial={false}\n                animate={{ y: live ? 0 : direction * shift }}\n                transition={live ? { duration: 0.72 / rate, delay: (index * 0.035) / rate, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}\n                style={{ clipPath: `inset(0 ${right}% 0 ${left}%)` }}\n                className=\"font-display absolute inset-0 text-center text-5xl tracking-tight text-foreground motion-reduce:translate-y-0 sm:text-6xl\"\n              >\n                {text}\n              </motion.span>\n            )\n          })}\n        </div>\n      )}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch64ScrollComponents } from "./catalog-batch64"
 
 /** Effect，滚动显现。 */
 const ui6: PropDoc[] = [
@@ -569,6 +570,7 @@ export const effectScrollComponents: ComponentMeta[] = [
         { name: "children", type: "ReactNode", description: "要入场的任意内容。" },
         ...ui36,
       ],
-    }
+    },
+  ...batch64ScrollComponents,
 ]
 

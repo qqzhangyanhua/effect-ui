@@ -194,5 +194,11 @@ export const componentOrder = [
   "shared-layout-expand",
   "logo-marquee",
   "entrance-presets",
+  "space-jump-hero",
+  "scroll-split-reveal",
+  "slice-shift-text",
+  "radial-hotspot-labels",
+  "spotlight-focus-blur",
+  "drag-rate-tiles",
 ] as const
 

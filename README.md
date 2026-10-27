@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 跳跃、裂开与评分
+
+登记在 `Batch 64`。柔光首页已占用 `Batch 63`。这是第 58 批调研里的六个交互，全部原创。运动参考 Mobbin 上的空格跳跃、滚动裂开、竖条错位、放射标签、聚光读字和拖动评分，没有复制代码或素材，也没有移植头。`space-jump-hero` 在聚焦后用空格或按钮让角色跳起，重力改变回落，不是滚动入场。`scroll-split-reveal` 把封面沿横缝分成上下两半再露出正文，不是 `scroll-parallax-layers` 的多层视差。`slice-shift-text` 把一句标题切成竖条再对齐，不是 `hero-text-stagger` 的按词出现。`radial-hotspot-labels` 用放射线连接可展开的标签，方向键能移动焦点。`spotlight-focus-blur` 让聚光区里的文字变清晰，不是 `mesh-glow-bg` 的背景色块。`drag-rate-tiles` 把卡片拖进左右落区并弹出，左右方向键也能评分，不是 `rubber-band-drag` 或 `sortable-list`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：跳跃不再位移，封面直接打开，标题不再错开，标签展开没有过渡，句子保持清晰，评分立刻生效。离开视口时连续动画和滚动监听暂停。
+
+| 组件 | 来源 |
+| --- | --- |
+| space-jump-hero | 原创，灵感来自 Mobbin |
+| scroll-split-reveal | 原创，灵感来自 Mobbin |
+| slice-shift-text | 原创，灵感来自 Mobbin |
+| radial-hotspot-labels | 原创，灵感来自 Mobbin |
+| spotlight-focus-blur | 原创，灵感来自 Mobbin |
+| drag-rate-tiles | 原创，灵感来自 Mobbin |
+
 ### 柔光首页与共享展开
 
 登记在 `Batch 63`。扭转入场与指针眩光已占用 `Batch 62`。这是第 57 批调研里的六个首页效果，全部原创。运动参考 Mobbin 营销首页的光晕、标题错落、滚动分层、共享元素展开、标志循环和入场预设，没有复制代码或素材，也没有移植头。`mesh-glow-bg` 是区块底下多层柔光色块的缓慢漂移，不是粒子，也不是单色渐变。`hero-text-stagger` 按标题的行和词错落入场，再带上副文和行动按钮，不是 `stagger-list` 的纵向列表。`scroll-parallax-layers` 让背景、中景和前景按不同速率跟着滚动位移，粗指针会把幅度减半，不是单元素的 `parallax`。`shared-layout-expand` 用共享布局把小卡展开成对话框，回车、空格和 Esc 都能用，不是 `flip-reveal-card` 的三维翻转，也不是 `hover-overlay-reveal` 的悬停遮罩。`logo-marquee` 是横向无缝循环，悬停或聚焦可以暂停，标志文字不靠悬停才出现，和 `logos-carousel` 的分组轮换不同。`entrance-presets` 是包住任意子元素的命名入场，不是 `twist-in-card` 那种固定卡片壳。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。柔光用 CSS 和 SVG。减弱动效停在终态：光晕静止，标题直接显示，视差不再位移，展开瞬时切换，标志排成静止的一行，入场直接出现。离开视口时连续动画暂停。

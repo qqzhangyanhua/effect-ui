@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-focus-blur",
+  "type": "registry:ui",
+  "title": "Spotlight Focus Blur",
+  "description": "原创。同一句文字叠成两层，底层保持模糊，聚光扫过的地方才清晰。细指针可以拖着光走，触屏仍看自动扫过，不靠悬停才读得到字。这不是 mesh-glow-bg 的背景色块，也不是 entrance-presets 的入场。减弱动效时整句清晰，不再模糊。离开视口时扫光停下。",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "cn",
+    "use-animation-active",
+    "use-prefers-reduced-motion"
+  ],
+  "files": [
+    {
+      "path": "registry/effects/spotlight-focus-blur.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/spotlight-focus-blur.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from \"react\"\nimport { animate } from \"motion/react\"\n\nimport { useAnimationActive } from \"@/hooks/use-animation-active\"\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/cn\"\n\nexport interface SpotlightFocusBlurProps {\n  text?: string\n  blur?: number\n  glow?: number\n  pace?: number\n  className?: string\n}\n\nfunction rateOf(pace: number) {\n  return Number.isFinite(pace) && pace > 0 ? pace : 1\n}\n\nfunction clamp(value: number, min: number, max: number) {\n  if (!Number.isFinite(value)) return min\n  return Math.min(max, Math.max(min, value))\n}\n\nexport function SpotlightFocusBlur({\n  text = \"聚光停住的地方，这句话才清楚。\",\n  blur = 8,\n  glow = 0.65,\n  pace = 1,\n  className,\n}: SpotlightFocusBlurProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const live = useAnimationActive(ref)\n  const [spot, setSpot] = useState({ x: 50, y: 46 })\n  const [following, setFollowing] = useState(false)\n  const blurPx = Math.round(clamp(blur, 0, 16))\n  const halo = clamp(glow, 0, 1)\n  const radius = 16 + halo * 14\n  const feather = 8 + (1 - halo) * 18\n  const moving = live && !reduced && !following\n\n  useEffect(() => {\n    if (!moving) return\n    let stopped = false\n    const playback = animate(0, 360, {\n      duration: 7.2 / rateOf(pace),\n      repeat: Infinity,\n      ease: \"linear\",\n      onUpdate(angle) {\n        if (stopped) return\n        const rad = (angle * Math.PI) / 180\n        setSpot({ x: 50 + Math.cos(rad) * 22, y: 46 + Math.sin(rad * 2) * 14 })\n      },\n    })\n    return () => {\n      stopped = true\n      playback.stop()\n    }\n  }, [moving, pace])\n\n  function onPointerMove(event: PointerEvent<HTMLDivElement>) {\n    if (event.pointerType === \"touch\" || reduced) return\n    const rect = event.currentTarget.getBoundingClientRect()\n    if (rect.width === 0 || rect.height === 0) return\n    setFollowing(true)\n    setSpot({\n      x: ((event.clientX - rect.left) / rect.width) * 100,\n      y: ((event.clientY - rect.top) / rect.height) * 100,\n    })\n  }\n\n  const mask = reduced\n    ? undefined\n    : `radial-gradient(circle at ${spot.x}% ${spot.y}%, #000 0%, #000 ${radius}%, transparent ${radius + feather}%)`\n  const sharpStyle: CSSProperties = {\n    WebkitMaskImage: mask,\n    maskImage: mask,\n  }\n\n  return (\n    <div\n      ref={ref}\n      data-slot=\"spotlight-focus-blur\"\n      data-blur={blurPx}\n      data-glow={halo}\n      data-pace={pace}\n      data-motion={reduced ? \"off\" : moving ? \"on\" : \"paused\"}\n      data-mask={reduced ? \"off\" : \"on\"}\n      onPointerMove={onPointerMove}\n      onPointerLeave={() => setFollowing(false)}\n      onPointerCancel={() => setFollowing(false)}\n      className={cn(\n        \"relative mx-auto min-h-56 max-w-3xl overflow-hidden rounded-3xl border border-border bg-card px-8 py-12 text-card-foreground motion-reduce:blur-none\",\n        className,\n      )}\n    >\n      <p aria-hidden className=\"font-display text-4xl leading-tight tracking-tight text-foreground motion-reduce:blur-none sm:text-5xl\" style={{ filter: reduced ? undefined : `blur(${blurPx}px)` }}>\n        {text}\n      </p>\n      <p className=\"font-display absolute inset-x-8 top-12 text-4xl leading-tight tracking-tight text-foreground sm:text-5xl\" style={sharpStyle}>\n        {text}\n      </p>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

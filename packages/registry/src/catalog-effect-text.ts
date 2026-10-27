@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch64TextComponents } from "./catalog-batch64"
 import { reactBitsCredit as credit } from "./catalog-sources"
 import { textControls, textPresets } from "./text-controls"
 const ui2: PropDoc[] = [
@@ -494,6 +495,7 @@ export const effectTextComponents: ComponentMeta[] = [
         { name: "children", type: "ReactNode", description: "用 HeroTextStaggerTitle、HeroTextStaggerSubtitle、HeroTextStaggerCta 分槽。有分槽时盖过对应 prop。" },
         ...ui36,
       ],
-    }
+    },
+  ...batch64TextComponents,
 ]
 

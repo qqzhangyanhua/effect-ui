@@ -89,7 +89,7 @@ export function ScrollSplitReveal({
         className,
       )}
     >
-      <div className="absolute inset-0 flex items-end bg-primary/15 p-8">
+      <div className="absolute inset-0 flex items-center bg-primary/15 p-8">
         <div>
           <p className="font-display text-4xl tracking-tight text-foreground">缝后面才是正文</p>
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">上下两半沿接缝分开，底下的内容才露出来。这不是多层视差。</p>

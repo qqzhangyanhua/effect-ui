@@ -54,6 +54,7 @@ export function DragRateTiles({
   const [offset, setOffset] = useState<Readonly<Record<string, number>>>({})
   const drag = useRef<{ id: string; startX: number; base: number } | null>(null)
   const playback = useRef<{ stop: () => void } | null>(null)
+  const stopDrag = useRef<(() => void) | null>(null)
   const limit = clamp(threshold, 0.16, 0.62)
   const spring = clamp(snap, 0, 1)
   const items = tiles.length > 0 ? tiles : builtIn
@@ -66,6 +67,7 @@ export function DragRateTiles({
     return () => {
       alive.current = false
       playback.current?.stop()
+      stopDrag.current?.()
     }
   }, [])
 
@@ -124,26 +126,37 @@ export function DragRateTiles({
   function onPointerDown(event: PointerEvent<HTMLDivElement>, id: string) {
     if (event.button !== 0) return
     playback.current?.stop()
+    stopDrag.current?.()
+    const width = event.currentTarget.getBoundingClientRect().width
+    const pointerId = event.pointerId
     drag.current = { id, startX: event.clientX, base: offset[id] ?? 0 }
-    try {
-      event.currentTarget.setPointerCapture(event.pointerId)
-    } catch {
-      // jsdom 没有活动指针时会拒绝捕获。
+    const move = (native: globalThis.PointerEvent) => {
+      if (native.pointerId !== pointerId || drag.current?.id !== id) return
+      const next = drag.current.base + (native.clientX - drag.current.startX)
+      setOffset((offsets) => ({ ...offsets, [id]: next }))
     }
-  }
-
-  function onPointerMove(event: PointerEvent<HTMLDivElement>) {
-    const current = drag.current
-    if (!current) return
-    const next = current.base + (event.clientX - current.startX)
-    setOffset((offsets) => ({ ...offsets, [current.id]: next }))
-  }
-
-  function onPointerUp(event: PointerEvent<HTMLDivElement>, id: string) {
-    const current = drag.current
-    if (!current || current.id !== id) return
-    const next = current.base + (event.clientX - current.startX)
-    release(id, next, event.currentTarget.getBoundingClientRect().width)
+    const up = (native: globalThis.PointerEvent) => {
+      if (native.pointerId !== pointerId) return
+      stop()
+      const current = drag.current
+      if (!current || current.id !== id) return
+      release(id, current.base + (native.clientX - current.startX), width)
+    }
+    const stop = () => {
+      window.removeEventListener("pointermove", move)
+      window.removeEventListener("pointerup", up)
+      window.removeEventListener("pointercancel", up)
+      if (stopDrag.current === stop) stopDrag.current = null
+    }
+    stopDrag.current = stop
+    window.addEventListener("pointermove", move)
+    window.addEventListener("pointerup", up)
+    window.addEventListener("pointercancel", up)
+    try {
+      event.currentTarget.setPointerCapture(pointerId)
+    } catch {
+      // jsdom 没有活动指针时会拒绝捕获。窗口监听仍然收得到冒泡。
+    }
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLDivElement>, id: string) {
@@ -190,9 +203,6 @@ export function DragRateTiles({
                 aria-keyshortcuts="ArrowLeft ArrowRight"
                 onKeyDown={(event) => onKeyDown(event, tile.id)}
                 onPointerDown={(event) => onPointerDown(event, tile.id)}
-                onPointerMove={onPointerMove}
-                onPointerUp={(event) => onPointerUp(event, tile.id)}
-                onPointerCancel={(event) => onPointerUp(event, tile.id)}
                 style={{ transform: `translate3d(${x}px, 0, 0)` }}
                 className="cursor-grab touch-none rounded-2xl border border-border bg-card px-4 py-4 text-card-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring active:cursor-grabbing motion-reduce:transition-none"
               >

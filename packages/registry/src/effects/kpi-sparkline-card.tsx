@@ -3,8 +3,7 @@
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
-import { CountUp } from "./count-up"
+import { cn } from "@/lib/cn"
 
 export interface KpiSparklineCardProps {
   label?: string
@@ -66,7 +65,7 @@ function KpiSparklineCard({
         <div>
           <p className="text-sm text-muted-foreground">{label}</p>
           <p className="mt-1 font-display text-3xl tracking-tight">
-            <CountUp value={value} />
+            <span>{value}</span>
           </p>
         </div>
         <span

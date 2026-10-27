@@ -40,7 +40,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
-      { find: "@/lib/utils", replacement: path.join(registrySrc, "lib/utils.ts") },
+      { find: "@/lib/cn", replacement: path.join(registrySrc, "lib/cn.ts") },
+      { find: "@/lib/utils", replacement: path.join(root, "apps/docs/lib/utils.ts") },
       { find: "@/lib/text-style", replacement: path.join(registrySrc, "lib/text-style.ts") },
       {
         find: /^@\/lib\/(.*)$/,

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export type GlassCardProps = React.HTMLAttributes<HTMLDivElement> & {
   /** 玻璃叠色倍率。不传或 1 仍是白 8% 底和 15% 边。 */

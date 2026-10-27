@@ -24,18 +24,14 @@ vi.mock("ogl", () => ({
 
 import { BeamsCollision } from "./beams-collision"
 import { DitherGradient } from "./dither-gradient"
-import { GpgpuParticles } from "./gpgpu-particles"
-import { Halftone } from "./halftone"
 import { Hyperspeed } from "./hyperspeed"
 import { Iridescence } from "./iridescence"
 import { LetterGlitchWall } from "./letter-glitch-wall"
 import { LightRays } from "./light-rays"
 import { Lightning } from "./lightning"
 import { SeaWavesBackground } from "./sea-waves-background"
-import { ShaderPack2 } from "./shader-pack-2"
 import { Silk } from "./silk"
 import { VortexBackground } from "./vortex-background"
-import { WorldMapArcs } from "./world-map-arcs"
 
 let reduceMotion = false
 const frames: FrameRequestCallback[] = []
@@ -94,64 +90,6 @@ function slot(name: string) {
   return node
 }
 
-test("半调按间距在画布上点网点", () => {
-  let fills = 0
-  HTMLCanvasElement.prototype.getContext = (() => ({
-    setTransform() {},
-    clearRect() {},
-    beginPath() {},
-    arc() {},
-    fill() {
-      fills += 1
-    },
-    fillStyle: "",
-  })) as typeof HTMLCanvasElement.prototype.getContext
-  vi.spyOn(HTMLCanvasElement.prototype, "getBoundingClientRect").mockReturnValue({
-    width: 42,
-    height: 28,
-    x: 0,
-    y: 0,
-    top: 0,
-    left: 0,
-    bottom: 28,
-    right: 42,
-    toJSON() {
-      return {}
-    },
-  })
-  render(<Halftone gap={14} />)
-  expect(fills).toBe(6)
-})
-
-test("半调没有循环动画，减弱动效时也不申请动画帧", () => {
-  reduceMotion = true
-  const { container } = render(<Halftone />)
-  expect(container.querySelector("canvas")).toBeInTheDocument()
-  expect(frames).toEqual([])
-})
-
-test("第二组着色器在视口内把默认速度留给预设", () => {
-  const { container } = render(<ShaderPack2 />)
-  expect(container.querySelector("[data-shader='liquid']")).toHaveAttribute("data-speed", "preset")
-})
-
-test("第二组着色器在减弱动效时把速度停成 0", () => {
-  reduceMotion = true
-  const { container } = render(<ShaderPack2 speed={3} />)
-  expect(container.querySelector("[data-shader='liquid']")).toHaveAttribute("data-speed", "0")
-})
-
-test("文字粒子在允许动效时挂上画布", () => {
-  const { container } = render(<GpgpuParticles text="星尘" />)
-  expect(container.querySelector("canvas")).toBeInTheDocument()
-})
-
-test("文字粒子在减弱动效时直接显示文字，不挂画布", () => {
-  reduceMotion = true
-  const { container } = render(<GpgpuParticles text="星尘" />)
-  expect(screen.getByText("星尘")).toBeInTheDocument()
-  expect(container.querySelector("canvas")).toBeNull()
-})
 
 test("故障字墙按行列铺字符", () => {
   const { container } = render(<LetterGlitchWall rows={2} cols={4} color="#f8fafc" />)
@@ -243,19 +181,6 @@ test("超速公路在减弱动效时停住光带", () => {
   expect(frames).toEqual([])
 })
 
-test("世界地图画出默认城市和航线", () => {
-  render(<WorldMapArcs />)
-  expect(screen.getByText("上海")).toBeInTheDocument()
-  expect(screen.getByText("纽约")).toBeInTheDocument()
-  expect(document.querySelectorAll("path")).toHaveLength(10)
-})
-
-test("世界地图在减弱动效时仍保留城市，不再循环脉冲", () => {
-  reduceMotion = true
-  render(<WorldMapArcs speed={2} />)
-  expect(screen.getByText("点状世界地图，城市之间有发光弧线")).toBeInTheDocument()
-  expect(frames).toEqual([])
-})
 
 test("旋涡在视口内挂上画布", () => {
   render(<VortexBackground count={12} />)

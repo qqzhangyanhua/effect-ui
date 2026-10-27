@@ -77,41 +77,9 @@ function builtItem(name: string) {
 }
 
 test("examples 导出 demo 映射的键名，审计可以直接导入", () => {
-  expect(demoNames).toContain("button")
+  expect(demoNames).toContain("aurora-background")
   expect(demoNames).not.toContain("utils")
   expect(demoNames).not.toContain("use-mobile")
-})
-
-test("use-mobile 以 registry:hook 安装到 hooks 目录", () => {
-  expect(component("use-mobile")).toMatchObject({
-    type: "registry:hook",
-    file: "hooks/use-mobile.ts",
-    target: "hooks/use-mobile.ts",
-  })
-})
-
-test("sidebar、input-group、toggle-group 的依赖从源码推导", () => {
-  expect(builtItem("sidebar").registryDependencies).toEqual([
-    "button",
-    "separator",
-    "sheet",
-    "use-mobile",
-    "utils",
-  ])
-  expect(builtItem("input-group").registryDependencies).toEqual([
-    "button",
-    "input",
-    "textarea",
-    "utils",
-  ])
-  expect(builtItem("toggle-group").dependencies).toEqual([
-    "@radix-ui/react-toggle-group",
-    "class-variance-authority",
-  ])
-})
-
-test("rich-text-editor 保留源码未引用的 peer 依赖 @tiptap/pm", () => {
-  expect(builtItem("rich-text-editor").dependencies).toContain("@tiptap/pm")
 })
 
 test("仓库审计没有问题", () => {
@@ -136,22 +104,3 @@ test("真实 catalog 里的 Effect 用词汇表里的词时，类型、控件和
   expect(auditRegistry(repoInput()).filter((issue) => issue.type === "vocabulary-mismatch")).toEqual([])
 })
 
-test("gradient-text 的 colors 保持 Tailwind 类字符串，词汇表检查跳过它", () => {
-  expect(
-    auditRegistry(repoInput()).filter(
-      (issue) => issue.name === "gradient-text" && issue.type === "vocabulary-mismatch",
-    ),
-  ).toEqual([])
-  expect(component("gradient-text").props.find((prop) => prop.name === "colors")).toMatchObject({
-    type: "string",
-    vocabularyExemption: expect.stringContaining("Tailwind"),
-  })
-})
-
-test("预设留在 catalog，不进入 shimmer-text 的 registry JSON", () => {
-  const item = builtItem("shimmer-text")
-  expect(item).not.toHaveProperty("presets")
-  expect(JSON.stringify(item)).not.toContain("shimmer-display")
-  expect(JSON.stringify(item)).not.toContain("shimmer-reading")
-  expect(JSON.stringify(item)).not.toContain("shimmer-kicker")
-})

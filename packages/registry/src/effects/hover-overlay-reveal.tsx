@@ -3,7 +3,7 @@
 import { useState, type CSSProperties, type MouseEvent, type PointerEvent, type ReactNode } from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface HoverOverlayRevealProps {
   title: string

@@ -6,15 +6,14 @@
   "description": "霓虹描边发光按钮。",
   "dependencies": [],
   "registryDependencies": [
-    "button",
-    "utils"
+    "cn"
   ],
   "files": [
     {
       "path": "registry/effects/neon-button.tsx",
       "type": "registry:ui",
       "target": "components/ui/neon-button.tsx",
-      "content": "import * as React from \"react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface NeonButtonProps extends React.ComponentProps<typeof Button> {\n  glowColor?: string\n  /** 辉光倍率。不传或 1 仍是 18px 休息、28px 悬停。 */\n  scale?: number\n}\n\nfunction NeonButton({\n  className,\n  children,\n  glowColor = \"var(--primary)\",\n  scale,\n  variant,\n  size,\n  asChild = false,\n  ...props\n}: NeonButtonProps) {\n  const gain = scale === undefined || scale === 1 ? undefined : scale\n  return (\n    <Button\n      data-slot=\"neon-button\"\n      variant={variant}\n      size={size}\n      asChild={asChild}\n      className={cn(\n        \"relative border border-[color-mix(in_oklab,var(--neon)_70%,transparent)] transition-shadow motion-reduce:transition-none\",\n        gain === undefined\n          ? \"shadow-[0_0_18px_-6px_var(--neon)] hover:shadow-[0_0_28px_-4px_var(--neon)]\"\n          : \"shadow-[var(--glow-rest)] hover:shadow-[var(--glow-hover)]\",\n        variant == null && \"bg-background text-foreground hover:bg-background\",\n        size == null && \"h-10 px-5\",\n        className,\n      )}\n      style={\n        gain === undefined\n          ? ({ \"--neon\": glowColor } as React.CSSProperties)\n          : ({\n              \"--neon\": glowColor,\n              \"--glow-rest\": `0 0 ${18 * gain}px ${-6 * gain}px var(--neon)`,\n              \"--glow-hover\": `0 0 ${28 * gain}px ${-4 * gain}px var(--neon)`,\n            } as React.CSSProperties)\n      }\n      {...props}\n    >\n      {children}\n    </Button>\n  )\n}\n\nexport { NeonButton }\n"
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\nexport interface NeonButtonProps extends React.ComponentProps<\"button\"> {\n  glowColor?: string\n  /** 辉光倍率。不传或 1 仍是 18px 休息、28px 悬停。 */\n  scale?: number\n}\n\nfunction NeonButton({\n  className,\n  children,\n  glowColor = \"var(--primary)\",\n  scale,\n  ...props\n}: NeonButtonProps) {\n  const gain = scale === undefined || scale === 1 ? undefined : scale\n  return (\n    <button\n      type=\"button\"\n      data-slot=\"neon-button\"\n      className={cn(\n        \"relative inline-flex h-10 items-center border border-[color-mix(in_oklab,var(--neon)_70%,transparent)] bg-background px-5 text-foreground transition-shadow hover:bg-background motion-reduce:transition-none\",\n        gain === undefined\n          ? \"shadow-[0_0_18px_-6px_var(--neon)] hover:shadow-[0_0_28px_-4px_var(--neon)]\"\n          : \"shadow-[var(--glow-rest)] hover:shadow-[var(--glow-hover)]\",\n        className,\n      )}\n      style={\n        gain === undefined\n          ? ({ \"--neon\": glowColor } as React.CSSProperties)\n          : ({\n              \"--neon\": glowColor,\n              \"--glow-rest\": `0 0 ${18 * gain}px ${-6 * gain}px var(--neon)`,\n              \"--glow-hover\": `0 0 ${28 * gain}px ${-4 * gain}px var(--neon)`,\n            } as React.CSSProperties)\n      }\n      {...props}\n    >\n      {children}\n    </button>\n  )\n}\n\nexport { NeonButton }\n"
     }
   ]
 }

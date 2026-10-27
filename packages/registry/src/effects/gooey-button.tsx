@@ -2,10 +2,9 @@
 
 import * as React from "react"
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
-export type GooeyButtonProps = React.ComponentProps<typeof Button> & {
+export type GooeyButtonProps = React.ComponentProps<"button"> & {
   /** 模糊倍率。不传或 1 仍是 stdDeviation 6。 */
   scale?: number
   /** 粘连强度倍率。不传或 1 仍是矩阵 18 与 -7。 */
@@ -17,16 +16,11 @@ function GooeyButton({
   children,
   scale,
   intensity,
-  variant,
-  size,
-  asChild = false,
   style,
   ...props
 }: GooeyButtonProps) {
   const id = React.useId().replace(/:/g, "")
-  const slotted =
-    asChild && React.isValidElement<{ children?: React.ReactNode }>(children) ? children : null
-  const label = slotted ? slotted.props.children : children
+  const label = children
   const blur = scale === undefined || scale === 1 ? undefined : 6 * scale
   const gain = intensity === undefined || intensity === 1 ? undefined : intensity
   const body = (
@@ -56,22 +50,15 @@ function GooeyButton({
   )
 
   return (
-    <Button
+    <button
+      type="button"
       data-slot="gooey-button"
-      variant={variant}
-      size={size}
-      asChild={slotted !== null}
-      className={cn(
-        "relative overflow-visible rounded-full",
-        variant == null && "hover:bg-primary",
-        size == null && "h-11 px-6",
-        className,
-      )}
+      className={cn("relative h-11 overflow-visible rounded-full px-6 hover:bg-primary", className)}
       style={{ filter: `url(#${id})`, ...style }}
       {...props}
     >
-      {slotted ? React.cloneElement(slotted, undefined, body) : body}
-    </Button>
+      {body}
+    </button>
   )
 }
 

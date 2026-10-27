@@ -3,8 +3,7 @@
 import * as React from "react"
 import { MinusIcon } from "lucide-react"
 
-import { Checkbox } from "@/components/ui/checkbox"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface CheckboxOption {
   label: React.ReactNode
@@ -14,9 +13,10 @@ export interface CheckboxOption {
 
 export type CheckboxOptionInput = string | CheckboxOption
 
-export interface CheckboxPlusProps extends Omit<React.ComponentProps<typeof Checkbox>, "checked"> {
+export interface CheckboxPlusProps extends Omit<React.ComponentProps<"button">, "checked"> {
   checked?: boolean
   indeterminate?: boolean
+  onCheckedChange?: (checked: boolean | "indeterminate") => void
 }
 
 export interface CheckboxPlusGroupProps {
@@ -52,17 +52,24 @@ function CheckboxPlus({
 }: CheckboxPlusProps) {
   const box = (
     <span className="relative inline-flex">
-      <Checkbox
+      <button
         {...props}
+        type="button"
+        role="checkbox"
         ref={ref}
         id={id}
-        onCheckedChange={onCheckedChange}
-        checked={indeterminate ? "indeterminate" : checked}
+        aria-checked={indeterminate ? "mixed" : checked ? "true" : "false"}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedBy}
-        className={cn(indeterminate && "[&_[data-slot=checkbox-indicator]]:opacity-0", className)}
-      />
-      {indeterminate ? <MinusIcon aria-hidden className="pointer-events-none absolute inset-0 m-auto size-3" /> : null}
+        className={cn("size-4 rounded border", className)}
+        onClick={(event) => {
+          props.onClick?.(event)
+          if (event.defaultPrevented || props.disabled) return
+          onCheckedChange?.(checked ? false : true)
+        }}
+      >
+        {indeterminate ? <MinusIcon aria-hidden className="size-3" /> : checked ? <span aria-hidden className="block size-2 bg-current" /> : null}
+      </button>
     </span>
   )
 

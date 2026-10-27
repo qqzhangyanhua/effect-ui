@@ -2,8 +2,7 @@
 
 import * as React from "react"
 
-import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface PasswordStrengthProps {
   value?: string
@@ -29,7 +28,8 @@ function PasswordStrength({ value: controlled, onValueChange, className }: Passw
 
   return (
     <div className={cn("w-full max-w-sm space-y-2", className)}>
-      <Input
+      <input
+        className="h-9 w-full rounded-md border bg-transparent px-3"
         type="password"
         value={value}
         placeholder="设置密码"

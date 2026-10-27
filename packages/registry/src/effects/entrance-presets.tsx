@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import { motion } from "motion/react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export type EntrancePresetName = "grow" | "slide" | "fade" | "spin" | "soft"
 export type EntranceFrom = "left" | "right" | "up" | "down"

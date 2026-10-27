@@ -18,18 +18,10 @@ vi.mock("motion/react", async () => {
   }
 })
 
-import { ApertureReveal } from "./aperture-reveal"
 import { ContainerScroll3D } from "./container-scroll-3d"
-import { ElementAlongPathItem, ElementAlongSvgPath } from "./element-along-svg-path"
-import { KineticTypeScroll } from "./kinetic-type-scroll"
 import { Scroll3dImageRotate } from "./scroll-3d-image-rotate"
-import { ScrollAndSwapText } from "./scroll-and-swap-text"
-import { ScrollBlurText } from "./scroll-blur-text"
-import { ScrollImageReveal } from "./scroll-image-reveal"
 import { ScrollImageSequence } from "./scroll-image-sequence"
-import { SkewedInfiniteScroll } from "./skewed-infinite-scroll"
 import { StickyGridScroll } from "./sticky-grid-scroll"
-import { TimelineReveal } from "./timeline-reveal"
 import { TracingBeam } from "./tracing-beam"
 import { KeyholeScrollReveal } from "../sections/keyhole-scroll-reveal"
 
@@ -97,29 +89,7 @@ function slot(container: HTMLElement, name: string) {
 }
 
 const frames = ["data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"]
-const picture = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E"
-const skewItems = [
-  { id: "1", text: "夜航" },
-  { id: "2", text: "北窗" },
-]
 
-function aperture() {
-  return (
-    <ApertureReveal length={2.2} viewportHeight={420}>
-      <ApertureReveal.Media>
-        <div>照片</div>
-      </ApertureReveal.Media>
-      <ApertureReveal.Headline>
-        <ApertureReveal.Lead>打开</ApertureReveal.Lead>
-        <ApertureReveal.Opening />
-        <ApertureReveal.Trail>光圈</ApertureReveal.Trail>
-      </ApertureReveal.Headline>
-      <ApertureReveal.Caption>
-        <ApertureReveal.Text>镜头随滚动张开，照片填满画面。</ApertureReveal.Text>
-      </ApertureReveal.Caption>
-    </ApertureReveal>
-  )
-}
 
 test("tracing beam shows its copy and starts the beam collapsed", () => {
   const { container } = render(
@@ -219,137 +189,4 @@ test("keyhole scroll reveal stacks every cue when motion is reduced", () => {
   expect(screen.getByText("庭院")).toBeInTheDocument()
 })
 
-test("aperture reveal shows the headline inside a scroll box", () => {
-  const { container } = render(aperture())
-  expect(screen.getByText("打开")).toBeInTheDocument()
-  expect(screen.getByText("光圈")).toBeInTheDocument()
-  expect(slot(container, "aperture-reveal")).toHaveAttribute("data-contained", "")
-  expect(slot(container, "aperture-reveal")).not.toHaveAttribute("data-static")
-})
 
-test("aperture reveal lays the copy out when motion is reduced", () => {
-  reduceMotion = true
-  const { container } = render(aperture())
-  expect(screen.getAllByText("镜头随滚动张开，照片填满画面。")).toHaveLength(2)
-  expect(screen.getByRole("heading", { name: /打开/ })).toBeInTheDocument()
-  expect(slot(container, "aperture-reveal")).toHaveAttribute("data-static", "")
-  expect(slot(container, "aperture-reveal")).not.toHaveAttribute("data-contained")
-})
-
-test("kinetic type scroll reads the words in order", () => {
-  const { container } = render(<KineticTypeScroll words={["北", "窗", "夜", "航"]} />)
-  expect(screen.getByText("北 窗 夜 航")).toBeInTheDocument()
-  expect(screen.getAllByText("北").length).toBeGreaterThan(0)
-  expect(slot(container, "kinetic-type-scroll")).toHaveAttribute("data-reduced", "false")
-})
-
-test("kinetic type scroll marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(<KineticTypeScroll words={["北", "窗", "夜", "航"]} />)
-  expect(screen.getByText("航")).toBeInTheDocument()
-  expect(slot(container, "kinetic-type-scroll")).toHaveAttribute("data-reduced", "true")
-})
-
-test("scroll image reveal shows the picture in a rounded frame", () => {
-  const { container } = render(<ScrollImageReveal alt="靛蓝夜空" direction="left" mask="wipe" parallax={60} src={picture} />)
-  expect(screen.getByRole("img", { name: "靛蓝夜空" })).toBeInTheDocument()
-  expect(slot(container, "scroll-image-reveal")).toHaveClass("rounded-2xl")
-  expect(slot(container, "scroll-image-reveal")).toHaveAttribute("data-reduced", "false")
-})
-
-test("scroll image reveal marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(<ScrollImageReveal alt="靛蓝夜空" src={picture} />)
-  expect(screen.getByRole("img", { name: "靛蓝夜空" })).toBeInTheDocument()
-  expect(slot(container, "scroll-image-reveal")).toHaveAttribute("data-reduced", "true")
-})
-
-test("scroll and swap text shows the phrase", () => {
-  const { container } = render(<ScrollAndSwapText>北窗换字</ScrollAndSwapText>)
-  expect(screen.getAllByText("北窗换字").length).toBeGreaterThan(0)
-  expect(slot(container, "scroll-and-swap-text").tagName).toBe("SPAN")
-  expect(slot(container, "scroll-and-swap-text")).toHaveAttribute("data-reduced", "false")
-})
-
-test("scroll and swap text keeps one static phrase when motion is reduced", () => {
-  reduceMotion = true
-  const { container } = render(<ScrollAndSwapText>北窗换字</ScrollAndSwapText>)
-  expect(screen.getAllByText("北窗换字").length).toBeGreaterThan(0)
-  expect(slot(container, "scroll-and-swap-text")).toHaveAttribute("data-reduced", "true")
-})
-
-test("skewed infinite scroll duplicates each item", () => {
-  const { container } = render(<SkewedInfiniteScroll columns={2} items={skewItems} speed={18} />)
-  expect(screen.getAllByText("夜航")).toHaveLength(2)
-  expect(screen.getAllByText("北窗")).toHaveLength(2)
-  expect(slot(container, "skewed-infinite-scroll")).toHaveAttribute("data-reduced", "false")
-})
-
-test("skewed infinite scroll stops the loop when motion is reduced", () => {
-  reduceMotion = true
-  const { container } = render(<SkewedInfiniteScroll columns={2} items={skewItems} speed={18} />)
-  expect(screen.getAllByText("夜航")).toHaveLength(2)
-  expect(container.querySelector("[style*='animation-name']")).toHaveStyle({ animationName: "none" })
-  expect(slot(container, "skewed-infinite-scroll")).toHaveAttribute("data-reduced", "true")
-})
-
-test("element along a path draws the curve and both dots", () => {
-  const { container } = render(
-    <ElementAlongSvgPath animationType="auto" direction="normal" duration={4} path="M10 80 C 30 10, 70 10, 90 80" showPath>
-      <ElementAlongPathItem>
-        <span>甲</span>
-      </ElementAlongPathItem>
-      <ElementAlongPathItem startOffset={30}>
-        <span>乙</span>
-      </ElementAlongPathItem>
-    </ElementAlongSvgPath>,
-  )
-  expect(screen.getByText("甲")).toBeInTheDocument()
-  expect(screen.getByText("乙")).toBeInTheDocument()
-  expect(container.querySelector("path")).toHaveAttribute("stroke", "currentColor")
-  expect(slot(container, "element-along-svg-path")).toHaveAttribute("data-reduced", "false")
-})
-
-test("element along a path marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(
-    <ElementAlongSvgPath path="M10 80 C 30 10, 70 10, 90 80" showPath>
-      <ElementAlongPathItem>
-        <span>甲</span>
-      </ElementAlongPathItem>
-    </ElementAlongSvgPath>,
-  )
-  expect(screen.getByText("甲")).toBeInTheDocument()
-  expect(slot(container, "element-along-svg-path")).toHaveAttribute("data-reduced", "true")
-})
-
-test("timeline reveal shows the first line as a div", () => {
-  const { container } = render(
-    <TimelineReveal animationNum={0} as="div" once>
-      先读许可
-    </TimelineReveal>,
-  )
-  expect(screen.getByText("先读许可").tagName).toBe("DIV")
-  expect(slot(container, "timeline-reveal")).toHaveAttribute("data-reduced", "false")
-})
-
-test("timeline reveal marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(<TimelineReveal>先读许可</TimelineReveal>)
-  expect(screen.getByText("先读许可")).toBeInTheDocument()
-  expect(slot(container, "timeline-reveal")).toHaveAttribute("data-reduced", "true")
-})
-
-test("scroll blur text renders a heading from the words", () => {
-  const { container } = render(<ScrollBlurText as="h2" direction="down" text="按词出现的一行句子" />)
-  expect(screen.getByRole("heading", { level: 2, name: "按词出现的一行句子" })).toBeInTheDocument()
-  expect(slot(container, "scroll-blur-text")).toHaveAttribute("data-state", "visible")
-  expect(slot(container, "scroll-blur-text")).toHaveAttribute("data-reduced", "false")
-})
-
-test("scroll blur text marks reduced motion", () => {
-  reduceMotion = true
-  const { container } = render(<ScrollBlurText text="按词出现的一行句子" />)
-  expect(screen.getByRole("heading", { name: "按词出现的一行句子" })).toBeInTheDocument()
-  expect(slot(container, "scroll-blur-text")).toHaveAttribute("data-reduced", "true")
-})

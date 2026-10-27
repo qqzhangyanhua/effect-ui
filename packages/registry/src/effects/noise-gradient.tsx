@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 const NOISE_COLORS = ["#7c3aed", "#d946ef", "#22d3ee"]
 const NOISE_THEME_STOPS = [

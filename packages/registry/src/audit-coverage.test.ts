@@ -102,10 +102,10 @@ test("缺失项不是三种之一时报告结构不合法，并且不能压掉�
 })
 
 test("未知名字、Batch 34 以后的组件、不合法条目分别报错，并且不能压掉缺测试", () => {
-  const closed = widget({ name: "hue-wave-loader", file: "effects/hue-wave-loader.tsx" })
+  const closed = widget({ name: "folder-float", file: "effects/folder-float.tsx" })
   const exemptions = [
     { name: "missing-widget", gaps: ["缺测试"], reason: "不存在" },
-    { name: "hue-wave-loader", gaps: ["缺测试"], reason: "新组件" },
+    { name: "folder-float", gaps: ["缺测试"], reason: "新组件" },
     { name: "widget", gaps: [], reason: "没有缺失项" },
     { name: "widget", gaps: ["缺测试"], reason: "   " },
     { name: "", gaps: ["随便"], reason: "坏的" },
@@ -115,11 +115,11 @@ test("未知名字、Batch 34 以后的组件、不合法条目分别报错，�
     "missing-widget",
   ])
   expect(issues.filter((issue) => issue.type === "closed-batch-exemption").map((issue) => issue.name)).toEqual([
-    "hue-wave-loader",
+    "folder-float",
   ])
   expect(issues.filter((issue) => issue.type === "invalid-exemption")).toHaveLength(3)
   expect(issues.filter((issue) => issue.type === "missing-test").map((issue) => issue.name).sort()).toEqual([
-    "hue-wave-loader",
+    "folder-float",
     "widget",
   ])
 })

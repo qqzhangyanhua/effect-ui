@@ -3,8 +3,6 @@
 import * as React from "react"
 
 import { HeroParallaxWall } from "@/components/ui/hero-parallax-wall"
-import { ImageTrail } from "@/components/ui/image-trail"
-import { ScrollTypography } from "@/components/ui/scroll-typography"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 
 import { agencyContent } from "./content"
@@ -12,14 +10,6 @@ import { agencyTheme } from "./theme"
 
 const CircularGallery = React.lazy(() =>
   import("@/components/ui/circular-gallery").then((mod) => ({ default: mod.CircularGallery })),
-)
-const SplashCursor = React.lazy(() =>
-  import("@/components/ui/splash-cursor").then((mod) => ({ default: mod.SplashCursor })),
-)
-const FooterInteractiveWordmark = React.lazy(() =>
-  import("@/components/ui/footer-interactive-wordmark").then((mod) => ({
-    default: mod.FooterInteractiveWordmark,
-  })),
 )
 
 function AgencyTemplate() {
@@ -33,7 +23,7 @@ function AgencyTemplate() {
     <div style={agencyTheme} className="bg-background text-foreground">
       <HeroParallaxWall title={agencyContent.title} subtitle={agencyContent.subtitle} />
       <div className="px-6 py-16">
-        <ScrollTypography text={agencyContent.manifesto} className="text-5xl" />
+        <h2 className="font-display text-5xl tracking-tight">{agencyContent.manifesto}</h2>
       </div>
       {reduced ? (
         <div className="grid grid-cols-2 gap-3 px-6 md:grid-cols-4">
@@ -50,21 +40,15 @@ function AgencyTemplate() {
           <CircularGallery items={gallery} className="mx-6" />
         </React.Suspense>
       )}
-      <div className="px-6 py-16">
-        <ImageTrail images={[...agencyContent.portraits]} className="h-48" />
+      <div className="flex gap-3 overflow-x-auto px-6 py-16">
+        {agencyContent.portraits.map((src) => (
+          <img key={src} src={src} alt="" className="h-48 w-20 shrink-0 rounded-md object-cover" />
+        ))}
       </div>
-      {reduced ? null : (
-        <React.Suspense fallback={null}>
-          <SplashCursor className="mx-6" />
-        </React.Suspense>
-      )}
-      {reduced ? (
-        <p className="px-6 py-12 text-center font-display text-5xl">AGENCY</p>
-      ) : (
-        <React.Suspense fallback={null}>
-          <FooterInteractiveWordmark word="AGENCY" />
-        </React.Suspense>
-      )}
+      <p className="px-6 text-center text-sm tracking-[0.2em] text-muted-foreground">
+        {agencyContent.gallery.map((item) => item.title).join("  ")}
+      </p>
+      <p className="px-6 py-12 text-center font-display text-5xl">AGENCY</p>
     </div>
   )
 }

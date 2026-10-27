@@ -1,27 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Combobox as ComboboxPrimitive } from "@base-ui/react"
-import { Loader2Icon, XIcon } from "lucide-react"
+import { ChevronDownIcon, Loader2Icon, XIcon } from "lucide-react"
 
-import {
-  Combobox,
-  ComboboxChip,
-  ComboboxChips,
-  ComboboxChipsInput,
-  ComboboxCollection,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxGroup,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxLabel,
-  ComboboxList,
-  ComboboxTrigger,
-  ComboboxValue,
-  useComboboxAnchor,
-} from "@/components/ui/combobox"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface SelectOption {
   value: string
@@ -76,32 +58,19 @@ export type SelectPlusProps = SelectPlusShared &
       }
   )
 
-type ItemGroup = { label: string; items: SelectOption[] }
+type Section = { key: string; label?: string; items: SelectOption[] }
 
-const searchReasons = new Set(["input-change", "input-paste", "input-clear"])
-
-function SelectClear({ disabled, className }: { disabled?: boolean; className?: string }) {
-  return (
-    <ComboboxPrimitive.Clear
-      aria-label="清除"
-      disabled={disabled}
-      className={cn(
-        "inline-flex size-4 shrink-0 items-center justify-center rounded-sm text-muted-foreground",
-        className,
-      )}
-    >
-      <XIcon />
-    </ComboboxPrimitive.Clear>
-  )
+function assignRef<T>(ref: React.Ref<T> | undefined, node: T | null) {
+  if (typeof ref === "function") {
+    ref(node)
+    return
+  }
+  if (ref) ref.current = node
 }
-
 function isOptionGroup(entry: SelectOption | SelectOptionGroup): entry is SelectOptionGroup {
   return "options" in entry
 }
-
-function isMultipleProps(
-  props: SelectPlusProps,
-): props is Extract<SelectPlusProps, { mode: "multiple" | "tags" }> {
+function isMulti(props: SelectPlusProps): props is Extract<SelectPlusProps, { mode: "multiple" | "tags" }> {
   return props.mode === "multiple" || props.mode === "tags"
 }
 
@@ -115,17 +84,39 @@ function flattenOptions(options: readonly (SelectOption | SelectOptionGroup)[] |
   return flat
 }
 
-function matchesOption(option: SelectOption, query: string, filterOption: FilterOption | undefined): boolean {
-  if (filterOption === false) return true
+function optionVisible(option: SelectOption, query: string, filterOption: FilterOption | undefined, search: boolean) {
+  if (!search || filterOption === false) return true
   if (typeof filterOption === "function") return filterOption(query, option)
   return option.label.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
 }
 
+function buildSections(
+  options: readonly (SelectOption | SelectOptionGroup)[] | undefined,
+  query: string,
+  filterOption: FilterOption | undefined,
+  search: boolean,
+): Section[] {
+  if (!options || options.length === 0) return []
+  const sections: Section[] = []
+  const loose: SelectOption[] = []
+  let sawGroup = false
+  options.forEach((entry, index) => {
+    if (isOptionGroup(entry)) {
+      sawGroup = true
+      const items = entry.options.filter((option) => optionVisible(option, query, filterOption, search))
+      if (items.length > 0) sections.push({ key: `group-${index}`, label: entry.label, items })
+      return
+    }
+    if (optionVisible(entry, query, filterOption, search)) loose.push(entry)
+  })
+  if (!sawGroup) return loose.length > 0 ? [{ key: "options", items: loose }] : []
+  if (loose.length > 0) sections.push({ key: "loose", items: loose })
+  return sections
+}
+
 function SelectPlus(props: SelectPlusProps) {
   const {
-    mode = "single",
     options,
-    children,
     showSearch,
     filterOption,
     onSearch,
@@ -134,9 +125,9 @@ function SelectPlus(props: SelectPlusProps) {
     disabled = false,
     status,
     size = "default",
-    open,
+    open: openProp,
     onOpenChange,
-    placeholder: placeholderProp,
+    placeholder = "请选择",
     notFoundContent = "没有匹配项",
     renderOption,
     className,
@@ -145,16 +136,25 @@ function SelectPlus(props: SelectPlusProps) {
     "aria-invalid": ariaInvalidProp,
     "aria-describedby": ariaDescribedBy,
   } = props
-  const maxTagCount = "maxTagCount" in props ? props.maxTagCount : undefined
+  const mode = props.mode ?? "single"
   const multiple = mode !== "single"
   const search = showSearch ?? multiple
-  const placeholder = placeholderProp ?? "请选择"
-  const valueProp = props.value
+  const useInput = multiple || search
+  const maxTagCount = isMulti(props) ? props.maxTagCount : undefined
+  const listId = React.useId()
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const openControlled = openProp !== undefined
+  const [openState, setOpenState] = React.useState(false)
+  const isOpen = openControlled ? openProp : openState
+  const openRef = React.useRef(isOpen)
+  const [highlight, setHighlight] = React.useState(-1)
+  const highlightRef = React.useRef(-1)
+  const [query, setQuery] = React.useState("")
   const [uncontrolled, setUncontrolled] = React.useState<string | string[]>(() => {
     if (props.defaultValue !== undefined) return props.defaultValue
     return multiple ? [] : ""
   })
-  const selected = valueProp !== undefined ? valueProp : uncontrolled
+  const selected = props.value !== undefined ? props.value : uncontrolled
   const selectedList = Array.isArray(selected) ? selected : []
   const selectedSingle = typeof selected === "string" ? selected : ""
   const flat = React.useMemo(() => flattenOptions(options), [options])
@@ -163,237 +163,336 @@ function SelectPlus(props: SelectPlusProps) {
     for (const option of flat) map.set(option.value, option.label)
     return map
   }, [flat])
-  const grouped = Boolean(options && options.length > 0 && options[0] && isOptionGroup(options[0]))
-  const items = React.useMemo(() => {
-    if (!options || options.length === 0) return undefined
-    const accessors = {
-      getValue: (item: SelectOption) => item.value,
-      getLabel: (item: SelectOption) => item.label,
-    }
-    if (grouped) {
-      const groups: ItemGroup[] = []
-      for (const entry of options) {
-        if (isOptionGroup(entry)) groups.push({ label: entry.label, items: entry.options })
-        else groups.push({ label: entry.label, items: [entry] })
-      }
-      return ComboboxPrimitive.createItems(groups, accessors)
-    }
-    return ComboboxPrimitive.createItems(
-      options.filter((entry): entry is SelectOption => !isOptionGroup(entry)),
-      accessors,
-    )
-  }, [grouped, options])
-  const [searchText, setSearchText] = React.useState("")
-  const highlighted = React.useRef<string | null>(null)
-  const popupInputRef = React.useRef<HTMLInputElement>(null)
-  const anchor = useComboboxAnchor()
-  const ariaInvalid = status === "error" ? true : ariaInvalidProp
-  const describedBy = ariaDescribedBy
+  const sections = buildSections(options, query, filterOption, search)
+  const visible = sections.flatMap((section) => section.items)
+  const activeIndex = highlight >= 0 && highlight < visible.length ? highlight : -1
+  const singleLabel = selectedSingle ? (labels.get(selectedSingle) ?? selectedSingle) : ""
+  const inputValue = multiple || isOpen || query !== "" ? query : singleLabel
+  const hasValue = multiple ? selectedList.length > 0 : selectedSingle !== ""
+  const showClear = allowClear && hasValue && !disabled
+  const invalid = status === "error" ? true : ariaInvalidProp
   const busy = loading ? true : undefined
+  const visibleTags = maxTagCount === undefined ? selectedList : selectedList.slice(0, maxTagCount)
+  const overflow = selectedList.length - visibleTags.length
+  const selectedSet = new Set(multiple ? selectedList : selectedSingle ? [selectedSingle] : [])
 
   function commitSingle(next: string) {
-    if (valueProp === undefined) setUncontrolled(next)
-    if (isMultipleProps(props)) return
+    if (props.value === undefined) setUncontrolled(next)
+    if (isMulti(props)) return
     props.onValueChange?.(next)
   }
 
   function commitMultiple(next: string[]) {
-    if (valueProp === undefined) setUncontrolled(next)
-    if (!isMultipleProps(props)) return
+    if (props.value === undefined) setUncontrolled(next)
+    if (!isMulti(props)) return
     props.onValueChange?.(next)
   }
 
-  function handleInput(next: string, details: { reason: string }) {
-    if (multiple) setSearchText(next)
-    if (searchReasons.has(details.reason)) onSearch?.(next)
+  function setOpen(next: boolean) {
+    if (disabled) return
+    const current = openRef.current
+    if (!openControlled) {
+      openRef.current = next
+      setOpenState(next)
+    }
+    if (next !== current) onOpenChange?.(next)
   }
 
-  function handleHighlight(value: string | undefined) {
-    highlighted.current = value ?? null
+  function closeMenu() {
+    highlightRef.current = -1
+    setHighlight(-1)
+    if (!multiple) setQuery("")
+    setOpen(false)
   }
-
-  function acceptItem(item: SelectOption, query: string) {
-    if (!search) return true
-    return matchesOption(item, query, filterOption)
+  function openMenu() {
+    if (disabled || openRef.current) return
+    highlightRef.current = -1
+    setHighlight(-1)
+    setOpen(true)
   }
-
-  function renderItem(option: SelectOption) {
-    return (
-      <ComboboxItem key={option.value} value={option.value} disabled={option.disabled}>
-        {renderOption ? renderOption(option) : option.label}
-      </ComboboxItem>
-    )
+  function moveHighlight(direction: 1 | -1) {
+    const count = visible.length
+    if (count === 0) {
+      highlightRef.current = -1
+      return
+    }
+    let index = highlightRef.current
+    if (index >= count) index = -1
+    for (let step = 0; step < count; step += 1) {
+      index += direction
+      if (index >= count) index = 0
+      if (index < 0) index = count - 1
+      const option = visible[index]
+      if (option && !option.disabled) {
+        highlightRef.current = index
+        setHighlight(index)
+        return
+      }
+    }
   }
-
+  function choose(option: SelectOption) {
+    if (disabled || option.disabled) return
+    if (multiple) {
+      const next = selectedList.includes(option.value)
+        ? selectedList.filter((value) => value !== option.value)
+        : [...selectedList, option.value]
+      commitMultiple(next)
+      setQuery("")
+      highlightRef.current = -1
+      setHighlight(-1)
+      return
+    }
+    commitSingle(option.value)
+    closeMenu()
+  }
   function createTag(text: string) {
     const match = flat.find((option) => option.label === text || option.value === text)
     const nextValue = match?.value ?? text
     if (!selectedList.includes(nextValue)) commitMultiple([...selectedList, nextValue])
-    setSearchText("")
+    setQuery("")
+    highlightRef.current = -1
+    setHighlight(-1)
+  }
+  function removeValue(value: string) {
+    commitMultiple(selectedList.filter((item) => item !== value))
+  }
+  function onClear(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    event.stopPropagation()
+    if (disabled) return
+    if (multiple) commitMultiple([])
+    else commitSingle("")
+    setQuery("")
+    closeMenu()
+  }
+  function onInput(event: React.ChangeEvent<HTMLInputElement>) {
+    const next = event.target.value
+    setQuery(next)
+    highlightRef.current = -1
+    setHighlight(-1)
+    onSearch?.(next)
+    if (!openRef.current) setOpen(true)
+  }
+  function onKeyDown(event: React.KeyboardEvent<HTMLButtonElement | HTMLInputElement>) {
+    if (disabled) return
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault()
+      if (!openRef.current) {
+        openMenu()
+        return
+      }
+      moveHighlight(event.key === "ArrowDown" ? 1 : -1)
+      return
+    }
+    if (event.key === "Enter") {
+      if (event.nativeEvent.isComposing) return
+      const index = highlightRef.current
+      const option = openRef.current && index >= 0 && index < visible.length ? visible[index] : undefined
+      if (option && !option.disabled) {
+        event.preventDefault()
+        choose(option)
+        return
+      }
+      if (!(event.currentTarget instanceof HTMLInputElement)) return
+      event.preventDefault()
+      if (mode !== "tags") return
+      const text = event.currentTarget.value.trim()
+      if (!text) return
+      createTag(text)
+      return
+    }
+    if (event.key === "Escape") {
+      if (!openRef.current) return
+      event.preventDefault()
+      closeMenu()
+      return
+    }
+    if (event.key !== "Backspace" || !multiple) return
+    if (!(event.currentTarget instanceof HTMLInputElement) || event.currentTarget.value !== "") return
+    if (selectedList.length === 0) return
+    event.preventDefault()
+    commitMultiple(selectedList.slice(0, -1))
   }
 
-  const buttonClass = cn(
-    "flex w-full items-center justify-between gap-2 rounded-md border border-input bg-transparent px-3 text-left text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 data-[placeholder]:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:ring-destructive/40",
-    size === "sm" ? "h-8" : "h-9",
-    status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20",
-    className,
-  )
-  const inputClass = cn("w-full", size === "sm" && "h-8", status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20", className)
-  const chipsClass = cn(
-    "w-full",
-    size === "sm" ? "min-h-8" : "min-h-9",
-    status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20",
-    className,
-  )
-  const visibleTags = maxTagCount === undefined ? selectedList : selectedList.slice(0, maxTagCount)
-  const overflow = selectedList.length - visibleTags.length
+  const closeRef = React.useRef(closeMenu)
+  React.useEffect(() => {
+    openRef.current = isOpen
+    closeRef.current = closeMenu
+  })
+  React.useEffect(() => {
+    if (!isOpen) return
+    function onMouseDown(event: MouseEvent) {
+      const target = event.target
+      if (!(target instanceof Node)) return
+      if (rootRef.current?.contains(target)) return
+      closeRef.current()
+    }
+    document.addEventListener("mousedown", onMouseDown)
+    return () => document.removeEventListener("mousedown", onMouseDown)
+  }, [isOpen])
+
   const fieldProps = {
     id,
+    ref: (node: HTMLButtonElement | HTMLInputElement | null) => assignRef(ref, node),
+    role: "combobox" as const,
     disabled,
-    "aria-invalid": ariaInvalid,
-    "aria-describedby": describedBy,
+    "aria-invalid": invalid,
+    "aria-describedby": ariaDescribedBy,
     "aria-busy": busy,
+    "aria-expanded": isOpen,
+    "aria-controls": isOpen ? listId : undefined,
+    "aria-activedescendant": isOpen && activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined,
+    "aria-haspopup": "listbox" as const,
+    onKeyDown,
   }
-
-  const popup = (
-    <ComboboxContent anchor={multiple ? anchor : undefined}>
-      {search ? null : (
-        <ComboboxInput
-          ref={popupInputRef}
-          aria-hidden
-          showTrigger={false}
-          showClear={false}
-          tabIndex={-1}
-          className="sr-only"
-        />
-      )}
-      {loading ? <div className="px-2 py-1.5 text-sm text-muted-foreground">加载中…</div> : null}
-      <ComboboxEmpty>{notFoundContent}</ComboboxEmpty>
-      <ComboboxList>
-        {options
-          ? grouped
-            ? (group: ItemGroup) => (
-                <ComboboxGroup key={group.label} items={group.items}>
-                  <ComboboxLabel>{group.label}</ComboboxLabel>
-                  <ComboboxCollection>{(option: SelectOption) => renderItem(option)}</ComboboxCollection>
-                </ComboboxGroup>
-              )
-            : (option: SelectOption) => renderItem(option)
-          : children}
-      </ComboboxList>
-    </ComboboxContent>
+  const controlClass = cn(
+    "w-full rounded-md border border-input bg-transparent text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
+    size === "sm" ? "h-8" : "h-9",
+    status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20",
   )
 
-  const buttonField = (
-    <div className="relative w-full">
-      <ComboboxTrigger
-        ref={ref as React.Ref<HTMLButtonElement>}
-        className={buttonClass}
-        onKeyDown={(event) => {
-          if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return
-          queueMicrotask(() => popupInputRef.current?.focus())
-        }}
-        {...fieldProps}
-      >
-        <span className="flex min-w-0 flex-1 items-center gap-2 truncate">
-          {loading ? <Loader2Icon className="size-4 animate-spin" aria-hidden /> : null}
-          <ComboboxValue placeholder={placeholder} />
-        </span>
-      </ComboboxTrigger>
-      {allowClear ? (
-        <SelectClear disabled={disabled} className="absolute top-1/2 right-8 -translate-y-1/2" />
-      ) : null}
+  let start = 0
+  const optionNodes = sections.map((section) => {
+    const offset = start
+    start += section.items.length
+    const items = section.items.map((option, index) => {
+      const itemIndex = offset + index
+      return (
+        <div
+          key={option.value}
+          id={`${listId}-opt-${itemIndex}`}
+          role="option"
+          aria-selected={selectedSet.has(option.value)}
+          aria-disabled={option.disabled ? true : undefined}
+          data-highlighted={itemIndex === activeIndex ? "" : undefined}
+          className={cn("flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm", itemIndex === activeIndex && "bg-accent text-accent-foreground", option.disabled && "opacity-50")}
+          onMouseDown={(event) => event.preventDefault()}
+          onClick={() => choose(option)}
+        >
+          {renderOption ? renderOption(option) : option.label}
+        </div>
+      )
+    })
+    if (!section.label) return <div key={section.key}>{items}</div>
+    return (
+      <div key={section.key} role="group" aria-label={section.label}>
+        <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">{section.label}</div>
+        {items}
+      </div>
+    )
+  })
+
+  const popup = !isOpen ? null : (
+    <div
+      id={listId}
+      role="listbox"
+      aria-multiselectable={multiple || undefined}
+      className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md"
+      onMouseDown={(event) => event.preventDefault()}
+    >
+      {loading ? <div className="px-2 py-1.5 text-sm text-muted-foreground">加载中…</div> : null}
+      {visible.length === 0 ? <div className="px-2 py-1.5 text-sm text-muted-foreground">{notFoundContent}</div> : optionNodes}
     </div>
   )
 
-  const searchField = (
-    <ComboboxInput
-      ref={ref as React.Ref<HTMLInputElement>}
-      className={inputClass}
-      placeholder={placeholder}
-      showClear={false}
-      {...fieldProps}
+  const clearButton = showClear ? (
+    <button
+      type="button"
+      aria-label="清除"
+      className={cn("inline-flex size-4 shrink-0 items-center justify-center rounded-sm text-muted-foreground", multiple ? undefined : "absolute top-1/2 right-8 z-10 -translate-y-1/2")}
+      onMouseDown={(event) => event.preventDefault()}
+      onClick={onClear}
     >
-      {allowClear ? <SelectClear disabled={disabled} /> : null}
-      {loading ? <Loader2Icon className="mr-2 size-4 animate-spin text-muted-foreground" aria-hidden /> : null}
-    </ComboboxInput>
-  )
+      <XIcon className="size-4" aria-hidden />
+    </button>
+  ) : null
 
-  const chipsField = (
-    <ComboboxChips
-      ref={anchor}
-      className={chipsClass}
-      onKeyDownCapture={(event) => {
-        if (event.key !== "Backspace") return
-        const target = event.target
-        if (!(target instanceof HTMLInputElement) || target.value !== "") return
-        if (selectedList.length === 0) return
-        event.preventDefault()
-        event.stopPropagation()
-        commitMultiple(selectedList.slice(0, -1))
-      }}
-    >
-      {visibleTags.map((item) => (
-        <ComboboxChip key={item}>{labels.get(item) ?? item}</ComboboxChip>
-      ))}
-      {overflow > 0 ? <span className="px-1 text-xs text-muted-foreground">+{overflow}</span> : null}
-      {search ? (
-        <ComboboxChipsInput
-          ref={ref as React.Ref<HTMLInputElement>}
-          placeholder={selectedList.length === 0 ? placeholder : ""}
-          onKeyDown={(event) => {
-            if (mode !== "tags" || event.key !== "Enter" || event.nativeEvent.isComposing) return
-            const text = event.currentTarget.value.trim()
-            if (!text || highlighted.current) return
-            event.preventDefault()
-            event.stopPropagation()
-            createTag(text)
-          }}
-          {...fieldProps}
-        />
-      ) : (
-        <ComboboxTrigger ref={ref as React.Ref<HTMLButtonElement>} className="ml-auto" aria-label="打开选项" {...fieldProps} />
+  const trigger = multiple ? (
+    <div
+      className={cn(
+        "flex w-full flex-wrap items-center gap-1 rounded-md border border-input bg-transparent px-2 py-1 text-sm shadow-xs focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50",
+        size === "sm" ? "min-h-8" : "min-h-9",
+        status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20",
+        disabled && "cursor-not-allowed opacity-50",
       )}
-      {allowClear ? <SelectClear disabled={disabled} /> : null}
+    >
+      {visibleTags.map((value) => {
+        const label = labels.get(value) ?? value
+        return (
+          <span key={value} className="inline-flex items-center gap-1 rounded-sm bg-muted px-1.5 py-0.5 text-xs">
+            {label}
+            <button
+              type="button"
+              aria-label={`移除 ${label}`}
+              className="inline-flex size-4 items-center justify-center text-muted-foreground"
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={(event) => {
+                event.stopPropagation()
+                removeValue(value)
+              }}
+            >
+              <XIcon className="size-3" aria-hidden />
+            </button>
+          </span>
+        )
+      })}
+      {overflow > 0 ? <span className="px-1 text-xs text-muted-foreground">+{overflow}</span> : null}
+      <input
+        {...fieldProps}
+        type="text"
+        className="min-w-12 flex-1 bg-transparent py-0.5 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed"
+        value={inputValue}
+        placeholder={selectedList.length === 0 ? placeholder : ""}
+        autoComplete="off"
+        aria-autocomplete="list"
+        onChange={onInput}
+        onClick={openMenu}
+      />
+      {clearButton}
       {loading ? <Loader2Icon className="size-4 animate-spin text-muted-foreground" aria-hidden /> : null}
-    </ComboboxChips>
-  )
-
-  const field = multiple ? chipsField : search ? searchField : buttonField
-  const shared = {
-    items,
-    disabled,
-    open,
-    onOpenChange: (next: boolean) => onOpenChange?.(next),
-    onInputValueChange: handleInput,
-    onItemHighlighted: handleHighlight,
-    filter: options ? acceptItem : undefined,
-  }
-
-  if (multiple) {
-    return (
-      <Combobox<string, true, SelectOption>
-        {...shared}
-        multiple
-        inputValue={search ? searchText : ""}
-        value={selectedList}
-        onValueChange={(next) => commitMultiple([...next])}
+    </div>
+  ) : useInput ? (
+    <div className="relative">
+      <input
+        {...fieldProps}
+        type="text"
+        className={cn(controlClass, "px-3", showClear && "pr-8")}
+        value={inputValue}
+        placeholder={placeholder}
+        autoComplete="off"
+        aria-autocomplete="list"
+        onChange={onInput}
+        onClick={openMenu}
+      />
+      {clearButton}
+      {loading ? <Loader2Icon className="absolute top-1/2 right-2 size-4 -translate-y-1/2 animate-spin text-muted-foreground" aria-hidden /> : null}
+    </div>
+  ) : (
+    <div className="relative">
+      <button
+        {...fieldProps}
+        type="button"
+        className={cn(controlClass, "flex items-center justify-between gap-2 px-3 text-left whitespace-nowrap")}
+        onClick={() => {
+          if (openRef.current) closeMenu()
+          else openMenu()
+        }}
       >
-        {field}
-        {popup}
-      </Combobox>
-    )
-  }
+        <span className={cn("flex min-w-0 flex-1 items-center gap-2 truncate", !singleLabel && "text-muted-foreground")}>
+          {loading ? <Loader2Icon className="size-4 animate-spin" aria-hidden /> : null}
+          {singleLabel || placeholder}
+        </span>
+        <ChevronDownIcon className="size-4 shrink-0 opacity-50" aria-hidden />
+      </button>
+      {clearButton}
+    </div>
+  )
 
   return (
-    <Combobox<string, false, SelectOption>
-      {...shared}
-      value={selectedSingle === "" ? null : selectedSingle}
-      onValueChange={(next) => commitSingle(next ?? "")}
-    >
-      {field}
+    <div ref={rootRef} className={cn("relative w-full", className)}>
+      {trigger}
       {popup}
-    </Combobox>
+    </div>
   )
 }
 

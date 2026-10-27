@@ -1,8 +1,4 @@
-"use client"
-
 import { CheckCircle2, Code2, FileCode2, Palette } from "lucide-react"
-
-import { SpotlightCard } from "@effect-ui/registry/effects/spotlight-card"
 
 const principles = [
   {
@@ -35,18 +31,16 @@ export function HomePrinciplesGrid() {
       {principles.map((item) => {
         const Icon = item.icon
         return (
-          <SpotlightCard
+          <div
             key={item.title}
-            radius={220}
-            intensity={0.85}
-            className="rounded-2xl border-border/80 p-6 shadow-xs transition-transform duration-300 hover:-translate-y-0.5 motion-reduce:transform-none"
+            className="rounded-2xl border border-border/80 bg-card p-6 shadow-xs transition-transform duration-300 hover:-translate-y-0.5 motion-reduce:transform-none"
           >
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <Icon className="size-5" />
             </div>
             <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-          </SpotlightCard>
+          </div>
         )
       })}
     </div>

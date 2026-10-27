@@ -3,14 +3,15 @@
 import * as React from "react"
 import { EyeIcon, EyeOffIcon, Loader2Icon, SearchIcon, XIcon } from "lucide-react"
 
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupTextarea,
-} from "@/components/ui/input-group"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
+
+function FieldAddon({ children }: { children?: React.ReactNode }) {
+  return <span className="inline-flex shrink-0 items-center px-2 text-sm text-muted-foreground">{children}</span>
+}
+
+function FieldButton({ className, ...props }: React.ComponentProps<"button">) {
+  return <button type="button" className={cn("inline-flex items-center gap-1 px-2 text-sm", className)} {...props} />
+}
 
 type InputStatus = "error" | "warning"
 type CountFormatter = (count: number, maxLength?: number) => React.ReactNode
@@ -112,21 +113,24 @@ function FieldFrame({
 }) {
   return (
     <div className={cn("grid w-full gap-1", className)} data-status={status}>
-      <InputGroup
+      <div
         data-disabled={disabled ? "" : undefined}
-        className={cn(status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20")}
+        className={cn(
+          "flex min-h-9 w-full items-center rounded-md border bg-transparent",
+          status === "warning" && "border-amber-500 ring-[3px] ring-amber-500/20",
+        )}
       >
-        {prefix ? <InputGroupAddon align="inline-start">{prefix}</InputGroupAddon> : null}
+        {prefix ? <FieldAddon>{prefix}</FieldAddon> : null}
         {children}
         {showClear ? (
-          <InputGroupAddon align="inline-end">
-            <InputGroupButton aria-label="清除" onMouseDown={(event) => event.preventDefault()} onClick={onClear}>
+          <FieldAddon>
+            <FieldButton aria-label="清除" onMouseDown={(event) => event.preventDefault()} onClick={onClear}>
               <XIcon aria-hidden />
-            </InputGroupButton>
-          </InputGroupAddon>
+            </FieldButton>
+          </FieldAddon>
         ) : null}
-        {suffix ? <InputGroupAddon align="inline-end">{suffix}</InputGroupAddon> : null}
-      </InputGroup>
+        {suffix ? <FieldAddon>{suffix}</FieldAddon> : null}
+      </div>
       {showCount ? (
         <div className="text-right text-xs text-muted-foreground">
           {countFormatter ? countFormatter(count, maxLength) : countText(count, maxLength)}
@@ -196,8 +200,10 @@ function InputPlus({
       maxLength={maxLength}
       countFormatter={countFormatter}
     >
-      <InputGroupInput
+      <input
+        className="h-9 min-w-0 flex-1 bg-transparent px-3 outline-none"
         {...withoutDataSlot(props)}
+        data-slot="input-group-control"
         ref={(node) => {
           innerRef.current = node
           assignRef(ref, node)
@@ -230,9 +236,9 @@ function InputPlusPassword({
       suffix={
         <>
           {suffix}
-          <InputGroupButton aria-label={label} onClick={() => setVisible((next) => !next)}>
+          <FieldButton aria-label={label} onClick={() => setVisible((next) => !next)}>
             {visible ? <EyeOffIcon aria-hidden /> : <EyeIcon aria-hidden />}
-          </InputGroupButton>
+          </FieldButton>
         </>
       }
     />
@@ -277,7 +283,7 @@ function InputPlusSearch({
       suffix={
         <>
           {suffix}
-          <InputGroupButton
+          <FieldButton
             aria-label={searchLabel}
             aria-busy={loading || undefined}
             disabled={loading}
@@ -285,7 +291,7 @@ function InputPlusSearch({
           >
             {loading ? <Loader2Icon className="size-4 animate-spin" aria-hidden /> : <SearchIcon aria-hidden />}
             {searchLabel}
-          </InputGroupButton>
+          </FieldButton>
         </>
       }
     />
@@ -367,8 +373,9 @@ function InputPlusTextArea({
       maxLength={maxLength}
       countFormatter={countFormatter}
     >
-      <InputGroupTextarea
+      <textarea
         {...withoutDataSlot(props)}
+        data-slot="input-group-control"
         ref={(node) => {
           innerRef.current = node
           assignRef(ref, node)
@@ -379,7 +386,10 @@ function InputPlusTextArea({
         readOnly={readOnly}
         maxLength={maxLength}
         rows={rowLimit(current, autoSize, rows)}
-        className={autoSize ? "min-h-0 resize-none overflow-y-auto" : undefined}
+        className={cn(
+          "min-h-16 min-w-0 flex-1 bg-transparent px-3 py-2 outline-none",
+          autoSize && "min-h-0 resize-none overflow-y-auto",
+        )}
         style={textareaLimit(autoSize)}
         aria-invalid={invalid}
         aria-describedby={ariaDescribedBy}

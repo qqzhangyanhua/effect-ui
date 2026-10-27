@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, ty
 import Matter from "matter-js"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 const { Bodies, Composite, Engine } = Matter
 

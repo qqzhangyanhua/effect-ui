@@ -2,10 +2,7 @@
 
 import { useState } from "react"
 
-import { ClothWindBanner } from "../effects/cloth-wind-banner"
 import { DataTunnel } from "../effects/data-tunnel"
-import { EmbedCodeGenerator } from "../effects/embed-code-generator"
-import { FileUploadQueue } from "../effects/file-upload-queue"
 import { GalaxySpiral } from "../effects/galaxy-spiral"
 import { PetalDissolveText } from "../effects/petal-dissolve-text"
 import { PolaroidScrollStack } from "../sections/polaroid-scroll-stack"
@@ -13,8 +10,6 @@ import { ReactionBar, type ReactionItem } from "../effects/reaction-bar"
 import { ProximityScaleGrid } from "../effects/proximity-scale-grid"
 import { ScrollSvgGraph } from "../effects/scroll-svg-graph"
 import { SignaturePad } from "../effects/signature-pad"
-import { SocialPostFeed } from "../effects/social-post-feed"
-
 
 export function GalaxySpiralDemo({
   arms = 3,
@@ -64,17 +59,6 @@ export function ScrollSvgGraphDemo({
   return <ScrollSvgGraph className="w-full" speed={speed} intensity={intensity} color={color} />
 }
 
-export function ClothWindBannerDemo({
-  intensity = 0.65,
-  speed = 1,
-  colors = ["#7c3aed", "#ea580c"],
-}: {
-  intensity?: number
-  speed?: number
-  colors?: string[]
-} = {}) {
-  return <ClothWindBanner className="w-full" intensity={intensity} speed={speed} colors={colors} />
-}
 export function PetalDissolveTextDemo({
   text = "花瓣散开",
   direction = "forward",
@@ -124,18 +108,6 @@ export function DataTunnelDemo({
   intensity?: number
 } = {}) {
   return <DataTunnel className="w-full" count={count} speed={speed} colors={colors} intensity={intensity} />
-}
-
-export function FileUploadQueueDemo() {
-  return <FileUploadQueue className="w-full" />
-}
-
-export function EmbedCodeGeneratorDemo() {
-  return <EmbedCodeGenerator className="w-full" />
-}
-
-export function SocialPostFeedDemo() {
-  return <SocialPostFeed className="w-full" />
 }
 
 export function SignaturePadDemo() {

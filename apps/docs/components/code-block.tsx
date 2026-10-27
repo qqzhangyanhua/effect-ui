@@ -3,8 +3,6 @@
 import { Check, Copy } from "lucide-react"
 import { useState } from "react"
 
-import { Button } from "@effect-ui/registry/ui/button"
-
 import { cn } from "@/lib/utils"
 
 const collapseAfter = 64
@@ -23,19 +21,17 @@ function CopyButton({
   className?: string
 }) {
   return (
-    <Button
+    <button
       type="button"
-      size="icon"
-      variant="ghost"
       className={cn(
-        "size-7 text-zinc-300 hover:bg-white/10 hover:text-white",
+        "inline-flex size-7 items-center justify-center rounded-md text-zinc-300 hover:bg-white/10 hover:text-white",
         className,
       )}
       onClick={onCopy}
       aria-label="复制代码"
     >
       {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-    </Button>
+    </button>
   )
 }
 

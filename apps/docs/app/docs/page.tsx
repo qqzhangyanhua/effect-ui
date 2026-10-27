@@ -1,7 +1,6 @@
 import Link from "next/link"
 
 import { getCatalogGroups } from "@effect-ui/registry/catalog"
-import { Badge } from "@effect-ui/registry/ui/badge"
 
 import { familyPath, isFamilyCluster } from "@/lib/family-path"
 import { getRegistryBaseUrl } from "@/lib/source"
@@ -13,7 +12,9 @@ function DocsIndexPage() {
   return (
     <article className="mx-auto max-w-3xl space-y-8">
       <div className="space-y-3">
-        <Badge variant="outline">Introduction</Badge>
+        <span className="inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-xs font-medium">
+          Introduction
+        </span>
         <h1 className="font-display text-4xl tracking-tight">开始使用 effect-ui</h1>
         <p className="text-muted-foreground">
           这是一个 shadcn 风格的组件注册表：组件源码复制进你的仓库，由你持有、改主题、改实现。

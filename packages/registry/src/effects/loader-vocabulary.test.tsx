@@ -5,11 +5,8 @@ import { act, cleanup, render } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
 import { CountdownTimer } from "./countdown-timer"
-import { DotsLoader } from "./dots-loader"
 import { IntroPreloader } from "./intro-preloader"
-import { OrbitLoader } from "./orbit-loader"
 import { ParticleHourglass } from "./particle-hourglass"
-import { ProgressRing } from "./progress-ring"
 import { Spinner } from "./spinner"
 
 function installMatchMedia(reduce = false) {
@@ -61,18 +58,9 @@ test("起始值与不传的标记相同", () => {
   const spinnerSame = render(<Spinner size={28} duration={1000} />)
   expect(markup(spinnerSame.container)).toBe(markup(spinner.container))
 
-  const orbit = render(<OrbitLoader />)
-  const orbitSame = render(<OrbitLoader size={56} dots={6} duration={1400} delay={80} />)
-  expect(markup(orbitSame.container)).toBe(markup(orbit.container))
-
-  const dots = render(<DotsLoader />)
-  const dotsSame = render(<DotsLoader count={3} size={8} gap={6} duration={900} delay={120} />)
-  expect(markup(dotsSame.container)).toBe(markup(dots.container))
-
-  const ring = render(<ProgressRing value={72} />)
-  const ringSame = render(<ProgressRing value={72} size={72} strokeWidth={6} duration={500} />)
-  expect(markup(ringSame.container)).toBe(markup(ring.container))
-
+      
+      
+      
   const intro = render(<IntroPreloader />)
   const introSame = render(<IntroPreloader interval={32} duration={700} delay={70} count={5} />)
   expect(markup(introSame.container)).toBe(markup(intro.container))
@@ -97,37 +85,9 @@ test("新 prop 写进 class 或 style", () => {
   expect(styleOf(spinnerNode)).toContain("40px")
   expect(styleOf(spinnerNode)).toContain("rgb(17, 34, 51)")
 
-  const orbit = render(<OrbitLoader dots={3} duration={800} delay={40} color="#112233" />)
-  const dots = orbit.container.querySelectorAll(".rounded-full")
-  expect(dots).toHaveLength(3)
-  expect(dots[0]).not.toHaveClass("bg-primary")
-  expect(dots[0]).toHaveClass("motion-reduce:animate-pulse")
-  expect(styleOf(dots[1] ?? null)).toContain("40ms")
-  expect(styleOf(dots[0] ?? null)).toContain("800ms")
-  expect(styleOf(dots[0] ?? null)).toContain("rgb(17, 34, 51)")
-
-  const bounce = render(<DotsLoader count={5} size={14} gap={12} duration={500} delay={0} color="#112233" />)
-  const row = bounce.container.querySelector("[data-slot='dots-loader']")
-  const points = bounce.container.querySelectorAll(".rounded-full")
-  expect(points).toHaveLength(5)
-  expect(row).not.toHaveClass("gap-1.5")
-  expect(styleOf(row)).toContain("12px")
-  expect(points[0]).not.toHaveClass("size-2")
-  expect(points[0]).not.toHaveClass("bg-primary")
-  expect(styleOf(points[0] ?? null)).toContain("14px")
-  expect(styleOf(points[0] ?? null)).toContain("500ms")
-  expect(styleOf(points[1] ?? null)).toContain("0ms")
-
-  const ring = render(<ProgressRing value={72} size={100} strokeWidth={10} duration={200} color="#112233" />)
-  const arc = ring.container.querySelectorAll("circle")[1]
-  expect(arc).not.toHaveClass("duration-500")
-  expect(arc).not.toHaveClass("text-primary")
-  expect(arc).toHaveClass("motion-reduce:transition-none")
-  expect(arc).toHaveAttribute("stroke", "#112233")
-  expect(arc).toHaveAttribute("stroke-width", "10")
-  expect(styleOf(arc ?? null)).toContain("200ms")
-  expect(styleOf(ring.container.querySelector("[data-slot='progress-ring']"))).toContain("100px")
-
+                
+                      
+                  
   const intro = render(<IntroPreloader duration={400} delay={20} count={3} color="#112233" />)
   const panels = intro.container.querySelectorAll(".h-full.flex-1")
   expect(panels).toHaveLength(3)

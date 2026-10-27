@@ -2,9 +2,8 @@
 
 import * as React from "react"
 
-import { RoughAnnotation } from "@/components/ui/rough-annotation"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface ShowcaseScreen {
   id: string
@@ -82,7 +81,7 @@ function HeroAnnotatedShowcase({
         <h2 className="font-display mt-3 text-4xl tracking-tight text-balance sm:text-5xl">{title}</h2>
         <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
           底部图标切换画面。箭头是描边画出来的，重点用{" "}
-          <RoughAnnotation type="circle">{screen.note}</RoughAnnotation> 圈住。
+          <span>{screen.note}</span> 圈住。
         </p>
       </div>
       <div className="relative mx-auto mt-8 max-w-3xl">

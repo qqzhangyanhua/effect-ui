@@ -1,14 +1,10 @@
 // @vitest-environment jsdom
 
 import { afterEach, beforeAll, expect, test, vi } from "vitest"
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react"
+import { cleanup, render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { useForm } from "react-hook-form"
 import "@testing-library/jest-dom/vitest"
 
-import { ComboboxItem } from "./combobox"
-import { Form, FormControl, FormField, FormItem, FormLabel } from "./form"
-import { MultiSelect } from "./multi-select"
 import { SelectPlus, type SelectOption } from "./select-plus"
 
 const options: SelectOption[] = [
@@ -225,9 +221,8 @@ test("id、aria-describedby 和 ref 落在获得焦点的元素上", () => {
   expect(ref.current).toBe(field)
 })
 
-test("loading 标记忙碌，分组、自定义渲染、空状态和 children 可用", async () => {
+test("loading 标记忙碌，分组、自定义渲染和空状态可用", async () => {
   const user = setup()
-  const onValueChange = vi.fn()
   const { rerender } = render(<SelectPlus loading options={options} />)
   expect(screen.getByRole("combobox")).toHaveAttribute("aria-busy", "true")
 
@@ -250,16 +245,6 @@ test("loading 标记忙碌，分组、自定义渲染、空状态和 children �
   await user.type(field, "zzz")
   expect(screen.getByText("没有这个")).toBeInTheDocument()
   expect(screen.queryByRole("option")).not.toBeInTheDocument()
-
-  cleanup()
-  render(
-    <SelectPlus onValueChange={onValueChange}>
-      <ComboboxItem value="custom">自定义项</ComboboxItem>
-    </SelectPlus>,
-  )
-  fireEvent.mouseDown(screen.getByRole("combobox"))
-  fireEvent.click(await screen.findByRole("option", { name: "自定义项" }))
-  expect(onValueChange).toHaveBeenCalledWith("custom")
 })
 
 test("open 受控时回调打开状态", async () => {
@@ -286,46 +271,12 @@ test("方向键和 Enter 能选择，Escape 能关闭", async () => {
   expect(screen.queryByRole("option")).not.toBeInTheDocument()
 })
 
-test("FormControl 把 id 和校验状态写到焦点元素上", async () => {
-  const user = setup()
-  function CityForm() {
-    const form = useForm<{ city: string }>({ defaultValues: { city: "" } })
-    return (
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => undefined)}>
-          <FormField
-            control={form.control}
-            name="city"
-            rules={{ required: "请选择城市" }}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>城市</FormLabel>
-                <FormControl>
-                  <SelectPlus options={options} value={field.value} onValueChange={field.onChange} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <button type="submit">提交</button>
-        </form>
-      </Form>
-    )
-  }
-
-  render(<CityForm />)
-  const field = screen.getByRole("combobox")
-  expect(field).toHaveAttribute("id", screen.getByText("城市").closest("label")?.getAttribute("for") ?? "")
-
-  await user.click(screen.getByRole("button", { name: "提交" }))
-  expect(screen.getByRole("combobox")).toHaveAttribute("aria-invalid", "true")
-  expect(screen.getByRole("combobox").getAttribute("aria-describedby")).toBeTruthy()
-})
-
-test("multi-select 保持原有 props，并回调 string[]", async () => {
+test("多选支持 placeholder，并回调 string[]", async () => {
   const user = setup()
   const onValueChange = vi.fn()
   render(
-    <MultiSelect
+    <SelectPlus
+      mode="multiple"
       className="max-w-md"
       options={[
         { value: "motion", label: "Motion" },

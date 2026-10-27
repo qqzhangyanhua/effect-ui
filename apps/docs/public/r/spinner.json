@@ -6,14 +6,14 @@
   "description": "旋转加载指示。",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "cn"
   ],
   "files": [
     {
       "path": "registry/effects/spinner.tsx",
       "type": "registry:ui",
       "target": "components/ui/spinner.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: number\n  duration?: number\n  color?: string\n}\n\nfunction Spinner({ className, size = 28, duration, color, ...props }: SpinnerProps) {\n  const spinMs = duration === undefined || duration === 1000 ? undefined : duration\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"spinner\"\n      className={cn(\n        \"animate-spin motion-reduce:animate-pulse rounded-full border-2 border-muted-foreground/25\",\n        !color && \"border-t-primary\",\n        className,\n      )}\n      style={{\n        width: size,\n        height: size,\n        ...(spinMs === undefined ? null : { animationDuration: `${spinMs}ms` }),\n        ...(color ? { borderTopColor: color } : null),\n      }}\n      {...props}\n    >\n      <span className=\"sr-only\">Loading</span>\n    </div>\n  )\n}\n\nexport { Spinner }\n"
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\nexport interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {\n  size?: number\n  duration?: number\n  color?: string\n}\n\nfunction Spinner({ className, size = 28, duration, color, ...props }: SpinnerProps) {\n  const spinMs = duration === undefined || duration === 1000 ? undefined : duration\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"spinner\"\n      className={cn(\n        \"animate-spin motion-reduce:animate-pulse rounded-full border-2 border-muted-foreground/25\",\n        !color && \"border-t-primary\",\n        className,\n      )}\n      style={{\n        width: size,\n        height: size,\n        ...(spinMs === undefined ? null : { animationDuration: `${spinMs}ms` }),\n        ...(color ? { borderTopColor: color } : null),\n      }}\n      {...props}\n    >\n      <span className=\"sr-only\">Loading</span>\n    </div>\n  )\n}\n\nexport { Spinner }\n"
     }
   ]
 }

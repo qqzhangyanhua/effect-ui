@@ -3,9 +3,8 @@
 import * as React from "react"
 import { motion, useScroll, useSpring, useTransform } from "motion/react"
 
-import { NumberFlow } from "@/components/ui/number-flow"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface ScrollSvgGraphProps {
   className?: string
@@ -94,7 +93,7 @@ function ScrollSvgGraph({ className, speed, intensity, color }: ScrollSvgGraphPr
         <div className="mb-3 flex items-end justify-between gap-3">
           <p className="text-sm text-muted-foreground">滚动时折线和面积一起描出来，数值跟着当前点走。</p>
           <p className="text-2xl font-medium">
-            <NumberFlow value={reduced ? (POINTS.at(-1)?.value ?? 0) : active} />
+            <span>{reduced ? (POINTS.at(-1)?.value ?? 0) : active}</span>
           </p>
         </div>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="h-64 w-full" role="img" aria-label="八个月的滚动折线与面积">

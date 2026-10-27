@@ -8,15 +8,15 @@
     "motion"
   ],
   "registryDependencies": [
-    "use-prefers-reduced-motion",
-    "utils"
+    "cn",
+    "use-prefers-reduced-motion"
   ],
   "files": [
     {
       "path": "registry/effects/floating-navbar.tsx",
       "type": "registry:ui",
       "target": "components/ui/floating-navbar.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useMotionValueEvent, useScroll } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface FloatingNavbarProps {\n  className?: string\n  children?: React.ReactNode\n  duration?: number\n  intensity?: number\n}\n\nfunction FloatingNavbar({ className, children, duration, intensity }: FloatingNavbarProps) {\n  const reduce = usePrefersReducedMotion()\n  const { scrollY } = useScroll()\n  const [hidden, setHidden] = React.useState(false)\n  const seconds = duration === undefined || duration === 250 ? 0.25 : duration / 1000\n  const travel = intensity === undefined || intensity === 1 ? 88 : 88 * intensity\n\n  useMotionValueEvent(scrollY, \"change\", (latest) => {\n    const previous = scrollY.getPrevious() ?? 0\n    setHidden(latest > previous && latest > 80)\n  })\n\n  return (\n    <motion.nav\n      data-slot=\"floating-navbar\"\n      animate={{ y: hidden ? -travel : 0, opacity: hidden ? 0 : 1 }}\n      transition={{ duration: reduce ? 0 : seconds }}\n      className={cn(\n        \"sticky top-3 z-30 mx-auto flex w-fit items-center gap-3 rounded-full border bg-background/80 px-4 py-2 shadow-sm backdrop-blur\",\n        className,\n      )}\n    >\n      {children}\n    </motion.nav>\n  )\n}\n\nexport { FloatingNavbar }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useMotionValueEvent, useScroll } from \"motion/react\"\n\nimport { usePrefersReducedMotion } from \"@/hooks/use-prefers-reduced-motion\"\nimport { cn } from \"@/lib/cn\"\n\nexport interface FloatingNavbarProps {\n  className?: string\n  children?: React.ReactNode\n  duration?: number\n  intensity?: number\n}\n\nfunction FloatingNavbar({ className, children, duration, intensity }: FloatingNavbarProps) {\n  const reduce = usePrefersReducedMotion()\n  const { scrollY } = useScroll()\n  const [hidden, setHidden] = React.useState(false)\n  const seconds = duration === undefined || duration === 250 ? 0.25 : duration / 1000\n  const travel = intensity === undefined || intensity === 1 ? 88 : 88 * intensity\n\n  useMotionValueEvent(scrollY, \"change\", (latest) => {\n    const previous = scrollY.getPrevious() ?? 0\n    setHidden(latest > previous && latest > 80)\n  })\n\n  return (\n    <motion.nav\n      data-slot=\"floating-navbar\"\n      animate={{ y: hidden ? -travel : 0, opacity: hidden ? 0 : 1 }}\n      transition={{ duration: reduce ? 0 : seconds }}\n      className={cn(\n        \"sticky top-3 z-30 mx-auto flex w-fit items-center gap-3 rounded-full border bg-background/80 px-4 py-2 shadow-sm backdrop-blur\",\n        className,\n      )}\n    >\n      {children}\n    </motion.nav>\n  )\n}\n\nexport { FloatingNavbar }\n"
     }
   ]
 }

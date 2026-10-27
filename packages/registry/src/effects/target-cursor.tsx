@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { useAnimationActive } from "@/hooks/use-animation-active"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface TargetCursorProps {
   className?: string

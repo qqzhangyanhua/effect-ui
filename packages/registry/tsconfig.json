@@ -4,7 +4,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/lib/utils": ["./src/lib/utils.ts"],
+      "@/lib/cn": ["./src/lib/cn.ts"],
       "@/lib/text-style": ["./src/lib/text-style.ts"],
       "@/components/ui/*": ["./src/ui/*", "./src/effects/*", "./src/sections/*"],
       "@/hooks/*": ["./src/hooks/*"]

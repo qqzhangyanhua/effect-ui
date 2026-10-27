@@ -2,9 +2,8 @@
 
 import { motion } from "motion/react"
 
-import { NumberFlow } from "@/components/ui/number-flow"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface ReactionItem {
   emoji: string
@@ -64,7 +63,7 @@ function ReactionBar({ items, onToggle, className, duration, scale, gap, color }
           onClick={() => onToggle(item.emoji)}
         >
           <span aria-hidden>{item.emoji}</span>
-          <NumberFlow value={item.count} />
+          <span>{item.count}</span>
           <span className="sr-only">{item.active ? "已反应" : "反应"}</span>
         </motion.button>
       ))}

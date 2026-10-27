@@ -6,15 +6,15 @@
   "description": "灵感来自 lamp heading，原创实现：顶部灯罩高光落在大标题上。",
   "dependencies": [],
   "registryDependencies": [
-    "text-style",
-    "utils"
+    "cn",
+    "text-style"
   ],
   "files": [
     {
       "path": "registry/effects/lamp-heading.tsx",
       "type": "registry:ui",
       "target": "components/ui/lamp-heading.tsx",
-      "content": "import { textStyle } from \"@/lib/text-style\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface LampHeadingProps {\n  text: string\n  className?: string\n  color?: string\n  fontSize?: number\n  fontWeight?: number\n  letterSpacing?: number\n  align?: \"left\" | \"center\" | \"right\"\n}\n\nfunction LampHeading({ text, className, color, fontSize, fontWeight, letterSpacing, align }: LampHeadingProps) {\n  const painted = color !== undefined && color !== \"#c4b5fd\"\n  return (\n    <div className={cn(\"relative overflow-hidden rounded-2xl bg-zinc-950 px-8 py-16 text-center\", className)}>\n      <div className=\"pointer-events-none absolute inset-x-0 top-0 flex justify-center\">\n        <div\n          className={cn(\n            \"h-24 w-40 rounded-b-full blur-2xl\",\n            !painted && \"bg-[radial-gradient(ellipse_at_top,#c4b5fd,transparent_70%)]\",\n          )}\n          style={painted ? { background: `radial-gradient(ellipse at top, ${color}, transparent 70%)` } : undefined}\n        />\n      </div>\n      <div className=\"pointer-events-none absolute top-6 left-1/2 h-20 w-px -translate-x-1/2 bg-linear-to-b from-violet-200 to-transparent\" />\n      <div className=\"pointer-events-none absolute top-6 left-1/2 h-2 w-16 -translate-x-1/2 rounded-full bg-violet-100/80 blur-[1px]\" />\n      <p\n        className=\"relative font-display text-4xl tracking-tight text-white\"\n        style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}\n      >\n        {text}\n      </p>\n      <p className=\"relative mt-2 text-sm text-white/45\">灵感来自 lamp heading，原创实现</p>\n    </div>\n  )\n}\n\nexport { LampHeading }\n"
+      "content": "import { textStyle } from \"@/lib/text-style\"\nimport { cn } from \"@/lib/cn\"\n\nexport interface LampHeadingProps {\n  text: string\n  className?: string\n  color?: string\n  fontSize?: number\n  fontWeight?: number\n  letterSpacing?: number\n  align?: \"left\" | \"center\" | \"right\"\n}\n\nfunction LampHeading({ text, className, color, fontSize, fontWeight, letterSpacing, align }: LampHeadingProps) {\n  const painted = color !== undefined && color !== \"#c4b5fd\"\n  return (\n    <div className={cn(\"relative overflow-hidden rounded-2xl bg-zinc-950 px-8 py-16 text-center\", className)}>\n      <div className=\"pointer-events-none absolute inset-x-0 top-0 flex justify-center\">\n        <div\n          className={cn(\n            \"h-24 w-40 rounded-b-full blur-2xl\",\n            !painted && \"bg-[radial-gradient(ellipse_at_top,#c4b5fd,transparent_70%)]\",\n          )}\n          style={painted ? { background: `radial-gradient(ellipse at top, ${color}, transparent 70%)` } : undefined}\n        />\n      </div>\n      <div className=\"pointer-events-none absolute top-6 left-1/2 h-20 w-px -translate-x-1/2 bg-linear-to-b from-violet-200 to-transparent\" />\n      <div className=\"pointer-events-none absolute top-6 left-1/2 h-2 w-16 -translate-x-1/2 rounded-full bg-violet-100/80 blur-[1px]\" />\n      <p\n        className=\"relative font-display text-4xl tracking-tight text-white\"\n        style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}\n      >\n        {text}\n      </p>\n      <p className=\"relative mt-2 text-sm text-white/45\">灵感来自 lamp heading，原创实现</p>\n    </div>\n  )\n}\n\nexport { LampHeading }\n"
     }
   ]
 }

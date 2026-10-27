@@ -4,7 +4,7 @@ status: accepted
 
 # Composite components layer on primitives, and existing composites upgrade in place
 
-Users want antd-style components that cover common scenarios through props (multi-select, search, clear, loading, `columns`, `options`). We add these as new catalog entries, called composite components, that depend on the unchanged primitive entries. `select`, `button`, `input`, `switch`, `dialog`, `table` and the other shadcn-shaped entries keep their upstream shape, so their install output at `/r/<name>` does not change.
+Users want antd-style components that cover common scenarios through props (multi-select, search, clear, loading, `columns`, `options`). We add these as new catalog entries, called composite components, that depend on the unchanged primitive entries. `select`, `button`, `input`, `dialog`, `table` and the other shadcn-shaped entries keep their upstream shape, so their install output at `/r/<name>` does not change.
 
 A catalog entry that is already a composite, such as `data-table` or `multi-select`, is the exception: it is upgraded in place, keeps its name, and stays backward compatible. Two overlapping composites for the same job would be worse than one that grew.
 

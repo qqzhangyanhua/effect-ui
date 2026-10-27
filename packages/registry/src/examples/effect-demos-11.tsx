@@ -1,6 +1,5 @@
 "use client"
 
-import { CssAccordionAuto } from "../ui/css-accordion-auto"
 import { AnchorPopover } from "../ui/anchor-popover"
 import { DitherGradient } from "../effects/dither-gradient"
 
@@ -9,10 +8,8 @@ import { IntroPreloader } from "../effects/intro-preloader"
 import { Keycap3D } from "../ui/keycap-3d"
 import { LiquidGlassTabbar } from "../ui/liquid-glass-tabbar"
 import { ScrollTimelineReveal } from "../effects/scroll-timeline-reveal"
-import { Hero3DModel } from "../sections/hero-3d-model"
 import { HeroScrollZoom } from "../sections/hero-scroll-zoom"
 import { SectionHorizontalScroll } from "../sections/section-horizontal-scroll"
-import { SmoothScrollProvider } from "../ui/smooth-scroll-provider"
 import { ViewTransitionGallery } from "../ui/view-transition-gallery"
 
 export function ViewTransitionGalleryDemo({ gap, size }: { gap?: number; size?: number } = {}) {
@@ -29,10 +26,6 @@ export function ScrollTimelineRevealDemo({
   intensity?: number
 } = {}) {
   return <ScrollTimelineReveal className="w-full" mode={mode} speed={speed} intensity={intensity} />
-}
-
-export function SmoothScrollProviderDemo() {
-  return <SmoothScrollProvider className="w-full" />
 }
 
 export function HeroScrollZoomDemo() {
@@ -57,10 +50,6 @@ export function IntroPreloaderDemo({
   color?: string
 } = {}) {
   return <IntroPreloader className="w-full" interval={interval} duration={duration} delay={delay} count={count} color={color} />
-}
-
-export function Hero3DModelDemo() {
-  return <Hero3DModel className="w-full" />
 }
 
 export function Keycap3DDemo({ duration, angle, intensity, gap }: { duration?: number; angle?: number; intensity?: number; gap?: number } = {}) {
@@ -92,8 +81,4 @@ export function DitherGradientDemo({
 
 export function AnchorPopoverDemo() {
   return <AnchorPopover className="w-full" />
-}
-
-export function CssAccordionAutoDemo() {
-  return <CssAccordionAuto className="w-full" />
 }

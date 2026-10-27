@@ -2,8 +2,7 @@
 
 import * as React from "react"
 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface RadioOption {
   label: React.ReactNode
@@ -49,14 +48,34 @@ function RadioPlusGroup({
 }: RadioPlusGroupProps) {
   const items = options.map(normalizeOption)
   const buttons = optionType === "button"
+  const groupName = React.useId()
+  const [uncontrolled, setUncontrolled] = React.useState(defaultValue)
+  const selected = value ?? uncontrolled
+
+  function choose(next: string) {
+    if (value === undefined) setUncontrolled(next)
+    onValueChange?.(next)
+  }
+
+  function onKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    const forward = event.key === "ArrowRight" || event.key === "ArrowDown"
+    const back = event.key === "ArrowLeft" || event.key === "ArrowUp"
+    if (!forward && !back) return
+    const enabled = items.filter((item) => !disabled && !item.disabled)
+    if (enabled.length === 0) return
+    event.preventDefault()
+    const index = Math.max(0, enabled.findIndex((item) => item.value === selected))
+    const next = enabled[(index + (forward ? 1 : -1) + enabled.length) % enabled.length]
+    if (!next) return
+    choose(next.value)
+    event.currentTarget.querySelector<HTMLInputElement>(`input[value="${CSS.escape(next.value)}"]`)?.focus()
+  }
 
   return (
-    <RadioGroup
-      value={value}
-      defaultValue={defaultValue}
-      onValueChange={onValueChange}
-      disabled={disabled}
-      orientation={orientation}
+    <div
+      role="radiogroup"
+      data-orientation={orientation}
+      onKeyDown={onKeyDown}
       className={cn(
         buttons
           ? "inline-flex gap-0"
@@ -72,27 +91,29 @@ function RadioPlusGroup({
           key={item.value}
           className={cn(
             "inline-flex items-center gap-2 text-sm leading-none",
-            buttons &&
-              "relative cursor-pointer border border-input px-3 py-1.5 first:rounded-l-md last:rounded-r-md has-[[data-state=checked]]:bg-primary has-[[data-state=checked]]:text-primary-foreground has-[:focus-visible]:z-10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring",
-            buttons &&
-              orientation === "vertical" &&
-              "first:rounded-l-none first:rounded-t-md last:rounded-r-none last:rounded-b-md",
+            buttons && "relative cursor-pointer border border-input px-3 py-1.5 first:rounded-l-md last:rounded-r-md",
+            buttons && selected === item.value && "bg-primary text-primary-foreground",
+            buttons && orientation === "vertical" && "first:rounded-l-none first:rounded-t-md last:rounded-r-none last:rounded-b-md",
             (disabled || item.disabled) && "cursor-not-allowed opacity-50",
           )}
         >
-          <RadioGroupItem
+          <input
+            type="radio"
+            name={groupName}
             value={item.value}
+            checked={selected === item.value}
             disabled={disabled || item.disabled}
             id={index === 0 ? id : undefined}
-            ref={index === 0 ? ref : undefined}
+            ref={index === 0 ? (ref as React.Ref<HTMLInputElement>) : undefined}
             aria-invalid={ariaInvalid}
             aria-describedby={ariaDescribedBy}
-            className={buttons ? "absolute inset-0 size-auto aspect-auto h-full w-full cursor-pointer opacity-0" : undefined}
+            className={buttons ? "sr-only" : undefined}
+            onChange={() => choose(item.value)}
           />
           {item.label}
         </label>
       ))}
-    </RadioGroup>
+    </div>
   )
 }
 

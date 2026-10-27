@@ -3,9 +3,8 @@
 import * as React from "react"
 import { motion } from "motion/react"
 
-import { Button } from "@/components/ui/button"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface PulseHeartProps {
   active?: boolean
@@ -51,10 +50,9 @@ function PulseHeart({
   }
 
   return (
-    <Button
+    <button
       ref={ref}
       type="button"
-      variant="ghost"
       disabled={disabled}
       aria-pressed={on}
       aria-label={ariaLabel}
@@ -103,7 +101,7 @@ function PulseHeart({
             )
           })
         : null}
-    </Button>
+    </button>
   )
 }
 

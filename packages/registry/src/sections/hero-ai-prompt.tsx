@@ -3,10 +3,8 @@
 import * as React from "react"
 import { ArrowUp, Paperclip, Sparkles } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface HeroAiPromptProps {
   title?: string
@@ -56,7 +54,7 @@ function HeroAiPrompt({
       ) : null}
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center text-center text-white">
         <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/70">
-          <Sparkles className="size-3.5" />
+          <Sparkles className="size-3.5" aria-hidden />
           effect-ui prompt
         </span>
         <h2 className="font-display text-4xl tracking-tight text-balance sm:text-5xl">{title}</h2>
@@ -68,11 +66,11 @@ function HeroAiPrompt({
             submit()
           }}
         >
-          <Textarea
+          <textarea
             value={value}
             onChange={(event) => setValue(event.target.value)}
             placeholder={placeholder}
-            className="min-h-28 resize-none border-0 bg-transparent text-base text-white shadow-none placeholder:text-white/35 focus-visible:ring-0 dark:bg-transparent"
+            className="min-h-28 w-full resize-none border-0 bg-transparent text-base text-white shadow-none outline-none placeholder:text-white/35"
             onKeyDown={(event) => {
               if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault()
@@ -81,19 +79,20 @@ function HeroAiPrompt({
             }}
           />
           <div className="mt-2 flex items-center justify-between px-1">
-            <Button
+            <button
               type="button"
-              size="icon"
-              variant="ghost"
-              className="text-white/60 hover:bg-white/10 hover:text-white"
+              className="inline-flex size-9 items-center justify-center rounded-md text-white/60 hover:bg-white/10 hover:text-white"
               aria-label="附加文件"
             >
-              <Paperclip className="size-4" />
-            </Button>
-            <Button type="submit" size="sm" className="rounded-full px-4">
+              <Paperclip className="size-4" aria-hidden />
+            </button>
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1 rounded-full bg-primary px-4 py-1.5 text-sm text-primary-foreground"
+            >
               生成
-              <ArrowUp className="size-3.5" />
-            </Button>
+              <ArrowUp className="size-3.5" aria-hidden />
+            </button>
           </div>
         </form>
         <div className="mt-5 flex flex-wrap justify-center gap-2">

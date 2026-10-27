@@ -6,93 +6,46 @@ import { expect, test } from "vitest"
 
 import { readUsageExample } from "./usage"
 
-const gradientTextUsage = `import { GradientText } from "@/components/ui/gradient-text"
+const heroAnnotatedShowcaseUsage = `import { HeroAnnotatedShowcase } from "@/components/ui/hero-annotated-showcase"
 
-export function GradientTextDemo() {
-  const children = "流动渐变"
-  const colors = "from-violet-500 via-fuchsia-500 to-cyan-400"
-  const delay = 0
-  const loop = true
-  const interactive = false
-  const fontSize = 48
-  const fontWeight = 700
-  const letterSpacing = 0
-  const align = "center"
-
-  return (
-    <GradientText
-      className="text-4xl font-semibold tracking-tight"
-      colors={colors}
-      delay={delay}
-      loop={loop}
-      interactive={interactive}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      letterSpacing={letterSpacing}
-      align={align}
-    >
-      {children}
-    </GradientText>
-  )
+export function HeroAnnotatedShowcaseDemo() {
+  return <HeroAnnotatedShowcase className="w-full" />
 }
 `
 
 test("无参 demo 的用法代码与改写前一致", () => {
-  expect(readUsageExample("gradient-text")).toBe(gradientTextUsage)
+  expect(readUsageExample("hero-annotated-showcase")).toBe(heroAnnotatedShowcaseUsage)
 })
 
 test("单行带默认值的 demo 被改写成常量", () => {
-  const usage = readUsageExample("shimmer-text")
-  const childrenAt = usage.indexOf('const children = "扫光文字即将上线"')
-  const fontSizeAt = usage.indexOf("const fontSize = 48")
-  const fontWeightAt = usage.indexOf("const fontWeight = 600")
-  const letterSpacingAt = usage.indexOf("const letterSpacing = 0")
-  const alignAt = usage.indexOf('const align = "left"')
-  expect(usage).toMatch(/export function ShimmerTextDemo\(\) \{/)
-  expect(usage).toContain('const children = "扫光文字即将上线"')
-  expect(childrenAt).toBeGreaterThan(-1)
-  expect(fontSizeAt).toBeGreaterThan(childrenAt)
-  expect(fontWeightAt).toBeGreaterThan(fontSizeAt)
-  expect(letterSpacingAt).toBeGreaterThan(fontWeightAt)
-  expect(alignAt).toBeGreaterThan(letterSpacingAt)
-  expect(usage).toContain("fontSize={fontSize}")
-  expect(usage).toContain("fontWeight={fontWeight}")
-  expect(usage).toContain("letterSpacing={letterSpacing}")
-  expect(usage).toContain("align={align}")
-  expect(usage).toContain("{children}")
-  expect(usage).not.toMatch(/ShimmerTextDemo\s*\(\s*\{/)
+  const usage = readUsageExample("shuffle-grid-hero")
+  expect(usage).toMatch(/export function ShuffleGridHeroDemo\(\) \{/)
+  expect(usage).toContain("const interval = 1800")
+  expect(usage).toContain("interval={interval}")
+  expect(usage).not.toMatch(/ShuffleGridHeroDemo\s*\(\s*\{/)
   expect(usage).not.toContain("values")
   expect(usage).not.toContain("= {}")
 })
 
 test("多行解构、类型标注和默认空对象被改写成常量", () => {
-  const usage = readUsageExample("typing-text")
-  const textAt = usage.indexOf('const text = "把特效复制进你的项目"')
-  const durationAt = usage.indexOf("const duration = 80")
-  const loopAt = usage.indexOf("const loop = true")
-  const cursorAt = usage.indexOf("const cursor = true")
-  const delayAt = usage.indexOf("const delay = 0")
-  const interactiveAt = usage.indexOf("const interactive = false")
-  const fontSizeAt = usage.indexOf("const fontSize = 32")
-  const fontWeightAt = usage.indexOf("const fontWeight = 500")
-  const letterSpacingAt = usage.indexOf("const letterSpacing = 0")
-  const alignAt = usage.indexOf('const align = "left"')
-  expect(textAt).toBeGreaterThan(-1)
-  expect(durationAt).toBeGreaterThan(textAt)
-  expect(loopAt).toBeGreaterThan(durationAt)
-  expect(cursorAt).toBeGreaterThan(loopAt)
-  expect(delayAt).toBeGreaterThan(cursorAt)
-  expect(interactiveAt).toBeGreaterThan(delayAt)
-  expect(fontSizeAt).toBeGreaterThan(interactiveAt)
-  expect(fontWeightAt).toBeGreaterThan(fontSizeAt)
-  expect(letterSpacingAt).toBeGreaterThan(fontWeightAt)
-  expect(alignAt).toBeGreaterThan(letterSpacingAt)
-  expect(usage).toContain("delay={delay}")
-  expect(usage).toContain("interactive={interactive}")
-  expect(usage).toContain("fontSize={fontSize}")
-  expect(usage).toContain("align={align}")
-  expect(usage).toMatch(/export function TypingTextDemo\(\) \{/)
-  expect(usage).not.toMatch(/TypingTextDemo\s*\(\s*\{/)
+  const usage = readUsageExample("aurora-background")
+  const childrenAt = usage.indexOf('const children = "极光铺在内容后面"')
+  const speedAt = usage.indexOf("const speed = 1")
+  const intensityAt = usage.indexOf("const intensity = 0.7")
+  const colorsAt = usage.indexOf("const colors = undefined")
+  const sizeAt = usage.indexOf("const size = 64")
+  expect(childrenAt).toBeGreaterThan(-1)
+  expect(speedAt).toBeGreaterThan(childrenAt)
+  expect(intensityAt).toBeGreaterThan(speedAt)
+  expect(colorsAt).toBeGreaterThan(intensityAt)
+  expect(sizeAt).toBeGreaterThan(colorsAt)
+  expect(usage).toContain("speed={speed}")
+  expect(usage).toContain("intensity={intensity}")
+  expect(usage).toContain("colors={colors}")
+  expect(usage).toContain("size={size}")
+  expect(usage).toContain("{children}")
+  expect(usage).toMatch(/export function AuroraBackgroundDemo\(\) \{/)
+  expect(usage).not.toMatch(/AuroraBackgroundDemo\s*\(\s*\{/)
   expect(usage).not.toContain("values")
   expect(usage).not.toContain("= {}")
   expect(usage).not.toContain("Partial<")

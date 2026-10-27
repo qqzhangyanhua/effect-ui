@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface HeatmapCalendarProps {
   year?: number

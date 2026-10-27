@@ -6,11 +6,9 @@ const familyPaths: Record<FamilyCluster, string> = {
   button: "/docs/buttons",
   input: "/docs/inputs",
   checkbox: "/docs/checkboxes",
-  switch: "/docs/switches",
   radio: "/docs/radios",
   select: "/docs/selects",
   textarea: "/docs/textareas",
-  slider: "/docs/sliders",
 }
 
 export function familyPath(cluster: FamilyCluster): string {

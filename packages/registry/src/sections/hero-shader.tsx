@@ -3,15 +3,11 @@
 import * as React from "react"
 
 import { AuroraBackground } from "@/components/ui/aurora-background"
-import { Button } from "@/components/ui/button"
 import { Iridescence } from "@/components/ui/iridescence"
 import { Lightning } from "@/components/ui/lightning"
-import { ShaderBackground } from "@/components/ui/shader-backgrounds"
-import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { Silk } from "@/components/ui/silk"
-import { SplitText } from "@/components/ui/split-text"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export type HeroShaderBackground = "silk" | "iridescence" | "lightning" | "mesh" | "aurora"
 
@@ -44,7 +40,9 @@ function ShaderSlot({
   }
   if (variant === "iridescence") return <Iridescence className={layer} />
   if (variant === "lightning") return <Lightning className={layer} />
-  if (variant === "mesh") return <ShaderBackground variant="mesh" className={layer} />
+  if (variant === "mesh") {
+    return <div className={cn(layer, "bg-[linear-gradient(135deg,#312e81,#7c3aed_45%,#22d3ee,#0f172a)]")} />
+  }
   if (variant === "aurora") return <AuroraBackground className={layer} />
   return <Silk className={layer} />
 }
@@ -72,17 +70,22 @@ function HeroShader({
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-5 px-6 py-20 text-center">
         <p className="text-xs tracking-[0.28em] text-white/60 uppercase">Hero Shader</p>
         <h2 className="font-display text-4xl tracking-tight text-balance sm:text-5xl">
-          <SplitText text={title} by="word" className="justify-center gap-x-2" />
+          <span className="inline-flex justify-center gap-x-2">{title}</span>
         </h2>
         <p className="max-w-lg text-sm text-white/70">{subtitle}</p>
         <div className="flex flex-wrap justify-center gap-2">
-          <ShimmerButton>{ctaLabel}</ShimmerButton>
-          <Button
-            variant="outline"
-            className="border-white/25 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+          <button
+            type="button"
+            className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm text-primary-foreground"
+          >
+            {ctaLabel}
+          </button>
+          <button
+            type="button"
+            className="inline-flex h-9 items-center justify-center rounded-md border border-white/25 bg-white/5 px-4 text-sm text-white hover:bg-white/10 hover:text-white"
           >
             {secondaryLabel}
-          </Button>
+          </button>
         </div>
       </div>
     </section>

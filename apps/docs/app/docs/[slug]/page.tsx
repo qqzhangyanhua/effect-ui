@@ -11,7 +11,6 @@ import {
   sourceLibraryUrls,
   visibleComponents,
 } from "@effect-ui/registry/catalog"
-import { Badge } from "@effect-ui/registry/ui/badge"
 
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentTabs } from "@/components/component-tabs"
@@ -118,18 +117,26 @@ async function ComponentDocsPage({ params }: DocsPageProps) {
       <header className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
           {sourceUrl ? (
-            <Badge variant="secondary" asChild>
-              <a href={sourceUrl} target="_blank" rel="noreferrer">
-                {item.source}
-              </a>
-            </Badge>
+            <a
+              href={sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-fit items-center rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground"
+            >
+              {item.source}
+            </a>
           ) : (
-            <Badge variant="secondary">{item.source}</Badge>
+            <span className="inline-flex w-fit items-center rounded-md bg-secondary px-2 py-0.5 text-xs font-medium text-secondary-foreground">
+              {item.source}
+            </span>
           )}
           {layerBadges(item).map((label) => (
-            <Badge key={label} variant="outline">
+            <span
+              key={label}
+              className="inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-xs font-medium"
+            >
               {label}
-            </Badge>
+            </span>
           ))}
         </div>
         <h1 className="font-display text-4xl tracking-tight">{item.title}</h1>

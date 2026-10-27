@@ -5,7 +5,6 @@ import { cleanup, fireEvent, render, screen, within } from "@testing-library/rea
 import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
-import { ElasticSlider } from "../effects/elastic-slider"
 import { ReactionBar } from "../effects/reaction-bar"
 import { FuseButton } from "./fuse-button"
 import { JellyRadio } from "./jelly-radio"
@@ -14,7 +13,6 @@ import { PeekRating } from "./peek-rating"
 import { PulseHeart } from "./pulse-heart"
 import { SlideToConfirm } from "./slide-to-confirm"
 import { SpringCheck } from "./spring-check"
-import { SquishSwitch } from "./squish-switch"
 import { SwipeRow } from "./swipe-row"
 import { WarmTooltip } from "./warm-tooltip"
 
@@ -67,7 +65,6 @@ test("canonical props match the previous render", () => {
   }
   const reactions = [{ emoji: "ok", count: 1, active: true }]
   const pairs = [
-    [render(<SquishSwitch aria-label="开关" />), render(<SquishSwitch aria-label="开关" speed={1} />)],
     [render(<JellyRadio {...jelly} />), render(<JellyRadio {...jelly} intensity={0.55} />)],
     [render(<SpringCheck aria-label="勾选" />), render(<SpringCheck aria-label="勾选" intensity={0.3} />)],
     [render(<PeekRating aria-label="评分" />), render(<PeekRating aria-label="评分" size={28} intensity={0.25} />)],
@@ -76,7 +73,6 @@ test("canonical props match the previous render", () => {
     [render(<FuseButton />), render(<FuseButton scale={1} />)],
     [render(<PulseHeart />), render(<PulseHeart duration={350} scale={1} />)],
     [render(<LatticeLoader />), render(<LatticeLoader size={6} gap={6} />)],
-    [render(<ElasticSlider />), render(<ElasticSlider scale={1} speed={1} />)],
     [
       render(
         <WarmTooltip content="说明">
@@ -141,15 +137,6 @@ test("new props change the painted result", () => {
   expect(bar.className).not.toContain("border-primary")
   expect(bar).toHaveStyle({ borderColor: "#112233" })
 
-  const elastic = render(<ElasticSlider color="#112233" />)
-  const fill = elastic.container.querySelector("[class*='rounded-full'][class*='h-2']:not([class*='bg-muted'])")
-  expect(fill?.className).not.toContain("bg-primary")
-  expect(fill).toHaveStyle({ backgroundColor: "#112233" })
-
-  const small = render(<SquishSwitch aria-label="开关" size="sm" speed={1.4} />)
-  expect(within(small.container).getByRole("switch").className).toContain("h-5")
-  expect(within(small.container).getByRole("switch").className).toContain("w-9")
-
   render(
     <JellyRadio
       aria-label="尺寸"
@@ -162,7 +149,6 @@ test("new props change the painted result", () => {
     />,
   )
   render(<SpringCheck aria-label="勾选" intensity={0.8} defaultChecked />)
-  render(<ElasticSlider scale={2} speed={1.6} />)
   const heart = render(<PulseHeart duration={200} scale={1.6} />)
   fireEvent.click(within(heart.container).getByRole("button"))
 })

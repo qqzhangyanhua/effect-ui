@@ -3,7 +3,6 @@
 import { AudioSpectrum } from "../effects/audio-spectrum"
 import { CouponInput } from "../effects/coupon-input"
 import { CreditCardForm } from "../effects/credit-card-form"
-import { GradientCarousel3d } from "../effects/gradient-carousel-3d"
 import { LiquidMorphSlideshow } from "../effects/liquid-morph-slideshow"
 import { Singularity } from "../effects/singularity"
 import { Text3dScroll } from "../effects/text-3d-scroll"
@@ -26,11 +25,6 @@ export function WavefieldNeonDemo({
 } = {}) {
   return <WavefieldNeon className="w-full" color={color} density={density} amplitude={amplitude} />
 }
-
-export function GradientCarousel3dDemo({ speed, angle, scale, intensity }: { speed?: number; angle?: number; scale?: number; intensity?: number } = {}) {
-  return <GradientCarousel3d className="w-full" speed={speed} angle={angle} scale={scale} intensity={intensity} />
-}
-
 export function Text3dScrollDemo({
   text = "把句子从平面里翻出来",
   angle,

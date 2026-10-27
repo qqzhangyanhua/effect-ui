@@ -5,10 +5,8 @@ import { cleanup, render } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
 import { PixelTransition } from "./pixel-transition"
-import { Terminal } from "./terminal"
 import { ViewTransitionGallery } from "../ui/view-transition-gallery"
 
-const LINES = ["pnpm install"]
 
 function installMatchMedia(reduce = false) {
   window.matchMedia = (query: string) =>
@@ -55,10 +53,7 @@ afterEach(() => {
 })
 
 test("起始值与不传的标记相同", () => {
-  const terminal = render(<Terminal lines={LINES} />)
-  const terminalSame = render(<Terminal lines={LINES} interval={700} />)
-  expect(markup(terminalSame.container)).toBe(markup(terminal.container))
-
+      
   const pixel = render(<PixelTransition from="/a.png" to="/b.png" />)
   const pixelSame = render(<PixelTransition from="/a.png" to="/b.png" count={48} duration={500} delay={28} />)
   expect(markup(pixelSame.container)).toBe(markup(pixel.container))
@@ -73,11 +68,7 @@ test("起始值与不传的标记相同", () => {
 })
 
 test("改值会改变能看见的标记", () => {
-  const terminal = render(<Terminal lines={LINES} color="#112233" />)
-  const prompt = terminal.container.querySelector("pre span")
-  expect(prompt?.className ?? "").not.toContain("text-emerald-400")
-  expect(prompt?.getAttribute("style") ?? "").toContain("rgb(17, 34, 51)")
-
+        
   const pixel = render(<PixelTransition from="/a.png" to="/b.png" count={16} duration={800} delay={40} />)
   expect(pixel.container.innerHTML).toContain("repeat(4, 1fr)")
   expect(pixel.container.innerHTML).not.toContain("duration-500")
@@ -91,7 +82,6 @@ test("改值会改变能看见的标记", () => {
 
 test("减弱动效时渲染不抛错", () => {
   installMatchMedia(true)
-  render(<Terminal lines={LINES} />)
-  render(<PixelTransition from="/a.png" to="/b.png" />)
+    render(<PixelTransition from="/a.png" to="/b.png" />)
   render(<ViewTransitionGallery />)
 })

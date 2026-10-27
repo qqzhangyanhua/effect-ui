@@ -2,8 +2,6 @@ import Link from "next/link"
 import { ArrowRight, ChevronDown, ExternalLink, Github } from "lucide-react"
 
 import { components, resolveLayer } from "@effect-ui/registry/catalog"
-import { DotPattern } from "@effect-ui/registry/effects/dot-pattern"
-import { HighlightText } from "@effect-ui/registry/effects/highlight-text"
 import { HeroShowcase } from "@/components/hero-showcase"
 import { HomeCtaBand } from "@/components/home-cta-band"
 import { HomeFeatureGrid } from "@/components/home-feature-grid"
@@ -27,12 +25,6 @@ export default function HomePage() {
   return (
     <main className="min-h-svh bg-background text-foreground">
       <section className="relative overflow-hidden border-b border-border/50 bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(59,130,246,0.06),transparent)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(59,130,246,0.12),transparent)]">
-        <DotPattern
-          width={20}
-          height={20}
-          cr={0.8}
-          className="opacity-[0.28] mask-[radial-gradient(ellipse_75%_65%_at_50%_0%,#000_45%,transparent_100%)] motion-reduce:opacity-15"
-        />
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--border)_70%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--border)_70%,transparent)_1px,transparent_1px)] bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_70%_60%_at_50%_0%,#000_55%,transparent_100%)] opacity-35"
@@ -88,7 +80,7 @@ export default function HomePage() {
             title={
               <>
                 核心
-                <HighlightText className="mx-1">特性</HighlightText>
+                <span className="mx-1">特性</span>
               </>
             }
             description="提供丰富的基础组件与炫酷特效，帮助你快速构建现代化的 Web 应用。"
@@ -116,7 +108,7 @@ export default function HomePage() {
           title={
             <>
               一行命令，将
-              <HighlightText className="mx-1">源码</HighlightText>
+              <span className="mx-1">源码</span>
               置入你的项目
             </>
           }
@@ -137,7 +129,7 @@ export default function HomePage() {
           title={
             <>
               为什么选择
-              <HighlightText className="mx-1">effect-ui</HighlightText>
+              <span className="mx-1">effect-ui</span>
             </>
           }
           description="兼具基础 UI 的严谨规范与现代交互的灵动惊艳。"

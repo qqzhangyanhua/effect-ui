@@ -3,16 +3,8 @@
 import { AnimatePresence, motion } from "motion/react"
 import * as React from "react"
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export type SessionDevice = "desktop" | "mobile" | "tablet"
 
@@ -136,24 +128,32 @@ function ActiveSessionsList({ sessions, onSignOut, onSignOutOthers, className }:
           ))}
         </AnimatePresence>
       </ul>
-      <Dialog open={pending !== null} onOpenChange={(open) => { if (!open) setPending(null) }}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{pending === "others" ? "登出其他设备？" : "登出这个设备？"}</DialogTitle>
-            <DialogDescription>
+      {pending !== null ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" onMouseDown={() => setPending(null)}>
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="w-full max-w-md space-y-3 rounded-xl border bg-background p-4"
+            onMouseDown={(event) => event.stopPropagation()}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") setPending(null)
+            }}
+          >
+            <h2 className="text-lg font-medium">{pending === "others" ? "登出其他设备？" : "登出这个设备？"}</h2>
+            <p className="text-sm text-muted-foreground">
               {pending === "others" ? "其他设备需要重新登录。当前设备会保留。" : "该设备需要重新登录。"}
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <button type="button" className="h-9 rounded-md border px-3 text-sm" onClick={() => setPending(null)}>
-              取消
-            </button>
-            <button type="button" className="h-9 rounded-md bg-destructive px-3 text-sm text-white" onClick={confirm}>
-              确认登出
-            </button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+            </p>
+            <div className="flex justify-end gap-2">
+              <button type="button" className="h-9 rounded-md border px-3 text-sm" onClick={() => setPending(null)}>
+                取消
+              </button>
+              <button type="button" className="h-9 rounded-md bg-destructive px-3 text-sm text-white" onClick={confirm}>
+                确认登出
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   )
 }

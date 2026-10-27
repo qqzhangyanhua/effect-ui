@@ -47,7 +47,7 @@ test("按钮总览的每一项可以打开用法和源码", async () => {
     const view = render(
       await FamilyGallery({ cluster: "button", title: "按钮", description: "说明" }),
     )
-    const section = view.container.querySelector("#pulse-button")
+    const section = view.container.querySelector("#neon-button")
     expect(section).toBeTruthy()
     const scope = within(section as HTMLElement)
     const user = userEvent.setup()
@@ -55,9 +55,9 @@ test("按钮总览的每一项可以打开用法和源码", async () => {
     expect(scope.getByRole("tab", { name: "用法" })).toBeVisible()
     expect(scope.getByRole("tab", { name: "源码" })).toBeVisible()
     await user.click(scope.getByRole("tab", { name: "源码" }))
-    expect(section?.textContent).toContain("function PulseButton")
+    expect(section?.textContent).toContain("function NeonButton")
     await user.click(scope.getByRole("tab", { name: "用法" }))
-    expect(section?.textContent).toContain("PulseButtonDemo")
+    expect(section?.textContent).toContain("NeonButtonDemo")
   } finally {
     process.chdir(previous)
   }

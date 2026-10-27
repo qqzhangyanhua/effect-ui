@@ -5,13 +5,6 @@ import Link from "next/link"
 import { ArrowRight, Sparkles, Type, Wand2, Zap } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 
-import { Meteors } from "@effect-ui/registry/effects/meteors"
-import { ScrambleText } from "@effect-ui/registry/effects/scramble-text"
-import { ShineBorder } from "@effect-ui/registry/effects/shine-border"
-import { ShimmerButton } from "@effect-ui/registry/effects/shimmer-button"
-import { SpotlightCard } from "@effect-ui/registry/effects/spotlight-card"
-import { TypingText } from "@effect-ui/registry/effects/typing-text"
-import { WordRotate } from "@effect-ui/registry/effects/word-rotate"
 import { HomeSectionBackdrop } from "@/components/home-section-backdrop"
 import { cn } from "@/lib/utils"
 
@@ -95,11 +88,7 @@ export function HomeShowcase() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
               <span className="text-xs font-mono text-muted-foreground mb-4">TypingText</span>
-              <TypingText
-                className="text-2xl sm:text-3xl font-bold"
-                text="光标跟着句子往下写"
-                loop
-              />
+              <p className="text-2xl font-bold sm:text-3xl">光标跟着句子往下写</p>
               <Link
                 href="/docs/typing-text"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -110,12 +99,7 @@ export function HomeShowcase() {
 
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
               <span className="text-xs font-mono text-muted-foreground mb-4">ScrambleText</span>
-              <ScrambleText
-                className="text-2xl sm:text-3xl font-bold"
-                text="乱码慢慢还原成句"
-                duration={1400}
-                loop
-              />
+              <p className="text-2xl font-bold sm:text-3xl">乱码慢慢还原成句</p>
               <Link
                 href="/docs/scramble-text"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -126,10 +110,7 @@ export function HomeShowcase() {
 
             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card p-8 text-center min-h-[220px]">
               <span className="text-xs font-mono text-muted-foreground mb-4">WordRotate</span>
-              <WordRotate
-                className="text-2xl sm:text-3xl font-bold"
-                words={["句子滑上来", "再换下一句", "停在这一行"]}
-              />
+              <p className="text-2xl font-bold sm:text-3xl">句子滑上来</p>
               <Link
                 href="/docs/word-rotate"
                 className="mt-6 inline-flex items-center gap-1 text-xs text-primary hover:underline"
@@ -142,7 +123,7 @@ export function HomeShowcase() {
 
         {activeTab === "card" && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <SpotlightCard className="flex flex-col justify-between p-8 min-h-[240px] rounded-2xl">
+            <div className="flex min-h-[240px] flex-col justify-between rounded-2xl border border-border/80 bg-card p-8">
               <div>
                 <span className="text-xs font-mono text-muted-foreground">SpotlightCard</span>
                 <h3 className="mt-3 text-xl font-bold text-card-foreground">
@@ -161,12 +142,9 @@ export function HomeShowcase() {
                   查看文档 <ArrowRight className="size-3" />
                 </Link>
               </div>
-            </SpotlightCard>
+            </div>
 
-            <SpotlightCard
-              spotlightColor="color-mix(in oklab, var(--chart-2) 40%, transparent)"
-              className="flex flex-col justify-between p-8 min-h-[240px] rounded-2xl"
-            >
+            <div className="flex min-h-[240px] flex-col justify-between rounded-2xl border border-border/80 bg-card p-8">
               <div>
                 <span className="text-xs font-mono text-muted-foreground">Cyan Spotlight</span>
                 <h3 className="mt-3 text-xl font-bold text-card-foreground">
@@ -185,13 +163,13 @@ export function HomeShowcase() {
                   查看文档 <ArrowRight className="size-3" />
                 </Link>
               </div>
-            </SpotlightCard>
+            </div>
           </div>
         )}
 
         {activeTab === "border" && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <ShineBorder duration={8} className="p-8 min-h-[220px] rounded-2xl flex flex-col justify-between">
+            <div className="flex min-h-[220px] flex-col justify-between rounded-2xl border border-border/80 bg-card p-8">
               <div>
                 <span className="text-xs font-mono text-muted-foreground">ShineBorder</span>
                 <h3 className="mt-3 text-xl font-bold text-foreground">
@@ -207,10 +185,9 @@ export function HomeShowcase() {
               >
                 查看文档 <ArrowRight className="size-3" />
               </Link>
-            </ShineBorder>
+            </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-card p-8 min-h-[220px] flex flex-col justify-between">
-              <Meteors number={10} />
+            <div className="relative flex min-h-[220px] flex-col justify-between overflow-hidden rounded-2xl border border-border/80 bg-card p-8">
               <div className="relative z-10">
                 <span className="text-xs font-mono text-muted-foreground">Meteors</span>
                 <h3 className="mt-3 text-xl font-bold text-foreground">
@@ -233,9 +210,12 @@ export function HomeShowcase() {
         {activeTab === "button" && (
           <div className="flex min-h-[220px] flex-wrap items-center justify-center gap-6 rounded-2xl border border-border/80 bg-card/80 p-12 backdrop-blur-sm">
             <div className="flex flex-col items-center gap-3">
-              <ShimmerButton asChild>
-                <Link href="/docs">探索全部组件</Link>
-              </ShimmerButton>
+              <Link
+                href="/docs"
+                className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-6 text-sm font-medium text-primary-foreground"
+              >
+                探索全部组件
+              </Link>
               <span className="font-mono text-xs text-muted-foreground">ShimmerButton</span>
             </div>
 

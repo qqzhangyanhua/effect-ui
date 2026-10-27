@@ -4,19 +4,9 @@ import { FlipRevealCard } from "../effects/flip-reveal-card"
 import { HoverLiftGlow } from "../effects/hover-lift-glow"
 import { HoverOverlayReveal } from "../effects/hover-overlay-reveal"
 import { PointerTiltGlare } from "../effects/pointer-tilt-glare"
-import { StaggerCardGrid } from "../effects/stagger-card-grid"
 import { TwistInCard } from "../effects/twist-in-card"
 
 const frame = "flex min-h-80 w-full items-center justify-center px-6 py-10"
-
-const places = [
-  { name: "清晨", note: "谷底还有雾" },
-  { name: "午后", note: "山脊开始亮" },
-  { name: "黄昏", note: "影子拉得很长" },
-  { name: "海岸", note: "风从左边来" },
-  { name: "城墙", note: "砖是暖的" },
-  { name: "车站", note: "末班还没走" },
-]
 
 export function TwistInCardDemo({
   pace = 1,
@@ -37,33 +27,6 @@ export function TwistInCardDemo({
     </div>
   )
 }
-
-export function StaggerCardGridDemo({
-  pace = 1,
-  stagger = 0.08,
-  intensity = 1,
-  columns = 3,
-}: {
-  pace?: number
-  stagger?: number
-  intensity?: number
-  columns?: number
-} = {}) {
-  return (
-    <div className="w-full px-6 py-10">
-      <StaggerCardGrid pace={pace} stagger={stagger} intensity={intensity} columns={columns}>
-        {places.map((place) => (
-          <div key={place.name} className="p-4">
-            <div className="mb-4 h-16 rounded-lg bg-primary/15" />
-            <p className="font-medium">{place.name}</p>
-            <p className="mt-1 text-sm text-muted-foreground">{place.note}</p>
-          </div>
-        ))}
-      </StaggerCardGrid>
-    </div>
-  )
-}
-
 export function HoverLiftGlowDemo({
   lift = 8,
   glow = 1,

@@ -3,7 +3,7 @@
 import { motion, type HTMLMotionProps } from "motion/react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 const REVEAL_EASE = [0.22, 1, 0.36, 1] as const
 

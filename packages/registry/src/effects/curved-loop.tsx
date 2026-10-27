@@ -4,8 +4,7 @@ import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { textStyle } from "@/lib/text-style"
-import { cn } from "@/lib/utils"
-import { MarqueeAlongSvgPath } from "./marquee-along-svg-path"
+import { cn } from "@/lib/cn"
 
 export interface CurvedLoopProps {
   text?: string
@@ -30,10 +29,14 @@ function CurvedLoop({
   align,
 }: CurvedLoopProps) {
   const reduced = usePrefersReducedMotion()
+  const pathId = React.useId().replace(/:/g, "")
   const base = speed === undefined || !Number.isFinite(speed) ? 12 : 12 * speed
   const [dragged, setDragged] = React.useState<{ base: number; velocity: number } | null>(null)
   const velocity = dragged !== null && dragged.base === base ? dragged.velocity : base
   const drag = React.useRef<{ x: number } | null>(null)
+  const motionSpeed = reduced ? 0 : velocity
+  const seconds = motionSpeed === 0 ? 0 : Math.max(2, 36 / Math.abs(motionSpeed))
+  const forward = motionSpeed >= 0
 
   return (
     <div data-slot="curved-loop" className={cn("w-full", className)}>
@@ -60,21 +63,28 @@ function CurvedLoop({
           drag.current = null
         }}
       >
-        <MarqueeAlongSvgPath
-          path={ARC}
-          viewBox="0 0 540 180"
-          baseVelocity={reduced ? 0 : velocity}
-          repeat={8}
-          showPath={false}
-          className="min-h-48"
-        >
-          <span
-            className="font-display text-4xl whitespace-nowrap sm:text-5xl"
+        <svg viewBox="0 0 540 180" className="min-h-48 w-full" role="img" aria-label={text}>
+          <defs>
+            <path id={pathId} d={ARC} fill="none" />
+          </defs>
+          <text
+            className="fill-current font-display text-4xl sm:text-5xl"
             style={textStyle(undefined, fontSize, fontWeight, letterSpacing, align)}
           >
-            {text}
-          </span>
-        </MarqueeAlongSvgPath>
+            <textPath href={`#${pathId}`}>
+              {text.repeat(4)}
+              {seconds > 0 ? (
+                <animate
+                  attributeName="startOffset"
+                  from={forward ? "0%" : "-100%"}
+                  to={forward ? "-100%" : "0%"}
+                  dur={`${seconds}s`}
+                  repeatCount="indefinite"
+                />
+              ) : null}
+            </textPath>
+          </text>
+        </svg>
       </div>
       <p className="text-center text-xs text-muted-foreground">
         {reduced ? "已减弱动效，文字停在弧线上" : `左右拖动改变方向 · ${velocity > 0 ? "→" : "←"} ${Math.abs(velocity).toFixed(0)}`}

@@ -2,7 +2,6 @@ import type { ComponentType } from "react"
 
 import { getCatalogGroups, layerBadges, type ComponentMeta } from "@effect-ui/registry/catalog"
 import { getDemo } from "@effect-ui/registry/examples/index"
-import { Badge } from "@effect-ui/registry/ui/badge"
 
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentTabs } from "@/components/component-tabs"
@@ -113,9 +112,12 @@ async function FamilyGallery({
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-2xl font-medium tracking-tight">{item.title}</h2>
               {layerBadges(item).map((label) => (
-                <Badge key={label} variant="outline">
+                <span
+                  key={label}
+                  className="inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-xs font-medium"
+                >
                   {label}
-                </Badge>
+                </span>
               ))}
             </div>
             <p className="text-sm text-muted-foreground">{item.description}</p>

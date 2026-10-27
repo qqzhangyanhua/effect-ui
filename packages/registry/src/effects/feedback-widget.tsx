@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 
 import { useClickOutside } from "@/hooks/use-click-outside"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 const RATINGS = [
   { value: 1, emoji: "😞", label: "很差" },

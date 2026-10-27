@@ -2,7 +2,6 @@
 
 import { useState, type CSSProperties, type ReactNode } from "react"
 
-import { Button } from "@effect-ui/registry/ui/button"
 import { cn } from "@/lib/utils"
 
 const previewBackground: CSSProperties = {
@@ -20,9 +19,13 @@ function PreviewFrame({ children, className }: { children: ReactNode; className?
       style={previewBackground}
     >
       <div className="flex flex-wrap items-center justify-end gap-3">
-        <Button type="button" variant="outline" size="sm" onClick={() => setReplayKey((key) => key + 1)}>
+        <button
+          type="button"
+          className="inline-flex h-8 items-center justify-center rounded-md border border-input bg-background px-3 text-sm font-medium whitespace-nowrap hover:bg-accent"
+          onClick={() => setReplayKey((key) => key + 1)}
+        >
           重放
-        </Button>
+        </button>
       </div>
       <div key={replayKey} className="flex flex-1 items-center justify-center">
         {children}

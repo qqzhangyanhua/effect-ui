@@ -4,7 +4,6 @@ import { CardSwap } from "../effects/card-swap"
 import { ClickSpark } from "../effects/click-spark"
 import { CurvedLoop } from "../effects/curved-loop"
 import { DomeGallery } from "../effects/dome-gallery"
-import { ElasticSlider } from "../effects/elastic-slider"
 import { ElectricBorder } from "../effects/electric-border"
 import { FlowingMenu } from "../effects/flowing-menu"
 import { FuzzyText } from "../effects/fuzzy-text"
@@ -195,10 +194,6 @@ export function FlowingMenuDemo({ duration, speed }: { duration?: number; speed?
 
 export function DomeGalleryDemo({ count, speed, size }: { count?: number; speed?: number; size?: number } = {}) {
   return <DomeGallery className="w-full" count={count} speed={speed} size={size} />
-}
-
-export function ElasticSliderDemo({ color, scale, speed }: { color?: string; scale?: number; speed?: number } = {}) {
-  return <ElasticSlider className="w-full" color={color} scale={scale} speed={speed} />
 }
 
 export function LightRaysDemo({

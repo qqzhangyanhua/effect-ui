@@ -2,8 +2,6 @@
 
 import * as React from "react"
 
-
-import { FacetedFilterBar } from "../effects/faceted-filter-bar"
 import { GhostTrailText } from "../effects/ghost-trail-text"
 import { GravityImageTrail } from "../effects/gravity-image-trail"
 import { HeatmapCalendar } from "../effects/heatmap-calendar"
@@ -94,10 +92,6 @@ export function MacbookScrollDemo({
   speed?: number
 } = {}) {
   return <MacbookScroll className="w-full" intensity={intensity} scale={scale} speed={speed} />
-}
-
-export function FacetedFilterBarDemo() {
-  return <FacetedFilterBar className="w-full" />
 }
 
 export function JsonViewerDemo() {

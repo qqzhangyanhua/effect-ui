@@ -1,13 +1,9 @@
 "use client"
 
-import { CinemaSeatPicker } from "../effects/cinema-seat-picker"
 import { HologramCard } from "../effects/hologram-card"
 import { LoomThreadsMarquee } from "../effects/loom-threads-marquee"
-import { ProjectUpdateCard } from "../effects/project-update-card"
 import { Scroll3dImageRotate } from "../effects/scroll-3d-image-rotate"
 import { SeaWavesBackground } from "../effects/sea-waves-background"
-import { ShaderGridWide } from "../effects/shader-grid-wide"
-import { ShareInvitePanel } from "../effects/share-invite-panel"
 
 import { ThumbnailFlowPath } from "../effects/thumbnail-flow-path"
 
@@ -38,20 +34,6 @@ export function ThumbnailFlowPathDemo({ duration, delay, size, gap }: { duration
   return <ThumbnailFlowPath className="w-full" duration={duration} delay={delay} size={size} gap={gap} />
 }
 
-export function ShaderGridWideDemo({
-  intensity,
-  speed,
-  count,
-  scale,
-}: {
-  intensity?: number
-  speed?: number
-  count?: number
-  scale?: number
-} = {}) {
-  return <ShaderGridWide className="w-full" intensity={intensity} speed={speed} count={count} scale={scale} />
-}
-
 export function SeaWavesBackgroundDemo({
   intensity = 0.15,
   speed = 1,
@@ -66,16 +48,4 @@ export function SeaWavesBackgroundDemo({
   return (
     <SeaWavesBackground className="w-full" intensity={intensity} speed={speed} colors={colors} scale={scale} />
   )
-}
-
-export function CinemaSeatPickerDemo() {
-  return <CinemaSeatPicker className="w-full" />
-}
-
-export function ProjectUpdateCardDemo() {
-  return <ProjectUpdateCard className="w-full" />
-}
-
-export function ShareInvitePanelDemo() {
-  return <ShareInvitePanel className="w-full" />
 }

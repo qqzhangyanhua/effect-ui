@@ -1,20 +1,9 @@
 "use client"
 
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react"
-import type { ComponentType } from "react"
+import { useEffect, useId, useRef, useState } from "react"
+import type { ComponentProps, ComponentType } from "react"
+import * as SwitchPrimitive from "@radix-ui/react-switch"
 
-import { Button } from "@effect-ui/registry/ui/button"
-import { Input } from "@effect-ui/registry/ui/input"
-import { Label } from "@effect-ui/registry/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@effect-ui/registry/ui/select"
-import { Slider } from "@effect-ui/registry/ui/slider"
-import { Switch } from "@effect-ui/registry/ui/switch"
 import type { ControlDef, ControlPreset } from "@effect-ui/registry/catalog"
 
 import {
@@ -31,9 +20,16 @@ import {
   type ControlValue,
   type ControlValues,
 } from "@/lib/preview-controls"
+import { cn } from "@/lib/utils"
 import { PreviewFrame } from "@/components/preview-frame"
 
 const slowKinds = new Set<ControlDef["kind"]>(["range", "color", "colors"])
+const fieldClass =
+  "flex h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+const buttonClass =
+  "inline-flex h-8 items-center justify-center rounded-md border border-input bg-background px-3 text-sm font-medium whitespace-nowrap transition-colors hover:bg-accent"
+const buttonActiveClass =
+  "inline-flex h-8 items-center justify-center rounded-md bg-primary px-3 text-sm font-medium whitespace-nowrap text-primary-foreground"
 
 function ControlledPreview({
   Demo,
@@ -130,25 +126,24 @@ function ControlledPreview({
               {presets && presets.length > 0 ? (
                 <div className="flex flex-wrap gap-2" role="group" aria-label="预设">
                   {presets.map((preset) => (
-                    <Button
+                    <button
                       key={preset.name}
                       type="button"
-                      size="sm"
-                      variant={activePreset === preset.name ? "default" : "outline"}
+                      className={activePreset === preset.name ? buttonActiveClass : buttonClass}
                       aria-pressed={activePreset === preset.name}
                       onClick={() => applyPreset(preset)}
                     >
                       {preset.label}
-                    </Button>
+                    </button>
                   ))}
                 </div>
               ) : null}
-              <Button type="button" variant="outline" size="sm" onClick={reset}>
+              <button type="button" className={buttonClass} onClick={reset}>
                 重置
-              </Button>
-              <Button type="button" variant="outline" size="sm" onClick={copy}>
+              </button>
+              <button type="button" className={buttonClass} onClick={copy}>
                 {copied ? "已复制" : "复制当前配置"}
-              </Button>
+              </button>
             </div>
           </div>
           {grouped ? (
@@ -219,7 +214,9 @@ function ControlWidget({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-3">
-        <Label htmlFor={colorKind ? undefined : id}>{field.name}</Label>
+        <label htmlFor={colorKind ? undefined : id} className="text-sm font-medium leading-none">
+          {field.name}
+        </label>
         {control.kind === "range" && typeof value === "number" ? (
           <span className="text-sm text-muted-foreground tabular-nums">{formatNumber(value, control.step)}</span>
         ) : null}
@@ -260,7 +257,12 @@ function ControlWidget({
         <Switch id={id} checked={value} onCheckedChange={onChange} aria-label={field.name} />
       ) : null}
       {control.kind === "text" && typeof value === "string" ? (
-        <Input id={id} value={value} onChange={(event) => onChange(event.target.value)} />
+        <input
+          id={id}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className={fieldClass}
+        />
       ) : null}
     </div>
   )
@@ -279,25 +281,32 @@ function RangeControl({
   value: number
   onChange: (value: number) => void
 }) {
-  const rootRef = useRef<HTMLSpanElement>(null)
-  useLayoutEffect(() => {
-    const thumb = rootRef.current?.querySelector<HTMLElement>("[role='slider']")
-    if (!thumb) return
-    thumb.id = id
-    thumb.setAttribute("aria-label", name)
-  })
+  const step = control.step ?? 1
 
   return (
-    <Slider
-      ref={rootRef}
+    <input
+      id={id}
+      type="range"
+      aria-label={name}
       min={control.min}
       max={control.max}
-      step={control.step ?? 1}
-      value={[value]}
-      onValueChange={(next) => {
-        const raw = next[0]
-        if (raw === undefined) return
-        onChange(snap(raw, control.min, control.max, control.step))
+      step={step}
+      value={value}
+      className="w-full accent-primary"
+      onChange={(event) => {
+        onChange(snap(Number(event.target.value), control.min, control.max, control.step))
+      }}
+      onKeyDown={(event) => {
+        const direction =
+          event.key === "ArrowRight" || event.key === "ArrowUp"
+            ? 1
+            : event.key === "ArrowLeft" || event.key === "ArrowDown"
+              ? -1
+              : 0
+        if (direction === 0) return
+        // jsdom 不实现 range 方向键。preventDefault 避免真实浏览器再跳一格。
+        event.preventDefault()
+        onChange(snap(value + direction * step, control.min, control.max, control.step))
       }}
     />
   )
@@ -315,18 +324,22 @@ function SelectControl({
   onChange: (value: string) => void
 }) {
   return (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger id={id} className="w-full">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        {control.options.map((option) => (
-          <SelectItem key={option} value={option}>
-            {option}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <select
+      id={id}
+      value={value}
+      className={fieldClass}
+      onChange={(event) => onChange(event.target.value)}
+      onClick={(event) => {
+        // jsdom 点击 option 不会改 select 的值。
+        if (event.target instanceof HTMLOptionElement) onChange(event.target.value)
+      }}
+    >
+      {control.options.map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
   )
 }
 
@@ -352,11 +365,12 @@ function ColorControl({
         onChange={(event) => onChange(event.target.value)}
         className="size-9 shrink-0 cursor-pointer rounded-md border border-input bg-transparent p-1"
       />
-      <Input
+      <input
         id={id}
         aria-label={name}
         value={edit ?? value}
         spellCheck={false}
+        className={fieldClass}
         onChange={(event) => {
           const next = event.target.value
           setEdit(next)
@@ -387,6 +401,24 @@ function applySlow(current: ControlValues, controls: readonly ControlField[], dr
     changed = true
   }
   return changed ? next : current
+}
+
+function Switch({ className, ...props }: ComponentProps<typeof SwitchPrimitive.Root>) {
+  return (
+    <SwitchPrimitive.Root
+      data-slot="switch"
+      className={cn(
+        "peer inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input/80",
+        className,
+      )}
+      {...props}
+    >
+      <SwitchPrimitive.Thumb
+        data-slot="switch-thumb"
+        className="pointer-events-none block size-4 rounded-full bg-background ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0 dark:data-[state=checked]:bg-primary-foreground dark:data-[state=unchecked]:bg-foreground"
+      />
+    </SwitchPrimitive.Root>
+  )
 }
 
 export type { ControlField }

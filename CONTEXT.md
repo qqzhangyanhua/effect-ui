@@ -51,7 +51,7 @@ _Avoid_: utility, block (that is a page or section), business component, 功能�
 ### Docs site
 
 **Family**:
-The members of one control across layers, such as every switch: the primitive, its composite, and switch Effects. A family has one docs page that renders every member, and each member's own page sends the reader there.
+The members of one control across layers, such as every checkbox: the primitive, its composite, and checkbox Effects. A family has one docs page that renders every member, and each member's own page sends the reader there.
 _Avoid_: group, collection
 
 **Topic**:

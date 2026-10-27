@@ -19,11 +19,6 @@ export const animata = "移植自 Animata，MIT，Copyright (c) Animata。"
 export const cult = "移植自 Cult UI，MIT，Copyright (c) 2023 Jordan-Gilliam。"
 export const cultFile = (file: string) => `https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/${file}`
 
-/** kokonutUI */
-export const kokonut = "移植自 kokonutUI，MIT，Copyright (c) 2025 kokonutUI。"
-export const kokonutuiFile = (name: string) =>
-  `https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/${name}.tsx`
-
 /** SmoothUI */
 export const smooth = "移植自 SmoothUI，MIT，Copyright (c) 2024 Eduardo Calvo。"
 export const smoothuiFile = (name: string) =>
@@ -62,11 +57,6 @@ export const tremorFile = (path: string) => `https://github.com/tremorlabs/tremo
 export const galaxy = "移植自 Uiverse galaxy，MIT，Copyright (c) 2023 Uiverse.io。"
 export const galaxyGalaxyfile = (path: string) => `https://github.com/uiverse-io/galaxy/blob/main/${path}`
 export const galaxyGalaxyfile2 = (file: string) => `https://github.com/uiverse-io/galaxy/blob/main/${file}`
-
-/** Spectrum UI */
-export const spectrumUiSpectrum = "移植自 Spectrum UI，Apache-2.0，Made by Arihant。"
-export const spectrumUiFile = (path: string) => `https://github.com/arihantcodes/spectrum-ui/blob/main/${path}`
-export const spectrumUiSpectrum2 = "移植自 Spectrum UI，Apache-2.0，(c) Spectrum UI / arihantcodes。"
 
 /** prompt-kit */
 export const prompt = "移植自 prompt-kit，MIT，Copyright (c) 2025 Julien Thibeaut。"

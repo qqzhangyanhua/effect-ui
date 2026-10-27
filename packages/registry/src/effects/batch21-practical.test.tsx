@@ -6,9 +6,6 @@ import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
 import { ActiveSessionsList } from "./active-sessions-list"
-import { AnimatedSubscribeButton } from "./animated-subscribe-button"
-import { DiaTextReveal } from "./dia-text-reveal"
-import { GlyphMatrix } from "./glyph-matrix"
 
 class ObserverStub {
   observe() {}
@@ -56,25 +53,6 @@ afterEach(() => {
   cleanup()
 })
 
-test("字符点阵和斜向揭示会渲染文字", () => {
-  render(
-    <>
-      <GlyphMatrix text="北窗" />
-      <DiaTextReveal text="斜向扫过" />
-    </>,
-  )
-  expect(screen.getByLabelText("字符点阵 北窗")).toBeInTheDocument()
-  expect(screen.getByText("斜")).toBeInTheDocument()
-})
-
-test("订阅按钮受控并设置 aria-pressed", async () => {
-  const user = userEvent.setup()
-  const onChange = vi.fn()
-  render(<AnimatedSubscribeButton subscribed={false} onChange={onChange} />)
-  await user.click(screen.getByRole("button", { name: "Subscribe" }))
-  expect(onChange).toHaveBeenCalledWith(true)
-  expect(screen.getByRole("button")).toHaveAttribute("aria-pressed", "false")
-})
 
 test("会话登出需要确认，确认后行消失", async () => {
   const user = userEvent.setup()

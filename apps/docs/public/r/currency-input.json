@@ -6,15 +6,14 @@
   "description": "数字输入并预览货币格式。",
   "dependencies": [],
   "registryDependencies": [
-    "input",
-    "utils"
+    "cn"
   ],
   "files": [
     {
       "path": "registry/ui/currency-input.tsx",
       "type": "registry:ui",
       "target": "components/ui/currency-input.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { Input } from \"@/components/ui/input\"\nimport { cn } from \"@/lib/utils\"\n\nexport interface CurrencyInputProps {\n  value?: number\n  onValueChange?: (value: number) => void\n  currency?: string\n  locales?: string\n  className?: string\n}\n\nfunction CurrencyInput({\n  value = 0,\n  onValueChange,\n  currency = \"USD\",\n  locales = \"en-US\",\n  className,\n}: CurrencyInputProps) {\n  const [text, setText] = React.useState(String(value))\n  const [prevValue, setPrevValue] = React.useState(value)\n  if (value !== prevValue) {\n    setPrevValue(value)\n    setText(String(value))\n  }\n\n  const parsed = Number.parseFloat(text.replace(/[^\\d.-]/g, \"\"))\n  const amount = Number.isFinite(parsed) ? parsed : 0\n\n  return (\n    <div className={cn(\"flex max-w-xs items-center gap-2\", className)}>\n      <Input\n        inputMode=\"decimal\"\n        value={text}\n        onChange={(event) => {\n          setText(event.target.value)\n          const next = Number.parseFloat(event.target.value.replace(/[^\\d.-]/g, \"\"))\n          if (Number.isFinite(next)) onValueChange?.(next)\n        }}\n      />\n      <span className=\"text-sm text-muted-foreground\">\n        {new Intl.NumberFormat(locales, { style: \"currency\", currency }).format(amount)}\n      </span>\n    </div>\n  )\n}\n\nexport { CurrencyInput }\n"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/cn\"\n\nexport interface CurrencyInputProps {\n  value?: number\n  onValueChange?: (value: number) => void\n  currency?: string\n  locales?: string\n  className?: string\n}\n\nfunction CurrencyInput({\n  value = 0,\n  onValueChange,\n  currency = \"USD\",\n  locales = \"en-US\",\n  className,\n}: CurrencyInputProps) {\n  const [text, setText] = React.useState(String(value))\n  const [prevValue, setPrevValue] = React.useState(value)\n  if (value !== prevValue) {\n    setPrevValue(value)\n    setText(String(value))\n  }\n\n  const parsed = Number.parseFloat(text.replace(/[^\\d.-]/g, \"\"))\n  const amount = Number.isFinite(parsed) ? parsed : 0\n\n  return (\n    <div className={cn(\"flex max-w-xs items-center gap-2\", className)}>\n      <input\n        className=\"h-9 min-w-0 flex-1 rounded-md border bg-transparent px-3\"\n        inputMode=\"decimal\"\n        value={text}\n        onChange={(event) => {\n          setText(event.target.value)\n          const next = Number.parseFloat(event.target.value.replace(/[^\\d.-]/g, \"\"))\n          if (Number.isFinite(next)) onValueChange?.(next)\n        }}\n      />\n      <span className=\"text-sm text-muted-foreground\">\n        {new Intl.NumberFormat(locales, { style: \"currency\", currency }).format(amount)}\n      </span>\n    </div>\n  )\n}\n\nexport { CurrencyInput }\n"
     }
   ]
 }

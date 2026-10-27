@@ -4,7 +4,7 @@ status: accepted
 
 # Composite components do not bind to a form library
 
-Composite components forward `ref` and ARIA props (`id`, `aria-invalid`, `aria-describedby`) to the element that takes focus, and accept an explicit `status="error" | "warning"` that maps to `aria-invalid`. They take no `control` or `name` props and import no form library. They work inside the existing `FormControl` because it passes those props through `Slot`.
+Composite components forward `ref` and ARIA props (`id`, `aria-invalid`, `aria-describedby`) to the element that takes focus, and accept an explicit `status="error" | "warning"` that maps to `aria-invalid`. They take no `control` or `name` props and import no form library.
 
 ## Considered Options
 
@@ -12,5 +12,5 @@ Composite components forward `ref` and ARIA props (`id`, `aria-invalid`, `aria-d
 
 ## Consequences
 
-- `form` and `field` remain two separate form primitives. Unifying them, and an antd-style `Form` with linked validation, is outside this work.
+- `form` and `field` were later removed. Composites still do not import a form library.
 - A composite that renders its own wrapper must still put the forwarded props on the real control, not on the wrapper.

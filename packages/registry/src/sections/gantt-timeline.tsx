@@ -4,7 +4,7 @@ import * as React from "react"
 import { motion, useMotionValue, useTransform } from "motion/react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface GanttTask {
   id: string

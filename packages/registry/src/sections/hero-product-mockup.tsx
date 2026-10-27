@@ -2,12 +2,8 @@
 
 import type { ReactNode } from "react"
 
-import { Button } from "@/components/ui/button"
 import { ContainerScroll3D } from "@/components/ui/container-scroll-3d"
-import { Macbook } from "@/components/ui/device-mockups"
-import { GlowHover } from "@/components/ui/glow-hover"
-import { ShimmerButton } from "@/components/ui/shimmer-button"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface HeroProductMockupProps {
   title?: string
@@ -44,8 +40,15 @@ function HeroProductMockup({
         <h2 className="font-display mt-3 text-4xl tracking-tight text-balance">{title}</h2>
         <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">{subtitle}</p>
         <div className="mt-5 flex justify-center gap-2">
-          <ShimmerButton>{ctaLabel}</ShimmerButton>
-          <Button variant="outline">定价</Button>
+          <button
+            type="button"
+            className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm text-primary-foreground"
+          >
+            {ctaLabel}
+          </button>
+          <button type="button" className="inline-flex h-9 items-center justify-center rounded-md border bg-background px-4 text-sm">
+            定价
+          </button>
         </div>
       </div>
       <div className="relative mx-auto mt-10 max-w-3xl">
@@ -54,9 +57,9 @@ function HeroProductMockup({
           className="pointer-events-none absolute inset-x-12 top-8 h-40 rounded-full bg-primary/35 blur-3xl"
         />
         <ContainerScroll3D title="Tilt up" className="relative">
-          <GlowHover glowColor="var(--primary)" className="rounded-t-xl">
-            <Macbook>{screen ?? <DefaultScreen />}</Macbook>
-          </GlowHover>
+          <div className="rounded-t-xl">
+            <div className="overflow-hidden rounded-t-xl border bg-zinc-950">{screen ?? <DefaultScreen />}</div>
+          </div>
         </ContainerScroll3D>
       </div>
     </section>

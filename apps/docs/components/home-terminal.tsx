@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { Check, Copy, Terminal } from "lucide-react"
 
-import { ShineBorder } from "@effect-ui/registry/effects/shine-border"
 import { cn } from "@/lib/utils"
 
 const commands = [
@@ -38,11 +37,7 @@ export function HomeTerminal() {
   }
 
   return (
-    <ShineBorder
-      duration={12}
-      shineColor="color-mix(in oklab, var(--primary) 50%, transparent)"
-      className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border-border/80 bg-transparent p-0 shadow-2xl"
-    >
+    <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-border/80 bg-transparent p-0 shadow-2xl">
       <div className="overflow-hidden rounded-[inherit] bg-[#0d1117] text-slate-200">
       {/* Terminal Titlebar */}
       <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-3">
@@ -104,6 +99,6 @@ export function HomeTerminal() {
         </button>
       </div>
       </div>
-    </ShineBorder>
+    </div>
   )
 }

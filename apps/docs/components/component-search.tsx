@@ -1,19 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 import { useRouter } from "next/navigation"
 import { SearchIcon } from "lucide-react"
 
 import { componentCluster, getCatalogGroups } from "@effect-ui/registry/catalog"
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@effect-ui/registry/ui/command"
-import { Kbd } from "@effect-ui/registry/ui/kbd"
 
 import { familyPath } from "@/lib/family-path"
 import { cn } from "@/lib/utils"
@@ -34,9 +26,14 @@ interface ComponentSearchProps {
   className?: string
 }
 
+function matchesQuery(item: { name: string; title: string; description: string }, query: string) {
+  return `${item.name}\n${item.title}\n${item.description}`.toLowerCase().includes(query)
+}
+
 function ComponentSearch({ className }: ComponentSearchProps = {}) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -45,6 +42,7 @@ function ComponentSearch({ className }: ComponentSearchProps = {}) {
       if (event.altKey || event.shiftKey) return
       event.preventDefault()
       event.stopPropagation()
+      setQuery("")
       setOpen((current) => !current)
     }
 
@@ -52,11 +50,31 @@ function ComponentSearch({ className }: ComponentSearchProps = {}) {
     return () => document.removeEventListener("keydown", onKeyDown, true)
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return
+      setOpen(false)
+    }
+    document.addEventListener("keydown", onKeyDown)
+    return () => document.removeEventListener("keydown", onKeyDown)
+  }, [open])
+
   function openComponent(name: string) {
     setOpen(false)
     const cluster = componentCluster(name)
     router.push(cluster ? `${familyPath(cluster)}#${name}` : `/docs/${name}`)
   }
+
+  const needle = query.trim().toLowerCase()
+  const sections =
+    needle.length === 0
+      ? searchSections
+      : searchSections.flatMap((group) => {
+          const items = group.items.filter((item) => matchesQuery(item, needle))
+          if (items.length === 0) return []
+          return [{ ...group, items }]
+        })
 
   return (
     <>
@@ -68,42 +86,71 @@ function ComponentSearch({ className }: ComponentSearchProps = {}) {
         )}
         aria-label="搜索组件、文档..."
         aria-keyshortcuts="Meta+K Control+K"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setQuery("")
+          setOpen(true)
+        }}
       >
         <span className="flex items-center gap-1.5 truncate">
           <SearchIcon className="size-3.5 shrink-0 opacity-70" />
           <span className="truncate">搜索组件、文档...</span>
         </span>
-        <Kbd className="hidden font-mono text-[10px] sm:inline-flex">⌘K</Kbd>
+        <kbd className="hidden font-mono text-[10px] sm:inline-flex">⌘K</kbd>
       </button>
-      <CommandDialog
-        open={open}
-        onOpenChange={setOpen}
-        title="搜索组件"
-        description="按名称、标题或描述查找组件"
-      >
-        <CommandInput placeholder="搜索组件名称、标题或描述" className="pr-8" />
-        <CommandList>
-          <CommandEmpty>没有匹配的组件</CommandEmpty>
-          {searchSections.map((group) => (
-            <CommandGroup key={group.key} heading={group.heading}>
-              {group.items.map((item) => (
-                <CommandItem
-                  key={item.name}
-                  value={item.name}
-                  keywords={[item.title, item.description]}
-                  onSelect={() => openComponent(item.name)}
-                >
-                  <span className="truncate">{item.title}</span>
-                  <span className="ml-auto truncate pl-3 text-xs text-muted-foreground">
-                    {item.name}
-                  </span>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          ))}
-        </CommandList>
-      </CommandDialog>
+      {open
+        ? createPortal(
+            <div className="fixed inset-0 z-50">
+              <button
+                type="button"
+                className="absolute inset-0 bg-black/40"
+                aria-label="关闭搜索"
+                onClick={() => setOpen(false)}
+              />
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-label="搜索组件"
+                className="relative mx-auto mt-[12vh] flex max-h-[min(32rem,70vh)] w-[min(36rem,calc(100%-2rem))] flex-col overflow-hidden rounded-xl border bg-popover text-popover-foreground shadow-lg"
+              >
+                <input
+                  autoFocus
+                  value={query}
+                  placeholder="搜索组件名称、标题或描述"
+                  className="h-11 w-full border-b bg-transparent px-3 pr-8 text-sm outline-none placeholder:text-muted-foreground"
+                  onChange={(event) => setQuery(event.target.value)}
+                />
+                <div className="min-h-0 flex-1 overflow-y-auto p-2">
+                  {sections.length === 0 ? (
+                    <p className="px-3 py-6 text-center text-sm text-muted-foreground">没有匹配的组件</p>
+                  ) : (
+                    sections.map((group) => (
+                      <section key={group.key} className="mb-2">
+                        <h2 className="px-2 py-1.5 text-xs font-medium text-muted-foreground">{group.heading}</h2>
+                        <ul>
+                          {group.items.map((item) => (
+                            <li key={item.name}>
+                              <button
+                                type="button"
+                                className="flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm hover:bg-accent"
+                                onClick={() => openComponent(item.name)}
+                              >
+                                <span className="truncate">{item.title}</span>
+                                <span className="ml-auto truncate pl-3 text-xs text-muted-foreground">
+                                  {item.name}
+                                </span>
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   )
 }

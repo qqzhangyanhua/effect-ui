@@ -17,7 +17,6 @@ import { primitiveFeedbackComponents } from "./catalog-primitive-feedback"
 import { compositeFormComponents } from "./catalog-composite-form"
 import { compositeOverlayComponents } from "./catalog-composite-overlay"
 import { compositeDataComponents } from "./catalog-composite-data"
-import { compositeLayoutComponents } from "./catalog-composite-layout"
 import { compositeFeedbackComponents } from "./catalog-composite-feedback"
 import { widgetFormComponents } from "./catalog-widget-form"
 import { widgetOverlayComponents } from "./catalog-widget-overlay"
@@ -57,7 +56,6 @@ export type SourceLibrary =
   | "SyntaxUI"
   | "Origin UI"
   | "Paper Shaders"
-  | "Kokonut UI"
   | "Number Flow"
   | "liquid-glass-react"
   | "prompt-kit"
@@ -89,7 +87,6 @@ export type SourceLibrary =
   | "Uiverse"
   | "HyperUI"
   | "Meraki UI"
-  | "Spectrum UI"
   | "Flowbite"
   | "Velora UI"
   | "Neobrutalism"
@@ -235,7 +232,6 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   Uiverse: "https://uiverse.io",
   HyperUI: "https://github.com/markmead/hyperui",
   "Meraki UI": "https://github.com/merakiuilabs/merakiui",
-  "Spectrum UI": "https://github.com/arihantcodes/spectrum-ui",
   Flowbite: "https://github.com/themesberg/flowbite",
   "Velora UI": "https://github.com/ColorlibHQ/velora-ui",
   Neobrutalism: "https://github.com/ekmas/neobrutalism-components",
@@ -257,7 +253,6 @@ export const sourceLibraryUrls: Record<SourceLibrary, string | null> = {
   Amicro: "https://github.com/Subhan-code/Amicro--Micro-transitions-",
   "Origin UI": "https://coss.com/origin",
   "Paper Shaders": "https://shaders.paper.design",
-  "Kokonut UI": "https://kokonutui.com",
   "Number Flow": "https://number-flow.barvian.me",
   "liquid-glass-react": "https://github.com/rdev/liquid-glass-react",
   "prompt-kit": "https://www.prompt-kit.com",
@@ -298,7 +293,6 @@ for (const entry of [
   ...compositeFormComponents,
   ...compositeOverlayComponents,
   ...compositeDataComponents,
-  ...compositeLayoutComponents,
   ...compositeFeedbackComponents,
   ...widgetFormComponents,
   ...widgetOverlayComponents,
@@ -367,72 +361,17 @@ interface FamilySectionSpec {
 }
 
 const buttonFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["button", "button-group", "button-plus"] },
+  { key: "base", label: "基础", names: [
+      "button-plus",
+    ] },
   {
     key: "motion",
     label: "动效",
     names: [
       "fuse-button",
-      "hold-button",
-      "ripple-button",
-      "shimmer-button",
-      "pulse-button",
       "neon-button",
-      "rainbow-button",
-      "interactive-hover-button",
       "gooey-button",
-      "particle-button",
-      "tear-button",
-      "animated-subscribe-button",
-      "copy-button",
-      "pull-cord",
-      "undo-button",
-      "attract-button",
-      "loading-button",
-      "star-wars-button",
-      "hover-attention-button",
-      "eco-mode-button",
-      "rotating-complete-button",
-      "stitches-button",
-      "heartbeat-button",
-      "neubrutalism-button",
-      "3d-button",
-      "heart-like-button",
-      "download-size-button",
-      "lift-gradient-border-button",
-      "async-morph-button",
-      "follow-button",
-      "share-button",
       "jelly-button",
-      "retro-press-button",
-      "liquid-gradient-button",
-      "glitch-slice-button",
-      "send-arrow-button",
-      "trash-delete-button",
-      "circular-text-button",
-      "flower-burst-button",
-      "scroll-cue-button",
-      "flicker-reflect-button",
-      "printer-icon-button",
-      "tilt-sweep-button",
-      "fly-around-button",
-      "cosmic-button",
-      "glow-track-button",
-      "neumorph-button",
-      "stateful-button",
-      "split-button",
-      "button-retry-backoff",
-      "press-depth",
-      "action-swap",
-      "paper-shred-button",
-      "get-in-touch",
-      "flow-button",
-      "wax-seal-button",
-      "dispatch-truck-button",
-      "googly-gaze-button",
-      "progress-fold-button",
-      "cursor-edge-glow-button",
-      "secure-purchase-button",
     ],
   },
 ]
@@ -441,92 +380,67 @@ const inputFamilySections: readonly FamilySectionSpec[] = [
   {
     key: "base",
     label: "基础",
-    names: ["input", "input-group", "input-otp", "input-plus", "floating-label-input"],
+    names: [
+      "input-plus",
+    ],
   },
   {
     key: "specialized",
     label: "专用",
     names: [
-      "tag-input",
-      "phone-input",
       "currency-input",
       "coupon-input",
-      "prompt-input",
-      "mic-search-input",
-      "newsletter-input",
-      "pin-display-input",
-      "file-input",
-      "category-search-input",
     ],
   },
-  { key: "motion", label: "动效", names: ["placeholder-vanish-input", "glow-search-input", "focus-line-input", "exploding-input", "magic-input"] },
+  { key: "motion", label: "动效", names: [
+      "placeholder-vanish-input",
+    ] },
 ]
 
 const checkboxFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["checkbox"] },
-  { key: "plus", label: "增强", names: ["checkbox-plus"] },
-  { key: "motion", label: "动效", names: ["spring-check"] },
-]
-
-const switchFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["switch"] },
-  { key: "plus", label: "增强", names: ["switch-plus"] },
-  { key: "motion", label: "动效", names: ["squish-switch", "labeled-toggle", "halo-switch"] },
+  { key: "base", label: "基础", names: [] },
+  { key: "plus", label: "增强", names: [
+      "checkbox-plus",
+    ] },
+  { key: "motion", label: "动效", names: [
+      "spring-check",
+    ] },
 ]
 
 const radioFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["radio-group"] },
-  { key: "plus", label: "增强", names: ["radio-plus", "choicebox"] },
-  { key: "motion", label: "动效", names: ["jelly-radio"] },
+  { key: "base", label: "基础", names: [] },
+  { key: "plus", label: "增强", names: [
+      "radio-plus",
+    ] },
+  { key: "motion", label: "动效", names: [
+      "jelly-radio",
+    ] },
 ]
 
 const selectFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["select", "native-select", "combobox"] },
-  { key: "plus", label: "增强", names: ["select-plus", "multi-select"] },
+  { key: "base", label: "基础", names: [] },
+  { key: "plus", label: "增强", names: [
+      "select-plus",
+    ] },
 ]
 
 const textareaFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["textarea"] },
-  { key: "plus", label: "增强", names: ["autosize-textarea", "mention-textarea"] },
-]
-
-const sliderFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: ["slider"] },
-  { key: "plus", label: "增强", names: ["dual-range-slider"] },
+  { key: "base", label: "基础", names: [] },
+  { key: "plus", label: "增强", names: [
+      "mention-textarea",
+    ] },
 ]
 
 /** 专题只做索引，不加入 componentCluster，成员页不因此重定向。 */
-const aiTopicNames = [
-  "prompt-input",
-  "chat-message",
-  "siri-orb",
-  "ai-voice",
-  "ai-citations",
-  "ai-token-alternatives",
-  "response-stream",
-  "thinking-bar",
-  "chain-of-thought",
-  "reasoning",
-  "source",
-  "tool",
-  "system-message",
-  "feedback-bar",
-  "prompt-suggestion",
-  "generated-image",
-  "expandable-chat",
-  "chat-message-list",
-  "agent-intro-sequence",
-] as const
+const aiTopicNames = [] as const
 
 export type ComponentCluster =
   | "button"
   | "input"
   | "checkbox"
-  | "switch"
   | "radio"
   | "select"
   | "textarea"
-  | "slider"
 
 const controlFamilyGroups: readonly {
   key: ComponentCluster
@@ -534,11 +448,9 @@ const controlFamilyGroups: readonly {
   sections: readonly FamilySectionSpec[]
 }[] = [
   { key: "checkbox", label: "复选", sections: checkboxFamilySections },
-  { key: "switch", label: "开关", sections: switchFamilySections },
   { key: "radio", label: "单选", sections: radioFamilySections },
   { key: "select", label: "选择", sections: selectFamilySections },
   { key: "textarea", label: "多行文本", sections: textareaFamilySections },
-  { key: "slider", label: "滑块", sections: sliderFamilySections },
 ]
 
 const controlClusterByName = new Map<string, ComponentCluster>(
@@ -549,12 +461,11 @@ const controlClusterByName = new Map<string, ComponentCluster>(
 
 /** 文档导航按名字归组，不改 Layer。 */
 export function componentCluster(name: string): ComponentCluster | undefined {
-  // 拉绳开关、下压和换字的名字不带 button，文档导航仍归到按钮组。
+  // 下压和换字的名字不带 button，文档导航仍归到按钮组。
   if (
     name === "button" ||
     name.startsWith("button-") ||
     name.endsWith("-button") ||
-    name === "pull-cord" ||
     name === "press-depth" ||
     name === "action-swap" ||
     name === "get-in-touch"

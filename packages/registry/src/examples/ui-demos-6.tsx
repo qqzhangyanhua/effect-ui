@@ -1,12 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { useForm } from "react-hook-form"
 import { PlusIcon, SearchIcon } from "lucide-react"
 
 import { ButtonPlus } from "../ui/button-plus"
 import { CheckboxPlus, CheckboxPlusGroup } from "../ui/checkbox-plus"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { FuseButton } from "../ui/fuse-button"
 import { InputPlus, InputPlusPassword, InputPlusSearch, InputPlusTextArea } from "../ui/input-plus"
 import { JellyRadio } from "../ui/jelly-radio"
@@ -16,28 +14,8 @@ import { PulseHeart } from "../ui/pulse-heart"
 import { RadioPlusGroup } from "../ui/radio-plus"
 import { SlideToConfirm } from "../ui/slide-to-confirm"
 import { SpringCheck } from "../ui/spring-check"
-import { SquishSwitch } from "../ui/squish-switch"
 import { SwipeRow } from "../ui/swipe-row"
-import { SwitchPlus } from "../ui/switch-plus"
 import { WarmTooltip } from "../ui/warm-tooltip"
-
-export function SquishSwitchDemo({
-  size = "md",
-  color = "#2563eb",
-  squish = 0.35,
-  speed,
-}: {
-  size?: "sm" | "md" | "lg"
-  color?: string
-  squish?: number
-  speed?: number
-} = {}) {
-  return (
-    <div className="flex items-center justify-center p-10">
-      <SquishSwitch aria-label="压扁开关" size={size} color={color} squish={squish} speed={speed} defaultChecked />
-    </div>
-  )
-}
 
 export function JellyRadioDemo({
   stiffness = 320,
@@ -276,45 +254,6 @@ export function InputPlusDemo() {
       <InputPlusPassword placeholder="密码" />
       <InputPlusSearch value={keyword} onValueChange={setKeyword} onSearch={setKeyword} />
       <InputPlusTextArea autoSize={{ minRows: 2, maxRows: 4 }} showCount maxLength={40} placeholder="自适应高度" />
-      <NameField />
-    </div>
-  )
-}
-
-function NameField() {
-  const form = useForm<{ name: string }>({ defaultValues: { name: "" } })
-  return (
-    <Form {...form}>
-      <form className="grid gap-2" onSubmit={form.handleSubmit(() => undefined)}>
-        <FormField
-          control={form.control}
-          name="name"
-          rules={{ required: "请填写名称" }}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>名称</FormLabel>
-              <FormControl>
-                <InputPlus value={field.value} onValueChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <ButtonPlus htmlType="submit" className="w-fit">
-          提交校验
-        </ButtonPlus>
-      </form>
-    </Form>
-  )
-}
-
-export function SwitchPlusDemo() {
-  const [on, setOn] = useState(true)
-  return (
-    <div className="flex flex-wrap items-center gap-4">
-      <SwitchPlus checked={on} onCheckedChange={setOn} checkedChildren="开" unCheckedChildren="关" />
-      <SwitchPlus size="sm" defaultChecked />
-      <SwitchPlus loading defaultChecked />
     </div>
   )
 }

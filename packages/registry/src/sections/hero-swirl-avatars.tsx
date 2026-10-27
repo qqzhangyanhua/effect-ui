@@ -1,9 +1,7 @@
 "use client"
 
-import * as React from "react"
-
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface SwirlAvatar {
   name: string
@@ -23,10 +21,6 @@ const defaultPeople: SwirlAvatar[] = [
   { name: "陈默", hue: "#f59e0b" },
 ]
 
-const ShaderPack2 = React.lazy(() =>
-  import("@/components/ui/shader-pack-2").then((mod) => ({ default: mod.ShaderPack2 })),
-)
-
 function HeroSwirlAvatars({
   title = "漩涡底上漂着还在线的人",
   people = defaultPeople,
@@ -40,13 +34,7 @@ function HeroSwirlAvatars({
         {`@keyframes eu-drift { 50% { transform: translateY(-10px); } }`}
       </style>
       <div className="absolute inset-0">
-        {reduced ? (
-          <div className="size-full bg-[conic-gradient(from_120deg,#312e81,#7c3aed,#22d3ee,#312e81)] opacity-80" />
-        ) : (
-          <React.Suspense fallback={<div className="size-full bg-[#1e1b4b]" />}>
-            <ShaderPack2 variant="swirl" className="min-h-full rounded-none" />
-          </React.Suspense>
-        )}
+        <div className="size-full bg-[conic-gradient(from_120deg,#312e81,#7c3aed,#22d3ee,#312e81)] opacity-80" />
       </div>
       <div className="relative z-10 grid min-h-80 items-center gap-6 px-6 py-12 md:grid-cols-2">
         <div>

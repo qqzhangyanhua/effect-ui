@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 const HOLO = "#67e8f9"
 const HOLO_CSS = `@keyframes effect-ui-holo-scan { to { background-position: 0 28px; } }

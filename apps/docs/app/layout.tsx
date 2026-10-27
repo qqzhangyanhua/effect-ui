@@ -5,8 +5,6 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google"
 import { AppChrome } from "@/components/app-chrome"
 import { ThemeProvider } from "@/components/theme-provider"
 import { getRegistryBaseUrl } from "@/lib/source"
-import { Toaster } from "@effect-ui/registry/ui/sonner"
-import { TooltipProvider } from "@effect-ui/registry/ui/tooltip"
 
 import "./globals.css"
 
@@ -41,10 +39,7 @@ function RootLayout({ children }: { children: ReactNode }) {
     <html lang="zh-CN" suppressHydrationWarning>
       <body className={`${sans.variable} ${mono.variable} ${display.variable} min-h-svh`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <TooltipProvider>
-            <AppChrome>{children}</AppChrome>
-            <Toaster />
-          </TooltipProvider>
+          <AppChrome>{children}</AppChrome>
         </ThemeProvider>
       </body>
     </html>

@@ -6,7 +6,6 @@ import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
 import { SectionLogoCloud } from "./section-logo-cloud"
-import { SectionStickyFeatureScroll } from "./section-sticky-feature-scroll"
 import { SectionAnimatedBento } from "./section-animated-bento"
 import { HeroAnnotatedShowcase } from "./hero-annotated-showcase"
 import { HeroWaveMaskGallery } from "./hero-wave-mask-gallery"
@@ -71,11 +70,6 @@ test("logo cloud shows a brand and a milestone", () => {
   expect(screen.getByRole("heading", { name: "开源 registry" })).toBeInTheDocument()
 })
 
-test("sticky feature scroll shows the first story", () => {
-  render(<SectionStickyFeatureScroll />)
-  expect(screen.getByRole("heading", { name: "滚动时左侧粘住，右侧换故事" })).toBeInTheDocument()
-  expect(screen.getByRole("heading", { name: "可替换背景槽" })).toBeInTheDocument()
-})
 
 test("animated bento shows the install label", () => {
   render(<SectionAnimatedBento />)

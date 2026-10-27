@@ -7,20 +7,8 @@ import "@testing-library/jest-dom/vitest"
 import { CursorFollow } from "./cursor-follow"
 import { CursorTrail } from "./cursor-trail"
 import { GlareHover } from "./glare-hover"
-import { GlowHover } from "./glow-hover"
 import { GravityImageTrail } from "./gravity-image-trail"
-import { ImageTrail } from "./image-trail"
-import { LensZoom } from "./lens-zoom"
-import { Magnetic } from "./magnetic"
-
-import { PolylineRibbonCursor } from "./polyline-ribbon-cursor"
-import { ShaderGridWide } from "./shader-grid-wide"
-
-import { SplashCursor } from "./splash-cursor"
-import { SpotlightCard } from "./spotlight-card"
-
 import { TargetCursor } from "./target-cursor"
-import { Tilt } from "./tilt"
 
 import { WobbleLineCursor } from "./wobble-line-cursor"
 
@@ -59,38 +47,9 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-test("聚光卡片不传时保持 70% 衰减，并给触屏和减弱动效留静态光斑", () => {
-  const { container } = render(<SpotlightCard>光</SpotlightCard>)
-  expect(container.innerHTML).toContain("transparent 70%")
-  expect(container.innerHTML).toContain("duration-300")
-  expect(container.innerHTML).toContain("pointer-coarse:opacity-100")
-  expect(container.innerHTML).toContain("motion-reduce:opacity-100")
-})
-
-test("聚光强度和速度会改变衰减与过渡", () => {
-  const { container } = render(<SpotlightCard intensity={0.5} speed={2}>光</SpotlightCard>)
-  expect(container.innerHTML).toContain("transparent 35%")
-  expect(container.innerHTML).toContain("150ms")
-  expect(container.innerHTML).not.toContain("duration-300")
-})
-
-test("传 1 的聚光强度与不传相同", () => {
-  const { container } = render(<SpotlightCard intensity={1} speed={1}>光</SpotlightCard>)
-  expect(container.innerHTML).toContain("transparent 70%")
-  expect(container.innerHTML).toContain("duration-300")
-})
 
 test("磁性、倾斜和跟随在不传与传起始值时都能渲染", () => {
-  const magnetic = render(<Magnetic>吸</Magnetic>)
-  expect(magnetic.container.querySelector("[data-slot='magnetic']")).toBeTruthy()
-  magnetic.unmount()
-  const scaled = render(<Magnetic scale={1.5}>吸</Magnetic>)
-  expect(scaled.container.querySelector("[data-slot='magnetic']")).toBeTruthy()
-  scaled.unmount()
-  const tilt = render(<Tilt>斜</Tilt>)
-  expect(tilt.container.querySelector("[data-slot='tilt']")).toBeTruthy()
-  tilt.unmount()
-  render(<CursorFollow>跟</CursorFollow>)
+                    render(<CursorFollow>跟</CursorFollow>)
   expect(document.querySelector("[aria-hidden]")).toBeTruthy()
 })
 
@@ -118,39 +77,6 @@ test("跟随光标不传时用 35% 主题色，传入颜色仍保持这个透明
   expect(coarse.container.querySelector("[aria-hidden]")).toBeTruthy()
 })
 
-test("磁性和倾斜只在缩放偏离 1 时写入", () => {
-  const styleOf = (view: { container: HTMLElement }, slot: string) =>
-    view.container.querySelector(`[data-slot='${slot}']`)?.getAttribute("style") ?? ""
-
-  const omit = render(<Magnetic>吸</Magnetic>)
-  expect(styleOf(omit, "magnetic")).not.toContain("scale(")
-  omit.unmount()
-  const same = render(<Magnetic scale={1}>吸</Magnetic>)
-  expect(styleOf(same, "magnetic")).not.toContain("scale(")
-  same.unmount()
-  const grown = render(<Magnetic scale={1.5}>吸</Magnetic>)
-  expect(styleOf(grown, "magnetic")).toContain("scale(1.5)")
-  grown.unmount()
-
-  const tilt = render(<Tilt scale={1.5}>斜</Tilt>)
-  expect(styleOf(tilt, "tilt")).toContain("scale(1.5)")
-  tilt.unmount()
-  const flat = render(<Tilt scale={1}>斜</Tilt>)
-  expect(styleOf(flat, "tilt")).not.toContain("scale(")
-})
-
-test("外发光不传时保留原来的阴影类，并给触屏常亮阴影", () => {
-  const { container } = render(<GlowHover>光</GlowHover>)
-  expect(container.innerHTML).toContain("duration-300")
-  expect(container.innerHTML).toContain("hover:shadow-[0_0_0_1px_color-mix(in_oklab,var(--glow)_40%,transparent),0_12px_40px_-16px_var(--glow)]")
-  expect(container.innerHTML).toContain("pointer-coarse:shadow-")
-})
-
-test("外发光尺寸会写成阴影变量", () => {
-  const { container } = render(<GlowHover size={80}>光</GlowHover>)
-  expect(container.innerHTML).toContain("80px")
-  expect(container.innerHTML).not.toContain("duration-300")
-})
 
 test("拖尾在粗指针和减弱动效下停在画面外", () => {
   const view = render(<CursorTrail>尾</CursorTrail>)
@@ -180,36 +106,6 @@ test("拖尾尺寸 10 沿用类名，其它尺寸写内联宽高", () => {
   expect(dot).not.toHaveClass("size-2.5")
 })
 
-test("图片残影的尺寸、透明度和张数会生效，减弱动效不生成", () => {
-  const images = ["data:image/gif;base64,R0lGODlhAQABAAAAACw="]
-  const view = render(<ImageTrail images={images} size={80} intensity={0.5} gap={0} count={2} />)
-  const host = view.container.firstElementChild as HTMLElement
-  for (const x of [10, 40, 70, 100]) fireEvent.pointerMove(host, { clientX: x, clientY: 20 })
-  const imagesOut = view.container.querySelectorAll("img")
-  expect(imagesOut).toHaveLength(3)
-  expect(imagesOut[0]).toHaveStyle({ width: "80px", opacity: "0.5" })
-  expect(imagesOut[0]).not.toHaveClass("size-16", "opacity-80")
-  view.unmount()
-
-  installMatchMedia(true)
-  const reduced = render(<ImageTrail images={images} />)
-  fireEvent.pointerMove(reduced.container.firstElementChild as HTMLElement, { clientX: 30, clientY: 20 })
-  expect(reduced.container.querySelector("img")).toBeNull()
-})
-
-test("图片残影不传时用 16 和 80% 透明度，触屏不生成", () => {
-  const images = ["data:image/gif;base64,R0lGODlhAQABAAAAACw="]
-  const view = render(<ImageTrail images={images} />)
-  fireEvent.pointerMove(view.container.firstElementChild as HTMLElement, { clientX: 80, clientY: 30 })
-  const image = view.container.querySelector("img")
-  expect(image).toHaveClass("size-16", "opacity-80")
-  view.unmount()
-
-  installMatchMedia(false, true)
-  const coarse = render(<ImageTrail images={images} />)
-  fireEvent.pointerMove(coarse.container.firstElementChild as HTMLElement, { clientX: 80, clientY: 30 })
-  expect(coarse.container.querySelector("img")).toBeNull()
-})
 
 test("高光扫过不传时保留白光带，减弱动效时不渲染光带", () => {
   const { container } = render(<GlareHover />)
@@ -230,32 +126,6 @@ test("高光宽度倍率会写成百分比", () => {
 test("传入白色与不传一样保留高光类名", () => {
   const { container } = render(<GlareHover color="#ffffff" intensity={1} />)
   expect(container.innerHTML).toContain("via-white/75")
-})
-
-test("放大镜描边默认是白，传入颜色后改描边", () => {
-  const view = render(<LensZoom />)
-  const frame = view.container.querySelector("[data-slot='lens-zoom']") as HTMLElement
-  fireEvent.pointerMove(frame, { clientX: 20, clientY: 20 })
-  expect(view.container.innerHTML).toContain("border-white")
-  view.unmount()
-  const colored = render(<LensZoom color="#112233" />)
-  fireEvent.pointerMove(colored.container.querySelector("[data-slot='lens-zoom']") as HTMLElement, { clientX: 20, clientY: 20 })
-  expect(colored.container.innerHTML).toContain("border-color: rgb(17, 34, 51)")
-})
-
-test("传入白色与不传一样保留镜片白边", () => {
-  const view = render(<LensZoom color="#ffffff" />)
-  fireEvent.pointerMove(view.container.querySelector("[data-slot='lens-zoom']") as HTMLElement, { clientX: 20, clientY: 20 })
-  const lens = view.container.querySelector(".rounded-full")
-  expect(lens).toHaveClass("border-white")
-  expect(lens).not.toHaveAttribute("style", expect.stringContaining("border-color"))
-})
-
-test("减弱动效时放大镜不出现", () => {
-  installMatchMedia(true)
-  const view = render(<LensZoom />)
-  fireEvent.pointerMove(view.container.querySelector("[data-slot='lens-zoom']") as HTMLElement, { clientX: 20, clientY: 20 })
-  expect(view.container.innerHTML).not.toContain("rounded-full")
 })
 
 test("琴弦默认 5 根，颜色和根数会生效，粗指针不拨动", () => {
@@ -297,25 +167,5 @@ test("画布光标在不传和传入新 prop 时都能挂上标记", () => {
   gravity.unmount()
   render(<GravityImageTrail size={40} gap={10} intensity={0.5} speed={1.5} />)
   expect(screen.getByLabelText(/沿指针落下的图片/)).toBeTruthy()
-  cleanup()
-
-  for (const node of [
-    <SplashCursor key="splash" />,
-    <SplashCursor key="splash-set" intensity={0.4} speed={1.2} />,
-    <PolylineRibbonCursor key="ribbon" />,
-    <PolylineRibbonCursor key="ribbon-set" intensity={0.5} speed={1.2} />,
-    <ShaderGridWide key="grid" />,
-    <ShaderGridWide key="grid-set" count={8} intensity={0.5} speed={1.5} scale={1.2} />,
-  ]) {
-    const view = render(node)
-    expect(view.container.firstElementChild).toBeTruthy()
-    view.unmount()
-  }
 })
 
-test("减弱动效时喷溅光标停在静态渐变", () => {
-  installMatchMedia(true)
-  const { container } = render(<SplashCursor />)
-  expect(container.innerHTML).toContain("radial-gradient")
-  expect(container.querySelector("canvas")).toBeNull()
-})

@@ -4,20 +4,12 @@ import { afterEach, beforeEach, expect, test, vi } from "vitest"
 import { cleanup, fireEvent, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 
-import { BlurFade } from "./blur-fade"
-import { FadeIn } from "./fade-in"
 import { ImageTubeScroll } from "./image-tube-scroll"
 import { MacbookScroll } from "./macbook-scroll"
 import { Parallax } from "./parallax"
-import { ProgressiveBlur } from "./progressive-blur"
 import { Reveal } from "./reveal"
-import { ScrollProgress } from "./scroll-progress"
 import { ScrollSvgGraph } from "./scroll-svg-graph"
 import { ScrollTimelineReveal } from "./scroll-timeline-reveal"
-import { ScrollVelocity, ScrollVelocityRow } from "./scroll-velocity"
-import { SlideIn } from "./slide-in"
-import { StackingCardItem, StackingCards } from "./stacking-cards"
-import { StaggerList } from "./stagger-list"
 import { SvgMaskScrollTransition } from "./svg-mask-scroll-transition"
 
 function installMatchMedia(reduce = false) {
@@ -84,41 +76,6 @@ test("Reveal 减弱动效时停在可见状态", () => {
   expect(style).not.toContain("opacity: 0")
 })
 
-test("FadeIn 把强度传给淡入位移", () => {
-  const { container } = render(<FadeIn intensity={0.5}>淡入</FadeIn>)
-  expect(container.querySelector("[data-slot='fade-in']")).toBeTruthy()
-  expect(styleOf(container.querySelector("[data-slot='fade-in']"))).toContain("8px")
-})
-
-test("SlideIn 从左侧时强度减半位移", () => {
-  const { container } = render(<SlideIn from="left" intensity={0.5}>滑入</SlideIn>)
-  expect(styleOf(container.querySelector("[data-slot='slide-in']"))).toContain("-18px")
-})
-
-test("BlurFade 强度减半初始模糊", () => {
-  const { container } = render(<BlurFade intensity={0.5}>模糊</BlurFade>)
-  expect(styleOf(container.querySelector("[data-slot='blur-fade']"))).toContain("blur(4px)")
-})
-
-test("StaggerList 默认间距沿用 gap-2，其他间距写到 style", () => {
-  const kept = render(
-    <StaggerList>
-      <span>一项</span>
-    </StaggerList>,
-  )
-  expect(kept.container.querySelector("[data-slot='stagger-list']")).toHaveClass("gap-2")
-  expect(styleOf(kept.container.querySelector("[data-slot='stagger-list']"))).not.toContain("gap")
-  kept.unmount()
-
-  const spaced = render(
-    <StaggerList gap={16}>
-      <span>一项</span>
-    </StaggerList>,
-  )
-  const node = spaced.container.querySelector("[data-slot='stagger-list']")
-  expect(node).not.toHaveClass("gap-2")
-  expect(styleOf(node)).toContain("16px")
-})
 
 test("Parallax 减弱动效时不再套一层位移", () => {
   installMatchMedia(true)
@@ -130,62 +87,6 @@ test("Parallax 减弱动效时不再套一层位移", () => {
   expect(screen.getByText("视差").parentElement).toHaveAttribute("data-slot", "parallax")
 })
 
-test("ProgressiveBlur 默认 8 层，强度 0.5 把每层模糊减半", () => {
-  const full = render(<ProgressiveBlur />)
-  const fullLayers = full.container.querySelectorAll("[style*='backdrop-filter']")
-  expect(fullLayers).toHaveLength(8)
-  expect(styleOf(fullLayers[1] ?? null)).toContain("blur(0.25px)")
-  full.unmount()
-
-  const half = render(<ProgressiveBlur intensity={0.5} />)
-  const halfLayers = half.container.querySelectorAll("[style*='backdrop-filter']")
-  expect(styleOf(halfLayers[1] ?? null)).toContain("blur(0.125px)")
-})
-
-test("ScrollProgress 默认用 h-1，尺寸和强度会写进 style", () => {
-  const plain = render(<ScrollProgress />)
-  expect(plain.container.querySelector(".h-1")).toBeTruthy()
-  expect(plain.container.innerHTML).toContain("from-violet-500")
-  plain.unmount()
-
-  const kept = render(<ScrollProgress color="#8b5cf6" />)
-  expect(kept.container.innerHTML).toContain("from-violet-500")
-  kept.unmount()
-
-  const sized = render(<ScrollProgress size={8} intensity={0.5} color="#ff0000" />)
-  const bar = sized.container.querySelector("div")
-  expect(bar).not.toHaveClass("h-1")
-  expect(bar).not.toHaveClass("from-violet-500")
-  const style = styleOf(bar)
-  expect(style).toContain("8px")
-  expect(style).toContain("0.5")
-  expect(style).toContain("rgb(255, 0, 0)")
-})
-
-test("ScrollVelocity 减弱动效时子节点只出现一次", () => {
-  installMatchMedia(true)
-  render(
-    <ScrollVelocity>
-      <ScrollVelocityRow>
-        <span>跑马灯</span>
-      </ScrollVelocityRow>
-    </ScrollVelocity>,
-  )
-  expect(screen.getAllByText("跑马灯")).toHaveLength(1)
-})
-
-test("叠放卡片减弱动效时不再粘住", () => {
-  installMatchMedia(true)
-  const { container } = render(
-    <StackingCards totalCards={1}>
-      <StackingCardItem index={0}>
-        <p>设计</p>
-      </StackingCardItem>
-    </StackingCards>,
-  )
-  expect(screen.getByText("设计")).toBeTruthy()
-  expect(container.innerHTML).not.toContain("sticky")
-})
 
 test("时间线回退在强度 0.5 时把位移减半", () => {
   const css = window.CSS

@@ -1,8 +1,5 @@
-"use client"
-
 import type { ReactNode } from "react"
 
-import { BlurFade } from "@effect-ui/registry/effects/blur-fade"
 import { cn } from "@/lib/utils"
 
 type HomeSectionHeadingProps = {
@@ -23,11 +20,7 @@ export function HomeSectionHeading({
   const centered = align === "center"
 
   return (
-    <BlurFade
-      className={cn(centered ? "text-center" : "text-left", className)}
-      delay={0.05}
-      blur={10}
-    >
+    <div className={cn(centered ? "text-center" : "text-left", className)}>
       <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
         {kicker}
       </span>
@@ -49,6 +42,6 @@ export function HomeSectionHeading({
           {description}
         </p>
       ) : null}
-    </BlurFade>
+    </div>
   )
 }

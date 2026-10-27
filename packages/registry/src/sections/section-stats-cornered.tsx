@@ -1,8 +1,7 @@
 "use client"
 
-import { CountUp } from "@/components/ui/count-up"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface CornerStat {
   label: string
@@ -44,7 +43,7 @@ function SectionStatsCornered({ stats = defaultStats, className }: SectionStatsC
             <Viewfinder />
             <p className="font-mono text-[11px] tracking-[0.22em] text-muted-foreground">{stat.label}</p>
             <p className="font-display mt-3 text-5xl tabular-nums" style={{ transition: reduced ? "none" : undefined }}>
-              <CountUp value={stat.value} />
+              <span>{stat.value}</span>
               {stat.suffix}
             </p>
           </article>

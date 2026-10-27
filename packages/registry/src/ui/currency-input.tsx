@@ -2,8 +2,7 @@
 
 import * as React from "react"
 
-import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface CurrencyInputProps {
   value?: number
@@ -32,7 +31,8 @@ function CurrencyInput({
 
   return (
     <div className={cn("flex max-w-xs items-center gap-2", className)}>
-      <Input
+      <input
+        className="h-9 min-w-0 flex-1 rounded-md border bg-transparent px-3"
         inputMode="decimal"
         value={text}
         onChange={(event) => {

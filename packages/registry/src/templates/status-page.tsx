@@ -3,7 +3,7 @@
 import { graphLinePath } from "@/components/ui/scroll-svg-graph"
 import { UptimeBars, buildUptimeDays, type UptimeService, type UptimeStatus } from "@/components/ui/uptime-bars"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface StatusIncident {
   id: string

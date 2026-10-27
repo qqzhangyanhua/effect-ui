@@ -4,7 +4,7 @@ import { Children, isValidElement, useEffect, useRef, useSyncExternalStore, type
 
 import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export type ScrollParallaxDirection = "left" | "right" | "up" | "down"
 

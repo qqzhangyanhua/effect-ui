@@ -41,9 +41,6 @@ export function FooterSocialMarqueeDemo() {
   return <FooterSocialMarquee className="w-full" />
 }
 
-
-
-
 export function SectionStatsCorneredDemo() {
   return <SectionStatsCornered className="w-full" />
 }

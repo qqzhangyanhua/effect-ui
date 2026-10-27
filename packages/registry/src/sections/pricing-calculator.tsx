@@ -2,8 +2,7 @@
 
 import * as React from "react"
 
-import { NumberFlow } from "@/components/ui/number-flow"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface PricingTier {
   id: string
@@ -73,7 +72,7 @@ function PricingCalculator({ tiers = DEFAULT_TIERS, className }: PricingCalculat
           <li key={tier.id} className={cn("rounded-xl border p-3", tier.id === recommended?.tier.id && "border-primary")}>
             <p className="text-sm font-medium">{tier.name}</p>
             <p className="mt-2 text-2xl">
-              <NumberFlow value={amount} />
+              <span>{amount}</span>
               <span className="text-sm text-muted-foreground"> / 月</span>
             </p>
           </li>

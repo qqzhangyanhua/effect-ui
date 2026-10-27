@@ -5,7 +5,7 @@ import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { textStyle } from "@/lib/text-style"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface TextGenerateProps {
   text: string

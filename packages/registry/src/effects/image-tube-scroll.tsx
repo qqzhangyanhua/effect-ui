@@ -5,7 +5,7 @@ import { useMotionValueEvent, useScroll } from "motion/react"
 
 import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface ImageTubeScrollProps {
   images?: string[]

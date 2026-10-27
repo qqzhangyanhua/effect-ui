@@ -1,11 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { RoughAnnotation } from "@/components/ui/rough-annotation"
-import { ShimmerButton } from "@/components/ui/shimmer-button"
-import { SplitText } from "@/components/ui/split-text"
-import { WordRotate } from "@/components/ui/word-rotate"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface HeroKineticTextProps {
   lead?: string
@@ -32,19 +27,22 @@ function HeroKineticText({
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
         <p className="text-xs tracking-[0.28em] text-muted-foreground uppercase">Hero Kinetic</p>
         <h2 className="font-display flex flex-wrap items-baseline justify-center gap-x-3 text-4xl tracking-tight sm:text-6xl">
-          <SplitText text={lead} by="word" className="justify-center gap-x-2" />
-          <WordRotate words={words} className="text-primary" />
+          <span className="inline-flex justify-center gap-x-2">{lead}</span>
+          <span className="text-primary">{words[0] ?? ""}</span>
         </h2>
         <p className="max-w-md text-sm text-muted-foreground">
-          {subtitle} Try the{" "}
-          <RoughAnnotation type="circle" color="var(--primary)">
-            {annotation}
-          </RoughAnnotation>{" "}
-          mark.
+          {subtitle} Try the <span className="text-primary">{annotation}</span> mark.
         </p>
         <div className="flex gap-2">
-          <ShimmerButton>开始构建</ShimmerButton>
-          <Button variant="ghost">示例</Button>
+          <button
+            type="button"
+            className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm text-primary-foreground"
+          >
+            开始构建
+          </button>
+          <button type="button" className="inline-flex h-9 items-center justify-center rounded-md px-4 text-sm hover:bg-muted">
+            示例
+          </button>
         </div>
       </div>
     </section>

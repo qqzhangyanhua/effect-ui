@@ -2,9 +2,8 @@
 
 import * as React from "react"
 
-import { Button } from "@/components/ui/button"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface CtaRibbonSwooshProps {
   title?: string
@@ -53,7 +52,12 @@ function CtaRibbonSwoosh({ title = "一条色带扫进行动面板", className }
       <div className="relative ml-auto max-w-sm rounded-2xl border bg-card/90 p-6 shadow-lg backdrop-blur">
         <h2 className="font-display text-3xl tracking-tight">{title}</h2>
         <p className="mt-2 text-sm text-muted-foreground">色带沿路径画出来，面板上留着颗粒。</p>
-        <Button className="mt-5">继续</Button>
+        <button
+          type="button"
+          className="mt-5 inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm text-primary-foreground"
+        >
+          继续
+        </button>
       </div>
     </section>
   )

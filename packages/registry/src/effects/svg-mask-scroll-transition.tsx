@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export type MaskPreset = "circle" | "blob" | "stripes" | "text"
 

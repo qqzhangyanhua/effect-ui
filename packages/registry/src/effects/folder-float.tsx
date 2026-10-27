@@ -12,7 +12,7 @@ import React, {
 import Matter from "matter-js"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 const { Bodies, Body, Composite, Engine } = Matter
 

@@ -3,10 +3,8 @@
 import * as React from "react"
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react"
 
-import { Button } from "@/components/ui/button"
-import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface ParallaxWallCard {
   title: string
@@ -65,10 +63,15 @@ function HeroParallaxWall({
         <h2 className="font-display mt-3 text-4xl tracking-tight">{title}</h2>
         <p className="mt-3 text-sm text-white/60">{subtitle}</p>
         <div className="mt-5 flex justify-center gap-2">
-          <ShimmerButton>浏览组件</ShimmerButton>
-          <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
+          <button
+            type="button"
+            className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm text-primary-foreground"
+          >
+            浏览组件
+          </button>
+          <button type="button" className="inline-flex h-9 items-center justify-center rounded-md px-4 text-sm text-white hover:bg-white/10 hover:text-white">
             GitHub
-          </Button>
+          </button>
         </div>
       </div>
       <div className="mt-10 [perspective:1400px]">

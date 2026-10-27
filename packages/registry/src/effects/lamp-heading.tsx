@@ -1,5 +1,5 @@
 import { textStyle } from "@/lib/text-style"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface LampHeadingProps {
   text: string

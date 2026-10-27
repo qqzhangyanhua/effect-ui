@@ -1,7 +1,7 @@
 "use client"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface InlineMascotProps {
   className?: string

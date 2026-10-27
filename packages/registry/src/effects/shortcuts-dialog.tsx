@@ -2,9 +2,7 @@
 
 import * as React from "react"
 
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Kbd } from "@/components/ui/kbd"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface ShortcutItem {
   keys: string[]
@@ -87,6 +85,7 @@ export function useHotkey(keys: string, callback: () => void) {
 }
 
 function ShortcutsDialog({ groups = DEFAULT_GROUPS, className }: ShortcutsDialogProps) {
+  const titleId = React.useId()
   const [open, setOpen] = React.useState(false)
   const [query, setQuery] = React.useState("")
   const mac = useMac()
@@ -101,43 +100,54 @@ function ShortcutsDialog({ groups = DEFAULT_GROUPS, className }: ShortcutsDialog
   return (
     <div data-slot="shortcuts-dialog" className={className}>
       <button type="button" className="rounded-md border px-2 py-1 text-xs" onClick={() => setOpen(true)}>
-        快捷键 <Kbd>?</Kbd>
+        快捷键 <kbd className="rounded border px-1 font-mono text-[10px]">?</kbd>
       </button>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className={cn("max-w-md")}>
-          <DialogHeader>
-            <DialogTitle>快捷键</DialogTitle>
-            <DialogDescription>按 ? 打开或关闭。修饰键会按系统显示。</DialogDescription>
-          </DialogHeader>
-          <input
-            aria-label="搜索快捷键"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索"
-            className="h-9 rounded-md border px-2 text-sm"
-          />
-          <div className="max-h-80 space-y-4 overflow-auto">
-            {filtered.map((group) => (
-              <section key={group.title}>
-                <h3 className="text-xs text-muted-foreground">{group.title}</h3>
-                <ul className="mt-2 space-y-2">
-                  {group.items.map((item) => (
-                    <li key={item.label} className="flex items-center justify-between gap-3 text-sm">
-                      <span>{item.label}</span>
-                      <span className="flex gap-1">
-                        {item.keys.map((key) => (
-                          <Kbd key={key}>{labelFor(key, mac)}</Kbd>
-                        ))}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-            {filtered.length === 0 ? <p className="text-sm text-muted-foreground">没有匹配的快捷键。</p> : null}
+      {open ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" onMouseDown={() => setOpen(false)}>
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            className={cn("max-h-[min(32rem,80vh)] w-full max-w-md space-y-3 overflow-auto rounded-xl border bg-background p-4")}
+            onMouseDown={(event) => event.stopPropagation()}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") setOpen(false)
+            }}
+          >
+            <h2 id={titleId} className="text-lg font-medium">快捷键</h2>
+            <p className="text-sm text-muted-foreground">按 ? 打开或关闭。修饰键会按系统显示。</p>
+            <input
+              aria-label="搜索快捷键"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="搜索"
+              className="h-9 w-full rounded-md border px-2 text-sm"
+            />
+            <div className="max-h-80 space-y-4 overflow-auto">
+              {filtered.map((group) => (
+                <section key={group.title}>
+                  <h3 className="text-xs text-muted-foreground">{group.title}</h3>
+                  <ul className="mt-2 space-y-2">
+                    {group.items.map((item) => (
+                      <li key={item.label} className="flex items-center justify-between gap-3 text-sm">
+                        <span>{item.label}</span>
+                        <span className="flex gap-1">
+                          {item.keys.map((key) => (
+                            <kbd key={key} className="rounded border px-1 font-mono text-[10px]">
+                              {labelFor(key, mac)}
+                            </kbd>
+                          ))}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+              {filtered.length === 0 ? <p className="text-sm text-muted-foreground">没有匹配的快捷键。</p> : null}
+            </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      ) : null}
     </div>
   )
 }

@@ -2,8 +2,7 @@
 
 import * as React from "react"
 
-import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxItem, ComboboxList } from "@/components/ui/combobox"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
 export interface MentionCandidate {
   id: string
@@ -76,7 +75,6 @@ function MentionTextarea({ people = PEOPLE, tags = TAGS, value, onValueChange, c
   const [kind, setKind] = React.useState<"mention" | "tag">("mention")
   const [anchor, setAnchor] = React.useState({ left: 0, top: 0 })
   const areaRef = React.useRef<HTMLTextAreaElement>(null)
-  const anchorRef = React.useRef<HTMLSpanElement>(null)
   const current = value?.text ?? text
 
   const emit = (next: string) => {
@@ -136,27 +134,32 @@ function MentionTextarea({ people = PEOPLE, tags = TAGS, value, onValueChange, c
         }}
         onClick={(event) => syncTrigger(event.currentTarget)}
       />
-      <span ref={anchorRef} className="pointer-events-none absolute size-1" style={{ left: anchor.left, top: anchor.top }} />
-      <Combobox
-        open={open}
-        onOpenChange={setOpen}
-        items={candidates.map((item) => item.label)}
-        onValueChange={(next) => {
-          if (typeof next === "string") insert(next)
-        }}
-      >
-        <ComboboxContent anchor={anchorRef} side="bottom" align="start">
-          <ComboboxEmpty>没有匹配</ComboboxEmpty>
-          <ComboboxList>
-            {(item: string) => (
-              <ComboboxItem key={item} value={item}>
-                {kind === "mention" ? "@" : "#"}
-                {item}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
+      {open ? (
+        <ul
+          role="listbox"
+          className="absolute z-20 min-w-36 rounded-md border bg-background p-1 text-sm shadow"
+          style={{ left: anchor.left, top: anchor.top }}
+        >
+          {candidates.length === 0 ? (
+            <li className="px-2 py-1 text-xs text-muted-foreground">没有匹配</li>
+          ) : (
+            candidates.map((item) => (
+              <li key={item.id}>
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={false}
+                  className="w-full rounded px-2 py-1 text-left hover:bg-muted"
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => insert(item.label)}
+                >
+                  {`${kind === "mention" ? "@" : "#"}${item.label}`}
+                </button>
+              </li>
+            ))
+          )}
+        </ul>
+      ) : null}
     </div>
   )
 }

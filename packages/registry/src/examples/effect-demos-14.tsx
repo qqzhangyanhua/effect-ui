@@ -5,41 +5,12 @@ import { BeamsCollision } from "../effects/beams-collision"
 import { CookieConsent } from "../effects/cookie-consent"
 import { CountdownTimer } from "../effects/countdown-timer"
 import { DiffViewer } from "../effects/diff-viewer"
-import { ImageCropper } from "../effects/image-cropper"
 import { KpiSparklineCard } from "../effects/kpi-sparkline-card"
-import { LensZoom } from "../effects/lens-zoom"
 import { LinkPreview } from "../effects/link-preview"
 import { PlaceholderVanishInput } from "../effects/placeholder-vanish-input"
 import { ShuffleGridHero } from "../effects/shuffle-grid-hero"
 import { SortableList } from "../effects/sortable-list"
 import { VortexBackground } from "../effects/vortex-background"
-import { WorldMapArcs } from "../effects/world-map-arcs"
-
-export function LensZoomDemo({
-  zoom = 2.3,
-  lensSize = 148,
-  intensity,
-  color,
-}: {
-  zoom?: number
-  lensSize?: number
-  intensity?: number
-  color?: string
-} = {}) {
-  return <LensZoom className="w-full" zoom={zoom} lensSize={lensSize} intensity={intensity} color={color} />
-}
-
-export function WorldMapArcsDemo({
-  colors = ["#67e8f9", "#bae6fd"],
-  speed = 1,
-  size = 0.7,
-}: {
-  colors?: string[]
-  speed?: number
-  size?: number
-} = {}) {
-  return <WorldMapArcs className="w-full" colors={colors} speed={speed} size={size} />
-}
 
 export function VortexBackgroundDemo({
   count = 96,
@@ -153,10 +124,6 @@ export function CountdownTimerDemo({
       fontSize={fontSize}
     />
   )
-}
-
-export function ImageCropperDemo() {
-  return <ImageCropper className="w-full" />
 }
 
 export function DiffViewerDemo() {

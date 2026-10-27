@@ -2,11 +2,10 @@
 
 import * as React from "react"
 
-import { Button } from "@/components/ui/button"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/cn"
 
-export interface FuseButtonProps extends Omit<React.ComponentProps<typeof Button>, "color"> {
+export interface FuseButtonProps extends Omit<React.ComponentProps<"button">, "color"> {
   holdMs?: number
   color?: string
   scale?: number
@@ -24,7 +23,6 @@ function FuseButton({
   children = "按住确认",
   className,
   disabled,
-  size,
   ref,
   onPointerDown,
   onPointerUp,
@@ -66,13 +64,12 @@ function FuseButton({
   }
 
   return (
-    <Button
+    <button
       ref={ref}
       type="button"
       disabled={disabled}
-      size={size}
       data-slot="fuse-button"
-      className={cn("relative overflow-visible", size == null && "h-11 px-5", className)}
+      className={cn("relative inline-flex h-11 items-center overflow-visible px-5", className)}
       onPointerDown={(event) => {
         if (event.button === 0) start()
         onPointerDown?.(event)
@@ -127,7 +124,7 @@ function FuseButton({
         />
       </svg>
       <span className="relative">{children}</span>
-    </Button>
+    </button>
   )
 }
 

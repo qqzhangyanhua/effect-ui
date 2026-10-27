@@ -5,18 +5,13 @@ import { cleanup, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
-import { SmoothScrollProvider } from "./smooth-scroll-provider"
 import { HeroScrollZoom } from "../sections/hero-scroll-zoom"
 import { SectionHorizontalScroll } from "../sections/section-horizontal-scroll"
-import { Hero3DModel } from "../sections/hero-3d-model"
 import { AnchorPopover } from "./anchor-popover"
-import { CssAccordionAuto } from "./css-accordion-auto"
 import { PlaceholderVanishInput } from "../effects/placeholder-vanish-input"
 import { ShuffleGridHero } from "../effects/shuffle-grid-hero"
 import { CookieConsent } from "../effects/cookie-consent"
-import { ImageCropper } from "../effects/image-cropper"
 import { DiffViewer } from "../effects/diff-viewer"
-import { FacetedFilterBar } from "../effects/faceted-filter-bar"
 import { JsonViewer } from "../effects/json-viewer"
 import { HeatmapCalendar } from "../effects/heatmap-calendar"
 import { ResourceSearchHero } from "../effects/resource-search-hero"
@@ -66,11 +61,6 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
-test("smooth scroll shows the sample paragraphs", () => {
-  render(<SmoothScrollProvider />)
-  expect(screen.getByText("段落 1")).toBeInTheDocument()
-  expect(screen.getByText("段落 8")).toBeInTheDocument()
-})
 
 test("hero scroll zoom shows the default title", () => {
   render(<HeroScrollZoom />)
@@ -84,26 +74,12 @@ test("horizontal scroll shows the three chapters", () => {
   expect(screen.getByRole("heading", { name: "收束" })).toBeInTheDocument()
 })
 
-test("hero 3d model shows the glass title", () => {
-  render(<Hero3DModel />)
-  expect(screen.getByText("Glass")).toBeInTheDocument()
-  expect(screen.getByRole("heading", { name: "滚动带动一枚玻璃体" })).toBeInTheDocument()
-})
 
 test("anchor popover opens its note", async () => {
   const user = userEvent.setup()
   render(<AnchorPopover />)
   await user.click(screen.getByRole("button", { name: "打开说明" }))
   expect(screen.getByText("优先用 CSS anchor 定位，不够放就翻到另一侧。")).toBeInTheDocument()
-})
-
-test("css accordion opens a native summary", async () => {
-  const user = userEvent.setup()
-  render(<CssAccordionAuto />)
-  const summary = screen.getByText("高度可以是 auto")
-  await user.click(summary)
-  expect(summary.closest("details")).toHaveAttribute("open")
-  expect(screen.getByText("支持时用 interpolate-size，把 details 内容从 0 过渡到 auto。")).toBeInTheDocument()
 })
 
 test("placeholder vanish input submits the typed text", async () => {
@@ -130,14 +106,6 @@ test("cookie consent saves an accept-all choice", async () => {
   expect(screen.getByText("分析 开启 · 营销 开启")).toBeInTheDocument()
 })
 
-test("image cropper switches to a round mask", async () => {
-  const user = userEvent.setup()
-  render(<ImageCropper />)
-  const round = screen.getByRole("button", { name: "圆形" })
-  await user.click(round)
-  expect(round).toHaveAttribute("aria-pressed", "true")
-  expect(screen.getByRole("button", { name: "方形" })).toHaveAttribute("aria-pressed", "false")
-})
 
 test("diff viewer switches to the unified view", async () => {
   const user = userEvent.setup()
@@ -146,17 +114,6 @@ test("diff viewer switches to the unified view", async () => {
   await user.click(unified)
   expect(unified).toHaveAttribute("aria-pressed", "true")
   expect(screen.getByRole("button", { name: "并排" })).toHaveAttribute("aria-pressed", "false")
-})
-
-test("faceted filter bar keeps the matching row", async () => {
-  const user = userEvent.setup()
-  render(<FacetedFilterBar />)
-  expect(screen.getByText("信号墙")).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "+ 筛选" }))
-  await user.type(screen.getByRole("textbox"), "轨道")
-  await user.click(screen.getByRole("button", { name: "添加" }))
-  expect(screen.getByText("轨道列表")).toBeInTheDocument()
-  expect(screen.queryByText("信号墙")).not.toBeInTheDocument()
 })
 
 test("json viewer shows the sample row count", () => {

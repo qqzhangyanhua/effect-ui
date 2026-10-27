@@ -12,35 +12,13 @@ import {
   visibleComponents,
 } from "./catalog"
 
-const aiTopicNames = [
-  "prompt-input",
-  "chat-message",
-  "siri-orb",
-  "ai-voice",
-  "ai-citations",
-  "ai-token-alternatives",
-  "response-stream",
-  "thinking-bar",
-  "chain-of-thought",
-  "reasoning",
-  "source",
-  "tool",
-  "system-message",
-  "feedback-bar",
-  "prompt-suggestion",
-  "generated-image",
-  "expandable-chat",
-  "chat-message-list",
-  "agent-intro-sequence",
-]
-
 function expectSectionOrder(keys: readonly string[], order: readonly string[]) {
   const ranks = keys.map((key) => order.indexOf(key))
   expect(ranks.every((rank) => rank >= 0)).toBe(true)
   expect([...ranks]).toEqual([...ranks].sort((a, b) => a - b))
 }
 
-test("按钮、输入和六个控件族各自只出现在对应分组，并且紧跟在组件分组后面", () => {
+test("按钮、输入和四个控件族各自只出现在对应分组，并且紧跟在组件分组后面", () => {
   const groups = getCatalogGroups()
   const keys = groups.map((group) => group.key)
 
@@ -49,15 +27,12 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
     "button",
     "input",
     "checkbox",
-    "switch",
     "radio",
     "select",
     "textarea",
-    "slider",
     "effects",
     "sections",
     "templates",
-    "topics",
     "hooks-libs",
   ])
   expect(keys).not.toContain("buttons")
@@ -100,17 +75,7 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
   expect(groups.find((group) => group.key === "hooks-libs")?.sections.map((section) => section.key)).toEqual(["hook", "lib"])
   expect(groups.find((group) => group.key === "hooks-libs")?.sections.map((section) => section.label)).toEqual(["Hook", "Lib"])
 
-  const topics = groups.find((group) => group.key === "topics")
-  expect(topics?.label).toBe("专题")
-  expect(topics?.sections.map((section) => section.key)).toEqual(["ai"])
-  expect(topics?.sections.map((section) => section.label)).toEqual(["AI"])
-  expect(topics?.sections[0]?.items.map((item) => item.name)).toEqual(aiTopicNames)
-  expect(aiTopicNames.filter((name) => componentCluster(name))).toEqual(["prompt-input"])
-  expect(componentCluster("prompt-input")).toBe("input")
-  for (const name of aiTopicNames) {
-    if (name === "prompt-input") continue
-    expect(componentCluster(name)).toBeUndefined()
-  }
+  expect(groups.find((group) => group.key === "topics")).toBeUndefined()
 
   const listed = new Set(groups.flatMap((group) => group.items.map((item) => item.name)))
   for (const item of components) expect(listed.has(item.name)).toBe(true)
@@ -119,45 +84,21 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
   const input = groups.find((group) => group.key === "input")
   expect(button?.sections.map((section) => section.label)).toEqual(["基础", "动效"])
   expect(input?.sections.map((section) => section.label)).toEqual(["基础", "专用", "动效"])
-  expect(button?.items[0]?.name).toBe("button")
-  expect(input?.items[0]?.name).toBe("input")
+  expect(button?.items[0]?.name).toBe("button-plus")
+  expect(input?.items[0]?.name).toBe("input-plus")
 
   expect(groups.find((group) => group.key === "checkbox")?.items.map((item) => item.name)).toEqual([
-    "checkbox",
     "checkbox-plus",
     "spring-check",
   ])
-  expect(groups.find((group) => group.key === "switch")?.items.map((item) => item.name)).toEqual([
-    "switch",
-    "switch-plus",
-    "squish-switch",
-    "labeled-toggle",
-    "halo-switch",
-  ])
   expect(groups.find((group) => group.key === "radio")?.items.map((item) => item.name)).toEqual([
-    "radio-group",
     "radio-plus",
-    "choicebox",
     "jelly-radio",
   ])
-  expect(groups.find((group) => group.key === "select")?.items.map((item) => item.name)).toEqual([
-    "select",
-    "native-select",
-    "combobox",
-    "select-plus",
-    "multi-select",
-  ])
-  expect(groups.find((group) => group.key === "textarea")?.items.map((item) => item.name)).toEqual([
-    "textarea",
-    "autosize-textarea",
-    "mention-textarea",
-  ])
-  expect(groups.find((group) => group.key === "slider")?.items.map((item) => item.name)).toEqual([
-    "slider",
-    "dual-range-slider",
-  ])
+  expect(groups.find((group) => group.key === "select")?.items.map((item) => item.name)).toEqual(["select-plus"])
+  expect(groups.find((group) => group.key === "textarea")?.items.map((item) => item.name)).toEqual(["mention-textarea"])
 
-  const familyKeys = new Set(["button", "input", "checkbox", "switch", "radio", "select", "textarea", "slider"])
+  const familyKeys = new Set(["button", "input", "checkbox", "radio", "select", "textarea"])
   const clustered = new Map(
     groups.filter((group) => familyKeys.has(group.key)).map((group) => [group.key, new Set(group.items.map((item) => item.name))]),
   )
@@ -180,18 +121,15 @@ test("按钮、输入和六个控件族各自只出现在对应分组，并且�
 })
 
 test("同类链接列出同组其他组件，家族分组不改写 Layer", () => {
-  const related = relatedComponents("shimmer-button").map((item) => item.name)
-  expect(related).toContain("button")
+  const related = relatedComponents("button-plus").map((item) => item.name)
   expect(related).toContain("fuse-button")
-  expect(related).not.toContain("shimmer-button")
+  expect(related).toContain("neon-button")
+  expect(related).not.toContain("button-plus")
   expect(relatedComponents("card")).toEqual([])
-  expect(relatedComponents("checkbox").map((item) => item.name)).toEqual(["checkbox-plus", "spring-check"])
-  expect(relatedComponents("switch").map((item) => item.name)).not.toContain("checkbox")
+  expect(relatedComponents("checkbox-plus").map((item) => item.name)).toEqual(["spring-check"])
 
-  expect(getComponent("button")).toMatchObject({ layer: "primitive", purposeGroup: "form" })
-  expect(getComponent("shimmer-button")).toMatchObject({ layer: "effect", effectCategory: "buttons" })
-  expect(getComponent("prompt-input")).toMatchObject({ layer: "widget", purposeGroup: "form" })
-  expect(getComponent("checkbox")).toMatchObject({ layer: "primitive", purposeGroup: "form" })
+  expect(getComponent("button-plus")).toMatchObject({ layer: "composite", purposeGroup: "form" })
+  expect(getComponent("neon-button")).toMatchObject({ layer: "effect", effectCategory: "buttons" })
   expect(getComponent("checkbox-plus")).toMatchObject({ layer: "composite", purposeGroup: "form" })
   expect(getComponent("spring-check")).toMatchObject({ layer: "effect", effectCategory: "micro" })
 })

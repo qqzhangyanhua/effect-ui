@@ -32,6 +32,7 @@ import * as effectDemos52 from "./effect-demos-52"
 
 import * as effectDemos64 from "./effect-demos-64"
 import * as effectDemos65 from "./effect-demos-65"
+import * as effectDemos66 from "./effect-demos-66"
 
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
@@ -225,7 +226,13 @@ const demoMap: Record<string, ComponentType> = {
   "scroll-parallax-layers": effectDemos65.ScrollParallaxLayersDemo,
   "shared-layout-expand": effectDemos65.SharedLayoutExpandDemo,
   "logo-marquee": effectDemos65.LogoMarqueeDemo,
-  "entrance-presets": effectDemos65.EntrancePresetsDemo
+  "entrance-presets": effectDemos65.EntrancePresetsDemo,
+  "space-jump-hero": effectDemos66.SpaceJumpHeroDemo,
+  "scroll-split-reveal": effectDemos66.ScrollSplitRevealDemo,
+  "slice-shift-text": effectDemos66.SliceShiftTextDemo,
+  "radial-hotspot-labels": effectDemos66.RadialHotspotLabelsDemo,
+  "spotlight-focus-blur": effectDemos66.SpotlightFocusBlurDemo,
+  "drag-rate-tiles": effectDemos66.DragRateTilesDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

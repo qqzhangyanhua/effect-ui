@@ -1,0 +1,167 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 73 批调研，catalog batch 79。六个原创交互，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch79ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "digit-slot-gate",
+    batch: 79,
+    title: "Digit Slot Gate",
+    description:
+      "原创。一排圆形 PIN 位槽，输入数字逐位填充并轻弹，满位校验；错误时整排抖动并清空。数字键与 Backspace 可用，Space 清空。这是数字位槽填充门闸，不是 slide-rail-confirm 的滑轨确认，也不是 hold-fill-commit 的长按填充，更不是 drag-token-gate 的拖 token 过闸。减弱动效瞬时切填充态，无弹跳与抖动。没有循环帧。demo 用中性 Enter code 文案，不用银行或钱包商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/digit-slot-gate.tsx",
+    target: "components/ui/digit-slot-gate.tsx",
+    presets: [
+      { name: "soft", label: "软", values: { pace: 0.6, intensity: 0.35, slots: 4, mask: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, slots: 6, mask: true } },
+      { name: "stark", label: "硬", values: { pace: 1.4, intensity: 1, slots: 6, mask: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "填充与抖动的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "弹跳幅度与抖动强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "slots", type: "number", defaultValue: "6", description: "位槽数量，4 或 6。", control: { kind: "range", value: 6, min: 4, max: 6, step: 2, group: "交互" } },
+      { name: "mask", type: "boolean", defaultValue: "true", description: "是否以实心点遮盖数字。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { filled: number; status: \"idle\" | \"filling\" | \"checking\" | \"success\" | \"fail\" }) => void", description: "填充数或校验状态变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "spine-node-march",
+    batch: 79,
+    title: "Spine Node March",
+    description:
+      "原创。竖向时间线脊，已完成段实线、未完成段虚线，当前节点放大成 pill 卡，可逐步前进或后退。上下方向键或 J K 步进，Home 和 End 跳首末，Enter 前进一档。这是竖脊 solid 到 dashed 加节点 pill 推进，不是 scroll-timeline-reveal 的滚动揭示，也不是 stage-lane-flow 的泳道阶段线，更不是 strip-step-expand 的条带展开。减弱动效瞬时切 activeIndex 与脊长，无弹性与流动。离开视口后虚线流动停止。demo 用中性 Step 文案，不用健康或银行商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/spine-node-march.tsx",
+    target: "components/ui/spine-node-march.tsx",
+    presets: [
+      { name: "calm", label: "静", values: { pace: 0.6, intensity: 0.35, flow: false, showChecks: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, flow: true, showChecks: true } },
+      { name: "live", label: "流", values: { pace: 1.4, intensity: 1, flow: true, showChecks: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "推进过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "pill 缩放与脊辉光强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "flow", type: "boolean", defaultValue: "true", description: "未完成虚线是否流动描边。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "showChecks", type: "boolean", defaultValue: "true", description: "完成节点是否显示打勾。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { activeIndex: number }) => void", description: "当前节点变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "chip-fold-badge",
+    batch: 79,
+    title: "Chip Fold Badge",
+    description:
+      "原创。多选筛选 chip 云，点选后高亮；折叠时选中 chip 形态收缩汇入一枚数量徽章，展开可再散开。Tab 切 chip，Enter 选或取消，折叠按钮或快捷键切换折叠。这是多选 chip 折叠收成徽章，不是 magnet-chips 的磁吸跟随，也不是 fan-deck-pick 的扇形卡选。减弱动效瞬时切折叠与选中，无 FLIP 弹簧。没有循环帧。demo 用中性 Topic 标签，不用旅游或社交商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/chip-fold-badge.tsx",
+    target: "components/ui/chip-fold-badge.tsx",
+    presets: [
+      { name: "open", label: "开", values: { pace: 0.6, intensity: 0.35, collapsed: false, maxVisible: 8 } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, collapsed: false, maxVisible: 6 } },
+      { name: "folded", label: "折", values: { pace: 1.3, intensity: 0.9, collapsed: true, maxVisible: 4 } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "折叠与展开的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "选中对比与徽章辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "collapsed", type: "boolean", defaultValue: "false", description: "是否折叠为数量徽章。", control: { kind: "boolean", value: false, group: "交互" } },
+      { name: "maxVisible", type: "number", defaultValue: "6", description: "展开时提示用的最大可见选中数。", control: { kind: "range", value: 6, min: 2, max: 12, step: 1, group: "外观" } },
+      { name: "onValueChange", type: "(state: { selected: string[]; collapsed: boolean }) => void", description: "选中集合或折叠态变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "mood-word-ring",
+    batch: 79,
+    title: "Mood Word Ring",
+    description:
+      "原创。若干短词沿圆环排布，旋转或点选使一词停在焦点位并放大高亮，其余变淡。左右方向键步进，Enter 确认。这是空间词环选中，不是 text-rotate 的单行轮换，也不是 hero-text-stagger 的英雄字阶梯入场，更不是 presence-name-cursors 的多光标名牌。减弱动效瞬时切选中词，无旋转插值与自动慢旋。离开视口后自动慢旋停止。demo 用中性情绪词，不用 wellness 商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/mood-word-ring.tsx",
+    target: "components/ui/mood-word-ring.tsx",
+    presets: [
+      { name: "still", label: "静", values: { pace: 0.6, intensity: 0.35, auto: false, echo: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, auto: false, echo: true } },
+      { name: "orbit", label: "旋", values: { pace: 1.4, intensity: 0.9, auto: true, echo: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "旋转与吸附的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "焦点缩放与对比强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "auto", type: "boolean", defaultValue: "false", description: "是否自动慢旋。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "echo", type: "boolean", defaultValue: "true", description: "是否在中央回显选中词。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { index: number; word: string }) => void", description: "选中词变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "glyph-block-swap",
+    batch: 79,
+    title: "Glyph Block Swap",
+    description:
+      "原创。一行标题字母中，部分字符周期性地与彩色几何色块互换形态，色块可为方或拱并可带眼点。左右方向键切焦点字，Enter 强制互换一次。这是字母与色块语义互换，不是 kinetic-scramble-text 的乱码，也不是 split-flap-text 的翻牌字，更不是 petal-dissolve-text 的花瓣溶解。减弱动效显示静态混合态，无循环 morph。离开视口后循环互换停止。demo 用中性短句与抽象色块，不用机器人或品牌字形。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/glyph-block-swap.tsx",
+    target: "components/ui/glyph-block-swap.tsx",
+    presets: [
+      { name: "plain", label: "素", values: { pace: 0.6, intensity: 0.35, eyes: false, cycle: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, eyes: true, cycle: true } },
+      { name: "vivid", label: "艳", values: { pace: 1.4, intensity: 1, eyes: true, cycle: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "互换周期的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "色块尺寸与饱和强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "eyes", type: "boolean", defaultValue: "true", description: "色块是否带眼点。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "cycle", type: "boolean", defaultValue: "true", description: "是否自动循环互换。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "onValueChange", type: "(state: { mode: \"letters\" | \"mixed\" | \"blocks\"; focus: number }) => void", description: "形态或焦点字变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "particle-veil-caption",
+    batch: 79,
+    title: "Particle Veil Caption",
+    description:
+      "原创。canvas 粒子帷幕在指针或焦点附近被推开，露出下方居中标题；无指针时粒子缓慢回流合拢。方向键可移动隐形焦点点。这是粒子帷幕排斥让开，不是 frost-dot-reveal 的霜点揭示，也不是 mesh-glow-bg 或 aurora-background 的装饰底，更不是 spotlight-mask-reveal 的聚光蒙版。减弱动效粒子静态一帧且标题常显，无漂移与排斥。离开视口后粒子 rAF 停止。demo 用中性标题，不用建站平台商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/particle-veil-caption.tsx",
+    target: "components/ui/particle-veil-caption.tsx",
+    presets: [
+      { name: "haze", label: "雾", values: { pace: 0.6, intensity: 0.35, sphere: false, caption: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, sphere: true, caption: true } },
+      { name: "dense", label: "密", values: { pace: 1.3, intensity: 1, sphere: true, caption: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "回流与漂移的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "排斥半径与粒子密度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "sphere", type: "boolean", defaultValue: "true", description: "是否聚成球云，否则为漫场。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "caption", type: "boolean", defaultValue: "true", description: "是否显示居中标题。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { parting: boolean }) => void", description: "帷幕是否被推开时调用。" },
+      className,
+    ],
+  },
+]

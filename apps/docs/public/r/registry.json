@@ -5454,6 +5454,130 @@
           "target": "components/ui/speed-notch-rail.tsx"
         }
       ]
+    },
+    {
+      "name": "digit-slot-gate",
+      "type": "registry:ui",
+      "title": "Digit Slot Gate",
+      "description": "原创。一排圆形 PIN 位槽，输入数字逐位填充并轻弹，满位校验；错误时整排抖动并清空。数字键与 Backspace 可用，Space 清空。这是数字位槽填充门闸，不是 slide-rail-confirm 的滑轨确认，也不是 hold-fill-commit 的长按填充，更不是 drag-token-gate 的拖 token 过闸。减弱动效瞬时切填充态，无弹跳与抖动。没有循环帧。demo 用中性 Enter code 文案，不用银行或钱包商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/digit-slot-gate.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/digit-slot-gate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spine-node-march",
+      "type": "registry:ui",
+      "title": "Spine Node March",
+      "description": "原创。竖向时间线脊，已完成段实线、未完成段虚线，当前节点放大成 pill 卡，可逐步前进或后退。上下方向键或 J K 步进，Home 和 End 跳首末，Enter 前进一档。这是竖脊 solid 到 dashed 加节点 pill 推进，不是 scroll-timeline-reveal 的滚动揭示，也不是 stage-lane-flow 的泳道阶段线，更不是 strip-step-expand 的条带展开。减弱动效瞬时切 activeIndex 与脊长，无弹性与流动。离开视口后虚线流动停止。demo 用中性 Step 文案，不用健康或银行商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/spine-node-march.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/spine-node-march.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chip-fold-badge",
+      "type": "registry:ui",
+      "title": "Chip Fold Badge",
+      "description": "原创。多选筛选 chip 云，点选后高亮；折叠时选中 chip 形态收缩汇入一枚数量徽章，展开可再散开。Tab 切 chip，Enter 选或取消，折叠按钮或快捷键切换折叠。这是多选 chip 折叠收成徽章，不是 magnet-chips 的磁吸跟随，也不是 fan-deck-pick 的扇形卡选。减弱动效瞬时切折叠与选中，无 FLIP 弹簧。没有循环帧。demo 用中性 Topic 标签，不用旅游或社交商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chip-fold-badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chip-fold-badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mood-word-ring",
+      "type": "registry:ui",
+      "title": "Mood Word Ring",
+      "description": "原创。若干短词沿圆环排布，旋转或点选使一词停在焦点位并放大高亮，其余变淡。左右方向键步进，Enter 确认。这是空间词环选中，不是 text-rotate 的单行轮换，也不是 hero-text-stagger 的英雄字阶梯入场，更不是 presence-name-cursors 的多光标名牌。减弱动效瞬时切选中词，无旋转插值与自动慢旋。离开视口后自动慢旋停止。demo 用中性情绪词，不用 wellness 商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mood-word-ring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mood-word-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glyph-block-swap",
+      "type": "registry:ui",
+      "title": "Glyph Block Swap",
+      "description": "原创。一行标题字母中，部分字符周期性地与彩色几何色块互换形态，色块可为方或拱并可带眼点。左右方向键切焦点字，Enter 强制互换一次。这是字母与色块语义互换，不是 kinetic-scramble-text 的乱码，也不是 split-flap-text 的翻牌字，更不是 petal-dissolve-text 的花瓣溶解。减弱动效显示静态混合态，无循环 morph。离开视口后循环互换停止。demo 用中性短句与抽象色块，不用机器人或品牌字形。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glyph-block-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glyph-block-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particle-veil-caption",
+      "type": "registry:ui",
+      "title": "Particle Veil Caption",
+      "description": "原创。canvas 粒子帷幕在指针或焦点附近被推开，露出下方居中标题；无指针时粒子缓慢回流合拢。方向键可移动隐形焦点点。这是粒子帷幕排斥让开，不是 frost-dot-reveal 的霜点揭示，也不是 mesh-glow-bg 或 aurora-background 的装饰底，更不是 spotlight-mask-reveal 的聚光蒙版。减弱动效粒子静态一帧且标题常显，无漂移与排斥。离开视口后粒子 rAF 停止。demo 用中性标题，不用建站平台商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/particle-veil-caption.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/particle-veil-caption.tsx"
+        }
+      ]
     }
   ]
 }

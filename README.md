@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 位槽、竖脊与粒子帷幕
+
+登记在 `Batch 79`。簇针已占用 `Batch 78`。这是第 73 批调研里的六个交互，全部原创。运动参考 Mobbin 上的数字位槽、竖向节点、筛选 chip、词环、字形色块和粒子球标题，没有复制代码或素材，也没有移植头。`digit-slot-gate` 逐位填充圆形位槽并在错误时抖动清空，不是 `slide-rail-confirm` 的滑轨确认，也不是 `hold-fill-commit` 或 `drag-token-gate`。`spine-node-march` 让竖脊从实线走到虚线，当前节点扩成 pill，不是 `scroll-timeline-reveal`，也不是 `stage-lane-flow`。`chip-fold-badge` 把多选 chip 收成数量徽章，不是 `magnet-chips`，也不是 `fan-deck-pick`。`mood-word-ring` 在圆环上选中一词，不是 `text-rotate`，也不是 `hero-text-stagger`。`glyph-block-swap` 在字母和几何色块之间互换，不是 `kinetic-scramble-text`，也不是 `split-flap-text`。`particle-veil-caption` 用指针把粒子帷幕推开露出标题，不是 `frost-dot-reveal`，也不是聚光蒙版。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：位槽瞬时填充或清空，竖脊瞬时改长度，chip 瞬时折叠，词环瞬时换词，字形停在混合静帧，粒子停在静帧且标题常显。离开视口时虚线流动、词环慢旋、字形循环和粒子漂移都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| digit-slot-gate | 原创，灵感来自 Mobbin |
+| spine-node-march | 原创，灵感来自 Mobbin |
+| chip-fold-badge | 原创，灵感来自 Mobbin |
+| mood-word-ring | 原创，灵感来自 Mobbin |
+| glyph-block-swap | 原创，灵感来自 Mobbin |
+| particle-veil-caption | 原创，灵感来自 Mobbin |
+
 ### 簇针、机舱座位与倍速刻度
 
 登记在 `Batch 78`。路线已占用 `Batch 77`。这是第 72 批调研里的六个交互，全部原创。运动参考 Mobbin 上的地图数字簇、机舱座位图、楼层平面、路边停靠、产品多角度和离散倍速轨，没有复制代码或素材，也没有移植头。`pin-cluster-burst` 把带数字的簇针爆发成周围子针，不是 `hex-zone-hotspots` 的六角热区，也不是 `radial-hotspot-labels`。`cabin-seat-pick` 是机舱座位网格点选，不是 `hex-trail-claim`。`floor-unit-glow` 在平面多边形上切换楼层并点亮单元，不是地图簇针，也不是 `masonry-density-live`。`curb-spot-walk` 在多个路边点之间画出步行虚线和分钟徽章，不是 `route-path-scrub`。`orbit-frame-spin` 用水平拖切换产品角度帧，不是 `solar-orbit-scrub`，也不是 `filmstrip-frame-pick`。`speed-notch-rail` 把滑块吸附到离散倍速刻度，不是 `knurl-scrub-dial`，也不是 `year-snap-rail`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：簇针瞬时展开或收合，座位瞬时选中，楼层单元瞬时发光，步行虚线不再流动，角度帧瞬时切换，倍速刻度没有吸附弹簧。离开视口时子针微漂、呼吸辉光、虚线流动、自动慢旋和倍速预览都会停下。

@@ -230,5 +230,11 @@ export const componentOrder = [
   "oscillation-arc-dial",
   "puzzle-slide-fit",
   "scatter-photo-drag",
+  "mosaic-tile-flip",
+  "pixel-stream-morph",
+  "slide-rail-confirm",
+  "finish-swatch-morph",
+  "undo-countdown-ring",
+  "amount-fit-type",
 ] as const
 

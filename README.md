@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 马赛克、滑轨与金额字号
+
+登记在 `Batch 70`。编号条与散落照片已占用 `Batch 69`。这是第 64 批调研里的六个交互，全部原创。运动参考 Mobbin 上的品牌格交错翻转、像素色流标题、滑轨确认、色卡换面漆、撤销倒计时环和金额自适应字号，没有复制代码或素材，也没有移植头。`mosaic-tile-flip` 是规则网格瓦片按对角线翻转或错落入场，不是 `bento-asymmetric-grid` 的不等分放大格。`pixel-stream-morph` 把短词栅格成像素蒙版，色带在字面里流，不是 `pixel-transition` 的整图溶解。`slide-rail-confirm` 要拇指滑到阈值才确认，没到就弹回，成功后停在对勾直到 Reset，不是 `slide-to-confirm` 松手归零，也不是 `swipe-action-row` 或 `hold-fill-commit`。`finish-swatch-morph` 用底部色卡切换同一块产品剪影的色泽，不是 `tab-media-swap` 的左表右媒。`undo-countdown-ring` 在提交后给出带环倒计时的撤销，归零后锁定，不是长按提交。`amount-fit-type` 让货币金额随位数在容器里缩小或回到上限，不是 `barrel-value-wheel`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：瓦片瞬时出现，像素字静止，滑轨改成一键确认，色卡瞬时切换，撤销环改成静态秒数，金额字号瞬时落下。离开视口时色流、入场、回弹和倒计时帧都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| mosaic-tile-flip | 原创，灵感来自 Mobbin |
+| pixel-stream-morph | 原创，灵感来自 Mobbin |
+| slide-rail-confirm | 原创，灵感来自 Mobbin |
+| finish-swatch-morph | 原创，灵感来自 Mobbin |
+| undo-countdown-ring | 原创，灵感来自 Mobbin |
+| amount-fit-type | 原创，灵感来自 Mobbin |
+
 ### 编号条、表媒与散落照片
 
 登记在 `Batch 69`。放大镜与墨线已占用 `Batch 68`。这是第 63 批调研里的六个交互，全部原创。运动参考 Mobbin 上的编号水平条、左表右媒、词块入槽、弧角拨杆、拼图滑块和散落照片拖动，没有复制代码或素材，也没有移植头。`strip-step-expand` 是水平编号条，折叠时标题竖排，展开时占宽，不是 `shared-layout-expand` 的共享布局放大卡。`tab-media-swap` 是左侧特性列表配右侧媒体交叉切换，不是前后擦除，也不是作品集横卡。`seed-slot-drop` 把词块拖进或点进固定空槽，填满后有一记脉冲，不是 `physics-dropzone` 的自由落区。`oscillation-arc-dial` 沿弧轨拖拇指，松手弹簧振荡后吸附刻度，不是 `particle-dial-reveal`，也不是 `barrel-value-wheel` 或 `ruler-tick-scrub`。`puzzle-slide-fit` 让拼图块跟着底滑块走，对齐缺口才成功，不是 `before-after-wipe`。`scatter-photo-drag` 是散落倾斜的占位照片，可以自由拖动并带一点惯性，不是 `peek-fan-stack` 或 `sticky-note-board`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：编号条瞬时切换，媒体不再交叉淡入并关掉自动播放，词块改为点选，弧拨不再振荡，拼图改成一键对齐，照片拖动不再惯性。离开视口时自动播放、弹簧和惯性帧都会停下。

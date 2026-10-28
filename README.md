@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 月相、睡眠弧与潮位曲线
+
+登记在 `Batch 76`。风纹已占用 `Batch 75`。这是第 70 批调研里的六个交互，全部原创。运动参考 Mobbin 上的月相照度、睡眠双柄环、阶段色道、竖杆混音、二维平衡盘和潮位曲线，没有复制代码或素材，也没有移植头。`phase-illum-scrub` 用月相球体的照度遮罩和相位名跟随日轨，不是 `solar-orbit-scrub` 的太阳立方，也不是 `horizon-sun-scrub` 的地平线天空。`sleep-arc-range` 是 24 小时环上的入睡与醒来双柄，不是 `oscillation-arc-dial` 的单值弧。`stage-lane-flow` 用多道阶段色块和竖向 scrub 读当前阶段，不是 `wind-streak-scrub` 的风纹。`stem-fader-mix` 是多列竖杆推子，不是 `audio-spectrum` 的只读频谱。`balance-plane-puck` 在正交平面上拖 puck 改平衡与前后，不是 `presence-name-cursors`。`tide-curve-scrub` 拖潮位面积曲线读高度和涨落，不是 `ridge-profile-scrub` 的海拔剖面。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：月相瞬时切遮罩，睡眠弧瞬时改读数，阶段线不再微流，推子没有电平微抖，平衡盘没有回中弹簧，潮位不再自动播放。离开视口时月相自动推进、阶段微流、电平微抖、回中弹簧和潮位播放都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| phase-illum-scrub | 原创，灵感来自 Mobbin |
+| sleep-arc-range | 原创，灵感来自 Mobbin |
+| stage-lane-flow | 原创，灵感来自 Mobbin |
+| stem-fader-mix | 原创，灵感来自 Mobbin |
+| balance-plane-puck | 原创，灵感来自 Mobbin |
+| tide-curve-scrub | 原创，灵感来自 Mobbin |
+
 ### 风纹、探路与应力色带
 
 登记在 `Batch 75`。地平线已占用 `Batch 74`。这是第 69 批调研里的六个交互，全部原创。运动参考 Mobbin 上的风场时刻、六边形探路、扇形牌面、情绪半圆、海拔剖面和应力色带，没有复制代码或素材，也没有移植头。`wind-streak-scrub` 用矢量场短纹和底部时轴改风向与密度，不是 `wave-background`，也不是 `horizon-sun-scrub`。`hex-trail-claim` 沿单列蜂窝依次认领并显示 explored 百分比，不是 `hex-zone-hotspots`。`fan-deck-pick` 在扇形牌背里点选翻面，不是 `peek-fan-stack`，也不是 `arc-film-carousel`。`gauge-sentiment-sweep` 用半圆色阶和区段标签落针，不是 `oscillation-arc-dial`。`ridge-profile-scrub` 拖海拔脊线读出米数，不是 `scroll-svg-graph`。`stress-band-meter` 用竖轴有机色带显示 LOW、MEDIUM、HIGH，不是 `breath-expand-ring`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：风纹不再流动，蜂窝瞬时点亮，牌面瞬时翻转，指针瞬时跳区，脊线瞬时改读数，色带不再起伏。离开视口时风粒子、自动认领、指针吸附和色带微动都会停下。

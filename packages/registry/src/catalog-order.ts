@@ -266,5 +266,11 @@ export const componentOrder = [
   "gauge-sentiment-sweep",
   "ridge-profile-scrub",
   "stress-band-meter",
+  "phase-illum-scrub",
+  "sleep-arc-range",
+  "stage-lane-flow",
+  "stem-fader-mix",
+  "balance-plane-puck",
+  "tide-curve-scrub",
 ] as const
 

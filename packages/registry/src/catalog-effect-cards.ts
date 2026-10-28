@@ -1,6 +1,7 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 import { batch65CardsComponents } from "./catalog-batch65"
 import { batch66CardsComponents } from "./catalog-batch66"
+import { batch67CardsComponents } from "./catalog-batch67"
 import { reactBitsCredit as credit } from "./catalog-sources"
 
 /** Effect，卡片 / 3D。 */
@@ -784,5 +785,6 @@ export const effectCardsComponents: ComponentMeta[] = [
     },
   ...batch65CardsComponents,
   ...batch66CardsComponents,
+  ...batch67CardsComponents,
 ]
 

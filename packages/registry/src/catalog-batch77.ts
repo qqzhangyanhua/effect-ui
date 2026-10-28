@@ -1,0 +1,173 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 71 批调研，catalog batch 77。六个原创交互，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch77ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "route-path-scrub",
+    batch: 77,
+    title: "Route Path Scrub",
+    description:
+      "原创。抽象地图上一条折线路途，拖 playhead 或底部进度轨时高亮已走段，并读出距离、配速和心率。左右方向键微调，Home 和 End 跳到起点与终点。这是路途折线 playhead，不是 ridge-profile-scrub 的海拔剖面，也不是 tide-curve-scrub 的潮位正弦。减弱动效瞬时切标记和读数。离开视口后自动推进停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/route-path-scrub.tsx",
+    target: "components/ui/route-path-scrub.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.6, intensity: 0.3, metrics: false, auto: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, metrics: true, auto: false } },
+      { name: "run", label: "推进", values: { pace: 1.6, intensity: 1, metrics: true, auto: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "自动推进和读数过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "已走段对比和标记辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "metrics", type: "boolean", defaultValue: "true", description: "显示配速和心率。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "auto", type: "boolean", defaultValue: "false", description: "沿折线自动推进。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "onValueChange", type: "(t: number) => void", description: "t 变化时调用，范围 0 到 1。" },
+      className,
+    ],
+  },
+  {
+    name: "skew-axis-warp",
+    batch: 77,
+    title: "Skew Axis Warp",
+    description:
+      "原创。中性色块面板叠对齐栅格，拖 X 和 Y 两根刻度轨时整幅面板做透视扭曲。读数写成 X +12 · Y −8，Reset 回零。Tab 在两轴之间切换，方向键微调当前轴。这是视觉扭曲栅格，不是 balance-plane-puck 的正交读数盘。减弱动效瞬时改 transform，没有回弹。离开视口后回零弹簧停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/skew-axis-warp.tsx",
+    target: "components/ui/skew-axis-warp.tsx",
+    presets: [
+      { name: "soft", label: "柔", values: { pace: 0.6, intensity: 0.3, grid: true, snap: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, grid: true, snap: true } },
+      { name: "strong", label: "强", values: { pace: 1.6, intensity: 1, grid: true, snap: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "回零弹簧的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "最大透视幅度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "grid", type: "boolean", defaultValue: "true", description: "显示对齐栅格。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "snap", type: "boolean", defaultValue: "true", description: "松手时靠近零位则吸附。", control: { kind: "boolean", value: true, group: "交互" } },
+      { name: "onValueChange", type: "(point: { x: number; y: number }) => void", description: "轴向读数变化时调用，单位是刻度。" },
+      className,
+    ],
+  },
+  {
+    name: "wave-clip-window",
+    batch: 77,
+    title: "Wave Clip Window",
+    description:
+      "原创。横向合成波形上有一扇固定时长的选择窗，拖窗体或右缘时窗内波形高亮并显示秒数。方向键平移窗口，方括号加减宽度。这是波形条剪辑窗，不是 vinyl-clip-window 的黑胶圆盘，也不是 audio-spectrum 的只读频谱，没有真实音频。减弱动效瞬时切窗口。离开视口后窗内播放头停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/wave-clip-window.tsx",
+    target: "components/ui/wave-clip-window.tsx",
+    presets: [
+      { name: "short", label: "短", values: { pace: 0.6, intensity: 0.3, seconds: "8", play: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, seconds: "15", play: false } },
+      { name: "loop", label: "循环", values: { pace: 1.6, intensity: 1, seconds: "30", play: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "窗内播放头的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "窗内波形对比和描边辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      {
+        name: "seconds",
+        type: '"8" | "15" | "30"',
+        defaultValue: '"15"',
+        description: "选择窗的默认秒数。",
+        control: { kind: "select", value: "15", options: ["8", "15", "30"], group: "外观" },
+      },
+      { name: "play", type: "boolean", defaultValue: "false", description: "在窗内循环播放头。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "onClipChange", type: "(clip: { start: number; seconds: number }) => void", description: "窗口变化时调用。start 为 0 到 1。" },
+      className,
+    ],
+  },
+  {
+    name: "charge-target-ring",
+    batch: 77,
+    title: "Charge Target Ring",
+    description:
+      "原创。圆环显示当前充电弧，环上可拖目标刻度。中央是当前百分比，下方是目标百分比和预计剩余时间。目标不会低于当前电量。方向键微调目标，Home 回到当前，End 跳到充满。这是单柄目标加当前填充，不是 sleep-arc-range 的双柄区间，也不是 breath-expand-ring 的相位扩缩。减弱动效瞬时改弧和读数。离开视口后充电脉冲停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/charge-target-ring.tsx",
+    target: "components/ui/charge-target-ring.tsx",
+    presets: [
+      { name: "still", label: "静", values: { pace: 0.6, intensity: 0.3, pulse: false, showEta: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, pulse: false, showEta: true } },
+      { name: "live", label: "脉冲", values: { pace: 1.6, intensity: 1, pulse: true, showEta: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "刻度过渡和脉冲的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "充电弧的对比和辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "pulse", type: "boolean", defaultValue: "false", description: "充电弧轻微脉冲。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "showEta", type: "boolean", defaultValue: "true", description: "显示目标百分比和剩余时间。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onTargetChange", type: "(target: number) => void", description: "目标变化时调用，范围是当前电量到 1。" },
+      className,
+    ],
+  },
+  {
+    name: "keystone-corner-drag",
+    batch: 77,
+    title: "Keystone Corner Drag",
+    description:
+      "原创。中性几何面板上叠可拖的四点梯形。拖任意角时框变形，触点旁出现圆形放大镜。Reset 回到矩形。Tab 在四角之间切换，方向键微调当前角。这是透视角点放大镜，不是 eyedrop-loupe-pick 的取色镜，也没有文档照片。减弱动效瞬时改框，没有吸附弹簧。离开视口后回正弹簧停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/keystone-corner-drag.tsx",
+    target: "components/ui/keystone-corner-drag.tsx",
+    presets: [
+      { name: "plain", label: "素", values: { pace: 0.6, intensity: 0.3, loupe: false, midpoints: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, loupe: true, midpoints: false } },
+      { name: "marks", label: "中点", values: { pace: 1.6, intensity: 1, loupe: true, midpoints: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "回正弹簧的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "框对比和放大镜尺寸。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "loupe", type: "boolean", defaultValue: "true", description: "拖动时显示角点放大镜。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "midpoints", type: "boolean", defaultValue: "false", description: "显示四条边的中点手柄。", control: { kind: "boolean", value: false, group: "交互" } },
+      { name: "onQuadChange", type: "(quad: { nw: { x: number; y: number }; ne: { x: number; y: number }; se: { x: number; y: number }; sw: { x: number; y: number } }) => void", description: "四点坐标变化时调用，单位是百分比。" },
+      className,
+    ],
+  },
+  {
+    name: "bearing-compass-turn",
+    batch: 77,
+    title: "Bearing Compass Turn",
+    description:
+      "原创。罗盘刻度盘可旋转，拖转盘时中央方位角和 N、NE、E 这类方向文案一起变。方向键微调，按住 Shift 走 15 度。可选吸附到 45 度刻度。这是 360 度方位语义，不是 knurl-scrub-dial 的滚花旋钮，也不是 oscillation-arc-dial 的单值弧。减弱动效瞬时改角度和文案。离开视口后微抖噪声停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/bearing-compass-turn.tsx",
+    target: "components/ui/bearing-compass-turn.tsx",
+    presets: [
+      { name: "free", label: "自由", values: { pace: 0.6, intensity: 0.3, snap: false, noise: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, snap: false, noise: false } },
+      { name: "hunt", label: "吸附", values: { pace: 1.6, intensity: 1, snap: true, noise: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "噪声和指针过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "刻度对比和指针辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "snap", type: "boolean", defaultValue: "false", description: "松手时吸到 45 度刻度。", control: { kind: "boolean", value: false, group: "交互" } },
+      { name: "noise", type: "boolean", defaultValue: "false", description: "指针轻微抖动。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "onBearingChange", type: "(bearing: number) => void", description: "方位角变化时调用，范围 0 到 359。" },
+      className,
+    ],
+  },
+]

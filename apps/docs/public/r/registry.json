@@ -5202,6 +5202,132 @@
           "target": "components/ui/tide-curve-scrub.tsx"
         }
       ]
+    },
+    {
+      "name": "route-path-scrub",
+      "type": "registry:ui",
+      "title": "Route Path Scrub",
+      "description": "原创。抽象地图上一条折线路途，拖 playhead 或底部进度轨时高亮已走段，并读出距离、配速和心率。左右方向键微调，Home 和 End 跳到起点与终点。这是路途折线 playhead，不是 ridge-profile-scrub 的海拔剖面，也不是 tide-curve-scrub 的潮位正弦。减弱动效瞬时切标记和读数。离开视口后自动推进停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/route-path-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/route-path-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skew-axis-warp",
+      "type": "registry:ui",
+      "title": "Skew Axis Warp",
+      "description": "原创。中性色块面板叠对齐栅格，拖 X 和 Y 两根刻度轨时整幅面板做透视扭曲。读数写成 X +12 · Y −8，Reset 回零。Tab 在两轴之间切换，方向键微调当前轴。这是视觉扭曲栅格，不是 balance-plane-puck 的正交读数盘。减弱动效瞬时改 transform，没有回弹。离开视口后回零弹簧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/skew-axis-warp.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/skew-axis-warp.tsx"
+        }
+      ]
+    },
+    {
+      "name": "wave-clip-window",
+      "type": "registry:ui",
+      "title": "Wave Clip Window",
+      "description": "原创。横向合成波形上有一扇固定时长的选择窗，拖窗体或右缘时窗内波形高亮并显示秒数。方向键平移窗口，方括号加减宽度。这是波形条剪辑窗，不是 vinyl-clip-window 的黑胶圆盘，也不是 audio-spectrum 的只读频谱，没有真实音频。减弱动效瞬时切窗口。离开视口后窗内播放头停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wave-clip-window.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wave-clip-window.tsx"
+        }
+      ]
+    },
+    {
+      "name": "charge-target-ring",
+      "type": "registry:ui",
+      "title": "Charge Target Ring",
+      "description": "原创。圆环显示当前充电弧，环上可拖目标刻度。中央是当前百分比，下方是目标百分比和预计剩余时间。目标不会低于当前电量。方向键微调目标，Home 回到当前，End 跳到充满。这是单柄目标加当前填充，不是 sleep-arc-range 的双柄区间，也不是 breath-expand-ring 的相位扩缩。减弱动效瞬时改弧和读数。离开视口后充电脉冲停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/charge-target-ring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/charge-target-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "keystone-corner-drag",
+      "type": "registry:ui",
+      "title": "Keystone Corner Drag",
+      "description": "原创。中性几何面板上叠可拖的四点梯形。拖任意角时框变形，触点旁出现圆形放大镜。Reset 回到矩形。Tab 在四角之间切换，方向键微调当前角。这是透视角点放大镜，不是 eyedrop-loupe-pick 的取色镜，也没有文档照片。减弱动效瞬时改框，没有吸附弹簧。离开视口后回正弹簧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/keystone-corner-drag.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/keystone-corner-drag.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bearing-compass-turn",
+      "type": "registry:ui",
+      "title": "Bearing Compass Turn",
+      "description": "原创。罗盘刻度盘可旋转，拖转盘时中央方位角和 N、NE、E 这类方向文案一起变。方向键微调，按住 Shift 走 15 度。可选吸附到 45 度刻度。这是 360 度方位语义，不是 knurl-scrub-dial 的滚花旋钮，也不是 oscillation-arc-dial 的单值弧。减弱动效瞬时改角度和文案。离开视口后微抖噪声停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bearing-compass-turn.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bearing-compass-turn.tsx"
+        }
+      ]
     }
   ]
 }

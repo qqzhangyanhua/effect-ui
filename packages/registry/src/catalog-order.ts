@@ -272,5 +272,11 @@ export const componentOrder = [
   "stem-fader-mix",
   "balance-plane-puck",
   "tide-curve-scrub",
+  "route-path-scrub",
+  "skew-axis-warp",
+  "wave-clip-window",
+  "charge-target-ring",
+  "keystone-corner-drag",
+  "bearing-compass-turn",
 ] as const
 

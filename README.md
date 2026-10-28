@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 路线、透视扭曲与罗盘方位
+
+登记在 `Batch 77`。月相已占用 `Batch 76`。这是第 71 批调研里的六个交互，全部原创。运动参考 Mobbin 上的路线折线、双轴透视、波形剪辑窗、充电目标环、四点梯形和方位罗盘，没有复制代码或素材，也没有移植头。`route-path-scrub` 在抽象折线路途上拖 playhead，读出距离、配速和心率，不是 `ridge-profile-scrub` 的海拔剖面。`skew-axis-warp` 用 X/Y 双轴把整幅栅格做透视扭曲，不是 `balance-plane-puck` 的正交读数盘。`wave-clip-window` 在波形条上拖固定时长的剪辑窗，不是 `vinyl-clip-window` 的黑胶窗，也没有真实音频。`charge-target-ring` 是当前充电弧加单柄目标刻度，不是 `sleep-arc-range` 的双柄区间。`keystone-corner-drag` 拖四点梯形并在角点旁显示圆形放大镜，不是 `eyedrop-loupe-pick` 的取色镜。`bearing-compass-turn` 转罗盘读出方位角和 N/NE 这类方向，不是 `knurl-scrub-dial` 的滚花旋钮。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：路线瞬时改读数，扭曲没有回弹，波形窗不再播放，充电环不再脉冲，透视框没有吸附弹簧，罗盘不再微抖。离开视口时路线自动推进、波形播放、充电脉冲、回零弹簧和罗盘噪声都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| route-path-scrub | 原创，灵感来自 Mobbin |
+| skew-axis-warp | 原创，灵感来自 Mobbin |
+| wave-clip-window | 原创，灵感来自 Mobbin |
+| charge-target-ring | 原创，灵感来自 Mobbin |
+| keystone-corner-drag | 原创，灵感来自 Mobbin |
+| bearing-compass-turn | 原创，灵感来自 Mobbin |
+
 ### 月相、睡眠弧与潮位曲线
 
 登记在 `Batch 76`。风纹已占用 `Batch 75`。这是第 70 批调研里的六个交互，全部原创。运动参考 Mobbin 上的月相照度、睡眠双柄环、阶段色道、竖杆混音、二维平衡盘和潮位曲线，没有复制代码或素材，也没有移植头。`phase-illum-scrub` 用月相球体的照度遮罩和相位名跟随日轨，不是 `solar-orbit-scrub` 的太阳立方，也不是 `horizon-sun-scrub` 的地平线天空。`sleep-arc-range` 是 24 小时环上的入睡与醒来双柄，不是 `oscillation-arc-dial` 的单值弧。`stage-lane-flow` 用多道阶段色块和竖向 scrub 读当前阶段，不是 `wind-streak-scrub` 的风纹。`stem-fader-mix` 是多列竖杆推子，不是 `audio-spectrum` 的只读频谱。`balance-plane-puck` 在正交平面上拖 puck 改平衡与前后，不是 `presence-name-cursors`。`tide-curve-scrub` 拖潮位面积曲线读高度和涨落，不是 `ridge-profile-scrub` 的海拔剖面。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：月相瞬时切遮罩，睡眠弧瞬时改读数，阶段线不再微流，推子没有电平微抖，平衡盘没有回中弹簧，潮位不再自动播放。离开视口时月相自动推进、阶段微流、电平微抖、回中弹簧和潮位播放都会停下。

@@ -4586,6 +4586,119 @@
           "target": "components/ui/curve-focus-rail.tsx"
         }
       ]
+    },
+    {
+      "name": "title-year-list",
+      "type": "registry:ui",
+      "title": "Title Year List",
+      "description": "原创。竖排大号片名，年份以小号上标贴在标题末字旁。滚轮、拖动、点选或上下方向键改焦点时，当前项提亮加粗，邻项按距离变淡。这是标题加年份上标的列表，不是 curve-focus-rail 的弧轨媒体，也不是 year-snap-rail 的横向年份轨，也不是编号条手风琴。减弱动效瞬时切换焦点和透明度。离开视口后惯性帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/title-year-list.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/title-year-list.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logo-focus-dim",
+      "type": "registry:ui",
+      "title": "Logo Focus Dim",
+      "description": "原创。静态几何字标。指针或键盘落到一枚时，该枚全不透明并略放大，其余一起降透明度。离开容器可以回到中间透明度，也可以保持最后一枚。这是离散焦点变暗，不是 proximity-scale-grid 的指针距离连续缩放，也不是 logo-marquee 的无限跑马灯。减弱动效瞬时切换透明度。没有循环帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/logo-focus-dim.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/logo-focus-dim.tsx"
+        }
+      ]
+    },
+    {
+      "name": "paint-lift-rail",
+      "type": "registry:ui",
+      "title": "Paint Lift Rail",
+      "description": "原创。竖向圆角轨上拖圆形手柄，卡片表面的彩绘自下而上用 clip 揭开，拖动时顶缘可以带一点笔触。松手可以停住，也可以吸到空、一半或满。上下方向键微调。这是竖向油漆填充，不是 slide-rail-confirm 的横向确认滑轨，也不是点色卡换图。减弱动效改为瞬时改填充，没有笔触抖动。离开视口后弹簧帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/paint-lift-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/paint-lift-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drag-token-gate",
+      "type": "registry:ui",
+      "title": "Drag Token Gate",
+      "description": "原创。把一枚几何令牌拖进虚线目标圈，松手命中就锁定并启用 Enter，没中则弹回起点。方向键移动，Enter 投放，Place token 可以直接放入。这是单令牌入闸，不是 seed-slot-drop 的多种子多槽，也不是 drag-lock-escape 的拖出逃脱。减弱动效改为 Place token 瞬时入槽。离开视口后回弹帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drag-token-gate.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drag-token-gate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "frost-dot-reveal",
+      "type": "registry:ui",
+      "title": "Frost Dot Reveal",
+      "description": "原创。大号 Value 由霜点点阵构成。拖滑条或方向键改数值时，点阵凝聚变清晰；松手可以保持，也可以淡回霜态。这是数字点阵凝聚，不是 scrub-fog-clear 的擦雾看图，也不是 particle-dial-reveal 的粒子环选盘。减弱动效改为实心数字，滑条瞬时改值。离开视口后点抖动停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/frost-dot-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/frost-dot-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blur-rep-count",
+      "type": "registry:ui",
+      "title": "Blur Rep Count",
+      "description": "原创。大号计数每次加减时，旧数字纵向运动模糊甩出，新数字从反方向甩入后锐化。方向跟增减走。Replay 演示 0、1、2。这是整数字的模糊位移，不是 clay-digit-morph 的挤胀，也不是乱码、翻牌或滚筒。减弱动效瞬时换数字。离开视口后自动计数和模糊帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blur-rep-count.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blur-rep-count.tsx"
+        }
+      ]
     }
   ]
 }

@@ -242,5 +242,11 @@ export const componentOrder = [
   "swipe-style-cycle",
   "clay-digit-morph",
   "curve-focus-rail",
+  "title-year-list",
+  "logo-focus-dim",
+  "paint-lift-rail",
+  "drag-token-gate",
+  "frost-dot-reveal",
+  "blur-rep-count",
 ] as const
 

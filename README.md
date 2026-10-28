@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 片名年份、油漆轨与模糊计数
+
+登记在 `Batch 72`。日轨与弧形焦点已占用 `Batch 71`。这是第 66 批调研里的六个交互，全部原创。运动参考 Mobbin 上的片名年份列表、合作标志焦点变暗、竖轨彩绘、拖令牌入门、霜点揭数字和计数运动模糊，没有复制代码或素材，也没有移植头。`title-year-list` 是竖排大号标题加年份上标，焦点提亮、邻项变淡，不是 `year-snap-rail` 的横向年份轨，也不是 `curve-focus-rail`。`logo-focus-dim` 是静态几何字标，焦点一枚全亮、其余一起变暗，不是 `logo-marquee` 的跑马灯，也不是 `proximity-scale-grid` 的连续缩放。`paint-lift-rail` 用竖轨手柄把油漆填充从下往上揭开，不是 `slide-rail-confirm` 的横向确认。`drag-token-gate` 把单枚令牌拖进目标圈后解锁 Enter，不是 `seed-slot-drop`，也不是 `drag-lock-escape`。`frost-dot-reveal` 用点阵凝聚揭出 Value，不是 `scrub-fog-clear`。`blur-rep-count` 用纵向运动模糊甩换计数，不是 `clay-digit-morph`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：列表瞬时切焦点，标志瞬时变暗，油漆填充瞬时改高度，令牌改为按钮入槽，霜点改为实心数字，计数瞬时替换。离开视口时惯性、弹簧、点抖动和自动计数都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| title-year-list | 原创，灵感来自 Mobbin |
+| logo-focus-dim | 原创，灵感来自 Mobbin |
+| paint-lift-rail | 原创，灵感来自 Mobbin |
+| drag-token-gate | 原创，灵感来自 Mobbin |
+| frost-dot-reveal | 原创，灵感来自 Mobbin |
+| blur-rep-count | 原创，灵感来自 Mobbin |
+
 ### 日轨、阶段胶囊与弧形焦点
 
 登记在 `Batch 71`。马赛克与金额字号已占用 `Batch 70`。这是第 65 批调研里的六个交互，全部原创。运动参考 Mobbin 上的太阳轨道阴影、直播阶段胶囊、分段强度、横滑换肤、黏土数字和弧形焦点轨，没有复制代码或素材，也没有移植头。`solar-orbit-scrub` 用椭圆轨道上的太阳手柄带动中央圆角立方的投影和 06:00–20:00 时刻，不是 `oscillation-arc-dial` 的数值刻度拨杆。`live-stage-capsule` 在深色胶囊里推进离散阶段，可以收起再展开，不是扫描轨或撤销倒计时。`strength-segment-fill` 让 Passphrase 样本驱动分段填色和清单打勾，不是 `color-step-rail`，也不是现成的密码强度条。`swipe-style-cycle` 只更换同一张卡的皮肤，没过阈值就弹回，不是 `swipe-action-row` 的底层动作钮。`clay-digit-morph` 用纵向挤胀过渡大号数字，不是 `amount-fit-type` 的宽度自适应。`curve-focus-rail` 让左侧标签沿圆弧进入焦点，右侧媒体跟着换，不是 `barrel-value-wheel`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：轨道改成更早和更晚，阶段瞬时切换，分段瞬时填满，换肤改成按钮，数字瞬时替换，弧轨改成平铺列表。离开视口时弹簧、自动推进、回弹、挤胀和惯性帧都会停下。

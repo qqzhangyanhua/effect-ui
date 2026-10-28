@@ -200,5 +200,11 @@ export const componentOrder = [
   "radial-hotspot-labels",
   "spotlight-focus-blur",
   "drag-rate-tiles",
+  "color-step-rail",
+  "scratch-line-field",
+  "swipe-action-row",
+  "particle-dial-reveal",
+  "scrub-fog-clear",
+  "iridescent-edge-card",
 ] as const
 

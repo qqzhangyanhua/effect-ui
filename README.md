@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 色阶、刮开与虹彩边
+
+登记在 `Batch 65`。跳跃与评分已占用 `Batch 64`。这是第 59 批调研里的六个交互，全部原创。运动参考 Mobbin 上的色阶轨、刮开奖励、横滑动作、粒子拨盘、擦雾开场和虹彩描边，没有复制代码或素材，也没有移植头。`color-step-rail` 是横向色阶，拖动或方向键步进，活动色块弹起后可以复制 hex 或 OKLCH。`scratch-line-field` 用指针路径擦掉不透明箔，过了阈值才揭开。`swipe-action-row` 把一行横向拖出稍后、归档和删除，Alt 加方向键也能打开，不是 `drag-rate-tiles` 的整卡评分，也不是只有一个动作。`particle-dial-reveal` 拖动半圆拨盘，数字由粒子聚合成形，不是滚轮，也不是弧形仪表。`scrub-fog-clear` 擦掉盖在内容上的模糊，不是刮奖箔，也不是 `spotlight-focus-blur` 的聚光。`iridescent-edge-card` 只让描边跟着指针角度走，卡面不动，不是整卡全息，也不是单色跑光。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：色块不再弹起，箔层改成一次揭开，行内直接露出动作，拨盘只留静止数字，雾层关掉，描边不再跟随。离开视口时粒子帧停止。
+
+| 组件 | 来源 |
+| --- | --- |
+| color-step-rail | 原创，灵感来自 Mobbin |
+| scratch-line-field | 原创，灵感来自 Mobbin |
+| swipe-action-row | 原创，灵感来自 Mobbin |
+| particle-dial-reveal | 原创，灵感来自 Mobbin |
+| scrub-fog-clear | 原创，灵感来自 Mobbin |
+| iridescent-edge-card | 原创，灵感来自 Mobbin |
+
 ### 跳跃、裂开与评分
 
 登记在 `Batch 64`。柔光首页已占用 `Batch 63`。这是第 58 批调研里的六个交互，全部原创。运动参考 Mobbin 上的空格跳跃、滚动裂开、竖条错位、放射标签、聚光读字和拖动评分，没有复制代码或素材，也没有移植头。`space-jump-hero` 在聚焦后用空格或按钮让角色跳起，重力改变回落，不是滚动入场。`scroll-split-reveal` 把封面沿横缝分成上下两半再露出正文，不是 `scroll-parallax-layers` 的多层视差。`slice-shift-text` 把一句标题切成竖条再对齐，不是 `hero-text-stagger` 的按词出现。`radial-hotspot-labels` 用放射线连接可展开的标签，方向键能移动焦点。`spotlight-focus-blur` 让聚光区里的文字变清晰，不是 `mesh-glow-bg` 的背景色块。`drag-rate-tiles` 把卡片拖进左右落区并弹出，左右方向键也能评分，不是 `rubber-band-drag` 或 `sortable-list`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：跳跃不再位移，封面直接打开，标题不再错开，标签展开没有过渡，句子保持清晰，评分立刻生效。离开视口时连续动画和滚动监听暂停。

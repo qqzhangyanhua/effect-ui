@@ -3900,6 +3900,117 @@
           "target": "components/ui/iridescent-edge-card.tsx"
         }
       ]
+    },
+    {
+      "name": "sticky-stack-cards",
+      "type": "registry:ui",
+      "title": "Sticky Stack Cards",
+      "description": "原创。竖向滚动时当前卡片钉在顶部，并按进度缩小、微微旋转、往下沉，下一张从下方顶上来盖住它。方向键和 PageDown 可以步进到下一张。这不是 sticky-grid-scroll 的三列网格错位，也不是抛掷、文件夹或横向封面流。减弱动效改成静止的竖列，不再钉住。离开视口后不再监听滚动。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sticky-stack-cards.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sticky-stack-cards.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glass-feature-trio",
+      "type": "registry:ui",
+      "title": "Glass Feature Trio",
+      "description": "原创。固定三列磨砂玻璃卡，每张下面有自己的色块。细指针移动时色块中心跟着走，卡片轻轻抬起；键盘聚焦有同样的抬起。粗指针和触屏不靠悬停，只留可见焦点环和静止色块。这不是单张 glass-card，也不是整卡虹彩描边。减弱动效时色块和卡片都静止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glass-feature-trio.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glass-feature-trio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hex-zone-hotspots",
+      "type": "registry:ui",
+      "title": "Hex Zone Hotspots",
+      "description": "原创。抽象平面上画着半透明六边形热区和簇点。点选或按 Enter 后，旁边出现标题、距离和摘要，Esc 收起。方向键在热区之间移动。这不是从中心拉出的放射标签，也不是上传轨道。没有地图 SDK。减弱动效时没有脉冲，详情直接出现。离开视口后脉冲停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hex-zone-hotspots.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hex-zone-hotspots.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbital-action-ring",
+      "type": "registry:ui",
+      "title": "Orbital Action Ring",
+      "description": "原创。点一下中心锚点，虚线圆轨道上弹出确认、删除、刷新等动作。左右方向键沿环移动，Enter 确认，Esc 关闭。触屏先点锚点再点动作。这不是底部表情条，也不是放射文案。减弱动效改成竖直的动作列表，不再弹簧展开。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbital-action-ring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbital-action-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scan-rail-progress",
+      "type": "registry:ui",
+      "title": "Scan Rail Progress",
+      "description": "原创。圆角遮罩里有一条横轨上下来回扫。auto 按 pace 把进度走到 1，hold 要按住空格或按住画面才会涨，松手就停。到 1 时 onComplete 只调用一次，然后可以 Reset。这不是转圈，也不是开屏或聚光清字。减弱动效关掉扫描，用 Complete 一次完成。离开视口后动画帧暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scan-rail-progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scan-rail-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "page-curl-turn",
+      "type": "registry:ui",
+      "title": "Page Curl Turn",
+      "description": "原创。卡片右下角可以拖出卷曲，超过 threshold 就翻到下一页。Turn page 按钮、Enter 和右方向键也会翻，左方向键翻回去。这不是撕开贴纸，也不是绕 Y 轴的三维翻转，更不是横缝裂开。减弱动效时没有卷曲，按钮会立刻换页。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/page-curl-turn.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/page-curl-turn.tsx"
+        }
+      ]
     }
   ]
 }

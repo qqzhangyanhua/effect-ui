@@ -1,6 +1,7 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 import { batch64MicroComponents } from "./catalog-batch64"
 import { batch65MicroComponents } from "./catalog-batch65"
+import { batch66MicroComponents } from "./catalog-batch66"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，微交互。 */
@@ -442,5 +443,6 @@ export const effectMicroComponents: ComponentMeta[] = [
     },
   ...batch64MicroComponents,
   ...batch65MicroComponents,
+  ...batch66MicroComponents,
 ]
 

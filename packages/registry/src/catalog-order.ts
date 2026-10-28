@@ -206,5 +206,11 @@ export const componentOrder = [
   "particle-dial-reveal",
   "scrub-fog-clear",
   "iridescent-edge-card",
+  "sticky-stack-cards",
+  "glass-feature-trio",
+  "hex-zone-hotspots",
+  "orbital-action-ring",
+  "scan-rail-progress",
+  "page-curl-turn",
 ] as const
 

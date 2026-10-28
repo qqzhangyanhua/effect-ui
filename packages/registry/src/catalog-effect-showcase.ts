@@ -1,5 +1,6 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 import { batch64ShowcaseComponents } from "./catalog-batch64"
+import { batch66ShowcaseComponents } from "./catalog-batch66"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，展示 / 列表。 */
@@ -245,5 +246,6 @@ export const effectShowcaseComponents: ComponentMeta[] = [
       ],
     },
   ...batch64ShowcaseComponents,
+  ...batch66ShowcaseComponents,
 ]
 

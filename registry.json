@@ -4124,6 +4124,120 @@
           "target": "components/ui/kinetic-scramble-text.tsx"
         }
       ]
+    },
+    {
+      "name": "blob-zoom-lens",
+      "type": "registry:ui",
+      "title": "Blob Zoom Lens",
+      "description": "原创。同一张抽象色块叠成两层，上层放大，并用有机 blob 或锯齿遮罩裁出来跟着指针走。方向键微移中心，加减号改大小，触屏要按住拖。这不是 scrub-fog-clear 的擦雾，也不是 spotlight-focus-blur 的圆形聚光清字，更不是悬停叠层揭示。减弱动效改成居中的静止圆遮罩，不再跟随，也不再变形。离开视口后形变帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/blob-zoom-lens.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/blob-zoom-lens.tsx"
+        }
+      ]
+    },
+    {
+      "name": "year-snap-rail",
+      "type": "registry:ui",
+      "title": "Year Snap Rail",
+      "description": "原创。竖直年份轨吸附到中间那条参考线，选中的年份放大，旁边的标题和摘要跟着换。滚轮、拖动、点击年份和上下方向键都能换年。这不是 scroll-timeline-reveal 的滚动段落，也不是色阶横轨或作品集横卡。减弱动效会立刻换年，不再放大。没有循环动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/year-snap-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/year-snap-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ruler-tick-scrub",
+      "type": "registry:ui",
+      "title": "Ruler Tick Scrub",
+      "description": "原创。水平刻度尺有主刻度和次刻度，拖动后吸附到最近的里程碑，下面的日期和说明跟着换。左右方向键和两侧按钮也能步进。这不是 color-step-rail 的色采样，也不是 scan-rail-progress 的遮罩扫描。减弱动效只留按钮和方向键切换，拖动不再带动尺子。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ruler-tick-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ruler-tick-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "peek-fan-stack",
+      "type": "registry:ui",
+      "title": "Peek Fan Stack",
+      "description": "原创。每张作品卡里主图居中，左右两张背卡斜着露出一角。细指针悬停或键盘聚焦时扇角变大，触屏点一下切换。这不是 apple-cards-carousel 的封面流，也不是抛掷叠卡或文件夹。减弱动效保持静止的三层叠，焦点只留描边。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/peek-fan-stack.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/peek-fan-stack.tsx"
+        }
+      ]
+    },
+    {
+      "name": "barrel-value-wheel",
+      "type": "registry:ui",
+      "title": "Barrel Value Wheel",
+      "description": "原创。竖直滚筒选一个数值，正中间最大，上下按圆柱透视变淡变小，松手吸附。方向键和滚轮步进，快拖会带一点惯性。这不是 particle-dial-reveal 的粒子拨盘，也不是轨道动作环或翻牌字。减弱动效改成选择框和上下按钮，不再透视。离开视口后惯性帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/barrel-value-wheel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/barrel-value-wheel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ink-stroke-draw",
+      "type": "registry:ui",
+      "title": "Ink Stroke Draw",
+      "description": "原创。标题用两条自绘 SVG 路径按 stroke-dashoffset 描出来，画完可以填色，重播按钮再来一次。进入视口会自动画一遍，Enter 在重播上也能再画。这不是 kinetic-scramble-text 的乱码，也不是逐字生成。减弱动效直接显示描完的终态。离开视口后描边帧取消。读屏拿到终稿。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ink-stroke-draw.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ink-stroke-draw.tsx"
+        }
+      ]
     }
   ]
 }

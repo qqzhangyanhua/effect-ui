@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 放大镜、年份轨与墨线
+
+登记在 `Batch 68`。马赛克与乱码已占用 `Batch 67`。这是第 62 批调研里的六个交互，全部原创。运动参考 Mobbin 上的有机放大遮罩、年份吸附轨、刻度里程碑、窥视扇叠、滚筒选值和路径描边，没有复制代码或素材，也没有移植头。`blob-zoom-lens` 用锯齿 blob 遮罩放大同一张色块，不是 `scrub-fog-clear` 的擦雾，也不是 `spotlight-focus-blur` 的圆形聚光。`year-snap-rail` 让竖直年份吸附到中线并切换旁侧文案，不是 `scroll-timeline-reveal`。`ruler-tick-scrub` 是主次刻度的水平里程碑尺，不是 `color-step-rail` 的色采样，也不是 `scan-rail-progress`。`peek-fan-stack` 在单张卡里扇开左右背卡，不是 `apple-cards-carousel` 或 `card-toss-stack`。`barrel-value-wheel` 用透视滚筒选值，不是 `particle-dial-reveal`。`ink-stroke-draw` 用 SVG 描边写出标记，不是 `kinetic-scramble-text`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：放大镜改成静止圆，年份立刻切换，刻度只留按钮，扇叠不再张开，滚筒改成选择框，描边直接显示终稿。离开视口时形变、惯性和描边帧都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| blob-zoom-lens | 原创，灵感来自 Mobbin |
+| year-snap-rail | 原创，灵感来自 Mobbin |
+| ruler-tick-scrub | 原创，灵感来自 Mobbin |
+| peek-fan-stack | 原创，灵感来自 Mobbin |
+| barrel-value-wheel | 原创，灵感来自 Mobbin |
+| ink-stroke-draw | 原创，灵感来自 Mobbin |
+
 ### 马赛克、作品集与按住提交
 
 登记在 `Batch 67`。叠卡与翻页已占用 `Batch 66`。这是第 61 批调研里的六个交互，全部原创。运动参考 Mobbin 上的不等分功能格、作品集轮播、按住填环、拖锁出圈、前后对照擦拭和乱码落定，没有复制代码或素材，也没有移植头。`bento-asymmetric-grid` 用跨列格子做马赛克，聚焦时放大并压暗邻居，不是 `sticky-grid-scroll` 的错位网格，也不是 `glass-feature-trio`。`case-study-carousel` 是平面作品集，主卡居中、两侧窥视，不是 `apple-cards-carousel` 的三维封面流。`hold-fill-commit` 要按住圆环或底条涨满才提交，松手回落，不是 `scan-rail-progress` 的扫描轨。`drag-lock-escape` 把锁拖出安全圆才解锁。`before-after-wipe` 在同一画幅里拖竖向手柄擦出前后两层。`kinetic-scramble-text` 让一句文案逐字乱码再落定，不是 `letter-glitch-wall`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：网格不再缩放，轮播瞬时切卡，按住改成点一次提交，锁改成 Unlock，对照改成两个按钮，乱码直接显示终稿。离开视口时填环、回弹和乱码帧都会停下。

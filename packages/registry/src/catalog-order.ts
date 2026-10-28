@@ -218,5 +218,11 @@ export const componentOrder = [
   "drag-lock-escape",
   "before-after-wipe",
   "kinetic-scramble-text",
+  "blob-zoom-lens",
+  "year-snap-rail",
+  "ruler-tick-scrub",
+  "peek-fan-stack",
+  "barrel-value-wheel",
+  "ink-stroke-draw",
 ] as const
 

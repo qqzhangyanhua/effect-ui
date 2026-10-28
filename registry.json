@@ -4238,6 +4238,124 @@
           "target": "components/ui/ink-stroke-draw.tsx"
         }
       ]
+    },
+    {
+      "name": "strip-step-expand",
+      "type": "registry:ui",
+      "title": "Strip Step Expand",
+      "description": "原创。水平并排的编号条。折叠时窄，标题竖排，编号很大；点开或按左右方向键后，这一条占掉主要宽度，标题横过来，并露出摘要和色块。同一时刻只有一条展开。这不是 shared-layout-expand 的共享布局放大卡，也不是 sticky-stack-cards 或 case-study-carousel。减弱动效会瞬时换条，不再做宽度弹簧。没有循环帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/strip-step-expand.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/strip-step-expand.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tab-media-swap",
+      "type": "registry:ui",
+      "title": "Tab Media Swap",
+      "description": "原创。左边是特性列表，选中项的底色会滑过去；右边的色块和说明跟着交叉换上。上下方向键、Home、End 和点选都能换，右侧也可以横滑。pace 控制自动轮播的间隔，指针放上来会暂停。这不是 shared-layout-expand 的单卡展开，也不是 before-after-wipe 或 case-study-carousel。减弱动效瞬时切换，并关掉自动播放。离开视口后轮播帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tab-media-swap.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tab-media-swap.tsx"
+        }
+      ]
+    },
+    {
+      "name": "seed-slot-drop",
+      "type": "registry:ui",
+      "title": "Seed Slot Drop",
+      "description": "原创。下方的词块可以拖进上方的虚线空槽，靠近时高亮最近的空槽，松手后吸进去。也可以先点词块再点空槽。方向键先选槽，回车放进去。放错了可以拖回，或点取出。全部填满时有一记短脉冲。这不是 physics-dropzone 的自由物理落区，也不是 sortable-list。减弱动效改为点选，不再弹簧。离开视口后脉冲帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/seed-slot-drop.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/seed-slot-drop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "oscillation-arc-dial",
+      "type": "registry:ui",
+      "title": "Oscillation Arc Dial",
+      "description": "原创。半圆刻度上拖拇指改强度，松手后弹簧振荡一两下，再吸到最近的刻度。左右方向键按步进增减。这不是 particle-dial-reveal 的粒子环，也不是 barrel-value-wheel 的纵滚筒，更不是 ruler-tick-scrub 的水平尺。减弱动效松手就吸住，不再振荡，并多出加减按钮。离开视口后振荡帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/oscillation-arc-dial.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/oscillation-arc-dial.tsx"
+        }
+      ]
+    },
+    {
+      "name": "puzzle-slide-fit",
+      "type": "registry:ui",
+      "title": "Puzzle Slide Fit",
+      "description": "原创。底滑块带动一块几何拼图水平移动，对准虚线缺口后松手会吸住并亮起成功。没对准就弹回起点。方向键微调，回车再试一次。重排会换一个可复现的目标位置。这不是 before-after-wipe 的前后擦除，也不是 hold-fill-commit 的长按。减弱动效改成一键对齐，不再拖动。离开视口后回弹帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/puzzle-slide-fit.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/puzzle-slide-fit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scatter-photo-drag",
+      "type": "registry:ui",
+      "title": "Scatter Photo Drag",
+      "description": "原创。几张倾斜的色块照片散在画布上，可以拖起来放到最前，松手后按速度轻轻滑一段再停住。Tab 选中后，方向键微移，方括号旋转。双击或重散会换一版可复现的散落。这不是 peek-fan-stack 的扇叠，也不是 card-toss-stack、folder-stack 或 sticky-note-board。减弱动效仍可拖动，但松手不再惯性。离开视口后惯性帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scatter-photo-drag.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scatter-photo-drag.tsx"
+        }
+      ]
     }
   ]
 }

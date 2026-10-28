@@ -3,6 +3,7 @@ import { batch64ShowcaseComponents } from "./catalog-batch64"
 import { batch66ShowcaseComponents } from "./catalog-batch66"
 import { batch67ShowcaseComponents } from "./catalog-batch67"
 import { batch68ShowcaseComponents } from "./catalog-batch68"
+import { batch69ShowcaseComponents } from "./catalog-batch69"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，展示 / 列表。 */
@@ -251,5 +252,6 @@ export const effectShowcaseComponents: ComponentMeta[] = [
   ...batch66ShowcaseComponents,
   ...batch67ShowcaseComponents,
   ...batch68ShowcaseComponents,
+  ...batch69ShowcaseComponents,
 ]
 

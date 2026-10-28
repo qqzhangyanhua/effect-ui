@@ -224,5 +224,11 @@ export const componentOrder = [
   "peek-fan-stack",
   "barrel-value-wheel",
   "ink-stroke-draw",
+  "strip-step-expand",
+  "tab-media-swap",
+  "seed-slot-drop",
+  "oscillation-arc-dial",
+  "puzzle-slide-fit",
+  "scatter-photo-drag",
 ] as const
 

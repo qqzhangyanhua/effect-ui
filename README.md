@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 编号条、表媒与散落照片
+
+登记在 `Batch 69`。放大镜与墨线已占用 `Batch 68`。这是第 63 批调研里的六个交互，全部原创。运动参考 Mobbin 上的编号水平条、左表右媒、词块入槽、弧角拨杆、拼图滑块和散落照片拖动，没有复制代码或素材，也没有移植头。`strip-step-expand` 是水平编号条，折叠时标题竖排，展开时占宽，不是 `shared-layout-expand` 的共享布局放大卡。`tab-media-swap` 是左侧特性列表配右侧媒体交叉切换，不是前后擦除，也不是作品集横卡。`seed-slot-drop` 把词块拖进或点进固定空槽，填满后有一记脉冲，不是 `physics-dropzone` 的自由落区。`oscillation-arc-dial` 沿弧轨拖拇指，松手弹簧振荡后吸附刻度，不是 `particle-dial-reveal`，也不是 `barrel-value-wheel` 或 `ruler-tick-scrub`。`puzzle-slide-fit` 让拼图块跟着底滑块走，对齐缺口才成功，不是 `before-after-wipe`。`scatter-photo-drag` 是散落倾斜的占位照片，可以自由拖动并带一点惯性，不是 `peek-fan-stack` 或 `sticky-note-board`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：编号条瞬时切换，媒体不再交叉淡入并关掉自动播放，词块改为点选，弧拨不再振荡，拼图改成一键对齐，照片拖动不再惯性。离开视口时自动播放、弹簧和惯性帧都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| strip-step-expand | 原创，灵感来自 Mobbin |
+| tab-media-swap | 原创，灵感来自 Mobbin |
+| seed-slot-drop | 原创，灵感来自 Mobbin |
+| oscillation-arc-dial | 原创，灵感来自 Mobbin |
+| puzzle-slide-fit | 原创，灵感来自 Mobbin |
+| scatter-photo-drag | 原创，灵感来自 Mobbin |
+
 ### 放大镜、年份轨与墨线
 
 登记在 `Batch 68`。马赛克与乱码已占用 `Batch 67`。这是第 62 批调研里的六个交互，全部原创。运动参考 Mobbin 上的有机放大遮罩、年份吸附轨、刻度里程碑、窥视扇叠、滚筒选值和路径描边，没有复制代码或素材，也没有移植头。`blob-zoom-lens` 用锯齿 blob 遮罩放大同一张色块，不是 `scrub-fog-clear` 的擦雾，也不是 `spotlight-focus-blur` 的圆形聚光。`year-snap-rail` 让竖直年份吸附到中线并切换旁侧文案，不是 `scroll-timeline-reveal`。`ruler-tick-scrub` 是主次刻度的水平里程碑尺，不是 `color-step-rail` 的色采样，也不是 `scan-rail-progress`。`peek-fan-stack` 在单张卡里扇开左右背卡，不是 `apple-cards-carousel` 或 `card-toss-stack`。`barrel-value-wheel` 用透视滚筒选值，不是 `particle-dial-reveal`。`ink-stroke-draw` 用 SVG 描边写出标记，不是 `kinetic-scramble-text`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：放大镜改成静止圆，年份立刻切换，刻度只留按钮，扇叠不再张开，滚筒改成选择框，描边直接显示终稿。离开视口时形变、惯性和描边帧都会停下。

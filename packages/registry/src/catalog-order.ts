@@ -284,5 +284,11 @@ export const componentOrder = [
   "curb-spot-walk",
   "orbit-frame-spin",
   "speed-notch-rail",
+  "digit-slot-gate",
+  "spine-node-march",
+  "chip-fold-badge",
+  "mood-word-ring",
+  "glyph-block-swap",
+  "particle-veil-caption",
 ] as const
 

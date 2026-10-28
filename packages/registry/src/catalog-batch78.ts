@@ -1,0 +1,167 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 72 批调研，catalog batch 78。六个原创交互，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch78ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "pin-cluster-burst",
+    batch: 78,
+    title: "Pin Cluster Burst",
+    description:
+      "原创。抽象地图上若干带数字的簇 pin，点击或放大某一簇时数字针爆发为周围子针扇出，再点可收合。Tab 切簇，Enter 或 Space 展开或收合，Escape 收合全部。这是数字簇爆发拆针，不是 hex-zone-hotspots 的六角热区，也不是 radial-hotspot-labels 的径向标签，更不是 route-path-scrub 的路线折线 playhead。减弱动效瞬时切展开或收合，无弹性与微漂。离开视口后子针微漂停止。demo 用合成街道与中性标签，不用真实城市名或门店商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/pin-cluster-burst.tsx",
+    target: "components/ui/pin-cluster-burst.tsx",
+    presets: [
+      { name: "calm", label: "静", values: { pace: 0.6, intensity: 0.35, drift: false, labels: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, drift: true, labels: true } },
+      { name: "live", label: "动", values: { pace: 1.5, intensity: 1, drift: true, labels: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "爆发与收合的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "弹出距离与辉光强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "drift", type: "boolean", defaultValue: "true", description: "展开后子针是否微漂。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "labels", type: "boolean", defaultValue: "true", description: "是否显示子针短标签。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { clusterId: string | null; expanded: boolean }) => void", description: "簇展开或收合时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "cabin-seat-pick",
+    batch: 78,
+    title: "Cabin Seat Pick",
+    description:
+      "原创。抽象机舱俯视座位网格，可点选空闲座，占用座不可选，选中座高亮并在底栏显示座号。方向键在网格导航，Enter 选或取消，Escape 清除。这是机舱座位网格选点，不是 hex-trail-claim 的六角足迹认领，也不是 seed-slot-drop 的插槽投放。减弱动效瞬时切选中态，无弹簧缩放。没有循环帧。demo 用中性 Seat 文案与示意布局，不用航司或机型商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/cabin-seat-pick.tsx",
+    target: "components/ui/cabin-seat-pick.tsx",
+    presets: [
+      { name: "soft", label: "软", values: { pace: 0.6, intensity: 0.35, preferred: false, multi: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, preferred: true, multi: false } },
+      { name: "duo", label: "双", values: { pace: 1.2, intensity: 0.85, preferred: true, multi: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "选中过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "选中描边与辉光强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "preferred", type: "boolean", defaultValue: "true", description: "是否区分 preferred 座位色。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "multi", type: "boolean", defaultValue: "false", description: "是否允许多选（上限 2）。", control: { kind: "boolean", value: false, group: "交互" } },
+      { name: "onValueChange", type: "(seats: string[]) => void", description: "选中座号列表变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "floor-unit-glow",
+    batch: 78,
+    title: "Floor Unit Glow",
+    description:
+      "原创。建筑平面图上若干多边形单元，切换楼层或点选单元时该单元描边发光，侧卡显示单元代号与状态。Tab 切单元，左右方向键切楼层，Enter 选中。这是楼层平面多边形单元高亮，不是 pin-cluster-burst 的地图簇针，也不是 hex-zone-hotspots 的六角热区，更不是 masonry-density-live 的瀑布流密度。减弱动效瞬时切 glow 与楼层，无呼吸。可选呼吸辉光离开视口后停止。demo 用合成几何平面，不用真实地址或房产商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/floor-unit-glow.tsx",
+    target: "components/ui/floor-unit-glow.tsx",
+    presets: [
+      { name: "plain", label: "素", values: { pace: 0.6, intensity: 0.35, breath: false, showLegend: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, breath: false, showLegend: true } },
+      { name: "glow", label: "呼吸", values: { pace: 1.3, intensity: 1, breath: true, showLegend: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "glow 过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "描边辉光强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "breath", type: "boolean", defaultValue: "false", description: "选中单元是否慢呼吸辉光。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "showLegend", type: "boolean", defaultValue: "true", description: "是否显示 Open 或 Taken 图例。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { floor: number; unitId: string | null }) => void", description: "楼层或单元变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "curb-spot-walk",
+    batch: 78,
+    title: "Curb Spot Walk",
+    description:
+      "原创。抽象街区图上多个路边停靠点，选中一点后画出到入口的步行虚线，并显示步行分钟徽章。左右方向键切点，Enter 确认。这是多路边点加步行支线，不是 route-path-scrub 的单条活动路线 playhead，也不是 bearing-compass-turn 的方位罗盘，更不是 stage-lane-flow 的泳道阶段线。减弱动效瞬时切点与虚线，无流动。离开视口后虚线流动停止。demo 用抽象街区，不用酒店或车企商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/curb-spot-walk.tsx",
+    target: "components/ui/curb-spot-walk.tsx",
+    presets: [
+      { name: "calm", label: "静", values: { pace: 0.6, intensity: 0.35, flow: false, showEta: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, flow: true, showEta: true } },
+      { name: "live", label: "流", values: { pace: 1.5, intensity: 1, flow: true, showEta: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "虚线流动与切点过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "选中辉光与虚线对比。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "flow", type: "boolean", defaultValue: "true", description: "虚线是否流动描边。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "showEta", type: "boolean", defaultValue: "true", description: "是否显示步行分钟徽章。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { spotIndex: number; minutes: number }) => void", description: "停靠点变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "orbit-frame-spin",
+    batch: 78,
+    title: "Orbit Frame Spin",
+    description:
+      "原创。中性产品色块以多角度帧序列展示，水平拖或滚轮时按角度切换帧，角度读数同步更新。左右方向键步进帧，Home 和 End 跳首末。这是产品角度帧序列，不是 solar-orbit-scrub 的太阳轨道照明，也不是 filmstrip-frame-pick 的胶片时间轨，更不是 scroll-3d-image-rotate 的滚动 3D 旋转。减弱动效瞬时切帧与读数，无自动旋与惯性。离开视口后自动慢旋停止。demo 用几何色块多视角，不用真实产品照片或品牌。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/orbit-frame-spin.tsx",
+    target: "components/ui/orbit-frame-spin.tsx",
+    presets: [
+      { name: "still", label: "静", values: { pace: 0.6, intensity: 0.35, auto: false, snap: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, auto: false, snap: true } },
+      { name: "orbit", label: "旋", values: { pace: 1.4, intensity: 0.9, auto: true, snap: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "跟手与自动慢旋的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "帧对比与底轨辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "auto", type: "boolean", defaultValue: "false", description: "是否自动慢旋。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "snap", type: "boolean", defaultValue: "true", description: "松手是否吸附最近帧。", control: { kind: "boolean", value: true, group: "交互" } },
+      { name: "onValueChange", type: "(state: { frame: number; angle: number }) => void", description: "帧或角度变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "speed-notch-rail",
+    batch: 78,
+    title: "Speed Notch Rail",
+    description:
+      "原创。横向离散倍速刻度轨，拖或点刻度时滑块吸附，预览区播放速率视觉同步。左右方向键切 notch，Home 和 End 跳最慢或最快。这是离散倍速刻度吸附，不是 knurl-scrub-dial 的连续滚花旋钮，也不是 stem-fader-mix 的混音推子，更不是 year-snap-rail 的年份吸附轨。减弱动效瞬时切 notch 与预览，无吸附弹簧。离开视口后预览循环停止。demo 用中性 notch 与几何预览，不用流媒体商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/speed-notch-rail.tsx",
+    target: "components/ui/speed-notch-rail.tsx",
+    presets: [
+      { name: "minimal", label: "简", values: { pace: 0.6, intensity: 0.35, preview: false, notches: 3 } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, preview: true, notches: 5 } },
+      { name: "dense", label: "密", values: { pace: 1.3, intensity: 0.9, preview: true, notches: 7 } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "吸附跟随的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "滑块辉光与预览对比。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "preview", type: "boolean", defaultValue: "true", description: "是否显示速率预览区。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "notches", type: "number", defaultValue: "5", description: "刻度数量，3、5 或 7。", control: { kind: "range", value: 5, min: 3, max: 7, step: 2, group: "交互" } },
+      { name: "onValueChange", type: "(rate: number) => void", description: "倍速变化时调用，仅落在 notch 集合。" },
+      className,
+    ],
+  },
+]

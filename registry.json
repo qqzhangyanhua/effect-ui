@@ -5328,6 +5328,132 @@
           "target": "components/ui/bearing-compass-turn.tsx"
         }
       ]
+    },
+    {
+      "name": "pin-cluster-burst",
+      "type": "registry:ui",
+      "title": "Pin Cluster Burst",
+      "description": "原创。抽象地图上若干带数字的簇 pin，点击或放大某一簇时数字针爆发为周围子针扇出，再点可收合。Tab 切簇，Enter 或 Space 展开或收合，Escape 收合全部。这是数字簇爆发拆针，不是 hex-zone-hotspots 的六角热区，也不是 radial-hotspot-labels 的径向标签，更不是 route-path-scrub 的路线折线 playhead。减弱动效瞬时切展开或收合，无弹性与微漂。离开视口后子针微漂停止。demo 用合成街道与中性标签，不用真实城市名或门店商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pin-cluster-burst.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pin-cluster-burst.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cabin-seat-pick",
+      "type": "registry:ui",
+      "title": "Cabin Seat Pick",
+      "description": "原创。抽象机舱俯视座位网格，可点选空闲座，占用座不可选，选中座高亮并在底栏显示座号。方向键在网格导航，Enter 选或取消，Escape 清除。这是机舱座位网格选点，不是 hex-trail-claim 的六角足迹认领，也不是 seed-slot-drop 的插槽投放。减弱动效瞬时切选中态，无弹簧缩放。没有循环帧。demo 用中性 Seat 文案与示意布局，不用航司或机型商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cabin-seat-pick.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cabin-seat-pick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floor-unit-glow",
+      "type": "registry:ui",
+      "title": "Floor Unit Glow",
+      "description": "原创。建筑平面图上若干多边形单元，切换楼层或点选单元时该单元描边发光，侧卡显示单元代号与状态。Tab 切单元，左右方向键切楼层，Enter 选中。这是楼层平面多边形单元高亮，不是 pin-cluster-burst 的地图簇针，也不是 hex-zone-hotspots 的六角热区，更不是 masonry-density-live 的瀑布流密度。减弱动效瞬时切 glow 与楼层，无呼吸。可选呼吸辉光离开视口后停止。demo 用合成几何平面，不用真实地址或房产商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/floor-unit-glow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floor-unit-glow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "curb-spot-walk",
+      "type": "registry:ui",
+      "title": "Curb Spot Walk",
+      "description": "原创。抽象街区图上多个路边停靠点，选中一点后画出到入口的步行虚线，并显示步行分钟徽章。左右方向键切点，Enter 确认。这是多路边点加步行支线，不是 route-path-scrub 的单条活动路线 playhead，也不是 bearing-compass-turn 的方位罗盘，更不是 stage-lane-flow 的泳道阶段线。减弱动效瞬时切点与虚线，无流动。离开视口后虚线流动停止。demo 用抽象街区，不用酒店或车企商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/curb-spot-walk.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/curb-spot-walk.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbit-frame-spin",
+      "type": "registry:ui",
+      "title": "Orbit Frame Spin",
+      "description": "原创。中性产品色块以多角度帧序列展示，水平拖或滚轮时按角度切换帧，角度读数同步更新。左右方向键步进帧，Home 和 End 跳首末。这是产品角度帧序列，不是 solar-orbit-scrub 的太阳轨道照明，也不是 filmstrip-frame-pick 的胶片时间轨，更不是 scroll-3d-image-rotate 的滚动 3D 旋转。减弱动效瞬时切帧与读数，无自动旋与惯性。离开视口后自动慢旋停止。demo 用几何色块多视角，不用真实产品照片或品牌。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/orbit-frame-spin.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/orbit-frame-spin.tsx"
+        }
+      ]
+    },
+    {
+      "name": "speed-notch-rail",
+      "type": "registry:ui",
+      "title": "Speed Notch Rail",
+      "description": "原创。横向离散倍速刻度轨，拖或点刻度时滑块吸附，预览区播放速率视觉同步。左右方向键切 notch，Home 和 End 跳最慢或最快。这是离散倍速刻度吸附，不是 knurl-scrub-dial 的连续滚花旋钮，也不是 stem-fader-mix 的混音推子，更不是 year-snap-rail 的年份吸附轨。减弱动效瞬时切 notch 与预览，无吸附弹簧。离开视口后预览循环停止。demo 用中性 notch 与几何预览，不用流媒体商标。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/speed-notch-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/speed-notch-rail.tsx"
+        }
+      ]
     }
   ]
 }

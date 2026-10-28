@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 簇针、机舱座位与倍速刻度
+
+登记在 `Batch 78`。路线已占用 `Batch 77`。这是第 72 批调研里的六个交互，全部原创。运动参考 Mobbin 上的地图数字簇、机舱座位图、楼层平面、路边停靠、产品多角度和离散倍速轨，没有复制代码或素材，也没有移植头。`pin-cluster-burst` 把带数字的簇针爆发成周围子针，不是 `hex-zone-hotspots` 的六角热区，也不是 `radial-hotspot-labels`。`cabin-seat-pick` 是机舱座位网格点选，不是 `hex-trail-claim`。`floor-unit-glow` 在平面多边形上切换楼层并点亮单元，不是地图簇针，也不是 `masonry-density-live`。`curb-spot-walk` 在多个路边点之间画出步行虚线和分钟徽章，不是 `route-path-scrub`。`orbit-frame-spin` 用水平拖切换产品角度帧，不是 `solar-orbit-scrub`，也不是 `filmstrip-frame-pick`。`speed-notch-rail` 把滑块吸附到离散倍速刻度，不是 `knurl-scrub-dial`，也不是 `year-snap-rail`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：簇针瞬时展开或收合，座位瞬时选中，楼层单元瞬时发光，步行虚线不再流动，角度帧瞬时切换，倍速刻度没有吸附弹簧。离开视口时子针微漂、呼吸辉光、虚线流动、自动慢旋和倍速预览都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| pin-cluster-burst | 原创，灵感来自 Mobbin |
+| cabin-seat-pick | 原创，灵感来自 Mobbin |
+| floor-unit-glow | 原创，灵感来自 Mobbin |
+| curb-spot-walk | 原创，灵感来自 Mobbin |
+| orbit-frame-spin | 原创，灵感来自 Mobbin |
+| speed-notch-rail | 原创，灵感来自 Mobbin |
+
 ### 路线、透视扭曲与罗盘方位
 
 登记在 `Batch 77`。月相已占用 `Batch 76`。这是第 71 批调研里的六个交互，全部原创。运动参考 Mobbin 上的路线折线、双轴透视、波形剪辑窗、充电目标环、四点梯形和方位罗盘，没有复制代码或素材，也没有移植头。`route-path-scrub` 在抽象折线路途上拖 playhead，读出距离、配速和心率，不是 `ridge-profile-scrub` 的海拔剖面。`skew-axis-warp` 用 X/Y 双轴把整幅栅格做透视扭曲，不是 `balance-plane-puck` 的正交读数盘。`wave-clip-window` 在波形条上拖固定时长的剪辑窗，不是 `vinyl-clip-window` 的黑胶窗，也没有真实音频。`charge-target-ring` 是当前充电弧加单柄目标刻度，不是 `sleep-arc-range` 的双柄区间。`keystone-corner-drag` 拖四点梯形并在角点旁显示圆形放大镜，不是 `eyedrop-loupe-pick` 的取色镜。`bearing-compass-turn` 转罗盘读出方位角和 N/NE 这类方向，不是 `knurl-scrub-dial` 的滚花旋钮。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：路线瞬时改读数，扭曲没有回弹，波形窗不再播放，充电环不再脉冲，透视框没有吸附弹簧，罗盘不再微抖。离开视口时路线自动推进、波形播放、充电脉冲、回零弹簧和罗盘噪声都会停下。

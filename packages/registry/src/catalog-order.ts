@@ -278,5 +278,11 @@ export const componentOrder = [
   "charge-target-ring",
   "keystone-corner-drag",
   "bearing-compass-turn",
+  "pin-cluster-burst",
+  "cabin-seat-pick",
+  "floor-unit-glow",
+  "curb-spot-walk",
+  "orbit-frame-spin",
+  "speed-notch-rail",
 ] as const
 

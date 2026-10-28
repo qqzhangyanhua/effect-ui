@@ -248,5 +248,11 @@ export const componentOrder = [
   "drag-token-gate",
   "frost-dot-reveal",
   "blur-rep-count",
+  "filmstrip-frame-pick",
+  "knurl-scrub-dial",
+  "arc-film-carousel",
+  "vinyl-clip-window",
+  "depth-blur-line",
+  "border-focus-strip",
 ] as const
 

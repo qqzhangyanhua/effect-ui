@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 胶片条、滚花拨盘与景深标题
+
+登记在 `Batch 73`。片名年份已占用 `Batch 72`。这是第 67 批调研里的六个交互，全部原创。运动参考 Mobbin 上的封面胶片条、滚花拨盘、弧形胶片走马灯、波形剪辑窗、景深标题和横向海报条，没有复制代码或素材，也没有移植头。`filmstrip-frame-pick` 用横向胶片帧同步大预览，不是 `year-snap-rail` 的年份轨。`knurl-scrub-dial` 让滚花圆柱表面跟手滚动，不是 `barrel-value-wheel` 的数字筒。`arc-film-carousel` 把帧卡排在开弧胶片带上，不是 `curve-focus-rail`。`vinyl-clip-window` 用旋转黑胶和可拖剪辑窗选一段，不是 `audio-spectrum`。`depth-blur-line` 按行索引做景深模糊，不是 `title-year-list`。`border-focus-strip` 给焦点海报加粗描边，不是 `apple-cards-carousel`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：胶片瞬时切帧，拨盘改成滑块，弧带瞬时换焦，黑胶停止旋转，标题只降透明度，海报不再放大。离开视口时吸附、惯性和旋转都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| filmstrip-frame-pick | 原创，灵感来自 Mobbin |
+| knurl-scrub-dial | 原创，灵感来自 Mobbin |
+| arc-film-carousel | 原创，灵感来自 Mobbin |
+| vinyl-clip-window | 原创，灵感来自 Mobbin |
+| depth-blur-line | 原创，灵感来自 Mobbin |
+| border-focus-strip | 原创，灵感来自 Mobbin |
+
 ### 片名年份、油漆轨与模糊计数
 
 登记在 `Batch 72`。日轨与弧形焦点已占用 `Batch 71`。这是第 66 批调研里的六个交互，全部原创。运动参考 Mobbin 上的片名年份列表、合作标志焦点变暗、竖轨彩绘、拖令牌入门、霜点揭数字和计数运动模糊，没有复制代码或素材，也没有移植头。`title-year-list` 是竖排大号标题加年份上标，焦点提亮、邻项变淡，不是 `year-snap-rail` 的横向年份轨，也不是 `curve-focus-rail`。`logo-focus-dim` 是静态几何字标，焦点一枚全亮、其余一起变暗，不是 `logo-marquee` 的跑马灯，也不是 `proximity-scale-grid` 的连续缩放。`paint-lift-rail` 用竖轨手柄把油漆填充从下往上揭开，不是 `slide-rail-confirm` 的横向确认。`drag-token-gate` 把单枚令牌拖进目标圈后解锁 Enter，不是 `seed-slot-drop`，也不是 `drag-lock-escape`。`frost-dot-reveal` 用点阵凝聚揭出 Value，不是 `scrub-fog-clear`。`blur-rep-count` 用纵向运动模糊甩换计数，不是 `clay-digit-morph`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：列表瞬时切焦点，标志瞬时变暗，油漆填充瞬时改高度，令牌改为按钮入槽，霜点改为实心数字，计数瞬时替换。离开视口时惯性、弹簧、点抖动和自动计数都会停下。

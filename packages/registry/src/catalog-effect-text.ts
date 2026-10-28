@@ -5,6 +5,7 @@ import { batch68TextComponents } from "./catalog-batch68"
 import { batch70TextComponents } from "./catalog-batch70"
 import { batch71TextComponents } from "./catalog-batch71"
 import { batch72TextComponents } from "./catalog-batch72"
+import { batch73TextComponents } from "./catalog-batch73"
 import { reactBitsCredit as credit } from "./catalog-sources"
 import { textControls, textPresets } from "./text-controls"
 const ui2: PropDoc[] = [
@@ -507,5 +508,6 @@ export const effectTextComponents: ComponentMeta[] = [
   ...batch70TextComponents,
   ...batch71TextComponents,
   ...batch72TextComponents,
+  ...batch73TextComponents,
 ]
 

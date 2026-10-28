@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch65CardsComponents } from "./catalog-batch65"
 import { reactBitsCredit as credit } from "./catalog-sources"
 
 /** Effect，卡片 / 3D。 */
@@ -779,6 +780,7 @@ export const effectCardsComponents: ComponentMeta[] = [
         { name: "onOpenChange", type: "(id: string | null) => void", description: "打开时带上卡片 id，关闭时为 null。" },
         ...ui39,
       ],
-    }
+    },
+  ...batch65CardsComponents,
 ]
 

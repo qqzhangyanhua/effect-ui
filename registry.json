@@ -3791,6 +3791,115 @@
           "target": "components/ui/drag-rate-tiles.tsx"
         }
       ]
+    },
+    {
+      "name": "color-step-rail",
+      "type": "registry:ui",
+      "title": "Color Step Rail",
+      "description": "原创。横向色阶轨，拖动或点选步进，左右方向键也能移动。活动色块会弹起，并显示当前 hex 或 OKLCH。复制按钮把这一格写入剪贴板。这不是兴趣芯片。传入 colors 时用那一组颜色，否则按 hue 生成明度阶。减弱动效时没有弹起，复制仍然可用。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/color-step-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/color-step-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scratch-line-field",
+      "type": "registry:ui",
+      "title": "Scratch Line Field",
+      "description": "原创。上层是不透明箔，指针路径把它擦掉。刮开面积达到 threshold 后剩余箔收起，并调用 onReveal 一次。Enter 或空格可以直接揭开。这不是点击翻转，也不是清雾。减弱动效时不刮擦，用 Reveal 按钮一次揭开。离开视口后没有持续动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scratch-line-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scratch-line-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swipe-action-row",
+      "type": "registry:ui",
+      "title": "Swipe Action Row",
+      "description": "原创。列表行可以横向拖。超过 threshold 就吸附打开左侧或右侧的动作，没超过则按 snap 回弹，snap 为 0 时停在松手的地方。Alt+左方向键打开左侧，Alt+右方向键打开右侧，Esc 收起。动作有稍后、归档和删除三种颜色。这不是整卡拖去评分，也不是只有一个动作。粗指针和减弱动效把按钮直接放在行内，不靠悬停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/swipe-action-row.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/swipe-action-row.tsx"
+        }
+      ]
+    },
+    {
+      "name": "particle-dial-reveal",
+      "type": "registry:ui",
+      "title": "Particle Dial Reveal",
+      "description": "原创。半圆拨盘拖动手柄或沿弧拖动，改变中间的数值。数字由粒子从散开再聚到字形上。方向键、Home 和 End 都能改值。这不是滚轮帧，也不是把弧涂满的仪表。减弱动效时只显示静止数字，不创建粒子画布。离开视口后粒子帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/particle-dial-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/particle-dial-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scrub-fog-clear",
+      "type": "registry:ui",
+      "title": "Scrub Fog Clear",
+      "description": "原创。内容上面盖着一层模糊的雾。指针擦过的路径把雾清掉，清开比例达到 threshold 后整层淡出，并调用 onClear 一次。Enter 可以直接清除。这是清雾，不是刮开不透明箔，也不是聚光把一句话读清楚。减弱动效时没有模糊，用 Clear 按钮一次完成。触屏沿路径擦除。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scrub-fog-clear.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scrub-fog-clear.tsx"
+        }
+      ]
+    },
+    {
+      "name": "iridescent-edge-card",
+      "type": "registry:ui",
+      "title": "Iridescent Edge Card",
+      "description": "原创。圆角卡片的描边用色相环跟着指针角度走，卡面内容保持不动。离开后停在最后的角度。键盘聚焦时描边缓慢自转，作为不依赖悬停的反馈。粗指针和减弱动效改成静止虹彩，不再跟随指针。这不是整卡全息，也不是一道单色光沿着边跑。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/iridescent-edge-card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/iridescent-edge-card.tsx"
+        }
+      ]
     }
   ]
 }

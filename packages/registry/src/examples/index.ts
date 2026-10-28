@@ -33,6 +33,7 @@ import * as effectDemos52 from "./effect-demos-52"
 import * as effectDemos64 from "./effect-demos-64"
 import * as effectDemos65 from "./effect-demos-65"
 import * as effectDemos66 from "./effect-demos-66"
+import * as effectDemos67 from "./effect-demos-67"
 
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
@@ -233,6 +234,12 @@ const demoMap: Record<string, ComponentType> = {
   "radial-hotspot-labels": effectDemos66.RadialHotspotLabelsDemo,
   "spotlight-focus-blur": effectDemos66.SpotlightFocusBlurDemo,
   "drag-rate-tiles": effectDemos66.DragRateTilesDemo,
+  "color-step-rail": effectDemos67.ColorStepRailDemo,
+  "scratch-line-field": effectDemos67.ScratchLineFieldDemo,
+  "swipe-action-row": effectDemos67.SwipeActionRowDemo,
+  "particle-dial-reveal": effectDemos67.ParticleDialRevealDemo,
+  "scrub-fog-clear": effectDemos67.ScrubFogClearDemo,
+  "iridescent-edge-card": effectDemos67.IridescentEdgeCardDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

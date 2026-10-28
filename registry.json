@@ -4699,6 +4699,132 @@
           "target": "components/ui/blur-rep-count.tsx"
         }
       ]
+    },
+    {
+      "name": "filmstrip-frame-pick",
+      "type": "registry:ui",
+      "title": "Filmstrip Frame Pick",
+      "description": "原创。上方大预览，下方横向胶片条带齿孔。拖动、滚轮或点选一帧时，当前帧吸到中线，大预览同步换成这一帧。左右方向键步进。这是胶片帧条加大预览，不是 year-snap-rail 的年份轨，也不是 ruler-tick-scrub 的刻度尺，也不是 before-after-wipe 的对比擦除。减弱动效瞬时切帧和预览。离开视口后吸附帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/filmstrip-frame-pick.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/filmstrip-frame-pick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "knurl-scrub-dial",
+      "type": "registry:ui",
+      "title": "Knurl Scrub Dial",
+      "description": "原创。短圆柱表面有滚花齿纹，沿表面拖动时齿纹滚动，数值跟着变。松手可以停住，连续模式下会带着惯性。方向键微调。这是滚花圆柱跟手，不是 barrel-value-wheel 的纵列数字筒，也不是 oscillation-arc-dial 的弧角刻度，也不是 ruler-tick-scrub 的平面尺。减弱动效改成滑块和按钮，圆柱不再滚动。离开视口后惯性帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/knurl-scrub-dial.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/knurl-scrub-dial.tsx"
+        }
+      ]
+    },
+    {
+      "name": "arc-film-carousel",
+      "type": "registry:ui",
+      "title": "Arc Film Carousel",
+      "description": "原创。预览帧贴在向下弯曲的胶片带上，拖动或点左右箭头让焦点帧滑到弧顶并略放大，两侧递降。左右方向键步进。这是开弧胶片带，不是 curve-focus-rail 的平面标签加侧栏媒体，也不是 circular-gallery 的闭环圆，也不是 peek-fan-stack 的扇形叠卡。减弱动效瞬时换焦点。离开视口后滑动帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/arc-film-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/arc-film-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "vinyl-clip-window",
+      "type": "registry:ui",
+      "title": "Vinyl Clip Window",
+      "description": "原创。中性标签的黑胶在播放时旋转，下方波形条上有可拖的剪辑窗，拖窗平移，两端手柄改起止。播放和暂停切换旋转。这是黑胶加可拖剪辑窗，不是 audio-spectrum 的纯频谱，也不是 solar-orbit-scrub 的轨道时间。减弱动效黑胶不转，选区改成起止滑块。离开视口后旋转停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/vinyl-clip-window.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/vinyl-clip-window.tsx"
+        }
+      ]
+    },
+    {
+      "name": "depth-blur-line",
+      "type": "registry:ui",
+      "title": "Depth Blur Line",
+      "description": "原创。多行大号短句竖排，焦点行保持锐利，上下行按距离加重模糊。滚轮、拖动、点选或上下方向键换行。这是按行索引的景深，不是 spotlight-focus-blur 的指针聚光，也不是 title-year-list 的标题加年份上标，也不是 kinetic-scramble-text。减弱动效瞬时换焦点，邻行只降透明度，不再模糊。没有循环帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/depth-blur-line.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/depth-blur-line.tsx"
+        }
+      ]
+    },
+    {
+      "name": "border-focus-strip",
+      "type": "registry:ui",
+      "title": "Border Focus Strip",
+      "description": "原创。横向海报条，焦点卡用主题色粗描边并轻微放大，邻卡降低透明度。拖动、滚轮、点选或左右方向键改焦点。这是海报条加描边焦点，不是 logo-focus-dim 的标志云，也不是 apple-cards-carousel 的堆叠透视，也不是 sticky-stack-cards。减弱动效瞬时切边和透明度，不再放大。离开视口后惯性帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/border-focus-strip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/border-focus-strip.tsx"
+        }
+      ]
     }
   ]
 }

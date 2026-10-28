@@ -5076,6 +5076,132 @@
           "target": "components/ui/stress-band-meter.tsx"
         }
       ]
+    },
+    {
+      "name": "phase-illum-scrub",
+      "type": "registry:ui",
+      "title": "Phase Illum Scrub",
+      "description": "原创。中央月相球体用照度遮罩跟随底部日轨，大号百分比和 New、Waxing、Full、Waning 一起变。左右方向键微调，Home 和 End 跳到 New 与 Full。这是月相照度球，不是 solar-orbit-scrub 的太阳立方，也不是 horizon-sun-scrub 的地平线天空。减弱动效瞬时切遮罩。离开视口后自动推进停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/phase-illum-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/phase-illum-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sleep-arc-range",
+      "type": "registry:ui",
+      "title": "Sleep Arc Range",
+      "description": "原创。24 小时圆环上两枚手柄夹出入睡到醒来的弧，中央读总时长。可以拖弧身平移整段，并按最小时长钳制。Tab 在两柄之间切换，方向键微调当前柄。这是双柄闭环区间，不是 oscillation-arc-dial 的单值弧，也不是 breath-expand-ring 的扩缩环。减弱动效瞬时改弧和读数。离开视口后吸附停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sleep-arc-range.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sleep-arc-range.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stage-lane-flow",
+      "type": "registry:ui",
+      "title": "Stage Lane Flow",
+      "description": "原创。Awake、REM、Light、Deep 四条色道排成合成阶段图，拖竖线读出当前阶段和占比。图例可以滤掉其它道。方向键微调时刻。这是可 scrub 的阶段色道，不是 wind-streak-scrub 的风纹，也不是 ridge-profile-scrub 的海拔。减弱动效瞬时切竖线，不再微流。离开视口后微流停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stage-lane-flow.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stage-lane-flow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stem-fader-mix",
+      "type": "registry:ui",
+      "title": "Stem Fader Mix",
+      "description": "原创。Lead、Knock、Low、Air 四根竖杆推子改增益，顶部波形跟着平均电平缩放。Tab 切列，上下方向键调节。Reset 把全部拉回满格。可选把总和保持住。这是可拖的多轨推子，不是 audio-spectrum 的只读频谱，也没有真实音频。减弱动效瞬时改填充，不再微抖。离开视口后微抖停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stem-fader-mix.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stem-fader-mix.tsx"
+        }
+      ]
+    },
+    {
+      "name": "balance-plane-puck",
+      "type": "registry:ui",
+      "title": "Balance Plane Puck",
+      "description": "原创。正交平面上拖一枚 puck，读出左右 Balance 和前后 Fade。靠近中心可以吸住，Reset 或双击沿弹簧回中。方向键微调，按住 Shift 走大步。这是单个二维平衡盘，不是 presence-name-cursors 的具名光标，也没有车辆图片。减弱动效瞬时改位置。离开视口后回中弹簧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/balance-plane-puck.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/balance-plane-puck.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tide-curve-scrub",
+      "type": "registry:ui",
+      "title": "Tide Curve Scrub",
+      "description": "原创。合成潮位面积曲线，拖竖线或按 Play 读出米数和涨落。峰谷点可以吸附。方向键微调，空格启停。站名只用 Station A。这是可 scrub 的潮位周期，不是 ridge-profile-scrub 的海拔剖面，也不是 sea-waves-background 的装饰海浪。减弱动效瞬时切读数，不再自动播放。离开视口后播放停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tide-curve-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tide-curve-scrub.tsx"
+        }
+      ]
     }
   ]
 }

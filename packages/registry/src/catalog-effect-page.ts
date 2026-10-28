@@ -1,6 +1,7 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 import { batch64PageComponents } from "./catalog-batch64"
 import { batch65PageComponents } from "./catalog-batch65"
+import { batch68PageComponents } from "./catalog-batch68"
 import { smoothuiFile as file } from "./catalog-sources"
 
 /** Effect，页面 / 转场。 */
@@ -63,5 +64,6 @@ export const effectPageComponents: ComponentMeta[] = [
     },
   ...batch64PageComponents,
   ...batch65PageComponents,
+  ...batch68PageComponents,
 ]
 

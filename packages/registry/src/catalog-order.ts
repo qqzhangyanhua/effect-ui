@@ -236,5 +236,11 @@ export const componentOrder = [
   "finish-swatch-morph",
   "undo-countdown-ring",
   "amount-fit-type",
+  "solar-orbit-scrub",
+  "live-stage-capsule",
+  "strength-segment-fill",
+  "swipe-style-cycle",
+  "clay-digit-morph",
+  "curve-focus-rail",
 ] as const
 

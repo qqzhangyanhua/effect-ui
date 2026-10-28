@@ -260,5 +260,11 @@ export const componentOrder = [
   "eyedrop-loupe-pick",
   "perforate-ticket-tear",
   "masonry-density-live",
+  "wind-streak-scrub",
+  "hex-trail-claim",
+  "fan-deck-pick",
+  "gauge-sentiment-sweep",
+  "ridge-profile-scrub",
+  "stress-band-meter",
 ] as const
 

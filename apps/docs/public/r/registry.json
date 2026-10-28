@@ -4950,6 +4950,132 @@
           "target": "components/ui/masonry-density-live.tsx"
         }
       ]
+    },
+    {
+      "name": "wind-streak-scrub",
+      "type": "registry:ui",
+      "title": "Wind Streak Scrub",
+      "description": "原创。抽象网格上叠短纹风粒子，底部时刻轨和 Play 改 t，风向和密度跟着变。左右方向键微调，空格启停。这是矢量场短纹加时轴，不是 wave-background 的海浪，也不是 horizon-sun-scrub 的地平线太阳。减弱动效停掉流动，只留静态短纹，时刻瞬时跳。离开视口后粒子帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/wind-streak-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/wind-streak-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hex-trail-claim",
+      "type": "registry:ui",
+      "title": "Hex Trail Claim",
+      "description": "原创。浅色底上一条弯曲的六边形探路，滑杆或方向键让格子依次点亮，底部显示 explored 百分比。Home 和 End 跳到两端。这是单列蜂窝认领，不是 hex-zone-hotspots 的热区，也不是 scan-rail-progress 的扫描条。减弱动效瞬时点亮，没有逐格弹簧。离开视口后自动认领停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hex-trail-claim.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hex-trail-claim.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fan-deck-pick",
+      "type": "registry:ui",
+      "title": "Fan Deck Pick",
+      "description": "原创。牌背沿底边排成扇形，左右滑动或方向键抬起焦点牌，点选或 Enter 翻面，露出几何图和中性标题。再点一次收回。这是扇形选牌翻面，不是 peek-fan-stack 的侧视窥视，也不是 flip-reveal-card 的单卡，更不是 arc-film-carousel 的胶片带。减弱动效瞬时切换正反面。没有空闲循环。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fan-deck-pick.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fan-deck-pick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gauge-sentiment-sweep",
+      "type": "registry:ui",
+      "title": "Gauge Sentiment Sweep",
+      "description": "原创。半圆从低到高的色弧，拖指针或点区段，落到 Strong down、Down、Neutral、Up、Strong up。松手可以吸到区段中心。这是情绪色阶和标签，不是 oscillation-arc-dial 的弧角选值，也不是 particle-dial-reveal 的粒子环。减弱动效瞬时跳针。离开视口后吸附帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/gauge-sentiment-sweep.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/gauge-sentiment-sweep.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ridge-profile-scrub",
+      "type": "registry:ui",
+      "title": "Ridge Profile Scrub",
+      "description": "原创。合成海拔脊线，拖竖线或距离轨时读出米数，迷你路径上的点一起走。可以按斜率着色，也可以标出起终点。这是可拖的海拔剖面，不是 scroll-svg-graph 的滚动描边，也不是 kpi-sparkline-card 的火花线。减弱动效瞬时改竖线和读数。没有循环帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ridge-profile-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ridge-profile-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stress-band-meter",
+      "type": "registry:ui",
+      "title": "Stress Band Meter",
+      "description": "原创。竖轴旁边三条有机色带，滑杆或点色带改应力值，大号数字和 LOW、MEDIUM、HIGH 一起变。当前色带更亮。这是应力色带读数，不是 breath-expand-ring 的呼吸环，也不是半圆情绪针。减弱动效瞬时切换，色带不再起伏。离开视口后微动停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stress-band-meter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stress-band-meter.tsx"
+        }
+      ]
     }
   ]
 }

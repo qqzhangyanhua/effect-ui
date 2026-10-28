@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 风纹、探路与应力色带
+
+登记在 `Batch 75`。地平线已占用 `Batch 74`。这是第 69 批调研里的六个交互，全部原创。运动参考 Mobbin 上的风场时刻、六边形探路、扇形牌面、情绪半圆、海拔剖面和应力色带，没有复制代码或素材，也没有移植头。`wind-streak-scrub` 用矢量场短纹和底部时轴改风向与密度，不是 `wave-background`，也不是 `horizon-sun-scrub`。`hex-trail-claim` 沿单列蜂窝依次认领并显示 explored 百分比，不是 `hex-zone-hotspots`。`fan-deck-pick` 在扇形牌背里点选翻面，不是 `peek-fan-stack`，也不是 `arc-film-carousel`。`gauge-sentiment-sweep` 用半圆色阶和区段标签落针，不是 `oscillation-arc-dial`。`ridge-profile-scrub` 拖海拔脊线读出米数，不是 `scroll-svg-graph`。`stress-band-meter` 用竖轴有机色带显示 LOW、MEDIUM、HIGH，不是 `breath-expand-ring`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：风纹不再流动，蜂窝瞬时点亮，牌面瞬时翻转，指针瞬时跳区，脊线瞬时改读数，色带不再起伏。离开视口时风粒子、自动认领、指针吸附和色带微动都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| wind-streak-scrub | 原创，灵感来自 Mobbin |
+| hex-trail-claim | 原创，灵感来自 Mobbin |
+| fan-deck-pick | 原创，灵感来自 Mobbin |
+| gauge-sentiment-sweep | 原创，灵感来自 Mobbin |
+| ridge-profile-scrub | 原创，灵感来自 Mobbin |
+| stress-band-meter | 原创，灵感来自 Mobbin |
+
 ### 地平线、呼吸环与砌体密度
 
 登记在 `Batch 74`。胶片条已占用 `Batch 73`。这是第 68 批调研里的六个交互，全部原创。运动参考 Mobbin 上的地平线太阳弧、引导呼吸环、具名协同光标、取色放大镜、齿孔票根和密度滑杆砌体，没有复制代码或素材，也没有移植头。`horizon-sun-scrub` 用天空洗色和地平线虚线弧上的太阳改时刻，不是 `solar-orbit-scrub` 的中央立方投影。`breath-expand-ring` 按吸气、停、呼气扩缩同心环，不是 `hold-fill-commit` 的长按确认。`presence-name-cursors` 是多枚具名彩色光标一起漂移，不是 `cursor-follow` 的单指针。`eyedrop-loupe-pick` 拖动放大镜取样并涂满外环，不是 `color-step-rail`。`perforate-ticket-tear` 把 Stub A 拖过齿孔阈值后撕开，不是 `sticker-peel`。`masonry-density-live` 用 Size、Gap、Padding 即时改瀑布列密度，不是 `bento-asymmetric-grid`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：时刻瞬时跳到滑块，呼吸环不再扩缩，光标停在布局位，放大镜不再放大，票根瞬时撕开或复位，砌体间距瞬时落下。离开视口时吸附、呼吸相位、光标漂移和回弹都会停下。

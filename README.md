@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 日轨、阶段胶囊与弧形焦点
+
+登记在 `Batch 71`。马赛克与金额字号已占用 `Batch 70`。这是第 65 批调研里的六个交互，全部原创。运动参考 Mobbin 上的太阳轨道阴影、直播阶段胶囊、分段强度、横滑换肤、黏土数字和弧形焦点轨，没有复制代码或素材，也没有移植头。`solar-orbit-scrub` 用椭圆轨道上的太阳手柄带动中央圆角立方的投影和 06:00–20:00 时刻，不是 `oscillation-arc-dial` 的数值刻度拨杆。`live-stage-capsule` 在深色胶囊里推进离散阶段，可以收起再展开，不是扫描轨或撤销倒计时。`strength-segment-fill` 让 Passphrase 样本驱动分段填色和清单打勾，不是 `color-step-rail`，也不是现成的密码强度条。`swipe-style-cycle` 只更换同一张卡的皮肤，没过阈值就弹回，不是 `swipe-action-row` 的底层动作钮。`clay-digit-morph` 用纵向挤胀过渡大号数字，不是 `amount-fit-type` 的宽度自适应。`curve-focus-rail` 让左侧标签沿圆弧进入焦点，右侧媒体跟着换，不是 `barrel-value-wheel`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：轨道改成更早和更晚，阶段瞬时切换，分段瞬时填满，换肤改成按钮，数字瞬时替换，弧轨改成平铺列表。离开视口时弹簧、自动推进、回弹、挤胀和惯性帧都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| solar-orbit-scrub | 原创，灵感来自 Mobbin |
+| live-stage-capsule | 原创，灵感来自 Mobbin |
+| strength-segment-fill | 原创，灵感来自 Mobbin |
+| swipe-style-cycle | 原创，灵感来自 Mobbin |
+| clay-digit-morph | 原创，灵感来自 Mobbin |
+| curve-focus-rail | 原创，灵感来自 Mobbin |
+
 ### 马赛克、滑轨与金额字号
 
 登记在 `Batch 70`。编号条与散落照片已占用 `Batch 69`。这是第 64 批调研里的六个交互，全部原创。运动参考 Mobbin 上的品牌格交错翻转、像素色流标题、滑轨确认、色卡换面漆、撤销倒计时环和金额自适应字号，没有复制代码或素材，也没有移植头。`mosaic-tile-flip` 是规则网格瓦片按对角线翻转或错落入场，不是 `bento-asymmetric-grid` 的不等分放大格。`pixel-stream-morph` 把短词栅格成像素蒙版，色带在字面里流，不是 `pixel-transition` 的整图溶解。`slide-rail-confirm` 要拇指滑到阈值才确认，没到就弹回，成功后停在对勾直到 Reset，不是 `slide-to-confirm` 松手归零，也不是 `swipe-action-row` 或 `hold-fill-commit`。`finish-swatch-morph` 用底部色卡切换同一块产品剪影的色泽，不是 `tab-media-swap` 的左表右媒。`undo-countdown-ring` 在提交后给出带环倒计时的撤销，归零后锁定，不是长按提交。`amount-fit-type` 让货币金额随位数在容器里缩小或回到上限，不是 `barrel-value-wheel`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：瓦片瞬时出现，像素字静止，滑轨改成一键确认，色卡瞬时切换，撤销环改成静态秒数，金额字号瞬时落下。离开视口时色流、入场、回弹和倒计时帧都会停下。

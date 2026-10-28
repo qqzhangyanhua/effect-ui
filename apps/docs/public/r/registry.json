@@ -4472,6 +4472,120 @@
           "target": "components/ui/amount-fit-type.tsx"
         }
       ]
+    },
+    {
+      "name": "solar-orbit-scrub",
+      "type": "registry:ui",
+      "title": "Solar Orbit Scrub",
+      "description": "原创。椭圆轨道上拖太阳手柄，中央圆角立方的投影长度和角度跟着方位变，旁边的胶囊显示从 06:00 到 20:00 的时刻。松手可以停在原地，也可以吸到日出或日落。左右方向键微调。这是阴影可视化，不是 oscillation-arc-dial 的数值刻度拨杆，也不是年份轨或粒子环盘。减弱动效用更早、更晚瞬时改位置，不再弹簧。离开视口后弹簧帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/solar-orbit-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/solar-orbit-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "live-stage-capsule",
+      "type": "registry:ui",
+      "title": "Live Stage Capsule",
+      "description": "原创。深色胶囊里放状态文案和离散阶段节点，可以收成窄条再展开。Next stage、节点和方向键都会推进，到最后一阶段停住。这是胶囊里的阶段，不是 scan-rail-progress 的框边扫描，也不是撤销倒计时或长按填环。减弱动效瞬时切换和展开。离开视口后自动推进停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/live-stage-capsule.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/live-stage-capsule.tsx"
+        }
+      ]
+    },
+    {
+      "name": "strength-segment-fill",
+      "type": "registry:ui",
+      "title": "Strength Segment Fill",
+      "description": "原创。Passphrase 样本文字变长或变复杂时，分段条按分数填色，下面的清单从图叉变成对勾。Weak、Medium、Strong 是预设，也可以直接打字。这是派生出来的强度反馈，不是 color-step-rail 的色阶选择，也不是金额字号。减弱动效瞬时填段和打勾。没有循环帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/strength-segment-fill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/strength-segment-fill.tsx"
+        }
+      ]
+    },
+    {
+      "name": "swipe-style-cycle",
+      "type": "registry:ui",
+      "title": "Swipe Style Cycle",
+      "description": "原创。同一张卡的标题和正文不动，横滑或 Next style 在几套皮肤之间循环：默认、强调、深底，多一套时还有软底。没过阈值就弹回。这只换这张卡的皮肤，不是 swipe-action-row 的底层动作钮，也不是翻页或左表右媒。减弱动效用按钮瞬时切换，不再跟手。离开视口后回弹帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/swipe-style-cycle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/swipe-style-cycle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "clay-digit-morph",
+      "type": "registry:ui",
+      "title": "Clay Digit Morph",
+      "description": "原创。大号数字带软浮雕，换值时纵向挤一下再胀开，而不是淡入或翻牌。数字键、加减和 Replay 都能改，Replay 走 0、7、3。这是固定字号的字形过渡，不是 amount-fit-type 的宽度自适应，也不是滚筒或乱码。减弱动效瞬时换数字。离开视口后过渡帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/clay-digit-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/clay-digit-morph.tsx"
+        }
+      ]
+    },
+    {
+      "name": "curve-focus-rail",
+      "type": "registry:ui",
+      "title": "Curve Focus Rail",
+      "description": "原创。左侧标签沿圆弧排开，滚轮、拖动或点选让一项进入焦点，右侧色块和标题一起换。上下方向键也能走。这是标签加媒体的弧轨，不是 barrel-value-wheel 的数字滚筒，也不是单拇指弧拨或水平编号条。减弱动效改成平铺列表并瞬时换媒体。离开视口后惯性帧停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/curve-focus-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/curve-focus-rail.tsx"
+        }
+      ]
     }
   ]
 }

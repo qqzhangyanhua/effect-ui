@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 叠卡、热区与翻页
+
+登记在 `Batch 66`。色阶与虹彩边已占用 `Batch 65`。这是第 60 批调研里的六个交互，全部原创。运动参考 Mobbin 上的钉住叠卡、玻璃三列、地图热区、轨道动作、扫描进度和翻页卷曲，没有复制代码或素材，也没有移植头。`sticky-stack-cards` 在滚动时把当前卡片钉住并缩小旋转，下一张从下方顶上来，不是 `sticky-grid-scroll` 的网格错位。`glass-feature-trio` 是固定三列磨砂卡，各自带色块，键盘可以 Tab 过去，不是单张 `glass-card`。`hex-zone-hotspots` 在抽象平面上放六边形热区，点选后弹出详情，Esc 收起，没有地图 SDK。`orbital-action-ring` 从锚点弹出虚线圆轨道上的动作，方向键沿环移动。`scan-rail-progress` 在遮罩里来回扫描，可以自动走完，也可以按住才涨。`page-curl-turn` 从右下角卷曲翻到下一页，不是撕贴纸，也不是三维翻转。没有新增依赖，没有使用 GSAP、tldraw、WebGL 或地图 SDK。减弱动效停在终态：叠卡改成静止竖列，玻璃不再抬起，热区不再脉冲，轨道改成竖向列表，扫描改成一次完成，翻页不再卷曲。离开视口时滚动监听、脉冲和扫描帧都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| sticky-stack-cards | 原创，灵感来自 Mobbin |
+| glass-feature-trio | 原创，灵感来自 Mobbin |
+| hex-zone-hotspots | 原创，灵感来自 Mobbin |
+| orbital-action-ring | 原创，灵感来自 Mobbin |
+| scan-rail-progress | 原创，灵感来自 Mobbin |
+| page-curl-turn | 原创，灵感来自 Mobbin |
+
 ### 色阶、刮开与虹彩边
 
 登记在 `Batch 65`。跳跃与评分已占用 `Batch 64`。这是第 59 批调研里的六个交互，全部原创。运动参考 Mobbin 上的色阶轨、刮开奖励、横滑动作、粒子拨盘、擦雾开场和虹彩描边，没有复制代码或素材，也没有移植头。`color-step-rail` 是横向色阶，拖动或方向键步进，活动色块弹起后可以复制 hex 或 OKLCH。`scratch-line-field` 用指针路径擦掉不透明箔，过了阈值才揭开。`swipe-action-row` 把一行横向拖出稍后、归档和删除，Alt 加方向键也能打开，不是 `drag-rate-tiles` 的整卡评分，也不是只有一个动作。`particle-dial-reveal` 拖动半圆拨盘，数字由粒子聚合成形，不是滚轮，也不是弧形仪表。`scrub-fog-clear` 擦掉盖在内容上的模糊，不是刮奖箔，也不是 `spotlight-focus-blur` 的聚光。`iridescent-edge-card` 只让描边跟着指针角度走，卡面不动，不是整卡全息，也不是单色跑光。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：色块不再弹起，箔层改成一次揭开，行内直接露出动作，拨盘只留静止数字，雾层关掉，描边不再跟随。离开视口时粒子帧停止。

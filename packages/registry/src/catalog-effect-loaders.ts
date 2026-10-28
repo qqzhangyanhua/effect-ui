@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch66LoadersComponents } from "./catalog-batch66"
 const ui11: PropDoc[] = [
   {
     name: "className",
@@ -217,6 +218,7 @@ export const effectLoadersComponents: ComponentMeta[] = [
         },
         ...ui37,
       ],
-    }
+    },
+  ...batch66LoadersComponents,
 ]
 

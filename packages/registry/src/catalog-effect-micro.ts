@@ -9,6 +9,7 @@ import { batch70MicroComponents } from "./catalog-batch70"
 import { batch71MicroComponents } from "./catalog-batch71"
 import { batch72MicroComponents } from "./catalog-batch72"
 import { batch73MicroComponents } from "./catalog-batch73"
+import { batch74MicroComponents } from "./catalog-batch74"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，微交互。 */
@@ -458,5 +459,6 @@ export const effectMicroComponents: ComponentMeta[] = [
   ...batch71MicroComponents,
   ...batch72MicroComponents,
   ...batch73MicroComponents,
+  ...batch74MicroComponents,
 ]
 

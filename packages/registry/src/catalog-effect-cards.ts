@@ -8,6 +8,7 @@ import { batch70CardsComponents } from "./catalog-batch70"
 import { batch71CardsComponents } from "./catalog-batch71"
 import { batch72CardsComponents } from "./catalog-batch72"
 import { batch73CardsComponents } from "./catalog-batch73"
+import { batch74CardsComponents } from "./catalog-batch74"
 import { reactBitsCredit as credit } from "./catalog-sources"
 
 /** Effect，卡片 / 3D。 */
@@ -798,5 +799,6 @@ export const effectCardsComponents: ComponentMeta[] = [
   ...batch71CardsComponents,
   ...batch72CardsComponents,
   ...batch73CardsComponents,
+  ...batch74CardsComponents,
 ]
 

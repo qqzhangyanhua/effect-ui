@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useSyncExternalStore, type PointerEvent, type ReactNode } from "react"
+import { useState, useSyncExternalStore, type CSSProperties, type PointerEvent, type ReactNode } from "react"
 
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/cn"
@@ -86,30 +86,38 @@ export function IridescentEdgeCard({
       onFocus={() => setPhase((current) => (current === "tracking" ? current : "focus"))}
       onBlur={() => setPhase((current) => (current === "focus" ? "idle" : current))}
       className={cn(
-        "relative rounded-3xl bg-card text-card-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
+        "relative overflow-hidden rounded-3xl bg-card text-card-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
         className,
       )}
-      style={{ padding: edge }}
+      style={
+        {
+          padding: edge,
+          "--edge": `${edge}px`,
+        } as CSSProperties
+      }
     >
       <div
         aria-hidden
-        data-edge-ring=""
-        className={cn(
-          "pointer-events-none absolute inset-0 rounded-[inherit] motion-reduce:animate-none motion-reduce:transition-none",
-          spinning && "animate-spin",
-        )}
-        style={{
-          background: gradient,
-          transform: spinning ? undefined : `rotate(${angle}deg)`,
-          transition: quiet ? "none" : `transform ${ms}ms ease-out`,
-          animationDuration: spinning ? `${Math.max(4, 14 / rateOf(pace))}s` : undefined,
-          padding: edge,
-          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-          WebkitMaskComposite: "xor",
-          maskComposite: "exclude",
-        }}
-      />
-      <div data-content="still" className="relative rounded-[inherit] bg-card px-5 py-6">
+        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[220%] -translate-x-1/2 -translate-y-1/2"
+      >
+        <div
+          data-edge-ring=""
+          className={cn(
+            "size-full motion-reduce:animate-none motion-reduce:transition-none",
+            spinning && "animate-spin",
+          )}
+          style={{
+            background: gradient,
+            transform: spinning ? undefined : `rotate(${angle}deg)`,
+            transition: quiet ? "none" : `transform ${ms}ms ease-out`,
+            animationDuration: spinning ? `${Math.max(4, 14 / rateOf(pace))}s` : undefined,
+          }}
+        />
+      </div>
+      <div
+        data-content="still"
+        className="relative rounded-[max(0px,calc(1.5rem-var(--edge)))] bg-card px-5 py-6"
+      >
         {children ?? (
           <div className="space-y-1">
             <p className="font-display text-xl tracking-tight">虹彩留在边上</p>

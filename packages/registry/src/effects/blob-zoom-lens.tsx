@@ -20,8 +20,13 @@ interface Point {
 }
 
 const fieldImage = [
+  "radial-gradient(circle at 50% 50%, transparent 0 5.5%, var(--foreground) 5.8% 6.6%, transparent 7%)",
+  "radial-gradient(circle at 44% 58%, var(--primary) 0 3.2%, transparent 3.6%)",
+  "radial-gradient(circle at 58% 44%, var(--accent) 0 2.4%, transparent 2.8%)",
   "radial-gradient(circle at 28% 36%, var(--primary) 0 16%, transparent 17%)",
   "radial-gradient(circle at 72% 62%, var(--accent) 0 12%, transparent 13%)",
+  "repeating-linear-gradient(90deg, transparent 0 22px, color-mix(in oklab, var(--foreground) 22%, transparent) 22px 23px)",
+  "repeating-linear-gradient(0deg, transparent 0 22px, color-mix(in oklab, var(--foreground) 16%, transparent) 22px 23px)",
   "linear-gradient(140deg, var(--muted), var(--background))",
 ].join(",")
 

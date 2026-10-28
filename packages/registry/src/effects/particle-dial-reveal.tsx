@@ -85,7 +85,8 @@ function glyphPoints(text: string) {
 function handlePoint(value: number, min: number, max: number) {
   const span = max - min || 1
   const angle = Math.PI * (1 - (value - min) / span)
-  return { x: 160 + Math.cos(angle) * 112, y: 150 - Math.sin(angle) * 112 }
+  const round = (coordinate: number) => Math.round(coordinate * 1000) / 1000
+  return { x: round(160 + Math.cos(angle) * 112), y: round(150 - Math.sin(angle) * 112) }
 }
 
 export function ParticleDialReveal({

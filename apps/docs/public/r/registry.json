@@ -4011,6 +4011,119 @@
           "target": "components/ui/page-curl-turn.tsx"
         }
       ]
+    },
+    {
+      "name": "bento-asymmetric-grid",
+      "type": "registry:ui",
+      "title": "Bento Asymmetric Grid",
+      "description": "原创。不等分的功能格：其中一格跨两列。悬停、聚焦或触屏点选时它放大并抬到上层，旁边的格子变暗收一点。键盘可以 Tab 逐格走过。这不是 sticky-grid-scroll 的滚动错位，也不是洗牌入场或近距缩放，更不是固定三列的玻璃卡。减弱动效只留静止网格和焦点环，不再缩放压暗。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/bento-asymmetric-grid.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bento-asymmetric-grid.tsx"
+        }
+      ]
+    },
+    {
+      "name": "case-study-carousel",
+      "type": "registry:ui",
+      "title": "Case Study Carousel",
+      "description": "原创。横向作品集：当前这张最大，左右露出邻卡一角，下面是标题和摘要。上一则、下一则、方向键和横向拖动都能换卡。这不是 apple-cards-carousel 的三维封面流，也不是缩略图路径或抛掷叠卡。减弱动效会立刻换卡，邻卡不再缩小。离开视口后不再排动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/case-study-carousel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/case-study-carousel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hold-fill-commit",
+      "type": "registry:ui",
+      "title": "Hold Fill Commit",
+      "description": "原创。按住中心按钮，圆环或底条才会涨；松手没到阈值就回落。涨满时 onCommit 只调用一次，然后可以 Reset。空格和 Enter 按住同样有效。这不是 scan-rail-progress 的遮罩扫描轨，也不是侧滑动作或开屏预载。减弱动效改成点一次就提交。离开视口后累计和动画帧都会停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hold-fill-commit.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hold-fill-commit.tsx"
+        }
+      ]
+    },
+    {
+      "name": "drag-lock-escape",
+      "type": "registry:ui",
+      "title": "Drag Lock Escape",
+      "description": "原创。把锁从虚线安全圆里拖出去才解锁，没拖出就弹回圆心。方向键可以把锁移出圆，Enter 在圆外确认，Esc 复位。这不是单行侧滑，也不是靶心光标或磁吸芯片。减弱动效用 Unlock 一次完成。离开视口后回弹帧暂停。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/drag-lock-escape.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/drag-lock-escape.tsx"
+        }
+      ]
+    },
+    {
+      "name": "before-after-wipe",
+      "type": "registry:ui",
+      "title": "Before After Wipe",
+      "description": "原创。同一张画幅里拖竖向或横向手柄，擦出之前和之后两层。左右方向键按 pace 微调，横向手柄也可以用上下方向键。这不是滚动时裂开的横缝，也不是撕角、三维翻转或卷页。减弱动效改成两个按钮，在全部之前和全部之后之间切换。拖动手柄不使用动画帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/before-after-wipe.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/before-after-wipe.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kinetic-scramble-text",
+      "type": "registry:ui",
+      "title": "Kinetic Scramble Text",
+      "description": "原创。悬停、聚焦或点按后，这句话逐字乱码，再从左到右落定，可以再来一次。触屏不靠悬停，点一下就会跑。这不是满屏的 letter-glitch-wall，也不是流式生成、压力形变或轮换词。减弱动效直接显示终稿，不再乱码。离开视口后乱码帧取消。读屏始终拿到终稿。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/kinetic-scramble-text.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/kinetic-scramble-text.tsx"
+        }
+      ]
     }
   ]
 }

@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 马赛克、作品集与按住提交
+
+登记在 `Batch 67`。叠卡与翻页已占用 `Batch 66`。这是第 61 批调研里的六个交互，全部原创。运动参考 Mobbin 上的不等分功能格、作品集轮播、按住填环、拖锁出圈、前后对照擦拭和乱码落定，没有复制代码或素材，也没有移植头。`bento-asymmetric-grid` 用跨列格子做马赛克，聚焦时放大并压暗邻居，不是 `sticky-grid-scroll` 的错位网格，也不是 `glass-feature-trio`。`case-study-carousel` 是平面作品集，主卡居中、两侧窥视，不是 `apple-cards-carousel` 的三维封面流。`hold-fill-commit` 要按住圆环或底条涨满才提交，松手回落，不是 `scan-rail-progress` 的扫描轨。`drag-lock-escape` 把锁拖出安全圆才解锁。`before-after-wipe` 在同一画幅里拖竖向手柄擦出前后两层。`kinetic-scramble-text` 让一句文案逐字乱码再落定，不是 `letter-glitch-wall`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：网格不再缩放，轮播瞬时切卡，按住改成点一次提交，锁改成 Unlock，对照改成两个按钮，乱码直接显示终稿。离开视口时填环、回弹和乱码帧都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| bento-asymmetric-grid | 原创，灵感来自 Mobbin |
+| case-study-carousel | 原创，灵感来自 Mobbin |
+| hold-fill-commit | 原创，灵感来自 Mobbin |
+| drag-lock-escape | 原创，灵感来自 Mobbin |
+| before-after-wipe | 原创，灵感来自 Mobbin |
+| kinetic-scramble-text | 原创，灵感来自 Mobbin |
+
 ### 叠卡、热区与翻页
 
 登记在 `Batch 66`。色阶与虹彩边已占用 `Batch 65`。这是第 60 批调研里的六个交互，全部原创。运动参考 Mobbin 上的钉住叠卡、玻璃三列、地图热区、轨道动作、扫描进度和翻页卷曲，没有复制代码或素材，也没有移植头。`sticky-stack-cards` 在滚动时把当前卡片钉住并缩小旋转，下一张从下方顶上来，不是 `sticky-grid-scroll` 的网格错位。`glass-feature-trio` 是固定三列磨砂卡，各自带色块，键盘可以 Tab 过去，不是单张 `glass-card`。`hex-zone-hotspots` 在抽象平面上放六边形热区，点选后弹出详情，Esc 收起，没有地图 SDK。`orbital-action-ring` 从锚点弹出虚线圆轨道上的动作，方向键沿环移动。`scan-rail-progress` 在遮罩里来回扫描，可以自动走完，也可以按住才涨。`page-curl-turn` 从右下角卷曲翻到下一页，不是撕贴纸，也不是三维翻转。没有新增依赖，没有使用 GSAP、tldraw、WebGL 或地图 SDK。减弱动效停在终态：叠卡改成静止竖列，玻璃不再抬起，热区不再脉冲，轨道改成竖向列表，扫描改成一次完成，翻页不再卷曲。离开视口时滚动监听、脉冲和扫描帧都会停下。

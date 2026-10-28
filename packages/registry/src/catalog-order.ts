@@ -212,5 +212,11 @@ export const componentOrder = [
   "orbital-action-ring",
   "scan-rail-progress",
   "page-curl-turn",
+  "bento-asymmetric-grid",
+  "case-study-carousel",
+  "hold-fill-commit",
+  "drag-lock-escape",
+  "before-after-wipe",
+  "kinetic-scramble-text",
 ] as const
 

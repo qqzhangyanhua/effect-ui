@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch74CursorComponents } from "./catalog-batch74"
 import { reactBitsCredit as credit, smoothuiFile as file } from "./catalog-sources"
 
 /** Effect，光标 / 悬停。 */
@@ -278,6 +279,7 @@ export const effectCursorComponents: ComponentMeta[] = [
         { name: "layers", type: "number", defaultValue: "5", description: "回声层数，限制在 2 到 8。" },
         ...ui4,
       ],
-    }
+    },
+  ...batch74CursorComponents,
 ]
 

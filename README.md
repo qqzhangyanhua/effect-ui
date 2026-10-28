@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 地平线、呼吸环与砌体密度
+
+登记在 `Batch 74`。胶片条已占用 `Batch 73`。这是第 68 批调研里的六个交互，全部原创。运动参考 Mobbin 上的地平线太阳弧、引导呼吸环、具名协同光标、取色放大镜、齿孔票根和密度滑杆砌体，没有复制代码或素材，也没有移植头。`horizon-sun-scrub` 用天空洗色和地平线虚线弧上的太阳改时刻，不是 `solar-orbit-scrub` 的中央立方投影。`breath-expand-ring` 按吸气、停、呼气扩缩同心环，不是 `hold-fill-commit` 的长按确认。`presence-name-cursors` 是多枚具名彩色光标一起漂移，不是 `cursor-follow` 的单指针。`eyedrop-loupe-pick` 拖动放大镜取样并涂满外环，不是 `color-step-rail`。`perforate-ticket-tear` 把 Stub A 拖过齿孔阈值后撕开，不是 `sticker-peel`。`masonry-density-live` 用 Size、Gap、Padding 即时改瀑布列密度，不是 `bento-asymmetric-grid`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：时刻瞬时跳到滑块，呼吸环不再扩缩，光标停在布局位，放大镜不再放大，票根瞬时撕开或复位，砌体间距瞬时落下。离开视口时吸附、呼吸相位、光标漂移和回弹都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| horizon-sun-scrub | 原创，灵感来自 Mobbin |
+| breath-expand-ring | 原创，灵感来自 Mobbin |
+| presence-name-cursors | 原创，灵感来自 Mobbin |
+| eyedrop-loupe-pick | 原创，灵感来自 Mobbin |
+| perforate-ticket-tear | 原创，灵感来自 Mobbin |
+| masonry-density-live | 原创，灵感来自 Mobbin |
+
 ### 胶片条、滚花拨盘与景深标题
 
 登记在 `Batch 73`。片名年份已占用 `Batch 72`。这是第 67 批调研里的六个交互，全部原创。运动参考 Mobbin 上的封面胶片条、滚花拨盘、弧形胶片走马灯、波形剪辑窗、景深标题和横向海报条，没有复制代码或素材，也没有移植头。`filmstrip-frame-pick` 用横向胶片帧同步大预览，不是 `year-snap-rail` 的年份轨。`knurl-scrub-dial` 让滚花圆柱表面跟手滚动，不是 `barrel-value-wheel` 的数字筒。`arc-film-carousel` 把帧卡排在开弧胶片带上，不是 `curve-focus-rail`。`vinyl-clip-window` 用旋转黑胶和可拖剪辑窗选一段，不是 `audio-spectrum`。`depth-blur-line` 按行索引做景深模糊，不是 `title-year-list`。`border-focus-strip` 给焦点海报加粗描边，不是 `apple-cards-carousel`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：胶片瞬时切帧，拨盘改成滑块，弧带瞬时换焦，黑胶停止旋转，标题只降透明度，海报不再放大。离开视口时吸附、惯性和旋转都会停下。

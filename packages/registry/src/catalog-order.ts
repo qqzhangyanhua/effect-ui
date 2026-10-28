@@ -254,5 +254,11 @@ export const componentOrder = [
   "vinyl-clip-window",
   "depth-blur-line",
   "border-focus-strip",
+  "horizon-sun-scrub",
+  "breath-expand-ring",
+  "presence-name-cursors",
+  "eyedrop-loupe-pick",
+  "perforate-ticket-tear",
+  "masonry-density-live",
 ] as const
 

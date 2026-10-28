@@ -4825,6 +4825,131 @@
           "target": "components/ui/border-focus-strip.tsx"
         }
       ]
+    },
+    {
+      "name": "horizon-sun-scrub",
+      "type": "registry:ui",
+      "title": "Horizon Sun Scrub",
+      "description": "原创。地平线上方一条虚线弧，太阳沿弧跟着手走，天空在夜、黎明、日间和黄昏之间洗色，时刻 pill 从 05:00 走到 21:00。底部尺和太阳共用同一个 t。松手可以吸到 Rise、Noon、Set。左右方向键微调。这是天空渐变加地平线弧，不是 solar-orbit-scrub 的中央立方投影，也不是 oscillation-arc-dial 的弧角选值。减弱动效用滑块瞬时改时刻，不再播放吸附。离开视口后吸附帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/horizon-sun-scrub.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/horizon-sun-scrub.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breath-expand-ring",
+      "type": "registry:ui",
+      "title": "Breath Expand Ring",
+      "description": "原创。同心环按 Inhale、Hold、Exhale 扩缩，中央写当前相位，上方显示吸气和呼气秒数。Start 或空格开始，再按暂停。上下方向键改演示节奏。这是自动相位引导，不是 hold-fill-commit 的长按确认，也不是 undo-countdown-ring 的撤销倒计时。减弱动效保持静态环，只瞬时切换相位文案。离开视口后相位循环停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/breath-expand-ring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/breath-expand-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "presence-name-cursors",
+      "type": "registry:ui",
+      "title": "Presence Name Cursors",
+      "description": "原创。画布上多枚彩色箭头光标，各自带着 Ada、Kai 这类中性名牌，缓慢漂移。点选或方向键聚焦一枚，Enter 钉住。这是多用户具名光标场，不是 cursor-follow 的单指针跟随，也不是 cursor-trail 的拖尾。减弱动效光标停在布局位，只瞬时改焦点。离开视口后漂移停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/presence-name-cursors.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/presence-name-cursors.tsx"
+        }
+      ]
+    },
+    {
+      "name": "eyedrop-loupe-pick",
+      "type": "registry:ui",
+      "title": "Eyedrop Loupe Pick",
+      "description": "原创。在几何色块上拖动圆形放大镜，外环涂上采样到的主题色，下方 chip 显示色名。Confirm 锁定。方向键微调位置。这是自由拖动取色，不是 color-step-rail 的色阶，也不是 blob-zoom-lens 的液态放大。减弱动效不放大，移动时瞬时改环色。没有循环帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/eyedrop-loupe-pick.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/eyedrop-loupe-pick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "perforate-ticket-tear",
+      "type": "registry:ui",
+      "title": "Perforate Ticket Tear",
+      "description": "原创。票面写着 Admit One，齿孔和侧凹槽分开票根 Stub A。把票根拖过阈值就撕离并盖上 Redeemed，没过阈值就弹回。方向键累积进度，Enter 确认。这是齿孔票根撕开，不是 sticker-peel 的揭贴纸，也不是 page-curl-turn 的卷页。减弱动效瞬时在完整和撕开之间切换。离开视口后回弹帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/perforate-ticket-tear.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/perforate-ticket-tear.tsx"
+        }
+      ]
+    },
+    {
+      "name": "masonry-density-live",
+      "type": "registry:ui",
+      "title": "Masonry Density Live",
+      "description": "原创。圆角色块排成瀑布列，Size、Gap、Padding 滑杆即时改密度，列数也可以调。这是全局密度控制，不是 proximity-scale-grid 的近距缩放，也不是 bento-asymmetric-grid 的固定拼贴。减弱动效瞬时改间距，不再过渡。离开视口后落定帧停止。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/masonry-density-live.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/masonry-density-live.tsx"
+        }
+      ]
     }
   ]
 }

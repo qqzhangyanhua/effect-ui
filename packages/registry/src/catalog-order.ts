@@ -296,5 +296,11 @@ export const componentOrder = [
   "dot-scale-matrix",
   "interlock-streak-glow",
   "chapter-dash-seek",
+  "rail-pin-annotate",
+  "pane-blend-compare",
+  "layer-peel-sheet",
+  "funnel-drop-stage",
+  "status-rail-hop",
+  "node-link-pulse",
 ] as const
 

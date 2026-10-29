@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 轨钉、软混合与状态跳跃
+
+登记在 `Batch 81`。剪辑柄已占用 `Batch 80`。这是第 75 批调研里的六个交互，全部原创。运动参考 Mobbin 上的时间轴标注、对比滑杆、层叠卡片、购买漏斗、状态轨和关系连线，没有复制代码或素材，也没有移植头。`rail-pin-annotate` 在水平内容轨上拖钉并展开标注，不是 `scroll-timeline-reveal`，也不是 `wave-pin-anchor` 或 `chapter-dash-seek`。`pane-blend-compare` 用竖滑杆做双面板软混合，不是 `before-after-wipe` 的硬裁切。`layer-peel-sheet` 从页角撕开文档露出下层摘要，不是 `sticker-peel`，也不是 `flip-reveal-card` 或 `peek-fan-stack`。`funnel-drop-stage` 用逐级收窄的漏斗显示掉量，不是 `stage-lane-flow`。`status-rail-hop` 让状态胶囊沿合法边跳跃，非法转移会轻拒，不是 `spine-node-march` 或 `live-stage-capsule`。`node-link-pulse` 点选节点后脉冲邻边，不是 `scroll-svg-graph`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：标注、混合比、翻页、漏斗高亮、状态和邻边都瞬时切换，没有弹簧、卷曲或脉冲。离开视口时钉呼吸、翻页过渡、跳跃弧和边脉冲都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| rail-pin-annotate | Inspired by Paired Timeline and Life Reset (via Mobbin), original implementation |
+| pane-blend-compare | Inspired by Photoroom and Azar (via Mobbin), original implementation |
+| layer-peel-sheet | Inspired by Wysa and Locket (via Mobbin), original implementation |
+| funnel-drop-stage | Inspired by Squarespace and Monarch (via Mobbin), original implementation |
+| status-rail-hop | Inspired by LinkedIn, monday.com, and Airtasker (via Mobbin), original implementation |
+| node-link-pulse | Inspired by Obsidian and Freeform (via Mobbin), original implementation |
+
 ### 剪辑柄、波形钉与章节轨
 
 登记在 `Batch 80`。位槽已占用 `Batch 79`。这是第 74 批调研里的六个交互，全部原创。运动参考 Mobbin 上的时间线剪柄、波形标记、产品热点、习惯圆点、连胜环和分段播放轨，没有复制代码或素材，也没有移植头。`trim-handle-span` 用左右粗柄改剪辑跨度，中间是 playhead，不是 `filmstrip-frame-pick` 的单帧点选，也不是 `vinyl-clip-window` 或 `wave-clip-window`。`wave-pin-anchor` 在合成波形上点钉吸附并展开短文，不是 `audio-spectrum`，也没有真实音频。`hotspot-pulse-map` 在抽象产品线稿上展开脉冲热点，不是 `hex-zone-hotspots`，也不是 `radial-hotspot-labels`。`dot-scale-matrix` 用圆点半径编码强度，不是 `heatmap-calendar`。`interlock-streak-glow` 把多个进度圆用液体桥连起来依次点亮，不是 `charge-target-ring`。`chapter-dash-seek` 用不等长虚线段跳章，不是 `scan-rail-progress`，也不是 `stage-lane-flow`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：剪辑跨度、波形进度、热点标注、圆点焦点、连胜数和章节进度都瞬时切换，没有弹簧、呼吸或自动播放。离开视口时播放、脉冲、微呼吸和外辉都会停下。

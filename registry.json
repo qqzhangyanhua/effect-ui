@@ -5704,6 +5704,118 @@
           "target": "components/ui/chapter-dash-seek.tsx"
         }
       ]
+    },
+    {
+      "name": "rail-pin-annotate",
+      "type": "registry:ui",
+      "title": "Rail Pin Annotate",
+      "description": "原创。水平工作台内容轨上可拖钉标注，点钉展开短 callout。方向键切钉，Enter 展开，方括号微调位置。这是轨上钉评，不是 scroll-timeline-reveal 的滚动揭示，也不是 wave-pin-anchor 的波形钉，更不是 chapter-dash-seek 的播放章节段。减弱动效瞬时切展开与位置。demo 用中性 Milestone 文案，不用社交或健康品牌商标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rail-pin-annotate.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rail-pin-annotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pane-blend-compare",
+      "type": "registry:ui",
+      "title": "Pane Blend Compare",
+      "description": "原创。左右两块中性内容面板用中央竖滑杆做软混合 crossfade，不是硬裁切。方向键调混合比，Home End 跳端。这是双面板软混合，不是 before-after-wipe 的照片硬 wipe。减弱动效瞬时切混合比。demo 用抽象色块布局，不用真人照片与修图商标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/pane-blend-compare.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/pane-blend-compare.tsx"
+        }
+      ]
+    },
+    {
+      "name": "layer-peel-sheet",
+      "type": "registry:ui",
+      "title": "Layer Peel Sheet",
+      "description": "原创。上层文档卡片右下角可拖撕开露出下层摘要，过阈值翻到下一页。方向键调 peel，Enter 确认翻页。这是多页文档角撕，不是 sticker-peel 单贴纸，也不是 flip-reveal-card 整卡翻转，更不是 peek-fan-stack 扇形 peek。减弱动效瞬时切页无卷曲。离开视口后翻页过渡停止。demo 用中性 Doc 文案，不用真实人脸照片。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/layer-peel-sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/layer-peel-sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "funnel-drop-stage",
+      "type": "registry:ui",
+      "title": "Funnel Drop Stage",
+      "description": "原创。竖直漏斗宽条逐级收窄，点选某级高亮并显示掉量百分比。方向键切级，Enter 锁定。这是漏斗掉量图，不是 stage-lane-flow 多泳道，也不是 strip-step-expand 条带展开，更不是 color-step-rail 色阶轨。减弱动效瞬时切高亮无宽度 morph。demo 用中性 Visits 到 Buy 文案，不用建站商标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/funnel-drop-stage.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/funnel-drop-stage.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-rail-hop",
+      "type": "registry:ui",
+      "title": "Status Rail Hop",
+      "description": "原创。水平状态轨上胶囊跳到下一合法态，非法转移轻拒。方向键在邻态间跳，Enter 确认。这是带合法边的状态机跳跃，不是 spine-node-march 竖脊行进，也不是 live-stage-capsule 直播胶囊，更不是 swipe-style-cycle 样式循环。减弱动效瞬时切态无跳跃弧。离开视口后跳跃过渡停止。demo 用 Saved 到 Archived 中性态名，不照搬第三方品牌色。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/status-rail-hop.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/status-rail-hop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "node-link-pulse",
+      "type": "registry:ui",
+      "title": "Node Link Pulse",
+      "description": "原创。小关系图点选节点后邻边路径脉冲高亮并旁侧列标签。方向键切节点，Enter 锁定。这是点选脉冲邻边，不是 scroll-svg-graph 滚动大图，也不是 spine-node-march 竖脊行进。减弱动效静态高亮边无脉冲。离开视口后脉冲停止。demo 用中性 Note Tag 节点，不用知识库商标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/node-link-pulse.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/node-link-pulse.tsx"
+        }
+      ]
     }
   ]
 }

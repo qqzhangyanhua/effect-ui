@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 剪辑柄、波形钉与章节轨
+
+登记在 `Batch 80`。位槽已占用 `Batch 79`。这是第 74 批调研里的六个交互，全部原创。运动参考 Mobbin 上的时间线剪柄、波形标记、产品热点、习惯圆点、连胜环和分段播放轨，没有复制代码或素材，也没有移植头。`trim-handle-span` 用左右粗柄改剪辑跨度，中间是 playhead，不是 `filmstrip-frame-pick` 的单帧点选，也不是 `vinyl-clip-window` 或 `wave-clip-window`。`wave-pin-anchor` 在合成波形上点钉吸附并展开短文，不是 `audio-spectrum`，也没有真实音频。`hotspot-pulse-map` 在抽象产品线稿上展开脉冲热点，不是 `hex-zone-hotspots`，也不是 `radial-hotspot-labels`。`dot-scale-matrix` 用圆点半径编码强度，不是 `heatmap-calendar`。`interlock-streak-glow` 把多个进度圆用液体桥连起来依次点亮，不是 `charge-target-ring`。`chapter-dash-seek` 用不等长虚线段跳章，不是 `scan-rail-progress`，也不是 `stage-lane-flow`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：剪辑跨度、波形进度、热点标注、圆点焦点、连胜数和章节进度都瞬时切换，没有弹簧、呼吸或自动播放。离开视口时播放、脉冲、微呼吸和外辉都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| trim-handle-span | 原创，灵感来自 Mobbin |
+| wave-pin-anchor | 原创，灵感来自 Mobbin |
+| hotspot-pulse-map | 原创，灵感来自 Mobbin |
+| dot-scale-matrix | 原创，灵感来自 Mobbin |
+| interlock-streak-glow | 原创，灵感来自 Mobbin |
+| chapter-dash-seek | 原创，灵感来自 Mobbin |
+
 ### 位槽、竖脊与粒子帷幕
 
 登记在 `Batch 79`。簇针已占用 `Batch 78`。这是第 73 批调研里的六个交互，全部原创。运动参考 Mobbin 上的数字位槽、竖向节点、筛选 chip、词环、字形色块和粒子球标题，没有复制代码或素材，也没有移植头。`digit-slot-gate` 逐位填充圆形位槽并在错误时抖动清空，不是 `slide-rail-confirm` 的滑轨确认，也不是 `hold-fill-commit` 或 `drag-token-gate`。`spine-node-march` 让竖脊从实线走到虚线，当前节点扩成 pill，不是 `scroll-timeline-reveal`，也不是 `stage-lane-flow`。`chip-fold-badge` 把多选 chip 收成数量徽章，不是 `magnet-chips`，也不是 `fan-deck-pick`。`mood-word-ring` 在圆环上选中一词，不是 `text-rotate`，也不是 `hero-text-stagger`。`glyph-block-swap` 在字母和几何色块之间互换，不是 `kinetic-scramble-text`，也不是 `split-flap-text`。`particle-veil-caption` 用指针把粒子帷幕推开露出标题，不是 `frost-dot-reveal`，也不是聚光蒙版。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：位槽瞬时填充或清空，竖脊瞬时改长度，chip 瞬时折叠，词环瞬时换词，字形停在混合静帧，粒子停在静帧且标题常显。离开视口时虚线流动、词环慢旋、字形循环和粒子漂移都会停下。

@@ -1,0 +1,167 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 74 批调研，catalog batch 80。六个原创交互，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch80ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "trim-handle-span",
+    batch: 80,
+    title: "Trim Handle Span",
+    description:
+      "原创。胶片或色块缩略轨上左右粗柄独立拖动改剪辑起止，中间竖 playhead，窗外段变暗窗内高亮。方括号键调左柄，花括号或 Alt 加方向键调右柄，方向键移 playhead。这是 L R 跨度剪辑，不是 filmstrip-frame-pick 的单帧点选，也不是 vinyl-clip-window 的黑胶窗，更不是 wave-clip-window 的波形固定时长窗。减弱动效瞬时切 start end 与 playhead，无弹簧与自动播放。离开视口后自动播放停止。demo 用中性 Trim clip 文案与假色条轨，不用剪辑软件商标与真实成片。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/trim-handle-span.tsx",
+    target: "components/ui/trim-handle-span.tsx",
+    presets: [
+      { name: "tight", label: "紧", values: { pace: 0.6, intensity: 0.35, minSpan: 0.12, showFilm: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, minSpan: 0.08, showFilm: true } },
+      { name: "wide", label: "宽", values: { pace: 1.3, intensity: 1, minSpan: 0.05, showFilm: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "柄吸附与播放推进的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "窗外压暗与柄辉光强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "minSpan", type: "number", defaultValue: "0.08", description: "起止之间的最小归一化跨度。", control: { kind: "range", value: 0.08, min: 0.04, max: 0.2, step: 0.01, group: "交互" } },
+      { name: "showFilm", type: "boolean", defaultValue: "true", description: "是否显示假缩略格纹。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { start: number; end: number; t: number }) => void", description: "起止或 playhead 变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "wave-pin-anchor",
+    batch: 80,
+    title: "Wave Pin Anchor",
+    description:
+      "原创。横向合成波形已播段着色未播段灰，时间戳钉评气泡浮在波峰上，点选吸附 playhead 并展开短文。方向键步进，P 下一钉，Enter 展开。这是进度掩色加钉评，不是 audio-spectrum 的只读频谱，也不是 wave-clip-window 的固定时长窗，更不是 stem-fader-mix 的多轨推子。减弱动效瞬时切进度与展开态，无播放插值。离开视口后自动播放停止。demo 用中性 Note 钉文案，不用艺人曲名与流媒体商标，无真实音频依赖。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/wave-pin-anchor.tsx",
+    target: "components/ui/wave-pin-anchor.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.6, intensity: 0.35, autoPlay: false, showPins: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, autoPlay: false, showPins: true } },
+      { name: "live", label: "播", values: { pace: 1.4, intensity: 0.95, autoPlay: true, showPins: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "播放与钉吸附的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "波峰对比与钉辉光。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "autoPlay", type: "boolean", defaultValue: "false", description: "是否自动推进 playhead。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "showPins", type: "boolean", defaultValue: "true", description: "是否显示钉评气泡。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { t: number; activePin: number | null }) => void", description: "进度或激活钉变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "hotspot-pulse-map",
+    batch: 80,
+    title: "Hotspot Pulse Map",
+    description:
+      "原创。中性产品静帧上若干脉冲同心环热点，点选后环收束并展开旁侧 callout 标签，默认同屏仅一个展开。Tab 或方向键切热点，Enter 展开或收起。这是产品图点标 callout，不是 hex-zone-hotspots 的六边形热区，也不是 radial-hotspot-labels 的径向标签盘，更不是 presence-name-cursors 或多光标名牌。减弱动效静态环点加瞬时切 callout，无呼吸。离开视口后脉冲停止。demo 用抽象线稿产品，不用真实商品图与硬件商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/hotspot-pulse-map.tsx",
+    target: "components/ui/hotspot-pulse-map.tsx",
+    presets: [
+      { name: "still", label: "静", values: { pace: 0.6, intensity: 0.35, pulse: false, oneOpen: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, pulse: true, oneOpen: true } },
+      { name: "busy", label: "密", values: { pace: 1.3, intensity: 1, pulse: true, oneOpen: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "脉冲与展开的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "环半径与辉光强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "pulse", type: "boolean", defaultValue: "true", description: "闲置热点是否呼吸脉冲。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "oneOpen", type: "boolean", defaultValue: "true", description: "是否同时仅允许一个 callout。", control: { kind: "boolean", value: true, group: "交互" } },
+      { name: "onValueChange", type: "(state: { activeIndex: number | null; open: boolean }) => void", description: "激活热点或展开态变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "dot-scale-matrix",
+    batch: 80,
+    title: "Dot Scale Matrix",
+    description:
+      "原创。月历或习惯网格中每个单元是圆点，半径与可选色阶编码强度，点选放大并显示读数 chip。方向键移动焦点，Enter 锁定。这是变径圆点矩阵，不是 heatmap-calendar 的等大方格热力，也不是 frost-dot-reveal 的霜点擦除，更不是 proximity-scale-grid 的近距缩放格。减弱动效瞬时切焦点与锁定，半径仍按 value 静态映射。离开视口后微呼吸停止。demo 用中性 Activity 轴，不用健康或情绪品牌商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/dot-scale-matrix.tsx",
+    target: "components/ui/dot-scale-matrix.tsx",
+    presets: [
+      { name: "flat", label: "平", values: { pace: 0.6, intensity: 0.35, colorScale: false, showChip: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, colorScale: true, showChip: true } },
+      { name: "bold", label: "粗", values: { pace: 1.3, intensity: 1, colorScale: true, showChip: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "选中放大过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "最大半径倍率与对比。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "colorScale", type: "boolean", defaultValue: "true", description: "是否叠加色阶。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "showChip", type: "boolean", defaultValue: "true", description: "锁定时是否显示读数 chip。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { focusIndex: number; locked: boolean; value: number }) => void", description: "焦点或锁定读数变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "interlock-streak-glow",
+    batch: 80,
+    title: "Interlock Streak Glow",
+    description:
+      "原创。一排进度圆被液体或直线窄桥相连，达成数递增时圆依次点亮并外辉，桥段同步填色。方向键增减连胜，空格步进。这是多环连锁连胜，不是 charge-target-ring 的单目标充电环，也不是 breath-expand-ring 的呼吸扩缩，更不是 wind-streak-scrub 的风纹时轴。减弱动效瞬时切已点亮数，无液体 morph 与呼吸。离开视口后外辉呼吸停止。demo 用中性 Day streak 文案，不用健身或饮食商标与吉祥物。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/interlock-streak-glow.tsx",
+    target: "components/ui/interlock-streak-glow.tsx",
+    presets: [
+      { name: "line", label: "线", values: { pace: 0.6, intensity: 0.35, liquid: false, glow: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, liquid: true, glow: true } },
+      { name: "neon", label: "霓", values: { pace: 1.4, intensity: 1, liquid: true, glow: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "点亮过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "辉光与桥粗细强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "liquid", type: "boolean", defaultValue: "true", description: "是否使用 metaball 液体桥，否则直线。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "glow", type: "boolean", defaultValue: "true", description: "已点亮圆是否外辉呼吸。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "onValueChange", type: "(state: { streak: number }) => void", description: "连胜数变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "chapter-dash-seek",
+    batch: 80,
+    title: "Chapter Dash Seek",
+    description:
+      "原创。播放进度条拆成若干不等长章节虚线段，当前段实心填色，点段或拖拇指跳章并显示章节标题。方向键细步进，方括号上或下章，空格启停。这是不等长章节段可跳，不是 scan-rail-progress 的线性扫描轨，也不是 stage-lane-flow 的泳道阶段，更不是 stress-band-meter 的应力色带。减弱动效瞬时切进度与章，无自动播放。离开视口后播放停止。demo 用 Chapter 中性标题，不用播客品牌与真实封面。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/chapter-dash-seek.tsx",
+    target: "components/ui/chapter-dash-seek.tsx",
+    presets: [
+      { name: "solid", label: "实", values: { pace: 0.6, intensity: 0.35, dashed: false, labels: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, dashed: true, labels: true } },
+      { name: "dash", label: "虚", values: { pace: 1.4, intensity: 0.95, dashed: true, labels: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "播放与跳章过渡的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "当前段对比与虚线密度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "dashed", type: "boolean", defaultValue: "true", description: "未播段是否虚线描边。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "labels", type: "boolean", defaultValue: "true", description: "是否显示章节标题。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { t: number; chapterIndex: number }) => void", description: "进度或章节变化时调用。" },
+      className,
+    ],
+  },
+]

@@ -290,5 +290,11 @@ export const componentOrder = [
   "mood-word-ring",
   "glyph-block-swap",
   "particle-veil-caption",
+  "trim-handle-span",
+  "wave-pin-anchor",
+  "hotspot-pulse-map",
+  "dot-scale-matrix",
+  "interlock-streak-glow",
+  "chapter-dash-seek",
 ] as const
 

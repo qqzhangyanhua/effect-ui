@@ -17,8 +17,12 @@ import {
 } from "lucide-react"
 import { AnimatePresence, motion, useSpring, useTransform } from "motion/react"
 
+import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@effect-ui/registry/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/utils"
+
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 
 type NavId = "components" | "effects" | "docs" | "examples" | "github"
 
@@ -78,6 +82,9 @@ const navItems: NavItem[] = [
 
 export function HeroShowcase() {
   const reduced = usePrefersReducedMotion()
+  const frameRef = useRef<HTMLDivElement>(null)
+  const live = useAnimationActive(frameRef)
+  const floating = live && !reduced
   const [copied, setCopied] = useState(false)
   const [activeNav, setActiveNav] = useState<NavId>("components")
   const tiltRef = useRef<HTMLDivElement>(null)
@@ -116,7 +123,7 @@ export function HeroShowcase() {
   }
 
   return (
-    <div className="relative mx-auto flex w-full max-w-[560px] items-center justify-center py-4 select-none sm:py-6 lg:justify-end">
+    <div ref={frameRef} className="relative mx-auto flex w-full max-w-[560px] items-center justify-center py-4 select-none sm:py-6 lg:justify-end">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-4 top-1/2 size-72 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl sm:size-96 dark:bg-blue-600/15"
@@ -175,6 +182,7 @@ export function HeroShowcase() {
                           onClick={() => setActiveNav(item.id)}
                           className={cn(
                             "flex w-full items-center gap-1.5 rounded-md px-2 py-1 text-left text-[11px] transition-colors",
+                            focusRing,
                             selected
                               ? "bg-blue-500/10 font-medium text-blue-600 dark:text-blue-400"
                               : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
@@ -234,7 +242,11 @@ export function HeroShowcase() {
                       href={active.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 text-[11px] text-white/70 transition-colors hover:text-white"
+                      className={cn(
+                        "inline-flex items-center gap-1 rounded-sm text-[11px] text-white/70 transition-colors hover:text-white",
+                        focusRing,
+                        "focus-visible:ring-offset-zinc-950",
+                      )}
                     >
                       打开
                       <ArrowRight className="size-3" />
@@ -242,7 +254,11 @@ export function HeroShowcase() {
                   ) : (
                     <Link
                       href={active.href}
-                      className="inline-flex items-center gap-1 text-[11px] text-white/70 transition-colors hover:text-white"
+                      className={cn(
+                        "inline-flex items-center gap-1 rounded-sm text-[11px] text-white/70 transition-colors hover:text-white",
+                        focusRing,
+                        "focus-visible:ring-offset-zinc-950",
+                      )}
                     >
                       查看
                       <ArrowRight className="size-3" />
@@ -255,15 +271,18 @@ export function HeroShowcase() {
         </motion.div>
 
         <div
-          style={{ animation: reduced ? undefined : "hero-float-1 5s ease-in-out infinite" }}
-          className="absolute -right-2 -top-3 z-20 sm:-right-4 sm:-top-5 motion-reduce:animate-none"
+          className={cn(
+            "z-20 max-lg:relative max-lg:mt-4 max-lg:ml-auto max-lg:w-fit lg:absolute lg:-top-5 lg:-right-4",
+            floating && "lg:animate-[hero-float-1_5s_ease-in-out_infinite]",
+            "motion-reduce:animate-none",
+          )}
         >
           <div className="flex items-center gap-2.5 rounded-xl border border-border/80 bg-card/95 px-3.5 py-2 font-mono text-xs text-foreground shadow-lg shadow-black/5 backdrop-blur-md dark:shadow-black/20">
             <span className="select-all">npx shadcn add</span>
             <button
               type="button"
               onClick={handleCopy}
-              className="rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground"
+              className={cn("rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground", focusRing)}
               title="复制命令"
               aria-label="复制命令"
             >
@@ -274,8 +293,12 @@ export function HeroShowcase() {
 
         <Link
           href="/docs/typing-text"
-          style={{ animation: reduced ? undefined : "hero-float-2 6s ease-in-out infinite" }}
-          className="group absolute -right-4 top-[34%] z-20 block sm:-right-8 motion-reduce:animate-none"
+          className={cn(
+            "group z-20 block rounded-xl max-lg:relative max-lg:mt-3 max-lg:ml-auto max-lg:w-fit lg:absolute lg:top-[34%] lg:-right-8",
+            floating && "lg:animate-[hero-float-2_6s_ease-in-out_infinite]",
+            "motion-reduce:animate-none",
+            focusRing,
+          )}
         >
           <div className="flex w-52 items-center gap-3 rounded-xl border border-border/80 bg-card/95 px-3.5 py-2.5 shadow-xl shadow-black/5 backdrop-blur-md transition-all hover:border-primary/40 hover:shadow-2xl sm:w-56 dark:shadow-black/20">
             <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-foreground">
@@ -290,17 +313,20 @@ export function HeroShowcase() {
         </Link>
 
         <div
-          style={{ animation: reduced ? undefined : "hero-float-3 5.5s ease-in-out infinite" }}
-          className="absolute -bottom-3 right-4 z-20 sm:-bottom-4 sm:right-8 motion-reduce:animate-none"
+          className={cn(
+            "z-20 max-lg:relative max-lg:mt-3 max-lg:ml-auto max-lg:w-fit lg:absolute lg:-bottom-4 lg:right-8",
+            floating && "lg:animate-[hero-float-3_5.5s_ease-in-out_infinite]",
+            "motion-reduce:animate-none",
+          )}
         >
           <div className="flex items-center gap-1.5 rounded-2xl border border-border/80 bg-card/95 p-1.5 shadow-xl shadow-black/5 backdrop-blur-md dark:shadow-black/20">
-            <Link href="/docs/button" className="flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" title="组件">
+            <Link href="/docs/button" aria-label="组件" title="组件" className={cn("flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground", focusRing)}>
               <Layers className="size-3.5" />
             </Link>
-            <Link href="/docs" className="flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" title="工具箱">
+            <Link href="/docs" aria-label="工具箱" title="工具箱" className={cn("flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground", focusRing)}>
               <Box className="size-3.5" />
             </Link>
-            <Link href="/#showcase" className="flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" title="实时体验">
+            <Link href="/#showcase" aria-label="实时体验" title="实时体验" className={cn("flex size-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground", focusRing)}>
               <Zap className="size-3.5" />
             </Link>
           </div>

@@ -1,19 +1,22 @@
 import Link from "next/link"
 import { ArrowRight, Box, LayoutGrid, Sparkles } from "lucide-react"
 
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+
 export function HomeHeroActions() {
   return (
-    <div className="mt-8 flex flex-wrap items-center gap-3.5">
+    <div className="mt-8 flex flex-wrap items-center gap-3">
       <Link
         href="/docs"
-        className="inline-flex h-10 w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground shadow-xs"
+        className={`inline-flex h-11 w-fit shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 ${focusRing}`}
       >
         开始使用
         <ArrowRight className="size-4 shrink-0" />
       </Link>
       <Link
         href="/#showcase"
-        className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-lg border border-border bg-card/70 px-5 py-2.5 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-muted/70 hover:shadow-sm"
+        className={`inline-flex h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-lg border border-border bg-background/80 px-5 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted ${focusRing}`}
       >
         实时体验
       </Link>

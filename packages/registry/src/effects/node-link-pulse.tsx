@@ -111,7 +111,7 @@ export function NodeLinkPulse({
       if (stopped) return
       const dt = now > last ? Math.min(0.05, (now - last) / 1000) : 1 / 12
       if (now > 0) last = now
-      setWave((value) => (value + dt * 0.8 * paceRate) % 1)
+      setWave((value) => (value + dt * 0.55 * paceRate) % 1)
       frame = window.requestAnimationFrame(tick)
     }
     frame = window.requestAnimationFrame(tick)
@@ -161,7 +161,7 @@ export function NodeLinkPulse({
     event.preventDefault()
   }
 
-  const glow = pulsing ? 0.45 + 0.55 * Math.abs(Math.sin(wave * Math.PI * 2)) : 1
+  const glow = pulsing ? 0.68 + 0.22 * Math.abs(Math.sin(wave * Math.PI * 2)) : 1
 
   return (
     <div
@@ -179,12 +179,11 @@ export function NodeLinkPulse({
       data-ease={ms}
       data-motion={reduced ? "off" : "on"}
       data-live={live ? "on" : "off"}
-      tabIndex={0}
       role="group"
       aria-label="Note links"
       onKeyDown={onKeyDown}
       className={cn(
-        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
+        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground select-none motion-reduce:transition-none",
         className,
       )}
     >
@@ -210,7 +209,7 @@ export function NodeLinkPulse({
                   x2={to.x}
                   y2={to.y}
                   stroke={on ? "var(--primary)" : "var(--border)"}
-                  strokeWidth={on ? 1.6 + gain * 2.4 : 1.25}
+                  strokeWidth={on ? 1.7 + gain * 1.4 : 1.25}
                   strokeOpacity={on ? glow : 0.9}
                   strokeLinecap="round"
                 />

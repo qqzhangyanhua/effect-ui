@@ -136,12 +136,11 @@ export function PaneBlendCompare({
       data-phase={dragging ? "dragging" : compare ? "compare" : "idle"}
       data-ease={ms}
       data-motion={reduced ? "off" : "on"}
-      tabIndex={0}
       role="group"
       aria-label="Layout blend"
       onKeyDown={onKeyDown}
       className={cn(
-        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
+        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground select-none motion-reduce:transition-none",
         className,
       )}
     >

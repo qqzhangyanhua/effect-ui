@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react"
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type PointerEvent } from "react"
 
 import { useAnimationActive } from "@/hooks/use-animation-active"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
@@ -43,6 +43,14 @@ function rateOf(pace: number) {
   return Number.isFinite(pace) && pace > 0 ? pace : 1
 }
 
+function curlPoint(x: number, y: number, towardX: number, towardY: number, amount: number) {
+  const dx = towardX - x
+  const dy = towardY - y
+  const dist = Math.hypot(dx, dy) || 1
+  const step = Math.min(amount, dist * 0.4)
+  return { x: x + (dx / dist) * step, y: y + (dy / dist) * step }
+}
+
 function capture(event: PointerEvent<HTMLElement>) {
   if (typeof event.currentTarget.setPointerCapture !== "function") return
   try {
@@ -60,6 +68,7 @@ export function LayerPeelSheet({
   onValueChange,
 }: LayerPeelSheetProps) {
   const ref = useRef<HTMLDivElement>(null)
+  const curlId = useId().replace(/:/g, "")
   const reduced = usePrefersReducedMotion()
   const live = useAnimationActive(ref)
   const gain = clamp(intensity, 0, 1)
@@ -235,12 +244,11 @@ export function LayerPeelSheet({
       data-motion={reduced ? "off" : "on"}
       data-live={live ? "on" : "off"}
       data-count={PEEL_SHEETS.length}
-      tabIndex={0}
       role="group"
       aria-label="Document sheets"
       onKeyDown={onKeyDown}
       className={cn(
-        "w-full max-w-md rounded-3xl border border-border bg-card p-4 text-card-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
+        "w-full max-w-md rounded-3xl border border-border bg-card p-4 text-card-foreground select-none motion-reduce:transition-none",
         className,
       )}
     >
@@ -274,12 +282,7 @@ export function LayerPeelSheet({
           <p className="mt-2 text-sm text-foreground">{current.body}</p>
         </article>
         {cut > 0 ? (
-          <div
-            data-curl=""
-            aria-hidden="true"
-            className="pointer-events-none absolute right-0 bottom-0 z-30 bg-foreground/10 motion-reduce:transition-none"
-            style={{ width: `${cut}%`, height: `${cut}%`, opacity: 0.25 + gain * 0.55 }}
-          />
+          <PeelCurl cut={cut} gain={gain} curlId={curlId} />
         ) : null}
         <button
           type="button"
@@ -298,5 +301,90 @@ export function LayerPeelSheet({
       </div>
       <p className="mt-3 text-xs text-muted-foreground">Drag the corner. Arrows set peel. Enter turns the sheet.</p>
     </div>
+  )
+}
+
+interface PeelCurlProps {
+  cut: number
+  gain: number
+  curlId: string
+}
+
+function PeelCurl({ cut, gain, curlId }: PeelCurlProps) {
+  const creaseStart = { x: 100 - cut, y: 100 }
+  const creaseEnd = { x: 100, y: 100 - cut }
+  const tip = { x: 100 - cut, y: 100 - cut }
+  const center = {
+    x: (creaseStart.x + creaseEnd.x + tip.x) / 3,
+    y: (creaseStart.y + creaseEnd.y + tip.y) / 3,
+  }
+  const thick = Math.min(1.15 + gain * 0.45, Math.max(0.35, cut * 0.22))
+  const faceStart = curlPoint(creaseStart.x, creaseStart.y, center.x, center.y, thick)
+  const faceEnd = curlPoint(creaseEnd.x, creaseEnd.y, center.x, center.y, thick)
+  const faceTip = curlPoint(tip.x, tip.y, center.x, center.y, thick)
+  const shadeId = `${curlId}-shade`
+  const paperId = `${curlId}-paper`
+  const liftId = `${curlId}-lift`
+  const edge = `color-mix(in srgb, var(--foreground) ${Math.round(28 + gain * 22)}%, var(--border))`
+
+  return (
+    <svg
+      data-curl=""
+      aria-hidden="true"
+      viewBox="0 0 100 100"
+      className="pointer-events-none absolute inset-0 z-30 h-full w-full overflow-visible"
+    >
+      <defs>
+        <linearGradient
+          id={shadeId}
+          gradientUnits="userSpaceOnUse"
+          x1={100 - cut / 2}
+          y1={100 - cut / 2}
+          x2="100"
+          y2="100"
+        >
+          <stop offset="0%" stopColor="var(--foreground)" stopOpacity={0.34 + gain * 0.16} />
+          <stop offset="62%" stopColor="var(--foreground)" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id={paperId} gradientUnits="userSpaceOnUse" x1={tip.x} y1={tip.y} x2={center.x} y2={center.y}>
+          <stop offset="0%" stopColor="var(--background)" />
+          <stop offset="100%" stopColor="var(--muted)" />
+        </linearGradient>
+        <filter id={liftId} x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow
+            dx="-0.4"
+            dy="-0.5"
+            stdDeviation={0.55 + gain * 0.55}
+            floodColor="var(--foreground)"
+            floodOpacity={0.22 + gain * 0.16}
+          />
+        </filter>
+      </defs>
+      <polygon data-shade="" points={`${creaseStart.x},${creaseStart.y} ${creaseEnd.x},${creaseEnd.y} 100,100`} fill={`url(#${shadeId})`} />
+      <polygon
+        data-edge=""
+        points={`${creaseStart.x},${creaseStart.y} ${creaseEnd.x},${creaseEnd.y} ${tip.x},${tip.y}`}
+        fill={edge}
+        filter={`url(#${liftId})`}
+      />
+      <polygon
+        data-flap=""
+        points={`${faceStart.x},${faceStart.y} ${faceEnd.x},${faceEnd.y} ${faceTip.x},${faceTip.y}`}
+        fill={`url(#${paperId})`}
+        stroke="color-mix(in srgb, var(--foreground) 42%, var(--border))"
+        strokeWidth={0.35 + gain * 0.2}
+        strokeLinejoin="round"
+      />
+      <line
+        data-crease=""
+        x1={creaseStart.x}
+        y1={creaseStart.y}
+        x2={creaseEnd.x}
+        y2={creaseEnd.y}
+        stroke="color-mix(in srgb, var(--foreground) 62%, transparent)"
+        strokeWidth={0.5 + gain * 0.35}
+        strokeLinecap="round"
+      />
+    </svg>
   )
 }

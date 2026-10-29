@@ -210,12 +210,11 @@ export function StatusRailHop({
       data-ease={ms}
       data-motion={reduced ? "off" : "on"}
       data-live={live ? "on" : "off"}
-      tabIndex={0}
       role="group"
       aria-label="Status rail"
       onKeyDown={onKeyDown}
       className={cn(
-        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
+        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground select-none motion-reduce:transition-none",
         className,
       )}
     >

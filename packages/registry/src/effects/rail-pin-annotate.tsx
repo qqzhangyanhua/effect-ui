@@ -92,7 +92,7 @@ export function RailPinAnnotate({
   const activeRef = useRef(active)
   const openRef = useRef(open)
   const onValueRef = useRef(onValueChange)
-  const breathing = live && !reduced
+  const breathing = live && !reduced && active !== null
 
   if (seenOne !== oneOpen) {
     setSeenOne(oneOpen)
@@ -118,7 +118,7 @@ export function RailPinAnnotate({
       if (stopped) return
       const dt = now > last ? Math.min(0.05, (now - last) / 1000) : 1 / 12
       if (now > 0) last = now
-      setBreath((value) => (value + dt * 0.4 * paceRate) % 1)
+      setBreath((value) => (value + dt * 0.28 * paceRate) % 1)
       frame = window.requestAnimationFrame(tick)
     }
     frame = window.requestAnimationFrame(tick)
@@ -251,12 +251,11 @@ export function RailPinAnnotate({
       data-ease={ms}
       data-motion={reduced ? "off" : "on"}
       data-live={live ? "on" : "off"}
-      tabIndex={0}
       role="group"
       aria-label="Milestone rail"
       onKeyDown={onKeyDown}
       className={cn(
-        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none",
+        "w-full max-w-xl rounded-3xl border border-border bg-card p-4 text-card-foreground select-none motion-reduce:transition-none",
         className,
       )}
     >
@@ -293,7 +292,7 @@ export function RailPinAnnotate({
             : null}
           {RAIL_PINS.map((pin, index) => {
             const at = ats[index] ?? pin.at
-            const scale = 1 + wave * (index === active ? 0.08 : 0.035) * (0.35 + gain)
+            const scale = index === active ? 1 + wave * 0.05 * (0.35 + gain) : 1
             return (
               <button
                 key={pin.id}

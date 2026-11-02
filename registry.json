@@ -6182,6 +6182,132 @@
           "target": "components/ui/margin-bookmark-notch.tsx"
         }
       ]
+    },
+    {
+      "name": "aisle-crossfade-route",
+      "type": "registry:ui",
+      "title": "Aisle Crossfade Route",
+      "description": "原创。两条路由内容 aisle 之间做短时交叉淡入，或沿轴向极轻柔擦。方括号和方向键切换，Enter 在通道上重播，完成后焦点落到目标页的主按钮。这不是 before-after-wipe 的对比擦除，也不是 pixel-transition、svg-mask-scroll-transition 或 route-path-scrub。位移很短，不挡阅读。减弱动效时瞬时切到目标页。离开视口时进行中的交叉落到目标稳态并停帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/aisle-crossfade-route.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/aisle-crossfade-route.tsx"
+        }
+      ]
+    },
+    {
+      "name": "apron-slide-sheet",
+      "type": "registry:ui",
+      "title": "Apron Slide Sheet",
+      "description": "原创。右侧或底部 apron 短距滑入，背后一层轻 scrim。打开后焦点落在关闭钮，Tab 留在面板里，点 scrim、Esc 或关闭钮可关。关完后面板和 scrim 一起卸掉，焦点回到触发钮。这不是 spring-drawer 的弹簧抽屉，也不是 layer-peel-sheet 或 hover-overlay-reveal。没有来回弹跳。减弱动效时面板和 scrim 瞬时到位或卸除。离开视口时停在打开或关闭的稳态。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/apron-slide-sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/apron-slide-sheet.tsx"
+        }
+      ]
+    },
+    {
+      "name": "welcome-offer-stage",
+      "type": "registry:ui",
+      "title": "Welcome Offer Stage",
+      "description": "原创。居中的欢迎 / offer 舞台，主接受按钮、次要婉拒和关闭钮。开始时是关的。打开后焦点落在主按钮，Tab 顺序是主按钮、次要按钮、关闭钮，Esc 可关。关完后 scrim 卸除，背景恢复可点，焦点回到触发钮。这不是 cookie-consent，也不是 shortcuts-dialog、quiet-nudge-pill 或 entrance-presets。主按钮上没有扫光。减弱动效时瞬时显现或消失。离开视口时入场停在打开或关闭的稳态。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/welcome-offer-stage.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/welcome-offer-stage.tsx"
+        }
+      ]
+    },
+    {
+      "name": "haze-ambient-veil",
+      "type": "registry:ui",
+      "title": "Haze Ambient Veil",
+      "description": "原创。内容前一层很轻的 haze 在入场时淡开，露出标题和主按钮。帷幕 pointer-events 为 none，不进 Tab 序。Enter 重播退去，Reset 同样重播。这不是 particle-veil-caption，也不是 shard-veil-clear、logo-focus-dim 或整页 aurora-background。雾很薄，正文保持可读。减弱动效时没有帷幕，内容直接全显。离开视口时淡开停住，已经显出的内容保持。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/haze-ambient-veil.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/haze-ambient-veil.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sill-gleam-pass",
+      "type": "registry:ui",
+      "title": "Sill Gleam Pass",
+      "description": "原创。卡片窗台边缘一道装饰 gleam 缓慢路过。装饰层 pointer-events 为 none，没有 Tab 位，按钮始终可点。播放开关本身可以聚焦。这不是 glare-hover 的指针跟随眩光，也不是 glowing-edge、electric-border 或 card-beam-scanner。亮度默认很低，不会闪到刺眼。减弱动效时停在一帧静止高光。离开视口时停止循环，回到视口后可以继续。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/sill-gleam-pass.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sill-gleam-pass.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scrim-clean-dismiss",
+      "type": "registry:ui",
+      "title": "Scrim Clean Dismiss",
+      "description": "原创。专门演示关干净：打开轻 scrim 和通知，用完成钮、关闭钮、Esc 或 scrim 退出。退场结束后遮罩、对话框、aria-modal 和 inert 一起卸掉，背景按钮立刻可点，焦点回到触发钮。这不是 hover-overlay-reveal，也不是 shared-layout-expand 或 intro-preloader。减弱动效时瞬时关闭并同步卸层。离开视口时如果还开着，就保持打开，不自动关。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/scrim-clean-dismiss.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scrim-clean-dismiss.tsx"
+        }
+      ]
     }
   ]
 }

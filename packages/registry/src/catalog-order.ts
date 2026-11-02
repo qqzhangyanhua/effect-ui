@@ -320,5 +320,11 @@ export const componentOrder = [
   "verse-cascade-reveal",
   "ledge-chapter-chip",
   "margin-bookmark-notch",
+  "aisle-crossfade-route",
+  "apron-slide-sheet",
+  "welcome-offer-stage",
+  "haze-ambient-veil",
+  "sill-gleam-pass",
+  "scrim-clean-dismiss",
 ] as const
 

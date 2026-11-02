@@ -1,0 +1,167 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 78 批调研，catalog batch 84。六个原创滚动叙事，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch84ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "stanza-rise-enter",
+    batch: 84,
+    title: "Stanza Rise Enter",
+    description:
+      "原创。阅读栏里的一节 stanza 进入视口后短升入位（轻微 translateY 与不透明度），落稳后静置。方向键和 Page 键步进滚动，Enter 对焦点节重播一次入场。这不是 entrance-presets 的通用入场，也不是 scroll-timeline-reveal、sticky-stack-cards 或 twist-in-card。正文保持可读，没有整屏抢焦。减弱动效时直接停在入位静帧。离开视口时进行中的升起落到已入位。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/stanza-rise-enter.tsx",
+    target: "components/ui/stanza-rise-enter.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.15, stagger: false, threshold: 0.5 } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.32, stagger: true, threshold: 0.4 } },
+      { name: "lift", label: "起", values: { pace: 1.4, intensity: 0.8, stagger: true, threshold: 0.25 } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "入场时长的速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.32", description: "最大升起距离，默认偏低。", control: { kind: "range", value: 0.32, min: 0, max: 1, step: 0.05 } },
+      { name: "stagger", type: "boolean", defaultValue: "true", description: "多节同时入场时是否错峰。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "threshold", type: "number", defaultValue: "0.4", description: "入场触发的阅读进度比例。", control: { kind: "range", value: 0.4, min: 0.15, max: 0.7, step: 0.05, group: "交互" } },
+      { name: "onValueChange", type: "(state: { progress: number; settled: number }) => void", description: "阅读进度或已入位节数变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "folio-drift-plane",
+    batch: 84,
+    title: "Folio Drift Plane",
+    description:
+      "原创。前景 folio 的标题和正文保持固定可读，背后只有一层装饰面随滚动极轻漂移。方向键步进，Home 与 End 到两端，也可以拖动。正文层的位移恒为 0。这不是 scroll-parallax-layers，也不是 parallax、container-scroll-3d 或 text-3d-scroll。装饰面不盖住正文。减弱动效时装饰面停在中位。离开视口后停止跟滚，并留在最后一帧。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/folio-drift-plane.tsx",
+    target: "components/ui/folio-drift-plane.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.1, planeOpacity: 0.25, axis: "y" } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.22, planeOpacity: 0.38, axis: "y" } },
+      { name: "wide", label: "宽", values: { pace: 1.4, intensity: 0.55, planeOpacity: 0.55, axis: "x" } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "装饰面跟上滚动的平滑速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.22", description: "漂移幅度，默认很低。", control: { kind: "range", value: 0.22, min: 0, max: 1, step: 0.05 } },
+      { name: "planeOpacity", type: "number", defaultValue: "0.38", description: "装饰面不透明度。", control: { kind: "range", value: 0.38, min: 0.15, max: 0.7, step: 0.01, group: "外观" } },
+      { name: "axis", type: '"y" | "x"', defaultValue: '"y"', description: "装饰面漂移的轴向。", control: { kind: "select", value: "y", options: ["y", "x"], group: "外观" } },
+      { name: "onValueChange", type: "(state: { progress: number; shift: number }) => void", description: "阅读进度或装饰面位移变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "margin-ink-progress",
+    batch: 84,
+    title: "Margin Ink Progress",
+    description:
+      "原创。阅读栏一侧的竖向墨迹轨随阅读进度填充，轨上的章节刻度可以点击或用键盘跳转。填充是实线墨迹。方向键微调，方括号或数字跳节，Home 与 End 到两端。这不是 scan-rail-progress 的扫描遮罩，也不是 curved-scrollbar、chapter-dash-seek 或 spine-node-march。进度不自动循环。减弱动效时墨迹直接跳到目标。离开视口后停止插值，进度保持当前值。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/margin-ink-progress.tsx",
+    target: "components/ui/margin-ink-progress.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.2, ticks: 3, side: "start" } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.35, ticks: 4, side: "start" } },
+      { name: "dense", label: "密", values: { pace: 1.4, intensity: 0.8, ticks: 6, side: "end" } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "墨迹跟上阅读进度的平滑速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.35", description: "墨迹粗细与对比，默认克制。", control: { kind: "range", value: 0.35, min: 0, max: 1, step: 0.05 } },
+      { name: "ticks", type: "number", defaultValue: "4", description: "章节刻度数，3 到 6。", control: { kind: "range", value: 4, min: 3, max: 6, step: 1, group: "交互" } },
+      { name: "side", type: '"start" | "end"', defaultValue: '"start"', description: "墨迹轨在行首还是行尾。", control: { kind: "select", value: "start", options: ["start", "end"], group: "外观" } },
+      { name: "onValueChange", type: "(state: { progress: number; chapter: number }) => void", description: "阅读进度或当前章节变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "verse-cascade-reveal",
+    batch: 84,
+    title: "Verse Cascade Reveal",
+    description:
+      "原创。多段短 verse 越过各自的滚动阈值后逐段显现，带一点上升，显现后保持可读静置。开始时只有首段全显。方向键和 Page 键步进，Enter 让全部瞬时显现，R 或 Reset 收回。这不是 scroll-split-reveal 的左右劈开，也不是 reveal、frost-dot-reveal、scroll-timeline-reveal 或 particle-dial-reveal。减弱动效时按当前进度瞬时切态，没有 cascade 插值。离开视口时已过阈值的段落保持全显。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/verse-cascade-reveal.tsx",
+    target: "components/ui/verse-cascade-reveal.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.25, cascadeGap: 0.2, lines: 3 } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.45, cascadeGap: 0.45, lines: 5 } },
+      { name: "wide", label: "宽", values: { pace: 1.3, intensity: 0.75, cascadeGap: 0.7, lines: 6 } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "逐段显现的速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.45", description: "未显现时的隐匿程度和升起量。", control: { kind: "range", value: 0.45, min: 0, max: 1, step: 0.05 } },
+      { name: "cascadeGap", type: "number", defaultValue: "0.45", description: "段与段之间的错峰。", control: { kind: "range", value: 0.45, min: 0, max: 1, step: 0.05, group: "动画" } },
+      { name: "lines", type: "number", defaultValue: "5", description: "段落数量，3 到 6。", control: { kind: "range", value: 5, min: 3, max: 6, step: 1, group: "外观" } },
+      { name: "onValueChange", type: "(state: { progress: number; revealed: number }) => void", description: "阅读进度或已显现段数变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "ledge-chapter-chip",
+    batch: 84,
+    title: "Ledge Chapter Chip",
+    description:
+      "原创。阅读区顶部一条窄 ledge 上只有一枚章节 chip，跨节时文案切换，标明现在读到哪一章。Enter 打开迷你目录，方向键在目录项间移动，Esc 关闭。chip 不堆卡，也不挡住首行正文。这不是 sticky-stack-cards，也不是 sticky-grid-scroll、floating-navbar 或 chapter-dash-seek。减弱动效时文案瞬时切换。离开视口后保留最后一节标签。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/ledge-chapter-chip.tsx",
+    target: "components/ui/ledge-chapter-chip.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.25, showToc: true, ledgeAlign: "start" } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.45, showToc: true, ledgeAlign: "start" } },
+      { name: "center", label: "中", values: { pace: 1.4, intensity: 0.85, showToc: false, ledgeAlign: "center" } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "章节标签切换的速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.45", description: "chip 的强调程度。", control: { kind: "range", value: 0.45, min: 0, max: 1, step: 0.05 } },
+      { name: "showToc", type: "boolean", defaultValue: "true", description: "是否允许打开迷你目录。", control: { kind: "boolean", value: true, group: "交互" } },
+      { name: "ledgeAlign", type: '"start" | "center" | "end"', defaultValue: '"start"', description: "chip 在窄 ledge 上的对齐。", control: { kind: "select", value: "start", options: ["start", "center", "end"], group: "外观" } },
+      { name: "onValueChange", type: "(state: { chapter: number; title: string }) => void", description: "当前章节变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "margin-bookmark-notch",
+    batch: 84,
+    title: "Margin Bookmark Notch",
+    description:
+      "原创。页边一枚小书签凹口跟随当前阅读位置。可以拖动，松手后吸附到最近的凹口；方向键在凹口间移动，Enter 跳到对应段落。凹口默认很小，不挡住正文。这不是 wave-pin-anchor，也不是 rail-pin-annotate、cite-handle-mark 或 pin-cluster-burst。减弱动效时凹口直接跳到目标。离开视口时停在当前凹口。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/margin-bookmark-notch.tsx",
+    target: "components/ui/margin-bookmark-notch.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.2, snapNotches: 3, side: "end" } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.32, snapNotches: 4, side: "end" } },
+      { name: "free", label: "随", values: { pace: 1.3, intensity: 0.7, snapNotches: 0, side: "start" } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "凹口跟上阅读位置的速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.32", description: "凹口尺寸，默认偏小。", control: { kind: "range", value: 0.32, min: 0, max: 1, step: 0.05 } },
+      { name: "snapNotches", type: "number", defaultValue: "4", description: "可吸附凹口数。0 表示自由跟随，最多 5。", control: { kind: "range", value: 4, min: 0, max: 5, step: 1, group: "交互" } },
+      { name: "side", type: '"start" | "end"', defaultValue: '"end"', description: "凹口在行首还是行尾。", control: { kind: "select", value: "end", options: ["start", "end"], group: "外观" } },
+      { name: "onValueChange", type: "(state: { progress: number; passage: number }) => void", description: "书签位置或对应段落变化时调用。" },
+      className,
+    ],
+  },
+]

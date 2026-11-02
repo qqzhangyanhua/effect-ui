@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 边距批注、裁决轨与静默提醒
+
+登记在 `Batch 82`。轨钉已占用 `Batch 81`。这是第 76 批调研里的六个交互，全部原创。运动参考 Mobbin 上的侧栏批注、同意驳回、句内提及、diff 窄条、审阅进度和未读角标，没有复制代码或素材，也没有移植头。`margin-note-pop` 在段落旁的边距列展开一张批注卡，不是 `rail-pin-annotate`，也不是 `sticky-note-board` 或 `hotspot-pulse-map`。`verdict-lane-slide` 是同意与驳回的二元裁决轨，不是 `status-rail-hop`。`cite-handle-mark` 只读高亮句内 `@handle`，不是 `mention-textarea`。`hunk-delta-bar` 用窄竖 gutter 表示增减密度，不是 `diff-viewer` 或 `pane-blend-compare`。`signoff-bead-path` 用珠串表示审阅签名进度，不是 `spine-node-march` 或 `scan-rail-progress`。`quiet-nudge-pill` 是角落里呼吸一次就静置的未读 pill，不是 `breath-expand-ring`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：批注、裁决、提及、hunk、珠串和未读标记都瞬时切换，没有弹簧、霓虹或弹跳。离开视口时锚点呼吸、提及轮询、当前珠脉冲和未读呼吸都会停下。
+
+| 组件 | 来源 |
+| --- | --- |
+| margin-note-pop | Inspired by Dovetail, Air, and Fabric (via Mobbin), original implementation |
+| verdict-lane-slide | Inspired by Whop, Juicebox, Deel, and Mercury (via Mobbin), original implementation |
+| cite-handle-mark | Inspired by DocuSign, ClickUp, and Cofounder (via Mobbin), original implementation |
+| hunk-delta-bar | Inspired by Devin, Mintlify, Grammarly, and Cursor Diff (via Mobbin), original implementation |
+| signoff-bead-path | Inspired by Mercury, Contra, Employment Hero, and Deel (via Mobbin), original implementation |
+| quiet-nudge-pill | Inspired by Polywork, Meetup, Basecamp, and Featurebase (via Mobbin), original implementation |
+
 ### 轨钉、软混合与状态跳跃
 
 登记在 `Batch 81`。剪辑柄已占用 `Batch 80`。这是第 75 批调研里的六个交互，全部原创。运动参考 Mobbin 上的时间轴标注、对比滑杆、层叠卡片、购买漏斗、状态轨和关系连线，没有复制代码或素材，也没有移植头。`rail-pin-annotate` 在水平内容轨上拖钉并展开标注，不是 `scroll-timeline-reveal`，也不是 `wave-pin-anchor` 或 `chapter-dash-seek`。`pane-blend-compare` 用竖滑杆做双面板软混合，不是 `before-after-wipe` 的硬裁切。`layer-peel-sheet` 从页角撕开文档露出下层摘要，不是 `sticker-peel`，也不是 `flip-reveal-card` 或 `peek-fan-stack`。`funnel-drop-stage` 用逐级收窄的漏斗显示掉量，不是 `stage-lane-flow`。`status-rail-hop` 让状态胶囊沿合法边跳跃，非法转移会轻拒，不是 `spine-node-march` 或 `live-stage-capsule`。`node-link-pulse` 点选节点后脉冲邻边，不是 `scroll-svg-graph`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：标注、混合比、翻页、漏斗高亮、状态和邻边都瞬时切换，没有弹簧、卷曲或脉冲。离开视口时钉呼吸、翻页过渡、跳跃弧和边脉冲都会停下。

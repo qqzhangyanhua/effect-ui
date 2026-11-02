@@ -5816,6 +5816,120 @@
           "target": "components/ui/node-link-pulse.tsx"
         }
       ]
+    },
+    {
+      "name": "margin-note-pop",
+      "type": "registry:ui",
+      "title": "Margin Note Pop",
+      "description": "原创。文档段落旁的边距锚点，点开后只在边距列展开一张批注卡，正文留在另一列。方向键移动锚点，Enter 展开，Esc 收起。这是边距批注，不是 rail-pin-annotate 的可拖时间钉，也不是 sticky-note-board 的贴纸墙，更不是 hotspot-pulse-map 的地图热点。批注文字始终不透明，没有缩放弹入。减弱动效时锚点强调瞬时切换。离开视口后锚点微呼吸停止。demo 用中性段落，不用第三方商标。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/margin-note-pop.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/margin-note-pop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "verdict-lane-slide",
+      "type": "registry:ui",
+      "title": "Verdict Lane Slide",
+      "description": "原创。水平二元裁决轨。拖柄越过阈值后吸附到同意或驳回，点左右段直接裁决，点中段、Home 或 Backspace 回到未决。方向键只表示倾向，Enter 确认。填充是低饱和功能色，线性过渡，没有弹跳和霓虹。这不是 status-rail-hop 的多态跳跃，也不是 slide-to-confirm 的滑锁。减弱动效瞬时切换填充。说明文案留在轨道外。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/verdict-lane-slide.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/verdict-lane-slide.tsx"
+        }
+      ]
+    },
+    {
+      "name": "cite-handle-mark",
+      "type": "registry:ui",
+      "title": "Cite Handle Mark",
+      "description": "原创。只读句子里的 @handle 用 primary 低透明度墨渍底衬高亮。方向键轮询，Enter 锁定并停止自动轮询。这不是 mention-textarea 的输入框，也不是 presence-name-cursors 的多人光标。没有霓虹描边和弹跳。减弱动效瞬时切换底衬，并强制关闭轮询。离开视口后轮询停止。正文其余字不闪烁。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/cite-handle-mark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/cite-handle-mark.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hunk-delta-bar",
+      "type": "registry:ui",
+      "title": "Hunk Delta Bar",
+      "description": "原创。文件旁一条窄竖 gutter，用低饱和绿红短段表示增减密度。点选或方向键聚焦某个 hunk，旁侧只给一行摘要。这不是 pane-blend-compare 的双面板混合，也不是 before-after-wipe，更不是完整的 diff-viewer。上下文不用整块闪色。减弱动效瞬时切换焦点，段高不变形。没有循环帧。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/hunk-delta-bar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hunk-delta-bar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "signoff-bead-path",
+      "type": "registry:ui",
+      "title": "Signoff Bead Path",
+      "description": "原创。水平珠串表示审阅人从 pending 到 signed 的进度。点珠查看短状态，Advance 把当前珠标为已签并激活下一颗。方向键切换珠。这不是 spine-node-march 的竖脊，也不是 funnel-drop-stage 或 scan-rail-progress。连线用低透明度主题色，没有彩带和礼花。减弱动效瞬时切换珠态和连线。离开视口后当前珠微脉冲停止。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/signoff-bead-path.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/signoff-bead-path.tsx"
+        }
+      ]
+    },
+    {
+      "name": "quiet-nudge-pill",
+      "type": "registry:ui",
+      "title": "Quiet Nudge Pill",
+      "description": "原创。内容卡角落一枚未读 pill。进入视口时底衬极轻地呼吸一次然后静置，点按或 Enter 标为已读，Space 可切回未读。这不是 hotspot-pulse-map 的热点群，也不是 breath-expand-ring 或 interlock-streak-glow。文字保持不透明。减弱动效没有呼吸，直接显示终态。离开视口后呼吸停止，且不会反复触发。主文留在 pill 下方。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/quiet-nudge-pill.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/quiet-nudge-pill.tsx"
+        }
+      ]
     }
   ]
 }

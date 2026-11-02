@@ -302,5 +302,11 @@ export const componentOrder = [
   "funnel-drop-stage",
   "status-rail-hop",
   "node-link-pulse",
+  "margin-note-pop",
+  "verdict-lane-slide",
+  "cite-handle-mark",
+  "hunk-delta-bar",
+  "signoff-bead-path",
+  "quiet-nudge-pill",
 ] as const
 

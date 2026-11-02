@@ -314,5 +314,11 @@ export const componentOrder = [
   "shard-veil-clear",
   "inertia-notch-coast",
   "latch-thumb-spring",
+  "stanza-rise-enter",
+  "folio-drift-plane",
+  "margin-ink-progress",
+  "verse-cascade-reveal",
+  "ledge-chapter-chip",
+  "margin-bookmark-notch",
 ] as const
 

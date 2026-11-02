@@ -6056,6 +6056,132 @@
           "target": "components/ui/latch-thumb-spring.tsx"
         }
       ]
+    },
+    {
+      "name": "stanza-rise-enter",
+      "type": "registry:ui",
+      "title": "Stanza Rise Enter",
+      "description": "原创。阅读栏里的一节 stanza 进入视口后短升入位（轻微 translateY 与不透明度），落稳后静置。方向键和 Page 键步进滚动，Enter 对焦点节重播一次入场。这不是 entrance-presets 的通用入场，也不是 scroll-timeline-reveal、sticky-stack-cards 或 twist-in-card。正文保持可读，没有整屏抢焦。减弱动效时直接停在入位静帧。离开视口时进行中的升起落到已入位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/stanza-rise-enter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stanza-rise-enter.tsx"
+        }
+      ]
+    },
+    {
+      "name": "folio-drift-plane",
+      "type": "registry:ui",
+      "title": "Folio Drift Plane",
+      "description": "原创。前景 folio 的标题和正文保持固定可读，背后只有一层装饰面随滚动极轻漂移。方向键步进，Home 与 End 到两端，也可以拖动。正文层的位移恒为 0。这不是 scroll-parallax-layers，也不是 parallax、container-scroll-3d 或 text-3d-scroll。装饰面不盖住正文。减弱动效时装饰面停在中位。离开视口后停止跟滚，并留在最后一帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/folio-drift-plane.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/folio-drift-plane.tsx"
+        }
+      ]
+    },
+    {
+      "name": "margin-ink-progress",
+      "type": "registry:ui",
+      "title": "Margin Ink Progress",
+      "description": "原创。阅读栏一侧的竖向墨迹轨随阅读进度填充，轨上的章节刻度可以点击或用键盘跳转。填充是实线墨迹。方向键微调，方括号或数字跳节，Home 与 End 到两端。这不是 scan-rail-progress 的扫描遮罩，也不是 curved-scrollbar、chapter-dash-seek 或 spine-node-march。进度不自动循环。减弱动效时墨迹直接跳到目标。离开视口后停止插值，进度保持当前值。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/margin-ink-progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/margin-ink-progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "verse-cascade-reveal",
+      "type": "registry:ui",
+      "title": "Verse Cascade Reveal",
+      "description": "原创。多段短 verse 越过各自的滚动阈值后逐段显现，带一点上升，显现后保持可读静置。开始时只有首段全显。方向键和 Page 键步进，Enter 让全部瞬时显现，R 或 Reset 收回。这不是 scroll-split-reveal 的左右劈开，也不是 reveal、frost-dot-reveal、scroll-timeline-reveal 或 particle-dial-reveal。减弱动效时按当前进度瞬时切态，没有 cascade 插值。离开视口时已过阈值的段落保持全显。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/verse-cascade-reveal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/verse-cascade-reveal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ledge-chapter-chip",
+      "type": "registry:ui",
+      "title": "Ledge Chapter Chip",
+      "description": "原创。阅读区顶部一条窄 ledge 上只有一枚章节 chip，跨节时文案切换，标明现在读到哪一章。Enter 打开迷你目录，方向键在目录项间移动，Esc 关闭。chip 不堆卡，也不挡住首行正文。这不是 sticky-stack-cards，也不是 sticky-grid-scroll、floating-navbar 或 chapter-dash-seek。减弱动效时文案瞬时切换。离开视口后保留最后一节标签。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ledge-chapter-chip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ledge-chapter-chip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "margin-bookmark-notch",
+      "type": "registry:ui",
+      "title": "Margin Bookmark Notch",
+      "description": "原创。页边一枚小书签凹口跟随当前阅读位置。可以拖动，松手后吸附到最近的凹口；方向键在凹口间移动，Enter 跳到对应段落。凹口默认很小，不挡住正文。这不是 wave-pin-anchor，也不是 rail-pin-annotate、cite-handle-mark 或 pin-cluster-burst。减弱动效时凹口直接跳到目标。离开视口时停在当前凹口。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/margin-bookmark-notch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/margin-bookmark-notch.tsx"
+        }
+      ]
     }
   ]
 }

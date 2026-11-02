@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 章节升起、页边墨迹与阅读书签
+
+登记在 `Batch 84`。物理微交互已占用 `Batch 83`。这是第 78 批调研里的六个滚动叙事，全部原创。阅读节奏参考 Mobbin 上的章节过渡、浅层背景、阅读进度、段落显现、粘性章节标签和页边书签，没有复制代码或素材，也没有移植头。`stanza-rise-enter` 让阅读栏里的一节短升入位后静置，不是 `entrance-presets`，也不是 `scroll-timeline-reveal` 或 `sticky-stack-cards`。`folio-drift-plane` 让正文固定可读，只让背后一层装饰面极轻漂移，不是 `scroll-parallax-layers`，也不是 `parallax` 或 `container-scroll-3d`。`margin-ink-progress` 用竖向页边墨迹和可点刻度表示阅读进度，不是 `scan-rail-progress`，也不是 `curved-scrollbar` 或 `chapter-dash-seek`。`verse-cascade-reveal` 让多段短文越过阈值后逐段显现，不是 `scroll-split-reveal`，也不是 `frost-dot-reveal` 或 `particle-dial-reveal`。`ledge-chapter-chip` 在窄顶栏上切换一枚章节 chip，不是 `sticky-stack-cards`，也不是 `floating-navbar`。`margin-bookmark-notch` 用页边小书签凹口标记读到哪里，不是 `wave-pin-anchor`，也不是 `rail-pin-annotate` 或 `pin-cluster-burst`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有改首页。减弱动效停在静帧或瞬时切态，减动效下不会继续插值滚动。离开视口时入场、漂移、墨迹、cascade、章节切换和凹口滑动都会落到稳态并停帧。
+
+| 组件 | 来源 |
+| --- | --- |
+| stanza-rise-enter | Inspired by Slack, Oryzo, and Glide (via Mobbin), original implementation |
+| folio-drift-plane | Inspired by GitBook, Air, and Dialpad (via Mobbin), original implementation |
+| margin-ink-progress | Inspired by Codecademy, GetYourGuide, Turo, and Amazon (via Mobbin), original implementation |
+| verse-cascade-reveal | Inspired by Craft, Chronicle, and Podia (via Mobbin), original implementation |
+| ledge-chapter-chip | Inspired by Apple Books, Public, Blinkist, and CVS (via Mobbin), original implementation |
+| margin-bookmark-notch | Inspired by Fable, Skiff, and Whop (via Mobbin), original implementation |
+
 ### 按压瓦片、牵绳回弹与凹口滑停
 
 登记在 `Batch 83`。边距批注已占用 `Batch 82`。这是第 77 批调研里的六个物理微交互，全部原创。运动参考 Mobbin 上的按压卡片、弹性拉柄、拖入虚线袋、成功碎屑、惯性刻度和开关闩，没有复制代码或素材，也没有移植头。`press-squash-tile` 是内容瓦片的短时压扁与松手回弹，不是 `jelly-button`，也不是 `gooey-button`、`click-spark` 或 `hold-fill-commit`。`tether-yank-return` 用可见牵绳把拖柄拉回锚点，不是 `rubber-band-drag`，也不是 `spring-drawer`。`magnet-pocket-catch` 把单枚筹码吸入虚线口袋，不是 `magnet-chips`，也不是 `physics-dropzone`、`seed-slot-drop` 或 `drag-token-gate`。`shard-veil-clear` 把遮罩柔碎成少量碎片并离框，终态正文完全可读，不是 `fireworks-show`，也不是 `frost-dot-reveal` 或 `petal-dissolve-text`。`inertia-notch-coast` 让质量块在凹口轨上惯性滑停，不是 `year-snap-rail`，也不是 `knurl-scrub-dial` 或 `slide-rail-confirm`。`latch-thumb-spring` 是二元闩拇指的一次过冲贴合，不是 `verdict-lane-slide`，也不是 `status-rail-hop`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：压扁、回锚、入袋、揭开、凹口和闩位都瞬时切换，没有无限晃动。离开视口时回弹、牵绳、吸入、碎裂、滑行和过冲都会落到稳态并停帧。

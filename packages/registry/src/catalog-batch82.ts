@@ -1,0 +1,168 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 76 批调研，catalog batch 82。六个原创协作审阅微交互，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch82ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "margin-note-pop",
+    batch: 82,
+    title: "Margin Note Pop",
+    description:
+      "原创。文档段落旁的边距锚点，点开后只在边距列展开一张批注卡，正文留在另一列。方向键移动锚点，Enter 展开，Esc 收起。这是边距批注，不是 rail-pin-annotate 的可拖时间钉，也不是 sticky-note-board 的贴纸墙，更不是 hotspot-pulse-map 的地图热点。批注文字始终不透明，没有缩放弹入。减弱动效时锚点强调瞬时切换。离开视口后锚点微呼吸停止。demo 用中性段落，不用第三方商标。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/margin-note-pop.tsx",
+    target: "components/ui/margin-note-pop.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.6, intensity: 0.35, oneOpen: true, side: "end" } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.7, oneOpen: true, side: "end" } },
+      { name: "loose", label: "松", values: { pace: 1.4, intensity: 1, oneOpen: false, side: "start" } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "锚点强调过渡速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.7", description: "锚点与卡片边的对比强度。", control: { kind: "range", value: 0.7, min: 0, max: 1, step: 0.05 } },
+      { name: "oneOpen", type: "boolean", defaultValue: "true", description: "是否同时只展开一张批注。", control: { kind: "boolean", value: true, group: "交互" } },
+      { name: "side", type: '"start" | "end"', defaultValue: '"end"', description: "批注列在行首还是行尾。", control: { kind: "select", value: "end", options: ["start", "end"], group: "外观" } },
+      { name: "onValueChange", type: "(state: { active: number | null; open: string[] }) => void", description: "锚点或展开状态变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "verdict-lane-slide",
+    batch: 82,
+    title: "Verdict Lane Slide",
+    description:
+      "原创。水平二元裁决轨。拖柄越过阈值后吸附到同意或驳回，点左右段直接裁决，点中段、Home 或 Backspace 回到未决。方向键只表示倾向，Enter 确认。填充是低饱和功能色，线性过渡，没有弹跳和霓虹。这不是 status-rail-hop 的多态跳跃，也不是 slide-to-confirm 的滑锁。减弱动效瞬时切换填充。说明文案留在轨道外。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/verdict-lane-slide.tsx",
+    target: "components/ui/verdict-lane-slide.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.6, intensity: 0.2, threshold: 0.75, showLabels: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.4, threshold: 0.65, showLabels: true } },
+      { name: "firm", label: "实", values: { pace: 1.4, intensity: 0.7, threshold: 0.55, showLabels: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "填充与柄的线性过渡速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.4", description: "填充饱和上限，默认偏低。", control: { kind: "range", value: 0.4, min: 0, max: 1, step: 0.05 } },
+      { name: "threshold", type: "number", defaultValue: "0.65", description: "松手后吸附到同意或驳回的阈值。", control: { kind: "range", value: 0.65, min: 0.55, max: 0.75, step: 0.05, group: "交互" } },
+      { name: "showLabels", type: "boolean", defaultValue: "true", description: "是否显示同意、未决、驳回标签。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { verdict: \"pending\" | \"approve\" | \"reject\"; hold: number }) => void", description: "裁决或柄位置变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "cite-handle-mark",
+    batch: 82,
+    title: "Cite Handle Mark",
+    description:
+      "原创。只读句子里的 @handle 用 primary 低透明度墨渍底衬高亮。方向键轮询，Enter 锁定并停止自动轮询。这不是 mention-textarea 的输入框，也不是 presence-name-cursors 的多人光标。没有霓虹描边和弹跳。减弱动效瞬时切换底衬，并强制关闭轮询。离开视口后轮询停止。正文其余字不闪烁。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/cite-handle-mark.tsx",
+    target: "components/ui/cite-handle-mark.tsx",
+    presets: [
+      { name: "still", label: "静", values: { pace: 0.6, intensity: 0.35, count: 3, cycle: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, count: 4, cycle: false } },
+      { name: "scan", label: "巡", values: { pace: 1.3, intensity: 0.8, count: 5, cycle: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "底衬过渡与自动轮询速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "墨渍浓度上限。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "count", type: "number", defaultValue: "4", description: "句内可见提及数。", control: { kind: "range", value: 4, min: 2, max: 5, step: 1 } },
+      { name: "cycle", type: "boolean", defaultValue: "false", description: "是否自动轻轮询。减弱动效时强制关闭。", control: { kind: "boolean", value: false, group: "动画" } },
+      { name: "onValueChange", type: "(state: { activeIndex: number; handle: string; locked: boolean }) => void", description: "当前提及变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "hunk-delta-bar",
+    batch: 82,
+    title: "Hunk Delta Bar",
+    description:
+      "原创。文件旁一条窄竖 gutter，用低饱和绿红短段表示增减密度。点选或方向键聚焦某个 hunk，旁侧只给一行摘要。这不是 pane-blend-compare 的双面板混合，也不是 before-after-wipe，更不是完整的 diff-viewer。上下文不用整块闪色。减弱动效瞬时切换焦点，段高不变形。没有循环帧。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/hunk-delta-bar.tsx",
+    target: "components/ui/hunk-delta-bar.tsx",
+    presets: [
+      { name: "slim", label: "窄", values: { pace: 0.6, intensity: 0.35, showLabels: false, compact: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, showLabels: true, compact: false } },
+      { name: "full", label: "满", values: { pace: 1.3, intensity: 1, showLabels: true, compact: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "焦点标记的过渡速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "增减色的饱和上限。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "showLabels", type: "boolean", defaultValue: "true", description: "是否在段旁显示加减行数。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "compact", type: "boolean", defaultValue: "false", description: "是否使用更短的 gutter。", control: { kind: "boolean", value: false, group: "外观" } },
+      { name: "onValueChange", type: "(state: { activeIndex: number; locked: boolean }) => void", description: "聚焦 hunk 变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "signoff-bead-path",
+    batch: 82,
+    title: "Signoff Bead Path",
+    description:
+      "原创。水平珠串表示审阅人从 pending 到 signed 的进度。点珠查看短状态，Advance 把当前珠标为已签并激活下一颗。方向键切换珠。这不是 spine-node-march 的竖脊，也不是 funnel-drop-stage 或 scan-rail-progress。连线用低透明度主题色，没有彩带和礼花。减弱动效瞬时切换珠态和连线。离开视口后当前珠微脉冲停止。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/signoff-bead-path.tsx",
+    target: "components/ui/signoff-bead-path.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.6, intensity: 0.3, showChecks: false, count: 3, advanceOnEnter: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, showChecks: true, count: 4, advanceOnEnter: false } },
+      { name: "full", label: "满", values: { pace: 1.3, intensity: 0.85, showChecks: true, count: 6, advanceOnEnter: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "连线填色与脉冲速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "当前珠与连线的对比强度。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "showChecks", type: "boolean", defaultValue: "true", description: "已签的珠是否显示勾。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "count", type: "number", defaultValue: "4", description: "珠串上的审阅人数。", control: { kind: "range", value: 4, min: 3, max: 6, step: 1 } },
+      { name: "advanceOnEnter", type: "boolean", defaultValue: "false", description: "Enter 是否推进到下一位。", control: { kind: "boolean", value: false, group: "交互" } },
+      { name: "onValueChange", type: "(state: { selectedId: string; activeId: string | null; signed: number }) => void", description: "选中珠或签名进度变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "quiet-nudge-pill",
+    batch: 82,
+    title: "Quiet Nudge Pill",
+    description:
+      "原创。内容卡角落一枚未读 pill。进入视口时底衬极轻地呼吸一次然后静置，点按或 Enter 标为已读，Space 可切回未读。这不是 hotspot-pulse-map 的热点群，也不是 breath-expand-ring 或 interlock-streak-glow。文字保持不透明。减弱动效没有呼吸，直接显示终态。离开视口后呼吸停止，且不会反复触发。主文留在 pill 下方。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/quiet-nudge-pill.tsx",
+    target: "components/ui/quiet-nudge-pill.tsx",
+    presets: [
+      { name: "still", label: "静", values: { pace: 0.6, intensity: 0.15, count: 1, autoBreathe: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.3, count: 1, autoBreathe: true } },
+      { name: "marked", label: "显", values: { pace: 1.4, intensity: 0.5, count: 3, autoBreathe: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "单次呼吸的速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.3", description: "呼吸幅度上限，默认很低。", control: { kind: "range", value: 0.3, min: 0, max: 1, step: 0.05 } },
+      { name: "count", type: "number", defaultValue: "1", description: "角标数字。", control: { kind: "range", value: 1, min: 1, max: 9, step: 1 } },
+      { name: "autoBreathe", type: "boolean", defaultValue: "true", description: "进入视口时是否呼吸一次。", control: { kind: "boolean", value: true, group: "动画" } },
+      { name: "onValueChange", type: "(state: { read: boolean; count: number }) => void", description: "已读状态变化时调用。" },
+      className,
+    ],
+  },
+]

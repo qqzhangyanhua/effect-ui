@@ -1,0 +1,167 @@
+import type { ComponentMeta, PropDoc } from "./catalog"
+
+/** 第 77 批调研，catalog batch 83。六个原创物理微交互，灵感来自 Mobbin，没有移植头。 */
+const className: PropDoc = {
+  name: "className",
+  type: "string",
+  description: "额外 Tailwind 类名，与主题变量兼容。",
+}
+
+export const batch83ShowcaseComponents: ComponentMeta[] = [
+  {
+    name: "press-squash-tile",
+    batch: 83,
+    title: "Press Squash Tile",
+    description:
+      "原创。内容瓦片按下时沿短轴轻微压扁并加深阴影，松手后只过冲一次就回到静置。Space 或 Enter 触发一次按下再回弹，不是长按。这不是 jelly-button 的果冻形变，也不是 gooey-button、click-spark 或 hold-fill-commit。瓦片文案保持可读，没有持续晃动。减弱动效时按下与静置瞬时切换。离开视口后回弹停在静置。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/press-squash-tile.tsx",
+    target: "components/ui/press-squash-tile.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.6, intensity: 0.2, shadow: false, axis: "y" } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.4, shadow: true, axis: "y" } },
+      { name: "firm", label: "实", values: { pace: 1.5, intensity: 0.85, shadow: true, axis: "uniform" } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "松手回弹速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.4", description: "最大压扁幅度，默认偏低。", control: { kind: "range", value: 0.4, min: 0, max: 1, step: 0.05 } },
+      { name: "shadow", type: "boolean", defaultValue: "true", description: "按下时是否加深阴影。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "axis", type: '"y" | "uniform"', defaultValue: '"y"', description: "压扁轴向。", control: { kind: "select", value: "y", options: ["y", "uniform"], group: "外观" } },
+      { name: "onValueChange", type: "(state: { tile: string; pose: \"rest\" | \"pressed\" | \"return\" }) => void", description: "瓦片按下或回到静置时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "tether-yank-return",
+    batch: 83,
+    title: "Tether Yank Return",
+    description:
+      "原创。锚点连着一条可见弹性牵绳和拖柄。拖离时牵绳拉长，阻力随距离增加，松手后至多过冲一次再贴回锚点。方向键步进拉离，Home 或 Esc 回锚，Enter 拉满再回弹。这不是 rubber-band-drag 的列表回弹，也不是 spring-drawer 或 swipe-action-row。说明文案留在牵绳外面。减弱动效时直接贴回锚点。离开视口后回弹停在锚点。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/tether-yank-return.tsx",
+    target: "components/ui/tether-yank-return.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.3, stiffness: 1.3, showRope: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, stiffness: 1, showRope: true } },
+      { name: "loose", label: "松", values: { pace: 1.4, intensity: 0.9, stiffness: 0.6, showRope: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "回锚速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "最大拉伸与过冲幅度。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "stiffness", type: "number", defaultValue: "1", description: "回弹软硬。", control: { kind: "range", value: 1, min: 0.5, max: 1.6, step: 0.1, group: "动画" } },
+      { name: "showRope", type: "boolean", defaultValue: "true", description: "是否显示牵绳。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { pull: number; phase: \"rest\" | \"yank\" | \"return\" }) => void", description: "拉伸或回到锚点时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "magnet-pocket-catch",
+    batch: 83,
+    title: "Magnet Pocket Catch",
+    description:
+      "原创。一枚游离筹码靠近虚线口袋，进入吸附半径后显示克制的向心预览，松手被吸入并停住。方向键移动筹码，Enter 在半径内吸入、已吸入时弹出，Esc 取消预吸。这不是 magnet-chips 的指针磁吸串，也不是 physics-dropzone、seed-slot-drop 或 drag-token-gate。袋内袋外标签留在画布外侧。减弱动效时瞬时入袋或弹出。离开视口后停在入袋或游离终态。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/magnet-pocket-catch.tsx",
+    target: "components/ui/magnet-pocket-catch.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.3, radius: 0.8, snapPreview: false } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, radius: 1, snapPreview: true } },
+      { name: "wide", label: "宽", values: { pace: 1.3, intensity: 0.85, radius: 1.4, snapPreview: true } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "吸入与回位速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "预览吸力的视觉强度。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "radius", type: "number", defaultValue: "1", description: "吸附半径系数。", control: { kind: "range", value: 1, min: 0.6, max: 1.6, step: 0.1, group: "交互" } },
+      { name: "snapPreview", type: "boolean", defaultValue: "true", description: "进入半径时是否显示向心预览。", control: { kind: "boolean", value: true, group: "交互" } },
+      { name: "onValueChange", type: "(state: { docked: boolean; x: number; y: number }) => void", description: "筹码入袋、弹出或移动时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "shard-veil-clear",
+    batch: 83,
+    title: "Shard Veil Clear",
+    description:
+      "原创。短文案卡上覆一层磨砂遮罩。触发后遮罩散成少量碎片，沿边缘快速离框，终态摘掉遮罩和碎片，句子完全可读。Enter 或 Space 揭开，R、Esc 或 Reset 回到遮罩。这不是 fireworks-show，也不是 frost-dot-reveal、petal-dissolve-text 或 perforate-ticket-tear。碎片不超过 12 片，且不盖住正文。减弱动效时直接揭开，没有碎片飞行。离开视口时跳到揭开静帧。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/shard-veil-clear.tsx",
+    target: "components/ui/shard-veil-clear.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.3, shardCount: 4, veilOpacity: 0.7 } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, shardCount: 8, veilOpacity: 0.86 } },
+      { name: "wide", label: "散", values: { pace: 1.4, intensity: 0.9, shardCount: 12, veilOpacity: 1 } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "碎片离框速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "碎片飞散幅度。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "shardCount", type: "number", defaultValue: "8", description: "碎片数量，4 到 12。", control: { kind: "range", value: 8, min: 4, max: 12, step: 1, group: "外观" } },
+      { name: "veilOpacity", type: "number", defaultValue: "0.86", description: "遮罩不透明度。", control: { kind: "range", value: 0.86, min: 0.45, max: 1, step: 0.01, group: "外观" } },
+      { name: "onValueChange", type: "(state: { phase: \"veiled\" | \"shattering\" | \"clear\" }) => void", description: "遮罩阶段变化时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "inertia-notch-coast",
+    batch: 83,
+    title: "Inertia Notch Coast",
+    description:
+      "原创。水平凹口轨上的质量块可拖动，松手后按速度阻尼滑行，再贴到最近凹口。方向键移动一格并短过冲后贴合，Home 与 End 到两端。读数在轨道上方。这不是 year-snap-rail，也不是 knurl-scrub-dial、slide-rail-confirm、card-toss-stack 或 balance-plane-puck。减弱动效时直接跳到凹口。离开视口时停在目标凹口或最近凹口。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/inertia-notch-coast.tsx",
+    target: "components/ui/inertia-notch-coast.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.3, notches: 3, showTicks: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.55, notches: 5, showTicks: true } },
+      { name: "long", label: "长", values: { pace: 1.4, intensity: 0.9, notches: 7, showTicks: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "阻尼与贴合速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.55", description: "松手初速的视觉上限。", control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05 } },
+      { name: "notches", type: "number", defaultValue: "5", description: "凹口数量，3 到 7。", control: { kind: "range", value: 5, min: 3, max: 7, step: 1, group: "交互" } },
+      { name: "showTicks", type: "boolean", defaultValue: "true", description: "是否显示凹口刻度。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { index: number; label: string }) => void", description: "停在凹口时调用。" },
+      className,
+    ],
+  },
+  {
+    name: "latch-thumb-spring",
+    batch: 83,
+    title: "Latch Thumb Spring",
+    description:
+      "原创。二元闩轨上的拇指。点轨、拖过中线松手，或按 Space 与 Enter 切换。到位时只过冲一次就贴住开或关。这不是 verdict-lane-slide 的三段裁决，也不是 slide-rail-confirm 或 status-rail-hop。启用与关闭写在轨道外侧。填充用低饱和主题色。减弱动效时瞬时切换。离开视口时落到目标开或关。",
+    layer: "effect",
+    effectCategory: "showcase",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/latch-thumb-spring.tsx",
+    target: "components/ui/latch-thumb-spring.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { pace: 0.7, intensity: 0.15, trackFill: false, labels: true } },
+      { name: "default", label: "默认", values: { pace: 1, intensity: 0.28, trackFill: true, labels: true } },
+      { name: "firm", label: "实", values: { pace: 1.5, intensity: 0.7, trackFill: true, labels: false } },
+    ],
+    props: [
+      { name: "pace", type: "number", defaultValue: "1", description: "拇指贴合速度。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
+      { name: "intensity", type: "number", defaultValue: "0.28", description: "过冲幅度，默认偏低。", control: { kind: "range", value: 0.28, min: 0, max: 1, step: 0.05 } },
+      { name: "trackFill", type: "boolean", defaultValue: "true", description: "开态是否填充轨道。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "labels", type: "boolean", defaultValue: "true", description: "是否在轨道旁显示启用或关闭。", control: { kind: "boolean", value: true, group: "外观" } },
+      { name: "onValueChange", type: "(state: { on: boolean }) => void", description: "闩位切换完成时调用。" },
+      className,
+    ],
+  },
+]

@@ -1,8 +1,9 @@
 import Link from "next/link"
-import { ArrowRight, ChevronDown, ExternalLink, Github } from "lucide-react"
+import { ArrowRight, ChevronDown, ExternalLink } from "lucide-react"
 
 import { components, resolveLayer } from "@effect-ui/registry/catalog"
 import { HeroShowcase } from "@/components/hero-showcase"
+import { HomeAtmosphere } from "@/components/home-atmosphere"
 import { HomeCtaBand } from "@/components/home-cta-band"
 import { HomeFeatureGrid } from "@/components/home-feature-grid"
 import { HomeHeroActions, HomeHeroMetrics } from "@/components/home-hero-extras"
@@ -12,6 +13,12 @@ import { HomeSectionHeading } from "@/components/home-section-heading"
 import { HomeShowcase } from "@/components/home-showcase"
 import { HomeSectionBackdrop } from "@/components/home-section-backdrop"
 import { HomeTerminal } from "@/components/home-terminal"
+
+const heroVeil =
+  "radial-gradient(ellipse 88% 100% at 16% 42%, var(--background) 0%, color-mix(in oklab, var(--background) 92%, transparent) 38%, color-mix(in oklab, var(--background) 30%, transparent) 100%)"
+
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 
 export default function HomePage() {
   let componentCount = 0
@@ -24,12 +31,13 @@ export default function HomePage() {
 
   return (
     <main className="min-h-svh bg-background text-foreground">
-      <section className="relative overflow-hidden border-b border-border/50 bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(59,130,246,0.06),transparent)] dark:bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(59,130,246,0.12),transparent)]">
+      <section data-home-zone="hero" className="relative overflow-hidden border-b border-border/50">
+        <HomeAtmosphere intensity={0.5} speed={0.28} size={80} veil={heroVeil}>
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--border)_70%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--border)_70%,transparent)_1px,transparent_1px)] bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_70%_60%_at_50%_0%,#000_55%,transparent_100%)] opacity-35"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--border)_55%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--border)_55%,transparent)_1px,transparent_1px)] bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_70%_60%_at_50%_0%,#000_55%,transparent_100%)] opacity-25"
         />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-24 lg:px-8 lg:pt-24 lg:pb-28">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start text-left">
               <span className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/60 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground backdrop-blur-sm">
@@ -60,13 +68,14 @@ export default function HomePage() {
           <div className="mt-10 flex justify-center lg:mt-4">
             <Link
               href="/#showcase"
-              className="group inline-flex flex-col items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+              className={`group inline-flex flex-col items-center gap-1 rounded-md text-xs text-muted-foreground transition-colors hover:text-foreground ${focusRing}`}
             >
               <span>向下滚动体验动效</span>
-              <ChevronDown className="size-4 animate-bounce motion-reduce:animate-none" />
+              <ChevronDown className="size-4 animate-bounce motion-reduce:animate-none group-data-[motion=off]/atmos:animate-none group-data-[motion=paused]/atmos:animate-none" />
             </Link>
           </div>
         </div>
+        </HomeAtmosphere>
       </section>
 
       <section className="relative overflow-hidden py-16 sm:py-24">

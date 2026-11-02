@@ -500,6 +500,19 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 按压瓦片、牵绳回弹与凹口滑停
+
+登记在 `Batch 83`。边距批注已占用 `Batch 82`。这是第 77 批调研里的六个物理微交互，全部原创。运动参考 Mobbin 上的按压卡片、弹性拉柄、拖入虚线袋、成功碎屑、惯性刻度和开关闩，没有复制代码或素材，也没有移植头。`press-squash-tile` 是内容瓦片的短时压扁与松手回弹，不是 `jelly-button`，也不是 `gooey-button`、`click-spark` 或 `hold-fill-commit`。`tether-yank-return` 用可见牵绳把拖柄拉回锚点，不是 `rubber-band-drag`，也不是 `spring-drawer`。`magnet-pocket-catch` 把单枚筹码吸入虚线口袋，不是 `magnet-chips`，也不是 `physics-dropzone`、`seed-slot-drop` 或 `drag-token-gate`。`shard-veil-clear` 把遮罩柔碎成少量碎片并离框，终态正文完全可读，不是 `fireworks-show`，也不是 `frost-dot-reveal` 或 `petal-dissolve-text`。`inertia-notch-coast` 让质量块在凹口轨上惯性滑停，不是 `year-snap-rail`，也不是 `knurl-scrub-dial` 或 `slide-rail-confirm`。`latch-thumb-spring` 是二元闩拇指的一次过冲贴合，不是 `verdict-lane-slide`，也不是 `status-rail-hop`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：压扁、回锚、入袋、揭开、凹口和闩位都瞬时切换，没有无限晃动。离开视口时回弹、牵绳、吸入、碎裂、滑行和过冲都会落到稳态并停帧。
+
+| 组件 | 来源 |
+| --- | --- |
+| press-squash-tile | Inspired by Insight Timer, Tide Guide, and Snapchat (via Mobbin), original implementation |
+| tether-yank-return | Inspired by Wise, Snapchat, Best Buy, and Discord (via Mobbin), original implementation |
+| magnet-pocket-catch | Inspired by Optimal Workshop, Maze, Gumloop, and Airtable (via Mobbin), original implementation |
+| shard-veil-clear | Inspired by Descript, GoDaddy, incident.io, and Codecademy (via Mobbin), original implementation |
+| inertia-notch-coast | Inspired by Cal AI, Replika, Sonos, and Cleo (via Mobbin), original implementation |
+| latch-thumb-spring | Inspired by Cursor, Family, Airtasker, Pinterest, and Moonlitt (via Mobbin), original implementation |
+
 ### 边距批注、裁决轨与静默提醒
 
 登记在 `Batch 82`。轨钉已占用 `Batch 81`。这是第 76 批调研里的六个交互，全部原创。运动参考 Mobbin 上的侧栏批注、同意驳回、句内提及、diff 窄条、审阅进度和未读角标，没有复制代码或素材，也没有移植头。`margin-note-pop` 在段落旁的边距列展开一张批注卡，不是 `rail-pin-annotate`，也不是 `sticky-note-board` 或 `hotspot-pulse-map`。`verdict-lane-slide` 是同意与驳回的二元裁决轨，不是 `status-rail-hop`。`cite-handle-mark` 只读高亮句内 `@handle`，不是 `mention-textarea`。`hunk-delta-bar` 用窄竖 gutter 表示增减密度，不是 `diff-viewer` 或 `pane-blend-compare`。`signoff-bead-path` 用珠串表示审阅签名进度，不是 `spine-node-march` 或 `scan-rail-progress`。`quiet-nudge-pill` 是角落里呼吸一次就静置的未读 pill，不是 `breath-expand-ring`。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL，也没有新增 Button 变体。减弱动效停在终态：批注、裁决、提及、hunk、珠串和未读标记都瞬时切换，没有弹簧、霓虹或弹跳。离开视口时锚点呼吸、提及轮询、当前珠脉冲和未读呼吸都会停下。

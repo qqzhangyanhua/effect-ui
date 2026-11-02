@@ -308,5 +308,11 @@ export const componentOrder = [
   "hunk-delta-bar",
   "signoff-bead-path",
   "quiet-nudge-pill",
+  "press-squash-tile",
+  "tether-yank-return",
+  "magnet-pocket-catch",
+  "shard-veil-clear",
+  "inertia-notch-coast",
+  "latch-thumb-spring",
 ] as const
 

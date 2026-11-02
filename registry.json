@@ -5930,6 +5930,132 @@
           "target": "components/ui/quiet-nudge-pill.tsx"
         }
       ]
+    },
+    {
+      "name": "press-squash-tile",
+      "type": "registry:ui",
+      "title": "Press Squash Tile",
+      "description": "原创。内容瓦片按下时沿短轴轻微压扁并加深阴影，松手后只过冲一次就回到静置。Space 或 Enter 触发一次按下再回弹，不是长按。这不是 jelly-button 的果冻形变，也不是 gooey-button、click-spark 或 hold-fill-commit。瓦片文案保持可读，没有持续晃动。减弱动效时按下与静置瞬时切换。离开视口后回弹停在静置。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/press-squash-tile.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/press-squash-tile.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tether-yank-return",
+      "type": "registry:ui",
+      "title": "Tether Yank Return",
+      "description": "原创。锚点连着一条可见弹性牵绳和拖柄。拖离时牵绳拉长，阻力随距离增加，松手后至多过冲一次再贴回锚点。方向键步进拉离，Home 或 Esc 回锚，Enter 拉满再回弹。这不是 rubber-band-drag 的列表回弹，也不是 spring-drawer 或 swipe-action-row。说明文案留在牵绳外面。减弱动效时直接贴回锚点。离开视口后回弹停在锚点。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tether-yank-return.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tether-yank-return.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnet-pocket-catch",
+      "type": "registry:ui",
+      "title": "Magnet Pocket Catch",
+      "description": "原创。一枚游离筹码靠近虚线口袋，进入吸附半径后显示克制的向心预览，松手被吸入并停住。方向键移动筹码，Enter 在半径内吸入、已吸入时弹出，Esc 取消预吸。这不是 magnet-chips 的指针磁吸串，也不是 physics-dropzone、seed-slot-drop 或 drag-token-gate。袋内袋外标签留在画布外侧。减弱动效时瞬时入袋或弹出。离开视口后停在入袋或游离终态。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/magnet-pocket-catch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/magnet-pocket-catch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shard-veil-clear",
+      "type": "registry:ui",
+      "title": "Shard Veil Clear",
+      "description": "原创。短文案卡上覆一层磨砂遮罩。触发后遮罩散成少量碎片，沿边缘快速离框，终态摘掉遮罩和碎片，句子完全可读。Enter 或 Space 揭开，R、Esc 或 Reset 回到遮罩。这不是 fireworks-show，也不是 frost-dot-reveal、petal-dissolve-text 或 perforate-ticket-tear。碎片不超过 12 片，且不盖住正文。减弱动效时直接揭开，没有碎片飞行。离开视口时跳到揭开静帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/shard-veil-clear.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/shard-veil-clear.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inertia-notch-coast",
+      "type": "registry:ui",
+      "title": "Inertia Notch Coast",
+      "description": "原创。水平凹口轨上的质量块可拖动，松手后按速度阻尼滑行，再贴到最近凹口。方向键移动一格并短过冲后贴合，Home 与 End 到两端。读数在轨道上方。这不是 year-snap-rail，也不是 knurl-scrub-dial、slide-rail-confirm、card-toss-stack 或 balance-plane-puck。减弱动效时直接跳到凹口。离开视口时停在目标凹口或最近凹口。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inertia-notch-coast.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inertia-notch-coast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "latch-thumb-spring",
+      "type": "registry:ui",
+      "title": "Latch Thumb Spring",
+      "description": "原创。二元闩轨上的拇指。点轨、拖过中线松手，或按 Space 与 Enter 切换。到位时只过冲一次就贴住开或关。这不是 verdict-lane-slide 的三段裁决，也不是 slide-rail-confirm 或 status-rail-hop。启用与关闭写在轨道外侧。填充用低饱和主题色。减弱动效时瞬时切换。离开视口时落到目标开或关。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/latch-thumb-spring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/latch-thumb-spring.tsx"
+        }
+      ]
     }
   ]
 }

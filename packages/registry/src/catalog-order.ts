@@ -318,5 +318,11 @@ export const componentOrder = [
   "latch-gate-click",
   "whoosh-dart-send",
   "mute-cone-morph",
+  "caret-welcome-ring",
+  "float-label-settle",
+  "inline-alert-rail",
+  "otp-cell-cascade",
+  "meter-rule-ticks",
+  "submit-check-flare",
 ] as const
 

@@ -6211,6 +6211,132 @@
           "target": "components/ui/tone/feedback-tone.tsx"
         }
       ]
+    },
+    {
+      "name": "caret-welcome-ring",
+      "type": "registry:ui",
+      "title": "Caret Welcome Ring",
+      "description": "原创。文本字段获得焦点时，插入符做一次短促欢迎，檐口同时亮起四角环或一条下划线，然后停住。字段始终可编辑，系统插入符不会被换掉。装饰层不接收指针。这不是 border-focus-strip 的边条扫过，也不是 echo-focus-twin、true-focus、spotlight-focus-blur 或 buzz-rim-flash。没有整页闪，也没有声音。减弱动效时环停在静帧，不再向外扩张。离开视口时卸掉环和欢迎插入符，已输入的文字保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/caret-welcome-ring.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/caret-welcome-ring.tsx"
+        }
+      ]
+    },
+    {
+      "name": "float-label-settle",
+      "type": "registry:ui",
+      "title": "Float Label Settle",
+      "description": "原创。标签从字段内的占位位置上浮，或从左侧滑入，然后落在檐口上方或字段旁侧。有焦点或有文字时保持浮起，清空并失焦后回到占位。标签是真正的 label，不挡住输入。这不是 placeholder-vanish-input 的占位消失，也不是 scratch-line-field 或 border-focus-strip。标签不会飞出组件。减弱动效时瞬时切到浮起或回落。离开视口时停住当前落点。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/float-label-settle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/float-label-settle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "inline-alert-rail",
+      "type": "registry:ui",
+      "title": "Inline Alert Rail",
+      "description": "原创。本地校验失败时，字段下方出现图标、文字和一条斜纹轨，檐口再做一次克制的描边。错误不靠颜色单独表达，也不铺满整页。没有声音。这不是 buzz-rim-flash，也不是 quiet-nudge-pill、feedback-widget 或 coupon-input。字段在报错后仍可编辑，焦点回到字段。减弱动效时描边直接停在静帧，没有摇晃。离开视口时卸掉闪层，图标和文字保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/inline-alert-rail.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/inline-alert-rail.tsx"
+        }
+      ]
+    },
+    {
+      "name": "otp-cell-cascade",
+      "type": "registry:ui",
+      "title": "OTP Cell Cascade",
+      "description": "原创。验证码按格输入，当前格获得焦点，填入一位后有一颗短珠从这一格走到下一格。满格时亮一次完成框，并对照示例码给出匹配或不匹配。不提交到后端。格子上的装饰不接收指针。这不是 digit-slot-gate 的闸门，也不是 clay-digit-morph、coupon-input 或 credit-card-form。键盘、退格和粘贴都可以用。减弱动效时直接切到下一格，没有珠子插值。离开视口时停掉珠子，已填数字保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/otp-cell-cascade.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/otp-cell-cascade.tsx"
+        }
+      ]
+    },
+    {
+      "name": "meter-rule-ticks",
+      "type": "registry:ui",
+      "title": "Meter Rule Ticks",
+      "description": "原创。输入口令时，一条短计量更新，旁边的规则用勾或虚线空框标出是否满足，并写出 Empty、Weak、Fair 或 Strong。强度不靠颜色单独表达。可以显示或隐藏口令。这不是 strength-segment-fill 的分段条，也不是 stress-band-meter、gauge-sentiment-sweep 或 hold-fill-commit。规则是本地假检查，没有新的强度库。减弱动效时计量直接跳到当前档。离开视口时停住插值，当前档位和勾保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/meter-rule-ticks.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/meter-rule-ticks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "submit-check-flare",
+      "type": "registry:ui",
+      "title": "Submit Check Flare",
+      "description": "原创。本地校验通过后，在按钮或字段上画一次勾，或擦亮一颗胶囊，然后落到静帧 Saved。没有声音，也没有循环庆祝。失败时只在字段旁给出图标和文字。装饰层不接收指针。这不是 chime-check-bloom，也不是 feedback-widget、slide-rail-confirm、breath-expand-ring 或 charge-target-ring。成功后 Reset 和字段都可以用键盘到达。减弱动效时直接显示勾和 Saved。离开视口时卸掉闪光，成功静帧保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/submit-check-flare.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/submit-check-flare.tsx"
+        }
+      ]
     }
   ]
 }

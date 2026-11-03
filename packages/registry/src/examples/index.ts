@@ -56,6 +56,7 @@ import * as effectDemos87 from "./effect-demos-87"
 import * as effectDemos88 from "./effect-demos-88"
 import * as effectDemos89 from "./effect-demos-89"
 import * as effectDemos90 from "./effect-demos-90"
+import * as effectDemos91 from "./effect-demos-91"
 
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
@@ -380,6 +381,12 @@ const demoMap: Record<string, ComponentType> = {
   "otp-cell-cascade": effectDemos90.OtpCellCascadeDemo,
   "meter-rule-ticks": effectDemos90.MeterRuleTicksDemo,
   "submit-check-flare": effectDemos90.SubmitCheckFlareDemo,
+  "grip-lift-rise": effectDemos91.GripLiftRiseDemo,
+  "slot-gap-shim": effectDemos91.SlotGapShimDemo,
+  "lane-insert-beam": effectDemos91.LaneInsertBeamDemo,
+  "rim-reject-wobble": effectDemos91.RimRejectWobbleDemo,
+  "snap-home-cancel": effectDemos91.SnapHomeCancelDemo,
+  "dock-settle-pop": effectDemos91.DockSettlePopDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

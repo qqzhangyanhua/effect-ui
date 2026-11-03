@@ -90,8 +90,8 @@ test("展示区分类可切换，离开视口时不挂上循环文字", async ()
   expect(document.querySelector("[data-slot='text-rotate']")).toBeNull()
 
   await user.click(screen.getByRole("tab", { name: "流光边框" }))
-  expect(screen.getByText("电流只走边，不盖住字")).toBeTruthy()
-  expect(document.querySelector("[data-slot='electric-border']")).not.toBeNull()
+  expect(screen.getByText("描边跟着指针走")).toBeTruthy()
+  expect(document.querySelector("[data-slot='iridescent-edge-card']")).not.toBeNull()
   expect(document.querySelector("[data-slot='glowing-edge']")).toBeNull()
 
   await user.click(screen.getByRole("tab", { name: "动态按钮" }))

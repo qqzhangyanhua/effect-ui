@@ -6,15 +6,15 @@ import { expect, test } from "vitest"
 
 import { readUsageExample } from "./usage"
 
-const heroAnnotatedShowcaseUsage = `import { HeroAnnotatedShowcase } from "@/components/ui/hero-annotated-showcase"
+const heroWaveMaskGalleryUsage = `import { HeroWaveMaskGallery } from "@/components/ui/hero-wave-mask-gallery"
 
-export function HeroAnnotatedShowcaseDemo() {
-  return <HeroAnnotatedShowcase className="w-full" />
+export function HeroWaveMaskGalleryDemo() {
+  return <HeroWaveMaskGallery className="w-full" />
 }
 `
 
 test("无参 demo 的用法代码与改写前一致", () => {
-  expect(readUsageExample("hero-annotated-showcase")).toBe(heroAnnotatedShowcaseUsage)
+  expect(readUsageExample("hero-wave-mask-gallery")).toBe(heroWaveMaskGalleryUsage)
 })
 
 test("单行带默认值的 demo 被改写成常量", () => {

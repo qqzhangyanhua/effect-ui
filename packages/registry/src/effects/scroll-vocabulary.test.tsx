@@ -6,8 +6,6 @@ import "@testing-library/jest-dom/vitest"
 
 import { ImageTubeScroll } from "./image-tube-scroll"
 import { MacbookScroll } from "./macbook-scroll"
-import { Parallax } from "./parallax"
-import { Reveal } from "./reveal"
 import { ScrollSvgGraph } from "./scroll-svg-graph"
 import { ScrollTimelineReveal } from "./scroll-timeline-reveal"
 import { SvgMaskScrollTransition } from "./svg-mask-scroll-transition"
@@ -49,44 +47,6 @@ afterEach(() => {
   cleanup()
   vi.unstubAllGlobals()
 })
-
-test("Reveal 不传时淡入上移 16，强度 0.5 减半，传 1 与不传相同", () => {
-  const omitted = render(<Reveal>淡入</Reveal>)
-  const omittedStyle = styleOf(omitted.container.querySelector("[data-slot='reveal']"))
-  omitted.unmount()
-
-  const half = render(<Reveal intensity={0.5}>淡入</Reveal>)
-  const halfStyle = styleOf(half.container.querySelector("[data-slot='reveal']"))
-  half.unmount()
-
-  const same = render(<Reveal speed={1} intensity={1}>淡入</Reveal>)
-  const sameStyle = styleOf(same.container.querySelector("[data-slot='reveal']"))
-
-  expect(omittedStyle).toContain("16px")
-  expect(halfStyle).toContain("8px")
-  expect(halfStyle).not.toContain("16px")
-  expect(sameStyle).toBe(omittedStyle)
-})
-
-test("Reveal 减弱动效时停在可见状态", () => {
-  installMatchMedia(true)
-  const { container } = render(<Reveal>淡入</Reveal>)
-  const style = styleOf(container.querySelector("[data-slot='reveal']"))
-  expect(style).toContain("opacity: 1")
-  expect(style).not.toContain("opacity: 0")
-})
-
-
-test("Parallax 减弱动效时不再套一层位移", () => {
-  installMatchMedia(true)
-  render(
-    <Parallax>
-      <p>视差</p>
-    </Parallax>,
-  )
-  expect(screen.getByText("视差").parentElement).toHaveAttribute("data-slot", "parallax")
-})
-
 
 test("时间线回退在强度 0.5 时把位移减半", () => {
   const css = window.CSS

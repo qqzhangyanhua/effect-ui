@@ -2,10 +2,8 @@
 
 import { AvatarGroupTooltip } from "../effects/avatar-group-tooltip"
 import { BeamsCollision } from "../effects/beams-collision"
-import { CookieConsent } from "../effects/cookie-consent"
 import { CountdownTimer } from "../effects/countdown-timer"
 import { DiffViewer } from "../effects/diff-viewer"
-import { KpiSparklineCard } from "../effects/kpi-sparkline-card"
 import { LinkPreview } from "../effects/link-preview"
 import { PlaceholderVanishInput } from "../effects/placeholder-vanish-input"
 import { ShuffleGridHero } from "../effects/shuffle-grid-hero"
@@ -72,30 +70,6 @@ export function ShuffleGridHeroDemo({ interval = 1800 }: { interval?: number } =
 
 export function SortableListDemo({ gap }: { gap?: number } = {}) {
   return <SortableList className="w-full" gap={gap} />
-}
-
-export function KpiSparklineCardDemo({
-  label = "本周访问",
-  value = 12840,
-  delta = 12.4,
-  color,
-  size,
-}: {
-  label?: string
-  value?: number
-  delta?: number
-  color?: string
-  size?: number
-} = {}) {
-  return <KpiSparklineCard className="w-full" label={label} value={value} delta={delta} color={color} size={size} />
-}
-
-export function CookieConsentDemo() {
-  return (
-    <div className="relative h-96 w-full overflow-hidden rounded-xl border bg-muted/40">
-      <CookieConsent className="absolute right-4 bottom-4" />
-    </div>
-  )
 }
 
 export function CountdownTimerDemo({

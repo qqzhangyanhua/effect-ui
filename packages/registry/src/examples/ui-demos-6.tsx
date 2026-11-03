@@ -12,7 +12,6 @@ import { LatticeLoader } from "../ui/lattice-loader"
 import { PeekRating } from "../ui/peek-rating"
 import { PulseHeart } from "../ui/pulse-heart"
 import { RadioPlusGroup } from "../ui/radio-plus"
-import { SlideToConfirm } from "../ui/slide-to-confirm"
 import { SpringCheck } from "../ui/spring-check"
 import { SwipeRow } from "../ui/swipe-row"
 import { WarmTooltip } from "../ui/warm-tooltip"
@@ -78,24 +77,6 @@ export function PeekRatingDemo({
   return (
     <div className="flex items-center justify-center p-10">
       <PeekRating aria-label="评分" max={max} allowHalf={allowHalf} color={color} size={size} intensity={intensity} defaultValue={3} />
-    </div>
-  )
-}
-
-export function SlideToConfirmDemo({
-  label = "滑动确认",
-  threshold = 0.85,
-  color = "#2563eb",
-  duration,
-}: {
-  label?: string
-  threshold?: number
-  color?: string
-  duration?: number
-} = {}) {
-  return (
-    <div className="flex items-center justify-center p-10">
-      <SlideToConfirm label={label} threshold={threshold} color={color} duration={duration} className="w-64" />
     </div>
   )
 }

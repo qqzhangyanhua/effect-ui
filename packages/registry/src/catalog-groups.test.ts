@@ -29,7 +29,6 @@ test("按钮、输入和四个控件族各自只出现在对应分组，并且�
     "checkbox",
     "radio",
     "select",
-    "textarea",
     "effects",
     "sections",
     "templates",
@@ -96,9 +95,8 @@ test("按钮、输入和四个控件族各自只出现在对应分组，并且�
     "jelly-radio",
   ])
   expect(groups.find((group) => group.key === "select")?.items.map((item) => item.name)).toEqual(["select-plus"])
-  expect(groups.find((group) => group.key === "textarea")?.items.map((item) => item.name)).toEqual(["mention-textarea"])
 
-  const familyKeys = new Set(["button", "input", "checkbox", "radio", "select", "textarea"])
+  const familyKeys = new Set(["button", "input", "checkbox", "radio", "select"])
   const clustered = new Map(
     groups.filter((group) => familyKeys.has(group.key)).map((group) => [group.key, new Set(group.items.map((item) => item.name))]),
   )

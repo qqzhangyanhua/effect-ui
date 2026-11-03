@@ -6,11 +6,9 @@ import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
 import { InvoicePreview } from "./invoice-preview"
-import { MentionTextarea } from "./mention-textarea"
 import { ShortcutsDialog, useHotkey } from "./shortcuts-dialog"
 import { TimezoneClock } from "./timezone-clock"
 import { PlanCompareTable } from "../sections/plan-compare-table"
-import { PricingCalculator } from "../sections/pricing-calculator"
 
 vi.mock("@number-flow/react", () => ({
   default: ({ value }: { value: number }) => <span>{value}</span>,
@@ -62,16 +60,6 @@ test("useHotkey 在 mac 上听 meta", async () => {
   expect(onFire).toHaveBeenCalled()
 })
 
-test("计价会跟着席位变化并提示推荐", async () => {
-  const user = userEvent.setup()
-  render(<PricingCalculator />)
-  expect(screen.getByText(/推荐 团队/)).toBeInTheDocument()
-  const seat = screen.getByRole("slider", { name: "席位" })
-  seat.focus()
-  await user.keyboard("{ArrowRight}")
-  expect(screen.getByText(/推荐/)).toBeInTheDocument()
-})
-
 test("只看差异会藏起完全相同的行", async () => {
   const user = userEvent.setup()
   render(<PlanCompareTable />)
@@ -79,18 +67,6 @@ test("只看差异会藏起完全相同的行", async () => {
   await user.click(screen.getByRole("checkbox", { name: "只看差异" }))
   expect(screen.queryByRole("row", { name: /评论/ })).not.toBeInTheDocument()
   expect(screen.getByRole("row", { name: /席位/ })).toBeInTheDocument()
-})
-
-test("输入 @ 可以插入提及", async () => {
-  const user = userEvent.setup()
-  const onValueChange = vi.fn()
-  render(<MentionTextarea onValueChange={onValueChange} />)
-  await user.type(screen.getByRole("textbox", { name: "提到某人或话题" }), "@林")
-  await user.click(await screen.findByRole("option", { name: "@林夏" }))
-  expect(onValueChange).toHaveBeenCalled()
-  const last = onValueChange.mock.calls.at(-1)?.[0] as { text: string; mentions: { label: string }[] }
-  expect(last.text).toContain("@林夏")
-  expect(last.mentions.some((item) => item.label === "林夏")).toBe(true)
 })
 
 test("时钟按传入时间显示上海", () => {

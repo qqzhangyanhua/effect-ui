@@ -16,9 +16,6 @@ const ui2: PropDoc[] = [
     description: "额外 Tailwind 类名，与主题变量兼容。",
   },
 ]
-const ui38: PropDoc[] = [{ name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" }]
-const pause = "减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。"
-
 export const effectBackgroundsComponents: ComponentMeta[] = [
   {
       name: "aurora-background",
@@ -66,48 +63,6 @@ export const effectBackgroundsComponents: ComponentMeta[] = [
           control: { kind: "range", value: 64, min: 16, max: 96, step: 4 },
         },
         ...uiProps,
-      ],
-    },
-  {
-      name: "wave-background",
-      batch: 2,
-      title: "Wave Background",
-      description: "底部波浪背景。",
-      layer: "effect",
-      effectCategory: "backgrounds",
-      source: "original",
-      type: "registry:ui",
-      file: "effects/wave-background.tsx",
-      target: "components/ui/wave-background.tsx",
-      props: [
-        {
-          name: "speed",
-          type: "number",
-          defaultValue: "1",
-          description: "波动速度。",
-          control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
-        },
-        {
-          name: "color",
-          type: "string",
-          description: "波浪颜色。",
-          control: { kind: "color" },
-        },
-        {
-          name: "intensity",
-          type: "number",
-          defaultValue: "0.25",
-          description: "波浪透明度。",
-          control: { kind: "range", value: 0.25, min: 0.08, max: 0.7, step: 0.01 },
-        },
-        {
-          name: "size",
-          type: "number",
-          defaultValue: "112",
-          description: "波浪高度。",
-          control: { kind: "range", value: 112, min: 48, max: 200, step: 4 },
-        },
-        ...ui2,
       ],
     },
   {
@@ -706,43 +661,5 @@ export const effectBackgroundsComponents: ComponentMeta[] = [
         ...ui2,
       ],
     },
-  {
-      name: "singularity",
-      batch: 19,
-      title: "Singularity",
-      description: "灵感来自 Codrops Singularity，原创实现。中心暗盘、旋转吸积环，外圈星空被引力透镜拧弯。",
-      layer: "effect",
-      effectCategory: "backgrounds",
-      source: "original",
-      type: "registry:ui",
-      file: "effects/singularity.tsx",
-      target: "components/ui/singularity.tsx",
-      props: ui2,
-    },
-  {
-      name: "mesh-glow-bg",
-      batch: 63,
-      title: "Mesh Glow Bg",
-      description: `原创。区块底下叠三团主题色柔光，慢慢漂移。这是背景光晕，不是粒子，也不是一条单色渐变。调色板只换主题变量，不写死品牌色。${pause}`,
-      layer: "effect",
-      effectCategory: "backgrounds",
-      source: "original",
-      type: "registry:ui",
-      file: "effects/mesh-glow-bg.tsx",
-      target: "components/ui/mesh-glow-bg.tsx",
-      presets: [
-        { name: "aurora", label: "极光", values: { pace: 1, intensity: 0.65, palette: "aurora" } },
-        { name: "dusk", label: "暮色", values: { pace: 0.8, intensity: 0.8, palette: "dusk" } },
-        { name: "tide", label: "潮色", values: { pace: 1.2, intensity: 0.45, palette: "tide" } },
-      ],
-      props: [
-        { name: "pace", type: "number", defaultValue: "1", description: "漂移速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
-        { name: "intensity", type: "number", defaultValue: "0.65", description: "模糊和位移幅度。", control: { kind: "range", value: 0.65, min: 0, max: 1, step: 0.05 } },
-        { name: "palette", type: '"aurora" | "dusk" | "tide"', defaultValue: '"aurora"', description: "三组主题色。aurora 用主色，dusk 偏强调色，tide 偏图表色。", control: { kind: "select", value: "aurora", options: ["aurora", "dusk", "tide"] } },
-        { name: "paused", type: "boolean", defaultValue: "false", description: "为真时停在当前一帧。" },
-        { name: "children", type: "ReactNode", description: "叠在光晕上的内容。" },
-        ...ui38,
-      ],
-    }
 ]
 

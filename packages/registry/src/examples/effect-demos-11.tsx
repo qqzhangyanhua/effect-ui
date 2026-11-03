@@ -1,6 +1,5 @@
 "use client"
 
-import { AnchorPopover } from "../ui/anchor-popover"
 import { DitherGradient } from "../effects/dither-gradient"
 
 import { InfiniteCanvasGallery } from "../effects/infinite-canvas-gallery"
@@ -77,8 +76,4 @@ export function DitherGradientDemo({
   return (
     <DitherGradient className="w-full" colors={colors} speed={speed} count={count} intensity={intensity} />
   )
-}
-
-export function AnchorPopoverDemo() {
-  return <AnchorPopover className="w-full" />
 }

@@ -14,7 +14,6 @@ vi.mock("@paper-design/shaders-react", () => ({
 
 import { AuroraBackground } from "./aurora-background"
 import { NoiseGradient } from "./noise-gradient"
-import { WaveBackground } from "./wave-background"
 
 let reduceMotion = false
 const frames: FrameRequestCallback[] = []
@@ -104,20 +103,6 @@ test("噪点渐变没有循环动画，减弱动效时也不申请动画帧", ()
   render(<NoiseGradient />)
   expect(slot("noise-gradient").className).not.toContain("animate-")
   expect(frames).toEqual([])
-})
-
-
-test("波浪不传颜色时用 primary，尺寸默认 7rem", () => {
-  render(<WaveBackground />)
-  const wave = slot("wave-background").querySelector("svg")
-  expect(classes(wave)).toContain("text-primary/25")
-  expect(classes(wave)).toContain("h-28")
-})
-
-test("波浪在减弱动效时停住位移", () => {
-  reduceMotion = true
-  render(<WaveBackground />)
-  expect(classes(slot("wave-background").querySelector("path"))).toContain("motion-reduce:animate-none")
 })
 
 

@@ -8,14 +8,8 @@ import "@testing-library/jest-dom/vitest"
 MotionGlobalConfig.skipAnimations = true
 
 import { CardBeamScanner } from "./card-beam-scanner"
-import { CircularGallery } from "./circular-gallery"
 import { LenticularCard } from "./lenticular-card"
 import { PerspectiveCard } from "./perspective-card"
-
-const shots = [
-  { title: "A", src: "data:image/gif;base64,R0lGODlhAQABAAAAACw=" },
-  { title: "B", src: "data:image/gif;base64,R0lGODlhAQABAAAAACw=" },
-]
 
 let reduceMotion = false
 
@@ -103,19 +97,6 @@ test("透视卡片在减弱动效时不再跟随指针", () => {
   fireEvent.mouseMove(card, { clientX: 20, clientY: 10 })
   expect(screen.getByText("Perspective")).toBeInTheDocument()
 })
-
-
-test("环形相册先挂上画布", () => {
-  const { container } = render(<CircularGallery items={shots} />)
-  expect(container.querySelector("canvas")).not.toBeNull()
-})
-
-test("环形相册在减弱动效时仍挂上画布", () => {
-  reduceMotion = true
-  const { container } = render(<CircularGallery items={shots} />)
-  expect(container.querySelector("canvas")).not.toBeNull()
-})
-
 
 test("光栅卡在角度居中时停在中间画面", () => {
   render(<LenticularCard />)

@@ -7,10 +7,8 @@ import "@testing-library/jest-dom/vitest"
 
 import { HeroScrollZoom } from "../sections/hero-scroll-zoom"
 import { SectionHorizontalScroll } from "../sections/section-horizontal-scroll"
-import { AnchorPopover } from "./anchor-popover"
 import { PlaceholderVanishInput } from "../effects/placeholder-vanish-input"
 import { ShuffleGridHero } from "../effects/shuffle-grid-hero"
-import { CookieConsent } from "../effects/cookie-consent"
 import { DiffViewer } from "../effects/diff-viewer"
 import { JsonViewer } from "../effects/json-viewer"
 import { HeatmapCalendar } from "../effects/heatmap-calendar"
@@ -74,14 +72,6 @@ test("horizontal scroll shows the three chapters", () => {
   expect(screen.getByRole("heading", { name: "收束" })).toBeInTheDocument()
 })
 
-
-test("anchor popover opens its note", async () => {
-  const user = userEvent.setup()
-  render(<AnchorPopover />)
-  await user.click(screen.getByRole("button", { name: "打开说明" }))
-  expect(screen.getByText("优先用 CSS anchor 定位，不够放就翻到另一侧。")).toBeInTheDocument()
-})
-
 test("placeholder vanish input submits the typed text", async () => {
   const user = userEvent.setup()
   render(<PlaceholderVanishInput />)
@@ -96,16 +86,6 @@ test("shuffle grid hero shows the title and first tile", () => {
   expect(screen.getByText("01")).toBeInTheDocument()
   expect(screen.getByText("08")).toBeInTheDocument()
 })
-
-test("cookie consent saves an accept-all choice", async () => {
-  const user = userEvent.setup()
-  render(<CookieConsent />)
-  expect(screen.getByRole("dialog", { name: "Cookie 偏好" })).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "全部接受" }))
-  expect(screen.getByText("偏好已保存")).toBeInTheDocument()
-  expect(screen.getByText("分析 开启 · 营销 开启")).toBeInTheDocument()
-})
-
 
 test("diff viewer switches to the unified view", async () => {
   const user = userEvent.setup()

@@ -16,7 +16,6 @@ const issue74 = [
   "shuffle-grid-hero",
   "countdown-timer",
   "progress-ring",
-  "kpi-sparkline-card",
   "curved-scrollbar",
 ]
 
@@ -72,7 +71,7 @@ function repoInput(): AuditInput {
   }
 }
 
-test("issue 74 的六个条目不报 control-not-in-demo", () => {
+test("issue 74 的五个条目不报 control-not-in-demo", () => {
   const names = new Set(issue74)
   expect(
     auditRegistry(repoInput()).filter((issue) => issue.type === "control-not-in-demo" && names.has(issue.name)),

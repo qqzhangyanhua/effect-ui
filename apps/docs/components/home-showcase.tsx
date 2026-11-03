@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation"
 import { ArrowRight, Sparkles, Type, Wand2, Zap, type LucideIcon } from "lucide-react"
 import { motion } from "motion/react"
 
-import { ElectricBorder } from "@/components/ui/electric-border"
 import { GlassCard } from "@/components/ui/glass-card"
+import { IridescentEdgeCard } from "@/components/ui/iridescent-edge-card"
 import { GlowingEdge } from "@/components/ui/glowing-edge"
 import { HoverLiftGlow } from "@/components/ui/hover-lift-glow"
 import { JellyButton } from "@/components/ui/jelly-button"
@@ -148,26 +148,14 @@ function BorderPanel({ live, reduced }: { live: boolean; reduced: boolean }) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div className="min-w-0">
-        <ElectricBorder speed={0.35} intensity={0.4} color="#c4b5fd" className="h-full">
-          <div className="px-2 pt-2">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-white/65">electric-border</p>
-          <h3 className="mt-3 text-xl font-semibold tracking-tight text-white">电流只走边，不盖住字</h3>
-          <p className="mt-2 text-sm leading-relaxed text-white/75">深色标本里的标题保持纯白。离开视口后电流停下。</p>
+        <IridescentEdgeCard intensity={0.55} pace={0.8} className="h-full">
+          <p className="font-mono text-[11px] tracking-wide text-muted-foreground">iridescent-edge-card</p>
+          <h3 className="mt-3 text-xl font-semibold tracking-tight text-card-foreground">描边跟着指针走</h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">卡面不动，只有边在变色。离开视口后描边停下。</p>
           <div className="mt-6">
-            <Link
-              href="/docs/electric-border"
-              className={cn(
-                "inline-flex w-fit items-center gap-1 rounded-sm text-xs font-medium text-white underline decoration-white/40 underline-offset-4",
-                focusRing,
-                "focus-visible:ring-offset-zinc-950",
-              )}
-            >
-              查看文档
-              <ArrowRight className="size-3" />
-            </Link>
+            <DocLink href="/docs/iridescent-edge-card" />
           </div>
-          </div>
-        </ElectricBorder>
+        </IridescentEdgeCard>
       </div>
 
       {live && !reduced ? (

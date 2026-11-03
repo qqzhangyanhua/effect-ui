@@ -155,46 +155,6 @@
       ]
     },
     {
-      "name": "reveal",
-      "type": "registry:ui",
-      "title": "Reveal",
-      "description": "滚动进入视口时按变体显现。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/reveal.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/reveal.tsx"
-        }
-      ]
-    },
-    {
-      "name": "parallax",
-      "type": "registry:ui",
-      "title": "Parallax",
-      "description": "滚动视差位移。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/parallax.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/parallax.tsx"
-        }
-      ]
-    },
-    {
       "name": "text-rotate",
       "type": "registry:ui",
       "title": "Text Rotate",
@@ -212,23 +172,6 @@
           "path": "registry/effects/text-rotate.tsx",
           "type": "registry:ui",
           "target": "components/ui/text-rotate.tsx"
-        }
-      ]
-    },
-    {
-      "name": "wave-background",
-      "type": "registry:ui",
-      "title": "Wave Background",
-      "description": "底部波浪背景。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/wave-background.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/wave-background.tsx"
         }
       ]
     },
@@ -470,23 +413,6 @@
       ]
     },
     {
-      "name": "password-strength",
-      "type": "registry:ui",
-      "title": "Password Strength",
-      "description": "密码强度条（长度、大小写、数字、符号）。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/password-strength.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/password-strength.tsx"
-        }
-      ]
-    },
-    {
       "name": "currency-input",
       "type": "registry:ui",
       "title": "Currency Input",
@@ -558,27 +484,6 @@
           "path": "registry/effects/container-scroll-3d.tsx",
           "type": "registry:ui",
           "target": "components/ui/container-scroll-3d.tsx"
-        }
-      ]
-    },
-    {
-      "name": "circular-gallery",
-      "type": "registry:ui",
-      "title": "Circular Gallery",
-      "description": "灵感来自 circular gallery，原创实现：OGL 环形相册，无 WebGL 时 CSS 3D 回退。",
-      "dependencies": [
-        "ogl"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-animation-active",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/circular-gallery.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/circular-gallery.tsx"
         }
       ]
     },
@@ -920,12 +825,10 @@
       "name": "agency-template",
       "type": "registry:block",
       "title": "Agency Template",
-      "description": "灵感来自 Awwwards，原创组合。视差墙、滚动字、圆形画廊、图片轨迹和可点击字标。重 WebGL 懒加载。",
+      "description": "灵感来自 Awwwards，原创组合。视差墙、滚动字、图片轨迹和可点击字标。",
       "dependencies": [],
       "registryDependencies": [
-        "circular-gallery",
-        "hero-parallax-wall",
-        "use-prefers-reduced-motion"
+        "hero-parallax-wall"
       ],
       "files": [
         {
@@ -942,24 +845,6 @@
           "path": "registry/templates/agency/theme.ts",
           "type": "registry:file",
           "target": "app/agency/theme.ts"
-        }
-      ]
-    },
-    {
-      "name": "hero-annotated-showcase",
-      "type": "registry:ui",
-      "title": "Hero Annotated Showcase",
-      "description": "灵感来自 ToDesktop（via Mobbin），原创实现。产品窗口、手绘注释和描边箭头，底部图标切换画面。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/sections/hero-annotated-showcase.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/hero-annotated-showcase.tsx"
         }
       ]
     },
@@ -1148,24 +1033,6 @@
       ]
     },
     {
-      "name": "section-testimonial-split",
-      "type": "registry:ui",
-      "title": "Section Testimonial Split",
-      "description": "灵感来自 Paraform（via Mobbin），原创实现。左侧衬线引言，右侧深色品牌卡，两边同步轮换。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/sections/section-testimonial-split.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/section-testimonial-split.tsx"
-        }
-      ]
-    },
-    {
       "name": "view-transition-gallery",
       "type": "registry:ui",
       "title": "View Transition Gallery",
@@ -1339,24 +1206,6 @@
       ]
     },
     {
-      "name": "anchor-popover",
-      "type": "registry:ui",
-      "title": "Anchor Popover",
-      "description": "原创。CSS anchor 定位加 Popover API，position-try 翻转；不支持时用坐标回退。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/anchor-popover.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/anchor-popover.tsx"
-        }
-      ]
-    },
-    {
       "name": "jelly-radio",
       "type": "registry:ui",
       "title": "Jelly Radio",
@@ -1413,24 +1262,6 @@
           "path": "registry/ui/peek-rating.tsx",
           "type": "registry:ui",
           "target": "components/ui/peek-rating.tsx"
-        }
-      ]
-    },
-    {
-      "name": "slide-to-confirm",
-      "type": "registry:ui",
-      "title": "Slide To Confirm",
-      "description": "把滑块拖过阈值才确认，提前松开会弹回。键盘用 Enter 或 Space。灵感来自 React Bits，原创实现，未打开源码。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/ui/slide-to-confirm.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/slide-to-confirm.tsx"
         }
       ]
     },
@@ -1626,25 +1457,6 @@
       ]
     },
     {
-      "name": "electric-border",
-      "type": "registry:ui",
-      "title": "Electric Border",
-      "description": "灵感来自 React Bits，原创实现。用 SVG feTurbulence 和 feDisplacementMap 做爆裂发光边。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-animation-active",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/electric-border.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/electric-border.tsx"
-        }
-      ]
-    },
-    {
       "name": "sticker-peel",
       "type": "registry:ui",
       "title": "Sticker Peel",
@@ -1661,26 +1473,6 @@
           "path": "registry/effects/sticker-peel.tsx",
           "type": "registry:ui",
           "target": "components/ui/sticker-peel.tsx"
-        }
-      ]
-    },
-    {
-      "name": "click-spark",
-      "type": "registry:ui",
-      "title": "Click Spark",
-      "description": "灵感来自 React Bits，原创实现。点击任意处迸出一圈短火花线。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/click-spark.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/click-spark.tsx"
         }
       ]
     },
@@ -1943,44 +1735,6 @@
           "path": "registry/effects/sortable-list.tsx",
           "type": "registry:ui",
           "target": "components/ui/sortable-list.tsx"
-        }
-      ]
-    },
-    {
-      "name": "kpi-sparkline-card",
-      "type": "registry:ui",
-      "title": "KPI Sparkline Card",
-      "description": "灵感来自 Vercel，原创实现。数字用 CountUp 递增，角标显示涨跌，迷你折线可悬停或用方向键查看点值。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/kpi-sparkline-card.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/kpi-sparkline-card.tsx"
-        }
-      ]
-    },
-    {
-      "name": "cookie-consent",
-      "type": "registry:ui",
-      "title": "Cookie Consent",
-      "description": "灵感来自 Stripe，原创实现。浮动卡片可展开类别开关，选择写入 localStorage。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/cookie-consent.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/cookie-consent.tsx"
         }
       ]
     },
@@ -2625,23 +2379,6 @@
       ]
     },
     {
-      "name": "pricing-calculator",
-      "type": "registry:ui",
-      "title": "Pricing Calculator",
-      "description": "席位和调用量滑块按阶梯实时计价，数字滚动显示，可切换月付和年付，并提示推荐方案。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn"
-      ],
-      "files": [
-        {
-          "path": "registry/sections/pricing-calculator.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/pricing-calculator.tsx"
-        }
-      ]
-    },
-    {
       "name": "plan-compare-table",
       "type": "registry:ui",
       "title": "Plan Compare Table",
@@ -2655,23 +2392,6 @@
           "path": "registry/sections/plan-compare-table.tsx",
           "type": "registry:ui",
           "target": "components/ui/plan-compare-table.tsx"
-        }
-      ]
-    },
-    {
-      "name": "mention-textarea",
-      "type": "registry:ui",
-      "title": "Mention Textarea",
-      "description": "输入 @ 或 # 时在光标处弹出候选，插入提及，并输出正文和提及列表。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/mention-textarea.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/mention-textarea.tsx"
         }
       ]
     },
@@ -2775,26 +2495,6 @@
       ]
     },
     {
-      "name": "singularity",
-      "type": "registry:ui",
-      "title": "Singularity",
-      "description": "灵感来自 Codrops Singularity，原创实现。中心暗盘、旋转吸积环，外圈星空被引力透镜拧弯。",
-      "dependencies": [
-        "ogl"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/singularity.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/singularity.tsx"
-        }
-      ]
-    },
-    {
       "name": "credit-card-form",
       "type": "registry:ui",
       "title": "Credit Card Form",
@@ -2851,26 +2551,6 @@
           "path": "registry/sections/gantt-timeline.tsx",
           "type": "registry:ui",
           "target": "components/ui/gantt-timeline.tsx"
-        }
-      ]
-    },
-    {
-      "name": "org-chart",
-      "type": "registry:ui",
-      "title": "Org Chart",
-      "description": "组织架构。节点可展开折叠，画布可平移缩放，搜索后定位到对应的人。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/sections/org-chart.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/org-chart.tsx"
         }
       ]
     },
@@ -3557,49 +3237,10 @@
       ]
     },
     {
-      "name": "mesh-glow-bg",
-      "type": "registry:ui",
-      "title": "Mesh Glow Bg",
-      "description": "原创。区块底下叠三团主题色柔光，慢慢漂移。这是背景光晕，不是粒子，也不是一条单色渐变。调色板只换主题变量，不写死品牌色。减弱动效停在终态。离开视口时连续动画暂停，回到视口再继续。",
-      "dependencies": [],
-      "registryDependencies": [
-        "cn",
-        "use-animation-active",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/mesh-glow-bg.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/mesh-glow-bg.tsx"
-        }
-      ]
-    },
-    {
-      "name": "hero-text-stagger",
-      "type": "registry:ui",
-      "title": "Hero Text Stagger",
-      "description": "原创。标题按行再按词错落出现，副文和行动按钮随后跟上，只播放一次。面向首屏文案，不是 stagger-list 的纵向列表。可以用 title 行数组，也可以用 Title、Subtitle、Cta 分槽。减弱动效直接显示终态。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/hero-text-stagger.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/hero-text-stagger.tsx"
-        }
-      ]
-    },
-    {
       "name": "scroll-parallax-layers",
       "type": "registry:ui",
       "title": "Scroll Parallax Layers",
-      "description": "原创。背景、中景和前景按不同速率跟着滚动位移。两层时不渲染中景。粗指针把幅度减半。这是多层视差，不是 parallax 的单元素位移。减弱动效时各层静止叠放。离开视口不监听滚动。",
+      "description": "原创。背景、中景和前景按不同速率跟着滚动位移。两层时不渲染中景。粗指针把幅度减半。这是多层视差。减弱动效时各层静止叠放。离开视口不监听滚动。",
       "dependencies": [],
       "registryDependencies": [
         "cn",
@@ -3611,26 +3252,6 @@
           "path": "registry/effects/scroll-parallax-layers.tsx",
           "type": "registry:ui",
           "target": "components/ui/scroll-parallax-layers.tsx"
-        }
-      ]
-    },
-    {
-      "name": "shared-layout-expand",
-      "type": "registry:ui",
-      "title": "Shared Layout Expand",
-      "description": "原创。网格里的小卡点击或按 Enter、Space 后，用共享布局扩成对话框。Esc、关闭按钮和遮罩都能收回，焦点留在对话框里。这不是 flip-reveal-card 的三维翻转，也不是 hover-overlay-reveal 的悬停遮罩。减弱动效瞬时切换，不再变形。",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "cn",
-        "use-prefers-reduced-motion"
-      ],
-      "files": [
-        {
-          "path": "registry/effects/shared-layout-expand.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/shared-layout-expand.tsx"
         }
       ]
     },

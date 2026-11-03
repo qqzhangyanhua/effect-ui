@@ -11,7 +11,6 @@ import { JellyRadio } from "./jelly-radio"
 import { LatticeLoader } from "./lattice-loader"
 import { PeekRating } from "./peek-rating"
 import { PulseHeart } from "./pulse-heart"
-import { SlideToConfirm } from "./slide-to-confirm"
 import { SpringCheck } from "./spring-check"
 import { SwipeRow } from "./swipe-row"
 import { WarmTooltip } from "./warm-tooltip"
@@ -68,7 +67,6 @@ test("canonical props match the previous render", () => {
     [render(<JellyRadio {...jelly} />), render(<JellyRadio {...jelly} intensity={0.55} />)],
     [render(<SpringCheck aria-label="勾选" />), render(<SpringCheck aria-label="勾选" intensity={0.3} />)],
     [render(<PeekRating aria-label="评分" />), render(<PeekRating aria-label="评分" size={28} intensity={0.25} />)],
-    [render(<SlideToConfirm />), render(<SlideToConfirm duration={150} />)],
     [render(<SwipeRow>行</SwipeRow>), render(<SwipeRow duration={150} intensity={0.4}>行</SwipeRow>)],
     [render(<FuseButton />), render(<FuseButton scale={1} />)],
     [render(<PulseHeart />), render(<PulseHeart duration={350} scale={1} />)],
@@ -97,11 +95,6 @@ test("canonical props match the previous render", () => {
 
 test("new props change the painted result", () => {
   installMatchMedia(false)
-
-  const slide = render(<SlideToConfirm duration={80} />)
-  const thumb = within(slide.container).getByRole("slider")
-  expect(thumb.className).not.toContain("duration-150")
-  expect(thumb).toHaveStyle({ transitionDuration: "80ms" })
 
   const swipe = render(<SwipeRow duration={80}>行</SwipeRow>)
   const row = within(swipe.container).getByText("行")
@@ -215,11 +208,6 @@ test("swipe intensity changes when the row opens", () => {
 
 test("reduced motion keeps the fallback", () => {
   installMatchMedia(true)
-  const slide = render(<SlideToConfirm duration={80} />)
-  const thumb = within(slide.container).getByRole("slider")
-  expect(thumb.className).not.toContain("transition-[left]")
-  expect(thumb.style.transitionDuration).toBe("")
-
   const lattice = render(<LatticeLoader size={10} />)
   const status = within(lattice.container).getByRole("status")
   expect(status).toHaveAttribute("data-reduced", "true")

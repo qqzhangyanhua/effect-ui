@@ -3,7 +3,6 @@ import type { AuditExemption } from "./audit-coverage"
 /** 由 scripts/generate-audit-exemptions.ts 生成。手改后要重新跑脚本核对。 */
 export const auditExemptions: readonly AuditExemption[] = [
   { name: "card-beam-scanner", gaps: ["控件不足"], reason: "已发布的可调项只有标题。" },
-  { name: "circular-gallery", gaps: ["控件不足"], reason: "已发布的可调项只有自转倍率，图片列表是结构。" },
   { name: "curved-loop", gaps: ["缺测试"], reason: "落地前已有缺口" },
   { name: "floating-navbar", gaps: ["控件不足"], reason: "已发布的可调项只有收起时长和收起距离倍率，不够 3 个 Control。" },
   { name: "flowing-menu", gaps: ["控件不足"], reason: "已发布的可调项只有滑入时长和跑马灯倍率。菜单项是列表。" },
@@ -20,7 +19,6 @@ export const auditExemptions: readonly AuditExemption[] = [
   { name: "repetition-image-hover", gaps: ["控件不足"], reason: "已发布的可调项只有画面文字和回声层数，不够 3 个 Control。" },
   { name: "rubber-band-drag", gaps: ["控件不足"], reason: "只有 className，没有已发布的可调 prop。" },
   { name: "scroll-image-sequence", gaps: ["控件不足"], reason: "已发布的可调项只有帧进度倍率和画面不透明度，不够 3 个 Control。帧图片是列表。" },
-  { name: "singularity", gaps: ["控件不足"], reason: "只有 className，没有已发布的可调 prop。" },
   { name: "sticky-grid-scroll", gaps: ["控件不足"], reason: "已发布的可调项只有位移强度和滚动曲线倍率，不够 3 个 Control。" },
   { name: "text-generate", gaps: ["缺测试"], reason: "落地前已有缺口" },
   { name: "text-pressure", gaps: ["缺测试"], reason: "落地前已有缺口" },

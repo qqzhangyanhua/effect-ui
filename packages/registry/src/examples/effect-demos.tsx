@@ -3,7 +3,6 @@
 import { AuroraBackground } from "../effects/aurora-background"
 import { GlassCard } from "../effects/glass-card"
 import { NeonButton } from "../effects/neon-button"
-import { Reveal } from "../effects/reveal"
 import { Spinner } from "../effects/spinner"
 
 export function AuroraBackgroundDemo({
@@ -49,41 +48,4 @@ export function NeonButtonDemo({ glowColor, scale }: { glowColor?: string; scale
 
 export function SpinnerDemo({ size, duration, color }: { size?: number; duration?: number; color?: string } = {}) {
   return <Spinner size={size} duration={duration} color={color} />
-}
-
-export function RevealDemo({
-  variant = "fade",
-  from = "bottom",
-  delay = 0,
-  once = true,
-  blur = 8,
-  as = "div",
-  speed,
-  intensity,
-}: {
-  variant?: "fade" | "blur" | "slide" | "clip"
-  from?: "left" | "right" | "top" | "bottom"
-  delay?: number
-  once?: boolean
-  blur?: number
-  as?: "div" | "section"
-  speed?: number
-  intensity?: number
-} = {}) {
-  const label = variant === "blur" ? "模糊显现" : variant === "slide" ? "滑入" : variant === "clip" ? "裁切揭开" : "淡入"
-  return (
-    <Reveal
-      variant={variant}
-      from={from}
-      delay={delay}
-      once={once}
-      blur={blur}
-      as={as}
-      speed={speed}
-      intensity={intensity}
-      className="w-full rounded-xl border bg-card p-4"
-    >
-      {label}
-    </Reveal>
-  )
 }

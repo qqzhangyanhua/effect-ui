@@ -162,23 +162,5 @@ export const compositeFormComponents: ComponentMeta[] = [
         ...ui5,
       ],
     },
-  {
-      name: "mention-textarea",
-      batch: 18,
-      title: "Mention Textarea",
-      description: "输入 @ 或 # 时在光标处弹出候选，插入提及，并输出正文和提及列表。",
-      layer: "composite",
-      purposeGroup: "form",
-      source: "original",
-      type: "registry:ui",
-      file: "effects/mention-textarea.tsx",
-      target: "components/ui/mention-textarea.tsx",
-      props: [
-        { name: "people", type: "MentionCandidate[]", description: "@ 候选。" },
-        { name: "tags", type: "MentionCandidate[]", description: "# 候选。" },
-        { name: "onValueChange", type: "(value: MentionValue) => void", description: "正文和提及一起变化。" },
-        ...ui5,
-      ],
-    }
 ]
 

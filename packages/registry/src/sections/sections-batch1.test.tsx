@@ -7,7 +7,6 @@ import "@testing-library/jest-dom/vitest"
 
 import { SectionLogoCloud } from "./section-logo-cloud"
 import { SectionAnimatedBento } from "./section-animated-bento"
-import { HeroAnnotatedShowcase } from "./hero-annotated-showcase"
 import { HeroWaveMaskGallery } from "./hero-wave-mask-gallery"
 import { HeroInlineMascot } from "./hero-inline-mascot"
 import { HeroOrbitNodes } from "./hero-orbit-nodes"
@@ -18,7 +17,6 @@ import { SectionStatsCornered } from "./section-stats-cornered"
 import { SectionStatsBlob } from "./section-stats-blob"
 import { SectionDottedFeatureTabs } from "./section-dotted-feature-tabs"
 import { CtaRibbonSwoosh } from "./cta-ribbon-swoosh"
-import { SectionTestimonialSplit } from "./section-testimonial-split"
 
 beforeEach(() => {
   vi.stubGlobal("matchMedia", (query: string) => ({
@@ -76,14 +74,6 @@ test("animated bento shows the install label", () => {
   expect(screen.getByRole("heading", { name: "每个格子自己动" })).toBeInTheDocument()
   expect(screen.getByText("安装次数")).toBeInTheDocument()
   expect(screen.getByText("Launch")).toBeInTheDocument()
-})
-
-test("annotated showcase switches to the inbox", async () => {
-  const user = userEvent.setup()
-  render(<HeroAnnotatedShowcase />)
-  expect(screen.getByRole("heading", { name: "把产品窗口摊开，再用手绘箭头标出来" })).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "收件" }))
-  expect(screen.getByText("北线更新")).toBeInTheDocument()
 })
 
 test("wave mask gallery shows the first tile", () => {
@@ -150,13 +140,4 @@ test("ribbon swoosh shows the action title", () => {
   render(<CtaRibbonSwoosh />)
   expect(screen.getByRole("heading", { name: "一条色带扫进行动面板" })).toBeInTheDocument()
   expect(screen.getByRole("button", { name: "继续" })).toBeInTheDocument()
-})
-
-test("testimonial split advances to the next quote", async () => {
-  const user = userEvent.setup()
-  render(<SectionTestimonialSplit />)
-  expect(screen.getByText(/区块接上之后/)).toBeInTheDocument()
-  await user.click(screen.getByRole("button", { name: "下一条" }))
-  expect(screen.getByText(/定价和页脚终于用同一套字号/)).toBeInTheDocument()
-  expect(screen.getByText("周衡")).toBeInTheDocument()
 })

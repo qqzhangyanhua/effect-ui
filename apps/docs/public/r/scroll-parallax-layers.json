@@ -3,7 +3,7 @@
   "name": "scroll-parallax-layers",
   "type": "registry:ui",
   "title": "Scroll Parallax Layers",
-  "description": "原创。背景、中景和前景按不同速率跟着滚动位移。两层时不渲染中景。粗指针把幅度减半。这是多层视差，不是 parallax 的单元素位移。减弱动效时各层静止叠放。离开视口不监听滚动。",
+  "description": "原创。背景、中景和前景按不同速率跟着滚动位移。两层时不渲染中景。粗指针把幅度减半。这是多层视差。减弱动效时各层静止叠放。离开视口不监听滚动。",
   "dependencies": [],
   "registryDependencies": [
     "cn",

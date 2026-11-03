@@ -424,13 +424,6 @@ const selectFamilySections: readonly FamilySectionSpec[] = [
     ] },
 ]
 
-const textareaFamilySections: readonly FamilySectionSpec[] = [
-  { key: "base", label: "基础", names: [] },
-  { key: "plus", label: "增强", names: [
-      "mention-textarea",
-    ] },
-]
-
 /** 专题只做索引，不加入 componentCluster，成员页不因此重定向。 */
 const aiTopicNames = [] as const
 
@@ -440,7 +433,6 @@ export type ComponentCluster =
   | "checkbox"
   | "radio"
   | "select"
-  | "textarea"
 
 const controlFamilyGroups: readonly {
   key: ComponentCluster
@@ -450,7 +442,6 @@ const controlFamilyGroups: readonly {
   { key: "checkbox", label: "复选", sections: checkboxFamilySections },
   { key: "radio", label: "单选", sections: radioFamilySections },
   { key: "select", label: "选择", sections: selectFamilySections },
-  { key: "textarea", label: "多行文本", sections: textareaFamilySections },
 ]
 
 const controlClusterByName = new Map<string, ComponentCluster>(

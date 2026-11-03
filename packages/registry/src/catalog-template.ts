@@ -21,7 +21,7 @@ export const templateComponents: ComponentMeta[] = [
       name: "agency-template",
       batch: 9,
       title: "Agency Template",
-      description: "灵感来自 Awwwards，原创组合。视差墙、滚动字、圆形画廊、图片轨迹和可点击字标。重 WebGL 懒加载。",
+      description: "灵感来自 Awwwards，原创组合。视差墙、滚动字、图片轨迹和可点击字标。",
       layer: "template",
       source: "original",
       type: "registry:block",

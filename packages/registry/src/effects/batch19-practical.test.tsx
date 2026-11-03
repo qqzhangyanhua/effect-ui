@@ -8,7 +8,6 @@ import "@testing-library/jest-dom/vitest"
 import { CouponInput } from "./coupon-input"
 import { CreditCardForm } from "./credit-card-form"
 import { GanttTimeline } from "../sections/gantt-timeline"
-import { OrgChart } from "../sections/org-chart"
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -60,11 +59,4 @@ test("甘特图可以切换周视图", async () => {
   expect(screen.getAllByText("北窗").length).toBeGreaterThan(0)
   await user.click(screen.getByRole("button", { name: "周" }))
   expect(screen.getByRole("button", { name: "周" })).toHaveAttribute("aria-pressed", "true")
-})
-
-test("组织图搜索后标出对应的人", async () => {
-  const user = userEvent.setup()
-  render(<OrgChart />)
-  await user.type(screen.getByRole("searchbox", { name: "搜索成员" }), "周宁")
-  expect(screen.getByRole("heading", { name: "周宁" }).closest("article")).toHaveAttribute("data-active", "true")
 })

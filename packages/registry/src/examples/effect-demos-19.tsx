@@ -4,12 +4,11 @@ import { AudioSpectrum } from "../effects/audio-spectrum"
 import { CouponInput } from "../effects/coupon-input"
 import { CreditCardForm } from "../effects/credit-card-form"
 import { LiquidMorphSlideshow } from "../effects/liquid-morph-slideshow"
-import { Singularity } from "../effects/singularity"
 import { Text3dScroll } from "../effects/text-3d-scroll"
 
 import { WavefieldNeon } from "../effects/wavefield-neon"
 import { GanttTimeline } from "../sections/gantt-timeline"
-import { OrgChart } from "../sections/org-chart"
+
 export function LiquidMorphSlideshowDemo({ interval, intensity, speed }: { interval?: number; intensity?: number; speed?: number } = {}) {
   return <LiquidMorphSlideshow className="w-full" interval={interval} intensity={intensity} speed={speed} />
 }
@@ -57,10 +56,6 @@ export function AudioSpectrumDemo({ mode, size, color }: { mode?: "bars" | "circ
   return <AudioSpectrum className="w-full" mode={mode} size={size} color={color} />
 }
 
-export function SingularityDemo() {
-  return <Singularity className="w-full" />
-}
-
 export function CreditCardFormDemo() {
   return <CreditCardForm />
 }
@@ -80,8 +75,4 @@ export function CouponInputDemo() {
 
 export function GanttTimelineDemo() {
   return <GanttTimeline className="w-full" />
-}
-
-export function OrgChartDemo() {
-  return <OrgChart className="w-full" />
 }

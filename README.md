@@ -66,7 +66,7 @@ registry.json shadcn 兼容总表
 
 ### 基础组件（shadcn/ui）
 
-复选、单选、选择、多行文本各自收成一个文档入口，已有的增强和动效跟基础组件在同一页里向下滚动查看。路径是 `/docs/checkboxes`、`/docs/radios`、`/docs/selects`、`/docs/textareas`。
+复选、单选、选择各自收成一个文档入口，已有的增强和动效跟基础组件在同一页里向下滚动查看。路径是 `/docs/checkboxes`、`/docs/radios`、`/docs/selects`。
 
 button · input · textarea · label · card · badge · separator · dialog · sheet · dropdown-menu · tabs · tooltip · sonner · checkbox · select · accordion · popover · avatar · alert · alert-dialog · aspect-ratio · breadcrumb · carousel · chart · command · context-menu · drawer · input-otp · menubar · navigation-menu · pagination · progress · radio-group · resizable · scroll-area · sidebar · skeleton · table · toggle-group · data-table · input-group · button-group · kbd · item · native-select · combobox · date-picker
 
@@ -113,7 +113,6 @@ text-style
 | aurora-background | 原创 |
 | ripples | Magic UI |
 | light-beams | Magic UI |
-| wave-background | 原创 |
 | noise-gradient | 原创 |
 | animated-grid | Magic UI |
 | retro-grid | Magic UI |
@@ -175,7 +174,6 @@ text-style
 | morphing-dialog | Motion Primitives |
 | image-comparison | Motion Primitives |
 | holographic-foil | Smooth UI |
-| circular-gallery | 灵感来自 circular gallery，原创实现 |
 | glowing-edge | 灵感来自 Linear，原创实现 |
 | pixel-canvas-card | hexagoncircle/pixel-canvas MIT |
 | atropos-card | Atropos MIT |
@@ -246,7 +244,6 @@ text-style
 | jelly-radio | 灵感来自 React Bits，原创实现，未打开源码 |
 | spring-check | 灵感来自 React Bits，原创实现，未打开源码 |
 | peek-rating | 灵感来自 React Bits，原创实现，未打开源码 |
-| slide-to-confirm | 灵感来自 React Bits，原创实现，未打开源码 |
 | swipe-row | 灵感来自 React Bits，原创实现，未打开源码 |
 | pulse-heart | 灵感来自 React Bits，原创实现，未打开源码 |
 | lattice-loader | 灵感来自 React Bits，原创实现，未打开源码 |
@@ -267,11 +264,9 @@ text-style
 
 | 组件 | 来源 |
 | --- | --- |
-| reveal | 原创 |
 | fade-in | Motion Primitives |
 | slide-in | Motion Primitives |
 | stagger-list | Motion Primitives |
-| parallax | 原创 |
 | blur-fade | Magic UI |
 | progressive-blur | Motion Primitives |
 | scroll-progress | Magic UI |
@@ -317,7 +312,6 @@ text-style
 | section-logo-cloud | 原创（组合 marquee / progressive-blur / timeline） |
 | section-sticky-feature-scroll | Cult UI（MIT） |
 | section-animated-bento | 原创（组合 bento-grid 与迷你动画） |
-| hero-annotated-showcase | Inspired by ToDesktop (via Mobbin), original implementation |
 | hero-wave-mask-gallery | Inspired by Kajabi (via Mobbin), original implementation |
 | hero-inline-mascot | Inspired by Phantom (via Mobbin), original implementation |
 | hero-orbit-nodes | Inspired by Air (via Mobbin), original implementation |
@@ -328,7 +322,6 @@ text-style
 | section-stats-blob | Inspired by Oyster (via Mobbin), original implementation |
 | section-dotted-feature-tabs | Inspired by Maze (via Mobbin), original implementation |
 | cta-ribbon-swoosh | Inspired by The Leap (via Mobbin), original implementation |
-| section-testimonial-split | Inspired by Paraform (via Mobbin), original implementation |
 
 ### 2025-26 动效
 
@@ -345,7 +338,6 @@ text-style
 | infinite-canvas-gallery | 灵感来自无限画布，原创实现 |
 | liquid-glass-tabbar | 灵感来自 iOS 26，原创实现 |
 | dither-gradient | 原创 Bayer 抖动着色器 |
-| anchor-popover | 原创（CSS anchor + Popover API） |
 
 ### React Bits 灵感动效
 
@@ -358,9 +350,7 @@ text-style
 | split-flap-text | 灵感来自 React Bits，原创实现 |
 | curved-loop | 灵感来自 React Bits，原创实现 |
 | fuzzy-text | 灵感来自 React Bits，原创实现 |
-| electric-border | 灵感来自 React Bits，原创实现 |
 | sticker-peel | 灵感来自 React Bits，原创实现 |
-| click-spark | 灵感来自 React Bits，原创实现 |
 | glare-hover | 灵感来自 React Bits，原创实现 |
 | card-swap | 灵感来自 React Bits，原创实现 |
 | flowing-menu | 灵感来自 React Bits，原创实现 |
@@ -370,7 +360,7 @@ text-style
 
 ### 原创动效与实用组件
 
-登记在 `Batch 14`（`Batch 13` 已用于 React Bits 灵感动效）。未打开 Aceternity、Hover.dev、Stripe、Linear、Vercel、Apple、GitHub 的源码。`vortex-background` 是向心辉光漩涡。`simplex-noise` 与 `diff` 按需动态加载。
+登记在 `Batch 14`（`Batch 13` 已用于 React Bits 灵感动效）。未打开 Aceternity、Hover.dev、Linear、Apple、GitHub 的源码。`vortex-background` 是向心辉光漩涡。`simplex-noise` 与 `diff` 按需动态加载。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -380,8 +370,6 @@ text-style
 | avatar-group-tooltip | 灵感来自 Hover.dev，原创实现 |
 | shuffle-grid-hero | 灵感来自 Aceternity，原创实现 |
 | sortable-list | 灵感来自 Linear，原创实现 |
-| kpi-sparkline-card | 灵感来自 Vercel，原创实现 |
-| cookie-consent | 灵感来自 Stripe，原创实现 |
 | countdown-timer | 灵感来自 Apple，原创实现 |
 | diff-viewer | 灵感来自 GitHub，原创实现 |
 
@@ -443,14 +431,12 @@ text-style
 | particle-hourglass | 灵感来自 Codrops Sands of Time，原创实现 |
 | invoice-preview | 原创 |
 | shortcuts-dialog | 原创 |
-| pricing-calculator | 原创 |
 | plan-compare-table | 原创 |
-| mention-textarea | 原创 |
 | timezone-clock | 原创 |
 
-### 频谱与组织图
+### 频谱
 
-登记在 `Batch 19`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时液体幻灯改为交叉淡入，波场和黑洞停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，卡面不翻转。
+登记在 `Batch 19`。未打开 Codrops 源码，未移植其组件。未使用 GSAP 或 tldraw，没有新增依赖。WebGL 懒加载已有的 OGL。离开视口时暂停动画帧。减弱动效时液体幻灯改为交叉淡入，波场停在静帧，3D 卡片改为横向滚动，翻页文字直接显示，滚动字母只变色，频谱改为静态条，卡面不翻转。
 
 | 组件 | 来源 |
 | --- | --- |
@@ -458,10 +444,8 @@ text-style
 | wavefield-neon | 灵感来自 Codrops Wavefield Shader，原创实现 |
 | text-3d-scroll | 灵感来自 Codrops 3D Text Scroll Animations，原创实现 |
 | audio-spectrum | 灵感来自 Spotify visualiser，原创实现。实时频谱 |
-| singularity | 灵感来自 Codrops Singularity，原创实现 |
 | credit-card-form | 原创 |
 | gantt-timeline | 原创 |
-| org-chart | 原创 |
 
 ### 光栅、状态页与帮助中心
 
@@ -788,16 +772,13 @@ Mobbin references: [Canva transitions](https://mobbin.com/flows/2b0fafb0-91e4-4b
 | spotlight-focus-blur | 原创，灵感来自 Mobbin |
 | drag-rate-tiles | 原创，灵感来自 Mobbin |
 
-### 柔光首页与共享展开
+### 滚动分层与入场预设
 
-登记在 `Batch 63`。扭转入场与指针眩光已占用 `Batch 62`。这是第 57 批调研里的六个首页效果，全部原创。运动参考 Mobbin 营销首页的光晕、标题错落、滚动分层、共享元素展开、标志循环和入场预设，没有复制代码或素材，也没有移植头。`mesh-glow-bg` 是区块底下多层柔光色块的缓慢漂移，不是粒子，也不是单色渐变。`hero-text-stagger` 按标题的行和词错落入场，再带上副文和行动按钮，不是 `stagger-list` 的纵向列表。`scroll-parallax-layers` 让背景、中景和前景按不同速率跟着滚动位移，粗指针会把幅度减半，不是单元素的 `parallax`。`shared-layout-expand` 用共享布局把小卡展开成对话框，回车、空格和 Esc 都能用，不是 `flip-reveal-card` 的三维翻转，也不是 `hover-overlay-reveal` 的悬停遮罩。`logo-marquee` 是横向无缝循环，悬停或聚焦可以暂停，标志文字不靠悬停才出现，和 `logos-carousel` 的分组轮换不同。`entrance-presets` 是包住任意子元素的命名入场，不是 `twist-in-card` 那种固定卡片壳。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。柔光用 CSS 和 SVG。减弱动效停在终态：光晕静止，标题直接显示，视差不再位移，展开瞬时切换，标志排成静止的一行，入场直接出现。离开视口时连续动画暂停。
+登记在 `Batch 63`。扭转入场与指针眩光已占用 `Batch 62`。这是第 57 批调研里的三个首页效果，全部原创。运动参考 Mobbin 营销首页的滚动分层、标志循环和入场预设，没有复制代码或素材，也没有移植头。`scroll-parallax-layers` 让背景、中景和前景按不同速率跟着滚动位移，粗指针会把幅度减半。`logo-marquee` 是横向无缝循环，悬停或聚焦可以暂停，标志文字不靠悬停才出现，和 `logos-carousel` 的分组轮换不同。`entrance-presets` 是包住任意子元素的命名入场，不是 `twist-in-card` 那种固定卡片壳。没有新增依赖，没有使用 GSAP、tldraw 或 WebGL。减弱动效停在终态：视差不再位移，标志排成静止的一行，入场直接出现。离开视口时连续动画暂停。
 
 | 组件 | 来源 |
 | --- | --- |
-| mesh-glow-bg | 原创，灵感来自 Mobbin |
-| hero-text-stagger | 原创，灵感来自 Mobbin |
 | scroll-parallax-layers | 原创，灵感来自 Mobbin |
-| shared-layout-expand | 原创，灵感来自 Mobbin |
 | logo-marquee | 原创，灵感来自 Mobbin |
 | entrance-presets | 原创，灵感来自 Mobbin |
 
@@ -1460,7 +1441,6 @@ Mobbin references: [Canva transitions](https://mobbin.com/flows/2b0fafb0-91e4-4b
 | infinite-scroll | 原创 |
 | masonry-gallery | react-photo-album |
 | lightbox | yet-another-react-lightbox |
-| password-strength | 原创 |
 | emoji-picker | frimousse |
 | video-player | Kibo UI（原生 video） |
 | gravity | matter-js |

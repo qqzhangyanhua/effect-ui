@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { CurrencyInput } from "../ui/currency-input"
 import { InfiniteScroll } from "../ui/infinite-scroll"
-import { PasswordStrength } from "../ui/password-strength"
 
 export function InfiniteScrollDemo() {
   const [count, setCount] = useState(8)
@@ -16,10 +15,6 @@ export function InfiniteScrollDemo() {
       ))}
     </InfiniteScroll>
   )
-}
-
-export function PasswordStrengthDemo() {
-  return <PasswordStrength />
 }
 
 export function CurrencyInputDemo() {

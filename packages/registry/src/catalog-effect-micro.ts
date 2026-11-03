@@ -11,7 +11,6 @@ import { batch72MicroComponents } from "./catalog-batch72"
 import { batch73MicroComponents } from "./catalog-batch73"
 import { batch74MicroComponents } from "./catalog-batch74"
 import { batch75MicroComponents } from "./catalog-batch75"
-import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，微交互。 */
 const className: PropDoc = {
@@ -128,55 +127,6 @@ export const effectMicroComponents: ComponentMeta[] = [
         { name: "spring-check-slow", label: "慢", values: { duration: 0.8, intensity: 0.15, strokeWidth: 1.5 } },
         { name: "spring-check-default", label: "默认", values: { duration: 0.45, intensity: 0.3, strokeWidth: 2 } },
         { name: "spring-check-fast", label: "快", values: { duration: 0.2, intensity: 0.6, strokeWidth: 3.5 } },
-      ],
-    },
-  {
-      name: "slide-to-confirm",
-      batch: 12,
-      title: "Slide To Confirm",
-      description: "把滑块拖过阈值才确认，提前松开会弹回。键盘用 Enter 或 Space。灵感来自 React Bits，原创实现，未打开源码。",
-      layer: "effect",
-      effectCategory: "micro",
-      source: "original",
-      type: "registry:ui",
-      file: "ui/slide-to-confirm.tsx",
-      target: "components/ui/slide-to-confirm.tsx",
-      props: [
-        {
-          name: "label",
-          type: "string",
-          defaultValue: '"滑动确认"',
-          description: "轨道上的文字，也是滑块的可访问名称。",
-          control: { kind: "text", value: "滑动确认" },
-        },
-        {
-          name: "threshold",
-          type: "number",
-          defaultValue: "0.85",
-          description: "确认阈值，0 到 1。",
-          control: { kind: "range", value: 0.85, min: 0.5, max: 1, step: 0.05 },
-        },
-        {
-          name: "color",
-          type: "string",
-          description: "滑块颜色。缺省用 primary。",
-          control: { kind: "color", value: "#2563eb" },
-        },
-        {
-          name: "duration",
-          type: "number",
-          description: "松手回弹时长（毫秒）。150 与不传相同。",
-          control: { kind: "range", value: 150, min: 60, max: 300, step: 10 },
-        },
-        { name: "onConfirm", type: "() => void", description: "越过阈值或按下 Enter / Space 时回调一次，然后复位。" },
-        disabled,
-        className,
-        { name: "ref", type: "React.Ref<HTMLButtonElement>", description: "滑块按钮的 ref。" },
-      ],
-      presets: [
-        { name: "slide-to-confirm-loose", label: "松", values: { threshold: 0.6, duration: 220 } },
-        { name: "slide-to-confirm-default", label: "默认", values: { threshold: 0.85, duration: 150 } },
-        { name: "slide-to-confirm-tight", label: "紧", values: { threshold: 1, duration: 80 } },
       ],
     },
   {

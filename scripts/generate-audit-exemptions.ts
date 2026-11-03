@@ -72,7 +72,6 @@ const rows = components
 
 /** 控件不足但已发布 prop 不够 3 个。重新生成时保留这条说明。 */
 const statedControlReasons: Readonly<Record<string, string>> = {
-  singularity: "只有 className，没有已发布的可调 prop。",
   "distorted-glass": "只有 children，没有已发布的数值或颜色 prop。",
   "hover-blocks-grid": "已发布的可调项是两色和一组坐标，坐标不适合做成单个控件。",
   "rubber-band-drag": "只有 className，没有已发布的可调 prop。",
@@ -96,7 +95,6 @@ const statedControlReasons: Readonly<Record<string, string>> = {
   "perspective-card": "已发布的可调项只有横向倾斜和浮起距离，内容是节点。",
   "expandable-card": "已发布的可调项只有标题，收起摘要是节点。",
   "morphing-dialog": "已发布的可调项只有弹簧时长和回弹。",
-  "circular-gallery": "已发布的可调项只有自转倍率，图片列表是结构。",
   "lenticular-card": "已发布的可调项只有画面列表。",
   "card-beam-scanner": "已发布的可调项只有标题。",
   "interactive-image-selector": "已发布的可调项只有一开始就多选，图片列表是结构，已选 id 一传入就受控。",

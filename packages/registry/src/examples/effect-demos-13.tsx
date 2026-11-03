@@ -1,10 +1,8 @@
 "use client"
 
 import { CardSwap } from "../effects/card-swap"
-import { ClickSpark } from "../effects/click-spark"
 import { CurvedLoop } from "../effects/curved-loop"
 import { DomeGallery } from "../effects/dome-gallery"
-import { ElectricBorder } from "../effects/electric-border"
 import { FlowingMenu } from "../effects/flowing-menu"
 import { FuzzyText } from "../effects/fuzzy-text"
 import { GlareHover } from "../effects/glare-hover"
@@ -158,16 +156,8 @@ export function FuzzyTextDemo({
   )
 }
 
-export function ElectricBorderDemo({ color, speed, scale, intensity }: { color?: string; speed?: number; scale?: number; intensity?: number } = {}) {
-  return <ElectricBorder className="w-full" color={color} speed={speed} scale={scale} intensity={intensity} />
-}
-
 export function StickerPeelDemo({ intensity, speed, size }: { intensity?: number; speed?: number; size?: number } = {}) {
   return <StickerPeel intensity={intensity} speed={speed} size={size} />
-}
-
-export function ClickSparkDemo({ count, duration, scale, size, color }: { count?: number; duration?: number; scale?: number; size?: number; color?: string } = {}) {
-  return <ClickSpark className="w-full" count={count} duration={duration} scale={scale} size={size} color={color} />
 }
 
 export function GlareHoverDemo({

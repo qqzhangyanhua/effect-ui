@@ -7,12 +7,10 @@ import "@testing-library/jest-dom/vitest"
 import { AppleCardsCarousel } from "./apple-cards-carousel"
 import { AvatarGroupTooltip } from "./avatar-group-tooltip"
 import { CardSwap } from "./card-swap"
-import { CircularGallery } from "./circular-gallery"
 import { EvervaultCard } from "./evervault-card"
 import { GlassCard } from "./glass-card"
 import { GlowingEdge } from "./glowing-edge"
 import { HologramCard } from "./hologram-card"
-import { KpiSparklineCard } from "./kpi-sparkline-card"
 import { LinkPreview } from "./link-preview"
 import { PerspectiveCard } from "./perspective-card"
 import { StickerPeel } from "./sticker-peel"
@@ -139,15 +137,6 @@ test("Evervault 减弱动效时文字不模糊，且不启动定时器", () => {
   expect(window.setInterval).not.toHaveBeenCalled()
 })
 
-test("圆形画廊在 jsdom 里先挂上画布", () => {
-  const items = [{ title: "甲", src: "a" }, { title: "乙", src: "b" }]
-  const omitted = render(<CircularGallery items={items} />)
-  const paced = render(<CircularGallery items={items} speed={1} />)
-  expect(omitted.container.querySelector("canvas")).toBeTruthy()
-  expect(paced.container.querySelector("canvas")).toBeTruthy()
-})
-
-
 test("苹果卡片、键帽、贴纸和换位", () => {
   const cards = render(<AppleCardsCarousel />)
   const cardsSame = render(<AppleCardsCarousel gap={12} size={208} intensity={0.6} />)
@@ -204,7 +193,7 @@ test("键帽在减弱动效时过渡为 none", () => {
   expect(styleOf(screen.getByRole("button", { name: "Q" }))).toContain("transition: none")
 })
 
-test("链接预览、头像和指标卡", () => {
+test("链接预览和头像", () => {
   const link = render(<LinkPreview href="#a" title="预览">查看</LinkPreview>)
   fireEvent.mouseEnter(q(link).getByRole("link"))
   const pop = link.container.querySelector(".absolute")
@@ -228,17 +217,6 @@ test("链接预览、头像和指标卡", () => {
   expect(q(avatarsFew).getAllByRole("button")).toHaveLength(3)
   expect(q(avatarsFew).getByRole("button", { name: "林夏" })).not.toHaveClass("size-12")
   expect(styleOf(q(avatarsFew).getByRole("button", { name: "林夏" }))).toContain("32px")
-
-  const kpi = render(<KpiSparklineCard />)
-  const kpiSame = render(<KpiSparklineCard size={80} />)
-  const kpiTall = render(<KpiSparklineCard size={40} color="#ff0000" />)
-  const chart = (view: ReturnType<typeof render>) => view.container.querySelector("svg")
-  expect(mark(chart(kpiSame))).toBe(mark(chart(kpi)))
-  expect(chart(kpi)).toHaveClass("h-20")
-  expect(chart(kpi)?.querySelector("path")).toHaveAttribute("stroke", "currentColor")
-  expect(chart(kpiTall)).not.toHaveClass("h-20")
-  expect(styleOf(chart(kpiTall))).toContain("40px")
-  expect(chart(kpiTall)?.querySelector("path")).toHaveAttribute("stroke", "#ff0000")
 })
 
 test("全息卡起始值沿用原动画，换色和强度改写样式", () => {

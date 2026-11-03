@@ -13,7 +13,6 @@ vi.mock("ogl", () => ({
 
 import { DataTunnel } from "./data-tunnel"
 import { GalaxySpiral } from "./galaxy-spiral"
-import { Singularity } from "./singularity"
 
 import { WavefieldNeon } from "./wavefield-neon"
 
@@ -122,18 +121,6 @@ test("霓虹波场在减弱动效时改成静帧标签", () => {
   expect(screen.getByLabelText("霓虹波场静帧")).toBeInTheDocument()
   expect(frames).toEqual([])
 })
-
-test("黑洞允许动效时挂上可跟随指针的画布", () => {
-  render(<Singularity />)
-  expect(screen.getByLabelText("黑洞，移动指针可以轻轻挪动它")).toBeInTheDocument()
-})
-
-test("黑洞在减弱动效时改成静帧标签", () => {
-  reduceMotion = true
-  render(<Singularity />)
-  expect(screen.getByLabelText("黑洞静帧")).toBeInTheDocument()
-})
-
 
 function slotAfter(name: string, node: ReactElement) {
   render(node)

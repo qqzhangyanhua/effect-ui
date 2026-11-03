@@ -6,7 +6,6 @@ import userEvent from "@testing-library/user-event"
 import "@testing-library/jest-dom/vitest"
 
 import { InfiniteScroll } from "./infinite-scroll"
-import { PasswordStrength } from "./password-strength"
 import { CurrencyInput } from "./currency-input"
 
 beforeEach(() => {
@@ -57,15 +56,6 @@ test("infinite scroll shows the loaded page", () => {
   render(<InfiniteScroll onLoadMore={() => undefined}>第一页</InfiniteScroll>)
   expect(screen.getByText("第一页")).toBeInTheDocument()
   expect(screen.getByText("继续滚动")).toBeInTheDocument()
-})
-
-
-test("password strength labels a short password", async () => {
-  const user = userEvent.setup()
-  render(<PasswordStrength />)
-  expect(screen.getByText("至少 8 位，含大小写、数字和符号")).toBeInTheDocument()
-  await user.type(screen.getByPlaceholderText("设置密码"), "a")
-  expect(screen.getByText("很弱")).toBeInTheDocument()
 })
 
 test("currency input formats dollars", async () => {

@@ -1,5 +1,4 @@
 "use client"
-import { CircularGallery } from "../effects/circular-gallery"
 import { ContainerScroll3D } from "../effects/container-scroll-3d"
 import { GlowingEdge } from "../effects/glowing-edge"
 import { LampHeading } from "../effects/lamp-heading"
@@ -13,13 +12,6 @@ const frames = [
   "https://picsum.photos/id/1025/640/360",
   "https://picsum.photos/id/1035/640/360",
   "https://picsum.photos/id/1043/640/360",
-]
-
-const gallery = [
-  { title: "A", src: "https://picsum.photos/id/1011/240/300" },
-  { title: "B", src: "https://picsum.photos/id/1015/240/300" },
-  { title: "C", src: "https://picsum.photos/id/1025/240/300" },
-  { title: "D", src: "https://picsum.photos/id/1035/240/300" },
 ]
 
 export function LampHeadingDemo({
@@ -92,10 +84,6 @@ export function ContainerScroll3DDemo({
       <div className="h-16" />
     </div>
   )
-}
-
-export function CircularGalleryDemo({ speed }: { speed?: number } = {}) {
-  return <CircularGallery className="w-full" items={gallery} speed={speed} />
 }
 
 export function GlowingEdgeDemo({ duration, color, intensity, size }: { duration?: number; color?: string; intensity?: number; size?: number } = {}) {

@@ -15,7 +15,6 @@ const ui2: PropDoc[] = [
     description: "额外 Tailwind 类名，与主题变量兼容。",
   },
 ]
-const ui36: PropDoc[] = [{ name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" }]
 
 export const effectTextComponents: ComponentMeta[] = [
   {
@@ -479,28 +478,6 @@ export const effectTextComponents: ComponentMeta[] = [
       file: "effects/hyperspace-text.tsx",
       target: "components/ui/hyperspace-text.tsx",
       props: [{ name: "phrases", type: "string[]", description: "依次重组的句子。" }, ...ui2],
-    },
-  {
-      name: "hero-text-stagger",
-      batch: 63,
-      title: "Hero Text Stagger",
-      description: "原创。标题按行再按词错落出现，副文和行动按钮随后跟上，只播放一次。面向首屏文案，不是 stagger-list 的纵向列表。可以用 title 行数组，也可以用 Title、Subtitle、Cta 分槽。减弱动效直接显示终态。",
-      layer: "effect",
-      effectCategory: "text",
-      source: "original",
-      type: "registry:ui",
-      file: "effects/hero-text-stagger.tsx",
-      target: "components/ui/hero-text-stagger.tsx",
-      props: [
-        { name: "title", type: "readonly string[]", description: "标题行。一行里用空格分词；没有空格时整行一起出现。" },
-        { name: "subtitle", type: "ReactNode", description: "标题之后出现的副文。" },
-        { name: "cta", type: "ReactNode", description: "副文之后出现的行动内容。" },
-        { name: "pace", type: "number", defaultValue: "1", description: "入场速度倍数。", control: { kind: "range", value: 1, min: 0.4, max: 2, step: 0.1, group: "动画" } },
-        { name: "stagger", type: "number", defaultValue: "80", description: "相邻词的间隔，单位毫秒。", control: { kind: "range", value: 80, min: 0, max: 240, step: 10, group: "动画" } },
-        { name: "intensity", type: "number", defaultValue: "0.75", description: "上移和模糊的幅度。", control: { kind: "range", value: 0.75, min: 0, max: 1, step: 0.05 } },
-        { name: "children", type: "ReactNode", description: "用 HeroTextStaggerTitle、HeroTextStaggerSubtitle、HeroTextStaggerCta 分槽。有分槽时盖过对应 prop。" },
-        ...ui36,
-      ],
     },
   ...batch64TextComponents,
   ...batch67TextComponents,

@@ -7,14 +7,12 @@ import { FireworksShow } from "../effects/fireworks-show"
 import { ImageTubeScroll } from "../effects/image-tube-scroll"
 import { InvoicePreview } from "../effects/invoice-preview"
 
-import { MentionTextarea } from "../effects/mention-textarea"
 import { ParticleHourglass } from "../effects/particle-hourglass"
 import { ShortcutsDialog } from "../effects/shortcuts-dialog"
 import { TimezoneClock } from "../effects/timezone-clock"
 import { WobbleLineCursor } from "../effects/wobble-line-cursor"
 import { DepthFogGallery } from "../sections/depth-fog-gallery"
 import { PlanCompareTable } from "../sections/plan-compare-table"
-import { PricingCalculator } from "../sections/pricing-calculator"
 import { TelescopeZoomScroll } from "../sections/telescope-zoom-scroll"
 
 export function ImageTubeScrollDemo({
@@ -99,16 +97,8 @@ export function ShortcutsDialogDemo() {
   return <ShortcutsDialog />
 }
 
-export function PricingCalculatorDemo() {
-  return <PricingCalculator className="w-full" />
-}
-
 export function PlanCompareTableDemo() {
   return <PlanCompareTable className="w-full" />
-}
-
-export function MentionTextareaDemo() {
-  return <MentionTextarea className="w-full" />
 }
 
 export function TimezoneClockDemo() {

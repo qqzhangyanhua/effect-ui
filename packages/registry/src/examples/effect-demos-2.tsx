@@ -5,7 +5,6 @@ import { GooeyButton } from "../effects/gooey-button"
 import { NoiseGradient } from "../effects/noise-gradient"
 import { PerspectiveCard } from "../effects/perspective-card"
 import { TextRotate } from "../effects/text-rotate"
-import { WaveBackground } from "../effects/wave-background"
 
 export function TextRotateDemo({
   interval = 1800,
@@ -33,30 +32,6 @@ export function TextRotateDemo({
       letterSpacing={letterSpacing}
       align={align}
     />
-  )
-}
-
-export function WaveBackgroundDemo({
-  speed = 1,
-  color,
-  intensity = 0.25,
-  size = 112,
-}: {
-  speed?: number
-  color?: string
-  intensity?: number
-  size?: number
-} = {}) {
-  return (
-    <WaveBackground
-      className="flex min-h-40 w-full items-center justify-center p-8"
-      speed={speed}
-      color={color}
-      intensity={intensity}
-      size={size}
-    >
-      波浪背景
-    </WaveBackground>
   )
 }
 

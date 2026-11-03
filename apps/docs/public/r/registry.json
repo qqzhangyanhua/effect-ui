@@ -6055,6 +6055,162 @@
           "target": "components/ui/brim-flick-ink.tsx"
         }
       ]
+    },
+    {
+      "name": "tick-pip-confirm",
+      "type": "registry:ui",
+      "title": "Tick Pip Confirm",
+      "description": "原创。在按钮上按下或用键盘激活时，播放一声极短 tick，并在按压点闪一颗很小的 pip，确认已经按下。演示默认静音，需要打开声音才听得到短促界面音。Pip 不接收指针。这不是 press-snap-beacon 的径向信标，也不是 click-spark、press-squash-tile 或 gooey-button。没有循环蜂鸣，也没有粒子火花。减弱动效时 pip 停在静帧并立刻停音。离开视口时卸掉 pip 并停音。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/tick-pip-confirm.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tick-pip-confirm.tsx"
+        },
+        {
+          "path": "registry/effects/tone/feedback-tone.tsx",
+          "type": "registry:file",
+          "target": "components/ui/tone/feedback-tone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chime-check-bloom",
+      "type": "registry:ui",
+      "title": "Chime Check Bloom",
+      "description": "原创。确认成功时播放一声短促上升 chime，勾选标记做一次软 bloom，然后落成静帧勾。演示默认静音，需要打开声音才听得到。Bloom 不接收指针，成功卡可以重置。这不是 feedback-widget，也不是 breath-expand-ring、charge-target-ring 或 quiet-nudge-pill。没有循环庆祝，也没有全屏粒子。减弱动效时直接显示静帧勾并停音。离开视口时停音并卸掉 bloom。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/chime-check-bloom.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chime-check-bloom.tsx"
+        },
+        {
+          "path": "registry/effects/tone/feedback-tone.tsx",
+          "type": "registry:file",
+          "target": "components/ui/tone/feedback-tone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "buzz-rim-flash",
+      "type": "registry:ui",
+      "title": "Buzz Rim Flash",
+      "description": "原创。校验失败时播放一声低频短 buzz，并在字段檐口做一次克制的红闪或最多 2 像素的轻移，不是整页摇晃。演示默认静音。檐口层不接收指针，字段仍可编辑。这不是 quiet-nudge-pill，也不是 feedback-widget 或 press-snap-beacon。没有持续蜂鸣，也没有声纹粒子。减弱动效时只留错误文案和静帧红边，并停音。离开视口时停音并卸掉闪层，错误文案保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/buzz-rim-flash.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/buzz-rim-flash.tsx"
+        },
+        {
+          "path": "registry/effects/tone/feedback-tone.tsx",
+          "type": "registry:file",
+          "target": "components/ui/tone/feedback-tone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "latch-gate-click",
+      "type": "registry:ui",
+      "title": "Latch Gate Click",
+      "description": "原创。拨动开关时播放一声很短的 latch，拇指或闸门线性到位，并闪一下合闸标记。演示默认静音。合闸标记不接收指针。这不是 latch-thumb-spring 的弹簧拇指，也不是 year-snap-rail 或 gooey-button。悬停不发声。减弱动效时瞬时切态并停音。离开视口时停音，开关保持当前态。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/latch-gate-click.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/latch-gate-click.tsx"
+        },
+        {
+          "path": "registry/effects/tone/feedback-tone.tsx",
+          "type": "registry:file",
+          "target": "components/ui/tone/feedback-tone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "whoosh-dart-send",
+      "type": "registry:ui",
+      "title": "Whoosh Dart Send",
+      "description": "原创。发送时播放一声短 whoosh，并沿发送方向射出至多两个很短的 dart，播完即卸。演示默认静音。Dart 不接收指针，下方 Probe 始终可点。这不是 nib-crumb-fade，也不是 brim-flick-ink、gravity-image-trail 或 cursor-trail。没有粒子雨，也没有常驻拖尾。减弱动效时跳过 dart 并停音。离开视口时打断 whoosh 并卸掉 dart。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/whoosh-dart-send.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/whoosh-dart-send.tsx"
+        },
+        {
+          "path": "registry/effects/tone/feedback-tone.tsx",
+          "type": "registry:file",
+          "target": "components/ui/tone/feedback-tone.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mute-cone-morph",
+      "type": "registry:ui",
+      "title": "Mute Cone Morph",
+      "description": "原创。扬声器锥体在静音和开音之间切换斜杠，旁边用固定档位的体积 pip 表示音量，不是实时频谱。演示默认静音。打开声音后，Test 才播放一声短音。Pip 不接收指针。这不是 audio-spectrum，也不是 glyph-block-swap 或 quiet-nudge-pill。不使用麦克风。减弱动效时锥体瞬时切态并停音。离开视口时停音，静音状态保持。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/mute-cone-morph.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/mute-cone-morph.tsx"
+        },
+        {
+          "path": "registry/effects/tone/feedback-tone.tsx",
+          "type": "registry:file",
+          "target": "components/ui/tone/feedback-tone.tsx"
+        }
+      ]
     }
   ]
 }

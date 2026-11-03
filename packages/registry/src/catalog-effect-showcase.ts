@@ -23,6 +23,7 @@ import { batch85ShowcaseComponents } from "./catalog-batch85"
 import { batch86ShowcaseComponents } from "./catalog-batch86"
 import { batch87ShowcaseComponents } from "./catalog-batch87"
 import { batch88ShowcaseComponents } from "./catalog-batch88"
+import { batch89ShowcaseComponents } from "./catalog-batch89"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，展示 / 列表。 */
@@ -291,5 +292,6 @@ export const effectShowcaseComponents: ComponentMeta[] = [
   ...batch86ShowcaseComponents,
   ...batch87ShowcaseComponents,
   ...batch88ShowcaseComponents,
+  ...batch89ShowcaseComponents,
 ]
 

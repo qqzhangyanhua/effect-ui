@@ -324,5 +324,11 @@ export const componentOrder = [
   "otp-cell-cascade",
   "meter-rule-ticks",
   "submit-check-flare",
+  "grip-lift-rise",
+  "slot-gap-shim",
+  "lane-insert-beam",
+  "rim-reject-wobble",
+  "snap-home-cancel",
+  "dock-settle-pop",
 ] as const
 

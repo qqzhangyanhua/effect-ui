@@ -6337,6 +6337,132 @@
           "target": "components/ui/submit-check-flare.tsx"
         }
       ]
+    },
+    {
+      "name": "grip-lift-rise",
+      "type": "registry:ui",
+      "title": "Grip Lift Rise",
+      "description": "原创。按住行首拖柄时，该行短促抬起：阴影托板或一次微缩放，确认已经抓起。抬起层不接收指针。键盘可 Tab 到拖柄，Space 或 Enter 抓起，方向键或 Move 调序，Release 落位，Esc 或 Cancel 回到抓起前的顺序。只有拖柄接管手势，页面仍可滚动。这不是 hover-lift-glow 的悬停抬起，也不是 paint-lift-rail、press-snap-beacon 或 sortable-list 的整表重排。没有声音。减弱动效时直接停在抬起静帧。离开视口时打断抬起动画，并停在当前静帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/grip-lift-rise.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/grip-lift-rise.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slot-gap-shim",
+      "type": "registry:ui",
+      "title": "Slot Gap Shim",
+      "description": "原创。拖移预览时，目标行间张开一条占位 shim，原位可以留一层虚线幽灵。Shim 和幽灵都不接收指针，也不进 Tab。方向键或 Insert 移动插入位，Drop 落下，Esc 或 Cancel 关上缝并回到原顺序。这不是 seed-slot-drop 的投槽，也不是 digit-slot-gate、scrub-ghost-whisk、ghost-trail-text 或 sortable-list。没有声音。减弱动效时缝直接张开。离开视口时停在最后的插入静帧。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/slot-gap-shim.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slot-gap-shim.tsx"
+        }
+      ]
+    },
+    {
+      "name": "lane-insert-beam",
+      "type": "registry:ui",
+      "title": "Lane Insert Beam",
+      "description": "原创。拖到列表缝或另一列时，出现一条插入 beam：横线标出缝，或列缘亮一条竖线，并可写出 Insert here。Beam 不接收指针。焦点卡片可用方向键瞄准，Move to Open、Move to Hold 或 Commit 落位，Esc 或 Cancel 卸掉 beam。空列也能亮起 beam。这不是 funnel-drop-stage，也不是 physics-dropzone、card-toss-stack 或 shuffle-grid-hero。没有整列闪红。减弱动效时 beam 直接出现，没有扫光。离开视口时卸掉 beam，列内容保持。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/lane-insert-beam.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/lane-insert-beam.tsx"
+        }
+      ]
+    },
+    {
+      "name": "rim-reject-wobble",
+      "type": "registry:ui",
+      "title": "Rim Reject Wobble",
+      "description": "原创。拖进 Locked 无效区，或按下 Attempt invalid move 时，容器做一次克制描边。soft 档的位移不超过 3 像素，并且只发生一次。同时有斜线和文字，不靠颜色单独表达，也不闪整页。描边不接收指针。Esc 或 Dismiss 退出，焦点回到按钮。没有声音。这不是 buzz-rim-flash，也不是 rubber-band-drag、drag-lock-escape 或 inline-alert-rail。减弱动效时只留静帧描边和文字，没有位移。离开视口时停掉插值，文字可以留下。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/rim-reject-wobble.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/rim-reject-wobble.tsx"
+        }
+      ]
+    },
+    {
+      "name": "snap-home-cancel",
+      "type": "registry:ui",
+      "title": "Snap Home Cancel",
+      "description": "原创。拖动开始后，Esc 或 Cancel 让幽灵沿短路径回到原位并卸掉，顺序与拖前一致。Drop 才会改顺序。回位层不接收指针，Cancel 在 Tab 序里，取消后焦点回到原行。这不是 press-snap-beacon，也不是 tether-yank-return、latch-thumb-spring 或 scrim-clean-dismiss。没有声音。减弱动效时瞬间回到原位。离开视口时打断回位并直接停在原位。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/snap-home-cancel.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/snap-home-cancel.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dock-settle-pop",
+      "type": "registry:ui",
+      "title": "Dock Settle Pop",
+      "description": "原创。成功落位时，目标行或卡片做一次很短的 dock：微缩放，或落下一道阴影，然后停在新顺序。Preview 再 Cancel 或 Esc 不会触发 settle。Settle 装饰不接收指针。Commit move 或在焦点项上按 Enter 等价于成功落位，焦点留在该项。没有勾、没有粒子、没有声音。这不是 float-label-settle，也不是 chime-check-bloom、submit-check-flare 或 magnet-pocket-catch。减弱动效时直接切到新顺序。离开视口时卸掉 settle，新顺序保留。",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "cn",
+        "use-animation-active",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/dock-settle-pop.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dock-settle-pop.tsx"
+        }
+      ]
     }
   ]
 }

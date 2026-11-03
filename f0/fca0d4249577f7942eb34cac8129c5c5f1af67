@@ -1,0 +1,86 @@
+packages/registry/src/examples/effect-demos-19.tsx
+  s_e7a32f4613265a::t_fd18ee575ec579 11
+apps/docs/public/r/agency-template.json
+  s_e7a32f4613265a::t_eb0596d2216b17 6,9,16
+packages/registry/src/effects/card-vocabulary.test.tsx
+  s_e7a32f4613265a::t_100551bcbf22e1 196
+registry.json
+  s_e7a32f4613265a::t_5358f441194f15 3243
+  s_e7a32f4613265a::t_eb0596d2216b17 828,831
+apps/docs/public/r/scroll-parallax-layers.json
+  s_e7a32f4613265a::t_5358f441194f15 6
+docs/project-map.md
+  s_e7a32f4613265a::t_4dfeb73d7aacb3 11
+packages/registry/src/catalog-effect-scroll.ts
+  s_e7a32f4613265a::t_83f0b23e92ce1d 418
+packages/registry/src/catalog-composite-overlay.ts
+  s_884ca1c8cea49e::t_4e1d3cab0d707f 1,4
+apps/docs/components/home-showcase.tsx
+  s_884ca1c8cea49e::t_6d9af842d74406 10,151-154,156,158
+packages/registry/src/templates/agency/page.tsx
+  s_e7a32f4613265a::t_1ff56ff88d03a7 15-20
+  s_884ca1c8cea49e::t_44531132e6db50 21
+THIRD_PARTY_NOTICES.md
+  s_e7a32f4613265a::t_0a1532d23e3876 488
+  s_e7a32f4613265a::t_2cfcbecad6d1ff 490
+  s_e7a32f4613265a::t_bf0800862f1cf1 489
+  s_e7a32f4613265a::t_4a61c6126b984f 491
+  s_e7a32f4613265a::t_11620b5783035f 492
+  s_e7a32f4613265a::t_9abca3b45116ff 483
+  s_e7a32f4613265a::t_594eae36b4d5ce 497
+  s_e7a32f4613265a::t_7beda166dbdb6f 498
+  s_e7a32f4613265a::t_4f8ffc0463d689 482
+packages/registry/src/catalog-groups.test.ts
+  s_e7a32f4613265a::t_915fe74726ce7e 99
+README.md
+  s_e7a32f4613265a::t_1ee3ab3c1be62d 363
+  s_e7a32f4613265a::t_826dba7f6aa8df 439
+  s_e7a32f4613265a::t_8cac0d03ec705f 437
+  s_e7a32f4613265a::t_3ea0ab1bf8c97c 775
+  s_e7a32f4613265a::t_f61ff645178dff 777
+  s_e7a32f4613265a::t_7346b4c5d43232 69
+apps/docs/lib/usage.test.ts
+  s_e7a32f4613265a::t_17df8b34f5344a 9,11-12,17
+CREDITS.md
+  s_e7a32f4613265a::t_c194349e3dcf56 65
+  s_e7a32f4613265a::t_4847ab06e01a38 68
+  s_e7a32f4613265a::t_9b592c42295486 14,66,69
+  s_e7a32f4613265a::t_19e76fd5f241ad 17,76
+  s_e7a32f4613265a::t_40ac886c962f1f 18,74
+  s_e7a32f4613265a::t_8c367017252703 19
+  s_e7a32f4613265a::t_3d465f3ab161c6 60
+  s_e7a32f4613265a::t_db655d15a05a12 61
+apps/docs/public/r/registry.json
+  s_e7a32f4613265a::t_5358f441194f15 3243
+  s_e7a32f4613265a::t_eb0596d2216b17 828,831
+packages/registry/src/audit.issue-74.test.ts
+  s_e7a32f4613265a::t_73482163b124fd 74
+packages/registry/src/catalog-template.ts
+  s_e7a32f4613265a::t_b53894b3ed26f0 24
+apps/docs/components/home-sections.test.tsx
+  s_884ca1c8cea49e::t_eb28be767cf119 93-94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f0fca0d4249577f7942eb34cac8129c5c5f1af67",
+  "prompts": {},
+  "sessions": {
+    "s_884ca1c8cea49e": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a19f57-d801-7170-876b-2642e88b2e77",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_e7a32f4613265a": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a18783-55b0-7743-8e21-07b0aff14111",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": null
+    }
+  }
+}

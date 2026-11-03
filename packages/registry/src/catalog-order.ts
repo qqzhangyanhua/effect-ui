@@ -312,5 +312,11 @@ export const componentOrder = [
   "echo-focus-twin",
   "scrub-ghost-whisk",
   "brim-flick-ink",
+  "tick-pip-confirm",
+  "chime-check-bloom",
+  "buzz-rim-flash",
+  "latch-gate-click",
+  "whoosh-dart-send",
+  "mute-cone-morph",
 ] as const
 

@@ -306,5 +306,11 @@ export const componentOrder = [
   "haze-ambient-veil",
   "sill-gleam-pass",
   "scrim-clean-dismiss",
+  "nib-crumb-fade",
+  "press-snap-beacon",
+  "nest-soft-halo",
+  "echo-focus-twin",
+  "scrub-ghost-whisk",
+  "brim-flick-ink",
 ] as const
 

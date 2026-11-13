@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch90BackgroundComponents } from "./catalog-batch90"
 import { reactBitsCredit as credit } from "./catalog-sources"
 
 /** Effect，背景。 */
@@ -661,5 +662,6 @@ export const effectBackgroundsComponents: ComponentMeta[] = [
         ...ui2,
       ],
     },
+  ...batch90BackgroundComponents,
 ]
 

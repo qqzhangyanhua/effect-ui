@@ -1,5 +1,6 @@
 "use client"
 
+import { DepthParallaxPhoto } from "../effects/depth-parallax-photo"
 import { FlutedGlassPane } from "../effects/fluted-glass-pane"
 import { LiquidMetalMark } from "../effects/liquid-metal-mark"
 
@@ -31,6 +32,22 @@ export function LiquidMetalMarkDemo({
   return (
     <div className="w-full max-w-xl px-6 py-10">
       <LiquidMetalMark speed={speed} intensity={intensity} colors={colors} />
+    </div>
+  )
+}
+
+export function DepthParallaxPhotoDemo({
+  intensity = 0.5,
+  size = 24,
+  speed = 1,
+}: {
+  intensity?: number
+  size?: number
+  speed?: number
+} = {}) {
+  return (
+    <div className="w-full max-w-xl px-6 py-10">
+      <DepthParallaxPhoto intensity={intensity} size={size} speed={speed} />
     </div>
   )
 }

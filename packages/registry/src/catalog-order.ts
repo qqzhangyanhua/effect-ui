@@ -337,5 +337,8 @@ export const componentOrder = [
   "glass-refract-hero",
   "fluted-glass-pane",
   "liquid-metal-mark",
+  "ripple-refract-surface",
+  "reaction-diffusion-field",
+  "depth-parallax-photo",
 ] as const
 

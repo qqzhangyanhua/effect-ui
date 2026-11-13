@@ -339,6 +339,7 @@ export const componentOrder = [
   "ripple-refract-surface",
   "reaction-diffusion-field",
   "depth-parallax-photo",
+  "velocity-bend-gallery",
   "ascii-halftone-filter",
 ] as const
 

@@ -1,13 +1,13 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 
-/** 第 85 批调研，catalog batch 91。棱纹玻璃、深度照片和字符滤镜，原创，没有移植头。 */
+/** 第 85 批调研，catalog batch 91。棱纹玻璃、深度照片、字符滤镜和速度画廊，原创，没有移植头。 */
 const className: PropDoc = {
   name: "className",
   type: "string",
   description: "额外 Tailwind 类名，与主题变量兼容。",
 }
 
-function paneFiles(slug: string): NonNullable<ComponentMeta["files"]> {
+function glFiles(slug: string): NonNullable<ComponentMeta["files"]> {
   return [
     { file: `effects/${slug}.tsx`, type: "registry:ui", target: `components/ui/${slug}.tsx` },
     { file: "effects/gl/gl-loop.tsx", type: "registry:file", target: "components/ui/gl/gl-loop.tsx" },
@@ -27,7 +27,7 @@ export const batch91CardsComponents: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/fluted-glass-pane.tsx",
     target: "components/ui/fluted-glass-pane.tsx",
-    files: paneFiles("fluted-glass-pane"),
+    files: glFiles("fluted-glass-pane"),
     presets: [
       { name: "quiet", label: "疏", values: { count: 8, angle: 90, intensity: 0.2 } },
       { name: "default", label: "默认", values: { count: 18, angle: 90, intensity: 0.45 } },
@@ -81,7 +81,7 @@ export const batch91CardsComponents: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/depth-parallax-photo.tsx",
     target: "components/ui/depth-parallax-photo.tsx",
-    files: paneFiles("depth-parallax-photo"),
+    files: glFiles("depth-parallax-photo"),
     presets: [
       { name: "quiet", label: "静", values: { intensity: 0.2, size: 12, speed: 0.6 } },
       { name: "default", label: "默认", values: { intensity: 0.5, size: 24, speed: 1 } },
@@ -134,7 +134,7 @@ export const batch91CardsComponents: ComponentMeta[] = [
     type: "registry:ui",
     file: "effects/ascii-halftone-filter.tsx",
     target: "components/ui/ascii-halftone-filter.tsx",
-    files: paneFiles("ascii-halftone-filter"),
+    files: glFiles("ascii-halftone-filter"),
     presets: [
       { name: "quiet", label: "疏", values: { mode: "ascii", size: 16, intensity: 0.4 } },
       { name: "default", label: "默认", values: { mode: "ascii", size: 8, intensity: 0.8 } },
@@ -166,6 +166,57 @@ export const batch91CardsComponents: ComponentMeta[] = [
         name: "src",
         type: "string",
         description: "图片地址。不是控件。不传或加载失败时用程序化图。",
+      },
+      className,
+    ],
+  },
+]
+
+export const batch91ScrollComponents: ComponentMeta[] = [
+  {
+    name: "velocity-bend-gallery",
+    batch: 91,
+    title: "Velocity Bend Gallery",
+    description:
+      "原创。画廊在组件自己的滚动区域里，滚得越快，卡片弯得越厉害，色差也越明显。不听窗口滚动，也不使用平滑滚动库。speed 是速度倍数，intensity 是弯曲幅度，gap 是卡片间距，单位像素。images 是图片地址列表，不是控件。不传或某一张加载失败时，该卡片留在程序化图上，不抛。程序化卡片读取组件根上的 --background、--foreground、--primary、--chart-2、--chart-4，不读 documentElement。这不是 image-tube-scroll，也不是 scroll-image-sequence。没有新依赖。减弱动效不挂 canvas，卡片不弯，仍然可以滚动。没有 WebGL 时同样停在可滚动的静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+    layer: "effect",
+    effectCategory: "scroll",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/velocity-bend-gallery.tsx",
+    target: "components/ui/velocity-bend-gallery.tsx",
+    files: glFiles("velocity-bend-gallery"),
+    presets: [
+      { name: "quiet", label: "疏", values: { speed: 0.6, intensity: 0.2, gap: 24 } },
+      { name: "default", label: "默认", values: { speed: 1, intensity: 0.6, gap: 16 } },
+      { name: "fast", label: "快", values: { speed: 1.8, intensity: 0.9, gap: 8 } },
+    ],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "滚动速度换成弯曲的倍数。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.6",
+        description: "弯曲和色差的幅度。0.6 与不传相同。0 时再快也不弯。",
+        control: { kind: "range", value: 0.6, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "gap",
+        type: "number",
+        defaultValue: "16",
+        description: "卡片间距，单位像素。16 与不传相同。",
+        control: { kind: "range", value: 16, min: 0, max: 48, step: 1 },
+      },
+      {
+        name: "images",
+        type: "string[]",
+        description: "图片地址列表。不是控件。不传或加载失败时用程序化卡片。",
       },
       className,
     ],

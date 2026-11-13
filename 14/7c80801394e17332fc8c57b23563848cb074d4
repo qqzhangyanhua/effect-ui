@@ -1,0 +1,44 @@
+registry.json
+  s_757f5d4e974c26::t_fa392bf19be7e5 6572-6573
+  s_757f5d4e974c26::t_d7efe49b1dcd29 6574-6587
+  s_757f5d4e974c26::t_7911c159b70dad 6588-6590
+packages/registry/src/catalog-effect-cards.ts
+  s_757f5d4e974c26::t_d7efe49b1dcd29 13,759
+packages/registry/src/catalog-order.ts
+  s_757f5d4e974c26::t_d7efe49b1dcd29 338
+packages/registry/src/examples/index.ts
+  s_757f5d4e974c26::t_d7efe49b1dcd29 61,399
+packages/registry/src/catalog-batch91.ts
+  s_757f5d4e974c26::t_d7efe49b1dcd29 1-72
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_757f5d4e974c26::t_d7efe49b1dcd29 1-130
+apps/docs/public/r/registry.json
+  s_757f5d4e974c26::t_d7efe49b1dcd29 6574-6587
+  s_757f5d4e974c26::t_fa392bf19be7e5 6572-6573
+  s_757f5d4e974c26::t_73320b3eacb680 6588-6590
+packages/registry/src/examples/effect-demos-93.tsx
+  s_757f5d4e974c26::t_d7efe49b1dcd29 1-19
+apps/docs/public/r/fluted-glass-pane.json
+  s_757f5d4e974c26::t_d7efe49b1dcd29 1-26
+packages/registry/src/effects/fluted-glass-pane.tsx
+  s_757f5d4e974c26::t_d7efe49b1dcd29 1-408
+README.md
+  s_757f5d4e974c26::t_d7efe49b1dcd29 505-511
+  s_757f5d4e974c26::t_4dbbd6759da48c 512
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "147c80801394e17332fc8c57b23563848cb074d4",
+  "prompts": {},
+  "sessions": {
+    "s_757f5d4e974c26": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d54c-5535-7de3-a8ef-41c97109ae34",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

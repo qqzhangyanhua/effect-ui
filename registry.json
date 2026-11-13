@@ -6483,6 +6483,24 @@
       ]
     },
     {
+      "name": "curtain-route-transition",
+      "type": "registry:ui",
+      "title": "Curtain Route Transition",
+      "description": "原创。两块英文内容之间播一段 SVG 曲线幕布，播完露出另一块。按钮或键盘播放。不包裹路由，也不导航。宿主若有自己的路由，在 onPass 里换内容。减弱动效时两块内容瞬时切换。这不是 aisle-crossfade-route 的交叉淡入。没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/curtain-route-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/curtain-route-transition.tsx"
+        }
+      ]
+    },
+    {
       "name": "morph-mega-menu",
       "type": "registry:ui",
       "title": "Morph Mega Menu",

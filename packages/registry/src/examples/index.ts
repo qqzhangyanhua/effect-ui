@@ -389,6 +389,7 @@ const demoMap: Record<string, ComponentType> = {
   "snap-home-cancel": effectDemos91.SnapHomeCancelDemo,
   "dock-settle-pop": effectDemos91.DockSettlePopDemo,
   "theme-reveal-toggle": effectDemos95.ThemeRevealToggleDemo,
+  "curtain-route-transition": effectDemos95.CurtainRouteTransitionDemo,
   "morph-mega-menu": effectDemos95.MorphMegaMenuDemo,
 }
 

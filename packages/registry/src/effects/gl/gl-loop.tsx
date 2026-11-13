@@ -264,6 +264,48 @@ function releaseContext(gl: GlContext) {
   gl.getExtension("WEBGL_lose_context")?.loseContext()
 }
 
+/** 编译失败时删掉着色器并返回 null。 */
+export function compileShader(gl: GlContext, type: number, source: string): WebGLShader | null {
+  const shader = gl.createShader(type)
+  if (!shader) return null
+  gl.shaderSource(shader, source)
+  gl.compileShader(shader)
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    gl.deleteShader(shader)
+    return null
+  }
+  return shader
+}
+
+function rgbChannels(input: string): [number, number, number] | null {
+  const text = input.trim()
+  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(text)
+  const body = hex?.[1]
+  if (body) {
+    const full = body.length === 3 ? [...body].map((char) => char + char).join("") : body
+    const value = Number.parseInt(full, 16)
+    return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
+  }
+  const rgb = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i.exec(text)
+  if (!rgb?.[1] || !rgb[2] || !rgb[3]) return null
+  return [Number(rgb[1]) / 255, Number(rgb[2]) / 255, Number(rgb[3]) / 255]
+}
+
+/** hex、rgb 直接解析。其余写进 color，读浏览器算出的 rgb。失败返回 null。 */
+export function parseCssColor(host: HTMLElement, input: string): [number, number, number] | null {
+  const text = input.trim()
+  if (!text) return null
+  const direct = rgbChannels(text)
+  if (direct) return direct
+  const previous = host.style.color
+  host.style.color = text
+  try {
+    return rgbChannels(getComputedStyle(host).color)
+  } finally {
+    host.style.color = previous
+  }
+}
+
 /**
  * 多 pass 效果共用的原始 WebGL 循环。只管生命周期：成对 framebuffer、全屏三角形、
  * 浮点纹理探测、像素比上限、尺寸、离屏暂停、卸载时释放 context。

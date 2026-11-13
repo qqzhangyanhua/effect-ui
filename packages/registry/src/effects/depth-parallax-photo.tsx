@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type PointerEvent } from "react"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/cn"
 
-import { mountGlLoop, type GlContext, type GlLoopHandle, type GlSize } from "./gl/gl-loop"
+import { compileShader, mountGlLoop, type GlContext, type GlLoopHandle, type GlSize } from "./gl/gl-loop"
 
 /** original implementation. Pointer and touch shift the photo by depth. */
 
@@ -183,18 +183,6 @@ void main() {
 }
 `
   return { vert, frag }
-}
-
-function compileShader(gl: GlContext, type: number, source: string) {
-  const shader = gl.createShader(type)
-  if (!shader) return null
-  gl.shaderSource(shader, source)
-  gl.compileShader(shader)
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    gl.deleteShader(shader)
-    return null
-  }
-  return shader
 }
 
 function linkPhoto(gl: GlContext) {

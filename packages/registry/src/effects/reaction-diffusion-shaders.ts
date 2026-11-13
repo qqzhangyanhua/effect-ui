@@ -1,4 +1,4 @@
-import type { GlContext } from "./gl/gl-loop"
+import { compileShader, type GlContext } from "./gl/gl-loop"
 
 export interface FieldProgram {
   program: WebGLProgram
@@ -82,23 +82,11 @@ void main() {
   )
 }
 
-function shaderOf(gl: GlContext, type: number, source: string): WebGLShader | null {
-  const item = gl.createShader(type)
-  if (!item) return null
-  gl.shaderSource(item, source)
-  gl.compileShader(item)
-  if (!gl.getShaderParameter(item, gl.COMPILE_STATUS)) {
-    gl.deleteShader(item)
-    return null
-  }
-  return item
-}
-
 function compile(gl: GlContext, vertex: string, fragment: string): FieldProgram | null {
   const program = gl.createProgram()
   if (!program) return null
-  const vs = shaderOf(gl, gl.VERTEX_SHADER, vertex)
-  const fs = shaderOf(gl, gl.FRAGMENT_SHADER, fragment)
+  const vs = compileShader(gl, gl.VERTEX_SHADER, vertex)
+  const fs = compileShader(gl, gl.FRAGMENT_SHADER, fragment)
   if (!vs || !fs) {
     if (vs) gl.deleteShader(vs)
     if (fs) gl.deleteShader(fs)

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/cn"
 
-import { mountGlLoop, type GlContext, type GlFrame, type GlLoopHandle, type GlPair, type GlTarget } from "./gl/gl-loop"
+import { mountGlLoop, parseCssColor, type GlContext, type GlFrame, type GlLoopHandle, type GlPair, type GlTarget } from "./gl/gl-loop"
 import { compileField, type FieldProgram } from "./reaction-diffusion-shaders"
 
 /** original implementation. Gray-Scott field grown from a built-in pattern. */
@@ -174,32 +174,6 @@ export function seedChemicals(pattern: ReactionPattern, x: number, y: number): {
   return { u: v > 0 ? 0.5 : 1, v }
 }
 
-function parseCssColor(input: string): Rgb | null {
-  const text = input.trim()
-  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(text)
-  const body = hex?.[1]
-  if (body) {
-    const full = body.length === 3 ? [...body].map((char) => char + char).join("") : body
-    const value = Number.parseInt(full, 16)
-    return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
-  }
-  const rgb = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i.exec(text)
-  if (!rgb?.[1] || !rgb[2] || !rgb[3]) return null
-  return [Number(rgb[1]) / 255, Number(rgb[2]) / 255, Number(rgb[3]) / 255]
-}
-
-function colorOn(host: HTMLElement, css: string): Rgb | null {
-  const text = css.trim()
-  if (!text) return null
-  const direct = parseCssColor(text)
-  if (direct) return direct
-  const previous = host.style.color
-  host.style.color = text
-  const resolved = parseCssColor(getComputedStyle(host).color)
-  host.style.color = previous
-  return resolved
-}
-
 function fallbackAt(index: number): Rgb {
   return FALLBACK[index] ?? FALLBACK[0] ?? [0.2, 0.28, 0.45]
 }
@@ -208,7 +182,7 @@ function tokenColor(host: HTMLElement, style: CSSStyleDeclaration, index: number
   const token = TOKENS[index] ?? "--primary"
   const raw = style.getPropertyValue(token).trim()
   if (!raw) return fallbackAt(index)
-  return colorOn(host, raw) ?? fallbackAt(index)
+  return parseCssColor(host, raw) ?? fallbackAt(index)
 }
 
 function themeColors(host: HTMLElement): [Rgb, Rgb, Rgb] {
@@ -219,15 +193,15 @@ function themeColors(host: HTMLElement): [Rgb, Rgb, Rgb] {
 function paletteOf(host: HTMLElement, colors: readonly string[] | undefined): [Rgb, Rgb, Rgb] {
   if (!colors || colors.length === 0) return themeColors(host)
   return [
-    colorOn(host, colors[0] ?? "") ?? fallbackAt(0),
-    colorOn(host, colors[1] ?? "") ?? fallbackAt(1),
-    colorOn(host, colors[2] ?? "") ?? fallbackAt(2),
+    parseCssColor(host, colors[0] ?? "") ?? fallbackAt(0),
+    parseCssColor(host, colors[1] ?? "") ?? fallbackAt(1),
+    parseCssColor(host, colors[2] ?? "") ?? fallbackAt(2),
   ]
 }
 
 function backdropOf(host: HTMLElement): Rgb {
   const style = getComputedStyle(host)
-  return parseCssColor(style.backgroundColor) ?? colorOn(host, "var(--background)") ?? [0.97, 0.96, 0.94]
+  return parseCssColor(host, style.backgroundColor) ?? parseCssColor(host, "var(--background)") ?? [0.97, 0.96, 0.94]
 }
 
 function stillPaint(pattern: ReactionPattern, colors: readonly string[] | undefined) {

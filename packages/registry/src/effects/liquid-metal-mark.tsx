@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react"
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/cn"
 
-import { mountGlLoop, type GlContext, type GlLoopHandle, type GlSize } from "./gl/gl-loop"
+import { compileShader, mountGlLoop, parseCssColor, type GlContext, type GlLoopHandle, type GlSize } from "./gl/gl-loop"
 
 /** original implementation. The word is the mark until an image mask replaces it. */
 
@@ -99,25 +99,8 @@ function token(style: CSSStyleDeclaration, name: string, fallback: string) {
   return value
 }
 
-function parseColor(input: string): [number, number, number] | null {
-  const value = input.trim()
-  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(value)
-  const raw = hex?.[1]
-  if (raw) {
-    const full = raw.length === 3 ? [...raw].map((part) => part + part).join("") : raw
-    const bits = Number.parseInt(full, 16)
-    return [(bits >> 16) / 255, ((bits >> 8) & 255) / 255, (bits & 255) / 255]
-  }
-  const rgb = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i.exec(value)
-  const red = rgb?.[1]
-  const green = rgb?.[2]
-  const blue = rgb?.[3]
-  if (!red || !green || !blue) return null
-  return [Number(red) / 255, Number(green) / 255, Number(blue) / 255]
-}
-
-function rgbOf(input: string, fallback: string): [number, number, number] {
-  return parseColor(input) ?? parseColor(fallback) ?? [0, 0, 0]
+function rgbOf(host: HTMLElement, input: string, fallback: string): [number, number, number] {
+  return parseCssColor(host, input) ?? parseCssColor(host, fallback) ?? [0, 0, 0]
 }
 
 function metalColors(style: CSSStyleDeclaration, colors: readonly string[] | undefined): [string, string, string] {
@@ -170,18 +153,6 @@ void main() {
 }
 `
   return { vert, frag }
-}
-
-function compileShader(gl: GlContext, type: number, source: string) {
-  const shader = gl.createShader(type)
-  if (!shader) return null
-  gl.shaderSource(shader, source)
-  gl.compileShader(shader)
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    gl.deleteShader(shader)
-    return null
-  }
-  return shader
 }
 
 function linkMetal(gl: GlContext) {
@@ -268,8 +239,8 @@ function paintMask(canvas: HTMLCanvasElement, mark: MetalMark, image: HTMLImageE
   return true
 }
 
-function writeColor(gl: GlContext, slot: WebGLUniformLocation | null, color: string, fallback: string) {
-  const channels = rgbOf(color, fallback)
+function writeColor(gl: GlContext, host: HTMLElement, slot: WebGLUniformLocation | null, color: string, fallback: string) {
+  const channels = rgbOf(host, color, fallback)
   gl.uniform3f(slot, channels[0], channels[1], channels[2])
 }
 
@@ -309,9 +280,9 @@ function drawMetal(
   gl.uniform1f(gpu.time, time)
   gl.uniform1f(gpu.speed, tuning.speed)
   gl.uniform1f(gpu.intensity, tuning.intensity)
-  writeColor(gl, gpu.c0, shade, THEME_FALLBACK[0])
-  writeColor(gl, gpu.c1, body, THEME_FALLBACK[1])
-  writeColor(gl, gpu.c2, highlight, THEME_FALLBACK[2])
+  writeColor(gl, host, gpu.c0, shade, THEME_FALLBACK[0])
+  writeColor(gl, host, gpu.c1, body, THEME_FALLBACK[1])
+  writeColor(gl, host, gpu.c2, highlight, THEME_FALLBACK[2])
   draw()
 }
 

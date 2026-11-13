@@ -15,7 +15,7 @@ import {
   inkSplatVelocity,
   inkVertex,
 } from "./fluid-ink-shaders"
-import { mountGlLoop, type GlContext, type GlFrame, type GlLoopHandle, type GlPair, type GlTarget } from "./gl/gl-loop"
+import { compileShader, mountGlLoop, parseCssColor, type GlContext, type GlFrame, type GlLoopHandle, type GlPair, type GlTarget } from "./gl/gl-loop"
 
 /** original implementation. Pointer and touch stir ink inside this element. */
 
@@ -79,20 +79,6 @@ function clampIntensity(intensity: number) {
   return Math.min(1, Math.max(0, intensity))
 }
 
-function parseCssColor(input: string): [number, number, number] | null {
-  const text = input.trim()
-  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(text)
-  const body = hex?.[1]
-  if (body) {
-    const full = body.length === 3 ? body.split("").map((char) => char + char).join("") : body
-    const value = Number.parseInt(full, 16)
-    return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
-  }
-  const rgb = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i.exec(text)
-  if (!rgb?.[1] || !rgb[2] || !rgb[3]) return null
-  return [Number(rgb[1]) / 255, Number(rgb[2]) / 255, Number(rgb[3]) / 255]
-}
-
 const TOKEN_NAMES = ["--primary", "--chart-2", "--chart-4"] as const
 const TOKEN_FALLBACK: [number, number, number][] = [
   [0.2, 0.28, 0.45],
@@ -104,17 +90,17 @@ function inkAt(index: number): [number, number, number] {
   return TOKEN_FALLBACK[index] ?? TOKEN_FALLBACK[0] ?? [0.2, 0.28, 0.45]
 }
 
-function themeInkColors(style: CSSStyleDeclaration): [number, number, number][] {
-  return TOKEN_NAMES.map((name, index) => parseCssColor(style.getPropertyValue(name)) ?? inkAt(index))
+function themeInkColors(host: HTMLElement, style: CSSStyleDeclaration): [number, number, number][] {
+  return TOKEN_NAMES.map((name, index) => parseCssColor(host, style.getPropertyValue(name)) ?? inkAt(index))
 }
 
-function paletteFrom(style: CSSStyleDeclaration, colors: readonly string[] | undefined) {
-  if (!colors || colors.length === 0) return themeInkColors(style)
-  return [0, 1, 2].map((index) => parseCssColor(colors[index] ?? "") ?? inkAt(index))
+function paletteFrom(host: HTMLElement, style: CSSStyleDeclaration, colors: readonly string[] | undefined) {
+  if (!colors || colors.length === 0) return themeInkColors(host, style)
+  return [0, 1, 2].map((index) => parseCssColor(host, colors[index] ?? "") ?? inkAt(index))
 }
 
-function backdropOf(style: CSSStyleDeclaration): [number, number, number] {
-  return parseCssColor(style.backgroundColor) ?? parseCssColor(style.getPropertyValue("--background")) ?? [0.97, 0.96, 0.94]
+function backdropOf(host: HTMLElement, style: CSSStyleDeclaration): [number, number, number] {
+  return parseCssColor(host, style.backgroundColor) ?? parseCssColor(host, style.getPropertyValue("--background")) ?? [0.97, 0.96, 0.94]
 }
 
 function stillPaint(colors: readonly string[] | undefined) {
@@ -143,23 +129,11 @@ interface Compiled {
   loc: (name: string) => WebGLUniformLocation | null
 }
 
-function shaderOf(gl: GlContext, type: number, source: string) {
-  const item = gl.createShader(type)
-  if (!item) return null
-  gl.shaderSource(item, source)
-  gl.compileShader(item)
-  if (!gl.getShaderParameter(item, gl.COMPILE_STATUS)) {
-    gl.deleteShader(item)
-    return null
-  }
-  return item
-}
-
 function compile(gl: GlContext, vertex: string, fragment: string): Compiled | null {
   const program = gl.createProgram()
   if (!program) return null
-  const vs = shaderOf(gl, gl.VERTEX_SHADER, vertex)
-  const fs = shaderOf(gl, gl.FRAGMENT_SHADER, fragment)
+  const vs = compileShader(gl, gl.VERTEX_SHADER, vertex)
+  const fs = compileShader(gl, gl.FRAGMENT_SHADER, fragment)
   if (!vs || !fs) {
     if (vs) gl.deleteShader(vs)
     if (fs) gl.deleteShader(fs)
@@ -275,7 +249,7 @@ function startSession(loop: GlLoopHandle, host: HTMLElement, tuning: { readonly 
       const velKeep = decayInk(1, speed, frame.dt * 0.2)
       ink = decayInk(ink, speed, frame.dt)
       const style = getComputedStyle(host)
-      const palette = paletteFrom(style, tuning.current.colors)
+      const palette = paletteFrom(host, style, tuning.current.colors)
       const radius = 0.03 + intensity * 0.07
       gl.disable(gl.BLEND)
       const queued = splats.splice(0, splats.length)
@@ -356,7 +330,7 @@ function startSession(loop: GlLoopHandle, host: HTMLElement, tuning: { readonly 
       gl.uniform1f(flow.loc("uDye"), 1)
       loop.draw()
       ready.dye.swap()
-      const [red, green, blue] = backdropOf(style)
+      const [red, green, blue] = backdropOf(host, style)
       gl.bindFramebuffer(gl.FRAMEBUFFER, null)
       gl.viewport(0, 0, frame.size.width, frame.size.height)
       gl.clearColor(red, green, blue, 1)

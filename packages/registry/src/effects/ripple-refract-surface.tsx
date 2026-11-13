@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from "
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion"
 import { cn } from "@/lib/cn"
 
-import { mountGlLoop, type GlContext, type GlFrame, type GlLoopHandle } from "./gl/gl-loop"
+import { compileShader, mountGlLoop, parseCssColor, type GlContext, type GlFrame, type GlLoopHandle } from "./gl/gl-loop"
 
 /** original implementation. Pointer move and click ripple a picture or a gradient. */
 
@@ -81,31 +81,6 @@ export function rippleSubsteps(speed: number): number {
   return Math.max(1, Math.round(clampSpeed(speed)))
 }
 
-function parseCssColor(input: string): [number, number, number] | null {
-  const text = input.trim()
-  const hex = /^#([\da-f]{3}|[\da-f]{6})$/i.exec(text)
-  const body = hex?.[1]
-  if (body) {
-    const full = body.length === 3 ? body.split("").map((char) => char + char).join("") : body
-    const value = Number.parseInt(full, 16)
-    return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255]
-  }
-  const rgb = /^rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/i.exec(text)
-  if (!rgb?.[1] || !rgb[2] || !rgb[3]) return null
-  return [Number(rgb[1]) / 255, Number(rgb[2]) / 255, Number(rgb[3]) / 255]
-}
-
-function resolveColor(host: HTMLElement, raw: string): string {
-  const text = raw.trim()
-  if (!text) return ""
-  const probe = host.ownerDocument.createElement("span")
-  probe.style.color = text
-  host.appendChild(probe)
-  const resolved = getComputedStyle(probe).color
-  probe.remove()
-  return resolved
-}
-
 function colorReader(host: HTMLElement) {
   let key = "\0"
   let tint = FALLBACK_TINT
@@ -114,7 +89,7 @@ function colorReader(host: HTMLElement) {
     const raw = given || getComputedStyle(host).getPropertyValue("--primary").trim()
     if (raw === key) return tint
     key = raw
-    tint = parseCssColor(raw) ?? parseCssColor(resolveColor(host, raw)) ?? FALLBACK_TINT
+    tint = parseCssColor(host, raw) ?? FALLBACK_TINT
     return tint
   }
 }
@@ -181,23 +156,11 @@ function packHeight(field: Float32Array, into: Uint8Array) {
   }
 }
 
-function shaderOf(gl: GlContext, type: number, source: string) {
-  const item = gl.createShader(type)
-  if (!item) return null
-  gl.shaderSource(item, source)
-  gl.compileShader(item)
-  if (!gl.getShaderParameter(item, gl.COMPILE_STATUS)) {
-    gl.deleteShader(item)
-    return null
-  }
-  return item
-}
-
 function compile(gl: GlContext, vertex: string, fragment: string): Compiled | null {
   const program = gl.createProgram()
   if (!program) return null
-  const vs = shaderOf(gl, gl.VERTEX_SHADER, vertex)
-  const fs = shaderOf(gl, gl.FRAGMENT_SHADER, fragment)
+  const vs = compileShader(gl, gl.VERTEX_SHADER, vertex)
+  const fs = compileShader(gl, gl.FRAGMENT_SHADER, fragment)
   if (!vs || !fs) {
     if (vs) gl.deleteShader(vs)
     if (fs) gl.deleteShader(fs)

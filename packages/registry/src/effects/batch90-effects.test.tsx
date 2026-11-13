@@ -11,7 +11,7 @@ import "@testing-library/jest-dom/vitest"
 import { auditExemptions } from "../audit-exemptions"
 import { getComponent } from "../catalog"
 import { decayInk, FluidInkCursor, injectPointer } from "./fluid-ink-cursor"
-import { cappedDpr, shouldDrawFrame } from "./gl/gl-loop"
+import { cappedDpr, parseCssColor, shouldDrawFrame } from "./gl/gl-loop"
 import { advanceRipple, rippleDrop, rippleSubsteps, RippleRefractSurface } from "./ripple-refract-surface"
 import {
   dyeWeight,
@@ -47,6 +47,20 @@ afterEach(() => {
   cleanup()
   vi.unstubAllGlobals()
   vi.restoreAllMocks()
+})
+
+test("oklch 主题色解析成计算后的 rgb，不是 fallback", () => {
+  const host = document.createElement("div")
+  const oklch = "oklch(0.62 0.18 250)"
+  vi.stubGlobal("getComputedStyle", () => ({
+    getPropertyValue(name: string) {
+      return name.startsWith("--") ? oklch : ""
+    },
+    color: "rgb(12, 34, 56)",
+  }))
+  expect(getComputedStyle(host).getPropertyValue("--primary")).toBe(oklch)
+  expect(parseCssColor(host, oklch)).toEqual([12 / 255, 34 / 255, 56 / 255])
+  expect(host.style.color).toBe("")
 })
 
 test("像素比封顶 1.5，离屏或页面隐藏时不画", () => {

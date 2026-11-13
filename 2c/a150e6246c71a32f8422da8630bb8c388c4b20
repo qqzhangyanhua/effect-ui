@@ -1,0 +1,45 @@
+packages/registry/src/effects/morph-mega-menu.tsx
+  s_2a196084a75e36::t_4beb307458b264 1-259
+packages/registry/src/examples/index.ts
+  s_2a196084a75e36::t_4beb307458b264 396
+README.md
+  s_2a196084a75e36::t_4beb307458b264 489,495
+registry.json
+  s_2a196084a75e36::t_23695682e677bd 6540-6549
+  s_2a196084a75e36::t_4beb307458b264 6532-6539
+  s_2a196084a75e36::t_62b9858199e284 6531
+packages/registry/src/catalog-effect-navigation.ts
+  s_2a196084a75e36::t_4beb307458b264 2,117-118
+packages/registry/src/catalog-batch93.ts
+  s_2a196084a75e36::t_4beb307458b264 100-149
+apps/docs/public/r/morph-mega-menu.json
+  s_2a196084a75e36::t_4beb307458b264 1-21
+packages/registry/src/examples/effect-demos-95.tsx
+  s_2a196084a75e36::t_4beb307458b264 4,38-50
+  s_2a196084a75e36::t_c5808d691fd35f 51-53
+packages/registry/src/effects/batch93-effects.test.tsx
+  s_2a196084a75e36::t_4beb307458b264 23-29,102-146,150,259-397
+  s_2a196084a75e36::t_01e6c3d8ad9ab1 22,398
+packages/registry/src/catalog-order.ts
+  s_2a196084a75e36::t_4beb307458b264 336
+apps/docs/public/r/registry.json
+  s_2a196084a75e36::t_23695682e677bd 6540-6549
+  s_2a196084a75e36::t_4beb307458b264 6532-6539
+  s_2a196084a75e36::t_7f1b8e1921130a 6531
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "2ca150e6246c71a32f8422da8630bb8c388c4b20",
+  "prompts": {},
+  "sessions": {
+    "s_2a196084a75e36": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b68f09465eaf",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

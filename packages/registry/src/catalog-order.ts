@@ -342,5 +342,6 @@ export const componentOrder = [
   "velocity-bend-gallery",
   "liquid-metal-mark",
   "voice-orb",
+  "ascii-halftone-filter",
 ] as const
 

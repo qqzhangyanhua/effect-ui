@@ -10,6 +10,7 @@ import "@testing-library/jest-dom/vitest"
 
 import { auditExemptions } from "../audit-exemptions"
 import { getComponent } from "../catalog"
+import { asciiGlyph, AsciiHalftoneFilter, halftoneRadius } from "./ascii-halftone-filter"
 import { depthOffset, easeDepth, luminanceDepth, pointerAxis, DepthParallaxPhoto } from "./depth-parallax-photo"
 import { flutePhase, fluteSample, FlutedGlassPane } from "./fluted-glass-pane"
 import { LiquidMetalMark, metalFlow, metalMark, metalSheen } from "./liquid-metal-mark"
@@ -468,4 +469,110 @@ test("velocity-bend-gallery 在 batch 91，滚动分类，默认预设等于控�
   expect(source).not.toMatch(/\bpace\b/)
   expect(source).not.toMatch(/\bwindow\b/)
   expect(source).not.toMatch(/addEventListener/)
+})
+
+test("明度经过对比后，暗处取井号，亮处留空，半调半径按格子像素", () => {
+  expect(asciiGlyph(0, 1)).toBe("#")
+  expect(asciiGlyph(1, 1)).toBe(" ")
+  expect(asciiGlyph(0.5, 1)).toBe("=")
+  expect(asciiGlyph(0, 0)).toBe("=")
+  expect(asciiGlyph(0.125, 1)).toBe("*")
+  expect(asciiGlyph(0.875, 1)).toBe(".")
+  expect(halftoneRadius(0, 1, 8)).toBe(4)
+  expect(halftoneRadius(1, 1, 8)).toBe(0)
+  expect(halftoneRadius(0.5, 1, 8)).toBe(2)
+  expect(halftoneRadius(0.25, 0.5, 16)).toBe(5)
+})
+
+test("ascii-halftone-filter 能在 ascii 和 halftone 之间切换", () => {
+  const view = render(<AsciiHalftoneFilter />)
+  const root = view.container.querySelector("[data-slot='ascii-halftone-filter']")
+  expect(root).toHaveAttribute("data-mode", "ascii")
+  expect(root).toHaveAttribute("data-image", "procedural")
+  expect(view.container.querySelector("img")).toBeNull()
+  view.rerender(<AsciiHalftoneFilter mode="halftone" size={12} />)
+  expect(root).toHaveAttribute("data-mode", "halftone")
+  expect(root).toHaveAttribute("data-size", "12")
+  view.rerender(<AsciiHalftoneFilter mode="ascii" />)
+  expect(root).toHaveAttribute("data-mode", "ascii")
+  expect(view.getByText("North type")).toBeInTheDocument()
+})
+
+test("ascii-halftone-filter 图片加载失败时留程序化图，不抛", () => {
+  const view = render(<AsciiHalftoneFilter src="/missing-filter.png" mode="halftone" />)
+  const root = view.container.querySelector("[data-slot='ascii-halftone-filter']")
+  expect(root).toHaveAttribute("data-image", "pending")
+  expect(root).toHaveAttribute("data-mode", "halftone")
+  const img = view.container.querySelector("img")
+  expect(img).not.toBeNull()
+  expect(() => {
+    if (img) fireEvent.error(img)
+  }).not.toThrow()
+  expect(root).toHaveAttribute("data-image", "procedural")
+  expect(img).toHaveClass("hidden")
+})
+
+test("ascii-halftone-filter 没有 WebGL 时停在静帧", async () => {
+  const view = render(<AsciiHalftoneFilter className="extra-filter" mode="ascii" size={12} />)
+  await waitFor(() => {
+    expect(view.container.querySelector("[data-fallback='still']")).not.toBeNull()
+  })
+  const root = view.container.querySelector("[data-slot='ascii-halftone-filter']")
+  expect(root).toHaveClass("extra-filter")
+  expect(root).toHaveAttribute("data-mode", "ascii")
+  expect(root).toHaveAttribute("data-size", "12")
+  expect(root).toHaveAttribute("data-image", "procedural")
+  expect(view.container.querySelector("canvas")).toBeNull()
+  expect(view.getByText("North type")).toBeInTheDocument()
+})
+
+test("ascii-halftone-filter 减弱动效不挂 canvas", () => {
+  installMedia({ reduced: true })
+  const view = render(<AsciiHalftoneFilter mode="halftone" />)
+  expect(view.container.querySelector("canvas")).toBeNull()
+  expect(view.container.querySelector("[data-fallback='still']")).not.toBeNull()
+  expect(view.container.querySelector("[data-slot='ascii-halftone-filter']")).toHaveAttribute("data-mode", "halftone")
+})
+
+test("ascii-halftone-filter 在 batch 91，卡片分类，默认预设等于控件起点", () => {
+  const entry = getComponent("ascii-halftone-filter")
+  expect(entry?.batch).toBe(91)
+  expect(entry?.layer).toBe("effect")
+  expect(entry?.effectCategory).toBe("cards")
+  expect(entry?.source).toBe("original")
+  expect(entry?.props.filter((prop) => prop.control).length).toBeGreaterThanOrEqual(3)
+  expect(entry?.props.some((prop) => prop.name === "count")).toBe(false)
+  expect(entry?.props.some((prop) => prop.name === "src" && prop.control)).toBe(false)
+  const mode = entry?.props.find((prop) => prop.name === "mode")
+  expect(mode?.control?.kind).toBe("select")
+  if (mode?.control?.kind === "select") {
+    expect(mode.control.value).toBe("ascii")
+    expect(mode.control.options).toEqual(["ascii", "halftone"])
+  }
+  const size = entry?.props.find((prop) => prop.name === "size")
+  expect(size?.control?.kind).toBe("range")
+  expect(size?.description).toMatch(/像素/)
+  expect(auditExemptions.some((item) => item.name === "ascii-halftone-filter")).toBe(false)
+  const preset = entry?.presets?.find((item) => item.name === "default")
+  expect(preset?.values.mode).toBe("ascii")
+  expect(preset?.values.size).toBe(8)
+  expect(preset?.values.intensity).toBe(0.8)
+  expect(preset?.values.src).toBeUndefined()
+  for (const prop of entry?.props ?? []) {
+    if (!prop.control || !("value" in prop.control)) continue
+    expect(preset?.values[prop.name]).toBe(prop.control.value)
+  }
+  expect(entry?.files?.map((file) => file.target)).toEqual([
+    "components/ui/ascii-halftone-filter.tsx",
+    "components/ui/gl/gl-loop.tsx",
+  ])
+  const source = fs.readFileSync(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "ascii-halftone-filter.tsx"),
+    "utf8",
+  )
+  expect(source).toMatch(/usePrefersReducedMotion/)
+  expect(source).toMatch(/original implementation/)
+  expect(source).toMatch(/mountGlLoop/)
+  expect(source).not.toMatch(/documentElement/)
+  expect(source).not.toMatch(/\bpace\b/)
 })

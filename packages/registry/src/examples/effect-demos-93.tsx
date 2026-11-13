@@ -1,5 +1,6 @@
 "use client"
 
+import { AsciiHalftoneFilter, type FilterMode } from "../effects/ascii-halftone-filter"
 import { DepthParallaxPhoto } from "../effects/depth-parallax-photo"
 import { FlutedGlassPane } from "../effects/fluted-glass-pane"
 import { LiquidMetalMark } from "../effects/liquid-metal-mark"
@@ -65,6 +66,22 @@ export function VelocityBendGalleryDemo({
   return (
     <div className="w-full max-w-xl px-6 py-10">
       <VelocityBendGallery speed={speed} intensity={intensity} gap={gap} />
+    </div>
+  )
+}
+
+export function AsciiHalftoneFilterDemo({
+  mode = "ascii",
+  size = 8,
+  intensity = 0.8,
+}: {
+  mode?: FilterMode
+  size?: number
+  intensity?: number
+} = {}) {
+  return (
+    <div className="w-full max-w-xl px-6 py-10">
+      <AsciiHalftoneFilter mode={mode} size={size} intensity={intensity} />
     </div>
   )
 }

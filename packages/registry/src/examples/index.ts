@@ -403,6 +403,7 @@ const demoMap: Record<string, ComponentType> = {
   "depth-parallax-photo": effectDemos93.DepthParallaxPhotoDemo,
   "velocity-bend-gallery": effectDemos93.VelocityBendGalleryDemo,
   "voice-orb": effectDemos94.VoiceOrbDemo,
+  "ascii-halftone-filter": effectDemos93.AsciiHalftoneFilterDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

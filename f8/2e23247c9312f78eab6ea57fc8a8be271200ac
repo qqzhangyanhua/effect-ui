@@ -1,0 +1,42 @@
+packages/registry/src/catalog-effect-navigation.ts
+  s_4d6906f4d8ed7a::t_bb61e58cb0e0cd 2,117-118
+apps/docs/public/r/morph-mega-menu.json
+  s_4d6906f4d8ed7a::t_3def7a098521c5 1-21
+packages/registry/src/examples/index.ts
+  s_4d6906f4d8ed7a::t_059fe772af24d7 392
+packages/registry/src/effects/batch93-effects.test.tsx
+  s_4d6906f4d8ed7a::t_105970fb244e10 15-21,62-106,110,218-357
+  s_4d6906f4d8ed7a::t_44551ae608d06e 14
+registry.json
+  s_4d6906f4d8ed7a::t_3def7a098521c5 6484-6502
+packages/registry/src/catalog-order.ts
+  s_4d6906f4d8ed7a::t_a6def22b9a5577 334
+packages/registry/src/catalog-batch93.ts
+  s_4d6906f4d8ed7a::t_09a40e7bbd3df9 53-102
+packages/registry/src/effects/morph-mega-menu.tsx
+  s_4d6906f4d8ed7a::t_bf891f9baf86d6 1-91,94-259
+  s_4d6906f4d8ed7a::t_11a55db73cfbfe 92-93
+README.md
+  s_4d6906f4d8ed7a::t_bd7e370a723d01 489,494
+packages/registry/src/examples/effect-demos-95.tsx
+  s_4d6906f4d8ed7a::t_275d7df35de3cf 3,21-33
+  s_4d6906f4d8ed7a::t_1de4f1b2e9d546 34-36
+apps/docs/public/r/registry.json
+  s_4d6906f4d8ed7a::t_3def7a098521c5 6484-6502
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f82e23247c9312f78eab6ea57fc8a8be271200ac",
+  "prompts": {},
+  "sessions": {
+    "s_4d6906f4d8ed7a": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d527-6eff-7200-8b95-139b4853d2d3",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

@@ -6529,6 +6529,25 @@
       ]
     },
     {
+      "name": "morph-mega-menu",
+      "type": "registry:ui",
+      "title": "Morph Mega Menu",
+      "description": "原创。导航项之间切换时，同一块面板从旧位置移到新位置。点击展开，不靠悬停，所以触屏可用。方向键在项之间移动，Escape 关闭，外部点击走 useClickOutside。减弱动效时面板瞬时切换。不使用浮层原语库，也没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-click-outside",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morph-mega-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morph-mega-menu.tsx"
+        }
+      ]
+    },
+    {
       "name": "glass-refract-hero",
       "type": "registry:ui",
       "title": "Glass Refract Hero",

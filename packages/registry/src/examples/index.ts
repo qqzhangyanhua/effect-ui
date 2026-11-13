@@ -393,6 +393,7 @@ const demoMap: Record<string, ComponentType> = {
   "theme-reveal-toggle": effectDemos95.ThemeRevealToggleDemo,
   "curtain-route-transition": effectDemos95.CurtainRouteTransitionDemo,
   "fluid-ink-cursor": effectDemos92.FluidInkCursorDemo,
+  "morph-mega-menu": effectDemos95.MorphMegaMenuDemo,
   "glass-refract-hero": effectDemos94.GlassRefractHeroDemo,
 }
 

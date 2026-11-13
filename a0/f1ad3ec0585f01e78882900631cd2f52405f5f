@@ -1,0 +1,40 @@
+README.md
+  s_df9b6f1e3171a9::t_7621b2b811dff3 507,512
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_df9b6f1e3171a9::t_cc6e19e8ff079a 13,132-241,247
+  s_df9b6f1e3171a9::t_8cf3ecc5ecd8e3 242-246
+registry.json
+  s_df9b6f1e3171a9::t_8863d5572c1207 6595-6617
+apps/docs/public/r/registry.json
+  s_df9b6f1e3171a9::t_8863d5572c1207 6595-6617
+packages/registry/src/examples/index.ts
+  s_df9b6f1e3171a9::t_997f3168af1c5f 400
+apps/docs/public/r/depth-parallax-photo.json
+  s_df9b6f1e3171a9::t_8863d5572c1207 1-26
+packages/registry/src/catalog-batch91.ts
+  s_df9b6f1e3171a9::t_169d5d72d59911 72-124
+packages/registry/src/effects/depth-parallax-photo.tsx
+  s_df9b6f1e3171a9::t_665d64882e8820 110
+  s_df9b6f1e3171a9::t_b6abe8b8b4c31d 1-109,111-497
+packages/registry/src/examples/effect-demos-93.tsx
+  s_df9b6f1e3171a9::t_ece90ba30ddc2d 3,21-33
+  s_df9b6f1e3171a9::t_d39eed6392b223 34-36
+packages/registry/src/catalog-order.ts
+  s_df9b6f1e3171a9::t_1b080725cb6f88 339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "a0f1ad3ec0585f01e78882900631cd2f52405f5f",
+  "prompts": {},
+  "sessions": {
+    "s_df9b6f1e3171a9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759b-7d02-aef5-77d4f7bc5487",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

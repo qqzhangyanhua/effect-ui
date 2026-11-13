@@ -486,12 +486,21 @@ text-style
 
 ### 圆形揭示的主题切换
 
-登记在 `Batch 93`。这是第 87 批调研里的页面效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。`curtain-route-transition` 用 SVG 曲线幕布盖住一块英文内容，按钮或键盘播放，播完露出另一块；不导航，减弱动效时瞬时切换，这不是 `aisle-crossfade-route`。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
+登记在 `Batch 93`。这是第 87 批调研里的页面和导航效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。`curtain-route-transition` 用 SVG 曲线幕布盖住一块英文内容，按钮或键盘播放，播完露出另一块；不导航，减弱动效时瞬时切换，这不是 `aisle-crossfade-route`。`morph-mega-menu` 在导航项之间切换时把同一块面板从旧位置移到新位置，点击展开而不靠悬停，方向键移动，Escape 和外部点击关闭，减弱动效时瞬时切换。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
 
 | 组件 | 来源 |
 | --- | --- |
 | theme-reveal-toggle | Original implementation |
 | curtain-route-transition | Original implementation |
+| morph-mega-menu | Original implementation |
+
+### 折射玻璃体
+
+登记在 `Batch 92`。圆形揭示已占用 `Batch 93`。这是第 86 批调研里的材质效果，原创实现。`glass-refract-hero` 用一块玻璃体折射后面的程序化后景，并带色散。传入 `src` 时折射那张图；不传或加载失败时仍用程序化后景，不抛错。组件不自带标题、副标题或按钮，children 叠在画布上面。这不是 `hero-shader`，这一批也不改它。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| glass-refract-hero | Original implementation |
 
 ### 容器内流体墨迹
 

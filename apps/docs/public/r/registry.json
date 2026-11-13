@@ -6529,6 +6529,48 @@
       ]
     },
     {
+      "name": "morph-mega-menu",
+      "type": "registry:ui",
+      "title": "Morph Mega Menu",
+      "description": "原创。导航项之间切换时，同一块面板从旧位置移到新位置。点击展开，不靠悬停，所以触屏可用。方向键在项之间移动，Escape 关闭，外部点击走 useClickOutside。减弱动效时面板瞬时切换。不使用浮层原语库，也没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-click-outside",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morph-mega-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morph-mega-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glass-refract-hero",
+      "type": "registry:ui",
+      "title": "Glass Refract Hero",
+      "description": "原创。一块玻璃体折射后面的程序化后景，并带色散。src 不传或加载失败时仍画程序化后景，不抛错。children 叠在画布上面。组件不包含标题、副标题或按钮。这不是 hero-shader，也不改它。颜色读取组件根上的 --background、--primary、--chart-2，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glass-refract-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glass-refract-hero.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
       "name": "ripple-refract-surface",
       "type": "registry:ui",
       "title": "Ripple Refract Surface",

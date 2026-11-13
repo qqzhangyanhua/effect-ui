@@ -1,0 +1,45 @@
+apps/docs/public/r/registry.json
+  s_167fb857b5d18b::t_dd91ba9a21a893 6728-6730
+  s_167fb857b5d18b::t_1a97379c1acba5 6715-6727
+  s_167fb857b5d18b::t_dcf444dd436060 6731-6732
+README.md
+  s_167fb857b5d18b::t_dd91ba9a21a893 499,504
+apps/docs/public/r/voice-orb.json
+  s_167fb857b5d18b::t_dd91ba9a21a893 1-20
+registry.json
+  s_167fb857b5d18b::t_1a97379c1acba5 6715-6727
+  s_167fb857b5d18b::t_dd91ba9a21a893 6728-6730
+  s_167fb857b5d18b::t_b0214c6b150278 6731-6732
+packages/registry/src/effects/voice-orb.tsx
+  s_167fb857b5d18b::t_dd91ba9a21a893 1-153
+packages/registry/src/catalog-batch92.ts
+  s_167fb857b5d18b::t_dd91ba9a21a893 72-116
+packages/registry/src/examples/index.ts
+  s_167fb857b5d18b::t_dd91ba9a21a893 405
+packages/registry/src/effects/batch92-effects.test.tsx
+  s_167fb857b5d18b::t_dd91ba9a21a893 24-30,199-321,324
+  s_167fb857b5d18b::t_8a2e9ff16bcebc 322-323
+packages/registry/src/catalog-effect-micro.ts
+  s_167fb857b5d18b::t_dd91ba9a21a893 14,416
+packages/registry/src/catalog-order.ts
+  s_167fb857b5d18b::t_dd91ba9a21a893 344
+packages/registry/src/examples/effect-demos-94.tsx
+  s_167fb857b5d18b::t_dd91ba9a21a893 4,23-35
+  s_167fb857b5d18b::t_f8ea7f71fd92ba 36-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "f59f0a6e6768cbef0f18cace35e4c107ac8c23f4",
+  "prompts": {},
+  "sessions": {
+    "s_167fb857b5d18b": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d56b-f792-7bb1-a448-31083dc00745",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

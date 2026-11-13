@@ -1,0 +1,66 @@
+packages/registry/src/effects/ripple-refract-surface.tsx
+  s_08b82401e867b2::t_cbf7f4d418d21b 92,162-163
+  s_08b82401e867b2::t_779e11098158f9 8
+apps/docs/public/r/velocity-bend-gallery.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+packages/registry/src/effects/gl/gl-loop.tsx
+  s_08b82401e867b2::t_6004be1a581aac 267-308
+apps/docs/public/r/depth-parallax-photo.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+packages/registry/src/effects/reaction-diffusion-shaders.ts
+  s_08b82401e867b2::t_074167b7af105c 1
+  s_08b82401e867b2::t_9637c45f35cdcf 88-89
+packages/registry/src/effects/liquid-metal-mark.tsx
+  s_08b82401e867b2::t_9a90a1ae36e6b4 10
+  s_08b82401e867b2::t_0fe1cdf3103ba8 102-103,242-243,283-285
+packages/registry/src/effects/fluted-glass-pane.tsx
+  s_08b82401e867b2::t_d9e6edfc604a0c 8
+packages/registry/src/effects/fluid-ink-cursor.tsx
+  s_08b82401e867b2::t_354ededf773765 93-94,97-99,102-103,135-136,252,333
+  s_08b82401e867b2::t_6fe14ef792fcb7 18
+apps/docs/public/r/glass-refract-hero.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+packages/registry/src/effects/reaction-diffusion-field.tsx
+  s_08b82401e867b2::t_7c1fcc19304ea4 8
+  s_08b82401e867b2::t_52028fb09aa7dd 185,196-198,204
+apps/docs/public/r/fluid-ink-cursor.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_08b82401e867b2::t_9ae63ea0e00aff 14,52-63
+  s_08b82401e867b2::t_ccd8642da1411d 64-65
+packages/registry/src/effects/depth-parallax-photo.tsx
+  s_08b82401e867b2::t_4167920b88bf70 8
+apps/docs/public/r/reaction-diffusion-field.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23,29
+apps/docs/public/r/ascii-halftone-filter.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+packages/registry/src/effects/glass-refract-hero.tsx
+  s_08b82401e867b2::t_96d3cc9b3b03a2 8
+  s_08b82401e867b2::t_fe0527395f7227 93,102,159-160
+packages/registry/src/effects/ascii-halftone-filter.tsx
+  s_08b82401e867b2::t_add59bd3175b5a 8
+packages/registry/src/effects/velocity-bend-gallery.tsx
+  s_08b82401e867b2::t_5191822990f3a2 8
+apps/docs/public/r/fluted-glass-pane.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+apps/docs/public/r/liquid-metal-mark.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+apps/docs/public/r/ripple-refract-surface.json
+  s_08b82401e867b2::t_5268c7d1184eb2 17,23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "fe77ac45166f5a39f0caa7fff82cbbb317fc8b44",
+  "prompts": {},
+  "sessions": {
+    "s_08b82401e867b2": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d57c-0922-7352-a427-b6a11e2966a4",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

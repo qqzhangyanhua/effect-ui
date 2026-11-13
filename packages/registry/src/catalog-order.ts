@@ -331,5 +331,6 @@ export const componentOrder = [
   "snap-home-cancel",
   "dock-settle-pop",
   "theme-reveal-toggle",
+  "curtain-route-transition",
 ] as const
 

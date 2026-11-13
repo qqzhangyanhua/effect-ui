@@ -486,11 +486,12 @@ text-style
 
 ### 圆形揭示的主题切换
 
-登记在 `Batch 93`。这是第 87 批调研里的页面效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
+登记在 `Batch 93`。这是第 87 批调研里的页面效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。`curtain-route-transition` 用 SVG 曲线幕布盖住一块英文内容，按钮或键盘播放，播完露出另一块；不导航，减弱动效时瞬时切换，这不是 `aisle-crossfade-route`。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
 
 | 组件 | 来源 |
 | --- | --- |
 | theme-reveal-toggle | Original implementation |
+| curtain-route-transition | Original implementation |
 
 ### 抓起抬升、插入缝与落位回弹
 

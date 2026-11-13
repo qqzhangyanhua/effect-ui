@@ -49,4 +49,51 @@ export const batch93PageComponents: ComponentMeta[] = [
       className,
     ],
   },
+  {
+    name: "curtain-route-transition",
+    batch: 93,
+    title: "Curtain Route Transition",
+    description:
+      "原创。两块英文内容之间播一段 SVG 曲线幕布，播完露出另一块。按钮或键盘播放。不包裹路由，也不导航。宿主若有自己的路由，在 onPass 里换内容。减弱动效时两块内容瞬时切换。这不是 aisle-crossfade-route 的交叉淡入。没有 WebGL。",
+    layer: "effect",
+    effectCategory: "page",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/curtain-route-transition.tsx",
+    target: "components/ui/curtain-route-transition.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { duration: 400, intensity: 0.16, direction: "up" } },
+      { name: "default", label: "默认", values: { duration: 800, intensity: 0.4, direction: "left" } },
+      { name: "sweep", label: "扫", values: { duration: 1400, intensity: 0.86, direction: "right" } },
+    ],
+    props: [
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "800",
+        description: "幕布走过的毫秒。800 与不传相同。",
+        control: { kind: "range", value: 800, min: 320, max: 1600, step: 20, group: "动画" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.4",
+        description: "曲线鼓出的强度。0 是直线，1 是最弯。0.4 与不传相同。",
+        control: { kind: "range", value: 0.4, min: 0, max: 1, step: 0.01, group: "外观" },
+      },
+      {
+        name: "direction",
+        type: '"left" | "right" | "up" | "down"',
+        defaultValue: '"left"',
+        description: "幕布离开的方向。",
+        control: { kind: "select", value: "left", options: ["left", "right", "up", "down"], group: "动画" },
+      },
+      {
+        name: "onPass",
+        type: "(state: { side: \"north\" | \"south\" }) => void",
+        description: "幕布落定、另一块内容露出时调用。组件不导航。",
+      },
+      className,
+    ],
+  },
 ]

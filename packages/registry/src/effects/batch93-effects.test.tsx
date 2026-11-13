@@ -12,6 +12,14 @@ import { auditExemptions } from "../audit-exemptions"
 import { getComponent } from "../catalog"
 
 import {
+  curtainBow,
+  curtainDuration,
+  curtainEdge,
+  curtainIntensity,
+  curtainPath,
+  CurtainRouteTransition,
+} from "./curtain-route-transition"
+import {
   revealButtonSize,
   revealCenter,
   revealDuration,
@@ -40,6 +48,38 @@ function installMedia(reduced: boolean) {
 function rootOf(container: HTMLElement) {
   const node = container.querySelector("[data-slot='theme-reveal-toggle']")
   if (!(node instanceof HTMLElement)) throw new Error("missing theme-reveal-toggle")
+  return node
+}
+
+const queued = new Map<number, FrameRequestCallback>()
+let nextFrame = 1
+
+function installFrames() {
+  queued.clear()
+  nextFrame = 1
+  vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
+    const id = nextFrame
+    nextFrame += 1
+    queued.set(id, callback)
+    return id
+  })
+  vi.stubGlobal("cancelAnimationFrame", (id: number) => {
+    queued.delete(id)
+  })
+}
+
+function drain(frames: number) {
+  for (let index = 0; index < frames; index += 1) {
+    const batch = [...queued.values()]
+    queued.clear()
+    if (batch.length === 0) return
+    for (const callback of batch) callback(0)
+  }
+}
+
+function curtainRoot(container: HTMLElement) {
+  const node = container.querySelector("[data-slot='curtain-route-transition']")
+  if (!(node instanceof HTMLElement)) throw new Error("missing curtain-route-transition")
   return node
 }
 
@@ -160,4 +200,104 @@ test("theme-reveal-toggle 登记在页面批次 93，默认预设等于起始值
   expect(source).not.toMatch(/documentElement/)
   expect(source).not.toMatch(/viewTransitionName:\s*["']root["']/)
   expect(source).not.toMatch(/\bpace\b/)
+})
+
+test("曲线幕布播完露出另一块内容，减弱动效则瞬时切换", () => {
+  expect(curtainDuration(800)).toBe(800)
+  expect(curtainDuration(1)).toBe(320)
+  expect(curtainDuration(9000)).toBe(1600)
+  expect(curtainIntensity(0.4)).toBe(0.4)
+  expect(curtainIntensity(2)).toBe(1)
+  expect(curtainBow(0)).toBe(0)
+  expect(curtainBow(1)).toBe(36)
+  expect(curtainEdge(0, "left")).toBe(100)
+  expect(curtainEdge(1, "left")).toBe(0)
+  expect(curtainEdge(0.5, "right")).toBe(50)
+  expect(curtainPath(0, 0, "left")).toBe("M 0 0 H 100 Q 100 50 100 100 H 0 Z")
+  expect(curtainPath(0, 0.4, "left")).toBe("M 0 0 H 100 Q 114 50 100 100 H 0 Z")
+  expect(curtainPath(0, 1, "left")).toBe("M 0 0 H 100 Q 136 50 100 100 H 0 Z")
+
+  installMedia(false)
+  installFrames()
+  const onPass = vi.fn()
+  const view = render(<CurtainRouteTransition onPass={onPass} className="extra-curtain" />)
+  const root = curtainRoot(view.container)
+  expect(root).toHaveClass("extra-curtain")
+  expect(root).toHaveAttribute("data-side", "north")
+  expect(root).toHaveAttribute("data-direction", "left")
+  expect(root).toHaveAttribute("data-playing", "off")
+  expect(view.getByRole("heading", { name: "North hall" })).toBeInTheDocument()
+  expect(view.queryByRole("heading", { name: "South hall" })).not.toBeInTheDocument()
+  expect(view.container.querySelector("[data-curtain]")).toBeNull()
+
+  fireEvent.click(view.getByRole("button", { name: "Open south hall" }))
+  expect(root).toHaveAttribute("data-playing", "on")
+  expect(root).toHaveAttribute("data-side", "north")
+  expect(view.getByRole("heading", { name: "North hall" })).toBeInTheDocument()
+  expect(view.queryByRole("heading", { name: "South hall" })).not.toBeInTheDocument()
+  const curtain = view.container.querySelector("[data-curtain]")
+  expect(curtain?.tagName.toLowerCase()).toBe("svg")
+  expect(curtain?.querySelector("path")?.getAttribute("d")).toBe("M 0 0 H 100 Q 114 50 100 100 H 0 Z")
+
+  act(() => drain(60))
+  expect(root).toHaveAttribute("data-side", "south")
+  expect(root).toHaveAttribute("data-playing", "off")
+  expect(view.getByRole("heading", { name: "South hall" })).toBeInTheDocument()
+  expect(view.queryByRole("heading", { name: "North hall" })).not.toBeInTheDocument()
+  expect(view.getByRole("button", { name: "Open north hall" })).toBeInTheDocument()
+  expect(view.container.querySelector("[data-curtain]")).toBeNull()
+  expect(onPass).toHaveBeenCalledWith({ side: "south" })
+  view.unmount()
+
+  installMedia(false)
+  installFrames()
+  const keys = render(<CurtainRouteTransition direction="down" />)
+  const stage = keys.getByRole("region", { name: "Curtain route" })
+  expect(curtainRoot(keys.container)).toHaveAttribute("data-direction", "down")
+  fireEvent.keyDown(stage, { key: "ArrowDown" })
+  act(() => drain(60))
+  expect(keys.getByRole("heading", { name: "South hall" })).toBeInTheDocument()
+  expect(keys.queryByRole("heading", { name: "North hall" })).not.toBeInTheDocument()
+  keys.unmount()
+
+  installMedia(true)
+  installFrames()
+  const reduced = render(<CurtainRouteTransition />)
+  fireEvent.click(reduced.getByRole("button", { name: "Open south hall" }))
+  expect(curtainRoot(reduced.container)).toHaveAttribute("data-side", "south")
+  expect(curtainRoot(reduced.container)).toHaveAttribute("data-playing", "off")
+  expect(reduced.getByRole("heading", { name: "South hall" })).toBeInTheDocument()
+  expect(reduced.queryByRole("heading", { name: "North hall" })).not.toBeInTheDocument()
+  expect(reduced.container.querySelector("[data-curtain]")).toBeNull()
+  expect(queued.size).toBe(0)
+})
+
+test("curtain-route-transition 登记在页面批次 93，默认预设等于起始值", () => {
+  const entry = getComponent("curtain-route-transition")
+  expect(entry?.batch).toBe(93)
+  expect(entry?.layer).toBe("effect")
+  expect(entry?.effectCategory).toBe("page")
+  expect(entry?.source).toBe("original")
+  expect(entry?.props.filter((prop) => prop.control).map((prop) => prop.name)).toEqual([
+    "duration",
+    "intensity",
+    "direction",
+  ])
+  expect(auditExemptions.some((item) => item.name === "curtain-route-transition")).toBe(false)
+  const preset = entry?.presets?.find((item) => item.name === "default")
+  expect(preset?.values.duration).toBe(800)
+  expect(preset?.values.intensity).toBe(0.4)
+  expect(preset?.values.direction).toBe("left")
+  for (const prop of entry?.props ?? []) {
+    if (!prop.control || !("value" in prop.control) || prop.control.value === undefined) continue
+    expect(preset?.values[prop.name]).toBe(prop.control.value)
+  }
+  const source = fs.readFileSync(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "curtain-route-transition.tsx"),
+    "utf8",
+  )
+  expect(source).toMatch(/usePrefersReducedMotion/)
+  expect(source).not.toMatch(/\bpace\b/)
+  expect(source).not.toMatch(/from ["']react-router/)
+  expect(source).not.toMatch(/from ["']next\/navigation/)
 })

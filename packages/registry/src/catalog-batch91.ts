@@ -69,4 +69,57 @@ export const batch91CardsComponents: ComponentMeta[] = [
       className,
     ],
   },
+  {
+    name: "depth-parallax-photo",
+    batch: 91,
+    title: "Depth Parallax Photo",
+    description:
+      "原创。照片跟着指针或手指按深度错开，不使用设备方向。intensity 是错开强度，size 是贴边时的最大位移（像素），speed 是跟上指针的速度。src 是照片地址，depthSrc 是深度图地址，都不是控件。没有深度图时用亮度；照片和深度图都没有，或加载失败，就画程序化的一对图，不抛。程序化图读取组件根上的 --background、--primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+    layer: "effect",
+    effectCategory: "cards",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/depth-parallax-photo.tsx",
+    target: "components/ui/depth-parallax-photo.tsx",
+    files: paneFiles("depth-parallax-photo"),
+    presets: [
+      { name: "quiet", label: "静", values: { intensity: 0.2, size: 12, speed: 0.6 } },
+      { name: "default", label: "默认", values: { intensity: 0.5, size: 24, speed: 1 } },
+      { name: "near", label: "近", values: { intensity: 0.9, size: 48, speed: 1.6 } },
+    ],
+    props: [
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.5",
+        description: "深度错开的强度。0.5 与不传相同。0 时图层不再错开。",
+        control: { kind: "range", value: 0.5, min: 0, max: 1, step: 0.05, group: "外观" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "24",
+        description: "指针贴边、深度为 1、强度为 1 时的最大位移，单位像素。24 与不传相同。",
+        control: { kind: "range", value: 24, min: 8, max: 64, step: 1, group: "外观" },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "跟上指针的速度倍数。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1, group: "动画" },
+      },
+      {
+        name: "src",
+        type: "string",
+        description: "照片地址。不是控件。不传或加载失败时用程序化图。",
+      },
+      {
+        name: "depthSrc",
+        type: "string",
+        description: "深度图地址。不是控件。不传或加载失败时，有照片就用亮度，否则用画好的深度。",
+      },
+      className,
+    ],
+  },
 ]

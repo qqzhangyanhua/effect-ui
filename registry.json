@@ -6592,6 +6592,29 @@
           "target": "components/ui/gl/gl-loop.tsx"
         }
       ]
+    },
+    {
+      "name": "depth-parallax-photo",
+      "type": "registry:ui",
+      "title": "Depth Parallax Photo",
+      "description": "原创。照片跟着指针或手指按深度错开，不使用设备方向。intensity 是错开强度，size 是贴边时的最大位移（像素），speed 是跟上指针的速度。src 是照片地址，depthSrc 是深度图地址，都不是控件。没有深度图时用亮度；照片和深度图都没有，或加载失败，就画程序化的一对图，不抛。程序化图读取组件根上的 --background、--primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/depth-parallax-photo.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/depth-parallax-photo.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
     }
   ]
 }

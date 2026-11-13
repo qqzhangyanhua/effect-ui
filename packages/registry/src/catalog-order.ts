@@ -336,5 +336,6 @@ export const componentOrder = [
   "morph-mega-menu",
   "glass-refract-hero",
   "fluted-glass-pane",
+  "depth-parallax-photo",
 ] as const
 

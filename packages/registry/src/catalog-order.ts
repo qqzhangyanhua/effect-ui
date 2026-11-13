@@ -336,6 +336,9 @@ export const componentOrder = [
   "morph-mega-menu",
   "glass-refract-hero",
   "fluted-glass-pane",
+  "ripple-refract-surface",
+  "reaction-diffusion-field",
+  "depth-parallax-photo",
   "ascii-halftone-filter",
 ] as const
 

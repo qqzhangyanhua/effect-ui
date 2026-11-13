@@ -1,0 +1,43 @@
+apps/docs/public/r/glass-refract-hero.json
+  s_09a76309a75109::t_2a77e561e1bb50 1-26
+packages/registry/src/catalog-batch92.ts
+  s_09a76309a75109::t_2a77e561e1bb50 1-71
+packages/registry/src/effects/batch92-effects.test.tsx
+  s_09a76309a75109::t_2a77e561e1bb50 1-191
+registry.json
+  s_09a76309a75109::t_656c676dfb1301 6565-6572
+  s_09a76309a75109::t_2a77e561e1bb50 6551-6564
+  s_09a76309a75109::t_e66caa2f4427ee 6550
+packages/registry/src/effects/glass-refract-hero.tsx
+  s_09a76309a75109::t_2a77e561e1bb50 1-447
+packages/registry/src/examples/index.ts
+  s_09a76309a75109::t_2a77e561e1bb50 61,397
+apps/docs/public/r/registry.json
+  s_09a76309a75109::t_656c676dfb1301 6565-6572
+  s_09a76309a75109::t_2a77e561e1bb50 6551-6564
+  s_09a76309a75109::t_700b0be062773c 6550
+packages/registry/src/catalog-effect-page.ts
+  s_09a76309a75109::t_2a77e561e1bb50 5,70
+packages/registry/src/catalog-order.ts
+  s_09a76309a75109::t_2a77e561e1bb50 337
+packages/registry/src/examples/effect-demos-94.tsx
+  s_09a76309a75109::t_2a77e561e1bb50 1-21
+README.md
+  s_09a76309a75109::t_2a77e561e1bb50 497-504
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "4c4a5b522940241fd6f2d9d4bc382b4d2f319dcf",
+  "prompts": {},
+  "sessions": {
+    "s_09a76309a75109": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b6719307666f",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

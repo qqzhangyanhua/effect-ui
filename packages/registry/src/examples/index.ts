@@ -58,6 +58,7 @@ import * as effectDemos89 from "./effect-demos-89"
 import * as effectDemos90 from "./effect-demos-90"
 import * as effectDemos91 from "./effect-demos-91"
 import * as effectDemos92 from "./effect-demos-92"
+import * as effectDemos93 from "./effect-demos-93"
 import * as effectDemos94 from "./effect-demos-94"
 import * as effectDemos95 from "./effect-demos-95"
 
@@ -395,6 +396,8 @@ const demoMap: Record<string, ComponentType> = {
   "fluid-ink-cursor": effectDemos92.FluidInkCursorDemo,
   "morph-mega-menu": effectDemos95.MorphMegaMenuDemo,
   "glass-refract-hero": effectDemos94.GlassRefractHeroDemo,
+  "fluted-glass-pane": effectDemos93.FlutedGlassPaneDemo,
+  "ripple-refract-surface": effectDemos92.RippleRefractSurfaceDemo,
   "voice-orb": effectDemos94.VoiceOrbDemo,
 }
 

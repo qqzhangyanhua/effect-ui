@@ -503,13 +503,22 @@ text-style
 | glass-refract-hero | Original implementation |
 | voice-orb | Original implementation |
 
+### 棱纹玻璃
+
+登记在 `Batch 91`。页面效果已占用 `Batch 93`，容器内流体已占用 `Batch 90`。这是第 85 批调研里的光学纹理，这一张先放棱纹玻璃，原创实现，没有移植头。`fluted-glass-pane` 把一张图折成一条条棱，不移动指针也看得见。条数、角度和折射强度可以调。`interactive` 默认关闭，打开后指针只推动棱的相位。图片地址 `src` 不是控件；不传或加载失败都留在程序化图上，不抛错。程序化图的颜色读取组件根上的主题 token。这不是 `glass-card`，也不是 `lenticular-card`。没有新依赖，没有远程样例图，也没有改首页。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。
+
+| 组件 | 来源 |
+| --- | --- |
+| fluted-glass-pane | Original implementation |
+
 ### 容器内流体墨迹
 
-登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
+登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`ripple-refract-surface` 在同一块背景上随指针移动和点击激起涟漪，折射底下的图片或程序化渐变，子节点叠在画布上面。没有改首页。
 
 | 组件 | 来源 |
 | --- | --- |
 | fluid-ink-cursor | Original implementation |
+| ripple-refract-surface | Original implementation |
 
 ### 抓起抬升、插入缝与落位回弹
 

@@ -6463,6 +6463,24 @@
           "target": "components/ui/dock-settle-pop.tsx"
         }
       ]
+    },
+    {
+      "name": "theme-reveal-toggle",
+      "type": "registry:ui",
+      "title": "Theme Reveal Toggle",
+      "description": "原创。在自己的表面上从按钮位置做圆形揭示，切换明暗。dark class 写在这块表面的根上，不写文档根，也不使用文档站的主题包。亮色 token 写在表面节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示用名为 theme-reveal 的 view transition。没有 View Transitions，或用户偏好减弱动效时，class 立刻切换。这不是 pixel-transition 的像素格，也不是 view-transition-gallery 的共享元素。没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/theme-reveal-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/theme-reveal-toggle.tsx"
+        }
+      ]
     }
   ]
 }

@@ -484,6 +484,14 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 圆形揭示的主题切换
+
+登记在 `Batch 93`。这是第 87 批调研里的页面效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| theme-reveal-toggle | Original implementation |
+
 ### 抓起抬升、插入缝与落位回弹
 
 登记在 `Batch 89`。表单微反馈已占用 `Batch 88`。这是第 83 批调研里的六个拖放与重排微反馈，全部原创。节奏参考 Mobbin 上的拖柄抬起、行间占位、看板插入线、无效区提示、取消回原位和成功落位，没有复制代码或素材，也没有移植头。`grip-lift-rise` 在按下拖柄时把该行短促抬起，不是 `hover-lift-glow`，也不是 `paint-lift-rail`、`press-snap-beacon` 或 `sortable-list`。`slot-gap-shim` 在拖移时张开行间占位缝，不是 `seed-slot-drop`，也不是 `digit-slot-gate`、`scrub-ghost-whisk`、`ghost-trail-text` 或 `sortable-list`。`lane-insert-beam` 用横线或列缘标出插入位，不是 `funnel-drop-stage`，也不是 `physics-dropzone`、`card-toss-stack` 或 `shuffle-grid-hero`。`rim-reject-wobble` 在无效区做一次克制描边，不是 `buzz-rim-flash`，也不是 `rubber-band-drag`、`drag-lock-escape` 或 `inline-alert-rail`。`snap-home-cancel` 让 Esc 或 Cancel 把项带回原位，不是 `press-snap-beacon`，也不是 `tether-yank-return`、`latch-thumb-spring` 或 `scrim-clean-dismiss`。`dock-settle-pop` 在成功落位时做一次短 settle，不是 `float-label-settle`，也不是 `chime-check-bloom`、`submit-check-flare` 或 `magnet-pocket-catch`。演示可以点到空列表、拖中、成功落位和取消。装饰层不接收指针，也不进 Tab。Esc 或 Cancel 能退出拖态，拖柄以外的页面仍可滚动。没有 Web Audio，没有新依赖，没有使用 GSAP、tldraw 或 WebGL，也没有改首页。减弱动效停在静帧或瞬时切态。离开视口时抬起、占位缝、插入线、拒绝描边、回位和落位都会落到稳态。

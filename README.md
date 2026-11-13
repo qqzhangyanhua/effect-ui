@@ -494,6 +494,14 @@ text-style
 | curtain-route-transition | Original implementation |
 | morph-mega-menu | Original implementation |
 
+### 容器内流体墨迹
+
+登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| fluid-ink-cursor | Original implementation |
+
 ### 抓起抬升、插入缝与落位回弹
 
 登记在 `Batch 89`。表单微反馈已占用 `Batch 88`。这是第 83 批调研里的六个拖放与重排微反馈，全部原创。节奏参考 Mobbin 上的拖柄抬起、行间占位、看板插入线、无效区提示、取消回原位和成功落位，没有复制代码或素材，也没有移植头。`grip-lift-rise` 在按下拖柄时把该行短促抬起，不是 `hover-lift-glow`，也不是 `paint-lift-rail`、`press-snap-beacon` 或 `sortable-list`。`slot-gap-shim` 在拖移时张开行间占位缝，不是 `seed-slot-drop`，也不是 `digit-slot-gate`、`scrub-ghost-whisk`、`ghost-trail-text` 或 `sortable-list`。`lane-insert-beam` 用横线或列缘标出插入位，不是 `funnel-drop-stage`，也不是 `physics-dropzone`、`card-toss-stack` 或 `shuffle-grid-hero`。`rim-reject-wobble` 在无效区做一次克制描边，不是 `buzz-rim-flash`，也不是 `rubber-band-drag`、`drag-lock-escape` 或 `inline-alert-rail`。`snap-home-cancel` 让 Esc 或 Cancel 把项带回原位，不是 `press-snap-beacon`，也不是 `tether-yank-return`、`latch-thumb-spring` 或 `scrim-clean-dismiss`。`dock-settle-pop` 在成功落位时做一次短 settle，不是 `float-label-settle`，也不是 `chime-check-bloom`、`submit-check-flare` 或 `magnet-pocket-catch`。演示可以点到空列表、拖中、成功落位和取消。装饰层不接收指针，也不进 Tab。Esc 或 Cancel 能退出拖态，拖柄以外的页面仍可滚动。没有 Web Audio，没有新依赖，没有使用 GSAP、tldraw 或 WebGL，也没有改首页。减弱动效停在静帧或瞬时切态。离开视口时抬起、占位缝、插入线、拒绝描边、回位和落位都会落到稳态。

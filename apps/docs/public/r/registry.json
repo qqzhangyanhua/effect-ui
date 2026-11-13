@@ -6501,6 +6501,34 @@
       ]
     },
     {
+      "name": "fluid-ink-cursor",
+      "type": "registry:ui",
+      "title": "Fluid Ink Cursor",
+      "description": "原创。在组件自己的矩形里用多 pass 流体画墨迹。指针按下并移动，或触屏拖动，都会注入速度和颜色；松开或离开后墨迹消退。不盖住视口，也不替换系统光标。colors 不传时读取组件根上的 --primary、--chart-2、--chart-4，不读 documentElement。这不是 cursor-follow，也不是 cursor-trail 或 brim-flick-ink。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fluid-ink-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fluid-ink-cursor.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        },
+        {
+          "path": "registry/effects/fluid-ink-shaders.ts",
+          "type": "registry:file",
+          "target": "components/ui/fluid-ink-shaders.ts"
+        }
+      ]
+    },
+    {
       "name": "morph-mega-menu",
       "type": "registry:ui",
       "title": "Morph Mega Menu",

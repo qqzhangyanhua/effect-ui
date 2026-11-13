@@ -335,5 +335,6 @@ export const componentOrder = [
   "fluid-ink-cursor",
   "morph-mega-menu",
   "glass-refract-hero",
+  "voice-orb",
 ] as const
 

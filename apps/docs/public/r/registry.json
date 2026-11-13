@@ -6569,6 +6569,24 @@
           "target": "components/ui/gl/gl-loop.tsx"
         }
       ]
+    },
+    {
+      "name": "voice-orb",
+      "type": "registry:ui",
+      "title": "Voice Orb",
+      "description": "原创。SVG 状态球表示待机、聆听、思考和播报。volume 由调用方传入，只在 speak 时推动幅度，不是控件。不打开麦克风，不建立音频上下文，也不播放声音。颜色用组件上的 --primary 与 --foreground，不读 documentElement。减弱动效时球停在静帧。没有新依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/voice-orb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/voice-orb.tsx"
+        }
+      ]
     }
   ]
 }

@@ -496,11 +496,12 @@ text-style
 
 ### 折射玻璃体
 
-登记在 `Batch 92`。圆形揭示已占用 `Batch 93`。这是第 86 批调研里的材质效果，原创实现。`glass-refract-hero` 用一块玻璃体折射后面的程序化后景，并带色散。传入 `src` 时折射那张图；不传或加载失败时仍用程序化后景，不抛错。组件不自带标题、副标题或按钮，children 叠在画布上面。这不是 `hero-shader`，这一批也不改它。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
+登记在 `Batch 92`。圆形揭示已占用 `Batch 93`。这是第 86 批调研里的材质效果，原创实现。`glass-refract-hero` 用一块玻璃体折射后面的程序化后景，并带色散。传入 `src` 时折射那张图；不传或加载失败时仍用程序化后景，不抛错。组件不自带标题、副标题或按钮，children 叠在画布上面。这不是 `hero-shader`，这一批也不改它。`voice-orb` 用 SVG 表示待机、聆听、思考和播报，调用方传入的 `volume` 只在播报时改变幅度，不打开麦克风也不建立音频上下文，减弱动效时球停在静帧。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
 
 | 组件 | 来源 |
 | --- | --- |
 | glass-refract-hero | Original implementation |
+| voice-orb | Original implementation |
 
 ### 容器内流体墨迹
 

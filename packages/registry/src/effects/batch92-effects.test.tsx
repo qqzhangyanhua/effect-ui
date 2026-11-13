@@ -21,6 +21,14 @@ import {
   glassShift,
   GlassRefractHero,
 } from "./glass-refract-hero"
+import {
+  clampVoiceIntensity,
+  clampVoiceSpeed,
+  clampVoiceVolume,
+  voiceOrbAmplitude,
+  voiceOrbState,
+  VoiceOrb,
+} from "./voice-orb"
 
 function installMedia(options: { reduced?: boolean } = {}) {
   vi.stubGlobal("matchMedia", (query: string) => ({
@@ -186,6 +194,112 @@ test("glass-refract-hero 在 batch 92，页面分类，默认预设等于起始�
   expect(source).toMatch(/usePrefersReducedMotion/)
   expect(source).toMatch(/mountGlLoop/)
   expect(source).toMatch(/original implementation/)
+  expect(source).not.toMatch(/documentElement/)
+  expect(source).not.toMatch(/\bpace\b/)
+})
+
+test("语音球的幅度只在播报时吃进音量", () => {
+  expect(voiceOrbState("idle")).toBe("idle")
+  expect(voiceOrbState("listen")).toBe("listen")
+  expect(voiceOrbState("think")).toBe("think")
+  expect(voiceOrbState("speak")).toBe("speak")
+  expect(voiceOrbState("nope")).toBe("idle")
+  expect(voiceOrbState(undefined)).toBe("idle")
+  expect(clampVoiceSpeed(1)).toBe(1)
+  expect(clampVoiceSpeed(0)).toBe(0.25)
+  expect(clampVoiceSpeed(4)).toBe(2.5)
+  expect(clampVoiceSpeed(Number.NaN)).toBe(1)
+  expect(clampVoiceIntensity(0.5)).toBe(0.5)
+  expect(clampVoiceIntensity(-1)).toBe(0)
+  expect(clampVoiceIntensity(2)).toBe(1)
+  expect(clampVoiceIntensity(Number.NaN)).toBe(0.5)
+  expect(clampVoiceVolume(0)).toBe(0)
+  expect(clampVoiceVolume(1)).toBe(1)
+  expect(clampVoiceVolume(2)).toBe(1)
+  expect(clampVoiceVolume(-0.2)).toBe(0)
+  expect(clampVoiceVolume(Number.NaN)).toBe(0)
+  expect(voiceOrbAmplitude("idle", 1, 0.5)).toBe(0.875)
+  expect(voiceOrbAmplitude("listen", 1, 0)).toBe(0.75)
+  expect(voiceOrbAmplitude("think", 0, 1)).toBe(1)
+  expect(voiceOrbAmplitude("speak", 0, 0.5)).toBe(0.875)
+  expect(voiceOrbAmplitude("speak", 1, 0.5)).toBe(1)
+  expect(voiceOrbAmplitude("speak", 0.5, 0.5)).toBe(0.9375)
+  expect(voiceOrbAmplitude("speak", 1, 0)).toBe(0.75)
+  expect(voiceOrbAmplitude("speak", 1, 1)).toBe(1.25)
+  expect(voiceOrbAmplitude("speak", Number.NaN, Number.NaN)).toBe(0.875)
+  expect(voiceOrbAmplitude("speak", 2, 2)).toBe(1.25)
+  expect(voiceOrbAmplitude("speak", -1, -1)).toBe(0.75)
+})
+
+test("voice-orb 切换状态，音量改变播报幅度", () => {
+  const view = render(<VoiceOrb volume={1} intensity={0.5} />)
+  const root = () => view.container.querySelector("[data-slot='voice-orb']")
+  expect(view.getByText("Idle")).toBeInTheDocument()
+  expect(root()).toHaveAttribute("data-state", "idle")
+  expect(root()).toHaveAttribute("data-amplitude", "0.875")
+  expect(root()).toHaveAttribute("data-motion", "run")
+  expect(view.container.querySelector("svg")).toHaveAttribute("data-animated", "on")
+
+  view.rerender(<VoiceOrb state="listen" volume={1} intensity={0.5} />)
+  expect(view.getByText("Listening")).toBeInTheDocument()
+  expect(root()).toHaveAttribute("data-state", "listen")
+  expect(root()).toHaveAttribute("data-amplitude", "0.875")
+
+  view.rerender(<VoiceOrb state="think" volume={1} intensity={1} />)
+  expect(view.getByText("Thinking")).toBeInTheDocument()
+  expect(root()).toHaveAttribute("data-state", "think")
+  expect(root()).toHaveAttribute("data-amplitude", "1")
+
+  view.rerender(<VoiceOrb state="speak" volume={0} intensity={0.5} />)
+  expect(view.getByText("Speaking")).toBeInTheDocument()
+  expect(root()).toHaveAttribute("data-state", "speak")
+  expect(root()).toHaveAttribute("data-amplitude", "0.875")
+
+  view.rerender(<VoiceOrb state="speak" volume={1} intensity={0.5} className="extra-orb" />)
+  expect(root()).toHaveAttribute("data-amplitude", "1")
+  expect(root()).toHaveClass("extra-orb")
+})
+
+test("voice-orb 减弱动效时停在静帧", () => {
+  installMedia({ reduced: true })
+  const view = render(<VoiceOrb state="speak" volume={1} intensity={0.5} />)
+  const root = view.container.querySelector("[data-slot='voice-orb']")
+  expect(root).toHaveAttribute("data-motion", "still")
+  expect(root).toHaveAttribute("data-state", "speak")
+  expect(root).toHaveAttribute("data-amplitude", "1")
+  expect(view.container.querySelector("svg")).toHaveAttribute("data-animated", "off")
+  expect(view.getByText("Speaking")).toBeInTheDocument()
+})
+
+test("voice-orb 在 batch 92，微交互，默认预设等于起始值", () => {
+  const entry = getComponent("voice-orb")
+  expect(entry?.batch).toBe(92)
+  expect(entry?.layer).toBe("effect")
+  expect(entry?.effectCategory).toBe("micro")
+  expect(entry?.source).toBe("original")
+  expect(entry?.props.filter((prop) => prop.control).map((prop) => prop.name)).toEqual(["speed", "intensity", "state"])
+  expect(entry?.props.find((prop) => prop.name === "volume")?.control).toBeUndefined()
+  expect(entry?.props.find((prop) => prop.name === "state")?.control).toMatchObject({
+    kind: "select",
+    value: "idle",
+    options: ["idle", "listen", "think", "speak"],
+  })
+  expect(auditExemptions.some((item) => item.name === "voice-orb")).toBe(false)
+  const preset = entry?.presets?.find((item) => item.name === "default")
+  expect(preset?.values.speed).toBe(1)
+  expect(preset?.values.intensity).toBe(0.5)
+  expect(preset?.values.state).toBe("idle")
+  for (const prop of entry?.props ?? []) {
+    if (!prop.control || !("value" in prop.control) || prop.control.value === undefined) continue
+    expect(preset?.values[prop.name]).toBe(prop.control.value)
+  }
+  expect(entry?.files?.some((file) => file.file.includes("gl-loop")) ?? false).toBe(false)
+  const source = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), "voice-orb.tsx"), "utf8")
+  expect(source).toMatch(/usePrefersReducedMotion/)
+  expect(source).toMatch(/original implementation/)
+  expect(source).not.toMatch(/gl-loop/)
+  expect(source).not.toMatch(/from ["']ogl["']/)
+  expect(source).not.toMatch(/from ["']three["']/)
   expect(source).not.toMatch(/documentElement/)
   expect(source).not.toMatch(/\bpace\b/)
 })

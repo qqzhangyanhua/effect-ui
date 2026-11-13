@@ -1,0 +1,54 @@
+packages/registry/src/effects/reaction-diffusion-shaders.ts
+  s_6c6d7cd08628af::t_a646c18dd8790b 1-133
+packages/registry/src/effects/reaction-diffusion-field.tsx
+  s_6c6d7cd08628af::t_a646c18dd8790b 1-455
+apps/docs/public/r/reaction-diffusion-field.json
+  s_6c6d7cd08628af::t_a646c18dd8790b 1-32
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_6c6d7cd08628af::t_a646c18dd8790b 16-24,256-345,352
+  s_6c6d7cd08628af::t_a147592f2c9744 255
+  s_6c6d7cd08628af::t_c4768e1ac6ffaf 346-351
+packages/registry/src/examples/index.ts
+  s_6c6d7cd08628af::t_a646c18dd8790b 401
+README.md
+  s_6c6d7cd08628af::t_6de5ee295352ee 515
+  s_6c6d7cd08628af::t_a646c18dd8790b 521
+packages/registry/src/examples/effect-demos-92.tsx
+  s_6c6d7cd08628af::t_38d4c4eab609ab 40
+  s_6c6d7cd08628af::t_a646c18dd8790b 4,41-54
+  s_69024c90347ba0::t_26f7218406d4bf 55-57
+packages/registry/src/catalog-order.ts
+  s_6c6d7cd08628af::t_a646c18dd8790b 340
+registry.json
+  s_6c6d7cd08628af::t_8e3f5ad301aab8 6618-6645
+apps/docs/public/r/registry.json
+  s_6c6d7cd08628af::t_8e3f5ad301aab8 6618-6645
+packages/registry/src/catalog-batch90.ts
+  s_6c6d7cd08628af::t_a646c18dd8790b 74-82,144-183,185
+  s_6c6d7cd08628af::t_54b73904db61dc 134-143
+  s_69024c90347ba0::t_f4616cc4266e5c 83-85,184,186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "d5784ccd8d6b46d97e73195b1aa110943c45766b",
+  "prompts": {},
+  "sessions": {
+    "s_69024c90347ba0": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d54a-c198-7962-92f7-4b3cbe844b21",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_6c6d7cd08628af": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d554-9fdf-7763-a66e-ebeffbda1e1f",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

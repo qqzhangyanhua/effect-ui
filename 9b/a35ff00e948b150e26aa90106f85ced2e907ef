@@ -1,0 +1,47 @@
+packages/registry/src/examples/effect-demos-93.tsx
+  s_72ff26e4effa01::t_4707ed04863a64 5,24-35
+  s_72ff26e4effa01::t_a198118198c295 36-38
+packages/registry/src/catalog-effect-decor.ts
+  s_72ff26e4effa01::t_4707ed04863a64 2,157-158
+apps/docs/public/r/registry.json
+  s_72ff26e4effa01::t_14ba2ae3fddec7 6692-6707,6709
+  s_72ff26e4effa01::t_56dcf938367b84 6708,6710-6714
+packages/registry/src/catalog-order.ts
+  s_72ff26e4effa01::t_b6958d11bce258 343
+packages/registry/src/examples/index.ts
+  s_72ff26e4effa01::t_4707ed04863a64 400
+apps/docs/public/r/liquid-metal-mark.json
+  s_72ff26e4effa01::t_4707ed04863a64 1-26
+README.md
+  s_72ff26e4effa01::t_53757fb36a66e5 507
+  s_72ff26e4effa01::t_4707ed04863a64 512
+registry.json
+  s_72ff26e4effa01::t_14ba2ae3fddec7 6692-6707,6709
+  s_72ff26e4effa01::t_73de0f525968f4 6708,6710-6714
+packages/registry/src/effects/liquid-metal-mark.tsx
+  s_72ff26e4effa01::t_4707ed04863a64 1-435
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_72ff26e4effa01::t_4707ed04863a64 15,135-225,231
+  s_72ff26e4effa01::t_cc9d3dc904dcbe 226-230
+  s_72ff26e4effa01::t_598aed072a09bd 232
+packages/registry/src/catalog-batch91.ts
+  s_72ff26e4effa01::t_c3d355fe076d50 177
+  s_72ff26e4effa01::t_4707ed04863a64 178-232
+  s_72ff26e4effa01::t_f7c2716aef9258 233-235
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "9ba35ff00e948b150e26aa90106f85ced2e907ef",
+  "prompts": {},
+  "sessions": {
+    "s_72ff26e4effa01": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d567-40c5-7ca3-bbab-0212967c1494",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

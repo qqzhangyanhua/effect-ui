@@ -63,3 +63,60 @@ export const batch90CursorComponents: ComponentMeta[] = [
     ],
   },
 ]
+
+function rippleFiles(slug: string): NonNullable<ComponentMeta["files"]> {
+  return [
+    { file: `effects/${slug}.tsx`, type: "registry:ui", target: `components/ui/${slug}.tsx` },
+    { file: "effects/gl/gl-loop.tsx", type: "registry:file", target: "components/ui/gl/gl-loop.tsx" },
+  ]
+}
+
+export const batch90BackgroundComponents: ComponentMeta[] = [
+  {
+    name: "ripple-refract-surface",
+    batch: 90,
+    title: "Ripple Refract Surface",
+    description:
+      "原创。指针移动和点击都会在这块表面上激起涟漪，并折射底下的图片。不传 src，或图片加载失败时，用程序化渐变，不抛错。子节点叠在画布上面。没有 interactive 开关。color 不传时读取组件根上的 --primary，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+    layer: "effect",
+    effectCategory: "backgrounds",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/ripple-refract-surface.tsx",
+    target: "components/ui/ripple-refract-surface.tsx",
+    files: rippleFiles("ripple-refract-surface"),
+    presets: [
+      { name: "quiet", label: "静", values: { speed: 0.6, intensity: 0.2 } },
+      { name: "default", label: "默认", values: { speed: 1, intensity: 0.5 } },
+      { name: "swell", label: "涌", values: { speed: 1.8, intensity: 0.9, color: "#0f766e" } },
+    ],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "波纹推进的速度倍数。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.5",
+        description: "落点和折射的强度。0.5 与不传相同。",
+        control: { kind: "range", value: 0.5, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "color",
+        type: "string",
+        description: "涟漪高光。不传则读取组件根上的主题 token。",
+        control: { kind: "color" },
+      },
+      {
+        name: "src",
+        type: "string",
+        description: "底下的图片地址。不传或加载失败时改用程序化渐变，不抛错。",
+      },
+      className,
+    ],
+  },
+]

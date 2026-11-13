@@ -333,5 +333,6 @@ export const componentOrder = [
   "theme-reveal-toggle",
   "curtain-route-transition",
   "fluid-ink-cursor",
+  "fluted-glass-pane",
 ] as const
 

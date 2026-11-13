@@ -1,0 +1,51 @@
+apps/docs/public/r/curtain-route-transition.json
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 1-20
+apps/docs/public/r/registry.json
+  s_4d6906f4d8ed7a::t_1252b50b3f8cad 6486-6502
+  s_4d6906f4d8ed7a::t_1bf37da8fb9d4c 6485
+packages/registry/src/effects/curtain-route-transition.tsx
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 1-235
+README.md
+  s_4d6906f4d8ed7a::t_ef89a503301e75 489
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 494
+registry.json
+  s_4d6906f4d8ed7a::t_1252b50b3f8cad 6486-6502
+  s_4d6906f4d8ed7a::t_3bb87384248643 6485
+packages/registry/src/examples/index.ts
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 392
+packages/registry/src/catalog-order.ts
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 334
+packages/registry/src/catalog-batch93.ts
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 52-98
+packages/registry/src/effects/batch93-effects.test.tsx
+  s_4d6906f4d8ed7a::t_2794151925bd3d 398
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 15-21,62-93,399-497
+  s_b8a73b59e24f40::t_b7adc578a440f2 14
+packages/registry/src/examples/effect-demos-95.tsx
+  s_4d6906f4d8ed7a::t_f25dbf6f1dd685 3,26
+  s_b8a73b59e24f40::t_a36ff313069b35 23-25,27-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "48d004c60b6e6c55c544b76cbeb3e015754c9896",
+  "prompts": {},
+  "sessions": {
+    "s_4d6906f4d8ed7a": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d527-6eff-7200-8b95-139b4853d2d3",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_b8a73b59e24f40": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d533-59fe-7313-bf4e-432179491a92",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

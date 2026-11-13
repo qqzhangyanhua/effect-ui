@@ -69,3 +69,48 @@ export const batch92PageComponents: ComponentMeta[] = [
     ],
   },
 ]
+
+export const batch92MicroComponents: ComponentMeta[] = [
+  {
+    name: "voice-orb",
+    batch: 92,
+    title: "Voice Orb",
+    description:
+      "原创。SVG 状态球表示待机、聆听、思考和播报。volume 由调用方传入，待机、聆听、思考和播报都按它改变幅度，播报更明显。不打开麦克风，不建立音频上下文，也不播放声音。颜色用组件上的 --primary 与 --foreground，不读 documentElement。减弱动效时球停在静帧。没有新依赖。",
+    layer: "effect",
+    effectCategory: "micro",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/voice-orb.tsx",
+    target: "components/ui/voice-orb.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { speed: 0.6, volume: 0, state: "idle" } },
+      { name: "default", label: "默认", values: { speed: 1, volume: 0.5, state: "idle" } },
+      { name: "speak", label: "播报", values: { speed: 1.6, volume: 0.85, state: "speak" } },
+    ],
+    props: [
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "描边和轨道的速度倍数。1 与不传相同。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1, group: "动画" },
+      },
+      {
+        name: "volume",
+        type: "number",
+        defaultValue: "0.5",
+        description: "调用方传入的音量，0 到 1。待机、聆听、思考和播报都按它改变幅度，播报更明显。0.5 与不传相同。不打开麦克风。",
+        control: { kind: "range", value: 0.5, min: 0, max: 1, step: 0.05, group: "外观" },
+      },
+      {
+        name: "state",
+        type: '"idle" | "listen" | "think" | "speak"',
+        defaultValue: '"idle"',
+        description: "待机、聆听、思考或播报。idle 与不传相同。",
+        control: { kind: "select", value: "idle", options: ["idle", "listen", "think", "speak"], group: "外观" },
+      },
+      className,
+    ],
+  },
+]

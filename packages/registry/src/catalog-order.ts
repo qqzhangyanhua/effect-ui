@@ -341,5 +341,6 @@ export const componentOrder = [
   "depth-parallax-photo",
   "velocity-bend-gallery",
   "liquid-metal-mark",
+  "voice-orb",
 ] as const
 

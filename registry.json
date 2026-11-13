@@ -6666,6 +6666,29 @@
           "target": "components/ui/gl/gl-loop.tsx"
         }
       ]
+    },
+    {
+      "name": "velocity-bend-gallery",
+      "type": "registry:ui",
+      "title": "Velocity Bend Gallery",
+      "description": "原创。画廊在组件自己的滚动区域里，滚得越快，卡片弯得越厉害，色差也越明显。不听窗口滚动，也不使用平滑滚动库。speed 是速度倍数，intensity 是弯曲幅度，gap 是卡片间距，单位像素。images 是图片地址列表，不是控件。不传或某一张加载失败时，该卡片留在程序化图上，不抛。程序化卡片读取组件根上的 --background、--foreground、--primary、--chart-2、--chart-4，不读 documentElement。这不是 image-tube-scroll，也不是 scroll-image-sequence。没有新依赖。减弱动效不挂 canvas，卡片不弯，仍然可以滚动。没有 WebGL 时同样停在可滚动的静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/velocity-bend-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/velocity-bend-gallery.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
     }
   ]
 }

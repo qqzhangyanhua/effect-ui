@@ -6592,6 +6592,29 @@
           "target": "components/ui/gl/gl-loop.tsx"
         }
       ]
+    },
+    {
+      "name": "ascii-halftone-filter",
+      "type": "registry:ui",
+      "title": "ASCII Halftone Filter",
+      "description": "原创。把一张图做成 ASCII，或做成半调网点。mode 只有 ascii 和 halftone，默认 ascii。size 是格子边长，单位像素。intensity 是对比，0 是一片中间调，1 是拉开。src 是图片地址，不是控件。不传或加载失败都留在程序化图上，不抛。程序化图读取组件根上的 --background、--foreground、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ascii-halftone-filter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ascii-halftone-filter.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
     }
   ]
 }

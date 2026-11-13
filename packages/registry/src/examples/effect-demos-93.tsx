@@ -1,5 +1,6 @@
 "use client"
 
+import { AsciiHalftoneFilter, type FilterMode } from "../effects/ascii-halftone-filter"
 import { FlutedGlassPane } from "../effects/fluted-glass-pane"
 
 export function FlutedGlassPaneDemo({
@@ -14,6 +15,22 @@ export function FlutedGlassPaneDemo({
   return (
     <div className="w-full max-w-xl px-6 py-10">
       <FlutedGlassPane count={count} angle={angle} intensity={intensity} />
+    </div>
+  )
+}
+
+export function AsciiHalftoneFilterDemo({
+  mode = "ascii",
+  size = 8,
+  intensity = 0.8,
+}: {
+  mode?: FilterMode
+  size?: number
+  intensity?: number
+} = {}) {
+  return (
+    <div className="w-full max-w-xl px-6 py-10">
+      <AsciiHalftoneFilter mode={mode} size={size} intensity={intensity} />
     </div>
   )
 }

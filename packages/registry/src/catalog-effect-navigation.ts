@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch93NavigationComponents } from "./catalog-batch93"
 import { reactBitsCredit } from "./catalog-sources"
 
 /** Effect，导航。 */
@@ -113,6 +114,7 @@ export const effectNavigationComponents: ComponentMeta[] = [
         },
         ...ui48,
       ],
-    }
+    },
+  ...batch93NavigationComponents,
 ]
 

@@ -50,3 +50,53 @@ export const batch93PageComponents: ComponentMeta[] = [
     ],
   },
 ]
+
+export const batch93NavigationComponents: ComponentMeta[] = [
+  {
+    name: "morph-mega-menu",
+    batch: 93,
+    title: "Morph Mega Menu",
+    description:
+      "原创。导航项之间切换时，同一块面板从旧位置移到新位置。点击展开，不靠悬停，所以触屏可用。方向键在项之间移动，Escape 关闭，外部点击走 useClickOutside。减弱动效时面板瞬时切换。不使用浮层原语库，也没有 WebGL。",
+    layer: "effect",
+    effectCategory: "navigation",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/morph-mega-menu.tsx",
+    target: "components/ui/morph-mega-menu.tsx",
+    presets: [
+      { name: "quiet", label: "静", values: { duration: 200, intensity: 0.2, size: 200 } },
+      { name: "default", label: "默认", values: { duration: 400, intensity: 0.55, size: 280 } },
+      { name: "wide", label: "宽", values: { duration: 720, intensity: 1, size: 400 } },
+    ],
+    props: [
+      {
+        name: "items",
+        type: "readonly MorphMegaMenuItem[]",
+        description: "导航项。不传则是 Product、Docs、Studio。",
+      },
+      {
+        name: "duration",
+        type: "number",
+        defaultValue: "400",
+        description: "面板从旧位置移到新位置的毫秒。400 与不传相同。",
+        control: { kind: "range", value: 400, min: 160, max: 800, step: 10, group: "动画" },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.55",
+        description: "移动中段面板加宽的幅度。0.55 与不传相同。",
+        control: { kind: "range", value: 0.55, min: 0, max: 1, step: 0.05, group: "外观" },
+      },
+      {
+        name: "size",
+        type: "number",
+        defaultValue: "280",
+        description: "面板宽度（像素）。280 与不传相同。",
+        control: { kind: "range", value: 280, min: 160, max: 440, step: 4, group: "外观" },
+      },
+      className,
+    ],
+  },
+]

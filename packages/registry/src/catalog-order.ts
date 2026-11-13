@@ -340,6 +340,7 @@ export const componentOrder = [
   "reaction-diffusion-field",
   "depth-parallax-photo",
   "velocity-bend-gallery",
+  "liquid-metal-mark",
   "ascii-halftone-filter",
 ] as const
 

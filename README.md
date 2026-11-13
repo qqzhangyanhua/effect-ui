@@ -504,11 +504,12 @@ text-style
 
 ### 棱纹玻璃
 
-登记在 `Batch 91`。页面效果已占用 `Batch 93`，容器内流体已占用 `Batch 90`。这是第 85 批调研里的光学纹理，这一张先放棱纹玻璃，原创实现，没有移植头。`fluted-glass-pane` 把一张图折成一条条棱，不移动指针也看得见。条数、角度和折射强度可以调。`interactive` 默认关闭，打开后指针只推动棱的相位。图片地址 `src` 不是控件；不传或加载失败都留在程序化图上，不抛错。程序化图的颜色读取组件根上的主题 token。这不是 `glass-card`，也不是 `lenticular-card`。`depth-parallax-photo` 跟着指针或手指按深度错开照片，不听设备方向；没有深度图时用亮度，都没有或加载失败时仍画程序化的一对图，不抛错。没有新依赖，没有远程样例图，也没有改首页。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`velocity-bend-gallery` 在自己的滚动区域里跟着滚动速度把卡片弯起来并拉开色差，不听窗口滚动；`images` 不是控件，缺省是英文程序化卡片，减弱动效或没有 WebGL 时不弯但仍可滚动。`ascii-halftone-filter` 把同一张图做成 ASCII 或半调网点，`mode` 只有这两种，格子大小是像素 `size`，`intensity` 调对比；`src` 不是控件，不传或加载失败都留在程序化图上，颜色读取组件根上的主题 token。
+登记在 `Batch 91`。页面效果已占用 `Batch 93`，容器内流体已占用 `Batch 90`。这是第 85 批调研里的光学纹理，这一张先放棱纹玻璃，原创实现，没有移植头。`fluted-glass-pane` 把一张图折成一条条棱，不移动指针也看得见。条数、角度和折射强度可以调。`interactive` 默认关闭，打开后指针只推动棱的相位。图片地址 `src` 不是控件；不传或加载失败都留在程序化图上，不抛错。程序化图的颜色读取组件根上的主题 token。这不是 `glass-card`，也不是 `lenticular-card`。`depth-parallax-photo` 跟着指针或手指按深度错开照片，不听设备方向；没有深度图时用亮度，都没有或加载失败时仍画程序化的一对图，不抛错。没有新依赖，没有远程样例图，也没有改首页。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`velocity-bend-gallery` 在自己的滚动区域里跟着滚动速度把卡片弯起来并拉开色差，不听窗口滚动；`images` 不是控件，缺省是英文程序化卡片，减弱动效或没有 WebGL 时不弯但仍可滚动。`liquid-metal-mark` 把短词画成流动的液态金属，默认文字是 Metal；传入图片遮罩后遮罩代替文字，文字不再作为标记，`text` 和 `src` 都不是控件。`ascii-halftone-filter` 把同一张图做成 ASCII 或半调网点，`mode` 只有这两种，格子大小是像素 `size`，`intensity` 调对比；`src` 不是控件，不传或加载失败都留在程序化图上，颜色读取组件根上的主题 token。
 
 | 组件 | 来源 |
 | --- | --- |
 | fluted-glass-pane | Original implementation |
+| liquid-metal-mark | Original implementation |
 | depth-parallax-photo | Original implementation |
 | velocity-bend-gallery | Original implementation |
 | ascii-halftone-filter | Original implementation |

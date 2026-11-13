@@ -1,0 +1,47 @@
+apps/docs/public/r/registry.json
+  s_df9b6f1e3171a9::t_5d66b3c977617f 6644-6646
+  s_df9b6f1e3171a9::t_3352684eda7480 6596-6643
+packages/registry/src/effects/ripple-refract-surface.tsx
+  s_df9b6f1e3171a9::t_3352684eda7480 1-492
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_df9b6f1e3171a9::t_3352684eda7480 15-24,148-352
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_df9b6f1e3171a9::t_3352684eda7480 2,665
+packages/registry/src/effects/reaction-diffusion-field.tsx
+  s_df9b6f1e3171a9::t_3352684eda7480 1-455
+packages/registry/src/effects/reaction-diffusion-shaders.ts
+  s_df9b6f1e3171a9::t_3352684eda7480 1-133
+packages/registry/src/examples/effect-demos-92.tsx
+  s_df9b6f1e3171a9::t_3352684eda7480 4-5,22-57
+apps/docs/public/r/ripple-refract-surface.json
+  s_df9b6f1e3171a9::t_3352684eda7480 1-26
+README.md
+  s_df9b6f1e3171a9::t_3352684eda7480 516,521-522
+registry.json
+  s_df9b6f1e3171a9::t_5d66b3c977617f 6644-6646
+  s_df9b6f1e3171a9::t_3352684eda7480 6596-6643
+apps/docs/public/r/reaction-diffusion-field.json
+  s_df9b6f1e3171a9::t_3352684eda7480 1-32
+packages/registry/src/catalog-batch90.ts
+  s_df9b6f1e3171a9::t_3352684eda7480 66-187
+packages/registry/src/examples/index.ts
+  s_df9b6f1e3171a9::t_3352684eda7480 400-401
+packages/registry/src/catalog-order.ts
+  s_df9b6f1e3171a9::t_3352684eda7480 339-340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "4f1af2591b9521736d3a5d9d74b5857160a163a4",
+  "prompts": {},
+  "sessions": {
+    "s_df9b6f1e3171a9": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759b-7d02-aef5-77d4f7bc5487",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

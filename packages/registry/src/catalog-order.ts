@@ -334,6 +334,7 @@ export const componentOrder = [
   "curtain-route-transition",
   "fluid-ink-cursor",
   "morph-mega-menu",
+  "glass-refract-hero",
   "reaction-diffusion-field",
 ] as const
 

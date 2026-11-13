@@ -512,12 +512,13 @@ text-style
 
 ### 容器内流体墨迹
 
-登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`ripple-refract-surface` 在同一块背景上随指针移动和点击激起涟漪，折射底下的图片或程序化渐变，子节点叠在画布上面。没有改首页。
+登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`ripple-refract-surface` 在同一块背景上随指针移动和点击激起涟漪，折射底下的图片或程序化渐变，子节点叠在画布上面。`reaction-diffusion-field` 用公开的 Gray-Scott 从内置斑点、指纹或珊瑚图案长出纹理，不接收文字、遮罩或图片，`pattern` 只有 `spots`、`print`、`coral`。没有改首页。
 
 | 组件 | 来源 |
 | --- | --- |
 | fluid-ink-cursor | Original implementation |
 | ripple-refract-surface | Original implementation |
+| reaction-diffusion-field | Original implementation |
 
 ### 抓起抬升、插入缝与落位回弹
 

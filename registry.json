@@ -6615,6 +6615,34 @@
           "target": "components/ui/gl/gl-loop.tsx"
         }
       ]
+    },
+    {
+      "name": "reaction-diffusion-field",
+      "type": "registry:ui",
+      "title": "Reaction Diffusion Field",
+      "description": "原创。用 Gray-Scott 反应扩散从内置图案长出纹理。pattern 为 spots、print 或 coral，默认斑点；不接收文字、遮罩或图片。colors 不传时读取组件根上的 --primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reaction-diffusion-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reaction-diffusion-field.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        },
+        {
+          "path": "registry/effects/reaction-diffusion-shaders.ts",
+          "type": "registry:file",
+          "target": "components/ui/reaction-diffusion-shaders.ts"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,63 @@
+packages/registry/src/examples/index.ts
+  s_09a76309a75109::t_0dbf1c16e5a466 395
+registry.json
+  s_09a76309a75109::t_e93dcd260c0565 6530-6557
+packages/registry/src/effects/reaction-diffusion-field.tsx
+  s_09a76309a75109::t_b3aceb39035f36 9-29,254
+  s_09a76309a75109::t_1b1d3c4c49b58d 192-197
+  s_09a76309a75109::t_24edf1ddd3b0bb 35,39,45,72,77,84,90,108,118,124,130,137,148,160,167,175,189,201,205,207-226,231,247,252,259,272,288,292,367,373,453
+  s_2a196084a75e36::t_e4f59bcf37dff8 1-8,30-34,36-38,40-44,46-71,73-76,78-83,85-89,91-107,109-117,119-123,125-129,131-136,138-147,149-159,161-166,168-174,176-188,190-191,198-200,202-204,206,227-230,232-246,248-251,253,255-258,260-271,273-287,289-291,293-366,368-372,374-452,454-455
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_09a76309a75109::t_5213e7cfb7ab49 15-23,147-239,244
+  s_09a76309a75109::t_8ffd45a1a294d3 240-243
+apps/docs/public/r/registry.json
+  s_09a76309a75109::t_e93dcd260c0565 6530-6557
+packages/registry/src/catalog-order.ts
+  s_09a76309a75109::t_5b97ace7476772 336
+packages/registry/src/effects/reaction-diffusion-shaders.ts
+  s_09a76309a75109::t_fc28a8e2502e31 1-133
+packages/registry/src/catalog-batch90.ts
+  s_09a76309a75109::t_b6792b2fdb89ca 66-105,107-133
+  s_09a76309a75109::t_c5164457d148f0 106
+packages/registry/src/examples/effect-demos-92.tsx
+  s_09a76309a75109::t_cd8ba56bfed716 4,21-35
+  s_606ded155f9cea::t_28b92186e81c5f 36-38
+README.md
+  s_09a76309a75109::t_5f74c39e352c39 498,503
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_09a76309a75109::t_8254ed46716b61 2,665
+apps/docs/public/r/reaction-diffusion-field.json
+  s_09a76309a75109::t_e93dcd260c0565 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "1d8b2f331eaa1f31c868c5e175f44d466e8b2943",
+  "prompts": {},
+  "sessions": {
+    "s_09a76309a75109": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b6719307666f",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_2a196084a75e36": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b68f09465eaf",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_606ded155f9cea": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b6618309e341",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

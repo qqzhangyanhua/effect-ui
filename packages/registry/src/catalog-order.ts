@@ -330,5 +330,6 @@ export const componentOrder = [
   "rim-reject-wobble",
   "snap-home-cancel",
   "dock-settle-pop",
+  "fluid-ink-cursor",
 ] as const
 

@@ -63,3 +63,71 @@ export const batch90CursorComponents: ComponentMeta[] = [
     ],
   },
 ]
+
+function fieldFiles(slug: string): NonNullable<ComponentMeta["files"]> {
+  return [
+    { file: `effects/${slug}.tsx`, type: "registry:ui", target: `components/ui/${slug}.tsx` },
+    { file: "effects/gl/gl-loop.tsx", type: "registry:file", target: "components/ui/gl/gl-loop.tsx" },
+    {
+      file: "effects/reaction-diffusion-shaders.ts",
+      type: "registry:file",
+      target: "components/ui/reaction-diffusion-shaders.ts",
+    },
+  ]
+}
+
+export const batch90BackgroundComponents: ComponentMeta[] = [
+  {
+    name: "reaction-diffusion-field",
+    batch: 90,
+    title: "Reaction Diffusion Field",
+    description:
+      "原创。用 Gray-Scott 反应扩散从内置图案长出纹理。pattern 为 spots、print 或 coral，默认斑点；不接收文字、遮罩或图片。colors 不传时读取组件根上的 --primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+    layer: "effect",
+    effectCategory: "backgrounds",
+    source: "original",
+    type: "registry:ui",
+    file: "effects/reaction-diffusion-field.tsx",
+    target: "components/ui/reaction-diffusion-field.tsx",
+    files: fieldFiles("reaction-diffusion-field"),
+    presets: [
+      { name: "quiet", label: "静", values: { pattern: "print", speed: 0.5, intensity: 0.3 } },
+      { name: "default", label: "默认", values: { pattern: "spots", speed: 1, intensity: 0.75 } },
+      {
+        name: "vivid",
+        label: "盛",
+        values: { pattern: "coral", speed: 1.8, intensity: 1, colors: ["#1d4ed8", "#0f766e", "#b45309"] },
+      },
+    ],
+    props: [
+      {
+        name: "pattern",
+        type: '"spots" | "print" | "coral"',
+        defaultValue: '"spots"',
+        description: "内置图案。斑点、指纹或珊瑚。不接收文字或遮罩。",
+        control: { kind: "select", value: "spots", options: ["spots", "print", "coral"] },
+      },
+      {
+        name: "speed",
+        type: "number",
+        defaultValue: "1",
+        description: "每帧反应步数的倍数。",
+        control: { kind: "range", value: 1, min: 0.25, max: 2.5, step: 0.1 },
+      },
+      {
+        name: "intensity",
+        type: "number",
+        defaultValue: "0.75",
+        description: "反应强度，并决定着色有多实。",
+        control: { kind: "range", value: 0.75, min: 0, max: 1, step: 0.05 },
+      },
+      {
+        name: "colors",
+        type: "string[]",
+        description: "三色。不传则读取组件根上的主题 token。",
+        control: { kind: "colors", value: ["#1d4ed8", "#0f766e", "#b45309"], follow: true },
+      },
+      className,
+    ],
+  },
+]

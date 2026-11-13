@@ -392,6 +392,7 @@ const demoMap: Record<string, ComponentType> = {
   "theme-reveal-toggle": effectDemos95.ThemeRevealToggleDemo,
   "curtain-route-transition": effectDemos95.CurtainRouteTransitionDemo,
   "fluid-ink-cursor": effectDemos92.FluidInkCursorDemo,
+  "reaction-diffusion-field": effectDemos92.ReactionDiffusionFieldDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -6594,6 +6594,57 @@
       ]
     },
     {
+      "name": "ripple-refract-surface",
+      "type": "registry:ui",
+      "title": "Ripple Refract Surface",
+      "description": "原创。指针移动和点击都会在这块表面上激起涟漪，并折射底下的图片。不传 src，或图片加载失败时，用程序化渐变，不抛错。子节点叠在画布上面。没有 interactive 开关。color 不传时读取组件根上的 --primary，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ripple-refract-surface.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ripple-refract-surface.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reaction-diffusion-field",
+      "type": "registry:ui",
+      "title": "Reaction Diffusion Field",
+      "description": "原创。用 Gray-Scott 反应扩散从内置图案长出纹理。pattern 为 spots、print 或 coral，默认斑点；不接收文字、遮罩或图片。colors 不传时读取组件根上的 --primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reaction-diffusion-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reaction-diffusion-field.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        },
+        {
+          "path": "registry/effects/reaction-diffusion-shaders.ts",
+          "type": "registry:file",
+          "target": "components/ui/reaction-diffusion-shaders.ts"
+        }
+      ]
+    },
+    {
       "name": "depth-parallax-photo",
       "type": "registry:ui",
       "title": "Depth Parallax Photo",

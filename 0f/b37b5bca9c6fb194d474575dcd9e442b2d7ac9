@@ -1,0 +1,55 @@
+README.md
+  s_606ded155f9cea::t_bc954b0fbf71df 489,495-503
+packages/registry/src/effects/batch93-effects.test.tsx
+  s_606ded155f9cea::t_bc954b0fbf71df 23-29,102-146,150,259-397
+  s_606ded155f9cea::t_c60197db6f713c 22,398
+packages/registry/src/examples/effect-demos-94.tsx
+  s_606ded155f9cea::t_bc954b0fbf71df 1-21
+packages/registry/src/effects/glass-refract-hero.tsx
+  s_606ded155f9cea::t_bc954b0fbf71df 1-447
+packages/registry/src/catalog-effect-navigation.ts
+  s_606ded155f9cea::t_bc954b0fbf71df 2,117-118
+packages/registry/src/catalog-order.ts
+  s_606ded155f9cea::t_bc954b0fbf71df 336-337
+packages/registry/src/effects/morph-mega-menu.tsx
+  s_606ded155f9cea::t_bc954b0fbf71df 1-259
+packages/registry/src/examples/index.ts
+  s_606ded155f9cea::t_bc954b0fbf71df 61,396-397
+packages/registry/src/catalog-effect-page.ts
+  s_606ded155f9cea::t_bc954b0fbf71df 5,70
+apps/docs/public/r/registry.json
+  s_606ded155f9cea::t_95eb69f90cfc64 6565-6572
+  s_606ded155f9cea::t_bc954b0fbf71df 6531-6564
+apps/docs/public/r/morph-mega-menu.json
+  s_606ded155f9cea::t_bc954b0fbf71df 1-21
+packages/registry/src/examples/effect-demos-95.tsx
+  s_606ded155f9cea::t_bc954b0fbf71df 4,38-50
+  s_606ded155f9cea::t_1913d421c413f4 51-53
+packages/registry/src/catalog-batch93.ts
+  s_606ded155f9cea::t_bc954b0fbf71df 100-149
+apps/docs/public/r/glass-refract-hero.json
+  s_606ded155f9cea::t_bc954b0fbf71df 1-26
+packages/registry/src/catalog-batch92.ts
+  s_606ded155f9cea::t_bc954b0fbf71df 1-71
+registry.json
+  s_606ded155f9cea::t_bc954b0fbf71df 6531-6564
+  s_606ded155f9cea::t_95eb69f90cfc64 6565-6572
+packages/registry/src/effects/batch92-effects.test.tsx
+  s_606ded155f9cea::t_bc954b0fbf71df 1-191
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "0fb37b5bca9c6fb194d474575dcd9e442b2d7ac9",
+  "prompts": {},
+  "sessions": {
+    "s_606ded155f9cea": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b6618309e341",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

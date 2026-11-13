@@ -1,6 +1,7 @@
 "use client"
 
 import { FlutedGlassPane } from "../effects/fluted-glass-pane"
+import { LiquidMetalMark } from "../effects/liquid-metal-mark"
 
 export function FlutedGlassPaneDemo({
   count = 18,
@@ -14,6 +15,22 @@ export function FlutedGlassPaneDemo({
   return (
     <div className="w-full max-w-xl px-6 py-10">
       <FlutedGlassPane count={count} angle={angle} intensity={intensity} />
+    </div>
+  )
+}
+
+export function LiquidMetalMarkDemo({
+  speed = 1,
+  intensity = 0.6,
+  colors = undefined,
+}: {
+  speed?: number
+  intensity?: number
+  colors?: string[]
+} = {}) {
+  return (
+    <div className="w-full max-w-xl px-6 py-10">
+      <LiquidMetalMark speed={speed} intensity={intensity} colors={colors} />
     </div>
   )
 }

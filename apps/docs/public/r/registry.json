@@ -6592,6 +6592,29 @@
           "target": "components/ui/gl/gl-loop.tsx"
         }
       ]
+    },
+    {
+      "name": "liquid-metal-mark",
+      "type": "registry:ui",
+      "title": "Liquid Metal Mark",
+      "description": "原创。把短词画成流动的液态金属。text 默认 Metal，不是控件。src 是图片遮罩，不是控件；传了就代替文字，文字不再作为标记。遮罩加载失败回到文字，不抛。speed 是高光流速，intensity 是高光对比。colors 不传时读取组件根上的 --foreground、--primary、--chart-2，不读 documentElement。这不是 fluted-glass-pane。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-metal-mark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-metal-mark.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
     }
   ]
 }

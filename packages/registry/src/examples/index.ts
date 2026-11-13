@@ -397,6 +397,7 @@ const demoMap: Record<string, ComponentType> = {
   "morph-mega-menu": effectDemos95.MorphMegaMenuDemo,
   "glass-refract-hero": effectDemos94.GlassRefractHeroDemo,
   "fluted-glass-pane": effectDemos93.FlutedGlassPaneDemo,
+  "liquid-metal-mark": effectDemos93.LiquidMetalMarkDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

@@ -1,0 +1,62 @@
+packages/registry/src/effects/reaction-diffusion-field.tsx
+  s_317e1688fb10b0::t_f404121a8913cb 1-455
+packages/registry/src/examples/effect-demos-92.tsx
+  s_317e1688fb10b0::t_f404121a8913cb 4-5,22-57
+packages/registry/src/catalog-batch90.ts
+  s_317e1688fb10b0::t_f404121a8913cb 66-187
+packages/registry/src/catalog-order.ts
+  s_317e1688fb10b0::t_f404121a8913cb 339-341
+packages/registry/src/effects/reaction-diffusion-shaders.ts
+  s_317e1688fb10b0::t_f404121a8913cb 1-133
+apps/docs/public/r/reaction-diffusion-field.json
+  s_317e1688fb10b0::t_f404121a8913cb 1-32
+apps/docs/public/r/ripple-refract-surface.json
+  s_317e1688fb10b0::t_f404121a8913cb 1-26
+packages/registry/src/effects/ripple-refract-surface.tsx
+  s_317e1688fb10b0::t_f404121a8913cb 1-492
+packages/registry/src/examples/effect-demos-93.tsx
+  s_317e1688fb10b0::t_0f8599bfc7e070 35-38
+  s_317e1688fb10b0::t_f404121a8913cb 4,23-34
+packages/registry/src/effects/depth-parallax-photo.tsx
+  s_317e1688fb10b0::t_f404121a8913cb 1-497
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_317e1688fb10b0::t_f404121a8913cb 2,665
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_317e1688fb10b0::t_f404121a8913cb 15-24,148-352
+packages/registry/src/examples/index.ts
+  s_317e1688fb10b0::t_f404121a8913cb 400-402
+README.md
+  s_317e1688fb10b0::t_d9c81de5f499cb 507
+  s_317e1688fb10b0::t_f404121a8913cb 512,517,522-523
+registry.json
+  s_317e1688fb10b0::t_ea83b6cdff4d1d 6669
+  s_317e1688fb10b0::t_f404121a8913cb 6596-6668
+apps/docs/public/r/depth-parallax-photo.json
+  s_317e1688fb10b0::t_f404121a8913cb 1-26
+apps/docs/public/r/registry.json
+  s_317e1688fb10b0::t_ea83b6cdff4d1d 6669
+  s_317e1688fb10b0::t_f404121a8913cb 6596-6668
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_317e1688fb10b0::t_f404121a8913cb 14,129-242
+  s_317e1688fb10b0::t_9883502c99ef7d 243-244
+packages/registry/src/catalog-batch91.ts
+  s_317e1688fb10b0::t_95e9e977f54aa5 3,121-124
+  s_317e1688fb10b0::t_f404121a8913cb 73-120
+  s_317e1688fb10b0::t_a873a33f9e225d 72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "b4bb53c3d9f7492426df19f323ed9251762f9557",
+  "prompts": {},
+  "sessions": {
+    "s_317e1688fb10b0": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759c-7463-8550-db63c09f5e35",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

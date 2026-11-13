@@ -1,0 +1,43 @@
+apps/docs/public/r/registry.json
+  s_5daf652ef83816::t_345da85818f269 6735-6753
+  s_5daf652ef83816::t_a23c2e8220d528 6733-6734
+  s_5daf652ef83816::t_86a075c99dc552 6754-6755
+packages/registry/src/catalog-batch91.ts
+  s_5daf652ef83816::t_345da85818f269 3,125-169,171
+  s_5daf652ef83816::t_bbe6954da63794 170,172
+packages/registry/src/effects/ascii-halftone-filter.tsx
+  s_5daf652ef83816::t_345da85818f269 1-476
+packages/registry/src/catalog-order.ts
+  s_5daf652ef83816::t_345da85818f269 345
+packages/registry/src/examples/effect-demos-93.tsx
+  s_5daf652ef83816::t_345da85818f269 3,72-84
+  s_5daf652ef83816::t_88d30de9388c56 85-87
+registry.json
+  s_5daf652ef83816::t_a23c2e8220d528 6733-6734
+  s_5daf652ef83816::t_345da85818f269 6735-6753
+  s_5daf652ef83816::t_79f9ae0483a356 6754-6755
+apps/docs/public/r/ascii-halftone-filter.json
+  s_5daf652ef83816::t_345da85818f269 1-26
+packages/registry/src/examples/index.ts
+  s_5daf652ef83816::t_345da85818f269 406
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_5daf652ef83816::t_345da85818f269 13,473-578
+README.md
+  s_5daf652ef83816::t_345da85818f269 508,516
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "58fc620f24e1a615d80e15fec6327cd37fed05de",
+  "prompts": {},
+  "sessions": {
+    "s_5daf652ef83816": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d570-cb67-7d12-a348-f187ac5af692",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

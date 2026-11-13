@@ -332,5 +332,6 @@ export const componentOrder = [
   "dock-settle-pop",
   "theme-reveal-toggle",
   "curtain-route-transition",
+  "fluid-ink-cursor",
 ] as const
 

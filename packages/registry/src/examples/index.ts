@@ -57,6 +57,7 @@ import * as effectDemos88 from "./effect-demos-88"
 import * as effectDemos89 from "./effect-demos-89"
 import * as effectDemos90 from "./effect-demos-90"
 import * as effectDemos91 from "./effect-demos-91"
+import * as effectDemos92 from "./effect-demos-92"
 import * as effectDemos95 from "./effect-demos-95"
 
 import * as uiDemos3 from "./ui-demos-3"
@@ -390,6 +391,7 @@ const demoMap: Record<string, ComponentType> = {
   "dock-settle-pop": effectDemos91.DockSettlePopDemo,
   "theme-reveal-toggle": effectDemos95.ThemeRevealToggleDemo,
   "curtain-route-transition": effectDemos95.CurtainRouteTransitionDemo,
+  "fluid-ink-cursor": effectDemos92.FluidInkCursorDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

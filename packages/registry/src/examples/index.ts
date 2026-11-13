@@ -57,6 +57,10 @@ import * as effectDemos88 from "./effect-demos-88"
 import * as effectDemos89 from "./effect-demos-89"
 import * as effectDemos90 from "./effect-demos-90"
 import * as effectDemos91 from "./effect-demos-91"
+import * as effectDemos92 from "./effect-demos-92"
+import * as effectDemos93 from "./effect-demos-93"
+import * as effectDemos94 from "./effect-demos-94"
+import * as effectDemos95 from "./effect-demos-95"
 
 import * as uiDemos3 from "./ui-demos-3"
 import * as uiDemos4 from "./ui-demos-4"
@@ -387,6 +391,19 @@ const demoMap: Record<string, ComponentType> = {
   "rim-reject-wobble": effectDemos91.RimRejectWobbleDemo,
   "snap-home-cancel": effectDemos91.SnapHomeCancelDemo,
   "dock-settle-pop": effectDemos91.DockSettlePopDemo,
+  "theme-reveal-toggle": effectDemos95.ThemeRevealToggleDemo,
+  "curtain-route-transition": effectDemos95.CurtainRouteTransitionDemo,
+  "fluid-ink-cursor": effectDemos92.FluidInkCursorDemo,
+  "morph-mega-menu": effectDemos95.MorphMegaMenuDemo,
+  "glass-refract-hero": effectDemos94.GlassRefractHeroDemo,
+  "fluted-glass-pane": effectDemos93.FlutedGlassPaneDemo,
+  "liquid-metal-mark": effectDemos93.LiquidMetalMarkDemo,
+  "ripple-refract-surface": effectDemos92.RippleRefractSurfaceDemo,
+  "reaction-diffusion-field": effectDemos92.ReactionDiffusionFieldDemo,
+  "depth-parallax-photo": effectDemos93.DepthParallaxPhotoDemo,
+  "velocity-bend-gallery": effectDemos93.VelocityBendGalleryDemo,
+  "voice-orb": effectDemos94.VoiceOrbDemo,
+  "ascii-halftone-filter": effectDemos93.AsciiHalftoneFilterDemo,
 }
 
 export const demoNames: readonly string[] = Object.keys(demoMap)

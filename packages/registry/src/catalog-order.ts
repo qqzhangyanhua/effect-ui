@@ -330,5 +330,18 @@ export const componentOrder = [
   "rim-reject-wobble",
   "snap-home-cancel",
   "dock-settle-pop",
+  "theme-reveal-toggle",
+  "curtain-route-transition",
+  "fluid-ink-cursor",
+  "morph-mega-menu",
+  "glass-refract-hero",
+  "fluted-glass-pane",
+  "ripple-refract-surface",
+  "reaction-diffusion-field",
+  "depth-parallax-photo",
+  "velocity-bend-gallery",
+  "liquid-metal-mark",
+  "voice-orb",
+  "ascii-halftone-filter",
 ] as const
 

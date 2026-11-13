@@ -1,4 +1,5 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
+import { batch91DecorComponents } from "./catalog-batch91"
 
 /** Effect，装饰 / 庆祝。 */
 const ui43: PropDoc[] = [{ name: "className", type: "string", description: "额外 Tailwind 类名，与主题变量兼容。" }]
@@ -153,6 +154,7 @@ export const effectDecorComponents: ComponentMeta[] = [
         },
         ...ui43,
       ],
-    }
+    },
+  ...batch91DecorComponents,
 ]
 

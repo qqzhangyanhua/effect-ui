@@ -6463,6 +6463,296 @@
           "target": "components/ui/dock-settle-pop.tsx"
         }
       ]
+    },
+    {
+      "name": "theme-reveal-toggle",
+      "type": "registry:ui",
+      "title": "Theme Reveal Toggle",
+      "description": "原创。在自己的表面上从按钮位置做圆形揭示，切换明暗。dark class 写在这块表面的根上，不写文档根，也不使用文档站的主题包。亮色 token 写在表面节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示用名为 theme-reveal 的 view transition。没有 View Transitions，或用户偏好减弱动效时，class 立刻切换。这不是 pixel-transition 的像素格，也不是 view-transition-gallery 的共享元素。没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/theme-reveal-toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/theme-reveal-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "curtain-route-transition",
+      "type": "registry:ui",
+      "title": "Curtain Route Transition",
+      "description": "原创。两块英文内容之间播一段 SVG 曲线幕布，播完露出另一块。按钮或键盘播放。不包裹路由，也不导航。宿主若有自己的路由，在 onPass 里换内容。减弱动效时两块内容瞬时切换。这不是 aisle-crossfade-route 的交叉淡入。没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/curtain-route-transition.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/curtain-route-transition.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluid-ink-cursor",
+      "type": "registry:ui",
+      "title": "Fluid Ink Cursor",
+      "description": "原创。在组件自己的矩形里用多 pass 流体画墨迹。指针按下并移动，或触屏拖动，都会注入速度和颜色；松开或离开后墨迹消退。不盖住视口，也不替换系统光标。colors 不传时读取组件根上的 --primary、--chart-2、--chart-4，不读 documentElement。这不是 cursor-follow，也不是 cursor-trail 或 brim-flick-ink。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fluid-ink-cursor.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fluid-ink-cursor.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        },
+        {
+          "path": "registry/effects/fluid-ink-shaders.ts",
+          "type": "registry:file",
+          "target": "components/ui/fluid-ink-shaders.ts"
+        }
+      ]
+    },
+    {
+      "name": "morph-mega-menu",
+      "type": "registry:ui",
+      "title": "Morph Mega Menu",
+      "description": "原创。导航项之间切换时，同一块面板从旧位置移到新位置。点击展开，不靠悬停，所以触屏可用。方向键在项之间移动，Escape 关闭，外部点击走 useClickOutside。减弱动效时面板瞬时切换。不使用浮层原语库，也没有 WebGL。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-click-outside",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/morph-mega-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/morph-mega-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glass-refract-hero",
+      "type": "registry:ui",
+      "title": "Glass Refract Hero",
+      "description": "原创。一块玻璃体折射后面的程序化后景，并带色散。src 不传或加载失败时仍画程序化后景，不抛错。children 叠在画布上面。组件不包含标题、副标题或按钮。这不是 hero-shader，也不改它。颜色读取组件根上的 --background、--primary、--chart-2，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glass-refract-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glass-refract-hero.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fluted-glass-pane",
+      "type": "registry:ui",
+      "title": "Fluted Glass Pane",
+      "description": "原创。把一张图折成一条条棱，不移动指针也看得见。count 是棱的条数，angle 是棱的角度，intensity 是折射强度。interactive 默认关闭，不是控件；打开后指针只推动棱的相位。src 是图片地址，不是控件。不传或加载失败都留在程序化图上，不抛。程序化图读取组件根上的 --background、--primary、--chart-2、--chart-4，不读 documentElement。这不是 glass-card，也不是 lenticular-card。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/fluted-glass-pane.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/fluted-glass-pane.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ripple-refract-surface",
+      "type": "registry:ui",
+      "title": "Ripple Refract Surface",
+      "description": "原创。指针移动和点击都会在这块表面上激起涟漪，并折射底下的图片。不传 src，或图片加载失败时，用程序化渐变，不抛错。子节点叠在画布上面。没有 interactive 开关。color 不传时读取组件根上的 --primary，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ripple-refract-surface.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ripple-refract-surface.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "reaction-diffusion-field",
+      "type": "registry:ui",
+      "title": "Reaction Diffusion Field",
+      "description": "原创。用 Gray-Scott 反应扩散从内置图案长出纹理。pattern 为 spots、print 或 coral，默认斑点；不接收文字、遮罩或图片。colors 不传时读取组件根上的 --primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/reaction-diffusion-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/reaction-diffusion-field.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        },
+        {
+          "path": "registry/effects/reaction-diffusion-shaders.ts",
+          "type": "registry:file",
+          "target": "components/ui/reaction-diffusion-shaders.ts"
+        }
+      ]
+    },
+    {
+      "name": "depth-parallax-photo",
+      "type": "registry:ui",
+      "title": "Depth Parallax Photo",
+      "description": "原创。照片跟着指针或手指按深度错开，不使用设备方向。intensity 是错开强度，size 是贴边时的最大位移（像素），speed 是跟上指针的速度。src 是照片地址，depthSrc 是深度图地址，都不是控件。没有深度图时用亮度；照片和深度图都没有，或加载失败，就画程序化的一对图，不抛。程序化图读取组件根上的 --background、--primary、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/depth-parallax-photo.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/depth-parallax-photo.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "velocity-bend-gallery",
+      "type": "registry:ui",
+      "title": "Velocity Bend Gallery",
+      "description": "原创。画廊在组件自己的滚动区域里，滚得越快，卡片弯得越厉害，色差也越明显。不听窗口滚动，也不使用平滑滚动库。speed 是速度倍数，intensity 是弯曲幅度，gap 是卡片间距，单位像素。images 是图片地址列表，不是控件。不传或某一张加载失败时，该卡片留在程序化图上，不抛。程序化卡片读取组件根上的 --background、--foreground、--primary、--chart-2、--chart-4，不读 documentElement。这不是 image-tube-scroll，也不是 scroll-image-sequence。没有新依赖。减弱动效不挂 canvas，卡片不弯，仍然可以滚动。没有 WebGL 时同样停在可滚动的静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/velocity-bend-gallery.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/velocity-bend-gallery.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-metal-mark",
+      "type": "registry:ui",
+      "title": "Liquid Metal Mark",
+      "description": "原创。把短词画成流动的液态金属。text 默认 Metal，不是控件。src 是图片遮罩，不是控件；传了就代替文字，文字不再作为标记。遮罩加载失败回到文字，不抛。speed 是高光流速，intensity 是高光对比。colors 不传时读取组件根上的 --foreground、--primary、--chart-2，不读 documentElement。这不是 fluted-glass-pane。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/liquid-metal-mark.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/liquid-metal-mark.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
+    },
+    {
+      "name": "voice-orb",
+      "type": "registry:ui",
+      "title": "Voice Orb",
+      "description": "原创。SVG 状态球表示待机、聆听、思考和播报。volume 由调用方传入，待机、聆听、思考和播报都按它改变幅度，播报更明显。不打开麦克风，不建立音频上下文，也不播放声音。颜色用组件上的 --primary 与 --foreground，不读 documentElement。减弱动效时球停在静帧。没有新依赖。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/voice-orb.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/voice-orb.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ascii-halftone-filter",
+      "type": "registry:ui",
+      "title": "ASCII Halftone Filter",
+      "description": "原创。把一张图做成 ASCII，或做成半调网点。mode 只有 ascii 和 halftone，默认 ascii。size 是格子边长，单位像素。intensity 是对比，0 是一片中间调，1 是拉开。src 是图片地址，不是控件。不传或加载失败都留在程序化图上，不抛。程序化图读取组件根上的 --background、--foreground、--chart-2、--chart-4，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/ascii-halftone-filter.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ascii-halftone-filter.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
     }
   ]
 }

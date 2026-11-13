@@ -484,6 +484,47 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 圆形揭示的主题切换
+
+登记在 `Batch 93`。这是第 87 批调研里的页面和导航效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。`curtain-route-transition` 用 SVG 曲线幕布盖住一块英文内容，按钮或键盘播放，播完露出另一块；不导航，减弱动效时瞬时切换，这不是 `aisle-crossfade-route`。`morph-mega-menu` 在导航项之间切换时把同一块面板从旧位置移到新位置，点击展开而不靠悬停，方向键移动，Escape 和外部点击关闭，减弱动效时瞬时切换。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| theme-reveal-toggle | Original implementation |
+| curtain-route-transition | Original implementation |
+| morph-mega-menu | Original implementation |
+
+### 折射玻璃体
+
+登记在 `Batch 92`。圆形揭示已占用 `Batch 93`。这是第 86 批调研里的材质效果，原创实现。`glass-refract-hero` 用一块玻璃体折射后面的程序化后景，并带色散。传入 `src` 时折射那张图；不传或加载失败时仍用程序化后景，不抛错。组件不自带标题、副标题或按钮，children 叠在画布上面。这不是 `hero-shader`，这一批也不改它。`voice-orb` 用 SVG 表示待机、聆听、思考和播报，调用方传入的 `volume` 改变这四个状态的幅度，播报更明显，不打开麦克风也不建立音频上下文，减弱动效时球停在静帧。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| glass-refract-hero | Original implementation |
+| voice-orb | Original implementation |
+
+### 棱纹玻璃
+
+登记在 `Batch 91`。页面效果已占用 `Batch 93`，容器内流体已占用 `Batch 90`。这是第 85 批调研里的光学纹理，这一张先放棱纹玻璃，原创实现，没有移植头。`fluted-glass-pane` 把一张图折成一条条棱，不移动指针也看得见。条数、角度和折射强度可以调。`interactive` 默认关闭，打开后指针只推动棱的相位。图片地址 `src` 不是控件；不传或加载失败都留在程序化图上，不抛错。程序化图的颜色读取组件根上的主题 token。这不是 `glass-card`，也不是 `lenticular-card`。`depth-parallax-photo` 跟着指针或手指按深度错开照片，不听设备方向；没有深度图时用亮度，都没有或加载失败时仍画程序化的一对图，不抛错。没有新依赖，没有远程样例图，也没有改首页。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`velocity-bend-gallery` 在自己的滚动区域里跟着滚动速度把卡片弯起来并拉开色差，不听窗口滚动；`images` 不是控件，缺省是英文程序化卡片，减弱动效或没有 WebGL 时不弯但仍可滚动。`liquid-metal-mark` 把短词画成流动的液态金属，默认文字是 Metal；传入图片遮罩后遮罩代替文字，文字不再作为标记，`text` 和 `src` 都不是控件。`ascii-halftone-filter` 把同一张图做成 ASCII 或半调网点，`mode` 只有这两种，格子大小是像素 `size`，`intensity` 调对比；`src` 不是控件，不传或加载失败都留在程序化图上，颜色读取组件根上的主题 token。
+
+| 组件 | 来源 |
+| --- | --- |
+| fluted-glass-pane | Original implementation |
+| liquid-metal-mark | Original implementation |
+| depth-parallax-photo | Original implementation |
+| velocity-bend-gallery | Original implementation |
+| ascii-halftone-filter | Original implementation |
+
+### 容器内流体墨迹
+
+登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。`ripple-refract-surface` 在同一块背景上随指针移动和点击激起涟漪，折射底下的图片或程序化渐变，子节点叠在画布上面。`reaction-diffusion-field` 用公开的 Gray-Scott 从内置斑点、指纹或珊瑚图案长出纹理，不接收文字、遮罩或图片，`pattern` 只有 `spots`、`print`、`coral`。没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| fluid-ink-cursor | Original implementation |
+| ripple-refract-surface | Original implementation |
+| reaction-diffusion-field | Original implementation |
+
 ### 抓起抬升、插入缝与落位回弹
 
 登记在 `Batch 89`。表单微反馈已占用 `Batch 88`。这是第 83 批调研里的六个拖放与重排微反馈，全部原创。节奏参考 Mobbin 上的拖柄抬起、行间占位、看板插入线、无效区提示、取消回原位和成功落位，没有复制代码或素材，也没有移植头。`grip-lift-rise` 在按下拖柄时把该行短促抬起，不是 `hover-lift-glow`，也不是 `paint-lift-rail`、`press-snap-beacon` 或 `sortable-list`。`slot-gap-shim` 在拖移时张开行间占位缝，不是 `seed-slot-drop`，也不是 `digit-slot-gate`、`scrub-ghost-whisk`、`ghost-trail-text` 或 `sortable-list`。`lane-insert-beam` 用横线或列缘标出插入位，不是 `funnel-drop-stage`，也不是 `physics-dropzone`、`card-toss-stack` 或 `shuffle-grid-hero`。`rim-reject-wobble` 在无效区做一次克制描边，不是 `buzz-rim-flash`，也不是 `rubber-band-drag`、`drag-lock-escape` 或 `inline-alert-rail`。`snap-home-cancel` 让 Esc 或 Cancel 把项带回原位，不是 `press-snap-beacon`，也不是 `tether-yank-return`、`latch-thumb-spring` 或 `scrim-clean-dismiss`。`dock-settle-pop` 在成功落位时做一次短 settle，不是 `float-label-settle`，也不是 `chime-check-bloom`、`submit-check-flare` 或 `magnet-pocket-catch`。演示可以点到空列表、拖中、成功落位和取消。装饰层不接收指针，也不进 Tab。Esc 或 Cancel 能退出拖态，拖柄以外的页面仍可滚动。没有 Web Audio，没有新依赖，没有使用 GSAP、tldraw 或 WebGL，也没有改首页。减弱动效停在静帧或瞬时切态。离开视口时抬起、占位缝、插入线、拒绝描边、回位和落位都会落到稳态。

@@ -11,6 +11,7 @@ import { batch72MicroComponents } from "./catalog-batch72"
 import { batch73MicroComponents } from "./catalog-batch73"
 import { batch74MicroComponents } from "./catalog-batch74"
 import { batch75MicroComponents } from "./catalog-batch75"
+import { batch92MicroComponents } from "./catalog-batch92"
 
 /** Effect，微交互。 */
 const className: PropDoc = {
@@ -412,5 +413,6 @@ export const effectMicroComponents: ComponentMeta[] = [
   ...batch73MicroComponents,
   ...batch74MicroComponents,
   ...batch75MicroComponents,
+  ...batch92MicroComponents,
 ]
 

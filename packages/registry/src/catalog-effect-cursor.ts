@@ -1,5 +1,6 @@
 import type { ComponentMeta, PropDoc } from "./catalog"
 import { batch74CursorComponents } from "./catalog-batch74"
+import { batch90CursorComponents } from "./catalog-batch90"
 import { reactBitsCredit as credit, smoothuiFile as file } from "./catalog-sources"
 
 /** Effect，光标 / 悬停。 */
@@ -281,5 +282,6 @@ export const effectCursorComponents: ComponentMeta[] = [
       ],
     },
   ...batch74CursorComponents,
+  ...batch90CursorComponents,
 ]
 

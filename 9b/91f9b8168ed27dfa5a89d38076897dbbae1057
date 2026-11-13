@@ -1,0 +1,45 @@
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_1adb982096149b::t_3cd8e2064ff03c 15,139-242,245
+  s_1adb982096149b::t_d22f8713b9c1b6 243-244
+packages/registry/src/catalog-batch90.ts
+  s_1adb982096149b::t_3cd8e2064ff03c 66-122
+packages/registry/src/examples/index.ts
+  s_1adb982096149b::t_3cd8e2064ff03c 400
+apps/docs/public/r/ripple-refract-surface.json
+  s_1adb982096149b::t_3cd8e2064ff03c 1-26
+apps/docs/public/r/registry.json
+  s_1adb982096149b::t_7a16d82e3f3dd2 6595-6596
+  s_1adb982096149b::t_3cd8e2064ff03c 6597-6610
+  s_1adb982096149b::t_e4dae81fb529bd 6611-6617
+packages/registry/src/catalog-order.ts
+  s_1adb982096149b::t_3cd8e2064ff03c 339
+registry.json
+  s_1adb982096149b::t_3cd8e2064ff03c 6597-6610
+  s_1adb982096149b::t_7a16d82e3f3dd2 6595-6596
+  s_1adb982096149b::t_ee299ecb24c8b4 6611-6617
+packages/registry/src/effects/ripple-refract-surface.tsx
+  s_1adb982096149b::t_3cd8e2064ff03c 1-492
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_1adb982096149b::t_3cd8e2064ff03c 2,665
+packages/registry/src/examples/effect-demos-92.tsx
+  s_1adb982096149b::t_3cd8e2064ff03c 4,21-35
+  s_1adb982096149b::t_25881b30eb04b1 36-38
+README.md
+  s_1adb982096149b::t_3cd8e2064ff03c 515,520
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "9b91f9b8168ed27dfa5a89d38076897dbbae1057",
+  "prompts": {},
+  "sessions": {
+    "s_1adb982096149b": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759b-7d02-aef5-77bf724e3a9e",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

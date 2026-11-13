@@ -15,7 +15,6 @@ export interface VoiceOrbProps {
   state?: VoiceOrbState
   volume?: number
   speed?: number
-  intensity?: number
   className?: string
 }
 
@@ -57,11 +56,6 @@ export function clampVoiceSpeed(speed: number): number {
   return Math.min(2.5, Math.max(0.25, speed))
 }
 
-export function clampVoiceIntensity(intensity: number): number {
-  if (!Number.isFinite(intensity)) return 0.5
-  return Math.min(1, Math.max(0, intensity))
-}
-
 export function clampVoiceVolume(volume: number): number {
   if (!Number.isFinite(volume)) return 0
   return Math.min(1, Math.max(0, volume))
@@ -72,12 +66,12 @@ export function voiceOrbState(state: string | undefined): VoiceOrbState {
   return "idle"
 }
 
-/** 静止幅度来自 intensity。volume 只在 speak 上再加一截。 */
-export function voiceOrbAmplitude(state: VoiceOrbState, volume: number, intensity: number): number {
-  const level = clampVoiceIntensity(intensity)
-  const rest = 0.75 + level * 0.25
-  if (state !== "speak") return rest
-  return rest + clampVoiceVolume(volume) * level * 0.25
+/** 四个状态都读 volume。同样音量下，speak 再抬一截。 */
+export function voiceOrbAmplitude(state: VoiceOrbState, volume: number): number {
+  const level = clampVoiceVolume(volume)
+  const base = 0.75 + level * 0.25
+  if (state === "speak") return base + level * 0.25
+  return base
 }
 
 function ListenRings({ radius, animate }: { radius: number; animate: boolean }) {
@@ -132,14 +126,13 @@ function OrbGraphic({ state, amplitude, animate }: { state: VoiceOrbState; ampli
 
 export function VoiceOrb({
   state = "idle",
-  volume = 0,
+  volume = 0.5,
   speed = 1,
-  intensity = 0.5,
   className,
 }: VoiceOrbProps) {
   const reduced = usePrefersReducedMotion()
   const mode = voiceOrbState(state)
-  const amplitude = voiceOrbAmplitude(mode, volume, intensity)
+  const amplitude = voiceOrbAmplitude(mode, volume)
   const tuned = clampVoiceSpeed(speed)
   return (
     <div

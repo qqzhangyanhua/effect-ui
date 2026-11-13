@@ -23,16 +23,16 @@ export function GlassRefractHeroDemo({
 
 export function VoiceOrbDemo({
   speed = 1,
-  intensity = 0.5,
+  volume = 0.5,
   state = "idle",
 }: {
   speed?: number
-  intensity?: number
+  volume?: number
   state?: VoiceOrbState
 } = {}) {
   return (
     <div className="flex w-full justify-center px-6 py-10">
-      <VoiceOrb speed={speed} intensity={intensity} state={state} volume={state === "speak" ? 0.8 : 0} />
+      <VoiceOrb speed={speed} volume={volume} state={state} />
     </div>
   )
 }

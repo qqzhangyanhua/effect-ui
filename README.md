@@ -493,6 +493,14 @@ text-style
 | theme-reveal-toggle | Original implementation |
 | curtain-route-transition | Original implementation |
 
+### 折射玻璃体
+
+登记在 `Batch 92`。圆形揭示已占用 `Batch 93`。这是第 86 批调研里的材质效果，原创实现。`glass-refract-hero` 用一块玻璃体折射后面的程序化后景，并带色散。传入 `src` 时折射那张图；不传或加载失败时仍用程序化后景，不抛错。组件不自带标题、副标题或按钮，children 叠在画布上面。这不是 `hero-shader`，这一批也不改它。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| glass-refract-hero | Original implementation |
+
 ### 容器内流体墨迹
 
 登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。

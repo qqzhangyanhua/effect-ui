@@ -6527,6 +6527,29 @@
           "target": "components/ui/fluid-ink-shaders.ts"
         }
       ]
+    },
+    {
+      "name": "glass-refract-hero",
+      "type": "registry:ui",
+      "title": "Glass Refract Hero",
+      "description": "原创。一块玻璃体折射后面的程序化后景，并带色散。src 不传或加载失败时仍画程序化后景，不抛错。children 叠在画布上面。组件不包含标题、副标题或按钮。这不是 hero-shader，也不改它。颜色读取组件根上的 --background、--primary、--chart-2，不读 documentElement。没有新依赖。减弱动效不挂 canvas。没有 WebGL 时停在同一张静帧。离开视口或页面隐藏时停止绘制，卸载时释放 context。设备像素比上限 1.5。",
+      "dependencies": [],
+      "registryDependencies": [
+        "cn",
+        "use-prefers-reduced-motion"
+      ],
+      "files": [
+        {
+          "path": "registry/effects/glass-refract-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/glass-refract-hero.tsx"
+        },
+        {
+          "path": "registry/effects/gl/gl-loop.tsx",
+          "type": "registry:file",
+          "target": "components/ui/gl/gl-loop.tsx"
+        }
+      ]
     }
   ]
 }

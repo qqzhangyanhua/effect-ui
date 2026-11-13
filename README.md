@@ -484,6 +484,14 @@ text-style
 | animated-subscribe-button | Magic UI，MIT |
 | active-sessions-list | 灵感来自 Railway 与 Replit（经由 Mobbin），原创实现 |
 
+### 圆形揭示的主题切换
+
+登记在 `Batch 93`。这是第 87 批调研里的页面效果，原创实现。`theme-reveal-toggle` 在自己的表面上从按钮位置做圆形揭示来切换明暗。`dark` 写在这块表面的根上，亮色 token 也写在这个节点上，宿主页面是暗色时摘掉 class 仍然是亮的。揭示使用名为 `theme-reveal` 的 view transition，不使用文档根上的那个 transition。没有 View Transitions，或用户偏好减弱动效时，主题立刻切换。这不是 `pixel-transition`，也不是 `view-transition-gallery`。不依赖文档站的主题包，也不改现有的主题开关。没有 WebGL，没有新依赖，也没有改首页。
+
+| 组件 | 来源 |
+| --- | --- |
+| theme-reveal-toggle | Original implementation |
+
 ### 容器内流体墨迹
 
 登记在 `Batch 90`。拖放微反馈已占用 `Batch 89`。这是第 84 批调研里的多 pass 流体，这一张先放容器内的墨迹，原创实现，没有移植头。`fluid-ink-cursor` 绑在自己的区域里，指针按下移动或触屏拖动都会搅动墨迹，离开后墨迹消退。它不是 `cursor-follow`，也不是 `cursor-trail` 或 `brim-flick-ink`。不盖住视口，不替换系统光标。颜色不传时读取组件根上的主题 token。没有新依赖。减弱动效不挂 canvas，没有 WebGL 时停在静帧。离开视口或页面隐藏后停止绘制，卸载时释放 context。设备像素比上限 1.5。没有改首页。

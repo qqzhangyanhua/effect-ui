@@ -1,0 +1,43 @@
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_317e1688fb10b0::t_dfd7a40d0e556d 13,132-231,237
+  s_317e1688fb10b0::t_150fba22c3a67b 232-236
+README.md
+  s_317e1688fb10b0::t_84c5248b92e386 507,512
+apps/docs/public/r/ascii-halftone-filter.json
+  s_317e1688fb10b0::t_1f0c9753a0a3cf 17
+  s_317e1688fb10b0::t_4db0ba6b2c4fd2 1-16,18-26
+apps/docs/public/r/registry.json
+  s_317e1688fb10b0::t_4db0ba6b2c4fd2 6595-6617
+packages/registry/src/examples/index.ts
+  s_317e1688fb10b0::t_c106dfbf580c3b 400
+registry.json
+  s_317e1688fb10b0::t_4db0ba6b2c4fd2 6595-6617
+packages/registry/src/examples/effect-demos-93.tsx
+  s_317e1688fb10b0::t_a8108533a017f3 3,21-33
+  s_317e1688fb10b0::t_1e409e7d0cb6c3 34-36
+packages/registry/src/catalog-batch91.ts
+  s_317e1688fb10b0::t_d3cfaad7620d76 3,72-112,116,118
+  s_317e1688fb10b0::t_186d569bd4f608 113-115,117,119
+packages/registry/src/effects/ascii-halftone-filter.tsx
+  s_317e1688fb10b0::t_7a165b1d19cb76 453
+  s_317e1688fb10b0::t_bf001387cde980 1-143,149-153,162-452,454-476
+  s_317e1688fb10b0::t_6cd7488bcef378 144-148,154-161
+packages/registry/src/catalog-order.ts
+  s_317e1688fb10b0::t_985baf89cdeb70 339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "e75ce0dd9dccb7697094f525aadeef71ec99e016",
+  "prompts": {},
+  "sessions": {
+    "s_317e1688fb10b0": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759c-7463-8550-db63c09f5e35",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

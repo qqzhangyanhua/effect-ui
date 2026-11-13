@@ -1,0 +1,71 @@
+apps/docs/public/r/reaction-diffusion-field.json
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-32
+packages/registry/src/effects/batch91-effects.test.tsx
+  s_c4fb796c2c9ebd::t_b95929677b8860 13,232-340,346
+  s_c4fb796c2c9ebd::t_da9e3175786f67 231
+  s_317e1688fb10b0::t_cfc6eac6222970 341-345
+packages/registry/src/effects/depth-parallax-photo.tsx
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-497
+packages/registry/src/examples/effect-demos-93.tsx
+  s_c4fb796c2c9ebd::t_30f90c134d6064 38
+  s_c4fb796c2c9ebd::t_b95929677b8860 3,39-50
+  s_317e1688fb10b0::t_d1d9c25e033d1b 51-53
+apps/docs/public/r/registry.json
+  s_c4fb796c2c9ebd::t_b95929677b8860 6620-6691
+  s_c4fb796c2c9ebd::t_ab24134125d396 6618-6619
+apps/docs/public/r/ripple-refract-surface.json
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-26
+packages/registry/src/catalog-batch91.ts
+  s_c4fb796c2c9ebd::t_b95929677b8860 72-83,85-124
+  s_c4fb796c2c9ebd::t_06efb229981946 84
+packages/registry/src/effects/reaction-diffusion-shaders.ts
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-133
+apps/docs/public/r/depth-parallax-photo.json
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-26
+packages/registry/src/catalog-batch90.ts
+  s_c4fb796c2c9ebd::t_b95929677b8860 66-187
+registry.json
+  s_c4fb796c2c9ebd::t_ab24134125d396 6618-6619
+  s_c4fb796c2c9ebd::t_b95929677b8860 6620-6691
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_c4fb796c2c9ebd::t_b95929677b8860 2,665
+packages/registry/src/examples/effect-demos-92.tsx
+  s_c4fb796c2c9ebd::t_b95929677b8860 4-5,22-57
+packages/registry/src/effects/reaction-diffusion-field.tsx
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-455
+README.md
+  s_c4fb796c2c9ebd::t_3228f5a63eb50e 507
+  s_c4fb796c2c9ebd::t_b95929677b8860 513,517,522-523
+packages/registry/src/effects/ripple-refract-surface.tsx
+  s_c4fb796c2c9ebd::t_b95929677b8860 1-492
+packages/registry/src/catalog-order.ts
+  s_c4fb796c2c9ebd::t_b95929677b8860 340-342
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_c4fb796c2c9ebd::t_b95929677b8860 15-24,148-352
+packages/registry/src/examples/index.ts
+  s_c4fb796c2c9ebd::t_b95929677b8860 401-403
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "a24d63a644f8ae14e8be242c49f02d287eeafb9c",
+  "prompts": {},
+  "sessions": {
+    "s_317e1688fb10b0": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759c-7463-8550-db63c09f5e35",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    },
+    "s_c4fb796c2c9ebd": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d550-759b-7d02-aef5-77c86e1794cc",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}

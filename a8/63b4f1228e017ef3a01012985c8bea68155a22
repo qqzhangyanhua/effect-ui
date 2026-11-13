@@ -1,0 +1,48 @@
+packages/registry/src/examples/effect-demos-92.tsx
+  s_606ded155f9cea::t_4b0406f2d396e9 4,21-35
+  s_606ded155f9cea::t_224b893db5d0f8 36-38
+registry.json
+  s_606ded155f9cea::t_a1668d2a4a37f1 6530-6552
+packages/registry/src/examples/index.ts
+  s_606ded155f9cea::t_534f648ee305db 395
+apps/docs/public/r/ripple-refract-surface.json
+  s_606ded155f9cea::t_a1668d2a4a37f1 1-26
+packages/registry/src/catalog-batch90.ts
+  s_606ded155f9cea::t_0be32e61435b9e 66-122
+packages/registry/src/catalog-order.ts
+  s_606ded155f9cea::t_3f1389b2a4ca06 336
+packages/registry/src/catalog-effect-backgrounds.ts
+  s_606ded155f9cea::t_a89626464cdc4f 2,665
+apps/docs/public/r/registry.json
+  s_606ded155f9cea::t_a1668d2a4a37f1 6530-6552
+packages/registry/src/effects/batch90-effects.test.tsx
+  s_606ded155f9cea::t_2bd56f1766a45f 15,139-219,223-242,245
+  s_606ded155f9cea::t_80e2d72378a0ab 220-222
+  s_606ded155f9cea::t_f3522122cef1c9 243-244
+packages/registry/src/effects/ripple-refract-surface.tsx
+  s_606ded155f9cea::t_1e285f8689643e 67,70
+  s_606ded155f9cea::t_642ec556f76aa3 131-134,157-158
+  s_606ded155f9cea::t_8f0c547f2185a6 51-55,278,355
+  s_606ded155f9cea::t_c1001aa86a5d85 1-50,56-66,68-69,71-130,135-156,159-219,234-277,279-280,283-316,318-354,356-368,372,374-379,381-382,384-387,389-405,409-416,418-445,447-448,453,457-467,473-492
+  s_606ded155f9cea::t_fa8be0201aa591 406-408,417
+  s_606ded155f9cea::t_4d015a01c88da6 468-472
+  s_606ded155f9cea::t_1d4fff38990688 220-233,281-282,317,369-371,373,380,383,388,446,449-452,454-456
+README.md
+  s_606ded155f9cea::t_302693f910097b 498,503
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "development:1.6.23",
+  "base_commit_sha": "a863b4f1228e017ef3a01012985c8bea68155a22",
+  "prompts": {},
+  "sessions": {
+    "s_606ded155f9cea": {
+      "agent_id": {
+        "tool": "grok",
+        "id": "01a1d538-4b20-7251-9b57-b6618309e341",
+        "model": "grok-4.7-build-fast"
+      },
+      "human_author": "张艳华 <939593210@qq.com>"
+    }
+  }
+}
